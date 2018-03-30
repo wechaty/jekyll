@@ -4,7 +4,5 @@ title:        "Chatie Documentations"
 description:  "Tutorials, API, and Support."
 author:       "Huan LI <zixia@zixia.net>"
 links: 
-  - 
-    sidebar: 
-      - 
-        Home: "https://www.chatie.io"
+  - sidebar: 
+    -  Home: "https://www.chatie.io"
