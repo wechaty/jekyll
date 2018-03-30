@@ -1,6 +1,6 @@
 # CHATIE OFFICIAL DOCUMENTS
 
-Documents
+https://docs.chatie.io
 
 ## Condidates
 
