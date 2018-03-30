@@ -1,0 +1,28 @@
+{
+  "name": "@chatie/docs",
+  "version": "0.0.1",
+  "description": "Chatie Documents",
+  "main": "index.js",
+  "scripts": {
+    "lint": "npm run lint:md",
+    "lint:md": "markdownlint *.md docs/**/*.md",
+    "test": "echo test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chatie/docs.git"
+  },
+  "keywords": [
+    "chatie",
+    "document"
+  ],
+  "author": "Huan LI <zixia@zixia.net>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Chatie/docs/issues"
+  },
+  "homepage": "https://github.com/Chatie/docs#readme",
+  "devDependencies": {
+    "markdownlint-cli": "^0.8.1"
+  }
+}
