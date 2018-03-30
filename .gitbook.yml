@@ -1,0 +1,8 @@
+title:        "Chatie Documentations",
+description:  "Tutorials, API, and Support.",
+author:       "Huan LI <zixia@zixia.net>",
+gitbook:      ">=3",
+root:         "docs/",
+links:
+  - sidebar:
+      - Home: "https://www.chatie.io"
