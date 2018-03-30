@@ -1,3 +1,4 @@
-# LANGS
+# Languages
 
-langs is here
+* [English](en/)
+* [Chinese](zh/)
