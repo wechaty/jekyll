@@ -1,7 +1,5 @@
 # Summary
 
-## Documentation
-
 * [Overview](overview/README.md)
   * [Concepts](overview/concepts.md)
 * [Quickstart](quickstart/README.md)
@@ -10,6 +8,8 @@
   * [Ding-dong Bot](api/wechaty.md)
 
 ----
+
+## Documentation
 
 * [After Parts Seprator](https://chatie.io)
   * [After Parts Sub 1](https://chatie.io)
