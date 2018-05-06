@@ -7,5 +7,5 @@ links:
   - sidebar: 
     -  Home: https://www.chatie.io
 
-plugins:
-  - github-edit
+# plugins:
+#   - github-edit
