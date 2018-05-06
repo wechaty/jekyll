@@ -4,8 +4,9 @@
   "description": "Chatie Documents",
   "main": "index.js",
   "scripts": {
-    "lint": "npm run lint:md",
+    "lint": "npm run lint:md && npm run lint:yaml",
     "lint:md": "markdownlint *.md docs/**/*.md",
+    "lint:yaml": "yamllint .gitbook.yml",
     "test": "echo test"
   },
   "repository": {
@@ -25,7 +26,8 @@
   "devDependencies": {
     "git-scripts": "^0.2.1",
     "gitbook-cli": "^2.3.2",
-    "markdownlint-cli": "^0.8.1"
+    "markdownlint-cli": "^0.8.1",
+    "yaml-lint": "^1.2.3"
   },
   "git": {
     "scripts": {
