@@ -1,4 +1,3 @@
-
 ### Concepts
 
 #### 1. Hostie
@@ -6,7 +5,6 @@
 #### 2. Botie
 
 #### 3. Giftie
-
 
 ### See Also
 
