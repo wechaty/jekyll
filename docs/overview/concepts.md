@@ -4,9 +4,15 @@
 
 ### 1. Hostie
 
+Hostie is a hostie.
+
 ### 2. Botie
 
+Botie is a botie.
+
 ### 3. Giftie
+
+Giftie is a giftie.
 
 ## SEE ALSO
 

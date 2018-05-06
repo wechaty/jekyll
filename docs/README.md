@@ -1,5 +1,3 @@
-### Documentation
-
 Welcome to Chatie! We've created this documentation to help answer any questions you may have about what Chatie is, how to use it and what its APIs are.
 
 #### Just learning about Chatie?
@@ -26,3 +24,4 @@ We recommend [reading the writeup](https://blog.chatie.io/wechaty-the-bot-sdk/) 
 #### Testing
 
 * [Unit Testing for Bot Applications](https://www.microsoft.com/developerblog/2017/01/20/unit-testing-for-bot-applications/)
+
