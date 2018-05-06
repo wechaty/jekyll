@@ -1,11 +1,9 @@
 # Summary
 
-* [Overview](overview/README.md)
-* [Concepts](overview/concepts.md)
-* [Quickstart](quickstart/README.md)
-* [Create Your First Bot](quickstart/1.md)
-* [Tutorials](tutorials/README.md)
-* [Ding-dong Bot](api/wechaty.md)
+* [Overview](overview.md)
+* [Concepts](concepts.md)
+* [Quickstart](quickstart.md)
+* [Tutorials](tutorials.md)
 
 ## Part I
 
@@ -16,10 +14,6 @@
 
 * [We love feedback](part2/feedback_please.md)
 * [Better tools for authors](part2/better_tools.md)
-
-----
-
-* [Last part without title](part3/title.md)
 
 ## Summary II
 
@@ -32,16 +26,20 @@
 
 ----
 
-* [After Parts Seprator](https://chatie.io)
-  * [After Parts Sub 1](https://chatie.io)
-* [After Parts Seprator 2](https://chatie.io)
-  * [After Parts Sub 2](https://chatie.io)
+* [After Parts Seprator](part2/better_tools.md)
+  * [After Parts Sub 1](part2/better_tools.md)
+* [After Parts Seprator 2](part2/better_tools.md)
+  * [After Parts Sub 2](part2/better_tools.md)
 
 ----
 
 ## Summary III
 
-* [After Parts Seprator](https://chatie.io)
-  * [After Parts Sub 1](https://chatie.io)
-* [After Parts Seprator 2](https://chatie.io)
-  * [After Parts Sub 2](https://chatie.io)
+* [After Parts Seprator](part2/better_tools.md)
+  * [After Parts Sub 1](part2/better_tools.md)
+* [After Parts Seprator 2](part2/better_tools.md)
+  * [After Parts Sub 2](part2/better_tools.md)
+
+----
+
+* [Last part without title](part3/title.md)
