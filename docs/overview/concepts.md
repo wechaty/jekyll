@@ -1,12 +1,14 @@
 # CONCEPTS
 
-## 1. Hostie
+## CHATIE
 
-## 2. Botie
+### 1. Hostie
 
-## 3. Giftie
+### 2. Botie
 
-# SEE ALSO
+### 3. Giftie
+
+## SEE ALSO
 
 1. [Hangouts Chat API](https://developers.google.com/hangouts/chat/concepts/)
 1. [MO vs. MT messaging – what is the difference between them?](https://www.horisen.com/en/blog/mo-vs-mt-messaging-what-is-the-difference-between-them)
