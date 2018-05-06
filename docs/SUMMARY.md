@@ -7,12 +7,12 @@
 * [Tutorials](tutorials/README.md)
 * [Ding-dong Bot](api/wechaty.md)
 
-### Part I
+## Part I
 
 * [Writing is nice](part1/writing.md)
 * [GitBook is nice](part1/gitbook.md)
 
-### Part II
+## Part II
 
 * [We love feedback](part2/feedback_please.md)
 * [Better tools for authors](part2/better_tools.md)
@@ -21,14 +21,14 @@
 
 * [Last part without title](part3/title.md)
 
-### Summary II
+## Summary II
 
 * [Part I](part1/README.md)
-    * [Writing is nice](part1/writing.md)
-    * [GitBook is nice](part1/gitbook.md)
+  * [Writing is nice](part1/writing.md)
+  * [GitBook is nice](part1/gitbook.md)
 * [Part II](part2/README.md)
-    * [We love feedback](part2/feedback_please.md)
-    * [Better tools for authors](part2/better_tools.md)
+  * [We love feedback](part2/feedback_please.md)
+  * [Better tools for authors](part2/better_tools.md)
 
 ----
 
@@ -37,5 +37,11 @@
 * [After Parts Seprator 2](https://chatie.io)
   * [After Parts Sub 2](https://chatie.io)
 
+----
 
+## Summary III
 
+* [After Parts Seprator](https://chatie.io)
+  * [After Parts Sub 1](https://chatie.io)
+* [After Parts Seprator 2](https://chatie.io)
+  * [After Parts Sub 2](https://chatie.io)

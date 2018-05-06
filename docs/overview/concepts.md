@@ -1,14 +1,14 @@
 # Concepts XX
 
-## 1. Hostie
+## Hostie
 
 Hostie is a hostie.
 
-## 2. Botie
+## Botie
 
 Botie is a botie.
 
-## 3. Giftie
+## Giftie
 
 Giftie is a giftie.
 

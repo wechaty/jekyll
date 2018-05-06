@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "npm run lint:md && npm run lint:yaml",
-    "lint:md": "markdownlint *.md docs/**/*.md",
+    "lint:md": "markdownlint *.md docs/*.md docs/**/*.md",
     "lint:yaml": "yamllint .gitbook.yml",
     "test": "echo test"
   },
