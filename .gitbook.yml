@@ -1,11 +1,10 @@
 root:         ./docs
-gitbook:      >= 3.0.0
-title:        Chatie Documentations
-description:  Tutorials, API, and Support.
-author:       Huan LI <zixia@zixia.net>
+gitbook:      ">= 3.0.0"
+title:        "Chatie Documentations"
+description:  "Tutorials, API, and Support."
+author:       "Huan LI <zixia@zixia.net>"
 links: 
-  - sidebar: 
-    -  Home: https://www.chatie.io
-
-plugins:
-  - github-edit
+  - 
+    sidebar: 
+      - 
+        Home: "https://www.chatie.io"
