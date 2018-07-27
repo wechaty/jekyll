@@ -5,14 +5,15 @@
 * [Quickstart](quickstart.md)
 * [Tutorials](tutorials.md)
 
-## Wechaty
+## FOR DEVELOPER
 
-* [Overview](wechaty/overview.md)
-* [Concepts](wechaty/concepts.md)
-* [Getting Started](wechaty/getting-started.md)
-* [Examples](wechaty/examples.md)
-* [API](wechaty/api.md)
-* [What is Puppet](wechaty/puppet.md)
+* [Wechaty](wechaty/overview.md)
+  * [Overview](wechaty/overview.md)
+  * [Concepts](wechaty/concepts.md)
+  * [Getting Started](wechaty/getting-started.md)
+  * [Examples](wechaty/examples.md)
+  * [API](wechaty/api.md)
+  * [What is Puppet](wechaty/puppet.md)
 
 ## Part II
 
