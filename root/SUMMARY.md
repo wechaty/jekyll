@@ -5,7 +5,7 @@
 * [Quickstart](quickstart.md)
 * [Tutorials](tutorials.md)
 
-* [Wechaty](wechaty/overview.md)
+* [Wechaty](wechaty/README.md)
   * [Overview](wechaty/overview.md)
   * [Concepts](wechaty/concepts.md)
   * [Getting Started](wechaty/getting-started.md)
