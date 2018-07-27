@@ -5,10 +5,14 @@
 * [Quickstart](quickstart.md)
 * [Tutorials](tutorials.md)
 
-## Part I
+## Wechaty
 
-* [Writing is nice](part1/writing.md)
-* [GitBook is nice](part1/gitbook.md)
+* [Overview](wechaty/overview.md)
+* [Concepts](wechaty/concepts.md)
+* [Getting Started](wechaty/getting-started.md)
+* [Examples](wechaty/examples.md)
+* [API](wechaty/api.md)
+* [What is Puppet](wechaty/puppet.md)
 
 ## Part II
 
