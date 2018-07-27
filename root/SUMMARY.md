@@ -5,8 +5,6 @@
 * [Quickstart](quickstart.md)
 * [Tutorials](tutorials.md)
 
-## FOR DEVELOPER
-
 * [Wechaty](wechaty/overview.md)
   * [Overview](wechaty/overview.md)
   * [Concepts](wechaty/concepts.md)
