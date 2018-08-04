@@ -1,5 +1,7 @@
 # CHATIE OFFICIAL DOCUMENTS
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Chatie/docs.svg)](https://greenkeeper.io/)
+
 [Chatie Documentations](https://docs.chatie.io)
 
 ## RESOURCES
