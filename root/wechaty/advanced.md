@@ -1,8 +1,8 @@
 # 1. Wechaty Tutorial
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=KO23WAlnPHg" frameborder="0" allowfullscreen="" style=" position: absolute; top:0; left:0; width:100%; height:100%; "></iframe>
-</div>
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=KO23WAlnPHg
+" target="_blank"><img src="http://img.youtube.com/vi/KO23WAlnPHg/0.jpg"
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 Above is a 10 minute video tutorial, which is a good way to start if you are new to Wechaty.
 
