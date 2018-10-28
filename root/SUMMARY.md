@@ -7,11 +7,16 @@
 
 * [Wechaty](wechaty/README.md)
   * [Overview](wechaty/overview.md)
+  * [Demo](wechaty/demo.md)
+  * [Quick Start](wechaty/quick-start.md)
+  * [Attention](wechaty/attention.md)
   * [Concepts](wechaty/concepts.md)
-  * [Getting Started](wechaty/getting-started.md)
+  * [Advanced](wechaty/advanced.md)
   * [Examples](wechaty/examples.md)
   * [API](wechaty/api.md)
   * [What is Puppet](wechaty/puppet.md)
+  * [FAQ](wechaty/faq.md)
+  * [Awesome Wechaty](wechaty/awesome-wechaty.md)
 
 ## Part II
 
