@@ -15,7 +15,7 @@ If you have not installed Node.js(or version is below 10),You need to install th
 
 > Instal Node.js for other platforms can be found at <https://nodejs.org/en/download/package-manager/>
 
-## 1. Clone this Repository
+## 1. Clone wechaty-getting-started Repository
 
 ```sh
 git clone tps://github.com/Chatie/wechaty-getting-started
@@ -29,7 +29,7 @@ npm install
 ```
 
 ## 3. Run the Bot
-> **Notice: Wechaty requires Node.js version >= 9**
+> **Notice: Wechaty requires Node.js version >= 10**
 
 ```shell
 npm start
@@ -42,6 +42,6 @@ You are all set!
 
 You can see the following result after running:
 
-![demo-png](https://chatie.io/wechaty-getting-started/demo.png)
+![demo](https://chatie.io/wechaty-getting-started/demo.gif)
 
 This demo will show all message on the bot.

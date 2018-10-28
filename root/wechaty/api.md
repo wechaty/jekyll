@@ -1,7 +1,4 @@
-# Wechaty v0.20 Documentation
-
-* <https://blog.chatie.io>
-
+Version: Wechaty v0.20
 
 ## Classes
 

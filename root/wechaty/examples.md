@@ -4,7 +4,7 @@ You can get all of the following examples at our [Official Wechaty Examples Dire
 
 ## 1. BASIC
 
-Wechaty Basic Functions (demos under the `basic/` directory)
+Wechaty Basic Functions, see https://github.com/Chatie/wechaty-getting-started/tree/master/examples/basic
 
 | FileName            | Description | 描述 |
 | ---                 | ---   | ---         |
@@ -14,7 +14,7 @@ Wechaty Basic Functions (demos under the `basic/` directory)
 
 ## 2. ADVANCED
 
-Wechaty Advanced Functions (demos under the `advanced/` directory)
+Wechaty Advanced Functions, see https://github.com/Chatie/wechaty-getting-started/tree/master/examples/advanced
 
 | FileName            | Description | 描述 |
 | ---                 | ---   | ---         |
@@ -27,7 +27,7 @@ Wechaty Advanced Functions (demos under the `advanced/` directory)
 
 ## 3. PROFESSIONAL
 
-Wechaty Integrated with Other Modules/Services (demos under the `professional/` directory)
+Wechaty Integrated with Other Modules/Services, see https://github.com/Chatie/wechaty-getting-started/tree/master/examples/professional 
 
 | FileName            | Description | 描述 |
 | ---                 | ---   | ---         |

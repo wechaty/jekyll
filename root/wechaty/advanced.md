@@ -1,10 +1,12 @@
 # 1. Wechaty Tutorial
 
 <div align="center">
-<a target="_blank" href="https://blog.chatie.io/getting-started-wechaty/"><img src="https://cloud.githubusercontent.com/assets/1361891/21722581/3ec957d0-d468-11e6-8888-a91c236e0ba2.jpg" border=0 width="60%"></a>
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=KO23WAlnPHg" frameborder="0" allowfullscreen="" style=" position: absolute; top:0; left:0; width:100%; height:100%; "></iframe>
 </div>
 
-Above is a 10 minute video tutorial(a little outdated, it's running under v0.14 or older versions of Wechaty), which is a good way to start if you are new to Wechaty.
+Above is a 10 minute video tutorial, which is a good way to start if you are new to Wechaty.
+
+For visiters come from China who can not visit YouTube.com, this video is also hosted on Tencent Video, see: [Getting Started with Wechaty @ Tencent](https://v.qq.com/x/page/k0726ho4rce.html)
 
 # 2. Docker Wechaty Getting Started
 
