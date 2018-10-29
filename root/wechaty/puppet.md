@@ -33,14 +33,14 @@ For a deeper understanding of the Puppet in Wechaty, you can read its source cod
 
 ## 3.1 Puppet Contact API
 
-| Contact API | wechat4u &<br />puppeteer | padchat | Ioscat
+| Contact API | PuppetWechat4u &<br />PuppetPuppeteer | PuppetPadchat | PuppetIoscat
 | --- | :---: | :---: | :---: |
 | Permanent ContactPayload.id  | ~~No~~ | Yes | ~~No~~
 | ContactPayload.friend | ~~No~~ | Yes | Yes
 
 ## 3.2 Puppet Message API
 
-| Message API | wechat4u &<br />puppeteer | padchat | Ioscat
+| Message API | PuppetWechat4u &<br />PuppetPuppeteer | PuppetPadchat | PuppetIoscat
 | --- | :---: | :---: | :---: |
 | messageSendContact() | ~~No~~ | Yes | ~~No~~
 | messageFile() | Yes | Yes for Image/Audio/Video<br />No for other Attachments | ~~No~~
@@ -49,7 +49,7 @@ For a deeper understanding of the Puppet in Wechaty, you can read its source cod
 
 ## 3.3 Puppet Room API
 
-| Room API | wechat4u &<br />puppeteer | padchat | Ioscat
+| Room API | PuppetWechat4u &<br />PuppetPuppeteer | PuppetPadchat | PuppetIoscat
 | --- | :---: | :---: | :---: |
 | Permanent RoomPayload.id | ~~No~~ | Yes | ~~No~~
 | roomQrcode() | ~~No~~ | Yes | Yes
