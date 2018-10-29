@@ -9,7 +9,7 @@
   * [Quick Start](wechaty/quick-start.md)
   * [API Reference](wechaty/api.md)
     * [Wechaty](wechaty/wechaty.md)
-    * [Contact](wechaty/contact.md)
+    * [Contact](https://github.com/lijiarui/wechaty/blob/doc/docs/contact.md)
     * [Room](wechaty/room.md)
     * [Message](wechaty/message.md)
   * [Examples](wechaty/examples.md)
