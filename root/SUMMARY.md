@@ -6,13 +6,17 @@
 * [Tutorials](tutorials.md)
 
 * [Wechaty](wechaty/README.md)
-  * [Overview](wechaty/overview.md)
   * [Quick Start](wechaty/quick-start.md)
-  * [What is Puppet](wechaty/puppet.md)
-  * [API](wechaty/api.md)
+  * [API Reference](wechaty/api.md)
+    * [Wechaty](wechaty/wechaty.md)
+    * [Contact](wechaty/contact.md)
+    * [Room](wechaty/room.md)
+    * [Message](wechaty/message.md)
   * [Examples](wechaty/examples.md)
-  * [Advanced](wechaty/advanced.md)
+  * [Puppet](wechaty/puppet.md)
   * [FAQ](wechaty/faq.md)
+  * [Change Log](wechaty/changelog.md)
+  * [Advanced](wechaty/advanced.md)
   * [Awesome Wechaty](wechaty/awesome-wechaty.md)
 
 ## Part II
