@@ -10,7 +10,6 @@
   * [Demo](wechaty/demo.md)
   * [Quick Start](wechaty/quick-start.md)
   * [Attention](wechaty/attention.md)
-  * [Glossary](wechaty/glossary.md)
   * [Advanced](wechaty/advanced.md)
   * [Examples](wechaty/examples.md)
   * [API](wechaty/api.md)
