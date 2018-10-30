@@ -1,6 +1,6 @@
 {
   "name": "@chatie/docs",
-  "version": "0.0.39",
+  "version": "0.0.40",
   "description": "Chatie Documents",
   "main": "index.js",
   "scripts": {
