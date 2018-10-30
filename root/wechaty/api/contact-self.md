@@ -1,3 +1,7 @@
+---
+description: 'Bot itself will be encapsulated as a ContactSelf. This class is extends Contact'
+---
+
 <a name="ContactSelf"></a>
 
 ## ContactSelf

@@ -1,3 +1,7 @@
+---
+description: 'Send, receive friend request, and friend confirmation events.'
+---
+
 <a name="Friendship"></a>
 
 ## Friendship

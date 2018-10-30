@@ -1,3 +1,7 @@
+---
+description: 'All wechat rooms(groups) will be encapsulated as a Room.'
+---
+
 ## Classes
 
 <dl>

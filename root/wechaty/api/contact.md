@@ -1,3 +1,7 @@
+---
+description: 'All wechat contacts(friend) will be encapsulated as a Contact.'
+---
+
 ## Classes
 
 <dl>

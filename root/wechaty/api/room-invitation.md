@@ -1,3 +1,7 @@
+---
+description: 'accept room invitation'
+---
+
 <a name="RoomInvitation"></a>
 
 ## RoomInvitation
