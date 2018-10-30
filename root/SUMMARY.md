@@ -7,7 +7,7 @@
 
 * [Wechaty](wechaty/README.md)
   * [Quick Start](wechaty/quick-start.md)
-  * [API Reference](wechaty/api/README.md)
+  * API Reference
     * [Wechaty](wechaty/api/wechaty.md)
     * [Contact](wechaty/api/contact.md)
     * [ContactSelf](wechaty/api/contact-self.md)
