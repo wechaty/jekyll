@@ -1,1 +1,0 @@
-{% include "git+https://github.com/lijiarui/wechaty.git/docs/wechaty.md#doc" %}
