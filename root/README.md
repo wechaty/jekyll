@@ -1,30 +1,50 @@
-# Introduction
+# 介绍
 
-Welcome to Chatie! We've created this documentation to help answer any questions you may have about what Chatie is, how to use it and what its APIs are.
+## Wechaty 是什么
 
-## Just learning about Chatie?
+[![Powered by Wechaty](https://img.shields.io/badge/Powered%20By-Wechaty-blue.svg)](https://github.com/chatie/wechaty) [![English Version](https://img.shields.io/badge/-English%20Version-blue.svg)](https://docs.chatie.io/wechaty/)
 
-Take a look at our [Wechaty 101 Talk](https://blog.chatie.io/wechaty-101-presentation/) which covers our core functionality, feature set and motivations behind the project.
+[Wechaty](https://github.com/Chatie/wechaty/) 是一个开源的的 **个人号** 微信机器人接口，是一个使用Typescript 构建的Node.js 应用。支持多种微信接入方案，包括网页，ipad，ios，windows， android 等。同时支持[Linux](https://travis-ci.com/chatie/wechaty), [Windows](https://ci.appveyor.com/project/chatie/wechaty), [Darwin\(OSX/Mac\)](https://travis-ci.com/chatie/wechaty) 和 [Docker](https://app.shippable.com/github/Chatie/wechaty) 多个平台。
 
-## Curious how our technology works?
+只需要6行代码，你就可以 **通过个人号** 搭建一个 **微信机器人功能** ，用来自动管理微信消息。
 
-We recommend [reading the writeup](https://blog.chatie.io/wechaty-the-bot-sdk/) we did and checking out our [Github repo](https://github.com/Chatie/).
+更多功能包括：
 
-## See Also
+* 消息处理：关键词回复
+* 群管理：自动入群，拉人，踢人
+* 自动处理好友请求
+* 智能对话：通过简单配置，即可加入智能对话系统，完成指定任务
+* ... 请自行开脑洞
 
-* [Azure Bot Service Introduction](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-overview-introduction)
+详情请看[Wechaty](https://github.com/chatie/wechaty)项目 [![NPM Version](https://badge.fury.io/js/wechaty.svg)](https://badge.fury.io/js/wechaty) [![Docker Pulls](https://img.shields.io/docker/pulls/zixia/wechaty.svg?maxAge=2592000)](https://hub.docker.com/r/zixia/wechaty/) [![TypeScript](https://img.shields.io/badge/<%2F>-TypeScript-blue.svg)](https://www.typescriptlang.org/) [![Greenkeeper badge](https://badges.greenkeeper.io/Chatie/wechaty.svg)](https://greenkeeper.io/)
 
-* [Become a Bot Builder with Microsoft Bot Framework - James Mann speaking at dotnetsheff in April, 2017](https://pusher.com/sessions/meetup/dotnetsheff/become-a-bot-builder-with-microsoft-bot-framework)
-* [Microsoft Bot Service Documentation](https://docs.microsoft.com/en-us/azure/bot-service/)
-* [VIDEO - Build 2017
-What’s new with the Microsoft Bot Framework
-May 08, 2017 at 1:21PM  by Chris Mullins, Henrik Frystyk Nielsen, Vishwac Sena Kannan](https://channel9.msdn.com/events/Build/2017/B8097)
-* [A curated list of awesome Microsoft Bot Framework related things](https://github.com/sozercan/awesome-botframework)
+## 注意事项
 
-### Payment
+从2017年6月下旬开始，使用基于web版微信接入方案存在大概率的被限制登陆的可能性。 主要表现为：无法登陆Web 微信，但不影响手机等其他平台。 验证是否被限制登陆： [https://wx.qq.com](https://wx.qq.com) 上扫码查看是否能登陆。 更多内容详见：
 
-* [Integrating Payments with Bots](https://www.microsoft.com/developerblog/2016/10/31/integrating-payments-with-bots/)
+* [Can not login with error message: 当前登录环境异常。为了你的帐号安全，暂时不能登录web微信。](https://github.com/Chatie/wechaty/issues/603)
+* [\[谣言\] 微信将会关闭网页版本](https://github.com/Chatie/wechaty/issues/990)
+* [新注册的微信号无法登陆](https://github.com/Chatie/wechaty/issues/872)
+* [wechaty-puppet-puppeteer](https://github.com/chatie/wechaty-puppet-puppeteer)
 
-### Testing
+{% hint style="success" %}
+**解决方案： 我们提供了非web 版本解决方案，**[**点击购买token**](https://github.com/lijiarui/wechaty-puppet-padchat/wiki/%E8%B4%AD%E4%B9%B0token) **, 更多技术细节查看** [**wechaty-puppet-padchat**](https://github.com/lijiarui/wechaty-puppet-padchat)
+{% endhint %}
 
-* [Unit Testing for Bot Applications](https://www.microsoft.com/developerblog/2017/01/20/unit-testing-for-bot-applications/)
+## 什么是 Puppet
+
+不同的[Puppet](https://github.com/Chatie/wechaty/wiki/Puppet) 代表的我们对微信协议的不同实现方式, Puppet的英文意思是`傀儡`, 很形象的描述了我们希望Puppet做的事情：帮助 Wechaty 来控制微信的操作。
+
+所有的实现方式都以`PuppetXXX` 来命名的，比如[PuppetPuppeteer](https://github.com/Chatie/wechaty-puppet-puppeteer) 是通过谷歌浏览器，通过 [google puppeteer](https://github.com/GoogleChrome/puppeteer)来控制[网页微信API](https://wx.qq.com)。[PuppetPadchat](https://github.com/lijiarui/wechaty-puppet-padchat) 是通过WebSocket 连接一个协议服务器来控制iPad 微信，两个重要的信息参考：
+
+* [完整的Puppet清单](puppet.md#2-wechaty-puppet-qing-dan)
+* [基于不同实现方式的Puppet兼容性对比](puppet.md#3-wechaty-puppet-jian-rong-xing)
+
+如果你希望深入了解Puppet是如何在Wechaty 运行的，你可以在[https://github.com/Chatie/wechaty-puppet/blob/master/src/puppet.ts](https://github.com/Chatie/wechaty-puppet/blob/master/src/puppet.ts) 查看源代码。
+
+基于网页微信的实现方式是免费的，基于其他的接入方式是收费的，详细介绍：[收费说明](https://github.com/lijiarui/wechaty-puppet-padchat/wiki/购买token)
+
+以下是Puppet 和Wechaty 的架构图，更多Puppet 的介绍在这里： [Puppet in wiki](https://github.com/Chatie/wechaty-puppet/wiki) 
+
+![](https://github.com/Chatie/wechaty/wiki/image/abstract-info.png)
+
