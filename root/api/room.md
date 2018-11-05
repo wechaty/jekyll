@@ -398,32 +398,28 @@ if (contact && room) {
 
 **Kind**: instance method of [`Room`](room.md#room)
 
+| Param | Type | Description |
+| :--- | :--- | :--- |
+
+
 <table>
   <thead>
     <tr>
-      <th style="text-align:left">Param</th>
-      <th style="text-align:left">Type</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">[query]</td>
-      <td style="text-align:left"><a href="room.md#roommemberqueryfilter"><code>RoomMemberQueryFilter</code></a> | <code>string</code>
-      </td>
-      <td style="text-align:left">
+      <th style="text-align:left">[query]</th>
+      <th style="text-align:left"><a href="room.md#roommemberqueryfilter"><code>RoomMemberQueryFilter</code></a> | <code>string</code>
+      </th>
+      <th style="text-align:left">
         <p>可选参数。</p>
         <ul>
           <li>RoomMemberQueryFilter 可通过 name, roomAlias, contactAlias 查找指定的群成员。</li>
           <li>当memberAll(name) 的参数为string 类型的时候, 返回所有找到的群成员。这里面的name 包括上面定义的name, roomAlias,
             contactAlias。</li>
         </ul>
-      </td>
+      </th>
     </tr>
-  </tbody>
-</table>**Example**
-
-```javascript
+  </thead>
+  <tbody></tbody>
+</table>```javascript
 const roomList:Conatct[] | null = await room.findAll()
 if(roomList)
 console.log(`room all member list: `, roomList)
@@ -437,32 +433,28 @@ console.log(`contact list with all name, room alias, alias are abc:`, memberCont
 
 **Kind**: instance method of [`Room`](room.md#room)
 
+| Param | Type | Description |
+| :--- | :--- | :--- |
+
+
 <table>
   <thead>
     <tr>
-      <th style="text-align:left">Param</th>
-      <th style="text-align:left">Type</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">queryArg</td>
-      <td style="text-align:left"><a href="room.md#roommemberqueryfilter"><code>RoomMemberQueryFilter</code></a> | <code>string</code>
-      </td>
-      <td style="text-align:left">
+      <th style="text-align:left">queryArg</th>
+      <th style="text-align:left"><a href="room.md#roommemberqueryfilter"><code>RoomMemberQueryFilter</code></a> | <code>string</code>
+      </th>
+      <th style="text-align:left">
         <p>如果找到多个，返回第一个。</p>
         <ul>
           <li>RoomMemberQueryFilter 可通过 name, roomAlias, contactAlias 查找指定的群成员。</li>
           <li>当memberAll(name) 的参数为string 类型的时候, 返回所有找到的群成员。这里面的name 包括上面定义的name, roomAlias,
             contactAlias。</li>
         </ul>
-      </td>
+      </th>
     </tr>
-  </tbody>
-</table>**Example** _\(Find member by name\)_
-
-```javascript
+  </thead>
+  <tbody></tbody>
+</table>```javascript
 const bot = new Wechaty()
 await bot.start()
 // after logged in...
@@ -535,7 +527,7 @@ await room.say('ding - created')
 
 ### Room.findAll\(\[query\]\) ⇒ `Promise.>`
 
-通过  {topic: string \| RegExp}, 查找群，返回找到的所有群的数组。
+通过 {topic: string \| RegExp}, 查找群，返回找到的所有群的数组。
 
 **Kind**: static method of [`Room`](room.md#room)
 
@@ -555,7 +547,7 @@ const roomList = await bot.Room.findAll({topic: 'wechaty'})  // find all of the 
 
 ### Room.find\(query\) ⇒ `Promise.`
 
-通过  {topic: string \| RegExp}, 查找群，如果找到多个群，返回找到的第一个群。
+通过 {topic: string \| RegExp}, 查找群，如果找到多个群，返回找到的第一个群。
 
 **Kind**: static method of [`Room`](room.md#room)  
 **Returns**: `Promise.` - If can find the room, return Room, or return null

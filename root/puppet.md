@@ -48,8 +48,8 @@
 | Message API | 描述 | PuppetWechat4u & PuppetPuppeteer | PuppetPadchat | PuppetIoscat |
 | :--- | :--- | :---: | :---: | :---: |
 | messageSendContact\(\) | 发送联系人名片 | ~~No~~ | Yes | ~~No~~ |
-| messageFile\(\) | 接收文件 | Yes | Yes: 图片/音频/视频 No: 其他文件  | ~~No~~ |
-| messageSendFile\(\) | 发送文件 | Yes | Yes: 图片/音频/视频 No: 其他文件  | ~~No~~ |
+| messageFile\(\) | 接收文件 | Yes | Yes: 图片/音频/视频 No: 其他文件 | ~~No~~ |
+| messageSendFile\(\) | 发送文件 | Yes | Yes: 图片/音频/视频 No: 其他文件 | ~~No~~ |
 | messageSendUrl\(\) | 发送链接消息 | ~~No~~ | Yes | ~~No~~ |
 
 ### 3.3 Puppet 微信群接口

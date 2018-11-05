@@ -2,15 +2,15 @@
 
 你可以点击wechaty 官方示例文档地址查看所有的示例代码
 
-{% embed url="https://github.com/Chatie/wechaty-getting-started/tree/master/examples" %}
+{% embed url="https://github.com/Chatie/wechaty-getting-started/tree/master/examples" caption="" %}
 
 ## 1. 基本版本
 
-代码内容详见： [https://github.com/Chatie/wechaty-getting-started/tree/master/examples/basi](ttps://github.com/Chatie/wechaty-getting-started/tree/master/examples/basic​
+代码内容详见： \[[https://github.com/Chatie/wechaty-getting-started/tree/master/examples/basi\]\(ttps://github.com/Chatie/wechaty-getting-started/tree/master/examples/basic​](https://github.com/Chatie/wechaty-getting-started/tree/master/examples/basi]%28ttps://github.com/Chatie/wechaty-getting-started/tree/master/examples/basic​)
 
-)[c](ttps://github.com/Chatie/wechaty-getting-started/tree/master/examples/basic​
+\)\[c\]\(ttps://github.com/Chatie/wechaty-getting-started/tree/master/examples/basic​
 
-)
+\)
 
 | 文件名称 | 描述 |
 | :--- | :--- |
@@ -20,9 +20,9 @@
 
 ### 2. 进阶版本
 
-代码内容详见：[https://github.com/Chatie/wechaty-getting-started/tree/master/examples/advanced​](https://github.com/Chatie/wechaty-getting-started/tree/master/examples/advanced​
+代码内容详见：\[[https://github.com/Chatie/wechaty-getting-started/tree/master/examples/advanced​\]\(https://github.com/Chatie/wechaty-getting-started/tree/master/examples/advanced​](https://github.com/Chatie/wechaty-getting-started/tree/master/examples/advanced​]%28https://github.com/Chatie/wechaty-getting-started/tree/master/examples/advanced​)
 
-)
+\)
 
 | 文件名称 | 描述 |
 | :--- | :--- |

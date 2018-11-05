@@ -103,13 +103,13 @@ bot.on('friendship', async friendship => {
 返回好友请求的类型。
 
 {% hint style="info" %}
+
 FriendshipType 在这里是enum:
 
 * FriendshipType.Unknown 
 * FriendshipType.Confirm
 * FriendshipType.Receive  
 * FriendshipType.Verify   
-{% endhint %}
 
 **Kind**: instance method of [`Friendship`](friendship.md#Friendship)  
 **Example** _\(If request content is \`ding\`, then accept the friendship\)_
@@ -134,8 +134,7 @@ _**Deprecated**_
 
 请使用 [Friendship\#add](friendship.md#friendship-add-contact-hello-promise) 替换
 
-**Kind**: static method of [`Friendship`](friendship.md#Friendship)  
-
+**Kind**: static method of [`Friendship`](friendship.md#Friendship)
 
 ### Friendship.add\(contact, hello\) ⇒ `Promise.`
 

@@ -135,9 +135,9 @@ try {
 {% endhint %}
 
 **Kind**: instance method of [`Contact`](contact.md#contact)  
-**Returns**: `boolean` \| `null` -   
-True for friend of the bot   
- False for not friend of the bot, null for unknown.  
+**Returns**: `boolean` \| `null` -  
+True for friend of the bot  
+False for not friend of the bot, null for unknown.  
 **Example**
 
 ```javascript
@@ -301,6 +301,4 @@ const contactList = await bot.Contact.findAll({ alias: 'lijiarui' }) // find all
 | :--- | :--- | :--- |
 | name | `string` | 用户自己设置的昵称叫做name |
 | alias | `string` | 机器人或者其他人给这个用户设置的昵称叫做alias：[More Detail](https://github.com/Chatie/wechaty/issues/365) |
-
-
 

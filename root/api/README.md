@@ -18,5 +18,3 @@ description: 'Wechaty Version: v0.20'
 
 {% page-ref page="friendship.md" %}
 
-
-

@@ -13,6 +13,7 @@
 * [示例代码](example.md)
 * [Puppet](puppet.md)
 * [FAQ](faq.md)
+* [购买第三方iPad版本](https://github.com/lijiarui/wechaty-puppet-padchat/wiki/%E8%B4%AD%E4%B9%B0token)
 
 ## 了解更多
 

@@ -74,15 +74,13 @@ bot.on('room-invite', async roomInvitation => {
 ### roomInvitation.roomTopic\(\)
 
 **Kind**: instance method of [`RoomInvitation`](room-invitation.md#RoomInvitation)  
-**Deprecated:**: 请使用 [topic\(\) ](room-invitation.md#roominvitation-topic-contact)  
-
+**Deprecated:**: 请使用 [topic\(\) ](room-invitation.md#roominvitation-topic-contact)
 
 ### roomInvitation.date\(\) ⇒ `Promise.`
 
 获取发送入群邀请的时间。
 
-**Kind**: instance method of [`RoomInvitation`](room-invitation.md#roominvitation)  
-
+**Kind**: instance method of [`RoomInvitation`](room-invitation.md#roominvitation)
 
 ### roomInvitation.age\(\) ⇒ `number`
 

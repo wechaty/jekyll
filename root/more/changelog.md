@@ -23,7 +23,7 @@ There will be a **migration guide from v0.14 to v0.16** will be published on our
 
 ### 1.3. Argument / Return Value
 
-* BREAKING CHANGE v0.16  room.add return Promise\ instead of return Promise\ [\#1362](https://github.com/Chatie/wechaty/issues/1362)
+* BREAKING CHANGE v0.16  room.add return Promise instead of return Promise [\#1362](https://github.com/Chatie/wechaty/issues/1362)
 * BREAKING CHANGE: v0.16 `scan` event args will be different! [\#1262](https://github.com/Chatie/wechaty/issues/1262)
 * BREAKING CHANGE: first arg of `room-leave` event licener changed from `Contact` to `Contact[]` [\#723](https://github.com/Chatie/wechaty/issues/723)
 * BREAKING CHANGE: v0.16 on\('friend\`\) arguments changed! [\#1196](https://github.com/Chatie/wechaty/issues/1196)
@@ -199,7 +199,7 @@ See more in [releases](https://github.com/chatie/wechaty/releases)
 * BREAKING CHANGE v0.16 Contact.personal\(\) and Contact.official\(\)  deprecated, use Contact.type\(\) instead [\#1366](https://github.com/Chatie/wechaty/issues/1366)
 * no encodedText error in `padchat-decode.ts` [\#1365](https://github.com/Chatie/wechaty/issues/1365)
 * BREAKING CHANGE v0.16  Contact, FriendRequest, Message, and Room classes will not be able to instantiate directly [\#1364](https://github.com/Chatie/wechaty/issues/1364)
-* BREAKING CHANGE v0.16  room.add return Promise\ instead of return Promise\ [\#1362](https://github.com/Chatie/wechaty/issues/1362)
+* BREAKING CHANGE v0.16  room.add return Promise instead of return Promise [\#1362](https://github.com/Chatie/wechaty/issues/1362)
 * `media-file-bot` cannot save xlsx file [\#1349](https://github.com/Chatie/wechaty/issues/1349)
 * room-leave-error [\#1335](https://github.com/Chatie/wechaty/issues/1335)
 * room-leave event throw error, cannot get leaver contact [\#1323](https://github.com/Chatie/wechaty/issues/1323)
