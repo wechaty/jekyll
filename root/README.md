@@ -54,9 +54,7 @@ We recommend [reading the writeup](https://blog.chatie.io/wechaty-the-bot-sdk/) 
 
 * [A curated list of awesome Microsoft Bot Framework related things](https://github.com/sozercan/awesome-botframework)
 
-### Payment
 
-* [Integrating Payments with Bots](https://www.microsoft.com/developerblog/2016/10/31/integrating-payments-with-bots/)
 
 ### Testing
 
