@@ -1,12 +1,15 @@
+---
+description: >-
+  Welcome to Chatie! We've created this documentation to help answer any
+  questions you may have about what wechaty is, how to use it and what its APIs
+  are.
+---
+
 # Introduction
-
-Welcome to Chatie! We've created this documentation to help answer any questions you may have about what Chatie is, how to use it and what its APIs are.
-
-
 
 ## What is wechaty
 
-[![Powered by Wechaty](https://img.shields.io/badge/Powered%20By-Wechaty-blue.svg)](https://github.com/chatie/wechaty)
+[![Powered by Wechaty](https://img.shields.io/badge/Powered%20By-Wechaty-blue.svg)](https://github.com/chatie/wechaty)[​![English Version](https://img.shields.io/badge/-English%20Version-blue.svg)​](https://docs.chatie.io/zh)
 
 [Wechaty](https://github.com/Chatie/wechaty/) is a Wechat Bot SDK for Personal Account that lets you create software to extend the functionality of the Wechat, writen in Node.js with TypeScript, Support all platforms including [Linux](https://travis-ci.com/chatie/wechaty), [Windows](https://ci.appveyor.com/project/chatie/wechaty), [Darwin\(OSX/Mac\)](https://travis-ci.com/chatie/wechaty) and [Docker](https://app.shippable.com/github/Chatie/wechaty).
 
@@ -21,6 +24,15 @@ More Powerful Feature as follows:
 * ...
 
 See more in [Wechaty](https://github.com/chatie/wechaty) [![NPM Version](https://badge.fury.io/js/wechaty.svg)](https://badge.fury.io/js/wechaty) [![Docker Pulls](https://img.shields.io/docker/pulls/zixia/wechaty.svg?maxAge=2592000)](https://hub.docker.com/r/zixia/wechaty/) [![TypeScript](https://img.shields.io/badge/<%2F>-TypeScript-blue.svg)](https://www.typescriptlang.org/) [![Greenkeeper badge](https://badges.greenkeeper.io/Chatie/wechaty.svg)](https://greenkeeper.io/)
+
+## Implementation
+
+* First Period: Wechaty is based on web WeChat, see [Wechaty 101: from v0.0 to v0.7](https://blog.chatie.io/wechaty-101-presentation/). This blog showed how wechaty works by a 2 hours video tutorial and a big PPT. **All implement by web WeChat is fully open-source and free!**
+* Second Period: There are a lot of [limitation using web WeChat](./#web-wechat-limitation). In order to make it more easy for chatbot developers, we provide Puppet to support third party to implement their WeChat implementations, see WeChat Protocal.
+
+## Web WeChat Limitation
+
+
 
 ## Attention
 
