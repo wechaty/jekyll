@@ -12,36 +12,24 @@
   * [Friendship](api-reference/friendship.md)
 * [Examples](examples.md)
 * [Puppet](puppet-1.md)
-* [Concepts](concepts.md)
 * [FAQ](faq.md)
 * [Best Practice](best-practice.md)
+* [Welcome to contribute](welcome-to-contribute.md)
+* [Third Party Puppet](https://github.com/lijiarui/wechaty-puppet-padchat/wiki/%E8%B4%AD%E4%B9%B0token)
 
-## Part II
+## More
 
+* [Video Tutorial](part-ii/video-tutorial.md)
 * [Advanced](part-ii/advanced.md)
-* [Awesome Wechaty](part-ii/awesome-wechaty.md)
+* [Code Structure](part-ii/code-structure.md)
+* [Release Log](part-ii/release-log.md)
 * [Change Log](part-ii/change-log.md)
+* [Awesome Wechaty](part-ii/awesome-wechaty.md)
+* [Contributors](https://github.com/Chatie/wechaty/wiki/Contributors)
 * [We love feedback](part-ii/we-love-feedback.md)
 * [Better tools for authors](part-ii/better-tools-for-authors.md)
 
-## Summary II
+## Others
 
-* [Part I](summary-ii/part-i/README.md)
-  * [Writing is nice](summary-ii/part-i/writing-is-nice.md)
-  * [GitBook is nice](summary-ii/part-i/gitbook-is-nice.md)
-* [Part II](summary-ii/part-ii/README.md)
-  * [We love feedback](summary-ii/part-ii/we-love-feedback.md)
-  * [Better tools for authors](summary-ii/part-ii/better-tools-for-authors.md)
-* [After Parts Seprator](summary-ii/after-parts-seprator/README.md)
-  * [After Parts Sub 1](summary-ii/after-parts-seprator/after-parts-sub-1.md)
-* [After Parts Seprator 2](summary-ii/after-parts-seprator-2/README.md)
-  * [After Parts Sub 2](summary-ii/after-parts-seprator-2/after-parts-sub-2.md)
-
-## Summary III
-
-* [After Parts Seprator](summary-iii/after-parts-seprator/README.md)
-  * [After Parts Sub 1](summary-iii/after-parts-seprator/after-parts-sub-1.md)
-* [After Parts Seprator 2](summary-iii/after-parts-seprator-2/README.md)
-  * [After Parts Sub 2](summary-iii/after-parts-seprator-2/after-parts-sub-2.md)
-* [Last part without title](summary-iii/last-part-without-title.md)
+* [Concepts](summary-ii/concepts.md)
 
