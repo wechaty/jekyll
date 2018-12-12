@@ -13,7 +13,7 @@
 * [Examples](examples.md)
 * [Puppet](puppet-1.md)
 * [Concepts](concepts.md)
-* [FAQ](faq.md)
+* [FAQ--](faq.md)
 * [Best Practice](best-practice.md)
 
 ## Part II
