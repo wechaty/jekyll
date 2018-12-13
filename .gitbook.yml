@@ -4,6 +4,5 @@ author:       "Rui LI <ruiruibupt@gmail.com>"
 structure:
   readme:     README.md
   summary:    SUMMARY.md
-​
 redirects:
   faq:        ./faq.md
