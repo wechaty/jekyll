@@ -1,6 +1,5 @@
 root:         ./root
 redirects:
-  help: https://github.com/chatie/wechaty/issues
   faq: ./faq.md
 gitbook:      ">= 3.0.0"
 title:        "Chatie Documentations"
