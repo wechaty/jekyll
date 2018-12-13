@@ -286,7 +286,7 @@ const contactList = await bot.Contact.findAll({ name: 'ruirui' })    // find all
 const contactList = await bot.Contact.findAll({ alias: 'lijiarui' }) // find all of the contacts whose alias is 'lijiarui'
 ```
 
-## 类型定义  <a id="typedef"></a>
+## 类型定义   <a id="typedef"></a>
 
 * [ContactQueryFilter](contact.md#contactqueryfilter)
 

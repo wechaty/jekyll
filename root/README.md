@@ -1,6 +1,6 @@
 # 介绍
 
-## Wechaty 是什么  <a id="intro"></a>
+## Wechaty 是什么   <a id="intro"></a>
 
 [![Powered by Wechaty](https://img.shields.io/badge/Powered%20By-Wechaty-blue.svg)](https://github.com/chatie/wechaty) [![English Version](https://img.shields.io/badge/-English%20Version-blue.svg)](https://docs.chatie.io/wechaty/)
 
@@ -18,12 +18,12 @@
 
 详情请看[Wechaty](https://github.com/chatie/wechaty)项目 [![NPM Version](https://badge.fury.io/js/wechaty.svg)](https://badge.fury.io/js/wechaty) [![Docker Pulls](https://img.shields.io/docker/pulls/zixia/wechaty.svg?maxAge=2592000)](https://hub.docker.com/r/zixia/wechaty/) [![TypeScript](https://img.shields.io/badge/<%2F>-TypeScript-blue.svg)](https://www.typescriptlang.org/) [![Greenkeeper badge](https://badges.greenkeeper.io/Chatie/wechaty.svg)](https://greenkeeper.io/)
 
-## 实现原理  <a id="web-limit"></a>
+## 实现原理   <a id="web-limit"></a>
 
 * 第一阶段：早期是基于网页版的微信客户端实现，详情查看 [Wechaty 101: from v0.0 to v0.7](https://blog.chatie.io/wechaty-101-presentation/) 这篇博客通过一个近2个小时的视频教程和ppt 来详细解释了实现原理。所有基于网页版本的实现均是**完全开源且免费的**。
 * 第二阶段：[基于网页版的微信有了较多限制](./#web-limit-1)，为了方便开发者继续搭建自己的聊天机器人，我们提供了中间件 [Puppet](puppet.md) 来支持多种实现方式。[查看多种微信接入方式。](./#multi-protocal)
 
-## 基于Web 微信的限制  <a id="web-limit"></a>
+## 基于Web 微信的限制   <a id="web-limit"></a>
 
 从2017年6月下旬开始，使用基于web版微信接入方案存在大概率的被限制登陆的可能性。 主要表现为：无法登陆Web 微信，但不影响手机等其他平台。 验证是否被限制登陆： [https://wx.qq.com](https://wx.qq.com) 上扫码查看是否能登陆。 更多内容详见：
 
@@ -36,7 +36,7 @@
 **解决方案： 我们提供了非web 版本解决方案，**[**点击购买token**](https://github.com/lijiarui/wechaty-puppet-padchat/wiki/购买token) **, 更多技术细节查看** [**wechaty-puppet-padchat**](https://github.com/lijiarui/wechaty-puppet-padchat)
 {% endhint %}
 
-## 支持多种微信接入方式  <a id="multi-protocal"></a>
+## 支持多种微信接入方式   <a id="multi-protocal"></a>
 
 我们提供多种微信协议的实现方式，在wechaty 的系统中，我们叫她[Puppet](https://github.com/Chatie/wechaty/wiki/Puppet)。Puppet的英文意思是`傀儡`, 很形象的描述了我们希望Puppet做的事情：帮助 Wechaty 来控制微信的操作。
 
@@ -53,7 +53,7 @@
 
 ![](https://github.com/Chatie/wechaty/wiki/image/abstract-info.png)
 
-## 加入我们  <a id="join-us"></a>
+## 加入我们   <a id="join-us"></a>
 
 {% hint style="success" %}
 扫描下方二维码，回复 'wechaty' 加入 Wechaty Developers Home
@@ -64,7 +64,6 @@
 {% endhint %}
 
 {% hint style="warning" %}
-
 请不要问这些问题：
 
 * Wechaty 怎么用？
@@ -72,6 +71,9 @@
 * 能不能实现_\*\*_？
 * 为什么我跑不起来？
 * 有待补充 …
+{% endhint %}
+
+
 
 ![Wechaty Developers&apos; Home](https://chatie.io/wechaty-getting-started/bot-qr-code.png)
 

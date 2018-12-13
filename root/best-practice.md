@@ -1,6 +1,6 @@
 # 最佳实践
 
-## 1. 规则  <a id="rule"></a>
+## 1. 规则   <a id="rule"></a>
 
 * 使用TypeScript 作为开发语言，TypeScript 是强类型的JavaScript，统一typings，增强系统的可维护性。更多请查看issue 讨论：[\#1066](https://github.com/Chatie/wechaty/issues/1066), [\#1064](https://github.com/Chatie/wechaty/issues/1064).
 * 使用TSLint 作为代码检查工具，为什么需要？[推荐阅读这个了解详情](https://ts.xcatliu.com/engineering/lint.html)。wechaty 的tslint 配置说明请参考[这篇博客](https://blog.chatie.io/migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-zh/)。
@@ -8,11 +8,11 @@
 * 文件的命名规则是小写，用`-` 连接所有的内容而不是空格。比如`2017-10-06-wechat-pc-impactor` 而不是 `2017-10-06-WeChat PC Impactor`
 * 变量命名为`小驼峰`写法。如 `userName` 而不是 `user_name`。
 
-## 2. 使用docker 运行  <a id="start"></a>
+## 2. 使用docker 运行   <a id="start"></a>
 
 最新版的 Wechaty Docker Image \(v0.22\)预装了所有的 puppet ，包括 puppeteer 和 padchat 等代码里面预设的所有
 
-## 3. 机器人启动方法  <a id="start"></a>
+## 3. 机器人启动方法   <a id="start"></a>
 
 ```typescript
 import { PuppetPadchat } from 'wechaty-puppet-padchat'
@@ -25,7 +25,7 @@ const bot = new Wechaty({
 
 进一步说明：在启动的时候设置wechaty 的 name（旧版本叫profile） 来存储机器人的登陆信息，登陆后会自动生成一个`*.memory-card.json` 的文件，这样再次运行的时候，就不需要扫码就可以直接登陆机器人了。
 
-## 4. 为方法调用设置合理间隔  <a id="interval"></a>
+## 4. 为方法调用设置合理间隔   <a id="interval"></a>
 
 为了防止微信封号，wechaty 内置了队列，详细可见：[rx-queue](https://github.com/zixia/rx-queue)​
 
@@ -59,13 +59,13 @@ log.level('silly')
 // 'silent' | 'error' | 'warn' | 'info' | 'verbose' | 'silly'
 ```
 
-## 6. 使用热加载  <a id="hot-import"></a>
+## 6. 使用热加载   <a id="hot-import"></a>
 
 > docker运行的bot文件如何debug？像nodemon那样?
 
 wechaty 提供了hot-import 模块，参考：[https://github.com/Chatie/wechaty-getting-started/tree/master/examples/professional/hot-import-bot](https://github.com/Chatie/wechaty-getting-started/tree/master/examples/professional/hot-import-bot)​
 
-## 7. 推荐版本  <a id="version-info"></a>
+## 7. 推荐版本   <a id="version-info"></a>
 
 > 如何理解Wechaty 及相关Puppet 的版本号
 
@@ -102,12 +102,12 @@ Wechaty 根据 [http://semver.org/](http://semver.org/) 的规则制定版本号
 
 如果想了解更多：[How to Understand the Wechaty Semantic Versioning?](https://github.com/Chatie/wechaty/wiki/FAQ#3-how-to-understand-the-wechaty-semantic-versioning)​
 
-## 8. 环境要求  <a id="env"></a>
+## 8. 环境要求   <a id="env"></a>
 
 * 同时支持[Linux](https://travis-ci.com/chatie/wechaty), [Windows](https://ci.appveyor.com/project/chatie/wechaty), [Darwin\(OSX/Mac\)](https://travis-ci.com/chatie/wechaty) 和 [Docker](https://app.shippable.com/github/Chatie/wechaty) 多个平台。windows 用户如果安装失败，请参考这篇博客：[在Windows10下安装Wechaty](https://blog.chatie.io/wechaty-installation-in-windows-10/)​
 * Node.js 版本高于 10
 
-## 9. 相关拓展包说明  <a id="package"></a>
+## 9. 相关拓展包说明   <a id="package"></a>
 
 * [memory-card](https://github.com/huan/memory-card)：Memory Card is an Easy to Use Key/Value Store, with Swagger API Backend & Serialization Support.
 * [brolog](https://github.com/huan/brolog): Brolog is Logger for Angular in Browser like Npmlog.
@@ -120,7 +120,7 @@ Wechaty 根据 [http://semver.org/](http://semver.org/) 的规则制定版本号
 * [finis](https://github.com/huan/finis): Hook node exit with your callback, get `exit code` and `signal name` from parameters 
 * [leveldown](https://github.com/Level/leveldown): Pure C++ Node.js LevelDB binding serving as the back-end to LevelUP
 
-## 10. 代码示例  <a id="example"></a>
+## 10. 代码示例   <a id="example"></a>
 
 {% page-ref page="example.md" %}
 
