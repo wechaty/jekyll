@@ -1,26 +1,35 @@
 # Table of contents
 
-* [介绍](README.md)
-* [快速开始](quick-start.md)
-* [API 文档](api/README.md)
-  * [Wechaty](api/wechaty.md)
-  * [Message](api/message.md)
-  * [Contact](api/contact.md)
-  * [ContactSelf](api/contact-self.md)
-  * [Room](api/room.md)
-  * [RoomInvitation](api/room-invitation.md)
-  * [Friendship](api/friendship.md)
-* [示例代码](example.md)
-* [Puppet](puppet.md)
+* [Introduction](README.md)
+* [Quick Start](quick-start-1.md)
+* [API Reference](api-reference/README.md)
+  * [Wechaty](api-reference/wechaty.md)
+  * [Contact](api-reference/contact.md)
+  * [ContactSelf](api-reference/contact-self.md)
+  * [Room](api-reference/room.md)
+  * [RoomInvitation](api-reference/room-invitation.md)
+  * [Message](api-reference/message.md)
+  * [Friendship](api-reference/friendship.md)
+* [Examples](examples.md)
+* [Puppet](puppet-1.md)
 * [FAQ](faq.md)
-* [购买第三方iPad版本](https://github.com/lijiarui/wechaty-puppet-padchat/wiki/%E8%B4%AD%E4%B9%B0token)
+* [Best Practice](best-practice.md)
+* [Welcome to contribute](welcome-to-contribute.md)
+* [Third Party Puppet](https://github.com/lijiarui/wechaty-puppet-padchat/wiki/%E8%B4%AD%E4%B9%B0token)
 
-## 了解更多
+## More
 
-* [视频教程](more/video.md)
-* [进阶](more/advanced.md)
-* [ReleaseLog](more/releaselog.md)
-* [ChangeLog](more/changelog.md)
-* [Awesome Wechaty](more/awesome-wechaty.md)
+* [Video Tutorial](part-ii/video-tutorial.md)
+* [Advanced](part-ii/advanced.md)
+* [Code Structure](part-ii/code-structure.md)
+* [Release Log](part-ii/release-log.md)
+* [Change Log](part-ii/change-log.md)
+* [Awesome Wechaty](part-ii/awesome-wechaty.md)
 * [Contributors](https://github.com/Chatie/wechaty/wiki/Contributors)
+* [We love feedback](part-ii/we-love-feedback.md)
+* [Better tools for authors](part-ii/better-tools-for-authors.md)
+
+## Others
+
+* [Concepts](summary-ii/concepts.md)
 
