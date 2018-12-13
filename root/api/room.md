@@ -6,7 +6,7 @@ description: 所有的微信群都会被封装成 Room 类
 
 ## Room
 
-所有的微信群都会被封装成 Room 类。
+所有的微信群都会被封装成 Room类。
 
 [Examples/Room-Bot](https://github.com/Chatie/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/room-bot.ts)
 
@@ -15,7 +15,7 @@ description: 所有的微信群都会被封装成 Room 类
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| id | `string` | 获取群id。这个id 是否是永久不变的id 取决于使用哪一个puppet，具体 [查看puppet兼容性清单](../puppet.md#3-wechaty-puppet-jian-rong-xing)。 |
+| id | `string` | 获取群id。这个id 是否是永久不变的id 取决于使用哪一个puppet，具体 [查看puppet兼容性清单](../puppet.md#puppet-compatibility)。 |
 
 * [Room](room.md#room)
   * _instance_
@@ -54,7 +54,7 @@ await room.sync()
 在群内发消息，如果设置了 \[mention\] 参数，机器人在群内发送消息的时候还会@这个联系人。
 
 {% hint style="info" %}
-这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#3-wechaty-puppet-jian-rong-xing)
+这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#puppet-compatibility)
 {% endhint %}
 
 > **Kind**: instance method of [`Room`](room.md#room)
@@ -163,7 +163,7 @@ if (room) {
 邀请好友加入群聊。
 
 {% hint style="info" %}
-这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#3-wechaty-puppet-jian-rong-xing)
+这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#puppet-compatibility)
 
 基于网页微信开发的用户请查看： [Web version of WeChat closed group interface](https://github.com/Chatie/wechaty/issues/1441)
 {% endhint %}
@@ -196,7 +196,7 @@ if (room) {
 将好友移出群聊，这个功能仅在机器人是群主的时候会生效。
 
 {% hint style="info" %}
-这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#3-wechaty-puppet-jian-rong-xing)
+这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#puppet-compatibility)
 
 基于网页微信开发的用户请查看： [Web version of WeChat closed group interface](https://github.com/Chatie/wechaty/issues/1441)
 {% endhint %}
@@ -229,7 +229,7 @@ if (room) {
 机器人主动退群。
 
 {% hint style="info" %}
-这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#3-wechaty-puppet-jian-rong-xing)
+这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#puppet-compatibility)
 {% endhint %}
 
 **Kind**: instance method of [`Room`](room.md#room)  
@@ -249,7 +249,7 @@ await room.quit()
 | :--- | :--- | :--- |
 | \[newTopic\] | `string` | 参数可选，如果没有设置，则会获取群名称，如果设置了，则会设置群名称。 |
 
-**Example** _\(When you say anything in a room, it will get room topic. \)_
+**Example** _\(当你在群里说话的时候，打印群名称 \)_
 
 ```javascript
 const bot = new Wechaty()
@@ -264,7 +264,7 @@ bot
 .start()
 ```
 
-**Example** _\(When you say anything in a room, it will change room topic. \)_
+**Example** _\(当你在群内说话的时候，机器人修改群名称. \)_
 
 ```javascript
 const bot = new Wechaty()
@@ -296,7 +296,7 @@ bot
 | :--- | :--- | :--- |
 | \[text\] | `string` | 如果设置了这个参数，则会设置群公告，如果没有设置，则是获取群公告。 |
 
-**Example** _\(When you say anything in a room, it will get room announce. \)_
+**Example** _\(当你在群里说话的时候，打印群公告. \)_
 
 ```javascript
 const bot = new Wechaty()
@@ -307,7 +307,7 @@ const announce = await room.announce()
 console.log(`room announce is : ${announce}`)
 ```
 
-**Example** _\(When you say anything in a room, it will change room announce. \)_
+**Example** _\(当你在群里说话的时候，修改群公告. \)_
 
 ```javascript
 const bot = new Wechaty()
@@ -324,7 +324,7 @@ console.log(`room announce change from ${oldAnnounce} to ${room.announce()}`)
 获取群二维码，用户可以通过扫描这个二维码加入群聊。
 
 {% hint style="info" %}
-这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#3-wechaty-puppet-jian-rong-xing)
+这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#puppet-compatibility)
 
 这个二维码仅在群人数小于100人的时候可用。
 {% endhint %}
@@ -409,7 +409,7 @@ if (contact && room) {
       <th style="text-align:left"><a href="room.md#roommemberqueryfilter"><code>RoomMemberQueryFilter</code></a> | <code>string</code>
       </th>
       <th style="text-align:left">
-        <p>可选参数。</p>
+        <p>可选参数</p>
         <ul>
           <li>RoomMemberQueryFilter 可通过 name, roomAlias, contactAlias 查找指定的群成员。</li>
           <li>当memberAll(name) 的参数为string 类型的时候, 返回所有找到的群成员。这里面的name 包括上面定义的name, roomAlias,
@@ -419,17 +419,7 @@ if (contact && room) {
     </tr>
   </thead>
   <tbody></tbody>
-</table>```javascript
-const roomList:Conatct[] | null = await room.findAll()
-if(roomList)
-console.log(`room all member list: `, roomList)
-const memberContactList: Conatct[] | null =await room.findAll(`abc`)
-console.log(`contact list with all name, room alias, alias are abc:`, memberContactList)
-```
-
-### room.member\(queryArg\) ⇒ `Promise.`
-
-根据 query 查找群成员，如果找到多个，返回第一个。
+</table>根据 query 查找群成员，如果找到多个，返回第一个。
 
 **Kind**: instance method of [`Room`](room.md#room)
 
@@ -458,23 +448,6 @@ console.log(`contact list with all name, room alias, alias are abc:`, memberCont
 const bot = new Wechaty()
 await bot.start()
 // after logged in...
-const room = await bot.Room.find({topic: 'wechaty'})           // change 'wechaty' to any room name in your wechat
-if (room) {
-  const member = await room.member('lijiarui')             // change 'lijiarui' to any room member in your wechat
-  if (member) {
-    console.log(`wechaty room got the member: ${member.name()}`)
-  } else {
-    console.log(`cannot get member in wechaty room!`)
-  }
-}
-```
-
-**Example** _\(Find member by MemberQueryFilter\)_
-
-```javascript
-const bot = new Wechaty()
-await bot.start()
-// after logged in...
 const room = await bot.Room.find({topic: 'wechaty'})          // change 'wechaty' to any room name in your wechat
 if (room) {
   const member = await room.member({name: 'lijiarui'})        // change 'lijiarui' to any room member in your wechat
@@ -491,7 +464,7 @@ if (room) {
 获取群主的信息。
 
 {% hint style="info" %}
-这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#3-wechaty-puppet-jian-rong-xing)
+这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#puppet-compatibility)
 {% endhint %}
 
 **Kind**: instance method of [`Room`](room.md#room)  
@@ -566,7 +539,7 @@ const roomList = await bot.Room.find()
 const roomList = await bot.Room.find({topic: 'wechaty'})
 ```
 
-## 类型定义
+## 类型定义    <a id="typedef"></a>
 
 [RoomQueryFilter](room.md#RoomQueryFilter)
 

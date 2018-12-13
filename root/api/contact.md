@@ -13,7 +13,7 @@ description: 所有的联系人（好友）都会被封装成要给Contact 类
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| id | `string` | 获取联系人id，这个id 是否为永久唯一id 取决于你使用什么puppet，详见 [Puppet 兼容性清单](../puppet.md#3-wechaty-puppet-jian-rong-xing)。 |
+| id | `string` | 获取联系人id，这个id 是否为永久唯一id 取决于你使用什么puppet，详见 [Puppet 兼容性清单](../puppet.md#puppet-compatibility)。 |
 
 * [Contact](contact.md#contact)
   * _instance_
@@ -35,7 +35,7 @@ description: 所有的联系人（好友）都会被封装成要给Contact 类
 ### contact.say\(textOrContactOrFileOrUrl\) ⇒ `Promise.`
 
 {% hint style="info" %}
-这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#3-wechaty-puppet-jian-rong-xing)
+这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#puppet-compatibility)
 {% endhint %}
 
 **Kind**: instance method of [`Contact`](contact.md#contact)
@@ -131,7 +131,7 @@ try {
 判断这个联系人是否为机器人的好友
 
 {% hint style="info" %}
-这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#3-wechaty-puppet-jian-rong-xing)
+这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#puppet-compatibility)
 {% endhint %}
 
 **Kind**: instance method of [`Contact`](contact.md#contact)  
@@ -286,7 +286,7 @@ const contactList = await bot.Contact.findAll({ name: 'ruirui' })    // find all
 const contactList = await bot.Contact.findAll({ alias: 'lijiarui' }) // find all of the contacts whose alias is 'lijiarui'
 ```
 
-## 类型定义
+## 类型定义  <a id="typedef"></a>
 
 * [ContactQueryFilter](contact.md#contactqueryfilter)
 

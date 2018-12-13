@@ -4,16 +4,16 @@ description: 一个Wechaty 代表着一个微信的客户端，他取决于你�
 
 # Wechaty
 
-## 简介
+## 简介     <a id="intro"></a>
 
-根据你选择的[Puppet](../puppet.md)的不同，Bot 可能等于下面中的一个客户端，不同的[Puppet](https://github.com/Chatie/wechaty/wiki/Puppet) 代表的我们对微信协议的不同实现方式, Puppet的英文意思是`傀儡`, 很形象的描述了我们希望Puppet做的事情：帮助 Wechaty 来控制微信的操作。
+根据你选择的[Puppet](../puppet.md#intro)的不同，Bot 可能等于下面中的一个客户端，不同的[Puppet](../puppet.md#intro) 代表的我们对微信协议的不同实现方式, Puppet的英文意思是`傀儡`, 很形象的描述了我们希望Puppet做的事情：帮助 Wechaty 来控制微信的操作。
 
 * 网页微信客户端, 当你选择: [puppet-puppeteer](https://github.com/chatie/wechaty-puppet-puppeteer)/[puppet-wechat4u](https://github.com/chatie/wechaty-puppet-wechat4u)​
 * iPad 微信客户端, 当你选择: [puppet-padchat](https://github.com/lijiarui/wechaty-puppet-padchat)​
 
 了解更多:
 
-* [Wechaty 中的Puppet 是什么意思](../puppet.md#1-jie-shao)
+* [Wechaty 中的Puppet 是什么意思](../puppet.md#intro)
 
 如果你希望先了解如何发送消息，点击下面
 
@@ -27,7 +27,7 @@ description: 一个Wechaty 代表着一个微信的客户端，他取决于你�
 
 {% page-ref page="room.md" %}
 
-## Wechaty    <a id="wechaty"></a>
+## Wechaty         <a id="wechaty"></a>
 
 **Kind**: global class
 
@@ -44,9 +44,9 @@ description: 一个Wechaty 代表着一个微信的客户端，他取决于你�
   * _static_
     * ​[.instance\(\[options\]\)](wechaty.md#wechaty-instance-options)​
 
-### new Wechaty\(\[options\]\)    <a id="new-wechaty-options"></a>
+### new Wechaty\(\[options\]\)         <a id="new-wechaty-options"></a>
 
-创建一个 Wechaty 的实例.
+创建一个 Wechaty 的实例，默认使用Web 的方式，切换到iPad 的方式，参数设置请查看[示例代码](https://github.com/lijiarui/wechaty-puppet-padchat#示例代码)
 
 | Param | Type | Default |
 | :--- | :--- | :--- |
@@ -64,7 +64,44 @@ bot.on('message', message => console.log(`Message: ${message}`))
 bot.start()
 ```
 
-### wechaty.on\(event, listener\) ⇒ [`Wechaty`](wechaty.md#Wechaty)​    <a id="wechaty-on-event-listener-wechaty"></a>
+注意，\`new Wechaty\(\)\` 是可以传参数的
+
+#### 使用网页版本的场景
+
+* 这里name 是用来存储登录信息的，和\`Wechaty.instance\({name: 'XX'}\)\` 的作用是一样的。 [查看详情](../faq.md#login-status-persistent). 
+
+```typescript
+const bot = new Wechaty({ name: 'your-bot-name' })
+```
+
+#### 使用iPad 版本的场景
+
+* 当不使用web 版本的时候，需要定义你需要用什么样的方式接入，通过定义puppet名字的方式确定接入方式，这里是wechaty-puppet-padchat
+* puppetOptions 在这里是用来传递[token](https://github.com/lijiarui/wechaty-puppet-padchat/wiki/购买token)的，按照下面代码示例传入即可。
+
+```typescript
+const WECHATY_PUPPET_PADCHAT_TOKEN = 'your-token-here'
+
+const puppet = 'wechaty-puppet-padchat' // 使用ipad 的方式接入。
+
+const puppetOptions = {
+  token: WECHATY_PUPPET_PADCHAT_TOKEN,
+}
+
+const bot = new Wechaty({
+  name: 'your-bot-name'
+  puppet,
+  puppetOptions,
+})
+```
+
+* 上述的puppet 和 token 也可以不写进代码里面，通过环境变量来传递，如在命令行中运行：
+
+```text
+WECHATY_PUPPET_PADCHAT_TOKEN=你的token WECHATY_PUPPET=padchat node bot.js
+```
+
+### wechaty.on\(event, listener\) ⇒ [`Wechaty`](wechaty.md#Wechaty)​         <a id="wechaty-on-event-listener-wechaty"></a>
 
 当机器人收到消息，会触发一个事件，一些简单的事件介绍如下：
 
@@ -197,7 +234,7 @@ bot.on('room-topic', (room, topic, oldTopic, changer) => {
 ​bot.on('error', (error) => {  console.error(error)})
 ```
 
-### wechaty.start\(\) ⇒ `Promise.`    <a id="wechaty-start-promise"></a>
+### wechaty.start\(\) ⇒ `Promise.`         <a id="wechaty-start-promise"></a>
 
 启动机器人
 
@@ -211,7 +248,7 @@ bot.on('room-topic', (room, topic, oldTopic, changer) => {
 await bot.start() // do other stuff with bot here
 ```
 
-### wechaty.stop\(\) ⇒ `Promise.`    <a id="wechaty-stop-promise"></a>
+### wechaty.stop\(\) ⇒ `Promise.`         <a id="wechaty-stop-promise"></a>
 
 停止机器人
 
@@ -221,7 +258,7 @@ await bot.start() // do other stuff with bot here
 await bot.stop()
 ```
 
-### wechaty.logout\(\) ⇒ `Promise.`    <a id="wechaty-logout-promise"></a>
+### wechaty.logout\(\) ⇒ `Promise.`         <a id="wechaty-logout-promise"></a>
 
 登出机器人
 
@@ -231,7 +268,7 @@ await bot.stop()
 await bot.logout()
 ```
 
-### wechaty.logonoff\(\) ⇒ `boolean`    <a id="wechaty-logonoff-boolean"></a>
+### wechaty.logonoff\(\) ⇒ `boolean`         <a id="wechaty-logonoff-boolean"></a>
 
 获取机器人logon/logoff 的状态
 
@@ -245,7 +282,7 @@ if (bot.logonoff()) {
 }
 ```
 
-### wechaty.userSelf\(\) ⇒ `ContactSelf`    <a id="wechaty-userself-contactself"></a>
+### wechaty.userSelf\(\) ⇒ `ContactSelf`         <a id="wechaty-userself-contactself"></a>
 
 获取当前机器人的所有信息
 
@@ -256,124 +293,51 @@ const contact = bot.userSelf()
 console.log(`Bot is ${contact.name()}`)
 ```
 
-### wechaty.say\(textOrContactOrFileOrUrl\) ⇒ `Promise.`    <a id="wechaty-say-textorcontactorfileorurl-promise"></a>
+### wechaty.say\(textOrContactOrFileOrUrl\) ⇒ `Promise.`         <a id="wechaty-say-textorcontactorfileorurl-promise"></a>
 
 机器人自己给自己发消息。
 
 {% hint style="info" %}
-这个函数是否能成功调用，取决于你使用了哪一种Puppet 的实现，了解更多：[Puppet 兼容性列表](../puppet.md#3-wechaty-puppet-jian-rong-xing)
+这个函数是否能成功调用，取决于你使用了哪一种Puppet 的实现，了解更多：[Puppet 兼容性列表](../puppet.md#puppet-compatibility)
 {% endhint %}
 
 **Kind**: instance method of [`Wechaty`](wechaty.md#wechaty)​
 
-| Param | Type | Description |
-| :--- | :--- | :--- |
-
-
 <table>
   <thead>
     <tr>
-      <th style="text-align:left">textOrContactOrFileOrUrl</th>
-      <th style="text-align:left"><code>string</code> | <code>Contact</code> | <code>FileBox</code>
-      </th>
-      <th style="text-align:left">
-        <p>发送文本、联系人名片或者文件给机器人自己。</p>
-        <p>你可以使用 <a href="https://www.npmjs.com/package/file-box">FileBox</a> 来发送文件</p>
-      </th>
+      <th style="text-align:left">Param</th>
+      <th style="text-align:left">Type</th>
+      <th style="text-align:left">Description</th>
     </tr>
   </thead>
-  <tbody></tbody>
-</table>```typescript
-const bot = new Wechaty()
-await bot.start()
-// after logged in
-
-​// 1. send text to bot itselfawait bot.say('hello!')​
-// 2. send Contact to bot itself
-const contact = bot.Contact.load('contactId')
-await bot.say(contact)​
-
-// 3. send Image to bot itself from remote url
-import { FileBox }  from 'file-box'
-const fileBox = FileBox.fromUrl('https://chatie.io/wechaty/images/bot-qr-code.png')
-await bot.say(fileBox)​
-
-// 4. send Image to bot itself from local file
-import { FileBox }  from 'file-box'
-const fileBox = FileBox.fromFile('/tmp/text.jpg')
-await bot.say(fileBox)
-```
-
-### Wechaty.instance\(\[options\]\)    <a id="wechaty-instance-options"></a>
-
-获取全局的Wechaty 实例。
-
-**Kind**: static method of [`Wechaty`](wechaty.md#wechaty)​
-
-| Param | Type | Default |
-| :--- | :--- | :--- |
-| \[options\] | ​[`WechatyOptions`](wechaty.md#wechatyoptions)​ | `{}` |
-
-**Example** _\(The World's Shortest ChatBot Code: 6 lines of JavaScript\)_
-
-```typescript
-const { Wechaty } = require('wechaty')
-​Wechaty.instance() // Global instance
-.on('scan', (url, code) => console.log(`Scan QR Code to login: ${code}\n${url}`))
-.on('login',       user => console.log(`User ${user} logined`))
-.on('message',  message => console.log(`Message: ${message}`))
-.start()
-```
-
-## 类型定义
-
-* [PuppetModuleName](wechaty.md#puppetmodulename)
-* [WechatyOptions](wechaty.md#wechatyoptions)
-* [WechatyEventName](wechaty.md#wechatyeventname)
-* \*\*\*\*[WechatyEventFunction](wechaty.md#wechatyeventfunction)
-
-### PuppetModuleName
-
-**Kind**: global typedef **Properties**
-
-PuppetModuleName 参数在这里代表着Puppet 的名称，类型是 string, 可能的取值为：
-
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| PUPPET\_DEFAULT | `string` | 默认的puppet， 默认会使用 wechaty-puppet-puppeteer |
-| wechaty-puppet-wechat4u | `string` | 默认的puppet，使用 [wechat4u](https://github.com/nodeWechat/wechat4u) 来控制 [网页微信 API](https://wx.qq.com/) |
-| wechaty-puppet-padchat | `string` | 使用WebSocket 协议链接一个协议服务器，来控制iPad 微信。 |
-| wechaty-puppet-puppeteer | `string` | 通过chrome\(谷歌\)浏览器使用 [google puppeteer](https://github.com/GoogleChrome/puppeteer) 来控制 [网页微信 API](https://wx.qq.com/) |
-| wechaty-puppet-mock | `string` | 为单元测试提供模拟调用的Puppet |
-
-### WechatyOptions
-
-创建wechaty 实例的可选参数类型。
-
-```typescript
-export interface WechatyOptions {
-  memory?        : MemoryCard,
-  name?          : string,                    // Wechaty Name
-  profile?       : null | string,             // DEPRECATED: use name instead
-  puppet?        : PuppetModuleName | Puppet, // Puppet name or instance
-  puppetOptions? : PuppetOptions,             // Puppet TOKEN
-  ioToken?       : string,                    // Io TOKEN
-}
-```
-
-**Kind**: global typedef **Properties**
-
-| Name | Type | Description |
-| :--- | :--- | :--- |
-
+  <tbody>
+    <tr>
+      <td style="text-align:left">textOrContactOrFileOrUrl</td>
+      <td style="text-align:left"><code>string</code> | <code>Contact</code> | <code>FileBox</code>
+      </td>
+      <td style="text-align:left">
+        <p>发送文本、联系人名片或者文件给机器人自己。</p>
+        <p>你可以使用 <a href="https://www.npmjs.com/package/file-box">FileBox</a> 来发送文件</p>
+      </td>
+    </tr>
+  </tbody>
+</table>\`\`\`typescript // 1. send text to bot itself await bot.say\('hello!'\)​ // 2. send Contact to bot itself const contact = bot.Contact.load\('contactId'\) await bot.say\(contact\)​ // 3. send Image to bot itself from remote url import { FileBox } from 'file-box' const fileBox = FileBox.fromUrl\('https://chatie.io/wechaty/images/bot-qr-code.png'\) await bot.say\(fileBox\)​ // 4. send Image to bot itself from local file import { FileBox } from 'file-box' const fileBox = FileBox.fromFile\('/tmp/text.jpg'\) await bot.say\(fileBox\) \`\`\` \#\#\# Wechaty.instance\\(\\[options\\]\\) 获取全局的Wechaty 实例。 \*\*Kind\*\*: static method of \[\`Wechaty\`\]\(wechaty.md\#wechaty\)​ \| Param \| Type \| Default \| \| :--- \| :--- \| :--- \| \| \\[options\\] \| ​\[\`WechatyOptions\`\]\(wechaty.md\#wechatyoptions\)​ \| \`{}\` \| \*\*Example\*\* \_\\(The World's Shortest ChatBot Code: 6 lines of JavaScript\\)\_ \`\`\`typescript const { Wechaty } = require\('wechaty'\) ​Wechaty.instance\(\) // Global instance .on\('scan', \(url, code\) =&gt; console.log\(\`Scan QR Code to login: ${code}\n${url}\`\)\) .on\('login', user =&gt; console.log\(\`User ${user} logined\`\)\) .on\('message', message =&gt; console.log\(\`Message: ${message}\`\)\) .start\(\) \`\`\` \#\# 类型定义 \* \[PuppetModuleName\]\(wechaty.md\#puppetmodulename\) \* \[WechatyOptions\]\(wechaty.md\#wechatyoptions\) \* \[WechatyEventName\]\(wechaty.md\#wechatyeventname\) \* \[WechatyEventFunction\]\(wechaty.md\#wechatyeventfunction\) \#\#\# PuppetModuleName \*\*Kind\*\*: global typedef \*\*Properties\*\* PuppetModuleName 参数在这里代表着Puppet 的名称，类型是 string, 可能的取值为： \| Name \| Type \| Description \| \| :--- \| :--- \| :--- \| \| PUPPET\\_DEFAULT \| \`string\` \| 默认的puppet， 默认会使用 wechaty-puppet-puppeteer \| \| wechaty-puppet-wechat4u \| \`string\` \| 默认的puppet，使用 \[wechat4u\]\(https://github.com/nodeWechat/wechat4u\) 来控制 \[网页微信 API\]\(https://wx.qq.com/\) \| \| wechaty-puppet-padchat \| \`string\` \| 使用WebSocket 协议链接一个协议服务器，来控制iPad 微信。 \| \| wechaty-puppet-puppeteer \| \`string\` \| 通过chrome\\(谷歌\\)浏览器使用 \[google puppeteer\]\(https://github.com/GoogleChrome/puppeteer\) 来控制 \[网页微信 API\]\(https://wx.qq.com/\) \| \| wechaty-puppet-mock \| \`string\` \| 为单元测试提供模拟调用的Puppet \| \#\#\# WechatyOptions 创建wechaty 实例的可选参数类型。 \`\`\`typescript export interface WechatyOptions { memory? : MemoryCard, name? : string, // Wechaty Name profile? : null \| string, // DEPRECATED: use name instead puppet? : PuppetModuleName \| Puppet, // Puppet name or instance puppetOptions? : PuppetOptions, // Puppet TOKEN ioToken? : string, // Io TOKEN } \`\`\` \*\*Kind\*\*: global typedef \*\*Properties\*\*
 
 <table>
   <thead>
     <tr>
-      <th style="text-align:left">name</th>
-      <th style="text-align:left"><code>string</code>
-      </th>
-      <th style="text-align:left">
+      <th style="text-align:left">Name</th>
+      <th style="text-align:left">Type</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">name</td>
+      <td style="text-align:left"><code>string</code>
+      </td>
+      <td style="text-align:left">
         <p>Wechaty 机器人的名称.</p>
         <p>当你按照下面的方式设置的时候： <code>new Wechaty({name: &apos;wechatyName&apos;})</code>
         </p>
@@ -381,103 +345,101 @@ export interface WechatyOptions {
           的时候，你不需要扫码登陆就能自动登陆机器人。</p>
         <p>这个名字在启动机器人的时候，是可以通过环境变量<code>WECHATY_NAME</code> 设置的，如：<code>WECHATY_NAME=&quot;wechatyName&quot; node bot.js</code>
         </p>
-      </th>
+      </td>
     </tr>
-  </thead>
-  <tbody></tbody>
-</table>| puppet | `PuppetModuleName` \| `Puppet` | Puppet 名称或者实例 |
-| :--- | :--- | :--- |
-
-
-| puppetOptions | `Partial.` | Puppet TOKEN |
-| :--- | :--- | :--- |
-
-
-| ioToken | `string` | Io TOKEN |
-| :--- | :--- | :--- |
-
-
-Wechaty 事件的类型
-
-**Kind**: global typedef **Properties**
-
-| Name | Type | Description |
-| :--- | :--- | :--- |
-
-
-| error | `string` | 当机器人内部出错的时候会触发error 事件。 |
-| :--- | :--- | :--- |
-
-
-| login | `string` | 当机器人成功登陆后，会触发login 事件，并会在事件中传递当前登陆机器人的信息。 |
-| :--- | :--- | :--- |
-
-
-| logout | `string` | 当机器人检测到登出的时候，会触发logout 事件，并会在事件中传递机器人的信息。 |
-| :--- | :--- | :--- |
-
-
-| heartbeat | `string` | 获取机器人的心跳。 |
-| :--- | :--- | :--- |
-
-
-| friendship | `string` | 当有人给机器人发好友请求的时候会触发这个事件。 |
-| :--- | :--- | :--- |
-
-
-| message | `string` | 当机器人收到消息的时候会触发这个事件。 |
-| :--- | :--- | :--- |
-
-
-| ready | `string` | 当所有数据加载完成后，会触发这个事件。在wechaty-puppet-padchat 中，它意味着已经加载完成Contact 和Room 的信息。 |
-| :--- | :--- | :--- |
-
-
-| room-join | `string` | 当有人进入微信群的时候会触发这个事件。机器人主动进入某个微信群，t那个样会触发这个事件。 |
-| :--- | :--- | :--- |
-
-
-| room-topic | `string` | 当有人修改群名称的时候会触发这个事件。 |
-| :--- | :--- | :--- |
-
-
-| room-leave | `string` | 当机器人把群里某个用户移出群聊的时候会触发这个时间。用户主动退群是无法检测到的。 |
-| :--- | :--- | :--- |
-
-
-| room-invite | `string` | 当收到群邀请的时候，会触发这个事件。具体请看 [RoomInvitation](room-invitation.md) |
-| :--- | :--- | :--- |
-
+    <tr>
+      <td style="text-align:left">ioToken</td>
+      <td style="text-align:left"><code>string</code>
+      </td>
+      <td style="text-align:left">Io TOKEN</td>
+    </tr>
+  </tbody>
+</table>Wechaty 事件的类型 \*\*Kind\*\*: global typedef \*\*Properties\*\*
 
 <table>
   <thead>
     <tr>
-      <th style="text-align:left">scan</th>
-      <th style="text-align:left"><code>string</code>
-      </th>
-      <th style="text-align:left">
-        <p>当机器人需要扫码登陆的时候会触发这个事件。</p>
-        <p>建议你安装 qrcode-terminal(run <code>npm install qrcode-terminal</code>) 这个包，这样你可以在命令行中直接看到二维码。</p>
-      </th>
+      <th style="text-align:left">Name</th>
+      <th style="text-align:left">Type</th>
+      <th style="text-align:left">Description</th>
     </tr>
   </thead>
-  <tbody></tbody>
-</table>Wechaty 事件函数
-
-**Kind**: global typedef **Properties**
-
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| error | `function` | \(this: Wechaty, error: Error\) =&gt; void callback function |
-| login | `function` | \(this: Wechaty, user: ContactSelf\)=&gt; void |
-| logout | `function` | \(this: Wechaty, user: ContactSelf\) =&gt; void |
-| scan | `function` | \(this: Wechaty, url: string, code: number\) =&gt; void |
-| heartbeat | `function` | \(this: Wechaty, data: any\) =&gt; void |
-| friendship | `function` | \(this: Wechaty, friendship: Friendship\) =&gt; void |
-| message | `function` | \(this: Wechaty, message: Message\) =&gt; void |
-| ready | `function` | \(this: Wechaty\) =&gt; void |
-| room-join | `function` | \(this: Wechaty, room: Room, inviteeList: Contact\[\], inviter: Contact\) =&gt; void |
-| room-topic | `function` | \(this: Wechaty, room: Room, newTopic: string, oldTopic: string, changer: Contact\) =&gt; void |
-| room-leave | `function` | \(this: Wechaty, room: Room, leaverList: Contact\[\]\) =&gt; void |
-| room-invite | `function` | \(this: Wechaty, room: Room, leaverList: Contact\[\]\) =&gt; void see more in [RoomInvitation](https://github.com/Chatie/docs/tree/777195b62684a2fcb789911ad01bf3a16e5bdbf6/root/wechaty/api/RoomInvitation/README.md)​ |
-
+  <tbody>
+    <tr>
+      <td style="text-align:left">error</td>
+      <td style="text-align:left"><code>string</code>
+      </td>
+      <td style="text-align:left">当机器人内部出错的时候会触发error 事件。</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">login</td>
+      <td style="text-align:left"><code>string</code>
+      </td>
+      <td style="text-align:left">当机器人成功登陆后，会触发login 事件，并会在事件中传递当前登陆机器人的信息。</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">logout</td>
+      <td style="text-align:left"><code>string</code>
+      </td>
+      <td style="text-align:left">当机器人检测到登出的时候，会触发logout 事件，并会在事件中传递机器人的信息。</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">heartbeat</td>
+      <td style="text-align:left"><code>string</code>
+      </td>
+      <td style="text-align:left">获取机器人的心跳。</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">friendship</td>
+      <td style="text-align:left"><code>string</code>
+      </td>
+      <td style="text-align:left">当有人给机器人发好友请求的时候会触发这个事件。</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">message</td>
+      <td style="text-align:left"><code>string</code>
+      </td>
+      <td style="text-align:left">当机器人收到消息的时候会触发这个事件。</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">ready</td>
+      <td style="text-align:left"><code>string</code>
+      </td>
+      <td style="text-align:left">当所有数据加载完成后，会触发这个事件。在wechaty-puppet-padchat 中，它意味着已经加载完成Contact 和Room 的信息。</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">room-join</td>
+      <td style="text-align:left"><code>string</code>
+      </td>
+      <td style="text-align:left">当有人进入微信群的时候会触发这个事件。机器人主动进入某个微信群，t那个样会触发这个事件。</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">room-topic</td>
+      <td style="text-align:left"><code>string</code>
+      </td>
+      <td style="text-align:left">当有人修改群名称的时候会触发这个事件。</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">room-leave</td>
+      <td style="text-align:left"><code>string</code>
+      </td>
+      <td style="text-align:left">当机器人把群里某个用户移出群聊的时候会触发这个时间。用户主动退群是无法检测到的。</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">room-invite</td>
+      <td style="text-align:left"><code>string</code>
+      </td>
+      <td style="text-align:left">当收到群邀请的时候，会触发这个事件。具体请看 <a href="room-invitation.md">RoomInvitation</a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">scan</td>
+      <td style="text-align:left"><code>string</code>
+      </td>
+      <td style="text-align:left">
+        <p>当机器人需要扫码登陆的时候会触发这个事件。</p>
+        <p>建议你安装 qrcode-terminal(运行 <code>npm install qrcode-terminal</code>) 这个包，这样你可以在命令行中直接看到二维码。</p>
+      </td>
+    </tr>
+  </tbody>
+</table>

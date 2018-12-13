@@ -12,13 +12,16 @@
   * [Friendship](api/friendship.md)
 * [示例代码](example.md)
 * [Puppet](puppet.md)
-* [FAQ](faq.md)
-* [购买第三方iPad版本](https://github.com/lijiarui/wechaty-puppet-padchat/wiki/%E8%B4%AD%E4%B9%B0token)
+* [常见问题](faq.md)
+* [最佳实践](best-practice.md)
+* [参与贡献](contribute.md)
+* [购买第三方iPad版本](https://github.com/lijiarui/wechaty-puppet-padchat/wiki/购买token)
 
 ## 了解更多
 
 * [视频教程](more/video.md)
 * [进阶](more/advanced.md)
+* [目录结构](more/catalog.md)
 * [ReleaseLog](more/releaselog.md)
 * [ChangeLog](more/changelog.md)
 * [Awesome Wechaty](more/awesome-wechaty.md)

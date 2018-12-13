@@ -123,7 +123,7 @@ bot
 回复多媒体、微信名片或者文本给这条消息的发送者。
 
 {% hint style="info" %}
-这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#3-wechaty-puppet-jian-rong-xing)
+这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#puppet-compatibility)
 {% endhint %}
 
 **Kind**: instance method of [`Message`](message.md#message)  
@@ -146,61 +146,26 @@ bot
     </tr>
   </thead>
   <tbody></tbody>
-</table>| \[mention\] | `Contact` \| `Array.` | 如果这是一条来自微信群的消息，当你设置了这个参数，你会在群中@这个联系人。 |
-| :--- | :--- | :--- |
+</table>// 1. send Image
 
-
-```javascript
-import { FileBox }  from 'file-box'
-const bot = new Wechaty()
-bot
-.on('message', async m => {
-
-// 1. send Image
-
-  if (/^ding$/i.test(m.text())) {
-    const fileBox = FileBox.fromUrl('https://chatie.io/wechaty/images/bot-qr-code.png')
-    await msg.say(fileBox)
-  }
+if \(/^ding$/i.test\(m.text\(\)\)\) { const fileBox = FileBox.fromUrl\('[https://chatie.io/wechaty/images/bot-qr-code.png](https://chatie.io/wechaty/images/bot-qr-code.png)'\) await msg.say\(fileBox\) }
 
 // 2. send Text
 
-  if (/^dong$/i.test(m.text())) {
-    await msg.say('dingdingding')
-  }
+if \(/^dong$/i.test\(m.text\(\)\)\) { await msg.say\('dingdingding'\) }
 
 // 3. send Contact
 
-  if (/^lijiarui$/i.test(m.text())) {
-    const contactCard = await bot.Contact.find({name: 'lijiarui'})
-    if (!contactCard) {
-      console.log('not found')
-      return
-    }
-    await msg.say(contactCard)
-  }
+if \(/^lijiarui$/i.test\(m.text\(\)\)\) { const contactCard = await bot.Contact.find\({name: 'lijiarui'}\) if \(!contactCard\) { console.log\('not found'\) return } await msg.say\(contactCard\) }
 
-})
-.start()
-```
+}\) .start\(\)
 
+```text
 ### message.type\(\) ⇒ `MessageType`
 
 获取消息的类型
 
 {% hint style="info" %}
-
-MessageType 的类型是 Enum， 具体如下
-
-* MessageType.Unknown     
-* MessageType.Attachment  
-* MessageType.Audio       
-* MessageType.Contact     
-* MessageType.Emoticon  
-* MessageType.Image      
-* MessageType.Text      
-* MessageType.Video    
-* MessageType.Url   
 
 **Kind**: instance method of [`Message`](message.md#message)  
 **Example**
@@ -261,33 +226,7 @@ if (await message.mentionSelf()) {
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">to</th>
-      <th style="text-align:left"><code>Sayable</code> | <code>Array.</code>
-      </th>
-      <th style="text-align:left">
-        <p>Room or Contact</p>
-        <p>The recipient of the message, the room, or the contact</p>
-      </th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>```javascript
-const bot = new Wechaty()
-bot
-.on('message', async m => {
-  const room = await bot.Room.find({topic: 'wechaty'})
-  if (room) {
-    await m.forward(room)
-    console.log('forward this message to wechaty room!')
-  }
-})
-.start()
-```
+| to | `Sayable` \| `Array.` | Room 或者 Contact。指的是收消息方。 |
 
 ### message.date\(\)
 
@@ -316,7 +255,7 @@ _**Deprecated**_
 从消息中提取多媒体文件并把它 存入到FileBox 里面。
 
 {% hint style="info" %}
-这个方法是否能实现，取决于用的是什么Puppet，具体请看：[Puppet 兼容性列表](../puppet.md#3-wechaty-puppet-jian-rong-xing)
+这个方法是否能实现，取决于用的是什么Puppet，具体请看：[Puppet 兼容性列表](../puppet.md#puppet-compatibility)
 {% endhint %}
 
 **Kind**: instance method of [`Message`](message.md#message)
@@ -326,7 +265,7 @@ _**Deprecated**_
 提取转发的微信好友名片内容，并封装成Contact 类型。
 
 {% hint style="info" %}
-这个方法是否能实现，取决于用的是什么Puppet，具体请看：[Puppet 兼容性列表](../puppet.md#3-wechaty-puppet-jian-rong-xing)
+这个方法是否能实现，取决于用的是什么Puppet，具体请看：[Puppet 兼容性列表](../puppet.md#puppet-compatibility)
 {% endhint %}
 
 **Kind**: instance method of [`Message`](message.md#message)

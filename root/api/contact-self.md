@@ -78,7 +78,7 @@ bot.on('login', (user: ContactSelf) => {
 
 | Param | Description |
 | :--- | :--- |
-| signature | The new signature that the bot will change to |
+| signature | 机器人要修改的签名内容 |
 
 **Example**
 
