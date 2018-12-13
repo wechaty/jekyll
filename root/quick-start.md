@@ -93,7 +93,6 @@ WECHATY_PUPPET_PADCHAT_TOKEN=你的token WECHATY_PUPPET=padchat npm start
 {% endhint %}
 
 {% hint style="danger" %}
-
 群内均为wechaty 的开发者，如果仅是为了测试功能，请测试后自动退群。为了避免广告及不看文档用户，群主及机器人会T人，不喜勿加。群内发言之前请先阅读文档，谢谢！
 
 进群后请切勿提问以下问题：
@@ -103,4 +102,7 @@ WECHATY_PUPPET_PADCHAT_TOKEN=你的token WECHATY_PUPPET=padchat npm start
 * 能不能实现_\*\*_？
 * 为什么我跑不起来？
 * 有待补充 …
+{% endhint %}
+
+
 
