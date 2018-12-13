@@ -32,4 +32,5 @@
 ## Others
 
 * [Concepts](others/concepts.md)
+* [Tech](others/tech.md)
 
