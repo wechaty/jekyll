@@ -23,9 +23,21 @@ See more in [Wechaty](https://github.com/chatie/wechaty) [![NPM Version](https:/
 * First Period: Wechaty is based on web WeChat, see [Wechaty 101: from v0.0 to v0.7](https://blog.chatie.io/wechaty-101-presentation/). This blog showed how wechaty works by a 2 hours video tutorial and a big PPT. **All implement by web WeChat is fully open-source and free!**
 * Second Period: There are a lot of [limitation using web WeChat](./#web-wechat-limitation). In order to make it more easy for chatbot developers, we provide Puppet to support third party to implement their WeChat implementations, see WeChat Protocal.
 
-## Web WeChat Limitation
+## Web WeChat Limitations
 
+1. WeChat Account that registered after 2017 mignt not be able to login Web Wechat, so it can not use PuppetPuppeteer with Wechaty. Please make sure your WeChat Account can be able to login by visiting [https://wx.qq.com](https://wx.qq.com/)
+2. Web API can not create room and invite members to room since 2018.
 
+related issues:
+
+* [Can not login with error message: 当前登录环境异常。为了你的帐号安全，暂时不能登录web微信。](https://github.com/Chatie/wechaty/issues/603)
+* [\[谣言\] 微信将会关闭网页版本](https://github.com/Chatie/wechaty/issues/990)
+* [新注册的微信号无法登陆](https://github.com/Chatie/wechaty/issues/872)
+* [wechaty-puppet-puppeteer](https://github.com/chatie/wechaty-puppet-puppeteer)
+
+If you want to break the above limitations, please consider to use a Wechaty Puppet other than using Web API, like [wechaty-puppet-padchat](https://github.com/lijiarui/wechaty-puppet-padchat).
+
+Learn more about the Puppet at [Wechaty wiki: Puppet](https://github.com/Chatie/wechaty/wiki/Puppet)
 
 ## Attention
 
