@@ -19,17 +19,17 @@
 
 ## More
 
-* [Video Tutorial](part-ii/video-tutorial.md)
-* [Advanced](part-ii/advanced.md)
-* [Code Structure](part-ii/code-structure.md)
-* [Release Log](part-ii/release-log.md)
-* [Change Log](part-ii/change-log.md)
-* [Awesome Wechaty](part-ii/awesome-wechaty.md)
+* [Video Tutorial](more/video-tutorial.md)
+* [Advanced](more/advanced.md)
+* [Code Structure](more/code-structure.md)
+* [Release Log](more/release-log.md)
+* [Change Log](more/change-log.md)
+* [Awesome Wechaty](more/awesome-wechaty.md)
 * [Contributors](https://github.com/Chatie/wechaty/wiki/Contributors)
-* [We love feedback](part-ii/we-love-feedback.md)
-* [Better tools for authors](part-ii/better-tools-for-authors.md)
+* [We love feedback](more/we-love-feedback.md)
+* [Better tools for authors](more/better-tools-for-authors.md)
 
 ## Others
 
-* [Concepts](summary-ii/concepts.md)
+* [Concepts](others/concepts.md)
 
