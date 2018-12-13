@@ -1,10 +1,3 @@
----
-description: >-
-  Welcome to Chatie! We've created this documentation to help answer any
-  questions you may have about what wechaty is, how to use it and what its APIs
-  are.
----
-
 # Introduction
 
 ## What is wechaty
