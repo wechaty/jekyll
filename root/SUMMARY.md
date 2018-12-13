@@ -17,7 +17,7 @@
 * [参与贡献](contribute.md)
 * [购买第三方iPad版本](https://github.com/lijiarui/wechaty-puppet-padchat/wiki/购买token)
 
-## More
+## 了解更多
 
 * [视频教程](more/video.md)
 * [进阶](more/advanced.md)
@@ -26,10 +26,4 @@
 * [ChangeLog](more/changelog.md)
 * [Awesome Wechaty](more/awesome-wechaty.md)
 * [Contributors](https://github.com/Chatie/wechaty/wiki/Contributors)
-* [We love feedback](more/we-love-feedback.md)
-* [Better tools for authors](more/better-tools-for-authors.md)
-
-## Others
-
-* [Concepts](others/concepts.md)
 

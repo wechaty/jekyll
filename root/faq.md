@@ -4,7 +4,11 @@
 
 ### 1.1 如何用最简单的方式把wechaty 跑起来？  <a id="simple-run"></a>
 
-Wechat account that registered after 2017 will not be able to login via Web API. Learn more at [https://github.com/Chatie/wechaty/issues/872](https://github.com/Chatie/wechaty/issues/872)
+1. 从github 上clone wechaty 的教学代码： [https://github.com/Chatie/wechaty-getting-started](https://github.com/Chatie/wechaty-getting-started)
+2. 运行 \`npm install\`
+3. 运行 \`npm start\`
+4. 默认会跑起来我们的demo 例子，demo代码位置: [examples/starter-bot.js](https://github.com/Chatie/wechaty-getting-started/blob/master/examples/starter-bot.js)
+5. 修改demo 的例子，实现你自己想要的bot 逻辑
 
 ### 1.2 Windows 安装wechaty-puppet-padchat 失败怎么办？  <a id="install-failed"></a>
 
@@ -12,11 +16,16 @@ Wechat account that registered after 2017 will not be able to login via Web API.
 
 ### 1.3 我的微信号无法登陆  <a id="can-not-login"></a>
 
-## 2. What wechaty cannot do on wechat
+从2017年6月下旬开始，使用基于web版微信接入方案存在大概率的被限制登陆的可能性。 主要表现为：无法登陆Web 微信，但不影响手机等其他平台。 验证是否被限制登陆： [https://wx.qq.com](https://wx.qq.com) 上扫码查看是否能登陆。 更多内容详见：
 
-### 2.1 Does wechaty support Red envelope, transfer money, moment?
+* [Can not login with error message: 当前登录环境异常。为了你的帐号安全，暂时不能登录web微信。](https://github.com/Chatie/wechaty/issues/603)
+* [\[谣言\] 微信将会关闭网页版本](https://github.com/Chatie/wechaty/issues/990)
+* [新注册的微信号无法登陆](https://github.com/Chatie/wechaty/issues/872)
+* [wechaty-puppet-puppeteer](https://github.com/chatie/wechaty-puppet-puppeteer)
 
-Short answer: NO
+{% hint style="success" %}
+**解决方案： 我们提供了非web 版本解决方案，**[**点击购买token**](https://github.com/lijiarui/wechaty-puppet-padchat/wiki/购买token) **, 更多技术细节查看** [**wechaty-puppet-padchat**](https://github.com/lijiarui/wechaty-puppet-padchat)
+{% endhint %}
 
 ### 1.**4** 如何打开调试信息  <a id="can-not-login"></a>
 
@@ -24,12 +33,9 @@ Short answer: NO
 
 ## 2. 功能相关  <a id="feature"></a>
 
-* Payment: we won't support this because this related to property security
-* @ someone in the room: we will support this in the future in solutions other than Web API.
-* Send Contact Card: we support this in ipad solution.
-* Send Share Card: we will support this in the future in solutions other than Web API.
-* Send Voice: we will support this in the future in solutions other than Web API.
-* Moment: we haven't decide yet whether to support this function
+{% hint style="info" %}
+请查看[ Puppet功能兼容性清单](puppet.md#3-wechaty-puppet-jian-rong-xing) 查看完整功能内容
+{% endhint %}
 
 ### 2.1 如何获取到用户的微信号  <a id="how-to-get-id"></a>
 
@@ -70,7 +76,7 @@ Short answer: NO
 
 ### 2.3 支持 红包、转账、朋友圈… 吗？  <a id="feature-support"></a>
 
-Not yet at this moment, will support later
+以下功能目前均不支持
 
 * 支付相关 - 红包、转账、收款 等都不支持
 * 在群聊中@他人 - 是的，Web 微信中被人@后也不会提醒
@@ -78,10 +84,11 @@ Not yet at this moment, will support later
 * 小程序 - 后续会支持
 * 发送视频 - 后续会支持
 
-* [Add support for send url rich media message](https://github.com/Chatie/wechaty/issues/718)
-* [can wechaty send share card msg](https://github.com/Chatie/wechaty/issues/824)
+以下功能部分支持
 
-### 2.3 I don't know wechaty support for personal account of wechat official account
+* 发送分享链接，仅padchat 支持
+* 发送名片，仅padchat 支持
+* 发送语音消息，仅padchat 支持
 
 ### 2.4 wechaty 是支持个人号还是公众号？  <a id="personal-vs-official"></a>
 
@@ -95,9 +102,20 @@ Not yet at this moment, will support later
 
 > 是否可以通过wechaty 发送分享链接？
 
-### 3.1 What is a `Puppet` in Wechaty
+PuppetPadchat 是支持的， 其他版本是不支持的，示例代码：
 
-The term `Puppet` in Wechaty is an Abstract Class for implementing protocol plugins. The plugins are the component that helps Wechaty to control the Wechat\(that's the reason we call it puppet\).
+```typescript
+  import { UrlLink } from 'wechaty'
+  bot.on('message', async function (m: Message) {
+    const link = new UrlLink({
+      description : '这是图文链接里面的描述',
+      title       : '这是图文链接的标题',
+      url         : 'https://github.com/chatie/wechaty',
+      thumbnailUrl: 'https://avatars0.githubusercontent.com/u/25162437?s=30&v=4',
+    })
+    m.say(link)
+  })
+```
 
 相关issue:
 
@@ -108,17 +126,23 @@ The term `Puppet` in Wechaty is an Abstract Class for implementing protocol plug
 
 ### 2.6 机器人被拉到一个新的群组里的事件是否支持？  <a id="room-join-support"></a>
 
-### 3.2 Wechaty & Queue
+支持，可以通过\`room-join\` 获取到这个事件。
 
-In order not blocked by wechat, we add queue in wechaty, see more: [rx-queue](https://github.com/zixia/rx-queue)
+```typescript
+bot.on('room-join', (room, inviteeList, inviter) => {
+  const nameList = inviteeList.map(c => c.name()).join(',')
+  console.log(`Room ${room.topic()} got new member ${nameList}, invited by ${inviter}`)
+  // 如果机器人被拉到一个新的群组里, inviteeList[0] === bot.self()
+})
+```
 
 ### 2.7 为什么需要扫码登陆而不是用户名密码登陆？  <a id="why-scan-login"></a>
 
-Wechaty can implement many wechat protocol plughins. The plugins are the component that helps Wechaty to control the Wechat. Wechaty provide same API in web, ipad, ios solutions. [wechat4u](https://github.com/nodeWechat/wechat4u) is [SPACELAN](https://github.com/spacelan) write as a web solution on github. Wechaty can use wechaty API call wechat 4u API
+> 我发现代码是有通过用户名密码登陆的方法的，所以也许我可以很简单的写一个创建账户的功能，然后不用再扫码登陆，但是为什么现在没做呢？
 
-> Is this right: wechaty has All api in wechat4u, but wechat 4u don't have all api wechaty has.
+对的，我们不支持账号密码登陆，以后也不会支持。
 
-No, wechaty use wechaty itself API for wechat4u. They are totally 2 different project and no one contains another.
+有一些Puppet 有有通过账号密码登陆的方法的，但是我们并不打算把这个API开放出来，因为以下3个原因：
 
 1. 有一些Puppet 是不支持这个功能的，比如使用网页API的PuppetWechat4u
 2. 当你使用扫码的方式登陆的时候，你是可以保存你手机的session的。换句话说，你可以同时让手机和机器人同时在线。如果你使用了用户名密码登陆，那么的session将会失效，只有机器人微信在线，手机微信将会自动退出。

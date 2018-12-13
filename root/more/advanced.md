@@ -1,4 +1,4 @@
-# Advanced
+# 进阶
 
 ## 1. 使用Docker 运行 Wechaty  <a id="docker"></a>
 

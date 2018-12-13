@@ -1,6 +1,8 @@
 # Awesome Wechaty
 
-## Showcase
+## Awesome Wechaty
+
+## 用户案例
 
 1. [一个用CNN深度神剧网络给图片评分的wechaty项目](https://github.com/huyingxi/wechaty_selfie)
 2. [Relay between Telegram and WeChat](https://github.com/Firaenix/TeleChatRelay)
@@ -10,7 +12,7 @@
 
 Learn more about Projects Using Wechaty at [Wiki:PoweredByWechaty](https://github.com/chatie/wechaty/wiki/PoweredByWechaty)
 
-## Plugins
+## 插件
 
 In Gist-bot
 
@@ -18,7 +20,7 @@ In Gist-bot
 * [message-bot](https://github.com/Chatie/wechaty/blob/master/examples/gist-bot/on-message.ts)
 * [room-bot](https://github.com/Chatie/wechaty/blob/master/examples/gist-bot/on-room-join.ts)
 
-## Enterprise Usage
+## 企业应用
 
 > "Wechaty is a great solution, I believe there would be much more users recognize it." [link](https://github.com/chatie/wechaty/pull/310#issuecomment-285574472)  
 > -- @Gcaufy, Tencent Engineer, Author of [WePY](https://github.com/Tencent/wepy)
