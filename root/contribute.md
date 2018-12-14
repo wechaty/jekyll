@@ -37,7 +37,7 @@ Chatie 的成长离不开开源社区里面每一个成员的贡献，无论你�
 ### 2. 其他支持
 
 * 修改文档中的问题：
-  * [中文文档地址](https://github.com/lijiarui/wechaty-docs)
+  * [中文文档地址](https://github.com/chatie/docs/tree/zh)
   * [英文文档地址](https://github.com/chatie/docs)
 * 参与文档的翻译工作，我们也欢迎增加其他语言的文档。
 * 撰写博客和教学课程，[详情参考博客](https://github.com/chatie/blog)。

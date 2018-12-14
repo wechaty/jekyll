@@ -19,11 +19,11 @@
 
 ## 了解更多
 
-* [视频教程](more/video.md)
-* [进阶](more/advanced.md)
-* [目录结构](more/catalog.md)
-* [ReleaseLog](more/releaselog.md)
-* [ChangeLog](more/changelog.md)
-* [Awesome Wechaty](more/awesome-wechaty.md)
+* [视频教程](liao-jie-geng-duo/video.md)
+* [进阶](liao-jie-geng-duo/advanced.md)
+* [目录结构](liao-jie-geng-duo/catalog.md)
+* [ReleaseLog](liao-jie-geng-duo/releaselog.md)
+* [ChangeLog](liao-jie-geng-duo/changelog.md)
+* [Awesome Wechaty](liao-jie-geng-duo/awesome-wechaty.md)
 * [Contributors](https://github.com/Chatie/wechaty/wiki/Contributors)
 
