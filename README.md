@@ -13,11 +13,7 @@ If you want to contribute to English version code, you can pull request to `mast
 
 If you want to contribute to Chinese version code, you can pull request to `zh` branch.
 
-## Markdown Linting Rules
-
-[Markdown Linting Rules Documents](https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md)
-
-## We need your contribute
+## Welcome to contribute
 
 ### Why contribute?
 As an open source product, Chatie thrives from contributions of community members. Whatever your skill set is, there is a lot you can do to help us make Chatie better! So start forking!
@@ -43,3 +39,7 @@ Contact rui@chatie.io to learn more
 
 ### Contributors List
 https://github.com/Chatie/wechaty/wiki/Contributors
+
+## Markdown Linting Rules
+
+[Markdown Linting Rules Documents](https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md)
