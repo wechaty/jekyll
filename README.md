@@ -13,10 +13,6 @@ https://docs.chatie.io/v/zh
 
 如果你希望贡献中文档代码，可以发pull request 到 `zh` 分支
 
-## Markdown Linting 规范
-
-[Markdown Linting Rules Documents](https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md)
-
 ## 参与贡献
 
 ### 为什么要贡献
@@ -56,3 +52,7 @@ Contact rui@chatie.io to learn more
 
 ### Contributors List
 https://github.com/Chatie/wechaty/wiki/Contributors
+
+## Markdown Linting 规范
+
+[Markdown Linting Rules Documents](https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md)
