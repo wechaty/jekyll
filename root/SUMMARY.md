@@ -1,7 +1,7 @@
 # Table of contents
 
 * [Introduction](README.md)
-* [Quick Start](quick-start-1.md)
+* [Quick Start](quick-start.md)
 * [API Reference](api/README.md)
   * [Wechaty](api/wechaty.md)
   * [Contact](api/contact.md)
@@ -11,7 +11,7 @@
   * [Message](api/message.md)
   * [Friendship](api/friendship.md)
 * [Examples](examples.md)
-* [Puppet](puppet-1.md)
+* [Puppet](puppet.md)
 * [FAQ](faq.md)
 * [Best Practice](best-practice.md)
 * [Welcome to contribute](welcome-to-contribute.md)
