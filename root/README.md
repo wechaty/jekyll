@@ -45,3 +45,34 @@ Learn more about the Puppet at [Wechaty wiki: Puppet](https://github.com/Chatie/
 
 We recommend [reading the writeup](https://blog.chatie.io/wechaty-the-bot-sdk/) we did and checking out our [Github repo](https://github.com/Chatie/).
 
+## Support Multi WeChat Protocols
+
+The term `Puppet` in Wechaty is a name that we had picked up to describe part of our system: Puppet is an Abstract Class for implementing plugins, the plugins are the component that helps Wechaty to control the Wechat, that's the reason we call it `puppet`.
+
+Plugins are named PuppetXXX, like PuppetPuppeteer is using the chrome puppeteer to control the WeChat Web API via a chrome browser, PuppetPadchat is using the WebSocket protocol to connect with a Protocol Server for controlling an iPad program. Here is the related information:
+
+* ​[Full Puppet List](https://docs.chatie.io/v/zh/puppet#puppet-list)
+* ​[Wechaty Puppet compatibility](https://docs.chatie.io/v/zh/puppet#puppet-compatibility)
+
+For a deeper understanding of the Puppet in Wechaty, you can read its source code if you like at [https://github.com/Chatie/wechaty-puppet/blob/master/src/puppet.ts](https://github.com/Chatie/wechaty-puppet/blob/master/src/puppet.ts)
+
+All implement by web WeChat is fully open-source and free, if you need other implement, you should pay for it, [see Why we charge for token](https://github.com/lijiarui/wechaty-puppet-padchat/wiki/Buy-Padchat-Token).
+
+Here is the whole image for wechaty puppet introduction:
+
+![Puppet](.gitbook/assets/image.png)
+
+## Join Us
+
+{% hint style="success" %}
+Scan the following QRCode, reply ''wechaty" to join Wechaty Developers' Home.
+{% endhint %}
+
+{% hint style="danger" %}
+Please read the doc before you ask question in the group. We don't welcome any discussion unrelated to wechaty, or you should give a red pocket\(more than 100 RMB\) in the group.
+{% endhint %}
+
+![Wechaty Developers&apos; Home](.gitbook/assets/image%20%281%29.png)
+
+
+
