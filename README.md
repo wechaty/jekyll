@@ -2,9 +2,18 @@
 
 [Chatie Documentations](https://docs.chatie.io)
 
-## RESOURCES
+## Directory Structure
 
-* [GitBook Toolchain Documentation](https://toolchain.gitbook.com)
+We use different branch to support multi language:
+
+- master: English version
+- zh: Chinise version
+
+If you want to contribute to English version code, you can pull request to `master` branch.
+
+If you want to contribute to Chinese version code, you can pull request to `zh` branch.
+
+
 
 ### Condidates
 
