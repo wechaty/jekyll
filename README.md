@@ -35,23 +35,11 @@ As an open source product, Chatie thrives from contributions of community member
     - English version: pull request to master branch
     - Chinese version: pull request to zh branch
 
-#### 1. Contribute Code
-- Check out GitHub issues with the tags good first issue, pull request welcome or help wanted
-- Write code examples for documentation
-- Report a bug and work on resolving it
-- Collaborate with others on building new features
+### More Contribution:
 
-> Tips: If you want to add new features or change the API, please submit an issue first to make sure no one else is already working on the same thing and discuss the implementation and API details with maintainers and users by creating an issue. When everything is settled down, you can submit a pull request.
-> 
-> Make sure to add tests for your features and bugfixes and update the documentation (see below) before submitting your code!
+See more in: https://docs.chatie.io/welcome-to-contribute
 
-#### 2. Contribute Support
-- Fix typos in documentation
-- Translate documentation to your local language
-- Write tutorials and blog posts, see more: https://github.com/chatie/blog
-- Answer questions on the Wechaty Developers Home or Github issues
-- Organize Chatie meetups or user groups in your area
-- Contact rui@chatie.io to learn more
+Contact rui@chatie.io to learn more
 
 ### Contributors List
 https://github.com/Chatie/wechaty/wiki/Contributors
