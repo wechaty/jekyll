@@ -6,11 +6,7 @@
 
 ## 1. 基本版本   <a id="basic"></a>
 
-代码内容详见： \[[https://github.com/Chatie/wechaty-getting-started/tree/master/examples/basi\]\(ttps://github.com/Chatie/wechaty-getting-started/tree/master/examples/basic​](https://github.com/Chatie/wechaty-getting-started/tree/master/examples/basi]%28ttps://github.com/Chatie/wechaty-getting-started/tree/master/examples/basic​)
-
-\)\[c\]\(ttps://github.com/Chatie/wechaty-getting-started/tree/master/examples/basic​
-
-\)
+代码内容详见： https://github.com/wechaty/wechaty-getting-started/tree/master/examples/basic
 
 | 文件名称 | 描述 |
 | :--- | :--- |
