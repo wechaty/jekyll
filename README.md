@@ -18,6 +18,15 @@ If you want to contribute to Chinese version code, you can pull request to `zh` 
 ### Why contribute?
 As an open source product, Chatie thrives from contributions of community members. Whatever your skill set is, there is a lot you can do to help us make Chatie better! So start forking!
 
+At the same time, we also meet up offline all over the world, here is some activites: 
+
+- [Wechaty Contributor Dinner](https://blog.chatie.io/wechaty-meeting/)
+- [The memorabilia of The First Chatie WWDC Party](https://blog.chatie.io/the-first-chatie-wwdc-party/)
+- [Shanghai WWDC - WeChaty Worldwide Developers Conference](https://blog.chatie.io/wechaty-shanghai-meetup/)
+- [Wechaty Contributor Dinner with Data Girls](https://blog.chatie.io/wechaty-contributor-dinner-data-girl/)
+- [Wechaty Country Wide Developer Conference](https://blog.chatie.io/country-wide-developer-conference/)
+.....
+
 ### How to contribute docs?
 - Fork this repo
 - Checkout to the right branch
