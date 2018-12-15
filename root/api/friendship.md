@@ -130,7 +130,7 @@ bot.on('friendship', async friendship => {
 
 _**Deprecated**_
 
-use [Friendship\#add](https://github.com/Chatie/docs/tree/4ef277398d2e3cf3c69d12a16adcf71e32338d84/root/wechaty/api/Friendship/README.md#add) instead
+use [Friendship\#add](friendship.md#friendship-add-contact-hello-promise) instead
 
 **Kind**: static method of [`Friendship`](friendship.md#Friendship)  
 
