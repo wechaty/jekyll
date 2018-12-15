@@ -20,7 +20,7 @@ If you have not installed Node.js\(or version is below 10\),You need to install 
 ### 1. Clone wechaty-getting-started Repository
 
 ```bash
-git clone tps://github.com/Chatie/wechaty-getting-started
+git clone https://github.com/Chatie/wechaty-getting-started
 cd wechaty-getting-started
 ```
 
