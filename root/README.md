@@ -60,7 +60,7 @@ All implement by web WeChat is fully open-source and free, if you need other imp
 
 Here is the whole image for wechaty puppet introduction:
 
-![Puppet](https://github.com/Chatie/docs/tree/058271ceb6407bb7408013defdec7232f670dbd2/root/.gitbook/assets/image.png)
+![Puppet](https://github.com/Chatie/docs/blob/master/docs/images/puppet.png)
 
 ## Join Us
 
@@ -72,5 +72,5 @@ Scan the following QRCode, reply ''wechaty" to join Wechaty Developers' Home.
 Please read the doc before you ask question in the group. We don't welcome any discussion unrelated to wechaty, or you should give a red pocket\(more than 100 RMB\) in the group.
 {% endhint %}
 
-![Wechaty Developers&apos; Home](https://github.com/Chatie/docs/tree/058271ceb6407bb7408013defdec7232f670dbd2/root/.gitbook/assets/image%20%281%29.png)
+![Wechaty Developers&apos; Home](https://github.com/Chatie/docs/blob/master/docs/images/bot-qr-code.png)
 

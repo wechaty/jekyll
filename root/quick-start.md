@@ -45,13 +45,13 @@ You are all set!
 
 You can see the following result after running:
 
-![demo](.gitbook/assets/image%20%286%29.png)
+![demo](https://github.com/Chatie/docs/blob/master/docs/images/demo.gif)
 
 This demo will show all message on the bot.
 
 ## DEMO
 
-![Wechaty Developers&apos; Home](.gitbook/assets/image%20%287%29.png)
+![Wechaty Developers&apos; Home](https://github.com/Chatie/docs/blob/master/docs/images/bot-qr-code.png)
 
 Scan the following QR Code in WeChat with secret code _wechaty_, join our **Wechaty Developers' Home**. This group is only for developers.
 
