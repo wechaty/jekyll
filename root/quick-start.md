@@ -1,14 +1,14 @@
 # 快速开始
 
-## 环境要求   <a id="env"></a>
+## 环境要求    <a id="env"></a>
 
 {% hint style="warning" %}
 注意： Wechaty 需要Node.js 版本高于 10
 {% endhint %}
 
-## 运行   <a id="run"></a>
+## 运行    <a id="run"></a>
 
-### 0. 安装 Node.jS \(&gt;=10\)   <a id="install-nodejs"></a>
+### 0. 安装 Node.jS \(&gt;=10\)    <a id="install-nodejs"></a>
 
 如果你还没有安装Node.js 或者你的版本低于10, 根据你的环境参考以下链接安装最新版本的Node.js:
 
@@ -32,20 +32,20 @@ node --version
 v10.10.0
 ```
 
-### 1. 从GitHub 上下载 wechaty-getting-started  代码   <a id="clone"></a>
+### 1. 从GitHub 上下载 wechaty-getting-started  代码    <a id="clone"></a>
 
 ```bash
-git clone https://github.com/Chatie/wechaty-getting-started
+git clone https://github.com/wechaty/wechaty-getting-started
 cd wechaty-getting-started
 ```
 
-### 2. 安装依赖   <a id="install"></a>
+### 2. 安装依赖    <a id="install"></a>
 
 ```bash
 npm install
 ```
 
-### 3. 运行Bot   <a id="run"></a>
+### 3. 运行Bot    <a id="run"></a>
 
 ```bash
 npm start
@@ -58,7 +58,7 @@ npm start 实际上执行的命令是：`node examples/starter-bot.js`你可以�
 
 运行成功后，你可以看到下面的界面：
 
-4. 切换成非Web 版本协议  
+1. 切换成非Web 版本协议  
 
 ![demo](https://github.com/Chatie/docs/blob/master/docs/images/demo.gif)
 
@@ -82,7 +82,7 @@ WECHATY_PUPPET_PADCHAT_TOKEN=你的token WECHATY_PUPPET=padchat npm start
 * WECHATY\_PUPPET\_PADCHAT\_TOKEN：[点击链接申请token](https://github.com/lijiarui/wechaty-puppet-padchat/wiki/购买token)
 * WECHATY\_PUPPET : 切换到wechaty-puppet-padchat 的puppet 来运行，即从使用web 版本变为使用ipad 版本
 
-## DEMO 展示   <a id="demo"></a>
+## DEMO 展示    <a id="demo"></a>
 
 以下是使用wechaty 开发的机器人，扫码体验。
 
@@ -91,6 +91,7 @@ WECHATY_PUPPET_PADCHAT_TOKEN=你的token WECHATY_PUPPET=padchat npm start
 {% endhint %}
 
 {% hint style="danger" %}
+
 群内均为wechaty 的开发者，如果仅是为了测试功能，请测试后自动退群。为了避免广告及不看文档用户，群主及机器人会T人，不喜勿加。群内发言之前请先阅读文档，谢谢！
 
 进群后请切勿提问以下问题：
@@ -100,9 +101,6 @@ WECHATY_PUPPET_PADCHAT_TOKEN=你的token WECHATY_PUPPET=padchat npm start
 * 能不能实现_\*\*_？
 * 为什么我跑不起来？
 * 有待补充 …
-{% endhint %}
 
 ![Wechaty Developers&apos; Home](https://github.com/Chatie/docs/blob/master/docs/images/bot-qr-code.png)
-
-
 

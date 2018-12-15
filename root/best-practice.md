@@ -10,7 +10,27 @@
 
 ## 2. 使用docker 运行   <a id="start"></a>
 
-最新版的 Wechaty Docker Image \(v0.22\)预装了所有的 puppet ，包括 puppeteer 和 padchat 等代码里面预设的所有
+最新版的 Wechaty Docker Image \(v0.22\)预装了所有的 puppet ，包括 puppeteer 和 padchat 等代码里面预设的所有.
+
+Wechaty Docker  同时支持JavaScript 和TypeScript。因为我们使用 `ts-node`  运行代码，所以你不需要编译，只需要将拓展名改为`.ts`即可使用TypeScript。
+
+{% embed url="https://github.com/wechaty/docker-wechaty-getting-started" %}
+
+### 2.1 使用 JavaScript 运行
+
+```bash
+# for JavaScript
+docker run -ti --rm --volume="$(pwd)":/bot zixia/wechaty mybot.js
+```
+
+### 2.2 使用TypeScript 运行
+
+```bash
+# for TypeScript
+docker run -ti --rm --volume="$(pwd)":/bot zixia/wechaty mybot.ts
+```
+
+了解更多：[Wiki:Docker](https://github.com/chatie/wechaty/wiki/Docker).
 
 ## 3. 机器人启动方法   <a id="start"></a>
 
