@@ -401,7 +401,7 @@ Wechaty Class Event Type
 | room-join | `string` | Emit when anyone join any room. |
 | room-topic | `string` | Get topic event, emitted when someone change room topic. |
 | room-leave | `string` | Emit when anyone leave the room.  |
-| room-invite | `string` | Emit when there is a room invitation, see more in  [RoomInvitation](https://github.com/Chatie/docs/tree/4ef277398d2e3cf3c69d12a16adcf71e32338d84/root/wechaty/api/RoomInvitation/README.md)                                    If someone leaves the room by themselves, wechat will not notice other people in the room, so the bot will never get the "leave" event. |
+| room-invite | `string` | Emit when there is a room invitation, see more in  [RoomInvitation](room-invitation.md)                                    If someone leaves the room by themselves, wechat will not notice other people in the room, so the bot will never get the "leave" event. |
 | scan | `string` | A scan event will be emitted when the bot needs to show you a QR Code for scanning. &lt;/br&gt;                                    It is recommend to install qrcode-terminal\(run `npm install qrcode-terminal`\) in order to show qrcode in the terminal. |
 
 ## WechatyEventFunction
@@ -424,5 +424,5 @@ Wechaty Class Event Function
 | room-join | `function` | \(this: Wechaty, room: Room, inviteeList: Contact\[\],  inviter: Contact\) =&gt; void |
 | room-topic | `function` | \(this: Wechaty, room: Room, newTopic: string, oldTopic: string, changer: Contact\) =&gt; void |
 | room-leave | `function` | \(this: Wechaty, room: Room, leaverList: Contact\[\]\) =&gt; void |
-| room-invite | `function` | \(this: Wechaty, room: Room, leaverList: Contact\[\]\) =&gt; void                                          see more in  [RoomInvitation](https://github.com/Chatie/docs/tree/4ef277398d2e3cf3c69d12a16adcf71e32338d84/root/wechaty/api/RoomInvitation/README.md) |
+| room-invite | `function` | \(this: Wechaty, room: Room, leaverList: Contact\[\]\) =&gt; void                                          see more in  [RoomInvitation](room-invitation.md) |
 

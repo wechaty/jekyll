@@ -276,31 +276,31 @@ See more in [releases](https://github.com/chatie/wechaty/releases)​
 
 ### v0.7.0 2016-12-29 <a id="v-0-7-0-2016-12-29"></a>
 
-​[v0.7.0](https://github.com/chatie/wechaty/tree/v0.7.0) \(2016-12-29\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.6.0...v0.7.0)​
+​[v0.7.0](https://github.com/chatie/wechaty/tree/v0.7.0) \(2016-12-29\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.6.32...v0.7.0)​
 
-### v0.6.0 2016-11-11 <a id="v-0-6-32-2016-11-11"></a>
+### v0.6.32 2016-11-28 <a id="v-0-6-32-2016-11-28"></a>
 
-​[v0.6.0](https://github.com/chatie/wechaty/tree/v0.6.0) \(2016-11-11\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.5.22...v0.6.0)​
+​[v0.6.32](https://github.com/chatie/wechaty/tree/v0.6.32) \(2016-11-28\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.6.21...v0.6.32)​
 
-### v0.5.22 2016-11-10 <a id="v-0-5-21-2016-11-10"></a>
+### v0.6.21 2016-11-14 <a id="v-0-6-21-2016-11-14"></a>
 
-​[v0.5.21](https://github.com/chatie/wechaty/tree/v0.5.22) \(2016-11-10\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.5.1...v0.5.22)​
+​[v0.6.21](https://github.com/chatie/wechaty/tree/v0.6.21) \(2016-11-14\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.5.21...v0.6.21)​
 
-### v0.5.9 2016-11-07 <a id="v-0-5-9-2016-11-07"></a>
+### v0.5.21 2016-11-09 <a id="v-0-5-21-2016-11-09"></a>
 
-​[v0.5.1](https://github.com/chatie/wechaty/tree/v0.5.9) \(2016-11-07\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.5.1...v0.5.9)​
+​[v0.5.21](https://github.com/chatie/wechaty/tree/v0.5.21) \(2016-11-09\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.5.1...v0.5.21)​
 
 ### v0.5.1 2016-11-03 <a id="v-0-5-1-2016-11-03"></a>
 
-​[v0.5.1](https://github.com/chatie/wechaty/tree/v0.5.1) \(2016-11-03\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.4.0...v0.5.1)​
+​[v0.5.1](https://github.com/chatie/wechaty/tree/v0.5.1) \(2016-11-03\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.4.0...v0.5.21)​
 
 ### v0.4.0 2016-10-08 <a id="v-0-4-0-2016-10-08"></a>
 
-​[v0.4.0](https://github.com/chatie/wechaty/tree/v0.4.0) \(2016-10-08\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.2.0...v0.4.0)​
+​[v0.4.0](https://github.com/chatie/wechaty/tree/v0.4.0) \(2016-10-08\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.3.12...v0.4.0)​
 
-### v0.2.0 2016-08-25 <a id="v-0-3-12-2016-06-28"></a>
+### v0.3.12 2016-08-25 <a id="v-0-3-12-2016-08-25"></a>
 
-​[v0.3.12](https://github.com/chatie/wechaty/tree/v0.2.0) \(2016-06-28\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.1.0...v0.2.0)​
+​[v0.3.12](https://github.com/chatie/wechaty/tree/v0.3.12) \(2016-08-25\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.1.0...v0.3.12)​
 
 ### v0.1.0 2016-06-09 <a id="v-0-1-0-2016-06-09"></a>
 
