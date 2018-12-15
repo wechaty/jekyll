@@ -10,6 +10,9 @@
 
 ## 2. 使用docker 运行   <a id="start"></a>
 
+[![Docker Pulls](https://img.shields.io/docker/pulls/zixia/wechaty.svg?maxAge=2592000)](https://hub.docker.com/r/zixia/wechaty/) 
+[![Docker Layers](https://images.microbadger.com/badges/image/zixia/wechaty.svg)](https://microbadger.com/#/images/zixia/wechaty)
+
 最新版的 Wechaty Docker Image \(v0.22\)预装了所有的 puppet ，包括 puppeteer 和 padchat 等代码里面预设的所有.
 
 Wechaty Docker  同时支持JavaScript 和TypeScript。因为我们使用 `ts-node`  运行代码，所以你不需要编译，只需要将拓展名改为`.ts`即可使用TypeScript。
