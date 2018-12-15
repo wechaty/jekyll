@@ -16,9 +16,7 @@
 
 ### 2. 进阶版本   <a id="advanced"></a>
 
-代码内容详见：\[[https://github.com/Chatie/wechaty-getting-started/tree/master/examples/advanced​\]\(https://github.com/Chatie/wechaty-getting-started/tree/master/examples/advanced​](https://github.com/Chatie/wechaty-getting-started/tree/master/examples/advanced​]%28https://github.com/Chatie/wechaty-getting-started/tree/master/examples/advanced​)
-
-\)
+代码内容详见：https://github.com/wechaty/wechaty-getting-started/tree/master/examples/advanced
 
 | 文件名称 | 描述 |
 | :--- | :--- |
@@ -31,7 +29,7 @@
 
 ### 3. 专业版本   <a id="professional"></a>
 
-代码内容详见：[https://github.com/Chatie/wechaty-getting-started/tree/master/examples/](https://github.com/Chatie/wechaty-getting-started/tree/master/examples/professional​)[professional](https://github.com/Chatie/wechaty-getting-started/tree/master/examples/professional)​
+代码内容详见：https://github.com/wechaty/wechaty-getting-started/tree/master/examples/professional
 
 | 文件名称 | 描述 |
 | :--- | :--- |
