@@ -60,7 +60,7 @@ npm start 实际上执行的命令是：`node examples/starter-bot.js`你可以�
 
 4. 切换成非Web 版本协议  
 
-![demo](.gitbook/assets/image%20%284%29.png)
+![demo](https://github.com/Chatie/docs/blob/master/docs/images/demo.gif)
 
 以上是默认使用网页微信的解决方案，但是网页微信有如下的限制：
 
@@ -102,7 +102,7 @@ WECHATY_PUPPET_PADCHAT_TOKEN=你的token WECHATY_PUPPET=padchat npm start
 * 有待补充 …
 {% endhint %}
 
-![Wechaty Developers&apos; Home](.gitbook/assets/image%20%285%29.png)
+![Wechaty Developers&apos; Home](https://github.com/Chatie/docs/blob/master/docs/images/bot-qr-code.png)
 
 
 
