@@ -58,9 +58,7 @@ npm start 实际上执行的命令是：`node examples/starter-bot.js`你可以�
 
 运行成功后，你可以看到下面的界面：
 
-1. 切换成非Web 版本协议  
-
-![demo](https://github.com/Chatie/docs/blob/master/docs/images/demo.gif)
+![demo](.gitbook/assets/image%20%282%29.png)
 
 以上是默认使用网页微信的解决方案，但是网页微信有如下的限制：
 
@@ -92,15 +90,5 @@ WECHATY_PUPPET_PADCHAT_TOKEN=你的token WECHATY_PUPPET=padchat npm start
 
 {% hint style="danger" %}
 
-群内均为wechaty 的开发者，如果仅是为了测试功能，请测试后自动退群。为了避免广告及不看文档用户，群主及机器人会T人，不喜勿加。群内发言之前请先阅读文档，谢谢！
-
-进群后请切勿提问以下问题：
-
-* 有人用过 Wechaty 吗？
-* 有人成功过吗？
-* 能不能实现_\*\*_？
-* 为什么我跑不起来？
-* 有待补充 …
-
-![Wechaty Developers&apos; Home](https://github.com/Chatie/docs/blob/master/docs/images/bot-qr-code.png)
+![Wechaty Developers&apos; Home](.gitbook/assets/image%20%281%29.png)
 

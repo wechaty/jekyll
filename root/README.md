@@ -54,7 +54,7 @@
 
 以下是Puppet 和Wechaty 的架构图，更多Puppet 的介绍在这里： [Puppet in wiki](https://github.com/Chatie/wechaty-puppet/wiki)
 
-![](https://github.com/Chatie/docs/blob/master/docs/images/puppet.png)
+![Puppet Structure](.gitbook/assets/image.png)
 
 ## 加入我们    <a id="join-us"></a>
 
