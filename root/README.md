@@ -60,7 +60,7 @@ All implement by web WeChat is fully open-source and free, if you need other imp
 
 Here is the whole image for wechaty puppet introduction:
 
-![Puppet](https://github.com/Chatie/docs/blob/master/docs/images/puppet.png)
+![Puppet Structure](.gitbook/assets/image.png)
 
 ## Join Us
 
