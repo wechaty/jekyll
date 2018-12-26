@@ -2,6 +2,8 @@
 
 [Chatie Documentations](https://docs.chatie.io)
 
+We are using GitBook v3(currently)
+
 ## RESOURCES
 
 * [GitBook Toolchain Documentation](https://toolchain.gitbook.com)
