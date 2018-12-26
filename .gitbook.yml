@@ -1,4 +1,6 @@
 root:         ./root
+redirects:
+  faq: ./faq.md
 gitbook:      ">= 3.0.0"
 title:        "Chatie Documentations"
 description:  "Tutorials, API, and Support."

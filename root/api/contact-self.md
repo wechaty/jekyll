@@ -1,34 +1,37 @@
 ---
-description: 'Bot itself will be encapsulated as a ContactSelf. This class is extends Contact'
+description: >-
+  Bot itself will be encapsulated as a ContactSelf. This class is extends
+  Contact
 ---
 
-<a name="ContactSelf"></a>
+# ContactSelf
 
 ## ContactSelf
+
 Bot itself will be encapsulated as a ContactSelf.
 
 > Tips: this class is extends Contact
 
-**Kind**: global class  
+**Kind**: global class
 
-* [ContactSelf](#ContactSelf)
-    * [.avatar([file])](#ContactSelf+avatar) ⇒ <code>Promise.&lt;(void\|FileBox)&gt;</code>
-    * [.qrcode()](#ContactSelf+qrcode) ⇒ <code>Promise.&lt;string&gt;</code>
-    * [.signature(signature)](#ContactSelf+signature)
+* [ContactSelf](contact-self.md#ContactSelf)
+  * [.avatar\(\[file\]\)](contact-self.md#ContactSelf+avatar) ⇒ `Promise.`
+  * [.qrcode\(\)](contact-self.md#ContactSelf+qrcode) ⇒ `Promise.`
+  * [.signature\(signature\)](contact-self.md#ContactSelf+signature)
 
-<a name="ContactSelf+avatar"></a>
+### contactSelf.avatar\(\[file\]\) ⇒ `Promise.`
 
-### contactSelf.avatar([file]) ⇒ <code>Promise.&lt;(void\|FileBox)&gt;</code>
 GET / SET bot avatar
 
-**Kind**: instance method of [<code>ContactSelf</code>](#ContactSelf)  
+**Kind**: instance method of [`ContactSelf`](contact-self.md#ContactSelf)
 
 | Param | Type |
-| --- | --- |
-| [file] | <code>FileBox</code> | 
+| :--- | :--- |
+| \[file\] | `FileBox` |
 
-**Example** *( GET the avatar for bot, return {Promise&lt;FileBox&gt;})*  
-```js
+**Example** _\( GET the avatar for bot, return {Promise&lt;FileBox&gt;}\)_
+
+```javascript
 // Save avatar to local file like `1-name.jpg`
 
 bot.on('login', (user: ContactSelf) => {
@@ -39,8 +42,10 @@ bot.on('login', (user: ContactSelf) => {
   console.log(`Save bot avatar: ${contact.name()} with avatar file: ${name}`)
 })
 ```
-**Example** *(SET the avatar for a bot)*  
-```js
+
+**Example** _\(SET the avatar for a bot\)_
+
+```javascript
 import { FileBox }  from 'file-box'
 bot.on('login', (user: ContactSelf) => {
   console.log(`user ${user} login`)
@@ -49,14 +54,15 @@ bot.on('login', (user: ContactSelf) => {
   console.log(`Change bot avatar successfully!`)
 })
 ```
-<a name="ContactSelf+qrcode"></a>
 
-### contactSelf.qrcode() ⇒ <code>Promise.&lt;string&gt;</code>
+### contactSelf.qrcode\(\) ⇒ `Promise.`
+
 Get bot qrcode
 
-**Kind**: instance method of [<code>ContactSelf</code>](#ContactSelf)  
-**Example**  
-```js
+**Kind**: instance method of [`ContactSelf`](contact-self.md#ContactSelf)  
+**Example**
+
+```javascript
 import { generate } from 'qrcode-terminal'
 bot.on('login', (user: ContactSelf) => {
   console.log(`user ${user} login`)
@@ -65,19 +71,20 @@ bot.on('login', (user: ContactSelf) => {
   generate(qrcode, { small: true })
 })
 ```
-<a name="ContactSelf+signature"></a>
 
-### contactSelf.signature(signature)
+### contactSelf.signature\(signature\)
+
 Change bot signature
 
-**Kind**: instance method of [<code>ContactSelf</code>](#ContactSelf)  
+**Kind**: instance method of [`ContactSelf`](contact-self.md#ContactSelf)
 
 | Param | Description |
-| --- | --- |
+| :--- | :--- |
 | signature | The new signature that the bot will change to |
 
-**Example**  
-```js
+**Example**
+
+```javascript
 bot.on('login', async user => {
   console.log(`user ${user} login`)
   try {
@@ -87,3 +94,4 @@ bot.on('login', async user => {
   }
 })
 ```
+

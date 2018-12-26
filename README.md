@@ -4,16 +4,53 @@
 
 We are using GitBook v3(currently)
 
-## RESOURCES
+## Directory Structure
 
-* [GitBook Toolchain Documentation](https://toolchain.gitbook.com)
+We use different branch to support multi language:
 
-### Condidates
+- master: English version
+- zh: Chinise version
 
-1. Node [GitBook](https://www.gitbook.com/) - [Using Gitbook to document an open source project](https://medium.com/@gpbl/how-to-use-gitbook-to-publish-docs-for-your-open-source-npm-packages-465dd8d5bfba)
-    * [Implementing GitBook to manage open source documentation](https://blog.strapi.io/gitbook-open-source-documentation/)
-2. Python [MkDocs](https://www.mkdocs.org/) - [Documentation for Shippable's Automated DevOps platform](https://github.com/Shippable/docs/)
+If you want to contribute to English version code, you can pull request to `master` branch.
 
-### Markdown Linting Rules
+If you want to contribute to Chinese version code, you can pull request to `zh` branch.
+
+## Welcome to contribute
+
+### Why contribute?
+As an open source product, Chatie thrives from contributions of community members. Whatever your skill set is, there is a lot you can do to help us make Chatie better! So start forking!
+
+At the same time, we also meet up offline all over the world, here is some activites: 
+
+- [Wechaty Contributor Dinner](https://blog.chatie.io/wechaty-meeting/)
+- [The memorabilia of The First Chatie WWDC Party](https://blog.chatie.io/the-first-chatie-wwdc-party/)
+- [Shanghai WWDC - WeChaty Worldwide Developers Conference](https://blog.chatie.io/wechaty-shanghai-meetup/)
+- [Wechaty Contributor Dinner with Data Girls](https://blog.chatie.io/wechaty-contributor-dinner-data-girl/)
+- [Wechaty Country Wide Developer Conference](https://blog.chatie.io/country-wide-developer-conference/)
+.....
+
+### How to contribute docs?
+- Fork this repo
+- Checkout to the right branch
+    - English version: `git checkout master`
+    - Chinese version: `git checkout zh`
+- Create your doc branch: `git checkout -b doc`
+- Write this doc in markdown
+- Commit your changes `git commit -am 'doc comment'`
+- Push to the branch
+- Create new Pull Request to the corresponding branch
+    - English version: pull request to master branch
+    - Chinese version: pull request to zh branch
+
+### More Contribution:
+
+See more in: https://docs.chatie.io/welcome-to-contribute
+
+Contact rui@chatie.io to learn more
+
+### Contributors List
+https://github.com/Chatie/wechaty/wiki/Contributors
+
+## Markdown Linting Rules
 
 [Markdown Linting Rules Documents](https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md)
