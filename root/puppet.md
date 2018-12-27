@@ -54,7 +54,7 @@
 | messageSendUrl\(\) | 发送链接消息 | ~~No~~ | Yes | ~~No~~ |
 
 {% hint style="info" %}
-Wechaty-puppet-padpro 已经支持发送各类文件，包括word,pdf,ppt等，正在内测中，如需要请在\[issue 1668\]\([https://github.com/Chatie/wechaty/issues/1668](https://github.com/Chatie/wechaty/issues/1668)\) 报名哦
+Wechaty-puppet-padpro 已经支持发送各类文件，包括word,pdf,ppt等，正在内测中，如需要请在[issue 1668](https://github.com/Chatie/wechaty/issues/1668) 报名哦
 {% endhint %}
 
 ### 3.3 Puppet 微信群接口    <a id="puppet-room"></a>
