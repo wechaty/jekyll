@@ -67,7 +67,6 @@
 {% endhint %}
 
 {% hint style="warning" %}
-
 请不要问这些问题：
 
 * Wechaty 怎么用？
@@ -75,6 +74,7 @@
 * 能不能实现_\*\*_？
 * 为什么我跑不起来？
 * 有待补充 …
+{% endhint %}
 
 ![Wechaty Developers&apos; Home](https://chatie.io/wechaty/images/bot-qr-code.png)
 
