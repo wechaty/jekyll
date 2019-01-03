@@ -209,7 +209,7 @@ setenforce 0
 
 首先，`Room.findAll`可以拿到所有的群，但是微信的群数据量很大，需要同步时间。无论是web的puppet还是iPad的puppet都需要一定时间来同步这部分消息，如果在同步的时候去调用`Room.findAll`，就只能拿到当前已经同步好的群。
 
-因此，`wechaty` 有一个`ready` 的事件可以供大家来监听，当所有数据都加载完毕的时候，`ready` 事件会被触发，此事件在`wechaty` 启动后只会被触发一次。那么，在`ready` 事件被触发了之后去调用`Room.findAll` 就会拿到所有的群聊消息了。示例代码如下：
+因此，`wechaty-puppet-padchat` 有一个`ready` 的事件可以供大家来监听 \(注意： 只有 wechaty-puppet-padchat 版本的接入方式才有ready 事件。\) 当所有数据都加载完毕的时候，`ready` 事件会被触发，此事件在`wechaty` 启动后只会被触发一次。那么，在`ready` 事件被触发了之后去调用`Room.findAll` 就会拿到所有的群聊消息了。示例代码如下：
 
 ```javascript
 bot.on('ready', () => {
