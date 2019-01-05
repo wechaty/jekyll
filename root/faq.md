@@ -24,7 +24,7 @@
 * [wechaty-puppet-puppeteer](https://github.com/chatie/wechaty-puppet-puppeteer)
 
 {% hint style="success" %}
-**解决方案： 我们提供了非web 版本解决方案，**[**点击购买token**](https://github.com/lijiarui/wechaty-puppet-padchat/wiki/购买token) **, 更多技术细节查看** [**wechaty-puppet-padchat**](https://github.com/lijiarui/wechaty-puppet-padchat)
+**解决方案： 第三方提供了非web 版本解决方案，**[**点击购买token**](https://github.com/lijiarui/wechaty-puppet-padchat/wiki/购买token) **, 更多技术细节查看** [**wechaty-puppet-padchat**](https://github.com/lijiarui/wechaty-puppet-padchat)
 {% endhint %}
 
 ### 1.**4** 如何打开调试信息   <a id="can-not-login"></a>
