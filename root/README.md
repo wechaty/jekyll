@@ -42,26 +42,40 @@ Wechaty.instance()
 wechaty.on('message', msg => console.log(msg))
 ```
 
-`msg`这个变量是一个Message类的实例，通过它我们可以得到每一条消息的所有细节，比如：
+`msg`这个变量是一个[Message](api/message.md)类的实例，通过它我们可以得到每一条消息的所有细节，比如：
 
 | 消息方法 | 功能 |
 | :--- | :--- |
-| `msg​.from()` | 发送者 |
-| `msg​.to()` | 接收者 |
-| `msg.room()` | 消息所在的群 |
-| `msg.text()` | 消息文本内容 |
-| `msg​.toFileBox()` | 消息附件（图片、音频、视频等） |
+| \`\`[`msg​.from()`](api/message.md#message-from-contact)\`\` | 发送者 |
+| \`\`[`msg​.to()`](api/message.md#message-to-contact-or-null) | 接收者 |
+| \`\`[`msg.room()`](api/message.md#message-room-room-or-null) | 消息所在的群 |
+| \`\`[`msg.text()`](api/message.md#message-text-string) | 消息文本内容 |
+| \`\`[`msg​.toFileBox()`](api/message.md#message-tofilebox-promise) | 消息附件（图片、音频、视频等） |
+
+### 发消息
+
+可以将文本、图片、视频、链接卡片、联系人卡片等信息，发送给其他微信用户，或是发到某一个微信群中。
+
+| 方法 | 功能 |
+| :--- | :--- |
+| \`\`[`contact.say('文本消息')`](api/contact.md#contact-say-textorcontactorfileorurl-promise) | 发送文本消息给contact |
+| \`\`[`contact.say(FileBox.fromFile('test.jpg'))`](api/contact.md#contact-say-textorcontactorfileorurl-promise) | 发送图片test.jpg给contact |
+| \`\`[`contact.say(FileBox.fromFile('test.mp4'))`](api/contact.md#contact-say-textorcontactorfileorurl-promise) | 发送test.mp4给contact |
+| \`\`[`contact.say(UrlLink.create('https://qq.com'))`](api/contact.md#contact-say-textorcontactorfileorurl-promise) | 发送链接卡片[https://qq.com给contact](https://qq.com给contact) |
+| \`\`[`contact.say(contact2)`](api/contact.md#contact-say-textorcontactorfileorurl-promise) | 发送联系人卡片contact2给contact |
+
+如果希望在微信群中发消息，只需要将contact替换为room即可。
 
 ### 好友管理
 
-我们可以对好友进行查找，也可以为他们设置别名：
+我们可以对好友进行查找，使用 [Contact](api/contact.md) 类，也可以为他们设置别名：
 
 ```javascript
 const filehelper = await wechaty.Contact.find({ name: '文件传输助手' })
 filehelper.alias('文件中转站')
 ```
 
-也可以向其他用户发起新好友请求：
+也可以向其他用户发起新好友请求\( 使用 [Friendship](api/friendship.md) 类\)：
 
 ```javascript
 wechaty.Friendship.add(stranger)
@@ -77,23 +91,9 @@ wechaty.on('friendship', async friendship => {
 })
 ```
 
-### 发消息
-
-可以将文本、图片、视频、链接卡片、联系人卡片等信息，发送给其他微信用户，或是发到某一个微信群中。
-
-| 方法 | 功能 |
-| :--- | :--- |
-| `contact.say('文本消息')` | 发送文本消息给contact |
-| `contact.say(FileBox.fromFile('test.jpg'))` | 发送图片test.jpg给contact |
-| `contact.say(FileBox.fromFile('test.mp4'))` | 发送test.mp4给contact |
-| `contact.say(UrlLink.create('https://qq.com'))` | 发送链接卡片[https://qq.com给contact](https://qq.com给contact) |
-| `contact.say(contact2)` | 发送联系人卡片contact2给contact |
-
-如果希望在微信群中发消息，只需要将contact替换为room即可。
-
 ### 群管理
 
-我们可以进行建群、群查找、拉人入群、踢人出群等操作。
+我们可以进行建群、群查找、拉人入群、踢人出群等操作，使用 [`Room`](api/room.md) 类。
 
 ```javascript
 const newRoom = await wechaty.Room.create([contact1, contact2], '新群主题')
@@ -104,9 +104,9 @@ const oldRoom = await wechaty.Room.find({ name: '已经存在的群主题' })
 
 | 方法 | 功能 |
 | :--- | :--- |
-| `room.add(contact)` | 添加contact到room群 |
-| `room.del(contact)` | 在room群中删除contact |
-| `room.topic('新群名')` | 修改room的群名称 |
+| \`\`[`room.add(contact)`](api/room.md#room-add-contact-promise) | 添加contact到room群 |
+| \`\`[`room.del(contact)`](api/room.md#room-del-contact-promise) | 在room群中删除contact |
+| \`\`[`room.topic('新群名')`](api/room.md#room-topic-newtopic-promise) | 修改room的群名称 |
 
 ## 实现原理     <a id="web-limit"></a>
 
