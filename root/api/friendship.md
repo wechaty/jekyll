@@ -112,7 +112,7 @@ FriendshipType 在这里是enum:
 * FriendshipType.Verify   
 
 **Kind**: instance method of [`Friendship`](friendship.md#Friendship)  
-**Example** _\(如果用户发送好友请求的捏弄是 \`ding\`, 机器人会自动通过好友请求\)_
+**Example** _\(如果用户发送好友请求的内容是 \`ding\`, 机器人会自动通过好友请求\)_
 
 ```javascript
 const bot = new Wechaty()
