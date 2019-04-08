@@ -128,7 +128,7 @@ await bot.start()
 // after logged in...
 const room = await bot.Room.find({topic: 'topic of your room'}) // change `event-room` to any room topic in your wechat
 if (room) {
-  room.on('join', (room, inviteeList, inviter) => {
+  room.on('join', (inviteeList, inviter) => {
     const nameList = inviteeList.map(c => c.name()).join(',')
     console.log(`Room got new member ${nameList}, invited by ${inviter}`)
   })
@@ -143,7 +143,7 @@ await bot.start()
 // after logged in...
 const room = await bot.Room.find({topic: 'topic of your room'}) // change `event-room` to any room topic in your wechat
 if (room) {
-  room.on('leave', (room, leaverList) => {
+  room.on('leave', (leaverList, remover) => {
     const nameList = leaverList.map(c => c.name()).join(',')
     console.log(`Room lost member ${nameList}`)
   })
@@ -158,7 +158,7 @@ await bot.start()
 // after logged in...
 const room = await bot.Room.find({topic: 'topic of your room'}) // change `event-room` to any room topic in your wechat
 if (room) {
-  room.on('topic', (room, topic, oldTopic, changer) => {
+  room.on('topic', (topic, oldTopic, changer) => {
     console.log(`Room topic changed from ${oldTopic} to ${topic} by ${changer.name()}`)
   })
 }
