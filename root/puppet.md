@@ -38,6 +38,7 @@ For a deeper understanding of the Puppet in Wechaty, you can read its source cod
 | :--- | :---: | :---: | :---: |
 | Permanent ContactPayload.id | ~~No~~ | Yes | ~~No~~ |
 | ContactPayload.friend | ~~No~~ | Yes | Yes |
+| weixin\(\) | ~~No~~ | Yes | Yes |
 
 ### 3.2 Puppet Message API
 
