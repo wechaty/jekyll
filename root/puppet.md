@@ -43,6 +43,7 @@
 | :--- | :--- | :---: | :---: | :---: |
 | Permanent ContactPayload.id | 唯一id | ~~No~~ | Yes | ~~No~~ |
 | ContactPayload.friend | 判断是否为机器人好友 | ~~No~~ | Yes | Yes |
+| weixin\(\) | 获取微信号 | ~~No~~ | Yes | Yes |
 
 ### 3.2 Puppet 消息收发接口    <a id="puppet-message"></a>
 
