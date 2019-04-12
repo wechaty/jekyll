@@ -140,8 +140,8 @@ bot
       <th style="text-align:left"><code>string</code> | <code>Contact</code> | <code>FileBox</code>
       </th>
       <th style="text-align:left">
-        <p>发送文本、名片或者文件</p>
-        <p>你可以使用 <a href="https://www.npmjs.com/package/file-box">FileBox</a> 来发送文件</p>
+        <p>&#x53D1;&#x9001;&#x6587;&#x672C;&#x3001;&#x540D;&#x7247;&#x6216;&#x8005;&#x6587;&#x4EF6;</p>
+        <p>&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <a href="https://www.npmjs.com/package/file-box">FileBox</a> &#x6765;&#x53D1;&#x9001;&#x6587;&#x4EF6;</p>
       </th>
     </tr>
   </thead>

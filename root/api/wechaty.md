@@ -317,8 +317,8 @@ console.log(`Bot is ${contact.name()}`)
       <td style="text-align:left"><code>string</code> | <code>Contact</code> | <code>FileBox</code>
       </td>
       <td style="text-align:left">
-        <p>发送文本、联系人名片或者文件给机器人自己。</p>
-        <p>你可以使用 <a href="https://www.npmjs.com/package/file-box">FileBox</a> 来发送文件</p>
+        <p>&#x53D1;&#x9001;&#x6587;&#x672C;&#x3001;&#x8054;&#x7CFB;&#x4EBA;&#x540D;&#x7247;&#x6216;&#x8005;&#x6587;&#x4EF6;&#x7ED9;&#x673A;&#x5668;&#x4EBA;&#x81EA;&#x5DF1;&#x3002;</p>
+        <p>&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <a href="https://www.npmjs.com/package/file-box">FileBox</a> &#x6765;&#x53D1;&#x9001;&#x6587;&#x4EF6;</p>
       </td>
     </tr>
   </tbody>
@@ -338,12 +338,13 @@ console.log(`Bot is ${contact.name()}`)
       <td style="text-align:left"><code>string</code>
       </td>
       <td style="text-align:left">
-        <p>Wechaty 机器人的名称.</p>
-        <p>当你按照下面的方式设置的时候： <code>new Wechaty({name: &apos;wechatyName&apos;})</code>
+        <p>Wechaty &#x673A;&#x5668;&#x4EBA;&#x7684;&#x540D;&#x79F0;.</p>
+        <p>&#x5F53;&#x4F60;&#x6309;&#x7167;&#x4E0B;&#x9762;&#x7684;&#x65B9;&#x5F0F;&#x8BBE;&#x7F6E;&#x7684;&#x65F6;&#x5019;&#xFF1A; <code>new Wechaty({name: &apos;wechatyName&apos;})</code>
         </p>
-        <p>他会自动生成一个叫做<code>wechatyName.memory-card.json</code>的文件 。这个文件会存储机器人的登陆信息。如果这个文件有效，启动wechaty
-          的时候，你不需要扫码登陆就能自动登陆机器人。</p>
-        <p>这个名字在启动机器人的时候，是可以通过环境变量<code>WECHATY_NAME</code> 设置的，如：<code>WECHATY_NAME=&quot;wechatyName&quot; node bot.js</code>
+        <p>&#x4ED6;&#x4F1A;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x53EB;&#x505A;<code>wechatyName.memory-card.json</code>&#x7684;&#x6587;&#x4EF6;
+          &#x3002;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x4F1A;&#x5B58;&#x50A8;&#x673A;&#x5668;&#x4EBA;&#x7684;&#x767B;&#x9646;&#x4FE1;&#x606F;&#x3002;&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x6709;&#x6548;&#xFF0C;&#x542F;&#x52A8;wechaty
+          &#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F60;&#x4E0D;&#x9700;&#x8981;&#x626B;&#x7801;&#x767B;&#x9646;&#x5C31;&#x80FD;&#x81EA;&#x52A8;&#x767B;&#x9646;&#x673A;&#x5668;&#x4EBA;&#x3002;</p>
+        <p>&#x8FD9;&#x4E2A;&#x540D;&#x5B57;&#x5728;&#x542F;&#x52A8;&#x673A;&#x5668;&#x4EBA;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x662F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x73AF;&#x5883;&#x53D8;&#x91CF;<code>WECHATY_NAME</code> &#x8BBE;&#x7F6E;&#x7684;&#xFF0C;&#x5982;&#xFF1A;<code>WECHATY_NAME=&quot;wechatyName&quot; node bot.js</code>
         </p>
       </td>
     </tr>
@@ -369,67 +370,74 @@ console.log(`Bot is ${contact.name()}`)
       <td style="text-align:left">error</td>
       <td style="text-align:left"><code>string</code>
       </td>
-      <td style="text-align:left">当机器人内部出错的时候会触发error 事件。</td>
+      <td style="text-align:left">&#x5F53;&#x673A;&#x5668;&#x4EBA;&#x5185;&#x90E8;&#x51FA;&#x9519;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x89E6;&#x53D1;error
+        &#x4E8B;&#x4EF6;&#x3002;</td>
     </tr>
     <tr>
       <td style="text-align:left">login</td>
       <td style="text-align:left"><code>string</code>
       </td>
-      <td style="text-align:left">当机器人成功登陆后，会触发login 事件，并会在事件中传递当前登陆机器人的信息。</td>
+      <td style="text-align:left">&#x5F53;&#x673A;&#x5668;&#x4EBA;&#x6210;&#x529F;&#x767B;&#x9646;&#x540E;&#xFF0C;&#x4F1A;&#x89E6;&#x53D1;login
+        &#x4E8B;&#x4EF6;&#xFF0C;&#x5E76;&#x4F1A;&#x5728;&#x4E8B;&#x4EF6;&#x4E2D;&#x4F20;&#x9012;&#x5F53;&#x524D;&#x767B;&#x9646;&#x673A;&#x5668;&#x4EBA;&#x7684;&#x4FE1;&#x606F;&#x3002;</td>
     </tr>
     <tr>
       <td style="text-align:left">logout</td>
       <td style="text-align:left"><code>string</code>
       </td>
-      <td style="text-align:left">当机器人检测到登出的时候，会触发logout 事件，并会在事件中传递机器人的信息。</td>
+      <td style="text-align:left">&#x5F53;&#x673A;&#x5668;&#x4EBA;&#x68C0;&#x6D4B;&#x5230;&#x767B;&#x51FA;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x89E6;&#x53D1;logout
+        &#x4E8B;&#x4EF6;&#xFF0C;&#x5E76;&#x4F1A;&#x5728;&#x4E8B;&#x4EF6;&#x4E2D;&#x4F20;&#x9012;&#x673A;&#x5668;&#x4EBA;&#x7684;&#x4FE1;&#x606F;&#x3002;</td>
     </tr>
     <tr>
       <td style="text-align:left">heartbeat</td>
       <td style="text-align:left"><code>string</code>
       </td>
-      <td style="text-align:left">获取机器人的心跳。</td>
+      <td style="text-align:left">&#x83B7;&#x53D6;&#x673A;&#x5668;&#x4EBA;&#x7684;&#x5FC3;&#x8DF3;&#x3002;</td>
     </tr>
     <tr>
       <td style="text-align:left">friendship</td>
       <td style="text-align:left"><code>string</code>
       </td>
-      <td style="text-align:left">当有人给机器人发好友请求的时候会触发这个事件。</td>
+      <td style="text-align:left">&#x5F53;&#x6709;&#x4EBA;&#x7ED9;&#x673A;&#x5668;&#x4EBA;&#x53D1;&#x597D;&#x53CB;&#x8BF7;&#x6C42;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x89E6;&#x53D1;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;</td>
     </tr>
     <tr>
       <td style="text-align:left">message</td>
       <td style="text-align:left"><code>string</code>
       </td>
-      <td style="text-align:left">当机器人收到消息的时候会触发这个事件。</td>
+      <td style="text-align:left">&#x5F53;&#x673A;&#x5668;&#x4EBA;&#x6536;&#x5230;&#x6D88;&#x606F;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x89E6;&#x53D1;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;</td>
     </tr>
     <tr>
       <td style="text-align:left">ready</td>
       <td style="text-align:left"><code>string</code>
       </td>
-      <td style="text-align:left">当所有数据加载完成后，会触发这个事件。在wechaty-puppet-padchat 中，它意味着已经加载完成Contact 和Room 的信息。</td>
+      <td style="text-align:left">&#x5F53;&#x6240;&#x6709;&#x6570;&#x636E;&#x52A0;&#x8F7D;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x4F1A;&#x89E6;&#x53D1;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;&#x5728;wechaty-puppet-padchat
+        &#x4E2D;&#xFF0C;&#x5B83;&#x610F;&#x5473;&#x7740;&#x5DF2;&#x7ECF;&#x52A0;&#x8F7D;&#x5B8C;&#x6210;Contact
+        &#x548C;Room &#x7684;&#x4FE1;&#x606F;&#x3002;</td>
     </tr>
     <tr>
       <td style="text-align:left">room-join</td>
       <td style="text-align:left"><code>string</code>
       </td>
-      <td style="text-align:left">当有人进入微信群的时候会触发这个事件。机器人主动进入某个微信群，t那个样会触发这个事件。</td>
+      <td style="text-align:left">&#x5F53;&#x6709;&#x4EBA;&#x8FDB;&#x5165;&#x5FAE;&#x4FE1;&#x7FA4;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x89E6;&#x53D1;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;&#x673A;&#x5668;&#x4EBA;&#x4E3B;&#x52A8;&#x8FDB;&#x5165;&#x67D0;&#x4E2A;&#x5FAE;&#x4FE1;&#x7FA4;&#xFF0C;t&#x90A3;&#x4E2A;&#x6837;&#x4F1A;&#x89E6;&#x53D1;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;</td>
     </tr>
     <tr>
       <td style="text-align:left">room-topic</td>
       <td style="text-align:left"><code>string</code>
       </td>
-      <td style="text-align:left">当有人修改群名称的时候会触发这个事件。</td>
+      <td style="text-align:left">&#x5F53;&#x6709;&#x4EBA;&#x4FEE;&#x6539;&#x7FA4;&#x540D;&#x79F0;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x89E6;&#x53D1;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;</td>
     </tr>
     <tr>
       <td style="text-align:left">room-leave</td>
       <td style="text-align:left"><code>string</code>
       </td>
-      <td style="text-align:left">当机器人把群里某个用户移出群聊的时候会触发这个时间。用户主动退群是无法检测到的。</td>
+      <td style="text-align:left">&#x5F53;&#x673A;&#x5668;&#x4EBA;&#x628A;&#x7FA4;&#x91CC;&#x67D0;&#x4E2A;&#x7528;&#x6237;&#x79FB;&#x51FA;&#x7FA4;&#x804A;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x89E6;&#x53D1;&#x8FD9;&#x4E2A;&#x65F6;&#x95F4;&#x3002;&#x7528;&#x6237;&#x4E3B;&#x52A8;&#x9000;&#x7FA4;&#x662F;&#x65E0;&#x6CD5;&#x68C0;&#x6D4B;&#x5230;&#x7684;&#x3002;</td>
     </tr>
     <tr>
       <td style="text-align:left">room-invite</td>
       <td style="text-align:left"><code>string</code>
       </td>
-      <td style="text-align:left">当收到群邀请的时候，会触发这个事件。具体请看 <a href="room-invitation.md">RoomInvitation</a>
+      <td style="text-align:left">&#x5F53;&#x6536;&#x5230;&#x7FA4;&#x9080;&#x8BF7;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x89E6;&#x53D1;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;&#x5177;&#x4F53;&#x8BF7;&#x770B;
+        <a
+        href="room-invitation.md">RoomInvitation</a>
       </td>
     </tr>
     <tr>
@@ -437,8 +445,9 @@ console.log(`Bot is ${contact.name()}`)
       <td style="text-align:left"><code>string</code>
       </td>
       <td style="text-align:left">
-        <p>当机器人需要扫码登陆的时候会触发这个事件。</p>
-        <p>建议你安装 qrcode-terminal(运行 <code>npm install qrcode-terminal</code>) 这个包，这样你可以在命令行中直接看到二维码。</p>
+        <p>&#x5F53;&#x673A;&#x5668;&#x4EBA;&#x9700;&#x8981;&#x626B;&#x7801;&#x767B;&#x9646;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x89E6;&#x53D1;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;</p>
+        <p>&#x5EFA;&#x8BAE;&#x4F60;&#x5B89;&#x88C5; qrcode-terminal(&#x8FD0;&#x884C; <code>npm install qrcode-terminal</code>)
+          &#x8FD9;&#x4E2A;&#x5305;&#xFF0C;&#x8FD9;&#x6837;&#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x547D;&#x4EE4;&#x884C;&#x4E2D;&#x76F4;&#x63A5;&#x770B;&#x5230;&#x4E8C;&#x7EF4;&#x7801;&#x3002;</p>
       </td>
     </tr>
   </tbody>

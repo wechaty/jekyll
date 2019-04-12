@@ -409,11 +409,14 @@ if (contact && room) {
       <th style="text-align:left"><a href="room.md#roommemberqueryfilter"><code>RoomMemberQueryFilter</code></a> | <code>string</code>
       </th>
       <th style="text-align:left">
-        <p>可选参数</p>
+        <p>&#x53EF;&#x9009;&#x53C2;&#x6570;</p>
         <ul>
-          <li>RoomMemberQueryFilter 可通过 name, roomAlias, contactAlias 查找指定的群成员。</li>
-          <li>当memberAll(name) 的参数为string 类型的时候, 返回所有找到的群成员。这里面的name 包括上面定义的name, roomAlias,
-            contactAlias。</li>
+          <li>RoomMemberQueryFilter &#x53EF;&#x901A;&#x8FC7; name, roomAlias, contactAlias
+            &#x67E5;&#x627E;&#x6307;&#x5B9A;&#x7684;&#x7FA4;&#x6210;&#x5458;&#x3002;</li>
+          <li>&#x5F53;memberAll(name) &#x7684;&#x53C2;&#x6570;&#x4E3A;string &#x7C7B;&#x578B;&#x7684;&#x65F6;&#x5019;,
+            &#x8FD4;&#x56DE;&#x6240;&#x6709;&#x627E;&#x5230;&#x7684;&#x7FA4;&#x6210;&#x5458;&#x3002;&#x8FD9;&#x91CC;&#x9762;&#x7684;name
+            &#x5305;&#x62EC;&#x4E0A;&#x9762;&#x5B9A;&#x4E49;&#x7684;name, roomAlias,
+            contactAlias&#x3002;</li>
         </ul>
       </th>
     </tr>
@@ -432,11 +435,14 @@ if (contact && room) {
       <th style="text-align:left"><a href="room.md#roommemberqueryfilter"><code>RoomMemberQueryFilter</code></a> | <code>string</code>
       </th>
       <th style="text-align:left">
-        <p>如果找到多个，返回第一个。</p>
+        <p>&#x5982;&#x679C;&#x627E;&#x5230;&#x591A;&#x4E2A;&#xFF0C;&#x8FD4;&#x56DE;&#x7B2C;&#x4E00;&#x4E2A;&#x3002;</p>
         <ul>
-          <li>RoomMemberQueryFilter 可通过 name, roomAlias, contactAlias 查找指定的群成员。</li>
-          <li>当memberAll(name) 的参数为string 类型的时候, 返回所有找到的群成员。这里面的name 包括上面定义的name, roomAlias,
-            contactAlias。</li>
+          <li>RoomMemberQueryFilter &#x53EF;&#x901A;&#x8FC7; name, roomAlias, contactAlias
+            &#x67E5;&#x627E;&#x6307;&#x5B9A;&#x7684;&#x7FA4;&#x6210;&#x5458;&#x3002;</li>
+          <li>&#x5F53;memberAll(name) &#x7684;&#x53C2;&#x6570;&#x4E3A;string &#x7C7B;&#x578B;&#x7684;&#x65F6;&#x5019;,
+            &#x8FD4;&#x56DE;&#x6240;&#x6709;&#x627E;&#x5230;&#x7684;&#x7FA4;&#x6210;&#x5458;&#x3002;&#x8FD9;&#x91CC;&#x9762;&#x7684;name
+            &#x5305;&#x62EC;&#x4E0A;&#x9762;&#x5B9A;&#x4E49;&#x7684;name, roomAlias,
+            contactAlias&#x3002;</li>
         </ul>
       </th>
     </tr>
