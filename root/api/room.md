@@ -33,6 +33,7 @@ description: 所有的微信群都会被封装成 Room 类
     * [.memberAll\(\[query\]\)](room.md#room-memberall-query-promise-greater-than) ⇒ `Promise.>`
     * [.member\(queryArg\)](room.md#room-member-queryarg-promise) ⇒ `Promise.`
     * [.owner\(\)](room.md#room-owner-contact-or-null) ⇒ `Contact` \| `null`
+    * [.avatar\(\)](room.md#room-owner-contact-or-null) ⇒ `Promise.`
   * _static_
     * [.create\(contactList, \[topic\]\)](room.md#room-create-contactlist-topic-promise) ⇒ [`Promise.`](room.md#Room)
     * [.findAll\(\[query\]\)](room.md#room-findall-query-promise-greater-than) ⇒ `Promise.>`
@@ -61,7 +62,7 @@ await room.sync()
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-| textOrContactOrFileOrUrl | `string` \| `Contact` \| `FileBox` | 群内发送 `text` 或者`media file。` 你可以通过 [FileBox](https://www.npmjs.com/package/file-box) 来发送文件。 |
+| textOrContactOrFileOrUrl | `string` \| `Contact` \| `FileBox` \| `UrlLiink` | 群内发送 `text` 或者`media file` 或者`链接` 。你可以通过 [FileBox](https://www.npmjs.com/package/file-box) 来发送文件。 |
 | \[mention\] | `Contact` \| `Array.` | 可选参数，当设置这个参数的时候，在群内发送文本消息会@此联系人。 |
 
 **Example**
@@ -90,6 +91,15 @@ await room.say(contactCard)
 // 4. Send text inside room and mention @mention contact
 const contact = await bot.Contact.find({name: 'lijiarui'}) // change 'lijiarui' to any of the room member
 await room.say('Hello world!', contact)
+
+// 5. send url link in a room
+const urlLink = new UrlLink ({
+  description  : 'this is url link description',
+  thumbnailUrl : 'this is a thumbnail url',
+  title        : 'this is url link title',
+  url          : 'this is the url',
+})
+await room.say(urlLink)
 ```
 
 ### room.on\(event, listener\) ⇒ `this`
@@ -462,6 +472,21 @@ if (contact && room) {
 
 ```javascript
 const owner = room.owner()
+```
+
+### room.avatar\(\) ⇒ `Promise`
+
+获取群头像的信息。
+
+{% hint style="info" %}
+这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#puppet-compatibility)
+{% endhint %}
+
+**Kind**: instance method of [`Room`](room.md#room)  
+**Example**
+
+```javascript
+const owner = room.avatar()
 ```
 
 ### Room.create\(contactList, \[topic\]\) ⇒ [`Promise.`](room.md#Room)
