@@ -17,22 +17,22 @@ description: 所有的联系人（好友）都会被封装成要给Contact 类
 
 * [Contact](contact.md#contact)
   * _instance_
-    * [.say\(textOrContactOrFileOrUrl\)](contact.md#contact-say-textorcontactorfileorurl-promise) ⇒ `Promise.`
+    * [.say\(textOrContactOrFileOrUrl\)](contact.md#contact-say-textorcontactorfileorurl-promise) ⇒ `Promise`
     * [.name\(\)](contact.md#contact-name-string) ⇒ `string`
-    * [.alias\(newAlias\)](contact.md#contact-alias-newalias-promise) ⇒ `Promise.`
+    * [.alias\(newAlias\)](contact.md#contact-alias-newalias-promise) ⇒ `Promise`
     * [.friend\(\)](contact.md#contact-friend-boolean-or-null) ⇒ `boolean` \| `null`
     * [.type\(\)](contact.md#contact-type-contacttype-unknown-or-contacttype-personal-or-contacttype-official) ⇒ `ContactType.Unknown` \| `ContactType.Personal` \| `ContactType.Official`
     * [.gender\(\)](contact.md#contact-gender-contactgender-unknown-or-contactgender-male-or-contactgender-female) ⇒ `ContactGender.Unknown` \| `ContactGender.Male` \| `ContactGender.Female`
     * [.province\(\)](contact.md#contact-province-string-or-null) ⇒ `string` \| `null`
     * [.city\(\)](contact.md#contact-city-string-or-null) ⇒ `string` \| `null`
-    * [.avatar\(\)](contact.md#contact-avatar-promise) ⇒ `Promise.`
-    * [.sync\(\)](contact.md#contact-sync-promise) ⇒ `Promise.`
+    * [.avatar\(\)](contact.md#contact-avatar-promise) ⇒ `Promise`
+    * [.sync\(\)](contact.md#contact-sync-promise) ⇒ `Promise`
     * [.self\(\)](contact.md#contact-self-boolean) ⇒ `boolean`
   * _static_
-    * [.find\(query\)](contact.md#contact-find-query-promise) ⇒ `Promise.`
-    * [.findAll\(\[queryArg\]\)](contact.md#contact-findall-queryarg-promise-greater-than) ⇒ `Promise.>`
+    * [.find\(query\)](contact.md#contact-find-query-promise) ⇒ `Promise`
+    * [.findAll\(\[queryArg\]\)](contact.md#contact-findall-queryarg-promise-greater-than) ⇒ `Promise`
 
-### contact.say\(textOrContactOrFileOrUrl\) ⇒ `Promise.`
+### contact.say\(textOrContactOrFileOrUrl\) ⇒ `Promise`
 
 {% hint style="info" %}
 这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#puppet-compatibility)
@@ -42,7 +42,7 @@ description: 所有的联系人（好友）都会被封装成要给Contact 类
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-| textOrContactOrFileOrUrl | `string` \| [`Contact`](contact.md#contact) \| `FileBox` | 给微信好友发送文本，联系人名片或者文件。你可以使用[FileBox](https://www.npmjs.com/package/file-box) 来发送文件。 |
+| textOrContactOrFileOrUrl | `string` \| [`Contact`](contact.md#contact) \| `FileBox` \| `UrlLink`| 给微信好友发送文本，联系人名片，文件或者链接。你可以使用[FileBox](https://www.npmjs.com/package/file-box) 来发送文件。 |
 
 **Example**
 
@@ -67,6 +67,16 @@ await contact.say(fileBox2)
 
 const contactCard = bot.Contact.load('contactId')
 await contact.say(contactCard)
+
+// 4. send url link to contact
+
+const urlLink = new UrlLink ({
+  description : 'this is url link description',
+  thumbnailUrl: 'this is a thumbnail url',
+  title       : 'this is url link title',
+  url         : 'this is the url',
+})
+await contact.say(urlLink)
 ```
 
 ### contact.name\(\) ⇒ `string`
@@ -80,7 +90,7 @@ await contact.say(contactCard)
 const name = contact.name()
 ```
 
-### contact.alias\(newAlias\) ⇒ `Promise.`
+### contact.alias\(newAlias\) ⇒ `Promise`
 
 获取/设置/删除 好友的备注。
 
@@ -198,7 +208,7 @@ const province = contact.province()
 const city = contact.city()
 ```
 
-### contact.avatar\(\) ⇒ `Promise.`
+### contact.avatar\(\) ⇒ `Promise`
 
 获取联系人的头像
 
@@ -214,7 +224,7 @@ await file.toFile(name, true)
 console.log(`Contact: ${contact.name()} with avatar file: ${name}`)
 ```
 
-### contact.sync\(\) ⇒ `Promise.`
+### contact.sync\(\) ⇒ `Promise`
 
 强制重新加载好友数据，会从低级别的 API 中重新同步一遍。
 
@@ -237,7 +247,7 @@ await contact.sync()
 const isSelf = contact.self()
 ```
 
-### Contact.find\(query\) ⇒ `Promise.`
+### Contact.find\(query\) ⇒ `Promise`
 
 通过类似这样的命令查找联系人： {name: string \| RegExp} / {alias: string \| RegExp}
 
@@ -259,7 +269,7 @@ const contactFindByName = await bot.Contact.find({ name:"ruirui"} )
 const contactFindByAlias = await bot.Contact.find({ alias:"lijiarui"} )
 ```
 
-### Contact.findAll\(\[queryArg\]\) ⇒ `Promise.>`
+### Contact.findAll\(\[queryArg\]\) ⇒ `Promise`
 
 通过name \(昵称\)或者alias\(备注\)查找联系人。
 
