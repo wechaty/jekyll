@@ -24,7 +24,7 @@
 | [PuppetPadchat](https://github.com/lijiarui/wechaty-puppet-padchat) | iPad 协议 | wechaty-puppet-padchat | ![PuppetPadchat](https://badge.fury.io/js/wechaty-puppet-padchat.svg)   [![npm \(tag\)](https://img.shields.io/npm/v/wechaty-puppet-padchat/next.svg)](https://www.npmjs.com/package/wechaty-puppet-padchat?activeTab=versions) | ![Stage:Release](https://img.shields.io/badge/Stage-Release-green.svg) |
 | [PuppetPadpro](https://github.com/botorange/wechaty-puppet-padpro) | iPad 协议 | 增强版本的wechaty-puppet-padchat, 内测中, 详见[issue1668](https://github.com/Chatie/wechaty/issues/1668) | ![PuppetPadpro](https://badge.fury.io/js/wechaty-puppet-padpro.svg)   [![npm \(tag\)](https://img.shields.io/npm/v/wechaty-puppet-padpro.svg)](https://www.npmjs.com/package/wechaty-puppet-padpro?activeTab=versions) | ![Stage:Release](https://img.shields.io/badge/Stage-Release-green.svg) |
 | [PuppetWechat4u](https://github.com/Chatie/wechaty-puppet-wechat4u) | 通过HTTP 调用网页API | wechaty-puppet-wechat4u | ![PuppetWechat4u](https://badge.fury.io/js/wechaty-puppet-wechat4u.svg)   [![npm \(tag\)](https://img.shields.io/npm/v/wechaty-puppet-wechat4u/next.svg)](https://www.npmjs.com/package/wechaty-puppet-wechat4u?activeTab=versions) | ![Stage:Release](https://img.shields.io/badge/Stage-Alpha-red.svg) |
-| [PuppetIoscat](https://github.com/linyimin-bupt/wechaty-puppet-ioscat) | iPhone Hook | wechaty-puppet-ioscat | ![PuppetIoscat](https://badge.fury.io/js/wechaty-puppet-ioscat.svg)   [![npm \(tag\)](https://img.shields.io/npm/v/wechaty-puppet-ioscat/next.svg)](https://www.npmjs.com/package/wechaty-puppet-ioscat?activeTab=versions) | ![Stage:Release](https://img.shields.io/badge/Stage-Alpha-red.svg) |
+| [PuppetIosbird](https://github.com/botorange/wechaty-puppet-iosbird) | iPhone Hook | wechaty-puppet-iosbird | ![PuppetIosbird](https://badge.fury.io/js/wechaty-puppet-iosbird.svg)   [![npm \(tag\)](https://img.shields.io/npm/v/wechaty-puppet-iosbird.svg)](https://www.npmjs.com/package/wechaty-puppet-iosbird?activeTab=versions) | ![Stage:Release](https://img.shields.io/badge/Stage-Alpha-red.svg) |
 | TBW | Android Hook | Android | 0.0.0 | ![Stage:Release](https://img.shields.io/badge/Stage-Plan-lightgrey.svg) |
 | TBW | Win32 Hook | Win32 | 0.0.0 | ![Stage:Release](https://img.shields.io/badge/Stage-Plan-lightgrey.svg) |
 
@@ -39,19 +39,19 @@
 
 ### 3.1 Puppet 联系人接口    <a id="puppet-contact"></a>
 
-| Contact API | 描述 | PuppetWechat4u & PuppetPuppeteer | PuppetPadchat | PuppetIoscat |
+| Contact API | 描述 | PuppetWechat4u & PuppetPuppeteer | PuppetPadchat | PuppetIosbird |
 | :--- | :--- | :---: | :---: | :---: |
-| Permanent ContactPayload.id | 唯一id | ~~No~~ | Yes | ~~No~~ |
+| Permanent ContactPayload.id | 唯一id | ~~No~~ | Yes | Yes |
 | ContactPayload.friend | 判断是否为机器人好友 | ~~No~~ | Yes | Yes |
 | weixin\(\) | 获取微信号 | ~~No~~ | Yes | Yes |
 
 ### 3.2 Puppet 消息收发接口    <a id="puppet-message"></a>
 
-| Message API | 描述 | PuppetWechat4u & PuppetPuppeteer | PuppetPadchat | PuppetIoscat |
+| Message API | 描述 | PuppetWechat4u & PuppetPuppeteer | PuppetPadchat | PuppetIosbird |
 | :--- | :--- | :---: | :---: | :---: |
 | messageSendContact\(\) | 发送联系人名片 | ~~No~~ | Yes | ~~No~~ |
-| messageFile\(\) | 接收文件 | Yes | Yes: 图片/音频/视频 No: 其他文件 | ~~No~~ |
-| messageSendFile\(\) | 发送文件 | Yes | Yes: 图片/音频/视频 No: 其他文件 | ~~No~~ |
+| messageFile\(\) | 接收文件 | Yes | Yes: 图片/音频/视频 No: 其他文件 | Yes: 图片/音频/视频/其他文件/连接 |
+| messageSendFile\(\) | 发送文件 | Yes | Yes: 图片/音频/视频 No: 其他文件 | Yes: 图片 No: 其他文件 |
 | messageSendUrl\(\) | 发送链接消息 | ~~No~~ | Yes | ~~No~~ |
 
 {% hint style="info" %}
@@ -60,9 +60,9 @@ Wechaty-puppet-padpro 已经支持发送各类文件，包括word,pdf,ppt等，�
 
 ### 3.3 Puppet 微信群接口    <a id="puppet-room"></a>
 
-| Room API | 描述 | PuppetWechat4u & PuppetPuppeteer | PuppetPadchat | PuppetIoscat |
+| Room API | 描述 | PuppetWechat4u & PuppetPuppeteer | PuppetPadchat | PuppetIosbird |
 | :--- | :--- | :---: | :---: | :---: |
-| Permanent RoomPayload.id | 唯一群id | ~~No~~ | Yes | ~~No~~ |
+| Permanent RoomPayload.id | 唯一群id | ~~No~~ | Yes | Yes |
 | roomQrcode\(\) | 获取群二维码 | ~~No~~ | Yes | Yes |
 | roomCreate\(\) | 创建微信群 | ~~No~~ | Yes | Yes |
 | roomAdd\(\) | 邀请好友入群 | ~~No~~ | Yes | Yes |
