@@ -14,7 +14,7 @@ All wechat messages will be encapsulated as a Message.
 
 * [Message](message.md#Message)
   * _instance_
-    * [.from\(\)](message.md#Message+from) ⇒ `Contact`
+    * [.from\(\)](message.md#Message+from) ⇒ `Contact` \| `null`
     * [.to\(\)](message.md#Message+to) ⇒ `Contact` \| `null`
     * [.room\(\)](message.md#Message+room) ⇒ `Room` \| `null`
     * [~~.content\(\)~~](message.md#Message+content)
@@ -62,7 +62,25 @@ bot
 
 Get the destination of the message Message.to\(\) will return null if a message is in a room, use Message.room\(\) to get the room.
 
-**Kind**: instance method of [`Message`](message.md#Message)  
+**Kind**: instance method of [`Message`](message.md#Message) 
+
+**Example**
+
+```javascript
+const bot = new Wechaty()
+bot
+.on('message', async m => {
+  const contact = message.from()
+  const text = message.text()
+  const toContact = message.to()
+  if (toContact) {
+    const name = toContact.name()
+    console.log(`toContact: ${name} Contact: ${contact.name()} Text: ${text}`)
+  } else {
+    console.log(`Contact: ${contact.name()} Text: ${text}`)
+  }
+})
+.start() 
 
 
 ### message.room\(\) ⇒ `Room` \| `null`
@@ -70,6 +88,7 @@ Get the destination of the message Message.to\(\) will return null if a message 
 Get the room from the message. If the message is not in a room, then will return `null`
 
 **Kind**: instance method of [`Message`](message.md#Message)  
+
 **Example**
 
 ```javascript
@@ -122,9 +141,27 @@ bot
 .start()
 ```
 
-### message.say\(textOrContactOrFile, \[mention\]\) ⇒ `Promise.`
+### message.toRecalled\(\) ⇒ `Promise`
 
-Reply a Text or Media File message to the sender.
+Get the text content of the recalled message
+
+**Kind**: instance method of [`Message`](message.md#message)  
+**Example**
+
+```javascript
+const bot = new Wechaty()
+bot
+.on('message', async m => {
+  if (m.type() === MessageType.Recalled) {
+    const recalledMessage = await m.toRecalled()
+    console.log(`Message: ${recalledMessage} has been recalled.`)
+  }
+})
+.start()
+
+### message.say\(textOrContactOrFileOrUrlLink, \[mention\]\) ⇒ `Promise.`
+
+Reply a Text, Media File or Link message to the sender.
 
 > Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table)
 
@@ -133,7 +170,7 @@ Reply a Text or Media File message to the sender.
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-| textOrContactOrFile | `string` \| `Contact` \| `FileBox` | send text, Contact, or file to bot. &lt;/br&gt; You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
+| textOrContactOrFile | `string` \| `Contact` \| `FileBox` \| `UrlLink` | send text, Contact, or file to bot. &lt;/br&gt; You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
 | \[mention\] | `Contact` \| `Array.` | If this is a room message, when you set mention param, you can `@` Contact in the room. |
 
 **Example**
@@ -169,6 +206,18 @@ bot
   }
 
 })
+
+// 4. send UrlLink
+
+if (/^link$/i.test(m.text())) { 
+  const linkPayload = new UrlLnik({
+    description: 'Netty',
+    thumbnailUrl: 'http://mmbiz.qpic.cn/mmbiz_jpg/48MFTQpxichmmxEoXZ1w7eno72H2MQdx1WC6JiaVdYRmwAp4MCcQbctE2IE7jWqkWOlgMPqMBXVAdR1N46xEibvoQ/640?wx_fmt=jpeg&wxtype=jpeg&wxfrom=0',
+    title: 'Netty',
+    url: 'http://mp.weixin.qq.com/s?__biz=MzU2MDU3MzE1Mg==&mid=2247484375&idx=1&sn=5ee91b0a8607a1766b5212a23d3c9179&chksm=fc04bc58cb73354e798403bcc03e293149bb115a0755940e334c0fbe33d7c3b0b0797120a213&scene=0&xtrack=1#rd', 
+  })
+  await msg.say(linkPayload) 
+}
 .start()
 ```
 
@@ -212,7 +261,7 @@ if (message.self()) {
 }
 ```
 
-### message.mention\(\) ⇒ `Promise.>`
+### message.mention\(\) ⇒ `Promise.`
 
 Get message mentioned contactList.
 
