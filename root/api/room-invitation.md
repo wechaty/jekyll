@@ -13,8 +13,8 @@ accept room invitation
 * [RoomInvitation](room-invitation.md#RoomInvitation)
   * [.accept\(\)](room-invitation.md#RoomInvitation+accept) ⇒ `Promise.`
   * [.inviter\(\)](room-invitation.md#RoomInvitation+inviter) ⇒ `Contact`
-  * [.topic\(\)](room-invitation.md#RoomInvitation+topic) ⇒ `Contact`
-  * [.roomTopic\(\)](room-invitation.md#RoomInvitation+roomTopic)
+  * [.topic\(\)](room-invitation.md#RoomInvitation+topic) ⇒ `Promise`
+  * [~~.roomTopic\(\)~~](room-invitation.md#RoomInvitation+roomTopic) ⇒ `Promise`
   * [.date\(\)](room-invitation.md#RoomInvitation+date) ⇒ `Promise.`
   * [.age\(\)](room-invitation.md#RoomInvitation+age) ⇒ `number`
 
@@ -55,7 +55,7 @@ bot.on('room-invite', async roomInvitation => {
 .start()
 ```
 
-### roomInvitation.topic\(\) ⇒ `Contact`
+### roomInvitation.topic\(\) ⇒ `Promise`
 
 Get the room topic from room invitation
 
@@ -71,7 +71,7 @@ bot.on('room-invite', async roomInvitation => {
 .start()
 ```
 
-### roomInvitation.roomTopic\(\)
+### ~~roomInvitation.roomTopic\(\)~~
 
 **Kind**: instance method of [`RoomInvitation`](room-invitation.md#RoomInvitation)  
 **Deprecated:**: use topic\(\) instead  
