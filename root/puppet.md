@@ -19,7 +19,7 @@ For a deeper understanding of the Puppet in Wechaty, you can read its source cod
 | [PuppetPuppeteer](https://github.com/Chatie/wechaty-puppet-puppeteer) | Web API via Browser Hooking | wechaty-puppet-puppeteer | ![PuppetPuppeteer](https://badge.fury.io/js/wechaty-puppet-puppeteer.svg) [![npm \(tag\)](https://img.shields.io/npm/v/wechaty-puppet-puppeteer/next.svg)](https://www.npmjs.com/package/wechaty-puppet-puppeteer?activeTab=versions) | ![Stage:Release](https://img.shields.io/badge/Stage-Release-green.svg) |
 | [PuppetPadchat](https://github.com/lijiarui/wechaty-puppet-padchat) | iPad Protocol | wechaty-puppet-padchat | ![PuppetPadchat](https://badge.fury.io/js/wechaty-puppet-padchat.svg)   [![npm \(tag\)](https://img.shields.io/npm/v/wechaty-puppet-padchat/next.svg)](https://www.npmjs.com/package/wechaty-puppet-padchat?activeTab=versions) | ![Stage:Release](https://img.shields.io/badge/Stage-Release-green.svg) |
 | [PuppetWechat4u](https://github.com/Chatie/wechaty-puppet-wechat4u) | Web API via HTTP | wechaty-puppet-wechat4u | ![PuppetWechat4u](https://badge.fury.io/js/wechaty-puppet-wechat4u.svg)   [![npm \(tag\)](https://img.shields.io/npm/v/wechaty-puppet-wechat4u/next.svg)](https://www.npmjs.com/package/wechaty-puppet-wechat4u?activeTab=versions) | ![Stage:Release](https://img.shields.io/badge/Stage-Alpha-red.svg) |
-| [PuppetIoscat](https://github.com/linyimin-bupt/wechaty-puppet-ioscat) | iPhone App Hooking | wechaty-puppet-ioscat | ![PuppetIoscat](https://badge.fury.io/js/wechaty-puppet-ioscat.svg)   [![npm \(tag\)](https://img.shields.io/npm/v/wechaty-puppet-ioscat/next.svg)](https://www.npmjs.com/package/wechaty-puppet-ioscat?activeTab=versions) | ![Stage:Release](https://img.shields.io/badge/Stage-Alpha-red.svg) |
+| [PuppetIosbird](https://github.com/botorange/wechaty-puppet-iosbird) | iPhone Hook | wechaty-puppet-iosbird | ![PuppetIosbird](https://badge.fury.io/js/wechaty-puppet-iosbird.svg)   [![npm \(tag\)](https://img.shields.io/npm/v/wechaty-puppet-iosbird.svg)](https://www.npmjs.com/package/wechaty-puppet-iosbird?activeTab=versions) | ![Stage:Release](https://img.shields.io/badge/Stage-Alpha-red.svg) |
 | TBW | Android Hook | Android | 0.0.0 | ![Stage:Release](https://img.shields.io/badge/Stage-Plan-lightgrey.svg) |
 | TBW | Win32 Hook | Win32 | 0.0.0 | ![Stage:Release](https://img.shields.io/badge/Stage-Plan-lightgrey.svg) |
 
@@ -34,26 +34,26 @@ For a deeper understanding of the Puppet in Wechaty, you can read its source cod
 
 ### 3.1 Puppet Contact API
 
-| Contact API | wechat4u & puppeteer | padchat | Ioscat |
+| Contact API | wechat4u & puppeteer | padchat | Iosbird |
 | :--- | :---: | :---: | :---: |
-| Permanent ContactPayload.id | ~~No~~ | Yes | ~~No~~ |
+| Permanent ContactPayload.id | ~~No~~ | Yes | Yes |
 | ContactPayload.friend | ~~No~~ | Yes | Yes |
 | weixin\(\) | ~~No~~ | Yes | Yes |
 
 ### 3.2 Puppet Message API
 
-| Message API | wechat4u & puppeteer | padchat | Ioscat |
+| Message API | wechat4u & puppeteer | padchat | Iosbird |
 | :--- | :---: | :---: | :---: |
 | messageSendContact\(\) | ~~No~~ | Yes | ~~No~~ |
-| messageFile\(\) | Yes | Yes for Image/Audio/Video No for other Attachments | ~~No~~ |
-| messageSendFile\(\) | Yes | Yes for Image/Audio/Video No for other Attachments | ~~No~~ |
+| messageFile\(\) | Yes | Yes for Image/Audio/Video No for other Attachments | Yes for Image/Audio/Video/other Attachments/UrlLink |
+| messageSendFile\(\) | Yes | Yes for Image/Audio/Video No for other Attachments | Yes for Image No for other Attachment |
 | messageSendUrl\(\) | ~~No~~ | Yes | ~~No~~ |
 
 ### 3.3 Puppet Room API
 
-| Room API | wechat4u & puppeteer | padchat | Ioscat |
+| Room API | wechat4u & puppeteer | padchat | Iosbird |
 | :--- | :---: | :---: | :---: |
-| Permanent RoomPayload.id | ~~No~~ | Yes | ~~No~~ |
+| Permanent RoomPayload.id | ~~No~~ | Yes | Yes |
 | roomQrcode\(\) | ~~No~~ | Yes | Yes |
 | roomCreate\(\) | ~~No~~ | Yes | Yes |
 | roomAdd\(\) | ~~No~~ | Yes | Yes |
