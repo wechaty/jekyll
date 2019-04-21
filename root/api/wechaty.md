@@ -302,7 +302,7 @@ Send message to userSelf, in other words, bot send message to itself.
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-| textOrContactOrFileOrUrl | `string` \| `Contact` \| `FileBox` | send text, Contact, or file to bot. &lt;/br&gt; You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
+| textOrContactOrFileOrUrl | `string` \| `Contact` \| `FileBox` \| `UrlLink` | send text, Contact, file or Link to bot. &lt;/br&gt; You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
 
 **Example**
 
@@ -327,6 +327,15 @@ await bot.say(fileBox)
 import { FileBox }  from 'file-box'
 const fileBox = FileBox.fromFile('/tmp/text.jpg')
 await bot.say(fileBox)
+
+// 5. send Link to bot itself
+const linkPayload = new UrlLink({
+ description  : 'Netty',
+ thumbnailUrl : 'http://mmbiz.qpic.cn/mmbiz_jpg/48MFTQpxichmmxEoXZ1w7eno72H2MQdx1WC6JiaVdYRmwAp4MCcQbctE2IE7jWqkWOlgMPqMBXVAdR1N46xEibvoQ/640?wx_fmt=jpeg&wxtype=jpeg&wxfrom=0',
+  title        : 'Netty',
+  url          : 'http://mp.weixin.qq.com/s?__biz=MzU2MDU3MzE1Mg==&mid=2247484375&idx=1&sn=5ee91b0a8607a1766b5212a23d3c9179&chksm=fc04bc58cb73354e798403bcc03e293149bb115a0755940e334c0fbe33d7c3b0b0797120a213&scene=0&xtrack=1#rd',
+})
+await bot.say(linkPayload)
 ```
 
 ### Wechaty.instance\(\[options\]\)
