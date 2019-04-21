@@ -4,6 +4,7 @@ description: 机器人自己的信息将会封装一个ContactSelf 类. 这个�
 
 # ContactSelf
 
+## ContactSelf
 
 {% hint style="info" %}
 这个类继承自 Contact
@@ -79,7 +80,7 @@ bot.on('login', (user: ContactSelf) => {
 
 ### contactSelf.name\(\) ⇒ `string`
 
-获取 机器人签名。
+获取 机器人昵称。
 
 **Kind**: instance method of [`ContactSelf`](contact-self.md#contactself)
 
@@ -94,13 +95,13 @@ bot.on('login', async user => {
 
 ### contactSelf.name\(name\) ⇒ `Promise<string>`
 
-修改机器人名称。
+修改机器人昵称。
 
 **Kind**: instance method of [`ContactSelf`](contact-self.md#contactself)
 
 | Param | Description |
 | :--- | :--- |
-| name | 机器人要修改的名称内容 |
+| name | 机器人要修改的昵称内容 |
 
 **Example**
 
