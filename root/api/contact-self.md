@@ -14,10 +14,13 @@ Bot itself will be encapsulated as a ContactSelf.
 
 **Kind**: global class
 
-* [ContactSelf](contact-self.md#ContactSelf)
-  * [.avatar\(\[file\]\)](contact-self.md#ContactSelf+avatar) ⇒ `Promise.`
-  * [.qrcode\(\)](contact-self.md#ContactSelf+qrcode) ⇒ `Promise.`
-  * [.signature\(signature\)](contact-self.md#ContactSelf+signature)
+- [ContactSelf](#contactself)
+  - [ContactSelf](#contactself-1)
+    - [contactSelf.avatar\(\[file\]\) ⇒ `Promise.`](#contactselfavatar\\file\\-⇒-promise)
+    - [contactSelf.qrcode\(\) ⇒ `Promise.`](#contactselfqrcode\\-⇒-promise)
+    - [contactSelf.signature\(signature\)](#contactselfsignature\signature\)
+    - [contactSelf.name\(\) ⇒ `string`](#contactselfname\\-⇒-string)
+    - [contactSelf.name\(name\) ⇒ `Promise<string>`](#contactselfname\name\-⇒-promisestring)
 
 ### contactSelf.avatar\(\[file\]\) ⇒ `Promise.`
 
@@ -95,3 +98,41 @@ bot.on('login', async user => {
 })
 ```
 
+### contactSelf.name\(\) ⇒ `string`
+
+Get alias of bot.
+
+**Kind**: instance method of [`ContactSelf`](contact-self.md#contactself)
+
+**Example**
+
+```javascript
+bot.on('login', async user => {
+  console.log(`user ${user} login`)
+  console.log(`user name: ${user.name()}`)
+})
+```
+
+### contactSelf.name\(name\) ⇒ `Promise<string>`
+
+Change bot alias.
+
+**Kind**: instance method of [`ContactSelf`](contact-self.md#contactself)
+
+| Param | Description |
+| :--- | :--- |
+| name | The new alias that the bot will change to |
+
+**Example**
+
+```javascript
+bot.on('login', async user => {
+  console.log(`user ${user} login`)
+  const oldName = user.name()
+  try {
+    await user.name(`${oldName}-${new Date().getTime()}`)
+  } catch (e) {
+    console.error('change name failed', e)
+  }
+})
+```
