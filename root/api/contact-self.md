@@ -12,20 +12,19 @@ description: 机器人自己的信息将会封装一个ContactSelf 类. 这个�
 
 **Kind**: global class
 
-* [ContactSelf](contact-self.md)
-  * [.avatar\(\[file\]\)](contact-self.md#contactself-avatar-file-promise) ⇒ `Promise.`
-  * [.qrcode\(\)](contact-self.md#contactself-qrcode-promise) ⇒ `Promise.`
-  * [.signature\(signature\)](contact-self.md#contactself-signature-signature)
-
-### contactSelf.avatar\(\[file\]\) ⇒ `Promise.`
-
-获取 / 设置 机器人的头像。
+- [ContactSelf](#contactself)
+    - [contactSelf.avatar() ⇒ Promise<FileBox>](#contactselfavatar-%E2%87%92-promisefilebox)
+    - [contactSelf.avatar\(file) ⇒ `Promise<void>`](#contactselfavatarfile-%E2%87%92-promisevoid)
+    - [contactSelf.qrcode\(\) ⇒ `Promise<string>`](#contactselfqrcode-%E2%87%92-promisestring)
+    - [contactSelf.name\(\) ⇒ `string`](#contactselfname-%E2%87%92-string)
+    - [contactSelf.name\(name\) ⇒ `Promise<string>`](#contactselfnamename-%E2%87%92-promisestring)
+    - [contactSelf.signature\(signature\): `Promise<void>`](#contactselfsignaturesignature-promisevoid)
 
 **Kind**: instance method of [`ContactSelf`](contact-self.md)
 
-| Param | Type |
-| :--- | :--- |
-| \[file\] | `FileBox` |
+### contactSelf.avatar() ⇒ Promise<FileBox>
+
+获取机器人的头像
 
 **Example** _\( GET the avatar for bot, return {Promise&lt;FileBox&gt;}\)_
 
@@ -41,6 +40,15 @@ bot.on('login', (user: ContactSelf) => {
 })
 ```
 
+### contactSelf.avatar\(file) ⇒ `Promise<void>`
+
+设置 机器人的头像
+
+| Param | Type |
+| :--- | :--- |
+| file | `FileBox` |
+
+
 **Example** _\(SET the avatar for a bot\)_
 
 ```javascript
@@ -53,11 +61,11 @@ bot.on('login', (user: ContactSelf) => {
 })
 ```
 
-### contactSelf.qrcode\(\) ⇒ `Promise.`
+### contactSelf.qrcode\(\) ⇒ `Promise<string>`
 
 获取机器人的二维码。
 
-**Kind**: instance method of [`ContactSelf`](contact-self.md#contactself)  
+**Kind**: instance method of [`ContactSelf`](contact-self.md#contactself)
 **Example**
 
 ```javascript
@@ -70,7 +78,46 @@ bot.on('login', (user: ContactSelf) => {
 })
 ```
 
-### contactSelf.signature\(signature\)
+### contactSelf.name\(\) ⇒ `string`
+
+获取 机器人昵称。
+
+**Kind**: instance method of [`ContactSelf`](contact-self.md#contactself)
+
+**Example**
+
+```javascript
+bot.on('login', async user => {
+  console.log(`user ${user} login`)
+  console.log(`user name: ${user.name()}`)
+})
+```
+
+### contactSelf.name\(name\) ⇒ `Promise<string>`
+
+修改机器人昵称。
+
+**Kind**: instance method of [`ContactSelf`](contact-self.md#contactself)
+
+| Param | Description |
+| :--- | :--- |
+| name | 机器人要修改的昵称内容 |
+
+**Example**
+
+```javascript
+bot.on('login', async user => {
+  console.log(`user ${user} login`)
+  const oldName = user.name()
+  try {
+    await user.name(`${oldName}-${new Date().getTime()}`)
+  } catch (e) {
+    console.error('change name failed', e)
+  }
+})
+```
+
+### contactSelf.signature\(signature\): `Promise<void>`
 
 修改机器人签名。
 
@@ -92,4 +139,3 @@ bot.on('login', async user => {
   }
 })
 ```
-
