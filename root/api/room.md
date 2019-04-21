@@ -53,6 +53,7 @@ All wechat rooms\(groups\) will be encapsulated as a Room.
     * [.memberAll\(\[query\]\)](room.md#Room+memberAll) ⇒ `Promise.>`
     * [.member\(queryArg\)](room.md#Room+member) ⇒ `Promise.`
     * [.owner\(\)](room.md#Room+owner) ⇒ `Contact` \| `null`
+    * [.avatar\(\)](room.md#room-owner-contact-or-null) ⇒ `Promise.`
   * _static_
     * [.create\(contactList, \[topic\]\)](room.md#Room.create) ⇒ [`Promise.`](room.md#Room)
     * [.findAll\(\[query\]\)](room.md#Room.findAll) ⇒ `Promise.>`
@@ -79,7 +80,7 @@ Send message inside Room, if set \[replyTo\], wechaty will mention the contact a
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-| textOrContactOrFileOrUrl | `string` \| `Contact` \| `FileBox` | Send `text` or `media file` inside Room.   You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
+| textOrContactOrFileOrUrl | `string` \| `Contact` \| `FileBox` \| `UrlLink` | Send `text`, `media file` or `link` inside Room.   You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
 | \[mention\] | `Contact` \| `Array.` | Optional parameter, send content inside Room, and mention @replyTo contact or contactList. |
 
 **Example**
@@ -108,6 +109,15 @@ await room.say(contactCard)
 // 4. Send text inside room and mention @mention contact
 const contact = await bot.Contact.find({name: 'lijiarui'}) // change 'lijiarui' to any of the room member
 await room.say('Hello world!', contact)
+
+* // 5. send Link inside room
+   * const linkPayload = new UrlLink({
+   *  description  : 'Netty',
+   *  thumbnailUrl : 'http://mmbiz.qpic.cn/mmbiz_jpg/48MFTQpxichmmxEoXZ1w7eno72H2MQdx1WC6JiaVdYRmwAp4MCcQbctE2IE7jWqkWOlgMPqMBXVAdR1N46xEibvoQ/640?wx_fmt=jpeg&wxtype=jpeg&wxfrom=0',
+   *  title        : 'Netty',
+   *  url          : 'http://mp.weixin.qq.com/s?__biz=MzU2MDU3MzE1Mg==&mid=2247484375&idx=1&sn=5ee91b0a8607a1766b5212a23d3c9179&chksm=fc04bc58cb73354e798403bcc03e293149bb115a0755940e334c0fbe33d7c3b0b0797120a213&scene=0&xtrack=1#rd',
+   * })
+   * await bot.say(linkPayload)
 ```
 
 ### room.on\(event, listener\) ⇒ `this`
@@ -474,6 +484,18 @@ Get room's owner from the room.
 
 ```javascript
 const owner = room.owner()
+```
+
+### room.avatar\(\) ⇒ `Promise`
+
+Get room's avatar
+
+> Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table)
+
+**Kind**: instance method of [`Room`](room.md#room)  
+**Example**
+```javascript
+const owner = room.avatar()
 ```
 
 ### Room.create\(contactList, \[topic\]\) ⇒ [`Promise.`](room.md#Room)
