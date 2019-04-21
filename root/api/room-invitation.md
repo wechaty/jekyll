@@ -13,8 +13,8 @@ description: 自动通过入群邀请
 * [RoomInvitation](room-invitation.md#roominvitation)
   * [.accept\(\)](room-invitation.md#roominvitation-accept-promise) ⇒ `Promise.`
   * [.inviter\(\)](room-invitation.md#roominvitation-inviter-contact) ⇒ `Contact`
-  * [.topic\(\)](room-invitation.md#roominvitation-topic-contact) ⇒ `Contact`
-  * [.roomTopic\(\)](room-invitation.md#roominvitation-roomtopic)
+  * [.topic\(\)](room-invitation.md#roominvitation-topic-contact) ⇒ `Promise`
+  * [~~.roomTopic\(\)~~](room-invitation.md#roominvitation-roomtopic) ⇒ `Promise`
   * [.date\(\)](room-invitation.md#roominvitation-date-promise) ⇒ `Promise.`
   * [.age\(\)](room-invitation.md#roominvitation-age-number) ⇒ `number`
 
@@ -55,7 +55,7 @@ bot.on('room-invite', async roomInvitation => {
 .start()
 ```
 
-### roomInvitation.topic\(\) ⇒ `Contact`
+### roomInvitation.topic\(\) ⇒ `Promise`
 
 获取需要进的群的群名称.
 
@@ -71,7 +71,7 @@ bot.on('room-invite', async roomInvitation => {
 .start()
 ```
 
-### roomInvitation.roomTopic\(\)
+### ~~roomInvitation.roomTopic\(\)~~
 
 **Kind**: instance method of [`RoomInvitation`](room-invitation.md#RoomInvitation)  
 **Deprecated:**: 请使用 [topic\(\) ](room-invitation.md#roominvitation-topic-contact)
