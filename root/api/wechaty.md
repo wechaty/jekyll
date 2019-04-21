@@ -314,7 +314,7 @@ console.log(`Bot is ${contact.name()}`)
   <tbody>
     <tr>
       <td style="text-align:left">textOrContactOrFileOrUrl</td>
-      <td style="text-align:left"><code>string</code> | <code>Contact</code> | <code>FileBox</code>
+      <td style="text-align:left"><code>string</code> | <code>Contact</code> | <code>FileBox</code> | <code>UrlLink</code>
       </td>
       <td style="text-align:left">
         <p>&#x53D1;&#x9001;&#x6587;&#x672C;&#x3001;&#x8054;&#x7CFB;&#x4EBA;&#x540D;&#x7247;&#x6216;&#x8005;&#x6587;&#x4EF6;&#x7ED9;&#x673A;&#x5668;&#x4EBA;&#x81EA;&#x5DF1;&#x3002;</p>
@@ -322,7 +322,94 @@ console.log(`Bot is ${contact.name()}`)
       </td>
     </tr>
   </tbody>
-</table>\\`\\`\\`typescript // 1. send text to bot itself await bot.say\\('hello!'\\)​ // 2. send Contact to bot itself const contact = bot.Contact.load\\('contactId'\\) await bot.say\\(contact\\)​ // 3. send Image to bot itself from remote url import { FileBox } from 'file-box' const fileBox = FileBox.fromUrl\\('https://chatie.io/wechaty/images/bot-qr-code.png'\\) await bot.say\\(fileBox\\)​ // 4. send Image to bot itself from local file import { FileBox } from 'file-box' const fileBox = FileBox.fromFile\\('/tmp/text.jpg'\\) await bot.say\\(fileBox\\) \\`\\`\\` \\#\\#\\# Wechaty.instance\\\(\\\[options\\\]\\\) 获取全局的Wechaty 实例。 \\*\\*Kind\\*\\*: static method of \\[\\`Wechaty\\`\\]\\(wechaty.md\\#wechaty\\)​ \\| Param \\| Type \\| Default \\| \\| :--- \\| :--- \\| :--- \\| \\| \\\[options\\\] \\| ​\\[\\`WechatyOptions\\`\\]\\(wechaty.md\\#wechatyoptions\\)​ \\| \\`{}\\` \\| \\*\\*Example\\*\\* \\_\\\(The World's Shortest ChatBot Code: 6 lines of JavaScript\\\)\\_ \\`\\`\\`typescript const { Wechaty } = require\\('wechaty'\\) ​Wechaty.instance\\(\\) // Global instance .on\\('scan', \\(url, code\\) =&gt; console.log\\(\\`Scan QR Code to login: ${code}\n${url}\\`\\)\\) .on\\('login', user =&gt; console.log\\(\\`User ${user} logined\\`\\)\\) .on\\('message', message =&gt; console.log\\(\\`Message: ${message}\\`\\)\\) .start\\(\\) \\`\\`\\` \\#\\# 类型定义 \\* \\[PuppetModuleName\\]\\(wechaty.md\\#puppetmodulename\\) \\* \\[WechatyOptions\\]\\(wechaty.md\\#wechatyoptions\\) \\* \\[WechatyEventName\\]\\(wechaty.md\\#wechatyeventname\\) \\* \\[WechatyEventFunction\\]\\(wechaty.md\\#wechatyeventfunction\\) \\#\\#\\# PuppetModuleName \\*\\*Kind\\*\\*: global typedef \\*\\*Properties\\*\\* PuppetModuleName 参数在这里代表着Puppet 的名称，类型是 string, 可能的取值为： \\| Name \\| Type \\| Description \\| \\| :--- \\| :--- \\| :--- \\| \\| PUPPET\\\_DEFAULT \\| \\`string\\` \\| 默认的puppet， 默认会使用 wechaty-puppet-puppeteer \\| \\| wechaty-puppet-wechat4u \\| \\`string\\` \\| 默认的puppet，使用 \\[wechat4u\\]\\(https://github.com/nodeWechat/wechat4u\\) 来控制 \\[网页微信 API\\]\\(https://wx.qq.com/\\) \\| \\| wechaty-puppet-padchat \\| \\`string\\` \\| 使用WebSocket 协议链接一个协议服务器，来控制iPad 微信。 \\| \\| wechaty-puppet-puppeteer \\| \\`string\\` \\| 通过chrome\\\(谷歌\\\)浏览器使用 \\[google puppeteer\\]\\(https://github.com/GoogleChrome/puppeteer\\) 来控制 \\[网页微信 API\\]\\(https://wx.qq.com/\\) \\| \\| wechaty-puppet-mock \\| \\`string\\` \\| 为单元测试提供模拟调用的Puppet \\| \\#\\#\\# WechatyOptions 创建wechaty 实例的可选参数类型。 \\`\\`\\`typescript export interface WechatyOptions { memory? : MemoryCard, name? : string, // Wechaty Name profile? : null \\| string, // DEPRECATED: use name instead puppet? : PuppetModuleName \\| Puppet, // Puppet name or instance puppetOptions? : PuppetOptions, // Puppet TOKEN ioToken? : string, // Io TOKEN } \\`\\`\\` \\*\\*Kind\\*\\*: global typedef \\*\\*Properties\\*\\*
+</table>
+
+```typescript 
+// 1. send text to bot itself 
+await bot.say('hello!')​ 
+
+// 2. send Contact to bot itself
+const contact = bot.Contact.load('contactId') 
+await bot.say(contact)​ 
+
+// 3. send Image to bot itself from remote url
+import { FileBox } from 'file-box' 
+const fileBox = FileBox.fromUrl('https://chatie.io/wechaty/images/bot-qr-code.png') 
+await bot.say(fileBox)​
+
+// 4. send Image to bot itself from local file 
+import { FileBox } from 'file-box' 
+const fileBox = FileBox.fromFile('/tmp/text.jpg') 
+await bot.say(fileBox) 
+
+// 5. send Link to bot itself
+const linkPayload = new UrlLink({
+ description  : '关于netty处理网络中粘包，拆包的方式总结',
+ thumbnailUrl : 'http://mmbiz.qpic.cn/mmbiz_jpg/48MFTQpxichmmxEoXZ1w7eno72H2MQdx1WC6JiaVdYRmwAp4MCcQbctE2IE7jWqkWOlgMPqMBXVAdR1N46xEibvoQ/640?wx_fmt=jpeg&wxtype=jpeg&wxfrom=0',
+  title        : 'Netty里面的粘包拆包处理',
+  url          : 'http://mp.weixin.qq.com/s?__biz=MzU2MDU3MzE1Mg==&mid=2247484375&idx=1&sn=5ee91b0a8607a1766b5212a23d3c9179&chksm=fc04bc58cb73354e798403bcc03e293149bb115a0755940e334c0fbe33d7c3b0b0797120a213&scene=0&xtrack=1#rd',
+})
+await bot.say(linkPayload)
+```
+ 
+### Wechaty.instance\(\[options\]\) 
+
+获取全局的Wechaty 实例。 
+
+**Kind**: static method of [`Wechaty`](wechaty.md\\#wechaty)​
+
+| Param | Type | Default |
+| :--- | :--- | :--- | 
+| \[options\] | ​[`WechatyOptions`](wechaty.md#wechatyoptions)​ | `{}` |
+
+**Example** 
+
+_(The World's Shortest ChatBot Code: 6 lines of JavaScript)_ 
+
+```typescript 
+const { Wechaty } = require('wechaty') 
+​Wechaty.instance() // Global instance 
+.on('scan', (url, code) => console.log(`Scan QR Code to login: ${code}\n${url}`)) 
+.on('login', user => console.log(`User ${user} logined`)) 
+.on('message', message => console.log(`Message: ${message}`)) 
+.start()
+``` 
+
+## 类型定义 
+
+* [PuppetModuleName](wechaty.md#puppetmodulename)
+* [WechatyOptions](wechaty.md#wechatyoptions) 
+* [WechatyEventName](wechaty.md#wechatyeventname)
+* [WechatyEventFunction](wechaty.md#wechatyeventfunction)
+ 
+### PuppetModuleName 
+
+**Kind**: global typedef **Properties** PuppetModuleName 参数在这里代表着Puppet 的名称，类型是 string, 可能的取值为： 
+
+| Name | Type | Description | 
+| :--- | :--- | :--- |
+| PUPPET_DEFAULT | `string` | 默认的puppet， 默认会使用 wechaty-puppet-puppeteer|
+| wechaty-puppet-wechat4u| `string` | 默认的puppet，使用 [wechat4u](https://github.com/nodeWechat/wechat4u) 来控制 [网页微信 API](https://wx.qq.com/) 
+| wechaty-puppet-padchat | `string` | 使用WebSocket 协议链接一个协议服务器，来控制iPad 微信。 |
+| wechaty-puppet-puppeteer | `string` | 通过chrome\(谷歌\)浏览器使用 [google puppeteer](https://github.com/GoogleChrome/puppeteer) 来控制 [网页微信 API](https://wx.qq.com/) |
+| wechaty-puppet-mock | `string` | 为单元测试提供模拟调用的Puppet | 
+
+### WechatyOptions 
+
+创建wechaty 实例的可选参数类型。 
+
+```typescript 
+export interface WechatyOptions { 
+  memory?       : MemoryCard,
+  name?         : string,                      // Wechaty Name
+  profile?      : null | string,               // DEPRECATED: use name instead
+  puppet?       : PuppetModuleName | Puppet,   // Puppet name or instance 
+  puppetOptions?: PuppetOptions,               // Puppet TOKEN 
+  ioToken?      : string,                      // Io TOKEN 
+}
+``` 
+
+**Kind**: global typedef **Properties**
 
 <table>
   <thead>
@@ -355,7 +442,9 @@ console.log(`Bot is ${contact.name()}`)
       <td style="text-align:left">Io TOKEN</td>
     </tr>
   </tbody>
-</table>Wechaty 事件的类型 \\*\\*Kind\\*\\*: global typedef \\*\\*Properties\\*\\*
+</table>
+
+Wechaty 事件的类型 **Kind**: global typedef **Properties**
 
 <table>
   <thead>
