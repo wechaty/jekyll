@@ -12,7 +12,7 @@ description: 所有的微信消息会被封装成一个Message 类
 
 * [Message](message.md#message)
   * _instance_
-    * [.from\(\) ](message.md#message-from-contact)⇒ `Contact`
+    * [.from\(\) ](message.md#message-from-contact)⇒ `Contact` \| `null`
     * [.to\(\)](message.md#message-to-contact-or-null) ⇒ `Contact` \| `null`
     * [.room\(\)](message.md#message-room-room-or-null) ⇒ `Room` \| `null`
     * ~~~~\[~~.content\(\)~~\]\(message.md\#message-content\)~~~~
@@ -61,6 +61,25 @@ bot
 获取消息发送的联系人。在微信群中，Message.to\(\) 会返回null，使用Message.room\(\)获取微信群信息。
 
 **Kind**: instance method of [`Message`](message.md#message)
+
+**Example**
+
+```javascript
+const bot = new Wechaty()
+bot
+.on('message', async m => {
+  const contact = message.from()
+  const text = message.text()
+  const toContact = message.to()
+  if (toContact) {
+    const name = toContact.name()
+    console.log(`toContact: ${name} Contact: ${contact.name()} Text: ${text}`)
+  } else {
+    console.log(`Contact: ${contact.name()} Text: ${text}`)
+  }
+})
+.start()
+```
 
 ### message.room\(\) ⇒ `Room` \| `null`
 
@@ -118,9 +137,28 @@ bot
 .start()
 ```
 
-### message.say\(textOrContactOrFile, \[mention\]\) ⇒ `Promise.`
+### message.toRecalled\(\) ⇒ `Promise`
 
-回复多媒体、微信名片或者文本给这条消息的发送者。
+获取撤回消息的文本内容。
+
+**Kind**: instance method of [`Message`](message.md#message)  
+**Example**
+
+```javascript
+const bot = new Wechaty()
+bot
+.on('message', async m => {
+  if (m.type() === MessageType.Recalled) {
+    const recalledMessage = await m.toRecalled()
+    console.log(`Message: ${recalledMessage} has been recalled.`)
+  }
+})
+.start()
+```
+
+### message.say\(textOrContactOrFileOrUrl, \[mention\]\) ⇒ `Promise.`
+
+回复多媒体、微信名片、文本或者链接给这条消息的发送者。
 
 {% hint style="info" %}
 这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#puppet-compatibility)
@@ -136,8 +174,8 @@ bot
 <table>
   <thead>
     <tr>
-      <th style="text-align:left">textOrContactOrFile</th>
-      <th style="text-align:left"><code>string</code> | <code>Contact</code> | <code>FileBox</code>
+      <th style="text-align:left">textOrContactOrFileOrUrl</th>
+      <th style="text-align:left"><code>string</code> | <code>Contact</code> | <code>FileBox</code> | <code>UrlLink</code>
       </th>
       <th style="text-align:left">
         <p>&#x53D1;&#x9001;&#x6587;&#x672C;&#x3001;&#x540D;&#x7247;&#x6216;&#x8005;&#x6587;&#x4EF6;</p>
@@ -146,19 +184,54 @@ bot
     </tr>
   </thead>
   <tbody></tbody>
-</table>if \(/^ding$/i.test\(m.text\(\)\)\) { const fileBox = FileBox.fromUrl\('[https://chatie.io/wechaty/images/bot-qr-code.png](https://chatie.io/wechaty/images/bot-qr-code.png)'\) await msg.say\(fileBox\) }
+</table>
+
+```javascript
+import { FileBox }  from 'file-box'
+const bot = new Wechaty()
+bot
+.on('message', async m => {
+
+// 1. send Image
+
+  if (/^ding$/i.test(m.text())) {
+    const fileBox = FileBox.fromUrl('https://chatie.io/wechaty/images/bot-qr-code.png')
+    await msg.say(fileBox)
+  }
 
 // 2. send Text
 
-if \(/^dong$/i.test\(m.text\(\)\)\) { await msg.say\('dingdingding'\) }
+  if (/^dong$/i.test(m.text())) {
+    await msg.say('dingdingding')
+  }
 
 // 3. send Contact
 
-if \(/^lijiarui$/i.test\(m.text\(\)\)\) { const contactCard = await bot.Contact.find\({name: 'lijiarui'}\) if \(!contactCard\) { console.log\('not found'\) return } await msg.say\(contactCard\) }
+  if (/^lijiarui$/i.test(m.text())) {
+    const contactCard = await bot.Contact.find({name: 'lijiarui'})
+    if (!contactCard) {
+      console.log('not found')
+      return
+    }
+    await msg.say(contactCard)
+  }
 
-}\) .start\(\)
+})
 
-```text
+// 4. send UrlLink
+
+if (/^link$/i.test(m.text())) { 
+  const linkPayload = new UrlLnik({
+    description : 'Netty',
+    thumbnailUrl: 'http://mmbiz.qpic.cn/mmbiz_jpg/48MFTQpxichmmxEoXZ1w7eno72H2MQdx1WC6JiaVdYRmwAp4MCcQbctE2IE7jWqkWOlgMPqMBXVAdR1N46xEibvoQ/640?wx_fmt=jpeg&wxtype=jpeg&wxfrom=0',
+    title       : 'Netty',
+    url         : 'http://mp.weixin.qq.com/s?__biz=MzU2MDU3MzE1Mg==&mid=2247484375&idx=1&sn=5ee91b0a8607a1766b5212a23d3c9179&chksm=fc04bc58cb73354e798403bcc03e293149bb115a0755940e334c0fbe33d7c3b0b0797120a213&scene=0&xtrack=1#rd',
+  })
+  await msg.say(linkPayload) 
+}
+.start()
+```
+
 ### message.type\(\) ⇒ `MessageType`
 
 获取消息的类型
@@ -189,7 +262,7 @@ if (message.self()) {
 }
 ```
 
-### message.mention\(\) ⇒ `Promise.>`
+### message.mention\(\) ⇒ `Promise.`
 
 获取在群中@的用户列表。
 
