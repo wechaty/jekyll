@@ -184,26 +184,54 @@ bot
     </tr>
   </thead>
   <tbody></tbody>
-</table>if \(/^ding$/i.test\(m.text\(\)\)\) { const fileBox = FileBox.fromUrl\('[https://chatie.io/wechaty/images/bot-qr-code.png](https://chatie.io/wechaty/images/bot-qr-code.png)'\) await msg.say\(fileBox\) }
+</table>
+
+```javascript
+import { FileBox }  from 'file-box'
+const bot = new Wechaty()
+bot
+.on('message', async m => {
+
+// 1. send Image
+
+  if (/^ding$/i.test(m.text())) {
+    const fileBox = FileBox.fromUrl('https://chatie.io/wechaty/images/bot-qr-code.png')
+    await msg.say(fileBox)
+  }
 
 // 2. send Text
 
-if \(/^dong$/i.test\(m.text\(\)\)\) { await msg.say\('dingdingding'\) }
+  if (/^dong$/i.test(m.text())) {
+    await msg.say('dingdingding')
+  }
 
 // 3. send Contact
 
-if \(/^lijiarui$/i.test\(m.text\(\)\)\) { const contactCard = await bot.Contact.find\({name: 'lijiarui'}\) if \(!contactCard\) { console.log\('not found'\) return } await msg.say\(contactCard\) }
+  if (/^lijiarui$/i.test(m.text())) {
+    const contactCard = await bot.Contact.find({name: 'lijiarui'})
+    if (!contactCard) {
+      console.log('not found')
+      return
+    }
+    await msg.say(contactCard)
+  }
 
-}\)
+})
 
 // 4. send UrlLink
 
-if \(/^link$/i.test\(m.text\(\)\)\) { const linkPayload = new UrlLnik\({description: '关于netty处理网络中粘包，拆包的方式总结', thumbnailUrl: 'http://mmbiz.qpic.cn/mmbiz_jpg/48MFTQpxichmmxEoXZ1w7eno72H2MQdx1WC6JiaVdYRmwAp4MCcQbctE2IE7jWqkWOlgMPqMBXVAdR1N46xEibvoQ/640?wx_fmt=jpeg&wxtype=jpeg&wxfrom=0', title: 'Netty里面的粘包拆包处理',url: 'http://mp.weixin.qq.com/s?__biz=MzU2MDU3MzE1Mg==&mid=2247484375&idx=1&sn=5ee91b0a8607a1766b5212a23d3c9179&chksm=fc04bc58cb73354e798403bcc03e293149bb115a0755940e334c0fbe33d7c3b0b0797120a213&scene=0&xtrack=1#rd',}\)
-await msg.say\(linkPayload\) }
+if (/^link$/i.test(m.text())) { 
+  const linkPayload = new UrlLnik({
+    description : 'Netty',
+    thumbnailUrl: 'http://mmbiz.qpic.cn/mmbiz_jpg/48MFTQpxichmmxEoXZ1w7eno72H2MQdx1WC6JiaVdYRmwAp4MCcQbctE2IE7jWqkWOlgMPqMBXVAdR1N46xEibvoQ/640?wx_fmt=jpeg&wxtype=jpeg&wxfrom=0',
+    title       : 'Netty',
+    url         : 'http://mp.weixin.qq.com/s?__biz=MzU2MDU3MzE1Mg==&mid=2247484375&idx=1&sn=5ee91b0a8607a1766b5212a23d3c9179&chksm=fc04bc58cb73354e798403bcc03e293149bb115a0755940e334c0fbe33d7c3b0b0797120a213&scene=0&xtrack=1#rd',
+  })
+  await msg.say(linkPayload) 
+}
+.start()
+```
 
-}\) .start\(\)
-
-```text
 ### message.type\(\) ⇒ `MessageType`
 
 获取消息的类型
