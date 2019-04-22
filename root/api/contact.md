@@ -1,5 +1,5 @@
 ---
-description: 所有的联系人（好友）都会被封装成要给Contact 类
+description: 所有的联系人（好友）都会被封装成Contact 类实例
 ---
 
 # Contact
