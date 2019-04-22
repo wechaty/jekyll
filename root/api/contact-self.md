@@ -16,11 +16,11 @@ Bot itself will be encapsulated as a ContactSelf.
 
 - [ContactSelf](#contactself)
   - [ContactSelf](#contactself-1)
-    - [contactSelf.avatar\(\[file\]\) ⇒ `Promise.`](#contactselfavatar\\file\\-⇒-promise)
-    - [contactSelf.qrcode\(\) ⇒ `Promise.`](#contactselfqrcode\\-⇒-promise)
-    - [contactSelf.signature\(signature\)](#contactselfsignature\signature\)
-    - [contactSelf.name\(\) ⇒ `string`](#contactselfname\\-⇒-string)
-    - [contactSelf.name\(name\) ⇒ `Promise<string>`](#contactselfname\name\-⇒-promisestring)
+    - [contactSelf.avatar\(\[file\]\) ⇒ `Promise.`](#contactselfavatarfile-%E2%87%92-promise)
+    - [contactSelf.qrcode\(\) ⇒ `Promise.`](#contactselfqrcode-%E2%87%92-promise)
+    - [contactSelf.signature\(signature\)](#contactselfsignaturesignature)
+    - [contactSelf.name\(\) ⇒ `string`](#contactselfname-%E2%87%92-string)
+    - [contactSelf.name\(name\) ⇒ `Promise<string>`](#contactselfnamename-%E2%87%92-promisestring)
 
 ### contactSelf.avatar\(\[file\]\) ⇒ `Promise.`
 
@@ -100,7 +100,7 @@ bot.on('login', async user => {
 
 ### contactSelf.name\(\) ⇒ `string`
 
-Get alias of bot.
+Get name of bot.
 
 **Kind**: instance method of [`ContactSelf`](contact-self.md#contactself)
 
@@ -115,7 +115,7 @@ bot.on('login', async user => {
 
 ### contactSelf.name\(name\) ⇒ `Promise<string>`
 
-Change bot alias.
+Change bot name.
 
 **Kind**: instance method of [`ContactSelf`](contact-self.md#contactself)
 
