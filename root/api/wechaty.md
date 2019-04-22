@@ -302,7 +302,7 @@ Send message to userSelf, in other words, bot send message to itself.
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-| textOrContactOrFileOrUrl | `string` \| `Contact` \| `FileBox` | send text, Contact, or file to bot. &lt;/br&gt; You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
+| textOrContactOrFileOrUrl | `string` \| `Contact` \| `FileBox` \| `UrlLink` | send text, Contact, file or Link to bot. &lt;/br&gt; You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
 
 **Example**
 
@@ -327,6 +327,15 @@ await bot.say(fileBox)
 import { FileBox }  from 'file-box'
 const fileBox = FileBox.fromFile('/tmp/text.jpg')
 await bot.say(fileBox)
+
+// 5. send Link to bot itself
+const linkPayload = new UrlLink({
+  description : 'WeChat Bot SDK for Individual Account, Powered by TypeScript, Docker, and Love',
+  thumbnailUrl: 'https://avatars0.githubusercontent.com/u/25162437?s=200&v=4',
+  title       : 'Welcome to Wechaty',
+  url         : 'https://github.com/chatie/wechaty',
+})
+await bot.say(linkPayload)
 ```
 
 ### Wechaty.instance\(\[options\]\)
