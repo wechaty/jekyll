@@ -50,7 +50,7 @@ description: 一个Wechaty 代表着一个微信的客户端，他取决于你�
 
 | Param | Type | Default |
 | :--- | :--- | :--- |
-| \[options\] | ​[`WechatyOptions`](wechaty.md#wechatyoptions)​ | `{}` |
+| \[options\] | ​[`WechatyOptions`](#wechatyoptions)​ | `{}` |
 
 **Example** _\(The World's Shortest ChatBot Code: 6 lines of JavaScript\)_
 
@@ -64,11 +64,11 @@ bot.on('message', message => console.log(`Message: ${message}`))
 bot.start()
 ```
 
-注意，\`new Wechaty\(\)\` 是可以传参数的
+注意，`new Wechaty()` 是可以传参数的
 
 #### 使用网页版本的场景
 
-* 这里name 是用来存储登录信息的，和\`Wechaty.instance\({name: 'XX'}\)\` 的作用是一样的。 [查看详情](../faq.md#login-status-persistent). 
+* 这里name 是用来存储登录信息的，和`Wechaty.instance({name: 'XX'})` 的作用是一样的。 [查看详情](../faq.md#login-status-persistent). 
 
 ```typescript
 const bot = new Wechaty({ name: 'your-bot-name' })
@@ -110,7 +110,7 @@ WECHATY_PUPPET_PADCHAT_TOKEN=你的token WECHATY_PUPPET=padchat node bot.js
 * **logout**: 当机器人退出登陆的时候，会触发到这个事件。
 * **message**: 当有新消息的时候会触发这个事件。
 
-初次之外，wechaty还有一些群相关的事件，了解更多：[WechatyEventName](wechaty.md#wechatyeventname)​
+初次之外，wechaty还有一些群相关的事件，了解更多：[WechatyEventName](#wechatyeventname)​
 
 你可以在这些时间的方法中自定义你希望的所有逻辑。​
 
@@ -120,7 +120,7 @@ WECHATY_PUPPET_PADCHAT_TOKEN=你的token WECHATY_PUPPET=padchat node bot.js
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-| event | ​[`WechatyEventName`](wechaty.md#wechatyeventname)​ | Emit WechatyEvent |
+| event | ​[`WechatyEventName`](#wechatyeventname)​ | Emit WechatyEvent |
 | listener | ​[`WechatyEventFunction`](wechaty.md#wechatyeventfunction)​ | Depends on the WechatyEvent |
 
 **Example** _\(Event:scan\)_
@@ -360,7 +360,7 @@ await bot.say(linkPayload)
 
 | Param | Type | Default |
 | :--- | :--- | :--- | 
-| \[options\] | ​[`WechatyOptions`](wechaty.md#wechatyoptions)​ | `{}` |
+| \[options\] | ​[`WechatyOptions`](#wechatyoptions)​ | `{}` |
 
 **Example** 
 
@@ -377,12 +377,12 @@ const { Wechaty } = require('wechaty')
 
 ## 类型定义 
 
-* [PuppetModuleName](wechaty.md#puppetmodulename)
-* [WechatyOptions](wechaty.md#wechatyoptions) 
-* [WechatyEventName](wechaty.md#wechatyeventname)
-* [WechatyEventFunction](wechaty.md#wechatyeventfunction)
+* [PuppetModuleName](#puppetmodulename)
+* [WechatyOptions](#wechatyoptions) 
+* [WechatyEventName](#wechatyeventname)
+* [WechatyEventFunction](#wechatyeventfunction)
  
-### PuppetModuleName 
+<h3 id="puppetmodulename">PuppetModuleName</h3> 
 
 **Kind**: global typedef **Properties** PuppetModuleName 参数在这里代表着Puppet 的名称，类型是 string, 可能的取值为： 
 
@@ -394,150 +394,34 @@ const { Wechaty } = require('wechaty')
 | wechaty-puppet-puppeteer | `string` | 通过chrome\(谷歌\)浏览器使用 [google puppeteer](https://github.com/GoogleChrome/puppeteer) 来控制 [网页微信 API](https://wx.qq.com/) |
 | wechaty-puppet-mock | `string` | 为单元测试提供模拟调用的Puppet | 
 
-### WechatyOptions 
+<h3 id="wechatyoptions">WechatyOptions</h3> 
 
 创建wechaty 实例的可选参数类型。 
 
-```typescript 
-export interface WechatyOptions { 
-  memory?       : MemoryCard,
-  name?         : string,                      // Wechaty Name
-  profile?      : null | string,               // DEPRECATED: use name instead
-  puppet?       : PuppetModuleName | Puppet,   // Puppet name or instance 
-  puppetOptions?: PuppetOptions,               // Puppet TOKEN 
-  ioToken?      : string,                      // Io TOKEN 
-}
-``` 
 
 **Kind**: global typedef **Properties**
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Name</th>
-      <th style="text-align:left">Type</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">name</td>
-      <td style="text-align:left"><code>string</code>
-      </td>
-      <td style="text-align:left">
-        <p>Wechaty &#x673A;&#x5668;&#x4EBA;&#x7684;&#x540D;&#x79F0;.</p>
-        <p>&#x5F53;&#x4F60;&#x6309;&#x7167;&#x4E0B;&#x9762;&#x7684;&#x65B9;&#x5F0F;&#x8BBE;&#x7F6E;&#x7684;&#x65F6;&#x5019;&#xFF1A; <code>new Wechaty({name: &apos;wechatyName&apos;})</code>
-        </p>
-        <p>&#x4ED6;&#x4F1A;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x53EB;&#x505A;<code>wechatyName.memory-card.json</code>&#x7684;&#x6587;&#x4EF6;
-          &#x3002;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x4F1A;&#x5B58;&#x50A8;&#x673A;&#x5668;&#x4EBA;&#x7684;&#x767B;&#x9646;&#x4FE1;&#x606F;&#x3002;&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x6709;&#x6548;&#xFF0C;&#x542F;&#x52A8;wechaty
-          &#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F60;&#x4E0D;&#x9700;&#x8981;&#x626B;&#x7801;&#x767B;&#x9646;&#x5C31;&#x80FD;&#x81EA;&#x52A8;&#x767B;&#x9646;&#x673A;&#x5668;&#x4EBA;&#x3002;</p>
-        <p>&#x8FD9;&#x4E2A;&#x540D;&#x5B57;&#x5728;&#x542F;&#x52A8;&#x673A;&#x5668;&#x4EBA;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x662F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x73AF;&#x5883;&#x53D8;&#x91CF;<code>WECHATY_NAME</code> &#x8BBE;&#x7F6E;&#x7684;&#xFF0C;&#x5982;&#xFF1A;<code>WECHATY_NAME=&quot;wechatyName&quot; node bot.js</code>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">ioToken</td>
-      <td style="text-align:left"><code>string</code>
-      </td>
-      <td style="text-align:left">Io TOKEN</td>
-    </tr>
-  </tbody>
-</table>
+| 名称 | 类型 | 描述 |
+|:---:|:---:|:---|
+|name|`string`|Wechaty 机器人的名称.<br>当你按照下面的方式设置的时候： `new Wechaty({name: 'wechatyName'})`<br>他会自动生成一个叫做`wechatyName.memory-card.json`的文件 。这个文件会存储机器人的登陆信息。如果这个文件有效，启动wechaty 的时候，你不需要扫码登陆就能自动登陆机器人（只对`wechaty-puppet-padchat`有效）。<br>这个名字在启动机器人的时候，是可以通过环境变量`WECHATY_NAME` 设置的，如：`WECHATY_NAME="wechatyName" node bot.js`|
+|puppet|[PuppetModuleName](#PuppetModuleName) \| `Puppet`|使用puppet名称指定相关puppet或者直接传入puppet实例作为`Wechaty`底层插件， 了解更多[puppet](https://github.com/Chatie/wechaty/wiki/Puppet)信息|
+|puppetOptions|`PuppetOptions`|指定puppet信息<br> `endpoint`: 指定puppet的底层服务器地址；<br>`timeout`：指定watchDog的超时时间<br>`token`: 指定puppet的token|
+
+<h3 id="wechatyeventname">WechatyEventName</h3>
 
 Wechaty 事件的类型 **Kind**: global typedef **Properties**
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Name</th>
-      <th style="text-align:left">Type</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">error</td>
-      <td style="text-align:left"><code>string</code>
-      </td>
-      <td style="text-align:left">&#x5F53;&#x673A;&#x5668;&#x4EBA;&#x5185;&#x90E8;&#x51FA;&#x9519;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x89E6;&#x53D1;error
-        &#x4E8B;&#x4EF6;&#x3002;</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">login</td>
-      <td style="text-align:left"><code>string</code>
-      </td>
-      <td style="text-align:left">&#x5F53;&#x673A;&#x5668;&#x4EBA;&#x6210;&#x529F;&#x767B;&#x9646;&#x540E;&#xFF0C;&#x4F1A;&#x89E6;&#x53D1;login
-        &#x4E8B;&#x4EF6;&#xFF0C;&#x5E76;&#x4F1A;&#x5728;&#x4E8B;&#x4EF6;&#x4E2D;&#x4F20;&#x9012;&#x5F53;&#x524D;&#x767B;&#x9646;&#x673A;&#x5668;&#x4EBA;&#x7684;&#x4FE1;&#x606F;&#x3002;</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">logout</td>
-      <td style="text-align:left"><code>string</code>
-      </td>
-      <td style="text-align:left">&#x5F53;&#x673A;&#x5668;&#x4EBA;&#x68C0;&#x6D4B;&#x5230;&#x767B;&#x51FA;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x89E6;&#x53D1;logout
-        &#x4E8B;&#x4EF6;&#xFF0C;&#x5E76;&#x4F1A;&#x5728;&#x4E8B;&#x4EF6;&#x4E2D;&#x4F20;&#x9012;&#x673A;&#x5668;&#x4EBA;&#x7684;&#x4FE1;&#x606F;&#x3002;</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">heartbeat</td>
-      <td style="text-align:left"><code>string</code>
-      </td>
-      <td style="text-align:left">&#x83B7;&#x53D6;&#x673A;&#x5668;&#x4EBA;&#x7684;&#x5FC3;&#x8DF3;&#x3002;</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">friendship</td>
-      <td style="text-align:left"><code>string</code>
-      </td>
-      <td style="text-align:left">&#x5F53;&#x6709;&#x4EBA;&#x7ED9;&#x673A;&#x5668;&#x4EBA;&#x53D1;&#x597D;&#x53CB;&#x8BF7;&#x6C42;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x89E6;&#x53D1;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">message</td>
-      <td style="text-align:left"><code>string</code>
-      </td>
-      <td style="text-align:left">&#x5F53;&#x673A;&#x5668;&#x4EBA;&#x6536;&#x5230;&#x6D88;&#x606F;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x89E6;&#x53D1;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">ready</td>
-      <td style="text-align:left"><code>string</code>
-      </td>
-      <td style="text-align:left">&#x5F53;&#x6240;&#x6709;&#x6570;&#x636E;&#x52A0;&#x8F7D;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x4F1A;&#x89E6;&#x53D1;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;&#x5728;wechaty-puppet-padchat
-        &#x4E2D;&#xFF0C;&#x5B83;&#x610F;&#x5473;&#x7740;&#x5DF2;&#x7ECF;&#x52A0;&#x8F7D;&#x5B8C;&#x6210;Contact
-        &#x548C;Room &#x7684;&#x4FE1;&#x606F;&#x3002;</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">room-join</td>
-      <td style="text-align:left"><code>string</code>
-      </td>
-      <td style="text-align:left">&#x5F53;&#x6709;&#x4EBA;&#x8FDB;&#x5165;&#x5FAE;&#x4FE1;&#x7FA4;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x89E6;&#x53D1;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;&#x673A;&#x5668;&#x4EBA;&#x4E3B;&#x52A8;&#x8FDB;&#x5165;&#x67D0;&#x4E2A;&#x5FAE;&#x4FE1;&#x7FA4;&#xFF0C;t&#x90A3;&#x4E2A;&#x6837;&#x4F1A;&#x89E6;&#x53D1;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">room-topic</td>
-      <td style="text-align:left"><code>string</code>
-      </td>
-      <td style="text-align:left">&#x5F53;&#x6709;&#x4EBA;&#x4FEE;&#x6539;&#x7FA4;&#x540D;&#x79F0;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x89E6;&#x53D1;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">room-leave</td>
-      <td style="text-align:left"><code>string</code>
-      </td>
-      <td style="text-align:left">&#x5F53;&#x673A;&#x5668;&#x4EBA;&#x628A;&#x7FA4;&#x91CC;&#x67D0;&#x4E2A;&#x7528;&#x6237;&#x79FB;&#x51FA;&#x7FA4;&#x804A;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x89E6;&#x53D1;&#x8FD9;&#x4E2A;&#x65F6;&#x95F4;&#x3002;&#x7528;&#x6237;&#x4E3B;&#x52A8;&#x9000;&#x7FA4;&#x662F;&#x65E0;&#x6CD5;&#x68C0;&#x6D4B;&#x5230;&#x7684;&#x3002;</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">room-invite</td>
-      <td style="text-align:left"><code>string</code>
-      </td>
-      <td style="text-align:left">&#x5F53;&#x6536;&#x5230;&#x7FA4;&#x9080;&#x8BF7;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x89E6;&#x53D1;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;&#x5177;&#x4F53;&#x8BF7;&#x770B;
-        <a
-        href="room-invitation.md">RoomInvitation</a>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">scan</td>
-      <td style="text-align:left"><code>string</code>
-      </td>
-      <td style="text-align:left">
-        <p>&#x5F53;&#x673A;&#x5668;&#x4EBA;&#x9700;&#x8981;&#x626B;&#x7801;&#x767B;&#x9646;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x89E6;&#x53D1;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;</p>
-        <p>&#x5EFA;&#x8BAE;&#x4F60;&#x5B89;&#x88C5; qrcode-terminal(&#x8FD0;&#x884C; <code>npm install qrcode-terminal</code>)
-          &#x8FD9;&#x4E2A;&#x5305;&#xFF0C;&#x8FD9;&#x6837;&#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x547D;&#x4EE4;&#x884C;&#x4E2D;&#x76F4;&#x63A5;&#x770B;&#x5230;&#x4E8C;&#x7EF4;&#x7801;&#x3002;</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| 名称 | 类型	| 描述 |
+|:---:|:---:|:---|
+| error | `string` |	当机器人内部出错的时候会触发error 事件。|
+|login|	`string`|	当机器人成功登陆后，会触发login 事件，并会在事件中传递当前登陆机器人的信息。|
+|logout	|`string`|	当机器人检测到登出的时候，会触发logout 事件，并会在事件中传递机器人的信息。|
+|heartbeat|`string`|获取机器人的心跳。|
+|friendship|`string`|当有人给机器人发好友请求的时候会触发这个事件。|
+|message|`string`|当机器人收到消息的时候会触发这个事件。|
+|ready|`string`|当所有数据加载完成后，会触发这个事件。在wechaty-puppet-padchat 中，它意味着已经加载完成Contact 和Room 的信息。|
+|room-join|`string`|当有人进入微信群的时候会触发这个事件。机器人主动进入某个微信群，t那个样会触发这个事件。|
+|room-topic|`string`|当有人修改群名称的时候会触发这个事件。|
+|room-leave|`string`|当机器人把群里某个用户移出群聊的时候会触发这个时间。用户主动退群是无法检测到的。|
+|room-invite|`string`|当收到群邀请的时候，会触发这个事件。具体请[RoomInvitation](./room-invitation.md)
+|scan|`string`|当机器人需要扫码登陆的时候会触发这个事件。<br>建议你安装 `qrcode-terminal`(运行 `npm install qrcode-terminal`) 这个包，这样你可以在命令行中直接看到二维码。|
