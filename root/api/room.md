@@ -53,6 +53,7 @@ All wechat rooms\(groups\) will be encapsulated as a Room.
     * [.memberAll\(\[query\]\)](room.md#Room+memberAll) ⇒ `Promise.>`
     * [.member\(queryArg\)](room.md#Room+member) ⇒ `Promise.`
     * [.owner\(\)](room.md#Room+owner) ⇒ `Contact` \| `null`
+    * [.avatar\(\)](room.md#room-owner-contact-or-null) ⇒ `Promise.`
   * _static_
     * [.create\(contactList, \[topic\]\)](room.md#Room.create) ⇒ [`Promise.`](room.md#Room)
     * [.findAll\(\[query\]\)](room.md#Room.findAll) ⇒ `Promise.>`
@@ -79,7 +80,7 @@ Send message inside Room, if set \[replyTo\], wechaty will mention the contact a
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-| textOrContactOrFileOrUrl | `string` \| `Contact` \| `FileBox` | Send `text` or `media file` inside Room.   You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
+| textOrContactOrFileOrUrl | `string` \| `Contact` \| `FileBox` \| `UrlLink` | Send `text`, `media file` or `link` inside Room.   You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
 | \[mention\] | `Contact` \| `Array.` | Optional parameter, send content inside Room, and mention @replyTo contact or contactList. |
 
 **Example**
@@ -108,6 +109,15 @@ await room.say(contactCard)
 // 4. Send text inside room and mention @mention contact
 const contact = await bot.Contact.find({name: 'lijiarui'}) // change 'lijiarui' to any of the room member
 await room.say('Hello world!', contact)
+
+// 5. send Link inside room
+const linkPayload = new UrlLink({
+  description : 'WeChat Bot SDK for Individual Account, Powered by TypeScript, Docker, and Love',
+  thumbnailUrl: 'https://avatars0.githubusercontent.com/u/25162437?s=200&v=4',
+  title       : 'Welcome to Wechaty',
+  url         : 'https://github.com/chatie/wechaty',
+})
+await room.say(linkPayload)
 ```
 
 ### room.on\(event, listener\) ⇒ `this`
@@ -474,6 +484,18 @@ Get room's owner from the room.
 
 ```javascript
 const owner = room.owner()
+```
+
+### room.avatar\(\) ⇒ `Promise`
+
+Get room's avatar
+
+> Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table)
+
+**Kind**: instance method of [`Room`](room.md#room)  
+**Example**
+```javascript
+const owner = room.avatar()
 ```
 
 ### Room.create\(contactList, \[topic\]\) ⇒ [`Promise.`](room.md#Room)
