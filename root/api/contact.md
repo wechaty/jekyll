@@ -42,7 +42,7 @@ All wechat contacts\(friend\) will be encapsulated as a Contact. [Examples/Conta
     * [.self\(\)](contact.md#Contact+self) ⇒ `boolean`
   * _static_
     * [.find\(query\)](contact.md#Contact.find) ⇒ `Promise.`
-    * [.findAll\(\[queryArg\]\)](contact.md#Contact.findAll) ⇒ `Promise.>`
+    * [.findAll\(\[queryArg\]\)](contact.md#Contact.findAll) ⇒ `Promise.`
 
 ### contact.say\(textOrContactOrFileOrUrl\) ⇒ `Promise.`
 
@@ -52,7 +52,7 @@ All wechat contacts\(friend\) will be encapsulated as a Contact. [Examples/Conta
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-| textOrContactOrFileOrUrl | `string` \| [`Contact`](contact.md#Contact) \| `FileBox` | send text, Contact, or file to contact. &lt;/br&gt; You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
+| textOrContactOrFileOrUrl | `string` \| [`Contact`](contact.md#Contact) \| `FileBox` \| `UrlLink` | send text, Contact, file or UrlLink to contact. &lt;/br&gt; You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
 
 **Example**
 
@@ -77,6 +77,15 @@ await contact.say(fileBox2)
 
 const contactCard = bot.Contact.load('contactId')
 await contact.say(contactCard)
+
+// 4. send url link to contact
+const linkPayload = new UrlLink({
+  description : 'WeChat Bot SDK for Individual Account, Powered by TypeScript, Docker, and Love',
+  thumbnailUrl: 'https://avatars0.githubusercontent.com/u/25162437?s=200&v=4',
+  title       : 'Welcome to Wechaty',
+  url         : 'https://github.com/chatie/wechaty',
+})
+await contact.say(urlLink)
 ```
 
 ### contact.name\(\) ⇒ `string`
@@ -263,7 +272,7 @@ const contactFindByName = await bot.Contact.find({ name:"ruirui"} )
 const contactFindByAlias = await bot.Contact.find({ alias:"lijiarui"} )
 ```
 
-### Contact.findAll\(\[queryArg\]\) ⇒ `Promise.>`
+### Contact.findAll\(\[queryArg\]\) ⇒ `Promise.`
 
 Find contact by `name` or `alias`
 
