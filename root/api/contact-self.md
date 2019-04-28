@@ -14,13 +14,13 @@ Bot itself will be encapsulated as a ContactSelf.
 
 **Kind**: global class
 
-- [ContactSelf](#contactself)
-  - [ContactSelf](#contactself-1)
-    - [contactSelf.avatar\(\[file\]\) ⇒ `Promise.`](#contactselfavatarfile-%E2%87%92-promise)
-    - [contactSelf.qrcode\(\) ⇒ `Promise.`](#contactselfqrcode-%E2%87%92-promise)
-    - [contactSelf.signature\(signature\)](#contactselfsignaturesignature)
-    - [contactSelf.name\(\) ⇒ `string`](#contactselfname-%E2%87%92-string)
-    - [contactSelf.name\(name\) ⇒ `Promise<string>`](#contactselfnamename-%E2%87%92-promisestring)
+* [ContactSelf](contact-self.md#contactself)
+  * [ContactSelf](contact-self.md#contactself-1)
+    * [contactSelf.avatar\(\[file\]\) ⇒ `Promise.`](contact-self.md#contactselfavatarfile-⇒-promise)
+    * [contactSelf.qrcode\(\) ⇒ `Promise.`](contact-self.md#contactselfqrcode-⇒-promise)
+    * [contactSelf.signature\(signature\)](contact-self.md#contactselfsignaturesignature)
+    * [contactSelf.name\(\) ⇒ `string`](contact-self.md#contactselfname-⇒-string)
+    * [contactSelf.name\(name\) ⇒ `Promise<string>`](contact-self.md#contactselfnamename-⇒-promisestring)
 
 ### contactSelf.avatar\(\[file\]\) ⇒ `Promise.`
 
@@ -136,3 +136,4 @@ bot.on('login', async user => {
   }
 })
 ```
+

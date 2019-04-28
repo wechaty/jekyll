@@ -74,20 +74,17 @@ bot.on('room-invite', async roomInvitation => {
 ### ~~roomInvitation.roomTopic\(\)~~
 
 **Kind**: instance method of [`RoomInvitation`](room-invitation.md#RoomInvitation)  
-**Deprecated:**: use topic\(\) instead  
-
+**Deprecated:**: use topic\(\) instead
 
 ### roomInvitation.date\(\) ⇒ `Promise.`
 
 Get the invitation time
 
-**Kind**: instance method of [`RoomInvitation`](room-invitation.md#RoomInvitation)  
-
+**Kind**: instance method of [`RoomInvitation`](room-invitation.md#RoomInvitation)
 
 ### roomInvitation.age\(\) ⇒ `number`
 
-Returns the roopm invitation age in seconds.   
-
+Returns the roopm invitation age in seconds.
 
 For example, the invitation is sent at time `8:43:01`, and when we received it in Wechaty, the time is `8:43:15`, then the age\(\) will return `8:43:15 - 8:43:01 = 14 (seconds)`
 

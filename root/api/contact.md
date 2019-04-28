@@ -152,9 +152,9 @@ Check if contact is friend
 > Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table)
 
 **Kind**: instance method of [`Contact`](contact.md#Contact)  
-**Returns**: `boolean` \| `null` -   
-True for friend of the bot   
- False for not friend of the bot, null for unknown.  
+**Returns**: `boolean` \| `null` -  
+True for friend of the bot  
+False for not friend of the bot, null for unknown.  
 **Example**
 
 ```javascript

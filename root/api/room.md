@@ -345,8 +345,7 @@ Get QR Code of the Room from the room, which can be used as scan and join the ro
 
 > Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table)
 
-**Kind**: instance method of [`Room`](room.md#Room)  
-
+**Kind**: instance method of [`Room`](room.md#Room)
 
 ### room.alias\(contact\) ⇒ `Promise.`
 
@@ -494,6 +493,7 @@ Get room's avatar
 
 **Kind**: instance method of [`Room`](room.md#room)  
 **Example**
+
 ```javascript
 const owner = room.avatar()
 ```

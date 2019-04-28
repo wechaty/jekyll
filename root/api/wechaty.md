@@ -21,7 +21,7 @@ See more:
 * [What is a Puppet in Wechaty](https://github.com/Chatie/wechaty-getting-started/wiki/FAQ-EN#31-what-is-a-puppet-in-wechaty)
 
 > If you want to know how to send message, see [Message](wechaty.md#Message)  
->  If you want to know how to get contact, see [Contact](wechaty.md#Contact)
+> If you want to know how to get contact, see [Contact](wechaty.md#Contact)
 
 ## Typedefs
 
@@ -54,8 +54,8 @@ See more:
 
 * [What is a Puppet in Wechaty](https://github.com/Chatie/wechaty-getting-started/wiki/FAQ-EN#31-what-is-a-puppet-in-wechaty)
 
-> If you want to know how to send message, see [Message](wechaty.md#Message)   
->  If you want to know how to get contact, see [Contact](wechaty.md#Contact)
+> If you want to know how to send message, see [Message](wechaty.md#Message)  
+> If you want to know how to get contact, see [Contact](wechaty.md#Contact)
 
 **Kind**: global class
 
@@ -409,7 +409,7 @@ Wechaty Class Event Type
 | ready | `string` | Emit when all data has load completed, in wechaty-puppet-padchat, it means it has sync Contact and Room completed |
 | room-join | `string` | Emit when anyone join any room. |
 | room-topic | `string` | Get topic event, emitted when someone change room topic. |
-| room-leave | `string` | Emit when anyone leave the room.  |
+| room-leave | `string` | Emit when anyone leave the room. |
 | room-invite | `string` | Emit when there is a room invitation, see more in  [RoomInvitation](room-invitation.md)                                    If someone leaves the room by themselves, wechat will not notice other people in the room, so the bot will never get the "leave" event. |
 | scan | `string` | A scan event will be emitted when the bot needs to show you a QR Code for scanning. &lt;/br&gt;                                    It is recommend to install qrcode-terminal\(run `npm install qrcode-terminal`\) in order to show qrcode in the terminal. |
 
@@ -425,7 +425,7 @@ Wechaty Class Event Function
 | error | `function` | \(this: Wechaty, error: Error\) =&gt; void callback function |
 | login | `function` | \(this: Wechaty, user: ContactSelf\)=&gt; void |
 | logout | `function` | \(this: Wechaty, user: ContactSelf\) =&gt; void |
-| scan | `function` | \(this: Wechaty, url: string, code: number\) =&gt; void     |
+| scan | `function` | \(this: Wechaty, url: string, code: number\) =&gt; void |
 | heartbeat | `function` | \(this: Wechaty, data: any\) =&gt; void |
 | friendship | `function` | \(this: Wechaty, friendship: Friendship\) =&gt; void |
 | message | `function` | \(this: Wechaty, message: Message\) =&gt; void |

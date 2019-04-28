@@ -62,7 +62,7 @@ bot
 
 Get the destination of the message Message.to\(\) will return null if a message is in a room, use Message.room\(\) to get the room.
 
-**Kind**: instance method of [`Message`](message.md#Message) 
+**Kind**: instance method of [`Message`](message.md#Message)
 
 **Example**
 
@@ -114,8 +114,7 @@ _**Deprecated**_
 
 use [text](message.md#Message+text) instead
 
-**Kind**: instance method of [`Message`](message.md#Message)  
-
+**Kind**: instance method of [`Message`](message.md#Message)
 
 ### message.text\(\) ⇒ `string`
 
@@ -326,18 +325,15 @@ bot
 
 Message sent date
 
-**Kind**: instance method of [`Message`](message.md#Message)  
-
+**Kind**: instance method of [`Message`](message.md#Message)
 
 ### message.age\(\) ⇒ `number`
 
-Returns the message age in seconds.   
-
+Returns the message age in seconds.
 
 For example, the message is sent at time `8:43:01`, and when we received it in Wechaty, the time is `8:43:15`, then the age\(\) will return `8:43:15 - 8:43:01 = 14 (seconds)`
 
-**Kind**: instance method of [`Message`](message.md#Message)  
-
+**Kind**: instance method of [`Message`](message.md#Message)
 
 ### ~~message.file\(\)~~
 
@@ -345,8 +341,7 @@ _**Deprecated**_
 
 use [toFileBox](message.md#Message+toFileBox) instead
 
-**Kind**: instance method of [`Message`](message.md#Message)  
-
+**Kind**: instance method of [`Message`](message.md#Message)
 
 ### message.toFileBox\(\) ⇒ `Promise.`
 
@@ -354,8 +349,7 @@ Extract the Media File from the Message, and put it into the FileBox.
 
 > Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table)
 
-**Kind**: instance method of [`Message`](message.md#Message)  
-
+**Kind**: instance method of [`Message`](message.md#Message)
 
 ### message.toContact\(\) ⇒ `Promise.`
 
@@ -363,15 +357,13 @@ Get Share Card of the Message Extract the Contact Card from the Message, and enc
 
 > Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table)
 
-**Kind**: instance method of [`Message`](message.md#Message)  
-
+**Kind**: instance method of [`Message`](message.md#Message)
 
 ### Message.find\(\)
 
 Find message in cache
 
-**Kind**: static method of [`Message`](message.md#Message)  
-
+**Kind**: static method of [`Message`](message.md#Message)
 
 ### Message.findAll\(\)
 
