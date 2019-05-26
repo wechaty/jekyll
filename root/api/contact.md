@@ -42,7 +42,7 @@ description: 所有的联系人（好友）都会被封装成Contact 类实例
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-| textOrContactOrFileOrUrl | `string` \| [`Contact`](contact.md#contact) \| `FileBox` \| `UrlLink`| 给微信好友发送文本，联系人名片，文件或者链接。你可以使用[FileBox](https://www.npmjs.com/package/file-box) 来发送文件。 |
+| textOrContactOrFileOrUrl | `string` \| [`Contact`](contact.md#contact) \| `FileBox` \| `UrlLink` | 给微信好友发送文本，联系人名片，文件或者链接。你可以使用[FileBox](https://www.npmjs.com/package/file-box) 来发送文件。 |
 
 **Example**
 
@@ -296,7 +296,7 @@ const contactList = await bot.Contact.findAll({ name: 'ruirui' })    // find all
 const contactList = await bot.Contact.findAll({ alias: 'lijiarui' }) // find all of the contacts whose alias is 'lijiarui'
 ```
 
-## 类型定义   <a id="typedef"></a>
+## 类型定义    <a id="typedef"></a>
 
 * [ContactQueryFilter](contact.md#contactqueryfilter)
 

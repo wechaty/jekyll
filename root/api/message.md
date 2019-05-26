@@ -184,9 +184,7 @@ bot
     </tr>
   </thead>
   <tbody></tbody>
-</table>
-
-```javascript
+</table>```javascript
 import { FileBox }  from 'file-box'
 const bot = new Wechaty()
 bot

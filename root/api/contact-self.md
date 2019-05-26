@@ -12,17 +12,17 @@ description: 机器人自己的信息将会封装一个ContactSelf 类. 这个�
 
 **Kind**: global class
 
-- [ContactSelf](#contactself)
-    - [contactSelf.avatar() ⇒ Promise<FileBox>](#contactselfavatar-%E2%87%92-promisefilebox)
-    - [contactSelf.avatar\(file) ⇒ `Promise<void>`](#contactselfavatarfile-%E2%87%92-promisevoid)
-    - [contactSelf.qrcode\(\) ⇒ `Promise<string>`](#contactselfqrcode-%E2%87%92-promisestring)
-    - [contactSelf.name\(\) ⇒ `string`](#contactselfname-%E2%87%92-string)
-    - [contactSelf.name\(name\) ⇒ `Promise<string>`](#contactselfnamename-%E2%87%92-promisestring)
-    - [contactSelf.signature\(signature\): `Promise<void>`](#contactselfsignaturesignature-promisevoid)
+* [ContactSelf](contact-self.md#contactself)
+  * [contactSelf.avatar\(\) ⇒ Promise](contact-self.md#contactselfavatar-⇒-promisefilebox)
+  * [contactSelf.avatar\(file\) ⇒ `Promise<void>`](contact-self.md#contactselfavatarfile-⇒-promisevoid)
+  * [contactSelf.qrcode\(\) ⇒ `Promise<string>`](contact-self.md#contactselfqrcode-⇒-promisestring)
+  * [contactSelf.name\(\) ⇒ `string`](contact-self.md#contactselfname-⇒-string)
+  * [contactSelf.name\(name\) ⇒ `Promise<string>`](contact-self.md#contactselfnamename-⇒-promisestring)
+  * [contactSelf.signature\(signature\): `Promise<void>`](contact-self.md#contactselfsignaturesignature-promisevoid)
 
 **Kind**: instance method of [`ContactSelf`](contact-self.md)
 
-### contactSelf.avatar() ⇒ Promise<FileBox>
+### contactSelf.avatar\(\) ⇒ Promise
 
 获取机器人的头像
 
@@ -40,14 +40,13 @@ bot.on('login', (user: ContactSelf) => {
 })
 ```
 
-### contactSelf.avatar\(file) ⇒ `Promise<void>`
+### contactSelf.avatar\(file\) ⇒ `Promise<void>`
 
 设置 机器人的头像
 
 | Param | Type |
 | :--- | :--- |
 | file | `FileBox` |
-
 
 **Example** _\(SET the avatar for a bot\)_
 
@@ -65,8 +64,7 @@ bot.on('login', (user: ContactSelf) => {
 
 获取机器人的二维码。
 
-**Kind**: instance method of [`ContactSelf`](contact-self.md#contactself)
-**Example**
+**Kind**: instance method of [`ContactSelf`](contact-self.md#contactself) **Example**
 
 ```javascript
 import { generate } from 'qrcode-terminal'
@@ -139,3 +137,4 @@ bot.on('login', async user => {
   }
 })
 ```
+

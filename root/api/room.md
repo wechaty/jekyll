@@ -432,9 +432,7 @@ if (contact && room) {
     </tr>
   </thead>
   <tbody></tbody>
-</table>**Kind**: instance method of [`Room`](room.md#room)
-
-| Param | Type | Description |
+</table>| Param | Type | Description |
 | :--- | :--- | :--- |
 
 
@@ -458,8 +456,7 @@ if (contact && room) {
     </tr>
   </thead>
   <tbody></tbody>
-</table>```text
-### room.owner\(\) ⇒ `Contact` \| `null`
+</table>### room.owner\(\) ⇒ `Contact` \| `null`
 
 获取群主的信息。
 
@@ -554,7 +551,7 @@ const roomList = await bot.Room.find()
 const roomList = await bot.Room.find({topic: 'wechaty'})
 ```
 
-## 类型定义     <a id="typedef"></a>
+## 类型定义      <a id="typedef"></a>
 
 [RoomQueryFilter](room.md#RoomQueryFilter)
 
