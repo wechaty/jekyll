@@ -46,7 +46,7 @@
 能否获取到用户的微信号，取决于你使用的是哪一个Puppet。
 
 * 如果使用的是Web 版本的Puppet，基于网页微信的机制，大部分情况下获取不到微信号，只有一小部分用户能获取到微信号。
-* 如果使用的是iPad 版本的Puppet，即将推出获取微信号的功能，详情看 [\#1647](https://github.com/Chatie/wechaty/issues/1647)
+* 如果使用的是iPad 版本的Puppet，PadPro版本是可以拿到微信号的，但是前提这个Contact 需要和bot 是好友关系，非好友关系是拿不到微信号的。
 
 相关issue：
 
