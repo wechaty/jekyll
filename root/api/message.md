@@ -184,26 +184,28 @@ bot
     </tr>
   </thead>
   <tbody></tbody>
-</table>```javascript
+</table>
+
+```javascript
 import { FileBox }  from 'file-box'
 const bot = new Wechaty()
 bot
 .on('message', async m => {
 
-// 1. send Image
+  // 1. send Image
 
   if (/^ding$/i.test(m.text())) {
     const fileBox = FileBox.fromUrl('https://chatie.io/wechaty/images/bot-qr-code.png')
     await msg.say(fileBox)
   }
 
-// 2. send Text
+  // 2. send Text
 
   if (/^dong$/i.test(m.text())) {
     await msg.say('dingdingding')
   }
 
-// 3. send Contact
+  // 3. send Contact
 
   if (/^lijiarui$/i.test(m.text())) {
     const contactCard = await bot.Contact.find({name: 'lijiarui'})
@@ -214,27 +216,24 @@ bot
     await msg.say(contactCard)
   }
 
+  // 4. send UrlLink
+
+  if (/^link$/i.test(m.text())) { 
+    const linkPayload = new UrlLink({
+      description: 'Wechaty is a Bot SDK for Wechat Individual Account which can help you create a bot in 6 lines of javascript, with cross-platform support including Linux, Windows, Darwin(OSX/Mac) and Docker.',
+      thumbnailUrl: 'https://camo.githubusercontent.com/f310a2097d4aa79d6db2962fa42bb3bb2f6d43df/68747470733a2f2f6368617469652e696f2f776563686174792f696d616765732f776563686174792d6c6f676f2d656e2e706e67',
+      title: 'Wechaty',
+      url: 'https://github.com/chatie/wechaty',
+    })
+    await msg.say(linkPayload) 
+  }
 })
-
-// 4. send UrlLink
-
-if (/^link$/i.test(m.text())) { 
-  const linkPayload = new UrlLnik({
-    description : 'Netty',
-    thumbnailUrl: 'http://mmbiz.qpic.cn/mmbiz_jpg/48MFTQpxichmmxEoXZ1w7eno72H2MQdx1WC6JiaVdYRmwAp4MCcQbctE2IE7jWqkWOlgMPqMBXVAdR1N46xEibvoQ/640?wx_fmt=jpeg&wxtype=jpeg&wxfrom=0',
-    title       : 'Netty',
-    url         : 'http://mp.weixin.qq.com/s?__biz=MzU2MDU3MzE1Mg==&mid=2247484375&idx=1&sn=5ee91b0a8607a1766b5212a23d3c9179&chksm=fc04bc58cb73354e798403bcc03e293149bb115a0755940e334c0fbe33d7c3b0b0797120a213&scene=0&xtrack=1#rd',
-  })
-  await msg.say(linkPayload) 
-}
 .start()
 ```
 
 ### message.type\(\) ⇒ `MessageType`
 
 获取消息的类型
-
-{% hint style="info" %}
 
 **Kind**: instance method of [`Message`](message.md#message)  
 **Example**
