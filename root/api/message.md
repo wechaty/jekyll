@@ -20,19 +20,20 @@ description: 所有的微信消息会被封装成一个Message 类
     * [.say\(textOrContactOrFile, \[mention\]\)](message.md#message-say-textorcontactorfile-mention-promise) ⇒ `Promise.`
     * [.type\(\)](message.md#message-type-messagetype) ⇒ `MessageType`
     * [.self\(\)](message.md#message-self-boolean) ⇒ `boolean`
-    * [.mention\(\)](message.md#message-mention-promise-greater-than) ⇒ `Promise.>`
-    * [.mentionSelf\(\)](message.md#message-mentionself-promise) ⇒ `Promise.`
-    * [.forward\(to\)](message.md#message-forward-to-promise) ⇒ `Promise.`
-    * [.date\(\)](message.md#message-date)
+    * [.mention\(\)](message.md#message-mention-promise-greater-than) ⇒ `Promise <Contact[]>`
+    * [.mentionSelf\(\)](message.md#message-mentionself-promise) ⇒ `Promise <boolean>`
+    * [.forward\(to\)](message.md#message-forward-to-promise) ⇒ `Promise <void>`
+    * [.date\(\)](message.md#message-date) ⇒ `Date`
     * [.age\(\)](message.md#message-age-number) ⇒ `number`
     * ~~~~\[~~.file\(\)~~\]\(message.md\#message-file\)~~~~
-    * [.toFileBox\(\) ](message.md#message-tofilebox-promise)⇒ `Promise.`
-    * [.toContact\(\)](message.md#message-tocontact-promise) ⇒ `Promise.`
+    * [.toFileBox\(\) ](message.md#message-tofilebox-promise)⇒ `Promise <FileBox>`
+    * [.toContact\(\)](message.md#message-tocontact-promise) ⇒ `Promise <Contact>`
+    * [.toUrlLink\(\)](message.md#message-tourllink-promise) ⇒ `Promise <UrlLink>`
   * _static_
     * [.find\(\)](message.md#message-find)
     * [.findAll\(\)](message.md#message-findall)
 
-### message.from\(\) ⇒ `Contact`
+### message.from\(\) ⇒ `Contact` \| `null`
 
 获取发送消息的联系人
 
@@ -137,7 +138,7 @@ bot
 .start()
 ```
 
-### message.toRecalled\(\) ⇒ `Promise`
+### message.toRecalled\(\) ⇒ `Promise <Message | null>`
 
 获取撤回消息的文本内容。
 
@@ -156,7 +157,7 @@ bot
 .start()
 ```
 
-### message.say\(textOrContactOrFileOrUrl, \[mention\]\) ⇒ `Promise.`
+### message.say\(textOrContactOrFileOrUrl, \[mention\]\) ⇒ `Promise <void>`
 
 回复多媒体、微信名片、文本或者链接给这条消息的发送者。
 
@@ -184,26 +185,28 @@ bot
     </tr>
   </thead>
   <tbody></tbody>
-</table>```javascript
+</table>
+
+```javascript
 import { FileBox }  from 'file-box'
 const bot = new Wechaty()
 bot
 .on('message', async m => {
 
-// 1. send Image
+  // 1. send Image
 
   if (/^ding$/i.test(m.text())) {
     const fileBox = FileBox.fromUrl('https://chatie.io/wechaty/images/bot-qr-code.png')
     await msg.say(fileBox)
   }
 
-// 2. send Text
+  // 2. send Text
 
   if (/^dong$/i.test(m.text())) {
     await msg.say('dingdingding')
   }
 
-// 3. send Contact
+  // 3. send Contact
 
   if (/^lijiarui$/i.test(m.text())) {
     const contactCard = await bot.Contact.find({name: 'lijiarui'})
@@ -214,19 +217,19 @@ bot
     await msg.say(contactCard)
   }
 
+  // 4. send UrlLink
+
+  if (/^link$/i.test(m.text())) { 
+    const linkPayload = new UrlLink({
+      description: 'Wechaty is a Bot SDK for Wechat Individual Account which can help you create a bot in 6 lines of javascript, with cross-platform support including Linux, Windows, Darwin(OSX/Mac) and Docker.',
+      thumbnailUrl: 'https://camo.githubusercontent.com/f310a2097d4aa79d6db2962fa42bb3bb2f6d43df/68747470733a2f2f6368617469652e696f2f776563686174792f696d616765732f776563686174792d6c6f676f2d656e2e706e67',
+      title: 'Wechaty',
+      url: 'https://github.com/chatie/wechaty',
+    });
+
+    await msg.say(linkPayload) 
+  }
 })
-
-// 4. send UrlLink
-
-if (/^link$/i.test(m.text())) { 
-  const linkPayload = new UrlLnik({
-    description : 'Netty',
-    thumbnailUrl: 'http://mmbiz.qpic.cn/mmbiz_jpg/48MFTQpxichmmxEoXZ1w7eno72H2MQdx1WC6JiaVdYRmwAp4MCcQbctE2IE7jWqkWOlgMPqMBXVAdR1N46xEibvoQ/640?wx_fmt=jpeg&wxtype=jpeg&wxfrom=0',
-    title       : 'Netty',
-    url         : 'http://mp.weixin.qq.com/s?__biz=MzU2MDU3MzE1Mg==&mid=2247484375&idx=1&sn=5ee91b0a8607a1766b5212a23d3c9179&chksm=fc04bc58cb73354e798403bcc03e293149bb115a0755940e334c0fbe33d7c3b0b0797120a213&scene=0&xtrack=1#rd',
-  })
-  await msg.say(linkPayload) 
-}
 .start()
 ```
 
@@ -234,14 +237,12 @@ if (/^link$/i.test(m.text())) {
 
 获取消息的类型
 
-{% hint style="info" %}
-
 **Kind**: instance method of [`Message`](message.md#message)  
 **Example**
 
 ```javascript
 const bot = new Wechaty()
-if (message.type() === bot.Message.Type.Text) {
+if (message.type() === bot.MessageType.Text) {
   console.log('This is a text message')
 }
 ```
@@ -256,11 +257,11 @@ if (message.type() === bot.Message.Type.Text) {
 
 ```javascript
 if (message.self()) {
- console.log('this message is sent by myself!')
+  console.log('this message is sent by myself!')
 }
 ```
 
-### message.mention\(\) ⇒ `Promise.`
+### message.mention\(\) ⇒ `Promise <Contact[]>`
 
 获取在群中@的用户列表。
 
@@ -273,7 +274,7 @@ const contactList = await message.mention()
 console.log(contactList)
 ```
 
-### message.mentionSelf\(\) ⇒ `Promise.`
+### message.mentionSelf\(\) ⇒ `Promise <boolean>`
 
 获取机器人是否在群里被@ 了
 
@@ -283,11 +284,11 @@ console.log(contactList)
 
 ```javascript
 if (await message.mentionSelf()) {
- console.log('this message were mentioned me! [You were mentioned] tip ([有人@我]的提示)')
+  console.log('this message were mentioned me! [You were mentioned] tip ([有人@我]的提示)')
 }
 ```
 
-### message.forward\(to\) ⇒ `Promise.`
+### message.forward\(to\) ⇒ `Promise <void>`
 
 转发收到的消息
 
@@ -295,7 +296,7 @@ if (await message.mentionSelf()) {
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-| to | `Sayable` \| `Array.` | Room 或者 Contact。指的是收消息方。 |
+| to | `Room` \| `Contact` | Room 或者 Contact。指的是收消息方。 |
 
 ### message.date\(\)
 
@@ -319,19 +320,9 @@ _**Deprecated**_
 
 **Kind**: instance method of [`Message`](message.md#message)
 
-### message.toFileBox\(\) ⇒ `Promise.`
+### message.toFileBox\(\) ⇒ `Promise <FileBox>`
 
-从消息中提取多媒体文件并把它 存入到FileBox 里面。
-
-{% hint style="info" %}
-这个方法是否能实现，取决于用的是什么Puppet，具体请看：[Puppet 兼容性列表](../puppet.md#puppet-compatibility)
-{% endhint %}
-
-**Kind**: instance method of [`Message`](message.md#message)
-
-### message.toContact\(\) ⇒ `Promise.`
-
-提取转发的微信好友名片内容，并封装成Contact 类型。
+从消息中提取多媒体文件并把它 存入到 FileBox 里面。
 
 {% hint style="info" %}
 这个方法是否能实现，取决于用的是什么Puppet，具体请看：[Puppet 兼容性列表](../puppet.md#puppet-compatibility)
@@ -339,13 +330,33 @@ _**Deprecated**_
 
 **Kind**: instance method of [`Message`](message.md#message)
 
-### Message.find\(\)
+### message.toContact\(\) ⇒ `Promise <Contact>`
+
+提取转发的微信好友名片内容，并封装成 Contact 类型。
+
+{% hint style="info" %}
+这个方法是否能实现，取决于用的是什么Puppet，具体请看：[Puppet 兼容性列表](../puppet.md#puppet-compatibility)
+{% endhint %}
+
+**Kind**: instance method of [`Message`](message.md#message)
+
+### message.toUrlLink\(\) ⇒ `Promise <UrlLink>`
+
+提取接收的卡片链接内容，并封装成 UrlLink 类型。
+
+{% hint style="info" %}
+这个方法是否能实现，取决于用的是什么Puppet，具体请看：[Puppet 兼容性列表](../puppet.md#puppet-compatibility)
+{% endhint %}
+
+**Kind**: instance method of [`Message`](message.md#message)
+
+### message.find\(\)
 
 在缓存中找消息。
 
 **Kind**: static method of [`Message`](message.md#message)
 
-### Message.findAll\(\)
+### message.findAll\(\)
 
 在缓存中找消息
 
