@@ -13,18 +13,18 @@ description: 机器人自己的信息将会封装一个ContactSelf 类. 这个�
 **Kind**: global class
 
 * [ContactSelf](contact-self.md#contactself)
-  * [contactSelf.avatar\(\) ⇒ Promise](contact-self.md#contactselfavatar-⇒-promisefilebox)
-  * [contactSelf.avatar\(file\) ⇒ `Promise<void>`](contact-self.md#contactselfavatarfile-⇒-promisevoid)
+  * [contactSelf.avatar\(\) ⇒ `Promise <FileBox>`](contact-self.md#contactselfavatar-⇒-promisefilebox)
+  * [contactSelf.avatar\(file\) ⇒ `Promise <void>`](contact-self.md#contactselfavatarfile-⇒-promisevoid)
   * [contactSelf.qrcode\(\) ⇒ `Promise<string>`](contact-self.md#contactselfqrcode-⇒-promisestring)
   * [contactSelf.name\(\) ⇒ `string`](contact-self.md#contactselfname-⇒-string)
-  * [contactSelf.name\(name\) ⇒ `Promise<string>`](contact-self.md#contactselfnamename-⇒-promisestring)
+  * [contactSelf.name\(name\) ⇒ `Promise<void>`](contact-self.md#contactselfnamename-⇒-promisestring)
   * [contactSelf.signature\(signature\): `Promise<void>`](contact-self.md#contactselfsignaturesignature-promisevoid)
 
 **Kind**: instance method of [`ContactSelf`](contact-self.md)
 
-### contactSelf.avatar\(\) ⇒ Promise
+### contactSelf.avatar\(\) ⇒ `Promise <FileBox>`
 
-获取机器人的头像
+获取机器人的头像。
 
 **Example** _\( GET the avatar for bot, return {Promise&lt;FileBox&gt;}\)_
 
@@ -36,13 +36,13 @@ bot.on('login', (user: ContactSelf) => {
   const file = await user.avatar()
   const name = file.name
   await file.toFile(name, true)
-  console.log(`Save bot avatar: ${contact.name()} with avatar file: ${name}`)
+  console.log(`Save bot avatar: ${user.name()} with avatar file: ${name}`)
 })
 ```
 
-### contactSelf.avatar\(file\) ⇒ `Promise<void>`
+### contactSelf.avatar\(file\) ⇒ `Promise <void>`
 
-设置 机器人的头像
+设置机器人的头像。
 
 | Param | Type |
 | :--- | :--- |
@@ -67,31 +67,31 @@ bot.on('login', (user: ContactSelf) => {
 **Kind**: instance method of [`ContactSelf`](contact-self.md#contactself) **Example**
 
 ```javascript
-import { generate } from 'qrcode-terminal'
+import { QrcodeTerminal } from 'qrcode-terminal'
 bot.on('login', (user: ContactSelf) => {
   console.log(`user ${user} login`)
   const qrcode = await user.qrcode()
   console.log(`Following is the bot qrcode!`)
-  generate(qrcode, { small: true })
+  QrcodeTerminal.generate(qrcode, { small: true })
 })
 ```
 
 ### contactSelf.name\(\) ⇒ `string`
 
-获取 机器人昵称。
+获取机器人昵称。
 
 **Kind**: instance method of [`ContactSelf`](contact-self.md#contactself)
 
 **Example**
 
 ```javascript
-bot.on('login', async user => {
+bot.on('login', (user: ContactSelf) => {
   console.log(`user ${user} login`)
   console.log(`user name: ${user.name()}`)
 })
 ```
 
-### contactSelf.name\(name\) ⇒ `Promise<string>`
+### contactSelf.name\(name\) ⇒ `Promise <void>`
 
 修改机器人昵称。
 
@@ -104,7 +104,7 @@ bot.on('login', async user => {
 **Example**
 
 ```javascript
-bot.on('login', async user => {
+bot.on('login', async (user: ContactSelf) => {
   console.log(`user ${user} login`)
   const oldName = user.name()
   try {
@@ -128,7 +128,7 @@ bot.on('login', async user => {
 **Example**
 
 ```javascript
-bot.on('login', async user => {
+bot.on('login', async (user: ContactSelf) => {
   console.log(`user ${user} login`)
   try {
     await user.signature(`Signature changed by wechaty on ${new Date()}`)
