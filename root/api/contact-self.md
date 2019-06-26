@@ -16,13 +16,13 @@ Bot itself will be encapsulated as a ContactSelf.
 
 * [ContactSelf](contact-self.md#contactself)
   * [ContactSelf](contact-self.md#contactself-1)
-    * [contactSelf.avatar\(\[file\]\) ⇒ `Promise.`](contact-self.md#contactselfavatarfile-⇒-promise)
-    * [contactSelf.qrcode\(\) ⇒ `Promise.`](contact-self.md#contactselfqrcode-⇒-promise)
-    * [contactSelf.signature\(signature\)](contact-self.md#contactselfsignaturesignature)
+    * [contactSelf.avatar\(file\) ⇒ `Promise <void | FileBox>`](contact-self.md#contactselfavatarfile-⇒-promise)
+    * [contactSelf.qrcode\(\) ⇒ `Promise <string>`](contact-self.md#contactselfqrcode-⇒-promise)
+    * [contactSelf.signature\(signature\) ⇒ `Promise <string>`](contact-self.md#contactselfsignaturesignature)
     * [contactSelf.name\(\) ⇒ `string`](contact-self.md#contactselfname-⇒-string)
-    * [contactSelf.name\(name\) ⇒ `Promise<string>`](contact-self.md#contactselfnamename-⇒-promisestring)
+    * [contactSelf.name\(name\) ⇒ `string | Promise<void>`](contact-self.md#contactselfnamename-⇒-promisestring)
 
-### contactSelf.avatar\(\[file\]\) ⇒ `Promise.`
+### contactSelf.avatar\(\[file\]\) ⇒ `Promise <void | FileBox>`
 
 GET / SET bot avatar
 
@@ -42,7 +42,7 @@ bot.on('login', (user: ContactSelf) => {
   const file = await user.avatar()
   const name = file.name
   await file.toFile(name, true)
-  console.log(`Save bot avatar: ${contact.name()} with avatar file: ${name}`)
+  console.log(`Save bot avatar: ${user.name()} with avatar file: ${name}`)
 })
 ```
 
@@ -58,7 +58,7 @@ bot.on('login', (user: ContactSelf) => {
 })
 ```
 
-### contactSelf.qrcode\(\) ⇒ `Promise.`
+### contactSelf.qrcode\(\) ⇒ `Promise <string>`
 
 Get bot qrcode
 
@@ -66,16 +66,16 @@ Get bot qrcode
 **Example**
 
 ```javascript
-import { generate } from 'qrcode-terminal'
+import { QrcodeTerminal } from 'qrcode-terminal'
 bot.on('login', (user: ContactSelf) => {
   console.log(`user ${user} login`)
   const qrcode = await user.qrcode()
   console.log(`Following is the bot qrcode!`)
-  generate(qrcode, { small: true })
+  QrcodeTerminal.generate(qrcode, { small: true })
 })
 ```
 
-### contactSelf.signature\(signature\)
+### contactSelf.signature\(signature\) ⇒ `Promise <void>`
 
 Change bot signature
 
@@ -88,7 +88,7 @@ Change bot signature
 **Example**
 
 ```javascript
-bot.on('login', async user => {
+bot.on('login', async (user: ContactSelf) => {
   console.log(`user ${user} login`)
   try {
     await user.signature(`Signature changed by wechaty on ${new Date()}`)
@@ -107,13 +107,13 @@ Get name of bot.
 **Example**
 
 ```javascript
-bot.on('login', async user => {
+bot.on('login', (user: ContactSelf) => {
   console.log(`user ${user} login`)
   console.log(`user name: ${user.name()}`)
 })
 ```
 
-### contactSelf.name\(name\) ⇒ `Promise<string>`
+### contactSelf.name\(name\) ⇒ `Promise<void>`
 
 Change bot name.
 
@@ -126,7 +126,7 @@ Change bot name.
 **Example**
 
 ```javascript
-bot.on('login', async user => {
+bot.on('login', async (user: ContactSelf) => {
   console.log(`user ${user} login`)
   const oldName = user.name()
   try {
