@@ -17,22 +17,22 @@ description: 所有的联系人（好友）都会被封装成Contact 类实例
 
 * [Contact](contact.md#contact)
   * _instance_
-    * [.say\(textOrContactOrFileOrUrl\)](contact.md#contact-say-textorcontactorfileorurl-promise) ⇒ `Promise`
+    * [.say\(textOrContactOrFileOrUrl\)](contact.md#contact-say-textorcontactorfileorurl-promise) ⇒ `Promise <void>`
     * [.name\(\)](contact.md#contact-name-string) ⇒ `string`
-    * [.alias\(newAlias\)](contact.md#contact-alias-newalias-promise) ⇒ `Promise`
+    * [.alias\(newAlias\)](contact.md#contact-alias-newalias-promise) ⇒ `Promise <null | string | void>`
     * [.friend\(\)](contact.md#contact-friend-boolean-or-null) ⇒ `boolean` \| `null`
     * [.type\(\)](contact.md#contact-type-contacttype-unknown-or-contacttype-personal-or-contacttype-official) ⇒ `ContactType.Unknown` \| `ContactType.Personal` \| `ContactType.Official`
     * [.gender\(\)](contact.md#contact-gender-contactgender-unknown-or-contactgender-male-or-contactgender-female) ⇒ `ContactGender.Unknown` \| `ContactGender.Male` \| `ContactGender.Female`
     * [.province\(\)](contact.md#contact-province-string-or-null) ⇒ `string` \| `null`
     * [.city\(\)](contact.md#contact-city-string-or-null) ⇒ `string` \| `null`
-    * [.avatar\(\)](contact.md#contact-avatar-promise) ⇒ `Promise`
-    * [.sync\(\)](contact.md#contact-sync-promise) ⇒ `Promise`
+    * [.avatar\(\)](contact.md#contact-avatar-promise) ⇒ `Promise <FileBox>`
+    * [.sync\(\)](contact.md#contact-sync-promise) ⇒ `Promise <void>`
     * [.self\(\)](contact.md#contact-self-boolean) ⇒ `boolean`
   * _static_
-    * [.find\(query\)](contact.md#contact-find-query-promise) ⇒ `Promise`
-    * [.findAll\(\[queryArg\]\)](contact.md#contact-findall-queryarg-promise-greater-than) ⇒ `Promise`
+    * [.find\(query\)](contact.md#contact-find-query-promise) ⇒ `Promise <Contact | null>`
+    * [.findAll\(\[queryArg\]\)](contact.md#contact-findall-queryarg-promise-greater-than) ⇒ `Promise <Contact []>`
 
-### contact.say\(textOrContactOrFileOrUrl\) ⇒ `Promise`
+### contact.say\(textOrContactOrFileOrUrl\) ⇒ `Promise <void>`
 
 {% hint style="info" %}
 这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#puppet-compatibility)
@@ -90,7 +90,7 @@ await contact.say(urlLink)
 const name = contact.name()
 ```
 
-### contact.alias\(newAlias\) ⇒ `Promise`
+### contact.alias\(newAlias\) ⇒ `Promise <null | string | void>`
 
 获取/设置/删除 好友的备注。
 
@@ -130,7 +130,7 @@ try {
 try {
   const oldAlias = await contact.alias(null)
   console.log(`delete ${contact.name()}'s alias successfully!`)
-  console.log('old alias is ${oldAlias}`)
+  console.log(`old alias is ${oldAlias}`)
 } catch (e) {
   console.log(`failed to delete ${contact.name()}'s alias!`)
 }
@@ -145,7 +145,7 @@ try {
 {% endhint %}
 
 **Kind**: instance method of [`Contact`](contact.md#contact)  
-**Returns**: `boolean` \| `null` -  
+**Returns**: `boolean` \| `null`
 True for friend of the bot  
 False for not friend of the bot, null for unknown.  
 **Example**
@@ -168,7 +168,7 @@ ContactType 在这里是enum
 ```javascript
 const bot = new Wechaty()
 await bot.start()
-const isOfficial = contact.type() === bot.Contact.Type.Official
+const isOfficial = contact.type() === bot.ContactType.Official
 ```
 
 ### contact.gender\(\) ⇒ `ContactGender.Unknown` \| `ContactGender.Male` \| `ContactGender.Female`
@@ -183,7 +183,7 @@ ContactGender在这里是 enum
 **Example**
 
 ```javascript
-const gender = contact.gender() === bot.Contact.Gender.Male
+const gender = contact.gender() === bot.ContactGender.Male
 ```
 
 ### contact.province\(\) ⇒ `string` \| `null`
@@ -208,7 +208,7 @@ const province = contact.province()
 const city = contact.city()
 ```
 
-### contact.avatar\(\) ⇒ `Promise`
+### contact.avatar\(\) ⇒ `Promise <FileBox>`
 
 获取联系人的头像
 
@@ -224,7 +224,7 @@ await file.toFile(name, true)
 console.log(`Contact: ${contact.name()} with avatar file: ${name}`)
 ```
 
-### contact.sync\(\) ⇒ `Promise`
+### contact.sync\(\) ⇒ `Promise <void>`
 
 强制重新加载好友数据，会从低级别的 API 中重新同步一遍。
 
@@ -247,14 +247,14 @@ await contact.sync()
 const isSelf = contact.self()
 ```
 
-### Contact.find\(query\) ⇒ `Promise`
+### Contact.find\(query\) ⇒ `Promise <Contact | null>`
 
 通过类似这样的命令查找联系人： {name: string \| RegExp} / {alias: string \| RegExp}
 
 支持通过昵称或者备注查找。如果查到不止一个联系人，返回找到的第一个。
 
 **Kind**: static method of [`Contact`](contact.md#contact)  
-**Returns**: `Promise.` - If can find the contact, return Contact, or return null
+**Returns**: `Promise <Contact | null>` - If can find the contact, return Contact, or return null
 
 | Param | Type |
 | :--- | :--- |
@@ -269,7 +269,7 @@ const contactFindByName = await bot.Contact.find({ name:"ruirui"} )
 const contactFindByAlias = await bot.Contact.find({ alias:"lijiarui"} )
 ```
 
-### Contact.findAll\(\[queryArg\]\) ⇒ `Promise`
+### Contact.findAll\(query\) ⇒ `Promise <Contact []>`
 
 通过name \(昵称\)或者alias\(备注\)查找联系人。
 
@@ -284,7 +284,7 @@ const contactFindByAlias = await bot.Contact.find({ alias:"lijiarui"} )
 
 | Param | Type |
 | :--- | :--- |
-| \[queryArg\] | [`ContactQueryFilter`](contact.md#contactqueryfilter) |
+| query | [`ContactQueryFilter`](contact.md#contactqueryfilter) |
 
 **Example**
 
@@ -292,7 +292,7 @@ const contactFindByAlias = await bot.Contact.find({ alias:"lijiarui"} )
 const bot = new Wechaty()
 await bot.start()
 const contactList = await bot.Contact.findAll()                      // get the contact list of the bot
-const contactList = await bot.Contact.findAll({ name: 'ruirui' })    // find allof the contacts whose name is 'ruirui'
+const contactList = await bot.Contact.findAll({ name: 'ruirui' })    // find all of the contacts whose name is 'ruirui'
 const contactList = await bot.Contact.findAll({ alias: 'lijiarui' }) // find all of the contacts whose alias is 'lijiarui'
 ```
 
