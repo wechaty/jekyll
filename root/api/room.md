@@ -63,7 +63,7 @@ await room.sync()
 | Param | Type | Description |
 | :--- | :--- | :--- |
 | textOrContactOrFileOrUrl | `string` \| `Contact` \| `FileBox` \| `UrlLiink` | 群内发送 `text` 或者`media file` 或者`链接` 。你可以通过 [FileBox](https://www.npmjs.com/package/file-box) 来发送文件。 |
-| \[mention\] | `Contact` \| `Array.` | 可选参数，当设置这个参数的时候，在群内发送文本消息会@此联系人。 |
+| \[mention\] | `Contact` \| `Array` | 可选参数，当设置这个参数的时候，在群内发送文本消息会@此联系人。 |
 
 **Example**
 
@@ -92,7 +92,7 @@ await room.say(contactCard)
 const contact = await bot.Contact.find({name: 'lijiarui'}) // change 'lijiarui' to any of the room member
 await room.say('Hello world!', contact)
 
-// 5. send url link in a room
+// 5. Send url link in a room
 const urlLink = new UrlLink ({
   description: 'Wechaty is a Bot SDK for Wechat Individual Account which can help you create a bot in 6 lines of javascript, with cross-platform support including Linux, Windows, Darwin(OSX/Mac) and Docker.',
   thumbnailUrl: 'https://camo.githubusercontent.com/f310a2097d4aa79d6db2962fa42bb3bb2f6d43df/68747470733a2f2f6368617469652e696f2f776563686174792f696d616765732f776563686174792d6c6f676f2d656e2e706e67',
@@ -168,7 +168,7 @@ if (room) {
 }
 ```
 
-### room.add\(contact\) ⇒ `Promise.`
+### room.add\(contact\) ⇒ `Promise <void>`
 
 邀请好友加入群聊。
 
