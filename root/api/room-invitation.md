@@ -11,11 +11,11 @@ description: 自动通过入群邀请
 **Kind**: global class
 
 * [RoomInvitation](room-invitation.md#roominvitation)
-  * [.accept\(\)](room-invitation.md#roominvitation-accept-promise) ⇒ `Promise.`
-  * [.inviter\(\)](room-invitation.md#roominvitation-inviter-contact) ⇒ `Contact`
-  * [.topic\(\)](room-invitation.md#roominvitation-topic-contact) ⇒ `Promise`
-  * [~~.roomTopic\(\)~~](room-invitation.md#roominvitation-roomtopic) ⇒ `Promise`
-  * [.date\(\)](room-invitation.md#roominvitation-date-promise) ⇒ `Promise.`
+  * [.accept\(\)](room-invitation.md#roominvitation-accept-promise) ⇒ `Promise <void>`
+  * [.inviter\(\)](room-invitation.md#roominvitation-inviter-contact) ⇒ `Promise <Contact>`
+  * [.topic\(\)](room-invitation.md#roominvitation-topic-contact) ⇒ `Promise <string>`
+  * [~~.roomTopic\(\)~~](room-invitation.md#roominvitation-roomtopic) ⇒ `Promise <string>`
+  * [.date\(\)](room-invitation.md#roominvitation-date-promise) ⇒ `Promise <Date>`
   * [.age\(\)](room-invitation.md#roominvitation-age-number) ⇒ `number`
 
 ### roomInvitation.accept\(\) ⇒ `Promise.`
@@ -38,7 +38,7 @@ bot.on('room-invite', async roomInvitation => {
 .start()
 ```
 
-### roomInvitation.inviter\(\) ⇒ `Contact`
+### roomInvitation.inviter\(\) ⇒ `Promise <Contact>`
 
 获取发送入群邀请的联系人。
 
@@ -55,7 +55,7 @@ bot.on('room-invite', async roomInvitation => {
 .start()
 ```
 
-### roomInvitation.topic\(\) ⇒ `Promise`
+### roomInvitation.topic\(\) ⇒ `Promise <string>`
 
 获取需要进的群的群名称.
 
@@ -76,13 +76,13 @@ bot.on('room-invite', async roomInvitation => {
 **Kind**: instance method of [`RoomInvitation`](room-invitation.md#RoomInvitation)  
 **Deprecated:**: 请使用 [topic\(\) ](room-invitation.md#roominvitation-topic-contact)
 
-### roomInvitation.date\(\) ⇒ `Promise.`
+### roomInvitation.date\(\) ⇒ `Promise <Date>`
 
 获取发送入群邀请的时间。
 
 **Kind**: instance method of [`RoomInvitation`](room-invitation.md#roominvitation)
 
-### roomInvitation.age\(\) ⇒ `number`
+### roomInvitation.age\(\) ⇒ `Promise <number>`
 
 获取入群邀请的时间间隔。
 
