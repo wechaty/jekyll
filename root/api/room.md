@@ -412,6 +412,21 @@ if (contact && room) {
 | :--- | :--- | :--- |
 | query | [`RoomQueryFilter`](room.md#roomqueryfilter) \| `string` | 1. RoomMemberQueryFilter 可通过 name, roomAlias, contactAlias 查找指定的群成员。<br>2. 当memberAll(name) 的参数为string 类型的时候, 返回所有找到的群成员。这里面的name 包括上面定义的name, roomAlias, contactAlias。|
 
+### room.member\(query\) ⇒ `Promise <null | Contact>`
+
+根据 query 获取群内的群成员。
+
+#### 定义
+
+* `name`                       微信联系人自己设置的昵称，等于 `Contact.name()`
+* `roomAlias`             微信联系人自己在群内设置的昵称。
+* `contactAlias`       机器人给微信联系人设置的，等于 `Contact.alias()`
+
+**Kind**: instance method of [`Room`](room.md#room)
+
+| Param | Type | Description |
+| :--- | :--- | :--- |
+| query | [`RoomQueryFilter`](room.md#roomqueryfilter) \| `string` | RoomMemberQueryFilter 可通过 name, roomAlias, contactAlias 查找指定的群成员。|
 
 
 ### room.owner\(\) ⇒ `Contact` \| `null`
