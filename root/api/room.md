@@ -35,7 +35,7 @@ description: 所有的微信群都会被封装成 Room 类
     * [.owner\(\)](room.md#room-owner-contact-or-null) ⇒ `Contact` \| `null`
     * [.avatar\(\)](room.md#room-owner-contact-or-null) ⇒ `Promise <FileBox>`
   * _static_
-    * [.create\(contactList, \[topic\]\)](room.md#room-create-contactlist-topic-promise) ⇒ `Promise <Room>`(room.md#Room)
+    * [.create\(contactList, \[topic\]\)](room.md#room-create-contactlist-topic-promise) ⇒ `Promise <Room>`
     * [.findAll\(\[query\]\)](room.md#room-findall-query-promise-greater-than) ⇒ `Promise <Room[]>`
     * [.find\(query\)](room.md#room-findall-query-promise-greater-than) ⇒ `Promise <Room>`
 
@@ -493,7 +493,7 @@ const roomList = await bot.Room.findAll({topic: 'wechaty'})  // find all of the 
 通过 {topic: string \| RegExp}, 查找群，如果找到多个群，返回找到的第一个群。
 
 **Kind**: static method of [`Room`](room.md#room)  
-**Returns**: `Promise <Room>` - If can find the room, return Room, or return null
+**Returns**: `Promise <Room>` -- If can find the room, return Room, or return null
 
 | Param | Type |
 | :--- | :--- |
@@ -564,7 +564,7 @@ Room Class Event Function
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| name | `string` | 通过用户的昵称查找群成员，这里面的name 等于`Contact.name()`. |
+| name | `string` | 通过用户的昵称查找群成员，这里面的name 等于`Contact.name()`。 |
 | roomAlias | `string` | 通过用户设置的群昵称查找群成员。 |
-| contactAlias | `string` | 通过机器人给用户设置的备注查找群成员，这里面的contactAlias 等于 `Contact.alias()`. 更多细节查看： [More Detail](https://github.com/Chatie/wechaty/issues/365) |
+| contactAlias | `string` | 通过机器人给用户设置的备注查找群成员，这里面的contactAlias 等于 `Contact.alias()`。 更多细节查看： [More Detail](https://github.com/Chatie/wechaty/issues/365) |
 
