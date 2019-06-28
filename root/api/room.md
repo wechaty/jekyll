@@ -25,18 +25,18 @@ description: 所有的微信群都会被封装成 Room 类
     * [.add\(contact\)](room.md#room-add-contact-promise) ⇒ `Promise <void>`
     * [.del\(contact\)](room.md#room-del-contact-promise) ⇒ `Promise <void>`
     * [.quit\(\)](room.md#room-quit-promise) ⇒ `Promise <void>`
-    * [.topic\(newTopic \| null\)](room.md#room-topic-newtopic-promise) ⇒ `Promise <void | string>`
-    * [.announce\(text \| null\)](room.md#room-announce-text-promise) ⇒ `Promise <void | string>`
+    * [.topic\(\[newTopic\]\)](room.md#room-topic-newtopic-promise) ⇒ `Promise <void | string>`
+    * [.announce\(\[text\]\)](room.md#room-announce-text-promise) ⇒ `Promise <void | string>`
     * [.qrcode\(\)](room.md#room-qrcode-promise) ⇒ `Promise <string>`
     * [.alias\(contact\)](room.md#room-alias-contact-promise) ⇒ `Promise <null | string>`
     * [.has\(contact\)](room.md#room-has-contact-promise) ⇒ `Promise <boolean>`
-    * [.memberAll\(query\)](room.md#room-memberall-query-promise-greater-than) ⇒ `Promise <Contact []>`
+    * [.memberAll\(\[query\]\)](room.md#room-memberall-query-promise-greater-than) ⇒ `Promise <Contact []>`
     * [.member\(query\)](room.md#room-member-queryarg-promise) ⇒ `Promise <null | Contact>`
     * [.owner\(\)](room.md#room-owner-contact-or-null) ⇒ `Contact` \| `null`
     * [.avatar\(\)](room.md#room-owner-contact-or-null) ⇒ `Promise <FileBox>`
   * _static_
     * [.create\(contactList, \[topic\]\)](room.md#room-create-contactlist-topic-promise) ⇒ `Promise <Room>`(room.md#Room)
-    * [.findAll\(query\)](room.md#room-findall-query-promise-greater-than) ⇒ `Promise <Room[]>`
+    * [.findAll\(\[query\]\)](room.md#room-findall-query-promise-greater-than) ⇒ `Promise <Room[]>`
     * [.find\(query\)](room.md#room-findall-query-promise-greater-than) ⇒ `Promise <Room>`
 
 ### room.sync\(\) ⇒ `Promise <void>`
@@ -249,7 +249,7 @@ if (room) {
 await room.quit()
 ```
 
-### room.topic\(newTopic\) ⇒ `Promise <void | string>`
+### room.topic\(\[newTopic\]\) ⇒ `Promise <void | string>`
 
 设置 / 获取 群名称。
 
@@ -290,9 +290,9 @@ bot
 .start()
 ```
 
-### room.announce\(text\) ⇒ `Promise <void | string>`
+### room.announce\(\[text\]\) ⇒ `Promise <void | string>`
 
-设置/获取 群公告。
+设置 / 获取 群公告。
 
 {% hint style="info" %}
 这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#3-wechaty-puppet-jian-rong-xing)
@@ -396,7 +396,7 @@ if (contact && room) {
 }
 ```
 
-### room.memberAll\(query\) ⇒ `Promise <Contact []>`
+### room.memberAll\(\[query\]\) ⇒ `Promise <Contact []>`
 
 根据 query 获取群内所有的群成员列表。如果没有设置query，返回所有的群成员信息。
 
@@ -468,7 +468,7 @@ await room.topic('ding - created')
 await room.say('ding - created')
 ```
 
-### Room.findAll\(query\) ⇒ `Promise <Room []>`
+### Room.findAll\(\[query\]\) ⇒ `Promise <Room []>`
 
 通过 {topic: string \| RegExp}, 查找群，返回找到的所有群的数组。
 
