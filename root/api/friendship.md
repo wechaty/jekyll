@@ -18,15 +18,15 @@ description: 发送，接受好友请求的Class
 
 * [Friendship](friendship.md#friendship)
   * _instance_
-    * [.accept\(\)](friendship.md#friendship-accept-promise) ⇒ `Promise.`
+    * [.accept\(\)](friendship.md#friendship-accept-promise) ⇒ `Promise <void>`
     * [.hello\(\)](friendship.md#friendship-hello-string) ⇒ `string`
     * [.contact\(\)](friendship.md#friendship-contact-contact) ⇒ `Contact`
     * [.type\(\)](friendship.md#friendship-type-friendshiptype) ⇒ `FriendshipType`
   * _static_
     * [~~.send\(\)~~](friendship.md#friendship-send)
-    * [.add\(contact, hello\)](friendship.md#friendship-add-contact-hello-promise) ⇒ `Promise.`
+    * [.add\(contact, hello\)](friendship.md#friendship-add-contact-hello-promise) ⇒ `Promise <void>`
 
-### friendship.accept\(\) ⇒ `Promise.`
+### friendship.accept\(\) ⇒ `Promise <void>`
 
 通过好友请求
 
@@ -136,7 +136,7 @@ _**Deprecated**_
 
 **Kind**: static method of [`Friendship`](friendship.md#Friendship)
 
-### Friendship.add\(contact, hello\) ⇒ `Promise.`
+### Friendship.add\(contact, hello\) ⇒ `Promise <void>`
 
 发送好友请求给`contact` 发送的内容是 `hello`.
 
