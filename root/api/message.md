@@ -149,7 +149,7 @@ bot
 const bot = new Wechaty()
 bot
 .on('message', async m => {
-  if (m.type() === MessageType.Recalled) {
+  if (m.type() === bot.Message.Type.Recalled) {
     const recalledMessage = await m.toRecalled()
     console.log(`Message: ${recalledMessage} has been recalled.`)
   }
@@ -242,7 +242,7 @@ bot
 
 ```javascript
 const bot = new Wechaty()
-if (message.type() === bot.MessageType.Text) {
+if (message.type() === bot.Message.Type.Text) {
   console.log('This is a text message')
 }
 ```
