@@ -27,9 +27,9 @@ See more:
 
 [PuppetName](wechaty.md#PuppetName)
 
-The term [Puppet](https://github.com/Chatie/wechaty/wiki/Puppet) in Wechaty is an Abstract Class for implementing protocol plugins. The plugins are the component that helps Wechaty to control the Wechat\(that's the reason we call it puppet\). The plugins are named XXXPuppet, for example:
+The term [Puppet](https://github.com/Chatie/wechaty/wiki/Puppet) in Wechaty is an Abstract Class for implementing protocol plugins. The plugins are the component that helps Wechaty to control the Wechat\(that's the reason we call it puppet\). The plugins are named PuppetXXX, for example:
 
-* [PuppetPuppeteer](https://github.com/Chatie/wechaty-puppet-puppeteer):
+* [PuppetPuppeteer](https://github.com/Chatie/wechaty-puppet-puppeteer)
 * [PuppetPadchat](https://github.com/lijiarui/wechaty-puppet-padchat)
 
 [WechatyOptions](wechaty.md#WechatyOptions)
@@ -63,12 +63,12 @@ See more:
   * [new Wechaty\(\[options\]\)](wechaty.md#new_Wechaty_new)
   * _instance_
     * [.on\(event, listener\)](wechaty.md#Wechaty+on) ⇒ [`Wechaty`](wechaty.md#Wechaty)
-    * [.start\(\)](wechaty.md#Wechaty+start) ⇒ `Promise.`
-    * [.stop\(\)](wechaty.md#Wechaty+stop) ⇒ `Promise.`
-    * [.logout\(\)](wechaty.md#Wechaty+logout) ⇒ `Promise.`
+    * [.start\(\)](wechaty.md#Wechaty+start) ⇒ `Promise <void>`
+    * [.stop\(\)](wechaty.md#Wechaty+stop) ⇒ `Promise <void>`
+    * [.logout\(\)](wechaty.md#Wechaty+logout) ⇒ `Promise <void>`
     * [.logonoff\(\)](wechaty.md#Wechaty+logonoff) ⇒ `boolean`
     * [.userSelf\(\)](wechaty.md#Wechaty+userSelf) ⇒ `ContactSelf`
-    * [.say\(textOrContactOrFileOrUrl\)](wechaty.md#Wechaty+say) ⇒ `Promise.`
+    * [.say\(textOrContactOrFileOrUrl\)](wechaty.md#Wechaty+say) ⇒ `Promise <void>`
   * _static_
     * [.instance\(\[options\]\)](wechaty.md#Wechaty.instance)
 
@@ -157,8 +157,8 @@ wechaty.on('message', (message) => {
 ```javascript
 // Friendship Event will emit when got a new friend request, or friendship is confirmed.
 
-bot.on('friendship', (friendship) => {
-  if(friendship.type() === Friendship.Type.Receive){ // 1. receive new friendship request from new contact
+bot.on('friendship', async (friendship) => {
+  if(friendship.type() === bot.Friendship.Type.Receive){ // 1. receive new friendship request from new contact
     const contact = friendship.contact()
     let result = await friendship.accept()
       if(result){
@@ -166,7 +166,7 @@ bot.on('friendship', (friendship) => {
       } else{
         console.log(`Request from ${contact.name()} failed to accept!`)
       }
-      } else if (friendship.type() === Friendship.Type.Confirm) { // 2. confirm friendship
+      } else if (friendship.type() === bot.Friendship.Type.Confirm) { // 2. confirm friendship
       console.log(`new friendship confirmed with ${contact.name()}`)
    }
  })
@@ -177,9 +177,9 @@ bot.on('friendship', (friendship) => {
 ```javascript
 // room-join Event will emit when someone join the room.
 
-bot.on('room-join', (room, inviteeList, inviter) => {
+bot.on('room-join', async (room, inviteeList, inviter) => {
   const nameList = inviteeList.map(c => c.name()).join(',')
-  console.log(`Room ${room.topic()} got new member ${nameList}, invited by ${inviter}`)
+  console.log(`Room ${await room.topic()} got new member ${nameList}, invited by ${inviter}`)
 })
 ```
 
@@ -188,9 +188,9 @@ bot.on('room-join', (room, inviteeList, inviter) => {
 ```javascript
 // room-leave Event will emit when someone leave the room.
 
-bot.on('room-leave', (room, leaverList) => {
+bot.on('room-leave', async (room, leaverList) => {
   const nameList = leaverList.map(c => c.name()).join(',')
-  console.log(`Room ${room.topic()} lost member ${nameList}`)
+  console.log(`Room ${await room.topic()} lost member ${nameList}`)
 })
 ```
 
@@ -199,8 +199,8 @@ bot.on('room-leave', (room, leaverList) => {
 ```javascript
 // room-topic Event will emit when someone change the room's topic.
 
-bot.on('room-topic', (room, topic, oldTopic, changer) => {
-  console.log(`Room ${room.topic()} topic changed from ${oldTopic} to ${topic} by ${changer.name()}`)
+bot.on('room-topic', async (room, topic, oldTopic, changer) => {
+  console.log(`Room ${await room.topic()} topic changed from ${oldTopic} to ${topic} by ${changer.name()}`)
 })
 ```
 
@@ -229,13 +229,14 @@ bot.on('error', (error) => {
 })
 ```
 
-### wechaty.start\(\) ⇒ `Promise.`
+### wechaty.start\(\) ⇒ `Promise <void>`
 
 When you start the bot, bot will begin to login, need you wechat scan qrcode to login
 
 > Tips: All the bot operation needs to be triggered after start\(\) is done
 
 **Kind**: instance method of [`Wechaty`](wechaty.md#Wechaty)  
+
 **Example**
 
 ```javascript
@@ -243,7 +244,7 @@ await bot.start()
 // do other stuff with bot here
 ```
 
-### wechaty.stop\(\) ⇒ `Promise.`
+### wechaty.stop\(\) ⇒ `Promise <void>`
 
 Stop the bot
 
@@ -254,7 +255,7 @@ Stop the bot
 await bot.stop()
 ```
 
-### wechaty.logout\(\) ⇒ `Promise.`
+### wechaty.logout\(\) ⇒ `Promise <void>`
 
 Logout the bot
 
@@ -292,7 +293,7 @@ const contact = bot.userSelf()
 console.log(`Bot is ${contact.name()}`)
 ```
 
-### wechaty.say\(textOrContactOrFileOrUrl\) ⇒ `Promise.`
+### wechaty.say\(textOrContactOrFileOrUrl\) ⇒ `Promise <void>`
 
 Send message to userSelf, in other words, bot send message to itself.
 
@@ -362,9 +363,9 @@ Wechaty.instance() // Global instance
 
 ## PuppetName
 
-The term [Puppet](https://github.com/Chatie/wechaty/wiki/Puppet) in Wechaty is an Abstract Class for implementing protocol plugins. The plugins are the component that helps Wechaty to control the Wechat\(that's the reason we call it puppet\). The plugins are named XXXPuppet, for example:
+The term [Puppet](https://github.com/Chatie/wechaty/wiki/Puppet) in Wechaty is an Abstract Class for implementing protocol plugins. The plugins are the component that helps Wechaty to control the Wechat\(that's the reason we call it puppet\). The plugins are named PuppetXXX, for example:
 
-* [PuppetPuppeteer](https://github.com/Chatie/wechaty-puppet-puppeteer):
+* [PuppetPuppeteer](https://github.com/Chatie/wechaty-puppet-puppeteer)
 * [PuppetPadchat](https://github.com/lijiarui/wechaty-puppet-padchat)
 
 **Kind**: global typedef  
@@ -386,7 +387,7 @@ The option parameter to create a wechaty instance
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| profile | `string` | Wechaty Name. &lt;/br&gt;          When you set this: &lt;/br&gt;          `new Wechaty({profile: 'wechatyName'})` &lt;/br&gt;          it will generate a file called `wechatyName.memory-card.json`. &lt;/br&gt;          This file stores the bot's login information. &lt;/br&gt;          If the file is valid, the bot can auto login so you don't need to scan the qrcode to login again. &lt;/br&gt;          Also, you can set the environment variable for `WECHATY_PROFILE` to set this value when you start. &lt;/br&gt;          eg:  `WECHATY_PROFILE="your-cute-bot-name" node bot.js` |
+| profile | `string` | Wechaty Name. <br>          When you set this: <br>          `new Wechaty({profile: 'wechatyName'})` <br>          it will generate a file called `wechatyName.memory-card.json`. <br>          This file stores the bot's login information. <br>          If the file is valid, the bot can auto login so you don't need to scan the qrcode to login again. <br>          Also, you can set the environment variable for `WECHATY_PROFILE` to set this value when you start. <br>          eg:  `WECHATY_PROFILE="your-cute-bot-name" node bot.js` |
 | puppet | `PuppetModuleName` \| `Puppet` | Puppet name or instance |
 | puppetOptions | `Partial.` | Puppet TOKEN |
 | ioToken | `string` | Io TOKEN |
