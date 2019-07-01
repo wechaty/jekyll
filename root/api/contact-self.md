@@ -16,8 +16,7 @@ description: 机器人自己的信息将会封装一个ContactSelf 类. 这个�
   * [contactSelf.avatar\(\) ⇒ `Promise <FileBox>`](contact-self.md#contactselfavatar-⇒-promisefilebox)
   * [contactSelf.avatar\(file\) ⇒ `Promise <void>`](contact-self.md#contactselfavatarfile-⇒-promisevoid)
   * [contactSelf.qrcode\(\) ⇒ `Promise<string>`](contact-self.md#contactselfqrcode-⇒-promisestring)
-  * [contactSelf.name\(\) ⇒ `string`](contact-self.md#contactselfname-⇒-string)
-  * [contactSelf.name\(name\) ⇒ `Promise<void>`](contact-self.md#contactselfnamename-⇒-promisestring)
+  * [contactSelf.name\(\[name\]\) ⇒ `Promise<void> | string`](contact-self.md#contactselfname-⇒-promisestring)
   * [contactSelf.signature\(signature\): `Promise<void>`](contact-self.md#contactselfsignaturesignature-promisevoid)
 
 **Kind**: instance method of [`ContactSelf`](contact-self.md)
