@@ -32,8 +32,8 @@ All wechat messages will be encapsulated as a Message.
     * [.toContact\(\)](message.md#Message+toContact) ⇒ `Promise <Contact>`
     * [.toUrlLink\(\)](message.md#Message+toUrlLink) ⇒ `Promise <UrlLink>`
   * _static_
-    * [.find\(\)](message.md#Message.find)
-    * [.findAll\(\)](message.md#Message.findAll)
+    * [.find\(\)](message.md#Message.find) ⇒ `Promise <Message>`
+    * [.findAll\(\)](message.md#Message.findAll) ⇒ `Promise <Message []>`
 
 ### message.from\(\) ⇒ `Contact | null` 
 
