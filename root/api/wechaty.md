@@ -182,7 +182,7 @@ bot.on('scan', (url, code) => {  console.log(`[${code}] Scan ${url} to login.` )
 ```typescript
 // room-join Event will emit when someone join the room.
 ​
-bot.on('room-join', (room, inviteeList, inviter) => {  
+bot.on('room-join', async (room, inviteeList, inviter) => {  
   const nameList = inviteeList.map(c => c.name()).join(',')  
   console.log(`Room ${await room.topic()} got new member ${nameList}, invited by ${inviter}`)
 })
@@ -193,7 +193,7 @@ bot.on('room-join', (room, inviteeList, inviter) => {
 ```typescript
 // room-leave Event will emit when someone leave the room.​
 
-bot.on('room-leave', (room, leaverList) => {  
+bot.on('room-leave', async (room, leaverList) => {  
   const nameList = leaverList.map(c => c.name()).join(',')  
   console.log(`Room ${await room.topic()} lost member ${nameList}`)
 })
@@ -204,8 +204,8 @@ bot.on('room-leave', (room, leaverList) => {
 ```typescript
 // room-topic Event will emit when someone change the room's topic.
 ​
-bot.on('room-topic', (room, topic, oldTopic, changer) => {  
-  console.log(`Room ${room.topic()} topic changed from ${oldTopic} to ${topic} by ${changer.name()}`)
+bot.on('room-topic', async (room, topic, oldTopic, changer) => {  
+  console.log(`Room ${await room.topic()} topic changed from ${oldTopic} to ${topic} by ${changer.name()}`)
 })
 ```
 
