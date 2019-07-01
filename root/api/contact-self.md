@@ -67,39 +67,24 @@ bot.on('login', (user: ContactSelf) => {
 **Kind**: instance method of [`ContactSelf`](contact-self.md#contactself) **Example**
 
 ```javascript
-import { QrcodeTerminal } from 'qrcode-terminal'
+import { generate } from 'qrcode-terminal'
 bot.on('login', (user: ContactSelf) => {
   console.log(`user ${user} login`)
   const qrcode = await user.qrcode()
   console.log(`Following is the bot qrcode!`)
-  QrcodeTerminal.generate(qrcode, { small: true })
+  generate(qrcode, { small: true })
 })
 ```
 
-### contactSelf.name\(\) ⇒ `string`
+### contactSelf.name\(\[name\]\) ⇒ `Promise <void> | string`
 
-获取机器人昵称。
-
-**Kind**: instance method of [`ContactSelf`](contact-self.md#contactself)
-
-**Example**
-
-```javascript
-bot.on('login', (user: ContactSelf) => {
-  console.log(`user ${user} login`)
-  console.log(`user name: ${user.name()}`)
-})
-```
-
-### contactSelf.name\(name\) ⇒ `Promise <void>`
-
-修改机器人昵称。
+获取 / 修改机器人昵称。
 
 **Kind**: instance method of [`ContactSelf`](contact-self.md#contactself)
 
 | Param | Description |
 | :--- | :--- |
-| name | 机器人要修改的昵称内容 |
+| [name] | 机器人要修改的昵称内容 |
 
 **Example**
 
