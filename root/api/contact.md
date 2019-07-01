@@ -173,7 +173,7 @@ Return the type of the Contact
 ```javascript
 const bot = new Wechaty()
 await bot.start()
-const isOfficial = contact.type() === bot.ContactType.Official
+const isOfficial = contact.type() === bot.Contact.Type.Official
 ```
 
 ### contact.gender\(\) ⇒ `ContactGender.Unknown` \| `ContactGender.Male` \| `ContactGender.Female`
@@ -186,7 +186,7 @@ Contact gender
 **Example**
 
 ```javascript
-const gender = contact.gender() === bot.ContactGender.Male
+const gender = contact.gender() === bot.Contact.Gender.Male
 ```
 
 ### contact.province\(\) ⇒ `string` \| `null`
