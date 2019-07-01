@@ -15,12 +15,11 @@ Bot itself will be encapsulated as a ContactSelf.
 **Kind**: global class
 
 * [ContactSelf](contact-self.md#contactself)
-  * [ContactSelf](contact-self.md#contactself-1)
-    * [contactSelf.avatar\(file\) ⇒ `Promise <void | FileBox>`](contact-self.md#contactselfavatarfile-⇒-promise)
+  * [intance](contact-self.md#contactself)
+    * [contactSelf.avatar\([file]\) ⇒ `Promise <void | FileBox>`](contact-self.md#contactselfavatarfile-⇒-promise)
     * [contactSelf.qrcode\(\) ⇒ `Promise <string>`](contact-self.md#contactselfqrcode-⇒-promise)
     * [contactSelf.signature\(signature\) ⇒ `Promise <string>`](contact-self.md#contactselfsignaturesignature)
-    * [contactSelf.name\(\) ⇒ `string`](contact-self.md#contactselfname-⇒-string)
-    * [contactSelf.name\(name\) ⇒ `string | Promise<void>`](contact-self.md#contactselfnamename-⇒-promisestring)
+    * [contactSelf.name\([name]\) ⇒ `Promise <void> | string`](contact-self.md#contactselfname-⇒-promisestring)
 
 ### contactSelf.avatar\(\[file\]\) ⇒ `Promise <void | FileBox>`
 
@@ -37,7 +36,7 @@ GET / SET bot avatar
 ```javascript
 // Save avatar to local file like `1-name.jpg`
 
-bot.on('login', (user: ContactSelf) => {
+bot.on('login', async (user: ContactSelf) => {
   console.log(`user ${user} login`)
   const file = await user.avatar()
   const name = file.name
@@ -63,15 +62,16 @@ bot.on('login', (user: ContactSelf) => {
 Get bot qrcode
 
 **Kind**: instance method of [`ContactSelf`](contact-self.md#ContactSelf)  
+
 **Example**
 
 ```javascript
-import { QrcodeTerminal } from 'qrcode-terminal'
-bot.on('login', (user: ContactSelf) => {
+import { generate } from 'qrcode-terminal'
+bot.on('login', async (user: ContactSelf) => {
   console.log(`user ${user} login`)
   const qrcode = await user.qrcode()
   console.log(`Following is the bot qrcode!`)
-  QrcodeTerminal.generate(qrcode, { small: true })
+  generate(qrcode, { small: true })
 })
 ```
 
@@ -98,39 +98,24 @@ bot.on('login', async (user: ContactSelf) => {
 })
 ```
 
-### contactSelf.name\(\) ⇒ `string`
+### contactSelf.name\(\[name\]\) ⇒ `Promise<void> | string`
 
-Get name of bot.
-
-**Kind**: instance method of [`ContactSelf`](contact-self.md#contactself)
-
-**Example**
-
-```javascript
-bot.on('login', (user: ContactSelf) => {
-  console.log(`user ${user} login`)
-  console.log(`user name: ${user.name()}`)
-})
-```
-
-### contactSelf.name\(name\) ⇒ `Promise<void>`
-
-Change bot name.
+Get or change bot name.
 
 **Kind**: instance method of [`ContactSelf`](contact-self.md#contactself)
 
 | Param | Description |
 | :--- | :--- |
-| name | The new alias that the bot will change to |
+| [name] | The new alias that the bot will change to |
 
 **Example**
 
 ```javascript
 bot.on('login', async (user: ContactSelf) => {
   console.log(`user ${user} login`)
-  const oldName = user.name()
+  const oldName = user.name() // get bot name
   try {
-    await user.name(`${oldName}-${new Date().getTime()}`)
+    await user.name(`${oldName}-${new Date().getTime()}`) // change bot name
   } catch (e) {
     console.error('change name failed', e)
   }
