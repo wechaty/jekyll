@@ -11,14 +11,14 @@ accept room invitation
 **Kind**: global class
 
 * [RoomInvitation](room-invitation.md#RoomInvitation)
-  * [.accept\(\)](room-invitation.md#RoomInvitation+accept) ⇒ `Promise.`
-  * [.inviter\(\)](room-invitation.md#RoomInvitation+inviter) ⇒ `Contact`
-  * [.topic\(\)](room-invitation.md#RoomInvitation+topic) ⇒ `Promise`
-  * [~~.roomTopic\(\)~~](room-invitation.md#RoomInvitation+roomTopic) ⇒ `Promise`
-  * [.date\(\)](room-invitation.md#RoomInvitation+date) ⇒ `Promise.`
+  * [.accept\(\)](room-invitation.md#RoomInvitation+accept) ⇒ `Promise <void>`
+  * [.inviter\(\)](room-invitation.md#RoomInvitation+inviter) ⇒ `Promise <Contact>`
+  * [.topic\(\)](room-invitation.md#RoomInvitation+topic) ⇒ `Promise <string>`
+  * [~~.roomTopic\(\)~~](room-invitation.md#RoomInvitation+roomTopic) ⇒ `Promise <string>`
+  * [.date\(\)](room-invitation.md#RoomInvitation+date) ⇒ `Promise <Date>`
   * [.age\(\)](room-invitation.md#RoomInvitation+age) ⇒ `number`
 
-### roomInvitation.accept\(\) ⇒ `Promise.`
+### roomInvitation.accept\(\) ⇒ `Promise <void>`
 
 Accept Room Invitation
 
@@ -38,7 +38,7 @@ bot.on('room-invite', async roomInvitation => {
 .start()
 ```
 
-### roomInvitation.inviter\(\) ⇒ `Contact`
+### roomInvitation.inviter\(\) ⇒ `Promise <Contact>`
 
 Get the inviter from room invitation
 
@@ -55,7 +55,7 @@ bot.on('room-invite', async roomInvitation => {
 .start()
 ```
 
-### roomInvitation.topic\(\) ⇒ `Promise`
+### roomInvitation.topic\(\) ⇒ `Promise <string>`
 
 Get the room topic from room invitation
 
@@ -76,7 +76,7 @@ bot.on('room-invite', async roomInvitation => {
 **Kind**: instance method of [`RoomInvitation`](room-invitation.md#RoomInvitation)  
 **Deprecated:**: use topic\(\) instead
 
-### roomInvitation.date\(\) ⇒ `Promise.`
+### roomInvitation.date\(\) ⇒ `Promise <Date>`
 
 Get the invitation time
 
