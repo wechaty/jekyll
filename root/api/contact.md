@@ -168,7 +168,7 @@ ContactType 在这里是enum
 ```javascript
 const bot = new Wechaty()
 await bot.start()
-const isOfficial = contact.type() === bot.ContactType.Official
+const isOfficial = contact.type() === bot.Contact.Type.Official
 ```
 
 ### contact.gender\(\) ⇒ `ContactGender.Unknown` \| `ContactGender.Male` \| `ContactGender.Female`
@@ -183,7 +183,7 @@ ContactGender在这里是 enum
 **Example**
 
 ```javascript
-const gender = contact.gender() === bot.ContactGender.Male
+const gender = contact.gender() === bot.Contact.Gender.Male
 ```
 
 ### contact.province\(\) ⇒ `string` \| `null`
