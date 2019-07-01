@@ -269,7 +269,7 @@ const contactFindByName = await bot.Contact.find({ name:"ruirui"} )
 const contactFindByAlias = await bot.Contact.find({ alias:"lijiarui"} )
 ```
 
-### Contact.findAll\(query\) ⇒ `Promise <Contact []>`
+### Contact.findAll\(\[queryArg\]\) ⇒ `Promise <Contact []>`
 
 通过name \(昵称\)或者alias\(备注\)查找联系人。
 
@@ -284,7 +284,7 @@ const contactFindByAlias = await bot.Contact.find({ alias:"lijiarui"} )
 
 | Param | Type |
 | :--- | :--- |
-| query | [`ContactQueryFilter`](contact.md#contactqueryfilter) |
+| [queryArg] | [`ContactQueryFilter`](contact.md#contactqueryfilter) |
 
 **Example**
 
