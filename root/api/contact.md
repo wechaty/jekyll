@@ -272,7 +272,7 @@ const contactFindByName = await bot.Contact.find({ name:"ruirui"} )
 const contactFindByAlias = await bot.Contact.find({ alias:"lijiarui"} )
 ```
 
-### Contact.findAll\(query\) ⇒ `Promise <Contact []>`
+### Contact.findAll\(\[queryArg\]\) ⇒ `Promise <Contact []>`
 
 Find contact by `name` or `alias`
 
@@ -287,7 +287,7 @@ If use Contact.findAll\(\) get the contact list of the bot.
 
 | Param | Type |
 | :--- | :--- |
-| query | [`ContactQueryFilter`](contact.md#ContactQueryFilter) |
+| queryArg | [`ContactQueryFilter`](contact.md#ContactQueryFilter) |
 
 **Example**
 
