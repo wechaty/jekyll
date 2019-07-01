@@ -29,22 +29,22 @@ All wechat contacts\(friend\) will be encapsulated as a Contact. [Examples/Conta
 
 * [Contact](contact.md#Contact)
   * _instance_
-    * [.say\(textOrContactOrFileOrUrl\)](contact.md#Contact+say) ⇒ `Promise.`
+    * [.say\(textOrContactOrFileOrUrl\)](contact.md#Contact+say) ⇒ `Promise <void>`
     * [.name\(\)](contact.md#Contact+name) ⇒ `string`
-    * [.alias\(newAlias\)](contact.md#Contact+alias) ⇒ `Promise.`
+    * [.alias\(\[newAlias\]\)](contact.md#Contact+alias) ⇒ `Promise <void | string>`
     * [.friend\(\)](contact.md#Contact+friend) ⇒ `boolean` \| `null`
     * [.type\(\)](contact.md#Contact+type) ⇒ `ContactType.Unknown` \| `ContactType.Personal` \| `ContactType.Official`
     * [.gender\(\)](contact.md#Contact+gender) ⇒ `ContactGender.Unknown` \| `ContactGender.Male` \| `ContactGender.Female`
     * [.province\(\)](contact.md#Contact+province) ⇒ `string` \| `null`
     * [.city\(\)](contact.md#Contact+city) ⇒ `string` \| `null`
-    * [.avatar\(\)](contact.md#Contact+avatar) ⇒ `Promise.`
-    * [.sync\(\)](contact.md#Contact+sync) ⇒ `Promise.`
+    * [.avatar\(\)](contact.md#Contact+avatar) ⇒ `Promise <FileBox>`
+    * [.sync\(\)](contact.md#Contact+sync) ⇒ `Promise <void>`
     * [.self\(\)](contact.md#Contact+self) ⇒ `boolean`
   * _static_
-    * [.find\(query\)](contact.md#Contact.find) ⇒ `Promise.`
-    * [.findAll\(\[queryArg\]\)](contact.md#Contact.findAll) ⇒ `Promise.`
+    * [.find\(query\)](contact.md#Contact.find) ⇒ `Promise <Contact | null>`
+    * [.findAll\(\[queryArg\]\)](contact.md#Contact.findAll) ⇒ `Promise <Contact []>`
 
-### contact.say\(textOrContactOrFileOrUrl\) ⇒ `Promise.`
+### contact.say\(textOrContactOrFileOrUrl\) ⇒ `Promise <void>`
 
 > Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table)
 
@@ -52,7 +52,7 @@ All wechat contacts\(friend\) will be encapsulated as a Contact. [Examples/Conta
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-| textOrContactOrFileOrUrl | `string` \| [`Contact`](contact.md#Contact) \| `FileBox` \| `UrlLink` | send text, Contact, file or UrlLink to contact. &lt;/br&gt; You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
+| textOrContactOrFileOrUrl | `string` \| [`Contact`](contact.md#Contact) \| `FileBox` \| `UrlLink` | send text, Contact, file or UrlLink to contact. <br> You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
 
 **Example**
 
@@ -79,7 +79,7 @@ const contactCard = bot.Contact.load('contactId')
 await contact.say(contactCard)
 
 // 4. send url link to contact
-const linkPayload = new UrlLink({
+const urlLink = new UrlLink({
   description : 'WeChat Bot SDK for Individual Account, Powered by TypeScript, Docker, and Love',
   thumbnailUrl: 'https://avatars0.githubusercontent.com/u/25162437?s=200&v=4',
   title       : 'Welcome to Wechaty',
@@ -99,7 +99,7 @@ Get the name from a contact
 const name = contact.name()
 ```
 
-### contact.alias\(newAlias\) ⇒ `Promise.`
+### contact.alias\(newAlias\) ⇒ `Promise <void | string | null>`
 
 GET / SET / DELETE the alias for a contact
 
@@ -152,7 +152,7 @@ Check if contact is friend
 > Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table)
 
 **Kind**: instance method of [`Contact`](contact.md#Contact)  
-**Returns**: `boolean` \| `null` -  
+**Returns**: `boolean` \| `null` -- 
 True for friend of the bot  
 False for not friend of the bot, null for unknown.  
 **Example**
@@ -165,7 +165,7 @@ const isFriend = contact.friend()
 
 Return the type of the Contact
 
-> Tips: ContactType is enum here.&lt;/br&gt;
+> Tips: ContactType is enum here.
 
 **Kind**: instance method of [`Contact`](contact.md#Contact)  
 **Example**
@@ -180,7 +180,7 @@ const isOfficial = contact.type() === bot.Contact.Type.Official
 
 Contact gender
 
-> Tips: ContactGender is enum here. &lt;/br&gt;
+> Tips: ContactGender is enum here.
 
 **Kind**: instance method of [`Contact`](contact.md#Contact)  
 **Example**
@@ -211,7 +211,7 @@ Get the region 'city' from a contact
 const city = contact.city()
 ```
 
-### contact.avatar\(\) ⇒ `Promise.`
+### contact.avatar\(\) ⇒ `Promise <FileBox>`
 
 Get avatar picture file stream
 
@@ -227,7 +227,7 @@ await file.toFile(name, true)
 console.log(`Contact: ${contact.name()} with avatar file: ${name}`)
 ```
 
-### contact.sync\(\) ⇒ `Promise.`
+### contact.sync\(\) ⇒ `Promise <void>`
 
 Force reload data for Contact, Sync data from lowlevel API again.
 
@@ -243,21 +243,21 @@ await contact.sync()
 Check if contact is self
 
 **Kind**: instance method of [`Contact`](contact.md#Contact)  
-**Returns**: `boolean` - True for contact is self, False for contact is others  
+**Returns**: `boolean` -- True for contact is self, False for contact is others  
 **Example**
 
 ```javascript
 const isSelf = contact.self()
 ```
 
-### Contact.find\(query\) ⇒ `Promise.`
+### Contact.find\(query\) ⇒ `Promise <Contact | null>`
 
 Try to find a contact by filter: {name: string \| RegExp} / {alias: string \| RegExp}
 
 Find contact by name or alias, if the result more than one, return the first one.
 
 **Kind**: static method of [`Contact`](contact.md#Contact)  
-**Returns**: `Promise.` - If can find the contact, return Contact, or return null
+**Returns**: `Promise <Contact | null>` - If can find the contact, return Contact, or return null
 
 | Param | Type |
 | :--- | :--- |
@@ -272,7 +272,7 @@ const contactFindByName = await bot.Contact.find({ name:"ruirui"} )
 const contactFindByAlias = await bot.Contact.find({ alias:"lijiarui"} )
 ```
 
-### Contact.findAll\(\[queryArg\]\) ⇒ `Promise.`
+### Contact.findAll\(\[queryArg\]\) ⇒ `Promise <Contact []>`
 
 Find contact by `name` or `alias`
 
@@ -295,7 +295,7 @@ If use Contact.findAll\(\) get the contact list of the bot.
 const bot = new Wechaty()
 await bot.start()
 const contactList = await bot.Contact.findAll()                      // get the contact list of the bot
-const contactList = await bot.Contact.findAll({ name: 'ruirui' })    // find allof the contacts whose name is 'ruirui'
+const contactList = await bot.Contact.findAll({ name: 'ruirui' })    // find all of the contacts whose name is 'ruirui'
 const contactList = await bot.Contact.findAll({ alias: 'lijiarui' }) // find all of the contacts whose alias is 'lijiarui'
 ```
 
