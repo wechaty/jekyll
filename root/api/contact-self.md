@@ -32,10 +32,17 @@ description: 机器人自己的信息将会封装一个ContactSelf 类. 这个�
 
 ```javascript
 import { FileBox }  from 'file-box'
+import fs from 'fs'
 bot.on('login', async user => {
   console.log(`user ${user} login`)
   const file = await user.avatar()
-  console.log(`Get your avatar: ${file}`)
+  fs.writeFile("./bot-old-avatar.jpg", file, err => {
+    if(err){
+      console.log(err)
+    }else{
+      console.log(`Save the old avatar successfully!`)
+    }
+  })
   const fileBox = FileBox.fromUrl('https://chatie.io/wechaty/images/bot-qr-code.png')
   await user.avatar(fileBox)
   console.log(`Change bot avatar successfully!`)
