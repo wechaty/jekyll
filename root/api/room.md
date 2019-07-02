@@ -16,11 +16,11 @@ All wechat rooms\(groups\) will be encapsulated as a Room.
 
 [RoomQueryFilter](room.md#RoomQueryFilter)
 
-The filter to find the room: {topic: string \| RegExp}[RoomEventName](room.md#RoomEventName)
+The filter to find the room: {topic: string \| RegExp} [RoomEventName](room.md#RoomEventName)
 
-Room Class Event Type[RoomEventFunction](room.md#RoomEventFunction)
+Room Class Event Type [RoomEventFunction](room.md#RoomEventFunction)
 
-Room Class Event Function[RoomMemberQueryFilter](room.md#RoomMemberQueryFilter)
+Room Class Event Function [RoomMemberQueryFilter](room.md#RoomMemberQueryFilter)
 
 The way to search member by Room.member\(\)
 
@@ -40,7 +40,7 @@ All wechat rooms\(groups\) will be encapsulated as a Room.
 * [Room](room.md#Room)
   * _instance_
     * [.sync\(\)](room.md#Room+sync) ⇒ `Promise <void>`
-    * [.say\(textOrContactOrFileOrUrl, \[mention\]\)](room.md#Room+say) ⇒ `Promise <void>`
+    * [.say\(textOrContactOrFileOrUrl, ...mentionList\)](room.md#Room+say) ⇒ `Promise <void>`
     * [.on\(event, listener\)](room.md#Room+on) ⇒ `Room`
     * [.add\(contact\)](room.md#Room+add) ⇒ `Promise <void>`
     * [.del\(contact\)](room.md#Room+del) ⇒ `Promise <void>`
@@ -70,9 +70,9 @@ Force reload data for Room, Sync data from lowlevel API again.
 await room.sync()
 ```
 
-### room.say\(textOrContactOrFileOrUrl, \[mention\]\) ⇒ `Promise <void>`
+### room.say\(textOrContactOrFileOrUrl, ...mentionList\) ⇒ `Promise <void>`
 
-Send message inside Room, if set \[replyTo\], wechaty will mention the contact as well.
+Send message inside Room, if set mentionList, wechaty will mention the contact list as well.
 
 > Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table)
 
@@ -81,7 +81,7 @@ Send message inside Room, if set \[replyTo\], wechaty will mention the contact a
 | Param | Type | Description |
 | :--- | :--- | :--- |
 | textOrContactOrFileOrUrl | `string` \| `Contact` \| `FileBox` \| `UrlLink` | Send `text`, `media file` or `link` inside Room.   You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
-| \[mention\] | `Contact` \| `Array.` | Optional parameter, send content inside Room, and mention @replyTo contact or contactList. |
+| ...mentionList | `Contact []` | Send content inside Room, and mention @contact list. |
 
 **Example**
 
@@ -107,8 +107,9 @@ const contactCard = await bot.Contact.find({name: 'lijiarui'}) // change 'lijiar
 await room.say(contactCard)
 
 // 4. Send text inside room and mention @mention contact
-const contact = await bot.Contact.find({name: 'lijiarui'}) // change 'lijiarui' to any of the room member
-await room.say('Hello world!', contact)
+const members = await room.memberAll() // all members in this room
+const someMembers = members.slice(0, 3);
+await room.say('Hello world!', ...someMembers)
 
 // 5. send Link inside room
 const linkPayload = new UrlLink({
