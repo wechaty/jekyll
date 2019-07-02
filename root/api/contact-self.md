@@ -28,11 +28,11 @@ description: 机器人自己的信息将会封装一个ContactSelf 类. 这个�
 | :--- | :--- |
 | [file] | `FileBox` |
 
-**Example** _\(SET the avatar for a bot\)_
+**Example** _\(GET / SET the avatar for a bot\)_
 
 ```javascript
 import { FileBox }  from 'file-box'
-bot.on('login', async (user: ContactSelf) => {
+bot.on('login', async user => {
   console.log(`user ${user} login`)
   const file = await user.avatar()
   const fileBox = FileBox.fromUrl('https://chatie.io/wechaty/images/bot-qr-code.png')
@@ -51,7 +51,7 @@ bot.on('login', async (user: ContactSelf) => {
 
 ```javascript
 import { generate } from 'qrcode-terminal'
-bot.on('login', async (user: ContactSelf) => {
+bot.on('login', async user => {
   console.log(`user ${user} login`)
   const qrcode = await user.qrcode()
   console.log(`Following is the bot qrcode!`)
@@ -72,7 +72,7 @@ bot.on('login', async (user: ContactSelf) => {
 **Example**
 
 ```javascript
-bot.on('login', async (user: ContactSelf) => {
+bot.on('login', async user => {
   console.log(`user ${user} login`)
   const oldName = user.name()
   try {
@@ -96,7 +96,7 @@ bot.on('login', async (user: ContactSelf) => {
 **Example**
 
 ```javascript
-bot.on('login', async (user: ContactSelf) => {
+bot.on('login', async user => {
   console.log(`user ${user} login`)
   try {
     await user.signature(`Signature changed by wechaty on ${new Date()}`)
