@@ -90,7 +90,7 @@ await room.say(contactCard)
 
 // 4. Send text inside room and mention @mention contact
 const members = await room.memberAll() // memtion all members in this room
-const someMembers = members.slice(0,3);
+const someMembers = members.slice(0, 3);
 await room.say('Hello world!', ...someMembers)
 
 // 5. Send url link in a room
