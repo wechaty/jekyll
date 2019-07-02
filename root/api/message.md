@@ -82,7 +82,7 @@ bot
   }
 })
 .start() 
-
+```
 
 ### message.room\(\) ⇒ `Room` \| `null`
 
@@ -158,10 +158,11 @@ bot
   }
 })
 .start()
+```
 
-### message.say\(textOrContactOrFileOrUrlLink, \[mention\]\) ⇒ `Promise <void>`
+### message.say\(textOrContactOrFileOrUrlLink\) ⇒ `Promise <void>`
 
-Reply a Text, Media File or Link message to the sender.
+Reply a Text,Contact Card, Media File or Link message to the sender.
 
 > Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table)
 
@@ -170,8 +171,7 @@ Reply a Text, Media File or Link message to the sender.
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-| textOrContactOrFile | `string` \| `Contact` \| `FileBox` \| `UrlLink` | send text, Contact, or file to bot. &lt;/br&gt; You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
-| \[mention\] | `Contact` \| `Array.` | If this is a room message, when you set mention param, you can `@` Contact in the room. |
+| textOrContactOrFile | `string` \| `Contact` \| `FileBox` \| `UrlLink` | send text, Contact, or file to bot. <br> You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
 
 **Example**
 
@@ -208,14 +208,14 @@ bot
 // 4. send UrlLink
 
   if (/^link$/i.test(m.text())) { 
-    const linkPayload = new UrlLink({
+    const urlLink = new UrlLink({
       description: 'Wechaty is a Bot SDK for Wechat Individual Account which can help you create a bot in 6 lines of javascript, with cross-platform support including Linux, Windows, Darwin(OSX/Mac) and Docker.',
       thumbnailUrl: 'https://camo.githubusercontent.com/f310a2097d4aa79d6db2962fa42bb3bb2f6d43df/68747470733a2f2f6368617469652e696f2f776563686174792f696d616765732f776563686174792d6c6f676f2d656e2e706e67',
       title: 'Wechaty',
       url: 'https://github.com/chatie/wechaty',
     });
 
-    await msg.say(linkPayload);
+    await msg.say(urlLink);
   }
 })
 .start()
