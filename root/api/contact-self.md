@@ -15,14 +15,13 @@ Bot itself will be encapsulated as a ContactSelf.
 **Kind**: global class
 
 * [ContactSelf](contact-self.md#contactself)
-  * [ContactSelf](contact-self.md#contactself-1)
-    * [contactSelf.avatar\(\[file\]\) ⇒ `Promise.`](contact-self.md#contactselfavatarfile-⇒-promise)
-    * [contactSelf.qrcode\(\) ⇒ `Promise.`](contact-self.md#contactselfqrcode-⇒-promise)
-    * [contactSelf.signature\(signature\)](contact-self.md#contactselfsignaturesignature)
-    * [contactSelf.name\(\) ⇒ `string`](contact-self.md#contactselfname-⇒-string)
-    * [contactSelf.name\(name\) ⇒ `Promise<string>`](contact-self.md#contactselfnamename-⇒-promisestring)
+  * [intance](contact-self.md#contactself)
+    * [contactSelf.avatar\([file]\) ⇒ `Promise <void | FileBox>`](contact-self.md#contactselfavatarfile-⇒-promise)
+    * [contactSelf.qrcode\(\) ⇒ `Promise <string>`](contact-self.md#contactselfqrcode-⇒-promise)
+    * [contactSelf.signature\(signature\) ⇒ `Promise <string>`](contact-self.md#contactselfsignaturesignature)
+    * [contactSelf.name\([name]\) ⇒ `Promise <void> | string`](contact-self.md#contactselfname-⇒-promisestring)
 
-### contactSelf.avatar\(\[file\]\) ⇒ `Promise.`
+### contactSelf.avatar\(\[file\]\) ⇒ `Promise <void | FileBox>`
 
 GET / SET bot avatar
 
@@ -37,12 +36,12 @@ GET / SET bot avatar
 ```javascript
 // Save avatar to local file like `1-name.jpg`
 
-bot.on('login', (user: ContactSelf) => {
+bot.on('login', async user => {
   console.log(`user ${user} login`)
   const file = await user.avatar()
   const name = file.name
   await file.toFile(name, true)
-  console.log(`Save bot avatar: ${contact.name()} with avatar file: ${name}`)
+  console.log(`Save bot avatar: ${user.name()} with avatar file: ${name}`)
 })
 ```
 
@@ -50,7 +49,7 @@ bot.on('login', (user: ContactSelf) => {
 
 ```javascript
 import { FileBox }  from 'file-box'
-bot.on('login', (user: ContactSelf) => {
+bot.on('login', user => {
   console.log(`user ${user} login`)
   const fileBox = FileBox.fromUrl('https://chatie.io/wechaty/images/bot-qr-code.png')
   await user.avatar(fileBox)
@@ -58,16 +57,17 @@ bot.on('login', (user: ContactSelf) => {
 })
 ```
 
-### contactSelf.qrcode\(\) ⇒ `Promise.`
+### contactSelf.qrcode\(\) ⇒ `Promise <string>`
 
 Get bot qrcode
 
 **Kind**: instance method of [`ContactSelf`](contact-self.md#ContactSelf)  
+
 **Example**
 
 ```javascript
 import { generate } from 'qrcode-terminal'
-bot.on('login', (user: ContactSelf) => {
+bot.on('login', async user => {
   console.log(`user ${user} login`)
   const qrcode = await user.qrcode()
   console.log(`Following is the bot qrcode!`)
@@ -75,7 +75,7 @@ bot.on('login', (user: ContactSelf) => {
 })
 ```
 
-### contactSelf.signature\(signature\)
+### contactSelf.signature\(signature\) ⇒ `Promise <void>`
 
 Change bot signature
 
@@ -98,39 +98,24 @@ bot.on('login', async user => {
 })
 ```
 
-### contactSelf.name\(\) ⇒ `string`
+### contactSelf.name\(\[name\]\) ⇒ `Promise<void> | string`
 
-Get name of bot.
-
-**Kind**: instance method of [`ContactSelf`](contact-self.md#contactself)
-
-**Example**
-
-```javascript
-bot.on('login', async user => {
-  console.log(`user ${user} login`)
-  console.log(`user name: ${user.name()}`)
-})
-```
-
-### contactSelf.name\(name\) ⇒ `Promise<string>`
-
-Change bot name.
+Get or change bot name.
 
 **Kind**: instance method of [`ContactSelf`](contact-self.md#contactself)
 
 | Param | Description |
 | :--- | :--- |
-| name | The new alias that the bot will change to |
+| [name] | The new alias that the bot will change to |
 
 **Example**
 
 ```javascript
 bot.on('login', async user => {
   console.log(`user ${user} login`)
-  const oldName = user.name()
+  const oldName = user.name() // get bot name
   try {
-    await user.name(`${oldName}-${new Date().getTime()}`)
+    await user.name(`${oldName}-${new Date().getTime()}`) // change bot name
   } catch (e) {
     console.error('change name failed', e)
   }
