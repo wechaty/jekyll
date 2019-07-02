@@ -18,15 +18,15 @@ Send, receive friend request, and friend confirmation events.
 
 * [Friendship](friendship.md#Friendship)
   * _instance_
-    * [.accept\(\)](friendship.md#Friendship+accept) ⇒ `Promise.`
+    * [.accept\(\)](friendship.md#Friendship+accept) ⇒ `Promise <void>`
     * [.hello\(\)](friendship.md#Friendship+hello) ⇒ `string`
     * [.contact\(\)](friendship.md#Friendship+contact) ⇒ `Contact`
     * [.type\(\)](friendship.md#Friendship+type) ⇒ `FriendshipType`
   * _static_
     * [~~.send\(\)~~](friendship.md#Friendship.send)
-    * [.add\(contact, hello\)](friendship.md#Friendship.add) ⇒ `Promise.`
+    * [.add\(contact, hello\)](friendship.md#Friendship.add) ⇒ `Promise <void>`
 
-### friendship.accept\(\) ⇒ `Promise.`
+### friendship.accept\(\) ⇒ `Promise <void>`
 
 Accept Friend Request
 
@@ -42,20 +42,20 @@ bot.on('friendship', async friendship => {
 
     // 1. New Friend Request
 
-    case Friendship.Type.Receive:
+    case bot.Friendship.Type.Receive:
       await friendship.accept()
       break
 
     // 2. Friend Ship Confirmed
 
-    case Friendship.Type.Confirm:
+    case bot.Friendship.Type.Confirm:
       console.log(`friend ship confirmed`)
       break
     }
   } catch (e) {
     console.error(e)
   }
-}
+})
 .start()
 ```
 
@@ -71,7 +71,7 @@ const bot = new Wechaty()
 bot.on('friendship', async friendship => {
   try {
     console.log(`received friend event from ${friendship.contact().name()}`)
-    if (friendship.type() === Friendship.Type.Receive && friendship.hello() === 'ding') {
+    if (friendship.type() === bot.Friendship.Type.Receive && friendship.hello() === 'ding') {
       await friendship.accept()
     }
   } catch (e) {
@@ -90,7 +90,7 @@ Get the contact from friendship
 
 ```javascript
 const bot = new Wechaty()
-bot.on('friendship', async friendship => {
+bot.on('friendship', friendship => {
   const contact = friendship.contact()
   const name = contact.name()
   console.log(`received friend event from ${name}`)
@@ -104,10 +104,10 @@ Return the Friendship Type
 
 > Tips: FriendshipType is enum here. &lt;/br&gt;
 >
-> * FriendshipType.Unknown  &lt;/br&gt;
-> * FriendshipType.Confirm  &lt;/br&gt;
-> * FriendshipType.Receive  &lt;/br&gt;
-> * FriendshipType.Verify   &lt;/br&gt;
+> * FriendshipType.Unknown
+> * FriendshipType.Confirm
+> * FriendshipType.Receive
+> * FriendshipType.Verify
 
 **Kind**: instance method of [`Friendship`](friendship.md#Friendship)  
 **Example** _\(If request content is \`ding\`, then accept the friendship\)_
@@ -116,7 +116,7 @@ Return the Friendship Type
 const bot = new Wechaty()
 bot.on('friendship', async friendship => {
   try {
-    if (friendship.type() === Friendship.Type.Receive && friendship.hello() === 'ding') {
+    if (friendship.type() === bot.Friendship.Type.Receive && friendship.hello() === 'ding') {
       await friendship.accept()
     }
   } catch (e) {
@@ -135,7 +135,7 @@ use [Friendship\#add](friendship.md#friendship-add-contact-hello-promise) instea
 **Kind**: static method of [`Friendship`](friendship.md#Friendship)  
 
 
-### Friendship.add\(contact, hello\) ⇒ `Promise.`
+### Friendship.add\(contact, hello\) ⇒ `Promise <void>`
 
 Send a Friend Request to a `contact` with message `hello`.
 
