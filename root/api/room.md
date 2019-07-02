@@ -20,7 +20,7 @@ description: 所有的微信群都会被封装成 Room 类
 * [Room](room.md#room)
   * _instance_
     * [.sync\(\)](room.md#room-sync-promise) ⇒ `Promise <void>`
-    * [.say\(textOrContactOrFileOrUrl, \[mention\]\)](room.md#room-say-textorcontactorfileorurl-mention-promise) ⇒ `Promise <void>`
+    * [.say\(textOrContactOrFileOrUrl, ...mentionList\)](room.md#room-say-textorcontactorfileorurl-mention-promise) ⇒ `Promise <void>`
     * [.on\(event, listener\)](room.md#room-on-event-listener-this) ⇒ `this`
     * [.add\(contact\)](room.md#room-add-contact-promise) ⇒ `Promise <void>`
     * [.del\(contact\)](room.md#room-del-contact-promise) ⇒ `Promise <void>`
@@ -52,7 +52,7 @@ await room.sync()
 
 ### room.say\(textOrContactOrFileOrUrl, ...mentionList\) ⇒ `Promise.`
 
-在群内发消息，如果设置了 ...mentionList 参数，机器人在群内发送消息的时候还会@这个联系人。
+在群内发消息，如果设置了 ...mentionList 参数，机器人在群内发送消息的时候还会@这些联系人。
 
 {% hint style="info" %}
 这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#puppet-compatibility)
@@ -63,7 +63,7 @@ await room.sync()
 | Param | Type | Description |
 | :--- | :--- | :--- |
 | textOrContactOrFileOrUrl | `string` \| `Contact` \| `FileBox` \| `UrlLiink` | 群内发送 `text` 或者`media file` 或者`链接` 。你可以通过 [FileBox](https://www.npmjs.com/package/file-box) 来发送文件。 |
-| mentionList | `Contact[]` | 可选参数，当设置这个参数的时候，在群内发送文本消息会@此联系人。 |
+| ...mentionList | `Contact[]` | 可选参数，当设置这个参数的时候，在群内发送文本消息会@这些联系人。 |
 
 **Example**
 
