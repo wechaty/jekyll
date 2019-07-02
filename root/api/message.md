@@ -350,13 +350,13 @@ _**Deprecated**_
 
 **Kind**: instance method of [`Message`](message.md#message)
 
-### message.find\(\)
+### Message.find\(\)
 
 在缓存中找消息。
 
 **Kind**: static method of [`Message`](message.md#message)
 
-### message.findAll\(\)
+### Message.findAll\(\)
 
 在缓存中找消息
 
