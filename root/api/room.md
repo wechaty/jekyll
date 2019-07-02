@@ -50,7 +50,7 @@ description: 所有的微信群都会被封装成 Room 类
 await room.sync()
 ```
 
-### room.say\(textOrContactOrFileOrUrl, ...mentionList\) ⇒ `Promise.`
+### room.say\(textOrContactOrFileOrUrl, ...mentionList\) ⇒ `Promise <void>`
 
 在群内发消息，如果设置了 ...mentionList 参数，机器人在群内发送消息的时候还会@这些联系人。
 
@@ -459,7 +459,7 @@ const owner = room.owner()
 const owner = room.avatar()
 ```
 
-### Room.create\(contactList, topic\) ⇒ `Promise <Room>`(room.md#Room)
+### Room.create\(contactList, topic\) ⇒ [`Promise <Room>`](room.md#Room)
 
 创建群聊
 
