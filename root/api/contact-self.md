@@ -35,6 +35,7 @@ import { FileBox }  from 'file-box'
 bot.on('login', async user => {
   console.log(`user ${user} login`)
   const file = await user.avatar()
+  console.log(`Get your avatar: ${file}`)
   const fileBox = FileBox.fromUrl('https://chatie.io/wechaty/images/bot-qr-code.png')
   await user.avatar(fileBox)
   console.log(`Change bot avatar successfully!`)
