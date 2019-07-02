@@ -17,7 +17,7 @@ description: 所有的微信消息会被封装成一个Message 类
     * [.room\(\)](message.md#message-room-room-or-null) ⇒ `Room` \| `null`
     * ~~~~\[~~.content\(\)~~\]\(message.md\#message-content\)~~~~
     * .[text\(\)](message.md#message-text-string) ⇒ `string`
-    * [.say\(textOrContactOrFile, \[mention\]\)](message.md#message-say-textorcontactorfile-mention-promise) ⇒ `Promise.`
+    * [.say\(textOrContactOrFile\)](message.md#message-say-textorcontactorfile-mention-promise) ⇒ `Promise <void>`
     * [.type\(\)](message.md#message-type-messagetype) ⇒ `MessageType`
     * [.self\(\)](message.md#message-self-boolean) ⇒ `boolean`
     * [.mention\(\)](message.md#message-mention-promise-greater-than) ⇒ `Promise <Contact[]>`
@@ -157,9 +157,9 @@ bot
 .start()
 ```
 
-### message.say\(textOrContactOrFileOrUrl, \[mention\]\) ⇒ `Promise <void>`
+### message.say\(textOrContactOrFileOrUrl\) ⇒ `Promise <void>`
 
-回复多媒体、微信名片、文本或者链接给这条消息的发送者。
+回复文本、微信名片、文件或者链接给这条消息的发送者。
 
 {% hint style="info" %}
 这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#puppet-compatibility)
@@ -170,22 +170,7 @@ bot
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">textOrContactOrFileOrUrl</th>
-      <th style="text-align:left"><code>string</code> | <code>Contact</code> | <code>FileBox</code> | <code>UrlLink</code>
-      </th>
-      <th style="text-align:left">
-        <p>&#x53D1;&#x9001;&#x6587;&#x672C;&#x3001;&#x540D;&#x7247;&#x6216;&#x8005;&#x6587;&#x4EF6;</p>
-        <p>&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <a href="https://www.npmjs.com/package/file-box">FileBox</a> &#x6765;&#x53D1;&#x9001;&#x6587;&#x4EF6;</p>
-      </th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>
+| textOrContactOrFileOrUrl | `string` \| `Contact` \| `FileBox` \| `UrlLink` | 文本、微信名片、文件或者链接<br>你可以使用 [FileBox](https://www.npmjs.com/package/file-box) 来发送文件 |
 
 ```javascript
 import { FileBox }  from 'file-box'
@@ -220,14 +205,14 @@ bot
   // 4. send UrlLink
 
   if (/^link$/i.test(m.text())) { 
-    const linkPayload = new UrlLink({
+    const urlLink = new UrlLink({
       description: 'Wechaty is a Bot SDK for Wechat Individual Account which can help you create a bot in 6 lines of javascript, with cross-platform support including Linux, Windows, Darwin(OSX/Mac) and Docker.',
       thumbnailUrl: 'https://camo.githubusercontent.com/f310a2097d4aa79d6db2962fa42bb3bb2f6d43df/68747470733a2f2f6368617469652e696f2f776563686174792f696d616765732f776563686174792d6c6f676f2d656e2e706e67',
       title: 'Wechaty',
       url: 'https://github.com/chatie/wechaty',
     });
 
-    await msg.say(linkPayload) 
+    await msg.say(urlLink) 
   }
 })
 .start()
