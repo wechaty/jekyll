@@ -193,9 +193,9 @@ bot.on('room-join', async (room, inviteeList, inviter) => {
 ```typescript
 // room-leave Event will emit when someone leave the room.​
 
-bot.on('room-leave', async (room, leaverList) => {  
+bot.on('room-leave', async (room, leaverList, remover) => {  
   const nameList = leaverList.map(c => c.name()).join(',')  
-  console.log(`Room ${await room.topic()} lost member ${nameList}`)
+  console.log(`Room ${await room.topic()} lost member ${nameList}, the remover is: ${remover}`)
 })
 ```
 
