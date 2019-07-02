@@ -160,22 +160,20 @@ bot.on('scan', (url, code) => {  console.log(`[${code}] Scan ${url} to login.` )
 ```typescript
 // Friendship Event will emit when got a new friend request, or friendship is confirmed.
 
-​bot.on('friendship', (friendship) => {  
+​bot.on('friendship', async (friendship) => {  
+  const contact = friendship.contact()
   if(friendship.type() === Friendship.Type.Receive){
-
     // 1. receive new friendship request from new contact    
-    const contact = friendship.contact()    
-    let result = await friendship.accept()      
-    if(result){
+    try {
+      await friendship.accept()      
       console.log(`Request from ${contact.name()} is accept succesfully!`)      
-    } else {        
+    } catch (error) {
       console.log(`Request from ${contact.name()} failed to accept!`)      
-    }      
+    }
   } else if (friendship.type() === Friendship.Type.Confirm) { 
-
     // 2. confirm friendship      
     console.log(`new friendship confirmed with ${contact.name()}`)   
-    } 
+  }
 })
 ```
 
@@ -184,9 +182,9 @@ bot.on('scan', (url, code) => {  console.log(`[${code}] Scan ${url} to login.` )
 ```typescript
 // room-join Event will emit when someone join the room.
 ​
-bot.on('room-join', (room, inviteeList, inviter) => {  
+bot.on('room-join', async (room, inviteeList, inviter) => {  
   const nameList = inviteeList.map(c => c.name()).join(',')  
-  console.log(`Room ${room.topic()} got new member ${nameList}, invited by ${inviter}`)
+  console.log(`Room ${await room.topic()} got new member ${nameList}, invited by ${inviter}`)
 })
 ```
 
@@ -195,9 +193,9 @@ bot.on('room-join', (room, inviteeList, inviter) => {
 ```typescript
 // room-leave Event will emit when someone leave the room.​
 
-bot.on('room-leave', (room, leaverList) => {  
+bot.on('room-leave', async (room, leaverList, remover) => {  
   const nameList = leaverList.map(c => c.name()).join(',')  
-  console.log(`Room ${room.topic()} lost member ${nameList}`)
+  console.log(`Room ${await room.topic()} lost member ${nameList}, the remover is: ${remover}`)
 })
 ```
 
@@ -206,8 +204,8 @@ bot.on('room-leave', (room, leaverList) => {
 ```typescript
 // room-topic Event will emit when someone change the room's topic.
 ​
-bot.on('room-topic', (room, topic, oldTopic, changer) => {  
-  console.log(`Room ${room.topic()} topic changed from ${oldTopic} to ${topic} by ${changer.name()}`)
+bot.on('room-topic', async (room, topic, oldTopic, changer) => {  
+  console.log(`Room ${await room.topic()} topic changed from ${oldTopic} to ${topic} by ${changer.name()}`)
 })
 ```
 
@@ -223,7 +221,7 @@ bot.on('room-topic', (room, topic, oldTopic, changer) => {
   } catch (e) {    
     console.error(e)  
   }
-}
+})
 ```
 
 **Example** _\(Event:error \)_
@@ -234,7 +232,7 @@ bot.on('room-topic', (room, topic, oldTopic, changer) => {
 ​bot.on('error', (error) => {  console.error(error)})
 ```
 
-### wechaty.start\(\) ⇒ `Promise.`           <a id="wechaty-start-promise"></a>
+### wechaty.start\(\) ⇒ `Promise <void>`           <a id="wechaty-start-promise"></a>
 
 启动机器人
 
@@ -248,7 +246,7 @@ bot.on('room-topic', (room, topic, oldTopic, changer) => {
 await bot.start() // do other stuff with bot here
 ```
 
-### wechaty.stop\(\) ⇒ `Promise.`           <a id="wechaty-stop-promise"></a>
+### wechaty.stop\(\) ⇒ `Promise <void>`           <a id="wechaty-stop-promise"></a>
 
 停止机器人
 
@@ -258,7 +256,7 @@ await bot.start() // do other stuff with bot here
 await bot.stop()
 ```
 
-### wechaty.logout\(\) ⇒ `Promise.`           <a id="wechaty-logout-promise"></a>
+### wechaty.logout\(\) ⇒ `Promise <void>`           <a id="wechaty-logout-promise"></a>
 
 登出机器人
 
@@ -293,7 +291,7 @@ const contact = bot.userSelf()
 console.log(`Bot is ${contact.name()}`)
 ```
 
-### wechaty.say\(textOrContactOrFileOrUrl\) ⇒ `Promise.`           <a id="wechaty-say-textorcontactorfileorurl-promise"></a>
+### wechaty.say\(textOrContactOrFileOrUrl\) ⇒ `Promise <void>`           <a id="wechaty-say-textorcontactorfileorurl-promise"></a>
 
 机器人自己给自己发消息。
 
