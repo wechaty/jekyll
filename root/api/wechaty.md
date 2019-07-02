@@ -34,9 +34,9 @@ The term [Puppet](https://github.com/Chatie/wechaty/wiki/Puppet) in Wechaty is a
 
 [WechatyOptions](wechaty.md#WechatyOptions)
 
-The option parameter to create a wechaty instance[WechatyEventName](wechaty.md#WechatyEventName)
+The option parameter to create a wechaty instance [WechatyEventName](wechaty.md#WechatyEventName)
 
-Wechaty Class Event Type[WechatyEventFunction](wechaty.md#WechatyEventFunction)
+Wechaty Class Event Type [WechatyEventFunction](wechaty.md#WechatyEventFunction)
 
 Wechaty Class Event Function
 
@@ -158,18 +158,18 @@ wechaty.on('message', (message) => {
 // Friendship Event will emit when got a new friend request, or friendship is confirmed.
 
 bot.on('friendship', async (friendship) => {
-  if(friendship.type() === bot.Friendship.Type.Receive){ // 1. receive new friendship request from new contact
+  if(friendship.type() === bot.Friendship.Type.Receive) { // 1. receive new friendship request from new contact
     const contact = friendship.contact()
     let result = await friendship.accept()
-      if(result){
-        console.log(`Request from ${contact.name()} is accept succesfully!`)
-      } else{
-        console.log(`Request from ${contact.name()} failed to accept!`)
-      }
-      } else if (friendship.type() === bot.Friendship.Type.Confirm) { // 2. confirm friendship
-      console.log(`new friendship confirmed with ${contact.name()}`)
-   }
- })
+    if(result) {
+      console.log(`Request from ${contact.name()} is accept succesfully!`)
+    } else {
+      console.log(`Request from ${contact.name()} failed to accept!`)
+    }
+  } else if (friendship.type() === bot.Friendship.Type.Confirm) { // 2. confirm friendship
+    console.log(`New friendship confirmed with ${contact.name()}`)
+  }
+})
 ```
 
 **Example** _\(Event:room-join \)_
@@ -188,9 +188,9 @@ bot.on('room-join', async (room, inviteeList, inviter) => {
 ```javascript
 // room-leave Event will emit when someone leave the room.
 
-bot.on('room-leave', async (room, leaverList) => {
+bot.on('room-leave', async (room, leaverList, remover) => {
   const nameList = leaverList.map(c => c.name()).join(',')
-  console.log(`Room ${await room.topic()} lost member ${nameList}`)
+  console.log(`Room ${await room.topic()} lost member ${nameList}, the remover is: ${remover}`)
 })
 ```
 
