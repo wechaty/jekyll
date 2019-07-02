@@ -121,7 +121,7 @@ const linkPayload = new UrlLink({
 await room.say(linkPayload)
 ```
 
-### room.on\(event, listener\) ⇒ `Room`
+### room.on\(event, listener\) ⇒ `this`
 
 **Kind**: instance method of [`Room`](room.md#Room)  
 **Returns**: `Room` - - Room for chain
