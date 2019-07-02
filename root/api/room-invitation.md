@@ -16,7 +16,7 @@ accept room invitation
   * [.topic\(\)](room-invitation.md#RoomInvitation+topic) ⇒ `Promise <string>`
   * [~~.roomTopic\(\)~~](room-invitation.md#RoomInvitation+roomTopic) ⇒ `Promise <string>`
   * [.date\(\)](room-invitation.md#RoomInvitation+date) ⇒ `Promise <Date>`
-  * [.age\(\)](room-invitation.md#RoomInvitation+age) ⇒ `number`
+  * [.age\(\)](room-invitation.md#RoomInvitation+age) ⇒ `Promise <number>`
 
 ### roomInvitation.accept\(\) ⇒ `Promise <void>`
 
@@ -82,7 +82,7 @@ Get the invitation time
 
 **Kind**: instance method of [`RoomInvitation`](room-invitation.md#RoomInvitation)
 
-### roomInvitation.age\(\) ⇒ `number`
+### roomInvitation.age\(\) ⇒ `Promise <number>`
 
 Returns the roopm invitation age in seconds.
 
