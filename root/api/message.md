@@ -162,7 +162,7 @@ bot
 
 ### message.say\(textOrContactOrFileOrUrlLink\) ⇒ `Promise <void>`
 
-Reply a Text,Contact Card, Media File or Link message to the sender.
+Reply a Text, Contact Card, Media File or Link message to the sender.
 
 > Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table)
 
