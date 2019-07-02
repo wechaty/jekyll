@@ -16,9 +16,9 @@ description: 自动通过入群邀请
   * [.topic\(\)](room-invitation.md#roominvitation-topic-contact) ⇒ `Promise <string>`
   * [~~.roomTopic\(\)~~](room-invitation.md#roominvitation-roomtopic) ⇒ `Promise <string>`
   * [.date\(\)](room-invitation.md#roominvitation-date-promise) ⇒ `Promise <Date>`
-  * [.age\(\)](room-invitation.md#roominvitation-age-number) ⇒ `number`
+  * [.age\(\)](room-invitation.md#roominvitation-age-number) ⇒ `Promise <number>`
 
-### roomInvitation.accept\(\) ⇒ `Promise.`
+### roomInvitation.accept\(\) ⇒ `Promise <void>`
 
 自动通过入群邀请
 
