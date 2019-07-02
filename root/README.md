@@ -64,13 +64,9 @@ Here is the whole image for wechaty puppet introduction:
 
 ## Join Us
 
-{% hint style="success" %}
-Scan the following QRCode, reply ''wechaty" to join Wechaty Developers' Home.
-{% endhint %}
+> Scan the following QRCode, reply ''wechaty" to join Wechaty Developers' Home.
 
-{% hint style="danger" %}
-Please read the doc before you ask question in the group. We don't welcome any discussion unrelated to wechaty, or you should give a red pocket\(more than 100 RMB\) in the group.
-{% endhint %}
+> Please read the doc before you ask question in the group. We don't welcome any discussion unrelated to wechaty, or you should give a red pocket\(more than 100 RMB\) in the group.
 
 ![Wechaty Developers&apos; Home](.gitbook/assets/image%20%281%29.png)
 
