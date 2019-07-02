@@ -36,7 +36,7 @@ GET / SET bot avatar
 ```javascript
 // Save avatar to local file like `1-name.jpg`
 
-bot.on('login', async (user: ContactSelf) => {
+bot.on('login', async user => {
   console.log(`user ${user} login`)
   const file = await user.avatar()
   const name = file.name
@@ -49,7 +49,7 @@ bot.on('login', async (user: ContactSelf) => {
 
 ```javascript
 import { FileBox }  from 'file-box'
-bot.on('login', (user: ContactSelf) => {
+bot.on('login', user => {
   console.log(`user ${user} login`)
   const fileBox = FileBox.fromUrl('https://chatie.io/wechaty/images/bot-qr-code.png')
   await user.avatar(fileBox)
@@ -67,7 +67,7 @@ Get bot qrcode
 
 ```javascript
 import { generate } from 'qrcode-terminal'
-bot.on('login', async (user: ContactSelf) => {
+bot.on('login', async user => {
   console.log(`user ${user} login`)
   const qrcode = await user.qrcode()
   console.log(`Following is the bot qrcode!`)
@@ -88,7 +88,7 @@ Change bot signature
 **Example**
 
 ```javascript
-bot.on('login', async (user: ContactSelf) => {
+bot.on('login', async user => {
   console.log(`user ${user} login`)
   try {
     await user.signature(`Signature changed by wechaty on ${new Date()}`)
@@ -111,7 +111,7 @@ Get or change bot name.
 **Example**
 
 ```javascript
-bot.on('login', async (user: ContactSelf) => {
+bot.on('login', async user => {
   console.log(`user ${user} login`)
   const oldName = user.name() // get bot name
   try {
