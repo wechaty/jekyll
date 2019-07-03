@@ -8,11 +8,11 @@ Chatie 的成长离不开开源社区里面每一个成员的贡献，无论你�
 
 同时，我们也会不定期在全球举行贡献者的线下聚会，共同讨论技术问题或者~~组织各类腐败活动。~~部分活动博客如下：
 
-* \*\*\*\*[**Wechaty Contributor Dinner**](https://blog.chatie.io/wechaty-meeting/)\*\*\*\*
-* \*\*\*\*[**The memorabilia of The First Chatie WWDC Party**](https://blog.chatie.io/the-first-chatie-wwdc-party/)\*\*\*\*
-* \*\*\*\*[**Shanghai WWDC - WeChaty Worldwide Developers Conference**](https://blog.chatie.io/wechaty-shanghai-meetup/)\*\*\*\*
-* \*\*\*\*[**Wechaty Contributor Dinner with Data Girls**](https://blog.chatie.io/wechaty-contributor-dinner-data-girl/)\*\*\*\*
-* \*\*\*\*[**Wechaty Country Wide Developer Conference**](https://blog.chatie.io/country-wide-developer-conference/)\*\*\*\*
+* [**Wechaty Contributor Dinner**](https://blog.chatie.io/wechaty-meeting/)
+* [**The memorabilia of The First Chatie WWDC Party**](https://blog.chatie.io/the-first-chatie-wwdc-party/)
+* [**Shanghai WWDC - WeChaty Worldwide Developers Conference**](https://blog.chatie.io/wechaty-shanghai-meetup/)
+* [**Wechaty Contributor Dinner with Data Girls**](https://blog.chatie.io/wechaty-contributor-dinner-data-girl/)
+* [**Wechaty Country Wide Developer Conference**](https://blog.chatie.io/country-wide-developer-conference/)
 * **.....**
 
 ## 如何贡献

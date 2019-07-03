@@ -26,7 +26,7 @@ description: 机器人自己的信息将会封装一个ContactSelf 类. 这个�
 
 | Param | Type |
 | :--- | :--- |
-| [file] | `FileBox` |
+| \[file\] | `FileBox` |
 
 **Example** _\(GET / SET the avatar for a bot\)_
 
@@ -47,7 +47,7 @@ bot.on('login', async user => {
 
 获取机器人的二维码。
 
-**Kind**: instance method of [`ContactSelf`](contact-self.md#contactself) 
+**Kind**: instance method of [`ContactSelf`](contact-self.md#contactself)
 
 **Example**
 
@@ -69,7 +69,7 @@ bot.on('login', async user => {
 
 | Param | Description |
 | :--- | :--- |
-| [name] | 机器人要修改的昵称内容 |
+| \[name\] | 机器人要修改的昵称内容 |
 
 **Example**
 

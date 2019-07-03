@@ -411,7 +411,7 @@ if (contact && room) {
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-| query | [`RoomQueryFilter`](room.md#roomqueryfilter) \| `string` | 1. RoomMemberQueryFilter 可通过 name, roomAlias, contactAlias 查找指定的群成员。<br>2. 当memberAll(name) 的参数为string 类型的时候, 返回所有找到的群成员。这里面的name 包括上面定义的name, roomAlias, contactAlias。|
+| query | [`RoomQueryFilter`](room.md#roomqueryfilter) \| `string` | 1. RoomMemberQueryFilter 可通过 name, roomAlias, contactAlias 查找指定的群成员。 2. 当memberAll\(name\) 的参数为string 类型的时候, 返回所有找到的群成员。这里面的name 包括上面定义的name, roomAlias, contactAlias。 |
 
 ### room.member\(query\) ⇒ `Promise <null | Contact>`
 
@@ -427,8 +427,7 @@ if (contact && room) {
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-| query | [`RoomQueryFilter`](room.md#roomqueryfilter) \| `string` | RoomMemberQueryFilter 可通过 name, roomAlias, contactAlias 查找指定的群成员。|
-
+| query | [`RoomQueryFilter`](room.md#roomqueryfilter) \| `string` | RoomMemberQueryFilter 可通过 name, roomAlias, contactAlias 查找指定的群成员。 |
 
 ### room.owner\(\) ⇒ `Contact` \| `null`
 
@@ -525,7 +524,7 @@ const roomList = await bot.Room.find()
 const roomList = await bot.Room.find({topic: 'wechaty'})
 ```
 
-## 类型定义      <a id="typedef"></a>
+## 类型定义       <a id="typedef"></a>
 
 [RoomQueryFilter](room.md#RoomQueryFilter)
 

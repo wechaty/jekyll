@@ -170,7 +170,7 @@ bot
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-| textOrContactOrFileOrUrl | `string` \| `Contact` \| `FileBox` \| `UrlLink` | 文本、微信名片、文件或者链接<br>你可以使用 [FileBox](https://www.npmjs.com/package/file-box) 来发送文件 |
+| textOrContactOrFileOrUrl | `string` \| `Contact` \| `FileBox` \| `UrlLink` | 文本、微信名片、文件或者链接 你可以使用 [FileBox](https://www.npmjs.com/package/file-box) 来发送文件 |
 
 ```javascript
 import { FileBox }  from 'file-box'
