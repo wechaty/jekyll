@@ -55,7 +55,7 @@ All wechat rooms\(groups\) will be encapsulated as a Room.
     * [.owner\(\)](room.md#Room+owner) ⇒ `Contact` \| `null`
     * [.avatar\(\)](room.md#room-owner-contact-or-null) ⇒ `Promise <FileBox>`
   * _static_
-    * [.create\(contactList, \[topic\]\)](room.md#Room.create) ⇒ [`Promise <Room>`](room.md#Room)
+    * [.create\(contactList, \[topic\]\)](room.md#Room.create) ⇒ `Promise <Room>`
     * [.findAll\(\[query\]\)](room.md#Room.findAll) ⇒ `Promise <Room []>`
     * [.find\(query\)](room.md#Room.find) ⇒ `Promise <Room | null>`
 
