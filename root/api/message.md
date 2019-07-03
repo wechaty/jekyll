@@ -19,7 +19,7 @@ All wechat messages will be encapsulated as a Message.
     * [.room\(\)](message.md#Message+room) ⇒ `Room` \| `null`
     * [~~.content\(\)~~](message.md#Message+content)
     * [.text\(\)](message.md#Message+text) ⇒ `string`
-    * [.say\(textOrContactOrFile, \[mention\]\)](message.md#Message+say) ⇒ `Promise <void>`
+    * [.say\(textOrContactOrFile\)](message.md#Message+say) ⇒ `Promise <void>`
     * [.type\(\)](message.md#Message+type) ⇒ `MessageType`
     * [.self\(\)](message.md#Message+self) ⇒ `boolean`
     * [.mention\(\)](message.md#Message+mention) ⇒ `Promise <Contact []>`
