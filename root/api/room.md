@@ -124,7 +124,7 @@ await room.say(linkPayload)
 ### room.on\(event, listener\) ⇒ `this`
 
 **Kind**: instance method of [`Room`](room.md#Room)  
-**Returns**: `Room` - - Room for chain
+**Returns**: `this` - - Room for chain
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
