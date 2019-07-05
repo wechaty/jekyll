@@ -19,22 +19,23 @@ All wechat messages will be encapsulated as a Message.
     * [.room\(\)](message.md#Message+room) ⇒ `Room` \| `null`
     * [~~.content\(\)~~](message.md#Message+content)
     * [.text\(\)](message.md#Message+text) ⇒ `string`
-    * [.say\(textOrContactOrFile, \[mention\]\)](message.md#Message+say) ⇒ `Promise.`
+    * [.say\(textOrContactOrFile\)](message.md#Message+say) ⇒ `Promise <void>`
     * [.type\(\)](message.md#Message+type) ⇒ `MessageType`
     * [.self\(\)](message.md#Message+self) ⇒ `boolean`
-    * [.mention\(\)](message.md#Message+mention) ⇒ `Promise.>`
-    * [.mentionSelf\(\)](message.md#Message+mentionSelf) ⇒ `Promise.`
-    * [.forward\(to\)](message.md#Message+forward) ⇒ `Promise.`
-    * [.date\(\)](message.md#Message+date)
+    * [.mention\(\)](message.md#Message+mention) ⇒ `Promise <Contact []>`
+    * [.mentionSelf\(\)](message.md#Message+mentionSelf) ⇒ `Promise <boolean>`
+    * [.forward\(to\)](message.md#Message+forward) ⇒ `Promise <void>`
+    * [.date\(\)](message.md#Message+date) ⇒ `Date`
     * [.age\(\)](message.md#Message+age) ⇒ `number`
     * [~~.file\(\)~~](message.md#Message+file)
-    * [.toFileBox\(\)](message.md#Message+toFileBox) ⇒ `Promise.`
-    * [.toContact\(\)](message.md#Message+toContact) ⇒ `Promise.`
+    * [.toFileBox\(\)](message.md#Message+toFileBox) ⇒ `Promise <FileBox>`
+    * [.toContact\(\)](message.md#Message+toContact) ⇒ `Promise <Contact>`
+    * [.toUrlLink\(\)](message.md#Message+toUrlLink) ⇒ `Promise <UrlLink>`
   * _static_
-    * [.find\(\)](message.md#Message.find)
-    * [.findAll\(\)](message.md#Message.findAll)
+    * [.find\(\)](message.md#Message.find) ⇒ `Promise <Message>`
+    * [.findAll\(\)](message.md#Message.findAll) ⇒ `Promise <Message []>`
 
-### message.from\(\) ⇒ `Contact`
+### message.from\(\) ⇒ `Contact | null` 
 
 Get the sender from a message.
 
@@ -81,7 +82,7 @@ bot
   }
 })
 .start() 
-
+```
 
 ### message.room\(\) ⇒ `Room` \| `null`
 
@@ -140,7 +141,7 @@ bot
 .start()
 ```
 
-### message.toRecalled\(\) ⇒ `Promise`
+### message.toRecalled\(\) ⇒ `Promise <Message | null>`
 
 Get the text content of the recalled message
 
@@ -151,16 +152,17 @@ Get the text content of the recalled message
 const bot = new Wechaty()
 bot
 .on('message', async m => {
-  if (m.type() === MessageType.Recalled) {
+  if (m.type() === bot.Message.Type.Recalled) {
     const recalledMessage = await m.toRecalled()
     console.log(`Message: ${recalledMessage} has been recalled.`)
   }
 })
 .start()
+```
 
-### message.say\(textOrContactOrFileOrUrlLink, \[mention\]\) ⇒ `Promise.`
+### message.say\(textOrContactOrFileOrUrlLink\) ⇒ `Promise <void>`
 
-Reply a Text, Media File or Link message to the sender.
+Reply a Text, Contact Card, Media File or Link message to the sender.
 
 > Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table)
 
@@ -169,8 +171,7 @@ Reply a Text, Media File or Link message to the sender.
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-| textOrContactOrFile | `string` \| `Contact` \| `FileBox` \| `UrlLink` | send text, Contact, or file to bot. &lt;/br&gt; You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
-| \[mention\] | `Contact` \| `Array.` | If this is a room message, when you set mention param, you can `@` Contact in the room. |
+| textOrContactOrFile | `string` \| `Contact` \| `FileBox` \| `UrlLink` | send text, Contact, or file to bot. <br> You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
 
 **Example**
 
@@ -204,19 +205,19 @@ bot
     await msg.say(contactCard)
   }
 
-})
-
 // 4. send UrlLink
 
-if (/^link$/i.test(m.text())) { 
-  const linkPayload = new UrlLnik({
-    description: 'Netty',
-    thumbnailUrl: 'http://mmbiz.qpic.cn/mmbiz_jpg/48MFTQpxichmmxEoXZ1w7eno72H2MQdx1WC6JiaVdYRmwAp4MCcQbctE2IE7jWqkWOlgMPqMBXVAdR1N46xEibvoQ/640?wx_fmt=jpeg&wxtype=jpeg&wxfrom=0',
-    title: 'Netty',
-    url: 'http://mp.weixin.qq.com/s?__biz=MzU2MDU3MzE1Mg==&mid=2247484375&idx=1&sn=5ee91b0a8607a1766b5212a23d3c9179&chksm=fc04bc58cb73354e798403bcc03e293149bb115a0755940e334c0fbe33d7c3b0b0797120a213&scene=0&xtrack=1#rd', 
-  })
-  await msg.say(linkPayload) 
-}
+  if (/^link$/i.test(m.text())) { 
+    const urlLink = new UrlLink({
+      description: 'Wechaty is a Bot SDK for Wechat Individual Account which can help you create a bot in 6 lines of javascript, with cross-platform support including Linux, Windows, Darwin(OSX/Mac) and Docker.',
+      thumbnailUrl: 'https://camo.githubusercontent.com/f310a2097d4aa79d6db2962fa42bb3bb2f6d43df/68747470733a2f2f6368617469652e696f2f776563686174792f696d616765732f776563686174792d6c6f676f2d656e2e706e67',
+      title: 'Wechaty',
+      url: 'https://github.com/chatie/wechaty',
+    });
+
+    await msg.say(urlLink);
+  }
+})
 .start()
 ```
 
@@ -226,15 +227,15 @@ Get the type from the message.
 
 > Tips: MessageType is Enum here. &lt;/br&gt;
 >
-> * MessageType.Unknown     &lt;/br&gt;
-> * MessageType.Attachment  &lt;/br&gt;
-> * MessageType.Audio       &lt;/br&gt;
-> * MessageType.Contact     &lt;/br&gt;
-> * MessageType.Emoticon    &lt;/br&gt;
-> * MessageType.Image       &lt;/br&gt;
-> * MessageType.Text        &lt;/br&gt;
-> * MessageType.Video       &lt;/br&gt;
-> * MessageType.Url         &lt;/br&gt;
+> * MessageType.Unknown     
+> * MessageType.Attachment  
+> * MessageType.Audio       
+> * MessageType.Contact     
+> * MessageType.Emoticon    
+> * MessageType.Image       
+> * MessageType.Text        
+> * MessageType.Video       
+> * MessageType.Url         
 
 **Kind**: instance method of [`Message`](message.md#Message)  
 **Example**
@@ -260,7 +261,7 @@ if (message.self()) {
 }
 ```
 
-### message.mention\(\) ⇒ `Promise.`
+### message.mention\(\) ⇒ `Promise <Contact []>`
 
 Get message mentioned contactList.
 
@@ -274,7 +275,7 @@ Message event table as follows
 | Identify two contacts with the same roomAlias by \[You were  mentioned\] tip | ✘ | ✘ | √ | √ |
 
 **Kind**: instance method of [`Message`](message.md#Message)  
-**Returns**: `Promise.>` - - Return message mentioned contactList  
+**Returns**: `Promise <Contact []>` - - Return message mentioned contactList  
 **Example**
 
 ```javascript
@@ -282,12 +283,12 @@ const contactList = await message.mention()
 console.log(contactList)
 ```
 
-### message.mentionSelf\(\) ⇒ `Promise.`
+### message.mentionSelf\(\) ⇒ `Promise <boolean>`
 
 Check if a message is mention self.
 
 **Kind**: instance method of [`Message`](message.md#Message)  
-**Returns**: `Promise.` - - Return `true` for mention me.  
+**Returns**: `Promise <boolean>` - - Return `true` for mention me.  
 **Example**
 
 ```javascript
@@ -296,7 +297,7 @@ if (await message.mentionSelf()) {
 }
 ```
 
-### message.forward\(to\) ⇒ `Promise.`
+### message.forward\(to\) ⇒ `Promise <void>`
 
 Forward the received message.
 
@@ -304,7 +305,7 @@ Forward the received message.
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-| to | `Sayable` \| `Array.` | Room or Contact The recipient of the message, the room, or the contact |
+| to | `Sayable` \| `Array` | Room or Contact The recipient of the message, the room, or the contact |
 
 **Example**
 
@@ -321,7 +322,7 @@ bot
 .start()
 ```
 
-### message.date\(\)
+### message.date\(\) ⇒ `Date`
 
 Message sent date
 
@@ -343,7 +344,7 @@ use [toFileBox](message.md#Message+toFileBox) instead
 
 **Kind**: instance method of [`Message`](message.md#Message)
 
-### message.toFileBox\(\) ⇒ `Promise.`
+### message.toFileBox\(\) ⇒ `Promise <FileBox>`
 
 Extract the Media File from the Message, and put it into the FileBox.
 
@@ -351,7 +352,7 @@ Extract the Media File from the Message, and put it into the FileBox.
 
 **Kind**: instance method of [`Message`](message.md#Message)
 
-### message.toContact\(\) ⇒ `Promise.`
+### message.toContact\(\) ⇒ `Promise <Contact>`
 
 Get Share Card of the Message Extract the Contact Card from the Message, and encapsulate it into Contact class
 
@@ -359,13 +360,21 @@ Get Share Card of the Message Extract the Contact Card from the Message, and enc
 
 **Kind**: instance method of [`Message`](message.md#Message)
 
-### Message.find\(\)
+### message.toUrlLink\(\) ⇒ `Promise <UrlLink>`
+
+Get Url Link of the Message Extract the Url Link from the Message, and encapsulate it into UrlLink class
+
+> Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table)
+
+**Kind**: instance method of [`Message`](message.md#Message)
+
+### Message.find\(\) ⇒ `Promise <Message | null>`
 
 Find message in cache
 
 **Kind**: static method of [`Message`](message.md#Message)
 
-### Message.findAll\(\)
+### Message.findAll\(\) ⇒ `Promise <Message []>`
 
 Find messages in cache
 
