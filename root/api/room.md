@@ -16,11 +16,11 @@ All wechat rooms\(groups\) will be encapsulated as a Room.
 
 [RoomQueryFilter](room.md#RoomQueryFilter)
 
-The filter to find the room: {topic: string \| RegExp}[RoomEventName](room.md#RoomEventName)
+The filter to find the room: {topic: string \| RegExp} [RoomEventName](room.md#RoomEventName)
 
-Room Class Event Type[RoomEventFunction](room.md#RoomEventFunction)
+Room Class Event Type [RoomEventFunction](room.md#RoomEventFunction)
 
-Room Class Event Function[RoomMemberQueryFilter](room.md#RoomMemberQueryFilter)
+Room Class Event Function [RoomMemberQueryFilter](room.md#RoomMemberQueryFilter)
 
 The way to search member by Room.member\(\)
 
@@ -39,27 +39,27 @@ All wechat rooms\(groups\) will be encapsulated as a Room.
 
 * [Room](room.md#Room)
   * _instance_
-    * [.sync\(\)](room.md#Room+sync) ⇒ `Promise.`
-    * [.say\(textOrContactOrFileOrUrl, \[mention\]\)](room.md#Room+say) ⇒ `Promise.`
-    * [.on\(event, listener\)](room.md#Room+on) ⇒ `this`
-    * [.add\(contact\)](room.md#Room+add) ⇒ `Promise.`
-    * [.del\(contact\)](room.md#Room+del) ⇒ `Promise.`
-    * [.quit\(\)](room.md#Room+quit) ⇒ `Promise.`
-    * [.topic\(\[newTopic\]\)](room.md#Room+topic) ⇒ `Promise.`
-    * [.announce\(\[text\]\)](room.md#Room+announce) ⇒ `Promise.`
-    * [.qrcode\(\)](room.md#Room+qrcode) ⇒ `Promise.`
-    * [.alias\(contact\)](room.md#Room+alias) ⇒ `Promise.`
-    * [.has\(contact\)](room.md#Room+has) ⇒ `Promise.`
-    * [.memberAll\(\[query\]\)](room.md#Room+memberAll) ⇒ `Promise.>`
-    * [.member\(queryArg\)](room.md#Room+member) ⇒ `Promise.`
+    * [.sync\(\)](room.md#Room+sync) ⇒ `Promise <void>`
+    * [.say\(textOrContactOrFileOrUrl, ...mentionList\)](room.md#Room+say) ⇒ `Promise <void>`
+    * [.on\(event, listener\)](room.md#Room+on) ⇒ `Room`
+    * [.add\(contact\)](room.md#Room+add) ⇒ `Promise <void>`
+    * [.del\(contact\)](room.md#Room+del) ⇒ `Promise <void>`
+    * [.quit\(\)](room.md#Room+quit) ⇒ `Promise <void>`
+    * [.topic\(\[newTopic\]\)](room.md#Room+topic) ⇒ `Promise <void | string>`
+    * [.announce\(\[text\]\)](room.md#Room+announce) ⇒ `Promise <void | string>`
+    * [.qrcode\(\)](room.md#Room+qrcode) ⇒ `Promise <string>`
+    * [.alias\(contact\)](room.md#Room+alias) ⇒ `Promise <null | string>`
+    * [.has\(contact\)](room.md#Room+has) ⇒ `Promise <boolean>`
+    * [.memberAll\(\[query\]\)](room.md#Room+memberAll) ⇒ `Promise <Contact []>`
+    * [.member\(queryArg\)](room.md#Room+member) ⇒ `Promise <Contact | null>`
     * [.owner\(\)](room.md#Room+owner) ⇒ `Contact` \| `null`
-    * [.avatar\(\)](room.md#room-owner-contact-or-null) ⇒ `Promise.`
+    * [.avatar\(\)](room.md#room-owner-contact-or-null) ⇒ `Promise <FileBox>`
   * _static_
-    * [.create\(contactList, \[topic\]\)](room.md#Room.create) ⇒ [`Promise.`](room.md#Room)
-    * [.findAll\(\[query\]\)](room.md#Room.findAll) ⇒ `Promise.>`
-    * [.find\(query\)](room.md#Room.find) ⇒ `Promise.`
+    * [.create\(contactList, \[topic\]\)](room.md#Room.create) ⇒ `Promise <Room>`
+    * [.findAll\(\[query\]\)](room.md#Room.findAll) ⇒ `Promise <Room []>`
+    * [.find\(query\)](room.md#Room.find) ⇒ `Promise <Room | null>`
 
-### room.sync\(\) ⇒ `Promise.`
+### room.sync\(\) ⇒ `Promise <void>`
 
 Force reload data for Room, Sync data from lowlevel API again.
 
@@ -70,9 +70,9 @@ Force reload data for Room, Sync data from lowlevel API again.
 await room.sync()
 ```
 
-### room.say\(textOrContactOrFileOrUrl, \[mention\]\) ⇒ `Promise.`
+### room.say\(textOrContactOrFileOrUrl, ...mentionList\) ⇒ `Promise <void>`
 
-Send message inside Room, if set \[replyTo\], wechaty will mention the contact as well.
+Send message inside Room, if set mentionList, wechaty will mention the contact list as well.
 
 > Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table)
 
@@ -81,7 +81,7 @@ Send message inside Room, if set \[replyTo\], wechaty will mention the contact a
 | Param | Type | Description |
 | :--- | :--- | :--- |
 | textOrContactOrFileOrUrl | `string` \| `Contact` \| `FileBox` \| `UrlLink` | Send `text`, `media file` or `link` inside Room.   You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
-| \[mention\] | `Contact` \| `Array.` | Optional parameter, send content inside Room, and mention @replyTo contact or contactList. |
+| ...mentionList | `Contact []` | Send content inside Room, and mention @contact list. |
 
 **Example**
 
@@ -107,8 +107,9 @@ const contactCard = await bot.Contact.find({name: 'lijiarui'}) // change 'lijiar
 await room.say(contactCard)
 
 // 4. Send text inside room and mention @mention contact
-const contact = await bot.Contact.find({name: 'lijiarui'}) // change 'lijiarui' to any of the room member
-await room.say('Hello world!', contact)
+const members = await room.memberAll() // all members in this room
+const someMembers = members.slice(0, 3);
+await room.say('Hello world!', ...someMembers)
 
 // 5. send Link inside room
 const linkPayload = new UrlLink({
@@ -123,7 +124,7 @@ await room.say(linkPayload)
 ### room.on\(event, listener\) ⇒ `this`
 
 **Kind**: instance method of [`Room`](room.md#Room)  
-**Returns**: `this` - - this for chain
+**Returns**: `this` - - Room for chain
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
@@ -186,7 +187,7 @@ if (room) {
 }
 ```
 
-### room.add\(contact\) ⇒ `Promise.`
+### room.add\(contact\) ⇒ `Promise <void>`
 
 Add contact in a room
 
@@ -217,7 +218,7 @@ if (room) {
 }
 ```
 
-### room.del\(contact\) ⇒ `Promise.`
+### room.del\(contact\) ⇒ `Promise <void>`
 
 Delete a contact from the room It works only when the bot is the owner of the room
 
@@ -248,7 +249,7 @@ if (room) {
 }
 ```
 
-### room.quit\(\) ⇒ `Promise.`
+### room.quit\(\) ⇒ `Promise <void>`
 
 Bot quit the room itself
 
@@ -261,7 +262,7 @@ Bot quit the room itself
 await room.quit()
 ```
 
-### room.topic\(\[newTopic\]\) ⇒ `Promise.`
+### room.topic\(\[newTopic\]\) ⇒ `Promise <void | string>`
 
 SET/GET topic from the room
 
@@ -302,7 +303,7 @@ bot
 .start()
 ```
 
-### room.announce\(\[text\]\) ⇒ `Promise.`
+### room.announce\(\[text\]\) ⇒ `Promise <void | string>`
 
 SET/GET announce from the room
 
@@ -339,7 +340,7 @@ await room.announce('change announce to wechaty!')
 console.log(`room announce change from ${oldAnnounce} to ${room.announce()}`)
 ```
 
-### room.qrcode\(\) ⇒ `Promise.`
+### room.qrcode\(\) ⇒ `Promise <string>`
 
 Get QR Code of the Room from the room, which can be used as scan and join the room.
 
@@ -347,12 +348,12 @@ Get QR Code of the Room from the room, which can be used as scan and join the ro
 
 **Kind**: instance method of [`Room`](room.md#Room)
 
-### room.alias\(contact\) ⇒ `Promise.`
+### room.alias\(contact\) ⇒ `Promise <string | null>`
 
 Return contact's roomAlias in the room
 
 **Kind**: instance method of [`Room`](room.md#Room)  
-**Returns**: `Promise.` - - If a contact has an alias in room, return string, otherwise return null
+**Returns**: `Promise <string | null>` - - If a contact has an alias in room, return string, otherwise return null
 
 | Param | Type |
 | :--- | :--- |
@@ -374,7 +375,7 @@ bot
 .start()
 ```
 
-### room.has\(contact\) ⇒ `Promise.`
+### room.has\(contact\) ⇒ `Promise <boolean>`
 
 Check if the room has member `contact`, the return is a Promise and must be `await`-ed
 
@@ -402,7 +403,7 @@ if (contact && room) {
 }
 ```
 
-### room.memberAll\(\[query\]\) ⇒ `Promise.>`
+### room.memberAll\(\[query\]\) ⇒ `Promise <Contact []>`
 
 Find all contacts in a room
 
@@ -428,7 +429,7 @@ const memberContactList: Conatct[] | null =await room.findAll(`abc`)
 console.log(`contact list with all name, room alias, alias are abc:`, memberContactList)
 ```
 
-### room.member\(queryArg\) ⇒ `Promise.`
+### room.member\(queryArg\) ⇒ `Promise <Contact | null>`
 
 Find all contacts in a room, if get many, return the first one.
 
@@ -485,7 +486,7 @@ Get room's owner from the room.
 const owner = room.owner()
 ```
 
-### room.avatar\(\) ⇒ `Promise`
+### room.avatar\(\) ⇒ `Promise <FileBox>`
 
 Get room's avatar
 
@@ -498,7 +499,7 @@ Get room's avatar
 const owner = room.avatar()
 ```
 
-### Room.create\(contactList, \[topic\]\) ⇒ [`Promise.`](room.md#Room)
+### Room.create\(contactList, \[topic\]\) ⇒ [`Promise <Room>`](room.md#Room)
 
 Create a new room.
 
@@ -506,7 +507,7 @@ Create a new room.
 
 | Param | Type |
 | :--- | :--- |
-| contactList | `Array.` |
+| contactList | `Array` |
 | \[topic\] | `string` |
 
 **Example** _\(Creat a room with 'lijiarui' and 'juxiaomi', the room topic is 'ding - created'\)_
@@ -522,7 +523,7 @@ await room.topic('ding - created')
 await room.say('ding - created')
 ```
 
-### Room.findAll\(\[query\]\) ⇒ `Promise.>`
+### Room.findAll\(\[query\]\) ⇒ `Promise <Room []>`
 
 Find room by by filter: {topic: string \| RegExp}, return all the matched room
 
@@ -542,12 +543,12 @@ const roomList = await bot.Room.findAll()                    // get the room lis
 const roomList = await bot.Room.findAll({topic: 'wechaty'})  // find all of the rooms with name 'wechaty'
 ```
 
-### Room.find\(query\) ⇒ `Promise.`
+### Room.find\(query\) ⇒ `Promise <Room>`
 
 Try to find a room by filter: {topic: string \| RegExp}. If get many, return the first one.
 
 **Kind**: static method of [`Room`](room.md#Room)  
-**Returns**: `Promise.` - If can find the room, return Room, or return null
+**Returns**: `Promise <Room>` - If can find the room, return Room, or return null
 
 | Param | Type |
 | :--- | :--- |
