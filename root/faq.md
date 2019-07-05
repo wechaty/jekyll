@@ -1,6 +1,6 @@
 # 常见问题
 
-## 1. 基本使用
+## 1. 基本使用    <a id="basic"></a>
 ### 1.1. 如何用最简单的方式把wechaty 跑起来？    <a id="simple-run"></a>
 
 1. 从 github 上 clone wechaty 的教学代码： [https://github.com/Chatie/wechaty-getting-started](https://github.com/Chatie/wechaty-getting-started)
@@ -26,8 +26,8 @@
 
 
 
-## 2. 功能相关
-### 2.1. wechaty 暂不支持的功能
+## 2. 功能相关    <a id="feature"></a>
+### 2.1. wechaty 暂不支持的功能    <a id="not-supported-in-wechaty"></a>
 
 * 支付相关：红包、转账、收款 等暂不支持
 * 朋友圈相关：后续会支持
@@ -273,7 +273,7 @@ bot.on('message', msg => {
 通常情况下，机器人只能读到在线期间所有的消息
 
 
-## 3. 运行及配置相关
+## 3. 运行及配置相关    <a id="run-and-config"></a>
 ### 3.1. 运行出现 Error: can not found bot file: xxx.js when using docker to start wechaty.    <a id="docker-error-file-not-found"></a>
 
 首先，请确认你有 `xxx.js` 文件，如果依然有这个问题，请检查一下 Linux 的 `SELinux` 设置。
@@ -334,7 +334,7 @@ WECHATY_NAME="your-cute-bot-name" node bot.js
 
 
 
-## 4. 其他
+## 4. 其他    <a id="others"></a>
 ### 4.1. 为什么需要扫码登陆而不是用户名密码登陆？    <a id="why-scan-login"></a>
 
 > 我发现代码是有通过用户名密码登陆的方法的，所以也许我可以很简单的写一个创建账户的功能，然后不用再扫码登陆，但是为什么现在没做呢？
