@@ -19,7 +19,7 @@
 请参考这篇博客：[在Windows10下安装Wechaty](https://blog.chatie.io/wechaty-installation-in-windows-10/)
 
 
-### 1.3. 如何打开调试信息    <a id="can-not-login"></a>
+### 1.3. 如何打开调试信息    <a id="how-to-open-debug-info"></a>
 
 参考 [最佳实践之日志说明](best-practice.md#4-ri-zhi-shuo-ming)
 
@@ -112,9 +112,9 @@ bot.on('message', async msg => {
 
 相关issue:
 
-* [\#1593](https://github.com/Chatie/wechaty/issues/1539) \[Feature\]: add receive and send link
+* [\#1593](https://github.com/Chatie/wechaty/issues/1539) feat: add receive and send link
 * [\#718](https://github.com/Chatie/wechaty/issues/718) Add support for send url rich media message
-* [\#537](https://github.com/Chatie/wechaty/issues/537) \[Enhancement\] Cant send a wechat page link to the room.
+* [\#537](https://github.com/Chatie/wechaty/issues/537) \[enhancement\] Cant send a wechat page link to the room.
 * [\#331](https://github.com/Chatie/wechaty/issues/331) \[Feature\] sending formatted links / href tags
 
 
@@ -164,7 +164,7 @@ bot.on('message', async msg => {
 相关issue:
 
 * [\#446](https://github.com/Chatie/wechaty/issues/446) how to send mesage without onMessage
-* [\#200](https://github.com/Chatie/wechaty/issues/200) [New Feature] Forward Message
+* [\#200](https://github.com/Chatie/wechaty/issues/200) [new feature] Forward Message
 * [\#89](https://github.com/Chatie/wechaty/issues/89) Wechaty.send() error when send message to the room
 * [\#41](https://github.com/Chatie/wechaty/issues/41) [New Feature] send message by branding new method: say()
 
@@ -316,7 +316,7 @@ const bot = Wechaty.instance({ name: 'your-cute-bot-name' })
 
 或者
 
-const bot = new Wechaty({ name: 'your-bot-name'})
+const bot = new Wechaty({ name: 'your-bot-name' })
 ```
 
 **2. 通过设置 **`WECHATY_NAME`** 环境变量传递 name**
