@@ -24,16 +24,34 @@
 参考 [最佳实践之日志说明](best-practice.md#4-ri-zhi-shuo-ming)
 
 
+### 1.4. 我的微信号无法登陆    <a id="can-not-login"></a>
+
+从2017年6月下旬开始，使用基于 Web 版微信接入方案存在大概率的被限制登陆的可能性。 主要表现为：无法登陆 Web 微信，但不影响手机等其他平台。验证是否被限制登陆： [https://wx.qq.com](https://wx.qq.com) 上扫码查看是否能登陆。 更多内容详见：
+
+* [Can not login with error message: 当前登录环境异常。为了你的帐号安全，暂时不能登录web微信。](https://github.com/Chatie/wechaty/issues/603)
+* [\[谣言\] 微信将会关闭网页版本](https://github.com/Chatie/wechaty/issues/990)
+* [新注册的微信号无法登陆](https://github.com/Chatie/wechaty/issues/872)
+* [wechaty-puppet-puppeteer](https://github.com/chatie/wechaty-puppet-puppeteer)
+
+{% hint style="success" %}
+**解决方案： 第三方提供了非web协议的** [**Puppet**](puppet.md) **解决方案，**[**点击购买token**](https://github.com/lijiarui/wechaty-puppet-padchat/wiki/购买token) **, 更多技术细节查看** [**wechaty-puppet-padchat**](https://github.com/lijiarui/wechaty-puppet-padchat)
+{% endhint %}
+
 
 
 ## 2. 功能相关    <a id="feature"></a>
+
+{% hint style="info" %}
+请查看[ Puppet功能兼容性清单](puppet.md#3-wechaty-puppet-jian-rong-xing) 查看完整功能内容
+{% endhint %}
+
 ### 2.1. wechaty 暂不支持的功能    <a id="not-supported-in-wechaty"></a>
 
 * 支付相关：红包、转账、收款 等暂不支持
 * 朋友圈相关：后续会支持
 * 小程序：后续会支持
 * 发送视频：后续会支持
-* 在群聊中@他人：是的，Web 微信中被人@后也不会提醒 `[TO_CONFIRM]`
+* 在群聊中@他人：是的，Web 微信中被人@后也不会提醒
 
 由于采用的微信接入方案的差异，以下功能仅 padchat, padpro 支持
 
@@ -137,7 +155,7 @@ import { Wechaty } from 'wechaty'
 const bot = new Wechaty()
 bot.on('message', async msg => {
   const room = msg.room()
-  if(room && room.id === 'which room you want to receive') {
+  if(room && await room.topic() === 'your room topic') {
     await room.say('I want to say in this room')
   }
 })
@@ -152,7 +170,7 @@ import { Wechaty } from 'wechaty'
 const bot = new Wechaty()
 bot.on('message', async msg => {
   const text = msg.text()
-  const contact = bot.Contact.load('contact id')
+  const contact = bot.Contact.find({name: 'XXXX'})
   if(contact && text) {
     await contact.say(`hello contact, its new message: ${text}`)
   }
@@ -203,7 +221,7 @@ bot.on('room-join', async (room, inviteeList, inviter) => {
 
 首先，`Room.findAll()` 可以拿到所有的群，但是微信的群数据量很大，需要同步时间。无论是web的puppet还是iPad的puppet都需要一定时间来同步这部分消息，如果在同步的时候去调用 `Room.findAll()`，就只能拿到当前已经同步好的群。
 
-因此，`wechaty-puppet-padchat` 有一个 `ready` 的事件可以供大家来监听 (注意： 只有 wechaty-puppet-padchat 版本的接入方式才有 ready 事件。[点击了解更多详情](https://github.com/lijiarui/wechaty-puppet-padchat/wiki/Padchat-%E9%80%9A%E8%AE%AF%E5%BD%95%E5%8A%A0%E8%BD%BD%E8%AF%A6%E8%A7%A3)) 当所有数据都加载完毕的时候，`ready` 事件会被触发，此事件在 `wechaty` 启动后只会被触发一次。那么，在 `ready` 事件被触发了之后去调用 `Room.findAll()` 就会拿到所有的群聊消息了。示例代码如下：
+因此，`wechaty-puppet-padchat` 和 `wechaty-puppet-padpro` 都有一个 `ready` 的事件可以供大家来监听 (注意： 只有 wechaty-puppet-padchat  和 wechaty-puppet-padpro 版本的接入方式才有 ready 事件。[点击了解更多详情](https://github.com/lijiarui/wechaty-puppet-padchat/wiki/Padchat-%E9%80%9A%E8%AE%AF%E5%BD%95%E5%8A%A0%E8%BD%BD%E8%AF%A6%E8%A7%A3)) 当所有数据都加载完毕的时候，`ready` 事件会被触发，此事件在 `wechaty` 启动后只会被触发一次。那么，在 `ready` 事件被触发了之后去调用 `Room.findAll()` 就会获得所有群组信息。示例代码如下：
 
 ```javascript
 import { Wechaty } from 'wechaty'
@@ -347,21 +365,8 @@ WECHATY_NAME="your-cute-bot-name" node bot.js
 2. 当你使用扫码的方式登陆的时候，你是可以保存你手机的session的。换句话说，你可以同时让手机和机器人同时在线。如果你使用了用户名密码登陆，那么的 session 将会失效，只有机器人微信在线，手机微信将会自动退出。
 3. 通过用户名密码登陆的协议，是使用一个协议服务器来控制 iPad 微信的。如果你使用用户名密码的方式登陆，那么你就会直接把这些敏感的账号信息发给第三方的服务器，这种方式大部分用户会觉得很不舒服。
 
-### 4.2. 我的微信号无法登陆    <a id="can-not-login"></a>
 
-从2017年6月下旬开始，使用基于 Web 版微信接入方案存在大概率的被限制登陆的可能性。 主要表现为：无法登陆 Web 微信，但不影响手机等其他平台。验证是否被限制登陆： [https://wx.qq.com](https://wx.qq.com) 上扫码查看是否能登陆。 更多内容详见：
-
-* [Can not login with error message: 当前登录环境异常。为了你的帐号安全，暂时不能登录web微信。](https://github.com/Chatie/wechaty/issues/603)
-* [\[谣言\] 微信将会关闭网页版本](https://github.com/Chatie/wechaty/issues/990)
-* [新注册的微信号无法登陆](https://github.com/Chatie/wechaty/issues/872)
-* [wechaty-puppet-puppeteer](https://github.com/chatie/wechaty-puppet-puppeteer)
-
-{% hint style="success" %}
-**解决方案： 第三方提供了非web协议的** [**Puppet**](puppet.md) **解决方案，**[**点击购买token**](https://github.com/lijiarui/wechaty-puppet-padchat/wiki/购买token) **, 更多技术细节查看** [**wechaty-puppet-padchat**](https://github.com/lijiarui/wechaty-puppet-padchat)
-{% endhint %}
-
-
-### 4.3. wechaty 和 wechat4u 项目，有什么区别？    <a id="difference-between-wechaty-and-wechaty-4-u"></a>
+### 4.2. wechaty 和 wechat4u 项目，有什么区别？    <a id="difference-between-wechaty-and-wechaty-4-u"></a>
 
 wechaty 可以实现多个微信接入的方案，对外提供统一的接口，包括 web，ipad，ios 等等，其中 [wechat4u](https://github.com/nodeWechat/wechat4u) 是 [SPACELAN](https://github.com/spacelan) 写的基于 web 实现微信接入的，wechaty 可以实现用 wechaty 的接口，调用 wechat4u 的 api。
 
@@ -370,14 +375,14 @@ wechaty 可以实现多个微信接入的方案，对外提供统一的接口，
 这个也不是完全确定的，因为wechaty 只是基于wechaty 暴露出来的接口为wechat4u 进行了封装。
 
 
-### 4.4. Python 版本什么时候上线？    <a id="when-python-available"></a>
+### 4.3. Python 版本什么时候上线？    <a id="when-python-available"></a>
 
 请关注这个项目：
 
 {% embed url="https://github.com/Chatie/python-wechaty" caption="" %}
 
 
-### 4.5. 如何理解 Wechaty 的版本号    <a id="wechaty-version-number"></a>
+### 4.4. 如何理解 Wechaty 的版本号    <a id="wechaty-version-number"></a>
 
 参考 [最佳实践之版本说明](best-practice.md#6-tui-jian-ban-ben)
 
