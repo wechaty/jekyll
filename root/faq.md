@@ -53,7 +53,7 @@
 * 发送视频：后续会支持
 * 在群聊中@他人：是的，Web 微信中被人@后也不会提醒
 
-由于采用的微信接入方案的差异，以下功能仅 padchat 和 padpro 支持，puppeteer 不支持
+由于采用的微信接入方案的差异，以下功能仅非 Web 版（padchat 和 padpro）支持，Web版（puppeteer 和 wechat4u）不支持
 
 * 发送分享链接
 * 发送名片
@@ -89,14 +89,14 @@
 通过 `Contact.id` 和 `Room.id` 获取好友和群的唯一 id。
 
 关于获取好友和群的唯一 id，再次对不同的 puppet 进行说明：
-puppteer 每次扫码登录后的 id 都是会发生变化的；此 id 与 padchat 和 padpro 中的 id 都不同；
+puppteer, wechat4u 每次扫码登录后的 id 都是会发生变化的；此 id 与 padchat 和 padpro 中的 id 都不同；
 padchat 和 padpro 这两个 id 是一直保持不变的；
 
 **是否能够跨 session 依然保持不变，换句话说，当你重新登录的时候，或者切换账号登录的时候，同一个好友或者群的 id 是否唯一。**
 
 不同的 Puppet 表现各不相同：
 
-* 基于 Web 版本的 Puppet(puppeteer) 得到的 id 跨 session 是会变化的，所以不能被用来当做你系统的唯一标识码来使用。
+* 基于 Web 版本的 Puppet(puppeteer, wechat4u) 得到的 id 跨 session 是会变化的，所以不能被用来当做你系统的唯一标识码来使用。
 * 基于 iPad 版本的 Puppet(padchat, padpro) 得到的 id 跨 session 是不会变化的，可以用来当做这个联系人的唯一标识码。
 
 相关issue:
