@@ -77,7 +77,7 @@ npm install wechaty-puppet-padchat
 WECHATY_PUPPET_PADCHAT_TOKEN=你的token WECHATY_PUPPET=padchat npm start
 ```
 
-- padpro
+- padpro (推荐)
 
 ```bash
 # 1. 安装 wechaty-puppet-padpro
@@ -91,7 +91,7 @@ WECHATY_PUPPET_PADPRO_TOKEN=你的token WECHATY_PUPPET=padpro npm start
 #### 针对环境变量的进一步说明：
 
 * WECHATY\_PUPPET\_PADPRO\_TOKEN：[点击链接申请token](https://github.com/lijiarui/wechaty-puppet-padchat/wiki/购买token)
-* WECHATY\_PUPPET : 切换到wechaty-puppet-padchat 的puppet 来运行，即从使用web 版本变为使用ipad 版本
+* WECHATY\_PUPPET : 切换到wechaty-puppet-padpro 的puppet 来运行，即从使用web 版本变为使用ipad 版本
 
 ## DEMO 展示    <a id="demo"></a>
 
