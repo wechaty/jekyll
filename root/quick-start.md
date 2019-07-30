@@ -74,7 +74,7 @@ npm start 实际上执行的命令是：`node examples/starter-bot.js`你可以�
 npm install wechaty-puppet-padpro
 
 # 2. 通过环境变量设置接入方式并设置token 运行
-WECHATY_PUPPET_PADPRO_TOKEN=你的token WECHATY_PUPPET=padpro npm start
+WECHATY_PUPPET_PADPRO_TOKEN=你的token WECHATY_PUPPET=wechaty-puppet-padpro npm start
 ```
 
 
