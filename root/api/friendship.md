@@ -154,7 +154,7 @@ _**Deprecated**_
 **Example**
 
 ```javascript
-const memberList = await room.memberList()
+const memberList = await room.memberAll()
 for (let i = 0; i < memberList.length; i++) {
   await bot.Friendship.add(member, 'Nice to meet you! I am wechaty bot!')
 }
