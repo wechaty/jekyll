@@ -156,7 +156,7 @@ const isFriend = contact.friend()
 
 ### contact.type\(\) ⇒ `ContactType.Unknown` \| `ContactType.Personal` \| `ContactType.Official`
 
-获取好友的类型，是公众号还是普通还有。
+获取好友的类型，是公众号还是联系人。
 
 {% hint style="info" %}
 ContactType 在这里是enum
