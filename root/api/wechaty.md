@@ -303,31 +303,42 @@ console.log(`Bot is ${contact.name()}`)
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
+| textOrContactOrFileOrUrl | ​`string` \| `Contact` \| `FileBox` \| `UrlLink`​ | 支持发送文本、联系人名片、文件或链接，你可以使用 [FileBox](https://www.npmjs.com/package/file-box) 来发送文件|
 
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">textOrContactOrFileOrUrl</th>
-      <th style="text-align:left"><code>string</code> | <code>Contact</code> | <code>FileBox</code> | <code>UrlLink</code>
-      </th>
-      <th style="text-align:left">
-        <p>&#x53D1;&#x9001;&#x6587;&#x672C;&#x3001;&#x8054;&#x7CFB;&#x4EBA;&#x540D;&#x7247;&#x6216;&#x8005;&#x6587;&#x4EF6;&#x7ED9;&#x673A;&#x5668;&#x4EBA;&#x81EA;&#x5DF1;&#x3002;</p>
-        <p>&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <a href="https://www.npmjs.com/package/file-box">FileBox</a> &#x6765;&#x53D1;&#x9001;&#x6587;&#x4EF6;</p>
-      </th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>// 2. send Contact to bot itself const contact = bot.Contact.load\('contactId'\) await bot.say\(contact\)​
+```
+const bot = new Wechaty()
+await bot.start()
+// after logged in
 
-// 3. send Image to bot itself from remote url import { FileBox } from 'file-box' const fileBox = FileBox.fromUrl\('[https://chatie.io/wechaty/images/bot-qr-code.png](https://chatie.io/wechaty/images/bot-qr-code.png)'\) await bot.say\(fileBox\)​
+// 1. send text to bot itself
+await bot.say('hello!')
 
-// 4. send Image to bot itself from local file import { FileBox } from 'file-box' const fileBox = FileBox.fromFile\('/tmp/text.jpg'\) await bot.say\(fileBox\)
+// 2. send Contact to bot itself
+const contact = bot.Contact.load('contactId')
+await bot.say(contact)
 
-// 5. send Link to bot itself const linkPayload = new UrlLink\({ description : 'WeChat Bot SDK for Individual Account, Powered by TypeScript, Docker, and Love', thumbnailUrl: '[https://avatars0.githubusercontent.com/u/25162437?s=200&v=4](https://avatars0.githubusercontent.com/u/25162437?s=200&v=4)', title : 'Welcome to Wechaty', url : '[https://github.com/chatie/wechaty](https://github.com/chatie/wechaty)', }\) await bot.say\(linkPayload\)
+// 3. send Image to bot itself from remote url
+import { FileBox }  from 'file-box'
+const fileBox = FileBox.fromUrl('https://chatie.io/wechaty/images/bot-qr-code.png')
+await bot.say(fileBox)
 
-```text
-### Wechaty.instance\(\[options\]\)
+// 4. send Image to bot itself from local file
+import { FileBox }  from 'file-box'
+const fileBox = FileBox.fromFile('/tmp/text.jpg')
+await bot.say(fileBox)
+
+// 5. send Link to bot itself
+const linkPayload = new UrlLink({
+  description : 'WeChat Bot SDK for Individual Account, Powered by TypeScript, Docker, and Love',
+  thumbnailUrl: 'https://avatars0.githubusercontent.com/u/25162437?s=200&v=4',
+  title       : 'Welcome to Wechaty',
+  url         : 'https://github.com/chatie/wechaty',
+})
+await bot.say(linkPayload)
+```
+
+### Wechaty.instance([options])
 
 获取全局的Wechaty 实例。
 
