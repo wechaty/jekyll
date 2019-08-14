@@ -42,13 +42,13 @@ bot.on('friendship', async friendship => {
 
     // 1. New Friend Request
 
-    case Friendship.Type.Receive:
+    case bot.Friendship.Type.Receive:
       await friendship.accept()
       break
 
     // 2. Friend Ship Confirmed
 
-    case Friendship.Type.Confirm:
+    case bot.Friendship.Type.Confirm:
       console.log(`friend ship confirmed`)
       break
     }
@@ -71,7 +71,7 @@ const bot = new Wechaty()
 bot.on('friendship', async friendship => {
   try {
     console.log(`received friend event from ${friendship.contact().name()}`)
-    if (friendship.type() === Friendship.Type.Receive && friendship.hello() === 'ding') {
+    if (friendship.type() === bot.Friendship.Type.Receive && friendship.hello() === 'ding') {
       await friendship.accept()
     }
   } catch (e) {
@@ -118,7 +118,7 @@ FriendshipType 在这里是enum:
 const bot = new Wechaty()
 bot.on('friendship', async friendship => {
   try {
-    if (friendship.type() === Friendship.Type.Receive && friendship.hello() === 'ding') {
+    if (friendship.type() === bot.Friendship.Type.Receive && friendship.hello() === 'ding') {
       await friendship.accept()
     }
   } catch (e) {
