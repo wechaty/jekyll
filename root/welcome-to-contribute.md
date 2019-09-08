@@ -29,6 +29,16 @@ Make sure to add tests for your features and bugfixes and update the documentati
 
 Contact [rui@chatie.io](mailto:rui@chatie.io) to learn more
 
+#### How Do I Become a Committer?
+
+First of all you need to get involved and be a Contributor.
+
+Based on your track-record as a contributor, one of our Maintainers or PMC members may invite you to be a committer (after we've called a vote). When that happens, if you accept, the following process kicks into place...
+
+Note that becoming a committer is not just about submitting some patches; it‘s also about helping out on the development and user Discussion Forums, helping with documentation and the issues.
+
+See Become a Committer.md for becoming a committer steps and more details.
+
 #### Contributors List
 
 [https://github.com/Chatie/wechaty/wiki/Contributors](https://github.com/Chatie/wechaty/wiki/Contributors)
