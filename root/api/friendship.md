@@ -132,8 +132,7 @@ _**Deprecated**_
 
 use [Friendship\#add](friendship.md#friendship-add-contact-hello-promise) instead
 
-**Kind**: static method of [`Friendship`](friendship.md#Friendship)  
-
+**Kind**: static method of [`Friendship`](friendship.md#Friendship)
 
 ### Friendship.add\(contact, hello\) ⇒ `Promise <void>`
 

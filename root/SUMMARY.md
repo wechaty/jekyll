@@ -15,7 +15,6 @@
 * [FAQ](faq.md)
 * [Best Practice](best-practice.md)
 * [Welcome to contribute](welcome-to-contribute.md)
-* [Pay for Third Party Puppet](https://github.com/lijiarui/wechaty-puppet-padchat/wiki/购买token)
 
 ## More
 

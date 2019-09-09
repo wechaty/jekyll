@@ -35,7 +35,7 @@ All wechat messages will be encapsulated as a Message.
     * [.find\(\)](message.md#Message.find) ⇒ `Promise <Message>`
     * [.findAll\(\)](message.md#Message.findAll) ⇒ `Promise <Message []>`
 
-### message.from\(\) ⇒ `Contact | null` 
+### message.from\(\) ⇒ `Contact | null`
 
 Get the sender from a message.
 
@@ -81,14 +81,14 @@ bot
     console.log(`Contact: ${contact.name()} Text: ${text}`)
   }
 })
-.start() 
+.start()
 ```
 
 ### message.room\(\) ⇒ `Room` \| `null`
 
 Get the room from the message. If the message is not in a room, then will return `null`
 
-**Kind**: instance method of [`Message`](message.md#Message)  
+**Kind**: instance method of [`Message`](message.md#Message)
 
 **Example**
 
@@ -171,7 +171,7 @@ Reply a Text, Contact Card, Media File or Link message to the sender.
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-| textOrContactOrFile | `string` \| `Contact` \| `FileBox` \| `UrlLink` | send text, Contact, or file to bot. <br> You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
+| textOrContactOrFile | `string` \| `Contact` \| `FileBox` \| `UrlLink` | send text, Contact, or file to bot.   You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
 
 **Example**
 
@@ -235,7 +235,7 @@ Get the type from the message.
 > * MessageType.Image       
 > * MessageType.Text        
 > * MessageType.Video       
-> * MessageType.Url         
+> * MessageType.Url
 
 **Kind**: instance method of [`Message`](message.md#Message)  
 **Example**

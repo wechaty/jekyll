@@ -63,8 +63,8 @@ Here is the whole image for wechaty puppet introduction:
 ## Join Us
 
 > Scan the following QRCode, reply ''wechaty" to join Wechaty Developers' Home.
-
+>
 > Please read the doc before you ask question in the group. We don't welcome any discussion unrelated to wechaty, or you should give a red pocket\(more than 100 RMB\) in the group.
 
-![Wechaty Developers' Home](https://chatie.io/wechaty/images/bot-qr-code.png)
+![Wechaty Developers&apos; Home](https://chatie.io/wechaty/images/bot-qr-code.png)
 

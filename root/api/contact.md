@@ -52,7 +52,7 @@ All wechat contacts\(friend\) will be encapsulated as a Contact. [Examples/Conta
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-| textOrContactOrFileOrUrl | `string` \| [`Contact`](contact.md#Contact) \| `FileBox` \| `UrlLink` | send text, Contact, file or UrlLink to contact. <br> You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
+| textOrContactOrFileOrUrl | `string` \| [`Contact`](contact.md#Contact) \| `FileBox` \| `UrlLink` | send text, Contact, file or UrlLink to contact.   You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
 
 **Example**
 

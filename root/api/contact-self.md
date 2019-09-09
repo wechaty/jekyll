@@ -16,10 +16,10 @@ Bot itself will be encapsulated as a ContactSelf.
 
 * [ContactSelf](contact-self.md#contactself)
   * [intance](contact-self.md#contactself)
-    * [contactSelf.avatar\([file]\) ⇒ `Promise <void | FileBox>`](contact-self.md#contactselfavatarfile-⇒-promise)
+    * [contactSelf.avatar\(\[file\]\) ⇒ `Promise <void | FileBox>`](contact-self.md#contactselfavatarfile-⇒-promise)
     * [contactSelf.qrcode\(\) ⇒ `Promise <string>`](contact-self.md#contactselfqrcode-⇒-promise)
     * [contactSelf.signature\(signature\) ⇒ `Promise <string>`](contact-self.md#contactselfsignaturesignature)
-    * [contactSelf.name\([name]\) ⇒ `Promise <void> | string`](contact-self.md#contactselfname-⇒-promisestring)
+    * [contactSelf.name\(\[name\]\) ⇒ `Promise <void> | string`](contact-self.md#contactselfname-⇒-promisestring)
 
 ### contactSelf.avatar\(\[file\]\) ⇒ `Promise <void | FileBox>`
 
@@ -61,7 +61,7 @@ bot.on('login', user => {
 
 Get bot qrcode
 
-**Kind**: instance method of [`ContactSelf`](contact-self.md#ContactSelf)  
+**Kind**: instance method of [`ContactSelf`](contact-self.md#ContactSelf)
 
 **Example**
 
@@ -106,7 +106,7 @@ Get or change bot name.
 
 | Param | Description |
 | :--- | :--- |
-| [name] | The new alias that the bot will change to |
+| \[name\] | The new alias that the bot will change to |
 
 **Example**
 

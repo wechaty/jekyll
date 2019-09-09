@@ -235,7 +235,7 @@ When you start the bot, bot will begin to login, need you wechat scan qrcode to 
 
 > Tips: All the bot operation needs to be triggered after start\(\) is done
 
-**Kind**: instance method of [`Wechaty`](wechaty.md#Wechaty)  
+**Kind**: instance method of [`Wechaty`](wechaty.md#Wechaty)
 
 **Example**
 
@@ -387,7 +387,7 @@ The option parameter to create a wechaty instance
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| profile | `string` | Wechaty Name. <br>          When you set this: <br>          `new Wechaty({profile: 'wechatyName'})` <br>          it will generate a file called `wechatyName.memory-card.json`. <br>          This file stores the bot's login information. <br>          If the file is valid, the bot can auto login so you don't need to scan the qrcode to login again. <br>          Also, you can set the environment variable for `WECHATY_PROFILE` to set this value when you start. <br>          eg:  `WECHATY_PROFILE="your-cute-bot-name" node bot.js` |
+| profile | `string` | Wechaty Name.            When you set this:            `new Wechaty({profile: 'wechatyName'})`            it will generate a file called `wechatyName.memory-card.json`.            This file stores the bot's login information.            If the file is valid, the bot can auto login so you don't need to scan the qrcode to login again.            Also, you can set the environment variable for `WECHATY_PROFILE` to set this value when you start.            eg:  `WECHATY_PROFILE="your-cute-bot-name" node bot.js` |
 | puppet | `PuppetModuleName` \| `Puppet` | Puppet name or instance |
 | puppetOptions | `Partial.` | Puppet TOKEN |
 | ioToken | `string` | Io TOKEN |
