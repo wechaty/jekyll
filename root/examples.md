@@ -2,7 +2,7 @@
 
 You can get all of the following examples as follows
 
-{% embed url="https://github.com/wechaty/wechaty-getting-started/tree/master/examples" %}
+[https://github.com/wechaty/wechaty-getting-started/tree/master/examples](https://github.com/wechaty/wechaty-getting-started/tree/master/examples)
 
 ## 1. BASIC
 
