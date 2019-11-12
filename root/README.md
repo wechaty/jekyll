@@ -35,7 +35,7 @@ related issues:
 * [New account login issue](https://github.com/Chatie/wechaty/issues/872)
 * [wechaty-puppet-puppeteer](https://github.com/chatie/wechaty-puppet-puppeteer)
 
-If you want to break the above limitations, please consider to use a Wechaty Puppet other than using Web API, like [wechaty-puppet-padchat](https://github.com/lijiarui/wechaty-puppet-padchat).
+If you want to break the above limitations, please consider to use a Wechaty Puppet other than using Web API, like [wechaty-puppet-padplus](https://github.com/botorange/wechaty-puppet-padplus).
 
 Learn more about the Puppet at [Wechaty wiki: Puppet](https://github.com/Chatie/wechaty/wiki/Puppet)
 
@@ -54,7 +54,7 @@ Plugins are named PuppetXXX, like PuppetPuppeteer is using the chrome puppeteer 
 
 For a deeper understanding of the Puppet in Wechaty, you can read its source code if you like at [https://github.com/Chatie/wechaty-puppet/blob/master/src/puppet.ts](https://github.com/Chatie/wechaty-puppet/blob/master/src/puppet.ts)
 
-All implement by web WeChat is fully open-source and free, if you need other implement, you should pay for it, [see Why we charge for token](https://github.com/lijiarui/wechaty-puppet-padchat/wiki/Buy-Padchat-Token).
+All implement by web WeChat is fully open-source and free, if you need other implement, you should apply for it, [see HOW to get token](https://github.com/Chatie/wechaty/issues/1846).
 
 Here is the whole image for wechaty puppet introduction:
 
