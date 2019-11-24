@@ -1,18 +1,18 @@
-# Change Log
+# ChangeLog
 
 > BREAKING NEWS: Wechaty logo color was changed from green to blue!
 
 There will be a **migration guide from v0.14 to v0.16** will be published on our blog later.
 
-## 1. BREAKING CHANGES <a id="1-breaking-changes"></a>
+## 1. BREAKING CHANGES  <a id="1-breaking-changes"></a>
 
-### 1.1 Class Removal <a id="1-1-class-removal"></a>
+### 1.1 Class Removal  <a id="1-1-class-removal"></a>
 
 * BREAKING CHANGE: v0.16 will remove `MediaMessage` class [\#1164](https://github.com/Chatie/wechaty/issues/1164)​
 * BREAKING CHANGES v0.16: FriendRequest class will be replaced with Friendship [\#1312](https://github.com/Chatie/wechaty/issues/1312)​
 * BREAKING CHANGE v0.16 Contact, FriendRequest, Message, and Room classes will not be able to instantiate directly [\#1364](https://github.com/Chatie/wechaty/issues/1364)​
 
-### 1.2. Sync to Async <a id="1-2-sync-to-async"></a>
+### 1.2. Sync to Async  <a id="1-2-sync-to-async"></a>
 
 * BREAKING CHANGE: v0.16 `Room.topic()` change from Sycn to Async [\#1295](https://github.com/Chatie/wechaty/issues/1295)​
 * BREAKING CHANGE: v0.16 `Room.alias(contact)` change from Sycn to Async [\#1293](https://github.com/Chatie/wechaty/issues/1293)​
@@ -21,20 +21,20 @@ There will be a **migration guide from v0.14 to v0.16** will be published on our
 * BREAKING CHANGE: v0.16 `Message.mention()` change from `sync` to `async` [\#1259](https://github.com/Chatie/wechaty/issues/1259)​
 * BREAKING CHANGES: v0.16 `Room.member()` from `sync` to `async` [\#1258](https://github.com/Chatie/wechaty/issues/1258)​
 
-### 1.3. Argument / Return Value <a id="1-3-argument-return-value"></a>
+### 1.3. Argument / Return Value  <a id="1-3-argument-return-value"></a>
 
 * BREAKING CHANGE v0.16 room.add return Promise instead of return Promise [\#1362](https://github.com/Chatie/wechaty/issues/1362)​
 * BREAKING CHANGE: v0.16 `scan` event args will be different! [\#1262](https://github.com/Chatie/wechaty/issues/1262)​
 * BREAKING CHANGE: first arg of `room-leave` event licener changed from `Contact` to `Contact[]` [\#723](https://github.com/Chatie/wechaty/issues/723)​
 * BREAKING CHANGE: v0.16 on\('friend\`\) arguments changed! [\#1196](https://github.com/Chatie/wechaty/issues/1196)​
 
-### 1.4. Deprecated <a id="1-4-deprecated"></a>
+### 1.4. Deprecated  <a id="1-4-deprecated"></a>
 
 * BREAKING CHANGE v0.16 Wechaty.self\(\) eprecated, use Wechaty.userSelf\(\) instead [\#1369](https://github.com/Chatie/wechaty/issues/1369)​
 * BREAKING CHANGE v0.16 Contact.personal\(\) and Contact.official\(\) deprecated, use Contact.type\(\) instead [\#1366](https://github.com/Chatie/wechaty/issues/1366)​
 * BREAKING CHANGE: v0.16 will replace `Message.content()` with `Message.text()` [\#1163](https://github.com/Chatie/wechaty/issues/1163)​
 
-## 2. New Features <a id="2-new-features"></a>
+## 2. New Features  <a id="2-new-features"></a>
 
 * feat: Add `for await (const contact of room) {}` support by ES6 iterators override [\#1198](https://github.com/Chatie/wechaty/issues/1198)​
 * \[todo\] allow Wechaty to be multi-instance [\#518](https://github.com/Chatie/wechaty/issues/518)​
@@ -43,13 +43,13 @@ There will be a **migration guide from v0.14 to v0.16** will be published on our
 * Puppet padchat [\#1245](https://github.com/Chatie/wechaty/pull/1245) \([lijiarui](https://github.com/lijiarui)\)
 * Multi-Instance Support [\#1159](https://github.com/Chatie/wechaty/pull/1159) \([zixia](https://github.com/zixia)\)
 
-## 3. Bug Fixes <a id="3-bug-fixes"></a>
+## 3. Bug Fixes  <a id="3-bug-fixes"></a>
 
 * Update the peerDependencies of `rx-queue`: rxjs@6 from rxjs@5 [\#1205](https://github.com/Chatie/wechaty/issues/1205)​
 * How to avoid the memory leak [\#981](https://github.com/Chatie/wechaty/issues/981)​
 * Should throw Exception when there have API Error. [\#683](https://github.com/Chatie/wechaty/issues/683)​
 
-## 4. Enhancements <a id="4-enhancements"></a>
+## 4. Enhancements  <a id="4-enhancements"></a>
 
 * Prevent the Floating Promise in the Async/Await Code [\#1346](https://github.com/Chatie/wechaty/issues/1346)​
 * Upgrade Docker Base Image from Ubuntu 17.10 to 18.04 [\#1239](https://github.com/Chatie/wechaty/issues/1239)​
@@ -64,63 +64,63 @@ Learn more between version at:
 * ​[Source Code of Wechaty v0.16](https://github.com/chatie/wechaty/tree/v0.16.0) \(2018-06-21\)
 * ​[Commits Between v0.14 and v0.16](https://github.com/chatie/wechaty/compare/v0.14.0...v0.16.0)​
 
-### v0.14 - Minor Bug Fixes <a id="v-0-14-minor-bug-fixes"></a>
+### v0.14 - Minor Bug Fixes  <a id="v-0-14-minor-bug-fixes"></a>
 
 ​[v0.14.0](https://github.com/Chatie/wechaty/releases/tag/v0.14.0) release this on 2018-04-15, 1161 commits to master since this release
 
-### v0.12 - All About Refactoring <a id="v-0-12-all-about-refactoring"></a>
+### v0.12 - All About Refactoring  <a id="v-0-12-all-about-refactoring"></a>
 
 ​[v0.12.0](https://github.com/Chatie/wechaty/releases/tag/v0.12.0) release this on 2017-10-31, 1475 commits to master since this release
 
-### v0.9 - Huge Improvements with lots of Bug Fixes and Feature Enhancements <a id="v-0-9-huge-improvements-with-lots-of-bug-fixes-and-feature-enhancements"></a>
+### v0.9 - Huge Improvements with lots of Bug Fixes and Feature Enhancements  <a id="v-0-9-huge-improvements-with-lots-of-bug-fixes-and-feature-enhancements"></a>
 
 ​[v0.9.0](https://github.com/Chatie/wechaty/releases/tag/v0.9.0) release this on 2017-10-04, 1722 commits to master since this release
 
-### v0.7 - A Brand New Version for Production <a id="v-0-7-a-brand-new-version-for-production"></a>
+### v0.7 - A Brand New Version for Production  <a id="v-0-7-a-brand-new-version-for-production"></a>
 
 ​[v0.7.0](https://github.com/Chatie/wechaty/releases/tag/v0.7.0) release this on 2016-12-29, 3041 commits to master since this release
 
-### v0.6 - DevOps CI/CD with Docker&NPM <a id="v-0-6-devops-ci-cd-with-docker-and-npm"></a>
+### v0.6 - DevOps CI/CD with Docker&NPM  <a id="v-0-6-devops-ci-cd-with-docker-and-npm"></a>
 
 ​[v0.6.0](https://github.com/Chatie/wechaty/releases/tag/v0.6.0) release this on 2016-11-11, 3359 commits to master since this release
 
-### v0.5.22 - Enhanced Media Message & Docker <a id="v-0-5-22-enhanced-media-message-and-docker"></a>
+### v0.5.22 - Enhanced Media Message & Docker  <a id="v-0-5-22-enhanced-media-message-and-docker"></a>
 
 ​[v0.5.22](https://github.com/Chatie/wechaty/releases/tag/v0.5.22) release this on 2016-11-10, 3378 commits to master since this release
 
-### v0.5.9 - 1st Recommend Version for Docker Image & NPM Module <a id="v-0-5-9-1st-recommend-version-for-docker-image-and-npm-module"></a>
+### v0.5.9 - 1st Recommend Version for Docker Image & NPM Module  <a id="v-0-5-9-1st-recommend-version-for-docker-image-and-npm-module"></a>
 
 ​[v0.5.9](https://github.com/Chatie/wechaty/releases/tag/v0.5.9) release this on 2016-11-07, 3431 commits to master since this release
 
-### v0.5.1 - The first TypeScript version with fully dockerized runtime support <a id="v-0-5-1-the-first-typescript-version-with-fully-dockerized-runtime-support"></a>
+### v0.5.1 - The first TypeScript version with fully dockerized runtime support  <a id="v-0-5-1-the-first-typescript-version-with-fully-dockerized-runtime-support"></a>
 
 ​[v0.5.1](https://github.com/Chatie/wechaty/releases/tag/v0.5.1) release this on 2016-11-03, 3573 commits to master since this release
 
-### v0.4.0 - Supported Room Operate & Friend Request, with Cloud Manager Backend. <a id="v-0-4-0-supported-room-operate-and-friend-request-with-cloud-manager-backend"></a>
+### v0.4.0 - Supported Room Operate & Friend Request, with Cloud Manager Backend.  <a id="v-0-4-0-supported-room-operate-and-friend-request-with-cloud-manager-backend"></a>
 
 ​[v0.4.0](https://github.com/Chatie/wechaty/releases/tag/v0.4.0) release this on 2016-10-10, 3848 commits to master since this release
 
-### v0.2.0 - Cloudify Wechaty: Start manage your bot on [https://chatie.io](https://chatie.io/)​ <a id="v-0-2-0-cloudify-wechaty-start-manage-your-bot-on-https-chatie-io"></a>
+### v0.2.0 - Cloudify Wechaty: Start manage your bot on [https://chatie.io](https://chatie.io/)​  <a id="v-0-2-0-cloudify-wechaty-start-manage-your-bot-on-https-chatie-io"></a>
 
 ​[v0.2.0](https://github.com/Chatie/wechaty/releases/tag/v0.2.0) release this on 2016-06-29, 4315 commits to master since this release
 
-### v0.1.1 - Save/Restore Wechat Session <a id="v-0-1-1-save-restore-wechat-session"></a>
+### v0.1.1 - Save/Restore Wechat Session  <a id="v-0-1-1-save-restore-wechat-session"></a>
 
 ​[v0.1.1](https://github.com/Chatie/wechaty/releases/tag/v0.1.1) release this on 2016-06-10, 4450 commits to master since this release
 
-### v0.1.1 - Perfect worked base on chrome <a id="v-0-1-1-perfect-worked-base-on-chrome"></a>
+### v0.1.1 - Perfect worked base on chrome  <a id="v-0-1-1-perfect-worked-base-on-chrome"></a>
 
 ​[v0.0.6](https://github.com/Chatie/wechaty/releases/tag/v0.0.6) release this on 2016-05-16, 4541 commits to master since this release
 
-### v0.0.5 - Wechaty baby born! <a id="v-0-0-5-wechaty-baby-born"></a>
+### v0.0.5 - Wechaty baby born!  <a id="v-0-0-5-wechaty-baby-born"></a>
 
 ​[v0.0.5](https://github.com/Chatie/wechaty/releases/tag/v0.0.5) release this on 2016-05-11, 4580 commits to master since this release
 
 See more in [releases](https://github.com/chatie/wechaty/releases)​
 
-## CHANGELOG <a id="changelog"></a>
+## CHANGELOG  <a id="changelog"></a>
 
-### v0.16.0 2018-06-21 <a id="v-0-16-0-2018-06-21"></a>
+### v0.16.0 2018-06-21  <a id="v-0-16-0-2018-06-21"></a>
 
 ​[v0.16.0](https://github.com/chatie/wechaty/tree/v0.16.0) \(2018-06-21\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.14.0...v0.16.0)​
 
@@ -258,51 +258,51 @@ See more in [releases](https://github.com/chatie/wechaty/releases)​
 * fix\(package\): update rx-queue to version 0.4.4 [\#1190](https://github.com/Chatie/wechaty/pull/1190) \([zixia](https://github.com/zixia)\)
 * Multi-Instance Support [\#1159](https://github.com/Chatie/wechaty/pull/1159) \([zixia](https://github.com/zixia)\)
 
-### v0.14.0 2018-04-15 <a id="v-0-14-0-2018-04-15"></a>
+### v0.14.0 2018-04-15  <a id="v-0-14-0-2018-04-15"></a>
 
 ​[v0.14.0](https://github.com/chatie/wechaty/tree/v0.14.0) \(2018-04-15\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.12.0...v0.14.0)​
 
-### v0.12.0 2017-10-30 <a id="v-0-12-0-2017-10-30"></a>
+### v0.12.0 2017-10-30  <a id="v-0-12-0-2017-10-30"></a>
 
 ​[v0.12.0](https://github.com/chatie/wechaty/tree/v0.12.0) \(2017-10-30\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.9.0...v0.12.0)​
 
-### v0.9.0 2017-10-04 <a id="v-0-9-0-2017-10-04"></a>
+### v0.9.0 2017-10-04  <a id="v-0-9-0-2017-10-04"></a>
 
 ​[v0.9.0](https://github.com/chatie/wechaty/tree/v0.9.0) \(2017-10-04\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.8.2...v0.9.0)​
 
-### v0.8.2 2017-05-03 <a id="v-0-8-2-2017-05-03"></a>
+### v0.8.2 2017-05-03  <a id="v-0-8-2-2017-05-03"></a>
 
 ​[v0.8.2](https://github.com/chatie/wechaty/tree/v0.8.2) \(2017-05-03\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.7.0...v0.8.2)​
 
-### v0.7.0 2016-12-29 <a id="v-0-7-0-2016-12-29"></a>
+### v0.7.0 2016-12-29  <a id="v-0-7-0-2016-12-29"></a>
 
-​[v0.7.0](https://github.com/chatie/wechaty/tree/v0.7.0) \(2016-12-29\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.6.32...v0.7.0)​
+​[v0.7.0](https://github.com/chatie/wechaty/tree/v0.7.0) \(2016-12-29\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.6.0...v0.7.0)​
 
-### v0.6.32 2016-11-28 <a id="v-0-6-32-2016-11-28"></a>
+### v0.6.0 2016-11-11  <a id="v-0-6-32-2016-11-11"></a>
 
-​[v0.6.32](https://github.com/chatie/wechaty/tree/v0.6.32) \(2016-11-28\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.6.21...v0.6.32)​
+​[v0.6.0](https://github.com/chatie/wechaty/tree/v0.6.0) \(2016-11-11\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.5.22...v0.6.0)​
 
-### v0.6.21 2016-11-14 <a id="v-0-6-21-2016-11-14"></a>
+### v0.5.22 2016-11-10  <a id="v-0-5-21-2016-11-10"></a>
 
-​[v0.6.21](https://github.com/chatie/wechaty/tree/v0.6.21) \(2016-11-14\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.5.21...v0.6.21)​
+​[v0.5.21](https://github.com/chatie/wechaty/tree/v0.5.22) \(2016-11-10\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.5.1...v0.5.22)​
 
-### v0.5.21 2016-11-09 <a id="v-0-5-21-2016-11-09"></a>
+### v0.5.9 2016-11-07  <a id="v-0-5-9-2016-11-07"></a>
 
-​[v0.5.21](https://github.com/chatie/wechaty/tree/v0.5.21) \(2016-11-09\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.5.1...v0.5.21)​
+​[v0.5.1](https://github.com/chatie/wechaty/tree/v0.5.9) \(2016-11-07\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.5.1...v0.5.9)​
 
-### v0.5.1 2016-11-03 <a id="v-0-5-1-2016-11-03"></a>
+### v0.5.1 2016-11-03  <a id="v-0-5-1-2016-11-03"></a>
 
-​[v0.5.1](https://github.com/chatie/wechaty/tree/v0.5.1) \(2016-11-03\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.4.0...v0.5.21)​
+​[v0.5.1](https://github.com/chatie/wechaty/tree/v0.5.1) \(2016-11-03\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.4.0...v0.5.1)​
 
-### v0.4.0 2016-10-08 <a id="v-0-4-0-2016-10-08"></a>
+### v0.4.0 2016-10-08  <a id="v-0-4-0-2016-10-08"></a>
 
-​[v0.4.0](https://github.com/chatie/wechaty/tree/v0.4.0) \(2016-10-08\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.3.12...v0.4.0)​
+​[v0.4.0](https://github.com/chatie/wechaty/tree/v0.4.0) \(2016-10-08\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.2.0...v0.4.0)​
 
-### v0.3.12 2016-08-25 <a id="v-0-3-12-2016-08-25"></a>
+### v0.2.0 2016-08-25  <a id="v-0-3-12-2016-06-28"></a>
 
-​[v0.3.12](https://github.com/chatie/wechaty/tree/v0.3.12) \(2016-08-25\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.1.0...v0.3.12)​
+​[v0.3.12](https://github.com/chatie/wechaty/tree/v0.2.0) \(2016-06-28\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.1.0...v0.2.0)​
 
-### v0.1.0 2016-06-09 <a id="v-0-1-0-2016-06-09"></a>
+### v0.1.0 2016-06-09  <a id="v-0-1-0-2016-06-09"></a>
 
 ​[v0.1.0](https://github.com/chatie/wechaty/tree/v0.1.0) \(2016-06-09\)[Full Changelog](https://github.com/chatie/wechaty/compare/v0.0.5...v0.1.0)​
 

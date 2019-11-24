@@ -1,60 +1,58 @@
-# Wechaty Official Documents
+# Wechaty 文档中文版
 
-[Wechaty Documentations](https://wechaty.github.io/docs/)
+https://docs.chatie.io/v/zh
 
-~~We are using GitBook v3(currently)~~
+## 目录结构
 
-## Directory Structure
+我们通过不同的分支来支持多语言：
 
-We use different branch to support multi language:
+- master: 英文版
+- zh: 中文版
 
-- master: English version
-- zh: Chinise version
+如果你希望贡献英文文档代码，可以发pull request 到 `master` 分支
 
-If you want to contribute to English version code, you can pull request to `master` branch.
+如果你希望贡献中文档代码，可以发pull request 到 `zh` 分支
 
-If you want to contribute to Chinese version code, you can pull request to `zh` branch.
+## 参与贡献
 
-## Welcome to contribute
+### 为什么要贡献
 
-### Why contribute?
+Chatie 的成长离不开开源社区里面每一个成员的贡献，无论你是不是一个开发者，你都可以帮助Chatie 成长的更好！
 
-As an open source product, Chatie thrives from contributions of community members. Whatever your skill set is, there is a lot you can do to help us make Chatie better! So start forking!
+所以，我们非常欢迎开发者为开源项目贡献力量，相应的也将给予贡献者激励以表认可与感谢。所有为社区做过贡献的贡献者，我们会在项目里公开的客观地记录每个人的贡献，同时邀请你加入Chatie Global Contributors Home，并会定期发放小礼物作为社区回馈。
 
-At the same time, we also meet up offline all over the world, here is some activites:
+同时，我们也会不定期在全球举行贡献者的线下聚会，共同讨论技术问题或者组织各类腐败活动。部分活动博客如下：
 
 - [Wechaty Contributor Dinner](https://blog.chatie.io/wechaty-meeting/)
 - [The memorabilia of The First Chatie WWDC Party](https://blog.chatie.io/the-first-chatie-wwdc-party/)
 - [Shanghai WWDC - WeChaty Worldwide Developers Conference](https://blog.chatie.io/wechaty-shanghai-meetup/)
 - [Wechaty Contributor Dinner with Data Girls](https://blog.chatie.io/wechaty-contributor-dinner-data-girl/)
 - [Wechaty Country Wide Developer Conference](https://blog.chatie.io/country-wide-developer-conference/)
-
 .....
 
-### How to contribute docs?
+### 如何贡献代码?
 
 - Fork this repo
 - Checkout to the right branch
-  - English version: `git checkout master`
-  - Chinese version: `git checkout zh`
+    - English version: `git checkout master`
+    - Chinese version: `git checkout zh`
 - Create your doc branch: `git checkout -b doc`
 - Write this doc in markdown
 - Commit your changes `git commit -am 'doc comment'`
 - Push to the branch
 - Create new Pull Request to the corresponding branch
-  - English version: pull request to master branch
-  - Chinese version: pull request to zh branch
+    - English version: pull request to master branch
+    - Chinese version: pull request to zh branch
 
-### More Contribution
+### More Contribution:
 
-See more in: [Welcome to contribute](https://wechaty.github.io/docs/welcome-to-contribute)
+See more in: https://docs.chatie.io/welcome-to-contribute
 
 Contact rui@chatie.io to learn more
 
 ### Contributors List
+https://github.com/Chatie/wechaty/wiki/Contributors
 
-[Contributors List](https://github.com/Chatie/wechaty/wiki/Contributors)
-
-## Markdown Linting Rules
+## Markdown Linting 规范
 
 [Markdown Linting Rules Documents](https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md)

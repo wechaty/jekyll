@@ -1,35 +1,30 @@
 # Table of contents
 
-* [Introduction](README.md)
-* [Quick Start](quick-start.md)
-* [API Reference](api/README.md)
+* [介绍](README.md)
+* [快速开始](quick-start.md)
+* [API 文档](api/README.md)
   * [Wechaty](api/wechaty.md)
+  * [Message](api/message.md)
   * [Contact](api/contact.md)
   * [ContactSelf](api/contact-self.md)
   * [Room](api/room.md)
   * [RoomInvitation](api/room-invitation.md)
-  * [Message](api/message.md)
   * [Friendship](api/friendship.md)
-* [Examples](examples.md)
+* [示例代码](example.md)
 * [Puppet](puppet.md)
-* [FAQ](faq.md)
-* [Best Practice](best-practice.md)
-* [Welcome to contribute](welcome-to-contribute.md)
+* [常见问题](faq.md)
+* [最佳实践](best-practice.md)
+* [参与贡献](contribute.md)
 
-## More
+## 了解更多
 
-* [Video Tutorial](more/video-tutorial.md)
-* [Advanced](more/advanced.md)
-* [Code Structure](more/code-structure.md)
-* [Release Log](more/release-log.md)
-* [Change Log](more/change-log.md)
-* [Awesome Wechaty](more/awesome-wechaty.md)
+* [视频教程](liao-jie-geng-duo/video.md)
+* [进阶](liao-jie-geng-duo/advanced.md)
+* [测试](liao-jie-geng-duo/test.md)
+* [目录结构](liao-jie-geng-duo/catalog.md)
+* [ReleaseLog](liao-jie-geng-duo/releaselog.md)
+* [ChangeLog](liao-jie-geng-duo/changelog.md)
+* [Awesome Wechaty](liao-jie-geng-duo/awesome-wechaty.md)
 * [Contributors](https://github.com/Chatie/wechaty/wiki/Contributors)
-* [We love feedback](more/we-love-feedback.md)
-* [Better tools for authors](more/better-tools-for-authors.md)
-
-## Others
-
-* [Concepts](others/concepts.md)
-* [Tech](others/tech.md)
+* [购买第三方iPad版本](https://github.com/lijiarui/wechaty-puppet-padchat/wiki/购买token)
 

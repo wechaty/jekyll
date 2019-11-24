@@ -1,24 +1,26 @@
 # Awesome Wechaty
 
-## Showcase
+## Awesome Wechaty
+
+## 用户案例
 
 1. [一个用CNN深度神剧网络给图片评分的wechaty项目](https://github.com/huyingxi/wechaty_selfie)
 2. [Relay between Telegram and WeChat](https://github.com/Firaenix/TeleChatRelay)
-3. [A chat bot managing the HaoShiYou wechat groups run by volunteers of haoshiyou.org](https://github.com/xinbenlv/www-haoshiyou-org)
+3. [A chat bot managing the HaoShiYou wechat groups run by volunteers of haoshiyou.org](https://github.com/xinbenlv/haoshiyou-bot)
 4. [An interactive chat bot to manage a TODO list](https://github.com/coderbunker/candobot)
 5. [Forward WeChat messages to telegram](https://github.com/luosheng/Wegram)
 
 Learn more about Projects Using Wechaty at [Wiki:PoweredByWechaty](https://github.com/chatie/wechaty/wiki/PoweredByWechaty)
 
-## Plugins
+## 插件
 
 In Gist-bot
 
-* [firend-bot](https://github.com/wechaty/wechaty-getting-started/blob/master/examples/advanced/gist-bot/on-friend.js)
-* [message-bot](https://github.com/wechaty/wechaty-getting-started/blob/master/examples/advanced/gist-bot/on-message.js)
-* [room-bot](https://github.com/wechaty/wechaty-getting-started/blob/master/examples/advanced/gist-bot/on-room-join.js)
+* [firend-bot](https://github.com/Chatie/wechaty/blob/master/examples/gist-bot/on-friend.ts)
+* [message-bot](https://github.com/Chatie/wechaty/blob/master/examples/gist-bot/on-message.ts)
+* [room-bot](https://github.com/Chatie/wechaty/blob/master/examples/gist-bot/on-room-join.ts)
 
-## Enterprise Usage
+## 企业应用
 
 > "Wechaty is a great solution, I believe there would be much more users recognize it." [link](https://github.com/chatie/wechaty/pull/310#issuecomment-285574472)  
 > -- @Gcaufy, Tencent Engineer, Author of [WePY](https://github.com/Tencent/wepy)
