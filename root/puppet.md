@@ -1,6 +1,6 @@
 # Puppet
 
-## 1. 介绍     <a id="intro"></a>
+## 1. 介绍 <a id="intro"></a>
 
 不同的[Puppet](https://github.com/Chatie/wechaty/wiki/Puppet) 代表的我们对微信协议的不同实现方式, Puppet的英文意思是`傀儡`, 很形象的描述了我们希望Puppet做的事情：帮助 Wechaty 来控制微信的操作。
 
@@ -14,9 +14,9 @@
 
 ![](https://github.com/Chatie/wechaty/wiki/image/abstract-info.png)
 
-## 2. Wechaty Puppet 清单     <a id="puppet-list"></a>
+## 2. Wechaty Puppet 清单 <a id="puppet-list"></a>
 
-### 2.1 调用 Wechaty 的开发者     <a id="puppet-developer"></a>
+### 2.1 调用 Wechaty 的开发者 <a id="puppet-developer"></a>
 
 | Puppet | 使用的微信协议 | Npm 名称 | Npm 版本 | 状态 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -28,16 +28,16 @@
 | TBW | Android Hook | Android | 0.0.0 | ![Stage:Release](https://img.shields.io/badge/Stage-Plan-lightgrey.svg) |
 | TBW | Win32 Hook | Win32 | 0.0.0 | ![Stage:Release](https://img.shields.io/badge/Stage-Plan-lightgrey.svg) |
 
-### 2.2 开发 Puppet 开发者     <a id="puppet-builder"></a>
+### 2.2 开发 Puppet 开发者 <a id="puppet-builder"></a>
 
 | Puppet | 使用的微信协议 | Npm 名称 | Npm 版本 | 状态 |
 | :--- | :--- | :--- | :--- | :--- |
 | [Puppet](https://github.com/Chatie/wechaty-puppet) | 抽象父类 | wechaty-puppet | ![Puppet](https://badge.fury.io/js/wechaty-puppet.svg)   [![npm \(tag\)](https://img.shields.io/npm/v/wechaty-puppet/next.svg)](https://www.npmjs.com/package/wechaty-puppet?activeTab=versions) | ![Stage:Release](https://img.shields.io/badge/Stage-Release-green.svg) |
 | [PuppetMock](https://github.com/Chatie/wechaty-puppet-mock) | 为单元测试提供模拟调用 | wechaty-puppet-mock | ![PuppetMock](https://badge.fury.io/js/wechaty-puppet-mock.svg)   [![npm \(tag\)](https://img.shields.io/npm/v/wechaty-puppet-mock/next.svg)](https://www.npmjs.com/package/wechaty-puppet-mock?activeTab=versions) | ![Stage:Release](https://img.shields.io/badge/Stage-Release-green.svg) |
 
-## 3. Wechaty Puppet 兼容性     <a id="puppet-compatibility"></a>
+## 3. Wechaty Puppet 兼容性 <a id="puppet-compatibility"></a>
 
-### 3.1 Puppet 联系人接口     <a id="puppet-contact"></a>
+### 3.1 Puppet 联系人接口 <a id="puppet-contact"></a>
 
 | Contact API | 描述 | PuppetWechat4u & PuppetPuppeteer | PuppetPadchat & PuppetPadPro | PuppetIosbird |
 | :--- | :--- | :---: | :---: | :---: |
@@ -45,7 +45,7 @@
 | ContactPayload.friend | 判断是否为机器人好友 | ~~No~~ | Yes | Yes |
 | weixin\(\) | 获取微信号 | ~~No~~ | Yes | Yes |
 
-### 3.2 Puppet 消息收发接口     <a id="puppet-message"></a>
+### 3.2 Puppet 消息收发接口 <a id="puppet-message"></a>
 
 | Message API | 描述 | PuppetWechat4u & PuppetPuppeteer | PuppetPadchat & PuppetPadPro | PuppetIosbird |
 | :--- | :--- | :---: | :---: | :---: |
@@ -58,7 +58,7 @@
 Wechaty-puppet-padpro 已经支持发送各类文件，包括word,pdf,ppt等，正在内测中，如需要请在[issue 1668](https://github.com/Chatie/wechaty/issues/1668) 报名哦
 {% endhint %}
 
-### 3.3 Puppet 微信群接口     <a id="puppet-room"></a>
+### 3.3 Puppet 微信群接口 <a id="puppet-room"></a>
 
 | Room API | 描述 | PuppetWechat4u & PuppetPuppeteer | PuppetPadchat & PuppetPadPro | PuppetIosbird |
 | :--- | :--- | :---: | :---: | :---: |
@@ -72,7 +72,7 @@ Wechaty-puppet-padpro 已经支持发送各类文件，包括word,pdf,ppt等，�
 | roomPayload.owner | 获取群主信息 | ~~No~~ | Yes | ~~No~~ |
 | roomInvitaition | 自动接受群邀请 | ~~No~~ | Yes | ~~No~~ |
 
-## 4. 了解更多     <a id="more"></a>
+## 4. 了解更多 <a id="more"></a>
 
 你可以参考这里了解更多的 Wechaty Puppet 内容： [https://github.com/Chatie/wechaty-puppet/wiki](https://github.com/Chatie/wechaty-puppet/wiki)
 

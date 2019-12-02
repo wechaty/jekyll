@@ -1,14 +1,14 @@
 # 快速开始
 
-## 环境要求    <a id="env"></a>
+## 环境要求 <a id="env"></a>
 
 {% hint style="warning" %}
 注意： Wechaty 需要Node.js 版本高于 10
 {% endhint %}
 
-## 运行    <a id="run"></a>
+## 运行 <a id="run"></a>
 
-### 0. 安装 Node.jS \(&gt;=10\)    <a id="install-nodejs"></a>
+### 0. 安装 Node.jS \(&gt;=10\) <a id="install-nodejs"></a>
 
 如果你还没有安装Node.js 或者你的版本低于10, 根据你的环境参考以下链接安装最新版本的Node.js:
 
@@ -32,20 +32,20 @@ node --version
 v10.10.0
 ```
 
-### 1. 从GitHub 上下载 wechaty-getting-started  代码    <a id="clone"></a>
+### 1. 从GitHub 上下载 wechaty-getting-started  代码 <a id="clone"></a>
 
 ```bash
 git clone https://github.com/wechaty/wechaty-getting-started
 cd wechaty-getting-started
 ```
 
-### 2. 安装依赖    <a id="install"></a>
+### 2. 安装依赖 <a id="install"></a>
 
 ```bash
 npm install
 ```
 
-### 3. 运行Bot    <a id="run"></a>
+### 3. 运行Bot <a id="run"></a>
 
 ```bash
 npm start
@@ -58,7 +58,7 @@ npm start 实际上执行的命令是：`node examples/starter-bot.js`你可以�
 
 运行成功后，你可以看到下面的界面：
 
-![demo](.gitbook/assets/image%20%282%29.png)
+![demo](.gitbook/assets/image-2.png)
 
 以上是默认使用网页微信的解决方案，但是网页微信有如下的限制：
 
@@ -80,7 +80,7 @@ WECHATY_PUPPET_PADCHAT_TOKEN=你的token WECHATY_PUPPET=padchat npm start
 * WECHATY\_PUPPET\_PADCHAT\_TOKEN：[点击链接申请token](https://github.com/lijiarui/wechaty-puppet-padchat/wiki/购买token)
 * WECHATY\_PUPPET : 切换到wechaty-puppet-padchat 的puppet 来运行，即从使用web 版本变为使用ipad 版本
 
-## DEMO 展示    <a id="demo"></a>
+## DEMO 展示 <a id="demo"></a>
 
 以下是使用wechaty 开发的机器人，扫码体验。
 
@@ -90,5 +90,5 @@ WECHATY_PUPPET_PADCHAT_TOKEN=你的token WECHATY_PUPPET=padchat npm start
 
 {% hint style="danger" %}
 
-![Wechaty Developers&apos; Home](.gitbook/assets/image%20%281%29.png)
+![Wechaty Developers&apos; Home](.gitbook/assets/image-1.png)
 
