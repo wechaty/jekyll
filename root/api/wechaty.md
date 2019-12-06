@@ -158,8 +158,8 @@ wechaty.on('message', (message) => {
 // Friendship Event will emit when got a new friend request, or friendship is confirmed.
 
 bot.on('friendship', async (friendship) => {
+  const contact = friendship.contact()
   if (friendship.type() === bot.Friendship.Type.Receive) { // 1. receive new friendship request from new contact
-    const contact = friendship.contact()
     let result = await friendship.accept()
     if (result) {
       console.log(`Request from ${contact.name()} is accept succesfully!`)
