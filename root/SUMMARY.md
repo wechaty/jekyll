@@ -1,48 +1,35 @@
-# Summary
+# Table of contents
 
-* [Overview](overview.md)
-* [Concepts](concepts.md)
-* [Quickstart](quickstart.md)
-* [Tutorials](tutorials.md)
+* [Introduction](README.md)
+* [Quick Start](quick-start.md)
+* [API Reference](api/README.md)
+  * [Wechaty](api/wechaty.md)
+  * [Contact](api/contact.md)
+  * [ContactSelf](api/contact-self.md)
+  * [Room](api/room.md)
+  * [RoomInvitation](api/room-invitation.md)
+  * [Message](api/message.md)
+  * [Friendship](api/friendship.md)
+* [Examples](examples.md)
+* [Puppet](puppet.md)
+* [FAQ](faq.md)
+* [Best Practice](best-practice.md)
+* [Welcome to contribute](welcome-to-contribute.md)
 
-* [Wechaty](wechaty/README.md)
-  * [Overview](wechaty/overview.md)
-  * [Concepts](wechaty/concepts.md)
-  * [Getting Started](wechaty/getting-started.md)
-  * [Examples](wechaty/examples.md)
-  * [API](wechaty/api.md)
-  * [What is Puppet](wechaty/puppet.md)
+## More
 
-## Part II
+* [Video Tutorial](more/video-tutorial.md)
+* [Advanced](more/advanced.md)
+* [Code Structure](more/code-structure.md)
+* [Release Log](more/release-log.md)
+* [Change Log](more/change-log.md)
+* [Awesome Wechaty](more/awesome-wechaty.md)
+* [Contributors](https://github.com/Chatie/wechaty/wiki/Contributors)
+* [We love feedback](more/we-love-feedback.md)
+* [Better tools for authors](more/better-tools-for-authors.md)
 
-* [We love feedback](part2/feedback_please.md)
-* [Better tools for authors](part2/better_tools.md)
+## Others
 
-## Summary II
+* [Concepts](others/concepts.md)
+* [Tech](others/tech.md)
 
-* [Part I](part1/README.md)
-  * [Writing is nice](part1/writing.md)
-  * [GitBook is nice](part1/gitbook.md)
-* [Part II](part2/README.md)
-  * [We love feedback](part2/feedback_please.md)
-  * [Better tools for authors](part2/better_tools.md)
-
-----
-
-* [After Parts Seprator](part2/better_tools.md)
-  * [After Parts Sub 1](part2/better_tools.md)
-* [After Parts Seprator 2](part2/better_tools.md)
-  * [After Parts Sub 2](part2/better_tools.md)
-
-----
-
-## Summary III
-
-* [After Parts Seprator](part2/better_tools.md)
-  * [After Parts Sub 1](part2/better_tools.md)
-* [After Parts Seprator 2](part2/better_tools.md)
-  * [After Parts Sub 2](part2/better_tools.md)
-
-----
-
-* [Last part without title](part3/title.md)
