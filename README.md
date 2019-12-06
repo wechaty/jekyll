@@ -1,6 +1,7 @@
 # Wechaty Official Documents
 
 [Wechaty Documentations](https://wechaty.github.io/docs/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/Chatie/docs.svg)](https://greenkeeper.io/)
 
 ~~We are using GitBook v3(currently)~~
 
