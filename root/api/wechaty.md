@@ -147,7 +147,7 @@ bot.on('logout', (user) => {
 ```javascript
 // Message Event will emit when there's a new message.
 
-wechaty.on('message', (message) => {
+bot.on('message', (message) => {
   console.log(`message ${message} received`)
 })
 ```
@@ -216,7 +216,7 @@ bot.on('room-invite', async roomInvitation => {
   } catch (e) {
     console.error(e)
   }
-}
+})
 ```
 
 **Example** _\(Event:error \)_
