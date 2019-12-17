@@ -39,7 +39,7 @@ All wechat messages will be encapsulated as a Message.
 
 Get the sender from a message.
 
-**Kind**: instance method of [`Message`](message.md#Message)  
+**Kind**: instance method of [`Message`](message.md#Message)
 **Example**
 
 ```javascript
@@ -121,7 +121,7 @@ use [text](message.md#Message+text) instead
 
 Get the text content of the message
 
-**Kind**: instance method of [`Message`](message.md#Message)  
+**Kind**: instance method of [`Message`](message.md#Message)
 **Example**
 
 ```javascript
@@ -145,7 +145,7 @@ bot
 
 Get the text content of the recalled message
 
-**Kind**: instance method of [`Message`](message.md#message)  
+**Kind**: instance method of [`Message`](message.md#message)
 **Example**
 
 ```javascript
@@ -160,23 +160,29 @@ bot
 .start()
 ```
 
-### message.say\(textOrContactOrFileOrUrlLink\) ⇒ `Promise <void>`
+### message.say\(textOrContactOrFileOrUrlLinkOrMiniProgram\) ⇒ `Promise <void>`
 
 Reply a Text, Contact Card, Media File or Link message to the sender.
 
 > Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table)
 
-**Kind**: instance method of [`Message`](message.md#Message)  
+**Kind**: instance method of [`Message`](message.md#Message)
 **See**: [Examples/ding-dong-bot](https://github.com/Chatie/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/ding-dong-bot.ts)
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-| textOrContactOrFile | `string` \| `Contact` \| `FileBox` \| `UrlLink` | send text, Contact, or file to bot.   You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
+| textOrContactOrFileOrUrlLinkOrMiniProgram | `string` \| `Contact` \| `FileBox` \| `UrlLink` \| `MiniProgram` | send text, Contact, UrlLink, MiniProgram or file to bot.   You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
 
 **Example**
 
 ```javascript
 import { FileBox }  from 'file-box'
+import {
+  Wechaty,
+  UrlLink,
+  MiniProgram,
+}  from 'wechaty'
+
 const bot = new Wechaty()
 bot
 .on('message', async m => {
@@ -207,7 +213,7 @@ bot
 
 // 4. send UrlLink
 
-  if (/^link$/i.test(m.text())) { 
+  if (/^link$/i.test(m.text())) {
     const urlLink = new UrlLink({
       description: 'Wechaty is a Bot SDK for Wechat Individual Account which can help you create a bot in 6 lines of javascript, with cross-platform support including Linux, Windows, Darwin(OSX/Mac) and Docker.',
       thumbnailUrl: 'https://camo.githubusercontent.com/f310a2097d4aa79d6db2962fa42bb3bb2f6d43df/68747470733a2f2f6368617469652e696f2f776563686174792f696d616765732f776563686174792d6c6f676f2d656e2e706e67',
@@ -216,6 +222,21 @@ bot
     });
 
     await msg.say(urlLink);
+  }
+
+// 5. send MiniProgram (only supported by `wechaty-puppet-macpro`)
+
+  if (/^mini-program$/i.test(m.text())) {
+    const miniProgram = new MiniProgram ({
+      appid              : 'gh_0aa444a25adc',
+      title              : '我正在使用Authing认证身份，你也来试试吧',
+      pagePath           : 'routes/explore.html',
+      description        : '身份管家',
+      thumbUrl           : '30590201000452305002010002041092541302033d0af802040b30feb602045df0c2c5042b777875706c6f61645f31373533353339353230344063686174726f6f6d3131355f313537363035393538390204010400030201000400',
+      thumbKey           : '42f8609e62817ae45cf7d8fefb532e83',
+    });
+
+    await msg.say(miniProgram);
   }
 })
 .start()
@@ -227,17 +248,17 @@ Get the type from the message.
 
 > Tips: MessageType is Enum here. &lt;/br&gt;
 >
-> * MessageType.Unknown     
-> * MessageType.Attachment  
-> * MessageType.Audio       
-> * MessageType.Contact     
-> * MessageType.Emoticon    
-> * MessageType.Image       
-> * MessageType.Text        
-> * MessageType.Video       
+> * MessageType.Unknown
+> * MessageType.Attachment
+> * MessageType.Audio
+> * MessageType.Contact
+> * MessageType.Emoticon
+> * MessageType.Image
+> * MessageType.Text
+> * MessageType.Video
 > * MessageType.Url
 
-**Kind**: instance method of [`Message`](message.md#Message)  
+**Kind**: instance method of [`Message`](message.md#Message)
 **Example**
 
 ```javascript
@@ -251,8 +272,8 @@ if (message.type() === bot.Message.Type.Text) {
 
 Check if a message is sent by self.
 
-**Kind**: instance method of [`Message`](message.md#Message)  
-**Returns**: `boolean` - - Return `true` for send from self, `false` for send from others.  
+**Kind**: instance method of [`Message`](message.md#Message)
+**Returns**: `boolean` - - Return `true` for send from self, `false` for send from others.
 **Example**
 
 ```javascript
@@ -274,8 +295,8 @@ Message event table as follows
 | Identify magic code \(8197\) by programming | ✘ | ✘ | ✘ | ✘ |
 | Identify two contacts with the same roomAlias by \[You were  mentioned\] tip | ✘ | ✘ | √ | √ |
 
-**Kind**: instance method of [`Message`](message.md#Message)  
-**Returns**: `Promise <Contact []>` - - Return message mentioned contactList  
+**Kind**: instance method of [`Message`](message.md#Message)
+**Returns**: `Promise <Contact []>` - - Return message mentioned contactList
 **Example**
 
 ```javascript
@@ -287,8 +308,8 @@ console.log(contactList)
 
 Check if a message is mention self.
 
-**Kind**: instance method of [`Message`](message.md#Message)  
-**Returns**: `Promise <boolean>` - - Return `true` for mention me.  
+**Kind**: instance method of [`Message`](message.md#Message)
+**Returns**: `Promise <boolean>` - - Return `true` for mention me.
 **Example**
 
 ```javascript

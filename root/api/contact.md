@@ -20,7 +20,7 @@ The way to search Contact
 
 All wechat contacts\(friend\) will be encapsulated as a Contact. [Examples/Contact-Bot](https://github.com/Chatie/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/contact-bot.ts)
 
-**Kind**: global class  
+**Kind**: global class
 **Properties**
 
 | Name | Type | Description |
@@ -44,7 +44,7 @@ All wechat contacts\(friend\) will be encapsulated as a Contact. [Examples/Conta
     * [.find\(query\)](contact.md#Contact.find) ⇒ `Promise <Contact | null>`
     * [.findAll\(\[queryArg\]\)](contact.md#Contact.findAll) ⇒ `Promise <Contact []>`
 
-### contact.say\(textOrContactOrFileOrUrl\) ⇒ `Promise <void>`
+### contact.say\(textOrContactOrFileOrUrlLinkOrMiniProgram\) ⇒ `Promise <void>`
 
 > Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table)
 
@@ -52,11 +52,18 @@ All wechat contacts\(friend\) will be encapsulated as a Contact. [Examples/Conta
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-| textOrContactOrFileOrUrl | `string` \| [`Contact`](contact.md#Contact) \| `FileBox` \| `UrlLink` | send text, Contact, file or UrlLink to contact.   You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
+| textOrContactOrFileOrUrlLinkOrMiniProgram | `string` \| [`Contact`](contact.md#Contact) \| `FileBox` \| `UrlLink` \| `MiniProgram` | send text, Contact, file or UrlLink to contact.   You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
 
 **Example**
 
 ```javascript
+import { FileBox }  from 'file-box'
+import {
+  Wechaty,
+  UrlLink,
+  MiniProgram,
+}  from 'wechaty'
+
 const bot = new Wechaty()
 await bot.start()
 const contact = await bot.Contact.find({name: 'lijiarui'})  // change 'lijiarui' to any of your contact name in wechat
@@ -79,6 +86,7 @@ const contactCard = bot.Contact.load('contactId')
 await contact.say(contactCard)
 
 // 4. send url link to contact
+
 const urlLink = new UrlLink({
   description : 'WeChat Bot SDK for Individual Account, Powered by TypeScript, Docker, and Love',
   thumbnailUrl: 'https://avatars0.githubusercontent.com/u/25162437?s=200&v=4',
@@ -86,13 +94,27 @@ const urlLink = new UrlLink({
   url         : 'https://github.com/chatie/wechaty',
 })
 await contact.say(urlLink)
+
+
+// 5. send MiniProgram (only supported by `wechaty-puppet-macpro`)
+
+const miniProgram = new MiniProgram ({
+  appid              : 'gh_0aa444a25adc',
+  title              : '我正在使用Authing认证身份，你也来试试吧',
+  pagePath           : 'routes/explore.html',
+  description        : '身份管家',
+  thumbUrl           : '30590201000452305002010002041092541302033d0af802040b30feb602045df0c2c5042b777875706c6f61645f31373533353339353230344063686174726f6f6d3131355f313537363035393538390204010400030201000400',
+  thumbKey           : '42f8609e62817ae45cf7d8fefb532e83',
+});
+
+await contact.say(miniProgram);
 ```
 
 ### contact.name\(\) ⇒ `string`
 
 Get the name from a contact
 
-**Kind**: instance method of [`Contact`](contact.md#Contact)  
+**Kind**: instance method of [`Contact`](contact.md#Contact)
 **Example**
 
 ```javascript
@@ -151,10 +173,10 @@ Check if contact is friend
 
 > Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table)
 
-**Kind**: instance method of [`Contact`](contact.md#Contact)  
-**Returns**: `boolean` \| `null` -  
-True for friend of the bot  
-False for not friend of the bot, null for unknown.  
+**Kind**: instance method of [`Contact`](contact.md#Contact)
+**Returns**: `boolean` \| `null` -
+True for friend of the bot
+False for not friend of the bot, null for unknown.
 **Example**
 
 ```javascript
@@ -167,7 +189,7 @@ Return the type of the Contact
 
 > Tips: ContactType is enum here.
 
-**Kind**: instance method of [`Contact`](contact.md#Contact)  
+**Kind**: instance method of [`Contact`](contact.md#Contact)
 **Example**
 
 ```javascript
@@ -182,7 +204,7 @@ Contact gender
 
 > Tips: ContactGender is enum here.
 
-**Kind**: instance method of [`Contact`](contact.md#Contact)  
+**Kind**: instance method of [`Contact`](contact.md#Contact)
 **Example**
 
 ```javascript
@@ -193,7 +215,7 @@ const gender = contact.gender() === bot.Contact.Gender.Male
 
 Get the region 'province' from a contact
 
-**Kind**: instance method of [`Contact`](contact.md#Contact)  
+**Kind**: instance method of [`Contact`](contact.md#Contact)
 **Example**
 
 ```javascript
@@ -204,7 +226,7 @@ const province = contact.province()
 
 Get the region 'city' from a contact
 
-**Kind**: instance method of [`Contact`](contact.md#Contact)  
+**Kind**: instance method of [`Contact`](contact.md#Contact)
 **Example**
 
 ```javascript
@@ -215,7 +237,7 @@ const city = contact.city()
 
 Get avatar picture file stream
 
-**Kind**: instance method of [`Contact`](contact.md#Contact)  
+**Kind**: instance method of [`Contact`](contact.md#Contact)
 **Example**
 
 ```javascript
@@ -231,7 +253,7 @@ console.log(`Contact: ${contact.name()} with avatar file: ${name}`)
 
 Force reload data for Contact, Sync data from lowlevel API again.
 
-**Kind**: instance method of [`Contact`](contact.md#Contact)  
+**Kind**: instance method of [`Contact`](contact.md#Contact)
 **Example**
 
 ```javascript
@@ -242,8 +264,8 @@ await contact.sync()
 
 Check if contact is self
 
-**Kind**: instance method of [`Contact`](contact.md#Contact)  
-**Returns**: `boolean` - True for contact is self, False for contact is others  
+**Kind**: instance method of [`Contact`](contact.md#Contact)
+**Returns**: `boolean` - True for contact is self, False for contact is others
 **Example**
 
 ```javascript
@@ -256,7 +278,7 @@ Try to find a contact by filter: {name: string \| RegExp} / {alias: string \| Re
 
 Find contact by name or alias, if the result more than one, return the first one.
 
-**Kind**: static method of [`Contact`](contact.md#Contact)  
+**Kind**: static method of [`Contact`](contact.md#Contact)
 **Returns**: `Promise.` - If can find the contact, return Contact, or return null
 
 | Param | Type |
@@ -303,7 +325,7 @@ const contactList = await bot.Contact.findAll({ alias: 'lijiarui' }) // find all
 
 The way to search Contact
 
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name | Type | Description |

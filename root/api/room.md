@@ -30,7 +30,7 @@ All wechat rooms\(groups\) will be encapsulated as a Room.
 
 [Examples/Room-Bot](https://github.com/Chatie/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/room-bot.ts)
 
-**Kind**: global class  
+**Kind**: global class
 **Properties**
 
 | Name | Type | Description |
@@ -63,14 +63,14 @@ All wechat rooms\(groups\) will be encapsulated as a Room.
 
 Force reload data for Room, Sync data from lowlevel API again.
 
-**Kind**: instance method of [`Room`](room.md#Room)  
+**Kind**: instance method of [`Room`](room.md#Room)
 **Example**
 
 ```javascript
 await room.sync()
 ```
 
-### room.say\(textOrContactOrFileOrUrl, ...mentionList\) ⇒ `Promise <void>`
+### room.say\(textOrContactOrFileOrUrlLinkOrMiniProgram, ...mentionList\) ⇒ `Promise <void>`
 
 Send message inside Room, if set mentionList, wechaty will mention the contact list as well.
 
@@ -80,12 +80,19 @@ Send message inside Room, if set mentionList, wechaty will mention the contact l
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-| textOrContactOrFileOrUrl | `string` \| `Contact` \| `FileBox` \| `UrlLink` | Send `text`, `media file` or `link` inside Room.   You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
+| textOrContactOrFileOrUrlLinkOrMiniProgram | `string` \| `Contact` \| `FileBox` \| `UrlLink` \| `MiniProgram` | Send `text`, `media file` or `link` inside Room.   You can use [FileBox](https://www.npmjs.com/package/file-box) to send file |
 | ...mentionList | `Contact []` | Send content inside Room, and mention @contact list. |
 
 **Example**
 
 ```javascript
+import { FileBox }  from 'file-box'
+import {
+  Wechaty,
+  UrlLink,
+  MiniProgram,
+}  from 'wechaty'
+
 const bot = new Wechaty()
 await bot.start()
 // after logged in...
@@ -96,6 +103,7 @@ const room = await bot.Room.find({topic: 'wechaty'})
 await room.say('Hello world!')
 
 // 2. Send media file inside Room
+
 import { FileBox }  from 'file-box'
 const fileBox1 = FileBox.fromUrl('https://chatie.io/wechaty/images/bot-qr-code.png')
 const fileBox2 = FileBox.fromLocal('/tmp/text.txt')
@@ -103,15 +111,18 @@ await room.say(fileBox1)
 await room.say(fileBox2)
 
 // 3. Send Contact Card in a room
+
 const contactCard = await bot.Contact.find({name: 'lijiarui'}) // change 'lijiarui' to any of the room member
 await room.say(contactCard)
 
 // 4. Send text inside room and mention @mention contact
+
 const members = await room.memberAll() // all members in this room
 const someMembers = members.slice(0, 3);
 await room.say('Hello world!', ...someMembers)
 
 // 5. send Link inside room
+
 const linkPayload = new UrlLink({
   description : 'WeChat Bot SDK for Individual Account, Powered by TypeScript, Docker, and Love',
   thumbnailUrl: 'https://avatars0.githubusercontent.com/u/25162437?s=200&v=4',
@@ -119,11 +130,23 @@ const linkPayload = new UrlLink({
   url         : 'https://github.com/chatie/wechaty',
 })
 await room.say(linkPayload)
+
+// 6. send MiniProgram (only supported by `wechaty-puppet-macpro`)
+
+const miniProgram = new MiniProgram ({
+  appid              : 'gh_0aa444a25adc',
+  title              : '我正在使用Authing认证身份，你也来试试吧',
+  pagePath           : 'routes/explore.html',
+  description        : '身份管家',
+  thumbUrl           : '30590201000452305002010002041092541302033d0af802040b30feb602045df0c2c5042b777875706c6f61645f31373533353339353230344063686174726f6f6d3131355f313537363035393538390204010400030201000400',
+  thumbKey           : '42f8609e62817ae45cf7d8fefb532e83',
+});
+await room.say(miniProgram);
 ```
 
 ### room.on\(event, listener\) ⇒ `this`
 
-**Kind**: instance method of [`Room`](room.md#Room)  
+**Kind**: instance method of [`Room`](room.md#Room)
 **Returns**: `this` - - Room for chain
 
 | Param | Type | Description |
@@ -255,7 +278,7 @@ Bot quit the room itself
 
 > Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table)
 
-**Kind**: instance method of [`Room`](room.md#Room)  
+**Kind**: instance method of [`Room`](room.md#Room)
 **Example**
 
 ```javascript
@@ -352,7 +375,7 @@ Get QR Code of the Room from the room, which can be used as scan and join the ro
 
 Return contact's roomAlias in the room
 
-**Kind**: instance method of [`Room`](room.md#Room)  
+**Kind**: instance method of [`Room`](room.md#Room)
 **Returns**: `Promise <string | null>` - - If a contact has an alias in room, return string, otherwise return null
 
 | Param | Type |
@@ -379,7 +402,7 @@ bot
 
 Check if the room has member `contact`, the return is a Promise and must be `await`-ed
 
-**Kind**: instance method of [`Room`](room.md#Room)  
+**Kind**: instance method of [`Room`](room.md#Room)
 **Returns**: `Promise.` - Return `true` if has contact, else return `false`.
 
 | Param | Type |
@@ -479,7 +502,7 @@ Get room's owner from the room.
 
 > Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table)
 
-**Kind**: instance method of [`Room`](room.md#Room)  
+**Kind**: instance method of [`Room`](room.md#Room)
 **Example**
 
 ```javascript
@@ -492,7 +515,7 @@ Get room's avatar
 
 > Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table)
 
-**Kind**: instance method of [`Room`](room.md#room)  
+**Kind**: instance method of [`Room`](room.md#room)
 **Example**
 
 ```javascript
@@ -547,7 +570,7 @@ const roomList = await bot.Room.findAll({topic: 'wechaty'})  // find all of the 
 
 Try to find a room by filter: {topic: string \| RegExp}. If get many, return the first one.
 
-**Kind**: static method of [`Room`](room.md#Room)  
+**Kind**: static method of [`Room`](room.md#Room)
 **Returns**: `Promise <Room>` - If can find the room, return Room, or return null
 
 | Param | Type |
@@ -568,7 +591,7 @@ const roomList = await bot.Room.find({topic: 'wechaty'})
 
 The filter to find the room: {topic: string \| RegExp}
 
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name | Type |
@@ -579,7 +602,7 @@ The filter to find the room: {topic: string \| RegExp}
 
 Room Class Event Type
 
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name | Type | Description |
@@ -592,7 +615,7 @@ Room Class Event Type
 
 Room Class Event Function
 
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name | Type | Description |
@@ -605,7 +628,7 @@ Room Class Event Function
 
 The way to search member by Room.member\(\)
 
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name | Type | Description |
