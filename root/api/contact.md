@@ -95,7 +95,6 @@ const urlLink = new UrlLink({
 })
 await contact.say(urlLink)
 
-
 // 5. send MiniProgram (only supported by `wechaty-puppet-macpro`)
 
 const miniProgram = new MiniProgram ({
