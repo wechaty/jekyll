@@ -26,7 +26,7 @@
   "devDependencies": {
     "git-scripts": "^0.2.1",
     "gitbook-cli": "^2.3.2",
-    "markdownlint-cli": "^0.8.1",
+    "markdownlint-cli": "^0.12.0",
     "yaml-lint": "^1.2.3"
   },
   "git": {

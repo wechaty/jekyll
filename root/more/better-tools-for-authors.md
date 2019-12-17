@@ -1,4 +1,2 @@
 # Better tools for authors
 
-
-

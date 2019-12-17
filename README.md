@@ -1,8 +1,9 @@
-# CHATIE OFFICIAL DOCUMENTS
+# Wechaty Official Documents
 
-[Chatie Documentations](https://docs.chatie.io)
+[Wechaty Documentations](https://wechaty.github.io/docs/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/wechaty/docs.svg)](https://greenkeeper.io/)
 
-We are using GitBook v3(currently)
+~~We are using GitBook v3(currently)~~
 
 ## Directory Structure
 
@@ -47,7 +48,7 @@ At the same time, we also meet up offline all over the world, here is some activ
 
 ### More Contribution
 
-See more in: [Welcome to contribute](https://docs.chatie.io/welcome-to-contribute)
+See more in: [Welcome to contribute](https://wechaty.github.io/docs/welcome-to-contribute)
 
 Contact rui@chatie.io to learn more
 

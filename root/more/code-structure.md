@@ -1,4 +1,4 @@
 # Code Structure
 
-PR  is welcome.
+PR is welcome.
 

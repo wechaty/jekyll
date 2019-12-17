@@ -422,10 +422,10 @@ Find all contacts in a room
 **Example**
 
 ```javascript
-const roomList:Conatct[] | null = await room.findAll()
-if(roomList)
- console.log(`room all member list: `, roomList)
-const memberContactList: Conatct[] | null =await room.findAll(`abc`)
+const memberList: Conatct[] = await room.memberAll()
+console.log(`room all member list: `, memberList)
+
+const memberContactList: Conatct[] = await room.memberAll(`abc`)
 console.log(`contact list with all name, room alias, alias are abc:`, memberContactList)
 ```
 
