@@ -2,13 +2,13 @@
 
 ## 1. Intro
 
-The term [Puppet](https://github.com/Chatie/wechaty/wiki/Puppet) in Wechaty is an Abstract Class for implementing protocol plugins. The plugins are the component that helps Wechaty to control the Wechat\(that's the reason we call it puppet\).
+The term [Puppet](https://github.com/wechaty/wechaty/wiki/Puppet) in Wechaty is an Abstract Class for implementing protocol plugins. The plugins are the component that helps Wechaty to control the Wechat\(that's the reason we call it puppet\).
 
-The plugins are named `PuppetXXX`, like [PuppetPuppeteer](https://github.com/Chatie/wechaty-puppet-puppeteer) is using the [google puppeteer](https://github.com/GoogleChrome/puppeteer) to control the [WeChat Web API](https://wx.qq.com) via a chrome browser, [PuppetPadchat](https://github.com/lijiarui/wechaty-puppet-padchat) is using the WebSocket protocol to connect with a Protocol Server for controlling the iPad Wechat program. More detail you could go [Puppet in wiki](https://github.com/Chatie/wechaty-puppet/wiki).
+The plugins are named `PuppetXXX`, like [PuppetPuppeteer](https://github.com/wechaty/wechaty-puppet-puppeteer) is using the [google puppeteer](https://github.com/GoogleChrome/puppeteer) to control the [WeChat Web API](https://wx.qq.com) via a chrome browser, [PuppetPadchat](https://github.com/lijiarui/wechaty-puppet-padchat) is using the WebSocket protocol to connect with a Protocol Server for controlling the iPad Wechat program. More detail you could go [Puppet in wiki](https://github.com/wechaty/wechaty-puppet/wiki).
 
-For a deeper understanding of the Puppet in Wechaty, you can read its source code if you like at [https://github.com/Chatie/wechaty-puppet/blob/master/src/puppet.ts](https://github.com/Chatie/wechaty-puppet/blob/master/src/puppet.ts)
+For a deeper understanding of the Puppet in Wechaty, you can read its source code if you like at [https://github.com/wechaty/wechaty-puppet/blob/master/src/puppet.ts](https://github.com/wechaty/wechaty-puppet/blob/master/src/puppet.ts)
 
-![](https://github.com/Chatie/wechaty/wiki/image/abstract-info.png)
+![](https://github.com/wechaty/wechaty/wiki/image/abstract-info.png)
 
 ## 2. Wechaty Puppet List
 
@@ -16,10 +16,10 @@ For a deeper understanding of the Puppet in Wechaty, you can read its source cod
 
 | Wechaty Puppet | Backend Protocol | Npm Name | Npm Version | Stage |
 | :--- | :--- | :--- | :--- | :--- |
-| [PuppetPuppeteer](https://github.com/Chatie/wechaty-puppet-puppeteer) | Web API via Browser Hooking | wechaty-puppet-puppeteer | ![PuppetPuppeteer](https://badge.fury.io/js/wechaty-puppet-puppeteer.svg) [![npm \(tag\)](https://img.shields.io/npm/v/wechaty-puppet-puppeteer/next.svg)](https://www.npmjs.com/package/wechaty-puppet-puppeteer?activeTab=versions) | ![Stage:Release](https://img.shields.io/badge/Stage-Release-green.svg) |
+| [PuppetPuppeteer](https://github.com/wechaty/wechaty-puppet-puppeteer) | Web API via Browser Hooking | wechaty-puppet-puppeteer | ![PuppetPuppeteer](https://badge.fury.io/js/wechaty-puppet-puppeteer.svg) [![npm \(tag\)](https://img.shields.io/npm/v/wechaty-puppet-puppeteer/next.svg)](https://www.npmjs.com/package/wechaty-puppet-puppeteer?activeTab=versions) | ![Stage:Release](https://img.shields.io/badge/Stage-Release-green.svg) |
 | [PuppetPadchat](https://github.com/lijiarui/wechaty-puppet-padchat) | iPad Protocol | wechaty-puppet-padchat | ![PuppetPadchat](https://badge.fury.io/js/wechaty-puppet-padchat.svg)   [![npm \(tag\)](https://img.shields.io/npm/v/wechaty-puppet-padchat/next.svg)](https://www.npmjs.com/package/wechaty-puppet-padchat?activeTab=versions) | ![Stage:Release](https://img.shields.io/badge/Stage-Release-green.svg) |
-| [PuppetPadpro](https://github.com/botorange/wechaty-puppet-padpro) | iPad Protocol | Enhance wechaty-puppet-padchat, see more [issue1668](https://github.com/Chatie/wechaty/issues/1668) | ![PuppetPadpro](https://badge.fury.io/js/wechaty-puppet-padpro.svg)   [![npm \(tag\)](https://img.shields.io/npm/v/wechaty-puppet-padpro.svg)](https://www.npmjs.com/package/wechaty-puppet-padpro?activeTab=versions) | ![Stage:Release](https://img.shields.io/badge/Stage-Release-green.svg) |
-| [PuppetWechat4u](https://github.com/Chatie/wechaty-puppet-wechat4u) | Web API via HTTP | wechaty-puppet-wechat4u | ![PuppetWechat4u](https://badge.fury.io/js/wechaty-puppet-wechat4u.svg)   [![npm \(tag\)](https://img.shields.io/npm/v/wechaty-puppet-wechat4u/next.svg)](https://www.npmjs.com/package/wechaty-puppet-wechat4u?activeTab=versions) | ![Stage:Release](https://img.shields.io/badge/Stage-Alpha-red.svg) |
+| [PuppetPadpro](https://github.com/botorange/wechaty-puppet-padpro) | iPad Protocol | Enhance wechaty-puppet-padchat, see more [issue1668](https://github.com/wechaty/wechaty/issues/1668) | ![PuppetPadpro](https://badge.fury.io/js/wechaty-puppet-padpro.svg)   [![npm \(tag\)](https://img.shields.io/npm/v/wechaty-puppet-padpro.svg)](https://www.npmjs.com/package/wechaty-puppet-padpro?activeTab=versions) | ![Stage:Release](https://img.shields.io/badge/Stage-Release-green.svg) |
+| [PuppetWechat4u](https://github.com/wechaty/wechaty-puppet-wechat4u) | Web API via HTTP | wechaty-puppet-wechat4u | ![PuppetWechat4u](https://badge.fury.io/js/wechaty-puppet-wechat4u.svg)   [![npm \(tag\)](https://img.shields.io/npm/v/wechaty-puppet-wechat4u/next.svg)](https://www.npmjs.com/package/wechaty-puppet-wechat4u?activeTab=versions) | ![Stage:Release](https://img.shields.io/badge/Stage-Alpha-red.svg) |
 | [PuppetIosbird](https://github.com/botorange/wechaty-puppet-iosbird) | iPhone Hook | wechaty-puppet-iosbird | ![PuppetIosbird](https://badge.fury.io/js/wechaty-puppet-iosbird.svg)   [![npm \(tag\)](https://img.shields.io/npm/v/wechaty-puppet-iosbird.svg)](https://www.npmjs.com/package/wechaty-puppet-iosbird?activeTab=versions) | ![Stage:Release](https://img.shields.io/badge/Stage-Alpha-red.svg) |
 | TBW | Android Hook | Android | 0.0.0 | ![Stage:Release](https://img.shields.io/badge/Stage-Plan-lightgrey.svg) |
 | TBW | Win32 Hook | Win32 | 0.0.0 | ![Stage:Release](https://img.shields.io/badge/Stage-Plan-lightgrey.svg) |
@@ -28,8 +28,8 @@ For a deeper understanding of the Puppet in Wechaty, you can read its source cod
 
 | Wechaty Puppet | Backend Protocol | Npm Name | Npm Version | Stage |
 | :--- | :--- | :--- | :--- | :--- |
-| [Puppet](https://github.com/Chatie/wechaty-puppet) | Abstract Base Class | wechaty-puppet | ![Puppet](https://badge.fury.io/js/wechaty-puppet.svg)   [![npm \(tag\)](https://img.shields.io/npm/v/wechaty-puppet/next.svg)](https://www.npmjs.com/package/wechaty-puppet?activeTab=versions) | ![Stage:Release](https://img.shields.io/badge/Stage-Release-green.svg) |
-| [PuppetMock](https://github.com/Chatie/wechaty-puppet-mock) | Mocking | wechaty-puppet-mock | ![PuppetMock](https://badge.fury.io/js/wechaty-puppet-mock.svg)   [![npm \(tag\)](https://img.shields.io/npm/v/wechaty-puppet-mock/next.svg)](https://www.npmjs.com/package/wechaty-puppet-mock?activeTab=versions) | ![Stage:Release](https://img.shields.io/badge/Stage-Release-green.svg) |
+| [Puppet](https://github.com/wechaty/wechaty-puppet) | Abstract Base Class | wechaty-puppet | ![Puppet](https://badge.fury.io/js/wechaty-puppet.svg)   [![npm \(tag\)](https://img.shields.io/npm/v/wechaty-puppet/next.svg)](https://www.npmjs.com/package/wechaty-puppet?activeTab=versions) | ![Stage:Release](https://img.shields.io/badge/Stage-Release-green.svg) |
+| [PuppetMock](https://github.com/wechaty/wechaty-puppet-mock) | Mocking | wechaty-puppet-mock | ![PuppetMock](https://badge.fury.io/js/wechaty-puppet-mock.svg)   [![npm \(tag\)](https://img.shields.io/npm/v/wechaty-puppet-mock/next.svg)](https://www.npmjs.com/package/wechaty-puppet-mock?activeTab=versions) | ![Stage:Release](https://img.shields.io/badge/Stage-Release-green.svg) |
 
 ## 3. Wechaty Puppet Compatibility
 
@@ -65,10 +65,10 @@ For a deeper understanding of the Puppet in Wechaty, you can read its source cod
 
 ## 4. Learn More
 
-Learn more about Wechaty Puppet at [https://github.com/Chatie/wechaty-puppet/wiki](https://github.com/Chatie/wechaty-puppet/wiki)
+Learn more about Wechaty Puppet at [https://github.com/wechaty/wechaty-puppet/wiki](https://github.com/wechaty/wechaty-puppet/wiki)
 
-* Repository: [https://github.com/Chatie/wechaty-puppet](https://github.com/Chatie/wechaty-puppet)
-* Documentation: [https://chatie.io/wechaty-puppet/typedoc/classes/puppet.html](https://chatie.io/wechaty-puppet/typedoc/classes/puppet.html)
-* Puppet Development Guide: [https://github.com/Chatie/wechaty-puppet/wiki/Development](https://github.com/Chatie/wechaty-puppet/wiki/Development)
-* Puppet Related Links: [https://github.com/Chatie/wechaty-puppet/wiki/Links](https://github.com/Chatie/wechaty-puppet/wiki/Links)
+* Repository: [https://github.com/wechaty/wechaty-puppet](https://github.com/wechaty/wechaty-puppet)
+* Documentation: [https://wechaty.github.io/wechaty-puppet/typedoc/classes/puppet.html](https://wechaty.github.io/wechaty-puppet/typedoc/classes/puppet.html)
+* Puppet Development Guide: [https://github.com/wechaty/wechaty-puppet/wiki/Development](https://github.com/wechaty/wechaty-puppet/wiki/Development)
+* Puppet Related Links: [https://github.com/wechaty/wechaty-puppet/wiki/Links](https://github.com/wechaty/wechaty-puppet/wiki/Links)
 
