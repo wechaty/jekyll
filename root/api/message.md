@@ -184,52 +184,25 @@ bot
     </tr>
   </thead>
   <tbody></tbody>
-</table>```javascript
-import { FileBox }  from 'file-box'
-const bot = new Wechaty()
-bot
-.on('message', async m => {
+</table>// 1. send Image
 
-// 1. send Image
-
-  if (/^ding$/i.test(m.text())) {
-    const fileBox = FileBox.fromUrl('https://chatie.io/wechaty/images/bot-qr-code.png')
-    await msg.say(fileBox)
-  }
+if \(/^ding$/i.test\(m.text\(\)\)\) { const fileBox = FileBox.fromUrl\('[https://chatie.io/wechaty/images/bot-qr-code.png](https://chatie.io/wechaty/images/bot-qr-code.png)'\) await msg.say\(fileBox\) }
 
 // 2. send Text
 
-  if (/^dong$/i.test(m.text())) {
-    await msg.say('dingdingding')
-  }
+if \(/^dong$/i.test\(m.text\(\)\)\) { await msg.say\('dingdingding'\) }
 
 // 3. send Contact
 
-  if (/^lijiarui$/i.test(m.text())) {
-    const contactCard = await bot.Contact.find({name: 'lijiarui'})
-    if (!contactCard) {
-      console.log('not found')
-      return
-    }
-    await msg.say(contactCard)
-  }
+if \(/^lijiarui$/i.test\(m.text\(\)\)\) { const contactCard = await bot.Contact.find\({name: 'lijiarui'}\) if \(!contactCard\) { console.log\('not found'\) return } await msg.say\(contactCard\) }
 
-})
+}\)
 
 // 4. send UrlLink
 
-if (/^link$/i.test(m.text())) { 
-  const linkPayload = new UrlLnik({
-    description : 'Netty',
-    thumbnailUrl: 'http://mmbiz.qpic.cn/mmbiz_jpg/48MFTQpxichmmxEoXZ1w7eno72H2MQdx1WC6JiaVdYRmwAp4MCcQbctE2IE7jWqkWOlgMPqMBXVAdR1N46xEibvoQ/640?wx_fmt=jpeg&wxtype=jpeg&wxfrom=0',
-    title       : 'Netty',
-    url         : 'http://mp.weixin.qq.com/s?__biz=MzU2MDU3MzE1Mg==&mid=2247484375&idx=1&sn=5ee91b0a8607a1766b5212a23d3c9179&chksm=fc04bc58cb73354e798403bcc03e293149bb115a0755940e334c0fbe33d7c3b0b0797120a213&scene=0&xtrack=1#rd',
-  })
-  await msg.say(linkPayload) 
-}
-.start()
-```
+if \(/^link$/i.test\(m.text\(\)\)\) { const linkPayload = new UrlLnik\({ description : 'Netty', thumbnailUrl: '[http://mmbiz.qpic.cn/mmbiz\_jpg/48MFTQpxichmmxEoXZ1w7eno72H2MQdx1WC6JiaVdYRmwAp4MCcQbctE2IE7jWqkWOlgMPqMBXVAdR1N46xEibvoQ/640?wx\_fmt=jpeg&wxtype=jpeg&wxfrom=0](http://mmbiz.qpic.cn/mmbiz_jpg/48MFTQpxichmmxEoXZ1w7eno72H2MQdx1WC6JiaVdYRmwAp4MCcQbctE2IE7jWqkWOlgMPqMBXVAdR1N46xEibvoQ/640?wx_fmt=jpeg&wxtype=jpeg&wxfrom=0)', title : 'Netty', url : '[http://mp.weixin.qq.com/s?\_\_biz=MzU2MDU3MzE1Mg==&mid=2247484375&idx=1&sn=5ee91b0a8607a1766b5212a23d3c9179&chksm=fc04bc58cb73354e798403bcc03e293149bb115a0755940e334c0fbe33d7c3b0b0797120a213&scene=0&xtrack=1\#rd](http://mp.weixin.qq.com/s?__biz=MzU2MDU3MzE1Mg==&mid=2247484375&idx=1&sn=5ee91b0a8607a1766b5212a23d3c9179&chksm=fc04bc58cb73354e798403bcc03e293149bb115a0755940e334c0fbe33d7c3b0b0797120a213&scene=0&xtrack=1#rd)', }\) await msg.say\(linkPayload\) } .start\(\)
 
+```text
 ### message.type\(\) ⇒ `MessageType`
 
 获取消息的类型
