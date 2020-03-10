@@ -19,27 +19,27 @@ description: 所有的微信群都会被封装成 Room 类
 
 * [Room](room.md#room)
   * _instance_
-    * [.sync\(\)](room.md#room-sync-promise) ⇒ `Promise.`
-    * [.say\(textOrContactOrFileOrUrl, \[mention\]\)](room.md#room-say-textorcontactorfileorurl-mention-promise) ⇒ `Promise.`
+    * [.sync\(\)](room.md#room-sync-promise) ⇒ `Promise <void>`
+    * [.say\(textOrContactOrFileOrUrl, ...mentionList\)](room.md#room-say-textorcontactorfileorurl-mention-promise) ⇒ `Promise <void>`
     * [.on\(event, listener\)](room.md#room-on-event-listener-this) ⇒ `this`
-    * [.add\(contact\)](room.md#room-add-contact-promise) ⇒ `Promise.`
-    * [.del\(contact\)](room.md#room-del-contact-promise) ⇒ `Promise.`
-    * [.quit\(\)](room.md#room-quit-promise) ⇒ `Promise.`
-    * [.topic\(\[newTopic\]\)](room.md#room-topic-newtopic-promise) ⇒ `Promise.`
-    * [.announce\(\[text\]\)](room.md#room-announce-text-promise) ⇒ `Promise.`
-    * [.qrcode\(\)](room.md#room-qrcode-promise) ⇒ `Promise.`
-    * [.alias\(contact\)](room.md#room-alias-contact-promise) ⇒ `Promise.`
-    * [.has\(contact\)](room.md#room-has-contact-promise) ⇒ `Promise.`
-    * [.memberAll\(\[query\]\)](room.md#room-memberall-query-promise-greater-than) ⇒ `Promise.>`
-    * [.member\(queryArg\)](room.md#room-member-queryarg-promise) ⇒ `Promise.`
+    * [.add\(contact\)](room.md#room-add-contact-promise) ⇒ `Promise <void>`
+    * [.del\(contact\)](room.md#room-del-contact-promise) ⇒ `Promise <void>`
+    * [.quit\(\)](room.md#room-quit-promise) ⇒ `Promise <void>`
+    * [.topic\(\[newTopic\]\)](room.md#room-topic-newtopic-promise) ⇒ `Promise <void | string>`
+    * [.announce\(\[text\]\)](room.md#room-announce-text-promise) ⇒ `Promise <void | string>`
+    * [.qrcode\(\)](room.md#room-qrcode-promise) ⇒ `Promise <string>`
+    * [.alias\(contact\)](room.md#room-alias-contact-promise) ⇒ `Promise <null | string>`
+    * [.has\(contact\)](room.md#room-has-contact-promise) ⇒ `Promise <boolean>`
+    * [.memberAll\(\[query\]\)](room.md#room-memberall-query-promise-greater-than) ⇒ `Promise <Contact []>`
+    * [.member\(query\)](room.md#room-member-queryarg-promise) ⇒ `Promise <null | Contact>`
     * [.owner\(\)](room.md#room-owner-contact-or-null) ⇒ `Contact` \| `null`
-    * [.avatar\(\)](room.md#room-owner-contact-or-null) ⇒ `Promise.`
+    * [.avatar\(\)](room.md#room-owner-contact-or-null) ⇒ `Promise <FileBox>`
   * _static_
-    * [.create\(contactList, \[topic\]\)](room.md#room-create-contactlist-topic-promise) ⇒ [`Promise.`](room.md#Room)
-    * [.findAll\(\[query\]\)](room.md#room-findall-query-promise-greater-than) ⇒ `Promise.>`
-    * [.find\(query\)](room.md#room-findall-query-promise-greater-than) ⇒ `Promise.`
+    * [.create\(contactList, \[topic\]\)](room.md#room-create-contactlist-topic-promise) ⇒ `Promise <Room>`
+    * [.findAll\(\[query\]\)](room.md#room-findall-query-promise-greater-than) ⇒ `Promise <Room[]>`
+    * [.find\(query\)](room.md#room-findall-query-promise-greater-than) ⇒ `Promise <Room>`
 
-### room.sync\(\) ⇒ `Promise.`
+### room.sync\(\) ⇒ `Promise <void>`
 
 强制加载群的数据，从底层API 重新加载数据。
 
@@ -50,9 +50,9 @@ description: 所有的微信群都会被封装成 Room 类
 await room.sync()
 ```
 
-### room.say\(textOrContactOrFileOrUrl, \[mention\]\) ⇒ `Promise.`
+### room.say\(textOrContactOrFileOrUrl, ...mentionList\) ⇒ `Promise <void>`
 
-在群内发消息，如果设置了 \[mention\] 参数，机器人在群内发送消息的时候还会@这个联系人。
+在群内发消息，如果设置了 ...mentionList 参数，机器人在群内发送消息的时候还会@这些联系人。
 
 {% hint style="info" %}
 这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#puppet-compatibility)
@@ -63,7 +63,7 @@ await room.sync()
 | Param | Type | Description |
 | :--- | :--- | :--- |
 | textOrContactOrFileOrUrl | `string` \| `Contact` \| `FileBox` \| `UrlLiink` | 群内发送 `text` 或者`media file` 或者`链接` 。你可以通过 [FileBox](https://www.npmjs.com/package/file-box) 来发送文件。 |
-| \[mention\] | `Contact` \| `Array.` | 可选参数，当设置这个参数的时候，在群内发送文本消息会@此联系人。 |
+| ...mentionList | `Contact[]` | 可选参数，当设置这个参数的时候，在群内发送文本消息会@这些联系人。 |
 
 **Example**
 
@@ -89,15 +89,16 @@ const contactCard = await bot.Contact.find({name: 'lijiarui'}) // change 'lijiar
 await room.say(contactCard)
 
 // 4. Send text inside room and mention @mention contact
-const contact = await bot.Contact.find({name: 'lijiarui'}) // change 'lijiarui' to any of the room member
-await room.say('Hello world!', contact)
+const members = await room.memberAll() // memtion all members in this room
+const someMembers = members.slice(0, 3);
+await room.say('Hello world!', ...someMembers)
 
-// 5. send url link in a room
+// 5. Send url link in a room
 const urlLink = new UrlLink ({
-  description  : 'this is url link description',
-  thumbnailUrl : 'this is a thumbnail url',
-  title        : 'this is url link title',
-  url          : 'this is the url',
+  description: 'Wechaty is a Bot SDK for Wechat Individual Account which can help you create a bot in 6 lines of javascript, with cross-platform support including Linux, Windows, Darwin(OSX/Mac) and Docker.',
+  thumbnailUrl: 'https://camo.githubusercontent.com/f310a2097d4aa79d6db2962fa42bb3bb2f6d43df/68747470733a2f2f6368617469652e696f2f776563686174792f696d616765732f776563686174792d6c6f676f2d656e2e706e67',
+  title: 'Wechaty',
+  url: 'https://github.com/chatie/wechaty',
 })
 await room.say(urlLink)
 ```
@@ -168,7 +169,7 @@ if (room) {
 }
 ```
 
-### room.add\(contact\) ⇒ `Promise.`
+### room.add\(contact\) ⇒ `Promise <void>`
 
 邀请好友加入群聊。
 
@@ -201,7 +202,7 @@ if (room) {
 }
 ```
 
-### room.del\(contact\) ⇒ `Promise.`
+### room.del\(contact\) ⇒ `Promise <void>`
 
 将好友移出群聊，这个功能仅在机器人是群主的时候会生效。
 
@@ -234,7 +235,7 @@ if (room) {
 }
 ```
 
-### room.quit\(\) ⇒ `Promise.`
+### room.quit\(\) ⇒ `Promise <void>`
 
 机器人主动退群。
 
@@ -249,7 +250,7 @@ if (room) {
 await room.quit()
 ```
 
-### room.topic\(\[newTopic\]\) ⇒ `Promise.`
+### room.topic\(\[newTopic\]\) ⇒ `Promise <void | string>`
 
 设置 / 获取 群名称。
 
@@ -257,7 +258,7 @@ await room.quit()
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-| \[newTopic\] | `string` | 参数可选，如果没有设置，则会获取群名称，如果设置了，则会设置群名称。 |
+| newTopic | `string` | 参数可选，如果没有设置，则会获取群名称，如果设置了，则会设置群名称。 |
 
 **Example** _\(当你在群里说话的时候，打印群名称 \)_
 
@@ -290,9 +291,9 @@ bot
 .start()
 ```
 
-### room.announce\(\[text\]\) ⇒ `Promise.`
+### room.announce\(\[text\]\) ⇒ `Promise <void | string>`
 
-设置/获取 群公告。
+设置 / 获取 群公告。
 
 {% hint style="info" %}
 这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#3-wechaty-puppet-jian-rong-xing)
@@ -304,7 +305,7 @@ bot
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-| \[text\] | `string` | 如果设置了这个参数，则会设置群公告，如果没有设置，则是获取群公告。 |
+| text | `string` | 如果设置了这个参数，则会设置群公告，如果没有设置，则是获取群公告。 |
 
 **Example** _\(当你在群里说话的时候，打印群公告. \)_
 
@@ -329,7 +330,7 @@ await room.announce('change announce to wechaty!')
 console.log(`room announce change from ${oldAnnounce} to ${room.announce()}`)
 ```
 
-### room.qrcode\(\) ⇒ `Promise.`
+### room.qrcode\(\) ⇒ `Promise <string>`
 
 获取群二维码，用户可以通过扫描这个二维码加入群聊。
 
@@ -341,12 +342,12 @@ console.log(`room announce change from ${oldAnnounce} to ${room.announce()}`)
 
 **Kind**: instance method of [`Room`](room.md#room)
 
-### room.alias\(contact\) ⇒ `Promise.`
+### room.alias\(contact\) ⇒ `Promise <null | string>`
 
 获取这个联系人在群内的群昵称。
 
 **Kind**: instance method of [`Room`](room.md#room)  
-**Returns**: `Promise.` - - 如果此联系人在群内设置了群昵称则会返回，否则会返回空。
+**Returns**: `Promise <null | string>` - - 如果此联系人在群内设置了群昵称则会返回，否则会返回空。
 
 | Param | Type |
 | :--- | :--- |
@@ -368,12 +369,12 @@ bot
 .start()
 ```
 
-### room.has\(contact\) ⇒ `Promise.`
+### room.has\(contact\) ⇒ `Promise <boolean>`
 
 检查群内是否有这个群成员。
 
 **Kind**: instance method of [`Room`](room.md#room)  
-**Returns**: `Promise.` - Return `true` if has contact, else return `false`.
+**Returns**: `Promise <boolean>` - Return `true` if has contact, else return `false`.
 
 | Param | Type |
 | :--- | :--- |
@@ -396,7 +397,7 @@ if (contact && room) {
 }
 ```
 
-### room.memberAll\(\[query\]\) ⇒ `Promise.>`
+### room.memberAll\(\[query\]\) ⇒ `Promise <Contact []>`
 
 根据 query 获取群内所有的群成员列表。如果没有设置query，返回所有的群成员信息。
 
@@ -410,53 +411,25 @@ if (contact && room) {
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
+| query | [`RoomQueryFilter`](room.md#roomqueryfilter) \| `string` | 1. RoomMemberQueryFilter 可通过 name, roomAlias, contactAlias 查找指定的群成员。 2. 当memberAll\(name\) 的参数为string 类型的时候, 返回所有找到的群成员。这里面的name 包括上面定义的name, roomAlias, contactAlias。 |
 
+### room.member\(query\) ⇒ `Promise <null | Contact>`
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">[query]</th>
-      <th style="text-align:left"><a href="room.md#roommemberqueryfilter"><code>RoomMemberQueryFilter</code></a> | <code>string</code>
-      </th>
-      <th style="text-align:left">
-        <p>&#x53EF;&#x9009;&#x53C2;&#x6570;</p>
-        <ul>
-          <li>RoomMemberQueryFilter &#x53EF;&#x901A;&#x8FC7; name, roomAlias, contactAlias
-            &#x67E5;&#x627E;&#x6307;&#x5B9A;&#x7684;&#x7FA4;&#x6210;&#x5458;&#x3002;</li>
-          <li>&#x5F53;memberAll(name) &#x7684;&#x53C2;&#x6570;&#x4E3A;string &#x7C7B;&#x578B;&#x7684;&#x65F6;&#x5019;,
-            &#x8FD4;&#x56DE;&#x6240;&#x6709;&#x627E;&#x5230;&#x7684;&#x7FA4;&#x6210;&#x5458;&#x3002;&#x8FD9;&#x91CC;&#x9762;&#x7684;name
-            &#x5305;&#x62EC;&#x4E0A;&#x9762;&#x5B9A;&#x4E49;&#x7684;name, roomAlias,
-            contactAlias&#x3002;</li>
-        </ul>
-      </th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>| Param | Type | Description |
+根据 query 获取群内的群成员。
+
+#### 定义
+
+* `name`                       微信联系人自己设置的昵称，等于 `Contact.name()`
+* `roomAlias`             微信联系人自己在群内设置的昵称。
+* `contactAlias`       机器人给微信联系人设置的，等于 `Contact.alias()`
+
+**Kind**: instance method of [`Room`](room.md#room)
+
+| Param | Type | Description |
 | :--- | :--- | :--- |
+| query | [`RoomQueryFilter`](room.md#roomqueryfilter) \| `string` | RoomMemberQueryFilter 可通过 name, roomAlias, contactAlias 查找指定的群成员。 |
 
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">queryArg</th>
-      <th style="text-align:left"><a href="room.md#roommemberqueryfilter"><code>RoomMemberQueryFilter</code></a> | <code>string</code>
-      </th>
-      <th style="text-align:left">
-        <p>&#x5982;&#x679C;&#x627E;&#x5230;&#x591A;&#x4E2A;&#xFF0C;&#x8FD4;&#x56DE;&#x7B2C;&#x4E00;&#x4E2A;&#x3002;</p>
-        <ul>
-          <li>RoomMemberQueryFilter &#x53EF;&#x901A;&#x8FC7; name, roomAlias, contactAlias
-            &#x67E5;&#x627E;&#x6307;&#x5B9A;&#x7684;&#x7FA4;&#x6210;&#x5458;&#x3002;</li>
-          <li>&#x5F53;memberAll(name) &#x7684;&#x53C2;&#x6570;&#x4E3A;string &#x7C7B;&#x578B;&#x7684;&#x65F6;&#x5019;,
-            &#x8FD4;&#x56DE;&#x6240;&#x6709;&#x627E;&#x5230;&#x7684;&#x7FA4;&#x6210;&#x5458;&#x3002;&#x8FD9;&#x91CC;&#x9762;&#x7684;name
-            &#x5305;&#x62EC;&#x4E0A;&#x9762;&#x5B9A;&#x4E49;&#x7684;name, roomAlias,
-            contactAlias&#x3002;</li>
-        </ul>
-      </th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>### room.owner\(\) ⇒ `Contact` \| `null`
+### room.owner\(\) ⇒ `Contact` \| `null`
 
 获取群主的信息。
 
@@ -471,7 +444,7 @@ if (contact && room) {
 const owner = room.owner()
 ```
 
-### room.avatar\(\) ⇒ `Promise`
+### room.avatar\(\) ⇒ `Promise <FileBox>`
 
 获取群头像的信息。
 
@@ -486,7 +459,7 @@ const owner = room.owner()
 const owner = room.avatar()
 ```
 
-### Room.create\(contactList, \[topic\]\) ⇒ [`Promise.`](room.md#Room)
+### Room.create\(contactList, topic\) ⇒ [`Promise <Room>`](room.md#Room)
 
 创建群聊
 
@@ -494,8 +467,8 @@ const owner = room.avatar()
 
 | Param | Type |
 | :--- | :--- |
-| contactList | `Array.` |
-| \[topic\] | `string` |
+| contactList | `Array` |
+| topic | `string` |
 
 **Example** _\(Creat a room with 'lijiarui' and 'juxiaomi', the room topic is 'ding - created'\)_
 
@@ -510,7 +483,7 @@ await room.topic('ding - created')
 await room.say('ding - created')
 ```
 
-### Room.findAll\(\[query\]\) ⇒ `Promise.>`
+### Room.findAll\(\[query\]\) ⇒ `Promise <Room []>`
 
 通过 {topic: string \| RegExp}, 查找群，返回找到的所有群的数组。
 
@@ -518,7 +491,7 @@ await room.say('ding - created')
 
 | Param | Type |
 | :--- | :--- |
-| \[query\] | [`RoomQueryFilter`](room.md#roomqueryfilter) |
+| query | [`RoomQueryFilter`](room.md#roomqueryfilter) |
 
 **Example**
 
@@ -530,12 +503,12 @@ const roomList = await bot.Room.findAll()                    // get the room lis
 const roomList = await bot.Room.findAll({topic: 'wechaty'})  // find all of the rooms with name 'wechaty'
 ```
 
-### Room.find\(query\) ⇒ `Promise.`
+### Room.find\(query\) ⇒ `Promise <Room>`
 
 通过 {topic: string \| RegExp}, 查找群，如果找到多个群，返回找到的第一个群。
 
 **Kind**: static method of [`Room`](room.md#room)  
-**Returns**: `Promise.` - If can find the room, return Room, or return null
+**Returns**: `Promise <Room>` -- If can find the room, return Room, or return null
 
 | Param | Type |
 | :--- | :--- |
@@ -551,7 +524,7 @@ const roomList = await bot.Room.find()
 const roomList = await bot.Room.find({topic: 'wechaty'})
 ```
 
-## 类型定义      <a id="typedef"></a>
+## 类型定义 <a id="typedef"></a>
 
 [RoomQueryFilter](room.md#RoomQueryFilter)
 
@@ -606,7 +579,7 @@ Room Class Event Function
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| name | `string` | 通过用户的昵称查找群成员，这里面的name 等于`Contact.name()`. |
+| name | `string` | 通过用户的昵称查找群成员，这里面的name 等于`Contact.name()`。 |
 | roomAlias | `string` | 通过用户设置的群昵称查找群成员。 |
-| contactAlias | `string` | 通过机器人给用户设置的备注查找群成员，这里面的contactAlias 等于 `Contact.alias()`. 更多细节查看： [More Detail](https://github.com/Chatie/wechaty/issues/365) |
+| contactAlias | `string` | 通过机器人给用户设置的备注查找群成员，这里面的contactAlias 等于 `Contact.alias()`。 更多细节查看： [More Detail](https://github.com/Chatie/wechaty/issues/365) |
 

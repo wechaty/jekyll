@@ -1,0 +1,37 @@
+{
+  "name": "@chatie/docs",
+  "version": "0.0.41",
+  "description": "Chatie Documents",
+  "main": "index.js",
+  "scripts": {
+    "lint": "npm run lint:md && npm run lint:yaml",
+    "lint:md": "markdownlint *.md docs/*.md docs/**/*.md",
+    "lint:yaml": "yamllint .gitbook.yml",
+    "test": "echo test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chatie/docs.git"
+  },
+  "keywords": [
+    "chatie",
+    "document"
+  ],
+  "author": "Huan LI <zixia@zixia.net>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Chatie/docs/issues"
+  },
+  "homepage": "https://github.com/Chatie/docs#readme",
+  "devDependencies": {
+    "git-scripts": "^0.2.1",
+    "gitbook-cli": "^2.3.2",
+    "markdownlint-cli": "^0.8.1",
+    "yaml-lint": "^1.2.3"
+  },
+  "git": {
+    "scripts": {
+      "pre-push": "bash ./scripts/pre-push.sh"
+    }
+  }
+}
