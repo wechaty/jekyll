@@ -39,7 +39,7 @@ docker run -ti --rm --volume="$(pwd)":/bot zixia/wechaty mybot.ts
 ```typescript
 import { PuppetPadchat } from 'wechaty-puppet-padchat'
 const puppet = new PuppetPadchat()
-const bot = new Wechaty({ 
+const bot = new Wechaty({
     puppet,
     name: 'your-bot-name'
 })
