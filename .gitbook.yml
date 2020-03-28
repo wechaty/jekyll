@@ -10,6 +10,10 @@ links:
     sidebar: 
       - 
         Home: "https://wechaty.github.io"
+
+#
+# Huan(202003): Not work yet
+#
 plugins:
   - scripts
 pluginsConfig:
