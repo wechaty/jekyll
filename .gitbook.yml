@@ -10,3 +10,9 @@ links:
     sidebar: 
       - 
         Home: "https://wechaty.github.io"
+plugins:
+  - scripts
+pluginsConfig:
+  scripts:
+    files:
+      - 'gitter-sidecar.html'
