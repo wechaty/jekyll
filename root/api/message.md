@@ -320,7 +320,7 @@ if (await message.mentionSelf()) {
 
 ### message.forward\(to\) ⇒ `Promise <void>`
 
-Forward the received message.
+Forward the received message. This action doesn't trigger the on-message events.
 
 **Kind**: instance method of [`Message`](message.md#Message)
 
