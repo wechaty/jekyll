@@ -321,7 +321,7 @@ await bot.say(contact)
 
 // 3. send Image to bot itself from remote url
 import { FileBox }  from 'file-box'
-const fileBox = FileBox.fromUrl('https://github.com/wechaty/wechaty/blob/master/docs/images/bot-qr-code.png')
+const fileBox = FileBox.fromUrl('https://wechaty.github.io/wechaty/images/bot-qr-code.png')
 await bot.say(fileBox)
 
 // 4. send Image to bot itself from local file

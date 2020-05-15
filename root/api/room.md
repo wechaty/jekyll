@@ -105,7 +105,7 @@ await room.say('Hello world!')
 // 2. Send media file inside Room
 
 import { FileBox }  from 'file-box'
-const fileBox1 = FileBox.fromUrl('https://github.com/wechaty/wechaty/blob/master/docs/images/bot-qr-code.png')
+const fileBox1 = FileBox.fromUrl('https://wechaty.github.io/wechaty/images/bot-qr-code.png')
 const fileBox2 = FileBox.fromLocal('/tmp/text.txt')
 await room.say(fileBox1)
 await room.say(fileBox2)

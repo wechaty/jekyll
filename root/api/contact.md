@@ -75,7 +75,7 @@ await contact.say('welcome to wechaty!')
 // 2. send media file to contact
 
 import { FileBox }  from 'file-box'
-const fileBox1 = FileBox.fromUrl('https://github.com/wechaty/wechaty/blob/master/docs/images/bot-qr-code.png')
+const fileBox1 = FileBox.fromUrl('https://wechaty.github.io/wechaty/images/bot-qr-code.png')
 const fileBox2 = FileBox.fromFile('/tmp/text.txt')
 await contact.say(fileBox1)
 await contact.say(fileBox2)

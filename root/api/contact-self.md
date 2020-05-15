@@ -51,7 +51,7 @@ bot.on('login', async user => {
 import { FileBox }  from 'file-box'
 bot.on('login', user => {
   console.log(`user ${user} login`)
-  const fileBox = FileBox.fromUrl('https://github.com/wechaty/wechaty/blob/master/docs/images/bot-qr-code.png')
+  const fileBox = FileBox.fromUrl('https://wechaty.github.io/wechaty/images/bot-qr-code.png')
   await user.avatar(fileBox)
   console.log(`Change bot avatar successfully!`)
 })
