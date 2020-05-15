@@ -24,7 +24,7 @@
 * [Release Log](more/release-log.md)
 * [Change Log](more/change-log.md)
 * [Awesome Wechaty](more/awesome-wechaty.md)
-* [Contributors](https://github.com/Chatie/wechaty/wiki/Contributors)
+* [Contributors](https://github.com/wechaty/wechaty/wiki/Contributors)
 * [We love feedback](more/we-love-feedback.md)
 * [Better tools for authors](more/better-tools-for-authors.md)
 
@@ -32,4 +32,3 @@
 
 * [Concepts](others/concepts.md)
 * [Tech](others/tech.md)
-

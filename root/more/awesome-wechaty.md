@@ -8,7 +8,7 @@
 4. [An interactive chat bot to manage a TODO list](https://github.com/coderbunker/candobot)
 5. [Forward WeChat messages to telegram](https://github.com/luosheng/Wegram)
 
-Learn more about Projects Using Wechaty at [Wiki:PoweredByWechaty](https://github.com/chatie/wechaty/wiki/PoweredByWechaty)
+Learn more about Projects Using Wechaty at [Wiki:PoweredByWechaty](https://github.com/wechaty/wechaty/wiki/PoweredByWechaty)
 
 ## Plugins
 
@@ -20,7 +20,7 @@ In Gist-bot
 
 ## Enterprise Usage
 
-> "Wechaty is a great solution, I believe there would be much more users recognize it." [link](https://github.com/chatie/wechaty/pull/310#issuecomment-285574472)  
+> "Wechaty is a great solution, I believe there would be much more users recognize it." [link](https://github.com/wechaty/wechaty/pull/310#issuecomment-285574472)  
 > -- @Gcaufy, Tencent Engineer, Author of [WePY](https://github.com/Tencent/wepy)
 >
 > "太好用，好用的想哭"  
@@ -32,8 +32,8 @@ In Gist-bot
 > "Wechaty让运营人员更多的时间思考如何进行活动策划、留存用户，商业变现" [link](http://mp.weixin.qq.com/s/dWHAj8XtiKG-1fIS5Og79g)  
 > -- @lijiarui, CEO of BotOrange.
 >
-> "If you know js ... try Chatie/wechaty, it's easy to use."  
+> "If you know js ... try wechaty/wechaty, it's easy to use."  
 > -- @Urinx Uri Lee, Author of [WeixinBot\(Python\)](https://github.com/Urinx/WeixinBot)
 
-See more at [Wiki:VoiceOfDeveloper](https://github.com/Chatie/wechaty/wiki/VoiceOfDeveloper)
+See more at [Wiki:VoiceOfDeveloper](https://github.com/wechaty/wechaty/wiki/VoiceOfDeveloper)
 

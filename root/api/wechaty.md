@@ -12,13 +12,13 @@ Main bot class.
 
 A `Bot` is a wechat client depends on which puppet you use. It may equals
 
-* web-wechat, when you use: [puppet-puppeteer](https://github.com/chatie/wechaty-puppet-puppeteer)/[puppet-wechat4u](https://github.com/chatie/wechaty-puppet-wechat4u)
+* web-wechat, when you use: [puppet-puppeteer](https://github.com/wechaty/wechaty-puppet-puppeteer)/[puppet-wechat4u](https://github.com/wechaty/wechaty-puppet-wechat4u)
 * ipad-wechat, when you use: [puppet-padchat](https://github.com/lijiarui/wechaty-puppet-padchat)
 * ios-wechat, when you use: puppet-ioscat
 
 See more:
 
-* [What is a Puppet in Wechaty](https://github.com/Chatie/wechaty-getting-started/wiki/FAQ-EN#31-what-is-a-puppet-in-wechaty)
+* [What is a Puppet in Wechaty](https://github.com/wechaty/wechaty-getting-started/wiki/FAQ-EN#31-what-is-a-puppet-in-wechaty)
 
 > If you want to know how to send message, see [Message](wechaty.md#Message)  
 > If you want to know how to get contact, see [Contact](wechaty.md#Contact)
@@ -27,9 +27,9 @@ See more:
 
 [PuppetName](wechaty.md#PuppetName)
 
-The term [Puppet](https://github.com/Chatie/wechaty/wiki/Puppet) in Wechaty is an Abstract Class for implementing protocol plugins. The plugins are the component that helps Wechaty to control the Wechat\(that's the reason we call it puppet\). The plugins are named PuppetXXX, for example:
+The term [Puppet](https://github.com/wechaty/wechaty/wiki/Puppet) in Wechaty is an Abstract Class for implementing protocol plugins. The plugins are the component that helps Wechaty to control the Wechat\(that's the reason we call it puppet\). The plugins are named PuppetXXX, for example:
 
-* [PuppetPuppeteer](https://github.com/Chatie/wechaty-puppet-puppeteer)
+* [PuppetPuppeteer](https://github.com/wechaty/wechaty-puppet-puppeteer)
 * [PuppetPadchat](https://github.com/lijiarui/wechaty-puppet-padchat)
 
 [WechatyOptions](wechaty.md#WechatyOptions)
@@ -46,13 +46,13 @@ Main bot class.
 
 A `Bot` is a wechat client depends on which puppet you use. It may equals
 
-* web-wechat, when you use: [puppet-puppeteer](https://github.com/chatie/wechaty-puppet-puppeteer)/[puppet-wechat4u](https://github.com/chatie/wechaty-puppet-wechat4u)
+* web-wechat, when you use: [puppet-puppeteer](https://github.com/wechaty/wechaty-puppet-puppeteer)/[puppet-wechat4u](https://github.com/wechaty/wechaty-puppet-wechat4u)
 * ipad-wechat, when you use: [puppet-padchat](https://github.com/lijiarui/wechaty-puppet-padchat)
 * ios-wechat, when you use: puppet-ioscat
 
 See more:
 
-* [What is a Puppet in Wechaty](https://github.com/Chatie/wechaty-getting-started/wiki/FAQ-EN#31-what-is-a-puppet-in-wechaty)
+* [What is a Puppet in Wechaty](https://github.com/wechaty/wechaty-getting-started/wiki/FAQ-EN#31-what-is-a-puppet-in-wechaty)
 
 > If you want to know how to send message, see [Message](wechaty.md#Message)  
 > If you want to know how to get contact, see [Contact](wechaty.md#Contact)
@@ -105,7 +105,7 @@ You can do anything you want when in these events functions. The main Event name
 see more in [WechatyEventName](wechaty.md#WechatyEventName)
 
 **Kind**: instance method of [`Wechaty`](wechaty.md#Wechaty)  
-**Returns**: [`Wechaty`](wechaty.md#Wechaty) - - this for chaining, see advanced [chaining usage](https://github.com/Chatie/wechaty-getting-started/wiki/FAQ-EN#36-why-wechatyonevent-listener-return-wechaty)
+**Returns**: [`Wechaty`](wechaty.md#Wechaty) - - this for chaining, see advanced [chaining usage](https://github.com/wechaty/wechaty-getting-started/wiki/FAQ-EN#36-why-wechatyonevent-listener-return-wechaty)
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
@@ -297,7 +297,7 @@ console.log(`Bot is ${contact.name()}`)
 
 Send message to userSelf, in other words, bot send message to itself.
 
-> Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table)
+> Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/wechaty/wechaty/wiki/Puppet#3-puppet-compatible-table)
 
 **Kind**: instance method of [`Wechaty`](wechaty.md#Wechaty)
 
@@ -321,7 +321,7 @@ await bot.say(contact)
 
 // 3. send Image to bot itself from remote url
 import { FileBox }  from 'file-box'
-const fileBox = FileBox.fromUrl('https://chatie.io/wechaty/images/bot-qr-code.png')
+const fileBox = FileBox.fromUrl('https://github.com/wechaty/wechaty/blob/master/docs/images/bot-qr-code.png')
 await bot.say(fileBox)
 
 // 4. send Image to bot itself from local file
@@ -334,7 +334,7 @@ const linkPayload = new UrlLink({
   description : 'WeChat Bot SDK for Individual Account, Powered by TypeScript, Docker, and Love',
   thumbnailUrl: 'https://avatars0.githubusercontent.com/u/25162437?s=200&v=4',
   title       : 'Welcome to Wechaty',
-  url         : 'https://github.com/chatie/wechaty',
+  url         : 'https://github.com/wechaty/wechaty',
 })
 await bot.say(linkPayload)
 ```
@@ -363,9 +363,9 @@ Wechaty.instance() // Global instance
 
 ## PuppetName
 
-The term [Puppet](https://github.com/Chatie/wechaty/wiki/Puppet) in Wechaty is an Abstract Class for implementing protocol plugins. The plugins are the component that helps Wechaty to control the Wechat\(that's the reason we call it puppet\). The plugins are named PuppetXXX, for example:
+The term [Puppet](https://github.com/wechaty/wechaty/wiki/Puppet) in Wechaty is an Abstract Class for implementing protocol plugins. The plugins are the component that helps Wechaty to control the Wechat\(that's the reason we call it puppet\). The plugins are named PuppetXXX, for example:
 
-* [PuppetPuppeteer](https://github.com/Chatie/wechaty-puppet-puppeteer)
+* [PuppetPuppeteer](https://github.com/wechaty/wechaty-puppet-puppeteer)
 * [PuppetPadchat](https://github.com/lijiarui/wechaty-puppet-padchat)
 
 **Kind**: global typedef  
@@ -435,4 +435,3 @@ Wechaty Class Event Function
 | room-topic | `function` | \(this: Wechaty, room: Room, newTopic: string, oldTopic: string, changer: Contact\) =&gt; void |
 | room-leave | `function` | \(this: Wechaty, room: Room, leaverList: Contact\[\]\) =&gt; void |
 | room-invite | `function` | \(this: Wechaty, room: Room, leaverList: Contact\[\]\) =&gt; void                                          see more in  [RoomInvitation](room-invitation.md) |
-

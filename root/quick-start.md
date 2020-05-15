@@ -20,7 +20,7 @@ If you have not installed Node.js\(or version is below 10\),You need to install 
 ### 1. Clone wechaty-getting-started Repository
 
 ```bash
-git clone https://github.com/Chatie/wechaty-getting-started
+git clone https://github.com/wechaty/wechaty-getting-started
 cd wechaty-getting-started
 ```
 
@@ -54,4 +54,3 @@ This demo will show all message on the bot.
 ![Wechaty Developers&apos; Home](.gitbook/assets/image-6.png)
 
 Scan the following QR Code in WeChat with secret code _wechaty_, join our **Wechaty Developers' Home**. This group is only for developers.
-

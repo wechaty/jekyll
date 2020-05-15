@@ -6,7 +6,7 @@ You can get all of the following examples as follows
 
 ## 1. BASIC
 
-Wechaty Basic Functions, see [https://github.com/Chatie/wechaty-getting-started/tree/master/examples/basic](https://github.com/Chatie/wechaty-getting-started/tree/master/examples/basic)
+Wechaty Basic Functions, see [https://github.com/wechaty/wechaty-getting-started/tree/master/examples/basic](https://github.com/wechaty/wechaty-getting-started/tree/master/examples/basic)
 
 | FileName | Description |
 | :--- | :--- |
@@ -16,7 +16,7 @@ Wechaty Basic Functions, see [https://github.com/Chatie/wechaty-getting-started/
 
 ## 2. ADVANCED
 
-Wechaty Advanced Functions, see [https://github.com/Chatie/wechaty-getting-started/tree/master/examples/advanced](https://github.com/Chatie/wechaty-getting-started/tree/master/examples/advanced)
+Wechaty Advanced Functions, see [https://github.com/wechaty/wechaty-getting-started/tree/master/examples/advanced](https://github.com/wechaty/wechaty-getting-started/tree/master/examples/advanced)
 
 | FileName | Description |
 | :--- | :--- |
@@ -29,7 +29,7 @@ Wechaty Advanced Functions, see [https://github.com/Chatie/wechaty-getting-start
 
 ## 3. PROFESSIONAL
 
-Wechaty Integrated with Other Modules/Services, see [https://github.com/Chatie/wechaty-getting-started/tree/master/examples/professional](https://github.com/Chatie/wechaty-getting-started/tree/master/examples/professional)
+Wechaty Integrated with Other Modules/Services, see [https://github.com/wechaty/wechaty-getting-started/tree/master/examples/professional](https://github.com/wechaty/wechaty-getting-started/tree/master/examples/professional)
 
 | FileName | Description |
 | :--- | :--- |
@@ -41,4 +41,3 @@ Wechaty Integrated with Other Modules/Services, see [https://github.com/Chatie/w
 | tuling123-bot.ts | Connect to [tuling123](http://www.tuling123.com/) chatbot |
 | telegram-roger-bot.js | single bot that runs under/for both Telegram and WeChaty |
 | blessed-twins-bot/ | Wechaty multi-instance support \(v0.16+\) demo |
-

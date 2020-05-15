@@ -12,7 +12,7 @@ Send, receive friend request, and friend confirmation events.
 2. receive request\(in friend event\)
 3. confirmation friendship\(friend event\)
 
-[Examples/Friend-Bot](https://github.com/Chatie/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/friend-bot.ts)
+[Examples/Friend-Bot](https://github.com/wechaty/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/friend-bot.ts)
 
 **Kind**: global class
 

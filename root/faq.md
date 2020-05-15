@@ -4,9 +4,9 @@
 
 ### 1.1 I can not login with my Wechat account
 
-Wechat account that registered after 2017 will not be able to login via Web API. Learn more at [https://github.com/Chatie/wechaty/issues/872](https://github.com/Chatie/wechaty/issues/872)
+Wechat account that registered after 2017 will not be able to login via Web API. Learn more at [https://github.com/wechaty/wechaty/issues/872](https://github.com/wechaty/wechaty/issues/872)
 
-Solution: Wechaty support protocols other than Web API, such as pad. Learn more at [https://github.com/Chatie/wechaty/issues/1296](https://github.com/Chatie/wechaty/issues/1296)
+Solution: Wechaty support protocols other than Web API, such as pad. Learn more at [https://github.com/wechaty/wechaty/issues/1296](https://github.com/wechaty/wechaty/issues/1296)
 
 ## 2. What wechaty cannot do on wechat
 
@@ -29,8 +29,8 @@ Not yet at this moment, will support later
 
 Related Issue：
 
-* [Add support for send url rich media message](https://github.com/Chatie/wechaty/issues/718)
-* [can wechaty send share card msg](https://github.com/Chatie/wechaty/issues/824)
+* [Add support for send url rich media message](https://github.com/wechaty/wechaty/issues/718)
+* [can wechaty send share card msg](https://github.com/wechaty/wechaty/issues/824)
 
 ### 2.3 I don't know wechaty support for personal account of wechat official account
 
@@ -38,7 +38,7 @@ At this moment, wechaty only support personal account
 
 Related Issue:
 
-* [Using wechaty to start a wechatOA account](https://github.com/Chatie/wechaty/issues/1016)
+* [Using wechaty to start a wechatOA account](https://github.com/wechaty/wechaty/issues/1016)
 
 ## 3. Others
 
@@ -60,5 +60,5 @@ Wechaty can implement many wechat protocol plughins. The plugins are the compone
 
 No, wechaty use wechaty itself API for wechat4u. They are totally 2 different project and no one contains another.
 
-You can edit here: [FAQ](https://github.com/Chatie/wechaty-getting-started/wiki/FAQ-EN)
+You can edit here: [FAQ](https://github.com/wechaty/wechaty-getting-started/wiki/FAQ-EN)
 

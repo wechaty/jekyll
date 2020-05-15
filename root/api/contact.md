@@ -8,7 +8,7 @@ description: All wechat contacts(friend) will be encapsulated as a Contact.
 
 [Contact](contact.md#Contact)
 
-All wechat contacts\(friend\) will be encapsulated as a Contact. [Examples/Contact-Bot](https://github.com/Chatie/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/contact-bot.ts)
+All wechat contacts\(friend\) will be encapsulated as a Contact. [Examples/Contact-Bot](https://github.com/wechaty/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/contact-bot.ts)
 
 ## Typedefs
 
@@ -18,14 +18,14 @@ The way to search Contact
 
 ## Contact
 
-All wechat contacts\(friend\) will be encapsulated as a Contact. [Examples/Contact-Bot](https://github.com/Chatie/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/contact-bot.ts)
+All wechat contacts\(friend\) will be encapsulated as a Contact. [Examples/Contact-Bot](https://github.com/wechaty/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/contact-bot.ts)
 
 **Kind**: global class
 **Properties**
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| id | `string` | Get Contact id. This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table) |
+| id | `string` | Get Contact id. This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/wechaty/wechaty/wiki/Puppet#3-puppet-compatible-table) |
 
 * [Contact](contact.md#Contact)
   * _instance_
@@ -46,7 +46,7 @@ All wechat contacts\(friend\) will be encapsulated as a Contact. [Examples/Conta
 
 ### contact.say\(textOrContactOrFileOrUrlLinkOrMiniProgram\) ⇒ `Promise <void>`
 
-> Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table)
+> Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/wechaty/wechaty/wiki/Puppet#3-puppet-compatible-table)
 
 **Kind**: instance method of [`Contact`](contact.md#Contact)
 
@@ -75,7 +75,7 @@ await contact.say('welcome to wechaty!')
 // 2. send media file to contact
 
 import { FileBox }  from 'file-box'
-const fileBox1 = FileBox.fromUrl('https://chatie.io/wechaty/images/bot-qr-code.png')
+const fileBox1 = FileBox.fromUrl('https://github.com/wechaty/wechaty/blob/master/docs/images/bot-qr-code.png')
 const fileBox2 = FileBox.fromFile('/tmp/text.txt')
 await contact.say(fileBox1)
 await contact.say(fileBox2)
@@ -91,7 +91,7 @@ const urlLink = new UrlLink({
   description : 'WeChat Bot SDK for Individual Account, Powered by TypeScript, Docker, and Love',
   thumbnailUrl: 'https://avatars0.githubusercontent.com/u/25162437?s=200&v=4',
   title       : 'Welcome to Wechaty',
-  url         : 'https://github.com/chatie/wechaty',
+  url         : 'https://github.com/wechaty/wechaty',
 })
 await contact.say(urlLink)
 
@@ -170,7 +170,7 @@ try {
 
 Check if contact is friend
 
-> Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table)
+> Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/wechaty/wechaty/wiki/Puppet#3-puppet-compatible-table)
 
 **Kind**: instance method of [`Contact`](contact.md#Contact)
 **Returns**: `boolean` \| `null` -
@@ -330,5 +330,5 @@ The way to search Contact
 | Name | Type | Description |
 | :--- | :--- | :--- |
 | name | `string` | The name-string set by user-self, should be called name |
-| alias | `string` | The name-string set by bot for others, should be called alias [More Detail](https://github.com/Chatie/wechaty/issues/365) |
+| alias | `string` | The name-string set by bot for others, should be called alias [More Detail](https://github.com/wechaty/wechaty/issues/365) |
 

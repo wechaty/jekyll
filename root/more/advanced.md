@@ -8,13 +8,12 @@ For visiters come from China who can not visit YouTube.com, this video is also h
 
 ## 2. Docker Wechaty Getting Started
 
-[![Docker](https://avatars0.githubusercontent.com/u/5429470?s=200)](https://github.com/Chatie/docker-wechaty-getting-started)
+[![Docker](https://avatars0.githubusercontent.com/u/5429470?s=200)](https://github.com/wechaty/docker-wechaty-getting-started)
 
-[https://github.com/Chatie/docker-wechaty-getting-started](https://github.com/Chatie/docker-wechaty-getting-started)
+[https://github.com/wechaty/docker-wechaty-getting-started](https://github.com/wechaty/docker-wechaty-getting-started)
 
 ## 3. Heroku Wechaty Getting Started
 
-[![Heroku](https://avatars3.githubusercontent.com/u/23211?s=200)](https://github.com/Chatie/heroku-wechaty-getting-started)
+[![Heroku](https://avatars3.githubusercontent.com/u/23211?s=200)](https://github.com/wechaty/heroku-wechaty-getting-started)
 
-[https://github.com/Chatie/heroku-wechaty-getting-started](https://github.com/Chatie/heroku-wechaty-getting-started)
-
+[https://github.com/wechaty/heroku-wechaty-getting-started](https://github.com/wechaty/heroku-wechaty-getting-started)
