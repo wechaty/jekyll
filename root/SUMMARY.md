@@ -18,13 +18,13 @@
 
 ## 了解更多
 
-* [视频教程](liao-jie-geng-duo/video.md)
-* [进阶](liao-jie-geng-duo/advanced.md)
-* [测试](liao-jie-geng-duo/test.md)
-* [目录结构](liao-jie-geng-duo/catalog.md)
-* [ReleaseLog](liao-jie-geng-duo/releaselog.md)
-* [ChangeLog](liao-jie-geng-duo/changelog.md)
-* [Awesome Wechaty](liao-jie-geng-duo/awesome-wechaty.md)
+* [视频教程](le-jie-geng-duo/video.md)
+* [进阶](le-jie-geng-duo/advanced.md)
+* [测试](le-jie-geng-duo/test.md)
+* [目录结构](le-jie-geng-duo/catalog.md)
+* [ReleaseLog](le-jie-geng-duo/releaselog.md)
+* [ChangeLog](le-jie-geng-duo/changelog.md)
+* [Awesome Wechaty](le-jie-geng-duo/awesome-wechaty.md)
 * [Contributors](https://github.com/Chatie/wechaty/wiki/Contributors)
 * [购买第三方iPad版本](https://github.com/lijiarui/wechaty-puppet-padchat/wiki/购买token)
 

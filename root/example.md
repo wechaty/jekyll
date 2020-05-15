@@ -4,7 +4,7 @@
 
 {% embed url="https://github.com/Chatie/wechaty-getting-started/tree/master/examples" caption="" %}
 
-## 1. 基本版本    <a id="basic"></a>
+## 1. 基本版本 <a id="basic"></a>
 
 代码内容详见： [https://github.com/wechaty/wechaty-getting-started/tree/master/examples/basic](https://github.com/wechaty/wechaty-getting-started/tree/master/examples/basic)
 
@@ -14,7 +14,7 @@
 | [ding-dong-bot.js](https://github.com/Chatie/wechaty-getting-started/blob/master/examples/basic/ding-dong-bot.js) | 处理收发消息的例子 |
 | [contact-bot.js](https://github.com/Chatie/wechaty-getting-started/blob/master/examples/basic/contact-bot.js) | 在终端下输出微信号下联系人的 _微信ID_ 和 _昵称_ |
 
-### 2. 进阶版本    <a id="advanced"></a>
+### 2. 进阶版本 <a id="advanced"></a>
 
 代码内容详见：[https://github.com/wechaty/wechaty-getting-started/tree/master/examples/advanced](https://github.com/wechaty/wechaty-getting-started/tree/master/examples/advanced)
 
@@ -27,7 +27,7 @@
 | [friend-bot.js](https://github.com/Chatie/wechaty-getting-started/blob/master/examples/advanced/friend-bot.js) | 处理好友请求的代码例子 |
 | [gist-bot/](https://github.com/Chatie/wechaty-getting-started/tree/master/examples/advanced/gist-bot) | 将不同的处理模块分散到不同文件里面的代码例子 |
 
-### 3. 专业版本    <a id="professional"></a>
+### 3. 专业版本 <a id="professional"></a>
 
 代码内容详见：[https://github.com/wechaty/wechaty-getting-started/tree/master/examples/professional](https://github.com/wechaty/wechaty-getting-started/tree/master/examples/professional)
 

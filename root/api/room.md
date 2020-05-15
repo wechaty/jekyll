@@ -427,8 +427,7 @@ if (contact && room) {
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
-| query | [`RoomQueryFilter`](room.md#roomqueryfilter) \| `string` | RoomMemberQueryFilter 可通过 name, roomAlias, contactAlias 查找指定的群成员。|
-
+| query | [`RoomQueryFilter`](room.md#roomqueryfilter) \| `string` | RoomMemberQueryFilter 可通过 name, roomAlias, contactAlias 查找指定的群成员。 |
 
 ### room.owner\(\) ⇒ `Contact` \| `null`
 
@@ -525,7 +524,7 @@ const roomList = await bot.Room.find()
 const roomList = await bot.Room.find({topic: 'wechaty'})
 ```
 
-## 类型定义      <a id="typedef"></a>
+## 类型定义 <a id="typedef"></a>
 
 [RoomQueryFilter](room.md#RoomQueryFilter)
 
@@ -583,4 +582,3 @@ Room Class Event Function
 | name | `string` | 通过用户的昵称查找群成员，这里面的name 等于`Contact.name()`。 |
 | roomAlias | `string` | 通过用户设置的群昵称查找群成员。 |
 | contactAlias | `string` | 通过机器人给用户设置的备注查找群成员，这里面的contactAlias 等于 `Contact.alias()`。 更多细节查看： [More Detail](https://github.com/Chatie/wechaty/issues/365) |
-

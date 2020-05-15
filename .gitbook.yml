@@ -1,4 +1,6 @@
 root:         ./root
+redirects:
+  faq: ./faq.md
 gitbook:      ">= 3.0.0"
 author:       "Rui LI <ruiruibupt@gmail.com>"
 structure:
