@@ -17,9 +17,9 @@ https://wechaty.js.org/v/zh/
 
 ### 为什么要贡献
 
-Chatie 的成长离不开开源社区里面每一个成员的贡献，无论你是不是一个开发者，你都可以帮助Chatie 成长的更好！
+Wechaty 的成长离不开开源社区里面每一个成员的贡献，无论你是不是一个开发者，你都可以帮助Wechaty 成长的更好！
 
-所以，我们非常欢迎开发者为开源项目贡献力量，相应的也将给予贡献者激励以表认可与感谢。所有为社区做过贡献的贡献者，我们会在项目里公开的客观地记录每个人的贡献，同时邀请你加入Chatie Global Contributors Home，并会定期发放小礼物作为社区回馈。
+所以，我们非常欢迎开发者为开源项目贡献力量，相应的也将给予贡献者激励以表认可与感谢。所有为社区做过贡献的贡献者，我们会在项目里公开的客观地记录每个人的贡献，同时邀请你加入Wechaty Global Contributors Home，并会定期发放小礼物作为社区回馈。
 
 同时，我们也会不定期在全球举行贡献者的线下聚会，共同讨论技术问题或者组织各类腐败活动。部分活动博客如下：
 
@@ -34,24 +34,25 @@ Chatie 的成长离不开开源社区里面每一个成员的贡献，无论你�
 
 - Fork this repo
 - Checkout to the right branch
-    - English version: `git checkout master`
-    - Chinese version: `git checkout zh`
+  - English version: `git checkout master`
+  - Chinese version: `git checkout zh`
 - Create your doc branch: `git checkout -b doc`
 - Write this doc in markdown
 - Commit your changes `git commit -am 'doc comment'`
 - Push to the branch
 - Create new Pull Request to the corresponding branch
-    - English version: pull request to master branch
-    - Chinese version: pull request to zh branch
+  - English version: pull request to master branch
+  - Chinese version: pull request to zh branch
 
-### More Contribution:
+### More Contribution
 
 See more in: https://wechaty.js.org/welcome-to-contribute
 
 Contact rui@chatie.io to learn more
 
 ### Contributors List
-https://github.com/Chatie/wechaty/wiki/Contributors
+
+<https://github.com/wechaty/wechaty/wiki/Contributors>
 
 ## Markdown Linting 规范
 

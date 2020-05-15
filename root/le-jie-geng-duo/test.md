@@ -12,5 +12,5 @@ To test Wechaty, run:
 npm test
 ```
 
-Get to know more about the tests from [Wiki:Tests](https://github.com/chatie/wechaty/wiki/Tests)
+Get to know more about the tests from [Wiki:Tests](https://github.com/wechaty/wechaty/wiki/Tests)
 

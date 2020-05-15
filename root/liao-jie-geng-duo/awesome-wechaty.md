@@ -10,19 +10,19 @@
 4. [An interactive chat bot to manage a TODO list](https://github.com/coderbunker/candobot)
 5. [Forward WeChat messages to telegram](https://github.com/luosheng/Wegram)
 
-Learn more about Projects Using Wechaty at [Wiki:PoweredByWechaty](https://github.com/chatie/wechaty/wiki/PoweredByWechaty)
+Learn more about Projects Using Wechaty at [Wiki:PoweredByWechaty](https://github.com/wechaty/wechaty/wiki/PoweredByWechaty)
 
 ## 插件
 
 In Gist-bot
 
-* [firend-bot](https://github.com/Chatie/wechaty/blob/master/examples/gist-bot/on-friend.ts)
-* [message-bot](https://github.com/Chatie/wechaty/blob/master/examples/gist-bot/on-message.ts)
-* [room-bot](https://github.com/Chatie/wechaty/blob/master/examples/gist-bot/on-room-join.ts)
+* [firend-bot](https://github.com/wechaty/wechaty/blob/master/examples/gist-bot/on-friend.ts)
+* [message-bot](https://github.com/wechaty/wechaty/blob/master/examples/gist-bot/on-message.ts)
+* [room-bot](https://github.com/wechaty/wechaty/blob/master/examples/gist-bot/on-room-join.ts)
 
 ## 企业应用
 
-> "Wechaty is a great solution, I believe there would be much more users recognize it." [link](https://github.com/chatie/wechaty/pull/310#issuecomment-285574472)  
+> "Wechaty is a great solution, I believe there would be much more users recognize it." [link](https://github.com/wechaty/wechaty/pull/310#issuecomment-285574472)  
 > -- @Gcaufy, Tencent Engineer, Author of [WePY](https://github.com/Tencent/wepy)
 >
 > "太好用，好用的想哭"  
@@ -37,5 +37,5 @@ In Gist-bot
 > "If you know js ... try Chatie/wechaty, it's easy to use."  
 > -- @Urinx Uri Lee, Author of [WeixinBot\(Python\)](https://github.com/Urinx/WeixinBot)
 
-See more at [Wiki:VoiceOfDeveloper](https://github.com/Chatie/wechaty/wiki/VoiceOfDeveloper)
+See more at [Wiki:VoiceOfDeveloper](https://github.com/wechaty/wechaty/wiki/VoiceOfDeveloper)
 

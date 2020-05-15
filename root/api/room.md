@@ -8,7 +8,7 @@ description: 所有的微信群都会被封装成 Room 类
 
 所有的微信群都会被封装成 Room类。
 
-[Examples/Room-Bot](https://github.com/Chatie/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/room-bot.ts)
+[Examples/Room-Bot](https://github.com/wechaty/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/room-bot.ts)
 
 **Kind**: global class  
 **Properties**
@@ -79,7 +79,7 @@ await room.say('Hello world!')
 
 // 2. Send media file inside Room
 import { FileBox }  from 'file-box'
-const fileBox1 = FileBox.fromUrl('https://chatie.io/wechaty/images/bot-qr-code.png')
+const fileBox1 = FileBox.fromUrl('https://wechaty.github.io/wechaty/images/bot-qr-code.png')
 const fileBox2 = FileBox.fromLocal('/tmp/text.txt')
 await room.say(fileBox1)
 await room.say(fileBox2)
@@ -98,7 +98,7 @@ const urlLink = new UrlLink ({
   description: 'Wechaty is a Bot SDK for Wechat Individual Account which can help you create a bot in 6 lines of javascript, with cross-platform support including Linux, Windows, Darwin(OSX/Mac) and Docker.',
   thumbnailUrl: 'https://camo.githubusercontent.com/f310a2097d4aa79d6db2962fa42bb3bb2f6d43df/68747470733a2f2f6368617469652e696f2f776563686174792f696d616765732f776563686174792d6c6f676f2d656e2e706e67',
   title: 'Wechaty',
-  url: 'https://github.com/chatie/wechaty',
+  url: 'https://github.com/wechaty/wechaty',
 })
 await room.say(urlLink)
 ```
@@ -176,7 +176,7 @@ if (room) {
 {% hint style="info" %}
 这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#puppet-compatibility)
 
-基于网页微信开发的用户请查看： [Web version of WeChat closed group interface](https://github.com/Chatie/wechaty/issues/1441)
+基于网页微信开发的用户请查看： [Web version of WeChat closed group interface](https://github.com/wechaty/wechaty/issues/1441)
 {% endhint %}
 
 **Kind**: instance method of [`Room`](room.md#room)
@@ -209,7 +209,7 @@ if (room) {
 {% hint style="info" %}
 这个功能是否能实现取决于你使用的是哪一个Puppet, 详情参考：[puppet兼容性列表](../puppet.md#puppet-compatibility)
 
-基于网页微信开发的用户请查看： [Web version of WeChat closed group interface](https://github.com/Chatie/wechaty/issues/1441)
+基于网页微信开发的用户请查看： [Web version of WeChat closed group interface](https://github.com/wechaty/wechaty/issues/1441)
 {% endhint %}
 
 **Kind**: instance method of [`Room`](room.md#room)
@@ -581,4 +581,4 @@ Room Class Event Function
 | :--- | :--- | :--- |
 | name | `string` | 通过用户的昵称查找群成员，这里面的name 等于`Contact.name()`。 |
 | roomAlias | `string` | 通过用户设置的群昵称查找群成员。 |
-| contactAlias | `string` | 通过机器人给用户设置的备注查找群成员，这里面的contactAlias 等于 `Contact.alias()`。 更多细节查看： [More Detail](https://github.com/Chatie/wechaty/issues/365) |
+| contactAlias | `string` | 通过机器人给用户设置的备注查找群成员，这里面的contactAlias 等于 `Contact.alias()`。 更多细节查看： [More Detail](https://github.com/wechaty/wechaty/issues/365) |

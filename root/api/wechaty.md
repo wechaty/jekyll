@@ -8,7 +8,7 @@ description: 一个Wechaty 代表着一个微信的客户端，他取决于你�
 
 根据你选择的[Puppet](../puppet.md#intro)的不同，Bot 可能等于下面中的一个客户端，不同的[Puppet](../puppet.md#intro) 代表的我们对微信协议的不同实现方式, Puppet的英文意思是`傀儡`, 很形象的描述了我们希望Puppet做的事情：帮助 Wechaty 来控制微信的操作。
 
-* 网页微信客户端, 当你选择: [puppet-puppeteer](https://github.com/chatie/wechaty-puppet-puppeteer)/[puppet-wechat4u](https://github.com/chatie/wechaty-puppet-wechat4u)​
+* 网页微信客户端, 当你选择: [puppet-puppeteer](https://github.com/wechaty/wechaty-puppet-puppeteer)/[puppet-wechat4u](https://github.com/wechaty/wechaty-puppet-wechat4u)​
 * iPad 微信客户端, 当你选择: [puppet-padchat](https://github.com/lijiarui/wechaty-puppet-padchat)​
 
 了解更多:
@@ -116,7 +116,7 @@ WECHATY_PUPPET_PADCHAT_TOKEN=你的token WECHATY_PUPPET=padchat node bot.js
 
 **Kind**: instance method of [`Wechaty`](wechaty.md#wechaty)
 
-**Returns**: [`Wechaty`](wechaty.md#wechaty) - - this for chaining, see advanced [chaining usage](https://github.com/Chatie/wechaty-getting-started/wiki/FAQ-EN#36-why-wechatyonevent-listener-return-wechaty)​
+**Returns**: [`Wechaty`](wechaty.md#wechaty) - - this for chaining, see advanced [chaining usage](https://github.com/wechaty/wechaty-getting-started/wiki/FAQ-EN#36-why-wechatyonevent-listener-return-wechaty)​
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
@@ -322,11 +322,11 @@ console.log(`Bot is ${contact.name()}`)
   <tbody></tbody>
 </table>// 2. send Contact to bot itself const contact = bot.Contact.load\('contactId'\) await bot.say\(contact\)​
 
-// 3. send Image to bot itself from remote url import { FileBox } from 'file-box' const fileBox = FileBox.fromUrl\('[https://chatie.io/wechaty/images/bot-qr-code.png](https://chatie.io/wechaty/images/bot-qr-code.png)'\) await bot.say\(fileBox\)​
+// 3. send Image to bot itself from remote url import { FileBox } from 'file-box' const fileBox = FileBox.fromUrl\('[https://wechaty.github.io/wechaty/images/bot-qr-code.png](https://wechaty.github.io/wechaty/images/bot-qr-code.png)'\) await bot.say\(fileBox\)​
 
 // 4. send Image to bot itself from local file import { FileBox } from 'file-box' const fileBox = FileBox.fromFile\('/tmp/text.jpg'\) await bot.say\(fileBox\)
 
-// 5. send Link to bot itself const linkPayload = new UrlLink\({ description : 'WeChat Bot SDK for Individual Account, Powered by TypeScript, Docker, and Love', thumbnailUrl: '[https://avatars0.githubusercontent.com/u/25162437?s=200&v=4](https://avatars0.githubusercontent.com/u/25162437?s=200&v=4)', title : 'Welcome to Wechaty', url : '[https://github.com/chatie/wechaty](https://github.com/chatie/wechaty)', }\) await bot.say\(linkPayload\)
+// 5. send Link to bot itself const linkPayload = new UrlLink\({ description : 'WeChat Bot SDK for Individual Account, Powered by TypeScript, Docker, and Love', thumbnailUrl: '[https://avatars0.githubusercontent.com/u/25162437?s=200&v=4](https://avatars0.githubusercontent.com/u/25162437?s=200&v=4)', title : 'Welcome to Wechaty', url : '[https://github.com/wechaty/wechaty](https://github.com/wechaty/wechaty)', }\) await bot.say\(linkPayload\)
 
 ```text
 ### Wechaty.instance\(\[options\]\)
@@ -380,7 +380,7 @@ const { Wechaty } = require('wechaty')
 | 名称 | 类型 | 描述 |
 | :---: | :---: | :--- |
 | name | `string` | Wechaty 机器人的名称. 当你按照下面的方式设置的时候： `new Wechaty({name: 'wechatyName'})` 他会自动生成一个叫做`wechatyName.memory-card.json`的文件 。这个文件会存储机器人的登陆信息。如果这个文件有效，启动wechaty 的时候，你不需要扫码登陆就能自动登陆机器人（只对`wechaty-puppet-padchat`有效）。 这个名字在启动机器人的时候，是可以通过环境变量`WECHATY_NAME` 设置的，如：`WECHATY_NAME="wechatyName" node bot.js` |
-| puppet | [PuppetModuleName](wechaty.md#PuppetModuleName) \| `Puppet` | 使用puppet名称指定相关puppet或者直接传入puppet实例作为`Wechaty`底层插件， 了解更多[puppet](https://github.com/Chatie/wechaty/wiki/Puppet)信息 |
+| puppet | [PuppetModuleName](wechaty.md#PuppetModuleName) \| `Puppet` | 使用puppet名称指定相关puppet或者直接传入puppet实例作为`Wechaty`底层插件， 了解更多[puppet](https://github.com/wechaty/wechaty/wiki/Puppet)信息 |
 | puppetOptions | `PuppetOptions` | 指定puppet信息  `endpoint`: 指定puppet的底层服务器地址； `timeout`：指定watchDog的超时时间 `token`: 指定puppet的token |
 
 ### WechatyEventName <a id="wechatyeventname"></a>

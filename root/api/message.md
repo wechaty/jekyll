@@ -6,7 +6,7 @@ description: 所有的微信消息会被封装成一个Message 类
 
 ## Message
 
-[Examples/Ding-Dong-Bot](https://github.com/Chatie/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/ding-dong-bot.ts)
+[Examples/Ding-Dong-Bot](https://github.com/wechaty/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/ding-dong-bot.ts)
 
 **Kind**: global class
 
@@ -165,7 +165,7 @@ bot
 {% endhint %}
 
 **Kind**: instance method of [`Message`](message.md#message)  
-**See**: [Examples/ding-dong-bot](https://github.com/Chatie/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/ding-dong-bot.ts)
+**See**: [Examples/ding-dong-bot](https://github.com/wechaty/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/ding-dong-bot.ts)
 
 | Param | Type | Description |
 | :--- | :--- | :--- |
@@ -186,7 +186,7 @@ bot
   <tbody></tbody>
 </table>// 1. send Image
 
-if \(/^ding$/i.test\(m.text\(\)\)\) { const fileBox = FileBox.fromUrl\('[https://chatie.io/wechaty/images/bot-qr-code.png](https://chatie.io/wechaty/images/bot-qr-code.png)'\) await msg.say\(fileBox\) }
+if \(/^ding$/i.test\(m.text\(\)\)\) { const fileBox = FileBox.fromUrl\('[https://wechaty.github.io/wechaty/images/bot-qr-code.png](https://wechaty.github.io/wechaty/images/bot-qr-code.png)'\) await msg.say\(fileBox\) }
 
 // 2. send Text
 

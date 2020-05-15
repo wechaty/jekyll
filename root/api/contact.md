@@ -6,7 +6,7 @@ description: 所有的联系人（好友）都会被封装成Contact 类实例
 
 ## Contact
 
-[Examples/Contact-Bot](https://github.com/Chatie/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/contact-bot.ts)
+[Examples/Contact-Bot](https://github.com/wechaty/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/contact-bot.ts)
 
 **Kind**: global class  
 **Properties**
@@ -58,7 +58,7 @@ await contact.say('welcome to wechaty!')
 // 2. send media file to contact
 
 import { FileBox }  from 'file-box'
-const fileBox1 = FileBox.fromUrl('https://chatie.io/wechaty/images/bot-qr-code.png')
+const fileBox1 = FileBox.fromUrl('https://wechaty.github.io/wechaty/images/bot-qr-code.png')
 const fileBox2 = FileBox.fromFile('/tmp/text.txt')
 await contact.say(fileBox1)
 await contact.say(fileBox2)
@@ -310,5 +310,5 @@ const contactList = await bot.Contact.findAll({ alias: 'lijiarui' }) // find all
 | Name | Type | Description |
 | :--- | :--- | :--- |
 | name | `string` | 用户自己设置的昵称叫做name |
-| alias | `string` | 机器人或者其他人给这个用户设置的昵称叫做alias：[More Detail](https://github.com/Chatie/wechaty/issues/365) |
+| alias | `string` | 机器人或者其他人给这个用户设置的昵称叫做alias：[More Detail](https://github.com/wechaty/wechaty/issues/365) |
 

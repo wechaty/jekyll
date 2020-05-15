@@ -1,7 +1,7 @@
 {
-  "name": "@chatie/docs",
+  "name": "@wechaty/wechaty.js.org",
   "version": "0.0.41",
-  "description": "Chatie Documents",
+  "description": "Wechaty Documents",
   "main": "index.js",
   "scripts": {
     "lint": "npm run lint:md && npm run lint:yaml",
@@ -11,18 +11,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Chatie/docs.git"
+    "url": "git+https://github.com/wechaty/wechaty.js.org.git"
   },
   "keywords": [
-    "chatie",
+    "wechaty",
     "document"
   ],
   "author": "Huan LI <zixia@zixia.net>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/Chatie/docs/issues"
+    "url": "https://github.com/wechaty/wechaty.js.org/issues"
   },
-  "homepage": "https://github.com/Chatie/docs#readme",
+  "homepage": "https://github.com/wechaty/wechaty.js.org#readme",
   "devDependencies": {
     "git-scripts": "^0.2.1",
     "gitbook-cli": "^2.3.2",

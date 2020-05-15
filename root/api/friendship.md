@@ -12,7 +12,7 @@ description: 发送，接受好友请求的Class
 2. 在 Friend event 中收到好友请求
 3. 在 Friend event 中确认好友请求
 
-[Examples/Friend-Bot](https://github.com/Chatie/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/friend-bot.ts)
+[Examples/Friend-Bot](https://github.com/wechaty/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/friend-bot.ts)
 
 **Kind**: global class
 

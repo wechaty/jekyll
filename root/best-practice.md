@@ -2,8 +2,8 @@
 
 ## 1. 规则 <a id="rule"></a>
 
-* 使用TypeScript 作为开发语言，TypeScript 是强类型的JavaScript，统一typings，增强系统的可维护性。更多请查看issue 讨论：[\#1066](https://github.com/Chatie/wechaty/issues/1066), [\#1064](https://github.com/Chatie/wechaty/issues/1064).
-* 使用TSLint 作为代码检查工具，为什么需要？[推荐阅读这个了解详情](https://ts.xcatliu.com/engineering/lint.html)。wechaty 的tslint 配置说明请参考[这篇博客](https://blog.chatie.io/migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-zh/)。
+* 使用TypeScript 作为开发语言，TypeScript 是强类型的JavaScript，统一typings，增强系统的可维护性。更多请查看issue 讨论：[\#1066](github.com/wechaty/wechaty/issues/1066), [\#1064](github.com/wechaty/wechaty/issues/1064).
+* 使用TSLint 作为代码检查工具，为什么需要？[推荐阅读这个了解详情](https://ts.xcatliu.com/engineering/lint.html)。wechaty 的tslint 配置说明请参考[这篇博客](https://wechaty.github.io/2018/06/30/migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-zh/)。
 * 使用 [VSCode](https://code.visualstudio.com/) 作为编译器。
 * 文件的命名规则是小写，用`-` 连接所有的内容而不是空格。比如`2017-10-06-wechat-pc-impactor` 而不是 `2017-10-06-WeChat PC Impactor`
 * 变量命名为`小驼峰`写法。如 `userName` 而不是 `user_name`。
@@ -32,7 +32,7 @@ docker run -ti --rm --volume="$(pwd)":/bot zixia/wechaty mybot.js
 docker run -ti --rm --volume="$(pwd)":/bot zixia/wechaty mybot.ts
 ```
 
-了解更多：[Wiki:Docker](https://github.com/chatie/wechaty/wiki/Docker).
+了解更多：[Wiki:Docker](github.com/wechaty/wechaty/wiki/Docker).
 
 ## 3. 机器人启动方法 <a id="start"></a>
 
@@ -85,7 +85,7 @@ log.level('silly')
 
 > docker运行的bot文件如何debug？像nodemon那样?
 
-wechaty 提供了hot-import 模块，参考：[https://github.com/Chatie/wechaty-getting-started/tree/master/examples/professional/hot-import-bot](https://github.com/Chatie/wechaty-getting-started/tree/master/examples/professional/hot-import-bot)​
+wechaty 提供了hot-import 模块，参考：[github.com/wechaty/wechaty-getting-started/tree/master/examples/professional/hot-import-bot](github.com/wechaty/wechaty-getting-started/tree/master/examples/professional/hot-import-bot)​
 
 ## 7. 推荐版本 <a id="version-info"></a>
 
@@ -104,7 +104,7 @@ Wechaty 根据 [http://semver.org/](http://semver.org/) 的规则制定版本号
 1. 偶数版本，如0.8，0.12，是用于生产环境的
 2. 奇数版本，如0.11，0.13，是发布的开发版本
 
-参考 [wechaty issue \#905](https://github.com/Chatie/wechaty/issues/905) 和 [wechaty issue 1158](https://github.com/Chatie/wechaty/issues/1158), 当语义版本的次要版本号是技术的时候，意味着它是开发分支，建议不要上生产环境。
+参考 [wechaty issue \#905](github.com/wechaty/wechaty/issues/905) 和 [wechaty issue 1158](github.com/wechaty/wechaty/issues/1158), 当语义版本的次要版本号是技术的时候，意味着它是开发分支，建议不要上生产环境。
 
 **偶数版本** 例子: \(用于生产环境\)
 
@@ -122,11 +122,11 @@ Wechaty 根据 [http://semver.org/](http://semver.org/) 的规则制定版本号
 
 同时，只要代码通过了Travis CI 的自动化测试，我们会发布所有版本的NPM包。
 
-如果想了解更多：[How to Understand the Wechaty Semantic Versioning?](https://github.com/Chatie/wechaty/wiki/FAQ#3-how-to-understand-the-wechaty-semantic-versioning)​
+如果想了解更多：[How to Understand the Wechaty Semantic Versioning?](github.com/wechaty/wechaty/wiki/FAQ#3-how-to-understand-the-wechaty-semantic-versioning)​
 
 ## 8. 环境要求 <a id="env"></a>
 
-* 同时支持[Linux](https://travis-ci.com/chatie/wechaty), [Windows](https://ci.appveyor.com/project/chatie/wechaty), [Darwin\(OSX/Mac\)](https://travis-ci.com/chatie/wechaty) 和 [Docker](https://app.shippable.com/github/Chatie/wechaty) 多个平台。windows 用户如果安装失败，请参考这篇博客：[在Windows10下安装Wechaty](https://blog.chatie.io/wechaty-installation-in-windows-10/)​
+* 同时支持[Linux](https://travis-ci.com/chatie/wechaty), [Windows](https://ci.appveyor.com/project/chatie/wechaty), [Darwin\(OSX/Mac\)](https://travis-ci.com/chatie/wechaty) 和 [Docker](https://app.shippable.com/github/Chatie/wechaty) 多个平台。windows 用户如果安装失败，请参考这篇博客：[在Windows10下安装Wechaty](https://wechaty.github.io/2018/07/24/wechaty-installation-in-windows-10/)​
 * Node.js 版本高于 10
 
 ## 9. 相关拓展包说明 <a id="package"></a>

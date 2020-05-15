@@ -4,24 +4,24 @@
 
 ### 1.1 如何用最简单的方式把wechaty 跑起来？ <a id="simple-run"></a>
 
-1. 从github 上clone wechaty 的教学代码： [https://github.com/Chatie/wechaty-getting-started](https://github.com/Chatie/wechaty-getting-started)
+1. 从github 上clone wechaty 的教学代码： [https://github.com/wechaty/wechaty-getting-started](https://github.com/wechaty/wechaty-getting-started)
 2. 运行 \`npm install\`
 3. 运行 \`npm start\`
-4. 默认会跑起来我们的demo 例子，demo代码位置: [examples/starter-bot.js](https://github.com/Chatie/wechaty-getting-started/blob/master/examples/starter-bot.js)
+4. 默认会跑起来我们的demo 例子，demo代码位置: [examples/starter-bot.js](https://github.com/wechaty/wechaty-getting-started/blob/master/examples/starter-bot.js)
 5. 修改demo 的例子，实现你自己想要的bot 逻辑
 
 ### 1.2 Windows 安装wechaty-puppet-padchat 失败怎么办？ <a id="install-failed"></a>
 
-请参考这篇博客：[在Windows10下安装Wechaty](https://blog.chatie.io/wechaty-installation-in-windows-10/)
+请参考这篇博客：[在Windows10下安装Wechaty](https://wechaty.github.io/2018/07/24/wechaty-installation-in-windows-10/)
 
 ### 1.3 我的微信号无法登陆 <a id="can-not-login"></a>
 
 从2017年6月下旬开始，使用基于web版微信接入方案存在大概率的被限制登陆的可能性。 主要表现为：无法登陆Web 微信，但不影响手机等其他平台。 验证是否被限制登陆： [https://wx.qq.com](https://wx.qq.com) 上扫码查看是否能登陆。 更多内容详见：
 
-* [Can not login with error message: 当前登录环境异常。为了你的帐号安全，暂时不能登录web微信。](https://github.com/Chatie/wechaty/issues/603)
-* [\[谣言\] 微信将会关闭网页版本](https://github.com/Chatie/wechaty/issues/990)
-* [新注册的微信号无法登陆](https://github.com/Chatie/wechaty/issues/872)
-* [wechaty-puppet-puppeteer](https://github.com/chatie/wechaty-puppet-puppeteer)
+* [Can not login with error message: 当前登录环境异常。为了你的帐号安全，暂时不能登录web微信。](https://github.com/wechaty/wechaty/issues/603)
+* [\[谣言\] 微信将会关闭网页版本](https://github.com/wechaty/wechaty/issues/990)
+* [新注册的微信号无法登陆](https://github.com/wechaty/wechaty/issues/872)
+* [wechaty-puppet-puppeteer](https://github.com/wechaty/wechaty-puppet-puppeteer)
 
 {% hint style="success" %}
 **解决方案： 第三方提供了非web协议的** [**Puppet**](puppet.md) **解决方案，**[**点击购买token**](https://github.com/lijiarui/wechaty-puppet-padchat/wiki/购买token) **, 更多技术细节查看** [**wechaty-puppet-padchat**](https://github.com/lijiarui/wechaty-puppet-padchat)
@@ -50,8 +50,8 @@
 
 相关issue：
 
-* [\#1658](https://github.com/Chatie/wechaty/issues/1658) How to get the wx\_id when user had wx account? 
-* [\#1307](https://github.com/Chatie/wechaty/issues/1307) How to get the user's wechat account（微信号）？
+* [\#1658](https://github.com/wechaty/wechaty/issues/1658) How to get the wx\_id when user had wx account? 
+* [\#1307](https://github.com/wechaty/wechaty/issues/1307) How to get the user's wechat account（微信号）？
 
 ### 2.2 如何获取好友和群的唯一id？ <a id="unique-id"></a>
 
@@ -68,11 +68,11 @@
 
 相关issue:
 
-* [\#1644](https://github.com/Chatie/wechaty/issues/1644)  About wxid or chatroomID
-* [\#90](https://github.com/Chatie/wechaty/issues/90) 请问可以获取到群号吗？
-* [\#1276](https://github.com/Chatie/wechaty/issues/1276) 最新版本Contact没有uin字段了吗？
-* [\#133](https://github.com/Chatie/wechaty/issues/133)  请问有办法取得个人和群的唯一标识吗？或者有没有办法自己构建？
-* [\#1307](https://github.com/Chatie/wechaty/issues/1307) How to get the user's wechat account（微信号）？
+* [\#1644](https://github.com/wechaty/wechaty/issues/1644)  About wxid or chatroomID
+* [\#90](https://github.com/wechaty/wechaty/issues/90) 请问可以获取到群号吗？
+* [\#1276](https://github.com/wechaty/wechaty/issues/1276) 最新版本Contact没有uin字段了吗？
+* [\#133](https://github.com/wechaty/wechaty/issues/133)  请问有办法取得个人和群的唯一标识吗？或者有没有办法自己构建？
+* [\#1307](https://github.com/wechaty/wechaty/issues/1307) How to get the user's wechat account（微信号）？
 
 ### 2.3 支持 红包、转账、朋友圈… 吗？ <a id="feature-support"></a>
 
@@ -96,7 +96,7 @@
 
 相关Issue:
 
-* [\#1016](https://github.com/Chatie/wechaty/issues/1016) Using wechaty to start a wechatOA account
+* [\#1016](https://github.com/wechaty/wechaty/issues/1016) Using wechaty to start a wechatOA account
 
 ### 2.5 wechaty 是否可以发送卡片消息，然后跳转到网页 <a id="url-message"></a>
 
@@ -110,7 +110,7 @@ PuppetPadchat 是支持的， 其他版本是不支持的，示例代码：
     const link = new UrlLink({
       description : '这是图文链接里面的描述',
       title       : '这是图文链接的标题',
-      url         : 'https://github.com/chatie/wechaty',
+      url         : 'https://github.com/wechaty/wechaty',
       thumbnailUrl: 'https://avatars0.githubusercontent.com/u/25162437?s=30&v=4',
     })
     m.say(link)
@@ -119,10 +119,10 @@ PuppetPadchat 是支持的， 其他版本是不支持的，示例代码：
 
 相关issue:
 
-* [\#1593](https://github.com/Chatie/wechaty/issues/1539) feat: add receive and send link
-* [\#718](https://github.com/Chatie/wechaty/issues/718) Add support for send url rich media message
-* [\#537](https://github.com/Chatie/wechaty/issues/537) \[enhancement\] Cant send a wechat page link to the room.
-* [\#331](https://github.com/Chatie/wechaty/issues/331) \[Feature\] sending formatted links / href tags
+* [\#1593](https://github.com/wechaty/wechaty/issues/1539) feat: add receive and send link
+* [\#718](https://github.com/wechaty/wechaty/issues/718) Add support for send url rich media message
+* [\#537](https://github.com/wechaty/wechaty/issues/537) \[enhancement\] Cant send a wechat page link to the room.
+* [\#331](https://github.com/wechaty/wechaty/issues/331) \[Feature\] sending formatted links / href tags
 
 ### 2.6 机器人被拉到一个新的群组里的事件是否支持？ <a id="room-join-support"></a>
 
@@ -164,14 +164,14 @@ const contact = await Contact.find('contact name')
 contact.say('hello room')
 ```
 
-更多例子请参考：[https://github.com/Chatie/wechaty-getting-started/blob/master/examples](https://github.com/Chatie/wechaty-getting-started/blob/master/examples)
+更多例子请参考：[https://github.com/wechaty/wechaty-getting-started/blob/master/examples](https://github.com/wechaty/wechaty-getting-started/blob/master/examples)
 
 相关issue:
 
-* [\#446](https://github.com/Chatie/wechaty/issues/446) how to send mesage without onMessage
-* [\#200](https://github.com/Chatie/wechaty/issues/200) \[new feature\] Forward Message
-* [\#89](https://github.com/Chatie/wechaty/issues/89) Wechaty.send\(\) error when send message to the room
-* [\#41](https://github.com/Chatie/wechaty/issues/41) \[New Feature\] send message by branding new method: say\(\)
+* [\#446](https://github.com/wechaty/wechaty/issues/446) how to send mesage without onMessage
+* [\#200](https://github.com/wechaty/wechaty/issues/200) \[new feature\] Forward Message
+* [\#89](https://github.com/wechaty/wechaty/issues/89) Wechaty.send\(\) error when send message to the room
+* [\#41](https://github.com/wechaty/wechaty/issues/41) \[New Feature\] send message by branding new method: say\(\)
 
 ### 2.9 运行出现Error: can not found bot file: xxx.js when using docker to start wechaty. <a id="docker-error-file-not-found"></a>
 
@@ -188,7 +188,7 @@ setenforce 0
 `setenforce 0` 会禁掉SELinux
 
 * 相关博客:  [Find if permission denied errors are caused by SELinux](https://www.mysysadmintips.com/linux/servers/587-find-if-permission-denied-error-is-caused-by-selinux)
-* 相关 issues:[\#66](https://github.com/Chatie/wechaty/issues/66#issuecomment-374086724) Dockerize Wechaty for easy start
+* 相关 issues:[\#66](https://github.com/wechaty/wechaty/issues/66#issuecomment-374086724) Dockerize Wechaty for easy start
 
 ### 2.10 通过Room.find\(\)找到的群，要是用户名或群名字有相同的会怎么办，find找到的是哪一个？ <a id="room-find-same-topic"></a>
 
@@ -335,6 +335,6 @@ wechaty 可以实现多个微信接入的方案，对外提供统一的接口，
 参考 [最佳实践之版本说明](best-practice.md#6-tui-jian-ban-ben)
 
 {% hint style="info" %}
-如果FAQ的内容无法满足你，可以去官网发Issue 获取支持： [https://github.com/chatie/wechaty/issues](https://github.com/chatie/wechaty/issues)
+如果FAQ的内容无法满足你，可以去官网发Issue 获取支持： [https://github.com/wechaty/wechaty/issues](https://github.com/wechaty/wechaty/issues)
 {% endhint %}
 
