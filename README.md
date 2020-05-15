@@ -1,6 +1,6 @@
 # Wechaty 文档中文版
 
-https://docs.chatie.io/v/zh
+https://wechaty.js.org/v/zh/
 
 ## 目录结构
 
