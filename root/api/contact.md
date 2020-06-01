@@ -8,7 +8,7 @@ description: All wechat contacts(friend) will be encapsulated as a Contact.
 
 [Contact](contact.md#Contact)
 
-All wechat contacts\(friend\) will be encapsulated as a Contact. [Examples/Contact-Bot](https://github.com/wechaty/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/contact-bot.ts)
+All wechat contacts\(friend\) will be encapsulated as a Contact. [Examples/Contact-Bot](https://github.com/Chatie/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/contact-bot.ts)
 
 ## Typedefs
 
@@ -18,14 +18,13 @@ The way to search Contact
 
 ## Contact
 
-All wechat contacts\(friend\) will be encapsulated as a Contact. [Examples/Contact-Bot](https://github.com/wechaty/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/contact-bot.ts)
+All wechat contacts\(friend\) will be encapsulated as a Contact. [Examples/Contact-Bot](https://github.com/Chatie/wechaty/blob/1523c5e02be46ebe2cc172a744b2fbe53351540e/examples/contact-bot.ts)
 
-**Kind**: global class
-**Properties**
+**Kind**: global class **Properties**
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| id | `string` | Get Contact id. This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/wechaty/wechaty/wiki/Puppet#3-puppet-compatible-table) |
+| id | `string` | Get Contact id. This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table) |
 
 * [Contact](contact.md#Contact)
   * _instance_
@@ -46,7 +45,7 @@ All wechat contacts\(friend\) will be encapsulated as a Contact. [Examples/Conta
 
 ### contact.say\(textOrContactOrFileOrUrlLinkOrMiniProgram\) ⇒ `Promise <void>`
 
-> Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/wechaty/wechaty/wiki/Puppet#3-puppet-compatible-table)
+> Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table)
 
 **Kind**: instance method of [`Contact`](contact.md#Contact)
 
@@ -75,7 +74,7 @@ await contact.say('welcome to wechaty!')
 // 2. send media file to contact
 
 import { FileBox }  from 'file-box'
-const fileBox1 = FileBox.fromUrl('https://wechaty.github.io/wechaty/images/bot-qr-code.png')
+const fileBox1 = FileBox.fromUrl('https://chatie.io/wechaty/images/bot-qr-code.png')
 const fileBox2 = FileBox.fromFile('/tmp/text.txt')
 await contact.say(fileBox1)
 await contact.say(fileBox2)
@@ -91,7 +90,7 @@ const urlLink = new UrlLink({
   description : 'WeChat Bot SDK for Individual Account, Powered by TypeScript, Docker, and Love',
   thumbnailUrl: 'https://avatars0.githubusercontent.com/u/25162437?s=200&v=4',
   title       : 'Welcome to Wechaty',
-  url         : 'https://github.com/wechaty/wechaty',
+  url         : 'https://github.com/chatie/wechaty',
 })
 await contact.say(urlLink)
 
@@ -113,8 +112,7 @@ await contact.say(miniProgram);
 
 Get the name from a contact
 
-**Kind**: instance method of [`Contact`](contact.md#Contact)
-**Example**
+**Kind**: instance method of [`Contact`](contact.md#Contact) **Example**
 
 ```javascript
 const name = contact.name()
@@ -170,13 +168,9 @@ try {
 
 Check if contact is friend
 
-> Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/wechaty/wechaty/wiki/Puppet#3-puppet-compatible-table)
+> Tips: This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/Chatie/wechaty/wiki/Puppet#3-puppet-compatible-table)
 
-**Kind**: instance method of [`Contact`](contact.md#Contact)
-**Returns**: `boolean` \| `null` -
-True for friend of the bot
-False for not friend of the bot, null for unknown.
-**Example**
+**Kind**: instance method of [`Contact`](contact.md#Contact) **Returns**: `boolean` \| `null` - True for friend of the bot False for not friend of the bot, null for unknown. **Example**
 
 ```javascript
 const isFriend = contact.friend()
@@ -188,8 +182,7 @@ Return the type of the Contact
 
 > Tips: ContactType is enum here.
 
-**Kind**: instance method of [`Contact`](contact.md#Contact)
-**Example**
+**Kind**: instance method of [`Contact`](contact.md#Contact) **Example**
 
 ```javascript
 const bot = new Wechaty()
@@ -203,8 +196,7 @@ Contact gender
 
 > Tips: ContactGender is enum here.
 
-**Kind**: instance method of [`Contact`](contact.md#Contact)
-**Example**
+**Kind**: instance method of [`Contact`](contact.md#Contact) **Example**
 
 ```javascript
 const gender = contact.gender() === bot.Contact.Gender.Male
@@ -214,8 +206,7 @@ const gender = contact.gender() === bot.Contact.Gender.Male
 
 Get the region 'province' from a contact
 
-**Kind**: instance method of [`Contact`](contact.md#Contact)
-**Example**
+**Kind**: instance method of [`Contact`](contact.md#Contact) **Example**
 
 ```javascript
 const province = contact.province()
@@ -225,8 +216,7 @@ const province = contact.province()
 
 Get the region 'city' from a contact
 
-**Kind**: instance method of [`Contact`](contact.md#Contact)
-**Example**
+**Kind**: instance method of [`Contact`](contact.md#Contact) **Example**
 
 ```javascript
 const city = contact.city()
@@ -236,8 +226,7 @@ const city = contact.city()
 
 Get avatar picture file stream
 
-**Kind**: instance method of [`Contact`](contact.md#Contact)
-**Example**
+**Kind**: instance method of [`Contact`](contact.md#Contact) **Example**
 
 ```javascript
 // Save avatar to local file like `1-name.jpg`
@@ -252,8 +241,7 @@ console.log(`Contact: ${contact.name()} with avatar file: ${name}`)
 
 Force reload data for Contact, Sync data from lowlevel API again.
 
-**Kind**: instance method of [`Contact`](contact.md#Contact)
-**Example**
+**Kind**: instance method of [`Contact`](contact.md#Contact) **Example**
 
 ```javascript
 await contact.sync()
@@ -263,9 +251,7 @@ await contact.sync()
 
 Check if contact is self
 
-**Kind**: instance method of [`Contact`](contact.md#Contact)
-**Returns**: `boolean` - True for contact is self, False for contact is others
-**Example**
+**Kind**: instance method of [`Contact`](contact.md#Contact) **Returns**: `boolean` - True for contact is self, False for contact is others **Example**
 
 ```javascript
 const isSelf = contact.self()
@@ -277,8 +263,7 @@ Try to find a contact by filter: {name: string \| RegExp} / {alias: string \| Re
 
 Find contact by name or alias, if the result more than one, return the first one.
 
-**Kind**: static method of [`Contact`](contact.md#Contact)
-**Returns**: `Promise.` - If can find the contact, return Contact, or return null
+**Kind**: static method of [`Contact`](contact.md#Contact) **Returns**: `Promise.` - If can find the contact, return Contact, or return null
 
 | Param | Type |
 | :--- | :--- |
@@ -324,11 +309,10 @@ const contactList = await bot.Contact.findAll({ alias: 'lijiarui' }) // find all
 
 The way to search Contact
 
-**Kind**: global typedef
-**Properties**
+**Kind**: global typedef **Properties**
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
 | name | `string` | The name-string set by user-self, should be called name |
-| alias | `string` | The name-string set by bot for others, should be called alias [More Detail](https://github.com/wechaty/wechaty/issues/365) |
+| alias | `string` | The name-string set by bot for others, should be called alias [More Detail](https://github.com/Chatie/wechaty/issues/365) |
 
