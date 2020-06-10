@@ -66,5 +66,5 @@ Here is the whole image for wechaty puppet introduction:
 >
 > Please read the doc before you ask question in the group. We don't welcome any discussion unrelated to wechaty, or you should give a red pocket\(more than 100 RMB\) in the group.
 
-![Wechaty Developers&apos; Home](https://chatie.io/wechaty/images/bot-qr-code.png)
+![Wechaty Developers&apos; Home](https://wechaty.github.io/wechaty/images/bot-qr-code.png)
 
