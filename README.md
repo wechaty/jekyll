@@ -1,9 +1,6 @@
-# Wechaty Official Documents
+# Wechaty Documentation
 
-[Wechaty Documentations](https://wechaty.js.org)
-[![Greenkeeper badge](https://badges.greenkeeper.io/wechaty/docs.svg)](https://greenkeeper.io/)
-
-~~We are using GitBook v3(currently)~~
+<https://wechaty.js.org>
 
 ## Directory Structure
 
@@ -67,3 +64,17 @@ Contact rui@chatie.io to learn more
 ## Markdown Linting Rules
 
 [Markdown Linting Rules Documents](https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md)
+
+## Resources
+
+- [Migrating from gitbook to docsify.js](https://timdams.com/2019/05/02/migrating-from-gitbook-to-docsify-js/)
+
+## Maintainers
+
+[@wechaty/contributors](https://github.com/orgs/wechaty/teams/contributors/members)
+
+## Copyright & License
+
+- Code & Docs © 2016 Wechaty Contributors (<https://github.com/wechaty>)
+- Code released under the Apache-2.0 License
+- Docs released under Creative Commons
