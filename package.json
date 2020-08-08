@@ -25,7 +25,6 @@
   "homepage": "https://github.com/wechaty/wechaty.js.org#readme",
   "devDependencies": {
     "git-scripts": "^0.2.1",
-    "gitbook-cli": "^2.3.2",
     "markdownlint-cli": "^0.12.0",
     "yaml-lint": "^1.2.3"
   },
@@ -35,6 +34,6 @@
     }
   },
   "dependencies": {
-    "gitbook": "^2.6.9"
+    "@docusaurus/init": "^2.0.0-alpha.60"
   }
 }

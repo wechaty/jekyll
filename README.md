@@ -7,7 +7,7 @@
 We use different branch to support multi language:
 
 - master: English version
-- zh: Chinise version
+- zh: Chinese version
 
 If you want to contribute to English version code, you can pull request to `master` branch.
 
@@ -19,7 +19,7 @@ If you want to contribute to Chinese version code, you can pull request to `zh` 
 
 As an open source product, Wechaty thrives from contributions of community members. Whatever your skill set is, there is a lot you can do to help us make Wechaty better! So start forking!
 
-At the same time, we also meet up offline all over the world, here is some activites:
+At the same time, we also meet up offline all over the world, here is some activities:
 
 - [Wechaty Contributor Dinner](https://wechaty.github.io/2017/04/26/wechaty-meeting/)
 - [The memorabilia of The First Chatie WWDC Party](https://wechaty.github.io/2017/06/06/the-first-chatie-wwdc-party/)
@@ -68,6 +68,8 @@ Contact rui@chatie.io to learn more
 ## Resources
 
 - [Migrating from gitbook to docsify.js](https://timdams.com/2019/05/02/migrating-from-gitbook-to-docsify-js/)
+- [Integrating GitBook with JSDoc to Document Your Open Source Project](https://gist.github.com/KevinAst/7e12648245ff2a8e9c1557135014b933)
+- [F8 2019: Using Docusaurus to Create Open Source Websites](https://www.youtube.com/watch?v=QcGJsf6mgZE)
 
 ## Maintainers
 
