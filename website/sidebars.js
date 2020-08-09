@@ -22,6 +22,8 @@ module.exports = {
       'video-tutorial',
       'awesome-wechaty',
       'advanced',
+      'concepts',
+      'tech',
     ],
     Docusaurus: [
       'test/doc1', 

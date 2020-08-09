@@ -1,4 +1,6 @@
-# Tech
+---
+title: Tech
+---
 
 ## See Also
 
