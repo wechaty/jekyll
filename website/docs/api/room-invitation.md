@@ -1,8 +1,8 @@
 ---
-description: accept room invitation
+title: RoomInvitation
 ---
 
-# RoomInvitation
+Accept room invitation
 
 ## RoomInvitation
 

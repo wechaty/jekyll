@@ -1,8 +1,8 @@
 ---
-description: All wechat messages will be encapsulated as a Message.
+title: Message
 ---
 
-# Message
+All wechat messages will be encapsulated as a Message.
 
 ## Message
 

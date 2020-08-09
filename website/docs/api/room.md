@@ -1,8 +1,8 @@
 ---
-description: All wechat rooms(groups) will be encapsulated as a Room.
+title: Room
 ---
 
-# Room
+All wechat rooms(groups) will be encapsulated as a Room.
 
 ## Classes
 

@@ -1,10 +1,8 @@
 ---
-description: >-
-  Bot itself will be encapsulated as a ContactSelf. This class is extends
-  Contact
+title: ContactSelf
 ---
 
-# ContactSelf
+Bot itself will be encapsulated as a ContactSelf. This class is extends Contact.
 
 ## ContactSelf
 

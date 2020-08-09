@@ -1,8 +1,8 @@
 ---
-description: 'Send, receive friend request, and friend confirmation events.'
+title: Friendship
 ---
 
-# Friendship
+Send, receive friend request, and friend confirmation events.
 
 ## Friendship
 
