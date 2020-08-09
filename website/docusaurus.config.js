@@ -7,6 +7,15 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'wechaty', // Usually your GitHub org/user name.
   projectName: 'wechaty.js.org', // Usually your repo name.
+  scripts: [
+    '/js/gitter-sidecar.js',
+    {
+      src:
+        'https://sidecar.gitter.im/dist/sidecar.v1.js',
+      async: true,
+      defer: true,
+    },
+  ],
   themeConfig: {
     navbar: {
       title: 'Wechaty',
@@ -86,6 +95,16 @@ module.exports = {
               label: 'GitHub',
               href: 'https://github.com/wechaty/wechaty#readme',
             },
+            {
+              html: `
+                <script>
+                  ((window.gitter = {}).chat = {}).options = {
+                    room: 'wechaty/wechaty'
+                  };
+                </script>
+                <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>            
+              `,
+            },
           ],
         },
       ],
@@ -103,14 +122,14 @@ module.exports = {
     // },
     googleAnalytics: {
       trackingID: 'UA-88739146-3'
-    }
+    },
   },
   presets: [
     [
       '@docusaurus/preset-classic',
       {
         docs: {
-          // It is recommended to set document id as docs home page (`docs/` path).
+          // It is recommended to set document id as docs home page (`` path).
           homePageId: 'readme',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
