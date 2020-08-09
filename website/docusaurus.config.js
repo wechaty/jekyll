@@ -17,21 +17,16 @@ module.exports = {
       items: [
         {
           label: 'Getting Started',
-          to: 'docs/',
+          to: 'docs/getting-started',
           position: 'right'
         },
         {
           label: 'Tutorial',
-          to: 'tutorials/essentials/part-1-overview-concepts',
+          to: 'docs/video-tutorial',
           position: 'right'
         },
-        { label: 'API', to: 'api/reference', position: 'right' },
-        { label: 'FAQ', to: 'faq', position: 'right' },
-        {
-          label: 'Best Practices',
-          to: '/style-guide/style-guide',
-          position: 'right'
-        },
+        { label: 'API', to: 'docs/api', position: 'right' },
+        { label: 'FAQ', to: 'docs/faq', position: 'right' },
         {
           label: 'GitHub',
           href: 'https://github.com/wechaty/wechaty',
@@ -47,23 +42,19 @@ module.exports = {
           items: [
             {
               label: 'Getting Started',
-              to: 'introduction/getting-started'
-            },
-            {
-              label: 'Tutorial',
-              to: 'tutorials/essentials/part-1-overview-concepts'
+              to: 'docs/getting-started'
             },
             {
               label: 'FAQ',
-              to: 'faq'
+              to: 'docs/faq'
             },
             {
               label: 'Tutorial',
-              to: 'basics/basic-tutorial'
+              to: 'docs/video-tutorial'
             },
             {
               label: 'API Reference',
-              to: 'api/api-reference'
+              to: 'docs/api'
             }
           ]
         },

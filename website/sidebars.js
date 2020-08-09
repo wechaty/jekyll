@@ -10,7 +10,7 @@ module.exports = {
       'faq',
     ],
     'API Reference': [
-      'api/readme',
+      'api',
       'api/wechaty',
       'api/message',
       'api/contact',

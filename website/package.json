@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "lint": "npm run lint:md && npm run lint:yaml",
+    "lint:md": "markdownlint *.md docs/*.md docs/**/*.md",
+    "lint:yaml": "yamllint xxx.yml",
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
     "build": "docusaurus build",
