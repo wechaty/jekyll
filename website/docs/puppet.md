@@ -1,6 +1,6 @@
-# Puppet
-
-## 1. Intro
+---
+title: Wechaty Puppet
+---
 
 The term [Puppet](https://github.com/wechaty/wechaty/wiki/Puppet) in Wechaty is an Abstract Class for implementing protocol plugins. The plugins are the component that helps Wechaty to control the Wechat\(that's the reason we call it puppet\).
 
