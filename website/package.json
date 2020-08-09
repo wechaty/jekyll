@@ -1,6 +1,7 @@
 {
   "name": "wechaty-docusaurus",
-  "version": "0.0.1",
+  "version": "0.0.43",
+  "description": "Wechaty Documents",
   "private": true,
   "scripts": {
     "lint": "npm run lint:md && npm run lint:yaml",
@@ -13,6 +14,20 @@
     "deploy": "docusaurus deploy",
     "serve": "docusaurus serve"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wechaty/wechaty.js.org.git"
+  },
+  "keywords": [
+    "wechaty",
+    "document"
+  ],
+  "author": "Huan LI <zixia@zixia.net>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/wechaty/wechaty.js.org/issues"
+  },
+  "homepage": "https://github.com/wechaty/wechaty.js.org#readme",
   "dependencies": {
     "@docusaurus/core": "^2.0.0-alpha.60",
     "@docusaurus/preset-classic": "^2.0.0-alpha.60",
@@ -33,8 +48,16 @@
       "last 1 safari version"
     ]
   },
+  "git": {
+    "scripts": {
+      "pre-push": "bash ./scripts/pre-push.sh"
+    }
+  },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^2.0.0-alpha.51",
-    "typescript": "^3.9.7"
+    "typescript": "^3.9.7",
+    "git-scripts": "^0.2.1",
+    "markdownlint-cli": "^0.12.0",
+    "yaml-lint": "^1.2.3"
   }
 }
