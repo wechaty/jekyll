@@ -40,7 +40,7 @@ jobs:
 
         cd deploy
         mv ../build/* .
-        mv ../build/.* .
+        mv ../build/.nojekyll .
         rmdir ../build
 
         git add --all
