@@ -1,4 +1,6 @@
-# Awesome Wechaty
+---
+title: Awesome Wechaty
+---
 
 ## Showcase
 

@@ -1,4 +1,6 @@
-# Change Log
+---
+title: Change Log
+---
 
 > BREAKING NEWS: Wechaty logo color was changed from green to blue!
 

@@ -1,4 +1,6 @@
-# Advanced
+---
+title: Advanced
+---
 
 ## 1. Wechaty Tutorial
 

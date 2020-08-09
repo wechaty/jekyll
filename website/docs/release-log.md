@@ -1,4 +1,6 @@
-# Release Log
+---
+title: Release Log
+---
 
 ## v0.16 New Puppet System\(BETA\) with Padchat Implemented <a id="v-0-16-new-puppet-system-beta-with-padchat-implemented"></a>
 

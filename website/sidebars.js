@@ -16,6 +16,13 @@ module.exports = {
       'api/room-invitation',
       'api/friendship',
     ],
+    Others: [
+      'release-log',
+      'change-log',
+      'video-tutorial',
+      'awesome-wechaty',
+      'advanced',
+    ],
     Docusaurus: [
       'test/doc1', 
       'test/doc2', 
