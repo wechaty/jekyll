@@ -43,6 +43,7 @@ jobs:
         mv ../build/.nojekyll .
         rmdir ../build
 
+        echo 'wechaty.js.org' > CNAME
         git add --all
         git commit -m "Deploy updates"
         git push -f origin docusaurus
