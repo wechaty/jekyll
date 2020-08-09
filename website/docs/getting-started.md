@@ -1,7 +1,7 @@
 ---
-id: getting-started
-# title: Start!
-# hide_title: true
+title: Start Page
 ---
 
-# Wechaty Getting Started
+## Go
+
+Let's go!
