@@ -1,7 +1,7 @@
 module.exports = {
-  title: 'Wechaty Documentation',
-  tagline: 'Wechaty Documentation Site',
-  url: 'https://wechaty.github.io/wechaty.js.org',
+  title: 'Wechaty',
+  tagline: 'A Conversational SDK for Chatbot Makers',
+  url: 'https://wechaty.js.org',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.ico',
@@ -12,40 +12,30 @@ module.exports = {
       title: 'Wechaty',
       logo: {
         alt: 'Wechaty Logo',
-        src: 'img/logo.svg',
+        src: 'img/wechaty.svg',
       },
       items: [
         {
-          href: 'https://wechaty.github.io/news/',
-          label: 'News',
-          position: 'left',
-        },
-        {
-          href: 'https://wechaty.github.io/developers/',
-          label: 'Developers',
-          position: 'left',
-        },
-        {
-          href: 'https://wechaty.github.io/talks/',
-          label: 'News',
-          position: 'left',
-        },
-        {
+          label: 'Getting Started',
           to: 'docs/',
-          activeBasePath: 'docs',
-          label: 'Docs',
-          position: 'left',
+          position: 'right'
         },
         {
-          href: 'https://github.com/wechaty/wechaty-getting-started/',
-          label: 'Get Started',
-          position: 'left',
+          label: 'Tutorial',
+          to: 'tutorials/essentials/part-1-overview-concepts',
+          position: 'right'
         },
-        // {to: 'blog', label: 'Blog', position: 'left'},
+        { label: 'API', to: 'api/reference', position: 'right' },
+        { label: 'FAQ', to: 'faq', position: 'right' },
         {
-          href: 'https://github.com/wechaty/wechaty',
+          label: 'Best Practices',
+          to: '/style-guide/style-guide',
+          position: 'right'
+        },
+        {
           label: 'GitHub',
-          position: 'right',
+          href: 'https://github.com/wechaty/wechaty',
+          position: 'right'
         },
       ],
     },
@@ -56,14 +46,26 @@ module.exports = {
           title: 'Docs',
           items: [
             {
-              label: 'Style Guide',
-              to: 'docs/',
+              label: 'Getting Started',
+              to: 'introduction/getting-started'
             },
             {
-              label: 'Second Doc',
-              to: 'docs/doc2/',
+              label: 'Tutorial',
+              to: 'tutorials/essentials/part-1-overview-concepts'
             },
-          ],
+            {
+              label: 'FAQ',
+              to: 'faq'
+            },
+            {
+              label: 'Tutorial',
+              to: 'basics/basic-tutorial'
+            },
+            {
+              label: 'API Reference',
+              to: 'api/api-reference'
+            }
+          ]
         },
         {
           title: 'Community',
@@ -96,13 +98,21 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Wechaty Contributors. Built with Docusaurus.`,
+      logo: {
+        alt: 'Wechaty Logo',
+        src: 'img/wechaty.svg',
+        href: 'https://wechaty.js.org/',
+      },
+      copyright: `Copyright © 2016-${new Date().getFullYear()} Huan and Wechaty community contributors.`,
     },
     // algolia: {
     //   apiKey: 'YOUR_API_KEY',
     //   indexName: 'YOUR_INDEX_NAME',
     //   searchParameters: {}, // Optional (if provided by Algolia)
     // },
+    googleAnalytics: {
+      trackingID: 'UA-88739146-3'
+    }
   },
   presets: [
     [
@@ -110,7 +120,7 @@ module.exports = {
       {
         docs: {
           // It is recommended to set document id as docs home page (`docs/` path).
-          homePageId: 'doc1',
+          homePageId: 'getting-started',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:

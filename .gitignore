@@ -58,7 +58,6 @@ typings/
 .env
 
 package-lock.json
-/_book/
 
 # DS_Store
 .DS_Store
