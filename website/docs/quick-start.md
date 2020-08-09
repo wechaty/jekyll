@@ -1,4 +1,6 @@
-# Quick Start
+---
+title: Quick Start
+---
 
 ## REQUIREMENTS
 
@@ -45,12 +47,12 @@ You are all set!
 
 You can see the following result after running:
 
-![demo](.gitbook/assets/image-5.png)
+![demo](/img/docs/getting-started-qrcode.png)
 
 This demo will show all message on the bot.
 
 ## DEMO
 
-![Wechaty Developers&apos; Home](.gitbook/assets/image-6.png)
+![Wechaty Developers' Home](/img/friday-qrcode.svg)
 
 Scan the following QR Code in WeChat with secret code _wechaty_, join our **Wechaty Developers' Home**. This group is only for developers.

@@ -2,6 +2,7 @@ module.exports = {
   docs: {
     Introduction: [
       'readme',
+      'quick-start',
       'getting-started',
     ],
     FAQ: [
