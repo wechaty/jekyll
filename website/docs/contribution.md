@@ -1,4 +1,6 @@
-# Welcome to contribute
+---
+title: Contribution
+---
 
 ## Why contribute?
 

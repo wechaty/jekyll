@@ -1,4 +1,6 @@
-# Examples
+---
+title: Examples
+---
 
 You can get all of the following examples as follows
 

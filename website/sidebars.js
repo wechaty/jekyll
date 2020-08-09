@@ -4,6 +4,7 @@ module.exports = {
       'readme',
       'quick-start',
       'getting-started',
+      'examples',
     ],
     FAQ: [
       'faq',
@@ -25,6 +26,8 @@ module.exports = {
       'advanced',
       'concepts',
       'tech',
+      'glossary',
+      'contribution',
     ],
     Docusaurus: [
       'test/doc1', 
