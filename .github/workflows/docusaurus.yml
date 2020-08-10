@@ -34,11 +34,11 @@ jobs:
         git commit --allow-empty -m "Init"
         git checkout master
 
-        rm -fr build deploy
-        git worktree add deploy docusaurus
+        rm -fr build docusaurus_deploy
+        git worktree add docusaurus_deploy docusaurus
         npm run build
 
-        cd deploy
+        cd docusaurus_deploy
         mv ../build/* .
         mv ../build/.nojekyll .
         rmdir ../build

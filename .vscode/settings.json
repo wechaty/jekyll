@@ -1,9 +1,10 @@
 {
   "python.pythonPath": "python3",
   "cSpell.words": [
-    "WWDC",
-    "docsify",
-    "gitbook",
-    "gitter"
-  ]
+      "docsify",
+      "gitbook",
+      "gitter",
+      "ipad",
+      "WWDC",
+  ],
 }
