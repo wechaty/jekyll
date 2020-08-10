@@ -40,10 +40,15 @@ jobs:
         npx docusaurus build
 
         cd gh-pages
-        mv ../build/* .
-        mv ../build/.nojekyll .
+        mkdir docs
+        mv ../build/* docs/
+        mv ../build/.nojekyll docs/
         rmdir ../build
 
         git add --all
         git commit -m "Deploy updates"
         git push -f origin gh-pages
+
+        cd ..
+        git worktree remove gh-pages
+        git branch -D gh-pages
