@@ -45,6 +45,8 @@ jobs:
         mv ../build/.nojekyll docs/
         rmdir ../build
 
+        echo wechaty.js.org > CNAME
+        cp ../static/redirect.html index.html
         git add --all
         git commit -m "Deploy updates"
         git push -f origin gh-pages
