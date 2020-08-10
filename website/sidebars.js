@@ -1,7 +1,7 @@
 module.exports = {
   docs: {
     Introduction: [
-      'readme',
+      'README',
       'getting-started',
       'puppet',
       'concepts',

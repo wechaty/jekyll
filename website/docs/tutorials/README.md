@@ -136,7 +136,7 @@ $wechaty->onScan(function($qrcode, $status, $data) {
 </TabItem>
 <TabItem value="dotnet">
 
-```cs
+```csharp
 var wechaty = new Wechaty(options, logger).onScan((qrcode, status) => {
   Console.WriteLine($"Scan QR Code to login: {status} https://wechaty.github.io/qrcode/{(qrcode)}`");
 }).OnLogin( user => {
