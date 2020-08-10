@@ -11,7 +11,10 @@
     "gitbook",
     "gitter",
     "ipad",
+    "nojekyll",
     "padplus",
-    "println"
+    "println",
+    "rmdir",
+    "worktree"
   ],
 }
