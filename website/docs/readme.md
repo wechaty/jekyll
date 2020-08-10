@@ -1,8 +1,9 @@
 ---
-title: Introduction
+sidebar_label: Overview    # Whatever title you feel like adding. This will show up as the index to this page on the sidebar.
+title: Overview
 ---
 
-## What is wechaty
+## What is Wechaty
 
 [Wechaty](https://github.com/Chatie/wechaty/) is a Wechat Bot SDK for Personal Account that lets you create software to extend the functionality of the Wechat, writen in Node.js with TypeScript, Support all platforms including [Linux](https://travis-ci.com/chatie/wechaty), [Windows](https://ci.appveyor.com/project/chatie/wechaty), [Darwin\(OSX/Mac\)](https://travis-ci.com/chatie/wechaty) and [Docker](https://app.shippable.com/github/Chatie/wechaty).
 

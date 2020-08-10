@@ -1,5 +1,6 @@
 ---
 title: API Reference
+sidebar_label: 'API Index'
 ---
 
 The Wechaty API surface is tiny. Wechaty defines a set of easy to use classes for you.

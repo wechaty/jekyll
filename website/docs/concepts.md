@@ -2,22 +2,21 @@
 title: Concepts
 ---
 
-## Hostie
+This page will helps you to build a deeper understanding of the underlying technology.
 
-Hostie is a hostie.
+## Wechaty
 
-## Botie
+The bot class that you always start with.
 
-Botie is a botie.
-
-## Giftie
-
-Giftie is a giftie.
+```ts
+const bot = new Wechaty()
+await wechaty.start()
+```
 
 ## See Also
 
 1. [Hangouts Chat API](https://developers.google.com/hangouts/chat/concepts/)
-2. [MO vs. MT messaging – what is the difference between them?](https://www.horisen.com/en/blog/mo-vs-mt-messaging-what-is-the-difference-between-them)
 
    > BO vs BT: Bot Originated/Terminated
 
+This is basically the whole idea of Wechaty.

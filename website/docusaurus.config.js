@@ -115,6 +115,12 @@ module.exports = {
     googleAnalytics: {
       trackingID: 'UA-88739146-3'
     },
+    prism: {
+      additionalLanguages: [
+        // 'csharp',
+        // 'scala',
+      ],
+    },
   },
   presets: [
     [
