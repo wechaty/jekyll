@@ -7,6 +7,9 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'wechaty', // Usually your GitHub org/user name.
   projectName: 'wechaty.js.org', // Usually your repo name.
+  stylesheets: [
+    '/css/gitter-sidecar.css',
+  ],
   scripts: [
     '/js/gitter-sidecar.js',
     {
