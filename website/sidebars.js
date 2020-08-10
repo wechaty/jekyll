@@ -8,6 +8,7 @@ module.exports = {
       'concepts',
       'motivation',
       'examples',
+      'examples2',
     ],
     Tutorials: [
       'tutorials/README',

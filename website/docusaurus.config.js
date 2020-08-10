@@ -8,10 +8,10 @@ module.exports = {
   organizationName: 'wechaty', // Usually your GitHub org/user name.
   projectName: 'wechaty.js.org', // Usually your repo name.
   stylesheets: [
-    '/css/gitter-sidecar.css',
+    'css/gitter-sidecar.css',
   ],
   scripts: [
-    '/js/gitter-sidecar.js',
+    'js/gitter-sidecar.js',
     {
       src:
         'https://sidecar.gitter.im/dist/sidecar.v1.js',
@@ -27,17 +27,22 @@ module.exports = {
       },
       items: [
         {
+          label: 'Docs',
+          to: 'README',
+          position: 'right'
+        },
+        {
           label: 'Getting Started',
-          to: 'docs/getting-started',
+          to: 'getting-started',
           position: 'right'
         },
         {
           label: 'Tutorial',
-          to: 'docs/video-tutorial',
+          to: 'video-tutorial',
           position: 'right'
         },
-        { label: 'API', to: 'docs/api/README', position: 'right' },
-        { label: 'FAQ', to: 'docs/faq/README', position: 'right' },
+        { label: 'API', to: 'api/README', position: 'right' },
+        { label: 'FAQ', to: 'faq/README', position: 'right' },
         {
           label: 'GitHub',
           href: 'https://github.com/wechaty/wechaty',
@@ -53,19 +58,19 @@ module.exports = {
           items: [
             {
               label: 'Getting Started',
-              to: 'docs/getting-started'
+              to: 'getting-started'
             },
             {
               label: 'FAQ',
-              to: 'docs/faq/README'
+              to: 'faq/README'
             },
             {
               label: 'Tutorial',
-              to: 'docs/video-tutorial'
+              to: 'video-tutorial'
             },
             {
               label: 'API Reference',
-              to: 'docs/api/README'
+              to: 'api/README'
             }
           ]
         },
@@ -128,8 +133,10 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
+          path: './docs',
+          routeBasePath: '/',
           // It is recommended to set document id as docs home page (`` path).
-          homePageId: 'README',
+          // homePageId: 'README',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
