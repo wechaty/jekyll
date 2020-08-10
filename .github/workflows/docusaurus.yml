@@ -30,20 +30,20 @@ jobs:
         cd website
         npm install
 
-        git checkout --orphan docusaurus
+        git checkout --orphan gh-pages
         git reset --hard
         git commit --allow-empty -m "Init"
         git checkout master
 
-        rm -fr build deploy_docusaurus
-        git worktree add deploy_docusaurus docusaurus
-        npx docusaurus build
+        rm -fr build gh-pages
+        git worktree add gh-pages gh-pages
+        npx gh-pages build
 
-        cd deploy_docusaurus
+        cd gh-pages
         mv ../build/* .
         mv ../build/.nojekyll .
         rmdir ../build
 
         git add --all
         git commit -m "Deploy updates"
-        git push -f origin docusaurus
+        git push -f origin gh-pages
