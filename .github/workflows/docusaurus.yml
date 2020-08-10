@@ -23,6 +23,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: |
+        set -x
         git config --global user.name 'Huan @ GitHub Action'
         git config --global user.email 'zixia@zixia.net'
 
