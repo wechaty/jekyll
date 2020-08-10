@@ -6,35 +6,13 @@
 
 This website is built using [Docusaurus 2](https://v2.docusaurus.io/), a modern static website generator.
 
-### Installation
-
-```sh
-yarn
-```
-
-### Local Development
-
-```sh
-yarn start
-```
-
-This command starts a local development server and open up a browser window. Most changes are reflected live without having to restart the server.
-
-### Build
-
-```sj
-yarn build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-### Deployment
-
-```sh
-GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+1. Installation: `yarn`
+1. Local Development: `yarn start`
+    > This command starts a local development server and open up a browser window. Most changes are reflected live without having to restart the server.
+1. Build: `yarn build`
+    > This command generates static content into the `build` directory and can be served using any static contents hosting service.
+1. Deployment `GIT_USER=<Your GitHub username> && USE_SSH=true yarn deploy`
+    > If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
 
 ## Directory Structure
 
@@ -111,6 +89,6 @@ Contact rui@chatie.io to learn more
 
 ## Copyright & License
 
-- Code & Docs © 2016-now Wechaty Contributors (<https://github.com/wechaty>)
+- Code & Docs © 2016-now Wechaty Contributors <https://github.com/wechaty>
 - Code released under the Apache-2.0 License
 - Docs released under Creative Commons

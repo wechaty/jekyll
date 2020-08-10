@@ -28,12 +28,12 @@ const features = [
     ),
   },
   {
-    title: <>Powered by React</>,
+    title: <>Powered by GRPC</>,
     imageUrl: 'img/undraw_docusaurus_react.svg',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Extend or customize your chatbot by reusing any programming languages. Wechaty can
+        be extended easily in JavaScript/TypeScript, Python, Java/Kotlin/Scala, PHP, Go, and .NET(C#).
       </>
     ),
   },
