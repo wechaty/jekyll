@@ -38,7 +38,7 @@ At the same time, we also meet up offline all over the world, here is some activ
 - [Shanghai WWDC - WeChaty Worldwide Developers Conference](https://wechaty.github.io/2017/08/28/wechaty-shanghai-meetup/)
 - [Wechaty Contributor Dinner with Data Girls](https://wechaty.github.io/2018/01/14/wechaty-contributor-dinner-data-girl/)
 - [Wechaty Country Wide Developer Conference](https://wechaty.github.io/2018/09/15/country-wide-developer-conference/)
-.....
+- .....
 
 ### How to contribute docs?
 
