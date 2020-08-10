@@ -13,7 +13,6 @@ module.exports = {
       src:
         'https://sidecar.gitter.im/dist/sidecar.v1.js',
       async: true,
-      defer: true,
     },
   ],
   themeConfig: {
@@ -94,16 +93,6 @@ module.exports = {
             {
               label: 'GitHub',
               href: 'https://github.com/wechaty/wechaty#readme',
-            },
-            {
-              html: `
-                <script>
-                  ((window.gitter = {}).chat = {}).options = {
-                    room: 'wechaty/wechaty'
-                  };
-                </script>
-                <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>            
-              `,
             },
           ],
         },
