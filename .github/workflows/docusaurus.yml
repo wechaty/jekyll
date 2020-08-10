@@ -36,7 +36,7 @@ jobs:
 
         rm -fr build docusaurus_deploy
         git worktree add docusaurus_deploy docusaurus
-        npm run build
+        npx docusaurus build
 
         cd docusaurus_deploy
         mv ../build/* .
