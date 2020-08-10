@@ -49,11 +49,6 @@
       "last 1 safari version"
     ]
   },
-  "git": {
-    "scripts": {
-      "pre-push": "bash ./scripts/pre-push.sh"
-    }
-  },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^2.0.0-alpha.51",
     "typescript": "^3.9.7",
