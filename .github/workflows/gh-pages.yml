@@ -37,7 +37,7 @@ jobs:
 
         rm -fr build gh-pages
         git worktree add gh-pages gh-pages
-        npx gh-pages build
+        npx docusaurus build
 
         cd gh-pages
         mv ../build/* .
