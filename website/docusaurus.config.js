@@ -117,9 +117,9 @@ module.exports = {
     },
     prism: {
       additionalLanguages: [
-        // 'clike',
-        // 'csharp',
-        // 'scala',
+        'csharp',
+        'kotlin',
+        'scala',
       ],
     },
   },

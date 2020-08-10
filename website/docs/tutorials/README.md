@@ -30,7 +30,7 @@ import TabItem from '@theme/TabItem';
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'TypeScript', value: 'ts', },
-    { label: '.Net(C#)', value: 'dotnet', },
+    { label: 'CSharp', value: 'csharp', },
     { label: 'Go', value: 'go', },
     { label: 'Java', value: 'java', },
     { label: 'PHP', value: 'php', },
@@ -44,7 +44,7 @@ import TabItem from '@theme/TabItem';
 ```js
 const { Wechaty } = require('wechaty')
 
-Wechaty.instance() // Global Instance
+Wechaty().instance()
   .on('scan', (qrcode, status) => console.log(`Scan QR Code to login: ${status}\nhttps://wechaty.github.io/qrcode/${encodeURIComponent(qrcode)}`))
   .on('login',            user => console.log(`User ${user} logged in`))
   .on('message',       message => console.log(`Message: ${message}`))
@@ -57,7 +57,7 @@ Wechaty.instance() // Global Instance
 ```ts
 import { Wechaty } from 'wechaty'
 
-Wechaty.instance() // Global Instance
+Wechaty.instance()
   .on('scan', (qrcode, status) => console.log(`Scan QR Code to login: ${status}\nhttps://wechaty.github.io/qrcode/${encodeURIComponent(qrcode)}`))
   .on('login',            user => console.log(`User ${user} logged in`))
   .on('message',       message => console.log(`Message: ${message}`))
@@ -69,12 +69,12 @@ Wechaty.instance() // Global Instance
 
 ```py
 from wechaty import Wechaty
-
 import asyncio
+
 async def main():
     bot = Wechaty()
     bot.on('scan', lambda status, qrcode, data: print('Scan QR Code to login: {}\nhttps://wechaty.github.io/qrcode/{}'.format(status, qrcode)))
-    bot.on('login', lambda user: print('User {} logined'.format(user)))
+    bot.on('login', lambda user: print('User {} logged in'.format(user)))
     bot.on('message', lambda message: print('Message: {}'.format(message)))
     await bot.start()
 
@@ -85,6 +85,8 @@ asyncio.run(main())
 <TabItem value="java">
 
 ```java
+package io.github.wechaty;
+
 class Bot{
   public static void main(String args[]){
     Wechaty bot = Wechaty.instance()
