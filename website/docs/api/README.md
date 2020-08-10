@@ -13,16 +13,16 @@ Every class described below is a top-level export.
 
 ### Wechaty Class
 
-- [Class Wechaty](api/wechaty)
+- [Class Wechaty](./wechaty)
 
 ### User Classes
 
-- [Class Message](api/message)
-- [Class Contact](api/contact)
-  - [Class ContactSelf](api/contact-self)
-- [Class Room](api/room)
-  - [Class RoomInvitation](api/room-invitation)
-- [Class Friendship](api/friendship)
+- [Class Message](./message)
+- [Class Contact](./contact)
+  - [Class ContactSelf](./contact-self)
+- [Class Room](./room)
+  - [Class RoomInvitation](./room-invitation)
+- [Class Friendship](./friendship)
 
 ## Importing
 

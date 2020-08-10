@@ -2,7 +2,7 @@ module.exports = {
   title: 'Wechaty',
   tagline: 'A Conversational SDK for Chatbot Makers',
   url: 'https://wechaty.js.org',
-  baseUrl: '/',
+  baseUrl: '/docs/',
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.ico',
   organizationName: 'wechaty', // Usually your GitHub org/user name.
@@ -36,8 +36,8 @@ module.exports = {
           to: 'docs/video-tutorial',
           position: 'right'
         },
-        { label: 'API', to: 'docs/api', position: 'right' },
-        { label: 'FAQ', to: 'docs/faq', position: 'right' },
+        { label: 'API', to: 'docs/api/README', position: 'right' },
+        { label: 'FAQ', to: 'docs/faq/README', position: 'right' },
         {
           label: 'GitHub',
           href: 'https://github.com/wechaty/wechaty',
@@ -57,7 +57,7 @@ module.exports = {
             },
             {
               label: 'FAQ',
-              to: 'docs/faq'
+              to: 'docs/faq/README'
             },
             {
               label: 'Tutorial',
@@ -65,7 +65,7 @@ module.exports = {
             },
             {
               label: 'API Reference',
-              to: 'docs/api'
+              to: 'docs/api/README'
             }
           ]
         },
@@ -129,7 +129,7 @@ module.exports = {
       {
         docs: {
           // It is recommended to set document id as docs home page (`` path).
-          homePageId: 'readme',
+          homePageId: 'README',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:

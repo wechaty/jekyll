@@ -1,11 +1,10 @@
 ---
-sidebar_label: Overview    # Whatever title you feel like adding. This will show up as the index to this page on the sidebar.
 title: Overview
 ---
 
 ## What is Wechaty
 
-[Wechaty](https://github.com/Chatie/wechaty/) is a Wechat Bot SDK for Personal Account that lets you create software to extend the functionality of the Wechat, writen in Node.js with TypeScript, Support all platforms including [Linux](https://travis-ci.com/chatie/wechaty), [Windows](https://ci.appveyor.com/project/chatie/wechaty), [Darwin\(OSX/Mac\)](https://travis-ci.com/chatie/wechaty) and [Docker](https://app.shippable.com/github/Chatie/wechaty).
+[Wechaty](https://github.com/Chatie/wechaty/) is a Wechat Bot SDK for Personal Account that lets you create software to extend the functionality of the Wechat, written in Node.js with TypeScript, Support all platforms including [Linux](https://travis-ci.com/chatie/wechaty), [Windows](https://ci.appveyor.com/project/chatie/wechaty), [Darwin\(OSX/Mac\)](https://travis-ci.com/chatie/wechaty) and [Docker](https://app.shippable.com/github/Chatie/wechaty).
 
 You can use wechaty building a personal wechat chatbot in just 6 lines of JavaScript code!
 
@@ -25,7 +24,7 @@ See more in [Wechaty](https://github.com/chatie/wechaty)
 ## Just learning about Wechaty?
 
 * First Period: Wechaty is based on web WeChat. **All implement by web WeChat is fully open-source and free!**
-* Second Period: There are a lot of [limitations when using web WeChat](./#web-wechat-limitation). In order to make it more easy for chatbot developers, we provide Puppet to support third party to implement their WeChat implementations, see WeChat Protocal.
+* Second Period: There are a lot of [limitations when using web WeChat](#web-wechat-limitation). In order to make it more easy for chatbot developers, we provide Puppet to support third party to implement their WeChat implementations, see WeChat Protocol.
 
 Take a look at our [Wechaty 101 Talk](https://blog.chatie.io/wechaty-101-presentation/) which covers our core functionality, feature set and motivations behind the project.
 
@@ -37,7 +36,7 @@ Take a look at our [Wechaty 101 Talk](https://blog.chatie.io/wechaty-101-present
 related issues:
 
 * [Can not login with error message: 当前登录环境异常。为了你的帐号安全，暂时不能登录web微信。](https://github.com/Chatie/wechaty/issues/603)
-* [\[RUMOR\] wechat will close webapi for wechat](https://github.com/Chatie/wechaty/issues/990)
+* [\[RUMOR\] wechat will close web api for wechat](https://github.com/Chatie/wechaty/issues/990)
 * [New account login issue](https://github.com/Chatie/wechaty/issues/872)
 * [wechaty-puppet-puppeteer](https://github.com/chatie/wechaty-puppet-puppeteer)
 

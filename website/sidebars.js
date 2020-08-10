@@ -3,6 +3,7 @@ module.exports = {
     Introduction: [
       'README',
       'getting-started',
+      'multi-language',
       'puppet',
       'concepts',
       'motivation',
@@ -13,6 +14,13 @@ module.exports = {
     ],
     Recipes: [
       'recipes/README',
+      'recipes/configure-wechaty',
+      'recipes/usage-with-typescript',
+      'recipes/usage-with-docker',
+      'recipes/usage-with-heroku',
+      'recipes/using-plugin-with-wechaty',
+      'recipes/using-vorpal-with-wechaty',
+      'recipes/using-redux-with-wechaty',
     ],
     FAQ: [
       'faq/README',

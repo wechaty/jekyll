@@ -9,11 +9,11 @@
     "lint:yaml": "false && yamllint xxx.yml || true",
     "test": "npm run lint && npm run build",
     "docusaurus": "docusaurus",
-    "start": "docusaurus start",
-    "build": "docusaurus build",
+    "start": "cd website && docusaurus start",
+    "build": "cd website && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
-    "serve": "docusaurus serve"
+    "serve": "cd website && docusaurus serve"
   },
   "repository": {
     "type": "git",
