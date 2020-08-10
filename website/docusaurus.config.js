@@ -20,10 +20,10 @@ module.exports = {
   ],
   themeConfig: {
     navbar: {
-      title: 'Wechaty',
+      title: '',
       logo: {
         alt: 'Wechaty Logo',
-        src: 'img/wechaty.svg',
+        src: 'img/wechaty-logo.svg',
       },
       items: [
         {
@@ -102,10 +102,10 @@ module.exports = {
       ],
       logo: {
         alt: 'Wechaty Logo',
-        src: 'img/wechaty.svg',
+        src: 'img/wechaty-logo.svg',
         href: 'https://wechaty.js.org/',
       },
-      copyright: `Copyright © 2016-${new Date().getFullYear()} Huan and Wechaty community contributors.`,
+      copyright: `Copyright © 2016-${new Date().getFullYear()} <a href="https://github.com/huan" target="_blank">@huan</a> and Wechaty community contributors`,
     },
     // algolia: {
     //   apiKey: 'YOUR_API_KEY',
