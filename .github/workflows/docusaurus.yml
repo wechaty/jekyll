@@ -45,8 +45,11 @@ jobs:
         rm -fr new-gh-pages
         git worktree add new-gh-pages gh-pages
 
-        mv website/build/* new-gh-pages/
-        mv website/build/.nojekyll new-gh-pages/
+        cp website/static/CNAME new-gh-pages
+        cp website/static/redirect.html new-gh-pages/index.html
+        mkdir new-gh-pages/docs
+        mv website/build/* new-gh-pages/docs/
+        mv website/build/.nojekyll new-gh-pages/docs/
         rmdir website/build
 
     - name: Deploy new-gh-pages
@@ -56,5 +59,6 @@ jobs:
         git commit -m "$(jq -r .version ../package.json)"
         git push -f origin gh-pages
         popd
+
         git worktree remove new-gh-pages
         rm -fr new-gh-pages
