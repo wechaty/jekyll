@@ -112,11 +112,11 @@ module.exports = {
       },
       copyright: `Copyright © 2016-${new Date().getFullYear()} <a href="https://github.com/huan" target="_blank">@huan</a> and Wechaty community contributors`,
     },
-    // algolia: {
-    //   apiKey: 'YOUR_API_KEY',
-    //   indexName: 'YOUR_INDEX_NAME',
-    //   searchParameters: {}, // Optional (if provided by Algolia)
-    // },
+    algolia: {
+      apiKey: 'cd8ca324c447a803e8a196a5c8fa22dd',
+      indexName: 'wechaty',
+      searchParameters: {}, // Optional (if provided by Algolia)
+    },
     googleAnalytics: {
       trackingID: 'UA-88739146-3'
     },
