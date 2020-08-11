@@ -22,28 +22,39 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: |
-        set -x
+    - name: Install dependencies
+      run: npm install
+    - name: Config Git
+      run: |
         git config --global user.name 'Huan @ GitHub Action'
         git config --global user.email 'zixia@zixia.net'
-
-        cd website
-        npm install
-
+    - name: Create orphan branch for gh-pages
+      run: |
         git checkout --orphan gh-pages
         git reset --hard
-        git commit --allow-empty -m "Init"
+        git commit --allow-empty -m "Orphan init"
         git checkout master
+    - name: Build docusaurus
+    - run: |
+        pushd website
+        rm -fr build
+        npx docusaurus build
+        popd
+    - name: Create new-gh-pages
+      run: |
+        rm -fr new-gh-pages
+        git worktree add new-gh-pages gh-pages
 
-        rm -fr build gh-pages
-        git worktree add gh-pages gh-pages
-        npx gh-pages build
+        mv website/build/* new-gh-pages/
+        mv website/build/.nojekyll new-gh-pages/
+        rmdir website/build
 
-        cd gh-pages
-        mv ../build/* .
-        mv ../build/.nojekyll .
-        rmdir ../build
-
+    - name: Deploy new-gh-pages
+      run: |
+        pushd new-gh-pages
         git add --all
-        git commit -m "Deploy updates"
+        git commit -m "$(jq -r .version ../package.json)"
         git push -f origin gh-pages
+        popd
+        git worktree remove new-gh-pages
+        rm -fr new-gh-pages

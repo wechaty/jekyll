@@ -15,7 +15,9 @@
     "ipad",
     "nojekyll",
     "padplus",
+    "popd",
     "println",
+    "pushd",
     "rmdir",
     "worktree",
     "yamllint"
