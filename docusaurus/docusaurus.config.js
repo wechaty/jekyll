@@ -108,7 +108,7 @@ module.exports = {
       ],
       logo: {
         alt: 'Wechaty Logo',
-        src: './static/img/wechaty-logo.svg',
+        src: 'img/wechaty-logo.svg',
         href: 'https://wechaty.js.org/',
       },
       copyright: `Copyright © 2016-${new Date().getFullYear()} Wechaty Contributors`,

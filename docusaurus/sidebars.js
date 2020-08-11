@@ -1,6 +1,6 @@
 module.exports = {
   docs: {
-    Overview: [
+    Introduction: [
       'README',
       'multi-language',
       'puppet',
@@ -15,6 +15,7 @@ module.exports = {
     ],
     Tutorials: [
       'tutorials/README',
+      'video-tutorial',
     ],
     'API Reference': [
       'api/README',
@@ -44,7 +45,6 @@ module.exports = {
    Others: [
       'release-log',
       'change-log',
-      'video-tutorial',
       'awesome-wechaty',
       'advanced',
       'tech',
@@ -56,8 +56,6 @@ module.exports = {
       'test/doc1',
       'test/doc2',
       'test/doc3',
-    ],
-    Features: [
       'test/mdx',
     ],
   },
