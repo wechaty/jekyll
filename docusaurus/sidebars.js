@@ -1,17 +1,29 @@
 module.exports = {
   docs: {
-    Introduction: [
+    Overview: [
       'README',
-      'getting-started',
       'multi-language',
       'puppet',
       'concepts',
       'motivation',
       'examples',
       'examples2',
+      'alternatives',
+    ],
+    'Getting Started': [
+      'getting-started',
     ],
     Tutorials: [
       'tutorials/README',
+    ],
+    'API Reference': [
+      'api/README',
+      'api/wechaty',
+      'api/message',
+      'api/contact',
+      'api/room',
+      'api/room-invitation',
+      'api/friendship',
     ],
     Recipes: [
       'recipes/README',
@@ -29,16 +41,7 @@ module.exports = {
       'faq/puppet',
       'faq/miscellaneous',
     ],
-    'API Reference': [
-      'api/README',
-      'api/wechaty',
-      'api/message',
-      'api/contact',
-      'api/room',
-      'api/room-invitation',
-      'api/friendship',
-    ],
-    Others: [
+   Others: [
       'release-log',
       'change-log',
       'video-tutorial',
@@ -47,6 +50,7 @@ module.exports = {
       'tech',
       'glossary',
       'contributing',
+      'user-showcases',
     ],
     Docusaurus: [
       'test/doc1',
