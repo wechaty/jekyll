@@ -22,35 +22,44 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: |
-        set -x
-        git config --global user.name 'Huan @ GitHub Action'
-        git config --global user.email 'zixia@zixia.net'
-
-        cd website
-        npm install
-
-        git checkout --orphan gh-pages
-        git reset --hard
-        git commit --allow-empty -m "Init"
-        git checkout master
-
-        rm -fr build gh-pages
-        git worktree add gh-pages gh-pages
-        npx docusaurus build
-
-        cd gh-pages
-        mkdir docs
-        mv ../build/* docs/
-        mv ../build/.nojekyll docs/
-        rmdir ../build
-
-        echo wechaty.js.org > CNAME
-        cp ../static/redirect.html index.html
-        git add --all
-        git commit -m "Deploy updates"
-        git push -f origin gh-pages
-
-        cd ..
-        git worktree remove gh-pages
-        git branch -D gh-pages
+        - name: Install dependencies
+        run: npm install
+      - name: Config Git
+        run: |
+          git config --global user.name 'Huan @ GitHub Action'
+          git config --global user.email 'zixia@zixia.net'
+      - name: Create orphan branch for gh-pages
+        run: |
+          git checkout --orphan gh-pages
+          git reset --hard
+          git commit --allow-empty -m "Orphan init"
+          git checkout master
+      - name: Build docusaurus
+      - run: |
+          pushd website
+          rm -fr build
+          npx docusaurus build
+          popd
+      - name: Bind git worktree with new-gh-pages folder and gh-pages branch
+        run: |
+          rm -fr new-gh-pages
+          git worktree add new-gh-pages gh-pages
+      - name: Copy files
+        run: |
+          cp website/static/CNAME new-gh-pages
+          cp website/static/redirect.html new-gh-pages/index.html
+          mkdir new-gh-pages/docs
+          mv website/build/* new-gh-pages/docs/
+          mv website/build/.nojekyll new-gh-pages/docs/
+          rmdir website/build
+      - name: Deploy new-gh-pages
+        run: |
+          pushd new-gh-pages
+          git add --all
+          git commit -m "$(jq -r .version ../package.json)"
+          git push -f origin gh-pages
+          popd
+      - name: Unbind new-gh-pages folder from gh-pages branch
+          git worktree remove new-gh-pages
+          git branch -D gh-pages
+          rm -fr new-gh-pages
