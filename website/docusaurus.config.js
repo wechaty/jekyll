@@ -110,7 +110,7 @@ module.exports = {
         src: 'img/wechaty-logo.svg',
         href: 'https://wechaty.js.org/',
       },
-      copyright: `Copyright © 2016-${new Date().getFullYear()} <a href="https://github.com/huan" target="_blank">@huan</a> and Wechaty community contributors`,
+      copyright: `Copyright © 2016-${new Date().getFullYear()} Wechaty Contributors`,
     },
     algolia: {
       apiKey: 'cd8ca324c447a803e8a196a5c8fa22dd',

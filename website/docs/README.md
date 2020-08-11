@@ -63,7 +63,7 @@ All implement by web WeChat is fully open-source and free, if you need other imp
 
 Here is the whole image for wechaty puppet introduction:
 
-![Puppet Structure](/img/docs/architecture.png)
+![Puppet Structure](../static/img/docs/architecture.png)
 
 ## Join Us
 
@@ -71,4 +71,4 @@ Here is the whole image for wechaty puppet introduction:
 >
 > Please read the doc before you ask question in the group. We don't welcome any discussion unrelated to wechaty, or you should give a red pocket\(more than 100 RMB\) in the group.
 
-![Wechaty Developers' Home](/img/friday-qrcode.svg)
+![Wechaty Developers' Home](../static/img/friday-qrcode.svg)
