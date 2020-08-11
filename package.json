@@ -1,7 +1,7 @@
 {
-  "name": "wechaty-docusaurus",
+  "name": "wechaty.js.org",
   "version": "0.0.43",
-  "description": "Wechaty Documents",
+  "description": "Wechaty Homepage",
   "private": true,
   "scripts": {
     "lint": "npm run lint:md && npm run lint:yaml",
@@ -9,8 +9,8 @@
     "lint:yaml": "false && yamllint xxx.yml || true",
     "test": "npm run lint && npm run build",
     "docusaurus": "docusaurus",
-    "start": "docusaurus start",
-    "build": "docusaurus build",
+    "start": "cd docusaurus && docusaurus start",
+    "build": "cd docusaurus && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "serve": "docusaurus serve"
