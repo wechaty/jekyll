@@ -35,7 +35,7 @@ jobs:
         git commit --allow-empty -m "Orphan init"
         git checkout master
     - name: Build docusaurus
-    - run: |
+      run: |
         pushd website
         rm -fr build
         npx docusaurus build
@@ -60,6 +60,7 @@ jobs:
         git push -f origin gh-pages
         popd
     - name: Unbind new-gh-pages folder from gh-pages branch
+      run: |
         git worktree remove new-gh-pages
         git branch -D gh-pages
         rm -fr new-gh-pages
