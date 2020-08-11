@@ -2,7 +2,7 @@ module.exports = {
   title: 'Wechaty',
   tagline: 'A Conversational SDK for Chatbot Makers',
   url: 'https://wechaty.js.org',
-  baseUrl: '/docs/',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.ico',
   organizationName: 'wechaty', // Usually your GitHub org/user name.
@@ -27,22 +27,23 @@ module.exports = {
       },
       items: [
         {
+          activeBasePath: 'docs',
           label: 'Docs',
-          to: 'README',
+          to: 'docs/',
           position: 'right'
         },
         {
           label: 'Getting Started',
-          to: 'getting-started',
+          to: 'docs/getting-started',
           position: 'right'
         },
         {
           label: 'Tutorial',
-          to: 'video-tutorial',
+          to: 'docs/video-tutorial',
           position: 'right'
         },
-        { label: 'API', to: 'api/README', position: 'right' },
-        { label: 'FAQ', to: 'faq/README', position: 'right' },
+        { label: 'API', to: 'docs/api/README', position: 'right' },
+        { label: 'FAQ', to: 'docs/faq/README', position: 'right' },
         {
           label: 'GitHub',
           href: 'https://github.com/wechaty/wechaty',
@@ -58,19 +59,19 @@ module.exports = {
           items: [
             {
               label: 'Getting Started',
-              to: 'getting-started'
+              to: 'docs/getting-started'
             },
             {
               label: 'FAQ',
-              to: 'faq/README'
+              to: 'docs/faq/README'
             },
             {
               label: 'Tutorial',
-              to: 'video-tutorial'
+              to: 'docs/video-tutorial'
             },
             {
               label: 'API Reference',
-              to: 'api/README'
+              to: 'docs/api/README'
             }
           ]
         },
@@ -107,7 +108,7 @@ module.exports = {
       ],
       logo: {
         alt: 'Wechaty Logo',
-        src: 'img/wechaty-logo.svg',
+        src: './static/img/wechaty-logo.svg',
         href: 'https://wechaty.js.org/',
       },
       copyright: `Copyright © 2016-${new Date().getFullYear()} Wechaty Contributors`,
@@ -133,14 +134,15 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          path: './docs',
-          routeBasePath: '/',
           // It is recommended to set document id as docs home page (`` path).
-          // homePageId: 'README',
+          homePageId: 'README',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl:
-            'https://github.com/wechaty/wechaty.js.org/edit/master/website/',
+          editUrl: 'https://github.com/wechaty/wechaty.js.org/edit/master/website/',
+          // Equivalent to `enableUpdateBy`.
+          showLastUpdateAuthor: true,
+          // Equivalent to `enableUpdateTime`.
+          showLastUpdateTime: true,
         },
         blog: {
           showReadingTime: true,

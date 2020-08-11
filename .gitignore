@@ -59,21 +59,8 @@ typings/
 
 package-lock.json
 
-# DS_Store
 .DS_Store
 t.*
 t/
 
-# Production
-build/
-docusaurus_deploy/
 
-# Generated files
-.docusaurus
-.cache-loader
-
-# Misc
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
