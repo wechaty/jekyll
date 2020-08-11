@@ -1,6 +1,6 @@
 # Wechaty Documentation
 
-[![Node.js CI](https://github.com/wechaty/wechaty.js.org/workflows/Node.js%20CI/badge.svg)](https://github.com/wechaty/wechaty.js.org/actions?query=workflow%3A%22Node.js+CI%22)
+[![Node.js CI](https://github.com/wechaty/wechaty.js.org/workflows/GitHub%20Pages/badge.svg)](https://github.com/wechaty/wechaty.js.org/actions?query=workflow%3A%22GitHub+Pages%22)
 
 ![Wechaty Docusaurus](docs/images/wechaty-docusaurus.png)
 
