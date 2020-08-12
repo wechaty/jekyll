@@ -27,6 +27,16 @@ module.exports = {
       },
       items: [
         {
+          label: 'News',
+          to: 'news/index.html',
+          position: 'right'
+        },
+        {
+          label: 'Community',
+          to: 'community/index.html',
+          position: 'right'
+        },
+        {
           activeBasePath: 'docs',
           label: 'Docs',
           to: 'docs/',
