@@ -282,7 +282,7 @@ const contactFindByAlias = await bot.Contact.find({ alias:"lijiarui"} )
 
 Find contact by `name` or `alias`
 
-If use Contact.findAll\(\) get the contact list of the bot.
+If use Contact.findAll\(\) get the contact list of the bot. Include the contacts from bot's rooms.
 
 #### definition
 
