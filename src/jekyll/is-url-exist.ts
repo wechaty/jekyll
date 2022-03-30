@@ -41,14 +41,14 @@ async function isUrlExist (
     }
 
     let response = await fetch(
-      url,
+      String(url),
       headOptions,
     )
 
     if (!response.ok) {
       response = await fetch(
-        url,
-        getOptions
+        String(url),
+        getOptions,
       )
     }
 

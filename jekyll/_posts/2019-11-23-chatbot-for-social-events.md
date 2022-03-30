@@ -1,14 +1,14 @@
 ---
 title: Chatbot在线下活动中应用
-author: alex
+author: alex2010
 date: 2019-11-28 09:00 +0800
 categories:
-  - talks
-image: /assets/2019/social-events/petppl.jpg
+  - talk
+image: /assets/2019/social-events/petppl.webp
 tags:
   - chatbot
   - wechat
-  - offline social event
+  - event
 ---
 
 大家好，我叫alex，王磊，是一名工作了10年的程序员，也是一个社区组织者，从2011年开始，我和朋友发起了一个英文爱好者社区：PET后英语时代(PostEnglishTime)，主要在CBD区域组织线下英语交流活动。
@@ -17,7 +17,7 @@ tags:
 
 我曾研究过微信客户端的协议，想自己开放，但后来预估了一下工作量，就放弃了。之后在网上寻找技术方案，找到了wechat4u和wechaty，最后很荣幸，成为了wechaty的测试用户。我用了1周多的时间，基于wechaty框架开发了我社区的第一个客服机器人，虽然也踩了几个坑，但最后wechaty框架机会完美解决了我的问题，比如群管理，群内公告，二维码生成等问题。非常感谢wechaty，真的为我这样的有技术背景的社区组织者带来了福音。我分享一个通过机器人协助活动组织的流程，如下图：
 
-![events](/assets/2019/social-events/process.jpg)
+![events](/assets/2019/social-events/process.webp)
 
 机器人做的事情，都是流程类的事情，并没有用到NLP这样高大上的技术，就是：
 
@@ -36,4 +36,4 @@ tags:
 
 我们的公号是：后英语时代，公号里有每周下线活动列表，欢迎喜欢线下活动的朋友们来参加；我们也有小程序：PostEnglishTime，每天会有一句可以朗读的英文，欢迎想要保持语感又喜欢读英文的朋友尝试。
 
-![events](/assets/2019/social-events/petppl.jpg)
+![events](/assets/2019/social-events/petppl.webp)

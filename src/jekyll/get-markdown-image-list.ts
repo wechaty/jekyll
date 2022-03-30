@@ -1,5 +1,5 @@
-import marked from 'marked'
-import fs     from 'fs'
+import fs           from 'fs'
+import { marked }   from 'marked'
 
 function markdownImageReducer (
   imageList : string[],
@@ -20,7 +20,7 @@ function markdownImageReducer (
       throw new Error('token.tokens is not Array!')
     }
     return token.tokens.reduce(markdownImageReducer, imageList)
-  } else if ('items' in token && token.items) {
+  } else if ('items' in token) {
     // image in a list
     return token.items.reduce(markdownImageReducer, imageList)
   } else if ('type' in token && token.type === 'image') {
