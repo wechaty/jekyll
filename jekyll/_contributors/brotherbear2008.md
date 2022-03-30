@@ -1,7 +1,7 @@
 ---
 name: brotherbear2008
 site: https://github.com/brotherbear2008
-avatar: 
+avatar: /assets/contributors/brotherbear2008/icon.webp
 bio: A programmer who likes motorcycles and plays basketball
 email: 752460320@qq.com
 ---

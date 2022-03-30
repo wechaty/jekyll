@@ -1,6 +1,6 @@
 ---
 title: 收藏文档，随时查找
-author: 林磊胤
+author: zacard-orc
 categories: article
 tags:
   - collection

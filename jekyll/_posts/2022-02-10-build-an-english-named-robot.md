@@ -1,30 +1,38 @@
 ---
-title:"如何使用python-wechaty搭建英文取名机器人"
-author:"ssstw"
-categories:"artical"
+title: 如何使用python-wechaty搭建英文取名机器人
+author: stw666
+categories: project
 tags:
- - python
- - wechaty 
- image: /assets/2022/01-build-an-chatbot-with-python-wechaty/cover.webp
- ---
+  - python
+  - entertainment
+image: /assets/2022/02-build-an-english-named-robot/cover.webp
+---
 
 [![Wechaty Contributor Program](https://img.shields.io/badge/Wechaty-Contributor%20Program-green.svg)](https://wechaty.js.org/docs/contributing/)
 
 ## 前言
+
 本文主要有两个目的：
+
 (一)使用python-wechaty实现一个英文取名机器人，用户输入中文名(输入格式：英文取名：XXX)，即可获取对应的英文名，
 扩展wechaty的应用场景。
+
 (二)关于WeChaty网上已经有很多教程了，但是大多数是关于Linux或MacOS系统的，对于没接触过的Windows新手难免会走些弯路，
 因此我把自己的搭建过程写成blog，以便大家参考。
 由于很多微信号不能通过web登录，所以本篇使用Padlocal协议来建立一个微信聊天机器人。
 搭建过程主要是参考[B站视频](https://www.bilibili.com/video/BV1BB4y1A714?from=search&seid=7669334820557139832&spm_id_from=333.337.0.0)，配合自己搜索的一些问题解决方案。
 
 ## 1、 连接远程服务
+
 ### 1.1 配置环境变量
+
 (一)使用Padlocal协议需要[申请token](http://pad-local.com/)，注册之后可以申请一个免费的7天token。
+
 (二)Windows系统需要先启用Hyper-V,然后下载Docker，具体过程可以参考[这里](https://www.runoob.com/docker/windows-docker-install.html)，需要注意的是Windows10 家庭版没有内置Hyper-V，
 要自己[手动安装](https://zhuanlan.zhihu.com/p/356396288)。
+
 (三)完成之后新建一个wechaty_test.sh文件，输入
+
 ```python
 export WECHATY_LOG="verbose"
 export WECHATY_PUPPET="wechaty-puppet-padlocal"
@@ -44,21 +52,28 @@ docker run -ti \
   -e WECHATY_TOKEN \
   -p "$WECHATY_PUPPET_SERVER_PORT:$WECHATY_PUPPET_SERVER_PORT" \
   wechaty/wechaty:0.56
-  ```
+```
+
 参考这篇[blog](https://wechaty.js.org/2021/02/03/python-wechaty-for-padlocal-puppet-service/)了解其中的参数含义，修改对应的参数。
 
-### 1.2 连接服务 
+### 1.2 连接服务
+
 运行wechaty_test.sh文件，Linux和MacOS可以直接运行。Windows可以在git bash中运行，输入
-```
+
+```sh
 winpty sh wechaty_test.sh
 ```
+
 出现下图界面就代表运行成功。
 
-![1-1](/assets/2022/01-build-an-chatbot-with-python-wechaty/1-1.webp)
+![1-1](/assets/2022/02-build-an-english-named-robot/1-1.webp)
 
 ## 2、Python代码部分
+
 接下实现英文取名机器人，修改ding-dong-bot.py中的代码。
+
 ### 2.1、通过API获取英文名
+
 ```python
 #传入中文名，获取英文名
 def get_english_name(realName):
@@ -85,7 +100,9 @@ def get_english_name(realName):
         print(e.response.text)
     return message
 ```
+
 ### 2.2、全部的python代码
+
 ```python
 import os
 import asyncio
@@ -191,10 +208,11 @@ async def main():
 
 
 asyncio.run(main())
-
 ```
+
 ### 2.3、运行结果
-![运行结果](/assets/2022/01-build-an-chatbot-with-python-wechaty/2-1.webp)
+
+![运行结果](/assets/2022/02-build-an-english-named-robot/2-1.webp)
 
 ## 结语
 

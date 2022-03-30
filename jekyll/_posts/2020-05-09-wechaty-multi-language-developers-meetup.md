@@ -55,8 +55,6 @@ Blog/Post: 260+
 
 ### Attendees
 
-![004](/assets/2021/06-summer-2021-open-source/004.webp)
-
 1. Huan, Tencent TVP of Chatbot, huan@chatie.io, CST
 2. Simple, Java Developer, CST
 3. Rui，Founder of JuziBot, rui@chatie.io, CST

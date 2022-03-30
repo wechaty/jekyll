@@ -79,8 +79,8 @@ docker run -ti --name wechaty_puppet_service_token_gateway --rm -e WECHATY_LOG -
 
 【**Step3**：登录附载微信】
 
-运行成功后会输出很多东西，此时我们需要找到一个Online QR Code: 的地址点击进去; 
-![Online QR Code](/assets/2021/08-livingbot-paddlepaddle-wechaty/QR.webp)
+运行成功后会输出很多东西，此时我们需要找到一个Online QR Code: 的地址点击进去;
+![Online QR Code](/assets/2021/08-livingbot-paddlepaddle-wechaty/qr.webp)
 然后扫码登陆即可!
 
 【**Step4_Way 1**：本地开发运行】
