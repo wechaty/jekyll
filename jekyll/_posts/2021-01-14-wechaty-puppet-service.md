@@ -294,13 +294,13 @@ Learn more about all the Wechaty Puppet Services at our official website: <https
 
 In this post, we clarified the following core concepts of Wechaty:
 
-1. __Wechaty Puppet__
-1. __Wechaty Puppet Abstract__
-1. __Wechaty Puppet Provider__
-1. __Wechaty gRPC__
-1. __Wechaty Puppet Service__
-1. __Wechaty Puppet Service Token__
-1. __Wechaty Puppet Service Provider__
+1. **Wechaty Puppet**
+1. **Wechaty Puppet Abstract**
+1. **Wechaty Puppet Provider**
+1. **Wechaty gRPC**
+1. **Wechaty Puppet Service**
+1. **Wechaty Puppet Service Token**
+1. **Wechaty Puppet Service Provider**
 
 I hope it can help our developer to understand Wechaty ecosystem better.
 
