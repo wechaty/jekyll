@@ -194,7 +194,7 @@ test('tags for project category', async t => {
     const categoryList  = getFrontmatterCategoryList(file)
     const tagList = tagMap[file]!
 
-    if (tagList?.length <= 0) {
+    if (tagList.length <= 0) {
       continue
     }
 

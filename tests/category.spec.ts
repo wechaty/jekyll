@@ -50,7 +50,7 @@ test('front matter key `categories` must contains at lease one preset category',
 
     const allPreset = categoryList.every(isPreset)
     if (!allPreset) {
-      t.fail(`"${stripRepoRoot(file)}" non of categories(${categoryList.join(',')}) is in preset(${allPreset ? '...' : PRESET_CATEGORIES_LIST.join(',')})`)
+      t.fail(`"${stripRepoRoot(file)}" non of categories(${categoryList.join(',')}) is in preset(${PRESET_CATEGORIES_LIST.join(',')})`)
     }
   }
 

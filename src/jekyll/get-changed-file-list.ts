@@ -1,4 +1,3 @@
-
 import util         from 'util'
 import childProcess from 'child_process'
 
@@ -29,7 +28,7 @@ async function getChangedFileList (
 
   if (options?.since) {
     cmdArgList.push(
-      `--since="${options?.since}"`
+      `--since="${options.since}"`,
     )
   }
   cmdArgList.push(

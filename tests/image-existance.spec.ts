@@ -1,5 +1,4 @@
 #!/usr/bin/env -S node --no-warnings --loader ts-node/esm
-
 import {
   tap,
   test,
@@ -51,9 +50,9 @@ test('all remote images linked from the post should be exist.', async t => {
   remoteImageList = lodash.shuffle(
     Array.from(
       new Set(
-        remoteImageList
-      )
-    )
+        remoteImageList,
+      ),
+    ),
   )
 
   // void chunk
@@ -71,11 +70,11 @@ test('all remote images linked from the post should be exist.', async t => {
     // console.info('remoteImageList chunk', chunk)
 
     process.stdout.write(
-      Array(chunk.length + 1).join('.')
+      Array(chunk.length + 1).join('.'),
     )
 
     const resultList = await Promise.all(
-      chunk.map(isUrlExist)
+      chunk.map(isUrlExist),
     )
 
     // sleep 3 seconds before next check

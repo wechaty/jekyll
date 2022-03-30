@@ -30,7 +30,7 @@ test('misplaced files', async t => {
   const missPlacedFileListList = await Promise.all(
     Object.values(DEPRECATED_FOLDER_LIST)
       .map(matchGlob => path.join(REPO_ROOT, matchGlob))
-      .map(matchGlob => glob(matchGlob))
+      .map(matchGlob => glob(matchGlob)),
   )
   const missPlacedFileList = missPlacedFileListList
     .flat()

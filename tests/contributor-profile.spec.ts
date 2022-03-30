@@ -138,7 +138,7 @@ test('developer profile name must be GitHub username', async t => {
   for (const chunk of nameListChunk) {
     process.stdout.write(Array(chunk.length + 1).join('.'))
     const resultList = await Promise.all(
-      chunk.map(isUrlExist)
+      chunk.map(isUrlExist),
     )
 
     await new Promise(resolve => setTimeout(resolve, SLEEP_SECONDS_BETWEEN_CHUNKS))
