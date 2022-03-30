@@ -1,13 +1,13 @@
 ---
 title: 彩虹屁机器人  开心每一天
-author: Livingbody
+author: livingbody
 categories: project
 tags:
   - code
   - entertainment
   - rainbow-fart
   - python
-image: assets/2021/10-osschat-is-what-you-need-for-opensouce-community-operations/cover.webp
+image: /assets/2021/11-rainbow-fart-wechaty-robot-project/phone-screenshot-1.webp
 ---
 
 ## 一、彩虹屁机器人     开心每一天
@@ -28,7 +28,7 @@ image: assets/2021/10-osschat-is-what-you-need-for-opensouce-community-operation
 * 5.利用图像处理超能力合并图像和语句
 * 6.对接天行API，各种彩虹屁不停息
 
-{% include iframe.html src="https://player.bilibili.com/player.html?aid=291932794&bvid=BV19f4y157NL&cid=377824174&page=1" %}
+{% include iframe.html src="https://www.bilibili.com/video/BV19f4y157NL" %}
 
 ![img](/assets/2021/11-rainbow-fart-wechaty-robot-project/phone-screenshot-1.webp)
 

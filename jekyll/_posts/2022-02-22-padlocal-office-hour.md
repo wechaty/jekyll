@@ -6,7 +6,7 @@ tags:
   - puppet-padlocal
   - ipad
   - meetup
-image: your_teaser_image_path
+image: /assets/2022/02-padlocal-office-hour/icon.webp
 ---
 
 2月5日，周六，社区在线上举办了一个 [Padlocal](https://github.com/wechaty/puppet-padlocal) 专题的视频会议，由 Padlocal 的作者 `@Haoda` 讲解了 Padlocal 的起源与技术架构，并对 Padlocal 的一些 issues 进行了回复。
@@ -27,17 +27,17 @@ image: your_teaser_image_path
 
 [@Osindex](https://github.com/osindex), Contributor of Wechaty, A lazy full stack developer. 使用 wechaty 开发了 [谁是卧底小游戏](https://wechaty.js.org/2020/06/06/wechaty-game-bot/)
 
-[@Hongye](), user of Wechaty
+[@Hongye](#tbd), user of Wechaty
 
-[@Snow Wang](), Contributor of Python Wechaty
+[@Snow Wang](#tbd), Contributor of Python Wechaty
 
-[@Yi Zhihang](), Contributor of Wechaty
+[@Yi Zhihang](#tbd), Contributor of Wechaty
 
-[Su Chang](), Contributor of Wechaty, 句子互动高级工程师
+[Su Chang](#tbd), Contributor of Wechaty, 句子互动高级工程师
 
-[KDB](), user of Wechaty
+[KDB](#tbd), user of Wechaty
 
-[Liu Siyao](), Contributor of Wechaty
+[Liu Siyao](#tbd), Contributor of Wechaty
 
 ## 个人分享环节
 
@@ -52,7 +52,7 @@ image: your_teaser_image_path
 近期关注：
 
 - 特别努力的把 `Friday bot` 推动到 DDD 领域 (`Domain Driven Design` 即 `领域驱动设计`)，它最关键的是把商业业务逻辑和代码划分的比较清楚。
-- 把 wechaty 向消息驱动方向做些尝试。使用的模式是 `CQRS` 即 `读写分离`，可见 [Friday bot 的 pr #112] (https://github.com/wechaty/friday/pull/112)
+- 把 wechaty 向消息驱动方向做些尝试。使用的模式是 `CQRS` 即 `读写分离`，可见 [Friday bot 的 pr #112](https://github.com/wechaty/friday/pull/112)
 
 ### 好大
 
@@ -105,7 +105,7 @@ Padlocal 的受益者，通过使用 padlocal 获得了一些持续收益。
 
 主要是介绍 Padlocal 底层运作的一些机制，来帮助用户来理解和解决开发中的问题。
 
-https://youtu.be/2tYcrFaWTZQ?t=1975
+{% include iframe.html src="https://youtu.be/2tYcrFaWTZQ?t=1975" %}
 
 主要讲三块：
 
@@ -154,14 +154,12 @@ Padlocal 是模拟 Ipad 的协议，最开始是把协议弄清楚，就要掌�
 
 ##### 控制流平坦化
 
-视频时间点： https://youtu.be/2tYcrFaWTZQ?t=2372
+视频时间点： <https://youtu.be/2tYcrFaWTZQ?t=2372>
 
 关于控制流平坦化，有一篇很好的论文，提到了这个，对我的帮助非常大。感兴趣的同学可以去看看：
 
 > OBFUSCATING C++ PROGRAMS VIA CONTROL FLOW FLATTENING
 > Annales Univ. Sci. Budapest., Sect. Comp. 30 (2009) 3-19
-> http://ac.inf.elte.hu/Vol_030_2009/003.pdf
+> <http://ac.inf.elte.hu/Vol_030_2009/003.pdf>
 
-
-
-- TODO: https://youtu.be/2tYcrFaWTZQ?t=2388
+- TODO: <https://youtu.be/2tYcrFaWTZQ?t=2388>
