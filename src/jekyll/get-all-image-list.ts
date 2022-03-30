@@ -7,7 +7,7 @@ import {
   getFrontmatterAvatarList,
   getChangedFileList,
   JEKYLL_FOLDER,
-}                             from '../../src/jekyll/mod.js'
+}                             from './mod.js'
 
 import type { ChangeOptions } from './get-changed-file-list.js'
 import { stripRepoRoot } from '../repo-root.js'

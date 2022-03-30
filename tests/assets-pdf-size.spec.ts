@@ -10,9 +10,6 @@ import globCB         from 'glob'
 import {
   JEKYLL_FOLDER,
 }                             from '../src/jekyll/mod.js'
-import {
-  DOCUSAURUS_FOLDER,
-}                             from '../src/docusaurus/mod.js'
 
 import {
   stripRepoRoot,
@@ -34,7 +31,6 @@ const allPdfList = async () => {
 
   const fileList = [
     ...await glob(`${JEKYLL_FOLDER.assets}/**/*.{${extListStr}}`),
-    ...await glob(`${DOCUSAURUS_FOLDER.static}/**/*.{${extListStr}}`),
   ]
 
   if (fileList.length <= 0) {

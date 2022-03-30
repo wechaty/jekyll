@@ -1,29 +1,29 @@
 {
-  "name": "wechaty.js.org",
+  "name": "wechaty.js.org-jekyll",
   "version": "0.10.86",
-  "description": "Wechaty Official Website for News, Blogs, Contributor Profiles, and Documentations",
+  "description": "Wechaty Official Website for News, Blogs, Contributor Profiles",
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=14"
+    "node": ">=16",
+    "npm": ">=7"
   },
   "scripts": {
     "fit-image": "./scripts/fit-image.sh",
     "lint": "npm-run-all lint:es lint:ts lint:md lint:fn lint:yml",
     "lint:es": "eslint \"src/**/*.ts\" \"tests/**/*.spec.ts\" --ignore-pattern tests/fixtures/",
     "lint:ts": "tsc --isolatedModules --noEmit",
-    "lint:md": "markdownlint --ignore _site/ --ignore node_modules/ --ignore docusaurus/node_modules/ \"**/*.md\"",
+    "lint:md": "markdownlint --ignore _site/ --ignore node_modules/ \"**/*.md\"",
     "lint:fn": "file-name-linter .file-name-linter.json",
     "lint:yml": "true || yamllint jekyll/_data/*.yml",
     "test": "npm-run-all lint test:unit",
     "test:unit": "cross-env TAP_TIMEOUT=60 NODE_OPTIONS=\"--no-warnings --loader=ts-node/esm\" tap \"src/**/*.spec.ts\" \"tests/**/*.spec.ts\"",
-    "build": "npm-run-all build:docusaurus build:jekyll",
-    "build:jekyll": "cd jekyll && make build",
-    "build:docusaurus": "cd docusaurus && npm run build"
+    "build": "npm-run-all build:jekyll",
+    "build:jekyll": "cd jekyll && make build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wechaty/wechaty.js.org.git"
+    "url": "git+https://github.com/wechaty/wechaty.js.org-jekyll.git"
   },
   "keywords": [
     "wechaty",
@@ -36,9 +36,9 @@
   "author": "Huan LI <zixia@zixia.net>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/wechaty/wechaty.js.org/issues"
+    "url": "https://github.com/wechaty/wechaty.js.org-jekyll/issues"
   },
-  "homepage": "https://github.com/wechaty/wechaty.js.org#readme",
+  "homepage": "https://github.com/wechaty/wechaty.js.org-jekyll#readme",
   "devDependencies": {
     "@chatie/eslint-config": "^0.14.1",
     "@chatie/git-scripts": "^0.6.2",
@@ -51,7 +51,6 @@
     "@types/probe-image-size": "^7.0.1",
     "@types/yaml-front-matter": "^4.1.0",
     "abort-controller": "^3.0.0",
-    "clsx": "^1.1.1",
     "cross-env": "^7.0.3",
     "file-box": "^0.16.8",
     "git-scripts": "^0.4.3",
@@ -60,17 +59,14 @@
     "is-pr": "^2.0.0",
     "lodash": "^4.17.21",
     "markdownlint-cli": "^0.28.1",
-    "marked": "^3.0.0",
     "node-fetch": "^2.6.1",
     "npm-run-all": "^4.1.5",
     "probe-image-size": "^7.2.1",
     "tstest": "^0.7.3",
-    "typescript": "^4.4.3",
     "uuid": "^8.3.2",
     "yaml": "^1.10.2",
     "yaml-front-matter": "^4.1.1",
-    "yaml-lint": "^1.2.4",
-    "zero-md": "^2.1.1"
+    "yaml-lint": "^1.2.4"
   },
   "git": {
     "scripts": {
