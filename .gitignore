@@ -17,3 +17,11 @@ jekyll/_posts/2020-12-31-osschat-a-bridge-to-the-apache-way-in-china.md
 .nyc_output/
 t/
 t.*
+
+_site/
+.jekyll-cache/
+node_modules/
+
+.sass-cache
+.jekyll-metadata
+Gemfile.lock
