@@ -2,14 +2,6 @@
 
 set -eo pipefail
 
-function buildDocusarus () {
-  pushd docusaurus
-  rm -fr build
-  npx docusaurus build
-  mv build/sitemap.xml build/sitemap-docusaurus.xml
-  popd
-}
-
 function buildJekyll () {
   pushd jekyll
   make build
@@ -35,12 +27,9 @@ elif [ ! -d "$target" ]; then
   exit 1
 fi
 
-buildDocusarus
 buildJekyll
 
-cp -Rav docusaurus/build/* "$target"
 cp -Rav jekyll/_site/* "$target"
-cp -v config/sitemap.xml "$target"
 rm -f "$target"/README.md
 touch "$target"/.nojekyll
 buildManifest "$target"/manifest.json
