@@ -1,5 +1,5 @@
 {
-  "name": "wechaty.js.org-jekyll",
+  "name": "wechaty-jekyll",
   "version": "0.10.89",
   "description": "Wechaty Official Website for News, Blogs, Contributor Profiles",
   "private": true,
@@ -23,22 +23,23 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wechaty/wechaty.js.org-jekyll.git"
+    "url": "git+https://github.com/wechaty/jekyll.git"
   },
   "keywords": [
     "wechaty",
-    "document",
+    "blog",
+    "news",
+    "controbutors",
     "homepage",
-    "Docusaurus",
     "Minimal Mistakes",
     "Jekyll"
   ],
   "author": "Huan LI <zixia@zixia.net>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/wechaty/wechaty.js.org-jekyll/issues"
+    "url": "https://github.com/wechaty/jekyll/issues"
   },
-  "homepage": "https://github.com/wechaty/wechaty.js.org-jekyll#readme",
+  "homepage": "https://github.com/wechaty/jekyll#readme",
   "devDependencies": {
     "@chatie/eslint-config": "^1.0.4",
     "@chatie/git-scripts": "^0.6.2",
