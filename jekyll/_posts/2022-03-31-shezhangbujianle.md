@@ -1,7 +1,14 @@
-借助世界上最大的单体中文NLP大模型和Wechaty，我们做出了一个可以跟人类玩“剧本杀”的AI……
-项目地址，欢迎围观：https://github.com/bigbrother666sh/shezhangbujianle
+---
+title: 借助世界上最大的单体中文NLP大模型和Wechaty，我们做出了一个可以跟人类玩“剧本杀”的AI!
+author: bigbrother666sh
+categories: article
+tags:
+  - puppet-xp
+  - AI
+  - 剧本杀
+---
 
-# 无图无真相
+**项目地址，欢迎围观**：https://github.com/bigbrother666sh/shezhangbujianle
 
 我们为本项目特别改编了一个微型线上剧本杀剧本，本子有五个角色，分别由五名玩家扮演，但我们每场只会召集四个玩家，并在他们不知情的情况下，派出AI扮演剩下的那个角色。
 
