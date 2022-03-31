@@ -6,6 +6,7 @@ tags:
   - puppet-xp
   - AI
   - 剧本杀
+image: /assets/2022/03-shezhangbujianle/aoc7k-iob2u.webp
 ---
 
 **项目地址，欢迎围观**：<https://github.com/bigbrother666sh/shezhangbujianle>
