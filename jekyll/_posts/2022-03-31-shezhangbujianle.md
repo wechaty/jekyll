@@ -21,7 +21,7 @@ image: /assets/2022/03-shezhangbujianle/aoc7k-iob2u.webp
 
 本着细节拉满的原则，我们也为AI准备了一个微信账号，并精心为她设定了昵称和头像，甚至每场游戏前我们还会紧扣时事的为她准备近三天的朋友圈内容，而游戏后还会继续连发三天朋友圈内容提供延展剧情（非常类似"规则怪谈"）。
 
-<img alt="img" height="600" src="https://github.com/bigbrother666sh/shezhangbujianle/blob/main/assets/af65z-209za.jpeg" width="300"/>   <img alt="img" height="600" src="https://github.com/bigbrother666sh/shezhangbujianle/blob/main/assets/yanzhanjuqing.jpg" width="300"/>
+<img alt="img" height="600" src="https://github.com/bigbrother666sh/shezhangbujianle/blob/main/assets/af65z-209za.jpeg" width="300"/>  <img alt="img" height="600" src="https://github.com/bigbrother666sh/shezhangbujianle/blob/main/assets/yanzhanjuqing.jpg" width="300"/>
 
 整体剧情并不复杂，讲的是某高校社团中五个骨干成员因为一件事情牵涉到各自利益而产生的种种勾心斗角。玩家要做的也非常简单，就是想方设法、拉帮结派的说服其他人接受自己的主张……不过我们这次对原作做了比较大的改动，剧作中AI所扮演的角色（蔡晓）受控于某邪恶的科技巨头（“北极鹅”公司），
 她要帮助“北极鹅”实行一个庞大的阴谋，而这个阴谋其实笼罩了所有人……坦率的说，从游戏角度，这个角色的难度还挺高，承担着推动剧情的作用，并且游戏机制设定最后所有的疑点矛头都会指向她，
