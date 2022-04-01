@@ -1,5 +1,5 @@
 <div align="center">
-<img src="https://github.com/wechaty/wechaty.js.org/blob/main/docs/images/wechaty-jekyll.png" alt="wechaty logo" height ="auto" width="800" />
+<img src="https://github.com/wechaty/jekyll/blob/main/docs/images/wechaty-jekyll.png" alt="wechaty logo" height ="auto" width="800" />
 <br />
 <h1>Wechaty Organization Website</h1>
 <p>
