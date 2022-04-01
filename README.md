@@ -17,6 +17,11 @@ Repository for the Wechaty Organization Website, a resource for the Wechaty Orga
 [![Jekyll](https://github.com/wechaty/jekyll/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/wechaty/jekyll/actions/workflows/gh-pages.yml)
 </div>
 
+## Tutorials
+
+1. [零基础小白在Wechaty社区发表自己的第一篇博客, @juzibot, Jul 02, 2021](https://wechaty.js.org/2021/07/02/how-to-publish-blog-on-wechaty/)
+2. [入门：小白如何在wechaty社区发布自己的第一篇博客（一）, @atorber, Apr 22, 2021](https://wechaty.js.org/2021/04/22/how-to-publish-blog-on-wechaty/)
+ 
 ## How To Post a Blog
 
 To submit a blog post for publication on [wechaty.js.org](https://wechaty.js.org), you can follow the steps below.
