@@ -12,9 +12,19 @@ image: /assets/2022/03-gsma-rcs-wechaty-walnut-5g-chatbot/rcs-cross.webp
 
 > 5G Chatbot 是基于国际标准 GSMA (Global System for Mobile Association) RCS (Rich Communication Services) 的中国版。
 
-Wechaty Community 与硬核桃社区强强联手，推出 5G Chatbot 开源 SDK Wechaty 的在线社群活动，并为2022年 5G Chatbot 黑客马拉松大赛做预热。
+3月30日上午，以“开发者，集结”为主题的第六期核能沙龙顺利举办，硬核桃社区号召更多开发者，一起开启5G消息时代。
 
-欢迎大家开始关注 5G 时代运营商在 SMS 领域的 Chatbot 拓展，Wechaty SDK 将帮你用6行代码轻松实现 5G Chatbot 和 WhatsApp / Wechaty / Gitter / QQ 代码的零代码修改无缝集成。
+中国通信企协增值专委会秘书长/5G消息工作组副组长 李旦，Wechaty社区创始人 李卓桓，长沙理工大学凡路实验室前端开发部部长 张瑞宁，硬核桃社区高级技术经理 杨洋，硬核桃社区架构师 谌铎，受邀参加了本次“核能沙龙”活动，共同探讨如何在5G消息领域发挥开发者的力量。
+
+中国通信企协增值专委会秘书长/5G消息工作组副组长，李旦做了开场致辞。他说：“5G消息工作组将全力支持硬核桃社区系列的开发者活动，共同推动5G消息应用的繁荣。并表示，将在多个方面重点开展合作，如5G消息行业培训、5G消息GSMA 主题论坛、5G消息“绽放杯”开发者赛道等。”
+
+Wechaty 开源 Chatbot SDK 创始人，李卓桓分享了自己对 Conversational AI 的理解和未来展望，并做了 Wechaty 开源 SDK 零代码修改同时运行在多个 IM 平台上的 Live Demo。他表示：“随着运营商5G消息时代的来临，其他行业的Chatbot开发者，比如像Wechaty社区中有很多微信、QQ的Chatbot应用，这些应用的开发者也希望能够在5G消息Chatbot开发中贡献自己的力量。”
+
+硬核桃社区表示：“5G消息虽然是新兴的技术，但并不是毫无根基。行业内的开发者已经展开大量的基础工作，把好的应用案例迁移到5G消息上。为开发者降低门槛也是硬核桃社区的使命之一。欢迎加入硬核桃社区，共同探讨，一起成长!“
+
+今年，Wechaty Community 与硬核桃社区将强强联手，共同推动 5G Chatbot 开源 SDK Wechaty 的社群开发与应用，为参加 2022 年的 5G Chatbot 黑客马拉松大赛的开发者们，提供最好用的开源 SDK 。通过 Wechaty 开源 SDK 开发的 5G Chatbot ，可以实现零代码修改兼容微信、WhatsApp、QQ等其他平台机器人。
+
+欢迎大家更多的开始关注 5G 时代运营商在 SMS 领域的 Chatbot 拓展，Wechaty SDK 将帮你用6行代码轻松实现 5G Chatbot 和 WhatsApp / Wechaty / Gitter / QQ 代码的零代码修改无缝集成。
 
 ## 活动介绍
 
