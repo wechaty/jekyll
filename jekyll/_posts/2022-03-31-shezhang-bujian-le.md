@@ -4,7 +4,7 @@ author: bigbrother666sh
 categories: article
 tags:
   - puppet-xp
-  - AI
+  - ai
   - 剧本杀
 image: /assets/2022/03-shezhangbujianle/aoc7k-iob2u.webp
 ---
