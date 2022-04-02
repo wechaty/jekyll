@@ -55,7 +55,7 @@ Wechaty 开源 Chatbot SDK 创始人，李卓桓分享了自己对 Conversationa
 
 {% include iframe.html src="https://youtu.be/07CTMnngYog" %}
 
-> [Bilibili](https://space.bilibili.com/1764229974/)
+> Watch on [Bilibili](https://www.bilibili.com/video/BV1ET4y1v7Mz)
 
 ## Wechaty Puppet Walnut
 
