@@ -6,7 +6,7 @@ tags:
   - puppet-xp
   - ai
   - 剧本杀
-image: /assets/2022/03-shezhangbujianle/aoc7k-iob2u.webp
+image: /assets/2022/03-shezhang-bujian-le/aoc7k-iob2u.webp 
 ---
   
 ## 借助世界上最大的单体中文NLP大模型和Wechaty，我们做出了一个可以跟人类玩“剧本杀”的AI
