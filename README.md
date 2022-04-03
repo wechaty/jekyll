@@ -1,5 +1,5 @@
 <div align="center">
-<img src="https://github.com/wechaty/wechaty.js.org/blob/main/docs/images/wechaty-docusaurus.png" alt="wechaty logo" height ="auto" width="800" />
+<img src="https://github.com/wechaty/jekyll/blob/main/docs/images/wechaty-jekyll.png" alt="wechaty logo" height ="auto" width="800" />
 <br />
 <h1>Wechaty Organization Website</h1>
 <p>
@@ -14,12 +14,13 @@ Repository for the Wechaty Organization Website, a resource for the Wechaty Orga
 <img src="https://img.shields.io/badge/Gitter-@layer5.svg?logo=slack" /></a>
 </p>
 
-[![GitHub Pages CI](https://github.com/wechaty/wechaty.js.org/workflows/GitHub%20Pages%20CI/badge.svg)](https://github.com/wechaty/wechaty.js.org/actions?query=workflow%3A%22GitHub+Pages+CI%22)
-[![Powered by Wechaty](https://img.shields.io/badge/Powered%20By-Wechaty-brightgreen.svg)](https://github.com/Wechaty/wechaty)
-[![DIVIO documentation system](https://img.shields.io/badge/DIVIO-Documentation%20System-blue)](https://documentation.divio.com/)
-[![ES Modules](https://img.shields.io/badge/ES-Modules-brightgreen)](https://github.com/Chatie/tsconfig/issues/16)
-
+[![Jekyll](https://github.com/wechaty/jekyll/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/wechaty/jekyll/actions/workflows/gh-pages.yml)
 </div>
+
+## Tutorials
+
+1. [零基础小白在Wechaty社区发表自己的第一篇博客, @juzibot, Jul 02, 2021](https://wechaty.js.org/2021/07/02/how-to-publish-blog-on-wechaty/)
+2. [入门：小白如何在wechaty社区发布自己的第一篇博客（一）, @atorber, Apr 22, 2021](https://wechaty.js.org/2021/04/22/how-to-publish-blog-on-wechaty/)
 
 ## How To Post a Blog
 
@@ -173,7 +174,11 @@ To get to know all our writers, see <https://github.com/wechaty/wechaty.js.org/g
 
 ## History
 
-### main v0.9 (Aug 23, 2021)
+### main v0.11 (Apr 1, 2022)
+
+Split repo from one to two: Jekyll (this one) and [Docusaurus](https://github.com/wechaty/docusaurus). See: [Issue wechaty/wechaty.js.org#1](https://github.com/wechaty/wechaty.js.org/issues/1)
+
+### v0.9 (Aug 23, 2021)
 
 1. Add OpenAPI Specification docs at <https://wechaty.js.org/docs/openapi/> ([#1218](https://github.com/wechaty/wechaty.js.org/issues/1218))
 
