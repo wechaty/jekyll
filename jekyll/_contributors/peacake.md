@@ -1,7 +1,7 @@
 ---
 name: peacake
 site:  https://github.com/pea-cake.
-avatar: https://avatars.githubusercontent.com/u/58544092?v=4
+avatar: /assets/contributors/peacake/avatar.webp
 bio: Frontend engigneer
 email: xmdevr@gmail.com
 wechat: yishengyichun
