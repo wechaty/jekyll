@@ -8,7 +8,8 @@ wechat: yishengyichun
 ---
 
 Frontend engigneer.
-- https://github.com/wechaty/puppet-xp/pull/99
+
+- [Update examples/ding-dong-bot.ts](https://github.com/wechaty/puppet-xp/pull/99)。
 
 ## Contact me
 
