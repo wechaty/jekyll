@@ -6,6 +6,7 @@ tag:
   - puppet-xp
   - gateway
   - wechat4U
+image: /assets/2022/04-wechaty-gateway-use/04-wechaty-gateway-use.webp
 ---
 
 # Wechaty Gateway 使用教程
