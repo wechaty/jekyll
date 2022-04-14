@@ -5,7 +5,7 @@ categories: article
 tags:
   - puppet-xp
   - gateway
-  - wechat4U
+  - wechat4u
 image: /assets/2022/04-wechaty-gateway-use/logo.webp
 ---
 
