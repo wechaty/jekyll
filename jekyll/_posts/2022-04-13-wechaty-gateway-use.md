@@ -185,7 +185,6 @@ cross-env NODE_OPTIONS="--no-warnings --loader=ts-node/esm" node examples/1.t  0
 ## 设计思路
 
 - Viper 用来读取或者写入配置文件，包括 各种 token
-
 - go func()  // 这里我并不理解这个，我以为他是 后台程序
 - strings.Replace 切割 @ 符号和机器人的名字，机器人的名字可以在 onlogin 的时候读取
 - 在 message 接收到消息的时候，如果匹配到了关键字，其实你可以把它放到后台继续执行的
