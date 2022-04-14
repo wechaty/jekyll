@@ -58,7 +58,7 @@ flowchart LR
     Go-->Grpc
     Rust-->Grpc
     Grpc-->Gateway{Gateway}-->Wechat4U
-		Wechat4U-->微信
+    Wechat4U-->微信
 ```
 
 ### Gateway
@@ -85,7 +85,7 @@ wechaty gateway --puppet ${WECHATY_PUPPET} --port ${WECHATY_PUPPET_SERVER_PORT} 
 
 wechaty 会在当前目录生成 `Gateway.memory-card.json`  有了这个文件就不需要总是重新登陆了
 
-### Polyglot
+### Polyglot(wechat4u)
 
 ```go
 // 其他的官网 demo 照抄就OK，这个使用的是 go-wechaty
@@ -117,14 +117,14 @@ flowchart LR
     XP-->微信
 ```
 
-### Gateway
+### Gateway(wechat4u)
 
 ```bash
 # 这些仅适用于 Windows，因为 xp 支持的是Windows版本微信
 npm install -g wechaty wechaty-puppet-xp
 # npm --registry https://registry.npm.taobao.org install -g wechaty wechaty-puppet-wechat4u
 
-set WECHATY_PUPPET="wechaty-puppet-wechat4u"
+set WECHATY_PUPPET="wechaty-puppet-xp"
 set WECHATY_TOKEN="d6e8b1c7-6fcd-4e32-b3f6-8d1e73388458"
 # set WECHATY_TOKEN=$(curl -s https://www.uuidgenerator.net/api/version4)
 
@@ -140,7 +140,7 @@ wechaty gateway --puppet %WECHATY_PUPPET% --port %WECHATY_PUPPET_SERVER_PORT% --
 
 上面这一堆麻烦的东西就是网关啦，希望你能使用它来作为你的好助手！
 
-### Polyglot
+### Polyglot(xp)
 
 ```go
 // 其他的官网 demo 照抄就OK，这个使用的是 go-wechaty
@@ -152,9 +152,9 @@ var bot = wechaty.NewWechaty(wechaty.WithPuppetOption(wp.Option{
 }))
 ```
 
-## 性能对比：
+## 性能对比
 
-### Gateway
+### Gateway(xp)
 
 ```bash
 func OnScan(ctx *wechaty.Context) {
@@ -190,3 +190,9 @@ cross-env NODE_OPTIONS="--no-warnings --loader=ts-node/esm" node examples/1.t  0
 - 在 message 接收到消息的时候，如果匹配到了关键字，其实你可以把它放到后台继续执行的
 - 还有就是 xp 消息发送过于频繁怕触发微信的风控
 - golang 可以使用 air 热重启，typescript 使用 nodemon
+
+## 关于文档贡献
+
+> 如果你喜欢这款开源机器人，且愿意与大家分享你的心得，欢迎投稿
+> 参与投稿，你将获得 长期 `padlocal token` ,更稳定！
+> 那么，关于文档，由于文章较多，我的解决方案是 `typora` + `github.dev` + [`markdownlint`](https://dlaa.me/markdownlint/)
