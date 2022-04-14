@@ -83,7 +83,7 @@ export WECHATY_PUPPET_SERVICE_NO_TLS_INSECURE_SERVER=true
 wechaty gateway --puppet ${WECHATY_PUPPET} --port ${WECHATY_PUPPET_SERVER_PORT} --token ${WECHATY_PUPPET_SERVICE_TOKEN} --puppet-token ${WECHATY_TOKEN}
 ```
 
-上面这一堆麻烦的东西就是网关啦，希望你能使用它来作为你的常用工具
+上面这些就是网关啦，希望你能使用它来作为你的常用工具
 
 wechaty 会在当前目录生成 `Gateway.memory-card.json`  有了这个文件就不需要总是重新登陆了
 
@@ -140,7 +140,7 @@ set WECHATY_PUPPET_SERVICE_NO_TLS_INSECURE_SERVER=true
 wechaty gateway --puppet %WECHATY_PUPPET% --port %WECHATY_PUPPET_SERVER_PORT% --token %WECHATY_PUPPET_SERVICE_TOKEN% --puppet-token %WECHATY_TOKEN%
 ```
 
-上面这一堆麻烦的东西就是网关啦，希望你能使用它来作为你的常用工具
+上面这一堆麻烦的东西就是网关啦，希望你能使用它来作为你的好助手！
 
 ### Polyglot
 
