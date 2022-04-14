@@ -2,7 +2,7 @@
 title: Wechaty Gateway 使用教程
 author: xrsec
 categories: article
-tag:
+tags:
   - puppet-xp
   - gateway
   - wechat4U
