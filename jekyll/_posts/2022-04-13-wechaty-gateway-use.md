@@ -9,8 +9,6 @@ tag:
 image: /assets/2022/04-wechaty-gateway-use/04-wechaty-gateway-use.webp
 ---
 
-# Wechaty Gateway 使用教程
-
 ### 声明
 
 1. wechaty 属于开源工具，并没有太多的义务帮你解决问题
@@ -92,11 +90,11 @@ wechaty 会在当前目录生成 `Gateway.memory-card.json`  有了这个文件�
 ```go
 // 其他的官网 demo 照抄就OK，这个使用的是 go-wechaty
 // demo: https://github.com/wechaty/go-wechaty/blob/master/examples/ding-dong-bot.go
-	var bot = wechaty.NewWechaty(wechaty.WithPuppetOption(wp.Option{
-		Token: "insecure_d6e8b1c7-6fcd-4e32-b3f6-8d1e73388458",
-		Endpoint: "127.0.0.1:25000",
-		Timeout: time.Second * 10,
-	}))
+var bot = wechaty.NewWechaty(wechaty.WithPuppetOption(wp.Option{
+    Token: "insecure_d6e8b1c7-6fcd-4e32-b3f6-8d1e73388458",
+    Endpoint: "127.0.0.1:25000",
+    Timeout: time.Second * 10,
+}))
 ```
 
 ## XP
@@ -147,11 +145,11 @@ wechaty gateway --puppet %WECHATY_PUPPET% --port %WECHATY_PUPPET_SERVER_PORT% --
 ```go
 // 其他的官网 demo 照抄就OK，这个使用的是 go-wechaty
 // demo: https://github.com/wechaty/go-wechaty/blob/master/examples/ding-dong-bot.go
-	var bot = wechaty.NewWechaty(wechaty.WithPuppetOption(wp.Option{
-		Token: "insecure_d6e8b1c7-6fcd-4e32-b3f6-8d1e73388458",
-		Endpoint: "127.0.0.1:25000",
-		Timeout: time.Second * 10,
-	}))
+var bot = wechaty.NewWechaty(wechaty.WithPuppetOption(wp.Option{
+    Token: "insecure_d6e8b1c7-6fcd-4e32-b3f6-8d1e73388458",
+    Endpoint: "127.0.0.1:25000",
+    Timeout: time.Second * 10,
+}))
 ```
 
 ## 性能对比：
@@ -160,7 +158,7 @@ wechaty gateway --puppet %WECHATY_PUPPET% --port %WECHATY_PUPPET_SERVER_PORT% --
 
 ```bash
 func OnScan(ctx *wechaty.Context) {
-		os.exit(0)
+    os.exit(0)
 ---------------------------------------
 ➜  time go run test.go
 2022/04/13 22:09:40 PuppetService Start()
@@ -173,7 +171,7 @@ go run test.go  0.46s user 0.32s system 27% cpu 2.895 total
 
 ```bash
 function onScan(payload: PUPPET.payloads.EventScan) {
-  return process.exit(0);
+    return process.exit(0);
 ---------------------------------------
 time cross-env NODE_OPTIONS="--no-warnings --loader=ts-node/esm" node examples/1.ts
 Puppet Version: 0.0.0<1.18.3>
