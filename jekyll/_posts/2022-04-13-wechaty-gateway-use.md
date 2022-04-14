@@ -2,12 +2,14 @@
 title: Wechaty Gateway 使用教程
 author: xrsec
 categories: article
-tag: 
+tag:
   - puppet-xp
   - gateway
   - wechat4U
 image: /assets/2022/04-wechaty-gateway-use/04-wechaty-gateway-use.webp
 ---
+
+## 前言
 
 ### 声明
 
@@ -195,4 +197,4 @@ cross-env NODE_OPTIONS="--no-warnings --loader=ts-node/esm" node examples/1.t  0
 
 > 如果你喜欢这款开源机器人，且愿意与大家分享你的心得，欢迎投稿
 > 参与投稿，你将获得 长期 `padlocal token` ,更稳定！
-> 那么，关于文档，由于文章较多，我的解决方案是 `typora` + `github.dev` + [`markdownlint`](https://dlaa.me/markdownlint/)
+> 那么，关于文档，由于文章较多，我的解决方案是 `vscode` + `Plug markdownlint` + [`markdownlint Config`](https://github.com/wechaty/jekyll/blob/main/.markdownlint.json)

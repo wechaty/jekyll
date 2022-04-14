@@ -3,8 +3,8 @@ name: XRSec
 site: https://blog.zygd.site/
 avatar: /assets/contributors/xrsec/avatar.webp
 bio: Freelance cyber security practitioner
-email: 
-twitter: 
+email:
+twitter:
 ---
 
 Low-key development, safety with concentration
