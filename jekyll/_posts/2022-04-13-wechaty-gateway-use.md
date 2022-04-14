@@ -64,6 +64,7 @@ flowchart LR
 ```
 
 ### Gateway
+
 ```bash
 npm install -g wechaty wechaty-puppet-wechat4u
 # npm --registry https://registry.npm.taobao.org install -g wechaty wechaty-puppet-wechat4u
@@ -119,6 +120,7 @@ flowchart LR
 ```
 
 ### Gateway
+
 ```bash
 # 这些仅适用于 Windows，因为 xp 支持的是Windows版本微信
 npm install -g wechaty wechaty-puppet-xp
