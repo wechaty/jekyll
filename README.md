@@ -34,6 +34,7 @@ To submit a blog post for publication on [wechaty.js.org](https://wechaty.js.org
 6. Write your blog in markdown in the file you created in the previous step. If you are not familiar with markdown syntax, you can learn it [here](https://guides.github.com/features/mastering-markdown/)
 7. Add related images to [jekyll/assets](./jekyll/assets) folder under `$YEAR/$MONTH-your-blog-slug/` directory
 8. Add your info into `jekyll/_contributors/your_github_id.md`
+8. Use mermaid: [URL](/jekyll#use-mermaid)
 9. Commit your changes using the command `git commit -am "YOUR_BLOG_TITLE"`. `YOUR_BLOG_TITLE` is the title of your blog
 10. Push your branch to github using the command `git push origin name-of-blog-branch`.
 11. Create new Pull Request(PR)

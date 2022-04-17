@@ -13,6 +13,20 @@ wechaty.js.org/ | Repo Folder
 1. For news posts (will show in `/news/` URL), add `news` to `tags`
 1. For sticky posts, add `sticky` to `tags`
 
+## Use mermaid
+
+````bash
+```
+title: xxxxx
+author: xxxxx
+categories: xxxxx
+tags:
+  - xxxxx
+image: /assets/2022/xxxxx/logo.webp
+mermaid: true
+```
+````
+
 ## Serve from local
 
 Run the Jekyll at localhost for blog preview.

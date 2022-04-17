@@ -7,6 +7,7 @@ tags:
   - gateway
   - wechat4u
 image: /assets/2022/04-wechaty-gateway-use/logo.webp
+mermaid: true
 ---
 
 ## 前言

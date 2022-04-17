@@ -33,7 +33,7 @@ serve:
 docker-serve:
 	docker run \
 		--rm \
-		-v .:/srv/jekyll:z \
+		-v $(pwd):/srv/jekyll:z \
 		-p 4000:4000 \
 		jekyll/jekyll \
 		jekyll serve --force_polling
