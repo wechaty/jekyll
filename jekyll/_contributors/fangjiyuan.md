@@ -8,7 +8,3 @@ twitter:
 ---
 
 Just know a little python.
-## Contact
-
-- Github: <https://github.com/fangjiyuan>
-- Email: <18905444538@189.cn>
