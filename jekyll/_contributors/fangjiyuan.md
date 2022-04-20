@@ -6,4 +6,8 @@ bio: everything auto.
 email: 18905444538@189.cn
 twitter: 
 ---
-pr: https://github.com/wechaty/python-wechaty-puppet-itchat/pull/18
+- pr: https://github.com/wechaty/python-wechaty-puppet-itchat/pull/18
+## Contact
+- Github: <https://github.com/fangjiyuan>
+- wechaty: fangjiyuan
+- Email: <18905444538@189.cn>
