@@ -63,7 +63,7 @@ await wechaty.post(post)
 
 postMixin: POST相关的抽象方法
 
-```ts
+~~~ts
 override async messageSendPost (conversationId: string, postPayload: PUPPET.payloads.Post): Promise<void> {
     log.verbose('PuppetWalnut', 'messageSendPost(%s, %s)', conversationId, postPayload)
     await sendPostMessage(conversationId, postPayload)
@@ -105,7 +105,7 @@ override async messageSendPost (conversationId: string, postPayload: PUPPET.payl
          contentType: 'application/vnd.gsma.botmessage.v1.0+json',
      })
  }
-```
+~~~
 
 ### 项目成果
 
