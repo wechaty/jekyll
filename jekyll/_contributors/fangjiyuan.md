@@ -6,5 +6,3 @@ bio: everything auto.
 email: 18905444538@189.cn
 twitter: 
 ---
-
-Just know a little python.
