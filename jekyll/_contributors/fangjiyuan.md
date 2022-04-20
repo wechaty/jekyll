@@ -6,3 +6,4 @@ bio: everything auto.
 email: 18905444538@189.cn
 twitter: 
 ---
+pr:https://github.com/wechaty/python-wechaty-puppet-itchat/pull/18
