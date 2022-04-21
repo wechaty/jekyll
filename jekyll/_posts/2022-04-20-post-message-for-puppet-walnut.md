@@ -112,9 +112,10 @@ override async messageSendPost (conversationId: string, postPayload: PUPPET.payl
 #### 1. 创建实例
 
 ~~~ts
+ // get a Wechaty instance
 const bot = WechatyBuilder.build({
   puppet: new PuppetWalnut(),
-})  // get a Wechaty instance
+}) 
   .on('login',            (user: any) => log.info(`User ${user} logged in`))
   .on('message',       async (message: { toContact: () => void }) => {
     log.info(`Message: ${message}`)
@@ -166,7 +167,9 @@ await contact.say(post)
 
 ### 未来与展望
 
+- 将walnut部署到句子秒回
 - 展开walnut社群的部署上线调试工作
-- 尽可能增加对其他功能的支持
+- 完成从0到1运行 puppet-walnut以及相关的功能博客
+- 用联通 5G 的接口接入 walnut
 
 > Author: [@fabian](https://github.com/fabian4)
