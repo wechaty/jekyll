@@ -116,8 +116,8 @@ override async messageSendPost (conversationId: string, postPayload: PUPPET.payl
 const bot = WechatyBuilder.build({
   puppet: new PuppetWalnut(),
 }) 
-  .on('login',          (user: any) => log.info(`User ${user} logged in`))
-  .on('message',       	async (message: { toContact: () => void }) => {
+  .on('login', (user: any) => log.info(`User ${user} logged in`))
+  .on('message', async (message: { toContact: () => void }) => {
     log.info(`Message: ${message}`)
   })
 
