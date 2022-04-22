@@ -164,9 +164,9 @@ npm install wechaty-puppet-walnut
 
 将我们之前上报的公网回调地址**映射到我们本地的3000端口**即可。
 
-> 这边推荐使用开源的frp工具 
+> 这边推荐使用开源的frp工具
 >
-> - Github repo:  <https://github.com/fatedier/frp> 
+> - Github repo: <https://github.com/fatedier/frp>
 > - 教程👉 <https://fabian4.site/blog/22217.html>
 >
 > walnut中包含一个**koa**的服务 默认监听端口为3000（可在启动配置中更改）
