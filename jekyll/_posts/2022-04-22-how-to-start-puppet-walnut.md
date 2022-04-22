@@ -53,8 +53,6 @@ tags:
 
 ![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=NzNiMzZiMGRjMTkwNzg0NDQ4Y2Q5ODZiNWE2ZjUxZjdfV1RmZUFxMkQ2Wk9zRmtQM2ZSbUljOEJ6SlFOM29ldDlfVG9rZW46Ym94Y25XWmJNUGRoWUpiZURWU0xWankzcHpjXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
 
-
-
 ### 三、申请试用硬核桃开发套件
 
 #### 1. 点击下图中的「首页」按钮回到首页
@@ -72,8 +70,6 @@ tags:
 #### 4. 点击下图中的「提交」按钮
 
 ![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=OTc4MzNhNmJkNDUzZWZiNzVmNjNjZmZiZmYyNjM1NjJfRFVHeWhNc0pXNjJkeU1nS0V1MFlvYW04dllnaVdJTTZfVG9rZW46Ym94Y25WU1hUdW5OSkhwRnZWUjM3S01LaEtiXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
-
-
 
 #### 5. 点击下图中的「去认证」按钮
 
@@ -119,8 +115,6 @@ tags:
 
 ![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=NjEyNWU2OGRmY2I1N2U3NWViOTgwMDRhZmIwZDlmNzBfd3A2d0F3UGtoM2FMbWZDZ3Yyenk2RFlsblIzNzZqMFpfVG9rZW46Ym94Y241cTR6WEVqSlI0WUtjdlhMRlFzbWZlXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
 
-
-
 ### 四. **开始接入Wechaty社区的puppet-walnut**
 
 > 在完成第二步的硬核桃开发者套件申请试用后，我们已经有了从硬核桃5G开发者社区申请到的Chatbot的AppId、Chatbot的AppKey、Chatbot的sipId。上报填报chatbot的公网回调地址
@@ -162,9 +156,9 @@ npm install wechaty-puppet-walnut
 
 将我们之前上报的公网回调地址**映射到我们本地的3000端口**即可。
 
-> 这边推荐使用开源的 frp 工具 
+> 这边推荐使用开源的frp工具 
 >
-> - Github repo: <https://github.com/fatedier/frp> 
+> - Github repo:  <https://github.com/fatedier/frp> 
 > - 教程👉 <https://fabian4.site/blog/22217.html>
 >
 > walnut中包含一个**koa**的服务 默认监听端口为3000（可在启动配置中更改）
