@@ -4,11 +4,11 @@
  categories: article
  tags:
    - blog
-   - wechaty
    - study
-   - Robot
+   - price
+   - robot
    - introduction
- image: /assets/2022/04-wechaty-coin-robot/robot.jpeg
+ image: /assets/2022/04-coin-price-robot/robot.webp
 ---
 
 ## 基于开放 API 封装 Wechaty 接口下的虚拟币行情机器人
@@ -31,7 +31,9 @@
 ### 整体流程
 
 package.json 相关依赖
+
 ```json
+
 "dependencies": {
     "axios": "^0.26.1",
     "dotenv": "^10.0.0",
@@ -63,6 +65,7 @@ package.json 相关依赖
 ```
 
 处理消息回复相关代码
+
 ```js
 async function onMessage (msg: Message) {
   log.info('StarterBot', msg.toString())
@@ -97,6 +100,7 @@ async function onMessage (msg: Message) {
 ```
 
 通过接口获取数据代码
+
 ```js
 async function coinBot (tag:string) {
   let response = null
@@ -147,8 +151,9 @@ async function coinBot (tag:string) {
   }
 }
 ```
+
 ## 最后效果
 
-![fe5ce357110efd60b8c703ccba9805d5](/assets/2022/04-wechaty-coin-robot/fe5ce357110efd60b8c703ccba9805d5.jpg)
+![fe5ce357110efd60b8c703ccba9805d5](/assets/2022/04-coin-price-robot/fe5ce357110efd60b8c703ccba9805d5.webp)
 
-![94546d0603828f51f60646fc51dee993](/assets/2022/04-wechaty-coin-robot/94546d0603828f51f60646fc51dee993.jpg)
+![94546d0603828f51f60646fc51dee993](/assets/2022/04-coin-price-robot/94546d0603828f51f60646fc51dee993.webp)
