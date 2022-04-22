@@ -9,7 +9,6 @@ tags:
   - puppet-walnut
   - chatbot
   - ecosystem
-  - plan
 ---
 
 ## 小白如何从0到1上手puppet-walnut
@@ -20,7 +19,7 @@ tags:
 
 #### 1. 点击[网址链接](https://www.5g-msg.com/#/)进入硬核桃5G开发者社区，如下图所示，点击网页中的「免费注册」按钮
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=MGNlMzczNWEwZjA2ZWM1OWVkM2Q4MTQ2YjYzYTcxYWZfTGlxQk9RTWtUa29mejZsaENCQ1F1aWNndk5zOFQzUGlfVG9rZW46Ym94Y25kV1FqcWtUSmM1MGFkWm1ieERzUHVmXzE2NTA2MjE3OTE6MTY1MDYyNTM5MV9WNA)
+![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=ZmFmNDNmOWYyYzMxZjhiMGMyNzFlNDA0NjNjYjVhMzBfUVphRnJ3MHo3cnQxMEFOUW1CNW5sV3NYMzRKOGRiS3NfVG9rZW46Ym94Y25kV1FqcWtUSmM1MGFkWm1ieERzUHVmXzE2NTA2MjY0OTc6MTY1MDYzMDA5N19WNA)
 
 #### 2. 如下图所示，输入账户名、密码、手机号进行相关注册
 
@@ -32,7 +31,7 @@ tags:
 
 #### 4. 注册成功！如果怕忘记密码，可以再绑定一个邮箱~（绑定邮箱的操作此处忽略）
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=YmFiNjY1N2JlYzFlZmM1ODEzMTU5YjU3YjY3MmMxMmVfTnZocEM1M3NBZW1ZbTFxUVpWMWdpUWFZNUpBamZNMmVfVG9rZW46Ym94Y25zbEVJS0dNc1VjdGZiM0lyRTF1NnJlXzE2NTA2MjE3OTE6MTY1MDYyNTM5MV9WNA)
+![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=NWNlZjQ3OTgyYWIzZTJiM2E4NmMzZmI4NDFmYWNjZTdfZDZRcVdsYTh0TGhCOTRxdm9iMWhKeVdvT3o3S2FkNVRfVG9rZW46Ym94Y25zbEVJS0dNc1VjdGZiM0lyRTF1NnJlXzE2NTA2MjY0NTg6MTY1MDYzMDA1OF9WNA)
 
 ### 二. 在硬核桃5G开发者社区中申请试用硬核桃开发套件
 
@@ -50,7 +49,7 @@ tags:
 
 > 在完成第二步的硬核桃开发者套件申请试用后，我们已经有了从硬核桃5G开发者社区申请到的Chatbot的AppId、Chatbot的AppKey、Chatbot的sipId。上报填报chatbot的公网回调地址
 
-#### 1. 设置我们的环境变量
+#### 1. 设置环境变量
 
 - Windows
 
@@ -72,7 +71,7 @@ tags:
   export WECHATY_PUPPET_WALNUT_SIPID=Chatbot的sipId
   ```
   
-#### 2. 安装我们的依赖
+#### 2. 安装依赖
 
 > 1. Node.js version 16+
 > 2. NPM version 7+
@@ -99,9 +98,9 @@ npm install wechaty-puppet-walnut
 const bot = WechatyBuilder.build({
   puppet: new PuppetWalnut(),
 })  // get a Wechaty instance
-  .on('login',            (user: any) => log.info(`User ${user} logged in`))
+  .on('login', (user: any) => log.info(`User ${user} logged in`))
     // get the message chatbot received from users
-  .on('message',       async (message: Message) => {
+  .on('message', async (message: Message) => {
     log.info(`Message: ${message}`)
   })
 
