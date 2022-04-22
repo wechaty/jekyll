@@ -23,15 +23,15 @@ tags:
 
 #### 2. 如下图所示，输入账户名、密码、手机号进行相关注册
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=NDgzYmE4NzM0NDJjMDM5ODMyNGJlODMwODc3YjdkNjJfNmFJbWxDSWpsWUFHNzIzS2NXYlEwMVZjeUdXTjFOYVRfVG9rZW46Ym94Y25lQWZVOW9GOGxJME9RdzVTWFhMWXNoXzE2NTA2MjE3OTE6MTY1MDYyNTM5MV9WNA)
+![img](https://user-images.githubusercontent.com/60428924/164729996-7cc09273-12ee-406f-975a-12ee5e8eecbf.png)
 
 #### 3. 如下图，输入手机短信验证码
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=ZmNlN2UzYWE4NmQ5ZTYwNGQ2NjQ4ODZjMjU4NjY4MzdfanRra0xLNURHdWp2MUZBaGx5UXY1V1JQYmVMYTNuSVBfVG9rZW46Ym94Y25HakxKbnA2Znl1NFdVZjY1M0swMjdiXzE2NTA2MjE3OTE6MTY1MDYyNTM5MV9WNA)
+![image](https://user-images.githubusercontent.com/60428924/164730084-3e53f00a-7067-4543-b0f2-9325b311c83f.png)
 
 #### 4. 注册成功！如果怕忘记密码，可以再绑定一个邮箱~（绑定邮箱的操作此处忽略）
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=NWNlZjQ3OTgyYWIzZTJiM2E4NmMzZmI4NDFmYWNjZTdfZDZRcVdsYTh0TGhCOTRxdm9iMWhKeVdvT3o3S2FkNVRfVG9rZW46Ym94Y25zbEVJS0dNc1VjdGZiM0lyRTF1NnJlXzE2NTA2MjY0NTg6MTY1MDYzMDA1OF9WNA)
+![image](https://user-images.githubusercontent.com/60428924/164730159-10d3b790-956e-4040-8292-26bbb73515a7.png)
 
 ### 二. 报名参加“启航计划”开发者大赛
 
@@ -39,89 +39,89 @@ tags:
 
 #### 1. 登陆第一步注册的账号之后，点击「“启航计划”开发者大赛」进入相关活动界面
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=NGY1MTBlOGMxYmQxNjFkZjFhYzlmNzcxZGViZTNiY2FfVkZmTExScDBBaTcwaTVNRHBmVjVNRTB3TDZ0dnRZZ1VfVG9rZW46Ym94Y25idGdGTnlEcWs0eEVONHZXV21jdUpYXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+![image](https://user-images.githubusercontent.com/60428924/164730238-25c5d258-e35b-4e5d-8af3-f5ec166df9c7.png)
 
 #### 2. 点击下图中的「立即报名」
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=OWY5ZDkyZmFhN2E3MTgxYzg2ZmQ1YzRhYTI2MWU2NjFfWm1lRk5zZnczbkEyVUNDa2RrVkRPYmdWcWNBU2xyd1lfVG9rZW46Ym94Y25qOEJ0WnFOMnVtdXlyR2Vxdm9IOFBlXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+![image](https://user-images.githubusercontent.com/60428924/164730327-3ce76e48-646c-48b1-ab4e-11b0937f583d.png)
 
 #### 3. 如下图所示，填写参赛相关信息（如有邀请码请填写邀请码，没有可不填），填写完毕之后点击「提交」按钮
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=MzJmYjhmODg3OTU3YmIwYTUzZTg4OTQ2ZWM5NDk2ZGNfZ2UzZzJUZnFpcFBFcDNnMm9LVmxJaHZqbVR0ZE5lM3FfVG9rZW46Ym94Y25FZHJzN2FSeVl3TjFtT1p1REFWSVJoXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+![image](https://user-images.githubusercontent.com/60428924/164730430-171e74f4-eeb5-432b-aefc-f34ef35ac25b.png)
 
 #### 4. 报名成功！
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=NzNiMzZiMGRjMTkwNzg0NDQ4Y2Q5ODZiNWE2ZjUxZjdfV1RmZUFxMkQ2Wk9zRmtQM2ZSbUljOEJ6SlFOM29ldDlfVG9rZW46Ym94Y25XWmJNUGRoWUpiZURWU0xWankzcHpjXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+![image](https://user-images.githubusercontent.com/60428924/164730508-f20eea45-0280-45d9-81c8-ec8a2c9bec09.png)
 
 ### 三、申请试用硬核桃开发套件
 
 #### 1. 点击下图中的「首页」按钮回到首页
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=ZmRkYjg4NGM1M2JmNTdjYTUzMWMyNTk0N2IxMjU2YWRfbm1vd0tGS29Vd05DbWlUZklaZUN6OHdsSm5uWDNDdlRfVG9rZW46Ym94Y25qUTY4ZlZ0VHpubEhZbTh0U1lRRUxoXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+![image](https://user-images.githubusercontent.com/60428924/164730588-20e5a3a8-7c08-40f3-bb3e-0991d3844a1e.png)
 
 #### 2. 从首页界面下拉，找到并点击下图所示的「申请试用」按钮
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=ZmVlNmU4ODdiNTZlY2Y2Yzk2YjFiNWFlMzFiZTgyMWVfd3g5NWNsYjdveGViNjhlR05aUHN2STBSRlBqU3hkMUpfVG9rZW46Ym94Y254QjlHMHZkRDZSQmFmTXlEN2h6MDFnXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+![image](https://user-images.githubusercontent.com/60428924/164730696-e93e6d29-0b93-4a61-b5ab-78fa2cbebcf5.png)
 
 #### 3. 点击下图中的「免费试用」按钮
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=NWMwMTk2YTU2YzkwZDdmNDViYTExNDI0NGM2ZjYxYzRfaEg5V2xNREkxaXJrUDMxVDlWbXgxOEl6TE1xVjBNalJfVG9rZW46Ym94Y255Vk1Sd29VMWJnNm85VVBxY1lXSUFkXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+![image](https://user-images.githubusercontent.com/60428924/164730757-8f55d2d9-dfc8-4cf9-a248-f9fbe901b89a.png)
 
 #### 4. 点击下图中的「提交」按钮
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=OTc4MzNhNmJkNDUzZWZiNzVmNjNjZmZiZmYyNjM1NjJfRFVHeWhNc0pXNjJkeU1nS0V1MFlvYW04dllnaVdJTTZfVG9rZW46Ym94Y25WU1hUdW5OSkhwRnZWUjM3S01LaEtiXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+![image](https://user-images.githubusercontent.com/60428924/164730809-cf9f65f5-4f84-48ce-aa23-992387222748.png)
 
 #### 5. 点击下图中的「去认证」按钮
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=M2FhNTdkOWFmZGVhMDNlZTAyZDc0NTBiMGJkN2M5NGNfbjJINGpFTG9DQVo1TlJPOFBZbGlpcTBLZWJqRWJTRUtfVG9rZW46Ym94Y25Gcmlzd0tJcU16TGVaZzlWdGFqcXMwXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+![image](https://user-images.githubusercontent.com/60428924/164730872-59ed0600-90e3-4c6e-ba8e-a681bda948f1.png)
 
 #### 6. 点击下图中的「前去认证」按钮对账户进行实名认证
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=NTg1YTAyODQwNzcyOTA1NmQxNjMwZTUwY2NiYTNhYWRfdThvekE5STN3Tmpuc1RLTHd5SnN3blBwaFYzUGFRZDhfVG9rZW46Ym94Y25vcEppQkFhRXJ2QkJabXpabTVKUmNkXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+![image](https://user-images.githubusercontent.com/60428924/164730947-63b9a642-e8a3-40b2-8aa3-3f09dbfe6e91.png)
 
 #### 7. 如下图所示，填写相关资料进行账户实名认证
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=ZTk0MjU0MDE2MzBmZDEzZjczYTcyYWMxYzA4ZTAwZWRfeklWRnM3c09OMkVreFBWdVVmUUlpZktLNUVJTzdrV2NfVG9rZW46Ym94Y25sZHJQb3IzYUgwN0tOUlJkdTdJOWxlXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+![image](https://user-images.githubusercontent.com/60428924/164731061-d8d11a0f-c86f-4bc6-a5e7-a1f9ca91a449.png)
 
 #### 8. 资料提交成功后，账户实名认证状态会如下图所示变为「待审核」
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=NTRjYzE4NGY5MDJlMTQ5MThhMGQ5MzJiMDU5ODEzNjBfZjdtMEh2cjVKZXppUjdRaU41NERURXdESkVldjJqVDJfVG9rZW46Ym94Y25ZbXFoZ2lPMzc3NTRIVHVxYzJCTVplXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+![image](https://user-images.githubusercontent.com/60428924/164731306-de29a867-41c2-413f-975a-b73329a73f21.png)
 
 #### 9. 如果提交的资料没问题，等待30分钟之内，认证状态会变为「认证通过」
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=OTU2NGI0ZGQ5NTcxZjEyN2VjYWMzNGEyZGRmZDBmOTlfZUZNZ1h3UlZkTjZDQzRBd0g1WDBLcVBXRWphZ2ZLZFFfVG9rZW46Ym94Y254UWlmblZ3Q1BUb3JFOUZUa1hRZ1lnXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+![image](https://user-images.githubusercontent.com/60428924/164731374-64bbd1fc-c7f4-470c-8002-625ca03e3b42.png)
 
 #### 10. 接下来我们继续申请企业账号认证，点击下图中的「前去认证」
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=YWNiYWQ1NTk4M2UxNzcwOTQ0MmNhNjFmZjRmOTZjN2VfVFBVQjRTZXc1Z0J6Nml3WjFXRU5lUkd6TERYZXhSdEVfVG9rZW46Ym94Y255RFVJV2w5dGFpVG1aNWROTmx5dElKXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+![image](https://user-images.githubusercontent.com/60428924/164731464-922336cc-779a-4b84-b4f5-d619ab4425e4.png)
 
 #### 11. 如下图所示，填写相关资料进行企业账号认证
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=ODg0M2U3YzFiODQ5ZjQzMjA3ZTY4OTcwMjVjODQ5YzJfNGJRZVBsRVkxS2U3aG5DYjNNZnB3ZndjM2ozSDFkWXJfVG9rZW46Ym94Y25SOFpodXpHc21qakp4R2VqbnU4aE1lXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+![image](https://user-images.githubusercontent.com/60428924/164731528-91df52c6-7dff-4634-90c2-935fca055f67.png)
 
 #### 12. 资料提交成功后，企业账号认证状态会如下图所示变为「待审核」
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=NzFhOWFkMzdmZWQzYTc3Yjk0ZjE3MzNmZjU4ZGIyYTlfV0FPTWl3NlZJdTAzRG9pQ2U4V09yRFVWSXBUYkl1VWlfVG9rZW46Ym94Y25kRlM4MjQzc2FNOHF4WURqMU5HUkxjXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+![image](https://user-images.githubusercontent.com/60428924/164731629-391c249e-6524-422e-8f7b-e1557dbe92ca.png)
 
 #### 13. 如果提交的资料没问题，等待30分钟之内，认证状态会变为「认证通过」
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=OTI2MjQwYzU4ZWVhMDVmMDUwZDdjNmQ0Njg2YmZhNTRfM2dIWm1qU3pLcFBGM2NZN0xsVVVxc0NjRmVpaWMwZ2FfVG9rZW46Ym94Y253RFk5d1Q4UE9la2pDbjRzanhqcnViXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+![image](https://user-images.githubusercontent.com/60428924/164731753-c1448821-d21c-42c9-a26e-911a271f1339.png)
 
 #### 14. 点击「硬核桃开发套件」按钮回到下图中的界面，点击「提交」
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=NDg2ZjQ4ZDFmMDYwMTkwOGZlYzM2ODc3Y2NjODM4MDVfc1NkUHFBaEhsa0JBampBOFozbzJROURLa1l2bWJZaWVfVG9rZW46Ym94Y25ycmloOUVMaHhpbVg0V3M0QTZ6ZHpoXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+![image](https://user-images.githubusercontent.com/60428924/164731854-f0110e6b-0f56-46ea-9ecb-21ef19fb1c2d.png)
 
 #### 15. 如下图所示，填写相关资料后点击「提交」按钮
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=NjEyNWU2OGRmY2I1N2U3NWViOTgwMDRhZmIwZDlmNzBfd3A2d0F3UGtoM2FMbWZDZ3Yyenk2RFlsblIzNzZqMFpfVG9rZW46Ym94Y241cTR6WEVqSlI0WUtjdlhMRlFzbWZlXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+![image](https://user-images.githubusercontent.com/60428924/164731959-3519f310-cf4a-46f7-b84e-6de1fe162c1e.png)
 
 #### 16. 显示账号信息提交成功！
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=MTA3NWRmNjY0MzQ0NTdiNjRmMmZhNTYwMzUxZGQyYzVfclo4N0NKWDRObnMybDVKWFVtYnZDMEJNWUcweWNOS0lfVG9rZW46Ym94Y25DRXJ1UWJBM21SR0xyYXRGNGxKTWtjXzE2NTA2MzUwMTI6MTY1MDYzODYxMl9WNA)
+![image](https://user-images.githubusercontent.com/60428924/164732111-08642c75-ecd7-4ef2-bafa-4cfa0bbf6f01.png)
 
 #### 17. 此时配置状态如下图所示显示「未配置」
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=ZTBkY2EyMWY4NmJjNjI4NWU2ZWRjM2JjNjg1NzVmODhfTXpBSTdRWXVsTG5rdEVra1ppM0ZxcHN2U1k5YkFseXJfVG9rZW46Ym94Y241V3NnMndiQzR0dnRaeHR1blcwM3hnXzE2NTA2MzUwMTI6MTY1MDYzODYxMl9WNA)
+![image](https://user-images.githubusercontent.com/60428924/164732215-9950b9ce-bd6f-4cf0-be2a-ca4a0d7e5099.png)
 
 ### 四. **开始接入Wechaty社区的puppet-walnut**
 
