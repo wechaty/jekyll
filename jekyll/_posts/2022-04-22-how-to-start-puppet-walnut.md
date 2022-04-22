@@ -115,6 +115,14 @@ tags:
 
 ![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=NjEyNWU2OGRmY2I1N2U3NWViOTgwMDRhZmIwZDlmNzBfd3A2d0F3UGtoM2FMbWZDZ3Yyenk2RFlsblIzNzZqMFpfVG9rZW46Ym94Y241cTR6WEVqSlI0WUtjdlhMRlFzbWZlXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
 
+#### 16. 显示账号信息提交成功！
+
+![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=MTA3NWRmNjY0MzQ0NTdiNjRmMmZhNTYwMzUxZGQyYzVfclo4N0NKWDRObnMybDVKWFVtYnZDMEJNWUcweWNOS0lfVG9rZW46Ym94Y25DRXJ1UWJBM21SR0xyYXRGNGxKTWtjXzE2NTA2MzUwMTI6MTY1MDYzODYxMl9WNA)
+
+#### 17. 此时配置状态如下图所示显示「未配置」
+
+![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=ZTBkY2EyMWY4NmJjNjI4NWU2ZWRjM2JjNjg1NzVmODhfTXpBSTdRWXVsTG5rdEVra1ppM0ZxcHN2U1k5YkFseXJfVG9rZW46Ym94Y241V3NnMndiQzR0dnRaeHR1blcwM3hnXzE2NTA2MzUwMTI6MTY1MDYzODYxMl9WNA)
+
 ### 四. **开始接入Wechaty社区的puppet-walnut**
 
 > 在完成第二步的硬核桃开发者套件申请试用后，我们已经有了从硬核桃5G开发者社区申请到的Chatbot的AppId、Chatbot的AppKey、Chatbot的sipId。上报填报chatbot的公网回调地址
