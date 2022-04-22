@@ -12,11 +12,11 @@ tags:
   - plan
 ---
 
-# 小白如何从0到1上手puppet-walnut
+## 小白如何从0到1上手puppet-walnut
 
 > 今天和大家分享从未接触过5G消息开发的小白如何从0到1的申请到5G消息的测试账号，以及如何使用Wechaty社区中的walnut puppet来实现5G消息的一些功能。
 
-## 一. 进入硬核桃5G开发者社区进行账号的注册
+### 一. 进入硬核桃5G开发者社区进行账号的注册
 
 #### 1. 点击[网址链接](https://www.5g-msg.com/#/)进入硬核桃5G开发者社区，如下图所示，点击网页中的「免费注册」按钮
 
@@ -34,9 +34,7 @@ tags:
 
 ![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=YmFiNjY1N2JlYzFlZmM1ODEzMTU5YjU3YjY3MmMxMmVfTnZocEM1M3NBZW1ZbTFxUVpWMWdpUWFZNUpBamZNMmVfVG9rZW46Ym94Y25zbEVJS0dNc1VjdGZiM0lyRTF1NnJlXzE2NTA2MjE3OTE6MTY1MDYyNTM5MV9WNA)
 
-
-
-## 二. 在硬核桃5G开发者社区中申请试用硬核桃开发套件
+### 二. 在硬核桃5G开发者社区中申请试用硬核桃开发套件
 
 > 在完成第一步的账号注册后，我们已经有了一个硬核桃5G开发者社区的账号
 
@@ -48,9 +46,7 @@ tags:
 
 ![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDJlMzRjN2Y2ODI3MzZjMTE2YmNlODZiMDM3NmJhM2Jfa0dZcDlnVkJPTzFnRlhJMjNsdHpiczlGc0ppTlljU0NfVG9rZW46Ym94Y25vQzBmM2FNMVJyVWhMT0sxd1VQUXhmXzE2NTA2MjE3OTE6MTY1MDYyNTM5MV9WNA)
 
-
-
-## 三. **开始接入Wechaty社区的puppet-walnut**
+### 三. **开始接入Wechaty社区的puppet-walnut**
 
 > 在完成第二步的硬核桃开发者套件申请试用后，我们已经有了从硬核桃5G开发者社区申请到的Chatbot的AppId、Chatbot的AppKey、Chatbot的sipId。上报填报chatbot的公网回调地址
 
@@ -65,7 +61,7 @@ tags:
   set WECHATY_PUPPET_WALNUT_APPKEY=Chatbot的AppKey
   set WECHATY_PUPPET_WALNUT_SIPID=Chatbot的sipId
   ```
-
+  
 - Linux & MacOs
 
   ```bash
@@ -75,7 +71,7 @@ tags:
   export WECHATY_PUPPET_WALNUT_APPKEY=Chatbot的AppKey
   export WECHATY_PUPPET_WALNUT_SIPID=Chatbot的sipId
   ```
-
+  
 #### 2. 安装我们的依赖
 
 > 1. Node.js version 16+
@@ -91,7 +87,7 @@ npm install wechaty-puppet-walnut
 
 - 将我们之前上报的公网回调地址**映射到我们本地的3000端口**。
 
-- 这边推荐使用开源的 frp 工具 👉https://github.com/fatedier/frp
+- 这边推荐使用开源的 frp 工具 👉<https://github.com/fatedier/frp>
 
 - walnut中包含一个**koa**的服务 默认监听端口为3000（可在启动配置中更改）
 
@@ -147,7 +143,7 @@ await contact.say(post)
 
 #### 6. 消息支持
 
-> 最新支持情况请参考 https://github.com/wechaty/puppet-walnut#%E6%B6%88%E6%81%AF%E7%A7%8D%E7%B1%BB%E6%94%AF%E6%8C%81
+> 最新支持情况请参考 <https://github.com/wechaty/puppet-walnut#%E6%B6%88%E6%81%AF%E7%A7%8D%E7%B1%BB%E6%94%AF%E6%8C%81>
 
 | 消息类型   | 从属(根据接口返回) | api                    | 接收 | 发送 | 群聊 |
 | ---------- | ------------------ | ---------------------- | ---- | ---- | ---- |
@@ -162,7 +158,7 @@ await contact.say(post)
 
 #### 7. Wechaty Api支持
 
-> 最新支持情况请参考 https://github.com/wechaty/puppet-walnut#wechaty-api-%E6%94%AF%E6%8C%81
+> 最新支持情况请参考 <https://github.com/wechaty/puppet-walnut#wechaty-api-%E6%94%AF%E6%8C%81>
 
 ##### (1). Contact
 
