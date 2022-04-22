@@ -19,7 +19,7 @@ tags:
 
 #### 1. 点击[网址链接](https://www.5g-msg.com/#/)进入硬核桃5G开发者社区，如下图所示，点击网页中的「免费注册」按钮
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=ZmFmNDNmOWYyYzMxZjhiMGMyNzFlNDA0NjNjYjVhMzBfUVphRnJ3MHo3cnQxMEFOUW1CNW5sV3NYMzRKOGRiS3NfVG9rZW46Ym94Y25kV1FqcWtUSmM1MGFkWm1ieERzUHVmXzE2NTA2MjY0OTc6MTY1MDYzMDA5N19WNA)
+![img](https://user-images.githubusercontent.com/60428924/164723111-850f799d-a562-47f2-bcb1-8cecc01a088b.png)
 
 #### 2. 如下图所示，输入账户名、密码、手机号进行相关注册
 
@@ -33,19 +33,95 @@ tags:
 
 ![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=NWNlZjQ3OTgyYWIzZTJiM2E4NmMzZmI4NDFmYWNjZTdfZDZRcVdsYTh0TGhCOTRxdm9iMWhKeVdvT3o3S2FkNVRfVG9rZW46Ym94Y25zbEVJS0dNc1VjdGZiM0lyRTF1NnJlXzE2NTA2MjY0NTg6MTY1MDYzMDA1OF9WNA)
 
-### 二. 在硬核桃5G开发者社区中申请试用硬核桃开发套件
+### 二. 报名参加“启航计划”开发者大赛
 
 > 在完成第一步的账号注册后，我们已经有了一个硬核桃5G开发者社区的账号
 
-#### 1. 登陆第一步注册的账号之后，点击下图所示的「申请试用」按钮
+#### 1. 登陆第一步注册的账号之后，点击「“启航计划”开发者大赛」进入相关活动界面
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=NzE3NDJlNzhmOTJjMTA0MGJmNmY3ZjViYTIyMjMxNGVfWHhIWUNlRFJkS1AwWmw2RHB2cmJ5SjNxbDNqN2lmVmtfVG9rZW46Ym94Y254QjlHMHZkRDZSQmFmTXlEN2h6MDFnXzE2NTA2MjE3OTE6MTY1MDYyNTM5MV9WNA)
+![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=NGY1MTBlOGMxYmQxNjFkZjFhYzlmNzcxZGViZTNiY2FfVkZmTExScDBBaTcwaTVNRHBmVjVNRTB3TDZ0dnRZZ1VfVG9rZW46Ym94Y25idGdGTnlEcWs0eEVONHZXV21jdUpYXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
 
-#### 2. 点击免费试用按钮
+#### 2. 点击下图中的「立即报名」
 
-![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDJlMzRjN2Y2ODI3MzZjMTE2YmNlODZiMDM3NmJhM2Jfa0dZcDlnVkJPTzFnRlhJMjNsdHpiczlGc0ppTlljU0NfVG9rZW46Ym94Y25vQzBmM2FNMVJyVWhMT0sxd1VQUXhmXzE2NTA2MjE3OTE6MTY1MDYyNTM5MV9WNA)
+![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=OWY5ZDkyZmFhN2E3MTgxYzg2ZmQ1YzRhYTI2MWU2NjFfWm1lRk5zZnczbkEyVUNDa2RrVkRPYmdWcWNBU2xyd1lfVG9rZW46Ym94Y25qOEJ0WnFOMnVtdXlyR2Vxdm9IOFBlXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
 
-### 三. **开始接入Wechaty社区的puppet-walnut**
+#### 3. 如下图所示，填写参赛相关信息（如有邀请码请填写邀请码，没有可不填），填写完毕之后点击「提交」按钮
+
+![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=MzJmYjhmODg3OTU3YmIwYTUzZTg4OTQ2ZWM5NDk2ZGNfZ2UzZzJUZnFpcFBFcDNnMm9LVmxJaHZqbVR0ZE5lM3FfVG9rZW46Ym94Y25FZHJzN2FSeVl3TjFtT1p1REFWSVJoXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+
+#### 4. 报名成功！
+
+![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=NzNiMzZiMGRjMTkwNzg0NDQ4Y2Q5ODZiNWE2ZjUxZjdfV1RmZUFxMkQ2Wk9zRmtQM2ZSbUljOEJ6SlFOM29ldDlfVG9rZW46Ym94Y25XWmJNUGRoWUpiZURWU0xWankzcHpjXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+
+
+
+### 三、申请试用硬核桃开发套件
+
+#### 1. 点击下图中的「首页」按钮回到首页
+
+![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=ZmRkYjg4NGM1M2JmNTdjYTUzMWMyNTk0N2IxMjU2YWRfbm1vd0tGS29Vd05DbWlUZklaZUN6OHdsSm5uWDNDdlRfVG9rZW46Ym94Y25qUTY4ZlZ0VHpubEhZbTh0U1lRRUxoXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+
+#### 2. 从首页界面下拉，找到并点击下图所示的「申请试用」按钮
+
+![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=ZmVlNmU4ODdiNTZlY2Y2Yzk2YjFiNWFlMzFiZTgyMWVfd3g5NWNsYjdveGViNjhlR05aUHN2STBSRlBqU3hkMUpfVG9rZW46Ym94Y254QjlHMHZkRDZSQmFmTXlEN2h6MDFnXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+
+#### 3. 点击下图中的「免费试用」按钮
+
+![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=NWMwMTk2YTU2YzkwZDdmNDViYTExNDI0NGM2ZjYxYzRfaEg5V2xNREkxaXJrUDMxVDlWbXgxOEl6TE1xVjBNalJfVG9rZW46Ym94Y255Vk1Sd29VMWJnNm85VVBxY1lXSUFkXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+
+#### 4. 点击下图中的「提交」按钮
+
+![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=OTc4MzNhNmJkNDUzZWZiNzVmNjNjZmZiZmYyNjM1NjJfRFVHeWhNc0pXNjJkeU1nS0V1MFlvYW04dllnaVdJTTZfVG9rZW46Ym94Y25WU1hUdW5OSkhwRnZWUjM3S01LaEtiXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+
+
+
+#### 5. 点击下图中的「去认证」按钮
+
+![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=M2FhNTdkOWFmZGVhMDNlZTAyZDc0NTBiMGJkN2M5NGNfbjJINGpFTG9DQVo1TlJPOFBZbGlpcTBLZWJqRWJTRUtfVG9rZW46Ym94Y25Gcmlzd0tJcU16TGVaZzlWdGFqcXMwXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+
+#### 6. 点击下图中的「前去认证」按钮对账户进行实名认证
+
+![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=NTg1YTAyODQwNzcyOTA1NmQxNjMwZTUwY2NiYTNhYWRfdThvekE5STN3Tmpuc1RLTHd5SnN3blBwaFYzUGFRZDhfVG9rZW46Ym94Y25vcEppQkFhRXJ2QkJabXpabTVKUmNkXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+
+#### 7. 如下图所示，填写相关资料进行账户实名认证
+
+![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=ZTk0MjU0MDE2MzBmZDEzZjczYTcyYWMxYzA4ZTAwZWRfeklWRnM3c09OMkVreFBWdVVmUUlpZktLNUVJTzdrV2NfVG9rZW46Ym94Y25sZHJQb3IzYUgwN0tOUlJkdTdJOWxlXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+
+#### 8. 资料提交成功后，账户实名认证状态会如下图所示变为「待审核」
+
+![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=NTRjYzE4NGY5MDJlMTQ5MThhMGQ5MzJiMDU5ODEzNjBfZjdtMEh2cjVKZXppUjdRaU41NERURXdESkVldjJqVDJfVG9rZW46Ym94Y25ZbXFoZ2lPMzc3NTRIVHVxYzJCTVplXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+
+#### 9. 如果提交的资料没问题，等待30分钟之内，认证状态会变为「认证通过」
+
+![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=OTU2NGI0ZGQ5NTcxZjEyN2VjYWMzNGEyZGRmZDBmOTlfZUZNZ1h3UlZkTjZDQzRBd0g1WDBLcVBXRWphZ2ZLZFFfVG9rZW46Ym94Y254UWlmblZ3Q1BUb3JFOUZUa1hRZ1lnXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+
+#### 10. 接下来我们继续申请企业账号认证，点击下图中的「前去认证」
+
+![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=YWNiYWQ1NTk4M2UxNzcwOTQ0MmNhNjFmZjRmOTZjN2VfVFBVQjRTZXc1Z0J6Nml3WjFXRU5lUkd6TERYZXhSdEVfVG9rZW46Ym94Y255RFVJV2w5dGFpVG1aNWROTmx5dElKXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+
+#### 11. 如下图所示，填写相关资料进行企业账号认证
+
+![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=ODg0M2U3YzFiODQ5ZjQzMjA3ZTY4OTcwMjVjODQ5YzJfNGJRZVBsRVkxS2U3aG5DYjNNZnB3ZndjM2ozSDFkWXJfVG9rZW46Ym94Y25SOFpodXpHc21qakp4R2VqbnU4aE1lXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+
+#### 12. 资料提交成功后，企业账号认证状态会如下图所示变为「待审核」
+
+![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=NzFhOWFkMzdmZWQzYTc3Yjk0ZjE3MzNmZjU4ZGIyYTlfV0FPTWl3NlZJdTAzRG9pQ2U4V09yRFVWSXBUYkl1VWlfVG9rZW46Ym94Y25kRlM4MjQzc2FNOHF4WURqMU5HUkxjXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+
+#### 13. 如果提交的资料没问题，等待30分钟之内，认证状态会变为「认证通过」
+
+![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=OTI2MjQwYzU4ZWVhMDVmMDUwZDdjNmQ0Njg2YmZhNTRfM2dIWm1qU3pLcFBGM2NZN0xsVVVxc0NjRmVpaWMwZ2FfVG9rZW46Ym94Y253RFk5d1Q4UE9la2pDbjRzanhqcnViXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+
+#### 14. 点击「硬核桃开发套件」按钮回到下图中的界面，点击「提交」
+
+![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=NDg2ZjQ4ZDFmMDYwMTkwOGZlYzM2ODc3Y2NjODM4MDVfc1NkUHFBaEhsa0JBampBOFozbzJROURLa1l2bWJZaWVfVG9rZW46Ym94Y25ycmloOUVMaHhpbVg0V3M0QTZ6ZHpoXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+
+#### 15. 如下图所示，填写相关资料后点击「提交」按钮
+
+![img](https://juzihudong.feishu.cn/space/api/box/stream/download/asynccode/?code=NjEyNWU2OGRmY2I1N2U3NWViOTgwMDRhZmIwZDlmNzBfd3A2d0F3UGtoM2FMbWZDZ3Yyenk2RFlsblIzNzZqMFpfVG9rZW46Ym94Y241cTR6WEVqSlI0WUtjdlhMRlFzbWZlXzE2NTA2MzM5ODk6MTY1MDYzNzU4OV9WNA)
+
+
+
+### 四. **开始接入Wechaty社区的puppet-walnut**
 
 > 在完成第二步的硬核桃开发者套件申请试用后，我们已经有了从硬核桃5G开发者社区申请到的Chatbot的AppId、Chatbot的AppKey、Chatbot的sipId。上报填报chatbot的公网回调地址
 
