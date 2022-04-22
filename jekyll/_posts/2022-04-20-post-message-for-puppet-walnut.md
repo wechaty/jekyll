@@ -45,7 +45,7 @@ tags:
 
 > post消息是提出的新的消息形式，为了去适应微信的朋友圈、推特和微博等功能去实现
 
-~~~ts
+```ts
 import * as WECHATY from 'wechaty'
 
 const post = await wechaty.Post.builder()
@@ -55,7 +55,7 @@ const post = await wechaty.Post.builder()
   .build()
 
 await wechaty.post(post)
-~~~
+```
 
 #### 2. 抽象方法的实现
 
@@ -63,7 +63,7 @@ await wechaty.post(post)
 
 postMixin: POST相关的抽象方法
 
-~~~ts
+```ts
 override async messageSendPost (conversationId: string, postPayload: PUPPET.payloads.Post): Promise<void> {
     log.verbose('PuppetWalnut', 'messageSendPost(%s, %s)', conversationId, postPayload)
     await sendPostMessage(conversationId, postPayload)
@@ -105,13 +105,13 @@ override async messageSendPost (conversationId: string, postPayload: PUPPET.payl
          contentType: 'application/vnd.gsma.botmessage.v1.0+json',
      })
  }
-~~~
+```
 
 ### 项目成果
 
 #### 1. 创建实例
 
-~~~ts
+```ts
  // get a Wechaty instance
 const bot = WechatyBuilder.build({
   puppet: new PuppetWalnut(),
@@ -124,27 +124,27 @@ const bot = WechatyBuilder.build({
 await bot.start()
 
 const contact = await bot.Contact.find({ id: 'xxxxxxxxxxx' })
-~~~
+```
 
 #### 2. 文本消息
 
-~~~ts
+```ts
 await contact.say('This is a simple text message.')
-~~~
+```
 
 ![text-message](https://user-images.githubusercontent.com/60428924/163546259-67dfa5a1-521a-4d87-bfbf-af4e09dabf7e.jpg)
 
 #### 3. 图片消息
 
-~~~ts
+```ts
 contact.say(FileBox.fromFile('C:\\Users\\Desktop\\1.png'))
-~~~
+```
 
 ![image-message](https://user-images.githubusercontent.com/60428924/163546352-1d573b86-65ee-474e-baf3-008ffe608a8d.jpg)
 
 #### 4. 富文本消息
 
-~~~ts
+```ts
 const post = await bot.Post.builder()
   .add('This is a single rich card.')
   .add('This is the description of the rich card. It\'s the first field that will be truncated if it exceeds the maximum width or height of a card.')
@@ -153,7 +153,7 @@ const post = await bot.Post.builder()
   .build()
 
 await contact.say(post)
-~~~
+```
 
 ![post-message](https://user-images.githubusercontent.com/60428924/163787857-fcde1562-c021-4e80-8a10-238e9615e3c7.jpg)
 
