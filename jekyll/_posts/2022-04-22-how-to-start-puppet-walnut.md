@@ -11,7 +11,7 @@ tags:
   - ecosystem
 ---
 
-## 小白如何从0到1上手puppet-walnut
+## 小白如何从0到1上手 Puppet-Walnut
 
 > 今天和大家分享从未接触过5G消息开发的小白如何从0到1的申请到5G消息的测试账号，以及如何使用Wechaty社区中的walnut puppet来实现5G消息的一些功能。
 
