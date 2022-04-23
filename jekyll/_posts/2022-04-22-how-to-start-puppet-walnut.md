@@ -19,19 +19,19 @@ tags:
 
 #### 1. 点击[网址链接](https://www.5g-msg.com/#/)进入硬核桃5G开发者社区，如下图所示，点击网页中的「免费注册」按钮
 
-![img](https://user-images.githubusercontent.com/60428924/164723111-850f799d-a562-47f2-bcb1-8cecc01a088b.png)
+![img](assets/2022/04-how-to-start-puppet-walnut/1.png)
 
 #### 2. 如下图所示，输入账户名、密码、手机号进行相关注册
 
-![img](https://user-images.githubusercontent.com/60428924/164729996-7cc09273-12ee-406f-975a-12ee5e8eecbf.png)
+![img](assets/2022/04-how-to-start-puppet-walnut/2.png)
 
 #### 3. 如下图，输入手机短信验证码
 
-![image](https://user-images.githubusercontent.com/60428924/164730084-3e53f00a-7067-4543-b0f2-9325b311c83f.png)
+![img](assets/2022/04-how-to-start-puppet-walnut/3.png)
 
 #### 4. 注册成功！如果怕忘记密码，可以再绑定一个邮箱~（绑定邮箱的操作此处忽略）
 
-![image](https://user-images.githubusercontent.com/60428924/164730159-10d3b790-956e-4040-8292-26bbb73515a7.png)
+![img](assets/2022/04-how-to-start-puppet-walnut/4.png)
 
 ### 二. 报名参加“启航计划”开发者大赛
 
@@ -39,89 +39,89 @@ tags:
 
 #### 1. 登陆第一步注册的账号之后，点击「“启航计划”开发者大赛」进入相关活动界面
 
-![image](https://user-images.githubusercontent.com/60428924/164730238-25c5d258-e35b-4e5d-8af3-f5ec166df9c7.png)
+![img](assets/2022/04-how-to-start-puppet-walnut/5.png)
 
 #### 2. 点击下图中的「立即报名」
 
-![image](https://user-images.githubusercontent.com/60428924/164730327-3ce76e48-646c-48b1-ab4e-11b0937f583d.png)
+![img](assets/2022/04-how-to-start-puppet-walnut/6.png)
 
 #### 3. 如下图所示，填写参赛相关信息（如有邀请码请填写邀请码，没有可不填），填写完毕之后点击「提交」按钮
 
-![image](https://user-images.githubusercontent.com/60428924/164730430-171e74f4-eeb5-432b-aefc-f34ef35ac25b.png)
+![img](assets/2022/04-how-to-start-puppet-walnut/7.png)
 
 #### 4. 报名成功！
 
-![image](https://user-images.githubusercontent.com/60428924/164730508-f20eea45-0280-45d9-81c8-ec8a2c9bec09.png)
+![img](assets/2022/04-how-to-start-puppet-walnut/8.png)
 
 ### 三、申请试用硬核桃开发套件
 
 #### 1. 点击下图中的「首页」按钮回到首页
 
-![image](https://user-images.githubusercontent.com/60428924/164730588-20e5a3a8-7c08-40f3-bb3e-0991d3844a1e.png)
+![img](assets/2022/04-how-to-start-puppet-walnut/9.png)
 
 #### 2. 从首页界面下拉，找到并点击下图所示的「申请试用」按钮
 
-![image](https://user-images.githubusercontent.com/60428924/164730696-e93e6d29-0b93-4a61-b5ab-78fa2cbebcf5.png)
+![img](assets/2022/04-how-to-start-puppet-walnut/10.png)
 
 #### 3. 点击下图中的「免费试用」按钮
 
-![image](https://user-images.githubusercontent.com/60428924/164730757-8f55d2d9-dfc8-4cf9-a248-f9fbe901b89a.png)
+![img](assets/2022/04-how-to-start-puppet-walnut/11.png)
 
 #### 4. 点击下图中的「提交」按钮
 
-![image](https://user-images.githubusercontent.com/60428924/164730809-cf9f65f5-4f84-48ce-aa23-992387222748.png)
+![img](assets/2022/04-how-to-start-puppet-walnut/12.png)
 
 #### 5. 点击下图中的「去认证」按钮
 
-![image](https://user-images.githubusercontent.com/60428924/164730872-59ed0600-90e3-4c6e-ba8e-a681bda948f1.png)
+![img](assets/2022/04-how-to-start-puppet-walnut/13.png)
 
 #### 6. 点击下图中的「前去认证」按钮对账户进行实名认证
 
-![image](https://user-images.githubusercontent.com/60428924/164730947-63b9a642-e8a3-40b2-8aa3-3f09dbfe6e91.png)
+![img](assets/2022/04-how-to-start-puppet-walnut/14.png)
 
 #### 7. 如下图所示，填写相关资料进行账户实名认证
 
-![image](https://user-images.githubusercontent.com/60428924/164731061-d8d11a0f-c86f-4bc6-a5e7-a1f9ca91a449.png)
+![img](assets/2022/04-how-to-start-puppet-walnut/15.png)
 
 #### 8. 资料提交成功后，账户实名认证状态会如下图所示变为「待审核」
 
-![image](https://user-images.githubusercontent.com/60428924/164731306-de29a867-41c2-413f-975a-b73329a73f21.png)
+![img](assets/2022/04-how-to-start-puppet-walnut/16.png)
 
 #### 9. 如果提交的资料没问题，等待30分钟之内，认证状态会变为「认证通过」
 
-![image](https://user-images.githubusercontent.com/60428924/164731374-64bbd1fc-c7f4-470c-8002-625ca03e3b42.png)
+![img](assets/2022/04-how-to-start-puppet-walnut/17.png)
 
 #### 10. 接下来我们继续申请企业账号认证，点击下图中的「前去认证」
 
-![image](https://user-images.githubusercontent.com/60428924/164731464-922336cc-779a-4b84-b4f5-d619ab4425e4.png)
+![img](assets/2022/04-how-to-start-puppet-walnut/18.png)
 
 #### 11. 如下图所示，填写相关资料进行企业账号认证
 
-![image](https://user-images.githubusercontent.com/60428924/164731528-91df52c6-7dff-4634-90c2-935fca055f67.png)
+![img](assets/2022/04-how-to-start-puppet-walnut/19.png)
 
 #### 12. 资料提交成功后，企业账号认证状态会如下图所示变为「待审核」
 
-![image](https://user-images.githubusercontent.com/60428924/164731629-391c249e-6524-422e-8f7b-e1557dbe92ca.png)
+![img](assets/2022/04-how-to-start-puppet-walnut/20.png)
 
 #### 13. 如果提交的资料没问题，等待30分钟之内，认证状态会变为「认证通过」
 
-![image](https://user-images.githubusercontent.com/60428924/164731753-c1448821-d21c-42c9-a26e-911a271f1339.png)
+![img](assets/2022/04-how-to-start-puppet-walnut/21.png)
 
 #### 14. 点击「硬核桃开发套件」按钮回到下图中的界面，点击「提交」
 
-![image](https://user-images.githubusercontent.com/60428924/164731854-f0110e6b-0f56-46ea-9ecb-21ef19fb1c2d.png)
+![img](assets/2022/04-how-to-start-puppet-walnut/22.png)
 
 #### 15. 如下图所示，填写相关资料后点击「提交」按钮
 
-![image](https://user-images.githubusercontent.com/60428924/164731959-3519f310-cf4a-46f7-b84e-6de1fe162c1e.png)
+![img](assets/2022/04-how-to-start-puppet-walnut/23.png)
 
 #### 16. 显示账号信息提交成功！
 
-![image](https://user-images.githubusercontent.com/60428924/164732111-08642c75-ecd7-4ef2-bafa-4cfa0bbf6f01.png)
+![img](assets/2022/04-how-to-start-puppet-walnut/24.png)
 
 #### 17. 此时配置状态如下图所示显示「未配置」
 
-![image](https://user-images.githubusercontent.com/60428924/164732215-9950b9ce-bd6f-4cf0-be2a-ca4a0d7e5099.png)
+![img](assets/2022/04-how-to-start-puppet-walnut/25.png)
 
 ### 四. **开始接入Wechaty社区的puppet-walnut**
 
@@ -196,7 +196,7 @@ const contact = await bot.Contact.find({ id: 'xxxxxxxxxxx' })
 await contact.say('This is a simple text message.')
 ```
 
-![text-message](https://user-images.githubusercontent.com/60428924/163546259-67dfa5a1-521a-4d87-bfbf-af4e09dabf7e.jpg)
+![img](assets/2022/04-how-to-start-puppet-walnut/26.png)
 
 ##### (3). 图片消息
 
@@ -204,7 +204,7 @@ await contact.say('This is a simple text message.')
 contact.say(FileBox.fromFile('C:\\Users\\Desktop\\1.png'))
 ```
 
-![image-message](https://user-images.githubusercontent.com/60428924/163546352-1d573b86-65ee-474e-baf3-008ffe608a8d.jpg)
+![img](assets/2022/04-how-to-start-puppet-walnut/27.png)
 
 ##### (4). 富文本消息
 
@@ -219,7 +219,7 @@ const post = await bot.Post.builder()
 await contact.say(post)
 ```
 
-![post-message](https://user-images.githubusercontent.com/60428924/163787857-fcde1562-c021-4e80-8a10-238e9615e3c7.jpg)
+![img](assets/2022/04-how-to-start-puppet-walnut/28.png)
 
 #### 6. 消息支持
 
