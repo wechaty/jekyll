@@ -132,7 +132,7 @@ const contact = await bot.Contact.find({ id: 'xxxxxxxxxxx' })
 await contact.say('This is a simple text message.')
 ```
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/1.webp)
+![img](/assets/2022/04-post-message-for-puppet-walnut/1.webp)
 
 #### 3. 图片消息
 
@@ -140,7 +140,7 @@ await contact.say('This is a simple text message.')
 contact.say(FileBox.fromFile('C:\\Users\\Desktop\\1.png'))
 ```
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/2.webp)
+![img](/assets/2022/04-post-message-for-puppet-walnut/2.webp)
 
 #### 4. 富文本消息
 
@@ -155,7 +155,7 @@ const post = await bot.Post.builder()
 await contact.say(post)
 ```
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/3.webp)
+![img](/assets/2022/04-post-message-for-puppet-walnut/3.webp)
 
 ### 视频展示
 
