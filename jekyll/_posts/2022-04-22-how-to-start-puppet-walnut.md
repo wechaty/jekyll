@@ -264,7 +264,7 @@ await contact.say(post)
   | sync()                       | `Promise`                                                    | ✅       |                       |
   | self()                       | `Boolean`                                                    | ✅       |                       |
 
-  > Default avatar 👉 <https://raw.githubusercontent.com/wechaty/puppet-walnut/main/docs/images/avatar.png
+  > Default avatar 👉 <https://raw.githubusercontent.com/wechaty/puppet-walnut/main/docs/images/avatar.png>
 
 - #### [Static Methods](https://wechaty.js.org/docs/api/contact#static-methods)
 
