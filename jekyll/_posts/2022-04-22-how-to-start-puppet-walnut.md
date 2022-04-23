@@ -131,7 +131,7 @@ tags:
 
 #### 1. APP下载
 
-- 下载页面< https://www.5g-msg.com/#/kaifataojian>，页面内查找终端测试消息 APP，点击进行下载，如图：
+- 下载页面<https://www.5g-msg.com/#/kaifataojian>，页面内查找终端测试消息 APP，点击进行下载，如图：
 
 ![img](/assets/2022/04-how-to-start-puppet-walnut/31.webp)
 
