@@ -19,19 +19,19 @@ tags:
 
 #### 1. 点击[网址链接](https://www.5g-msg.com/#/)进入硬核桃5G开发者社区，如下图所示，点击网页中的「免费注册」按钮
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/1.png)
+![img](/assets/2022/04-how-to-start-puppet-walnut/1.webp)
 
 #### 2. 如下图所示，输入账户名、密码、手机号进行相关注册
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/2.png)
+![img](/assets/2022/04-how-to-start-puppet-walnut/2.webp)
 
 #### 3. 如下图，输入手机短信验证码
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/3.png)
+![img](/assets/2022/04-how-to-start-puppet-walnut/3.webp)
 
 #### 4. 注册成功！如果怕忘记密码，可以再绑定一个邮箱~（绑定邮箱的操作此处忽略）
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/4.png)
+![img](/assets/2022/04-how-to-start-puppet-walnut/4.webp)
 
 ### 二. 报名参加“启航计划”开发者大赛
 
@@ -39,89 +39,89 @@ tags:
 
 #### 1. 登陆第一步注册的账号之后，点击「“启航计划”开发者大赛」进入相关活动界面
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/5.png)
+![img](/assets/2022/04-how-to-start-puppet-walnut/5.webp)
 
 #### 2. 点击下图中的「立即报名」
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/6.png)
+![img](/assets/2022/04-how-to-start-puppet-walnut/6.webp)
 
 #### 3. 如下图所示，填写参赛相关信息（如有邀请码请填写邀请码，没有可不填），填写完毕之后点击「提交」按钮
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/7.png)
+![img](/assets/2022/04-how-to-start-puppet-walnut/7.webp)
 
 #### 4. 报名成功！
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/8.png)
+![img](/assets/2022/04-how-to-start-puppet-walnut/8.webp)
 
 ### 三、申请试用硬核桃开发套件
 
 #### 1. 点击下图中的「首页」按钮回到首页
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/9.png)
+![img](/assets/2022/04-how-to-start-puppet-walnut/9.webp)
 
 #### 2. 从首页界面下拉，找到并点击下图所示的「申请试用」按钮
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/10.png)
+![img](/assets/2022/04-how-to-start-puppet-walnut/10.webp)
 
 #### 3. 点击下图中的「免费试用」按钮
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/11.png)
+![img](/assets/2022/04-how-to-start-puppet-walnut/11.webp)
 
 #### 4. 点击下图中的「提交」按钮
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/12.png)
+![img](/assets/2022/04-how-to-start-puppet-walnut/12.webp)
 
 #### 5. 点击下图中的「去认证」按钮
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/13.png)
+![img](/assets/2022/04-how-to-start-puppet-walnut/13.webp)
 
 #### 6. 点击下图中的「前去认证」按钮对账户进行实名认证
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/14.png)
+![img](/assets/2022/04-how-to-start-puppet-walnut/14.webp)
 
 #### 7. 如下图所示，填写相关资料进行账户实名认证
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/15.png)
+![img](/assets/2022/04-how-to-start-puppet-walnut/15.webp)
 
 #### 8. 资料提交成功后，账户实名认证状态会如下图所示变为「待审核」
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/16.png)
+![img](/assets/2022/04-how-to-start-puppet-walnut/16.webp)
 
 #### 9. 如果提交的资料没问题，等待30分钟之内，认证状态会变为「认证通过」
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/17.png)
+![img](/assets/2022/04-how-to-start-puppet-walnut/17.webp)
 
 #### 10. 接下来我们继续申请企业账号认证，点击下图中的「前去认证」
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/18.png)
+![img](/assets/2022/04-how-to-start-puppet-walnut/18.webp)
 
 #### 11. 如下图所示，填写相关资料进行企业账号认证
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/19.png)
+![img](/assets/2022/04-how-to-start-puppet-walnut/19.webp)
 
 #### 12. 资料提交成功后，企业账号认证状态会如下图所示变为「待审核」
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/20.png)
+![img](/assets/2022/04-how-to-start-puppet-walnut/20.webp)
 
 #### 13. 如果提交的资料没问题，等待30分钟之内，认证状态会变为「认证通过」
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/21.png)
+![img](/assets/2022/04-how-to-start-puppet-walnut/21.webp)
 
 #### 14. 点击「硬核桃开发套件」按钮回到下图中的界面，点击「提交」
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/22.png)
+![img](/assets/2022/04-how-to-start-puppet-walnut/22.webp)
 
 #### 15. 如下图所示，填写相关资料后点击「提交」按钮
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/23.png)
+![img](/assets/2022/04-how-to-start-puppet-walnut/23.webp)
 
 #### 16. 显示账号信息提交成功！
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/24.png)
+![img](/assets/2022/04-how-to-start-puppet-walnut/24.webp)
 
 #### 17. 此时配置状态如下图所示显示「未配置」
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/25.png)
+![img](/assets/2022/04-how-to-start-puppet-walnut/25.webp)
 
 ### 四. **开始接入Wechaty社区的puppet-walnut**
 
@@ -196,7 +196,7 @@ const contact = await bot.Contact.find({ id: 'xxxxxxxxxxx' })
 await contact.say('This is a simple text message.')
 ```
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/26.png)
+![img](/assets/2022/04-how-to-start-puppet-walnut/26.webp)
 
 ##### (3). 图片消息
 
@@ -204,7 +204,7 @@ await contact.say('This is a simple text message.')
 contact.say(FileBox.fromFile('C:\\Users\\Desktop\\1.png'))
 ```
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/27.png)
+![img](/assets/2022/04-how-to-start-puppet-walnut/27.webp)
 
 ##### (4). 富文本消息
 
@@ -219,7 +219,7 @@ const post = await bot.Post.builder()
 await contact.say(post)
 ```
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/28.png)
+![img](/assets/2022/04-how-to-start-puppet-walnut/28.webp)
 
 #### 6. 消息支持
 
@@ -264,7 +264,7 @@ await contact.say(post)
   | sync()                       | `Promise`                                                    | ✅       |                       |
   | self()                       | `Boolean`                                                    | ✅       |                       |
 
-  > Default avatar 👉 <https://raw.githubusercontent.com/wechaty/puppet-walnut/main/docs/images/avatar.webp>
+  > Default avatar 👉 <https://raw.githubusercontent.com/wechaty/puppet-walnut/main/docs/images/avatar.png
 
 - #### [Static Methods](https://wechaty.js.org/docs/api/contact#static-methods)
 
