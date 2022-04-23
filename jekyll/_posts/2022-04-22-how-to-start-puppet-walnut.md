@@ -15,7 +15,7 @@ tags:
 
 > 今天和大家分享从未接触过5G消息开发的小白如何从0到1的申请到5G消息的测试账号，以及如何使用Wechaty社区中的walnut puppet来实现5G消息的一些功能。
 
-### 一. 进入硬核桃5G开发者社区进行账号的注册
+### 一、进入硬核桃5G开发者社区进行账号的注册
 
 #### 1. 点击[网址链接](https://www.5g-msg.com/#/)进入硬核桃5G开发者社区，如下图所示，点击网页中的「免费注册」按钮
 
@@ -33,11 +33,11 @@ tags:
 
 ![img](/assets/2022/04-how-to-start-puppet-walnut/4.webp)
 
-### 二. 报名参加“启航计划”开发者大赛
+### 二、报名参加 “启航计划” 5G消息开发者大赛
 
 > 在完成第一步的账号注册后，我们已经有了一个硬核桃5G开发者社区的账号
 
-#### 1. 登陆第一步注册的账号之后，点击「“启航计划”开发者大赛」进入相关活动界面
+#### 1. 登陆第一步注册的账号之后，点击「“[启航计划”](https://www.5g-msg.com/#/sailPlan)[5G消息](https://www.5g-msg.com/#/sailPlan)[开发者大赛](https://www.5g-msg.com/#/sailPlan)」进入活动界面
 
 ![img](/assets/2022/04-how-to-start-puppet-walnut/5.webp)
 
@@ -49,81 +49,113 @@ tags:
 
 ![img](/assets/2022/04-how-to-start-puppet-walnut/7.webp)
 
-#### 4. 报名成功！
+#### 4. 报名成功！分享邀请码，邀请朋友参赛。
 
 ![img](/assets/2022/04-how-to-start-puppet-walnut/8.webp)
 
 ### 三、申请试用硬核桃开发套件
 
-#### 1. 点击下图中的「首页」按钮回到首页
+> 在申请开发资源前，请先进行实名认证。如若之前已经通过认证，无需二次认证，可直接申请所需开发资源。
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/9.webp)
+#### 1. 实名认证
 
-#### 2. 从首页界面下拉，找到并点击下图所示的「申请试用」按钮
+账号实名认证（个人）或者企业账号认证，两种方式二选一即可。
 
-![img](/assets/2022/04-how-to-start-puppet-walnut/10.webp)
-
-#### 3. 点击下图中的「免费试用」按钮
-
-![img](/assets/2022/04-how-to-start-puppet-walnut/11.webp)
-
-#### 4. 点击下图中的「提交」按钮
-
-![img](/assets/2022/04-how-to-start-puppet-walnut/12.webp)
-
-#### 5. 点击下图中的「去认证」按钮
-
-![img](/assets/2022/04-how-to-start-puppet-walnut/13.webp)
-
-#### 6. 点击下图中的「前去认证」按钮对账户进行实名认证
+- 点击下图中的「前去认证」按钮对账户进行实名认证
 
 ![img](/assets/2022/04-how-to-start-puppet-walnut/14.webp)
 
-#### 7. 如下图所示，填写相关资料进行账户实名认证
+- 如下图所示，填写相关资料进行账户实名认证
 
 ![img](/assets/2022/04-how-to-start-puppet-walnut/15.webp)
 
-#### 8. 资料提交成功后，账户实名认证状态会如下图所示变为「待审核」
+- 资料提交成功后，账户实名认证状态会如下图所示变为「待审核」
 
 ![img](/assets/2022/04-how-to-start-puppet-walnut/16.webp)
 
-#### 9. 如果提交的资料没问题，等待30分钟之内，认证状态会变为「认证通过」
+- 如果提交的资料没问题，等待30分钟之内，认证状态会变为「认证通过」
 
 ![img](/assets/2022/04-how-to-start-puppet-walnut/17.webp)
 
-#### 10. 接下来我们继续申请企业账号认证，点击下图中的「前去认证」
+#### 2. 企业账号认证
+
+- 接下来我们继续申请企业账号认证，点击下图中的「前去认证」
 
 ![img](/assets/2022/04-how-to-start-puppet-walnut/18.webp)
 
-#### 11. 如下图所示，填写相关资料进行企业账号认证
+- 如下图所示，填写相关资料进行企业账号认证
 
 ![img](/assets/2022/04-how-to-start-puppet-walnut/19.webp)
 
-#### 12. 资料提交成功后，企业账号认证状态会如下图所示变为「待审核」
+- 资料提交成功后，企业账号认证状态会如下图所示变为「待审核」
 
 ![img](/assets/2022/04-how-to-start-puppet-walnut/20.webp)
 
-#### 13. 如果提交的资料没问题，等待30分钟之内，认证状态会变为「认证通过」
+- 如果提交的资料没问题，等待30分钟之内，认证状态会变为「认证通过」
 
 ![img](/assets/2022/04-how-to-start-puppet-walnut/21.webp)
 
-#### 14. 点击「硬核桃开发套件」按钮回到下图中的界面，点击「提交」
+#### 3. 开发资源申请
+
+- 点击下图中的「开发者中心」按钮，选择下拉框中的「硬核桃开发套件」
+
+![img](/assets/2022/04-how-to-start-puppet-walnut/29.webp)
+
+- 点击下图中的「免费试用」按钮
+
+![img](/assets/2022/04-how-to-start-puppet-walnut/11.webp)
+
+- 点击「硬核桃开发套件」按钮回到下图中的界面，点击「提交」
 
 ![img](/assets/2022/04-how-to-start-puppet-walnut/22.webp)
 
-#### 15. 如下图所示，填写相关资料后点击「提交」按钮
+- 如下图所示，填写相关资料后点击「提交」按钮（非必填信息可以空着）。参赛作品以电联接口账号信息为准。
 
 ![img](/assets/2022/04-how-to-start-puppet-walnut/23.webp)
 
-#### 16. 显示账号信息提交成功！
+- 显示账号信息提交成功！
 
 ![img](/assets/2022/04-how-to-start-puppet-walnut/24.webp)
 
-#### 17. 此时配置状态如下图所示显示「未配置」
+- 此时配置状态如下图所示显示「未配置」
 
 ![img](/assets/2022/04-how-to-start-puppet-walnut/25.webp)
 
-### 四. **开始接入Wechaty社区的puppet-walnut**
+- 等待配置完成，配置完成后状态如下图所示显示「已配置」，此时点击「查看」，显示分配的 Chatbot资源信息。
+
+![img](/assets/2022/04-how-to-start-puppet-walnut/30.webp)
+
+### 四、硬核桃调测模拟终端
+
+> 5G消息是短信的升级，请在**安卓手机**安装终端模拟器进行5G消息的测试。
+
+#### 1. APP下载
+
+- 下载页面 https://www.5g-msg.com/#/kaifataojian，页面内查找终端测试消息 APP，点击进行下载，如图：
+
+![img](/assets/2022/04-how-to-start-puppet-walnut/31.webp)
+
+![img](/assets/2022/04-how-to-start-puppet-walnut/32.webp)
+
+#### 2. APP安装
+
+- 下载完成后，点击安装，**替代系统默认短信权限**，无需担心原有短信数据。由于安卓手机权限不一致的原因，若无法替代系统默认短信权限，可能导致终端模拟器无法正常使用，建议更换另一款安卓手机，重新安装。
+
+#### 3. APP登录
+
+- 安装成功后，打开 APP，点击【右上角三竖点】，选【设置】，选【常规】，选【融合通信登录】，登录界面如图：
+
+![img](/assets/2022/04-how-to-start-puppet-walnut/33.webp)
+
+- 输入账号（申请 Chatbot 时的手机号码）信息，点击登录，成功后返回，可查看到【小程序服务】。
+
+#### 4. Chatbot查看
+
+- 点击【小程序服务】，可在【小程序列表】中，输入Chatbot名称，搜索 Chatbot。点击 Chatbot，进入交互界面。完成首次交互后，也可在【消息列表】中，进行 Chatbot 的消息交互。
+
+![img](/assets/2022/04-how-to-start-puppet-walnut/34.webp)
+
+### 五、开始接入Wechaty社区的puppet-walnut
 
 > 在完成第二步的硬核桃开发者套件申请试用后，我们已经有了从硬核桃5G开发者社区申请到的Chatbot的AppId、Chatbot的AppKey、Chatbot的sipId。上报填报chatbot的公网回调地址
 
