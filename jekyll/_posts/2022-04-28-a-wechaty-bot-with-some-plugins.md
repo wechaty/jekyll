@@ -50,7 +50,7 @@ xin_bot
 ## 功能演示
 
 ### B站视频分享链接自动解析
- 
+
 被动技能，无命令。
 当用户发送的聊天信息中，包含B站视频链接时，机器人将自动解析视频各种信息，并发送视频消息。支持BV，av，b23.tv的链接。方便微信群内分享视频，可以快速了解到分享的内容。
 ![bilibili](/assets/2022/04-a-wechaty-bot-with-some-plugins/bilibili.webp)
