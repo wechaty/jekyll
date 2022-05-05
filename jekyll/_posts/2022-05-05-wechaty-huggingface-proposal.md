@@ -3,7 +3,7 @@ title: "2022-关于开发wechaty-huggingface-pipeline的提议"
 author: anaivebird
 categories:
   - project
-image: /assets/2022/05-wechaty-huggingface-proposal/huggingface_title.png
+image: /assets/2022/05-wechaty-huggingface-proposal/huggingface_title.webp
 tags:
   - plugin
   - chatbot
@@ -18,11 +18,11 @@ tags:
 
 - 支持16+的NLP（自然语言处理）任务，包括对话系统、自动摘要、文本分类、情感分析
 
-![img](/assets/2022/05-wechaty-huggingface-proposal/huggingface1.png)
+![img](/assets/2022/05-wechaty-huggingface-proposal/huggingface1.webp)
 
 - 支持36000+的AI训练好的预训练模型，包括中文预训练模型
 
-![img](/assets/2022/05-wechaty-huggingface-proposal/huggingface2.png)
+![img](/assets/2022/05-wechaty-huggingface-proposal/huggingface2.webp)
 
 ### 二、Wechaty社区为什么需要huggingface的NLP能力？
 
@@ -37,7 +37,7 @@ tags:
 - 第二步直接输入一句话，模型就会回复了。
 - 其中pipeline有一个可选参数是model_card，可以去选择用model_hub中哪一个模型
 
-![img](/assets/2022/05-wechaty-huggingface-proposal/huggingface3.png)
+![img](/assets/2022/05-wechaty-huggingface-proposal/huggingface3.webp)
 
 ### 四、智能问答的机器人最终效果是怎么样的？
 
