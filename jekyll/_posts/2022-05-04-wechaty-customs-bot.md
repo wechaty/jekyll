@@ -5,7 +5,7 @@ categories: article
 tags:
   - customs
   - wechat
-  - freight-forwarding
+  - freight-forwarding 
 image: /assets/2022/05-wechaty-customs-bot/bg.webp
 ---
 
