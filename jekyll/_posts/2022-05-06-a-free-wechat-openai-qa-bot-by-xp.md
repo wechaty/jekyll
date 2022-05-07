@@ -9,6 +9,8 @@ tags:
 image: /assets/2021/04-how-to-publish-blog-on-wechaty/rare-book.webp
 ---
 
+{% include iframe.html src="https://www.bilibili.com/video/BV1Y54y1f7v1?share_source=copy_web" %}
+
 ## 简介
 
 [wechat-openai-qa-bot](https://github.com/choogoo/wechat-openai-qa-bot)使用wechat机器人快速实现一个免费的QA问答系统，如果你是一个社群工作者、拼团团长、业务群运营经理，使用这个项目可以帮助你解决解决一些重复性问答。
