@@ -6,7 +6,7 @@
    - chatbot
    - python
    - study
-   - introduction
+   - padlocal
  image: /assets/2022/04-a-wechaty-bot-with-some-plugins/title_bg.webp
 ---
 
