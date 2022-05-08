@@ -3,8 +3,8 @@
  author: xin0501
  categories: article
  tags:
-   - blog
-   - wechaty
+   - chatbot
+   - python
    - study
    - introduction
  image: /assets/2022/04-a-wechaty-bot-with-some-plugins/title_bg.webp
