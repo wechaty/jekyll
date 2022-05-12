@@ -32,18 +32,24 @@ wechat-twitter-bot
 
 ## 下载
 
-    git clone https://github.com/mixver/wechat-twitter-bot.git
+```bash
+git clone https://github.com/mixver/wechat-twitter-bot.git
+```
 
 ## 配置
 
-    cp .env.example .env
+```bash
+cp .env.example .env
+```
 
-TWITTER_TOKEN 配置为twitter的登录token 
+TWITTER_TOKEN配置为twitter的登录token
 
 ## 运行
 
-    npm install
-    ts-node main.ts
+```bash
+npm install
+ts-node main.ts
+```
 
 ## 使用
 
