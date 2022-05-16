@@ -13,6 +13,4 @@ Low-key development, safety with concentration
 ## Contact
 
 - Homepage: <https://blog.zygd.site/>
-- Github: <https://github.com/XRSec>
-- Twitter: <>
-- Email: <>
+- Github: <https://github.com/Ran-Xing>
