@@ -1,16 +1,16 @@
 ---
 name: doublewinter0(二冬)
-site: <https://github.com/doublewinter0>
+site: https://github.com/doublewinter0
 avatar: /assets/contributors/doublewinter0/avatar.webp
 bio: Coder, 喜欢数学, 喜欢美食, 喜欢折腾一些小众的东西, 有个周游世界的小愿望...
 email: 
-twitter: <https://twitter.com/doublewinter0>
+twitter: https://twitter.com/doublewinter0
 ---
-Coder, 喜欢数学, 喜欢美食, 喜欢折腾一些小众的东西, 有个周游世界的小愿望...
 
+PR: <https://github.com/wechaty/python-wechaty/pull/326>
 ## Contact
 
-- Github: <https://github.com/doublewinter0>
+- Github: [@doublewinter0](https://github.com/doublewinter0)
 - Twitter: [@doublewinter0](https://twitter.com/doublewinter0)
 - Email: <>
-- Website: <https://erdong.me>
+- Website: [erdong.me](https://erdong.me)
