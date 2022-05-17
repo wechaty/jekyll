@@ -8,7 +8,8 @@ twitter: https://twitter.com/doublewinter0
 ---
 
 PR: <https://github.com/wechaty/python-wechaty/pull/326>
-## Contact
+
+## Contact me
 
 - Github: [@doublewinter0](https://github.com/doublewinter0)
 - Twitter: [@doublewinter0](https://twitter.com/doublewinter0)
