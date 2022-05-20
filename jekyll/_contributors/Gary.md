@@ -1,10 +1,10 @@
 ---
 name: Gary
-site: [www.gary666.com](https://www.gary666.com/)
+site: www.gary666.com
 avatar: /assets/contributors/gary/avatar.webp
 bio: Python Full Stack Engineer
 email: xts2000gary@163.com
-twitter:
+twitter:   
 ---
 
 Python Full Stack Engineer
