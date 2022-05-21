@@ -1,9 +1,8 @@
 ---
 title: 同心助力，战役有AI!
-author: ShanghaiITVolunteer
+author: bigbrother666sh
 categories: article
 tags:
-  - wechaty
   - ai
   - antigen
 image: /assets/2022/05-wechaty-ai-antigenbot/a1fup-y7cpd.webp
@@ -21,8 +20,6 @@ image: /assets/2022/05-wechaty-ai-antigenbot/a1fup-y7cpd.webp
 （志愿者们在小区外分拣物资）
 
 不负韶华，在青春的赛道上奋力奔跑。为了解决这些困难，年轻的小区志愿者吴光正、凌思凯、李思颖，作为小区的一份子，决心发挥专长，从技术的角度来解决小区面临的困境。三位 IT 领域的青年志愿者，在繁重的工作结束后的夜晚，熬夜讨论系统设计架构，尝试以最快最有效的方式搭建起一套解放人力的物资调度配送系统。仅仅2个晚上，物资配送系统搭建成功。这个系统在帮助居委会自动处理物资团购信息、快速制作定制化的表单方面，发挥了积极的作用。
-
-![img](/assets/2022/05-wechaty-ai-antigenbot/assqi-t4q31.webp)
 
 ![img](/assets/2022/05-wechaty-ai-antigenbot/avzr0-npy78.webp)
 
@@ -75,7 +72,7 @@ image: /assets/2022/05-wechaty-ai-antigenbot/a1fup-y7cpd.webp
 
 **开发志愿者：** 刘建建、马赫、韩鹏远（来自飞桨社区）
 
-![img](/assets/2022/05-wechaty-ai-antigenbot/a7q77-zlp5o.webp)
+![img](/assets/2022/05-wechaty-ai-antigenbot/a3vh5-c3zmu.webp)
 
 [模块详情](https://github.com/ShanghaiITVolunteer/AntigenWechatBot/issues/44)
 
@@ -116,7 +113,7 @@ AI 抗疫机器人AntigenBot 项目在嘉怡水岸小区抗疫工作流程的基
 
 ### Wechaty 社区
 
-![img](/assets/image/logo.webp)
+![img](/assets/2022/05-wechaty-ai-antigenbot/logo.webp)
 
 Wechaty is a Conversational RPA SDK for chatbot makers. With only 6 lines of code, you can create a bot on the most popular IMs like WeChat, Whatsapp, WeCom, Gitter, etc.
 
