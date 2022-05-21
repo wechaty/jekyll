@@ -7,6 +7,7 @@ tags:
   - antigen
 image: /assets/2022/05-wechaty-ai-antigenbot/a1fup-y7cpd.webp
 ---
+（bigbrother on behalf of the [ShanghaiITVolunteer](https://github.com/ShanghaiITVolunteer)
 
 2022年5月9日，上海闵行区政府从防控机制、防控措施和防控成效等方面对“无疫小区”申请名单的充分论证，公布了首批“无疫小区”名单，“嘉怡水岸睿府“赫然在列。嘉怡水岸睿府小区的抗疫成效卓然，
 分析其取得阶段性胜利的原因，离不开居民区党支部、居委会坚守阵地毫不松懈；离不开楼栋自治，保障楼道里的“最后一百米”；离不开团购报备制度，涉疫信息的透明度，更得益于看不见的人工智能“硬核”技术的加持--永不疲倦的 **“AI抗疫机器人”**。
