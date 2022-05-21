@@ -10,8 +10,7 @@ image: /assets/2022/05-wechaty-ai-antigenbot/a1fup-y7cpd.webp
 ---
 
 2022年5月9日，上海闵行区政府从防控机制、防控措施和防控成效等方面对“无疫小区”申请名单的充分论证，公布了首批“无疫小区”名单，“嘉怡水岸睿府“赫然在列。嘉怡水岸睿府小区的抗疫成效卓然，
-分析其取得阶段性胜利的原因，离不开居民区党支部、居委会坚守阵地毫不松懈；离不开楼栋自治，保障楼道里的“最后一百米”；离不开团购报备制度，涉疫信息的透明度，更得益于看不见的人工智能“硬核”技术的加持 
--- 永不疲倦的 **“AI抗疫机器人”**。
+分析其取得阶段性胜利的原因，离不开居民区党支部、居委会坚守阵地毫不松懈；离不开楼栋自治，保障楼道里的“最后一百米”；离不开团购报备制度，涉疫信息的透明度，更得益于看不见的人工智能“硬核”技术的加持--永不疲倦的 **“AI抗疫机器人”**。
 
 ## 小荷才露尖尖角
 
@@ -45,7 +44,7 @@ image: /assets/2022/05-wechaty-ai-antigenbot/a1fup-y7cpd.webp
 （蒋书记与志愿者们一起讨论抗疫工作）
 
 嘉怡水岸小区居委会蒋书记表示：“整套系统从开发、调试、磨合、正式运行短短的几天，让居委会在民生保障工作有了质的飞跃，大大降低了居委会的人力和时间成本，有更多的时间和精力去做好疫情防控工作。”
- 
+
 ## AI抗疫机器人功能模块说明
 
 ### 团购配送模块
@@ -66,7 +65,7 @@ image: /assets/2022/05-wechaty-ai-antigenbot/a1fup-y7cpd.webp
 
 ![img](/assets/2022/05-wechaty-ai-antigenbot/a1ett-6rr3x.webp)
 
-https://github.com/ShanghaiITVolunteer/AntigenWechatBot
+[模块详情](https://github.com/ShanghaiITVolunteer/AntigenWechatBot)
 
 ### 抗原图片分析模块
 
@@ -78,7 +77,7 @@ https://github.com/ShanghaiITVolunteer/AntigenWechatBot
 
 ![img](/assets/2022/05-wechaty-ai-antigenbot/a7q77-zlp5o.webp)
 
-https://github.com/ShanghaiITVolunteer/AntigenWechatBot/issues/44
+[模块详情](https://github.com/ShanghaiITVolunteer/AntigenWechatBot/issues/44)
 
 在项目开发的过程中，青年志愿者更希望守护公民的数据隐私，特邀开源社法律顾问委员会，海华永泰律师事务所的陈元熹律师，作为项目的法律指导，Wechaty 开源项目作者李卓桓老师和开源社理事庄表伟老师作为项目技术顾问，为项目出谋划策。
 AI 抗疫机器人AntigenBot 项目在嘉怡水岸小区抗疫工作流程的基础上，通过第一性原理简化方法，提升效率，规避风险。经过一系列的优化提升，负责机器人方面的社区的管理人员可以实现“开箱即用”、“一看就懂”的使用方法。
