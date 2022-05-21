@@ -79,7 +79,7 @@ image: /assets/2022/05-wechaty-ai-antigenbot/a1fup-y7cpd.webp
 在项目开发的过程中，青年志愿者更希望守护公民的数据隐私，特邀开源社法律顾问委员会，海华永泰律师事务所的陈元熹律师，作为项目的法律指导，Wechaty 开源项目作者李卓桓老师和开源社理事庄表伟老师作为项目技术顾问，为项目出谋划策。
 AI 抗疫机器人AntigenBot 项目在嘉怡水岸小区抗疫工作流程的基础上，通过第一性原理简化方法，提升效率，规避风险。经过一系列的优化提升，负责机器人方面的社区的管理人员可以实现“开箱即用”、“一看就懂”的使用方法。
 
-![img](/assets/2022/05-wechaty-ai-antigenbot/a3vh5-c3zmu.webp)
+![img](/assets/2022/05-wechaty-ai-antigenbot/aa0nw-g84t1.webp)
 
 （项目UI界面原型）
 
