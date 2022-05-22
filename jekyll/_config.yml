@@ -33,7 +33,7 @@ defaults:
       layout: post
       comments: true
       author: wechaty
-      avatar: /assets/contributors/wechaty/icon.png
+      avatar: /assets/contributors/wechaty/icon.webp
 
   # all pages
   - scope:

@@ -212,6 +212,22 @@ sequenceDiagram
     Application->>User: forwarded message
 ```
 
+### Lays & Dependencies in DDD
+
+> Most enterprise applications with significant business and technical complexity are defined by multiple layers. The layers are a logical artifact, and are not related to the deployment of the service. They exist to help developers manage the complexity in the code. Different layers (like the domain model layer versus the presentation layer, etc.) might have different types, which mandate translations between those types.
+
+![DDD Layers](/assets/2022/02-refactoring-friday-bot-with-nestjs-ddd-cqrs/domain-driven-design-microservice.webp)
+
+1. Domain Layer: Responsible for representing concepts of the business, information about the business situation, and business rules. S
+1. Application Layer: Defines the jobs the software is supposed to do and directs the expressive domain objects to work out problems.
+1. Infrastructure Layer: How the data that is initially held in domain entities (in memory) is persisted in databases or another persistent store.
+
+Dependencies:
+
+![Dependencies between Layers in DDD](/assets/2022/02-refactoring-friday-bot-with-nestjs-ddd-cqrs/ddd-service-layer-dependencies.webp)
+
+> Source: [Design a DDD-oriented microservice, Microsoft Docs](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/ddd-oriented-microservice)
+
 ### NestJS Perspective
 
 ![Dependency Injection](/assets/2022/02-refactoring-friday-bot-with-nestjs-ddd-cqrs/ioc.webp)
