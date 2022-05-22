@@ -7,7 +7,6 @@ tags:
   - antigen
 image: /assets/2022/05-wechaty-ai-antigenbot/a1fup-y7cpd.webp
 ---
-（bigbrother on behalf of the [ShanghaiITVolunteer](https://github.com/ShanghaiITVolunteer)
 
 2022年5月9日，上海闵行区政府从防控机制、防控措施和防控成效等方面对“无疫小区”申请名单的充分论证，公布了首批“无疫小区”名单，“嘉怡水岸睿府“赫然在列。嘉怡水岸睿府小区的抗疫成效卓然，
 分析其取得阶段性胜利的原因，离不开居民区党支部、居委会坚守阵地毫不松懈；离不开楼栋自治，保障楼道里的“最后一百米”；离不开团购报备制度，涉疫信息的透明度，更得益于看不见的人工智能“硬核”技术的加持--永不疲倦的 **“AI抗疫机器人”**。
@@ -80,7 +79,7 @@ image: /assets/2022/05-wechaty-ai-antigenbot/a1fup-y7cpd.webp
 在项目开发的过程中，青年志愿者更希望守护公民的数据隐私，特邀开源社法律顾问委员会，海华永泰律师事务所的陈元熹律师，作为项目的法律指导，Wechaty 开源项目作者李卓桓老师和开源社理事庄表伟老师作为项目技术顾问，为项目出谋划策。
 AI 抗疫机器人AntigenBot 项目在嘉怡水岸小区抗疫工作流程的基础上，通过第一性原理简化方法，提升效率，规避风险。经过一系列的优化提升，负责机器人方面的社区的管理人员可以实现“开箱即用”、“一看就懂”的使用方法。
 
-![img](/assets/2022/05-wechaty-ai-antigenbot/a3vh5-c3zmu.webp)
+![img](/assets/2022/05-wechaty-ai-antigenbot/aa0nw-g84t1.webp)
 
 （项目UI界面原型）
 
@@ -129,3 +128,5 @@ Wechaty is a Conversational RPA SDK for chatbot makers. With only 6 lines of cod
 ![img](/assets/2022/05-wechaty-ai-antigenbot/adt2z-wdcvt.webp)
 
 作为中国首个自主研发、功能丰富、开源开放的产业级深度学习平台，百度飞桨于2016年正式开源，当前飞桨平台汇聚了超过400万开发者，助力企业单位、高等院校、科研机构的AI开发者提升模型开发效率与体验、推动AI技术在各行业的实际落地与应用。AI Studio是基于百度深度学习平台飞桨的人工智能学习与实训社区，提供在线编程环境、免费GPU算力、海量实训项目和开放数据，帮助开发者快速创建和部署模型。
+
+bigbrother on behalf of the [ShanghaiITVolunteer](https://github.com/ShanghaiITVolunteer)
