@@ -44,21 +44,18 @@
 [盘腿治膝伤](https://mp.weixin.qq.com/s/6OvreXJz3UFwuTPqb-2Lug)
 
 有球星讨论膝盖半月板，唐僧师父念:
-鼓楼医院关节科不错:https://mp.weixin.qq.com/s/JH234VpbQmW23NcBduZbJA
+[鼓楼医院关节科不错](https://mp.weixin.qq.com/s/JH234VpbQmW23NcBduZbJA)
 
 足球群，当然足球相关话题也是师父喜欢的:
 有讨论齐达内等球星，师父就念:
-球场师徒缘:https://mp.weixin.qq.com/s/wq5M7busUmL8h1skLPuJ5Q
+[球场师徒缘](https://mp.weixin.qq.com/s/wq5M7busUmL8h1skLPuJ5Q)
 
 说起苏亚雷斯，师父念:
-从苏牙到苏神https://mp.weixin.qq.com/s/PC18UGOs5YxZrhvCDI_IMw
+[从苏牙到苏神](https://mp.weixin.qq.com/s/PC18UGOs5YxZrhvCDI_IMw)
 
 讨论多素少肉等提高体力的事，师父就念:
-红楼梦最俊美的女子为何要吃斋?: https://mp.weixin.qq.com/s/GrzkWiLmHuIutIshT4evWA
+[红楼梦最俊美的女子为何要吃斋?](https://mp.weixin.qq.com/s/GrzkWiLmHuIutIshT4evWA)
 
-话说回来，虽然佛祖唐僧师父等等苦心孤诣想告诉大家避免伤病的好心态，以及万一伤了怎么早点康复，但是要有机会出来念经，还是得好好感谢WeChaty这个工具。
-
-
-
+话说回来，虽然佛祖唐僧师父等等苦心孤诣想告诉大家避免伤病的好心态，以及万一伤了怎么早点康复，但是要有机会出来念经，还是得好好感谢WeChaty这个工具:
 
 详见python-wechaty官网文档。传送门[python-wechaty文档](https://wechaty.readthedocs.io/zh_CN/latest/introduction/use-padlocal-protocol/)
