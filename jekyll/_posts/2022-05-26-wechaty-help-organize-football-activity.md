@@ -1,13 +1,3 @@
---
- title: "WeChaty助力唐僧念经和佛祖踢球"
- author: 龙思
- categories: article
- tags:
-   - chatbot
-   - python
-   - wechaty
- image: /assets/2022/04-a-wechaty-bot-with-some-plugins/title_bg.webp
----
 
 ## WeChaty助力唐僧念经和佛祖踢球
 
