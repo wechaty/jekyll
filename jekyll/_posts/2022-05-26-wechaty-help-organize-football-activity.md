@@ -50,6 +50,7 @@
 [红楼梦最俊美的女子为何要吃斋?](https://mp.weixin.qq.com/s/GrzkWiLmHuIutIshT4evWA)
 
 ![打坐康复](../assets/2022/05-wechaty-help-organize-football-activity/打坐康复.jpeg)
+
 话说回来，虽然佛祖唐僧师父等等苦心孤诣想告诉大家避免伤病的好心态，以及万一伤了怎么早点康复，但是要有机会出来念经，还是得好好感谢WeChaty这个工具:
 
 详见python-wechaty官网文档。传送门[python-wechaty文档](https://wechaty.readthedocs.io/zh_CN/latest/introduction/use-padlocal-protocol/)
