@@ -5,7 +5,6 @@ categories: project
 tags:
   - summer-code
   - puppet-whatsapp
-  - automotive
   - productivity
 image: /assets/2022/06-summer-code-im-aggregation/title.webp
 ---
