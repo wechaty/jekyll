@@ -1,6 +1,6 @@
 ---
 title: "开源之夏 - IM 应用消息聚合"
-author: TankNee
+author: tanknee
 categories: project
 tags:
   - summer-code
