@@ -22,7 +22,7 @@ image:
 
 我们最常玩的球队领导比较多，领导忙起来也经常没法及时报名。
 有次看着快开赛了人还不足，一急之下人家是急中生智，我那次居然急中生想佛祖的心，说到:“哪天我要拉佛祖进群，并说:佛祖同志您好，请积极报名，不然怎么保佑大家不受伤。”
-![佛祖报名踢球](../assets/2022/05-wechaty-help-organize-football-activity/佛祖进群.png)
+![佛祖报名踢球](../assets/2022/05-wechaty-help-organize-football-activity/佛祖进群.webp)
 
 ### 请佛祖和唐僧师父
 
