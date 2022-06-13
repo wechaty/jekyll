@@ -37,8 +37,9 @@ image: /assets/2022/06-wechaty-walnut-aibot/walnut-aibot.webp
 关于5G智能微秘书平台的功能介绍和功能演示，以一段比赛时所提交的的视频来展示
 
 - Bilibili: <https://www.bilibili.com/video/BV1RY411M7k9>
+- Youtube: <https://youtu.be/kzg3rZsw2jc>
 
-{% include iframe.html src="//player.bilibili.com/player.html?aid=257360617&bvid=BV1RY411M7k9&cid=739125561&page=1" %}
+{% include iframe.html src="https://www.youtube.com/embed/kzg3rZsw2jc" %}
 
 ## 如何使用
 
@@ -105,7 +106,7 @@ npm run start
 
 分享一下答辩时的文稿，可以让大家更清楚的了解5G智能微秘书是怎样一个平台
 
-{% include iframe.html src="/assets/2022/06-wechaty-aibot/walnut-share.pdf" %}
+{% include iframe.html src="/assets/2022/06-wechaty-walnut-aibot/walnut-share.pdf" %}
 
 ## 关于绽放杯
 
