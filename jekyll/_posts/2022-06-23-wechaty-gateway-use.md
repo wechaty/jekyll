@@ -189,7 +189,7 @@ var bot = wechaty.NewWechaty(wechaty.WithPuppetOption(puppet.Option{
     Token: "insecure_d6e8b1c7-6fcd-4e32-b3f6-8d1e73388458",
     Endpoint: "127.0.0.1:25000",
     Timeout: time.Second * 10,
-		}))
+  }))
 ```
 
 ## 性能对比
