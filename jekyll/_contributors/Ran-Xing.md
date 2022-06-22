@@ -1,7 +1,7 @@
 ---
-name: XRSec
+name: Ran-Xing
 site: https://blog.zygd.site/
-avatar: /assets/contributors/xrsec/avatar.webp
+avatar: /assets/contributors/Ran-Xing/avatar.webp
 bio: Freelance cyber security practitioner
 email:
 twitter:

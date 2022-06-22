@@ -1,6 +1,6 @@
 ---
 title: Wechaty Gateway 使用教程
-author: xrsec
+author: Ran-Xing
 categories: article
 tags:
   - puppet-xp
@@ -106,7 +106,7 @@ var bot = wechaty.NewWechaty(wechaty.WithPuppetOption(wp.Option{
 - XP Token 不需要钱，随机生成就好
 - 下面这一套不需要 docker，安装简单
 - 安装[微信](https://github.com/wechaty/wechaty-puppet-xp/releases/download/v0.5/WeChatSetup-v3.3.0.115.exe)
-- Demo : [Go-wechaty-Bot](https://github.com/XRSec/Go-wechaty-Bot) - 欢迎下载体验、踢出宝贵的修复建议
+- Demo : [Go-wechaty-Bot](https://github.com/Ran-Xing/Go-wechaty-Bot) - 欢迎下载体验、踢出宝贵的修复建议
 
 ```mermaid
 flowchart LR
