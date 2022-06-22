@@ -1,6 +1,6 @@
 ---
 title: Wechaty Gateway 使用教程
-author: Ran-Xing
+author: ran-xing
 categories: article
 tags:
   - puppet-xp

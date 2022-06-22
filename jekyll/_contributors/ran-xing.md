@@ -1,7 +1,7 @@
 ---
-name: Ran-Xing
+name: ran-xing
 site: https://blog.zygd.site/
-avatar: /assets/contributors/Ran-Xing/avatar.webp
+avatar: /assets/contributors/ran-xing/avatar.webp
 bio: Freelance cyber security practitioner
 email:
 twitter:
@@ -13,4 +13,4 @@ Low-key development, safety with concentration
 ## Contact
 
 - Homepage: <https://blog.zygd.site/>
-- Github: <https://github.com/Ran-Xing>
+- Github: <https://github.com/ran-xing>
