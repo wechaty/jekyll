@@ -49,7 +49,7 @@ mermaid: true
 
 ## 会议成果
 
-经过此线上会议成立了项目兴趣小组，其中由社区内的星冉作为go-wechaty和wechaty-ui的开发者，liuming作为wechaty-ui和python-wechaty项目的开发者，[wj-Mcat](https://github.com/wj-Mcat)作为项目的发起者和推动者。
+经过此线上会议成立了项目兴趣小组，其中由社区内的[星冉](https://github.com/Ran-Xing)作为go-wechaty和wechaty-ui的开发者，[liuming](https://github.com/1914049892)作为wechaty-ui和python-wechaty项目的开发者，[wj-Mcat](https://github.com/wj-Mcat)作为项目的发起者和推动者。
 
 如果想要加入此兴趣小组，可添加开发者群秋客的微信，拉人入群。
 
