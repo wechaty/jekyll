@@ -1,10 +1,10 @@
 ---
-title: "WeChaty助力唐僧念经和佛祖踢球"
-author: 龙思
+title: "Wechaty助力唐僧念经和佛祖踢球"
+author: circlestriker
 categories: article
 tags:
-  - wechaty
-image: 
+  - ai
+image: /assets/2022/05-wechaty-help-organize-football-activity/佛祖进群.webp
 ---
 
 ## WeChaty助力唐僧念经和佛祖踢球
