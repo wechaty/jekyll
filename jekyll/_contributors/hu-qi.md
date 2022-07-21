@@ -15,7 +15,6 @@ twitter: https://twitter.com/huqii
 - 📫 How to reach me: [<a href="mailto:huqi1024@gmail.com">huqi1024@gmail.com</a>](mailto:huqi1024@gmail.com?subject=[Github]Hello)
  | [Hugi66]({{ '/assets/contributors/hu-qi/wechat-qrcode.webp' | relative_url }})
 
-
 ## Contacts
 
 - Github: <https://github.com/hu-qi>

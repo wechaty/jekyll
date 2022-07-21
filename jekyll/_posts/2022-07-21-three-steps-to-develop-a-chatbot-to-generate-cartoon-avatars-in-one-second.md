@@ -27,7 +27,6 @@ mermaid: true
 
 ![AnimeGAN 发展历程](/assets/2022/07-three-steps-to-develop-a-chatbot-to-generate-cartoon-avatars-in-one-second/2.webp)
 
-
 提到 AnimeGAN ，不得不说说它的发展历程，一作[Asher Chan](https://github.com/TachibanaYoshino)从 2019 年提交第一个 Git Commit 至今，已经迭代了三个版本，[AnimeGANv3](https://github.com/TachibanaYoshino/AnimeGANv3)放出了可执行程序和刚出炉还热乎的肖像素描（点我快速体验：[Run in ModelArts - AnimeGANv3 肖像素描生成](https://developer.huaweicloud.com/develop/aigallery/notebook/detail?id=8e87f943-9178-48d7-be00-28b9007dc7cb)）。
 
 ![AnimeGANv3 生成肖像画](/assets/2022/07-three-steps-to-develop-a-chatbot-to-generate-cartoon-avatars-in-one-second/3.webp)
@@ -51,7 +50,6 @@ AnimeGAN 实现了将现实世界场景的照片转换为动漫风格图像。 [
 我们通常认为“数据、算法、算力”是人工智能的三要素，现如今，处在大数据时代，可靠高质量的数据的获得变得简洁；优质的算法随着开源文化的发展也变得普及；然而算力确成了制约人工智能普及的“拦路虎”，就连 AnimeGAN 的作者也感叹[“论文的延迟发表只因只借到了一年的 2080ti”](https://github.com/TachibanaYoshino/AnimeGANv3/issues/1)。对于笔者而言，幸亏有普惠 AI 的华为云 ModelArts，[AI Gallery](https://developer.huaweicloud.com/develop/aigallery/home.html) 是在 ModelArts 的基础上构建的开发者生态社区，提供了 Notebook 代码样例、数据集、算法、模型、Workflow 等 AI 数字资产的共享，姑且理解为 AI 届的 Github。
 
 ![AI Gallery](/assets/2022/07-three-steps-to-develop-a-chatbot-to-generate-cartoon-avatars-in-one-second/5.webp)
-
 
 数据方面，AI Gallery 的数据模块支持数据集的共享和下载；而且数据集是支持 License 声明的，这一点类似于开源社区；
 算法方面，AI Gallery 的算法模块支持算法的共享和订阅；并且算法支持变现，类似于一个算法商城；
