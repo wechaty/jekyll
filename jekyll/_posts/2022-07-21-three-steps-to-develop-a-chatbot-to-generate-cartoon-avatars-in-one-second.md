@@ -3,7 +3,7 @@ title: 三步开发聊天机器人一秒生成漫画头像
 author: hu-qi    
 categories: article    
 tags:    
-  - wechaty-puppet-service    
+  - puppet-service   
   - code    
   - ai   
 image: /assets/2022/07-three-steps-to-develop-a-chatbot-to-generate-cartoon-avatars-in-one-second/title.webp    
