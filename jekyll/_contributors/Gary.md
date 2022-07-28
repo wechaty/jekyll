@@ -21,7 +21,6 @@ Python Full Stack Engineer
 
 - [fix:监听扫码事件参数对应错误以及格式化](https://github.com/wechaty/python-wechaty-getting-started/pull/76)
 
-
 ## Contact me
 
 - Github: <https://github.com/Gary2018X>
