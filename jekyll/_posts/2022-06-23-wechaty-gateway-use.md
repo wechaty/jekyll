@@ -1,12 +1,13 @@
 ---
 title: Wechaty Gateway 使用教程
-author: xrsec
+author: ran-xing
 categories: article
 tags:
   - puppet-xp
   - gateway
   - wechat4u
-image: /assets/2022/04-wechaty-gateway-use/logo.webp
+  - padlocal
+image: /assets/2022/06-wechaty-gateway-use/logo.webp
 mermaid: true
 ---
 
@@ -106,7 +107,7 @@ var bot = wechaty.NewWechaty(wechaty.WithPuppetOption(wp.Option{
 - XP Token 不需要钱，随机生成就好
 - 下面这一套不需要 docker，安装简单
 - 安装[微信](https://github.com/wechaty/wechaty-puppet-xp/releases/download/v0.5/WeChatSetup-v3.3.0.115.exe)
-- Demo : [Go-wechaty-Bot](https://github.com/XRSec/Go-wechaty-Bot) - 欢迎下载体验、踢出宝贵的修复建议
+- Demo : [Go-wechaty-Bot](https://github.com/Ran-Xing/Go-wechaty-Bot) - 欢迎下载体验、踢出宝贵的修复建议
 
 ```mermaid
 flowchart LR
@@ -125,7 +126,7 @@ flowchart LR
 ```bash
 # 这些仅适用于 Windows，因为 xp 支持的是Windows版本微信
 npm install -g wechaty wechaty-puppet-xp
-# npm --registry https://registry.npm.taobao.org install -g wechaty wechaty-puppet-wechat4u
+# npm --registry https://registry.npm.taobao.org install -g wechaty wechaty-puppet-xp
 
 set WECHATY_PUPPET="wechaty-puppet-xp"
 set WECHATY_TOKEN="d6e8b1c7-6fcd-4e32-b3f6-8d1e73388458"
@@ -153,6 +154,42 @@ var bot = wechaty.NewWechaty(wechaty.WithPuppetOption(wp.Option{
     Endpoint: "127.0.0.1:25000",
     Timeout: time.Second * 10,
 }))
+```
+
+## Padlocal
+
+### Gateway(padlocal)
+
+```bash
+# 初始化
+mkdir bot; cd bot; npm init -y
+
+npm install wechaty wechaty-puppet-padlocal // 安装全局报错找不到包
+# npm --registry https://registry.npm.taobao.org install wechaty wechaty-puppet-padlocal
+
+export WECHATY_PUPPET="wechaty-puppet-padlocal"
+export WECHATY_TOKEN="puppet_padlocal_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+# get from http://pad-local.com/#/
+
+export WECHATY_PUPPET_SERVICE_TOKEN="insecure_d6e8b1c7-6fcd-4e32-b3f6-8d1e73388458"
+# export WECHATY_PUPPET_SERVICE_TOKEN="insecure_$(curl -s https://www.uuidgenerator.net/api/version4)"
+
+export WECHATY_LOG="verbose"
+export WECHATY_PUPPET_SERVER_PORT="25000"
+export WECHATY_PUPPET_SERVICE_NO_TLS_INSECURE_SERVER=true
+export PATH="$PATH:$(pwd)/node_modules/.bin" // 这句很重要
+wechaty gateway --puppet ${WECHATY_PUPPET} --port ${WECHATY_PUPPET_SERVER_PORT} --token ${WECHATY_PUPPET_SERVICE_TOKEN} --puppet-token ${WECHATY_TOKEN}
+```
+
+### Polyglot(padlocal)
+
+```go
+import puppet "github.com/wechaty/go-wechaty/wechaty-puppet"
+var bot = wechaty.NewWechaty(wechaty.WithPuppetOption(puppet.Option{
+    Token: "insecure_d6e8b1c7-6fcd-4e32-b3f6-8d1e73388458",
+    Endpoint: "127.0.0.1:25000",
+    Timeout: time.Second * 10,
+  }))
 ```
 
 ## 性能对比
