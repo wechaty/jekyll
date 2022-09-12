@@ -7,7 +7,7 @@ tags:
 image: /assets/2022/05-wechaty-help-organize-football-activity/fozujinqun.webp
 ---
 
-## WeChaty助力唐僧念经和佛祖踢球
+## Wechaty助力唐僧念经和佛祖踢球
 
 ### 组织活动的小烦恼
 
@@ -35,7 +35,7 @@ image: /assets/2022/05-wechaty-help-organize-football-activity/fozujinqun.webp
 
 ![唐僧师父](/assets/2022/05-wechaty-help-organize-football-activity/tangseng.webp)
 
-于是一通操作，找到了WeChaty，把唐僧师父请进了我们足球群。
+于是一通操作，找到了Wechaty，把唐僧师父请进了我们足球群。
 
 ### wechaty助力
 
@@ -60,6 +60,6 @@ image: /assets/2022/05-wechaty-help-organize-football-activity/fozujinqun.webp
 
 ![打坐康复](/assets/2022/05-wechaty-help-organize-football-activity/dazuokangfu.webp)
 
-话说回来，虽然佛祖唐僧师父等等苦心孤诣想告诉大家避免伤病的好心态，以及万一伤了怎么早点康复，但是要有机会出来念经，还是得好好感谢WeChaty这个工具:
+话说回来，虽然佛祖唐僧师父等等苦心孤诣想告诉大家避免伤病的好心态，以及万一伤了怎么早点康复，但是要有机会出来念经，还是得好好感谢Wechaty这个工具:
 
 详见python-wechaty官网文档。传送门[python-wechaty文档](https://wechaty.readthedocs.io/zh_CN/latest/introduction/use-padlocal-protocol/)
