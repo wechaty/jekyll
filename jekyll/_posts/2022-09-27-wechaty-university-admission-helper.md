@@ -4,10 +4,10 @@ author: ligen131
 categories: article
 tags:
   - bot
-  - Wechaty
+  - wechaty
   - 后端
-  - Node.js
-  - TypeScript
+  - node.js
+  - typescript
   - 高校招生
 image: /assets/2022/09-wechaty-university-admission-helper/cover.webp
 ---
