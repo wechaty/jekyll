@@ -4,7 +4,6 @@ author: ligen131
 categories: article
 tags:
   - bot
-  - wechaty
   - 后端
   - node.js
   - typescript
