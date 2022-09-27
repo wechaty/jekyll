@@ -2,7 +2,7 @@
 name: ligen131
 site: <https://ligen131.com>
 bio: 华中科技大学本科生，喜欢折腾各种小玩具
-avatar: /assets/contributors/ligen131/avatar.png
+avatar: /assets/contributors/ligen131/avatar.webp
 email: 1353055672@qq.com
 ---
 
