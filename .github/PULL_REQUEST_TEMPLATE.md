@@ -47,7 +47,7 @@ Please make sure to check the following boxes creating your pull request, thank 
 
   Here is the example file:
 
-  - lijiarui.md: <https://github.com/wechaty/wechaty.js.org/blob/master/jekyll/_contributors/lijiarui.md>
+  - lijiarui.md: <https://github.com/wechaty/jekyll/blob/main/jekyll/_contributors/lijiarui.md>
   - It will shown like this on wechaty website: <https://wechaty.js.org/contributors/lijiarui/>
 
 To learn more about the contribute guideline, visit: <https://wechaty.js.org/docs/contributor-program/>
