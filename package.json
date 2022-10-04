@@ -1,6 +1,6 @@
 {
   "name": "wechaty-jekyll",
-  "version": "0.11.13",
+  "version": "0.11.20",
   "description": "Wechaty Official Website for News, Blogs, Contributor Profiles",
   "private": true,
   "type": "module",
@@ -52,6 +52,7 @@
     "@types/probe-image-size": "^7.0.1",
     "@types/yaml-front-matter": "^4.1.0",
     "abort-controller": "^3.0.0",
+    "ci-info": "^3.3.2",
     "cross-env": "^7.0.3",
     "file-box": "^1.4.15",
     "git-scripts": "^0.4.3",
