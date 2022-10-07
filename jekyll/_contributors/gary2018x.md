@@ -1,7 +1,7 @@
 ---
-name: Gary
+name: Gary2018X
 site: www.gary666.com
-avatar: /assets/contributors/gary/avatar.webp
+avatar: /assets/contributors/gary2018x/avatar.webp
 bio: Python Full Stack Engineer
 email: xts2000gary@163.com
 twitter:   
