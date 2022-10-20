@@ -1,5 +1,5 @@
 ---
-title: "Huan: 介绍对话机器人（Chatbot）与对话式用户交互界面（CUI）"
+title: "Huan: Introducing Chatbot and Conversational User Interface (CUI)"
 author: huan
 categories: tutorial
 tags:
@@ -10,58 +10,64 @@ tags:
 image: /assets/2021/01-chatbot-conversational-user-interface/chatbot.webp
 ---
 
-Wechaty 是一个为对话式用户交互界面提供接口服务的 SDK，通过 RPA 技术，为 Chatbot 开发者提供便利的即时通讯平台接入服务，打造更加优秀的 Conversational AI 对话机器人。
+Wechaty is an SDK that provides interface services for conversational user interface. Through RPA technology, it provides Chatbot developers with convenient instant messaging platform access services to create better Conversational AI conversational robots.
 
-为什么我们要做 Chatbot ，我们经常提起的 Chatbot 等名词究竟是什么，它们有哪些优势？本文希望可以简明扼要的介绍清楚：
+Why do we want to do Chatbot, what are the terms such as Chatbot that we often mention, and what are their advantages? This article hopes to be clear and concise:
 
-1. 什么是对话机器人（Chatbot）
-1. 什么是对话式用户交互界面（Conversational User Interface, CUI）
-1. Chatbot 能做什么
-1. 什么是 Conversational AI (CAI)
-1. CUI 与即时通讯平台（Instant Messaging, IM）
+1. What is a chatbot
+1. What is Conversational User Interface (CUI)
+1. What Chatbots Can Do
+1. What is Conversational AI (CAI)
+1. CUI and Instant Messaging (IM)
 
-## 什么是对话机器人（Chatbot）
+## What is a chatbot
 
-Chatbot 是一个有能力与用户通过自然语言进行交谈的软件。
+Chatbot is a software capable of conversing with users through natural language.
 
-一般 Chatbot 都会运行在现有的即时消息软件平台上，比如 Slack、微信、钉钉。它也可以直接嵌入在独立网站或者移动手机 APP 中。
+Generally, Chatbots will run on existing instant messaging software platforms, such as Slack, WeChat, and DingTalk. It can also be directly embedded in a stand-alone website or a mobile phone APP.
 
-## 什么是对话式用户交互界面（Conversational User Interface, CUI）
+## What is Conversational User Interface (CUI)
 
-对话式用户交互界面（Conversational User Interface, CUI）与以前使用按钮、输入框和滚动条的图形界面（Graphical User Interface, GUI）类似，但是 CUI 是通过模拟人类说话来与用户进行交互。
+A Conversational User Interface (CUI) is similar to the previous Graphical User Interface (GUI) that used buttons, input boxes, and scroll bars, but CUI interacts with the user by simulating human speech.
 
-比如，网站是图形界面，也就是说主要的用户界面是按钮，图片，滚动条等。与之对比，Chatbot 是一个对话界面，它的主要用户界面是用户和软件之间的对话。
+For example, a website is a graphical interface, which means that the main user interface is buttons, pictures, scroll bars, etc. In contrast, Chatbot is a conversational interface, and its main user interface is the conversation between the user and the software.
 
-现在 CUI 非常常见，你很可能已经使用过CUI了。比如如果你用 iPhone，那么应该接触过 Siri；如果你经常在线购物，那么你应该在淘宝上被小二机器人服务过。
+CUIs are so common these days that you've probably already used CUIs. For example, if you use an iPhone, you should have been in contact with Siri; if you often shop online, you should have been served by Xiaoer Robot on Taobao.
 
-所有的这些服务都是基于对话为中心进行设计的。设计对话的目标是让人与计算机之间的协作变得简单。区别于使用传统的计算机语言，对话机器人能够让用户通过与计算机进行像与其他人一样的“交谈”来完成任务。
+All of these services are designed with dialogue in mind. The goal of Design Conversation is to make it easy for humans to collaborate with computers. Instead of using traditional computer language, conversational bots allow users to complete tasks by "talking" to the computer as if they were other people.
 
-## Chatbot 能做什么
+## What Chatbots Can Do
 
-Chatbot 能够应用在很多日常任务中。比如查天气，完成在线的订单；可以推广和销售产品、提升用户活跃度；也可以帮助你为客户提供实时的问题回答，提升用户体验等。
+Chatbots can be used in many everyday tasks. For example, checking the weather and completing online orders; it can promote and sell products and increase user activity; it can also help you provide customers with real-time question answers and improve user experience.
 
-对话机器人可以降低人员成本，提升客户服务质量。和人工坐席相比，它最大的优势是可以永远实时回复，并且可以同时回复很多人。
+Conversational bots can reduce personnel costs and improve customer service. Compared with human agents, its biggest advantage is that it can always reply in real time, and can reply to many people at the same time.
 
-开发者可以 Chatbot 开发公司现有员工岗位的能力。想象一下 Chatbot 作为团队一员，能够每天24小时，每周7天不间断的工作，还不用领工资；它还可以被打造成为一个全面手，同时作为销售员、市场专员、客户服务坐席，一人独挡一面，为客户提供一站式全方位的支持。
+Developers can Chatbot develop the capabilities of existing employee positions in the company. Imagine Chatbot as a team member, able to work 24 hours a day, 7 days a week, without getting paid; it can also be built as a comprehensive hand, and at the same time as a salesperson, marketing specialist, customer service agent, one person Stand alone and provide customers with one-stop all-round support.
 
-## 什么是 Conversational AI (CAI)
+## What is Conversational AI (CAI)
 
-对话式交互是计算机从文本命令到图形界面之后，随着人工智能能力的不断增强，计算机软件系统下一代的人机交互界面。为对话式用户交互界面提供的 AI 能力，就是 Conversational AI (CAI)。
+Conversational interaction is the next-generation human-computer interaction interface of computer software systems with the continuous enhancement of artificial intelligence capabilities after computers change from text commands to graphical interfaces. The AI ​​capability provided for conversational user interfaces is Conversational AI (CAI).
 
-人工智能的发展是近些年来对话机器人能够越来越强大的基础原动力。近些年的世界变化表明，这些智能技术它们所不断学习和进步的速度，远远超越了我们人类。
+The development of artificial intelligence is the basic driving force for dialogue robots to become stronger and stronger in recent years. The changes in the world in recent years have shown that these intelligent technologies are constantly learning and improving at a rate far beyond that of us humans.
 
-## CUI 与即时通讯平台（Instant Messaging, IM）
+## CUI and Instant Messaging (IM)
 
-对话式用户交互界面(CUI)也需要适配各种平台，就像现有的响应式网页设计（Responsive Web Design）界面需要适配不同的屏幕分辨率和兼容电脑鼠标和手机触屏一样。
+Conversational user interface (CUI) also needs to adapt to various platforms, just like the existing Responsive Web Design interface needs to adapt to different screen resolutions and be compatible with computer mouse and mobile phone touch screen.
 
-CUI 基于不同的平台，你的 Chatbot 需要适应不同平台之间的不同特点。换言之，你需要确保你的用户在不同的设备和平台上访问你的对话机器人时，能够得到一致的体验。目前，最流行的对话平台包括：微信、Whatsapp、Slack、钉钉、飞书等。
+CUI is based on different platforms, and your Chatbot needs to adapt to the different characteristics of different platforms. In other words, you need to ensure that your users have a consistent experience accessing your conversational bot across different devices and platforms. Currently, the most popular conversation platforms include: WeChat, Whatsapp, Slack, DingTalk, Feishu, etc.
 
-## 写在最后
+## Conclusion
 
-Chatbot 是一个蕴含着巨大机会的新领域。今天的 Chatbot，就好像是 1996 年的网页。
+Chatbots are a new field with huge opportunities. Chatbots today are like web pages in 1996.
 
-Google，Microsoft，Facebook，Amazon，和 Apple 这些大公司已经发现了 CUI 可以作为未来拓展用户的重要途径。这种基于自然语言的 Chatbot 可能很快替代大量的 APPs ，使用户可以直接通过语言来和他们喜欢的数字服务进行交互。理解对话式用户交互界面（CUI）是理解未来科技发展的重要一步。
+Large companies such as Google, Microsoft, Facebook, Amazon, and Apple have found that CUI can be an important way to expand users in the future. Such natural language-based Chatbots could soon replace a host of apps, allowing users to interact with their favorite digital services directly through language. Understanding Conversational User Interfaces (CUIs) is an important step in understanding future technological developments.
 
-Chatbot 现在不断在迭代升级，对各种商业场景的未来都会产生巨大影响。你绝不应该错过这个绝佳的机会，今天就尽快建立一个属于你自己的 Chatbot 并通过它实现与你的客户的自然语言沟通，提升用户体验把！
+Chatbot is now iteratively upgraded, which will have a huge impact on the future of various business scenarios. You should never miss this great opportunity, build your own Chatbot as soon as possible today and use it to communicate with your customers in natural language to improve user experience!
 
 > Teaser image credit: [What Is a Chatbot? The Full Guide to Chatbots in 2020](https://learn.g2.com/chatbot)
+
+## Learn more from Conversational RPA SDK Wechaty
+
+Wechaty is an open-source SDK for providing API for Wahtsapp and WeChat individual/personal accounts based RPA technology.
+
+You can start building your first chatbot on Whatsapp/WeChat by following our Getting Started Guide at <https://wechaty.js.org/docs/tutorials/>
