@@ -16,7 +16,7 @@ image: /assets/2022/12-introducing-workpro-puppet/wecom.webp
 
 WorkPro 是 [RPAChat](http://rpachat.com/) 基于 wechaty-puppet-service 做的新 puppet service，RPAChat 来自美国硅谷，专注于通过 RPA 技术将 IM 软件变成机器人。RPAChat 正在为 P&G 、 L’ORÉAL Paris 、 Swisse 、 POPMART 等知名品牌提供基于对话的营销云解决方案。
 
-![rpachat.webp](/assets/2022/12-introducing-workpro-puppet/rpachat.webp)
+![rpachat-logo.webp](/assets/2022/12-introducing-workpro-puppet/rpachat-logo.webp)
 
 WxWork作为我们上一代的企业微信 puppet service，已经服务了大家超过两年的时间。由于设计和架构的原因， WxWork 存在一些无法解决的缺陷，例如：
 
@@ -44,7 +44,7 @@ WorkPro 的架构是直接根据 wechaty-grpc 的相关功能，对齐的是 wec
 
 - 使用 Codespace 运行
 
-    1. 点击 [Github Codespace](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=78732688) ，再点击 Create Codespace 。然后稍作等待，配置服务会自动安装好依赖。
+    1. 点击 [Github Codespace](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=78732688) ，再点击 ```Create Codespace``` 。然后稍作等待，配置服务会自动安装好依赖。
     2. 设置环境变量。目前我们尚不支持 TLS 链接。详情请参考 : <https://github.com/wechaty/puppet-service/issues/160>
 
         ```shell
