@@ -40,49 +40,100 @@ WorkPro 的架构是直接根据 wechaty-grpc 的相关功能，对齐的是 wec
 
 非常傻瓜的快速上手教程：
 
-1. 将 [Wechaty getting-started 项目](https://github.com/wechaty/getting-started) 克隆到本地，或者直接使用 [Github Codespace](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=78732688)
-2. 安装依赖
+使用官方的实例仓库:  [Wechaty getting-started 项目](https://github.com/wechaty/getting-started) 。推荐直接使用 [Github Codespace](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=78732688)。当然也可以选择将 [Wechaty getting-started 项目](https://github.com/wechaty/getting-started) 克隆到本地在本地运行，
 
-    - 如果你克隆项目到本地的，请执行如下命令（需要安装有 node 16）
+- 使用 Codespace 运行
 
-    ```shell
-    npm install cross-env -g
-    npm install
-    ```
+    1. 点击 [Github Codespace](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=78732688) ，再点击 Create Codespace 。然后稍作等待，配置服务会自动安装好依赖。
+    2. 设置环境变量。目前我们尚不支持 TLS 链接。详情请参考 : <https://github.com/wechaty/puppet-service/issues/160>
 
-    - 如果你使用了 Github Codespace ，那么只需要稍等一会儿，配置服务会自动安装好依赖
+        ```shell
+        export WECHATY_PUPPET_SERVICE_NO_TLS_INSECURE_CLIENT=true
+        ```
 
-3. 配置 puppet 设置。请打开 examples/ding-dong-bot.ts （Github Codespace 用户应该会自动打开），将 73-76 行修改为如下代码
+    3. 修改 ```examples/ding-dong-bot.ts``` 。这一文件应该已经自动打开了。将 74-76 行改为如下代码
 
-    ```ts
-    puppet: 'wechaty-puppet-service',
-    puppetOptions: {
-      token: 'xxx', // 将你的 token 填写在此，它应该形式类似于 'puppet_workpro_xxxxxx'
-      tls: {
-        disable: true, // 目前我们尚不支持 TLS 链接。详情请参考 : https://github.com/wechaty/puppet-service/issues/160
-      }
-    }
-    ```
+        ```ts
+        puppetOptions: {
+          token: 'xxx', // 将你的 token 填写在此，它应该形式类似于 'puppet_workpro_xxxxxx'
+        }
+        ```
 
-4. 使用 ```npm start``` 启动 bot ，你应该能看见二维码出现在你的终端中。
+    4. 使用 ```npm start``` 启动 bot ，你应该能看见二维码出现在你的终端中。
+
+- 克隆到本地运行
+
+    1. 安装依赖，确保你安装了 node 16 或以上，然后运行
+
+        ```shell
+        npm install cross-env -g
+        npm install
+        ```
+
+    2. 设置环境变量。目前我们尚不支持 TLS 链接。详情请参考 : <https://github.com/wechaty/puppet-service/issues/160>
+
+        ```shell
+        export WECHATY_PUPPET_SERVICE_NO_TLS_INSECURE_CLIENT=true
+        ```
+
+    3. 打开 ```examples/ding-dong-bot.ts``` 。将 74-76 行改为如下代码
+
+        ```ts
+        puppetOptions: {
+          token: 'xxx', // 将你的 token 填写在此，它应该形式类似于 'puppet_workpro_xxxxxx'
+        }
+        ```
+
+    4. 使用 ```npm start``` 启动 bot ，你应该能看见二维码出现在你的终端中。
 
 ## WorkPro 与 WxWork 的对比
 
-WorkPro 支持 WxWork 的所有功能 （WxWork 的功能请参考 [WxWork发布博客](https://wechaty.js.org/2020/12/07/puppet-wxwork-beta-release/)）
-
-WorkPro 支持的新功能包括但不限于：
-
-- 查询群公告
-- 收发语音消息
-- 退出群聊
-- 主动退出登录
-- 扫码状态（已扫码未确定）
-- 视频号消息*
-- 位置消息*
-- 引用消息*
-- 打标签（包括个人标签和企业标签）*
-- 发朋友圈*
-- 标签相关事件（标签增删改、标签打与删除）*
-- 群公告事件*
-
-*带星号的功能需要体验版 wechaty 支持。
+| 功能 | WorkPro | WxWork | 备注 |
+| - | - | - | ----|
+| <消息> |
+| 文本消息 | ✅ | ✅ |
+| 图片消息 | ✅ | ✅ |
+| 视频消息 | ✅ | ✅ |
+| 文件消息 | ✅ | ✅ |
+| 表情消息 | ✅ | ✅ |
+| 表情包消息 | ✅ | ✅ |
+| 语音消息 | ✅ | ❌ |
+| 小程序消息 | ✅ | ✅ |
+| 图文链接消息 | ✅ | ✅ |
+| 名片消息 | ✅ | ✅ |
+| 位置消息 | ✅ | ❌ | 依赖体验版 Wechaty |
+| 引用消息 | ✅ | ❌ | 依赖体验版 Wechaty |
+| 视频号消息 | ✅ | ❌ | 依赖体验版 Wechaty |
+| <群> |
+| 创建群聊 | ✅ | ✅ |
+| 设置群公告 | ✅ | ✅ |
+| 获取群公告 | ✅ | ❌ |
+| 群二维码 | ❌ | ❌ | 在计划中 |
+| 拉人进群 | ✅ | ✅ |
+| 接受群邀请 | ✅ | ✅ |
+| 踢人出群 | ✅ | ✅ |
+| 退出群聊 | ✅ | ❌ |
+| 修改群名 | ✅ | ✅ |
+| 入群事件 | ✅ | ✅ | WxWork 仅限群主， WorkPro 无限制 |
+| 离群事件 | ✅ | ✅ | WxWork 仅限群主， WorkPro 无限制 |
+| 群名称事件 | ✅ | ✅ |
+| @群成员 | ✅ | ✅ |
+| 群成员列表 | ✅ | ✅ |
+| 群详情 | ✅ | ✅ |
+| 群公告变更事件 | ✅ | ❌ | 依赖体验版 Wechaty |
+| <联系人> |
+| 修改备注 | ✅ | ✅ |
+| 添加好友 | ✅ | ✅ |
+| 通过好友 | ✅ | ✅ |
+| 好友列表 | ✅ | ✅ |
+| 好友详情 | ✅ | ✅ |
+| 删除/被删除事件 | ✅ | ❌  |
+| 好友标签 | ✅ | ❌ | 依赖体验版 Wechaty |
+| 好友标签添加/删除事件 | ✅ | ❌ | 依赖体验版 Wechaty |
+| 标签添加/删除/修改事件 | ✅ | ❌ | 依赖体验版 Wechaty |
+| <其他> |
+| 登录事件 | ✅ | ✅ |
+| 扫码状态 | ✅ | ❌ |
+| 登出事件 | ✅ | ✅ |
+| 主动退出登录 | ✅ | ❌ |
+| 发朋友圈 | ✅ | ❌ | 依赖体验版 Wechaty |
