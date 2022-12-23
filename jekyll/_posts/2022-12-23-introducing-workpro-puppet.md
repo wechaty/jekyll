@@ -32,7 +32,7 @@ WorkPro 的架构是直接根据 wechaty-grpc 的相关功能，对齐的是 wec
 ## 如何申请试用
 
 对于社区感兴趣的朋友，我们提供7天的免费试用 token ，请用微信或企微扫码添加客服咨询。
-![image.png](/assets/2022/12-introducing-workpro-puppet/qrcode.png)
+![qrcode.webp](/assets/2022/12-introducing-workpro-puppet/qrcode.webp)
 
 ## WorkPro Getting-Started
 
