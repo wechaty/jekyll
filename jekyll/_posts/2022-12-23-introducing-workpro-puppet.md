@@ -16,7 +16,7 @@ image: /assets/2022/12-introducing-workpro-puppet/wecom.webp
 
 WorkPro 是 [RPAChat](http://rpachat.com/) 基于 wechaty-puppet-service 做的新 puppet service，RPAChat 来自美国硅谷，专注于通过 RPA 技术将 IM 软件变成机器人。RPAChat 正在为 P&G 、 L’ORÉAL Paris 、 Swisse 、 POPMART 等知名品牌提供基于对话的营销云解决方案。
 
-![RPAChat.webp](/assets/2022/12-introducing-workpro-puppet/RPAChat.webp)
+![rpachat.webp](/assets/2022/12-introducing-workpro-puppet/rpachat.webp)
 
 WxWork作为我们上一代的企业微信 puppet service，已经服务了大家超过两年的时间。由于设计和架构的原因， WxWork 存在一些无法解决的缺陷，例如：
 
