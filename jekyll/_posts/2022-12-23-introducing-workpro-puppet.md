@@ -14,7 +14,7 @@ image: /assets/2022/12-introducing-workpro-puppet/wecom.webp
 
 ## 关于 Wechaty Puppet Service WorkPro
 
-WorkPro 是 [juzibot](https://github.com/juzibot/wxwork-tester) 基于 wechaty-puppet-service 做的新 puppet service，句子互动围绕微信生态为客户提供智能营销和销售服务，帮助企业引流并实现转化，客户覆盖教育、保险、大健康等多个领域。曾入选百度AI加速器 和 Facebook 大陆首期加速器，获得PreAngel、Plug and Play，Y Combination, TSVC和阿尔法公社多家中美机构投资。
+WorkPro 是 [juzibot](https://juzibot.com/) 基于 wechaty-puppet-service 做的新 puppet service，句子互动围绕微信生态为客户提供智能营销和销售服务，帮助企业引流并实现转化，客户覆盖教育、保险、大健康等多个领域。曾入选百度AI加速器 和 Facebook 大陆首期加速器，获得PreAngel、Plug and Play，Y Combination, TSVC和阿尔法公社多家中美机构投资。
 
 WxWork作为我们上一代的企业微信 puppet service，已经服务了大家超过两年的时间。由于设计和架构的原因， WxWork 存在一些无法解决的缺陷，例如：
 
