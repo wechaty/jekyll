@@ -1,6 +1,6 @@
 ---
 title: "Wechaty Puppet Service Workpro 发布公告"
-author: Wang-Nan
+author: wang-nan
 categories: announcement
 tags:
   - news
