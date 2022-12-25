@@ -51,10 +51,11 @@ WorkPro 的架构是直接根据 wechaty-grpc 的相关功能，对齐的是 wec
         export WECHATY_PUPPET_SERVICE_NO_TLS_INSECURE_CLIENT=true
         ```
 
-    3. 修改 ```examples/ding-dong-bot.ts``` 。这一文件应该已经自动打开了。将 74-76 行改为如下代码
+    3. 修改 ```examples/ding-dong-bot.ts``` 。这一文件应该已经自动打开了。将 73-76 行改为如下代码
 
         ```ts
         puppetOptions: {
+          puppet: 'wechaty-puppet-service', // WorkPro 是一种 puppet-service ，因此这里应该填写 'wechaty-puppet-service' 而不是 'wechaty-puppet-workpro'
           token: 'xxx', // 将你的 token 填写在此，它应该形式类似于 'puppet_workpro_xxxxxx'
         }
         ```
@@ -76,10 +77,11 @@ WorkPro 的架构是直接根据 wechaty-grpc 的相关功能，对齐的是 wec
         export WECHATY_PUPPET_SERVICE_NO_TLS_INSECURE_CLIENT=true
         ```
 
-    3. 打开 ```examples/ding-dong-bot.ts``` 。将 74-76 行改为如下代码
+    3. 打开 ```examples/ding-dong-bot.ts``` 。将 73-76 行改为如下代码
 
         ```ts
         puppetOptions: {
+          puppet: 'wechaty-puppet-service', // WorkPro 是一种 puppet-service ，因此这里应该填写 'wechaty-puppet-service' 而不是 'wechaty-puppet-workpro'
           token: 'xxx', // 将你的 token 填写在此，它应该形式类似于 'puppet_workpro_xxxxxx'
         }
         ```
