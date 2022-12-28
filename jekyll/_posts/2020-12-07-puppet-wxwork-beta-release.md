@@ -10,6 +10,8 @@ tags:
 image: /assets/2020/12-07-wxwork/wecom.webp
 ---
 
+最新消息： [WorkPro](https://wechaty.js.org/2022/12/23/introducing-workpro-puppet/) 作为 WxWork 的继任者已经正式上线了！WxWork 现已废弃，请尽快转移到 WorkPro 上。
+
 恭喜 WxWork 作为 Wechaty 社区新的 Puppet Service 正式进入 Beta 版！经过历时一个月的测试，WxWork 现在已经通过社区验证，可以正式售卖给社区的小伙伴了！
 
 想要使用的，请点击[wxwork 购买链接](https://qiwei.juzibot.com/user/login?isWechaty=true) 购买吧！
