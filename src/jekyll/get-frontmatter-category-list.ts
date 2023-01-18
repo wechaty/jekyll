@@ -8,7 +8,7 @@ const getFrontmatterCategoryList = (filename: string): string[] => {
   let categoryList  = front['categories']
   if (!Array.isArray(categoryList)) {
     categoryList = categoryList
-      ? [categoryList]
+      ? [ categoryList ]
       : []
   }
 
