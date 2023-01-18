@@ -31,7 +31,7 @@ const getFileToTagsMap = async () => {
     let tagList  = front['tags']
     if (!Array.isArray(tagList)) {
       tagList = tagList
-        ? [tagList]
+        ? [ tagList ]
         : []
     }
 
@@ -44,7 +44,7 @@ const getFileToTagsMap = async () => {
 test('front matter key `tags` must contact at least one tag', async t => {
   const tagMap = await getFileToTagsMap()
 
-  for (const [file, tagList] of Object.entries(tagMap)) {
+  for (const [ file, tagList ] of Object.entries(tagMap)) {
     /**
      * Must has at least 1 tag
      */
@@ -85,7 +85,7 @@ test('front matter key `tags` must not black listed', async t => {
 
   const tagMap = await getFileToTagsMap()
 
-  for (const [file, tagList] of Object.entries(tagMap)) {
+  for (const [ file, tagList ] of Object.entries(tagMap)) {
     for (const tag of tagList) {
       const msg = isBlacked(tag)
       if (msg) {
@@ -132,7 +132,7 @@ test('tags naming convension', async t => {
 
   const typoToGoodTagMap = {} as { [typo: string]: undefined | string }
   Object.entries(recommendedTags)
-    .forEach(([goodTag, typoTagList]) => {
+    .forEach(([ goodTag, typoTagList ]) => {
       typoTagList.forEach(typoTag => { typoToGoodTagMap[typoTag] = goodTag })
     })
 
@@ -145,7 +145,7 @@ test('tags naming convension', async t => {
   //   console.info(tag)
   // }
 
-  for (const [file, tagList] of Object.entries(fileTagsMap)) {
+  for (const [ file, tagList ] of Object.entries(fileTagsMap)) {
     for (const tag of tagList) {
       const recommendedTag = hasTypoTag(tag)
       if (recommendedTag) {
