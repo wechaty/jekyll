@@ -6,7 +6,7 @@ const getFrontmatterTeaserList = (filename: string): string[] => {
   const front   = yfm.loadFront(content)
 
   if (front['image']) {
-    return [front['image']]
+    return [ front['image'] ]
   }
   return []
 }
