@@ -1,7 +1,7 @@
 ---
 name: Hou Rui（侯睿）
 site: https://github.com/Houruirui
-avatar: /assets/2023/02-wechaty-flask/02-wechaty-flask/avatar.webp
+avatar: /assets/contributors/houruirui/avatar.webp
 bio: 代码爱好者
 email: ihourui@gmail.com
 twitter: 

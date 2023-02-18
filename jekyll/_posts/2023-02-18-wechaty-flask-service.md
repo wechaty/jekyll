@@ -3,16 +3,16 @@ title: "使用wechaty与Flask搭建消息通知服务"
 author: Houruirui
 categories: project
 tags:
-  - notification
-  - flask
+  - productivity
+image: /assets/2023/02-wechaty-flask-service/wechaty.webp
 ---
 [![Powered by Wechaty](https://img.shields.io/badge/Powered%20By-Wechaty-green.svg)](https://wechaty.js.org)
 [![Wechaty Contributor Program](https://img.shields.io/badge/Wechaty-Contributor%20Program-green.svg)](https://wechaty.js.org/docs/contributor-program)
 [![Juzi.BOT Developer Program](https://img.shields.io/badge/Wechaty%20Contributor%20Program-Juzi.BOT-orange.svg)](https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty/)
 
 > 作者: [Houruirui](https://github.com/Houruirui)，代码爱好者。
-> 
-[![Wechaty-Notification](/assets/2023/wechaty.webp)](https://github.com/Houruirui/wechaty-flask)
+
+[Wechaty-Flask-Service](https://github.com/Houruirui/wechaty-flask)
 
 <!-- more -->
 
@@ -22,25 +22,29 @@ tags:
 
 让我们进入正题！
 
-
 ## 环境和依赖
 
 python
-aiohttp
+aioflask
 asyncio
 
-##Wechaty Puppet Hostie部署：
+## Wechaty Puppet Hostie部署：
+
 因为原生的wechaty是基于JavaScript和TypeScript写的，所以需要通过docker搭建Wechaty Puppet Hostie 服务作为中转， 从而可以通过python调用。
+
 - **部署前置准备:**
+
 一个满足以下三点要求的服务器：
 
 >Public IP
 >Public Port
 >Docker
+
 - **部署Wechaty Puppet Hostie**
 
 具体代码如下（本人服务器为 Ununtu 18.04）
-```
+
+```bash
 #! /usr/bin/bash
 
 export WECHATY_LOG="verbose"
@@ -59,15 +63,19 @@ export WECHATY_TOKEN=$(curl -s https://www.uuidgenerator.net/api/version4)
   -p "$WECHATY_PUPPET_SERVER_PORT:$WECHATY_PUPPET_SERVER_PORT" \
   wechaty/wechaty
 ```
+
 代码中的WECHATY_PUPPET_PADLOCAL_TOKEN是需要向官方申请，可以得到的一个可以试用7天的token，后续通过社区的激励计划，还可以免费获得时效更长的token。[详情参见这里](https://wechaty.js.org/docs/contributor-program/)。
 
 - **验证Wechaty Puppet Hostie**
-访问 https://api.chatie.io/v0/hosties/WECHATY_TOKEN ，其中WECHATY_TOKEN是指你刚刚自行设定的Token，当返回结果为服务器的Public IP时则说明部署成功，为0.0.0.0时则说明部署失败~
+
+访问 <https://api.chatie.io/v0/hosties/WECHATY_TOKEN>, 其中WECHATY_TOKEN是指你刚刚自行设定的Token，当返回结果为服务器的Public IP时则说明部署成功，为0.0.0.0时则说明部署失败~
 
 ## 项目思路
-搭建完中转服务，现在我们需要集中注意力在需求和机器人的搭建上面。市场行情数据来源于国内三大交易所之一[币安](https://binance.com/)。为了获得更加及时的数据，我决定采用websocket来搭建我们的服务。关于机器人方面，我读了官方examples里面的代码发现机器人都是继承Wechaty基类来通过自定义回调函数来实现各种功能。利用事件驱动的回调函数这样是很被动的，而我想得到一个可直接调用的Wechaty对象，不通过start()函数进入事件循环监听, 而可以主动的发送信息。经过一天的阅读代码和自我摸索，终于实现了创建一个可以直接调用的机器人对象，稍后请参考详细代码，其中最重要的还是需要进入事件监听，然后在监听到成功登录的事件以后，中断监听，返回已经登录好的机器人对象， 从而实现直接调用。
 
-首先我们初始化机器人对象。我是想吧消息通知发送到群聊当中，在使用过程中发现，在初始化好机器人后并没有加载好微信群，所以我们需要先用官方提供的examples来获取到微信群的id，然后手动加载微信群。同时，我还发现如果同步的发送消息，falsk需要5-10s才能处理完请求，所以在这里我使用了用线程处理不同的请求，实现了消息的并发。
+关于机器人方面，我读了官方examples里面的代码发现机器人都是继承Wechaty基类来通过自定义回调函数来实现各种功能。利用事件驱动的回调函数这样是很被动的，而我想得到一个可直接调用的Wechaty对象，不通过start()函数进入事件循环监听, 而可以主动的发送信息。经过一天的阅读代码和自我摸索，终于实现了创建一个可以直接调用的机器人对象，稍后请参考详细代码，其中最重要的还是需要进入事件监听，然后在监听到成功登录的事件以后，中断监听，返回已经登录好的机器人对象， 从而实现直接调用。
+
+首先我们初始化机器人对象，我是想把消息通知发送到群聊当中，在使用过程中发现，在初始化好机器人后并没有加载好微信群，所以我们需要先用官方提供的examples来获取到微信群的id，然后手动加载微信群。同时，我还发现如果同步的发送消息，flask需要5-10s才能处理完请求，所以在这里我使用了用线程处理不同的请求，实现了消息的并发。
+
 ```python
 from aioflask import Flask
 from aioflask import request
@@ -92,7 +100,6 @@ WECHATY_PUPPET = 'wechaty-puppet-service'
 os.environ['WECHATY_PUPPET_SERVICE_TOKEN'] = WECHATY_PUPPET_SERVICE_TOKEN
 os.environ['WECHATY_PUPPET'] = WECHATY_PUPPET
 os.environ['WECHATY_PUPPET_SERVICE_ENDPOINT'] = "0.0.0.0:9001"
-
 
 class WechatBot():
 
@@ -359,8 +366,6 @@ if __name__ == '__main__':
 
 至此我们的基本框架已经搭好，大家可以通过本例的基础代码实现更复杂的工程。
 
-
 ## 感谢
 
 在最后我们要感谢所有为我们提供工具和服务的团队和个人。特别感谢开源项目[Wechaty](https://github.com/wechaty/wechaty)团队和免费提供服务的padLocal团队。
-
