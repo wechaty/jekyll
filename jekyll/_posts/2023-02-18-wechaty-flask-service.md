@@ -1,6 +1,6 @@
 ---
 title: "使用wechaty与Flask搭建消息通知服务"
-author: Houruirui
+author: houruirui
 categories: project
 tags:
   - productivity
