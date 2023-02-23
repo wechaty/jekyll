@@ -74,9 +74,9 @@ image: /assets/2023/02-wechaty-invited-to-gaidc/2023-gaidc.webp
 
 26号下午 13:00-15:00 在小舞台区域（离集市专区步行1～2min），各项目代表也会受邀上舞台，分享各自项目的建立初衷、发展状况和未来愿景等等，每家 5～6min 闪电演讲的时间，大家也别错过哦！
 
-![image-7.webp](/assets/2023/02-wechaty-invited-to-gaidc/image-8.webp)
+![image-7.webp](/assets/2023/02-wechaty-invited-to-gaidc/image-7.webp)
 
-![image-7.webp](/assets/2023/02-wechaty-invited-to-gaidc/image-8.webp)
+![image-8.webp](/assets/2023/02-wechaty-invited-to-gaidc/image-8.webp)
 
 ## 报名方式
 
