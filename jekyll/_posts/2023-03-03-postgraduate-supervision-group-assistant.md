@@ -1,8 +1,8 @@
 ---
 title: "考研监督群管 - 考研路上的好帮手"
-author: Jackie Zhu
+author: imooooc
 categories:
-  - acticle
+  - article
 image: /assets/2023/03-postgraduate-supervision-group-assistant/cover_title.webp
 tags:
   - chatbot
