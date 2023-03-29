@@ -1,6 +1,6 @@
 ---
 title: "a free wechat openai qa-bot by wechaty-puppet-xp"
-author: atorber
+author: choogoo
 categories: article
 tags:
   - blog
