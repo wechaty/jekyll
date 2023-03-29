@@ -26,115 +26,89 @@ Chatbot  !  !  !
 
 - [微信对话开放平台](https://openai.weixin.qq.com/) —— 5分钟零基础免费一键搭建智能对话机器人，并应用于微信公众号、小程序、企业网站、APP等
 
+## 已经实现的功能
+
+|功能|描述|
+|--|--|
+|消息存档|群聊天消息存档到表格（基于vika维格表，免费）|
+|定时消息|定时消息发送，支持单次定时和周期消息发送给指定好友或群|
+|智能问答|可以自定义问答内容，智能匹配答案，支持相似问题匹配，例如“什么时候到货？”“亲，几时到货”“亲，什么时候到货”均能匹配（基于微信对话开放平台，免费）|
+|千群千面|多个群相同问题不同回答内容,例如“何时到货？”,A群中回答“今天到”，B群中回答“明天到货”|
+|群白名单|支持配置群白名单，白名单内群开启机器人问答，未配置问题答案的群不会受到机器人干扰|
+|客服后台|简单客服后台，可以把群内消息按发言人列表区分|
+|MQTT消息推送|支持配置一个MQTTQ消息队列，将消息推送到队列当中|
+|远程控制发消息|支持通过MQTT控制机器人向指定好友或群发消息|
+|非群主链接检测|支持非群主小程序卡片、网页链接分享检测，自动提醒、警告发送者撤回|
+|团购订单转换|支持快团团订货单转换，原始表发送到群即可自动转换为按楼栋统计表|
+
 ## 快速入门
 
-1.clone （下载）项目代码,运行以下命令：
+[手把手教程](https://www.yuque.com/atorber/oegota/zm4ulnwnqp9whmd6)
 
-  ```Shell
-  git clone https://github.com/atorber/wechaty-wx-openai-link.git
-  ```
-
-  考虑对git不熟悉的用户，可以在页面直接下载项目.zip到电脑上,下载后解压缩即可
-
-  <img src="https://user-images.githubusercontent.com/104893934/167073011-7dd7b652-d384-4ac4-8adb-fba385f24981.png" width="60%">
-
-  clone或下载解压缩之后的目录是这样
-
-  <img src="https://user-images.githubusercontent.com/104893934/167073103-dfe07476-eb38-4bd9-9f57-2485fdb470eb.png" width="60%">
-
-2.安装nodejs，项目的tools目录下有相应的安装包node-v16.15.0-x64.zip，解压缩并安装；下载WeChatSetup-v3.3.0.115并安装（点击下载[WeChatSetup-v3.3.0.115.exe](https://github.com/wechaty/wechaty-puppet-xp/releases/download/v0.5/WeChatSetup-v3.3.0.115.exe)）
-
-> 特别注意目前支持的微信客户端版本为 WeChatSetup-v3.3.0.115,如果电脑上已经安装了其他版本的微信，需要卸载之后安装项目中的版本
-
-3.安装依赖，假设当前系统为win10，在系统搜索栏中输入 powershell ，选择第一个结果
-
-<img src="https://user-images.githubusercontent.com/104893934/167073290-2dbbf1b8-68fd-4588-b583-5336e934affc.png" width="60%">
-
-打开Windows PoweShell
-
-<img src="https://user-images.githubusercontent.com/104893934/167073308-d39df0f2-3709-4299-815a-6f4af7bd6c51.png" width="60%">
-
-到项目目录下用鼠标点击地址栏复制文件路径，例如我当前的路径为 C:\Users\wechaty\Documents\GitHub\wechaty-wx-openai-link
-
-<img src="https://user-images.githubusercontent.com/104893934/167073318-850e2388-fa14-466a-96dd-132c0d6eddb1.png" width="60%">
-
-在复制如下命令在Windows PoweShell中执行
+1.下载源码并安装依赖
 
 ```Shell
-cd C:\Users\wechaty\Documents\GitHub\wechaty-wx-openai-link
+git clone <https://github.com/choogoo/wechat-openai-qa-bot.git>
+cd ./wechat-openai-qa-bot
 npm install
 ```
 
-4.微信对话开放平台注册，访问[https://openai.weixin.qq.com/](https://openai.weixin.qq.com/)，导入示例数据及获取token
+2.分别登陆[微信对话开放平台](https://openai.weixin.qq.com/)和[vika维格表](https://spcp52tvpjhxm.com.vika.cn/?inviteCode=55152973)官网注册账号并获取token
 
-> 示例问答中的 xxx@chatroom 为你需要引入QA的群，此处特别注意，必须在回答中以 **QA+xxx@chatroom+回答内容** 才能达到在不同的群内有不同回答的效果
+3.在电脑上登陆微信，微信版本必须为[WeChatSetup-v3.6.0.18.exe](https://github.com/tom-snow/wechat-windows-versions/releases/download/v3.6.0.18/WeChatSetup-3.6.0.18.exe)
 
-扫码登陆
+4.修改./config.js配置文件
 
-<img src="https://user-images.githubusercontent.com/104893934/167073158-cd9ae604-f3a5-4f32-8bae-a719e945cfd8.png" width="60%">
+快速开始仅需要修改VIKA_TOKEN、VIKA_SPACENAME配置项,其他配置项暂时无需修改
 
-填写机器人信息
+```javascript
+/* eslint-disable sort-keys */
+// 配置文件，所有配置必须齐全，补充空白配置项，其他配置项可按需要修改
+const configs = {
+  VIKA_TOKEN: '替换成自己的维格表token', // VIKA维格表token
+  VIKA_SPACENAME: '替换成你的维格表空间名称', // VIKA维格表空间名称，修改为自己的空间名称
+}
 
-<img src="https://user-images.githubusercontent.com/104893934/167073177-555d84c3-c7cb-4d05-a6b4-69fe82c8ce64.png" width="60%">
-
-批量导入问答
-
-<img src="https://user-images.githubusercontent.com/104893934/167073422-88ca1ad2-f364-45b2-a33e-256213e93ac1.png" width="60%">
-
-选择项目中tools目录下的示例问答
-
-<img src="https://user-images.githubusercontent.com/104893934/167073438-5e631b72-b9a6-4727-b980-49a851654224.png" width="60%">
-
-上传问答
-
-<img src="https://user-images.githubusercontent.com/104893934/167073484-3dcb48fa-b85d-4b57-9036-9ba5e9b76781.png" width="60%">
-
-导入成功后问答列表
-
-<img src="https://user-images.githubusercontent.com/104893934/167073492-20c382bd-427c-4a16-84c7-1ae28fe5e83c.png" width="60%">
-
-上线发布
-
-<img src="https://user-images.githubusercontent.com/104893934/167073510-bc4f2f59-97a9-4b31-b192-0f7b83e467dc.png" width="60%">
-
-发布成功
-
-<img src="https://user-images.githubusercontent.com/104893934/167073537-ba9d5d50-c29d-46cf-aba5-8105a5d9686f.png" width="60%">
-
-应用绑定，获取token
-
-<img src="https://user-images.githubusercontent.com/104893934/167073557-022bae19-8092-4909-8d33-d11466b266b2.png" width="60%">
-
-填写申请信息，提交后马上就会审核通过
-
-<img src="https://user-images.githubusercontent.com/104893934/167073582-a38f19f0-0610-4c84-80cc-ef8fab4e9938.png" width="60%">
-
-开通成功，复制token备用
-
-<img src="https://user-images.githubusercontent.com/104893934/167073600-02b5d7ef-da79-49ea-9c64-84182f3dc517.png" width="60%">
-
-5.启动系统，在获取token之后，准备启动系统
-
-> 替换自己的微信对话开放平台token，如果set环境变量失败，可以尝试在index.ts中直接设置WX_TOKEN
-
-```Shell
-set WX_TOKEN=5jr7a*************************4u8B
-npm run start
+export default configs
 ```
 
-顺利的话，恭喜你已经拥有一个QA机器人，接下来你需要在简单问答中继续导入你需要的问答内容
+> 只有加入到roomWhiteList里的群才会开启只能问答机器人
 
-不顺利的话...请截图留言...
+5.初始化系统表，先运行，系统会自动在维格表中创建好初始化表格
 
-## 效果
+```Shell
+npm run sys-init
+```
 
-- 程序运行成功
+在维格表查看系统表是否创建成功
 
-<img src="https://user-images.githubusercontent.com/104893934/167073620-ef370d68-66be-4cd5-bd0f-d4e43b7d2917.png" width="60%">
+6.程序默认使用wechaty-puppet-wechat，三大系统均可使用
 
-- 问答
+7.启动程序
 
-<img src="https://user-images.githubusercontent.com/104893934/167064460-5e88dcaf-32c8-464f-9fe1-1b9efb272cd7.png" width="60%">
+```Shell
+npm start
+```
+
+出现二维码之后，扫码二维码登陆微信
+
+8.开启智能问答功能
+
+8.1 设置微信对话平台token，填写"环境变量"表中的 【对话平台token】、【对话平台EncodingAESKey】并在"功能开关"表中开启智能问答
+
+添加一个简单问题到微信对话开放平台，测试对应群内智能问答内容
+
+8.2 如果不希望每个群都开启智能问答，需设置群白名单,首先需要将上图中的群白名单开关设置为开启
+
+然后将群加入到问答白名单，在“群白名单”表中，加入需要开启的群ID（roomid），群ID在消息中查看(在群里发一条消息，然后控制台查看或在维格表中查找)
+
+详细操作参考 [手把手教程](https://www.yuque.com/atorber/oegota/zm4ulnwnqp9whmd6)
+
+8.4 重启程序，在指定群测试问答
+
+## 效果展示
+
+去 [效果展示图文](https://www.yuque.com/atorber/oegota/tbsokg3pqu5vk50y) 查看
 
 ## 最佳实践
 
