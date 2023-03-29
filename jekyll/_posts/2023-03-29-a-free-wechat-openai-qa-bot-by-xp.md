@@ -6,7 +6,7 @@ tags:
   - blog
   - study
   - introduction
-image: /assets/2022/05-a-free-wechat-openai-qa-bot-by-xp/rare-book.webp
+image: /assets/2023/03-a-free-wechat-openai-qa-bot-by-xp/rare-book.webp
 ---
 
 {% include iframe.html src="https://www.bilibili.com/video/BV1Y54y1f7v1?share_source=copy_web" %}
