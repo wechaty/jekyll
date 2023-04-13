@@ -80,7 +80,7 @@ test('all remote images linked from the post should be exist.', async t => {
     // sleep 3 seconds before next check
     await new Promise(resolve => setTimeout(resolve, 3000))
 
-    for (const [i, result] of resultList.entries()) {
+    for (const [ i, result ] of resultList.entries()) {
       if (!result) {
         t.fail(`"${remoteImageList[i]}" should be http response ok`)
       }
