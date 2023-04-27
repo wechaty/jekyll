@@ -29,7 +29,7 @@ npm install wechaty
 npm install wechaty-puppet-wxkf
 ```
 
-需要注意的是， wechaty-puppet-wxkf 需要 wechaty 1.0 以上版本已运行。
+需要注意的是， wechaty-puppet-wxkf 需要 wechaty 1.0 以上版本以运行。
 
 ### 配置环境变量
 
@@ -58,7 +58,7 @@ bot.start()
 
 ### 身份认证
 
-#### 如何获取 Key
+#### 如何获取身份信息
 
 如前文所说，以及 ding-dong bot 所示， wechaty-puppet-wxkf 中不会产生 scan 事件，因此也无法通过扫码来登录，这并非是弄错了。微信客服的登录是利用企微的“微信客服”应用。你可以在你的企业后台管理微信客服应用。
 
@@ -168,7 +168,7 @@ export PUPPET_WXKF_SELF_ENDPOINT=http://127.0.0.1:8080
 
 ### 架构图
 
-![structure-2.webp](/assets/2023/04-introducing-wechaty-puppet-wxkf/structure-2.webp)
+![structure-3.webp](/assets/2023/04-introducing-wechaty-puppet-wxkf/structure-3.webp)
 
 ### 如何使用
 
@@ -193,7 +193,7 @@ ACCESS_TOKEN_URL: 这是一个可选变量。因为直接从企业微信获取 a
 
 尽管上图所示的架构可以正常工作，但并非是最佳实践。如前文所说，一个企业微信的应用可能承担许多职责，而微信客服只是其中之一，因此最好有一个专门的回调服务来接受和分发所有的企微回调。同时，接从企业微信获取 accessToken 的接口是有调用频率限制的，因此理想的方式是通过一个其他服务来调用、刷新和缓存 accessToken 。这一接口的实现方式应该与企业微信文档中一致。因此，最理想的架构图如下所示。
 
-![structure-3.webp](/assets/2023/04-introducing-wechaty-puppet-wxkf/structure-3.webp)
+![structure-2.webp](/assets/2023/04-introducing-wechaty-puppet-wxkf/structure-2.webp)
 
 在这一架构中， WXKF-Manager 不再直接接收企微回调，而是通过一个 Gateway 服务来接受和分发。企微的回调地址可以配置为 `http://www.example.com/callback/{corpId}`。他的数据库中存有对应企业的`aesEncodingKey`和`token`，因此他可以解密回调信息。
 
