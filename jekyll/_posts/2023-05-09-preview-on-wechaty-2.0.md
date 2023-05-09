@@ -4,7 +4,6 @@ author: wang-nan
 categories: announcement
 tags:
   - talk
-  - wechaty
   - meetup
   - news
 image: /assets/2023/05-preview-on-wechaty-2.0/logo.webp
