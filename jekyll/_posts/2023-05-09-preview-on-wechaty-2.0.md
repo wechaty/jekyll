@@ -9,7 +9,41 @@ tags:
 image: /assets/2023/05-preview-on-wechaty-2.0/logo.webp
 ---
 
-使用 WorkPro Token 的朋友们可能知道， wechaty 有一个体验版， @juzi/wechaty，可以体验一些 wechaty 暂不支持的功能，例如朋友圈、引用、@所有人等。我们一直在致力于将其中的功能合并到社区主分支，使得更多的人可以用上这些功能。最近我们与李老师在一个短会上（可以在[这里](https://docs.google.com/document/d/1fVCk8qRYc4RKGMf2UY5HOe07hEhPUOpGC34v88GEFJg/edit#heading=h.si1xxj2xji7f)查看摘要），交流了对一些新功能设计的观点，并且基本达成了一致。这可以说向这些新功能在主分支上线迈进了一大步。对于这些功能的进度追踪可以参考这个 [issue](https://github.com/wechaty/wechaty/issues/2535) 。这里简单介绍一下。
+使用 WorkPro Token 的朋友们可能知道， wechaty 有一个体验版， @juzi/wechaty，可以体验一些 wechaty 暂不支持的功能，例如朋友圈、引用、@所有人等。我们一直在致力于将其中的功能合并到社区主分支，使得更多的人可以用上这些功能。最近我们与[Huan](https://wechaty.js.org/contributors/huan/)在一个短会上（可以在[这里](https://docs.google.com/document/d/1fVCk8qRYc4RKGMf2UY5HOe07hEhPUOpGC34v88GEFJg/edit#heading=h.si1xxj2xji7f)查看摘要），交流了对一些新功能设计的观点，并且基本达成了一致。这可以说向这些新功能在主分支上线迈进了一大步。对于这些功能的进度追踪可以参考这个 [issue](https://github.com/wechaty/wechaty/issues/2535) 。这里简单介绍一下。
+
+会议讨论内容：
+
+- 可能需要一个 ```messagePreview``` 来在实际下载媒体前获取
+
+  - 使用 uuid FileBox 来实现懒加载
+
+  - 使用 FileBox 的 metadata 来传输元数据
+
+- 新的系统消息
+
+  = 如果 IM 有对应的系统消息，则可以新增事件
+
+  - 将 Dirty 触发到 bot 层来实现数据更新通知
+
+- 引用消息
+
+  - 使用 Post 和 message.toPost 实现
+
+- 朋友圈的 Post
+
+  - sayableList 中的 payload 需要构造为 message，其中的 talker 和 listener 为 bot 自己
+
+  - 朋友圈的位置使用 sayable 中的 Location 作为 workaround
+
+  - 可见列表使用 sayable 中的 Contact 作为 workaround
+
+- @所有人
+
+  - @群聊 ID 来表示@所有人
+
+  - 需要新版本的 messageSendText 方法传递 contactId ，底层构造消息体
+
+基于会议内容，我们提出了 Wechaty 2.0 功能预览：
 
 - 新功能：视频号消息。
   
