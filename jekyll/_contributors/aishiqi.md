@@ -2,7 +2,7 @@
 name: Shiqi Ai
 site: https://github.com/aishiqi
 avatar: /assets/contributors/aishiqi/avatar.webp
-bio: 
+bio: A software engineer who has lots of hobbies.
 email: aishiqi1992@gmail.com
 ---
 
