@@ -39,7 +39,7 @@ const bot = WechatyBuilder.build({
 WECHATY_PUPPET_SERVICE_AUTHORITY="token-service-discovery-test.juzibot.com"
 WECHATY_PUPPET_SERVICE_NO_TLS_INSECURE_CLIENT=true
 
-其他的和官方dingdong示例代码差不多。
+# 其他的和官方dingdong示例代码差不多。
 ```
 
 注意
