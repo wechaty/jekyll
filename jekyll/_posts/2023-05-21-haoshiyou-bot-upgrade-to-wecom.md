@@ -44,7 +44,7 @@ WECHATY_PUPPET_SERVICE_NO_TLS_INSECURE_CLIENT=true
 
 注意
 
-- 句子的发现服务器在美国连接不太稳定，Residential网络还行，虽然中途也出现过连不上的情况，不过之后就没有发生了。在Digital Ocean租用的服务器从来就没有能连接上过，显示连接超时。于是我们租了阿里云主机，发现Github又不稳定，不过可以通过SSH直接push，命令如下。国内ChatGPT API也不能访问，后面详细说。
+- 句子的发现服务器在美国连接不太稳定，Residential网络还行，虽然中途也出现过连不上的情况，不过之后就没有发生了。在Digital Ocean租用的服务器从来就没有能连接上过，显示连接超时。于是我们租了阿里云主机，发现Github又不稳定，不过可以通过SSH直接push，命令如下。国内ChatGPT API也不能访问，后面详细说。访问MongoDB Atlas没有问题。
 
   ```bash
   git remote add server ssh://root@YourServerIP:~/path_to_your_project/
@@ -63,7 +63,7 @@ WECHATY_PUPPET_SERVICE_NO_TLS_INSECURE_CLIENT=true
 
   可用字段可以在源码中搜索 `%%`。
 
-  我们使用ChatGPT做信息的处理，以及实现AI客服。国内是无法访问ChatGPT的，我们用NodeJS做了一个简单的代理服务器，代码如下。注意，这里使用的是http协议，不安全，需要加密。
+  我们使用 ChatGPT 进行信息处理和实现 AI 客服。在国内，无法直接访问 ChatGPT，因此我们使用 NodeJS 创建了一个简单的代理服务器，下面是代码示例。请注意，此处使用的是 HTTP 协议，它不安全，需要进行加密处理。
 
   ```javascript
     import express from 'express';
@@ -172,6 +172,18 @@ WECHATY_PUPPET_SERVICE_NO_TLS_INSECURE_CLIENT=true
         }
     }
   ```
+
+ChatGPT 默认会自由发挥，例如我们并不是通过公众号添加的：
+
+![image3.jpg](/assets/2023/06-haoshiyou-bot-upgrade-to-wecom/image3.jpg)
+
+我们把好室友的介绍，以及我们对ChatGPT的要求放到系统消息（上述的`systemMessage`）中，就可以了。
+
+![image1.jpg](/assets/2023/06-haoshiyou-bot-upgrade-to-wecom/image1.jpg)
+
+![image2.png](/assets/2023/06-haoshiyou-bot-upgrade-to-wecom/image2.png)
+
+不过ChatGPT对`systemMessage`的权重比较低，偶尔也会忽略。
 
 目前好室友机器人已经运行了一段时间了，Wechaty和juzi puppet都很稳定。
 我们会继续开发好室友机器人V2，将支持租房之外更多的活动群，以便更好的服务湾区小伙伴。
