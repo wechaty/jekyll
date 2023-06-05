@@ -1,9 +1,9 @@
 ---
 title: "好室友机器人升级为企业微信, 结合使用ChatGPT"
-author: Shiqi Ai
+author: aishiqi
 categories: article
 tags:
-  - wechaty
+  - chatgpt
   - haoshiyou
   - bayarea
 image: /assets/2023/06-haoshiyou-bot-upgrade-to-wecom/logo.webp
