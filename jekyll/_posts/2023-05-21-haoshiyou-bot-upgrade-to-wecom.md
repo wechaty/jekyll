@@ -15,8 +15,51 @@ image: /assets/2023/05-haoshiyou-bot-upgrade-to-wecom/logo.webp
 
 Setup：
 
+我们使用 `wechaty-puppet-service`
+
 ```Text
-我们使用句子Fork的版本，例如
+package.json:
+"wechaty": "^1.20.2",
+"wechaty-puppet-service": "^1.19.9"
+```
+
+```javascript
+import { WechatyBuilder} from 'wechaty'
+
+const bot = WechatyBuilder.build({
+  name: 'haoshiyou-bot',
+  puppet: 'wechaty-puppet-service',
+  puppetOptions: {
+    token: 'puppet_workpro_你的Token',
+  }
+})
+```
+
+环境变量设置句子的发现服务器
+
+```bash
+WECHATY_PUPPET_SERVICE_AUTHORITY="token-service-discovery-test.juzibot.com"
+WECHATY_PUPPET_SERVICE_NO_TLS_INSECURE_CLIENT=true
+```
+
+其他的和官方dingdong示例代码差不多。
+
+句子Fork的版本会有一些新功能，例如以下新的事件：
+
+```Text
+post-comment
+post-tap
+room-announce
+tag
+tag-group
+```
+
+更多详情请看 [Diff](https://github.com/wechaty/puppet/compare/main...juzibot:wechaty-puppet:main#diff-6125e4db0556b5355b2c93d63632b29f6192003c9b3e36835d0c9f75f961fe9dR17)
+
+如果需要这些功能的话，需要以下改动：
+
+```Text
+package.json:
 "@juzi/wechaty": "^1.0.52",
 "@juzi/wechaty-puppet-service": "^1.0.51",
 ```
@@ -32,14 +75,6 @@ const bot = WechatyBuilder.build({
     token: 'puppet_workpro_你的Token',
   }
 })
-```
-
-```bash
-# 环境变量设置句子的发现服务器
-WECHATY_PUPPET_SERVICE_AUTHORITY="token-service-discovery-test.juzibot.com"
-WECHATY_PUPPET_SERVICE_NO_TLS_INSECURE_CLIENT=true
-
-# 其他的和官方dingdong示例代码差不多。
 ```
 
 注意
