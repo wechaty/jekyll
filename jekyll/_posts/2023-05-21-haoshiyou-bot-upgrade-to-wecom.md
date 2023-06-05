@@ -42,41 +42,6 @@ WECHATY_PUPPET_SERVICE_AUTHORITY="token-service-discovery-test.juzibot.com"
 WECHATY_PUPPET_SERVICE_NO_TLS_INSECURE_CLIENT=true
 ```
 
-其他的和官方dingdong示例代码差不多。
-
-句子Fork的版本会有一些新功能，例如以下新的事件：
-
-```Text
-post-comment
-post-tap
-room-announce
-tag
-tag-group
-```
-
-更多详情请看 [Diff](https://github.com/wechaty/puppet/compare/main...juzibot:wechaty-puppet:main#diff-6125e4db0556b5355b2c93d63632b29f6192003c9b3e36835d0c9f75f961fe9dR17)
-
-如果需要这些功能的话，需要以下改动：
-
-```Text
-package.json:
-"@juzi/wechaty": "^1.0.52",
-"@juzi/wechaty-puppet-service": "^1.0.51",
-```
-
-```javascript
-注意这里使用'@juzi/wechaty' 和'@juzi/wechaty-puppet-service'
-import { WechatyBuilder} from '@juzi/wechaty'
-
-const bot = WechatyBuilder.build({
-  name: 'haoshiyou-bot',
-  puppet: '@juzi/wechaty-puppet-service',
-  puppetOptions: {
-    token: 'puppet_workpro_你的Token',
-  }
-})
-```
-
 注意
 
 - 句子的发现服务器在美国连接不太稳定，Residential网络还行，虽然中途也出现过连不上的情况，不过之后就没有发生了。在Digital Ocean租用的服务器从来就没有能连接上过，显示连接超时。于是我们租了阿里云主机，发现Github又不稳定，不过可以通过SSH直接push，命令如下。国内ChatGPT API也不能访问，后面详细说。访问MongoDB Atlas没有问题。
