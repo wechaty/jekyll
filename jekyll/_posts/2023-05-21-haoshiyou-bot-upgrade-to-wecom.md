@@ -6,7 +6,7 @@ tags:
   - chatgpt
   - haoshiyou
   - bayarea
-image: /assets/2023/06-haoshiyou-bot-upgrade-to-wecom/logo.webp
+image: /assets/2023/05-haoshiyou-bot-upgrade-to-wecom/logo.webp
 ---
 
 
@@ -175,13 +175,13 @@ WECHATY_PUPPET_SERVICE_NO_TLS_INSECURE_CLIENT=true
 
 ChatGPT 默认会自由发挥，例如我们并不是通过公众号添加的：
 
-![image3.webp](/assets/2023/06-haoshiyou-bot-upgrade-to-wecom/image3.webp)
+![image3.webp](/assets/2023/05-haoshiyou-bot-upgrade-to-wecom/image3.webp)
 
 我们把好室友的介绍，以及我们对ChatGPT的要求放到系统消息（上述的`systemMessage`）中，就可以了。
 
-![image1.webp](/assets/2023/06-haoshiyou-bot-upgrade-to-wecom/image1.webp)
+![image1.webp](/assets/2023/05-haoshiyou-bot-upgrade-to-wecom/image1.webp)
 
-![image2.webp](/assets/2023/06-haoshiyou-bot-upgrade-to-wecom/image2.webp)
+![image2.webp](/assets/2023/05-haoshiyou-bot-upgrade-to-wecom/image2.webp)
 
 不过ChatGPT对`systemMessage`的权重比较低，偶尔也会忽略。
 
