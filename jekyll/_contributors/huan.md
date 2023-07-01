@@ -1,5 +1,5 @@
 ---
-name: Huan LI (李卓桓)
+name: Huan Li
 site: https://github.com/huan
 avatar: /assets/contributors/huan/avatar.webp
 bio: Creator of Wechaty, building chatbots for fun.
