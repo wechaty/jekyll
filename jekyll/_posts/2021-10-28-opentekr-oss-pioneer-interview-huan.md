@@ -7,7 +7,6 @@ tags:
   - opentekr
   - opensource
   - news
-  - sticky
 image: /assets/2021/10-opentekr-oss-pioneer-interview-huan/open-tekr-huan.webp
 ---
 

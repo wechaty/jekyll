@@ -6,6 +6,8 @@ tags:
   - microsoft
   - regional-director
   - summit
+  - sticky
+  - news
 image: /assets/2022/04-wechaty-microsoft-rd-summit/splash-rd-talk.webp
 ---
 
