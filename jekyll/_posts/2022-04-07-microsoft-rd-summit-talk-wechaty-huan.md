@@ -8,7 +8,7 @@ tags:
   - summit
   - sticky
   - news
-image: /assets/2022/04-wechaty-microsoft-rd-summit/splash-rd-talk.webp
+image: /assets/2022/04-microsoft-rd-summit-talk-wechaty-huan/splash-rd-talk.webp
 ---
 
 This is my speaking at Microsoft RD Summit on April 7, 2022.
