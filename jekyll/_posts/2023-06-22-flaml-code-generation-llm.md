@@ -1,7 +1,7 @@
 ---
 title: "Community meeting: generate Wechaty code with LLM & FLAML"
 author: huan
-categories: meeting
+categories: event
 tags:
   - llm
   - code-generation
@@ -28,3 +28,5 @@ As our Wechaty community is working on a chat project (<https://wechaty.js.org/c
 In this meeting, we invited Chi Wang, the author of FLAML, fireside chat with Tianwei Yue from Wechaty community LLM project.
 
 {% include iframe.html src="https://youtu.be/tTOWr8eE6Bc" %}
+
+> image credit: [The New Open Source LLM that Can Generative Code in Over 80 Programming Languages](https://pub.towardsai.net/inside-starcoder-the-new-open-source-llm-that-can-generative-code-in-over-80-programming-languages-12aab76800da)
