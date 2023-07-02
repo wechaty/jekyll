@@ -15,10 +15,11 @@ It has a very interesting blog post: [Achieve More, Pay Less - Use GPT-4 Smartly
 As our Wechaty community is working on a chat project (<https://wechaty.js.org/chat>) for helping our open-source community developers to not only easily get answer of documentations, but also can ask for generated codes by just telling system their chatbot requirements, as the following screenshot demostrated:
 
 > Write a chatbot on WeChat using Wechaty SDK v1.x (with `WechatyBuilder`) to monitor a room with the following features:
+>  
 > 1. When a user sends a text message to the bot, if the text is "Room A", then add the user to the "Room A" group; if the text is "Room B", then add the user to the "Room B" group;
 > 1. When a user sends an ad message to the "Room B" group:
->   1. for the first time, send a warning message to them;
->   1. for the second time, remove the user from the room;
+>     1. for the first time, send a warning message to them;
+>     1. for the second time, remove the user from the room;
 
 ![Wechaty Chat](/assets/2023/06-flaml-code-generation-llm/wechaty-chat-llm-code-generation.webp)
 
