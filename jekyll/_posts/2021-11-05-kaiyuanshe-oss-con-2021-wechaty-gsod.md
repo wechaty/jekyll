@@ -47,3 +47,9 @@ COSCon 以其独特定位及日益增加的影响力，吸引越来越多的顶�
 2021年，CONCon的主题是：Happy Hacking，开心开源。
 
 > Source: [COSCon21 社区治理 (GC）论坛介绍](https://mp.weixin.qq.com/s/-VtRC3IsTBovQJQbWlF5xA)
+
+Poster generator open-source project links:
+
+- [A poster generator for COSCon 2021](https://github.com/kaiyuanshe/coscon-poster)
+- [COSCon 2021 海报生成器](https://kaiyuanshe.github.io/coscon-poster/)
+- [A poster generator for ApacheCon Asia 2021](https://github.com/Ovilia/acasia-poster)
