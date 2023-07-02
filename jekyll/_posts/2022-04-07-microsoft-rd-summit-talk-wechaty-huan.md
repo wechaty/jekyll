@@ -17,4 +17,8 @@ Abstract：Conversational AI empowers the Chatbot application in the recent year
 
 However, WeChat does not have an official API published to achieve that, which leads the community developed an Open-source Robotic Process Automation (RPA) SDK Wechaty (Apache-2.0 License, 12k GitHub stars), to help the developers to build a WeChat chatbot in 6 lines of TypeScript.
 
+## Talk recording video
+
 {% include iframe.html src="https://youtu.be/QLzDWt80eIE" %}
+
+Presented by Huan, creator of the Wechaty open-source software project.
