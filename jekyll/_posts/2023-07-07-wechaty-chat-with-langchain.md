@@ -46,8 +46,8 @@ PINECONE_ENVIRONMENT=us-west4-gcp-free
 PINECONE_INDEX=...
 ```
 
-
 以下代码为当接收到支持的文件对文件进行向量化成功后返回提示
+
   ```javascript
    wechaty.on('message', async message => {
     const contact = message.talker();
@@ -71,95 +71,95 @@ PINECONE_INDEX=...
     }
    })  
   ```
-  ![image1.webp](/assets/2023/07-wechaty-chat-with-langchain/image1.webp)
 
-### langchain 相关代码
-```javascript
-import { PineconeClient } from "@pinecone-database/pinecone";
-import dotenv from 'dotenv';
-import { VectorDBQAChain } from "langchain/chains";
-import { DirectoryLoader } from "langchain/document_loaders";
-import { DocxLoader } from "langchain/document_loaders/fs/docx";
-import { PDFLoader } from "langchain/document_loaders/fs/pdf";
-import { TextLoader } from "langchain/document_loaders/fs/text";
-import { OpenAIEmbeddings } from "langchain/embeddings/openai";
-import { PromptLayerOpenAI } from "langchain/llms/openai";
-import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
-import { PineconeStore } from "langchain/vectorstores";
+![image1.webp](/assets/2023/07-wechaty-chat-with-langchain/image1.webp)
 
-dotenv.config();
-const client = new PineconeClient();
+langchain 相关代码
 
-await client.init({
-    apiKey: process.env.PINECONE_API_KEY,
-    environment: process.env.PINECONE_ENVIRONMENT,
-});
+  ```javascript
+  import { PineconeClient } from "@pinecone-database/pinecone";
+  import dotenv from 'dotenv';
+  import { VectorDBQAChain } from "langchain/chains";
+  import { DirectoryLoader } from "langchain/document_loaders";
+  import { DocxLoader } from "langchain/document_loaders/fs/docx";
+  import { PDFLoader } from "langchain/document_loaders/fs/pdf";
+  import { TextLoader } from "langchain/document_loaders/fs/text";
+  import { OpenAIEmbeddings } from "langchain/embeddings/openai";
+  import { PromptLayerOpenAI } from "langchain/llms/openai";
+  import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
+  import { PineconeStore } from "langchain/vectorstores";
 
-const pineconeIndex = client.Index(process.env.PINECONE_INDEX);
+  dotenv.config();
+  const client = new PineconeClient();
 
+  await client.init({
+      apiKey: process.env.PINECONE_API_KEY,
+      environment: process.env.PINECONE_ENVIRONMENT,
+  });
 
-async function loadDocuments(directory = 'resource') {
-    console.log('loadDocuments...')
-    const loader = new DirectoryLoader(directory,
-        {
-            ".pdf": (path) => new PDFLoader(path),
-            ".txt": (path) => new TextLoader(path),
-            ".doc": (path) => new DocxLoader(path),
-            ".docx": (path) => new DocxLoader(path),
-        });
-    // 将数据转成 document 对象，每个文件会作为一个 document
-    const rawDocuments = await loader.load();
-    console.log(`documents: ${rawDocuments.length}`);
-
-    // 初始化加载器
-    const textSplitter = new RecursiveCharacterTextSplitter({ chunkSize: 500 });
-    // 切割加载的 document
-    const splitDocs = await textSplitter.splitDocuments(rawDocuments);
-
-    // 持久化数据
-    // const docsearch = await Chroma.fromDocuments(splitDocs, embeddings, { collectionName: "private_doc" });
-    // docsearch.persist();
+  const pineconeIndex = client.Index(process.env.PINECONE_INDEX);
 
 
-    await PineconeStore.fromDocuments(splitDocs, new OpenAIEmbeddings(), {
-        pineconeIndex,
-    });
-    console.log(`send to PineconeStore`);
+  async function loadDocuments(directory = 'resource') {
+      console.log('loadDocuments...')
+      const loader = new DirectoryLoader(directory,
+          {
+              ".pdf": (path) => new PDFLoader(path),
+              ".txt": (path) => new TextLoader(path),
+              ".doc": (path) => new DocxLoader(path),
+              ".docx": (path) => new DocxLoader(path),
+          });
+      // 将数据转成 document 对象，每个文件会作为一个 document
+      const rawDocuments = await loader.load();
+      console.log(`documents: ${rawDocuments.length}`);
 
-}
+      // 初始化加载器
+      const textSplitter = new RecursiveCharacterTextSplitter({ chunkSize: 500 });
+      // 切割加载的 document
+      const splitDocs = await textSplitter.splitDocuments(rawDocuments);
 
-
-async function askDocument(question) {
-    const llm = new PromptLayerOpenAI({ plTags: ["langchain-requests", "chatbot"] })
-    // 初始化 openai 的 embeddings 对象
-
-    // 加载数据
-    const vectorStore = await PineconeStore.fromExistingIndex(
-        new OpenAIEmbeddings(),
-        { pineconeIndex }
-    );
-
-    /* Search the vector DB independently with meta filters */
-    const chain = VectorDBQAChain.fromLLM(llm, vectorStore, {
-        k: 1,
-        returnSourceDocuments: true,
-    });
-    const response = await chain.call({ query: question });
-    console.log(response);
-
-    // const response = await vectorStore.similaritySearch(question, 1);
-    // console.log(response);
-
-    return response.text
-}
-
-function supportFileType(mediaType) {
-    const types = ['doc', 'docx', , 'pdf', 'text']
-    return types.filter(e => mediaType.includes(e)).length > 0
-}
+      // 持久化数据
+      // const docsearch = await Chroma.fromDocuments(splitDocs, embeddings, { collectionName: "private_doc" });
+      // docsearch.persist();
 
 
-export { askDocument, loadDocuments, supportFileType };
+      await PineconeStore.fromDocuments(splitDocs, new OpenAIEmbeddings(), {
+          pineconeIndex,
+      });
+      console.log(`send to PineconeStore`);
+
+  }
 
 
-``` 
+  async function askDocument(question) {
+      const llm = new PromptLayerOpenAI({ plTags: ["langchain-requests", "chatbot"] })
+      // 初始化 openai 的 embeddings 对象
+
+      // 加载数据
+      const vectorStore = await PineconeStore.fromExistingIndex(
+          new OpenAIEmbeddings(),
+          { pineconeIndex }
+      );
+
+      /* Search the vector DB independently with meta filters */
+      const chain = VectorDBQAChain.fromLLM(llm, vectorStore, {
+          k: 1,
+          returnSourceDocuments: true,
+      });
+      const response = await chain.call({ query: question });
+      console.log(response);
+
+      // const response = await vectorStore.similaritySearch(question, 1);
+      // console.log(response);
+
+      return response.text
+  }
+
+  function supportFileType(mediaType) {
+      const types = ['doc', 'docx', , 'pdf', 'text']
+      return types.filter(e => mediaType.includes(e)).length > 0
+  }
+
+
+  export { askDocument, loadDocuments, supportFileType };
+  ```
