@@ -1,6 +1,6 @@
 ---
 title: "10分钟使用ChatGPT&Wechaty开发一个群会议助手"
-author: choogoo
+author: atorber
 categories: article
 tags:
   - blog
