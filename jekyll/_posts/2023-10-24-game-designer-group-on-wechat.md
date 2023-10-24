@@ -22,7 +22,7 @@ Game Copilot是怎么工作的呢？它利用GPT-4的强大功能，提供世界
 Game Copilot主要适用于独立工作室和RPG类游戏的开发。不论你是一位游戏创业者，还是一位寻求新灵感的开发者，Game Copilot都能为你提供帮助。  
 
 为了提高易用性，我们通过wechaty接入了企业微信，使得用户能在任何地方，任何时候记录自己的灵感，并进行迭代。无论是在挤公交车，还是在休闲的咖啡馆，只需打开企业微信，就能轻松访问Game Copilot。  
-   
+
 网页版：
 [体验链接](https://game-copilot-frontend.zeabur.app)
 企微Bot版：开发中。
