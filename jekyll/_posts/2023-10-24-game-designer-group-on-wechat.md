@@ -158,41 +158,41 @@ Game Copilot主要适用于独立工作室和RPG类游戏的开发。不论你�
 ### Backend TODO
 
 - Legends:
-    - :white_circle: Not started
-    - :construction: In progress
-    - :eight_pointed_black_star: Backend code finished. Need to be tested and integrated with frontend or agents.
-    - :white_check_mark: Done!
-    - :thought_balloon: Need to be discussed / Blocked by other tasks
+  - :white_circle: Not started
+  - :construction: In progress
+  - :eight_pointed_black_star: Backend code finished. Need to be tested and integrated with frontend or agents.
+  - :white_check_mark: Done!
+  - :thought_balloon: Need to be discussed / Blocked by other tasks
 - Authentication:
-    - :white_check_mark: Signup
-    - :white_check_mark: Login
-    - :white_circle: Email verification
-    - :white_circle: Password reset
+  - :white_check_mark: Signup
+  - :white_check_mark: Login
+  - :white_circle: Email verification
+  - :white_circle: Password reset
 - User:
-    - :white_check_mark: Get info
-    - :white_circle: Update info
-    - :white_circle: Delete account
-    - :white_circle: Get user list
+  - :white_check_mark: Get info
+  - :white_circle: Update info
+  - :white_circle: Delete account
+  - :white_circle: Get user list
 - Game:
-    - :white_check_mark: Get user's game list
-    - :white_check_mark: Create game
-    - :white_check_mark: Get game info
+  - :white_check_mark: Get user's game list
+  - :white_check_mark: Create game
+  - :white_check_mark: Get game info
 - Revision:
-    - :white_check_mark: Get game's revision list
-    - :construction: Create revision
-    - :white_check_mark: Get revision info
+  - :white_check_mark: Get game's revision list
+  - :construction: Create revision
+  - :white_check_mark: Get revision info
 - Record:
-    - :eight_pointed_black_star: Get revision's record list
-    - :eight_pointed_black_star: User chat
-    - :eight_pointed_black_star: Collect info end
-    - :eight_pointed_black_star: Co-design end
-    - :eight_pointed_black_star: Co-design confirm
-    - :eight_pointed_black_star: Review design command
-    - :eight_pointed_black_star: Review design submit
+  - :eight_pointed_black_star: Get revision's record list
+  - :eight_pointed_black_star: User chat
+  - :eight_pointed_black_star: Collect info end
+  - :eight_pointed_black_star: Co-design end
+  - :eight_pointed_black_star: Co-design confirm
+  - :eight_pointed_black_star: Review design command
+  - :eight_pointed_black_star: Review design submit
 - Agent Interaction:
-    - :eight_pointed_black_star: Collect info
-    - :eight_pointed_black_star: Co-design
-    - :eight_pointed_black_star: Review design
-    - :thought_balloon: Session recovery
+  - :eight_pointed_black_star: Collect info
+  - :eight_pointed_black_star: Co-design
+  - :eight_pointed_black_star: Review design
+  - :thought_balloon: Session recovery
 - Others
-    - :white_circle: Deploy to Zeabur
+  - :white_circle: Deploy to Zeabur
