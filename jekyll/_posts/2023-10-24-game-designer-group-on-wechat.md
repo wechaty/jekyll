@@ -6,7 +6,7 @@ tags:
   - blog
   - game
   - agent
-image: /assets/2023/09-game-designer-group-on-wechat/1.webp
+image: /assets/2023/10-game-designer-group-on-wechat/1.webp
 ---
 
 ## 介绍
@@ -16,7 +16,7 @@ image: /assets/2023/09-game-designer-group-on-wechat/1.webp
 Game Copilot是怎么工作的呢？它利用GPT-4的强大功能，提供世界观，机制，玩法，角色等游戏必要的元素，为开发者提供灵感。它能够表现出高发散性，并能对过去的游戏，小说，当前世界背景进行参考，以帮助开发者构建独特且引人入胜的游戏体验。  
 
 ### Agent架构
-/assets/2023/09-game-designer-group-on-wechat/1.webp
+/assets/2023/10-game-designer-group-on-wechat/2.webp
 
 ## User guide
 Game Copilot主要适用于独立工作室和RPG类游戏的开发。不论你是一位游戏创业者，还是一位寻求新灵感的开发者，Game Copilot都能为你提供帮助。  
