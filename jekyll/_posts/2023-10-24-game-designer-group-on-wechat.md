@@ -25,7 +25,7 @@ Game Copilot主要适用于独立工作室和RPG类游戏的开发。不论你�
    
 网页版：
 [体验链接](https://game-copilot-frontend.zeabur.app)
-企微Bot版：开发中...
+企微Bot版：开发中。
 
 ## 后端架构
 ### Technology
