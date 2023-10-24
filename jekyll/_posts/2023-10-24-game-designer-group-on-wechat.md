@@ -23,7 +23,8 @@ Game Copilot主要适用于独立工作室和RPG类游戏的开发。不论你�
 
 为了提高易用性，我们通过wechaty接入了企业微信，使得用户能在任何地方，任何时候记录自己的灵感，并进行迭代。无论是在挤公交车，还是在休闲的咖啡馆，只需打开企业微信，就能轻松访问Game Copilot。  
    
-网页版：[体验链接](https://game-copilot-frontend.zeabur.app/)
+网页版：
+[体验链接](https://game-copilot-frontend.zeabur.app)
 企微Bot版：开发中...
 
 ## 后端架构
