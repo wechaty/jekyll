@@ -1,6 +1,6 @@
 ---
 title: "Game-Copilot辅助游戏工作室进行头脑风暴"
-author: karryKeksis
+author: karrykeksis
 categories: article
 tags:
   - blog
