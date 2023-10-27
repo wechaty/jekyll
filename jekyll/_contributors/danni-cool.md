@@ -19,4 +19,4 @@ twitter:
 
 ### wechaty-puppet
 
-- https://github.com/wechaty/puppet-wechat4u/pull/67
+- [puppet-wechat4u / Fix voice msg error](https://github.com/wechaty/puppet-wechat4u/pull/67)
