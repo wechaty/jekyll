@@ -1,9 +1,8 @@
 ---
 title: "wechaty+LLM 助力基层社区自治"
-author: bigbrother666
+author: bigbrother666sh
 categories: article
 tags:
-  - workpro
   - LLM
   - agent
 image: /assets/2023/11-digital-socialworker-assisstant/0.webp
