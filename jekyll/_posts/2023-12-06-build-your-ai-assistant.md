@@ -12,9 +12,13 @@ image: /assets/2023/11-build-your-ai-assistant/1.webp
 
 ## 一、创建机器人
 
-这是 wechaty 启动机器人的代码，可以说非常简洁。
+我们接入 AI 的之前，需要过滤掉 AI 无法处理，或不需要处理的消息。
 
-但我们接入 AI 需要处理好对话上下文以及过滤掉 AI 无法处理，或不需要处理的消息。
+拿群消息举例，因为微信不支持富文本消息，而其他格式的消息无法带 @，如果都处理，很明显就 AI 这种需要上下文，并且存在速率限制的，一定会崩。
+
+微信每次启动就会同步最近的消息过来，过滤历史消息是因为可能已经回复过。我在 `puppet-wechat4u` 中有看到 [startTime][startTime] 属性用于过滤此类消息，但不知道为什么还会存在此问题，原因待查。
+
+微信中还有如 **微信团队** 等内置的微信功能，也会发送消息过来，比如异常登录，首次登录的欢迎语等，这种很明显不需要处理。
 
 所以我们需要过滤掉：
 
@@ -23,12 +27,6 @@ image: /assets/2023/11-build-your-ai-assistant/1.webp
 - 非真实好友的消息
 - 其他 AI 无法处理的消息
 - 等等
-
-过滤历史消息是因为可能已经回复过，微信每次启动就会同步最近的消息过来。我在 `puppet-wechat4u` 中有看到 [startTime][startTime] 属性用于过滤此类消息，但不知道为什么还会存在此问题，原因待查。
-
-因为微信不支持富文本消息，而其他格式的消息无法带 @，如果都处理，很明显就 AI 这种需要上下文，并且存在速率限制的，一定会崩。
-
-微信中还有如 **微信团队** 等内置的微信功能，也会发送消息过来，比如异常登录，首次登录的欢迎语等，这种很明显不需要处理。
 
 ```js
 // 机器人启动时间
@@ -39,7 +37,7 @@ bot.on("login", () => {
 });
 
 bot.on("message", async (message) => {
-  // 忽略每次启动后的微信的历史消息
+  // 忽略每次启动前的消息
   if (startupTime > message.date()) return;
 
   const talker = message.talker();
@@ -85,7 +83,7 @@ bot.on("message", async (message) => {
 
 什么是对话上下文？对于人类来说，在一个场景中说过的话就是对话上下文，但对 AI 无法知道当前处于什么环境，或者说当前提问者处于什么环境。
 
-机器人不是它家的网页聊天产品，我们可能一会在群里，一会在私聊，或者希望重新开始，它无法拿到当前的聊天记录。所以我们主动需要告诉它，当前对话和历史对话的内容。
+机器人不是它家的网页聊天产品，我们可能一会在群里，一会在私聊，或者希望重新开始，它无法拿到当前的聊天记录。所以我们需要主动告诉它，当前对话和历史对话的内容。
 
 OpenAI 提供了 messages 字段，其他厂商也有类似或同名的字段，让我们可以提交我们当时对话的内容。
 
@@ -108,11 +106,11 @@ const completion = await openai.chat.completions.create({
 });
 ```
 
-不过本篇文章主要以另一个知名的 NPM 模块 `chatgpt` 为主，详细的接入请查看 [接入 OpenAI 片段](#三接入-openai)。这个包允许我们只需要传递当前对话内容 和 `parentMessageId` 字段，剩下的它会去处理。
+不过本篇文章主要以另一个知名的 NPM 模块 `chatgpt` 为主，详细接入请查看 [接入 OpenAI](#三接入-openai) 章节。这个包允许我们只传递当前 **对话内容** 和 `parentMessageId`，剩下的它会去处理。
 
 ### 1. 创建上下文状态
 
-存储 `parentMessageId` 字段的对象就是我们说的上下文状态对象。我们需要确保每个人存的就是自己的，并且隔离 群聊 和 私聊 中，因为同一个人的不同的群有自己的对话场景。
+存储 `parentMessageId` 字段的对象就是我们说的上下文状态对象。我们需要确保每个人存的就是自己的，并且隔离 群聊 和 私聊 中，因为同一个人在不同的群有自己的对话场景。
 
 ```js
 // 保存所有对话上下文的对象
@@ -182,7 +180,7 @@ import { log, type Sayable } from "wechaty";
  *
  * @param sayable - 可以被发送的内容
  * @param finished - 是否结束对话，仅用于输出日志
- * @param bubble - 是否纯气泡模式，也就是群内只发内容，不 @ 对方
+ * @param bubble - 是否纯气泡模式，也就是群内只发内容，不 @ 对方，可以使用 message.say() 代替
  */
 async function reply(
   sayable: Sayable,
@@ -392,9 +390,52 @@ async function askAI({ message, state, reply }) {
 
 这也是此篇文章要分享的主要内容，以 OpenAI + wechaty 分享我这一年的开发经验，希望能给大家带来一些提示与帮助。
 
-这里打一个广告，我将自己的经验写成一个 wechaty 插件，并且开源到 Github 上，欢迎大家 star 和 fork。
+---------------------
+
+**以下为广告内容**
+
+我将自己的经验写成一个 wechaty 插件，并且开源到 Github 上。
 
 仓库地址：[wechaty-plugin-assistant](https://github.com/zhengxs2018/wechaty-plugin-assistant)
+
+示例代码：
+
+```js
+import {
+  ChatERNIEBot,
+  createAssistant,
+} from '@zhengxs/wechaty-plugin-assistant';
+import { WechatyBuilder } from 'wechaty';
+import { QRCodeTerminal } from 'wechaty-plugin-contrib';
+
+// ============ 创建 AI 助手  ============
+
+const llm = new ChatERNIEBot({
+  // 百度文心千帆的 token
+  token: process.env.EB_ACCESS_TOKEN,
+});
+
+const assistant = createAssistant({
+  llm,
+});
+
+// ============ 启动 wechaty 服务  ============
+
+const bot = WechatyBuilder.build({
+  name: 'demo',
+  puppet: 'wechaty-puppet-wechat4u',
+  puppetOptions: { uos: true },
+});
+
+bot.use(QRCodeTerminal({ small: true }));
+
+// 使用插件
+bot.use(assistant.callback());
+
+bot.start();
+```
+
+欢迎大家 star 和 fork ♥️。
 
 [startTime]: https://github.com/wechaty/puppet-wechat4u/blob/51280590e722bc59754ad178b697574abd968d25/src/puppet-wechat4u.ts#L412
 [chatgpt]: https://www.npmjs.com/package/chatgpt
