@@ -1,6 +1,6 @@
 ---
 title: "AutoRoom 帮您更好的进行用户自动进群"
-author: beiheng
+author: abeiheng
 categories: article
 tags:
   - blog

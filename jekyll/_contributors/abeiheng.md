@@ -1,5 +1,5 @@
 ---
-name: beiheng
+name: abeiheng
 site: https://github.com/Abeiheng
 avatar: /assets/contributors/abeiheng/avatar.webp
 bio: 前端工程师 热爱技术 后端也会一点
