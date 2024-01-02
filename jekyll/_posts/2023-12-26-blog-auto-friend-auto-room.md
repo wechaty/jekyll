@@ -4,9 +4,9 @@ author: beiheng
 categories: article
 tags:
   - blog
-  - autoFriend
-  - autoRoom
-image: /assets/2023/12-blog-autoFriend-autoRoom/logo.webp
+  - auto-friend
+  - auto-room
+image: /assets/2023/12-blog-auto-friend-auto-room/logo.webp
 ---
 
 WeChaty 是一个基于 Node.js 的开源微信机器人框架，而作为社群管理，需要对好友进行分类让其进入相应的群，通过本篇文章以及Wechaty，你可以创还能一个微信机器人，使其在微信平台上运行。
@@ -71,8 +71,8 @@ const wechaty = WechatyBuilder.build({
    })  
 ```
 
-![1.webp](/assets/2023/12-blog-autoFriend-autoRoom/1.webp)
-![1.webp](/assets/2023/12-blog-autoFriend-autoRoom/2.webp)
+![1.webp](/assets/2023/12-blog-auto-friend-auto-room/1.webp)
+![2.webp](/assets/2023/12-blog-auto-friend-auto-room/2.webp)
 
 以下代码为当私聊接收信息后返回提示 autoFriend 相关代码
 
