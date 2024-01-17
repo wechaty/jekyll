@@ -3,16 +3,16 @@ title: "Wechaty for non-Weixin accounts"
 author: aherman3
 categories: talk
 tags: puppet-wechat
-image: /assets/2024/01-wechaty-for-non-weixin-accounts/error-message.webp
+image: /assets/2024/01-wechaty-for-non-mainland-wechat-accounts/error-message.webp
 ---
 
+### Using Wechaty with a non-mainland China WeChat account
 
+When scanning to access Wechaty, some international users may find they are still unable to log in. This may be due to which version of WeChat your account is registered with. **If your account was created with a non-Chinese Mainland mobile number (numbers not beginning with +86), you are using the international version of WeChat, which has some differences in service.** You can check which type of user you are through Wechat -> Settings -> About -> Terms of Service.
 
-Due to Tencent policy change in 2017, newly created accounts are unable to login via Web Wechat. Since Wechaty uses Wechat Web API, Wechaty is also unable to login for these accounts. This issue can be solved with [UOS](https://github.com/wechaty/jekyll/blob/main/jekyll/_posts/2021-04-13-wechaty-uos-web.md).
+The international version of WeChat does not allow WeChat Web login, so scanning the default service Wechaty login QR will return the message "Service unavailable for this account".
 
-Even using UOS, some users may find they are still unable to log in. This may be due to being a WeChat user, rather than Weixin. Weixin and WeChat users are differentiated by mobile numbers, Weixin users use Chinese Mainland mobile numbers while WeChat users use non-Chinese Mainland mobile numbers. You can check which type of user you are through Wechat -> Settings -> About -> Terms of Service.
-
-If you are a Wechat user, don't worry! There are still multiple puppets you can use to access Wechaty. As a WeChat user, I was able to successfully access Wechaty with all 3 methods.
+If you are a non-mainland Chinese Wechat user, don't worry! There are still multiple puppets you can use to access Wechaty. With my non-mainland Chinese account, I was able to successfully access Wechaty with all methods.
 
 ## 1. Puppet XP
 
