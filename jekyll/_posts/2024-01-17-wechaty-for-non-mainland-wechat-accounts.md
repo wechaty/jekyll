@@ -6,7 +6,7 @@ tags: puppet-wechat
 image: /assets/2024/01-wechaty-for-non-mainland-wechat-accounts/error-message.webp
 ---
 
-### Using Wechaty with a non-mainland China WeChat account
+## Using Wechaty with a non-mainland China WeChat account
 
 When scanning to access Wechaty, some international users may find they are still unable to log in. This may be due to which version of WeChat your account is registered with. **If your account was created with a non-Chinese Mainland mobile number (numbers not beginning with +86), you are using the international version of WeChat, which has some differences in service.** You can check which type of user you are through Wechat -> Settings -> About -> Terms of Service.
 
