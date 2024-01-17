@@ -1,6 +1,6 @@
 {
   "name": "wechaty-jekyll",
-  "version": "0.11.60",
+  "version": "0.11.69",
   "description": "Wechaty Official Website for News, Blogs, Contributor Profiles",
   "private": true,
   "type": "module",
