@@ -12,7 +12,7 @@ image: /assets/2021/05-gsod-2021-proposal-to-improve-the-grpc-and-openapi-ecosys
 
 ## About me
 
-I considered myself a Polymath. I believe in rigorous and intuitive learning. Spend the majority of the time exploring different types of algorithms and contributing to open source. My interest lies in the fields of Algorithms, Computational Science, and Distributed Computing.
+I considered myself a Polymath. I believe in rigorous and intuitive learning. Spend the majority of the time exploring different types of algorithms and contributing to open-source. My interest lies in the fields of Algorithms, Computational Science, and Distributed Computing.
 
 ## Introduction
 

@@ -53,7 +53,7 @@ test('folder _contributors/, _posts/, and assets/ has been moved to `jekyll/` (e
     assets      : 'assets/ has been moved to `jekyll/assets`',
   }
 
-  for (const [folder, memo] of Object.entries(DEPRECATED_FOLDER_LIST)) {
+  for (const [ folder, memo ] of Object.entries(DEPRECATED_FOLDER_LIST)) {
     const existDeprecatedFolder = fs.existsSync(path.join(REPO_ROOT, folder))
     if (existDeprecatedFolder) {
       t.fail(`${folder}/ should not exist: ${memo}`)

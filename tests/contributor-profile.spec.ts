@@ -143,7 +143,7 @@ test('developer profile name must be GitHub username', async t => {
 
     await new Promise(resolve => setTimeout(resolve, SLEEP_SECONDS_BETWEEN_CHUNKS))
 
-    for (const [i, isExist] of resultList.entries()) {
+    for (const [ i, isExist ] of resultList.entries()) {
       if (!isExist) {
         process.stdout.write('\n')
         t.fail(`"${chunk[i]}" should exist on GitHub`)
