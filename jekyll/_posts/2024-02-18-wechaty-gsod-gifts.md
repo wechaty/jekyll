@@ -1,5 +1,5 @@
 ---
-title: 'Unveiling the Treasures of Collaboration: My Wechaty GSOD'21 Gifts'
+title: "Unveiling the Treasures of Collaboration: My Wechaty GSoD'21 Gifts"
 author: sajenjeshan1222
 categories: gsod
 tags:
