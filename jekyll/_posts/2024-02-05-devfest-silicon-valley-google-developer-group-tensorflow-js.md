@@ -34,10 +34,10 @@ The incredible talk by Huan Li, Chatbot Architect at Chatie, on "TensorFlow.js: 
 
 > "Netscape Communications recruited Brendan Eich and he wrote JavaScript in 10 days, in May 1995."  
 > — [Wikipedia:JavaScript](https://en.wikipedia.org/wiki/JavaScript)
-
+>  
 > "JavaScript now works."  
 > — Paul Graham, YC Founder, [WEB 2.0](https://www.paulgraham.com/web20.html), Nov 2005
-
+>  
 > "Any application that can be written in JavaScript, will eventually be written in JavaScript."  
 > — Jeff Atwood, StackOverflow Founder, [The Principle of Least Power](https://blog.codinghorror.com/the-principle-of-least-power/), Jul 2007
 
