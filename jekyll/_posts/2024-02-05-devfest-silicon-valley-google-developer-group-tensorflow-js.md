@@ -45,12 +45,10 @@ TensorFlow.js is a JavaScript library that brings machine learning to the browse
 
 In this [workshop](https://gdg.community.dev/events/details/google-gdg-silicon-valley-presents-workshop-build-a-hello-world-program-in-the-browser-with-tensorflowjs/), you will learn how to use TensorFlow.js to build a simple "Hello World" program. You will learn about the basic concepts of TensorFlow.js, such as tensors, layers, and models. You will also learn how to train and run a model in the browser.
 
-## Agenda
+## About Devfest Silicon Valley 2023: AI Edition
 
 ![Banner - DevFest Silicon Valley 2023](/assets/2024/02-devfest-silicon-valley-google-developer-group-tensorflow-js/devfest-2023-sv-banner.webp)
 ![Agenda - DevFest Silicon Valley 2023](/assets/2024/02-devfest-silicon-valley-google-developer-group-tensorflow-js/agenda-devfest-gdg-sv-2023.webp)
-
-Devfest Silicon Valley 2023 : AI Edition
 
 - When: Thursday, November 16, 2023, 9:00 AM – 6:00 PM PST
 - Where: Google Event Center (MP7), 1160 Bordeaux Drive, Sunnyvale, 94089
