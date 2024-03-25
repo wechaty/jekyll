@@ -32,7 +32,7 @@ npm start
 
 ## 2. PadLocal
 
-[Wechaty Puppet PadLocal](https://wechaty.js.org/docs/puppet-services/padlocal) can workaround Wechat user limitations without requiring Windows. PadLocal can also be used without VM.
+[Wechaty Puppet PadLocal](https://wechaty.js.org/docs/puppet-services/padlocal) can work around WeChat user limitations without requiring Windows. PadLocal can also be used without VM.
 
 - Requirements
     1. Your system must have Node.js installed (version >= 12).
