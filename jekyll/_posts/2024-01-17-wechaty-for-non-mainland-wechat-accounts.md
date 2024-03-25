@@ -57,7 +57,7 @@ npm start
 
 ## 4. WorkPro
 
-[Wechaty WorkPro Puppet](https://wechaty.js.org/docs/puppet-services/workpro) provided by RPAChat is also available. It is recommended to us Github Codespace for installation.
+[Wechaty WorkPro Puppet](https://wechaty.js.org/docs/puppet-services/workpro) provided by RPAChat is also available. It is recommended to use GitHub Codespace for installation.
 
 - Requirements
     1. Your system must have Node.js installed (version >= 16).
