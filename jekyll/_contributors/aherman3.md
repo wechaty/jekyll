@@ -13,6 +13,6 @@ I'm Annie and I'm an American graduate student in China! I enjoy any opportunity
 
 ## Contact me
 
-- Github: <https://github.com/aherman3>
+- GitHub: <https://github.com/aherman3>
 - Email：<annieh979@gmail.com>
 - 微信: aherman3
