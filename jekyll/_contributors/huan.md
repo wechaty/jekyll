@@ -26,7 +26,6 @@ Huan is a serial entrepreneur, [active angel investor](http://pre-angel.com/peop
 ## Contact
 
 - Github: <https://github.com/huan>
-- LinkedIn: <https://linkedin.com/in/zixia>
-- Wechat: [918999]({{ '/assets/contributors/huan/wechat-qrcode.webp' | relative_url }})
-- Twitter: [@huan_us](https://twitter.com/huan_us)
+- LinkedIn: <https://linkedin.com/in/huan42>
+- Twitter: [@huan2024](https://twitter.com/huan2024)
 - Email: <huan@chatie.io>
