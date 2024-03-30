@@ -5,7 +5,7 @@ categories: article
 tags:
   - dify
   - gpt4-turbo
-image: /assets/2024/03-wechatbot-with-wechaty-Dify-GPT4/bp-post.webp
+image: /assets/2024/03-wechatbot-with-wechaty-dify-gpt4/bp-post.webp
 ---
 
 > 作者: [gscfwid](https://github.com/gscfwid/)，An anesthetist in a big ship of mainland.
