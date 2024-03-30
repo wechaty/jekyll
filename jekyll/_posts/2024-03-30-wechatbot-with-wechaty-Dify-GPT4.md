@@ -63,23 +63,29 @@ const difyApiUrl = "https://api.dify.ai/v1/chat-messages";
 
 async function sendMessage(message, userName) {
   // ...
-  const response = await axios.post(
-    difyApiUrl,
-    {
-      inputs: {},
-      query: message,
-      response_mode: "streaming",
-      conversation_id: conversationData.conversationId,
-      user: userName,
-      files: [],
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${difyApiKey}`,
-        "Content-Type": "application/json",
+  try {
+    const response = await axios.post(
+      difyApiUrl,
+      {
+        inputs: {},
+        query: message,
+        response_mode: "streaming",
+        conversation_id: conversationData.conversationId,
+        user: userName,
+        files: [],
       },
-    }
-  );
+      {
+        headers: {
+          Authorization: `Bearer ${difyApiKey}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    // Process response...
+  } catch (error) {
+    console.error("Failed to send message to Dify API:", error);
+    // Handle error appropriately...
+  }
   // ...
 }
 ```
