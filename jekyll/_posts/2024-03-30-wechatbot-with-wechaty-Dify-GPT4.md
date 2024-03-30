@@ -3,7 +3,6 @@ title: "利用 Dify 构建基于 GPT-4 Turbo 的智能 Agent,实现医疗微信�
 author: gscfwid
 categories: article
 tags:
-  - wechaty
   - dify
   - gpt4-turbo
 image: /assets/2024/03-wechatbot-with-wechaty-Dify-GPT4/bp-post.webp
