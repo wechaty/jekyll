@@ -48,7 +48,7 @@ const { PuppetPadlocal } = require("wechaty-puppet-padlocal");
 const { WechatyBuilder } = require("wechaty");
 
 const puppet = new PuppetPadlocal({
-  token: "your_token_here",
+  token: process.env.PUPPET_PADLOCAL_TOKEN,
 });
 
 const bot = WechatyBuilder.build({ puppet, name: "test" });
@@ -58,7 +58,7 @@ const bot = WechatyBuilder.build({ puppet, name: "test" });
 
 ```javascript
 // 调用Dify API的函数
-const difyApiKey = "your_api_key_here";
+const difyApiKey = process.env.DIFY_API_KEY;
 const difyApiUrl = "https://api.dify.ai/v1/chat-messages";
 
 async function sendMessage(message, userName) {
@@ -83,7 +83,16 @@ async function sendMessage(message, userName) {
     );
     // Process response...
   } catch (error) {
-    console.error("Failed to send message to Dify API:", error);
+    if (error.response) {
+      console.error(
+        "Dify API responded with status code:",
+        error.response.status
+      );
+    } else if (error.request) {
+      console.error("No response received from Dify API:", error.request);
+    } else {
+      console.error("Error setting up request to Dify API:", error.message);
+    }
     // Handle error appropriately...
   }
   // ...
@@ -102,14 +111,16 @@ bot.on("message", async (message) => {
   const text = message.text();
   // 判断它是否在我已经创建好的SQLite数据库中
   if (!room) {
-    db.get("SELECT * FROM contacts WHERE id = ?", [id], (err, row) => {
-      if (err) {
-        console.error(err.message);
-      } else if (row != undefined) {
-        reply = await sendMessage(text, userName);
-        message.talker().say(reply);
+    const query = "SELECT * FROM contacts WHERE id = ?";
+    try {
+      const row = await db.get(query, [id]);
+      if (row != undefined) {
+        const reply = await sendMessage(text, userName);
+        await message.talker().say(reply);
       }
-    });
+    } catch (err) {
+      console.error(err.message);
+    }
   }
 });
 ```
