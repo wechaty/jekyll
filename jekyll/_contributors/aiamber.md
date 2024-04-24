@@ -6,11 +6,11 @@ bio: Wisetech Global 全栈工程师：K8S / .NET / Node.js / 数据分析 / NLP
 email: lzlrjok@vip.qq.com
 ---
 
-✨ Wehcaty 开源大使 ✨
-**为爱发电**，代表 Wehcaty 做布道宣传
+✨ Wechaty 开源大使 ✨
+**为爱发电**，代表 Wechaty 做布道宣传
 
 💡一个有产品思维的开发者
-Wisetech Global 全栈工程师：K8S / Java / .NET / Node.js / 数据分析 / NLP
+Wisetech Global 全栈工程师：K8S / .NET / Node.js / 数据分析 / NLP
 > 🎞️Shuang Film (Sci-fi AI short film), 2024
 > 📱Author of Meowbot (10k+ users, including 1k+ paid subscribers), 2022
 
@@ -22,9 +22,9 @@ Wisetech Global 全栈工程师：K8S / Java / .NET / Node.js / 数据分析 / N
 
 ## Contact me
 
-- Github: <https://github.com/AIAmber>
+- GitHub: <https://github.com/AIAmber>
 - Email：<lzlrjok@vip.qq.com>
 - Website: <https://blog.xxleee.com>
-- Wechat: xleeelx
+- WeChat: xleeelx
 
 ![podcast](/assets/contributors/aiamber/podcast.webp)
