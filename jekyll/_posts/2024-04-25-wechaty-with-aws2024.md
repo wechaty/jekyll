@@ -36,12 +36,15 @@ image: /assets/2024/04-wechaty-with-aws2024/mian.webp
 ![qrcode](/assets/2024/04-wechaty-with-aws2024/qrcode.webp)
 
 ## 赛事奖励
+
 ![awards](/assets/2024/04-wechaty-with-aws2024/awards.webp)
 
 ## 赛程安排
+
 ![schedule](/assets/2024/04-wechaty-with-aws2024/schedule.webp)
 
 ## 赛事组织
+
 ![org](/assets/2024/04-wechaty-with-aws2024/org.webp)
 
 机遇稍纵即逝，你还在等什么？现在就行动吧，填写报名信息。翘首以待你的到来，赢取这场挑战赛的桂冠荣耀！
