@@ -9,7 +9,7 @@ tags:
   - featured
   - chatbot
   - competition
-image: /assets/2024/04-wechaty-with-aws2024/mian.webp
+image: /assets/2024/04-wechaty-with-aws2024/main.webp
 ---
 
 ✨ **第二届中国生成式 AI 创新应用挑战赛** ✨
