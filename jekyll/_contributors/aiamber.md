@@ -20,12 +20,6 @@ Wisetech Global 全栈工程师：K8S / Java / .NET / Node.js / 数据分析 / N
 > 泽会网络（区块链），2016
 > 蜀越千味（本地生活），2015
 
-## Activities
-
-- [AWS 生成式 AI 应用挑战赛重磅来袭！](https://wechaty.js.org/2024/04/25/wechaty-with-aws2024/)
-- [2024GDC: Wechaty Showcasing the Power of AI and Automation at GDC 2024](https://wechaty.js.org/2024/03/26/wechaty-in-2024gdc/)
-- [直击现场:Wechaty在WAIC2023开源集市](https://wechaty.js.org/2023/07/08/wechaty-in-waic2023/)
-
 ## Contact me
 
 - Github: <https://github.com/AIAmber>
