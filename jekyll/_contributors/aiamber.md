@@ -2,15 +2,29 @@
 name: AIAmber
 site: https://github.com/AIAmber
 avatar: /assets/contributors/aiamber/avatar.webp
-bio: 合肥工业大学本科，RichAI（睿企科技）Java工程师：Docker/K8S/Java后端/数据分析/NLP。
+bio: Wisetech Global 全栈工程师：K8S / .NET / Node.js / 数据分析 / NLP
 email: lzlrjok@vip.qq.com
 ---
 
-合肥工业大学本科，RichAI（睿企科技）Java工程师：Docker/K8S/Java后端/数据分析/NLP。
-连续创业者，先后创业蜀越千味（电商）、泽会网络（区块链）、聚知星球（教育服务）等项目
+✨ Wechaty 开源大使 ✨
+**为爱发电**，代表 Wechaty 做布道宣传
+
+💡一个有产品思维的开发者
+Wisetech Global 全栈工程师：K8S / .NET / Node.js / 数据分析 / NLP
+> 🎞️Shuang Film (Sci-fi AI short film), 2024
+> 📱Author of Meowbot (10k+ users, including 1k+ paid subscribers), 2022
+
+🌌🌃连续创业者
+> 吴霜的科幻宇宙（科幻类AI短剧），2024
+> 聚知星球（教育科技），2021
+> 泽会网络（区块链），2016
+> 蜀越千味（本地生活），2015
 
 ## Contact me
 
-- Github: <https://github.com/AIAmber>
-- Email：<lzlrjok@vip.qq.com>
-- Website: <https://blog.xxleee.com>
+- GitHub: <https://github.com/AIAmber>
+- Email：<lzlrjok@vip.qq.com>
+- Website: <https://blog.xxleee.com>
+- WeChat: xleeelx
+
+![podcast](/assets/contributors/aiamber/podcast.webp)
