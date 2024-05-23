@@ -1,7 +1,7 @@
 ---
 name: zhichunxiao
 site: https://github.com/zhichunxiao
-avatar: /assets/contributors/zhichunxiao/xxx.webp
+avatar: /assets/contributors/zhichunxiao/avatar.png
 bio: 一个狂热的 AI 玩家
 email: heroesop@126.com 
 twitter: 
