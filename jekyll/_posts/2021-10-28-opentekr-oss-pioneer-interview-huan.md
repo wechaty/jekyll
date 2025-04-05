@@ -10,16 +10,27 @@ tags:
 image: /assets/2021/10-opentekr-oss-pioneer-interview-huan/open-tekr-huan.webp
 ---
 
-With 25 years of programming experience, Huan Li has gone from entrepreneurs to investors. He has practiced a variety of open source methods, and in the field of open source contributions, Huan Li is also a pioneer. Whether publishing open source projects with a cumulative total of more than 11,000 Stars on Github, or being invited by other open source organizations to become an Owner or a Maintainer, Huan Li has formed his own unique observation and experience of open source as a solution. This time it comes to "OSS Pioneer", what new insights will Li Zhuohuan bring to everyone? The 1% energy of the open source community contribute every day, how to reverse the giant Microsoft's contempt on Linux to integrate Linux into its own system? How does the open source project Wechaty arouse everyone's enthusiasm for collaborative development? Let's find out.
+> The  "OSS Pioneer - The People"  series is launched by OpenTEKr to help you to know more about the leaders who are constantly working hard to develop in China open source ecosystem and understand the stories behind their projects. For more detail, please visit <www.opentekr.com>
 
-## Video Playback
+## OpenTEKr｜OSS Pioneer｜Interview with Huan Li
 
 {% include iframe.html src="https://youtu.be/v0FjLrZ0zfw" %}
 
-> [Watch on bilibili (大话开源)](https://www.bilibili.com/video/BV1N44y1i7GV)  
-> [Watch on bilibili (活在当下)](https://www.bilibili.com/video/BV1j3411874h)
+With 25 years of programming experience, Huan Li has gone from entrepreneurs to investors. He has practiced a variety of open source methods, and in the field of open source contributions, Huan Li is also a pioneer. Whether publishing open source projects with a cumulative total of more than 10,000 Stars on Github, or being invited by other open source organizations to become an Owner or a Maintainer, Huan Li has formed his own unique observation and experience of open source as a solution. This time it comes to "OSS Pioneer", what new insights will Li Zhuohuan bring to everyone? The 1% energy of the open source community contribute every day, how to reverse the giant Microsoft's contempt on Linux to integrate Linux into its own system? How does the open source project Wechaty arouse everyone's enthusiasm for collaborative development? Let's find out.
 
-Today let's meet Zhuohuan Li 李卓桓. #OpenTEKr #OSSPioneer He is the founder of #Wechaty and an evangelist of #Chatbot. He is also an angel investor and a mentor at 璞跃中国 Plug and Play China Venture Partner. #opensource
+> [OpenTEKr｜大话开源｜李卓桓：我想要的功能你没有，那我来一个](https://www.bilibili.com/video/BV1N44y1i7GV)  
+>  
+> 有着25年编程经验，一路从创业人走到了投资人，而在开源领域的贡献中，不管是在 Github 上发布累计超过10000 Stars的开源项目，还是被其他开源组织邀请成为 Owner 或 Maintainer，李卓桓对开源作为一种解决之道已然形成了自己独有的观察与体会。这次的「大话开源」，李卓桓会带大家什么样的观点？
+
+## OpenTEKr｜OSS Pioneer - The People｜Zhuohuan Li
+
+{% include iframe.html src="https://youtu.be/k86BSka3Jws" %}
+
+From entrepreneur to investor, Zhuohuan Li, the founder of the open source project Wechaty, came to The People. Adhering to liberalism, he advocates "living in the present" and feels happy for it. What else does Li Zhuohuan share about himself? Let's find out.
+
+> [OpenTEKr｜开源人｜李卓桓 - 活在当下 CARPE DIEM](https://www.bilibili.com/video/BV1j3411874h)  
+>  
+> 一路从创业人走到了投资人，身为开源项目Wechaty的创始人李卓桓来到这次的栏目，坚持自由主义的他崇尚“活在当下”并为之而感到快乐。李卓桓关于个人的分享还有哪些？
 
 ## 01 对开源的解读
 
@@ -61,9 +72,11 @@ Today let's meet Zhuohuan Li 李卓桓. #OpenTEKr #OSSPioneer He is the founder 
 
 OpenTEKr has been sharing cutting-edge knowledge and insights via a series of interviews with founders, initiators, mentors, and experts within the open-source community. In its latest efforts, the OSS Pioneer series of interviews are being conducted starting from December in 2020, with a goal to gather 100 thought-leadersand contributors in China’s open-source space.
 
-OpenTEKr is a non-for-profit open organization with advancing open-source software and open hardware technology at its core, dedicated to shaping a sustainable open technology ecosystem. We envision a better tomorrow for all mankind with individuals and organizations inspired and empowered to realize their aspirations through transformative technologies and world-class innovation. For more detail, please visit www.opentekr.com
+OpenTEKr is a non-for-profit open organization with advancing open-source software and open hardware technology at its core, dedicated to shaping a sustainable open technology ecosystem. We envision a better tomorrow for all mankind with individuals and organizations inspired and empowered to realize their aspirations through transformative technologies and world-class innovation. For more detail, please visit <www.opentekr.com>
 
 「开源人」系列是 OpenTEKr 精心推出的，旨在帮助大家认识那些在开源生态中不断努力开拓的开源领路者，了解他们项目背后的故事。OpenTEKr 坚持认为开源的核心就是人，我们瞩目开源的精彩就是在注目那些精彩的开源人。
+
+「大话开源」是 OpenTEKr 旗下对话国内外开放科技界思想引领者的访谈栏目，致力于捕捉大咖们的开源精髓，为「开源发烧友」和「门外驻足观望的好奇宝宝」提供更多心法与招数。
 
 > Source:  
 >
