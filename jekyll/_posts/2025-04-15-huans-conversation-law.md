@@ -19,7 +19,7 @@ Now, we stand at the dawn of a new era: the age of **conversational interfaces**
 
 ## The Rise of Conversational Interfaces
 
-Consider a recent demonstration shared by Joseph Michael on LinkedIn. An AI agent assists a customer through voice, text, and video — understanding context, preferences, and even visual inputs to provide personalized recommendations and services.
+Consider [a recent demonstration shared by Joseph Michael on LinkedIn](https://www.linkedin.com/posts/joseph-michael_the-most-impressive-ai-demo-ive-seen-in-ugcPost-7317865648452198401-3bTF/). An AI agent assists a customer through voice, text, and video — understanding context, preferences, and even visual inputs to provide personalized recommendations and services.
 
 This isn't a distant future — it's happening now.
 
