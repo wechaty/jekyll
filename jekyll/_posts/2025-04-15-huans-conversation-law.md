@@ -7,9 +7,9 @@ tags:
 image: /assets/2025/04-huans-conversation-law/huans-law.webp
 ---
 
-Fifteen years ago, Jeff Atwood declared:
-
 > **Atwood’s Law:** “Any application that can be written in JavaScript, will eventually be written in JavaScript.”
+
+Fifteen years ago, Jeff Atwood declared.
 
 At the time, this was a bold assertion. Yet today, we see it realized in countless applications — from web-based versions of Photoshop to browser-run IDEs. The web became the universal platform, and JavaScript its lingua franca.
 
