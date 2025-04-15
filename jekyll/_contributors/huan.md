@@ -7,8 +7,6 @@ email: huan@chatie.io
 twitter: https://twitter.com/huan2024
 ---
 
-## About Huan Li
-
 **Huan Li** is the creator of [Wechaty](https://github.com/wechaty/wechaty), architect of [Chatie](https://github.com/chatie), and a leading voice in the software agent space. He is widely recognized for his contributions to **conversational AI**, **cloud-native architecture**, and the **open-source ecosystem**.
 
 Huan is a [GitHub Star](https://stars.github.com/profiles/huan/), and the co-author of [*Chatbot 0 to 1*](https://item.jd.com/12630213.html) and [*Concise Handbook of TensorFlow 2*](https://item.jd.com/12980534.html). His work has earned accolades from Microsoft, Google, and Tencent—recognized as a [Microsoft MVP](https://mvp.microsoft.com/en-us/PublicProfile/5003061), [Google Developer Expert (GDE)](https://developers.google.com/community/experts/directory/profile/profile-huan-li), and [Tencent Cloud TVP](https://cloud.tencent.com/tvp/138).
