@@ -12,7 +12,7 @@ jobs:
     name: Test & Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0  # https://github.com/facebook/docusaurus/issues/2798#issuecomment-636602951
       - name: Bundle Config
@@ -44,7 +44,7 @@ jobs:
       - test
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         fetch-depth: 0  # https://github.com/facebook/docusaurus/issues/2798#issuecomment-636602951
 
