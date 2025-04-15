@@ -4,7 +4,7 @@ author: huan
 categories: announcement
 tags:
   - law
-image: /assets/2025/04-huans-law/huans-law.webp
+image: /assets/2025/04-huans-conversation-law/huans-law.webp
 ---
 
 Fifteen years ago, Jeff Atwood declared:
