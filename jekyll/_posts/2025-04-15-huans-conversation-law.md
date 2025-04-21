@@ -1,5 +1,6 @@
 ---
 title: "All Interfaces Are Becoming Conversational"
+description: "Huan's Law: 'Any app that can be talked to, will be talked to.' Explore the future of voice-first and conversational apps, where talking to technology becomes the norm."
 author: huan
 categories: announcement
 tags:
@@ -33,13 +34,16 @@ Just as web applications once replaced desktop software, **conversational interf
 
 ## Huan’s Law
 
-Drawing inspiration from Atwood, I propose:
+Inspired by Atwood’s Law, I propose:
 
 > **Huan’s Law:** “Any application that can be talked to, will eventually be talked to.”
 
-This isn't merely a prediction — it's an observation of current trends.
+Or simply:  
+**“Any app that can be talked to, will be talked to.”**
 
-From customer service bots to voice-controlled home devices, **conversational interfaces are becoming ubiquitous**.
+This isn’t just a prediction—it’s a reflection of where things are already heading.
+
+From customer service bots to voice-activated home devices, **conversational interfaces are becoming the norm**.
 
 ---
 
