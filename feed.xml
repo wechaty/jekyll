@@ -1,0 +1,1348 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wechaty.js.org/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wechaty.js.org/" rel="alternate" type="text/html" /><updated>2025-04-21T22:25:09+00:00</updated><id>https://wechaty.js.org/feed.xml</id><title type="html">Wechaty</title><subtitle>Conversational RPA SDK for Chatbot Makers</subtitle><entry><title type="html">All Interfaces Are Becoming Conversational</title><link href="https://wechaty.js.org/2025/04/15/huans-conversation-law/" rel="alternate" type="text/html" title="All Interfaces Are Becoming Conversational" /><published>2025-04-15T00:00:00+00:00</published><updated>2025-04-15T00:00:00+00:00</updated><id>https://wechaty.js.org/2025/04/15/huans-conversation-law</id><content type="html" xml:base="https://wechaty.js.org/2025/04/15/huans-conversation-law/"><![CDATA[<blockquote>
+  <p><strong>Atwood’s Law:</strong> “Any application that can be written in JavaScript, will eventually be written in JavaScript.”</p>
+</blockquote>
+
+<p>Fifteen years ago, Jeff Atwood declared.</p>
+
+<p>At the time, this was a bold assertion. Yet today, we see it realized in countless applications — from web-based versions of Photoshop to browser-run IDEs. The web became the universal platform, and JavaScript its lingua franca.</p>
+
+<p>Now, we stand at the dawn of a new era: the age of <strong>conversational interfaces</strong>.</p>
+
+<hr />
+
+<h2 id="the-rise-of-conversational-interfaces">The Rise of Conversational Interfaces</h2>
+
+<p>Consider <a href="https://www.linkedin.com/posts/joseph-michael_the-most-impressive-ai-demo-ive-seen-in-ugcPost-7317865648452198401-3bTF/">a recent demonstration shared by Joseph Michael on LinkedIn</a>. An AI agent assists a customer through voice, text, and video — understanding context, preferences, and even visual inputs to provide personalized recommendations and services.</p>
+
+<p>This isn’t a distant future — it’s happening now.</p>
+
+<p>Just as web applications once replaced desktop software, <strong>conversational interfaces</strong> are beginning to supplant traditional GUIs. The reasons are clear:</p>
+
+<ul>
+  <li><strong>Accessibility:</strong> Voice and text interfaces lower the barrier to entry for users of all ages and abilities.</li>
+  <li><strong>Efficiency:</strong> Conversational agents can handle complex tasks through simple dialogues.</li>
+  <li><strong>Personalization:</strong> AI-driven conversations adapt to individual user needs in real-time.</li>
+</ul>
+
+<hr />
+
+<h2 id="huans-law">Huan’s Law</h2>
+
+<p>Inspired by Atwood’s Law, I propose:</p>
+
+<blockquote>
+  <p><strong>Huan’s Law:</strong> “Any application that can be talked to, will eventually be talked to.”</p>
+</blockquote>
+
+<p>Or simply:<br />
+<strong>“Any app that can be talked to, will be talked to.”</strong></p>
+
+<p>This isn’t just a prediction—it’s a reflection of where things are already heading.</p>
+
+<p>From customer service bots to voice-activated home devices, <strong>conversational interfaces are becoming the norm</strong>.</p>
+
+<hr />
+
+<h2 id="embracing-the-shift">Embracing the Shift</h2>
+
+<p>For developers and businesses, this shift presents both challenges and opportunities:</p>
+
+<ul>
+  <li><strong>Designing for Dialogue:</strong> Crafting intuitive conversational flows requires a new set of design principles.</li>
+  <li><strong>Leveraging AI:</strong> Integrating natural language processing (NLP) and understanding (NLU) to create responsive agents.</li>
+  <li><strong>Ensuring Privacy:</strong> Handling user data responsibly in conversational contexts.</li>
+</ul>
+
+<p>At <a href="https://wechaty.js.org/">Wechaty</a>, we’ve been at the forefront of this transformation — providing tools and frameworks to build conversational agents efficiently.</p>
+
+<hr />
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The evolution of user interfaces is steering toward conversation.</p>
+
+<p>As we embraced the web and JavaScript in the past, it’s time to embrace conversational AI.</p>
+
+<p>In the spirit of Huan’s Law:<br />
+<strong>If it can be talked to, it will be.</strong></p>
+
+<hr />
+
+<h2 id="sources">Sources</h2>
+
+<ul>
+  <li>Atwood, Jeff. <a href="https://blog.codinghorror.com/all-programming-is-web-programming/">“All Programming is Web Programming”</a></li>
+  <li>Joseph Michael. <a href="https://www.linkedin.com/posts/joseph-michael_the-most-impressive-ai-demo-ive-seen-in-ugcPost-7317865648452198401-3bTF/">“The most impressive AI demo I’ve seen in years.” (LinkedIn Post)</a></li>
+</ul>]]></content><author><name>huan</name></author><category term="announcement" /><category term="law" /><summary type="html"><![CDATA[Huan's Law: 'Any app that can be talked to, will be talked to.' Explore the future of voice-first and conversational apps, where talking to technology becomes the norm.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://wechaty.js.org/assets/2025/04-huans-conversation-law/huans-law.webp" /><media:content medium="image" url="https://wechaty.js.org/assets/2025/04-huans-conversation-law/huans-law.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">🚀 What’s the Best Transport for an Event-Driven Architecture: WebSocket or SSE + POST?</title><link href="https://wechaty.js.org/2025/04/04/best-transport-for-event-driven-architecture-websocket-or-sse-post/" rel="alternate" type="text/html" title="🚀 What’s the Best Transport for an Event-Driven Architecture: WebSocket or SSE + POST?" /><published>2025-04-04T00:00:00+00:00</published><updated>2025-04-04T00:00:00+00:00</updated><id>https://wechaty.js.org/2025/04/04/best-transport-for-event-driven-architecture-websocket-or-sse-post</id><content type="html" xml:base="https://wechaty.js.org/2025/04/04/best-transport-for-event-driven-architecture-websocket-or-sse-post/"><![CDATA[<p>As the creator of the <a href="https://github.com/wechaty/wechaty">Wechaty</a> and <a href="https://github.com/chatie">Chatie</a> projects, I’ve spent years building conversational and messaging tools for developers. Now, I’m investing in a new phase of <strong>cloud-native, event-driven infrastructure</strong> for Chatie, and I want to get the architecture right from day one.</p>
+
+<p>For this next-generation system, I’m adopting:</p>
+
+<ul>
+  <li><strong>CQRS</strong> (Command Query Responsibility Segregation)</li>
+  <li><strong>Event Sourcing</strong></li>
+  <li><strong>Event-Driven Programming</strong></li>
+</ul>
+
+<p>These patterns enable scalable, modular systems with clear separation of concerns. But to tie it all together, I need a reliable, flexible, and efficient <strong>messaging transport</strong> — something that works both <strong>internally between services</strong>, and <strong>externally with clients</strong> (browsers, CLI tools, etc).</p>
+
+<p>So the big question became:<br />
+<strong>What transport should I use for streaming and event communication?</strong></p>
+
+<hr />
+
+<h2 id="-the-problem-choosing-a-universal-messaging-protocol">❓ The Problem: Choosing a Universal Messaging Protocol</h2>
+
+<p>My goal is to design a <strong>universal communication layer</strong> that:</p>
+
+<ol>
+  <li>Works across <strong>cloud environments</strong> and <strong>local development</strong>.</li>
+  <li>Supports <strong>event-driven</strong> messaging — sending and receiving updates in real-time.</li>
+  <li>
+    <p>Plays nicely with modern <strong>web clients</strong>, <strong>CLI</strong>, and <strong>microservices</strong>.</p>
+  </li>
+  <li>Allows <strong>stateless request handling</strong> (ideal for serverless and horizontally scalable systems).</li>
+</ol>
+
+<p>Naturally, <strong>WebSocket</strong> is a common choice for bi-directional, real-time communication. But is it the best choice for this use case? I decided to dive deeper and explore another approach: <strong>HTTP POST + Server-Sent Events (SSE)</strong> — especially after learning how the <a href="https://modelcontextprotocol.io/introduction">Model Context Protocol (MCP)</a> team made a similar decision.</p>
+
+<hr />
+
+<h2 id="-the-solution-http-post--sse-vs-websocket">✅ The Solution: HTTP POST + SSE vs. WebSocket</h2>
+
+<p>After extensive research and experimentation, I’ve decided to go with <strong>HTTP POST + Server-Sent Events (SSE)</strong> as the primary messaging transport for Chatie.</p>
+
+<p>Let’s break it down.</p>
+
+<hr />
+
+<h2 id="️-comparing-websocket-vs-sse--post">⚖️ Comparing WebSocket vs SSE + POST</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>WebSocket</th>
+      <th>HTTP POST + SSE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Bi-directional</strong></td>
+      <td>✅ Full-duplex</td>
+      <td>🔄 Half-duplex (Client sends via POST, Server streams via SSE)</td>
+    </tr>
+    <tr>
+      <td><strong>Works with HTTP semantics (e.g., POST, headers)</strong></td>
+      <td>❌ No (only GET upgrade)</td>
+      <td>✅ Yes</td>
+    </tr>
+    <tr>
+      <td><strong>Authentication (e.g., <code class="language-plaintext highlighter-rouge">Authorization</code> header)</strong></td>
+      <td>❌ Limited in browsers</td>
+      <td>✅ Fully supported</td>
+    </tr>
+    <tr>
+      <td><strong>Browser support</strong></td>
+      <td>✅ Native WebSocket API</td>
+      <td>✅ Native EventSource API</td>
+    </tr>
+    <tr>
+      <td><strong>Proxy/firewall friendliness</strong></td>
+      <td>⚠️ Sometimes blocked</td>
+      <td>✅ Treated as normal HTTP</td>
+    </tr>
+    <tr>
+      <td><strong>Ease of debugging</strong></td>
+      <td>⚠️ Requires special tools</td>
+      <td>✅ Can use <code class="language-plaintext highlighter-rouge">curl</code>, browser, etc.</td>
+    </tr>
+    <tr>
+      <td><strong>Stateless-friendly (serverless, scale-out)</strong></td>
+      <td>❌ Long-lived stateful connection</td>
+      <td>✅ Stateless POST + stream</td>
+    </tr>
+    <tr>
+      <td><strong>Resumability (auto-reconnect)</strong></td>
+      <td>❌ Manual reconnection logic needed</td>
+      <td>✅ Built-in with EventSource</td>
+    </tr>
+    <tr>
+      <td><strong>Complexity</strong></td>
+      <td>⚠️ Needs upgrade handshake, framing</td>
+      <td>✅ Simple HTTP + text stream</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="-architecture-diagrams">🔧 Architecture Diagrams</h2>
+
+<h3 id="websocket-architecture">WebSocket Architecture</h3>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Client &lt;======&gt; WebSocket Server
+      [ Bi-directional | Long-lived connection ]
+</code></pre></div></div>
+
+<h3 id="sse--post-architecture">SSE + POST Architecture</h3>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Client --(POST)--&gt; Server
+Client &lt;--(SSE)-- Server
+
+      [ Stateless requests + Server-push stream ]
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-code-examples">💻 Code Examples</h2>
+
+<h3 id="sse--post-example-nodejs--express">SSE + POST Example (Node.js / Express)</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Server (Express)</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/run-tool</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// Process the incoming command</span>
+  <span class="kd">const</span> <span class="nx">toolInput</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+
+  <span class="nx">res</span><span class="p">.</span><span class="nf">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">text/event-stream</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nf">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Cache-Control</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">no-cache</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nf">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Connection</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">keep-alive</span><span class="dl">'</span><span class="p">);</span>
+
+  <span class="c1">// Simulate streaming output</span>
+  <span class="kd">const</span> <span class="nx">interval</span> <span class="o">=</span> <span class="nf">setInterval</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="s2">`data: Output at </span><span class="p">${</span><span class="k">new</span> <span class="nc">Date</span><span class="p">().</span><span class="nf">toISOString</span><span class="p">()}</span><span class="s2">\n\n`</span><span class="p">);</span>
+  <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+
+  <span class="c1">// Stop after 5 seconds</span>
+  <span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nf">clearInterval</span><span class="p">(</span><span class="nx">interval</span><span class="p">);</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="dl">'</span><span class="s1">event: done</span><span class="se">\n</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="dl">'</span><span class="s1">data: Stream complete</span><span class="se">\n\n</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nf">end</span><span class="p">();</span>
+  <span class="p">},</span> <span class="mi">5000</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Client (Browser)</span>
+<span class="kd">const</span> <span class="nx">evtSource</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">EventSource</span><span class="p">(</span><span class="dl">'</span><span class="s1">/run-tool</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">evtSource</span><span class="p">.</span><span class="nx">onmessage</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Message:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">evtSource</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">done</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Stream completed</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nx">evtSource</span><span class="p">.</span><span class="nf">close</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-resources--references">📚 Resources &amp; References</h2>
+
+<ul>
+  <li>MCP GitHub PR on SSE vs WebSocket: <a href="https://github.com/modelcontextprotocol/specification/pull/206">https://github.com/modelcontextprotocol/specification/pull/206</a></li>
+  <li>Durable Objects &amp; HTTP Streaming: <a href="https://blog.cloudflare.com/introducing-workers-durable-objects/#why-not-websockets">https://blog.cloudflare.com/introducing-workers-durable-objects/#why-not-websockets</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-conclusion">🧠 Conclusion</h2>
+
+<p>If you’re building a <strong>real-time, event-driven system</strong>, it’s easy to default to WebSockets. But before you do, consider whether you really need full-duplex communication.</p>
+
+<p>For most <strong>CQRS</strong>, <strong>event-sourcing</strong>, and <strong>cloud-native</strong> use cases — where clients <strong>send a command</strong> and <strong>receive streamed events</strong> — a combination of <strong>HTTP POST + SSE</strong> gives you the best of both worlds:</p>
+
+<ul>
+  <li>Clean request/response semantics</li>
+  <li>Streaming real-time updates</li>
+  <li>Low complexity and broad compatibility</li>
+</ul>
+
+<p>This is why <strong>Chatie will be built on SSE + POST</strong>, and I believe it’s a powerful, underused pattern that deserves more attention in the developer community.</p>
+
+<hr />
+
+<p>💬 I’d love to hear your thoughts! Have you used SSE or WebSockets in your projects? What challenges did you face? Let’s chat in the comments or <a href="https://github.com/chatie">on GitHub</a>.</p>]]></content><author><name>huan</name></author><category term="event" /><category term="event-driven" /><category term="cqrs" /><category term="cloud-native" /><summary type="html"><![CDATA[As the creator of the Wechaty and Chatie projects, I’ve spent years building conversational and messaging tools for developers. Now, I’m investing in a new phase of cloud-native, event-driven infrastructure for Chatie, and I want to get the architecture right from day one.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://wechaty.js.org/assets/2025/04-best-transport-for-event-driven-architecture-websocket-or-sse-post/sse-post-websocket.webp" /><media:content medium="image" url="https://wechaty.js.org/assets/2025/04-best-transport-for-event-driven-architecture-websocket-or-sse-post/sse-post-websocket.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">AWS with Wechaty | AWS 生成式 AI 应用挑战赛重磅来袭！</title><link href="https://wechaty.js.org/2024/04/25/wechaty-with-aws2024/" rel="alternate" type="text/html" title="AWS with Wechaty | AWS 生成式 AI 应用挑战赛重磅来袭！" /><published>2024-04-25T00:00:00+00:00</published><updated>2024-04-25T00:00:00+00:00</updated><id>https://wechaty.js.org/2024/04/25/wechaty-with-aws2024</id><content type="html" xml:base="https://wechaty.js.org/2024/04/25/wechaty-with-aws2024/"><![CDATA[<p>✨ <strong>第二届中国生成式 AI 创新应用挑战赛</strong> ✨
+见证下一批独角兽的诞生！
+<a href="https://mp.weixin.qq.com/s/kDyn9qL54jr7NCKg--RIvA">阅读原文</a></p>
+
+<p>第二届中国生成式 AI 应用创新挑战赛拉开帷幕！</p>
+
+<p>获得业内一致好评的</p>
+
+<p><strong>“中国生成式 AI 应用创新挑战赛”</strong>又来啦！</p>
+
+<p>在去年，亚马逊云科技联合清华大学基础模型中心和众多生成式 AI 头部机构举办了首届“中国生成式 AI 应用创新挑战赛”，吸引了<strong>超过600名来自不同行业的开发者与创业者</strong>参与，并帮助这些开发者利用亚马逊云科技以及合作企业的生成式 AI 服务，构建了<strong>超过140个生成式 AI 创新项目</strong>。</p>
+
+<p>从本月中旬开始，本届挑战赛携手 Wechaty 等开源社区，并联合<strong>亚马逊云科技初创生态</strong>及众多中国生成式 AI 领域独角兽，打造生成式 AI 领域的明星赛事。</p>
+
+<h2 id="赛题简介">赛题简介</h2>
+
+<p>所有报名选手将通过学习本次比赛发布的一系列课程，掌握生成式 AI 技术的核心理论和实践工具，完成复杂的生成式 AI 应用创新。参赛者需要选择合适的大模型作为应用核心，根据自己的兴趣和创意，选择不同的行业任务领域（如出海、电商、教育、娱乐、医疗、金融等），设计出兼顾效率和成本、有价值的生成式 AI 应用。</p>
+
+<p>本次大赛需要来自 Wechaty 开源社区的选手<strong>使用 AWS 和 Wechaty 两个产品</strong>来打造属于自己基于大模型的创意ai ChatBot，而大赛官方为选手们提供的不仅是一个全新的AI能力平台，也是一个能够与各路好手一较高下的舞台。那么这两大开源产品有哪些能力呢？</p>
+
+<p>无论你是创业者还是开发者，都可以在本次赛事中快速从学习到构建。我们将在海选阶段晋级20支优胜队伍，参与5月30日<strong>在亚马逊云科技中国峰会的舞台上的总决赛路演</strong>，向业内顶尖的技术专家与投资机构展现您的作品。</p>
+
+<p>目前该赛事已经开放报名和作品提交，<strong>扫描下方二维码，立即报名参赛！</strong>
+<img src="/assets/2024/04-wechaty-with-aws2024/qrcode.webp" alt="qrcode" /></p>
+
+<h2 id="赛事奖励">赛事奖励</h2>
+
+<p><img src="/assets/2024/04-wechaty-with-aws2024/awards.webp" alt="awards" /></p>
+
+<h2 id="赛程安排">赛程安排</h2>
+
+<p><img src="/assets/2024/04-wechaty-with-aws2024/schedule.webp" alt="schedule" /></p>
+
+<h2 id="赛事组织">赛事组织</h2>
+
+<p><img src="/assets/2024/04-wechaty-with-aws2024/org.webp" alt="org" /></p>
+
+<h3 id="aws">AWS</h3>
+
+<p>Amazon Web Services（AWS）是全球最全面、应用最广泛的云，从全球数据中心提供超过 200 项功能齐全的服务。数百万客户（包括增长最快速的初创公司、最大型企业和主要的政府机构）都在使用 AWS 来降低成本、提高敏捷性并加速创新。</p>
+
+<p>体验 AWS 请前往：<a href="https://aws.amazon.com/cn/what-is-aws/?nc1=f_cc">AWS云计算</a></p>
+
+<h3 id="wechaty">Wechaty</h3>
+
+<p>Wechaty 是一个开源聊天机器人框架SDK，具有多平台、多语言和多插件的特性，支持Python, Go, Java, Scala, .NET, PHP, Rust 等多语言版本，通过几行代码即可创建一个聊天机器人。经过5年多的发展，现在Wechaty开源社区已拥有数十位Committers，百余位Contributors，并被万名Github开发者Star。目前，Wechaty的开发者已遍布全球多个国家和地区，覆盖数万人，是国内最活跃的Conversational AI Chatbot 开发者社区。</p>
+
+<p>Wechaty的优势在于对代码质量地管理，开发者可以使用了Github Actions地DevOps工具完成了CI/CD工作流，从自动化单元测试到自动打包集成测试，从自动发布NPM包到自动构建和发布对应版本地Docker Image，实现了全自动地社区代码发布，极大地提高了社区地协同效率。</p>
+
+<p>目前，在Github上已有千余个开源项目基于Wechaty构建了聊天机器人。另外，Wechaty统一了即时通讯软件平台的对话接口，仅需要一套代码即可运行在多个平台之上，目前已成熟高效地推动了包括社群管理、数据运维、办公、资讯、广告、营销等多个领域不同实用场景的落地。</p>
+
+<p>机遇稍纵即逝，你还在等什么？现在就行动吧，填写报名信息。翘首以待你的到来，赢取这场挑战赛的桂冠荣耀！</p>
+
+<p>✨ 比赛的战鼓已经擂响</p>
+
+<p>✨ 欢迎您报名参赛</p>
+
+<p>✨ 在亚马逊云科技中国峰会现场巅峰相见</p>
+
+<p>✨ 共同突破极限，为 AI 而战！</p>
+
+<p><a href="https://mp.weixin.qq.com/s/kDyn9qL54jr7NCKg--RIvA">阅读原文</a></p>]]></content><author><name>aiamber</name></author><category term="article" /><category term="aws" /><category term="ai" /><category term="news" /><category term="featured" /><category term="chatbot" /><category term="competition" /><summary type="html"><![CDATA[✨ 第二届中国生成式 AI 创新应用挑战赛 ✨ 见证下一批独角兽的诞生！ 阅读原文]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://wechaty.js.org/assets/2024/04-wechaty-with-aws2024/main.webp" /><media:content medium="image" url="https://wechaty.js.org/assets/2024/04-wechaty-with-aws2024/main.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">利用 Dify 构建基于 GPT-4 Turbo 的智能 Agent,实现医疗微信机器人</title><link href="https://wechaty.js.org/2024/03/30/wechatbot-with-wechaty-dify-gpt4/" rel="alternate" type="text/html" title="利用 Dify 构建基于 GPT-4 Turbo 的智能 Agent,实现医疗微信机器人" /><published>2024-03-30T00:00:00+00:00</published><updated>2024-03-30T00:00:00+00:00</updated><id>https://wechaty.js.org/2024/03/30/wechatbot-with-wechaty-dify-gpt4</id><content type="html" xml:base="https://wechaty.js.org/2024/03/30/wechatbot-with-wechaty-dify-gpt4/"><![CDATA[<blockquote>
+  <p>作者: <a href="https://github.com/gscfwid/">gscfwid</a>，An anesthetist in a big ship of mainland.</p>
+</blockquote>
+
+<p>大家好,我是一名医生,同时也是一个技术爱好者。今天我想和大家分享一下我最近的一个项目——利用 Dify 构建基于 GPT-4 Turbo 的智能 Agent,实现高级微信聊天机器人。</p>
+
+<h2 id="为什么选择微信机器人">为什么选择微信机器人</h2>
+
+<p>首先,我想说一下为什么要做这个机器人。作为一名医生,我的一项重要工作是随访病人,了解他们术后的恢复情况。我们医院每年有 7-8 万的手术量,人工电话随访是非常不现实的。而且,现在运营商对电话的限制也比较严格。我发现,对于病人来说,微信可能是一个更容易接受的随访方式,因为它不会显得打扰到他们的生活。</p>
+
+<h2 id="为什么选择-wechaty">为什么选择 Wechaty</h2>
+
+<p>然而,市面上大多数微信机器人框架都是基于 web 协议的,而目前 web 协议基本处于不可用的状态。例如,虽然 wechaty 可以利用 UOS 上保留的 web 协议,但它无法获取永久的 ID、备注、tag 等数据,这对随访工作非常不利。在尝试了 padlocal 协议后,我觉得它非常适合我的需求。</p>
+
+<h2 id="为什么选择-dify">为什么选择 Dify</h2>
+
+<p>接下来,我想说一下为什么选择使用 Dify 来构建这个机器人。首先,我希望这个机器人不仅能完成随访任务,还能成为一个面向病人的医学科普机器人。随着大语言模型的爆发,这个想法变得非常容易实现。利用 wechaty 和大模型的 API,我很快就构思出了一个初步的框架。</p>
+
+<p>Dify 是一个知名的大模型 Agent 平台,它对 API 的封装要比 OpenAI 官方的 API 更加友好,例如在 prompt 的构建和对话线程的保持方面。虽然 OpenAI 也可以构建 assistant,但是保持对话似乎没有那么容易。另外,Dify 平台本身也构建了一些插件,比如 Google 搜索,可以很容易集成到 API 中。因此,我最终选择了 Dify 作为我的开发平台。
+以上就是我开发这个微信医疗随访机器人的一些背景和思路。作为一个医生和技术小白,我希望通过分享自己的项目经历,能给大家带来一些启发和思考。在接下来的部分,我会和大家聊聊这个机器人的一些技术细节,欢迎大家提出宝贵的意见和建议。</p>
+
+<h2 id="通过-dify-创建基于-gpt-4-turbo-的模型">通过 Dify 创建基于 GPT-4 Turbo 的模型</h2>
+
+<p>Dify 提供了一个简单易用的界面,让我可以快速地创建和测试模型。
+首先,我在 Dify 平台上创建了一个新的应用,并选择了 GPT-4 Turbo 作为基础模型。在这个初始阶段,我暂时没有使用任何自定义的 prompt 或插件,只是想先做一个简单的测试,看看模型的性能如何。</p>
+
+<p>创建应用后,Dify 会自动生成一个 API 密钥(API key),我们可以使用这个密钥来调用 Dify 的 API 接口,与我们创建的智能对话模型进行交互。</p>
+
+<h2 id="使用-wechaty-实现微信机器人">使用 Wechaty 实现微信机器人</h2>
+
+<p>有了智能对话模型,接下来我们需要一个平台来实现微信机器人,将模型集成到微信中。这里我选择了 Wechaty。Wechaty 是一个开源的对话机器人 SDK,支持个人微信号,使用 Node.js 和 TypeScript 构建。</p>
+
+<p>下面是我的代码实现,主要分为以下几个部分:</p>
+
+<p>首先,我使用 wechaty-puppet-padlocal 作为 Wechaty 的 Puppet Provider,它通过 iPad 协议连接微信,相比 Web 协议更加稳定可靠。然后使用 WechatyBuilder 来构建我们的机器人实例。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 初始化Wechaty</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">PuppetPadlocal</span> <span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">wechaty-puppet-padlocal</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">WechatyBuilder</span> <span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">wechaty</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">puppet</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PuppetPadlocal</span><span class="p">({</span>
+  <span class="na">token</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PUPPET_PADLOCAL_TOKEN</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="nx">WechatyBuilder</span><span class="p">.</span><span class="nf">build</span><span class="p">({</span> <span class="nx">puppet</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">test</span><span class="dl">"</span> <span class="p">});</span>
+</code></pre></div></div>
+
+<p>接下来调用 Dify API 的核心函数。我使用 axios 库发送 POST 请求到 Dify 的 API 端点,传入用户的输入消息、对话 ID 等参数,并通过 API Key 进行身份验证。Dify 会返回智能对话模型生成的回复。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 调用Dify API的函数</span>
+<span class="kd">const</span> <span class="nx">difyApiKey</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DIFY_API_KEY</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">difyApiUrl</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://api.dify.ai/v1/chat-messages</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">sendMessage</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span> <span class="nx">userName</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+      <span class="nx">difyApiUrl</span><span class="p">,</span>
+      <span class="p">{</span>
+        <span class="na">inputs</span><span class="p">:</span> <span class="p">{},</span>
+        <span class="na">query</span><span class="p">:</span> <span class="nx">message</span><span class="p">,</span>
+        <span class="na">response_mode</span><span class="p">:</span> <span class="dl">"</span><span class="s2">streaming</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">conversation_id</span><span class="p">:</span> <span class="nx">conversationData</span><span class="p">.</span><span class="nx">conversationId</span><span class="p">,</span>
+        <span class="na">user</span><span class="p">:</span> <span class="nx">userName</span><span class="p">,</span>
+        <span class="na">files</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`Bearer </span><span class="p">${</span><span class="nx">difyApiKey</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">,</span>
+        <span class="p">},</span>
+      <span class="p">}</span>
+    <span class="p">);</span>
+    <span class="c1">// Process response...</span>
+  <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span>
+        <span class="dl">"</span><span class="s2">Dify API responded with status code:</span><span class="dl">"</span><span class="p">,</span>
+        <span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span>
+      <span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">"</span><span class="s2">No response received from Dify API:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">error</span><span class="p">.</span><span class="nx">request</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Error setting up request to Dify API:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="c1">// Handle error appropriately...</span>
+  <span class="p">}</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>最后,我监听 Wechaty 的 message 事件,当收到用户在群聊中@机器人的消息时,提取出消息内容,调用 sendMessage 函数获取智能回复,然后通过 room.say 将回复发送到群聊中。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 监听消息事件</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">message</span><span class="dl">"</span><span class="p">,</span> <span class="k">async </span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// 获取发消息人的信息</span>
+  <span class="kd">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">talker</span><span class="p">().</span><span class="nx">id</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">room</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="nx">userName</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">name</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">text</span><span class="p">();</span>
+  <span class="c1">// 判断它是否在我已经创建好的SQLite数据库中</span>
+  <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">query</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">SELECT * FROM contacts WHERE id = ?</span><span class="dl">"</span><span class="p">;</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">row</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nx">query</span><span class="p">,</span> <span class="p">[</span><span class="nx">id</span><span class="p">]);</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">row</span> <span class="o">!=</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">reply</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">sendMessage</span><span class="p">(</span><span class="nx">text</span><span class="p">,</span> <span class="nx">userName</span><span class="p">);</span>
+        <span class="k">await</span> <span class="nx">message</span><span class="p">.</span><span class="nf">talker</span><span class="p">().</span><span class="nf">say</span><span class="p">(</span><span class="nx">reply</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>这里需要强调的一点是，我利用 Dify API 中的 conversation_id 来实现保持对话的功能。这部分代码主要在 sendMessage 函数中:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">conversationMap</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Map</span><span class="p">();</span> <span class="c1">// 创建一个键值对来保存提问者的信息和conversation_id</span>
+<span class="kd">const</span> <span class="nx">CONVERSATION_EXPIRATION</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">;</span> <span class="c1">// 设定conversation的保持时间，设定为5分钟</span>
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">sendMessage</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span> <span class="nx">userName</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+  <span class="kd">let</span> <span class="nx">conversationData</span> <span class="o">=</span> <span class="nx">conversationMap</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nx">userName</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">timestamp</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nf">now</span><span class="p">();</span>
+
+  <span class="c1">// 如果会话不存在或已过期,则创建新的会话</span>
+  <span class="k">if </span><span class="p">(</span>
+    <span class="o">!</span><span class="nx">conversationData</span> <span class="o">||</span>
+    <span class="nx">timestamp</span> <span class="o">-</span> <span class="nx">conversationData</span><span class="p">.</span><span class="nx">timestamp</span> <span class="o">&gt;</span> <span class="nx">CONVERSATION_EXPIRATION</span>
+  <span class="p">)</span> <span class="p">{</span>
+    <span class="nx">conversationData</span> <span class="o">=</span> <span class="p">{</span> <span class="na">conversationId</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">timestamp</span> <span class="p">};</span>
+    <span class="nx">conversationMap</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="nx">userName</span><span class="p">,</span> <span class="nx">conversationData</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+    <span class="nx">difyApiUrl</span><span class="p">,</span>
+    <span class="p">{</span>
+      <span class="c1">// ...</span>
+      <span class="na">conversation_id</span><span class="p">:</span> <span class="nx">conversationData</span><span class="p">.</span><span class="nx">conversationId</span><span class="p">,</span>
+      <span class="na">user</span><span class="p">:</span> <span class="nx">userName</span><span class="p">,</span>
+      <span class="c1">// ...</span>
+    <span class="p">}</span>
+    <span class="c1">// ...</span>
+  <span class="p">);</span>
+
+  <span class="c1">// 更新会话ID和时间戳</span>
+  <span class="nx">conversationData</span><span class="p">.</span><span class="nx">timestamp</span> <span class="o">=</span> <span class="nx">timestamp</span><span class="p">;</span>
+
+  <span class="c1">// ...</span>
+  <span class="c1">// 下面的代码是由于使用了stream模式来获取Dify的response，所以我需要遍历它的每个回复，找到最终的回复内容</span>
+  <span class="k">for </span><span class="p">(</span><span class="kd">const</span> <span class="nx">line</span> <span class="k">of</span> <span class="nx">lines</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">line</span><span class="p">.</span><span class="nf">startsWith</span><span class="p">(</span><span class="dl">"</span><span class="s2">data:</span><span class="dl">"</span><span class="p">))</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="nx">line</span><span class="p">.</span><span class="nf">slice</span><span class="p">(</span><span class="mi">5</span><span class="p">).</span><span class="nf">trim</span><span class="p">());</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">event</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">agent_thought</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// ...</span>
+        <span class="nx">conversationData</span><span class="p">.</span><span class="nx">conversationId</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">conversation_id</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>通过这种方式,我们可以为每个用户维护一个独立的对话上下文,实现多轮对话。当用户在一定时间内(这里设置为 5 分钟)继续发送消息时,就可以保持上下文连贯;如果超过了这个时间,就会开始一个新的对话。</p>
+
+<p>接下来的设置就都是在 Dify 平台了，目前我还在制作中。我设想是上传从网络中下载的科普文章作为知识库，限定 GPT-4 只在知识库中作答。Anyway，就不属于技术讨论的范畴了。</p>
+
+<p>以上就是利用 Dify 和 Wechaty 实现微信智能对话机器人的核心代码。通过 Dify 强大的对话模型和 Wechaty 方便的微信集成,我们可以快速搭建一个实用的医疗科普机器人。当然,这只是一个基础版本,我们还可以继续添加更多功能,如自定义 prompt、知识库搜索等,来进一步提升机器人的智能化水平。</p>]]></content><author><name>gscfwid</name></author><category term="article" /><category term="dify" /><category term="gpt4-turbo" /><summary type="html"><![CDATA[作者: gscfwid，An anesthetist in a big ship of mainland.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://wechaty.js.org/assets/2024/03-wechatbot-with-wechaty-dify-gpt4/bp-post.webp" /><media:content medium="image" url="https://wechaty.js.org/assets/2024/03-wechatbot-with-wechaty-dify-gpt4/bp-post.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">2024GDC: Wechaty Showcasing the Power of AI and Automation at GDC 2024</title><link href="https://wechaty.js.org/2024/03/26/wechaty-in-2024gdc/" rel="alternate" type="text/html" title="2024GDC: Wechaty Showcasing the Power of AI and Automation at GDC 2024" /><published>2024-03-26T00:00:00+00:00</published><updated>2024-03-26T00:00:00+00:00</updated><id>https://wechaty.js.org/2024/03/26/wechaty-in-2024gdc</id><content type="html" xml:base="https://wechaty.js.org/2024/03/26/wechaty-in-2024gdc/"><![CDATA[<p><img src="/assets/2024/03-wechaty-in-2024gdc/2024gdc-a.webp" alt="2024gdc-a.webp" /></p>
+
+<p>On March 23-24, representing the Wechaty open-source community, I attended the <a href="https://my.globalaidc.com/pc/page/b4070000-a7d2-36dc-08e0-08dc1af77df3?theme=bvent">“2024 Global Developer Conference” (GDC)</a> in Shanghai.
+<img src="/assets/2024/03-wechaty-in-2024gdc/me-a.webp" alt="me-a.webp" /></p>
+
+<p><a href="https://wechaty.js.org">Wechaty</a>, as the world’s largest conversational RPA framework, currently has nearly 20,000 stars on GitHub. The contributors to its code come from over 20 countries and regions worldwide, providing a concise and powerful instant messaging (IM) integration solution to developers globally.
+<img src="/assets/2024/03-wechaty-in-2024gdc/me-b.webp" alt="me-b.webp" /></p>
+
+<p>At GDC, I provided in-depth explanations and demonstrations on how to combine artificial intelligence with automation using Wechaty, covering everything from coding implementation to practical applications, showcasing the impressive flexibility of Wechaty.
+<img src="/assets/2024/03-wechaty-in-2024gdc/wechaty.webp" alt="wechaty.webp" /></p>
+
+<p>Additionally, in response to the call to “encourage women’s participation in technology,” as a Wechaty advocate, I supported a female fan who is a chatbot developer in delivering a fantastic presentation to a global audience.
+<img src="/assets/2024/03-wechaty-in-2024gdc/pre-schedule.webp" alt="pre-schedule.webp" />
+<img src="/assets/2024/03-wechaty-in-2024gdc/pre.webp" alt="pre.webp" /></p>
+
+<h2 id="pictures">pictures</h2>
+
+<p><img src="/assets/2024/03-wechaty-in-2024gdc/2024gdc-b.webp" alt="2024gdc-b.webp" />
+<img src="/assets/2024/03-wechaty-in-2024gdc/me-c.webp" alt="me-c.webp" />
+<img src="/assets/2024/03-wechaty-in-2024gdc/me-d.webp" alt="me-d.webp" />
+<img src="/assets/2024/03-wechaty-in-2024gdc/me-e.webp" alt="me-e.webp" /></p>
+
+<h2 id="ppt">PPT</h2>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://docs.google.com/presentation/d/1dtjNqRjlg8QTeeNyGUIkgcRRT6awNpOjTx1zMrs_0pY/edit?usp=sharing" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>]]></content><author><name>aiamber</name></author><category term="announcement" /><category term="news" /><category term="ecosystem" /><category term="wechaty-way" /><summary type="html"><![CDATA[]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://wechaty.js.org/assets/2024/03-wechaty-in-2024gdc/title.webp" /><media:content medium="image" url="https://wechaty.js.org/assets/2024/03-wechaty-in-2024gdc/title.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Unveiling the Treasures of Collaboration: My Wechaty GSoD’21 Gifts</title><link href="https://wechaty.js.org/2024/02/18/wechaty-gsod-gifts/" rel="alternate" type="text/html" title="Unveiling the Treasures of Collaboration: My Wechaty GSoD’21 Gifts" /><published>2024-02-18T00:00:00+00:00</published><updated>2024-02-18T00:00:00+00:00</updated><id>https://wechaty.js.org/2024/02/18/wechaty-gsod-gifts</id><content type="html" xml:base="https://wechaty.js.org/2024/02/18/wechaty-gsod-gifts/"><![CDATA[<p>Hello, friends and fellow tech enthusiasts!</p>
+
+<p>I remember feeling a rush as I opened the unexpected package from the Wechaty folks. It felt like <strong>Christmas morning</strong>, even though it was just a regular Tuesday. <a href="https://github.com/huan">Huan</a>, who mentored me through Google Season of Docs, had something to do with this…I just knew it!</p>
+
+<p>This wasn’t just a box. It was like holding a trophy for something far more important than code or project completion.  It held proof of all those thrilling “a-ha!” moments, those times we brainstormed solutions until our heads throbbed, and the deep satisfaction of making something great together.</p>
+
+<p>Each trinket in that box whispered a story – late night debates that led to amazing features, helping each other through hurdles, learning and laughing at the same time. And <a href="https://github.com/huan">Huan</a>, he always seemed to know when I needed an extra jolt of confidence. Those memories flooded back when I saw the gifts.</p>
+
+<p>More than anything, that package reminded me why I love open source. Sure, we create fantastic technologies, but most importantly, we create connections. These aren’t just online friendships, they feel more real than that. And sometimes, real means sending care packages across the globe to say, “Hey, remember how awesome we are?”</p>
+
+<p>Google Season of Docs was more than a career thing, it felt personal. Every challenge, every victory, shaped me somehow. This kind of open, global collaboration just isn’t possible many other places. We made something cool, yes, but we also learned how to truly work as a team.</p>
+
+<p>I am so grateful for <a href="https://github.com/huan">Huan</a>, for the Wechaty crew, and for every strange and wonderful person I’ve met in this open-source world. These treasures will sit near my computer as a reminder: there’s nothing we can’t do when we join forces.  Bring on more sleepless nights, head-spinning problems, and breakthroughs beyond measure – I’ll face them all with the strength of this awesome community at my back.</p>
+
+<h2 id="the-heartfelt-reveal">The Heartfelt Reveal</h2>
+
+<p>The day the package arrived marked a departure from the ordinary, turning into a celebration of the extraordinary efforts and connections forged during the Google Season of Docs. The unboxing was a moment of reflection and gratitude, each item unwrapped a symbol of the milestones we’ve reached together.</p>
+
+<ul>
+  <li><strong>The Certificate:</strong> This wasn’t just any certificate; it was a green-bordered testament to the journey undertaken, with my name, Sajen Saravjith Karthikeyan, proudly displayed. This certificate, now adorning my wall, stands as a symbol of our collective accomplishments and the community’s appreciation of the contributions made.</li>
+  <li><strong>The Pin:</strong> Beyond its sleek design, the Wechaty pin symbolizes the unity and honor of being part of something greater—a community committed to pushing the boundaries of what’s possible with open-source collaboration.</li>
+  <li><strong>The USB Drive:</strong> This device, while practical in function, holds a deeper meaning—it’s a compendium of past achievements and a beacon for future endeavors, embodying the essence of our shared journey and the promise of what lies ahead.</li>
+  <li><strong>The Stickers:</strong> More than mere adornments, these Wechaty stickers are a vibrant declaration of our community’s spirit, adding a personal and playful touch to my workspace and serving as a daily reminder of the joy and collaboration that define Wechaty.</li>
+</ul>
+
+<h2 id="a-salute-to-mentorship-the-role-of-guidance-and-inspiration">A Salute to Mentorship: The Role of Guidance and Inspiration</h2>
+
+<p>I can’t talk about the GSoD season without a huge shoutout to <a href="https://github.com/huan">Huan</a>. In recounting this incredible journey, it’s imperative to highlight the pivotal role of mentorship—specifically, the guidance and inspiration provided by <a href="https://github.com/huan">Huan</a>. His mentorship transcended traditional boundaries, fostering an environment rich with learning and creativity. <a href="https://github.com/huan">Huan’s</a> expertise, passion, and leadership not only illuminated the path but also made the journey an unforgettable adventure.</p>
+
+<h2 id="wechatys-welcoming-gateway-a-collaborative-masterpiece">Wechaty’s Welcoming Gateway: A Collaborative Masterpiece</h2>
+
+<p>Our endeavors during the Google Season of Docs went beyond mere documentation. It was a collective push towards innovation, resulting in the transformation of the Wechaty landing page into a welcoming portal for newcomers—a beacon of our teamwork and the collaborative spirit that drives our community.</p>
+
+<p>Google Season of Docs 2021 with wechaty was an immersive adventure; it pushed boundaries, taught me skills I hadn’t imagined and howed me what it means to truly own a project. The revamped Wechaty landing page feels like a win every time I see it. We built an inviting on-ramp for people who want to explore and become part of our amazing community.</p>
+
+<h2 id="the-symphony-of-collaboration-celebrating-collective-effort">The Symphony of Collaboration: Celebrating Collective Effort</h2>
+
+<p>The success we’ve celebrated is not the product of individual effort but the result of a harmonious symphony of contributions from every corner of the Wechaty community. To every contributor, user, and supporter who has engaged with our initiatives—your participation has been the ultimate reward, fueling our progress and enriching our community.</p>
+
+<p>This work only shines because of everyone who dives into Wechaty. Every “aha!” moment, every problem solved, every newcomer who jumps in - that’s the fuel that fires up phenomenal projects! Here’s to all of you for pushing this community to do extraordinary things.</p>
+
+<h2 id="looking-ahead-a-future-filled-with-potential">Looking Ahead: A Future Filled with Potential</h2>
+
+<p>These gifts aren’t just cool swag—they’re reminders of what we’ve done and what’s still to come. They’re not just for me; they’re for all of us in the Wechaty community who keep pushing forward, making things better one line of code at a time.</p>
+
+<p>The gifts from the Wechaty community symbolize more than achievements; they represent the ongoing journey of innovation, collaboration, and growth. They remind us of our shared past and inspire us towards a future brimming with possibilities. As we forge ahead, these tokens of appreciation serve as a constant reminder of the power of community and the endless potential that lies in collective endeavor.</p>
+
+<p>As we raise our glasses to the future, let us do so with a deep sense of gratitude and anticipation for what lies ahead. To <a href="https://github.com/huan">Huan</a>, <a href="https://github.com/lijiarui">Rui</a>, and every member of the Wechaty community—thank you for an extraordinary Google Season of Docs experience. Here’s to continued innovation, collaboration, and the joy of building something greater, together.</p>
+
+<p>“Let’s march forward, not just as individual contributors but as a unified force, shaping the future of open-source technology with every line of code and every piece of documentation we craft. To innovation, to collaboration, to the endless journey of discovery—cheers to us all!”</p>]]></content><author><name>sajenjeshan1222</name></author><category term="gsod" /><category term="google" /><category term="gsod" /><category term="gifts" /><summary type="html"><![CDATA[Hello, friends and fellow tech enthusiasts!]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://wechaty.js.org/assets/2024/02-wechaty-gsod-gifts/gsod-wechaty-gifts.webp" /><media:content medium="image" url="https://wechaty.js.org/assets/2024/02-wechaty-gsod-gifts/gsod-wechaty-gifts.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">TensorFlow.js: Machine Learning in JavaScript</title><link href="https://wechaty.js.org/2024/02/05/devfest-silicon-valley-google-developer-group-tensorflow-js/" rel="alternate" type="text/html" title="TensorFlow.js: Machine Learning in JavaScript" /><published>2024-02-05T00:00:00+00:00</published><updated>2024-02-05T00:00:00+00:00</updated><id>https://wechaty.js.org/2024/02/05/devfest-silicon-valley-google-developer-group-tensorflow-js</id><content type="html" xml:base="https://wechaty.js.org/2024/02/05/devfest-silicon-valley-google-developer-group-tensorflow-js/"><![CDATA[<blockquote>
+  <p>Huan takes us on a journey into the world of machine learning right in your browser with TensorFlow.js. Whether you’re a developer, tech enthusiast, or just curious about the intersection of JavaScript and ML, this talk is a must-watch!<br />
+— <a href="https://www.youtube.com/@GDGSiliconValley">GDG Silicon Valley</a></p>
+</blockquote>
+
+<p><img src="/assets/2024/02-devfest-silicon-valley-google-developer-group-tensorflow-js/group-photo-dev-fest-silicon-valley-nov-16-2023.webp" alt="DevFest Silicon Valley 2023" /></p>
+
+<p>Huan Li, Google Developer Expert, will be delivering a session on “TensorFlow.js: Machine Learning in JavaScript.” Discover how to integrate machine learning directly into your web projects using TensorFlow.js, and harness the power of ML in the versatile environment of JavaScript.</p>
+
+<p><a href="https://www.linkedin.com/posts/gdg-silicon-valley_devfestsvl2023-techinnovation-communitypower-activity-7131192091279310848-at4x/">DevFest Silicon Valley 2023</a> was an absolute blaze of innovation and energy. From groundbreaking tech showcases to inspiring talks, every moment was a leap into the future. Huge shoutout to everyone who made it happen – speakers, organizers, and attendees alike. We’ve truly set a new standard for tech conferences.</p>
+
+<p>This talk is ideal for developers eager to bring machine learning to the frontend. Don’t miss out on this opportunity to learn from Huan’s experience and dive into hands-on ML with JavaScript.</p>
+
+<h2 id="talk-video---tensorflowjs-machine-learning-in-javascript">Talk Video - TensorFlow.js: Machine Learning in Javascript</h2>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/BS26AtecnkM" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<p>The incredible talk by Huan Li, Chatbot Architect at Chatie, on “TensorFlow.js: Machine Learning in Javascript” from Devfest Silicon Valley.</p>
+
+<blockquote>
+  <p>Huan takes us on a journey into the world of machine learning right in your browser with TensorFlow.js. Whether you’re a developer, tech enthusiast, or just curious about the intersection of JavaScript and ML, this talk is a must-watch!<br />
+— <a href="https://www.linkedin.com/posts/gdg-silicon-valley_devfestslv2023-tensorflowjs-machinelearning-activity-7129505626128351232-wKm6">Google Developer Groups (GDG) Silicon Valley</a></p>
+</blockquote>
+
+<h2 id="atwoods-law">Atwood’s Law</h2>
+
+<p><img src="/assets/2024/02-devfest-silicon-valley-google-developer-group-tensorflow-js/huan-photos.webp" alt="Huan Photos - DevFest Silicon Valley 2023" /></p>
+
+<blockquote>
+  <p>Any application that can be written in JavaScript, will eventually be written in JavaScript.<br />
+— Jeff Atwood, StackOverflow Founder, <a href="https://blog.codinghorror.com/the-principle-of-least-power/">The Principle of Least Power</a>, Jul 2007</p>
+</blockquote>
+
+<p>Interested in more? Here’s a great blog post <a href="https://haacked.com/archive/2007/07/17/the-eponymous-laws-of-software-development.aspx/">19 Eponymous Laws Of Software Development</a> that you might enjoy!</p>
+
+<h2 id="workshop-build-a-hello-world-program-in-the-browser-with-tensorflowjs">Workshop: Build a “Hello World” program in the browser with TensorFlow.js</h2>
+
+<p><img src="/assets/2024/02-devfest-silicon-valley-google-developer-group-tensorflow-js/workshop-tensorflow-js-banner.webp" alt="Workshop: Build a &quot;Hello World&quot; program in the browser with TensorFlow.js - DevFest Silicon Valley 2023" /></p>
+
+<p>TensorFlow.js is a JavaScript library that brings machine learning to the browser. It makes it easy to train and run machine learning models on web pages, without the need for any plugins or backend servers.</p>
+
+<p>In this <a href="https://gdg.community.dev/events/details/google-gdg-silicon-valley-presents-workshop-build-a-hello-world-program-in-the-browser-with-tensorflowjs/">workshop</a>, you will learn how to use TensorFlow.js to build a simple “Hello World” program. You will learn about the basic concepts of TensorFlow.js, such as tensors, layers, and models. You will also learn how to train and run a model in the browser.</p>
+
+<h2 id="about-devfest-silicon-valley-2023-ai-edition">About Devfest Silicon Valley 2023: AI Edition</h2>
+
+<p><img src="/assets/2024/02-devfest-silicon-valley-google-developer-group-tensorflow-js/devfest-2023-sv-banner.webp" alt="Banner - DevFest Silicon Valley 2023" />
+<img src="/assets/2024/02-devfest-silicon-valley-google-developer-group-tensorflow-js/agenda-devfest-gdg-sv-2023.webp" alt="Agenda - DevFest Silicon Valley 2023" /></p>
+
+<ul>
+  <li>When: Thursday, November 16, 2023, 9:00 AM – 6:00 PM PST</li>
+  <li>Where: Google Event Center (MP7), 1160 Bordeaux Drive, Sunnyvale, 94089</li>
+</ul>
+
+<h2 id="about-google-developer-group-gdg">About Google Developer Group (GDG)</h2>
+
+<p><a href="https://goo.gle/GDG">Google Developer Groups (GDG)</a> are community-led initiatives for developers passionate about Google technologies and other modern tech. These local groups host a variety of events, from tech talks and workshops to hackathons, aimed at knowledge sharing, learning, and collaboration. Open to anyone interested in technology, GDGs provide a platform for networking, exploring new technologies, and engaging with the tech community through events like DevFests, which focus on Google’s developer technologies and more.</p>]]></content><author><name>huan</name></author><category term="talk" /><category term="tensorflow" /><category term="machine-learning" /><summary type="html"><![CDATA[Huan takes us on a journey into the world of machine learning right in your browser with TensorFlow.js. Whether you’re a developer, tech enthusiast, or just curious about the intersection of JavaScript and ML, this talk is a must-watch! — GDG Silicon Valley]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://wechaty.js.org/assets/2024/02-devfest-silicon-valley-google-developer-group-tensorflow-js/tensorflow-js-huan.webp" /><media:content medium="image" url="https://wechaty.js.org/assets/2024/02-devfest-silicon-valley-google-developer-group-tensorflow-js/tensorflow-js-huan.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">wechaty+LLM 助力基层社区自治</title><link href="https://wechaty.js.org/2023/11/21/digital-socialworker-assisstant/" rel="alternate" type="text/html" title="wechaty+LLM 助力基层社区自治" /><published>2023-11-21T00:00:00+00:00</published><updated>2023-11-21T00:00:00+00:00</updated><id>https://wechaty.js.org/2023/11/21/digital-socialworker-assisstant</id><content type="html" xml:base="https://wechaty.js.org/2023/11/21/digital-socialworker-assisstant/"><![CDATA[<p>当居委会遇到wechaty+大模型……</p>
+
+<h2 id="缘起">缘起</h2>
+
+<p>2022年上海疫情封控期间， 我们几个小伙伴有幸以“IT志愿者”的身份帮助到了两个小区的志愿者团队（有关这段经历： <a href="https://wechaty.js.org/2022/05/20/wechaty-ai-antigenbot/">同心助力，战役有AI!</a>）。</p>
+
+<p>没想到封控解除后，我们的这个工作引起了政府部门的兴趣，于是开启了我们与静安区临汾路街道长达一年的合作。</p>
+
+<h2 id="数字社工助理">数字社工助理</h2>
+
+<p>长期以来，作为直接服务包括你我在内的每一名居民的村/居委会都免不了被诟病“不给力”，尤其在疫情封控这种特殊场景下，其不足之处更是暴露无遗。而实际上这背后有着复杂的原因：</p>
+
+<p>村/居委会并不属于政府机构，而是“村/居民自治组织”，但是在我国目前的行政大环境下，它又不得不承担起政府的部分职能，比如社区管理、基层治理等等。这种”既不是政府，又不得不承担政府职能”的矛盾，导致了村/居委会的工作效率和服务质量都不尽如人意。</p>
+
+<p>以上海为例，一个居委会通常由5~9名社工组成，但需要对接3500~5000名居民，平均每个社工对接400~500人……但其日常工作却多达119项。（下图来自公众号”上海大调研”）</p>
+
+<p><img src="/assets/2023/11-digital-socialworker-assisstant/1.webp" alt="matrtial1" /></p>
+
+<p>这背后其实是复杂的基层社区自治问题，尤其是在我国政体的大背景下。学术界对此其实有很多论述和研究，从中央到地方的各级政府也一直在出台各种改革措施，但期望一蹴而就也不现实，村/居委会人少事多、能力不足的情况并不能马上彻底解决。
+在这种情况下，引入AI技术，辅助社工的工作，就很有意义了。</p>
+
+<h2 id="微信对话机器人的共识">微信对话机器人的共识</h2>
+
+<p>整个系统使用微信对话机器人，而非传统的网页或者app，甚至不使用公众号和小程序，这一点是从合作初期就确定的，事实上这也是最吸引临汾路街道的地方之一，因为社工大部分不具有特别高的IT技能，且日常工作已经非常繁重，根本没有时间去学习、适应新的工具，所以我们的产品必须要能够”零学习成本”；
+另一方面现实中基层的社工，无论是与居民的交流，还是接收上级的指示、通知等，这些工作其实就是通过微信完成的（很多各个部委斥巨资开发的系统，在居委会中都是“吃灰”状态，因为你不能要求社工面对居民的问题，现去找一台电脑，打开一个界面，登录后再去执行一系列繁琐的操作……）。</p>
+
+<p>这种情况下，微信对话机器人无疑就是最好的选择： 最自然的操作界面，无需下载任何软件，添加好友就能使用……</p>
+
+<p>在达成这个共识后，起初我们是想基于个人微信做开发，因为很多已经存在的工作群、居民群都是个人微信群，如果使用企业微信的话，还是有一些迁移成本的。
+但实践下来发现，个微还是有很多限制的，比如不止一次碰到了因为短期内发送20条以上相同内容的信息而触发24小时禁言……
+同时考虑正规性等因素，最终客户还是被我们说服承担一些迁移成本，改用企业微信，并为此新认证了组织（不知道企微是不是考虑给我们点推广费）。</p>
+
+<p>在迁移过程中，句子互动给予了很大支持，初期的wxwork协议还有些不太稳定，基本上一个月要重启一次，升级为workpro后，经历了几个月的打磨，自今年5月份以来，整个系统就非常稳了，连续运行数月也没有任何问题。</p>
+
+<h2 id="198个文档的痛苦">198个文档的痛苦</h2>
+
+<p>我们合作的静安区临汾路街道下辖20个居委会，近200名社工。上文提到，其日常工作多达119项。</p>
+
+<p>接触后我们发现，其实这些年上海市政府一直在推动居委会自治能力的提升，临汾路街道甚至为这119项工作编写了详细的工作手册，也就是我们熟悉的SOP。
+他们一共有198份word文档，清晰而详细的表明了每一项工作的归属单位、办理条件、所需材料以及办事流程等，事实上，这已经完全涵盖了居民日常生活的方方面面，但问题是没有哪个社工能够熟悉记忆这198个文档的详细内容，遇到问题手动查找又非常繁琐耗时。并且文档上使用的是书面用词，而居民提问往往是口语，
+举个例子，经常提到的“经适房”，标准政务用语是“共有产权保障住房”。另外，居民提问措辞方式也与书面文档有很大不同，比如书面文档只会写“社保卡补办流程”，但现实中居民的提问更可能是：“我社保卡掉了怎么办？”（上海话中”掉了”=”丢了”）。
+……这些都客观上增加了社工们使用SOP文档的难度。</p>
+
+<p>针对这个问题，我们采集了并标注了400多条居民实际提问用例，并经过数据增强，在开源的rocketqa模型基础上为本项目微调了专属的问答匹配模型，最终结合wechaty，实现了数字社工助理的第一个功能：智能SOP文档问答。从此198个文档的痛苦再也不存在了。</p>
+
+<p><img src="/assets/2023/11-digital-socialworker-assisstant/3.webp" alt="matrtial2" /></p>
+
+<p>上线后实测效果还是很不错的，甚至直接微信语音提问也能获得很准确的回答。</p>
+
+<p><img src="/assets/2023/11-digital-socialworker-assisstant/2.webp" alt="matrtial3" /></p>
+
+<h2 id="一句话生成的活动策划报告">一句话生成的活动策划报告</h2>
+
+<p>在完成了智能SOP问答后，临汾路街道又提出了第二个需求——一句话生成活动策划报告。</p>
+
+<p>原来，目前居委会50%的工作量是组织各类居民活动，这些活动有些是为了完成相应的宣传工作，比如每年都有的建党节、建军节、消防灭火宣传，所在区域的政策宣传，如垃圾分类、文明城市创建等……有一些则是相关的文化活动，比如端午节组织包粽子，儿童节组织儿童画展，中秋节组织赏月……
+我们也是接触后才了解，这些看似没啥实际意义的文化活动其实很有必要，现代生活，邻里之间的交流很少，很多人都不知道自己的邻居是谁，这些活动就是为了让居民们有机会聚在一起，增进邻里之间的感情，很多居民间的矛盾原来无法调节，但是一起参加一次活动后就有了调节空间，而居委会也需要通过这些活动拉近与居民的距离，这样未来需要他们出面做各种说服工作也才有感情基础。</p>
+
+<p>但是居委会每次组织活动都需要写一份策划案申请，这个工作对于很多社工来说，属于“不得不完成”的事情，另外时间长了，社工们也面临着“活动创意穷尽”的问题……</p>
+
+<p>接到这个需求后，我们马上想到了大模型。这确实是一个可以真实发挥大模型价值的场景。适逢在4、5月份，行业迎来了LLM的大爆发，我们的选择很多。我们首先根据需求，结合报告的模板要求，设计了prompt，然后比较了多个开源模型和商用大模型API的效果，最后综合生成质量、速度以及成本，并充分考虑了政务系统数据安全性的特殊要求， 选择了本地部署ChatGLM2-6B作为最终的方案。</p>
+
+<p><img src="/assets/2023/11-digital-socialworker-assisstant/4.webp" alt="matrtial4" /></p>
+
+<p><strong>最后，放一下产品视频吧：</strong></p>
+
+<div style="
+    position: relative;
+    padding-bottom: 70%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://player.bilibili.com/player.html?bvid=BV1x94y1H7yE/?vd_source=a9a9b3058af6573c5ad2ff31c387fa44&amp;high_quality=1" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h2 id="项目收到主流媒体的广泛报道">项目收到主流媒体的广泛报道</h2>
+
+<p>“数字社工助理”上线后，不仅得到了社工们的广泛好评，也吸引了多家专业媒体的报道，这对团队来说也是一种鼓励。</p>
+
+<p><img src="/assets/2023/11-digital-socialworker-assisstant/5.webp" alt="matrtial5" /></p>
+
+<h2 id="写在最后的话">写在最后的话</h2>
+
+<p>通过一年多近距离与临汾路街道的接触，我们真实感受到了什么叫”上头千根线，下面一根针”，基层工作确实不好做，我们很开心能够为此些许助力。</p>
+
+<p>不过也必须承认此项目有一定的偶然性，首先项目所在地上海本身就是中国目前政务理念最开明的地区，然后临汾路街道又是全国政务信息化的示范单位，与我们对接的负责人大学专业就是计算机，对新技术有一定的敏感度，这些都是难以复制的因素。</p>
+
+<p>我们也在2023年夏季尝试将此项目进行推广，但并不成功，这里面不存在技术问题，甚至也不存在商务问题（大部分有意向使用该系统的街镇都是有能力承担每年十几万的费用的），更多的阻力来自政务领域的特殊性。当然，另一个很大的因素是，团队至今都只是兼职，在市场和推广上其实也没有投入足够的精力。</p>
+
+<p>但无论如何，我们还是认为这个工作是有价值的，所以我们也在讨论将这个产品进行开源，同时服务更多的自治性组织，我们相信：借科技之力，是可以最大化降低组织的管理工作量的，而管理人员占比的降低是自治的必要条件之一！</p>]]></content><author><name>bigbrother666sh</name></author><category term="article" /><category term="workpro" /><category term="llm" /><category term="agent" /><summary type="html"><![CDATA[当居委会遇到wechaty+大模型……]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://wechaty.js.org/assets/2023/11-digital-socialworker-assisstant/0.webp" /><media:content medium="image" url="https://wechaty.js.org/assets/2023/11-digital-socialworker-assisstant/0.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Game-Copilot辅助游戏工作室进行头脑风暴</title><link href="https://wechaty.js.org/2023/10/24/game-designer-group-on-wechat/" rel="alternate" type="text/html" title="Game-Copilot辅助游戏工作室进行头脑风暴" /><published>2023-10-24T00:00:00+00:00</published><updated>2023-10-24T00:00:00+00:00</updated><id>https://wechaty.js.org/2023/10/24/game-designer-group-on-wechat</id><content type="html" xml:base="https://wechaty.js.org/2023/10/24/game-designer-group-on-wechat/"><![CDATA[<h2 id="介绍">介绍</h2>
+
+<p>在现代游戏开发过程中，创新和创意的重要性不言而喻。然而，即使对于最有才华的开发者来说，灵感也可能会枯竭。为了解决这个问题，我们创建了一个基于GPT-4的辅助工具，我们称之为Game Copilot。这个工具是一个包含十一个agent的聊天室，旨在帮助游戏创业者进行头脑风暴和优化游戏。</p>
+
+<h2 id="工作机制">工作机制</h2>
+
+<p>Game Copilot是怎么工作的呢？它利用GPT-4的强大功能，提供世界观，机制，玩法，角色等游戏必要的元素，为开发者提供灵感。它能够表现出高发散性，并能对过去的游戏，小说，当前世界背景进行参考，以帮助开发者构建独特且引人入胜的游戏体验。</p>
+
+<h2 id="项目信息">项目信息</h2>
+
+<p>Game Copilot主要适用于独立工作室和RPG类游戏的开发。不论你是一位游戏创业者，还是一位寻求新灵感的开发者，Game Copilot都能为你提供帮助。</p>
+
+<p>为了提高易用性，我们通过wechaty接入了企业微信，使得用户能在任何地方，任何时候记录自己的灵感，并进行迭代。无论是在挤公交车，还是在休闲的咖啡馆，只需打开企业微信，就能轻松访问Game Copilot。</p>
+
+<p>网页版：
+<a href="https://game-copilot-frontend.zeabur.app">体验链接</a>
+企微Bot版：开发中。</p>
+
+<h2 id="后端架构">后端架构</h2>
+
+<h3 id="technology">Technology</h3>
+
+<ol>
+  <li>Package Manager: Poetry</li>
+  <li>Backend Framework: FastAPI</li>
+  <li>Database: MongoDB and Beanie</li>
+</ol>
+
+<h3 id="get-started">Get Started</h3>
+
+<ol>
+  <li>Install Poetry and <code class="language-plaintext highlighter-rouge">poetry install</code></li>
+  <li>Prepare MongoDB. The easiest way is using docker: <code class="language-plaintext highlighter-rouge">docker run --rm -p 27017:27017 mongo</code></li>
+  <li>Install <code class="language-plaintext highlighter-rouge">game-copilot-agent-v2</code> and generate access key</li>
+  <li>Uncomment <code class="language-plaintext highlighter-rouge">.env</code> file and fill in the required information</li>
+  <li>Run <code class="language-plaintext highlighter-rouge">uvicorn src.main:app --reload</code></li>
+</ol>
+
+<h3 id="game-design-workflow">Game Design Workflow</h3>
+
+<ol>
+  <li>Register and Login</li>
+  <li>Start a Game: Sense we are using paid API for generating, each user will have limit on the number of games they can
+design.</li>
+  <li>Primary Information Collector: User will chat with a information collector agent. Then generate a basic description
+of the game user want to design.</li>
+  <li>Design Iteration:
+    <ol>
+      <li>Firstly, user will chat with a group of agents, including an ideation agent and a critic agents. They will help
+user to brainstorm fancy ideas and give feedbacks on those ideas and current game design.</li>
+      <li>When user is satisfied with new ideas and comments, they can issue a full game design iteration.</li>
+      <li>After a full design are generated, user can review and modify the design.
+        <ol>
+          <li>More specifically, user can issue a “command”, such as “add some new ideas in here” or “give me more options
+for this part”.</li>
+          <li>Agents will generate the requested result.</li>
+          <li>User and Agents chat with each other to discuss the result.</li>
+          <li>Finally, user can choose to accept or reject the modification.</li>
+        </ol>
+      </li>
+      <li>This “Design Iteration” can be repeated for several times until user is satisfied with our result.</li>
+    </ol>
+  </li>
+</ol>
+
+<p><img src="/assets/2023/10-game-designer-group-on-wechat/2.webp" alt="agent workflow" /></p>
+
+<h3 id="data-model">Data Model</h3>
+
+<ol>
+  <li>User: Very basic and common design
+    <ol>
+      <li>email, username, (hashed)password, email validation, type</li>
+      <li>In addition, a game limit counter is used</li>
+    </ol>
+  </li>
+  <li>Game:
+    <ol>
+      <li>user id, create time, design stage</li>
+      <li>title: string</li>
+    </ol>
+  </li>
+  <li>Revision: Store all chat messages, commands and designs.
+    <ol>
+      <li>game id, create time, is closed</li>
+      <li>type: collect-info, co-design, review-design</li>
+      <li>iteration: int</li>
+    </ol>
+  </li>
+  <li>Record:
+    <ol>
+      <li>revision id, create time</li>
+      <li>is agent, agent name</li>
+      <li>type: chat, command, design</li>
+      <li>command type: add, more-options</li>
+      <li>content: string</li>
+    </ol>
+  </li>
+  <li>Relations: User has-many Games, Game has-many Revisions, GameRevision has-many Records</li>
+  <li>Structure
+    <ol>
+      <li>Game: collect-info - co-design - review-design - co-design - review-design - …</li>
+      <li>Every “Revision” starts with a “Bootstrap” operation and ends with a “Finalize” operation.</li>
+      <li>Revision(collect-info): bootstrap - chat - chat - … - chat - design</li>
+      <li>Revision(co-design): bootstrap - chat - chat - … - chat - todo-list - confirm - design</li>
+      <li>Revision(review-design): bootstrap - chat - chat - … - chat - design</li>
+    </ol>
+  </li>
+</ol>
+
+<h3 id="required-agent-api">Required “Agent” API</h3>
+
+<ol>
+  <li>Common Description
+    <ol>
+      <li><strong>All</strong> API should be invoked with an “agent-token” in request body. <code class="language-plaintext highlighter-rouge">{ "token": "&lt;token&gt;"}</code></li>
+      <li><strong>All</strong> API except <code class="language-plaintext highlighter-rouge">bootstrap</code> message should be invoked with an “session-id” (may be generated
+by <code class="language-plaintext highlighter-rouge">uuid.uuid4().hex</code>) in request body. <code class="language-plaintext highlighter-rouge">{ "session_id": "&lt;uuid&gt;" }</code></li>
+      <li>Reset message (Force terminate session): <code class="language-plaintext highlighter-rouge">{ "type": "reset" }</code></li>
+      <li>Error message: <code class="language-plaintext highlighter-rouge">{ "type": "error", "detailed": "&lt;str&gt;" }</code>, For example:
+        <ol>
+          <li>Invalid session id</li>
+          <li>Invalid message scheme/format</li>
+          <li>Unexpected message type</li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">/api/collect-info/</code>
+    <ol>
+      <li>C -&gt; S: <code class="language-plaintext highlighter-rouge">{ "type": "bootstrap" }</code></li>
+      <li>S -&gt; C: <code class="language-plaintext highlighter-rouge">{ "type": "session", "session_id": "&lt;uuid&gt;" }</code></li>
+      <li>C -&gt; S: <code class="language-plaintext highlighter-rouge">{ "type": "chat-user", "content": "&lt;msg&gt;" }</code></li>
+      <li>S -&gt; C:
+        <ol>
+          <li><code class="language-plaintext highlighter-rouge">{ "type": "chat-agent-name", "name": "&lt;name&gt;" }</code></li>
+          <li><code class="language-plaintext highlighter-rouge">{ "type": "chat-agent", "content": "&lt;msg&gt;" }</code></li>
+          <li><code class="language-plaintext highlighter-rouge">{ "type": "chat-agent-fin", "end": "&lt;bool&gt;" }</code></li>
+        </ol>
+      </li>
+      <li>C -&gt; S: <code class="language-plaintext highlighter-rouge">{ "type": "end" }</code></li>
+      <li>S -&gt; C: <code class="language-plaintext highlighter-rouge">{ "type": "design", "content": "&lt;design&gt;" }</code></li>
+    </ol>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">/api/co-design/</code>
+    <ol>
+      <li>C -&gt; S: <code class="language-plaintext highlighter-rouge">{ "type": "bootstrap", "design": "&lt;design&gt;" }</code></li>
+      <li>S -&gt; C: <code class="language-plaintext highlighter-rouge">{ "type": "session", "session_id": "&lt;uuid&gt;" }</code></li>
+      <li>C -&gt; S: <code class="language-plaintext highlighter-rouge">{ "type": "chat-user", "content": "&lt;msg&gt;" }</code></li>
+      <li>S -&gt; C:
+        <ol>
+          <li><code class="language-plaintext highlighter-rouge">{ "type": "chat-agent-name", "name": "&lt;name&gt;" }</code></li>
+          <li><code class="language-plaintext highlighter-rouge">{ "type": "chat-agent", "content": "&lt;msg&gt;" }</code></li>
+          <li><code class="language-plaintext highlighter-rouge">{ "type": "chat-agent-fin" }</code></li>
+        </ol>
+      </li>
+      <li>C -&gt; S: <code class="language-plaintext highlighter-rouge">{ "type": "end" }</code></li>
+      <li>S -&gt; C: <code class="language-plaintext highlighter-rouge">{ "type": "summary", "content": "&lt;content&gt;" }</code></li>
+      <li>C -&gt; S: <code class="language-plaintext highlighter-rouge">{ "type": "confirm", "content": "&lt;content&gt;" }</code></li>
+      <li>S -&gt; C: <code class="language-plaintext highlighter-rouge">{ "type": "design", "content": "&lt;design&gt;" }</code></li>
+    </ol>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">/api/review-design/</code>
+    <ol>
+      <li>C -&gt; S: <code class="language-plaintext highlighter-rouge">{ "type": "bootstrap" }</code></li>
+      <li>S -&gt; C: <code class="language-plaintext highlighter-rouge">{ "type": "session", "session_id": "&lt;uuid&gt;" }</code></li>
+      <li>C -&gt; S: <code class="language-plaintext highlighter-rouge">{ "type": "add|more-options", "design": "&lt;design&gt;", "target": "&lt;target&gt;", "extra": "&lt;extra&gt;" }</code></li>
+      <li>S -&gt; C: <code class="language-plaintext highlighter-rouge">{ "type": "result", "content": "&lt;content&gt;" }</code></li>
+      <li>C -&gt; S: <code class="language-plaintext highlighter-rouge">{ "type": "chat-user", "content": "&lt;msg&gt;" }</code></li>
+      <li>S -&gt; C:
+        <ol>
+          <li><code class="language-plaintext highlighter-rouge">{ "type": "chat-agent-name", "name": "&lt;name&gt;" }</code></li>
+          <li><code class="language-plaintext highlighter-rouge">{ "type": "chat-agent", "content": "&lt;msg&gt;" }</code></li>
+          <li><code class="language-plaintext highlighter-rouge">{ "type": "chat-agent-fin" }</code></li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+</ol>
+
+<h3 id="frontend-api">Frontend API</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">/login/</code> <code class="language-plaintext highlighter-rouge">/signup/</code></li>
+  <li>RESTful API
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">/users/</code> <code class="language-plaintext highlighter-rouge">/users/{uid}</code></li>
+      <li><code class="language-plaintext highlighter-rouge">/users/{uid}/games/</code>  <code class="language-plaintext highlighter-rouge">/users/{uid}/games/{gid}</code></li>
+      <li><code class="language-plaintext highlighter-rouge">/users/{uid}/games/{gid}/revision</code> <code class="language-plaintext highlighter-rouge">/users/{uid}/games/{gid}/revision/{rid}</code></li>
+      <li><code class="language-plaintext highlighter-rouge">/users/{uid}/games/{gid}/revision/{rid}/records</code></li>
+    </ol>
+  </li>
+  <li>Server-Side Events (Prefix: <code class="language-plaintext highlighter-rouge">/users/{uid}/games/{gid}/revision/{rid}/records</code>)
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">/chat</code> <code class="language-plaintext highlighter-rouge">/reset</code></li>
+      <li><code class="language-plaintext highlighter-rouge">/collect/end</code></li>
+      <li><code class="language-plaintext highlighter-rouge">/codesign/end</code> <code class="language-plaintext highlighter-rouge">/codesign/confirm</code></li>
+      <li><code class="language-plaintext highlighter-rouge">/review/command</code> <code class="language-plaintext highlighter-rouge">/review/submit</code></li>
+    </ol>
+  </li>
+  <li>Process:
+    <ol>
+      <li>Create game: <code class="language-plaintext highlighter-rouge">POST /users/{uid}/games</code></li>
+      <li>Create revision (with types): <code class="language-plaintext highlighter-rouge">POST /users/{uid}/games/{gid}</code></li>
+      <li>Collect-Info
+        <ol>
+          <li>Chat: <code class="language-plaintext highlighter-rouge">POST .../chat</code></li>
+          <li>End: <code class="language-plaintext highlighter-rouge">POST .../end-collection</code></li>
+        </ol>
+      </li>
+      <li>Co-Design
+        <ol>
+          <li>Chat: <code class="language-plaintext highlighter-rouge">POST .../chat</code></li>
+          <li>End: <code class="language-plaintext highlighter-rouge">POST .../end-co-design</code></li>
+          <li>Confirm: <code class="language-plaintext highlighter-rouge">POST .../confirm-summary</code></li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+</ol>
+
+<h3 id="backend-todo">Backend TODO</h3>
+
+<ul>
+  <li>Legends:
+    <ul>
+      <li>:white_circle: Not started</li>
+      <li>:construction: In progress</li>
+      <li>:eight_pointed_black_star: Backend code finished. Need to be tested and integrated with frontend or agents.</li>
+      <li>:white_check_mark: Done!</li>
+      <li>:thought_balloon: Need to be discussed / Blocked by other tasks</li>
+    </ul>
+  </li>
+  <li>Authentication:
+    <ul>
+      <li>:white_check_mark: Signup</li>
+      <li>:white_check_mark: Login</li>
+      <li>:white_circle: Email verification</li>
+      <li>:white_circle: Password reset</li>
+    </ul>
+  </li>
+  <li>User:
+    <ul>
+      <li>:white_check_mark: Get info</li>
+      <li>:white_circle: Update info</li>
+      <li>:white_circle: Delete account</li>
+      <li>:white_circle: Get user list</li>
+    </ul>
+  </li>
+  <li>Game:
+    <ul>
+      <li>:white_check_mark: Get user’s game list</li>
+      <li>:white_check_mark: Create game</li>
+      <li>:white_check_mark: Get game info</li>
+    </ul>
+  </li>
+  <li>Revision:
+    <ul>
+      <li>:white_check_mark: Get game’s revision list</li>
+      <li>:construction: Create revision</li>
+      <li>:white_check_mark: Get revision info</li>
+    </ul>
+  </li>
+  <li>Record:
+    <ul>
+      <li>:eight_pointed_black_star: Get revision’s record list</li>
+      <li>:eight_pointed_black_star: User chat</li>
+      <li>:eight_pointed_black_star: Collect info end</li>
+      <li>:eight_pointed_black_star: Co-design end</li>
+      <li>:eight_pointed_black_star: Co-design confirm</li>
+      <li>:eight_pointed_black_star: Review design command</li>
+      <li>:eight_pointed_black_star: Review design submit</li>
+    </ul>
+  </li>
+  <li>Agent Interaction:
+    <ul>
+      <li>:eight_pointed_black_star: Collect info</li>
+      <li>:eight_pointed_black_star: Co-design</li>
+      <li>:eight_pointed_black_star: Review design</li>
+      <li>:thought_balloon: Session recovery</li>
+    </ul>
+  </li>
+  <li>Others
+    <ul>
+      <li>:white_circle: Deploy to Zeabur</li>
+    </ul>
+  </li>
+</ul>]]></content><author><name>karrykeksis</name></author><category term="article" /><category term="blog" /><category term="game" /><category term="agent" /><summary type="html"><![CDATA[介绍]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://wechaty.js.org/assets/2023/10-game-designer-group-on-wechat/1.webp" /><media:content medium="image" url="https://wechaty.js.org/assets/2023/10-game-designer-group-on-wechat/1.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">wechaty+TypeChat:使用自然语言控制你的微信</title><link href="https://wechaty.js.org/2023/08/06/use-llm-control-your-wechat/" rel="alternate" type="text/html" title="wechaty+TypeChat:使用自然语言控制你的微信" /><published>2023-08-06T00:00:00+00:00</published><updated>2023-08-06T00:00:00+00:00</updated><id>https://wechaty.js.org/2023/08/06/use-llm-control-your-wechat</id><content type="html" xml:base="https://wechaty.js.org/2023/08/06/use-llm-control-your-wechat/"><![CDATA[<p>随着ChatGPT火爆，LLM应用如雨后春笋，层出不穷。几乎任何人都可以基于大预言模型开发出自己的天猫精灵、小爱同学、小度小度…</p>
+
+<p>今天我将向大家介绍一个基于ChatGPT开发的使用自然语言控制微信方案。使用LLM控制wechaty机器人执行各种命令，wechaty+ <a href="https://github.com/microsoft/TypeChat">TypeChat</a> 的结合，已实现以下功能（完整代码查看<a href="https://github.com/atorber/type-wechaty">type-wechaty https://github.com/atorber/type-wechaty</a>体验）：</p>
+
+<ul>
+  <li>
+    <p>使用自然语言给指定好友或群发消息（如果你是一个日常需要协调和安排各种不同的人或群的角色，这将非常有帮助）</p>
+  </li>
+  <li>
+    <p>更多…嗯，还没有实现</p>
+  </li>
+</ul>
+
+<p>得益于微软的TypeChat <a href="https://github.com/microsoft/TypeChat">https://github.com/microsoft/TypeChat</a>，方案中我们仅仅通过定义类型即快速实现了上述功能，而拓展功能仅仅需要继续拓展更多的type。</p>
+
+<p>首先，介绍一下TypeChat <a href="https://github.com/microsoft/TypeChat">https://github.com/microsoft/TypeChat</a></p>
+
+<h2 id="typechat">TypeChat</h2>
+
+<p>官方介绍：</p>
+
+<pre><code class="language-TypeScript">TypeChat is a library that makes it easy to build natural language interfaces using types.
+
+Building natural language interfaces has traditionally been difficult. These apps often relied on complex decision trees to determine intent and collect the required inputs to take action. Large language models (LLMs) have made this easier by enabling us to take natural language input from a user and match to intent. This has introduced its own challenges including the need to constrain the model's reply for safety, structure responses from the model for further processing, and ensuring that the reply from the model is valid. Prompt engineering aims to solve these problems, but comes with a steep learning curve and increased fragility as the prompt increases in size.
+
+TypeChat replaces prompt engineering with schema engineering.
+
+Simply define types that represent the intents supported in your natural language application. That could be as simple as an interface for categorizing sentiment or more complex examples like types for a shopping cart or music application. For example, to add additional intents to a schema, a developer can add additional types into a discriminated union. To make schemas hierarchical, a developer can use a "meta-schema" to choose one or more sub-schemas based on user input.
+
+After defining your types, TypeChat takes care of the rest by:
+
+Constructing a prompt to the LLM using types.
+Validating the LLM response conforms to the schema. If the validation fails, repair the non-conforming output through further language model interaction.
+Summarizing succinctly (without use of a LLM) the instance and confirm that it aligns with user intent.
+Types are all you need!
+</code></pre>
+
+<p>简单总结一下：</p>
+
+<ol>
+  <li>TypeChat是一个库，可以轻松使用类型构建自然语言界面。</li>
+  <li>TypeChat用模式工程取代了提示工程。</li>
+  <li>定义类型后，TypeChat将通过以下方式处理其余部分：使用类型构建 LLM 提示。验证 LLM 响应是否符合架构。如果验证失败，则通过进一步的语言模型交互修复不合格的输出。简洁地总结（不使用法学硕士）实例并确认其与用户意图一致。类型就是您所需要的！</li>
+</ol>
+
+<p>对于使用的TypeScript开发者来说这个项目简直是太酷了。</p>
+
+<h2 id="需求描述">需求描述</h2>
+
+<p>我们的需求是通过与微信机器人对话来向指定的好友或群发消息，例如：</p>
+
+<p>给好友张三发消息，告诉他明天的会议取消了，只需要对机器人说“告诉张三，明天的会议取消了”，微信机器人自动向张三发送微信消息</p>
+
+<p>配合语音识别技术，我们甚至可以使用语音像使用智能音箱一样控制微信完成我们需要的动作。</p>
+
+<h2 id="实现">实现</h2>
+
+<p>基于TypeChat实现，我们仅仅需要定义一个类型文件，TypeChat则会自动帮我们从”告诉张三，明天的会议取消了”中提取出接收人和内容。</p>
+
+<p>我们希望格式化后的信息是这样的：</p>
+
+<pre><code class="language-TypeScript">{
+    "actions": [
+      {
+        "actionType": "sendMessage",
+        "event": {
+          "text": "明天的会议取消了",
+          "contacts": [
+            "张三"
+          ]
+        }
+      }
+    ]
+  }
+</code></pre>
+
+<p>这样我们就可以通过contacts查找微信好友，并将text的消息发送给他</p>
+
+<p>构建类型,对应的类型文件messageActionsSchema.ts：</p>
+
+<pre><code class="language-TypeScript">// The following types define the structure of an object of type MessageActions that represents a list of requested message actions
+
+// 通知【xxx】：会议取消了、告诉【xxx】：会议取消了
+export type Message = {
+    // Some message content, such as coming to the meeting immediately and picking up the delivery at the door
+    text: string;
+    // a list of people like 'team'
+    contacts: string[];
+};
+
+// 通知群【xxx】：会议取消了、群【xxx】：会议取消了
+export type RoomMessage = {
+    // Some message content, such as coming to the meeting immediately and picking up the delivery at the door
+    text: string;
+    // a list of room or named groups like 'team'
+    rooms: string[];
+};
+
+export type SendMessageAction = {
+    // 向某人发送消息或通知某人
+    actionType: 'sendMessage';
+    event: Message;
+};
+
+export type SendRoomMessageAction = {
+    // 向某个群发送消息或向某个群发通知
+    actionType: 'sendRoomMessage';
+    event: RoomMessage;
+};
+
+// if the user types text that can not easily be understood as a calendar action, this action is used
+export interface UnknownAction {
+    actionType: 'unknown';
+    // text typed by the user that the system did not understand
+    text: string;
+}
+
+export type Action =
+    | UnknownAction
+    | SendRoomMessageAction
+    | SendMessageAction;
+
+export type MessageActions = {
+    actions: Action[];
+};
+
+</code></pre>
+
+<p>使用TypeChat实现一个messageStructuring函数，调用这个函数可以返回我们希望的目标格式</p>
+
+<pre><code class="language-TypeScript">import * as fs from 'fs'
+import * as path from 'path'
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
+import * as dotenv from 'dotenv'
+import { log } from 'wechaty'
+
+import { createLanguageModel, createJsonTranslator } from 'typechat'
+import type { MessageActions } from '../types/messageActionsSchema'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
+// TODO: use local .env file.
+dotenv.config({ path: path.join(__dirname, '../../.env') })
+log.info('env', process.env)
+
+const model = createLanguageModel(process.env)
+const schema = fs.readFileSync('src/types/messageActionsSchema.ts', 'utf8')
+const translator = createJsonTranslator&lt;MessageActions&gt;(model, schema, 'MessageActions')
+translator.validator.stripNulls = true
+
+// Process requests interactively or from the input file specified on the command line
+export const messageStructuring = async (text: string) =&gt; {
+  const response: any = await translator.translate(text)
+  log.info('messageStructuring:', JSON.stringify(response, undefined, 2))
+  if (!response.success) {
+    log.info('messageStructuring 请求失败：\n', response.message)
+    return response
+  }
+  const messageActions = response.data
+  // log.info('结构化数据：\n', JSON.stringify(messageActions, undefined, 2))
+  if (messageActions.actions.some((item: { actionType: string }) =&gt; item.actionType === 'unknown')) {
+    log.info('语义无匹配：\n', "I didn't understand the following:")
+    for (const action of messageActions.actions) {
+      if (action.actionType === 'unknown') log.info('未匹配到类型：\n', action.text)
+    }
+    return messageActions
+  }
+  return messageActions
+}
+
+</code></pre>
+
+<p>最后我们在主程序中实现：当收到指定群或好友的消息时，中调用messageStructuring返回格式化的数据，然后调用wehcaty api给指定好友发送消息。</p>
+
+<pre><code class="language-TypeScript">async function onMessage (msg: Message) {
+  log.info('StarterBot', msg.toString())
+  const text = msg.text()
+  const talker = msg.talker()
+  const talkerName = talker.name()
+  const room = msg.room()
+  const topic = await room?.topic()
+  const ADMIN_WX_NAME =  process.env['ADMIN_WX_NAME']
+  const ADMIN_ROOM_TOPIC =  process.env['ADMIN_ROOM_TOPIC']
+
+  if (msg.text() === 'ding') {
+    await msg.say('dong')
+  }
+
+  if (talkerName === ADMIN_WX_NAME || (topic &amp;&amp; topic === ADMIN_ROOM_TOPIC)) {
+
+    if (text[0] === '/') {
+      const textArr = text.split(' ')
+      if (textArr[0] === '/llm' &amp;&amp; textArr.length &gt; 1) {
+        log.info('管理员或管理群消息', talkerName, topic)
+        const res: MessageActions = await messageStructuring(text.replace('/llm', ''))
+        log.info('LLM识别结果:', JSON.stringify(res))
+
+        if (res.actions.length) {
+          const textMsg:Action|undefined = res.actions[0]
+          const successList = []
+          const failList = []
+          if (textMsg?.actionType === 'sendMessage' &amp;&amp; textMsg.event.contacts.length) {
+            const relpText = textMsg.event.text + `\n————From:${msg.talker().name()}`
+            const contacts = textMsg.event.contacts
+            for (const i in contacts) {
+              const curContact = contacts[i]
+              let toUser = await bot.Contact.find({ alias:curContact })
+              if (!toUser) {
+                toUser = await bot.Contact.find({ name:curContact })
+              }
+              log.info('toUser:', JSON.stringify(toUser))
+              if (toUser) {
+                await toUser.say(relpText)
+                successList.push(curContact)
+              } else {
+                failList.push(curContact)
+              }
+            }
+            const timeString = new Date().toLocaleString()
+            if (contacts.length === successList.length) {
+              await msg.say(`${talkerName} /llm &gt;\n${timeString}\n全部发送成功[${successList.length}]：${successList.join('、')}`)
+            } else if (contacts.length === failList.length) {
+              await msg.say(`${talkerName} /llm &gt;\n${timeString}\n全部发送失败[${failList.length}]：${failList.join('、')}`)
+            } else {
+              await msg.say(`${talkerName} /llm &gt;\n${timeString}\n发送成功[${successList.length}/${contacts.length}]：${successList.join('、')}\n发送失败[${failList.length}/${contacts.length}]：${failList.join('、')}`)
+            }
+          }
+          if (textMsg?.actionType === 'sendRoomMessage' &amp;&amp; textMsg.event.rooms.length) {
+            const relpText = textMsg.event.text + `\n————From:${msg.talker().name()}`
+            const rooms = textMsg.event.rooms
+            for (const i in rooms) {
+              const curRoom = rooms[i]
+              const toUser = await bot.Room.find({ topic:curRoom })
+
+              log.info('toUser:', JSON.stringify(toUser))
+              if (toUser) {
+                await toUser.say(relpText)
+                successList.push(curRoom)
+              } else {
+                failList.push(curRoom)
+              }
+            }
+            const timeString = new Date().toLocaleString()
+            if (rooms.length === successList.length) {
+              await msg.say(`${talkerName} /llm &gt;\n${timeString}\n全部发送成功[${successList.length}]：${successList.join('、')}`)
+            } else if (rooms.length === failList.length) {
+              await msg.say(`${talkerName} /llm &gt;\n${timeString}\n全部发送失败[${failList.length}]：${failList.join('、')}`)
+            } else {
+              await msg.say(`${talkerName} /llm &gt;\n${timeString}\n发送成功[${successList.length}/${rooms.length}]：${successList.join('、')}\n发送失败[${failList.length}/${rooms.length}]：${failList.join('、')}`)
+            }
+          }
+        }
+      }
+    }
+
+  } else {
+    log.info('不是管理员或管理群消息', talkerName, topic)
+  }
+}
+</code></pre>
+
+<p>在.env中配置chatgpt的api key以及管理员群信息，运行起程序，一个简单的智能微信助手就完成了。</p>
+
+<h2 id="效果">效果</h2>
+
+<p><img src="/assets/2023/08-use-llm-control-your-wechat/1.webp" alt="send" /></p>
+
+<p><img src="/assets/2023/08-use-llm-control-your-wechat/2.webp" alt="res" /></p>
+
+<p>向管理员群发送控制指令：</p>
+
+<pre><code class="language-TypeScript">/llm 告诉张三，明天的会议取消了
+
+（张三不是机器人的好友）
+
+luyuchao /llm &gt;
+2023/8/6 22:10:20
+全部发送失败[1]：张三
+</code></pre>
+
+<pre><code class="language-TypeScript">/llm 告诉luyuchao，明天的会议取消了
+
+（luyuchao是机器人的好友）
+
+luyuchao /llm &gt;
+2023/8/6 22:31:19
+全部发送成功[1]：luyuchao
+</code></pre>
+
+<pre><code class="language-TypeScript">/llm 通知【大师、luyuchao】：今天晚上到公司开会
+
+(大师、luyuchao均为机器人好友)
+
+luyuchao /llm &gt;
+2023/8/6 22:33:13
+全部发送成功[2]：大师、luyuchao
+</code></pre>
+
+<blockquote>
+  <p>在github可以查看完整效果截图<a href="https://github.com/atorber/type-wechaty">https://github.com/atorber/type-wechaty</a></p>
+</blockquote>
+
+<h2 id="历史文章">历史文章</h2>
+
+<ul>
+  <li><a href="https://wechaty.js.org/2021/03/17/node-wechaty-and-wechaty-puppet-padlocal/">Wechaty+微信小程序实现群内活动报名</a></li>
+  <li><a href="https://wechaty.js.org/2021/04/22/how-to-publish-blog-on-wechaty/">入门：小白如何在wechaty社区发布自己的第一篇博客（一）</a></li>
+  <li><a href="https://wechaty.js.org/2021/07/13/wechaty-puppet-xp-start-up/">全新的Windows puppet项目wechaty-puppet-xp启动</a></li>
+</ul>]]></content><author><name>atorber</name></author><category term="article" /><category term="blog" /><category term="study" /><category term="introduction" /><summary type="html"><![CDATA[随着ChatGPT火爆，LLM应用如雨后春笋，层出不穷。几乎任何人都可以基于大预言模型开发出自己的天猫精灵、小爱同学、小度小度…]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://wechaty.js.org/assets/2023/08-use-llm-control-your-wechat/rare-book.webp" /><media:content medium="image" url="https://wechaty.js.org/assets/2023/08-use-llm-control-your-wechat/rare-book.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
