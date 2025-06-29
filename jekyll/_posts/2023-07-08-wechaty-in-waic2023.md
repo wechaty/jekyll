@@ -6,7 +6,7 @@ tags:
   - news
   - ecosystem
   - wechaty-way
-image: /assets/2023/07-wechaty-in-waic2023/2023-waic.webp
+image: /assets/2023/07-wechaty-in-waic2023/2023-waic1.webp
 ---
 
 ## Wechaty受邀参加WAIC2023开源集市现场直击
