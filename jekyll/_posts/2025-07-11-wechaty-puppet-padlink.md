@@ -1,6 +1,8 @@
 ---
 title: "新一代 Wechaty Puppet 服务：PadLink"
 author: padlink
+layout: post
+date: 2025-07-11
 image: /assets/2025/padlink/logo.webp
 categories: announcement
 tags:
