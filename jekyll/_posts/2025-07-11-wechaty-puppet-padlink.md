@@ -39,6 +39,6 @@ tags:
 
 PadLink 目前正处于公测阶段，欢迎广大开发者申请试用。我们也非常欢迎社区伙伴提出宝贵建议，与我们一起完善产品。
 
-如需申请或有任何问题，[欢迎联系]([padlink001@gmail.com](mailto:padlink001@gmail.com))。
+如需申请或有任何问题，[欢迎联系](mailto:padlink001@gmail.com)。
 
 让我们一起推动wechaty生态的创新与发展！
