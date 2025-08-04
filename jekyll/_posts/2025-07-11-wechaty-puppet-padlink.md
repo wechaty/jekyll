@@ -99,10 +99,10 @@ PadLink 目前正处于公测阶段，欢迎广大开发者申请试用。我们
 让我们一起推动Wechaty生态的创新与发展！
 
 ## 相关链接
-* [Wechaty 官方网站](https://wechaty.js.org/)
-* [PadLink GitHub 仓库](https://github.com/padlink/wechaty-puppet-padlink)
-* [Wechaty Puppet 插件体系介绍](https://wechaty.js.org/docs/puppet-overview/)
-* [PadLink 开发文档](https://github.com/padlink/wechaty-puppet-padlink)
-* [PadLink 示例项目](https://github.com/padlink/wechaty-puppet-padlink-demo)
+- [Wechaty 官方网站](https://wechaty.js.org/)
+- [PadLink GitHub 仓库](https://github.com/padlink/wechaty-puppet-padlink)
+- [Wechaty Puppet 插件体系介绍](https://wechaty.js.org/docs/puppet-overview/)
+- [PadLink 开发文档](https://github.com/padlink/wechaty-puppet-padlink)
+- [PadLink 示例项目](https://github.com/padlink/wechaty-puppet-padlink-demo)
 
-让我们一起推动 Wechaty 生态的创新与发展！
+ 让我们一起推动 Wechaty 生态的创新与发展！
