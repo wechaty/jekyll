@@ -59,44 +59,13 @@ PadLink 其实最初是因为项目需求“被逼出来的”。
 一家教育机构客户，原本使用开源 puppet 开发了微信群签到提醒机器人，结果遇到的掉线、消息丢失问题让他们的运营团队苦不堪言。  
 接入 PadLink 后，整个迁移过程只花了 30 分钟，掉线率从 20% 降到 0%，签到提醒消息的响应速度也提升了 5 倍。运营团队从此不用天天担心机器人“掉链子”，能把时间真正花在内容和用户体验上。
 
-## 快速上手示例代码
-
-以下是 PadLink 的最小可用示例，开发者可以快速上手：
-
-```ts
-import { WechatyBuilder } from 'wechaty'
-
-const bot = WechatyBuilder.build({
-  puppet: 'wechaty-puppet-padlink',
-  puppetOptions: {
-    token: 'your_padlink_token_here', // 申请获得的 Token
-  },
-})
-
-bot.on('scan', (qrcode, status) => {
-  console.log(`Scan QR Code to login: https://wechaty.js.org/qrcode/${encodeURIComponent(qrcode)}`)
-})
-
-bot.on('login', (user) => {
-  console.log(`User ${user} logged in`)
-})
-
-bot.on('message', (message) => {
-  console.log(`Message received: ${message.text()}`)
-})
-
-bot.start()
-  .then(() => console.log('PadLink Bot Started.'))
-  .catch(e => console.error('Bot start failed:', e))
-````
-
 ## 立即体验
 
-PadLink 目前正处于公测阶段，欢迎广大开发者申请试用。我们也非常欢迎社区伙伴提出宝贵建议，与我们一起完善产品。
+  PadLink 目前正处于公测阶段，欢迎广大开发者申请试用。我们也非常欢迎社区伙伴提出宝贵建议，与我们一起完善产品。
 
-如需申请或有任何问题，[欢迎联系](mailto:padlink001@gmail.com)。
+  如需申请或有任何问题，[欢迎联系](mailto:padlink001@gmail.com)。
 
-让我们一起推动Wechaty生态的创新与发展！
+  让我们一起推动Wechaty生态的创新与发展！
 
 ## 相关链接
 - [Wechaty 官方网站](https://wechaty.js.org/)
@@ -105,4 +74,4 @@ PadLink 目前正处于公测阶段，欢迎广大开发者申请试用。我们
 - [PadLink 开发文档](https://github.com/padlink/wechaty-puppet-padlink)
 - [PadLink 示例项目](https://github.com/padlink/wechaty-puppet-padlink-demo)
 
- 让我们一起推动 Wechaty 生态的创新与发展！
+让我们一起推动 Wechaty 生态的创新与发展！
