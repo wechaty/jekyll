@@ -1,7 +1,7 @@
 ---
 title: "Google Cloud Authentication — The Divio-Style Field Guide for Senior Full‑Stack Devs"
 author: huan
-categories: docs
+categories: article
 meta: "A single-page, Divio-structured, developer-first explanation of Google Cloud authentication: identities, credentials vs tokens, ADC, OAuth 2.0, API keys, service account keys, impersonation, Workload Identity Federation, and concrete recipes for local + prod."
 tags:
   - google-cloud
