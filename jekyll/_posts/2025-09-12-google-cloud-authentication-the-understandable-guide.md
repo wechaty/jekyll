@@ -2,6 +2,7 @@
 title: "Google Cloud Authentication — The Divio-Style Field Guide for Senior Full‑Stack Devs"
 description: "A single-page guide to identities, credentials, tokens, ADC, OAuth 2.0, API keys, service accounts, impersonation, and Workload Identity Federation — structured by Divio: Tutorials, How‑to, Explanation, Reference."
 categories: guide
+author: huan
 tags:
   - google-cloud
   - authentication
@@ -11,6 +12,7 @@ tags:
   - impersonation
   - workload-identity-federation
   - security
+image: /assets/2025/09-google-cloud-authentication-the-understandable-guide/adc-auth.webp
 ---
 
 A practical, copy‑pastable guide that untangles identities, credentials, tokens, ADC, OAuth 2.0, API keys, service accounts, impersonation, and Workload Identity Federation — organised with the Divio documentation system: Tutorials, How‑to, Explanation, and Reference.
