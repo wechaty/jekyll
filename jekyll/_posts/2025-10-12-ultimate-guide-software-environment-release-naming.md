@@ -8,7 +8,7 @@ tags:
 image: /assets/2025/10-ultimate-guide-software-environment-release-naming/ultimate-guide-software-environment-release-naming.webp
 ---
 
-It began with something innocent: I was deploying my Next.js app to Firebase App Hosting.
+> It began with something innocent: I was deploying my Next.js app to Firebase App Hosting.
 
 I saw the word **"Preview"** everywhere.
 
