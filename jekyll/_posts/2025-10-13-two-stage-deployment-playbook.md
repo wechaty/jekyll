@@ -31,6 +31,7 @@ This is the PreAngel Way — powered by GitHub Actions, Google Cloud Run, Artifa
 | Production  | Every Git tag (e.g., `v1.4.2`) reuses the exact same image from Artifact Registry and deploys to `myapp` with `--no-traffic`.     | Push tag `v*` | Cloud Run → `myapp` (no traffic) |
 
 This achieves full CI/CD simplicity:
+
 - Dev = automatic → instant iteration.
 - Prod = deliberate → controlled stability.
 - Both powered by the same artifact and pipeline logic.
@@ -56,11 +57,13 @@ Rule: Build once. Reuse the same image everywhere.
 Workload Identity Federation (WIF) lets GitHub authenticate to GCP without using a service account key.
 
 How it works:
+
 1) GitHub Actions requests an OIDC token for each workflow run.
 2) Google’s Security Token Service exchanges it for a short-lived access token.
 3) GCP IAM grants permissions directly to that OIDC identity.
 
 Why it’s best practice for PreAngel:
+
 - Keyless & secure: Eliminates JSON keys entirely.
 - Short-lived: Credentials expire automatically.
 - Direct IAM access: Grants roles directly to the identity — fewer layers, faster audits.
@@ -119,6 +122,7 @@ These are configured as GitHub Variables — not secrets.
 ## 6) The Two Workflows — Fully Declarative
 
 ### ① `.github/workflows/dev.yml`
+
 Builds, pushes, and deploys automatically on every commit to main.
 
 ```yaml
@@ -171,6 +175,7 @@ jobs:
 ```
 
 ### ② `.github/workflows/release.yml`
+
 Uses the same image from Artifact Registry to deploy tagged releases to Prod.
 
 ```yaml
@@ -254,6 +259,7 @@ gcloud run services update-traffic myapp --region us-central1 --to-latest --cond
 ## 8) Conclusion — The PreAngel Way
 
 PreAngel’s two-stage pipeline represents the ideal harmony between automation and human judgment:
+
 - Dev runs continuously and fearlessly.
 - Prod deploys intentionally and safely.
 - IAM is keyless and direct.
