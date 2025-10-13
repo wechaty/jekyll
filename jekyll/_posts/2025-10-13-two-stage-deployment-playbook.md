@@ -130,7 +130,7 @@ This model removes drift, downtime, and duplication.
 
 Instead of copying staging → prod, think of **traffic control**:
 
-```
+```text
 main branch → Firebase → Cloud Build → Cloud Run (Staging)
      │                              │
      │                              └─ validated image digest
@@ -186,5 +186,3 @@ This 2‑Stage model achieves the trifecta:
 * **Simplicity:** Two stages, one promotion signal.
 
 > ✅ **Build once. Test once. Promote by shifting traffic — not by redeploying.**
-
-**PreAngel Engineering Handbook — 2025 Edition**
