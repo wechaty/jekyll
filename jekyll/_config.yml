@@ -45,6 +45,7 @@ defaults:
     values:
       layout: contributor
       comments: true
+      search: false
 
 # Syntax
 markdown: kramdown

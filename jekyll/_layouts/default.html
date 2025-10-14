@@ -63,16 +63,15 @@
                {% include menu-header.html %}
             </ul>
             <ul class="navbar-nav ml-auto d-flex align-items-center">
-                {% include search-lunr.html %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ '/search/' | relative_url }}">Search</a>
+                </li>
             </ul>
         </div>
     </div>
     </nav>
 
-    <!-- Search Results -->
-    <div id="lunrsearchresults">
-        <ul class="mb-0"></ul>
-    </div>
+  <!-- Search results moved to a dedicated /search page -->
 
     <!-- Content -->
     <main role="main" class="site-content">
