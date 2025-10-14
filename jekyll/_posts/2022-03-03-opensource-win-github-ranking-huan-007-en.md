@@ -14,7 +14,7 @@ After discussions with experienced open-source friends, SegmentFault, Open Sourc
 
 The OpenDigger team at X-Lab analyzed GitHub archival logs, selected the top 10,000 accounts by collaboration influence in 2021, and, through open collaboration with developers and communities, verified annotations and removed bot accounts to shortlist 99 Chinese developers.
 
-## Code Never Sleeps—Win!
+## Code Never Sleeps—Win
 
 ![Open Source Win](/assets/2022/03-opensource-win-github-ranking-huan-007-en/winners.webp)
 

@@ -115,7 +115,6 @@ Wechaty 开源社区自成立来，已获多项荣誉，百万量级的下载量
 {% include iframe.html src="/assets/2021/07-gdg-shanghai-wechaty/wechaty-community-talk-live-demo.pdf" %}
 
 > 小编认为可以让一个 bot 来做发送文件的事情呢 ^_^
-
 > English version: [Wechaty: Build a Conversational UI App for WhatsApp and WeChat with 6 lines of code](/2021/07/22/gdg-shanghai-wechaty-en/)
 
 ## 关于社区说

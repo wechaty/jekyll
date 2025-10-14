@@ -84,5 +84,4 @@ Blogs:
 - 直播：马壮
 
 > Source: [核能沙龙 第六期 《开发者！集结！》](https://mp.weixin.qq.com/s/k5mefLNvX4s_qerKcJ7E4w)
-
 > English version: [Hardcore Peach 5G Chatbot Open-Source SDK Wechaty - Core Power Salon 6](/2022/03/30/gsma-rcs-wechaty-walnut-5g-chatbot-en/)
