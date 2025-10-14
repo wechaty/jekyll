@@ -31,6 +31,52 @@
 				"$tsc"
 			],
 			"group": "test"
+		},
+		{
+			"label": "Run unit tests",
+			"type": "shell",
+			"command": "npm test --silent",
+			"args": [],
+			"isBackground": false,
+			"problemMatcher": [
+				"$eslint-stylish"
+			],
+			"group": "test"
+		},
+		{
+			"label": "Run unit tests",
+			"type": "shell",
+			"command": "npm test --silent",
+			"isBackground": false,
+			"group": "test"
+		},
+		{
+			"label": "Run unit tests",
+			"type": "shell",
+			"command": "npm test --silent",
+			"isBackground": false,
+			"group": "test"
+		},
+		{
+			"label": "Run unit tests",
+			"type": "shell",
+			"command": "npm test --silent",
+			"isBackground": false,
+			"group": "test"
+		},
+		{
+			"label": "Run unit tests",
+			"type": "shell",
+			"command": "npm test --silent",
+			"isBackground": false,
+			"group": "test"
+		},
+		{
+			"label": "Run unit tests",
+			"type": "shell",
+			"command": "npm test --silent",
+			"isBackground": false,
+			"group": "test"
 		}
 	]
 }

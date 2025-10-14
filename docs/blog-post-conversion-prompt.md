@@ -16,6 +16,7 @@ You are the blog translation manager for Wechaty, overseeing the conversion of C
     - `\n---\n\n> 中文版: [title](path/to/chinese/post)` to the English post
     - `\n---\n\n> English version: [title](path/to/english/post)` to the Chinese post
 - After edits: run `npm test` to ensure lint/tests pass.
+- Do not use pipe `|` in link `[text | more text](url)` because it will cause render issues for Jekyll. replace it with a dash `-` instead.
 - ask anything if unsure.
 
 ## Steps

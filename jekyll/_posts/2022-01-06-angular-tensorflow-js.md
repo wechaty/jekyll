@@ -7,6 +7,7 @@ tags:
   - tensorflow.js
   - gdg
 image: /assets/2022/01-angular-tensorflow-js/ai-angular-tensorflow-js.webp
+hidden: true
 ---
 
 > AI, Wechaty, Angular, and mix them altogether in JavaScript
@@ -194,3 +195,4 @@ Knowledge, ideas, and insights for the Next Generation.
 活动将由不同的谷歌开发者社区举办，并邀请国内相关技术方向的谷歌开发者专家以及对技术有热情、愿意分享的嘉宾，一起聊聊最近做的项目、写的代码，或者三五技术好友探讨聊天。
 
 > Source: [社区说｜聊天机器人与 Angular](https://mp.weixin.qq.com/s/cluw2QQepzacuZFA1pJvcw)
+> English version: [Chatbot and Angular (Beijing GDG | Community Talk | NG+)](/2022/01/06/angular-tensorflow-js-en/)

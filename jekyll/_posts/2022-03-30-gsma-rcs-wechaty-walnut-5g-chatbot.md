@@ -8,6 +8,7 @@ tags:
   - ddd
   - event-driven
 image: /assets/2022/03-gsma-rcs-wechaty-walnut-5g-chatbot/rcs-cross.webp
+hidden: true
 ---
 
 > 5G Chatbot 是基于国际标准 GSMA (Global System for Mobile Association) RCS (Rich Communication Services) 的中国版。
@@ -83,3 +84,5 @@ Blogs:
 - 直播：马壮
 
 > Source: [核能沙龙 第六期 《开发者！集结！》](https://mp.weixin.qq.com/s/k5mefLNvX4s_qerKcJ7E4w)
+
+> English version: [Hardcore Peach 5G Chatbot Open-Source SDK Wechaty - Core Power Salon 6](/2022/03/30/gsma-rcs-wechaty-walnut-5g-chatbot-en/)
