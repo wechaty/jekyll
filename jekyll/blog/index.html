@@ -9,7 +9,9 @@ description: Wechaty Latest Community Blog Updates
 {% assign blog_posts = '' | split: ',' %}
 {% for post in site.posts %}
   {% unless post.tags contains 'news' %}
-     {% assign blog_posts = blog_posts | push: post %}
+         {% unless post.unlisted %}
+             {% assign blog_posts = blog_posts | push: post %}
+         {% endunless %}
   {% endunless %}
 {% endfor %}
 
@@ -178,7 +180,11 @@ description: Wechaty Latest Community Blog Updates
           <h4 class="font-weight-bold spanborder"><span>All Blogs</span></h4>
 
 
-          {% for post in paginator.posts %}
+                    {% for post in paginator.posts %}
+
+                            {% if post.unlisted %}
+                                {% continue %}
+                            {% endif %}
 
               {% include main-loop-card-post.html %}
 

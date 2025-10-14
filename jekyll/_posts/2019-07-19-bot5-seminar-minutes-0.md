@@ -8,6 +8,7 @@ tags:
   - meetup
   - news
 image: /assets/2019/bot5-seminar-0/group-photo.webp
+unlisted: true
 ---
 
 << 本次活动通知: [腾讯+句子互动=碰撞思想，点燃科技](https://mp.weixin.qq.com/s?__biz=MzU3OTk2MzA1Nw==&mid=2247485197&idx=1&sn=404c319ad11b9e12515d127dfabf7efd) <<
@@ -189,3 +190,5 @@ Bot Friday Zero 主场活动结束后，意(ji)犹(chang)未(lu)尽(lu)的三个
 1. 如果对活动纪要有修订或补充意见，请回复对本次活动纪要留言；
 1. 如果参加下次沙龙活动，请回复下次自己愿意分享的主题；
 1. 如果计划邀请新朋友参加下次沙龙活动，请让新朋友回复一句话的自我介绍；
+
+> English version: [Bot Friday Zero — Seminar Minutes](/2019/07/19/bot5-seminar-minutes-0-en/)

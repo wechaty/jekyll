@@ -14,6 +14,9 @@ permalink: /categories.html
 
         {% assign pages_list = category[1] %}
         {% for post in pages_list %}
+        {% if post.unlisted %}
+          {% continue %}
+        {% endif %}
         {% if post.title != null %}
           {% if group == null or group == post.group %}
 
