@@ -3,17 +3,24 @@ layout: null
 permalink: /search.json
 sitemap: false
 ---
+{%- comment -%}
+Generate a single JSON index for client-side search.
+Quotes everything via `jsonify` and avoids trailing commas.
+Excludes the generator page itself.
+{%- endcomment -%}
+{%- assign candidates = site.posts | concat: site.pages -%}
+{%- assign docs = candidates | where_exp: "d", "d.search != false" -%}
+{%- assign docs = docs | where_exp: "d", "d.url != '/search.json'" -%}
 {
   "docs": [
-  {%- assign docs = site.posts | concat: site.pages | concat: site.contributors -%}
-  {%- assign docs = docs | where_exp: "d", "d.search != false" -%}
   {%- for d in docs -%}
+    {%- assign title = d.title | default: d.name | default: d.url -%}
     {
-      "title": {{ d.title | default: d.name | to_json }},
-      "url": {{ d.url | relative_url | to_json }},
-      "tags": {{ d.tags | default: empty | to_json }},
-      "categories": {{ d.categories | default: empty | to_json }},
-      "excerpt": {{ d.excerpt | default: d.content | strip_html | strip_newlines | truncate: 220 | to_json }}
+      "title": {{ title | jsonify }},
+      "url": {{ d.url | relative_url | jsonify }},
+      "tags": {{ d.tags | jsonify }},
+      "categories": {{ d.categories | jsonify }},
+      "excerpt": {{ (d.excerpt | default: d.content) | strip_html | normalize_whitespace | truncate: 220 | jsonify }}
     }{%- unless forloop.last -%},{%- endunless -%}
   {%- endfor -%}
   ]

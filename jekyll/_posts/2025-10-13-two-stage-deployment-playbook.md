@@ -13,7 +13,7 @@ tags:
 image: /assets/2025/10-two-stage-deployment-playbook/two-stage-deployment-playbook.webp
 ---
 
-PreAngel’s philosophy has always been clear: simplicity and truth live in the repo. Every configuration should be declarative, versioned, and automated — never hidden in a console.
+> PreAngel’s philosophy has always been clear: simplicity and truth live in the repo. Every configuration should be declarative, versioned, and automated — never hidden in a console.
 
 Over time, we distilled our deployment pipeline down to its purest form:
 
