@@ -14,7 +14,7 @@ permalink: /tags.html
 
         {% assign pages_list = tag[1] %}
         {% for post in pages_list %}
-        {% if post.unlisted %}
+        {% if post.hidden %}
           {% continue %}
         {% endif %}
         {% if post.title != null %}
