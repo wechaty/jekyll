@@ -186,7 +186,6 @@ Huan focuses on chatbots and NLP. He co‑authored “Chatbot from 0 to 1” (�
 | Design: Yingjie Liu (刘颖洁)
 > Reprinted from: Kaiyuanshe (开源社) — <https://mp.weixin.qq.com/s/JS-fzyFwWYnJ0_2_GBu6lw>
 
-
 ---
 
 > Chinese version: [开源社：走进 “ SLASH（斜杠)青年 ” 李卓桓](/2020/03/27/kaiyuanshe-interview-huan-slash-youth/)
