@@ -1,7 +1,7 @@
 ---
 mode: 'agent'
 description: "Generate English version of blog posts"
-tools: ['codebase']
+tools: ['search/codebase']
 ---
 
 ## Translation Requirements (High-Level)
@@ -18,11 +18,10 @@ You are the blog translation manager for Wechaty, overseeing the conversion of C
     - suggested tags if there are any good ones.
 - Dual posts (no mixed languages):
   - Create a separate English file with `-en` suffix (e.g., `YYYY-MM-DD-slug-en.md`).
-  - Add cross-language links at the end of both posts as blockquotes:
-    - `\n---\n\n> 中文版: [title](path/to/chinese/post)` to the English post
-    - `\n---\n\n> English version: [title](path/to/english/post)` to the Chinese post
+  - Add a link at the end of the Chinese language version to Non-Chinese version in blockquote.
+  - Add a link at the end of the Non-Chinese language version to English version in blockquote.
 - After edits: run `npm test` to ensure lint/tests pass.
-- Do not use pipe `|` in link `[text | more text](url)` because it will cause render issues for Jekyll. replace it with a dash `-` instead.
+- Do not use pipe `|` in link text because it will cause render issues for Jekyll. replace it with a dash `-` instead.
 - ask anything if unsure.
 
 ## Steps
