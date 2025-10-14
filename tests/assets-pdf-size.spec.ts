@@ -34,7 +34,7 @@ const allPdfList = async () => {
   ]
 
   if (fileList.length <= 0) {
-    throw new Error('should get empty image file list')
+    throw new Error('should not get empty pdf file list')
   }
 
   return fileList

@@ -21,6 +21,7 @@ const BIG_SIZE_TO_BE_FIXED_FILE_LIST = [
    */
   'jekyll/assets/2019/bot5-seminar-2/chatbot-experience-limingth.pdf',
   'jekyll/assets/2020/11-summer-2020-wechaty/wechaty-summer-2020-introduction.pdf',
+  'jekyll/assets/2020/11-summer-2020-wechaty-en/wechaty-summer-2020-introduction.pdf',
   'jekyll/assets/2020/qijibot/final.pdf',
   'jekyll/assets/2020/qijibot/talk2.pdf',
   'jekyll/assets/2020/wechaty-plugin-milestone/gcaufy.pdf',
