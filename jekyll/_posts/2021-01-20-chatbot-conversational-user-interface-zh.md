@@ -8,6 +8,8 @@ tags:
   - cui
   - conversational-user-interface
 image: /assets/2021/01-chatbot-conversational-user-interface-zh/chatbot.webp
+hidden: true
+excerpt: "Huan Li (李卓桓) provides a concise introduction to Chatbots and Conversational User Interfaces (CUI), explaining their definitions, capabilities, and relationship with Instant Messaging platforms."
 ---
 
 Wechaty 是一个为对话式用户交互界面提供接口服务的 SDK，通过 RPA 技术，为 Chatbot 开发者提供便利的即时通讯平台接入服务，打造更加优秀的 Conversational AI 对话机器人。
