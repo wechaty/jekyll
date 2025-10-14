@@ -8,6 +8,7 @@ tags:
   - open-source
   - news
 image: /assets/2020/11-summer-2020-wechaty/summer-2020.webp
+hidden: true
 ---
 
 “暑期2020”是由中科院软件所与 openEuler 社区共同举办、中科院软件研究所南京软件技术研究院承办的一项面向高校学生的暑期活动，旨在鼓励高校在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。
@@ -34,3 +35,7 @@ Wechaty是2016年基于Apache-2.0许可证发布的开源对话式交互人机�
 ## 附：Wechaty 开源软件供应链点亮计划暑期 2020 招募书
 
 {% include iframe.html src="/assets/2020/11-summer-2020-wechaty/wechaty-summer-2020-introduction.pdf" %}
+
+---
+
+> English version: [Open Source Software Supply Chain Lighting Plan Summer 2020 Results: Wechaty-based Projects Win Outstanding Contribution and Most Potential Awards!](/2020/11/14/summer-2020-wechaty-en/)

@@ -8,6 +8,7 @@ tags:
   - summer-of-wechaty
   - featured
 image: /assets/2020/12-summer-2020-student-developers/award.webp
+hidden: true
 ---
 
 今夏， Wechaty 社区诞生了 9 位后浪贡献者：毕凯乔、王俊伟、谢昱清、范蕊、江姗姗、林昊翰、唐光彬、肖梓霖与孔祥哲。他们都还是正在就读本科与研究所的学生。
@@ -293,3 +294,7 @@ Go-wechaty Github Action optimization 主要通过使用 Github Actions 的特�
 | [https://docs.google.com/document/...](https://docs.google.com/document/d/1fVCk8qRYc4RKGMf2UY5HOe07hEhPUOpGC34v88GEFJg/edit#heading=h.64c95c3y2l4v) | Meeting Notes |
 
 > Special thanks to Milvus community for the [template](https://mp.weixin.qq.com/s?__biz=MzUzMDI5OTA5NQ==&mid=2247486935&idx=2&sn=07bbbc323872d5ef3a48e3096e2c6f02)
+
+---
+
+> English version: [This Summer: Stories of Wechaty Community and 9 Rising Open Source Contributors](/2020/12/31/summer-2020-student-developers-en/)
