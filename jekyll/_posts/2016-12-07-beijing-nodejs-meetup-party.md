@@ -6,6 +6,7 @@ tags:
   - talk
   - news
 image: /assets/2016/nodeparty-banner.webp
+hidden: true
 ---
 
 ![Node Party Banner][nodeparty-banner]
@@ -82,3 +83,7 @@ Rockq社区
 [nodeparty-banner]: /assets/2016/nodeparty-banner.webp
 [nodeparty-speaker]: /assets/2016/nodeparty-speaker.webp
 [nodeparty-speaker2]: /assets/2016/nodeparty-speaker2.webp
+
+---
+
+> English version of this post: [Node Party #18 - Rediscovering Chatbots]({{ '/2016/12/07/beijing-nodejs-meetup-party-en/' | relative_url }})

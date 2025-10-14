@@ -5,7 +5,8 @@ categories: event
 tags:
   - meetup
   - news
-image: /assets/2017/wechat-meeting.webp
+image: /assets/2017/04-wechaty-meeting-dinner-en/wechat-meeting.webp
+hidden: true
 ---
 
 ![Photo][antonia-video-photo]
@@ -60,7 +61,11 @@ Here is the Chinese version.
 
 很开心大家能聚在一起，共同探讨技术问题并增进对彼此的了解，希望日后能多一些线下交流的机会。
 
-[dinner-photo]: /assets/2017/wechat-meeting.webp
-[antonia-video-photo]: /assets/2017/antonia0912-issue-4-seminar.webp
+[dinner-photo]: /assets/2017/04-wechaty-meeting-dinner-en/wechat-meeting.webp
+[antonia-video-photo]: /assets/2017/04-wechaty-meeting-dinner-en/antonia0912-issue-4-seminar.webp
 
 Author: [Yang BAI](https://github.com/antonia0912), formal community manager at [JueJin](https://juejin.im/)(Chinese Hacker News)
+
+---
+
+> English version of this post: [Wechaty Contributor Dinner]({{ '/2017/04/21/wechaty-meeting-dinner-en/' | relative_url }})

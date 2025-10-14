@@ -5,7 +5,9 @@ categories: project
 tags:
   - padplus
   - productivity
+excerpt: "使用 Wechaty 构建一个简单的微信计算器机器人，可通过聊天消息执行基本算术运算"
 image: /assets/2020/wechat-calc/header.webp
+hidden: true
 ---
 
 [![Wechaty Badge](https://img.shields.io/badge/Powered%20By-Wechaty-green.svg#align=left&display=inline&height=20&margin=%5Bobject%20Object%5D&originHeight=20&originWidth=132&status=done&style=none&width=132)](https://github.com/wechaty/wechaty)
@@ -98,3 +100,7 @@ node app.js
 
 > 作者: [Ray](https://github.com/leiroc/)
 > Code: [Github](https://github.com/leiroc/wechat-calculator)
+
+---
+
+> English version: [WeChat Calculator Bot](/2020/07/06/wechat-calculator-bot-en/)

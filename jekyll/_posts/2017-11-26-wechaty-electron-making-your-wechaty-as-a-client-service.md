@@ -7,6 +7,7 @@ tags:
   - featured
   - utility
 image: /assets/2017/wechaty-electron-making-your-wachaty-as-a-client-service1.webp
+hidden: true
 ---
 
 ## 初识wechaty
@@ -126,3 +127,7 @@ ps: 这几天听闻微信网页端要封的消息，尚不知真假。不过，�
 ![a](https://avatars1.githubusercontent.com/u/33899027?s=88&v=3)
 
 > 作者: [郭英旭](https://github.com/Guoyingxu)
+
+---
+
+> English version of this post: [wechaty-electron: Making Your Wechaty a Client Service]({{ '/2017/11/26/wechaty-electron-making-your-wechaty-as-a-client-service-en/' | relative_url }})

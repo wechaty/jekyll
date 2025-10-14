@@ -1,5 +1,5 @@
 ---
-title: '用Chatie实现微信机器人商业逻辑之【好室友】群管理篇'
+title: 'Using Chatie to Implement WeChat Bot Business Logic for [Haoshiyou] Group Management'
 author: xinbenlv
 categories: project
 tags:
@@ -7,38 +7,29 @@ tags:
   - startup
   - featured
   - real-estate
-hidden: true
 ---
 
-为了帮助新来硅谷的朋友找室友和租房，我们在所在地区组建了若干微信群。
-我们对这个项目的基本理念是简单专注，用完即走。
+To help friends new to Silicon Valley find roommates and rent apartments, we established several WeChat groups in our local area.
+Our basic philosophy for this project is simple focus and finish-and-go.
 
-我们的应用场景是这样的：我们一共有数个微信群，按照硅谷旧金山湾区的几个租房区域进行分群，
-每个微信群常年满上限500人。我们要求入群的朋友修改群昵称，
-我们每周要按照一定的规则将不按照要求修改群昵称的群友和最早入群的人踢出，以实现群员的流动，
-确保群里都是最近有租房需求的朋友而不是许多租房群常见的僵尸群情况。
+Our application scenario is as follows: We have several WeChat groups, divided by rental areas in the San Francisco Bay Area of Silicon Valley.
+Each WeChat group consistently maintains the maximum limit of 500 people. We require friends who join the group to modify their group nicknames.
+Every week, we kick out group members who don't modify their group nicknames according to requirements and the earliest members to join, implementing member turnover to ensure that the group consists of friends with recent rental needs rather than the zombie group situation common in many rental groups.
 
-另外，我们不允许发布任何与租房无关的信息：广告、二手交易、机票信息等常见扩散信息都被视为禁止类型。
-在群管理员志愿者们的共同努力下，我们群在湾区朋友中间以简洁活跃赢得了相当不错的口碑，
-被常常被湾区的群友介绍给自己新来湾区的朋友。也是因为我们群初具规模，
-吸引了各种希望混入大群散发广告的各种运营号、广告号和宣传号。
-经常有人进入我们的微信群发布广告消息和无关消息，
-我们对于这种情况会予以警告直至踢出群并加入黑名单。
+Additionally, we don't allow publishing any information unrelated to renting: advertisements, second-hand transactions, flight information, and other common spam are all considered prohibited types.
+Under the joint efforts of our volunteer administrators, our groups have gained quite a good reputation among Bay Area friends for being clean and active, and are often recommended by Bay Area group members to their friends new to the Bay Area. It's also because our groups have reached a certain scale that we've attracted various marketing accounts, advertising accounts, and promotional accounts hoping to infiltrate large groups to spread advertisements.
+People often enter our WeChat groups to post advertising messages and irrelevant messages. We issue warnings for such situations up to kicking them out of the group and adding them to the blacklist.
 
-在使用机器人之前，我们的管理员志愿者们，每天需要手动登录手机，接受好友请求，
-然后根据相应的规则对群进行管理。由于加群请求巨大，群多而复杂，
-因此还经常要首先回答用户的问题再根据用户的意向分配进入相应的群。
-删除群好友的事儿也需要花费比较长的时间。
+Before using bots, our volunteer administrators needed to manually log into their phones daily, accept friend requests, and then manage groups according to corresponding rules. Due to enormous group joining requests and multiple complex groups, they often had to first answer users' questions and then assign them to appropriate groups based on user intentions.
+Deleting group members also required considerable time.
 
-在得知Chatie之后，我们立即使用Chatie的接口开发了机器人来进行群的管理工作，
-大大简化了管理员志愿者们的工作流程和负担。我们这里介绍一下我们的业务逻辑模块。
+After learning about Chatie, we immediately used Chatie's interface to develop bots for group management work, greatly simplifying the workflow and burden of volunteer administrators. Here we introduce our business logic modules.
 
-## 逻辑模块
+## Logic Modules
 
-### 1. 自动接受好友请求
+### 1. Automatically Accept Friend Requests
 
-我们会自动接受所有用户加好友的请求，并发送问候消息，我们会在问候消息中解释我们群的
-群规和分区规划，以及如何回复意向进行加群。
+We automatically accept all user friend requests and send greeting messages. In our greeting messages, we explain our group rules and regional planning, as well as how to reply with intentions for group joining.
 
 ```js
 exports = module.exports = async function onFriend(contact, request) {
@@ -51,10 +42,9 @@ exports = module.exports = async function onFriend(contact, request) {
 }
 ```
 
-### 2.关键字确认用户的加群意向
+### 2. Keyword Confirmation of User Group Joining Intentions
 
-我们利用关键字来确认用户的加群意向，在确认了用户想加哪个群之后，会先确认群是不是满了，
-如果满了会先进行清理，然后在加群。
+We use keywords to confirm user group joining intentions. After confirming which group the user wants to join, we first check if the group is full. If it's full, we clean it first, then add to the group.
 
 ```js
 let maybeAddToHsyGroups = async function(m:Message):Promise<Boolean> {
@@ -99,13 +89,11 @@ public static getAddGroupIndentFromMessage = function(
 }
 ```
 
-### 3. 基于群昵称和入群顺序进行群满自动踢人
+### 3. Automatic Group Member Removal Based on Group Nicknames and Join Order When Group is Full
 
-我们会检查每个管理的群，如果用户人数超过一个阈值（例如450人），就会触发削减群人数的函数。
-首先我们会寻找没有按照要求修改群昵称的群友，跳过管理员和群主以及机器人自己，
-从中间找出若干人（例如20个人），然后在从最早入群的用户中选择若干人（例如10人），作为
-踢出列表。我们会在群里宣布我们即将踢出人，以及踢人的原因（未修改区昵称和最早入群），
-然后私下告诉每个被踢的人具体被踢的原因，之后执行踢人。
+We check each managed group, and if the number of users exceeds a threshold (e.g., 450 people), we trigger the group downsizing function.
+First, we look for group members who haven't modified their group nicknames according to requirements, skipping administrators, group owners, and the bot itself.
+We select several people from them (e.g., 20 people), then select several people from the earliest joined users (e.g., 10 people) as the removal list. We announce in the group that we're about to remove people and the reasons for removal (not modifying group nicknames and earliest joined), then privately tell each person being removed the specific reason for removal, and then execute the removal.
 
 ```js
 let maybeDownsizeKeyRoom = async function(keyRoom: Room, c:Contact) {
@@ -146,16 +134,12 @@ let maybeDownsizeKeyRoom = async function(keyRoom: Room, c:Contact) {
 };
 ```
 
-### 4.按照管理员的发言来加黑名单
+### 4. Adding Users to Blacklist Based on Administrator Messages
 
-我们目前在微信里面加黑名单的流程是，首席先如果用户在群里发了什么无关信息或者长期没有修改群昵称，
-我们挂管理员可以在群里发消息说“@某用户，请不要发无关消息”，或者“@某用户，请修改群昵称”
-这样的口令将首先被机器人重复一遍“感谢管理员张三，@某用户请不要发无关消息”，以增加管理员在
-群里发言的威信，同时机器人会私信管理员询问是否要把该用户加入黑名单并提出，如果管理员
-回复确认，就会启动加黑名单和踢人逻辑。目前，我们管理黑名单的方式是在机器人的微信里把某位
-好友的备注加上`#黑名单`。
+Our current process for adding users to the blacklist in WeChat is: if a user posts irrelevant information in the group or doesn't modify their group nickname for a long time, our administrators can send messages in the group saying "@某用户，请不要发无关消息" (Don't post irrelevant messages) or "@某用户，请修改群昵称" (Please modify your group nickname).
+Such commands will first be repeated by the bot "感谢管理员张三，@某用户请不要发无关消息" (Thanks to administrator Zhang San, @某用户 please don't post irrelevant messages) to increase the administrator's authority in the group. At the same time, the bot will privately message the administrator asking whether to add this user to the blacklist and remove them. If the administrator confirms, it will start the blacklist addition and removal logic. Currently, we manage the blacklist by adding `#黑名单` to a friend's remark in the bot's WeChat.
 
-逻辑如下
+Logic as follows:
 
 ```js
 let maybeBlacklistUser = async function(m: Message):Promise<Boolean> {
@@ -184,7 +168,7 @@ let maybeBlacklistUser = async function(m: Message):Promise<Boolean> {
       /无关|修改群昵称/.test(m.content()) &&
       /^@/.test(m.content())) {
     let mentionName = m.content().slice(1)/*ignoring@*/
-        .replace(" "/*Space Char in Chinese*/, " ").split(" ")[0];
+        .replace(" "/*Space Char in Chinese*/, " ").split(" ")[0];
     let foundUsers = findMemberFromGroup(m.room(), new RegExp(mentionName));
     if (foundUsers.length > 0) {
       // Repeat the warning from the admin
@@ -213,16 +197,14 @@ let maybeBlacklistUser = async function(m: Message):Promise<Boolean> {
 };
 ```
 
-## 后记
+## Postscript
 
-在本篇里我们介绍了我们如何应用Chatie实现【好室友】系列租房群的一系列日常管理任务，大大
-简化了管理员的工作量，也提高和改善了用户在群里的体验。
-我们将在未来的文章中介绍我们如何利用Chatie的可编程接口来实现
-微信和我们开发的网站和APP实现数据和信息互通。
+In this article, we introduced how we applied Chatie to implement a series of daily management tasks for the [Haoshiyou] rental group series, greatly simplifying administrators' workload and improving and enhancing user experience in the groups.
+We will introduce in future articles how we use Chatie's programmable interface to achieve data and information connectivity between WeChat and our developed website and APP.
 
 At the time of writing this article, the haoshiyou-bot code described in this article is located
 [here](https://github.com/xinbenlv/haoshiyou-bot/tree/5f4dc109fafb5bf22996e53560e5a2ee51b4da89)
 
 ---
 
-> English version of this post: [Using Chatie to Implement WeChat Bot Business Logic for [Haoshiyou] Group Management]({{ '/2017/04/16/how-chatie-is-used-in-haoshiyou-project-en/' | relative_url }})
+> Chinese version of this post: [用Chatie实现微信机器人商业逻辑之【好室友】群管理篇]({{ '/2017/04/16/how-chatie-is-used-in-haoshiyou-project/' | relative_url }})

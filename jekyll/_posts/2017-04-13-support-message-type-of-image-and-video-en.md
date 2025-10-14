@@ -1,20 +1,19 @@
 ---
-title: '给机器人添加发送图片视频功能'
+title: 'Adding Image and Video Sending Function to Bots'
 author: mukaiu
 categories: feature
 tags:
   - code
 image: /assets/2017/04-support-message-type-of-image-and-video-en/mukaiu-ding-code.webp
-hidden: true
 ---
 
-公司活动，需要对入群用户进行管理和自动回复。前期在Node Party Beijing上接触到 @huan 的分享，Wechaty刚好能支持该活动，支持Docker部署，是一个很棒的Bot Framework。
+For company activities, we needed to manage users joining groups and provide automatic responses. Earlier at Node Party Beijing, I was exposed to @huan's sharing, and Wechaty was perfect for supporting this activity with Docker deployment - it's a great Bot Framework.
 
-开发过程中发现，[#4 Support Message Type of Image/Video](https://github.com/wechaty/wechaty/issues/4)此功能还未实现，决定完成该项特征。
+During development, I discovered that [#4 Support Message Type of Image/Video](https://github.com/wechaty/wechaty/issues/4) functionality was not yet implemented, so I decided to complete this feature.
 
-## 1. 问题分析
+## 1. Problem Analysis
 
-为解Web微信是如何发送图片的，进行了数据抓包，并分析微信Web源码
+To understand how Web WeChat sends images, I performed data packet capture and analyzed WeChat Web source code:
 
 ```js
 onSuccess: function(e) {
@@ -30,17 +29,17 @@ onSuccess: function(e) {
 },
 ```  
 
-Web中Message是通过此函数创建的，图片消息会被添加MediaId属性，因此如果我们能取得需要上传文件的MediaId，就可以直接调用sendMessage发送图片了。
+In Web, Messages are created through this function. Image messages get a MediaId property added, so if we can obtain the MediaId of the file to be uploaded, we can directly call sendMessage to send images.
 
-## 2. 上传图片
+## 2. Image Upload
 
-通过抓包，发现图片被POST请求发送到
+Through packet capture, I found that images are sent via POST request to:
 
 ```sh
 https://file.wx.qq.com/cgi-bin/mmwebwx-bin/webwxuploadmedia?f=json
 ```
 
-搜索源码，找到
+Searching the source code, I found:
 
 ```js
 API_webwxdownloadmedia: "https://" + o + "/cgi-bin/mmwebwx-bin/webwxgetmedia",
@@ -48,8 +47,8 @@ API_webwxuploadmedia: "https://" + o + "/cgi-bin/mmwebwx-bin/webwxuploadmedia",
 API_webwxpreview: "/cgi-bin/mmwebwx-bin/webwxpreview",
 ```
 
-API_webwxuploadmedia就是图片上传地址，全局搜索这个变量是不是就可以找到上传文件的方法呢？
-经过搜索
+API_webwxuploadmedia is the image upload address. By searching globally for this variable, could I find the file upload method?
+After searching:
 
 ```js
 window.WebUploader = e;
@@ -69,7 +68,7 @@ Y = e.create({
 })
 ```
 
-e就是webuploader，处理文件上传，单独打包在一个chunk里。由于控制游览器读取本地文件没有什么好的处理办法，所以决定通过使用直接post数据到此地址的方式进行文件上传，该请求并没有上传cookie信息，因此省去了很多麻烦。各个参数都可以直接调用Web信息获取到
+e is webuploader, handling file uploads, packaged separately in a chunk. Since there's no good way to control the browser to read local files, I decided to upload files by directly posting data to this address. This request doesn't upload cookie information, saving a lot of trouble. All parameters can be directly obtained by calling Web information:
 
 ```js
 let uploadMediaRequest = {
@@ -99,7 +98,7 @@ let formData = {
 }
 ```  
 
-返回结果为
+The return result is:
 
 ```json
 {
@@ -115,27 +114,27 @@ let formData = {
 }
 ```
 
-MediaId就是我们需要的，直接调用createMessage,sendMessage即可发送图片了。
+MediaId is what we need. We can directly call createMessage and sendMessage to send images.
 
-## 3.整合Wechaty
+## 3. Integrating with Wechaty
 
-为快速验证可行性，直接添加了Wechaty.sendMedia。后和@huan @lijiarui讨论，决定使用say(MediaMessage(filename))的形式发送媒体文件。
-重载
+To quickly verify feasibility, I directly added Wechaty.sendMedia. After discussing with @huan @lijiarui, we decided to use the form say(MediaMessage(filename)) to send media files.
+Overloaded:
 
 ```js
 Wchaty.send(message: MediaMessage)
 Contact.say(mediaMessage: MediaMessage)
 Message.say(mediaMessage: MediaMessage)
 
-//准备后续添加
+//Planned for future addition
 Room.say(mediaMessage: MediaMessage)
 ```
 
-## 4.坑
+## 4. Pitfalls
 
-1. 测试期间发现，发送图片有时候会失败，原因是无法获取mediaId，第一感觉是，难道还有细节没有发现?对比post数据，完全一致，没有问题，那问题出在哪呢？
+1. During testing, I found that sending images sometimes failed because MediaId couldn't be obtained. My first thought was: are there still details I haven't discovered? Comparing post data, everything was identical with no issues, so where was the problem?
 
-    后来看源码才发现
+    Later, looking at the source code, I discovered:
 
     ```js
     var e = location.host
@@ -146,22 +145,22 @@ Room.say(mediaMessage: MediaMessage)
     o = "file2.wx.qq.com",
     ```
 
-    原来还有个地址是wx2.qq.com。对应的文件上传地址是file2.wx.qq.com。不仔细啊
+    Turns out there's another address wx2.qq.com. The corresponding file upload address is file2.wx.qq.com. Not careful enough!
 
-1. 另一个坑是微信Web对视频大小有20M限制，这个也是开始没有注意的，发送大视频会失败
-1. 循环依赖
-    由于MediaMessage继承Message，Message.say(MediaMessage)又需要引用MediaMessage.OMG,循环引用,TS报错了不支持这么玩～
-    所以我把MediaMessage移入了message.ts,删除了media-message.ts,无中生有了186行变更😊
+1. Another pitfall is that WeChat Web has a 20MB limit for videos, which I didn't notice initially. Sending large videos will fail.
+1. Circular dependency
+    Since MediaMessage inherits from Message, and Message.say(MediaMessage) needs to reference MediaMessage. OMG, circular reference! TypeScript reported errors and doesn't support this approach~
+    So I moved MediaMessage into message.ts, deleted media-message.ts, and magically created 186 lines of changes😊
 
-## 5.End
+## 5. End
 
-现在Wechaty支持发送图片(bmp,jpg,png)视频(mp4)和其他文件。
-图片和视频是可以在聊天窗口直接查看的
-可以通过在ding-dong-bot里回复code来收到一张图片二维码。
+Now Wechaty supports sending images (bmp, jpg, png), videos (mp4), and other files.
+Images and videos can be viewed directly in the chat window.
+You can reply with "code" in ding-dong-bot to receive a QR code image.
 
 ![ding-code][mukaiu-ding-code]
 
-作者：@[mukaiu](https://github.com/mukaiu), [Wechaty Contributor](https://github.com/orgs/Chatie/teams/contributor)
+Author: @[mukaiu](https://github.com/mukaiu), [Wechaty Contributor](https://github.com/orgs/Chatie/teams/contributor)
 
 ![avatars2](https://avatars2.githubusercontent.com/u/7746790?v=3&s=88)
 
@@ -169,4 +168,4 @@ Room.say(mediaMessage: MediaMessage)
 
 ---
 
-> English version of this post: [Adding Image and Video Sending Function to Bots]({{ '/2017/04/13/support-message-type-of-image-and-video-en/' | relative_url }})
+> Chinese version of this post: [给机器人添加发送图片视频功能]({{ '/2017/04/13/support-message-type-of-image-and-video/' | relative_url }})
