@@ -6,6 +6,7 @@ tags:
   - news
   - interview
 image: /assets/2020/03-slash-huan-kaiyuanshe/slash-huan.webp
+hidden: true
 ---
 
 近年来非常流行“SLASH（斜杠）青年”一词，指的是不再满足“专一职业”的生活方式，而选择拥有多重职业和身份的多元生活的青年。
@@ -228,3 +229,7 @@ AI/ML 领域对开源也进行了最佳实践：从论文完全在 arxiv 上公�
 \| 设计：刘颖洁
 
 > 转载于：[开源社](https://mp.weixin.qq.com/s/JS-fzyFwWYnJ0_2_GBu6lw)
+
+---
+
+> 英文版: [Kaiyuanshe (开源社): Meet the "SLASH" Youth Huan Li (李卓桓)](/2020/03/27/kaiyuanshe-interview-huan-slash-youth-en/)
