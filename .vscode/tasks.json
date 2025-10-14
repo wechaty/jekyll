@@ -21,6 +21,16 @@
 				"$tsc"
 			],
 			"group": "test"
+		},
+		{
+			"label": "Run tests after front matter change",
+			"type": "shell",
+			"command": "npm test --silent",
+			"isBackground": false,
+			"problemMatcher": [
+				"$tsc"
+			],
+			"group": "test"
 		}
 	]
 }

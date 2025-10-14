@@ -13,7 +13,7 @@ tags:
   - video
   - nlp
 image: /assets/2019/bot5-seminar-0/group-photo.webp
-description: Minutes from Bot Friday Zero (kickoff) held at Tencent Beijing on Jul 19, 2019 — speakers, roundtable takeaways, decisions for the next meetup, slides and full video, plus our vision for the community.
+excerpt: Kickoff minutes for Bot Friday (Zero) at Tencent Beijing on Jul 19, 2019 — Rasa-to-production talk by Qinghua Duan, founding members, roundtable insights, next-meetup plan, with slides and full video.
 ---
 
  

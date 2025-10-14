@@ -1,6 +1,6 @@
 ---
 title: "📚 PreAngel Two-Stage Deployment Playbook — Firebase App Hosting × Google Cloud Run (v4)"
-description: "Purpose: Present PreAngel’s current best-practice two-stage deployment model — powered by GitHub Actions, Cloud Run, Artifact Registry, and Workload Identity Federation (WIF). This version reflects our final, production-proven approach: direct access, fully declarative, and keyless."
+excerpt: "Purpose: Present PreAngel’s current best-practice two-stage deployment model — powered by GitHub Actions, Cloud Run, Artifact Registry, and Workload Identity Federation (WIF). This version reflects our final, production-proven approach: direct access, fully declarative, and keyless."
 categories: guide
 author: huan
 tags:

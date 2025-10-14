@@ -1,6 +1,6 @@
 ---
 title: "🧭 Decoding the Chaos: The Ultimate Guide to Software Environment & Release Naming"
-description: "🚀 Confused by terms like Preview, Beta, and Staging? You're not alone. This post breaks down the chaos into three clear axes every developer should know - By Huan Li — a developer once lost in the fog of 'Preview' and 'Beta'"
+excerpt: "🚀 Confused by terms like Preview, Beta, and Staging? You're not alone. This post breaks down the chaos into three clear axes every developer should know - By Huan Li — a developer once lost in the fog of 'Preview' and 'Beta'"
 categories: guide
 author: huan
 tags:
