@@ -13,8 +13,8 @@ You are the blog translation manager for Wechaty, overseeing the conversion of C
 - Dual posts (no mixed languages):
   - Create a separate English file with `-en` suffix (e.g., `YYYY-MM-DD-slug-en.md`).
   - Add cross-language links at the end of both posts as blockquotes:
-    - `\n---\n\n> Chinese version: [title](path/to/chinese/post)` to the English post
-    - `\n---\n\n> 英文版: [title](path/to/english/post)` to the Chinese post
+    - `\n---\n\n> 中文版: [title](path/to/chinese/post)` to the English post
+    - `\n---\n\n> English version: [title](path/to/english/post)` to the Chinese post
 - After edits: run `npm test` to ensure lint/tests pass.
 - ask anything if unsure.
 

@@ -8,6 +8,7 @@ tags:
   - news
   - talk
 image: /assets/2020/11-summer-2020-summit-talks/summit.webp
+hidden: true
 ---
 
 11 月 14 日 - 11 月 15 日由中国科学软件研究所与 Open Euler 社区共同主办的开源软件供应链 2020 峰会在南京玄武苏宁诺富特酒店盛大举行，Wechaty 社区作为“开源软件供应链点亮计划-暑期 2020”的参与社区也受邀出席了峰会，并由李卓桓在开源文化会场分享了 Wechaty 的开源之路，吴京京在开源教育会场分享了 Multi-Wechaty SDK for Chatbot。
@@ -35,3 +36,7 @@ Wechaty 作者 Huan 在开源文化分会场做报告：Wechaty 开源之路
 ![Wechaty Friends](/assets/2020/11-summer-2020-summit-talks/six.webp)
 
 ![Wechaty Friends](/assets/2020/11-summer-2020-summit-talks/four.webp)
+
+---
+
+> English Version: [Open Source Forum: Wechaty's Open Source Journey](/2020/11/14/summer-2020-summit-talks-en/)
