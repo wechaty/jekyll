@@ -1,5 +1,5 @@
 ---
-title: "Wechaty受邀参加GAIDC开源集市，邀请你一起来！"
+title: ' "Wechaty受邀参加GAIDC开源集市，邀请你一起来！" (English translation WIP)'
 author: juzibot
 categories: announcement
 tags:
@@ -9,7 +9,7 @@ tags:
 image: /assets/2023/02-wechaty-invited-to-gaidc-en/2023-gaidc.webp
 ---
 
-## Wechaty受邀参加GAIDC开源集市邀请你一起来
+## Wechaty受邀参加GAIDC开源集市邀请你一起来！
 
 随着专为对话而生的 ChatGPT 火爆，Wechaty 再次成为开源社区里备受关注的项目。
 
@@ -87,3 +87,7 @@ image: /assets/2023/02-wechaty-invited-to-gaidc-en/2023-gaidc.webp
 由世界人工智能大会组委会、上海市经济和信息化委员会、上海市人才工作领导小组办公室、中国（上海）自由贸易试验区临港新片区管理委员会共同指导，上海市人工智能行业协会和上海临港经济发展（集团）有限公司共同主办的2023全球人工智能开发者先锋大会（GAIDC）将于2023年2月25日—26日在上海举行。
 
 GAIDC始于WAIC上海人工智能开发者大会，历经三年发展沉淀，全面迭代升级。本届大会主题为“向光而行的AI开发者”，以AI开发者为核心，为AI开发者带来产业之光、科技之光、未来之光。大会在上海最早迎接日出的地方——临港，通过论坛、团聚、学习赛、项目路演、人才交流、书友会、互动体验等多个板块，聚焦专业前沿内容，联合超过20家国内外开源组织、开发者社区，力邀全球技术大牛、导师大咖和AI开发者共同线下参与，同时与上千万专业开发者线上互动交流，营造自由活泼氛围。
+
+---
+
+> Chinese version of this post: [wechaty invited to gaidc]({{ '/2023/02/23/wechaty-invited-to-gaidc/' | relative_url }})

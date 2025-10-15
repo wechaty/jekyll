@@ -9,7 +9,7 @@ tags:
   - featured
   - chatbot
   - competition
-image: /assets/2024/04-wechaty-with-aws2024/main.webp
+image: /assets/2024/04-wechaty-with-aws2024-en/main.webp
 ---
 
 ✨ **第二届中国生成式 AI 创新应用挑战赛** ✨
@@ -35,19 +35,19 @@ image: /assets/2024/04-wechaty-with-aws2024/main.webp
 无论你是创业者还是开发者，都可以在本次赛事中快速从学习到构建。我们将在海选阶段晋级20支优胜队伍，参与5月30日**在亚马逊云科技中国峰会的舞台上的总决赛路演**，向业内顶尖的技术专家与投资机构展现您的作品。
 
 目前该赛事已经开放报名和作品提交，**扫描下方二维码，立即报名参赛！**
-![qrcode](/assets/2024/04-wechaty-with-aws2024/qrcode.webp)
+![qrcode](/assets/2024/04-wechaty-with-aws2024-en/qrcode.webp)
 
 ## 赛事奖励
 
-![awards](/assets/2024/04-wechaty-with-aws2024/awards.webp)
+![awards](/assets/2024/04-wechaty-with-aws2024-en/awards.webp)
 
 ## 赛程安排
 
-![schedule](/assets/2024/04-wechaty-with-aws2024/schedule.webp)
+![schedule](/assets/2024/04-wechaty-with-aws2024-en/schedule.webp)
 
 ## 赛事组织
 
-![org](/assets/2024/04-wechaty-with-aws2024/org.webp)
+![org](/assets/2024/04-wechaty-with-aws2024-en/org.webp)
 
 ### AWS
 

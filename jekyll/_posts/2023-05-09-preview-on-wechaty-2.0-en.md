@@ -1,5 +1,5 @@
 ---
-title: "Wechaty 2.0 的计划与预告"
+title: ' "Wechaty 2.0 的计划与预告" (English translation WIP)'
 author: wang-nan
 categories: announcement
 tags:
@@ -92,3 +92,7 @@ image: /assets/2023/05-preview-on-wechaty-2.0-en/logo.webp
 - 标签组系统： 还在讨论阶段，主要适配企业微信。
 
 这些功能都在紧锣密鼓的开发中。可以关注这个 [issue](https://github.com/wechaty/wechaty/issues/2535) 来获取最新进度。敬请期待。
+
+---
+
+> Chinese version of this post: [preview on wechaty 2.0]({{ '/2023/05/09/preview-on-wechaty-2.0/' | relative_url }})
