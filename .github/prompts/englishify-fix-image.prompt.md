@@ -80,7 +80,7 @@ Here's the EngPost list you need to process:
 2020-12-08-python-wechaty-open-source-journey-en.md
 2020-12-10-bridge-between-backend-and-wechat-en.md
 2020-12-23-open-source-pioneer-huan-en.md
-2020-12-28-automatic-rebate-robot-en.md
+2020-12-28-automatic-rebate-robot-en.md/
 2020-12-31-open-source-award-wechaty-en.md
 2020-12-31-summer-2020-student-developers-en.md
 ```

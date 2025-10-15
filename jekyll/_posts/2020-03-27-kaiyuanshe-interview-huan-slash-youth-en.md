@@ -7,7 +7,7 @@ tags:
   - interview
   - open-source
   - kaiyuanshe
-image: /assets/2020/03-slash-huan-kaiyuanshe/slash-huan.webp
+image: /assets/2020/03-kaiyuanshe-interview-huan-slash-youth-en/slash-huan.webp
 excerpt: An interview with Huan Li (李卓桓) on his multi-hyphenate “SLASH” path—founder, investor, author, programmer, advisor, and extreme-sports enthusiast—and his views on entrepreneurship, open source, and life.
 ---
 
@@ -17,7 +17,7 @@ In this interview, we meet such a “SLASH” youth: Huan Li (李卓桓). He wea
 
 ## 1. Resume: Refusing to be pigeonholed
 
-![Huan LI (李卓桓)](/assets/2020/03-slash-huan-kaiyuanshe/huan.webp)
+![Huan LI (李卓桓)](/assets/2020/03-kaiyuanshe-interview-huan-slash-youth-en/huan.webp)
 > <https://blog.zixia.net/2007/06/28/computer-with-huan-preface/>  
 > LinkedIn: <https://www.linkedin.com/in/zixia/>
 
@@ -58,7 +58,7 @@ He has contributed patches upstream that were merged by many projects, including
 
 Collectively, his projects have amassed 10,000+ GitHub stars and thousands of downstream dependents; his modules see ~30,000 monthly downloads, and his Docker images have been pulled over a million times.
 
-![Huan GitHub](/assets/2020/03-slash-huan-kaiyuanshe/huan-github.webp)
+![Huan GitHub](/assets/2020/03-kaiyuanshe-interview-huan-slash-youth-en/huan-github.webp)
 
 He’s been invited to serve as owner/maintainer for multiple open‑source organizations and projects: an owner of the Level (LevelDB) org, maintainer for Google’s pinject, maintainer for Node‑Python bridge projects, and more.
 
@@ -72,7 +72,7 @@ He encountered GNU/Linux and open‑source culture after arriving at Tsinghua in
 
 Site: <http://www.aka.net.cn> (2003)
 
-![AKA Website](/assets/2020/03-slash-huan-kaiyuanshe/aka.webp)
+![AKA Website](/assets/2020/03-kaiyuanshe-interview-huan-slash-youth-en/aka.webp)
 
 > The first issue of AKA’s magazine (Oct 1998): <http://www.aka.net.cn/Magazine/Aka1/aka1-cover.html>  
 > Possibly the earliest Chinese translation of “The Cathedral and the Bazaar”: <http://www.aka.net.cn/Magazine/Aka1/c&b.html>
@@ -123,7 +123,7 @@ Huan met Yang while judging Tencent’s campus competition. Among all teams, Yan
 
 This technical rapport is Huan’s advantage: it makes deep collaboration with expert founder‑CEOs natural.
 
-![From left: Jack Ma (马云), Huan Li (李卓桓), Stephen Chow (周星驰)](/assets/2020/03-slash-huan-kaiyuanshe/mayun-huan-zhouxingchi.webp)
+![From left: Jack Ma (马云), Huan Li (李卓桓), Stephen Chow (周星驰)](/assets/2020/03-kaiyuanshe-interview-huan-slash-youth-en/mayun-huan-zhouxingchi.webp)
 
 > From left: Jack Ma (马云), Huan Li (李卓桓), Stephen Chow (周星驰)
 
@@ -151,7 +151,7 @@ At work, he pursues hard problems without fear; in life, he treats difficult goa
 
 If new friends share this trait, conversations flow. “People like this have drive and resilience both at work and in life.”
 
-![Paragliding — Huan Li (李卓桓)](/assets/2020/03-slash-huan-kaiyuanshe/huan-paragliding.webp)
+![Paragliding — Huan Li (李卓桓)](/assets/2020/03-kaiyuanshe-interview-huan-slash-youth-en/huan-paragliding.webp)
 
 > Paragliding — Huan Li (李卓桓)
 
@@ -163,7 +163,7 @@ An accidental viewing of “Click” (The Click Remote) hit home: “I was ignor
 
 “Since then, I’ve sought balance. It’s a win‑win mindset.”
 
-![“Sunny boy” — Huan Li (李卓桓)](/assets/2020/03-slash-huan-kaiyuanshe/huan-ski.webp)
+![“Sunny boy” — Huan Li (李卓桓)](/assets/2020/03-kaiyuanshe-interview-huan-slash-youth-en/huan-ski.webp)
 
 > “Sunny boy” — Huan Li (李卓桓)
 
@@ -179,7 +179,7 @@ Many thanks to Huan Li (李卓桓) for the interview, and to everyone supporting
 
 Huan focuses on chatbots and NLP. He co‑authored “Chatbot from 0 to 1” (《Chatbot从0到1》) and “Concise TensorFlow 2” (《简明的 TensorFlow 2》). Consider grabbing a copy!
 
-| [![Chatbot from 0 to 1](/assets/2020/03-slash-huan-kaiyuanshe/chatbot-0-to-1.webp)](https://item.m.jd.com/product/12630213.html) | [![Concise TensorFlow 2](/assets/2020/03-slash-huan-kaiyuanshe/concise-tensorflow-2.webp)](https://item.m.jd.com/product/12980534.html) |
+| [![Chatbot from 0 to 1](/assets/2020/03-kaiyuanshe-interview-huan-slash-youth-en/chatbot-0-to-1.webp)](https://item.m.jd.com/product/12630213.html) | [![Concise TensorFlow 2](/assets/2020/03-kaiyuanshe-interview-huan-slash-youth-en/concise-tensorflow-2.webp)](https://item.m.jd.com/product/12980534.html) |
 
 | Author: Huan Li (李卓桓), Daozi (稻子)  
 | Editor: Zilin Yang (杨紫琳)  
