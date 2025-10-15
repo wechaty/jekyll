@@ -7,7 +7,7 @@ tags:
   - cqrs
   - ddd
   - event-driven
-image: /assets/2022/03-gsma-rcs-wechaty-walnut-5g-chatbot/rcs-cross.webp
+image: /assets/2022/03-gsma-rcs-wechaty-walnut-5g-chatbot-en/rcs-cross.webp
 hidden: true
 ---
 
@@ -41,7 +41,7 @@ Wechaty 开源 Chatbot SDK 创始人，李卓桓分享了自己对 Conversationa
 
 ## 核能沙龙第六期
 
-![Agenda](/assets/2022/03-gsma-rcs-wechaty-walnut-5g-chatbot/agenda.webp)
+![Agenda](/assets/2022/03-gsma-rcs-wechaty-walnut-5g-chatbot-en/agenda.webp)
 
 - 时间：3：30（ 周三）上午10:00
 - 主题：开发者，集结——来硬核桃开启你的5G消息

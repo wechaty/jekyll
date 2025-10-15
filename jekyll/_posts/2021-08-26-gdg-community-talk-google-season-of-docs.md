@@ -7,7 +7,7 @@ tags:
   - google
   - gdg
   - news
-image: /assets/2021/08-gdg-community-talk-google-season-of-docs/gdg-community-talk-gsod-wechaty.webp
+image: /assets/2021/08-gdg-community-talk-google-season-of-docs-en/gdg-community-talk-gsod-wechaty.webp
 hidden: true
 ---
 

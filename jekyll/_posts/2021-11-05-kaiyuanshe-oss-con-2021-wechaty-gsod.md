@@ -7,7 +7,7 @@ tags:
   - news
   - kaiyuanshe
   - gsod
-image: /assets/2021/11-kaiyuanshe-oss-con-2021-wechaty-gsod/huan-oss-con-2021.webp
+image: /assets/2021/11-kaiyuanshe-oss-con-2021-wechaty-gsod-en/huan-oss-con-2021.webp
 hidden: true
 ---
 

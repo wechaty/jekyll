@@ -8,7 +8,7 @@ tags:
   - milvus
   - opensource
   - news
-image: /assets/2021/10-zilliz-milvus-open-source-panel/zilliz-1024.webp
+image: /assets/2021/10-zilliz-milvus-open-source-panel-en/zilliz-1024.webp
 hidden: true
 ---
 
@@ -19,7 +19,7 @@ hidden: true
 
 1024 程序员节， Milvus 社区邀请到了五位开源界程序员大牛，为大家分享自己成长的心路历程。
 
-![1024程序员节](/assets/2021/10-zilliz-milvus-open-source-panel/zilliz-poster.webp)
+![1024程序员节](/assets/2021/10-zilliz-milvus-open-source-panel-en/zilliz-poster.webp)
 
 ## 视频回放
 

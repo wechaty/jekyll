@@ -3,7 +3,7 @@ title: 'Wechaty: 6 行代码构建基于 Whatsapp 和个人微信的对话式人
 author: huan
 categories:
   - talk
-image: /assets/2021/07-gdg-shanghai-wechaty/community-wechaty.webp
+image: /assets/2021/07-gdg-shanghai-wechaty-en/community-wechaty.webp
 tags:
   - gdg
   - google
@@ -13,7 +13,7 @@ hidden: true
 
 在本周四晚 8 点的《社区说》中，上海 GDG 社区邀请嘉宾李卓桓（Huan）老师在 B 站直播间与伙伴们畅聊他的聊天机器人SDK：Wechaty
 
-![huan intro](/assets/2021/07-gdg-shanghai-wechaty/huan-intro.webp)
+![huan intro](/assets/2021/07-gdg-shanghai-wechaty-en/huan-intro.webp)
 
 ## 讲师介绍
 
@@ -33,9 +33,9 @@ hidden: true
 
 李老师介绍了像 GPT-3 和 DALL·E 在自然语言处理上，通过简单的的一句自然语言，让机器生成有一定复杂度的文章或图片组。
 
-![gpt-3](/assets/2021/07-gdg-shanghai-wechaty/gpt-3.webp)
+![gpt-3](/assets/2021/07-gdg-shanghai-wechaty-en/gpt-3.webp)
 
-![dall-e](/assets/2021/07-gdg-shanghai-wechaty/dall-e.webp)
+![dall-e](/assets/2021/07-gdg-shanghai-wechaty-en/dall-e.webp)
 
 关于 Conversation AI, 李老师提到机器人聊天对话应用的种种困难，讲述了AI在提升这类机器人理解能力上的作用，以及人机合作如何在一定程度上改进用户体验。
 
@@ -51,7 +51,7 @@ Wechaty 帮助开发者实现一个让用户无感知的在 IM (Instant Messagin
 
 Wechaty 现支持多种即时通讯平台，可用多种编程语言实现：
 
-![wechaty-puppets](/assets/2021/07-gdg-shanghai-wechaty/wechaty-puppets.webp)
+![wechaty-puppets](/assets/2021/07-gdg-shanghai-wechaty-en/wechaty-puppets.webp)
 
 - GitHub Repo: <https://github.com/wechaty/wechaty>
 - 官网: <https://wechaty.js.org>
@@ -86,11 +86,11 @@ WECHATY_PUPPET=wechaty-puppet-whatsapp npm start
 
 在 Demo 中，个人微信号扫码登陆 web 版微信化身成为机器人，收到带有关键字 “ding” 的消息后，会自动发送 “dong” 作为回复：
 
-![ding-dong](/assets/2021/07-gdg-shanghai-wechaty/ding-dong.webp)
+![ding-dong](/assets/2021/07-gdg-shanghai-wechaty-en/ding-dong.webp)
 
 Wechaty 开源社区自成立来，已获多项荣誉，百万量级的下载量，其开发者群体数量庞大且国内外影响力广，如图展示：
 
-![awards-honors](/assets/2021/07-gdg-shanghai-wechaty/honors.webp)
+![awards-honors](/assets/2021/07-gdg-shanghai-wechaty-en/honors.webp)
 
 问答环节中同学们针对 Wechaty 的安全性、限制、多轮语义分析等方面提出了精彩的问题，感兴趣的伙伴们可以查看回放：
 
@@ -112,7 +112,7 @@ Wechaty 开源社区自成立来，已获多项荣誉，百万量级的下载量
 
 ## Slides
 
-{% include iframe.html src="/assets/2021/07-gdg-shanghai-wechaty/wechaty-community-talk-live-demo.pdf" %}
+{% include iframe.html src="/assets/2021/07-gdg-shanghai-wechaty-en/wechaty-community-talk-live-demo.pdf" %}
 
 > 小编认为可以让一个 bot 来做发送文件的事情呢 ^_^
 > English version: [Wechaty: Build a Conversational UI App for WhatsApp and WeChat with 6 lines of code](/2021/07/22/gdg-shanghai-wechaty-en/)

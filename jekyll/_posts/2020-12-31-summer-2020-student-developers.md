@@ -7,15 +7,15 @@ tags:
   - summer-2020
   - summer-of-wechaty
   - featured
-image: /assets/2020/12-summer-2020-student-developers/award.webp
+image: /assets/2020/12-summer-2020-student-developers-en/award.webp
 hidden: true
 ---
 
 今夏， Wechaty 社区诞生了 9 位后浪贡献者：毕凯乔、王俊伟、谢昱清、范蕊、江姗姗、林昊翰、唐光彬、肖梓霖与孔祥哲。他们都还是正在就读本科与研究所的学生。
 
-9 位后浪贡献者与 Wechaty 的故事要从今年中科院软件所和华为 openEuler 项目共同举办的“开源软件供应链点亮计划——暑期 2020” 说起。
+9 位后浪贡献者与 Wechaty 的故事要从今年中科院软件所和华为 openEuler 项目共同举办的"开源软件供应链点亮计划——暑期 2020" 说起。
 
-![summer 2020](/assets/2020/12-summer-2020-student-developers/summer-2020.webp)
+![summer 2020](/assets/2020/12-summer-2020-student-developers-en/summer-2020.webp)
 
 ## 故事的开始
 
@@ -31,7 +31,7 @@ hidden: true
 
 > 暑期2020的优秀学生最具潜力奖！
 
-![Wechaty Summer 2020 孔祥哲](/assets/2020/12-summer-2020-student-developers/kongxiangzhe.webp)
+![Wechaty Summer 2020 孔祥哲](/assets/2020/12-summer-2020-student-developers-en/kongxiangzhe.webp)
 
 - 学生：孔祥哲，清华大学（大二）
 - 导师：吴京京
@@ -63,7 +63,7 @@ hidden: true
 
 ## 项目 2 - 基于开放 API 封装 Wechaty 接口下的飞书聊天机器人
 
-![Wechaty Summer 2020 范蕊](/assets/2020/12-summer-2020-student-developers/fanrui.webp)
+![Wechaty Summer 2020 范蕊](/assets/2020/12-summer-2020-student-developers-en/fanrui.webp)
 
 - 学生：范蕊，南开大学（大四）
 - 导师：高原，李佳芮
@@ -113,11 +113,11 @@ hidden: true
 
 总体上来说，本次项目肖子霖同学完成得不错。从一开始的表情包的识别，包括文字识别和情感识别，到后来的“能”斗图的机器人，再到最后的“会”斗图的机器人，肖子霖同学都用实际行动完成了项目。
 
-最后一个建议：从目前呈现的效果来看，“怼”的效果可能还欠缺一点火候，希望后期可以“怼”得更好。
+最后一个建议：从目前呈现的效果来看，"怼"的效果可能还欠缺一点火候，希望后期可以"怼"得更好。
 
-## 项目 4 - 编写一个“每日一句”插件
+## 项目 4 - 编写一个"每日一句"插件
 
-![Wechaty Summer 2020 江姗姗](/assets/2020/12-summer-2020-student-developers/shanshan.webp)
+![Wechaty Summer 2020 江姗姗](/assets/2020/12-summer-2020-student-developers-en/shanshan.webp)
 
 > 暑期2020的优秀学生突出贡献奖！
 
