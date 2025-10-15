@@ -160,7 +160,7 @@ async function goFile(that, room, msg) {
 }
 ```
 
-## 上线！
+## 上线
 
 微信机器人这样常见的需求就应该有简单的做法。在排除各种不靠谱方案以后，我选择了 Wechaty。
 

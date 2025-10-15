@@ -231,7 +231,7 @@ Wechaty 在多平台、多功能多个维度上，共发布了 9 项任务，并
 {% include iframe.html src="https://youtu.be/51EwCNB_Y90" %}
 > [Tencent video link](https://v.qq.com/x/page/g3310wbhou9.html)
 
-## 欢迎报名开源之夏 2022！
+## 欢迎报名开源之夏 2022
 
 ### 报名学生开发者
 

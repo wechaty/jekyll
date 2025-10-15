@@ -51,7 +51,7 @@ image: /assets/2021/11-report-for-summer-2021/2.webp
 
 支持5G消息开发者一直以来都是硬核桃社区的产业责任和工作方向，我们希望中国能够早日落地 5G消息技术，让用户使用消息服务时，信息更加安全，功能更加丰富，体验更加便捷！
 
-### 未来，硬核桃社区会持续推动开源项目，只为更多的开发者能够加入到“5G消息”！
+### 未来，硬核桃社区会持续推动开源项目，只为更多的开发者能够加入到“5G消息”
 
 - 项目仓库: <https://github.com/wechaty/wechaty-puppet-walnut>  
 - npm包：<https://www.npmjs.com/package/wechaty-puppet-walnut>

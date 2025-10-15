@@ -14,7 +14,7 @@ tags:
 
 ## 关于Wechaty
 
-### 官方定义：
+### 官方定义
 
 > Wechaty是一个开源的的个人号微信机器人接口，使用Typescript构建的Node.js应用。支持多种微信接入方案，包括网页，ipad，ios，windows，android 等。同时支持 Linux, Windows, Darwin(OSX/Mac) 和 Docker 多个平台。
 

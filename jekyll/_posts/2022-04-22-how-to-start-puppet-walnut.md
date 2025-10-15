@@ -49,7 +49,7 @@ tags:
 
 ![img](/assets/2022/04-how-to-start-puppet-walnut/7.webp)
 
-#### 4. 报名成功！分享邀请码，邀请朋友参赛。
+#### 4. 报名成功！分享邀请码，邀请朋友参赛
 
 ![img](/assets/2022/04-how-to-start-puppet-walnut/8.webp)
 

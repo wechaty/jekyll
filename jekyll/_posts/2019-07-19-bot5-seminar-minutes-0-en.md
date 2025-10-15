@@ -12,7 +12,7 @@ tags:
   - tencent
   - video
   - nlp
-image: /assets/2019/bot5-seminar-0/group-photo.webp
+image: /assets/2019/07-bot5-seminar-minutes-0-en/group-photo.webp
 excerpt: Kickoff minutes for Bot Friday (Zero) at Tencent Beijing on Jul 19, 2019 — Rasa-to-production talk by Qinghua Duan, founding members, roundtable insights, next-meetup plan, with slides and full video.
 ---
 
@@ -58,7 +58,7 @@ In 2018, at the SMP-2018 Chinese Human-Computer Dialogue Evaluation in Harbin, t
 
 #### Slides
 
-{% include iframe.html src="/assets/2019/bot5-seminar-0/rasa-core-qhduan.pdf" %}
+{% include iframe.html src="/assets/2019/07-bot5-seminar-minutes-0-en/rasa-core-qhduan.pdf" %}
 
 #### Video
 
@@ -156,11 +156,11 @@ Our vision: become the hottest Friday-night destination for chatbots—top devel
 
 ### 5. Group Photo
 
-![Group Photo](/assets/2019/bot5-seminar-0/group-photo.webp)
+![Group Photo](/assets/2019/07-bot5-seminar-minutes-0-en/group-photo.webp)
 
 ## After Party 🍻
 
-![After Party](/assets/2019/bot5-seminar-0/after-party.webp)
+![After Party](/assets/2019/07-bot5-seminar-minutes-0-en/after-party.webp)
 
 After the main session, three of us continued across the street to Guan’s Skewer Bar for refueling, brainstorming attendees, sustainability, topics, and a name for the series—while finishing a glorious 4 liters of fresh beer.
 
@@ -192,3 +192,7 @@ We’ll keep iterating. :D
 1. Want to invite a friend? Ask them to reply with a one‑sentence self‑intro.
 
 > Chinese version: [Chatbot Friday - 碰撞思想，点燃科技](/2019/07/19/bot5-seminar-minutes-0/)
+
+---
+
+> Chinese version of this post: [bot5 seminar minutes 0]({{ '/2019/07/19/bot5-seminar-minutes-0/' | relative_url }})

@@ -7,7 +7,8 @@ tags:
   - talk
   - meetup
   - news
-image: /assets/2019/bot5-seminar-2/group-photo.webp
+image: /assets/2019/07-bot-friday-second-en/group-photo.webp
+hidden: true
 ---
 
 << 本次活动通知: [腾讯+句子互动第二弹，Chatbot Friday](https://mp.weixin.qq.com/s/fbY9BVLIqhy6Uwls0g4fRQ) <<
@@ -67,7 +68,7 @@ NLP技术到底哪家强？
 
 #### 1.3 Slides
 
-{% include iframe.html src="/assets/2019/bot5-seminar-2/chatbot-experience-limingth.pdf" %}
+{% include iframe.html src="/assets/2019/07-bot-friday-second-en/chatbot-experience-limingth.pdf" %}
 
 ### 2. Talk2 - 脸盲助手-基于微信社交的Chatbot人脸识别应用探索
 
@@ -84,7 +85,7 @@ NLP技术到底哪家强？
 
 #### 2.3 Slides
 
-{% include iframe.html src="/assets/2019/bot5-seminar-2/find-my-face-creatorkuang.pdf" %}
+{% include iframe.html src="/assets/2019/07-bot-friday-second-en/find-my-face-creatorkuang.pdf" %}
 
 ### 3. 分享视频回顾
 
@@ -184,13 +185,13 @@ NLP技术到底哪家强？
 
 ## 集体合影
 
-![合照](/assets/2019/bot5-seminar-2/group-photo.webp)
+![合照](/assets/2019/07-bot-friday-second-en/group-photo.webp)
 
-![所有人](/assets/2019/bot5-seminar-2/people.webp)
+![所有人](/assets/2019/07-bot-friday-second-en/people.webp)
 
 ## After Party 🍻
 
-![After Party](/assets/2019/bot5-seminar-2/after-party.webp)
+![After Party](/assets/2019/07-bot-friday-second-en/after-party.webp)
 
 主场活动结束后，六个人前往上次After Party的管氏串吧继续补充能量，大家讨论了创业，社区，技术，招聘等一系列问题，并成功的消灭了3炮鲜啤！
 

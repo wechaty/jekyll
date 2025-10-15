@@ -29,13 +29,13 @@ image: /assets/2021/11-how-to-develop-wechaty-puppet-module-supporting-5g-messag
 
 ### 1.下行消息
 
-#### 接口申请：
+#### 接口申请
 
 在[5G消息开发者社区](https://www.5g-msg.com/)申请开发接口，填写Chatbot信息并准备一个回调地址，可以是服务器的公网IP和端口号构成，也可以是提前申请好的域名。
 
 ![config](/assets/2021/11-how-to-develop-wechaty-puppet-module-supporting-5g-messages/config.webp)
   
-#### 获取token：
+#### 获取token
 
 - 首先要实现 `https://{notifyURL}/notifyPath` 这个接口进行身份鉴权并将代码部署到服务器上，其中`{notifyURL}`为申请Chatbot时所设置的回调地址。该接口的实现逻辑只需原样返回请求消息中的echoStr随机字符串和appId，如下面的这段验证示例所示，具体的实现不限语言。可参考 [中国电信-中国联通 5G 消息业务平台行业客户接入接口技术规范 V1.0.4文档](https://github.com/wechaty/puppet-walnut/blob/main/docs/5g-message-service-platform-industry-customer-access-interface-specification.pdf)（以下简称“接口文档”）中第6.2 部分。
   
@@ -106,7 +106,7 @@ image: /assets/2021/11-how-to-develop-wechaty-puppet-module-supporting-5g-messag
 }
 ```
   
-#### 下行消息：
+#### 下行消息
   
 获取 token 后，即可进行下行消息发送，即终端 APP 可收到 Chatbot 所发送的消息。需要实现 `https://{serverRoot}/bot/{apiVersion}/{chatbotId}/messages` 接口。具体的请求方法，参照[中国电信-中国联通 5G 消息业务平台行业客户接入接口技术规范 V1.0.4文档](https://github.com/wechaty/puppet-walnut/blob/main/docs/5g-message-service-platform-industry-customer-access-interface-specification.pdf) 的 9.2部分。
 

@@ -28,7 +28,7 @@ aiohttp
 asyncio
 wechaty
 
-## Wechaty Puppet Hostie部署：
+## Wechaty Puppet Hostie部署
 
 因为原生的wechaty是基于JavaScript和TypeScript写的，所以需要通过docker搭建Wechaty Puppet Hostie 服务作为中转， 从而可以通过python调用。
 

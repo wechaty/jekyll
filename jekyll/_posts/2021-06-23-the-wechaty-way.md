@@ -20,7 +20,7 @@ Wechaty自身对代码质量的管理，使用了 GitHub Actions 的 DevOps 工�
 
 在开源社区管理上，Wechaty 遵循 The Apache Way ，拥有 PMC / Committer 管理制度，和完善的 Issue / PR / Release 等管理制度。截止2021年，Wechaty 已经有近百万次 NPM 安装下载，并由社区自发推动了 Python, Go, Java, Scala, .NET, PHP, Rust 等语言的适配和发布，是国内最活跃的 Conversational AI Chatbot 开发者社区。
 
-## Wechaty 介绍 PPT：
+## Wechaty 介绍 PPT
 
 通过阅读下面3个PPT，你可以对Wechaty及其发展历程有一个基础的了解。
 
@@ -220,7 +220,7 @@ Wechaty 的 Contributor [xpt](https://stackoverflow.com/users/2125837/xpt) 在 S
 - [孵化场的地址](http://incubator.apache.org/)
 - [生命周期](http://incubator.apache.org/cookbook/)
 
-### 佳芮推荐：
+### 佳芮推荐
 
 - [Apache 介绍](http://www.apache.org/foundation/)
 - [什么是 Apache Way，Apache Way 是指 Apache 管理和运营项目的方法](http://apache.org/theapacheway/)

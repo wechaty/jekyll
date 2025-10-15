@@ -9,10 +9,11 @@ We have a few english version blog posts (EngPost) in our blog site, they are tr
 1. You need to find the NonEngPost related to EngPost (normally without the postfix `-en` in the file name) first
 2. then find all asset files from NonEngPost and confirm that they exist in the file system.
 3. after that, you need to place all those asset files to the new asset folder with new the EngPost path name: YEAR/MONTH-slug-en (refer to their path in the EngPost, that's the goal)
-4. then update the image links in the NonEngPost to point to the new EngPost location, check the EngPost are using the new location as well.
+4. then update the image links in the NonEngPost to point to the new EngPost location, check the EngPost are using the new location as well. Always use the new folder location for the asset files links in the post.
 5. update the NonEngPost by adding `hidden: true` in their front matter.
 6. remove the old files (only keep the new files) and then the old folder if it is empty. (if it is not empty, you need to tell me what files are left)
 7. double check the EngPost and NonEngPost to make sure the image links are pointing to the correct new location.
+8. make sure the front matter yaml format is correct in the blog post file
 
 ## Steps
 
@@ -36,13 +37,12 @@ Display the help message and wait user to activate you. do not do anything befor
 Here's the EngPost list you need to process:
 
 ```text
-2018-01-09-all-you-need-to-know-about-chatbot-en.md
-2018-01-25-how-to-build-face-blinder-bot-en.md
-2018-01-29-girl-techie-festival-en.md
-2018-02-06-techie-festival-faq-en.md
-2018-05-06-talk-about-wechat-robot-en.md
-2018-06-24-migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-en.md
-2018-08-30-ai-bot-wechaty-en.md
-2018-10-09-birthday-cake-2018-en.md
-2018-11-25-wechat-robot-can-do-anything-en.md
+2019-07-19-bot5-seminar-minutes-0-en.md
+2019-07-23-introduce-rasa-product-tech-en.md
+2019-07-26-bot-friday-second-en.md
+2019-08-12-dotnet-club-use-wechaty-to-collect-valuable-wechat-threads-en.md
+2019-08-31-wechaty-wwdc-in-silicon-valley-en.md
+2019-11-23-chatbot-for-social-events-en.md
+2019-12-06-wechaty-recruit-chatbot-en.md
+2019-12-23-wechaty-north-america-ricepo--en.md
 ```
