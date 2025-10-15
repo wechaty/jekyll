@@ -5,7 +5,7 @@ categories: project
 tags:
   - code
   - finance
-image: /assets/2017/iyjian-1.webp
+image: /assets/2017/11-red-pocket-wechaty-iyjian-en/iyjian-1.webp
 hidden: true
 ---
 
@@ -77,9 +77,9 @@ docker容器中默认的时间不是东八区，一定要重新搞一下，我�
 
 最后，谢谢你用这么多时间看了我写的字。
 
-[1]: /assets/2017/iyjian-1.webp
-[2]: /assets/2017/iyjian-2.webp
-[3]: /assets/2017/iyjian-3.webp
+[1]: /assets/2017/11-red-pocket-wechaty-iyjian-en/iyjian-1.webp
+[2]: /assets/2017/11-red-pocket-wechaty-iyjian-en/iyjian-2.webp
+[3]: /assets/2017/11-red-pocket-wechaty-iyjian-en/iyjian-3.webp
 
 ---
 

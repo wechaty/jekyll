@@ -122,3 +122,7 @@ Chatbots are indeed tools that can help us solve many problems in life, and any 
 ---
 
 > Chinese version of this post: [零基础小白如何搭建聊天机器人]({{ '/2017/07/13/how-to-build-a-chatbot/' | relative_url }})
+
+---
+
+> Chinese version of this post: [how to build a chatbot]({{ '/2017/07/13/how-to-build-a-chatbot/' | relative_url }})

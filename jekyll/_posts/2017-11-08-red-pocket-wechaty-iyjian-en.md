@@ -7,7 +7,7 @@ tags:
   - finance
   - automation
   - experience
-image: /assets/2017/iyjian-1.webp
+image: /assets/2017/11-red-pocket-wechaty-iyjian-en/iyjian-1.webp
 excerpt: A developer's journey building an automated WeChat robot for exchanging credit card reward points through red packets, sharing technical challenges and lessons learned from scaling to 3000+ users.
 ---
 
@@ -89,12 +89,14 @@ All this rambling was promised to [lijiarui](https://github.com/lijiarui) in Sep
 
 Finally, thank you for spending so much time reading what I wrote.
 
-[1]: /assets/2017/iyjian-1.webp
-[2]: /assets/2017/iyjian-2.webp
-[3]: /assets/2017/iyjian-3.webp
-
----
+[1]: /assets/2017/11-red-pocket-wechaty-iyjian-en/iyjian-1.webp
+[2]: /assets/2017/11-red-pocket-wechaty-iyjian-en/iyjian-2.webp
+[3]: /assets/2017/11-red-pocket-wechaty-iyjian-en/iyjian-3.webp
 
 ---
 
 > Chinese version of this post: [Wechaty 红包功能-我有我见]({{ '/2017/11/08/red-pocket-wechaty-iyjian/' | relative_url }})
+
+---
+
+> Chinese version of this post: [red pocket wechaty iyjian]({{ '/2017/11/08/red-pocket-wechaty-iyjian/' | relative_url }})
