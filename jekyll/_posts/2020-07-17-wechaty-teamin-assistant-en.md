@@ -1,5 +1,5 @@
 ---
-title: ' "用 Wechaty 实现微信任务小助手（wechat teamin chat robot）" (English translation WIP)'
+title: "Implementing a WeChat Task Assistant with Wechaty"
 author: darkli
 categories: project
 tags:
@@ -10,7 +10,78 @@ tags:
   - chatbot
   - featured
 image: /assets/2020/07-wechaty-teamin-assistant-en/home-01.webp
+excerpt: "This post introduces a WeChat task assistant built with Wechaty. The author shares the motivation, design, and technical challenges of creating a chatbot that can understand natural language to manage daily tasks and reminders within WeChat."
 ---
+
+> This post is also available in [Chinese (Simplified)](/2020/07/17/wechaty-teamin-assistant/).
+
+[![PoweredBy](https://img.shields.io/badge/Powered%20By-Wechaty-green.svg#align=left&display=inline&height=20&margin=%5Bobject%20Object%5D&originHeight=20&originWidth=132&status=done&style=none&width=132)](https://github.com/wechaty/wechaty)
+[![Wechaty](https://img.shields.io/badge/Wechaty-Open%20Source%20Incentive%20Program-green.svg#align=left&display=inline&height=20&margin=%5Bobject%20Object%5D&originHeight=20&originWidth=134&status=done&style=none&width=134)](https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty)
+
+## A WeChat Task Assistant Implemented with Wechaty
+
+### The Beginning
+
+Ever since the iPhone added the Screen Time feature, I was surprised to find that I spend more than half of my day on my phone, and over 80% of that time is on WeChat. This is probably a reflection of many people's daily lives. Gradually, we find that every aspect of our lives becomes connected to WeChat.
+
+After learning about Wechaty, an idea came to my mind: could I create a small assistant on WeChat to help me manage the various trivial matters of daily life? When there's something to do, I could just tell the assistant, and it would record it and remind me when the time comes. That sounds great, much simpler than opening a productivity app and typing in a schedule word by word. The assistant could also be made more human-like, making me feel as if I really have a personal assistant.
+
+### The Challenge
+
+#### Design
+
+The structure is actually quite simple. I thought about it, and the simplest implementation would look like this:
+![Structure Diagram](/assets/2020/07-wechaty-teamin-assistant-en/structure.webp)
+
+The official documentation already explains in detail how to connect to WeChat and handle message sending and receiving, so I won't go into that here. For the task assistant part, the two most core steps are intent analysis and keyword extraction to add tasks through the assistant.
+
+**Intent Analysis**
+I have previously compared Baidu's UNIT, Microsoft's LUIS, and the dialogue platforms of Tencent and iFlytek. I feel that Microsoft's LUIS has the best performance, so I chose their solution for intent understanding.
+
+**Keyword Extraction**
+In LUIS's intent analysis, you can also pick out some desired words through Entities, but this is far from enough for adding a task. Unlike the customer service dialogues we usually see, the dialogue scene for adding tasks is open-ended, so conventional keyword extraction cannot meet our requirements. For example:
+
+1. Remind me to go to a meeting tomorrow morning.
+2. Remind me to go on a business trip in the background.
+
+In these two sentences, "remind" and the time words are easy to pick out through Entities. The difficult part is the task's subject: "meeting," "business trip." The range of task subjects is open-ended; there's no way to predict what the content will be, nor is there a way to limit it. If one day the assistant suddenly tells you, "You can only ask me to remind you about meetings," what kind of mood would that put you in?
+
+To accurately extract the subject content, syntactic structure comes into play. The specifics of how to analyze it are beyond the scope of this blog, so I won't go into detail. The general idea is to use syntactic structure analysis to find the part of the user's expression that contains the content, remove some useless words, and then form the subject. It sounds simple, but doing it is another story, hehe...
+
+Well, with the general idea in mind, let's get started. The basic logic is:
+
+1. I send voice or text messages to WeChat.
+2. The assistant gets my information through the Wechaty interface. If it's a voice message, it's converted to text.
+3. The text is sent to LUIS for intent analysis, and some simple keywords like time, place, and person are extracted.
+4. The sentence is syntactically analyzed to extract the task's subject.
+5. Business logic is formed, and the task is recorded in the database.
+6. There will also be a scheduled task to periodically check if tasks are due. If a task is due, a message is sent to me via Wechaty.
+
+#### Trying it Out
+
+Since extracting the task subject is a very difficult thing to do, it's hard to make it perfect, but common reminder tasks are no problem, and the results are quite good. Let's look at some examples:
+![Chat Example 01](/assets/2020/07-wechaty-teamin-assistant-en/chat-01.webp)
+
+Here, the request to the assistant is: `Remind me to go to a meeting on the third floor at 10 am the day after tomorrow.`
+In this sentence, `me` and `10 am the day after tomorrow` can be directly returned during intent analysis. As mentioned earlier, through syntactic structure analysis, we find that `me` and `go to a meeting on the third floor at 10 am the day after tomorrow` are both objects of `remind`. From this, we can extract the subject: `go to a meeting on the third floor`. It doesn't seem too difficult, does it? Hehe.
+
+Now for a more complex one:
+![Chat Example 02](/assets/2020/07-wechaty-teamin-assistant-en/chat-02.webp)
+
+This time the wording is:
+`Meeting with a client at 10 am tomorrow, remind Xiao Ming to prepare the meeting materials before 3 pm.`
+
+This structure is more complex. Here, `Xiao Ming` is the person in charge of this matter. Also, there are two times: `10 am tomorrow` and `before 3 pm`. The difficulties in this sentence are:
+
+1. Determining that `Xiao Ming` is the person in charge.
+2. There are two times: `10 am` is the main time for the meeting, and `before 3 pm` is the time by which the materials need to be prepared.
+3. Deriving the subject: `Meeting with a client, have the meeting materials prepared`, without any extra useless words.
+
+For those who are interested, you can study how to do this yourself. It's quite interesting.
+
+### In Conclusion
+
+WeChat has now evolved into a tool for connecting people, and dialogue will slowly become the mainstream of applications in the future. The emergence of Wechaty has given us new opportunities for attempts like this. I am very grateful for the hard work of the Wechaty authors. We can imagine that in the future, a more intelligent dialogue assistant will appear, one that can help you solve various complex problems around you. I hope that day comes soon. :)
 
 [![PoweredBy](https://img.shields.io/badge/Powered%20By-Wechaty-green.svg#align=left&display=inline&height=20&margin=%5Bobject%20Object%5D&originHeight=20&originWidth=132&status=done&style=none&width=132)](https://github.com/wechaty/wechaty)
 [![Wechaty](https://img.shields.io/badge/Wechaty-%E5%BC%80%E6%BA%90%E6%BF%80%E5%8A%B1%E8%AE%A1%E5%88%92-green.svg#align=left&display=inline&height=20&margin=%5Bobject%20Object%5D&originHeight=20&originWidth=134&status=done&style=none&width=134)](https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty)

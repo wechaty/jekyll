@@ -1,5 +1,5 @@
 ---
-title: ' "如何用 QnAMaker.ai 构建一个投融资聊天机器人 - Azure Show" (English translation WIP)'
+title: "How to Build an Investment and Financing Chatbot with QnAMaker.ai - Azure Show"
 author: lijiarui
 categories: tutorial
 tags:
@@ -7,21 +7,22 @@ tags:
   - news
   - talk
 image: /assets/2020/05-open-source-wechaty-huan-2020-en/azure-show-rui.webp
+excerpt: "In the first episode of Azure Show's 'From Scratch' series, Rui Li, founder of Juzi Interactive and a Microsoft AI MVP, demonstrates how to build a chatbot for investors using Azure's QnAMaker.ai. This session provides a step-by-step guide to creating a bot that can automatically answer investment-related questions."
 ---
 
-欢迎来到 Azure Show 的从零开始，第一期的嘉宾 Rui Li，李佳芮句子互动创始人，连续创业者，微软人工智能最有价值专家（AI MVP），GitHub 7000+ Stars开源项目Wechaty作者，创建并管理了覆盖全球的微信聊天机器人开发者社区，《Chatbot从0到1：对话式交互设计指南》作者。句子互动围绕微信生态为客户提供智能营销和销售服务，帮助企业引流并实现转化，客户覆盖教育、保险、大健康等多个领域。曾入选百度AI加速器，获得PreAngel、Plug and Play，Y Combination, TSVC和阿尔法公社多家中美机构投资。
+Welcome to the first episode of "From Scratch" on the Azure Show. Our guest for this episode is Rui Li, the founder of Juzi Interactive, a serial entrepreneur, a Microsoft Most Valuable Professional (MVP) in Artificial Intelligence, and the author of the open-source project Wechaty, which has over 7,000 stars on GitHub. She has also created and manages a global community of WeChat chatbot developers and is the author of "Chatbot from 0 to 1: A Guide to Conversational Interaction Design." Juzi Interactive provides intelligent marketing and sales services around the WeChat ecosystem, helping businesses attract traffic and achieve conversions. Their clients span multiple sectors, including education, insurance, and healthcare. The company was selected for the Baidu AI Accelerator and has received investments from several Chinese and American institutions, including PreAngel, Plug and Play, Y Combinator, TSVC, and Alpha Commune.
 
 ![Azure Show](/assets/2020/05-open-source-wechaty-huan-2020-en/azure-show.webp)
 
 ## Azure Show
 
-Azure Show 是由微软最有价值专家、微软技术社区区域总监卢建晖和微软开发者关系PM朱兴亮共同发起的一个关于微软Azure、开源技术、还有技术社区相关的线上节目。每期节目由MVP面对面、开源故事、从零开始以及Azure101组成，邀请微软技术社区的代表人物以及行业中的技术大牛，与大家分享Azure与开源技术的相关内容，每两周一期，会通过公众号、哔哩哔哩以及油管同步上线，欢迎大家关注。
+The Azure Show is an online program about Microsoft Azure, open-source technology, and the tech community, co-hosted by Microsoft MVP and Regional Director of Microsoft Technology Community, Jianhui Lu, and Microsoft Developer Relations PM, Xingliang Zhu. Each episode features segments like "MVP Face-to-Face," "Open Source Stories," "From Scratch," and "Azure 101," inviting representatives from the Microsoft tech community and industry experts to share their insights on Azure and open-source technologies. The show is released every two weeks and is available on platforms like WeChat public accounts, Bilibili, and YouTube. We welcome you to follow us.
 
 [![Powered by Wechaty](https://img.shields.io/badge/Powered%20By-Wechaty-brightgreen.svg)](https://github.com/Wechaty/wechaty)
 
-## Open-source Wechaty
+## Open-Source Wechaty
 
-Wechaty 联合作者李佳芮，用 20 分钟教会你如何用 Azure Cognitive Service QnAMaker.ai 来构建一个能够自动回答投资人问题的 Chatbot !
+Rui Li, co-author of Wechaty, will teach you in 20 minutes how to build a chatbot that can automatically answer investors' questions using Azure Cognitive Service QnAMaker.ai!
 
 {% include iframe.html src="https://www.youtube.com/watch?v=ZYjYAT2g-1Q" %}
 
@@ -29,12 +30,10 @@ Wechaty 联合作者李佳芮，用 20 分钟教会你如何用 Azure Cognitive 
 
 ## MVP
 
-> 本期是我们Azure Show的首秀，谢谢各位小伙伴的关注，非常感谢本期嘉宾Kris，卓桓、佳芮以及我的搭档兴亮的大力支持，还有帮忙进行视频处理的小董。想在最后跟大家聊聊为什么要开设这个线上节目。自2012年成为微软最有价值专家（MVP）以来，开始在各个社区与同行们讨论技术，分享代码，在这个过程中，既是一种分享，也是一种收获。通过社区，不仅解决了自己碰到的一些技术难题也认识到很多好朋友。MVP这个社区，汇聚了来自各个行业，各个国家的IT同行，他们乐于分享，乐于互助，我期待通过这个节目，邀请到更多的行业大牛与大家分享，分享 Azure 的知识，分享他们的开源项目，分享技术社区中的点点滴滴，希望能给大家带来点干货！从第二期开始，我们将正式启动Azure 101活动，帮助大家从0开始认识Azure的知识。第一期节目，也是一次探索，后续我们会不断改进，也欢迎大家留言或者在公众号后台留下你们的建议与意见，
+> This is the premiere of our Azure Show. Thank you all for your attention. A big thank you to our guests Kris, Zhuohuan, Jiarui, and my partner Xingliang for their great support, as well as Xiao Dong who helped with the video editing. I'd like to share why we started this online show. Since becoming a Microsoft Most Valuable Professional (MVP) in 2012, I have been discussing technology and sharing code with peers in various communities. This process has been both about sharing and gaining. Through the community, I have not only solved some of my own technical problems but also made many good friends. The MVP community brings together IT professionals from various industries and countries who are willing to share and help each other. I hope that through this program, we can invite more industry experts to share their knowledge of Azure, their open-source projects, and their experiences in the tech community, hoping to bring some valuable content to everyone! Starting from the second episode, we will officially launch the Azure 101 segment to help everyone get to know Azure from scratch. This first episode is also an exploration, and we will continue to improve. We welcome your suggestions and feedback in the comments or through our WeChat public account.
 
 ![huan](/assets/2020/05-open-source-wechaty-huan-2020-en/azure-show-mvp.webp)
 
-Source: [Azure Show 第一期 开播啦！嘉宾梁迪&李卓桓&李佳芮](https://mp.weixin.qq.com/s/szB4YSEAJZxDLSNZr-_3Sw)
+Source: [Azure Show Episode 1 is Live! Guests: Liang Di, Li Zhuohuan, & Li Jiarui](https://mp.weixin.qq.com/s/szB4YSEAJZxDLSNZr-_3Sw)
 
----
-
-> Chinese version of this post: [qnamaker juzi bot for investors rui]({{ '/2020/05/19/qnamaker-juzi-bot-for-investors-rui/' | relative_url }})
+> This post is also available in [Chinese (Simplified)](/2020/05/19/qnamaker-juzi-bot-for-investors-rui/).

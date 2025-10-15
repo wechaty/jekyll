@@ -1,5 +1,5 @@
 ---
-title: ' "我如何用Chatbot在奇绩创坛重构销售体系" (English translation WIP)'
+title: "How I Rebuilt the Sales System at MiraclePlus with a Chatbot"
 author: rickyyin98
 categories: project
 tags:
@@ -10,110 +10,110 @@ tags:
 image: /assets/2020/08-qijibot-sales-automation-en/qijibot.webp
 ---
 
-- 除了媒体上的曝光，通过人进行深度触达是好的获客方式
-- 对于团队来说，需要保证所有人的触达标准化
-- 对于个人来说，需要努力提升触达过程的效率
-- 聊天机器人不是“银弹”，需要人总结出结构性的方法论
-- 结合方法论的聊天机器人是好的标准化和提效工具
-- 基于企业微信的辅助坐席，可能实现快速组建“销售铁军”的目标
+- In addition to media exposure, deep outreach through people is a good way to acquire customers.
+- For the team, it is necessary to ensure that everyone's outreach is standardized.
+- For individuals, it is necessary to strive to improve the efficiency of the outreach process.
+- A chatbot is not a "silver bullet"; it requires people to summarize a structured methodology.
+- A chatbot combined with a methodology is a good tool for standardization and efficiency improvement.
+- An assisted agent based on Enterprise WeChat may achieve the goal of quickly building a "sales iron army".
 
-## 我和奇绩创坛
+## Me and MiraclePlus
 
-我自己是一位连续创业者，有一家[教育科技公司](www.phaedoclasses.com)，在2019年夏天有幸在1700份申请中获得了YC中国的面试机会，也因此有机会见到了YC中国（现奇绩创坛）的创始人陆奇博士。  
-虽然后来没有通过那一轮面试拿到投资，但我太想拿到陆奇博士的投资了，所以我在2019年的10月选择成为一名奇绩创坛的实习生，开始与陆奇博士和奇绩创坛共事。
-在成为实习生后，我一个人在两周时间里完成了奇绩创坛的小程序的产品、视觉、开发和内外部协调的全部工作，又在奇绩创坛内做了一个“帮投资经理和创业者聊天”的机器人，故事就从这里说起。
-**本文代码详见[qijibot](www.github.com/juzibot/qijibot)，本文不做代码层面的详细说明**
+I am a serial entrepreneur myself, with an [ed-tech company](www.phaedoclasses.com). In the summer of 2019, I was fortunate to get an interview opportunity with YC China from 1,700 applications, and thus had the opportunity to meet Dr. Lu Qi, the founder of YC China (now MiraclePlus).
+Although I didn't get the investment through that round of interviews, I really wanted to get Dr. Lu Qi's investment, so in October 2019, I chose to become an intern at MiraclePlus and started working with Dr. Lu Qi and MiraclePlus.
+After becoming an intern, I single-handedly completed all the product, visual, development, and internal and external coordination work for the MiraclePlus mini-program in two weeks. I also made a robot within MiraclePlus to "help investment managers chat with entrepreneurs," and the story begins here.
+**The code in this article can be found at [qijibot](www.github.com/juzibot/qijibot). This article will not provide detailed code-level explanations.**
 
-## 一、 奇绩创坛如何获客和背后的困难？
+## 1. How does MiraclePlus acquire customers and what are the difficulties behind it?
 
-### 1.1.奇绩创坛探索的获客路径
+### 1.1. The customer acquisition path explored by MiraclePlus
 
-在2019年末那样一个时间节点，奇绩创坛还并不是一个足够有影响力的创投品牌，单纯依靠媒体上的曝光很难让所有早期创业者了解并报名奇绩创坛。  
-所以，奇绩创坛探索的路径就是在媒体持续曝光之外，通过大量的工作人员在微信上直接触达创业者，并邀请他们报名奇绩创坛。  
-事实上，这样的路径是非常成功的。因为人的存在，奇绩创坛价值主张的传递变得非常轻松，原来需要在媒体上反复解释的，通过对话的几个来回可以快速传递。  
+At that point in time at the end of 2019, MiraclePlus was not yet an influential enough venture capital brand. Simply relying on media exposure made it difficult for all early-stage entrepreneurs to understand and apply to MiraclePlus.
+Therefore, the path that MiraclePlus explored was to directly reach out to entrepreneurs on WeChat through a large number of staff, in addition to continuous media exposure, and invite them to apply to MiraclePlus.
+In fact, this path was very successful. Because of the presence of people, the transmission of MiraclePlus's value proposition became very easy. What originally needed to be repeatedly explained in the media could be quickly conveyed through a few back-and-forths in a conversation.
 
-### 1.2.新的获客路径下的新困难
+### 1.2. New difficulties under the new customer acquisition path
 
-然而，这背后带来了两点结构性的困难：
+However, this brought two structural difficulties:
 
-- 其一，对于团队管理者来说，如何保证每一个人说的话都是正确的（或者说是管理者希望传递下去的）
-- 其二，对于个人来说，如何尽可能地降低沟通中的重复劳动。
+- First, for team managers, how to ensure that what everyone says is correct (or what the manager wants to pass on).
+- Second, for individuals, how to minimize repetitive work in communication.
 
-基于这样的问题，我开始探索一种好的方式，能够让团队在微信上的沟通是标准化的、每个人都能几乎不进行重复劳动，又能在这两个前提下，真正把价值传递出去。
+Based on these problems, I began to explore a good way to make the team's communication on WeChat standardized, so that everyone could do almost no repetitive work, and under these two premises, truly deliver value.
 
-### 1.3.表层困难下的结构性困境
+### 1.3. The structural dilemma beneath the surface difficulties
 
-为了完成整套探索的路径，“搞个机器人来做自动化”显然是必然的。我将其拆分成两个维度：找到自动化的方式、找到决策方法论。
+To complete the entire exploration path, "getting a robot to do automation" was obviously inevitable. I broke it down into two dimensions: finding a way to automate and finding a decision-making methodology.
 
-- 自动化意味着可以让机器自由地收发消息，具体收发什么，交给决策方法论来进行。
-- 决策方法论的本质是将人的沟通抽象为一个对话的二叉树，并把这个可解释的二叉树变为机器可以学习的编码。
+- Automation means that the machine can freely send and receive messages, and what to send and receive is determined by the decision-making methodology.
+- The essence of the decision-making methodology is to abstract human communication into a binary tree of dialogue and turn this interpretable binary tree into code that the machine can learn.
 
-完成了这两步之后，一个在微信上的对话系统就可以运行，并切实地帮助销售团队去解决复杂的用户沟通问题。
+After completing these two steps, a dialogue system on WeChat can be run and can effectively help the sales team solve complex user communication problems.
 
-## 二、正式迈入聊天机器人行业的大门
+## 2. Officially entering the chatbot industry
 
-### 2.1.从零开始了解聊天机器人
+### 2.1. Learning about chatbots from scratch
 
-2019年的12月，奇绩创坛开始密集地进行微信上的沟通和获客。我从那时起，开始正式研究如何将整套过程落地成一套机器人系统。  
-对于当时的我来说，我只有模糊的一点“我要把这个事情做了”，但完全没有“我该如何做”的想法。  
-在一个周四的深夜，我在微信上找到了在奇绩创坛校友日上机缘巧合认识的、句子互动的创始人李佳芮，介绍了大致情况之后，她便邀请我参与在周五举行的[BOT Friday](bot5.ml)（一个技术极客讨论聊天机器人行业落地和商业应用的创业论坛）。
+In December 2019, MiraclePlus began to conduct intensive communication and customer acquisition on WeChat. From then on, I began to formally study how to implement the entire process into a robot system.
+For me at that time, I only had a vague idea of "I want to do this," but I had no idea of "how to do it."
+On a Thursday night, I found Li Jiarui, the founder of Juzi Interactive, on WeChat, whom I had met by chance at the MiraclePlus Alumni Day. After introducing the general situation, she invited me to participate in the [BOT Friday](bot5.ml) held on Friday (a technical geek forum discussing the landing and commercial application of the chatbot industry).
 
-### 2.2.连续地高密度的思考和沉淀
+### 2.2. Continuous high-density thinking and precipitation
 
-就在那周，我收到了句子互动创始人佳芮的书稿，《Chatbot从0到1》，成为了我聊天机器人的启蒙。
-后来，我在BOT Friday上认识了大量的创业者、工程师和聊天机器人从业者，并通过几次“看起来是分享实际上是请大家帮我答疑”的BOT Friday活动，逐渐迈入聊天机器人行业。
-![我的第一次分享](/assets/2020/08-qijibot-sales-automation-en/talk1.webp)
+That week, I received the manuscript of Jiarui's book, "Chatbot from 0 to 1," which became my enlightenment to chatbots.
+Later, I met a large number of entrepreneurs, engineers, and chatbot practitioners at BOT Friday, and through several BOT Friday events that "seemed to be sharing but were actually asking everyone to help me answer questions," I gradually entered the chatbot industry.
+![My first sharing](/assets/2020/08-qijibot-sales-automation-en/talk1.webp)
 
 {% include iframe.html src="/assets/2020/08-qijibot-sales-automation-en/talk2.pdf" %}
 
-## 三、如何做出一个可用的聊天机器人系统？
+## 3. How to make a usable chatbot system?
 
-### 3.1.一套一万字的“剧本”
+### 3.1. A 10,000-word "script"
 
-在我开始尝试设计一个帮助奇绩创坛进行沟通的聊天机器人的时候，我模糊地觉得我应该先把可能的话术对整理出来，
-我反复阅读和回顾我和之前创业者们的聊天记录，沉淀出了一套一万字的“剧本”，其中明确列出了if-else式的推进流。
+When I started trying to design a chatbot to help MiraclePlus communicate, I vaguely felt that I should first sort out the possible conversation pairs.
+I repeatedly read and reviewed my chat records with previous entrepreneurs and precipitated a 10,000-word "script," which clearly listed the if-else style of progression.
 
 {% include iframe.html src="/assets/2020/08-qijibot-sales-automation-en/method.pdf" %}
 
-当我写完“剧本”、技术开发又没有完成时，我基于这套“剧本”在一周时间里与300人进行了沟通，全程几乎不需要进行任何的思考，仿佛机器就应该如此运行一样。
-基于这套剧本，我成功地在人肉沟通环节，把每名创业者的沟通时间缩短到5分钟以内，并真正直接转化了其中数十位创业者报名。
-那个时候，我意识到，是时候将其变成更通用的系统了。
+When I finished writing the "script" and the technical development was not yet complete, I communicated with 300 people in one week based on this "script." The whole process required almost no thinking, as if the machine should run like this.
+Based on this script, I successfully shortened the communication time of each entrepreneur to less than 5 minutes in the manual communication link, and directly converted dozens of them to sign up.
+At that time, I realized that it was time to turn it into a more general system.
 
-### 3.2.一个全自动化的尝试
+### 3.2. A fully automated attempt
 
-没有人会拒绝一个全自动化的系统，这也是我完成剧本后第一件希望完成的工作。
-![一个全自动化的尝试](/assets/2020/08-qijibot-sales-automation-en/first.webp)
-然而，它毫无疑问的失败了，理由甚至不用赘述，毕竟这已经是聊天机器人行业的共识——纯机器人很难完成人类的所有需求。
+No one would refuse a fully automated system, and this was the first thing I wanted to accomplish after finishing the script.
+![A fully automated attempt](/assets/2020/08-qijibot-sales-automation-en/first.webp)
+However, it undoubtedly failed. The reason is not even worth mentioning. After all, it is already a consensus in the chatbot industry that pure robots can hardly meet all human needs.
 
-### 3.3.回归人机耦合的辅助坐席
+### 3.3. Returning to the human-computer coupled assisted agent
 
-在全自动化的尝试显著的失败之后，我开始探索真正能够解决问题的路径——不迷恋机器完成所有事情，那么机器完成90%的事情，然后人来做最后的决策如何？
-这个时候，我开始意识到，应该做一套人机耦合的辅助坐席。
+After the significant failure of the fully automated attempt, I began to explore a path that could truly solve the problem—not to be obsessed with the machine doing everything. So how about the machine doing 90% of the things, and then people making the final decision?
+At this time, I began to realize that I should make a human-computer coupled assisted agent.
 
 {% include iframe.html src="/assets/2020/08-qijibot-sales-automation-en/final.pdf" %}
 
-在产品层面我又进行了几个维度的思考：
+At the product level, I thought about it from several dimensions:
 
-- 这个辅助坐席应该是独立于微信传统的对话形式的、在每天的工作就是去用微信完成同一个任务的时候，应该做成Feed流形式。也就是说，所有消息应该不分究竟是谁的消息，而混编在一整条时间线上。
-- 针对每条消息，应该可以通过点击按钮的方式进行回复，每个按钮对应完整的话术和额外行为（打标签、拉群、改备注）。
+- This assisted agent should be independent of the traditional dialogue form of WeChat. When the daily work is to use WeChat to complete the same task, it should be made into a feed stream form. That is to say, all messages should not be distinguished by who sent them, but should be mixed together on a single timeline.
+- For each message, it should be possible to reply by clicking a button. Each button corresponds to a complete set of words and additional actions (tagging, pulling into a group, changing remarks).
 
-基于这两个层次的思考，传统意义上反复切换不同的聊天对象，针对每个人进行不同的回复的逻辑，应该变成流水线式的作业：
+Based on these two levels of thinking, the traditional logic of repeatedly switching between different chat objects and replying to each person differently should be turned into assembly line work:
 
-- 用户只需要盯着流水线上是否有新消息并基本不需要考虑是谁发出的。
-- 用户只需要点击按钮就能把对方提出的问题进行回复，并完成一些必要的操作。
-- 机器永远不自作主张地进行回复，永远需要人进行一次确认。
+- The user only needs to stare at whether there are new messages on the assembly line and basically does not need to consider who sent them.
+- The user only needs to click a button to reply to the questions raised by the other party and complete some necessary operations.
+- The machine never replies on its own, and always needs a person to confirm once.
 
-![最终产品](/assets/2020/08-qijibot-sales-automation-en/qijibot.webp)
+![Final product](/assets/2020/08-qijibot-sales-automation-en/qijibot.webp)
 
-## 四、帮更多企业在微信上做好私域销售
+## 4. Helping more companies do private domain sales on WeChat
 
-当然，Qijibot被投入的资源注定其只是一个非商业的尝试，距离成为人人可用的、真正改变企业销售体验的工具还有遥远的距离。  
-后来，我在2020年正式地加入句子互动，以CMO的身份，开始在企业微信生态上，去帮助企业做好“私域销售”，我们的产品[句客宝](qiwei.juzibot.com)已经上线。  
-![句客宝](/assets/2020/08-qijibot-sales-automation-en/jukebao.webp)
-这是另外一个很长的、还没有结束的故事……
-如果你对于如何借助工具打造销售体系感兴趣，欢迎你与我聊聊（微信：bohao-YIN），也许会是我们下一篇博客内容的起点。
+Of course, the resources invested in Qijibot are destined to be a non-commercial attempt, and there is still a long way to go before it becomes a tool that everyone can use and truly changes the sales experience of enterprises.
+Later, I officially joined Juzi Interactive in 2020 as CMO, and began to help enterprises do "private domain sales" on the Enterprise WeChat ecosystem. Our product [Jukebao](qiwei.juzibot.com) has been launched.
+![Jukebao](/assets/2020/08-qijibot-sales-automation-en/jukebao.webp)
+This is another long, unfinished story...
+If you are interested in how to build a sales system with tools, you are welcome to chat with me (WeChat: bohao-YIN), maybe it will be the starting point of our next blog post.
 
-> 作者: [Yinbohao](https://github.com/rickyyin98/)
+> Author: [Yinbohao](https://github.com/rickyyin98/)
 
 ---
 

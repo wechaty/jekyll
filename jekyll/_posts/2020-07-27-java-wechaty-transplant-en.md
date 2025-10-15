@@ -1,5 +1,5 @@
 ---
-title: ' Wechaty Java 移植组件开发 (English translation WIP)'
+title: Wechaty Java Transplant Component Development
 author: cunkoulaocai
 categories: project
 tags:
@@ -10,37 +10,37 @@ tags:
 image: /assets/2020/07-java-wechaty-transplant-en/java-wechaty-transplant.webp
 ---
 
-“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。 根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。 官网：<https://isrc.iscas.ac.cn/summer2020> 官方新闻：<http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html> 本项目 [Wechaty Java 移植组件开发] 系 暑期2020 支持的开源项目。
+"Open Source Software Supply Chain Lighting Plan - Summer 2020" (hereinafter referred to as Summer 2020) is a summer activity for college students jointly organized by the Institute of Software, Chinese Academy of Sciences and the openEuler community. It aims to encourage students to actively participate in the development and maintenance of open source software and promote the vigorous development of outstanding open source software communities in China. According to the difficulty and completion of the project, participants can also get the "Open Source Software Supply Chain Lighting Plan - Summer 2020" event bonus and trophy. Official website: <https://isrc.iscas.ac.cn/summer2020> Official news: <http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html> This project [Wechaty Java Transplant Component Development] is an open source project supported by Summer 2020.
 
-## [Wechaty Java 移植组件开发]具体计划
+## [Wechaty Java Transplant Component Development] Specific Plan
 
-- 导师：刁政欣
-- 学生：陈炀
-- 模块列表
-  - memory-card存储
-  - state-switch状态机
-  - 其他模块基本api移植
-  - (选做) api优化为更加符合kotlin风格
-  - (选做) 理解底层原理,添加一些新功能
-- 计划安排
-  - memory-card存储
+- Mentor: Diao Zhengxin
+- Student: Chen Yang
+- Module List
+  - memory-card storage
+  - state-switch state machine
+  - Basic api transplantation of other modules
+  - (Optional) api optimization to be more in line with kotlin style
+  - (Optional) Understand the underlying principles and add some new functions
+- Schedule
+  - memory-card storage
     - 7.1 - 7.19
-    - 该模块移植是基本要求,为了能够满足机器人重新登陆不需要扫码,保存机器人自身信息等功能,需要用到这个组件,这个组件将存储的功能和存储数据的  结构相分离,以便能够简单的更换存储方式,支持阿里云oss,华为云obs,亚马逊s3,json存储等,同时提供了易用的api来使用
-    - 基本功能
-  - state-switch状态机
+    - The transplantation of this module is a basic requirement. In order to meet the functions of re-login of the robot without scanning the code and saving the robot's own information, this component is needed. This component separates the storage function from the structure of the stored data, so that the storage method can be easily replaced. It supports Alibaba Cloud OSS, Huawei Cloud OBS, Amazon S3, json storage, etc., and provides easy-to-use api to use.
+    - Basic functions
+  - state-switch state machine
     - 7.20 - 7.26
-    - state-switch是用于管理异步操作的监视器/保护器,在原本的ts版本中可以通过Promise的特性来比较轻松的实现,在kotlin则需要其他的api来实现,思路 比较清晰,但是要找到合适的实现手段有点麻烦
-    - 基本功能
-  - (选做) 其他api移植与测试
+    - state-switch is a monitor/protector for managing asynchronous operations. In the original ts version, it can be easily implemented through the characteristics of Promise. In kotlin, other apis are needed to achieve it. The idea is clear, but it is a bit troublesome to find a suitable implementation method.
+    - Basic functions
+  - (Optional) Other api transplantation and testing
     - 7.27 - 8.7
-    - java-wechaty中还有许多api没有实现,api的风格也是仿照js来实现的,后续需要将这些api逐步实现,并且修改其api风格,以更适合java和kotlin等语言
-    - 扩展功能
-  - (选做) 理解底层原理,添加一些新功能
+    - There are still many apis in java-wechaty that have not been implemented, and the style of the api is also imitated by js. In the future, these apis need to be gradually implemented and their api style modified to be more suitable for languages ​​such as java and kotlin.
+    - Extended functions
+  - (Optional) Understand the underlying principles and add some new functions
     - 8.8-8.15
-    - 此部分为选作内容,wechaty还有一些关于miniprogram,红包等功能还未实现,需要能够理解底层,以便进行后续的扩展,逐步增强wechaty的功能
-    - 扩展功能
-- 项目链接：<https://github.com/cunkoulaocai/java-wechaty>
-- 联系方式：+86 15806082601 | e: <1184016190@qq.com>
+    - This part is optional. Wechaty still has some functions about miniprogram, red envelopes, etc. that have not been implemented. It is necessary to understand the bottom layer for subsequent expansion and gradually enhance the functions of wechaty.
+    - Extended functions
+- Project link: <https://github.com/cunkoulaocai/java-wechaty>
+- Contact: +86 15806082601 | e: <1184016190@qq.com>
 
 > Author: [@cunkoulaocai](https://github.com/cunkoulaocai)
 > Code: [@cunkoulaocai/java-wechaty](https://github.com/cunkoulaocai/java-wechaty)

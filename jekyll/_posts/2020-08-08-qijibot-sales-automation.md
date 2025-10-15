@@ -1,5 +1,4 @@
 ---
-hidden: true
 title: "我如何用Chatbot在奇绩创坛重构销售体系"
 author: rickyyin98
 categories: project
@@ -9,8 +8,10 @@ tags:
   - productivity
   - social
 image: /assets/2020/08-qijibot-sales-automation-en/qijibot.webp
----
 hidden: true
+---
+
+> This post is also available in English: [How I Rebuilt the Sales System at MiraclePlus with a Chatbot]({{ '/2020/08/08/qijibot-sales-automation-en/' | relative_url }})
 
 - 除了媒体上的曝光，通过人进行深度触达是好的获客方式
 - 对于团队来说，需要保证所有人的触达标准化

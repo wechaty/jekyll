@@ -1,5 +1,4 @@
 ---
-hidden: true
 title: "记一次 Wechaty 广州小分队与佳芮老师的小聚会"
 author: fish-ball
 categories: event
@@ -7,8 +6,10 @@ tags:
   - guangzhou
   - meetup
 image: /assets/2020/08-wechaty-guangzhou-gathering-en/pic1.webp
----
 hidden: true
+---
+
+> This post is also available in English: [A Small Gathering of the Wechaty Guangzhou Team and Teacher Jiarui]({{ '/2020/08/04/wechaty-guangzhou-gathering-en/' | relative_url }})
 
 [![Powered by Wechaty](https://img.shields.io/badge/Powered%20By-Wechaty-green.svg)](https://github.com/wechaty/wechaty)
 [![Wechaty开源激励计划](https://img.shields.io/badge/Wechaty-开源激励计划-green.svg)](https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty)

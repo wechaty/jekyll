@@ -1,5 +1,5 @@
 ---
-title: ' "无水印下载短视频机器人" (English translation WIP)'
+title: "A Bot for Downloading Short Videos Without Watermarks"
 author: remainsu
 categories: project
 tags:
@@ -8,18 +8,93 @@ tags:
   - padplus
   - productivity
   - nuxt
-image: /assets/2020/06-wechaty-mqbot-video-downloader-en/qrcode.webp 
+excerpt: "This post introduces a Wechaty-based bot that allows users to download short videos from major Chinese platforms without watermarks. The author shares the motivation behind creating this tool and provides a guide on how to set it up and use it."
 ---
 
-20年初开始接触到Tiktok(国际版抖音)，一直尝试做到今天，收获很多。同时也维护起了自己的一个圈子，圈子内很多人吐槽“短视频去水印工具”，这个比较常用的就是微信小程序，但是大多数都是一堆堆的广告，反应速度大多被作者故意设置了延时（这样可以多看几秒广告）
+At the beginning of 2020, I started getting into TikTok (the international version of Douyin) and have been experimenting with it ever since, learning a lot along the way. I also built a community around it, and many people in my circle complained about the tools available for removing watermarks from short videos. The most common tools are WeChat Mini Programs, but most of them are filled with ads, and their response times are often intentionally delayed by the developers (to make you watch a few more seconds of ads).
 
-于是就想着是不是可以自己做一个这样的工具，同时也可以通过这种方式进行引流。
+So, I thought, why not create my own tool? This could also be a way to attract more users.
 
-首先想到的就是微信机器人，因为这个用起来太方便了，不论是监控群还是对个人，然后再朋友的推荐之下就接触到了wechaty，上手及用，真的是太简单了。
+The first thing that came to mind was a WeChat bot because it's so convenient to use, whether for monitoring groups or for individual use. A friend recommended Wechaty, and it was incredibly easy to get started with.
 
-现在机器人已经上线，并支持国内各大短视频平台的视频无水印下载，只需要发送给机器人视频链接即可。
+The bot is now live and supports watermark-free video downloads from all major Chinese short video platforms. All you need to do is send the video link to the bot.
 
-## 项目使用
+## Project Usage
+
+## 1. Directory Introduction
+
+```js
+.
+├── README.md     // Introduction
+├── config.js     // Configuration file with token, bot name, etc.
+├── dtbot.js      // Core logic of the bot
+├── node_modules  // Required modules
+├── package.json  
+├── source        // Resources like images
+└── utils         // Utility classes
+```
+
+## 2. Install Node.js and Ensure the Version is 10 or Higher
+
+```sh
+# On macOS, you can use Homebrew
+brew install node
+```
+
+## 3. Clone the Project
+
+```sh
+git clone git@github.com:remainsu/qmrobot.git
+```
+
+## 4. Modify the Token in `config.js`
+
+```js
+const basic = {
+    TOKEN: 'your_token',
+    NAME: 'your_bot_name',
+}
+```
+
+## 5. Run the Bot
+
+```sh
+node dtbot.js
+```
+
+As shown in the image, you can log in by scanning the QR code.
+![Demo Image](/assets/2020/06-wechaty-mqbot-video-downloader-en/denglu1.webp)
+
+## Main Features
+
+The bot currently supports watermark-free video downloads from all major Chinese short video platforms. You just need to send the video link to my bot.
+
+Note: The API for removing watermarks is a paid service, so it is hidden in the source code. If you need it, you can add my bot, and I will recommend it to you.
+
+Here's how to use it, taking Kuaishou as an example:
+
+## 1. Copy and Send the Link
+
+![Demo Image](/assets/2020/06-wechaty-mqbot-video-downloader-en/fasong1.webp)
+
+## 2. Send it to the Bot, and You Will Get an Immediate Response. Copy the Link to Your Browser to Download
+
+![Demo Image](/assets/2020/06-wechaty-mqbot-video-downloader-en/wancheng1.webp)
+
+## Finally
+
+A big thank you to the [Wechaty](https://wechaty.github.io) open-source project and [Juzi Interactive (句子互动)](https://www.juzibot.com) for providing the token, which has been a great convenience for developers!
+
+There are still many features that can be improved, such as how to quickly download and convert videos. I am currently researching this.
+
+Feel free to scan the QR code to add my bot. Use "tiktok" as the verification message. You are also welcome to recommend me to your friends. Downloading videos without watermarks is that simple.
+
+![QR Code](/assets/2020/06-wechaty-mqbot-video-downloader-en/ewm1.webp)
+
+> Author: [remainsu](https://github.com/remainsu)
+> Code: [Github](https://github.com/remainsu/qmrobot)
+>
+> This post is also available in [Chinese (Simplified)](/2020/06/03/wechaty-mqbot-video-downloader/).
 
 ### 1. 目录介绍
 

@@ -1,5 +1,5 @@
 ---
-title: ' "记一次 Wechaty 广州小分队与佳芮老师的小聚会" (English translation WIP)'
+title: "A Small Gathering of the Wechaty Guangzhou Team and Teacher Jiarui"
 author: fish-ball
 categories: event
 tags:
@@ -9,61 +9,51 @@ image: /assets/2020/08-wechaty-guangzhou-gathering-en/pic1.webp
 ---
 
 [![Powered by Wechaty](https://img.shields.io/badge/Powered%20By-Wechaty-green.svg)](https://github.com/wechaty/wechaty)
-[![Wechaty开源激励计划](https://img.shields.io/badge/Wechaty-开源激励计划-green.svg)](https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty)
+[![Wechaty Open Source Incentive Program](https://img.shields.io/badge/Wechaty-Open%20Source%20Incentive%20Program-green.svg)](https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty)
 
-## 题记
+## Foreword
 
-说起来惭愧，到我写下博客的时候离聚会的时候已经有两周的时间，这段时间工作一直比较琐碎，没有来得及整理，现在赶紧补上。
+I'm ashamed to say that it has been two weeks since the party when I wrote the blog. During this time, my work has been trivial and I haven't had time to organize it. Now I will make it up.
 
-八月四日，我离开佛山的办公室坐上了去去广州五羊邨的地铁，加入 Wechaty Contributors 不就的我正准备赴约参加在一周前佳芮老师发起的一个广州小分队活动。
+On August 4th, I left the office in Foshan and took the subway to Wuyangcun, Guangzhou. I was about to attend a Guangzhou team event initiated by Teacher Jiarui a week ago.
 
-佳芮老师正好这段时间过来广州开会，于是有了这次聚会的机会。
+Teacher Jiarui happened to come to Guangzhou for a meeting during this time, so we had this opportunity to meet.
 
-我一看的确机会难得，虽然我工作地点也不在广州，但是毕竟过去也不麻烦，而且能够结识到在开源项目里面大显神通的大神，就打算参加去旁听旁听，长点见识。
+I saw that it was a rare opportunity. Although my workplace is not in Guangzhou, it is not troublesome to go there. Moreover, I can get to know the great gods who are showing their talents in open source projects, so I plan to attend and listen to them to broaden my horizons.
 
-结果我抱着打酱油的心态接了龙，出乎所料的是，这次竟然成了我和佳芮老师，还有 Wechaty 的零号 Contributor 大神 @0 前辈的三人聚会。
+As a result, I signed up with the mentality of just being an observer. To my surprise, this turned out to be a three-person gathering of me, Teacher Jiarui, and Wechaty's number zero contributor, senior @0.
 
-因为佳芮老师下午要在腾讯的广研开会，因此聚会约在珠江新城附近，中午的 11:30 附近吃个午饭，说回来只有 @0 前辈是广州本地人，比较熟悉地形，所以便安排好了地点。
+Because Teacher Jiarui was going to have a meeting at Tencent's Guangzhou Research Institute in the afternoon, the meeting was scheduled near Zhujiang New Town. We had lunch around 11:30. By the way, only senior @0 is a native of Guangzhou and is more familiar with the terrain, so he arranged the location.
 
-我到的时候比预定的时间晚了15分钟，下了五羊邨站地铁站之后走了有五分钟的路就到达了“食方缘素食”，@0 前辈和佳芮老师已经到了有一阵子了。
+I was 15 minutes later than the scheduled time. After getting off the Wuyangcun subway station, I walked for about five minutes to reach "Shifangyuan Vegetarian". Senior @0 and Teacher Jiarui had been there for a while.
 
-这个地方是一个三楼的露台，不过用玻璃围起来做了一个小的包厢，还有空调。景观很不错，能够看到街上的行人和精致的绿植，非常惬意。
+This place is a terrace on the third floor, but it is enclosed with glass to make a small private room with air conditioning. The view is very good, you can see the pedestrians on the street and the exquisite green plants, which is very pleasant.
 
-![聚会图片](/assets/2020/08-wechaty-guangzhou-gathering-en/pic1.webp)
+![Party picture](/assets/2020/08-wechaty-guangzhou-gathering-en/pic1.webp)
 
-我到了之后，佳芮老师就热情地像我介绍了 @0 前辈，特别说到 @0 前辈的 Wechaty bot 用了三年居然还没有掉过线。然后佳芮老师还拿出来了精心为我们准备的小礼物 ——
-佳芮老师、卓桓老师和李云军老师的新发的书《Chatbot 从 0 到 1——对话式交互设计实践指南》，还写下了赠言和签名，以及有一些 Wechaty 的周边小贴纸。
+After I arrived, Teacher Jiarui enthusiastically introduced senior @0 to me, especially mentioning that senior @0's Wechaty bot has not been offline for three years. Then Teacher Jiarui also took out the small gifts carefully prepared for us - the new book "Chatbot from 0 to 1 - A Practical Guide to Conversational Interaction Design" by Teacher Jiarui, Teacher Zhuohuan and Teacher Li Yunjun, and also wrote a message and signature, as well as some Wechaty peripheral stickers.
 
-![聚会图片](/assets/2020/08-wechaty-guangzhou-gathering-en/pic2.webp)
+![Party picture](/assets/2020/08-wechaty-guangzhou-gathering-en/pic2.webp)
 
-![聚会图片](/assets/2020/08-wechaty-guangzhou-gathering-en/pic3.webp)
+![Party picture](/assets/2020/08-wechaty-guangzhou-gathering-en/pic3.webp)
 
-然后我们留了个合照，开始了这次的交流。对于我来说，其实这一次的会面更多的是作为一个学习者和旁观者的视角来参与的，在这次会面我了解了一些 wechaty
-项目的历史以及大佬们的创业经历，对我来说也是得到了很多的启发。
+Then we took a group photo and started this exchange. For me, this meeting was more from the perspective of a learner and an observer. In this meeting, I learned about the history of the wechaty project and the entrepreneurial experience of the bigwigs, which gave me a lot of inspiration.
 
-最近谈到 @0 前辈那个多年稳定不掉线的 bot，他说道其实很大原因是在于这个 bot 主要的用途还是监听信息，没有在里面做一些发送的动作，所以虽然一直是用 puppeteer
-的网页微信版的登录，也依然能够在复杂多变的微信生态中存活下来。在近段时间的 WeTool 事件以及网页版微信的各种政策调整、其他封号环境的背景下，其实如何规范我们自己
-的或者客户使用的机器人在一个合理合法的生态规则下运作才是持续发展的方法。
+Recently, when talking about senior @0's bot that has been stable for many years without going offline, he said that a large part of the reason is that the main purpose of this bot is to monitor information, and it does not perform any sending actions. Therefore, although it has been using the web version of WeChat login with puppeteer, it can still survive in the complex and ever-changing WeChat ecosystem. Against the background of the recent WeTool incident, various policy adjustments of the web version of WeChat, and other account blocking environments, how to standardize our own or customers' use of robots to operate under a reasonable and legal ecological rule is the way to sustainable development.
 
-佳芮老师又分享了在 Wechaty 项目最早期的时候，当时是卓桓老师作为项目开发的主力，然后 @0 前辈就加入到了这个项目，然后在里面做出了很多的贡献，@0
-前辈还多次提到了卓桓老师，说经常还看见卓桓老师深夜还活跃在各种 GitHub 的开源项目上，对卓桓老师能够多年一直能够在开源项目上持续不断大力度在开源项目和编码上做出这样的
-贡献深表赞赏。
+Teacher Jiarui also shared that in the very early days of the Wechaty project, Teacher Zhuohuan was the main force of project development, and then senior @0 joined the project and made a lot of contributions. Senior @0 also mentioned Teacher Zhuohuan many times, saying that he often saw Teacher Zhuohuan active in various GitHub open source projects late at night, and expressed his deep appreciation for Teacher Zhuohuan's continuous and vigorous contributions to open source projects and coding for many years.
 
-后面还聊到了 @0 前辈和佳芮老师的创业经历，@0 前辈是一个中国互联网拓荒时代的创业者，曾经管理了上千人的技术团队，并且在很多智能应用方面做出了很多的尝试，
-不过这些尝试的项目可能是因为比时代的发展早得太多，反而没有等到一个最好的市场时机。而佳芮老师也是一个二次创业者，句子互动是第二个创业项目，
-然后佳芮老师也解答了我的一些疑问，介绍了一些有关句子互动的业务与模式。
+Later, we also talked about the entrepreneurial experiences of senior @0 and Teacher Jiarui. Senior @0 is an entrepreneur in the era of China's Internet pioneering. He once managed a technical team of thousands of people and made many attempts in many intelligent applications. However, these experimental projects may have been too far ahead of the development of the times and did not wait for the best market opportunity. And Teacher Jiarui is also a second-time entrepreneur. Juzi Interactive is her second entrepreneurial project. Then Teacher Jiarui also answered some of my questions and introduced some of Juzi Interactive's business and model.
 
-最后我们还聊了一些关于 Apache 基金会和开源项目的运作方式，和我自己的感觉一样，卓桓老师带领的团队在开源项目的建设上的确有着极为丰富的经验以及强大的实力，
-在推动国内开源生态的发展上做出的贡献的确非常珍贵。
+Finally, we also talked about the operation of the Apache Foundation and open source projects. Like my own feeling, the team led by Teacher Zhuohuan does have extremely rich experience and strong strength in the construction of open source projects. The contributions made to promoting the development of the domestic open source ecosystem are indeed very precious.
 
-就我自己而言，在加入 python-wechaty 小组至今不长的时间里，的确感受到了开源项目的魅力，也掌握了一些开源项目的工作流程，从技能上说，
-也从一些源自开源项目的优秀实践学到了很多，例如 GitHub Actions 的 CI，Makefile 的广泛使用等等，希望我自己能伴随着这个平台的发展越走越远吧！
+As for myself, in the short time since I joined the python-wechaty group, I have indeed felt the charm of open source projects and mastered the workflow of some open source projects. In terms of skills, I have also learned a lot from the excellent practices of some open source projects, such as the CI of GitHub Actions, the extensive use of Makefile, etc. I hope I can go further and further with the development of this platform!
 
-![聚会图片](/assets/2020/08-wechaty-guangzhou-gathering-en/pic4.webp)
+![Party picture](/assets/2020/08-wechaty-guangzhou-gathering-en/pic4.webp)
 
-![聚会图片](/assets/2020/08-wechaty-guangzhou-gathering-en/pic5.webp)
+![Party picture](/assets/2020/08-wechaty-guangzhou-gathering-en/pic5.webp)
 
-最后，回来之后仔细看了佳芮老师的书，的确是对话机器人这个领域的不可多得的理论和实践指南，在这里为佳芮老师带一下货，大家多多支持哦！也希望日后能有更多的机会参与开源项目的线下活动，Wechaty 越办越好！
+Finally, after I came back, I carefully read Teacher Jiarui's book. It is indeed a rare theoretical and practical guide in the field of dialogue robots. Here I will promote Teacher Jiarui's book. I hope everyone will support it! I also hope that there will be more opportunities to participate in offline activities of open source projects in the future, and Wechaty will get better and better!
 
 > Author: [Alfred Huang](https://github.com/fish-ball/)
 > Code: [Github](https://github.com/fish-ball/wechaty.js.org)

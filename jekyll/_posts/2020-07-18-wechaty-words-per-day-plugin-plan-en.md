@@ -1,5 +1,5 @@
 ---
-title: ' "暑期2020 [编写一个“每日一句”插件] 计划书" (English translation WIP)'
+title: "Summer 2020 [Write a \"Word of the Day\" Plugin] Project Plan"
 author: univerone
 categories: project
 tags:
@@ -8,51 +8,50 @@ tags:
   - summer-2020
   - entertainment
 image: /assets/2020/07-wechaty-words-per-day-plugin-plan-en/header.webp
+excerpt: "This post outlines the project plan for creating a \"Word of the Day\" plugin for Wechaty as part of the Summer 2020 open-source program. The plan covers the basic framework, NPM package publication, corpus enrichment, and testing."
 ---
 
-“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。
-旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。
-根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。
+> This post is also available in [Chinese (Simplified)](/2020/07/18/wechaty-words-per-day-plugin-plan/).
 
-官网：<https://isrc.iscas.ac.cn/summer2020>
+"Open Source Software Supply Chain Lighting Plan - Summer 2020" (hereinafter referred to as Summer 2020) is a summer event for college students jointly organized by the Institute of Software, Chinese Academy of Sciences and the openEuler community.
+It aims to encourage college students to actively participate in the development and maintenance of open source software and promote the vigorous development of outstanding open source software communities in China.
+According to the difficulty and completion of the project, participants can also get bonuses and trophies for the "Open Source Software Supply Chain Lighting Plan - Summer 2020" event.
 
-官方新闻：<http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html>
+Official website: <https://isrc.iscas.ac.cn/summer2020>
 
-本项目 [编写一个“每日一句”插件] 系 暑期2020 支持的开源项目。
+Official news: <http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html>
 
-## 编写一个“每日一句”插件具体计划
+This project [Write a "Word of the Day" plugin] is an open source project supported by Summer 2020.
 
-- 导师：gcaufy
-- 学生：univerone
-- 模块列表
-  - [x] 开发插件的基本框架
-  - [ ] 发布NPM包，引入CI/CD
-  - [ ] 丰富语料库
-  - [ ] 进行测试，完善项目文档
-  - [ ] 根据群名推荐每日一句的发送内容（可选）
-- 计划安排：
-  - 开发插件的基本框架
+## Specific plan for writing a "Word of the Day" plugin
+
+- Mentor: gcaufy
+- Student: univerone
+- Module list
+  - [x] Develop the basic framework of the plugin
+  - [ ] Publish NPM package, introduce CI/CD
+  - [ ] Enrich the corpus
+  - [ ] Conduct tests and improve project documentation
+  - [ ] Recommend the content of the daily sentence according to the group name (optional)
+- Schedule:
+  - Develop the basic framework of the plugin
     - 7/1 - 7/21
-    - 插件的输入参数有：使用的内置API接口名称、应用的群聊名称以及发布每日一句内容的时间，完成基本代码构建。插件能够设置定时发送的时间、群名、发送的内容，也可以根据请求结构中的图片地址下载图片，并根据每日一句内容以及微信群的相关信息添加水印。
-    - 基本步骤
-  - 发布NPM包，引入CI/CD
+    - The input parameters of the plugin are: the name of the built-in API interface used, the name of the applied group chat, and the time to publish the daily sentence content, and complete the basic code construction. The plugin can set the scheduled sending time, group name, and sending content. It can also download pictures according to the picture address in the request structure, and add watermarks according to the daily sentence content and WeChat group related information.
+    - Basic steps
+  - Publish NPM package, introduce CI/CD
     - 7/22 - 8/05
-    - 进一步优化代码以及注释，引入CI/CD来进行代码质量控制以及包的版本管理
-    - 无
-  - 丰富语料库
+    - Further optimize the code and comments, and introduce CI/CD for code quality control and package version management
+    - None
+  - Enrich the corpus
     - 8/06 - 8/20
-    - 首先确定使用的API接口或者爬取的网址，根据不同的网址进行不同的解析，返回指定的结果。构造请求并解析内容，返回需要的字符串（每日一句的内容或者图片的URL）。如有余力的话，能够支持用户自主设定语料的来源。
-    - 无
-  - 进行测试完善项目文档
+    - First determine the API interface to be used or the URL to be crawled, and perform different parsing according to different URLs to return the specified results. Construct the request and parse the content, and return the required string (the content of the daily sentence or the URL of the picture). If there is spare capacity, it can support users to set the source of the corpus independently.
+    - None
+  - Conduct tests and improve project documentation
     - 8/20 - 9/03
-    - 完善项目文档，撰写整个项目过程的总结文章。增加单元测试等。
-    - 无
-- 项目链接：[https://github.com/univerone/WordsPerDay](https://github.com/univerone/WordsPerDay)
-- 联系方式：univerone@outlook.com
+    - Improve the project documentation and write a summary article of the entire project process. Add unit tests, etc.
+    - None
+- Project link: [https://github.com/univerone/WordsPerDay](https://github.com/univerone/WordsPerDay)
+- Contact: univerone@outlook.com
 
-> 作者: [univerone](https://github.com/univerone/)
+> Author: [univerone](https://github.com/univerone/)
 > Code: [Github](https://github.com/univerone/WordsPerDay)
-
----
-
-> Chinese version of this post: [wechaty words per day plugin plan]({{ '/2020/07/18/wechaty-words-per-day-plugin-plan/' | relative_url }})

@@ -35,3 +35,5 @@ Wechaty 联合作者李佳芮，用 20 分钟教会你如何用 Azure Cognitive 
 ![huan](/assets/2020/05-open-source-wechaty-huan-2020-en/azure-show-mvp.webp)
 
 Source: [Azure Show 第一期 开播啦！嘉宾梁迪&李卓桓&李佳芮](https://mp.weixin.qq.com/s/szB4YSEAJZxDLSNZr-_3Sw)
+
+> This post is also available in [English](/2020/05/19/qnamaker-juzi-bot-for-investors-rui-en/).
