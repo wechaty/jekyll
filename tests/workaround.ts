@@ -26,7 +26,11 @@ const BIG_SIZE_TO_BE_FIXED_FILE_LIST = [
   'jekyll/assets/2020/qijibot/talk2.pdf',
   'jekyll/assets/2020/wechaty-plugin-milestone/gcaufy.pdf',
   'jekyll/assets/2020/wechaty-plugin-milestone/yuan.pdf',
-  'jekyll/assets/2020/wechaty-words-per-day-plugin-final/presentation.pdf',
+  'jekyll/assets/2020/wechaty-words-per-day-plugin-final-en/presentation.pdf',
+  // Huan(2025-10): new -en paths after englishify
+  'jekyll/assets/2020/08-qijibot-sales-automation-en/final.pdf',
+  'jekyll/assets/2020/08-qijibot-sales-automation-en/talk2.pdf',
+  'jekyll/assets/2020/09-wechaty-words-per-day-plugin-final-en/presentation.pdf',
   'jekyll/assets/2021/02-summer-wechaty-nanjing-summit-journey/slides.pdf',
   'jekyll/assets/2021/07-gdg-shanghai-wechaty/wechaty-community-talk-live-demo.pdf',
   'jekyll/assets/2021/08-ospp-mid-term-wechaty-itchat-puppet/itchat.pdf',
