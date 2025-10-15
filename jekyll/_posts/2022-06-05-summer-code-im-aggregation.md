@@ -6,7 +6,7 @@ tags:
   - summer-code
   - puppet-whatsapp
   - productivity
-image: /assets/2022/06-summer-code-im-aggregation/title.webp
+image: /assets/2022/06-summer-code-im-aggregation-en/title.webp
 ---
 
 如今，社交应用的种类日渐丰富，每个人每天都会面对海量的信息，而注意力和时间是有限的，频繁地在各个社交平台上浏览、查阅、回复消息会消耗大量的精力。为了提升工作效率，减少无效信息的干扰，我们希望能够聚合不同 IM 应用（例如微信，企业微信和 WhatsApp）的消息，并在每天的固定时间点转发上一个周期内的所有消息到指定应用。
@@ -41,7 +41,7 @@ image: /assets/2022/06-summer-code-im-aggregation/title.webp
 
 其转发调度的大致流程如下。
 
-![消息转发调度的流程](/assets/2022/06-summer-code-im-aggregation/1.webp)
+![消息转发调度的流程](/assets/2022/06-summer-code-im-aggregation-en/1.webp)
 
 为了保障用户的隐私信息，原则上消息聚合应用应该默认在转发之后删除原本存储的消息。
 
@@ -76,7 +76,7 @@ image: /assets/2022/06-summer-code-im-aggregation/title.webp
 7. 通过交互式命令暂停消息转发
 8. 通过交互式操作重新启动消息转发
 
-![交互式操作](/assets/2022/06-summer-code-im-aggregation/2.webp)
+![交互式操作](/assets/2022/06-summer-code-im-aggregation-en/2.webp)
 
 除上述配置相关的内容以外，该交互式操作还应该支持：
 
@@ -89,7 +89,7 @@ image: /assets/2022/06-summer-code-im-aggregation/title.webp
 
 本应用应该设计一组完善的接口，方便开发者和使用者接入更多的 IM 应用，例如 Telegram，QQ 等。Wechaty 社区已经适配了很多 IM 应用，我们可以对这些应用进行一个简单的适配，例如开发一个 adapter 层来统一 puppet 和消息聚合应用之间数据通信。
 
-![消息聚合应用架构设计](/assets/2022/06-summer-code-im-aggregation/4.webp)
+![消息聚合应用架构设计](/assets/2022/06-summer-code-im-aggregation-en/4.webp)
 
 ### 第三方应用接入
 
@@ -104,11 +104,11 @@ hook 大致可以分为这么几类：
 
 如下图所示，当消息聚合应用启动的时候，会触发所有注册了“启动成功” hook 的拓展的回调函数，在接收到 IM 消息的时候也会触发所有注册了“接收消息” hook 的拓展的回调函数， 其他几项都是差不多的逻辑。
 
-![生命周期事件](/assets/2022/06-summer-code-im-aggregation/3.webp)
+![生命周期事件](/assets/2022/06-summer-code-im-aggregation-en/3.webp)
 
 部分触发关键字的消息会被发送到第三方应用：
 
-![交互式命令事件](/assets/2022/06-summer-code-im-aggregation/5.webp)
+![交互式命令事件](/assets/2022/06-summer-code-im-aggregation-en/5.webp)
 
 ## docker 镜像打包
 

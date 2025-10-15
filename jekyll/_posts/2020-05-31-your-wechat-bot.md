@@ -86,7 +86,7 @@ npm config set puppeteer_download_host https://npm.taobao.org/mirrors
 cnpm start //npm start
 ```
 
-### 已实现的功能：
+### 已实现的功能
 
 - 热更新，修改代码后免重启，便于在线调试。
 - 新增全国肺炎、各省市肺炎数据，按关键字回复即可。

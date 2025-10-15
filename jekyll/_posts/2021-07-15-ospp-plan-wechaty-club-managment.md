@@ -4,7 +4,8 @@ author: mangguo188
 categories:
   - project
   - ospp
-image: /assets/2021/07-ospp-plan-wechaty-club-managment/rare-book.webp
+image: /assets/2021/07-ospp-plan-wechaty-club-managment-en/rare-book.webp
+hidden: true
 tags:
   - summer-of-wechaty
   - summer-2021

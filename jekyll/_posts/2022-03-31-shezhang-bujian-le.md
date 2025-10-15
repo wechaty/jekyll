@@ -1,12 +1,14 @@
 ---
-title: 借助世界上最大的单体中文NLP大模型和Wechaty，我们做出了一个可以跟人类玩“剧本杀”的AI!
-author: bigbrother666sh
-categories: article
+author: huan
+categories:
+- fun
+date: 2022-03-31
+image: /assets/2022/03-shezhang-bujian-le-en/aoc7k-iob2u.webp
+lang: zh
+hidden: true
 tags:
-  - puppet-xp
-  - ai
-  - 剧本杀
-image: /assets/2022/03-shezhang-bujian-le/aoc7k-iob2u.webp 
+- script-murder
+- ai
 ---
   
 ## 借助世界上最大的单体中文NLP大模型和Wechaty，我们做出了一个可以跟人类玩“剧本杀”的AI
@@ -21,7 +23,7 @@ image: /assets/2022/03-shezhang-bujian-le/aoc7k-iob2u.webp
 
 本着细节拉满的原则，我们也为AI准备了一个微信账号，并精心为她设定了昵称和头像，甚至每场游戏前我们还会紧扣时事的为她准备近三天的朋友圈内容，而游戏后还会继续连发三天朋友圈内容提供延展剧情（非常类似"规则怪谈"）。
 
-![img](/assets/2022/03-shezhang-bujian-le/1.webp)  ![img](/assets/2022/03-shezhang-bujian-le/2.webp)
+![img](/assets/2022/03-shezhang-bujian-le-en/1.webp)  ![img](/assets/2022/03-shezhang-bujian-le-en/2.webp)
 
 整体剧情并不复杂，讲的是某高校社团中五个骨干成员因为一件事情牵涉到各自利益而产生的种种勾心斗角。玩家要做的也非常简单，就是想方设法、拉帮结派的说服其他人接受自己的主张……不过我们这次对原作做了比较大的改动，剧作中AI所扮演的角色（蔡晓）受控于某邪恶的科技巨头（“北极鹅”公司），
 她要帮助“北极鹅”实行一个庞大的阴谋，而这个阴谋其实笼罩了所有人……坦率的说，从游戏角度，这个角色的难度还挺高，承担着推动剧情的作用，并且游戏机制设定最后所有的疑点矛头都会指向她，
@@ -110,7 +112,7 @@ _【以上演示录屏请大家移步 [项目github主页](https://github.com/bi
 
 不得不承认，本作最后的呈现与之前我们设想的不一样，或者说很不一样。NLP大模型的生成能力，使得AI可以和用户共同"演绎"出很多新的剧情， 比如下面这段，"谭明"找AI复盘，结果AI告诉他其实他和张家怡（游戏情节人物）是gay！
 
-![img](/assets/2022/03-shezhang-bujian-le/3.webp)
+![img](/assets/2022/03-shezhang-bujian-le-en/3.webp)
 
 针对这种情况，我们索性也直接在游戏规则中加入了一条："如果其他人提到了你所不知道的剧情，请相信那只是没有出现在你的剧本中，而非不存在"，并且我们也不提供复盘文本，而是鼓励他们互相（自然也包括AI）对信息进行复盘。
 在这个复盘过程中，玩家也早晚会发现某个玩家其实是AI（剧情中AI所扮演的角色是一个被植入了AI程序的女大学生，但大部分玩家都会认为这个角色是我们的工作人员假扮的，而他们最后会发现这个账号真的只是一个AI！），
@@ -120,7 +122,7 @@ _【以上演示录屏请大家移步 [项目github主页](https://github.com/bi
 
 而这种叙事有时也会产生非常感人的随机剧情。
 
-![img](/assets/2022/03-shezhang-bujian-le/4.webp)
+![img](/assets/2022/03-shezhang-bujian-le-en/4.webp)
 
 本项目中作为每次生成example的语料文件可以说直接决定了AI的表现，因此我们也一并将语料文件进行开源，因为在这种“开发范式”下，这些语料本质上就是代码的一部分。
 
@@ -140,7 +142,7 @@ _【以上演示录屏请大家移步 [项目github主页](https://github.com/bi
 
 蔡晓和"北极鹅"的故事并未完结，让我们在这里最后上一张蔡晓的"北极鹅"工卡吧！
 
-![img](/assets/2022/03-shezhang-bujian-le/5.webp)
+![img](/assets/2022/03-shezhang-bujian-le-en/5.webp)
 
 （作为一个喜欢将细节拉满的团队，这张工卡里面其实隐藏着两个彩蛋，你能找到么？）
 

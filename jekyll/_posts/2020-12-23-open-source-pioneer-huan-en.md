@@ -26,3 +26,7 @@ In addition, as a leading figure in the domestic developer community, Huan Li (�
 ---
 
 > 中文版: [开源项目 Wechaty 作者李卓桓入选「中国开源先锋 33 人」](/2020/12/23/open-source-pioneer-huan/)
+
+---
+
+> Chinese version of this post: [open source pioneer huan]({{ '/2020/12/23/open-source-pioneer-huan/' | relative_url }})

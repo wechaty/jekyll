@@ -1,20 +1,20 @@
 ---
- title: "OSPP 2021-结项报告-基于开放 API 封装 Wechaty 接口下的飞书聊天机器人"
- author: remember00000
- categories:
-  - project
-  - ospp
- tags:
-  - final-term
-  - ospp
-  - ospp-2021
-  - summer-2021
-  - puppet-provider
-  - lark
-  - summer-of-wechaty
-  - ecosystem
- image: /assets/2021/09-ospp-final-term-wechaty-puppet-lark/wechaty-lark.webp
-
+title: "OSPP 2021-结项报告-基于开放 API 封装 Wechaty 接口下的飞书聊天机器人"
+author: remember00000
+categories:
+- project
+- ospp
+tags:
+- final-term
+- ospp
+- ospp-2021
+- summer-2021
+- puppet-provider
+- lark
+- summer-of-wechaty
+- ecosystem
+image: /assets/2021/09-ospp-final-term-wechaty-puppet-lark-en/wechaty-lark.webp
+hidden: true
 ---
 
 > Code: [wechaty-puppet-lark](https://github.com/wechaty/wechaty-puppet-lark)
@@ -83,7 +83,7 @@
 
 ### 项目PPT
 
-{% include iframe.html src="/assets/2021/09-ospp-final-term-wechaty-puppet-lark/final-term-ppt.pdf" %}
+{% include iframe.html src="/assets/2021/09-ospp-final-term-wechaty-puppet-lark-en/final-term-ppt.pdf" %}
 
 ## 联系我们
 

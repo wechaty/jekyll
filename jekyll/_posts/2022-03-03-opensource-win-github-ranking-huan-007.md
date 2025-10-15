@@ -5,7 +5,7 @@ categories: announcement
 tags:
   - news
   - open-source
-image: /assets/2022/03-opensource-win-github-ranking-huan-007/opensource-super-mario.webp
+image: /assets/2022/03-opensource-win-github-ranking-huan-007-en/opensource-super-mario.webp
 hidden: true
 ---
 
@@ -17,9 +17,9 @@ hidden: true
 
 来自 X-Lab 的 OpenDigger 团队对 GitHub 开放的归档日志进行分析，筛选出了 2021 全年 GitHub 协作影响力排名前 10,000 的账号，并号召了社区中数十位开发者及十余家合作社区，通过开放式协作共同核实标注信息、排除机器人账号，第一阶段甄选出了 99 位中国开发者。
 
-## 码不停蹄，赢！
+## 码不停蹄，赢
 
-![Open Source Win](/assets/2022/03-opensource-win-github-ranking-huan-007/winners.webp)
+![Open Source Win](/assets/2022/03-opensource-win-github-ranking-huan-007-en/winners.webp)
 
 他们在为这些项目贡献（排名不分先后）
 
@@ -31,7 +31,7 @@ hidden: true
 
 Wechaty 创始人 [Huan(李卓桓)](https://opensource.win/huan) 排名全球 TOP 450 ，中国 TOP 7 ：
 
-[![Wechaty Huan](/assets/2022/03-opensource-win-github-ranking-huan-007/opensource-win-huan.webp)](https://opensource.win/huan)
+[![Wechaty Huan](/assets/2022/03-opensource-win-github-ranking-huan-007-en/opensource-win-huan.webp)](https://opensource.win/huan)
 
 ## 关于中国开源码力榜
 
@@ -57,9 +57,9 @@ Wechaty 创始人 [Huan(李卓桓)](https://opensource.win/huan) 排名全球 TO
 
 ## 合作伙伴
 
-![Open Source Wechaty](/assets/2022/03-opensource-win-github-ranking-huan-007/cover.webp)
+![Open Source Wechaty](/assets/2022/03-opensource-win-github-ranking-huan-007-en/cover.webp)
 
-![brands](/assets/2022/03-opensource-win-github-ranking-huan-007/brands.webp)
+![brands](/assets/2022/03-opensource-win-github-ranking-huan-007-en/brands.webp)
 
 > Source: [来自开源世界的超级码丽，中国开源码力榜权威发布, SegmentFault思否, Mar 1, 2022](https://segmentfault.com/a/1190000041478447)
 > English version: [China Open Source Power Ranking Released | Wechaty Founder Ranked TOP 7](/2022/03/03/opensource-win-github-ranking-huan-007-en/)

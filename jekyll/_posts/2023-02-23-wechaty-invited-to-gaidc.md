@@ -6,16 +6,16 @@ tags:
   - news
   - ecosystem
   - wechaty-way
-image: /assets/2023/02-wechaty-invited-to-gaidc/2023-gaidc.webp
+image: /assets/2023/02-wechaty-invited-to-gaidc-en/2023-gaidc.webp
 ---
 
-## Wechaty受邀参加GAIDC开源集市邀请你一起来！
+## Wechaty受邀参加GAIDC开源集市邀请你一起来
 
 随着专为对话而生的 ChatGPT 火爆，Wechaty 再次成为开源社区里备受关注的项目。
 
 过去 3 个月里，有数十个基于 Wechaty 把 ChatGPT 接入到聊天软件的项目在 GitHub 上开源，最受欢迎的项目已获得 8K+ Stars。
 
-![image-1.webp](/assets/2023/02-wechaty-invited-to-gaidc/image-1.webp)
+![image-1.webp](/assets/2023/02-wechaty-invited-to-gaidc-en/image-1.webp)
 
 通过 Wechaty，开发者仅需要 6 行代码就可以把聊天软件变成 Chatbot。增加几行代码就可以接入 ChatGPT、Stable Diffusion 等 AI 模型，获得丰富的对话能力，让聊天软件成为助力创作、提高效率的 AI 工具。
 
@@ -30,7 +30,7 @@ image: /assets/2023/02-wechaty-invited-to-gaidc/2023-gaidc.webp
 
 大会将有多元话题的前沿论坛，诸如AI编程、AI芯片、AI+健康、AI智能出行、AI+机器人、元宇宙等等，为你打开新世界的大门。
 
-![image-2.webp](/assets/2023/02-wechaty-invited-to-gaidc/image-2.webp)
+![image-2.webp](/assets/2023/02-wechaty-invited-to-gaidc-en/image-2.webp)
 
 活动现场，还有互动体验区、AI图书展，以及多个热门领域AI企业现场招聘会，鱼和熊掌都能品一品。当然，如果你对万花筒般丰富的开源技术、开源文化感兴趣，不妨也来开源集市瞧瞧！
 
@@ -48,15 +48,15 @@ image: /assets/2023/02-wechaty-invited-to-gaidc/2023-gaidc.webp
 
 本次集市活动召集了各个前沿技术方向的开源项目，既有用于大厂发起的用于深度图学习的开源框架，也有初创企业致力于解放创造力的新一代编程语言，还有只需 6 行代码，即可将任意聊天软件变成机器人的神奇工具！
 
-![image-3.webp](/assets/2023/02-wechaty-invited-to-gaidc/image-3.webp)
+![image-3.webp](/assets/2023/02-wechaty-invited-to-gaidc-en/image-3.webp)
 
 整个集市专区呈长条状，伙伴们入场时，会拿到一份 “集市游玩手册”(类似导览小册子)，介绍20个摊位对应的项目，以及集市专区的游戏玩法说明。
 
 每家社区会为伙伴们准备 1～3 个挑战任务（其中开发者的为技术类实战，非技术背景的朋友则是非coding的问题），顺利通关者可收获一定的“源力”点数，并兑换相应各社区周边礼品。
 
-![image-4.webp](/assets/2023/02-wechaty-invited-to-gaidc/image-4.webp)
+![image-4.webp](/assets/2023/02-wechaty-invited-to-gaidc-en/image-4.webp)
 
-![image-5.webp](/assets/2023/02-wechaty-invited-to-gaidc/image-5.webp)
+![image-5.webp](/assets/2023/02-wechaty-invited-to-gaidc-en/image-5.webp)
 
 并且，每个摊位每天都有10枚“天选开源人”贴纸（1枚=3个“源力点数”），奖励给来摊位深入交流探讨的伙伴。在集市专区出口处，大家可报上各自收获成果及相应联系方式；活动结束前的半小时再统计一遍，累计点数最多的，收获价值感满满的盲盒大礼盒（价值150～1000元不等），奖品信息拭目以待！
 
@@ -68,15 +68,15 @@ image: /assets/2023/02-wechaty-invited-to-gaidc/2023-gaidc.webp
 
 25日下午13:30-17:00有组织2～3场团聚（每场60～90min），组局者有充分的自由度自发挥，可以是恳谈会、吐槽会、圆桌、工作坊等多元形式，话题也可以跳脱纯技术本身尽可能拓展延伸，大会官网也可同步信息，尽快和大家同步！
 
-![image-6.webp](/assets/2023/02-wechaty-invited-to-gaidc/image-6.webp)
+![image-6.webp](/assets/2023/02-wechaty-invited-to-gaidc-en/image-6.webp)
 
 ### 2. 开源开放麦
 
 26号下午 13:00-15:00 在小舞台区域（离集市专区步行1～2min），各项目代表也会受邀上舞台，分享各自项目的建立初衷、发展状况和未来愿景等等，每家 5～6min 闪电演讲的时间，大家也别错过哦！
 
-![image-7.webp](/assets/2023/02-wechaty-invited-to-gaidc/image-7.webp)
+![image-7.webp](/assets/2023/02-wechaty-invited-to-gaidc-en/image-7.webp)
 
-![image-8.webp](/assets/2023/02-wechaty-invited-to-gaidc/image-8.webp)
+![image-8.webp](/assets/2023/02-wechaty-invited-to-gaidc-en/image-8.webp)
 
 ## 报名方式
 

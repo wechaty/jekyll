@@ -7,6 +7,7 @@ tags:
   - startup
   - featured
   - real-estate
+hidden: true
 ---
 
 为了帮助新来硅谷的朋友找室友和租房，我们在所在地区组建了若干微信群。
@@ -219,5 +220,9 @@ let maybeBlacklistUser = async function(m: Message):Promise<Boolean> {
 我们将在未来的文章中介绍我们如何利用Chatie的可编程接口来实现
 微信和我们开发的网站和APP实现数据和信息互通。
 
-撰写本文的时候，本文所描述的好室友机器人（haoshiyou-bot）代码处在
-[这里](https://github.com/xinbenlv/haoshiyou-bot/tree/5f4dc109fafb5bf22996e53560e5a2ee51b4da89)
+At the time of writing this article, the haoshiyou-bot code described in this article is located
+[here](https://github.com/xinbenlv/haoshiyou-bot/tree/5f4dc109fafb5bf22996e53560e5a2ee51b4da89)
+
+---
+
+> English version of this post: [Using Chatie to Implement WeChat Bot Business Logic for [Haoshiyou] Group Management]({{ '/2017/04/16/how-chatie-is-used-in-haoshiyou-project-en/' | relative_url }})

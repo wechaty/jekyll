@@ -4,7 +4,8 @@ author: mangguo188
 categories:
   - project
   - ospp
-image: /assets/2021/08-ospp-mid-term-club-managment/wechaty.webp
+image: /assets/2021/08-ospp-mid-term-club-managment-en/wechaty.webp
+hidden: true
 tags:
   - summer-of-wechaty
   - summer-2021
@@ -70,21 +71,21 @@ tags:
 
 项目仓库: <https://github.com/mangguo188/wechaty-club-management>  
 
-### live coding视频：
+### live coding视频
 
 {% include iframe.html src="https://youtu.be/MoNLKnT2rJ8" %}
 
 > 国内链接：<https://www.bilibili.com/video/BV14M4y1V7GD/>
 
-### PPT展示视频：
+### PPT展示视频
 
 {% include iframe.html src="https://youtu.be/oYcoOLfbgdE" %}
 
 > 国内链接：<https://www.bilibili.com/video/BV1wL4y1Y7cM/>
 
-### 项目PPT：
+### 项目PPT
 
-{% include iframe.html src="/assets/2021/08-ospp-mid-term-club-managment/mid-term-ppt.pdf" %}
+{% include iframe.html src="/assets/2021/08-ospp-mid-term-club-managment-en/mid-term-ppt.pdf" %}
 
 ## 联系我们
 

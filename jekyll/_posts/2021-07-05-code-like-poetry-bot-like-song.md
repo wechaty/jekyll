@@ -4,7 +4,8 @@ author: cixingguangming55555
 categories: article
 tags:
   - bot
-image: /assets/2021/07-code-like-poetry-bot-like-song/cover.webp 
+image: /assets/2021/07-code-like-poetry-bot-like-song-en/cover.webp
+hidden: true 
 ---
 
 ## 非关

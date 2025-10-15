@@ -4,7 +4,8 @@ author: jesseweb
 categories: project
 tags:
    - ecommerce
-image: /assets/2020/promote-bot/banner.webp
+image: /assets/2020/04-wechat-promote-tool-en/banner.webp
+hidden: true
 ---
 
 ## 一、项目背景
@@ -41,9 +42,9 @@ image: /assets/2020/promote-bot/banner.webp
 ## 测试效果
 
 * 机器人相关操作
-    ![INVITE](/assets/2020/promote-bot/result.webp)
+    ![INVITE](/assets/2020/04-wechat-promote-tool-en/result.webp)
 * 测试发送效果
-    ![INVITE](/assets/2020/promote-bot/result1.webp)
+    ![INVITE](/assets/2020/04-wechat-promote-tool-en/result1.webp)
 
 ## 后续计划
 

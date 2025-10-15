@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: "暑期2020 [编写一个“每日一句”插件] POC 成果展示"
 author: univerone
 categories: project
@@ -7,7 +8,7 @@ tags:
   - summer-of-wechaty
   - summer-2020
   - entertainment
-image: /assets/2020/wechaty-words-per-day-plugin-mid-term/header.webp
+image: /assets/2020/08-wechaty-words-per-day-plugin-mid-term-en/header.webp
 ---
 
 “开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。
@@ -93,7 +94,7 @@ image: /assets/2020/wechaty-words-per-day-plugin-mid-term/header.webp
 
 ### PPT
 
-{% include iframe.html src="/assets/2020/wechaty-words-per-day-plugin-mid-term/presentation.pdf" %}
+{% include iframe.html src="/assets/2020/08-wechaty-words-per-day-plugin-mid-term-en/presentation.pdf" %}
 
 ### Live Code视频
 

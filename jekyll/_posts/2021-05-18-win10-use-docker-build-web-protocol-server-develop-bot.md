@@ -172,7 +172,7 @@ del e:\wsl2\docker\docker-desktop-data.tar
 
 > 感谢您的阅读，考虑到本人水平极其有限，文章难免有差错，若读者发现文中错误，欢迎指正，或联系我修改。
 
-## 参考链接：
+## 参考链接
 
 - [教你用python-wecahty和web协议开发机器人](https://wechaty.js.org/2021/04/17/python-wechaty-use-web/)
 - [Puppet Service: DIY](https://wechaty.js.org/docs/puppet-services/diy)

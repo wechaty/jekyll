@@ -11,7 +11,7 @@ tags:
   - ospp-2021
   - summer-of-wechaty
   - summer-2021
-image: /assets/2021/11-report-for-summer-2021/2.webp
+image: /assets/2021/11-report-for-summer-2021-en/2.webp
 ---
 
 当你还在疑惑如何进行5G消息开发
@@ -40,7 +40,7 @@ image: /assets/2021/11-report-for-summer-2021/2.webp
 此开源项目，可以在开源之夏活动官网进行查看：
 [项目地址](https://summer.iscas.ac.cn/#/org/prodetail/210220088)
 
-![项目ID](/assets/2021/11-report-for-summer-2021/2.webp)
+![项目ID](/assets/2021/11-report-for-summer-2021-en/2.webp)
 
 我们的项目群也是非常壮大哦~
 ![项目群](/assets/2021/11-report-for-summer-2021/3.webp)
@@ -51,7 +51,7 @@ image: /assets/2021/11-report-for-summer-2021/2.webp
 
 支持5G消息开发者一直以来都是硬核桃社区的产业责任和工作方向，我们希望中国能够早日落地 5G消息技术，让用户使用消息服务时，信息更加安全，功能更加丰富，体验更加便捷！
 
-### 未来，硬核桃社区会持续推动开源项目，只为更多的开发者能够加入到“5G消息”！
+### 未来，硬核桃社区会持续推动开源项目，只为更多的开发者能够加入到“5G消息”
 
 - 项目仓库: <https://github.com/wechaty/wechaty-puppet-walnut>  
 - npm包：<https://www.npmjs.com/package/wechaty-puppet-walnut>

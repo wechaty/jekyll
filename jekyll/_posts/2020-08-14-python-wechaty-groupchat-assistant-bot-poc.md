@@ -1,14 +1,16 @@
 ---
+hidden: true
 title: "暑期2020 [基于python-wechaty的群聊助手机器人] POC 成果展示"
 author: kxz18
 categories: project
-image: /assets/2020/groupchat-assistant-bot-poc/header.webp
+image: /assets/2020/08-python-wechaty-groupchat-assistant-bot-poc-en/header.webp
 tags:
   - python
   - summer-2020
   - summer-of-wechaty
   - productivity
 ---
+hidden: true
 
 “开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。
 旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。

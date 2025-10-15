@@ -2,7 +2,7 @@
 title: "基于开放 API 封装 Wechaty 接口下的钉钉聊天机器人"
 author: jihuayu
 categories: project
-image: /assets/2020/wechaty-puppet-dingtalk/logo.webp
+image: /assets/2020/11-wechaty-puppet-oa-released-en/logo.webp
 tags:
   - summer-of-wechaty
   - summer-2020

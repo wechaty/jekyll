@@ -4,7 +4,7 @@ author: circlestriker
 categories: article
 tags:
   - ai
-image: /assets/2022/05-wechaty-help-organize-football-activity/fozujinqun.webp
+image: /assets/2022/05-wechaty-help-organize-football-activity-en/fozujinqun.webp
 ---
 
 ## Wechaty助力唐僧念经和佛祖踢球
@@ -23,7 +23,7 @@ image: /assets/2022/05-wechaty-help-organize-football-activity/fozujinqun.webp
 我们最常玩的球队领导比较多，领导忙起来也经常没法及时报名。
 有次看着快开赛了人还不足，一急之下人家是急中生智，我那次居然急中生想佛祖的心，说到:“哪天我要拉佛祖进群，并说:佛祖同志您好，请积极报名，不然怎么保佑大家不受伤。”
 
-![佛祖报名踢球](/assets/2022/05-wechaty-help-organize-football-activity/fozujinqun.webp)
+![佛祖报名踢球](/assets/2022/05-wechaty-help-organize-football-activity-en/fozujinqun.webp)
 
 ### 请佛祖和唐僧师父
 
@@ -33,7 +33,7 @@ image: /assets/2022/05-wechaty-help-organize-football-activity/fozujinqun.webp
 
 鉴于队长说过佛祖太高大上他怕hold不住，就改成请唐僧师父好了。
 
-![唐僧师父](/assets/2022/05-wechaty-help-organize-football-activity/tangseng.webp)
+![唐僧师父](/assets/2022/05-wechaty-help-organize-football-activity-en/tangseng.webp)
 
 于是一通操作，找到了Wechaty，把唐僧师父请进了我们足球群。
 
@@ -58,7 +58,7 @@ image: /assets/2022/05-wechaty-help-organize-football-activity/fozujinqun.webp
 讨论多素少肉等提高体力的事，师父就念:
 [红楼梦最俊美的女子为何要吃斋?](https://mp.weixin.qq.com/s/GrzkWiLmHuIutIshT4evWA)
 
-![打坐康复](/assets/2022/05-wechaty-help-organize-football-activity/dazuokangfu.webp)
+![打坐康复](/assets/2022/05-wechaty-help-organize-football-activity-en/dazuokangfu.webp)
 
 话说回来，虽然佛祖唐僧师父等等苦心孤诣想告诉大家避免伤病的好心态，以及万一伤了怎么早点康复，但是要有机会出来念经，还是得好好感谢Wechaty这个工具:
 

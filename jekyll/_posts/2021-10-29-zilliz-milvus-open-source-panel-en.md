@@ -40,3 +40,7 @@ The discussion covers:
 - Advice and book recommendations for young developers
 
 > 中文版: [1024 程序员节：Milvus 社区五位开源界程序员心路历程分享](/2021/10/29/zilliz-milvus-open-source-panel/)
+
+---
+
+> Chinese version of this post: [zilliz milvus open source panel]({{ '/2021/10/29/zilliz-milvus-open-source-panel/' | relative_url }})

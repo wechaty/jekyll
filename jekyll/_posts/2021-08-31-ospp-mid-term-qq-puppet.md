@@ -101,19 +101,19 @@ QQ 是国内和微信并列的两大聊天软件。我们在本次 Summer 2021 �
 
 项目仓库: <https://github.com/wechaty/wechaty-puppet-oicq>
 
-### live coding视频：
+### live coding视频
 
 {% include iframe.html src="https://youtu.be/FY4U2JPZjxE" %}
 
 > 国内版：<http://www.iqiyi.com/v_gqyz7g94fw.html>
 
-### PPT展示视频：
+### PPT展示视频
 
 {% include iframe.html src="https://youtu.be/pT16CnFhTPQ" %}
 
 > 国内版：<http://www.iqiyi.com/v_1ixjchyr7yw.html>
 
-### 项目PPT：
+### 项目PPT
 
 {% include iframe.html src="/assets/2021/08-ospp-mid-term-qq-puppet/qq-puppet.pdf" %}
 

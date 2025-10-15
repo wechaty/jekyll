@@ -5,7 +5,7 @@ categories: article
 tags:
   - ai
   - antigen
-image: /assets/2022/05-wechaty-ai-antigenbot/a1fup-y7cpd.webp
+image: /assets/2022/05-wechaty-ai-antigenbot-en/a1fup-y7cpd.webp
 ---
 
 2022年5月9日，上海闵行区政府从防控机制、防控措施和防控成效等方面对“无疫小区”申请名单的充分论证，公布了首批“无疫小区”名单，“嘉怡水岸睿府“赫然在列。嘉怡水岸睿府小区的抗疫成效卓然，
@@ -15,13 +15,13 @@ image: /assets/2022/05-wechaty-ai-antigenbot/a1fup-y7cpd.webp
 
 疫情初期，整个小区对疫情静态管理的经验不足，导致居民团购混乱无序，物资到达后运力紧张，志愿者配送路线无法追溯，居委会和志愿者的工作压力急剧上升，时有物资错发、漏发，以及搞错阳性楼栋的问题。由于人工调度的固有属性可能降低社区治理的效率，4月初，嘉怡水岸小区志愿者在微信群里展开激烈的讨论和思辩，提出楼栋自治的方案。然而在效率提升和误差消除方面仍然莫衷一是。
 
-![img](/assets/2022/05-wechaty-ai-antigenbot/augyv-hwwkr.webp)
+![img](/assets/2022/05-wechaty-ai-antigenbot-en/augyv-hwwkr.webp)
 
 （志愿者们在小区外分拣物资）
 
 不负韶华，在青春的赛道上奋力奔跑。为了解决这些困难，年轻的小区志愿者吴光正、凌思凯、李思颖，作为小区的一份子，决心发挥专长，从技术的角度来解决小区面临的困境。三位 IT 领域的青年志愿者，在繁重的工作结束后的夜晚，熬夜讨论系统设计架构，尝试以最快最有效的方式搭建起一套解放人力的物资调度配送系统。仅仅2个晚上，物资配送系统搭建成功。这个系统在帮助居委会自动处理物资团购信息、快速制作定制化的表单方面，发挥了积极的作用。
 
-![img](/assets/2022/05-wechaty-ai-antigenbot/avzr0-npy78.webp)
+![img](/assets/2022/05-wechaty-ai-antigenbot-en/avzr0-npy78.webp)
 
 （志愿者们拿着处理好的物资配送表单派送中）
 
@@ -32,11 +32,11 @@ image: /assets/2022/05-wechaty-ai-antigenbot/a1fup-y7cpd.webp
 与病毒赛跑的脚步永不停歇。 Wechaty 社区联合飞桨社区志愿者和开源社区的志愿者，在系统插件的开发上与病毒赛跑。基于PaddleDetection和PaddleOCR开发抗原图片检测功能以及各地健康码识别功能，也于近期部署上线，可以说是非常实用了。
 目前AI 抗疫机器人在嘉怡水岸小区稳定运行了一个月，获得了居委会和居民们的一致好评。
 
-![img](/assets/2022/05-wechaty-ai-antigenbot/ay0xw-gh4nt.webp)
+![img](/assets/2022/05-wechaty-ai-antigenbot-en/ay0xw-gh4nt.webp)
 
 （居委会工作人员与志愿者们一起配送物资）
 
-![img](/assets/2022/05-wechaty-ai-antigenbot/an3j3-lw6f4.webp)
+![img](/assets/2022/05-wechaty-ai-antigenbot-en/an3j3-lw6f4.webp)
 
 （蒋书记与志愿者们一起讨论抗疫工作）
 
@@ -60,7 +60,7 @@ image: /assets/2022/05-wechaty-ai-antigenbot/a1fup-y7cpd.webp
 
 **开发志愿者：** 吴京京，赵泽明 （来自 Wechaty 社区）
 
-![img](/assets/2022/05-wechaty-ai-antigenbot/a1ett-6rr3x.webp)
+![img](/assets/2022/05-wechaty-ai-antigenbot-en/a1ett-6rr3x.webp)
 
 [模块详情](https://github.com/ShanghaiITVolunteer/AntigenWechatBot)
 
@@ -72,14 +72,14 @@ image: /assets/2022/05-wechaty-ai-antigenbot/a1fup-y7cpd.webp
 
 **开发志愿者：** 刘建建、马赫、韩鹏远（来自飞桨社区）
 
-![img](/assets/2022/05-wechaty-ai-antigenbot/a3vh5-c3zmu.webp)
+![img](/assets/2022/05-wechaty-ai-antigenbot-en/a3vh5-c3zmu.webp)
 
 [模块详情](https://github.com/ShanghaiITVolunteer/AntigenWechatBot/issues/44)
 
 在项目开发的过程中，青年志愿者更希望守护公民的数据隐私，特邀开源社法律顾问委员会，海华永泰律师事务所的陈元熹律师，作为项目的法律指导，Wechaty 开源项目作者李卓桓老师和开源社理事庄表伟老师作为项目技术顾问，为项目出谋划策。
 AI 抗疫机器人AntigenBot 项目在嘉怡水岸小区抗疫工作流程的基础上，通过第一性原理简化方法，提升效率，规避风险。经过一系列的优化提升，负责机器人方面的社区的管理人员可以实现“开箱即用”、“一看就懂”的使用方法。
 
-![img](/assets/2022/05-wechaty-ai-antigenbot/aa0nw-g84t1.webp)
+![img](/assets/2022/05-wechaty-ai-antigenbot-en/aa0nw-g84t1.webp)
 
 （项目UI界面原型）
 
@@ -87,9 +87,9 @@ AI 抗疫机器人AntigenBot 项目在嘉怡水岸小区抗疫工作流程的基
 
 （满屏的感谢）
 
-![img](/assets/2022/05-wechaty-ai-antigenbot/arjkv-k9fni.webp)
+![img](/assets/2022/05-wechaty-ai-antigenbot-en/arjkv-k9fni.webp)
 
-![img](/assets/2022/05-wechaty-ai-antigenbot/a2izi-ehkxh.webp)
+![img](/assets/2022/05-wechaty-ai-antigenbot-en/a2izi-ehkxh.webp)
 
 （嘉怡水岸小区居委会和居民并肩战役）
 
@@ -113,19 +113,19 @@ AI 抗疫机器人AntigenBot 项目在嘉怡水岸小区抗疫工作流程的基
 
 ### Wechaty 社区
 
-![img](/assets/2022/05-wechaty-ai-antigenbot/logo.webp)
+![img](/assets/2022/05-wechaty-ai-antigenbot-en/logo.webp)
 
 Wechaty is a Conversational RPA SDK for chatbot makers. With only 6 lines of code, you can create a bot on the most popular IMs like WeChat, Whatsapp, WeCom, Gitter, etc.
 
 ### 开源社
 
-![img](/assets/2022/05-wechaty-ai-antigenbot/aa8zj-zyze7.webp)
+![img](/assets/2022/05-wechaty-ai-antigenbot-en/aa8zj-zyze7.webp)
 
 开源社成立于 2014 年，是由志愿贡献于开源事业的个人成员，依 “贡献、共识、共治” 原则所组成，始终维持厂商中立、公益、非营利的特点，是最早以 “开源治理、国际接轨、社区发展、开源项目” 为使命的开源社区联合体。开源社积极与支持开源的社区、企业以及政府相关单位紧密合作，以 “立足中国、贡献全球” 为愿景，旨在共创健康可持续发展的开源生态，推动中国开源社区成为全球开源体系的积极参与及贡献者。
 
 ### 飞桨社区
 
-![img](/assets/2022/05-wechaty-ai-antigenbot/adt2z-wdcvt.webp)
+![img](/assets/2022/05-wechaty-ai-antigenbot-en/adt2z-wdcvt.webp)
 
 作为中国首个自主研发、功能丰富、开源开放的产业级深度学习平台，百度飞桨于2016年正式开源，当前飞桨平台汇聚了超过400万开发者，助力企业单位、高等院校、科研机构的AI开发者提升模型开发效率与体验、推动AI技术在各行业的实际落地与应用。AI Studio是基于百度深度学习平台飞桨的人工智能学习与实训社区，提供在线编程环境、免费GPU算力、海量实训项目和开放数据，帮助开发者快速创建和部署模型。
 

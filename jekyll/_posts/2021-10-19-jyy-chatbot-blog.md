@@ -1,7 +1,8 @@
 ---
 title: "献给新生女儿的礼物：基于wechaty和语义开放平台打造的育儿机器人"
 author: jxitc
-image: /assets/2021/10-jyy-chatbot-blog/jyy.webp
+image: /assets/2021/10-jyy-chatbot-blog-en/jyy.webp
+hidden: true
 categories:
   - tutorial
 tags:

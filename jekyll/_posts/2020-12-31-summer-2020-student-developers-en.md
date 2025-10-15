@@ -298,3 +298,7 @@ You can start here: <https://github.com/wechaty/wechaty/issues>
 ---
 
 > 中文版: [今年夏天，Wechaty 社区与 9 位开源后浪的故事](/2020/12/31/summer-2020-student-developers/)
+
+---
+
+> Chinese version of this post: [summer 2020 student developers]({{ '/2020/12/31/summer-2020-student-developers/' | relative_url }})

@@ -9,7 +9,7 @@ tags:
   - featured
   - chatbot
   - competition
-image: /assets/2025/05-wechaty-with-aws2025/banner.webp
+image: /assets/2025/05-wechaty-with-aws2025-en/banner.webp
 ---
 
 🔥 **Wechaty & AWS 全球招募：创意为笔，用代码留下永恒印记！** 🔥  
@@ -51,7 +51,7 @@ AI开发大赛重磅来袭！你的代码，改变世界！
 
 ## 参加比赛
 
-![detail](/assets/2025/05-wechaty-with-aws2025/detail.webp)
+![detail](/assets/2025/05-wechaty-with-aws2025-en/detail.webp)
 
 🚀 AI正在重塑开发的边界，代码不再是少数人的专利，而是全民创造的钥匙！无论你是技术大牛还是创意先锋，这里都有你的舞台！  
 

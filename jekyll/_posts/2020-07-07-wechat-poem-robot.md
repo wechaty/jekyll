@@ -285,7 +285,7 @@ async function getPoemReply(word, chatRoomId) {
 }
 ```
 
-## 上线！
+## 上线
 
 在 production 环境运行，建议使用 PM2 。
 

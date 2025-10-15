@@ -6,7 +6,7 @@ tags:
   - workpro
   - llm
   - agent
-image: /assets/2023/11-digital-socialworker-assisstant/0.webp
+image: /assets/2023/11-digital-socialworker-assisstant-en/0.webp
 ---
 
 当居委会遇到wechaty+大模型……
@@ -25,7 +25,7 @@ image: /assets/2023/11-digital-socialworker-assisstant/0.webp
 
 以上海为例，一个居委会通常由5~9名社工组成，但需要对接3500~5000名居民，平均每个社工对接400~500人……但其日常工作却多达119项。（下图来自公众号”上海大调研”）
 
-![matrtial1](/assets/2023/11-digital-socialworker-assisstant/1.webp)
+![matrtial1](/assets/2023/11-digital-socialworker-assisstant-en/1.webp)
 
 这背后其实是复杂的基层社区自治问题，尤其是在我国政体的大背景下。学术界对此其实有很多论述和研究，从中央到地方的各级政府也一直在出台各种改革措施，但期望一蹴而就也不现实，村/居委会人少事多、能力不足的情况并不能马上彻底解决。
 在这种情况下，引入AI技术，辅助社工的工作，就很有意义了。
@@ -54,11 +54,11 @@ image: /assets/2023/11-digital-socialworker-assisstant/0.webp
 
 针对这个问题，我们采集了并标注了400多条居民实际提问用例，并经过数据增强，在开源的rocketqa模型基础上为本项目微调了专属的问答匹配模型，最终结合wechaty，实现了数字社工助理的第一个功能：智能SOP文档问答。从此198个文档的痛苦再也不存在了。
 
-![matrtial2](/assets/2023/11-digital-socialworker-assisstant/3.webp)
+![matrtial2](/assets/2023/11-digital-socialworker-assisstant-en/3.webp)
 
 上线后实测效果还是很不错的，甚至直接微信语音提问也能获得很准确的回答。
 
-![matrtial3](/assets/2023/11-digital-socialworker-assisstant/2.webp)
+![matrtial3](/assets/2023/11-digital-socialworker-assisstant-en/2.webp)
 
 ## 一句话生成的活动策划报告
 
@@ -71,7 +71,7 @@ image: /assets/2023/11-digital-socialworker-assisstant/0.webp
 
 接到这个需求后，我们马上想到了大模型。这确实是一个可以真实发挥大模型价值的场景。适逢在4、5月份，行业迎来了LLM的大爆发，我们的选择很多。我们首先根据需求，结合报告的模板要求，设计了prompt，然后比较了多个开源模型和商用大模型API的效果，最后综合生成质量、速度以及成本，并充分考虑了政务系统数据安全性的特殊要求， 选择了本地部署ChatGLM2-6B作为最终的方案。
 
-![matrtial4](/assets/2023/11-digital-socialworker-assisstant/4.webp)
+![matrtial4](/assets/2023/11-digital-socialworker-assisstant-en/4.webp)
 
 **最后，放一下产品视频吧：**
 
@@ -81,7 +81,7 @@ image: /assets/2023/11-digital-socialworker-assisstant/0.webp
 
 “数字社工助理”上线后，不仅得到了社工们的广泛好评，也吸引了多家专业媒体的报道，这对团队来说也是一种鼓励。
 
-![matrtial5](/assets/2023/11-digital-socialworker-assisstant/5.webp)
+![matrtial5](/assets/2023/11-digital-socialworker-assisstant-en/5.webp)
 
 ## 写在最后的话
 

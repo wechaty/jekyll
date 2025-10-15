@@ -4,7 +4,8 @@ author: zrn-fight
 categories:
   - project
   - ospp
-image: /assets/2021/07-ospp-plan-wechaty-matrix/wechaty-matrix-plan.webp
+image: /assets/2021/07-ospp-plan-wechaty-matrix-en/wechaty-matrix-plan.webp
+hidden: true
 tags:
   - matrix
   - summer-of-wechaty

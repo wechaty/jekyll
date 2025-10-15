@@ -7,7 +7,8 @@ tags:
   - wechat
   - medicine
   - improve-efficiency
-image: /assets/2022/02-wechaty-medical-bot/title-image.webp
+image: /assets/2022/02-wechaty-medical-bot-en/title-image.webp
+hidden: true
 ---
 
 ## 1. 前言
@@ -25,49 +26,49 @@ image: /assets/2022/02-wechaty-medical-bot/title-image.webp
 ### 3.1 个性化提醒，用于提醒轮科医生临床工作注意事项
 
 入院诊断、临床路径录入
-![new-admission-dignosis](/assets/2022/02-wechaty-medical-bot/new-admission-dignosis.webp)
+![new-admission-dignosis](/assets/2022/02-wechaty-medical-bot-en/new-admission-dignosis.webp)
 
 新入院注意事项
-![new-admission](/assets/2022/02-wechaty-medical-bot/new-admission.webp)
+![new-admission](/assets/2022/02-wechaty-medical-bot-en/new-admission.webp)
 
 病程书写注意事项
-![soap](/assets/2022/02-wechaty-medical-bot/soap.webp)
+![soap](/assets/2022/02-wechaty-medical-bot-en/soap.webp)
 
 早查房应关注的项目和内容
-![pre-wardround](/assets/2022/02-wechaty-medical-bot/pre-wardround.webp)
-![recall](/assets/2022/02-wechaty-medical-bot/recall.webp)
+![pre-wardround](/assets/2022/02-wechaty-medical-bot-en/pre-wardround.webp)
+![recall](/assets/2022/02-wechaty-medical-bot-en/recall.webp)
 
 换药和操作后医疗垃圾分类
-![debridement](/assets/2022/02-wechaty-medical-bot/debridement.webp)
+![debridement](/assets/2022/02-wechaty-medical-bot-en/debridement.webp)
 
 出院注意事项以及术后复查
-![discharge](/assets/2022/02-wechaty-medical-bot/discharge.webp)
+![discharge](/assets/2022/02-wechaty-medical-bot-en/discharge.webp)
 
 病案提交
-![file-submit](/assets/2022/02-wechaty-medical-bot/file-submit.webp)
+![file-submit](/assets/2022/02-wechaty-medical-bot-en/file-submit.webp)
 
 周末交接班
-![weekend](/assets/2022/02-wechaty-medical-bot/weekend.webp)
-![exchange](/assets/2022/02-wechaty-medical-bot/exchange.webp)
+![weekend](/assets/2022/02-wechaty-medical-bot-en/weekend.webp)
+![exchange](/assets/2022/02-wechaty-medical-bot-en/exchange.webp)
 
 ### 3.2 专业知识查询
 
 术后补液原则
-![fluid](/assets/2022/02-wechaty-medical-bot/fluid.webp)
+![fluid](/assets/2022/02-wechaty-medical-bot-en/fluid.webp)
 
 常见镇痛药物
-![analgesia](/assets/2022/02-wechaty-medical-bot/analgesia.webp)
+![analgesia](/assets/2022/02-wechaty-medical-bot-en/analgesia.webp)
 
 抢救药物
-![life-saving](/assets/2022/02-wechaty-medical-bot/life-saving.webp)
+![life-saving](/assets/2022/02-wechaty-medical-bot-en/life-saving.webp)
 
 ### 3.3 其他
 
-![light](/assets/2022/02-wechaty-medical-bot/light.webp)
+![light](/assets/2022/02-wechaty-medical-bot-en/light.webp)
 
-![post-blood-check](/assets/2022/02-wechaty-medical-bot/post-blood-check.webp)
+![post-blood-check](/assets/2022/02-wechaty-medical-bot-en/post-blood-check.webp)
 
-![tue-note](/assets/2022/02-wechaty-medical-bot/tue-note.webp)
+![tue-note](/assets/2022/02-wechaty-medical-bot-en/tue-note.webp)
 
 ## 4. 效果
 

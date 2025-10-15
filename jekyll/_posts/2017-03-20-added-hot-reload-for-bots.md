@@ -4,7 +4,8 @@ author: gcaufy
 categories: feature
 tags:
   - code
-image: /assets/2017/gcaufy-hot-reload-screencast.webp
+image: /assets/2017/03-added-hot-reload-for-bots-en/gcaufy-hot-reload-screencast.webp
+hidden: true
 ---
 
 ![avatars](https://avatars3.githubusercontent.com/u/2182004?v=3&s=88)
@@ -193,4 +194,8 @@ docker run -ti -e NODE_ENV=production --rm --volume="$(pwd)":/bot zixia/wechaty 
 
 作者：@[Gcaufy](https://github.com/gcaufy), Tencent, [Wechaty Contributor](https://github.com/orgs/Chatie/teams/contributor)
 
-[gcaufy-hot-reload]: /assets/2017/gcaufy-hot-reload-screencast.webp
+[gcaufy-hot-reload]: /assets/2017/03-added-hot-reload-for-bots-en/gcaufy-hot-reload-screencast.webp
+
+---
+
+> English version of this post: [Adding Hot Reload Function for WeChat Bots]({{ '/2017/03/20/added-hot-reload-for-bots-en/' | relative_url }})

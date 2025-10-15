@@ -7,8 +7,8 @@ const BIG_SIZE_TO_BE_FIXED_FILE_LIST = [
   /**
    * Images
    */
-  'jekyll/assets/2018/birthday-cake-chickens.webp',
-  'jekyll/assets/2018/techiefestival-24.webp',
+  'jekyll/assets/2018/10-birthday-cake-2018-en/birthday-cake-chickens.webp',
+  'jekyll/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-24.webp',
   'jekyll/assets/2020/wechaty-log-monitor/archy-demo.webp',
   'jekyll/assets/2020/your-wechat-bot/demo.webp',
   'jekyll/assets/2021/06-summer-2021-open-source/002.webp',
@@ -19,14 +19,18 @@ const BIG_SIZE_TO_BE_FIXED_FILE_LIST = [
   /**
    * PDFs
    */
-  'jekyll/assets/2019/bot5-seminar-2/chatbot-experience-limingth.pdf',
+  'jekyll/assets/2019/07-bot-friday-second-en/chatbot-experience-limingth.pdf',
   'jekyll/assets/2020/11-summer-2020-wechaty/wechaty-summer-2020-introduction.pdf',
   'jekyll/assets/2020/11-summer-2020-wechaty-en/wechaty-summer-2020-introduction.pdf',
   'jekyll/assets/2020/qijibot/final.pdf',
   'jekyll/assets/2020/qijibot/talk2.pdf',
   'jekyll/assets/2020/wechaty-plugin-milestone/gcaufy.pdf',
   'jekyll/assets/2020/wechaty-plugin-milestone/yuan.pdf',
-  'jekyll/assets/2020/wechaty-words-per-day-plugin-final/presentation.pdf',
+  'jekyll/assets/2020/wechaty-words-per-day-plugin-final-en/presentation.pdf',
+  // Huan(2025-10): new -en paths after englishify
+  'jekyll/assets/2020/08-qijibot-sales-automation-en/final.pdf',
+  'jekyll/assets/2020/08-qijibot-sales-automation-en/talk2.pdf',
+  'jekyll/assets/2020/09-wechaty-words-per-day-plugin-final-en/presentation.pdf',
   'jekyll/assets/2021/02-summer-wechaty-nanjing-summit-journey/slides.pdf',
   'jekyll/assets/2021/07-gdg-shanghai-wechaty/wechaty-community-talk-live-demo.pdf',
   'jekyll/assets/2021/08-ospp-mid-term-wechaty-itchat-puppet/itchat.pdf',

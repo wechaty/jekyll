@@ -54,11 +54,11 @@ image: /assets/2022/07-wechaty-office-hour/icon.webp
 
 ## Suggestions
 
-### Wechaty-ui：
+### Wechaty-ui
 
 - strongly suggests using Angular as a web framework because Angular will be used with the official Wechaty cloud service in the future
 
-### CQRS & DDD：
+### CQRS & DDD
 
 Event Driven Programming with Wechaty：
 

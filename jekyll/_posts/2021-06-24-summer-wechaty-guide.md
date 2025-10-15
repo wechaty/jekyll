@@ -135,7 +135,7 @@ XXX
 
 **提交PR时请注意：为这个 PR 打上 `ospp` 的标签，并在 PR 中填写自己项目的 GitHub Issue 链接，方便组委会进行审核。**
 
-###### 3. OSPP 2020 学生期初报告参考：
+###### 3. OSPP 2020 学生期初报告参考
 
 - [暑期2020 为 go-wechaty 设计实现插件体系 计划书](https://wechaty.js.org/2020/07/19/go-wechaty-plugin-dev-plan/)
 - [基于python-wechaty的群聊助手机器人](https://wechaty.js.org/2020/07/18/python-wechaty-groupchat-assistant-bot/)
@@ -247,7 +247,7 @@ XXX
 - 联系方式：
 ```
 
-###### 3. OSPP 2020 学生期中报告参考：
+###### 3. OSPP 2020 学生期中报告参考
 
 - [基于开放 API 封装 Wechaty 接口下的飞书聊天机器人：期中](https://wechaty.js.org/2020/08/19/wechaty-puppet-lark-mid-term-blog/)
 - [暑期2020 编写一个“每日一句”插件 POC 成果展示](https://wechaty.js.org/2020/08/15/wechaty-words-per-day-plugin-mid-term/)
@@ -320,7 +320,7 @@ XXX
 
 **提交PR时请注意：为这个 PR 打上 `ospp` 的标签，并在 PR 中填写自己项目的 GitHub Issue 链接，方便组委会进行审核。**
 
-###### 3. OSPP 2020 学生期末报告参考：
+###### 3. OSPP 2020 学生期末报告参考
 
 - [暑期2020 为 go-wechaty 设计实现插件体系 结项报告](https://wechaty.js.org/2020/09/27/go-wechaty-plugin/)
 - [暑期2020 基于python-wechaty的群聊助手机器人 结项成果展示](https://wechaty.js.org/2020/09/26/chassist-bot-final/)
@@ -371,7 +371,7 @@ XXX
 
 ## OSPP Wechaty Org Admin 工作内容
 
-### 工具包：
+### 工具包
 
 1. 社区 Repo: <https://github.com/wechaty/summer>
 1. 社区通知 Issue：<https://github.com/wechaty/summer/issues/筹备会中完成后确认的项目清单链接>

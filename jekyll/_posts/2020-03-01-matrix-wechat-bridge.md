@@ -145,7 +145,7 @@ WantedBy=multi-user.target
 之后就可以使用 `systemctl enable` 命令和 `systemctl start` 命令来启动 Wechaty Matrix Bridge 了。  
 仅建议在调试完成，可以成功运行的情况下使用 systemctl 启动。  
 
-## Let's Go！
+## Let's Go
 
 来到你的 Matrix 客户端上，对 `@wechaty:你的服务器` 发起 **私聊** ，等待 Bot 加入后它应该会提示  
 

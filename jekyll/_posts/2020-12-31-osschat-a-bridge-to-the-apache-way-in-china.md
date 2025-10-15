@@ -8,7 +8,7 @@ tags:
   - news
   - meetup
   - featured
-image: /assets/2020/12-osschat-a-bridge-to-the-apache-way-in-china/homepage.webp
+image: /assets/2020/12-bridge-between-backend-and-wechat-en/homepage.webp
 ---
 
 OSSChat 是一个机器人工具，用于桥接 IM 应用（如微信）与 Apache 社区工具（如邮件列表、Jira），OSS.Chat项目的任务是将微信和其他社交平台（未来）以及GitHub出现的问题和邮件列表之间的三方沟通和翻译障碍发送给开源开发社区，使ASF的文化、技术和协作流程能够更高效、更容易被接受。
@@ -60,13 +60,13 @@ Introducing OSS Bot: Sync GitHub Issues with WeChat Groups for Open-source Proje
 
 ### OSS.Chat - 通往 Apache Way 的一道虹桥
 
-![shipin](/assets/2020/12-osschat-a-bridge-to-the-apache-way-in-china/shipin.webp)
+![shipin](/assets/2020/12-bridge-between-backend-and-wechat-en/shipin.webp)
 
 - OSS.Chat 项目的使命是为开源项目开发社群搭建一道打通 WeChat 及其它社交平台 (未来) 和 GitHub Issues 与邮件列表的三向沟通和翻译壁垒的桥梁，让 ASF 的文化、技术和协作流程能尽快地容易地被接受，而不是一开始就磕磕绊绊。通过 Chatbot 这种自动化流程机制，让开发者能够更加便捷的分享和沟通开源项目的开发信息。尤其是对社区开放资料的存档和二次归纳处理，是我们认为很有意义的一件事情。透过 OSS.Chat 项目，我们希望能进一步推广、传播乃至于优化 Apache 项目社区的文化、技术、与协作。
 
 - 李卓桓，Tencent TVP of Chatbot。清华大学本科，中欧国际工商学院EMBA。现任PreAngel合伙人，Plug and Play Venture Partner，关注钟子期AI创业项目。zixia BBS、叽歪网创始人，曾任优酷网首席科学家、水木清华BBS站长，ChinaRen系统工程师。拥有丰富的互联网创业投资和编程经验，著有《Linux网络编程》《反垃圾邮件完全手册》《智能对话与深度学习》《Chatbot从0到1》《简明的 TensorFlow 2》等技术图书。2016 年在 GitHub 发布基于 Apache-2.0 许可证的 Conversational SDK Wechaty 开源项目，现有数十位 Committers，百余位 Contributors ，并被近万名 GitHub 开发者 Star
 
-![lzh](/assets/2020/12-osschat-a-bridge-to-the-apache-way-in-china/lzh.webp)
+![lzh](/assets/2020/12-bridge-between-backend-and-wechat-en/lzh.webp)
 
 {% include iframe.html src="https://coscon.kaiyuanshe.cn/#activity/agenda?pid=135" %}
 
