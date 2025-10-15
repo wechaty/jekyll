@@ -178,3 +178,7 @@ DataGirls is an interesting and informative data analysis learning community foc
 ---
 
 > Chinese version of this post: [一文解读聊天机器人的前世今生]({{ '/2018/01/09/all-you-need-to-know-about-chatbot/' | relative_url }})
+
+---
+
+> Chinese version of this post: [all you need to know about chatbot]({{ '/2018/01/09/all-you-need-to-know-about-chatbot/' | relative_url }})

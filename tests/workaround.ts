@@ -7,7 +7,7 @@ const BIG_SIZE_TO_BE_FIXED_FILE_LIST = [
   /**
    * Images
    */
-  'jekyll/assets/2018/birthday-cake-chickens.webp',
+  'jekyll/assets/2018/10-birthday-cake-2018-en/birthday-cake-chickens.webp',
   'jekyll/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-24.webp',
   'jekyll/assets/2020/wechaty-log-monitor/archy-demo.webp',
   'jekyll/assets/2020/your-wechat-bot/demo.webp',

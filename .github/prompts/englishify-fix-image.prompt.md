@@ -36,11 +36,13 @@ Display the help message and wait user to activate you. do not do anything befor
 Here's the EngPost list you need to process:
 
 ```text
-2017-03-20-added-hot-reload-for-bots-en.md
-2017-04-13-support-message-type-of-image-and-video-en.md
-2017-04-16-how-chatie-is-used-in-haoshiyou-project-en.md
-2017-04-21-wechaty-meeting-dinner-en.md
-2017-07-13-how-to-build-a-chatbot-en.md
-2017-11-08-red-pocket-wechaty-iyjian-en.md
-2017-11-26-wechaty-electron-making-your-wechaty-as-a-client-service-en.md
+2018-01-09-all-you-need-to-know-about-chatbot-en.md
+2018-01-25-how-to-build-face-blinder-bot-en.md
+2018-01-29-girl-techie-festival-en.md
+2018-02-06-techie-festival-faq-en.md
+2018-05-06-talk-about-wechat-robot-en.md
+2018-06-24-migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-en.md
+2018-08-30-ai-bot-wechaty-en.md
+2018-10-09-birthday-cake-2018-en.md
+2018-11-25-wechat-robot-can-do-anything-en.md
 ```
