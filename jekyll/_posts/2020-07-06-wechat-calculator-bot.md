@@ -6,7 +6,7 @@ tags:
   - padplus
   - productivity
 excerpt: "使用 Wechaty 构建一个简单的微信计算器机器人，可通过聊天消息执行基本算术运算"
-image: /assets/2020/wechat-calc/header.webp
+image: /assets/2020/07-wechat-calculator-bot-en/header.webp
 hidden: true
 ---
 
@@ -91,7 +91,7 @@ node app.js
 
 ## 效果图
 
-![效果图](/assets/2020/wechat-calc/demo.webp)
+![效果图](/assets/2020/07-wechat-calculator-bot-en/demo.webp)
 
 ## 致谢
 

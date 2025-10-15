@@ -6,7 +6,7 @@ tags:
   - padplus
   - productivity
 excerpt: "Build a simple WeChat calculator bot using Wechaty that can perform basic arithmetic operations through chat messages"
-image: /assets/2020/wechat-calc/header.webp
+image: /assets/2020/07-wechat-calculator-bot-en/header.webp
 ---
 
 [![Wechaty Badge](https://img.shields.io/badge/Powered%20By-Wechaty-green.svg#align=left&display=inline&height=20&margin=%5Bobject%20Object%5D&originHeight=20&originWidth=132&status=done&style=none&width=132)](https://github.com/wechaty/wechaty)
@@ -90,7 +90,7 @@ node app.js
 
 ## Demo
 
-![Demo](/assets/2020/wechat-calc/demo.webp)
+![Demo](/assets/2020/07-wechat-calculator-bot-en/demo.webp)
 
 ## Acknowledgments
 

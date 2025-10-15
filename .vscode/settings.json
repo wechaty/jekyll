@@ -116,4 +116,10 @@
     "worktree",
     "yamllint"
   ],
+  "chat.tools.terminal.enableAutoApprove": true,
+  "chat.tools.autoApprove": true,
+  "chat.tools.terminal.autoApprove": {
+    "/.*/": true,
+    "rm": null,
+  },
 }

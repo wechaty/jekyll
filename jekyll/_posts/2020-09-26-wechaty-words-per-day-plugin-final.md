@@ -3,11 +3,13 @@ title: "暑期2020 [编写一个“每日一句”插件] 结项报告"
 author: univerone
 categories: project
 tags:
-  - plugins
-  - summer-of-wechaty
-  - summer-2020
-  - entertainment
-image: /assets/2020/wechaty-words-per-day-plugin-final/logo.webp
+
+- plugins
+- summer-of-wechaty
+- summer-2020
+- entertainment
+image: /assets/2020/09-wechaty-words-per-day-plugin-final-en/logo.webp
+hidden: true
 ---
 
 - 项目名称：编写一个“每日一句”插件
@@ -40,7 +42,7 @@ image: /assets/2020/wechaty-words-per-day-plugin-final/logo.webp
   - PPT展示视频:
   {% include iframe.html src="https://player.bilibili.com/player.html?bvid=BV1pf4y1D71F" %}
   - PPT:
-  {% include iframe.html src="/assets/2020/wechaty-words-per-day-plugin-final/presentation.pdf" %}
+  {% include iframe.html src="/assets/2020/09-wechaty-words-per-day-plugin-final-en/presentation.pdf" %}
 
 - 遇到的问题及解决方案：
   - **编程语言的不熟悉**. 由于之前没有接触过typescript语言,在项目前期, 我对于整个项目的具体实现包括项目文件的组成结构都没有经验, 所以刚开始比较难着手, 解决方法是多参考社区内其它以typescript为主要编程语言的项目, 结合官方文档和教程, 总结出使用wechaty社区的规范从0发布一个npm package的流程, 据此来组织我的代码. 在具体的编程实现上, 我也参考了很多javascript的语法(尤其是MDN Web文档). 此外看到很多项目都有vscode配置文件夹,在项目一开始我就学习使用vscode进行开发, 到后面觉得十分趁手,也算是"真香"了.

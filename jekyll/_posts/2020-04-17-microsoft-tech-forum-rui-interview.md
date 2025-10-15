@@ -6,7 +6,8 @@ tags:
   - microsoft
   - chatbot
   - news
-image: /assets/2020/ms-lijiarui-interview/teaser.webp
+image: /assets/2020/04-microsoft-tech-forum-rui-interview-en/teaser.webp
+hidden: true
 ---
 
 ## 看点
@@ -17,7 +18,7 @@ image: /assets/2020/ms-lijiarui-interview/teaser.webp
 
 ## 内容
 
-![intro](/assets/2020/ms-lijiarui-interview/intro.webp)
+![intro](/assets/2020/04-microsoft-tech-forum-rui-interview-en/intro.webp)
 
 ### 1. 自我介绍
 
@@ -95,8 +96,8 @@ Chatbot 的智能程度取决于它能够给理解的意图和实体的数量和
 
 下面是在后台和微软中国 CTO 韦青老师的合影，为我的新书 [《Chatbot从0到1：对话式交互设计实践指南》](https://item.jd.com/12630213.html) 打call~
 
-![weiqing](/assets/2020/ms-lijiarui-interview/weiqing.webp)
+![weiqing](/assets/2020/04-microsoft-tech-forum-rui-interview-en/weiqing.webp)
 
 现场很多小伙伴发了额 wechaty 弹幕，开心~~
 
-![wechaty](/assets/2020/ms-lijiarui-interview/wechaty.webp)
+![wechaty](/assets/2020/04-microsoft-tech-forum-rui-interview-en/wechaty.webp)

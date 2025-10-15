@@ -39,3 +39,7 @@ After 3 months of effort, 151 students finally passed the project completion rev
 ---
 
 > 中文版: [开源软件供应链点亮计划暑期 2020 公布结果：基于 Wechaty 开发的项目斩获突出贡献奖和最具潜力两大奖项！](/2020/11/14/summer-2020-wechaty/)
+
+---
+
+> Chinese version of this post: [summer 2020 wechaty]({{ '/2020/11/14/summer-2020-wechaty/' | relative_url }})
