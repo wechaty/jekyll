@@ -1,5 +1,5 @@
 ---
-title: "基于wechaty开发的医疗小助手"
+title: ' "基于wechaty开发的医疗小助手" (English translation WIP)'
 author: smartnikocj
 categories: article
 tags:
@@ -8,7 +8,6 @@ tags:
   - medicine
   - improve-efficiency
 image: /assets/2022/02-wechaty-medical-bot-en/title-image.webp
-hidden: true
 ---
 
 ## 1. 前言
@@ -92,3 +91,7 @@ hidden: true
 ## 6. 致谢
 
 感谢[wechaty](https://wechaty.js.org/)社区开发者们的辛勤付出，感谢[Huan](https://github.com/huan)的宝贵建议。希望本项目可以持续发展下去。
+
+---
+
+> Chinese version of this post: [wechaty medical bot]({{ '/2022/02/02/wechaty-medical-bot/' | relative_url }})

@@ -1,5 +1,5 @@
 ---
-title: "基于 Wechaty 实现高校招生宣传小助手的实践"
+title: ' "基于 Wechaty 实现高校招生宣传小助手的实践" (English translation WIP)'
 author: ligen131
 categories: article
 tags:
@@ -96,3 +96,7 @@ img = FileBox.fromUrl(reply.content);
 ![wordle 游戏](/assets/2022/09-wechaty-university-admission-helper-en/wordle.webp)
 
 > 作者: [ligen131](https://ligen131.com)，生命不息，折腾不止。
+
+---
+
+> Chinese version of this post: [wechaty university admission helper]({{ '/2022/09/27/wechaty-university-admission-helper/' | relative_url }})

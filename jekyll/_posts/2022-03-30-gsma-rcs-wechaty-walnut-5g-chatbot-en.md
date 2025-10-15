@@ -57,3 +57,7 @@ Related reads:
 - Developing a Wechaty puppet module for 5G Chatbot / RCS — @Zhang Ruining, Oct 07, 2021
 
 > 中文版: [硬核桃 5G Chatbot 开源 SDK Wechaty - 核能沙龙 第六期](/2022/03/30/gsma-rcs-wechaty-walnut-5g-chatbot/)
+
+---
+
+> Chinese version of this post: [gsma rcs wechaty walnut 5g chatbot]({{ '/2022/03/30/gsma-rcs-wechaty-walnut-5g-chatbot/' | relative_url }})

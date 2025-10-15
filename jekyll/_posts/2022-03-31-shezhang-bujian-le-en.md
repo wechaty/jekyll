@@ -1,14 +1,12 @@
 ---
-author: huan
-categories:
-- fun
-date: 2022-03-31
-image: /assets/2022/03-shezhang-bujian-le-en/aoc7k-iob2u.webp
-lang: zh
-hidden: true
+title: ' 借助世界上最大的单体中文NLP大模型和Wechaty，我们做出了一个可以跟人类玩“剧本杀”的AI! (English translation WIP)'
+author: bigbrother666sh
+categories: article
 tags:
-- script-murder
-- ai
+  - puppet-xp
+  - ai
+  - 剧本杀
+image: /assets/2022/03-shezhang-bujian-le-en/aoc7k-iob2u.webp 
 ---
   
 ## 借助世界上最大的单体中文NLP大模型和Wechaty，我们做出了一个可以跟人类玩“剧本杀”的AI
@@ -147,3 +145,7 @@ _【以上演示录屏请大家移步 [项目github主页](https://github.com/bi
 （作为一个喜欢将细节拉满的团队，这张工卡里面其实隐藏着两个彩蛋，你能找到么？）
 
 **【有关本作更加详细的AI prompt配置细节、源代码以及人物剧本、效果演示录屏等请移步 [项目github主页](https://github.com/bigbrother666sh/shezhangbujianle) 】**
+
+---
+
+> Chinese version of this post: [shezhang bujian le]({{ '/2022/03/31/shezhang-bujian-le/' | relative_url }})
