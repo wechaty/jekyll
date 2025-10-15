@@ -9,7 +9,7 @@ tags:
 image: /assets/2023/02-wechaty-invited-to-gaidc-en/2023-gaidc.webp
 ---
 
-## Wechaty受邀参加GAIDC开源集市邀请你一起来！
+## Wechaty受邀参加GAIDC开源集市邀请你一起来
 
 随着专为对话而生的 ChatGPT 火爆，Wechaty 再次成为开源社区里备受关注的项目。
 

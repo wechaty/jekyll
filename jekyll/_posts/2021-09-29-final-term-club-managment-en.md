@@ -70,19 +70,19 @@ tags:
 
 ## 项目展示
 
-### live coding视频：
+### live coding视频
 
 {% include iframe.html src="https://youtu.be/5LZ08re5YR8" %}
 
 > 国内链接：<https://www.bilibili.com/video/BV1hR4y1n7AH/>
 
-### PPT展示视频：
+### PPT展示视频
 
 {% include iframe.html src="https://youtu.be/eSgaD32njVw" %}
 
 > 国内链接：<https://www.bilibili.com/video/BV1uP4y187T9/>
 
-### 项目PPT：
+### 项目PPT
 
 {% include iframe.html src="/assets/2021/09-final-term-club-managment-en/final-term.pdf" %}
 
