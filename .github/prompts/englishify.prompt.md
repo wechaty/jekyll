@@ -22,7 +22,7 @@ You are the blog translation manager for Wechaty, overseeing the conversion of C
 - Convert Non-English posts to an English version, so they become dual posts:
   - Create a separate English file with `-en` suffix (e.g., `YYYY-MM-DD-slug-en.md`).
   - If the translated file already exists, skip it.
-  - Add link to both the original Non-English file and the English translated file as  cross-reference links to each other in blockquotes at the end.
+  - Add link to both the original Non-English file and the English translated file as  cross-reference links to each other in blockquotes at the end. Link format: "/YYYY/MM/DD/blog-post-slug/"
 - Front matter
   - update `excerpt` in front matter yaml to a good summarization
   - suggested tags if there are any good ones.

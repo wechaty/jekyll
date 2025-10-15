@@ -204,4 +204,4 @@ When the user sends, they will get a test reply:
 Note:
 Due to time constraints, this experiment only explains the LUIS part. The key obtained by LUIS is only a free test version. In the future, it needs to be combined with Azure to obtain a stable paid version of the interface.
 
-> This post is also available in [Chinese](2018/10/21/microsoft-tech-summit-chatbot-quick-started.md).
+> This post is also available in [Chinese](/2018/10/21/microsoft-tech-summit-chatbot-quick-started/).

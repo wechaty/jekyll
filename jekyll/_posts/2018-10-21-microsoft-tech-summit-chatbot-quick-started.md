@@ -202,4 +202,4 @@ LUIS的开发流程更像是一个教学过程：开发者是老师，LUIS App�
 注意：
 由于时间关系，本次实验只是讲解了LUIS 的部分，LUIS获取的key 只是免费测试版本，后续需要和Azure 结合，获取到稳定的付费版本接口。
 
-> This post is also available in [English](2018/10/21/microsoft-tech-summit-chatbot-quick-started-en.md).
+> This post is also available in [English](/2018/10/21/microsoft-tech-summit-chatbot-quick-started-en/).
