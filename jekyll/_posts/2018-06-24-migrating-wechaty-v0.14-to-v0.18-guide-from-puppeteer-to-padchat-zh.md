@@ -5,14 +5,15 @@ categories: migration
 tags:
   - code
   - news
-image: /assets/2018/code-migration-zh.webp
+image: /assets/2018/06-24-migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-zh/code-migration-zh.webp
+hidden: true
 ---
 
 Wechaty 近期有了很大的升级，从0.14版本之后，开始陆续支持各类非Web 版本的解决方案。我的业务逻辑代码重度依赖于wechaty，所以自从wechaty release 了0.15 版本以后，我开始将我们的业务逻辑代码陆续从Web版本迁移到了非Web版本上来。
 
 本篇博客主要介绍了我是如何将业务逻辑代码，从Puppeteer 迁移到 Padchat上的。
 
-![code](/assets/2018/code-migration-zh.webp)
+![code](/assets/2018/06-24-migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-zh/code-migration-zh.webp)
 
 ## 1. Puppeteer VS Padchat
 
