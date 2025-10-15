@@ -5,8 +5,6 @@ categories: article
 tags:
   - aws
   - ai
-  - news
-  - featured
   - chatbot
   - competition
 image: /assets/2024/04-wechaty-with-aws2024-en/main.webp

@@ -7,6 +7,7 @@ tags:
   - meetup
   - news
 image: /assets/2023/05-preview-on-wechaty-2.0-en/logo.webp
+hidden: true
 ---
 
 使用 WorkPro Token 的朋友们可能知道， wechaty 有一个体验版， @juzi/wechaty，可以体验一些 wechaty 暂不支持的功能，例如朋友圈、引用、@所有人等。我们一直在致力于将其中的功能合并到社区主分支，使得更多的人可以用上这些功能。最近我们与[Huan](https://wechaty.js.org/contributors/huan/)在一个短会上（可以在[这里](https://docs.google.com/document/d/1fVCk8qRYc4RKGMf2UY5HOe07hEhPUOpGC34v88GEFJg/edit#heading=h.si1xxj2xji7f)查看摘要），交流了对一些新功能设计的观点，并且基本达成了一致。这可以说向这些新功能在主分支上线迈进了一大步。对于这些功能的进度追踪可以参考这个 [issue](https://github.com/wechaty/wechaty/issues/2535) 。这里简单介绍一下。
@@ -92,3 +93,5 @@ image: /assets/2023/05-preview-on-wechaty-2.0-en/logo.webp
 - 标签组系统： 还在讨论阶段，主要适配企业微信。
 
 这些功能都在紧锣密鼓的开发中。可以关注这个 [issue](https://github.com/wechaty/wechaty/issues/2535) 来获取最新进度。敬请期待。
+
+> 本文的英文版也可以在这里找到 [English](/2023/05/09/preview-on-wechaty-2.0-en/)。

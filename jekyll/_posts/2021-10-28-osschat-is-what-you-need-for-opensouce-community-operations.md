@@ -114,3 +114,5 @@ For visiters come from China who can not visit YouTube.com, this video is also h
 {% include iframe.html src="https://youtu.be/qWxDnSaa29s" %}
 
 ![osschat-is-what-you-need 7](/assets/2021/10-osschat-is-what-you-need-for-opensouce-community-operations-en/screenshot-7.webp)
+
+> This post is also available in [English](/2021/10/28/osschat-is-what-you-need-for-opensouce-community-operations-en/).
