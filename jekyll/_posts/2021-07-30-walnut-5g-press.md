@@ -3,7 +3,8 @@ title: 'Wechaty 社区 & 硬核桃社区：大学生玩转5G消息？So Easy！'
 author: lijiarui
 categories:
   - ospp
-image: /assets/2021/07-walnut-5g-press/teaser.webp
+image: /assets/2021/07-walnut-5g-press-en/teaser.webp
+hidden: true
 tags:
   - ospp
   - wechaty-puppet-5g
@@ -27,7 +28,7 @@ tags:
 
 ## 01.大学生暑期活动
 
-![student](/assets/2021/07-walnut-5g-press/student.webp)
+![student](/assets/2021/07-walnut-5g-press-en/student.webp)
 
 “暑期2021”（<https://summer.iscas.ac.cn/>），由中科院软件所与 openEuler 社区共同举办。
 
@@ -41,7 +42,7 @@ tags:
 
 ## 02.”5G Chatbot项目”
 
-![walnut-wechaty](/assets/2021/07-walnut-5g-press/walnut-wechaty.webp)
+![walnut-wechaty](/assets/2021/07-walnut-5g-press-en/walnut-wechaty.webp)
 
 此次“暑期2021”活动中的“5G Chatbot项目”，是**硬核桃5G消息开发者社区**(www.5g-msg.com)与**Wechaty社区**(wechaty.js.org)首次合作，专为大学生开发者倾力打造的暑期项目。
 
@@ -59,7 +60,7 @@ tags:
 
 ## 03.未来，更多的开发者活动
 
-![future](/assets/2021/07-walnut-5g-press/future.webp)
+![future](/assets/2021/07-walnut-5g-press-en/future.webp)
 
 公示的项目报告显示，两位学生从了解接口技术规范，到接入硬核桃环境进行编码和接口测试，再到最后成功进行接收和发送消息的测试
 

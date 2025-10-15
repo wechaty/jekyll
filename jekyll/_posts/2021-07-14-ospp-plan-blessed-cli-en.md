@@ -1,11 +1,10 @@
 ---
-title: "OSPP 2021-期初报告-基于 Blessed 的 Wechaty 命令行文本客户端软件"
+title: ' "OSPP 2021-期初报告-基于 Blessed 的 Wechaty 命令行文本客户端软件" (English translation WIP)'
 author: chinggg
 categories:
   - project
   - ospp
 image: /assets/2021/07-ospp-plan-blessed-cli-en/wechaty-cli-logo.webp
-hidden: true
 tags:
   - summer-of-wechaty
   - summer-2021
@@ -79,3 +78,7 @@ tags:
 官网：[https://summer.iscas.ac.cn/](https://summer.iscas.ac.cn/)
 
 本项目 [基于 Blessed 的 Wechaty 命令行文本客户端软件] 系 暑期2021 支持的开源项目。
+
+---
+
+> Chinese version of this post: [ospp plan blessed cli]({{ '/2021/07/14/ospp-plan-blessed-cli/' | relative_url }})

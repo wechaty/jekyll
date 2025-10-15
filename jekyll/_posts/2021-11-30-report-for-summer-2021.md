@@ -11,7 +11,7 @@ tags:
   - ospp-2021
   - summer-of-wechaty
   - summer-2021
-image: /assets/2021/11-report-for-summer-2021/2.webp
+image: /assets/2021/11-report-for-summer-2021-en/2.webp
 ---
 
 当你还在疑惑如何进行5G消息开发
@@ -40,7 +40,7 @@ image: /assets/2021/11-report-for-summer-2021/2.webp
 此开源项目，可以在开源之夏活动官网进行查看：
 [项目地址](https://summer.iscas.ac.cn/#/org/prodetail/210220088)
 
-![项目ID](/assets/2021/11-report-for-summer-2021/2.webp)
+![项目ID](/assets/2021/11-report-for-summer-2021-en/2.webp)
 
 我们的项目群也是非常壮大哦~
 ![项目群](/assets/2021/11-report-for-summer-2021/3.webp)

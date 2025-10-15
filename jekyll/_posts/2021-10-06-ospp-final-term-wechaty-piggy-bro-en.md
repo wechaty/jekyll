@@ -1,11 +1,10 @@
 ---
-title: "OSPP 2021-结项报告-基于 Wechaty 开发开源的二师兄社群逗乐机器人"
+title: ' "OSPP 2021-结项报告-基于 Wechaty 开发开源的二师兄社群逗乐机器人" (English translation WIP)'
 author: reikohaku
 categories:
   - project
   - ospp
 image: /assets/2021/10-ospp-final-term-wechaty-piggy-bro-en/piggy-bro-logo.webp
-hidden: true
 tags:
   - chat
   - summer-of-wechaty
@@ -101,3 +100,7 @@ tags:
 
   微信：ReiKohaku
   E-mail：hbsjzjwj@163.com
+
+---
+
+> Chinese version of this post: [ospp final term wechaty piggy bro]({{ '/2021/10/06/ospp-final-term-wechaty-piggy-bro/' | relative_url }})

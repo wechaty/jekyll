@@ -1,5 +1,5 @@
 ---
-title: "微信机器人上线自动回复，OSSChat 助力开源社区运营"
+title: ' "微信机器人上线自动回复，OSSChat 助力开源社区运营" (English translation WIP)'
 author: hailiang-wang
 categories:
   - project
@@ -10,7 +10,6 @@ tags:
   - utility
   - sticky
 image: /assets/2021/10-osschat-is-what-you-need-for-opensouce-community-operations-en/cover.webp
-hidden: true
 ---
 
 大家好，我是[春松客服开源社区首席运营](http://github.com/chatopera/cskefu)，我们常常发现，微信群，尤其是人多的时候，超过 30 人，就变成了不能“谈事情”的地方，**很多想法匆匆而过**。一些是非常值得追踪下去的想法，背后有一个很有必要做的任务，可是微信群，或者在微信上，我们不专注。
@@ -114,3 +113,7 @@ For visiters come from China who can not visit YouTube.com, this video is also h
 {% include iframe.html src="https://youtu.be/qWxDnSaa29s" %}
 
 ![osschat-is-what-you-need 7](/assets/2021/10-osschat-is-what-you-need-for-opensouce-community-operations-en/screenshot-7.webp)
+
+---
+
+> Chinese version of this post: [osschat is what you need for opensouce community operations]({{ '/2021/10/28/osschat-is-what-you-need-for-opensouce-community-operations/' | relative_url }})

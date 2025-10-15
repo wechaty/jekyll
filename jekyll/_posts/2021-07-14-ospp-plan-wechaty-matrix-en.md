@@ -1,11 +1,10 @@
 ---
-title: "OSPP 2021-期初报告-基于 Matrix AppService Wechaty 项目的用户、群与消息等基础功能的完善"
+title: ' "OSPP 2021-期初报告-基于 Matrix AppService Wechaty 项目的用户、群与消息等基础功能的完善" (English translation WIP)'
 author: zrn-fight
 categories:
   - project
   - ospp
 image: /assets/2021/07-ospp-plan-wechaty-matrix-en/wechaty-matrix-plan.webp
-hidden: true
 tags:
   - matrix
   - summer-of-wechaty
@@ -83,3 +82,7 @@ tags:
 官网：<https://summer.iscas.ac.cn/#/homepage>
 
 本项目 [基于 Matrix AppService Wechaty 项目的用户、群与消息等基础功能的完善] 系暑期2021支持的开源项目。
+
+---
+
+> Chinese version of this post: [ospp plan wechaty matrix]({{ '/2021/07/14/ospp-plan-wechaty-matrix/' | relative_url }})

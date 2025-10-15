@@ -1,5 +1,5 @@
 ---
-title: "如何用paddlepaddle及wechaty制作熊猫头表情生成机器人"
+title: ' "如何用paddlepaddle及wechaty制作熊猫头表情生成机器人" (English translation WIP)'
 author: ninetailskim
 categories: article
 tags:
@@ -7,7 +7,6 @@ tags:
   - study
   - introduction
 image: /assets/2021/05-how-to-build-a-panda-face-generator-with-paddlepaddle-en/shut-up-and-kiss-me.webp
-hidden: true
 ---
 
 很高兴能分享前段时间折腾的小项目，一只熊猫头表情生成机器人。因为本熊是个很热爱meme文化的人，而在聊天过程中，我总是需要表情包来支撑起我匮乏的语言表达能力以及抒发我无法通过文字表达的感情。这次使用wechaty和paddlepaddle制作了一个根据人像生成对应熊猫头的表情包制作机器人。经本人不正经的测试，本表情包制作机器人可以给你的对话增加更多的乐趣，聊天室内外充满了快活的空气~
@@ -78,3 +77,7 @@ opencv的简单操作，嘿嘿~
 在频繁给django发送请求后,server端的cpu和内存"爆炸",这部分不确定是django的问题还是Paddlehub的问题,目前这个问题似乎没有再出现(真是让人迷惑)。
 
 > 作者: [ninetailskim](https://github.com/ninetailskim/)，始于兴趣 陷于技术 忠于瞎搞
+
+---
+
+> Chinese version of this post: [how to build a panda face generator with paddlepaddle]({{ '/2021/05/24/how-to-build-a-panda-face-generator-with-paddlepaddle/' | relative_url }})

@@ -1,11 +1,10 @@
 ---
-title: "code如诗，bot如歌，由Wechaty引发的一个小白冒险之旅"
+title: ' "code如诗，bot如歌，由Wechaty引发的一个小白冒险之旅" (English translation WIP)'
 author: cixingguangming55555
 categories: article
 tags:
   - bot
-image: /assets/2021/07-code-like-poetry-bot-like-song-en/cover.webp
-hidden: true 
+image: /assets/2021/07-code-like-poetry-bot-like-song-en/cover.webp 
 ---
 
 ## 非关
@@ -128,3 +127,7 @@ Wechaty这个东东，上报一个问题的规矩居然这么复杂，我把fany
 致所有坚持的人们！你们前行不倦的身影，是最好的明灯！  
 
 > 作者: [cixingguangming55555](https://github.com/cixingguangming55555)，老张学技术
+
+---
+
+> Chinese version of this post: [code like poetry bot like song]({{ '/2021/07/05/code-like-poetry-bot-like-song/' | relative_url }})

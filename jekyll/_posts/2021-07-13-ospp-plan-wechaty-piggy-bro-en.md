@@ -1,11 +1,10 @@
 ---
-title: "OSPP 2021-期初报告-基于 Wechaty 开发开源的二师兄社群逗乐机器人"
+title: ' "OSPP 2021-期初报告-基于 Wechaty 开发开源的二师兄社群逗乐机器人" (English translation WIP)'
 author: reikohaku
 categories:
   - project
   - ospp
 image: /assets/2021/07-ospp-plan-wechaty-piggy-bro-en/wechaty-logo.webp
-hidden: true
 tags:
   - chat
   - summer-of-wechaty
@@ -83,3 +82,7 @@ tags:
 官网：[https://summer.iscas.ac.cn/](https://summer.iscas.ac.cn/)
 
 本项目 [基于 Wechaty 开发开源的二师兄社群逗乐机器人] 系 暑期2021 支持的开源项目。
+
+---
+
+> Chinese version of this post: [ospp plan wechaty piggy bro]({{ '/2021/07/13/ospp-plan-wechaty-piggy-bro/' | relative_url }})

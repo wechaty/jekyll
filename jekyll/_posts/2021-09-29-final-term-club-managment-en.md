@@ -1,11 +1,10 @@
 ---
-title: "OSPP 2021-结项报告-开发基于Wechaty实现微俱乐部会员&活动管理的微信小程序"
+title: ' "OSPP 2021-结项报告-开发基于Wechaty实现微俱乐部会员&活动管理的微信小程序" (English translation WIP)'
 author: mangguo188
 categories:
   - project
   - ospp
 image: /assets/2021/09-final-term-club-managment-en/wechaty.webp
-hidden: true
 tags:
   - summer-of-wechaty
   - summer-2021
@@ -71,19 +70,19 @@ tags:
 
 ## 项目展示
 
-### live coding视频
+### live coding视频：
 
 {% include iframe.html src="https://youtu.be/5LZ08re5YR8" %}
 
 > 国内链接：<https://www.bilibili.com/video/BV1hR4y1n7AH/>
 
-### PPT展示视频
+### PPT展示视频：
 
 {% include iframe.html src="https://youtu.be/eSgaD32njVw" %}
 
 > 国内链接：<https://www.bilibili.com/video/BV1uP4y187T9/>
 
-### 项目PPT
+### 项目PPT：
 
 {% include iframe.html src="/assets/2021/09-final-term-club-managment-en/final-term.pdf" %}
 
@@ -91,3 +90,7 @@ tags:
 
 - 项目链接：<https://github.com/mangguo188/wechaty-club-management>  
 - 联系方式：1017137803@qq.com
+
+---
+
+> Chinese version of this post: [final term club managment]({{ '/2021/09/29/final-term-club-managment/' | relative_url }})

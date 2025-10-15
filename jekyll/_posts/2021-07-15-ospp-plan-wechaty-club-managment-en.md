@@ -1,11 +1,10 @@
 ---
-title: "OSPP 2021-期初报告-开发基于微信实现微俱乐部会员&活动管理的微信小程序"
+title: ' "OSPP 2021-期初报告-开发基于微信实现微俱乐部会员&活动管理的微信小程序" (English translation WIP)'
 author: mangguo188
 categories:
   - project
   - ospp
 image: /assets/2021/07-ospp-plan-wechaty-club-managment-en/rare-book.webp
-hidden: true
 tags:
   - summer-of-wechaty
   - summer-2021
@@ -56,3 +55,7 @@ tags:
 官网：<https://summer.iscas.ac.cn/#/homepage>
 
 本项目 [开发基于微信实现微俱乐部会员&活动管理的微信小程序] 系暑期2021支持的开源项目。
+
+---
+
+> Chinese version of this post: [ospp plan wechaty club managment]({{ '/2021/07/15/ospp-plan-wechaty-club-managment/' | relative_url }})

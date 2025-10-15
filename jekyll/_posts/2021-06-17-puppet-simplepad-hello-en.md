@@ -1,8 +1,7 @@
 ---
-title: "New Wechaty Puppet Service: SimplePad"
+title: ' "New Wechaty Puppet Service: SimplePad" (English translation WIP)'
 author: simplepad
 image: /assets/2021/06-puppet-simplepad-hello-en/logo.webp
-hidden: true
 categories: announcement
 tags:
   - puppet
@@ -45,3 +44,7 @@ tags:
 以上就是SimplePad开发的初衷和由来,以及我在解决目前社区痛点问题上的思路和一些小小的优势,更深入的使用和体验欢迎大家来探索.
 
 也期望大家能够和我积极[交流反馈](https://github.com/chatrbot/wechaty-puppet-simplepad/issues),我会尽最大努力让开发者们获得最优的使用体验.
+
+---
+
+> Chinese version of this post: [puppet simplepad hello]({{ '/2021/06/17/puppet-simplepad-hello/' | relative_url }})

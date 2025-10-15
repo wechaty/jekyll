@@ -1,11 +1,10 @@
 ---
-title: "OSPP 2021-期中报告-基于 Blessed 的 Wechaty 命令行文本客户端软件"
+title: ' "OSPP 2021-期中报告-基于 Blessed 的 Wechaty 命令行文本客户端软件" (English translation WIP)'
 author: chinggg
 categories:
   - project
   - ospp
 image: /assets/2021/08-ospp-mid-term-cli-en/terminal-wechaty.webp
-hidden: true
 tags:
   - summer-of-wechaty
   - summer-2021
@@ -96,3 +95,7 @@ tags:
 
 - 项目链接：[https://github.com/wechaty/cli]  
 - 联系方式：liuchinggg@gmail.com
+
+---
+
+> Chinese version of this post: [ospp mid term cli]({{ '/2021/08/26/ospp-mid-term-cli/' | relative_url }})

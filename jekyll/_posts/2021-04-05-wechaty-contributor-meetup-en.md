@@ -1,8 +1,7 @@
 ---
-title: "Wechaty Contributor Beijing Meetup 2020/04"
+title: ' "Wechaty Contributor Beijing Meetup 2020/04" (English translation WIP)'
 author: padlocal
 image: /assets/2021/04-wechaty-contributor-meetup-en/cheers.webp
-hidden: true
 categories: story
 tags:
   - meetup
@@ -43,3 +42,7 @@ Wechaty Contributor 北京聚餐
 [@padlocal](https://github.com/padlocal): Wechaty Padlocal puppet
 
 [wechaty-beijing-meetup-photo]: /assets/2021/04-wechaty-contributor-meetup-en/cheers.webp
+
+---
+
+> Chinese version of this post: [wechaty contributor meetup]({{ '/2021/04/05/wechaty-contributor-meetup/' | relative_url }})
