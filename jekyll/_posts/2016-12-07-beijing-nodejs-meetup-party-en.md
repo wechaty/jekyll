@@ -5,44 +5,43 @@ categories: event
 tags:
   - talk
   - news
-  - nodejs
-  - meetup
   - chatbot
-image: /assets/2016/nodeparty-banner.webp
-excerpt: A Node.js developer meetup in Beijing featuring talks about building WeChat chatbots with 6 lines of JavaScript and chatbot applications, hosted by Rockq community.
+  - meetup
+image: /assets/2016/12-beijing-nodejs-meetup-party-en/nodeparty-banner.webp
+excerpt: "Node Party #18 focuses on chatbot development with Wechaty and explores practical scenarios for conversational AI. Join us for talks by Zhuohuan LI (李卓桓), Jiarui LI (李佳芮), and Shoukun WANG (王守崑) on December 11th in Beijing."
 ---
 
 ![Node Party Banner][nodeparty-banner]
 
 ## What is Node Party?
 
-Monthly JavaScript/Node developer meetups focusing on hot frontend and backend frameworks, development tools and methodologies.
+A monthly gathering for JavaScript/Node developers, focusing on popular frontend and backend frameworks, development tools, and methodologies.
 
 * Learn new things
 * Meet new friends
 * Networking dinner
 
-We will prepare for you:
+We will provide:
 
-* Coffee, desserts, popcorn and beautiful music for a pleasant afternoon together.
-* Time: Sunday, December 11th, 1:00 PM ~ 6:00 PM
-* Venue: KeJi Temple Startup Space (Beixinqiao Branch)
-* Address: Room 107, Block B, Kelin Building, 107 Dongsi North Street, Dongcheng District (near Beixinqiao Subway Station)
+* Coffee, desserts, popcorn, and great music for an enjoyable afternoon.
+* Time: December 11th, Sunday, 1:00 PM - 6:00 PM
+* Location: Tech Temple Startup Space (Beixinqiao Branch)
+* Address: Room 107, Building B, Kelin Building, 107 Dongsi North Street, Dongcheng District (near Beixinqiao Metro Station)
 * Registration: <http://www.bagevent.com/event/291037>
 
-## Agenda
+## Schedule
 
-13:00 ~ 13:30 Check-in
+1:00 PM ~ 1:30 PM Check-in
 
-### 13:30 - 14:30 How to Write WeChat Chatbots with 6 Lines of JavaScript
+### 1:30 PM - 2:30 PM How to Build a WeChat Chatbot with 6 Lines of JavaScript
 
-![Huan Li (李卓桓), Jiarui Li (李佳芮)][nodeparty-speaker]
+![Zhuohuan LI (李卓桓), Jiarui LI (李佳芮)][nodeparty-speaker]
 
-**Huan Li (李卓桓)**, Partner at PreAngel, founder of zixia BBS and JiWai.de. Former Chief Scientist at Youku, System Engineer at ChinaRen, and Station Master of Shuimu Tsinghua BBS. Bachelor's degree from Tsinghua University, EMBA from China Europe International Business School. 15 years of internet startup experience, 20 years of programming experience. Author of "Linux Network Programming" (2000), "Complete Anti-Spam Handbook" (2006) and other technical works. Passionate about extreme sports, enjoys making friends with brave, passionate people who embrace new things and constantly challenge themselves. Loves running, skiing, SALSA, MMA, parkour, paragliding and other extreme sports.
+**Zhuohuan LI (李卓桓)**, Partner at PreAngel, founder of zixia BBS and Jiwai.de. Former Chief Scientist at Youku, System Engineer at ChinaRen, and webmaster of Tsinghua University's Shuimu BBS. Bachelor's degree from Tsinghua University and EMBA from CEIBS. 15 years of internet entrepreneurship experience and 20 years of programming experience. Author of "Linux Network Programming" (2000) and "Complete Guide to Anti-Spam" (2006). Passionate about extreme sports and enjoys making friends with brave, passionate people who embrace new challenges. Enjoys running, skiing, salsa, MMA, parkour, paragliding, and other extreme sports.
 
-**Jiarui Li (李佳芮)**, Founder/CEO of Juzi Interactive, Master's in Computer Science from Beijing University of Posts and Telecommunications. Founded wedding O2O platform "AiNiangzi" in 2014, received 5 million angel investment the same year. Former President of IDEA Elite Club and Vice Minister of PR Department of Student Union at Beijing University of Posts and Telecommunications. Won Silver Award at the 2nd Tencent National Internet Innovation and Entrepreneurship Competition, Runner-up at the 3rd Beijing-Tianjin-Hebei Marketing Entrepreneurship Competition. Juzi Interactive is a community operation service solution provider, offering WeChat-based custom development and operational promotion services. Has served listed companies including Amazon, Tencent, JD.com. Jazz dance enthusiast, founded dance video teaching media "WuLi" in spare time, building dance communities. Created original videos with nearly 10 million views across platforms in half a year. Frequently featured as hot picks by Meipai, Tencent Video, Bilibili, and Youku.
+**Jiarui LI (李佳芮)**, Founder/CEO of Juzi Interactive, Master's degree in Computer Science from Beijing University of Posts and Telecommunications. Founded the wedding O2O platform "Ai Niangzi" in 2014, receiving 5 million yuan in angel investment. Former President of IDEA Elite Club and Vice Director of Public Relations at BUPT Student Union. Won the silver medal in the 2nd Tencent National Internet Innovation and Entrepreneurship Competition and runner-up in the 3rd Beijing-Tianjin-Hebei Marketing Entrepreneurship Competition. Juzi Interactive provides community operation solutions, including WeChat-based custom development and operational promotion services. Has served listed companies such as Amazon, Tencent, and JD.com. Jazz dance enthusiast who founded the dance video tutorial platform "Wuli" in her spare time, building a dance community. Original videos reached nearly 10 million views across all platforms within six months. Featured multiple times by Meipai, Tencent Video, Bilibili, and Youku.
 
-#### Talk Content
+#### Talk Overview
 
 1. Why Wechaty
 1. Wechaty from Scratch
@@ -57,38 +56,36 @@ We will prepare for you:
 1. Demo
 1. Q&A
 
-### 15:00 - 16:00 Scenario-based Applications of Chatbots
+### 3:00 PM - 4:00 PM Scenario-based Applications of Chatbots
 
-![Shoukun Wang (王守崑)][nodeparty-speaker2]
+![Shoukun WANG (王守崑)][nodeparty-speaker2]
 
-**Shoukun Wang (王守崑)** @Ein, early practitioner of personalized recommendation systems and related technologies in China. Graduated from Department of Automation, Tsinghua University. One of the early founding team members of Douban, served as Chief Scientist and Vice President of Douban for a long time, responsible for building Douban's personalized recommendation system. Currently entrepreneuring as Founder and CEO of Ein Interactive, focusing on natural language processing and conversational services, providing professional, high-quality conversational robot products to enterprise and individual users.
+**Shoukun WANG (王守崑)** @Ein, early practitioner of personalized recommendation systems and related technologies in China. Graduated from the Department of Automation at Tsinghua University. One of the early founding team members of Douban, served as Chief Scientist and Vice President of Douban for a long time, responsible for building Douban's personalized recommendation system. Currently entrepreneurial, serving as founder and CEO of Ein Interactive, focusing on natural language processing and conversational services, providing professional, high-quality chatbot products to enterprise and individual users.
 
-#### Talk Content
+#### Talk Overview
 
-1. Two major foundations for the rise of Chatbots
-1. Chatbot history, technology and current status
-1. Applicable scenarios for Chatbots
-1. Outlook
+1. Two major foundations for the rise of chatbots
+1. Chatbot history, technology, and current status
+1. Suitable scenarios for chatbots
+1. Future outlook
 
-### 16:20 - 17:20 Barcamp
+### 4:20 PM - 5:20 PM Barcamp
 
-Brief introductions: company, work, interests, technical stack expertise
+Brief introductions: company, work, interests, and tech stack expertise
 
-### After Event
+## After the Event
 
-Those available in the evening can have dinner together nearby.
+Those available in the evening can join for dinner nearby.
 
-Past Events Review: Photos, PPT, Slides <https://git.oschina.net/ubiware/node-party>
+Past Events: Photos, PPT, Slides <https://git.oschina.net/ubiware/node-party>
 
-**Organizer**
+**Organized by:**
 Rockq Community
 
-[nodeparty-banner]: /assets/2016/nodeparty-banner.webp
-[nodeparty-speaker]: /assets/2016/nodeparty-speaker.webp
-[nodeparty-speaker2]: /assets/2016/nodeparty-speaker2.webp
+[nodeparty-banner]: /assets/2016/12-beijing-nodejs-meetup-party-en/nodeparty-banner.webp "Node Party Banner"
+[nodeparty-speaker]: /assets/2016/12-beijing-nodejs-meetup-party-en/nodeparty-speaker.webp "Speakers: Zhuohuan LI and Jiarui LI"
+[nodeparty-speaker2]: /assets/2016/12-beijing-nodejs-meetup-party-en/nodeparty-speaker2.webp "Speaker: Shoukun WANG"
 
 ---
 
----
-
-> Chinese version of this post: [参加Beijing Node.js Party感想]({{ '/2016/12/07/beijing-nodejs-meetup-party/' | relative_url }})
+> Chinese version of this post: [Node Party #18 重新认识聊天机器人]({{ '/2016/12/07/beijing-nodejs-meetup-party/' | relative_url }})

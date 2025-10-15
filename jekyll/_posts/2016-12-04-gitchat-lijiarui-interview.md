@@ -5,7 +5,7 @@ categories: story
 tags:
   - interview
   - news
-image: /assets/2016/gitchat-lijiarui-interview.webp
+image: /assets/2016/12-gitchat-lijiarui-interview-en/gitchat-lijiarui-interview.webp
 hidden: true
 ---
 

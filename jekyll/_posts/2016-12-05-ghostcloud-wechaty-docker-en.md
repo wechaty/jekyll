@@ -6,7 +6,7 @@ tags:
   - code
   - docker
 excerpt: "Learn how to use Docker to run Wechaty WeChat bot framework, from basic setup to deployment with GhostCloud EcOS"
-image: /assets/2016/ghostcloud-banner.webp
+image: /assets/2016/12-ghostcloud-wechaty-docker-en/ghostcloud-banner.webp
 ---
 
 Wechaty (<https://github.com/wechaty/wechaty>) is an open-source WeChat SDK. Based on WeChat's public APIs, it wraps interfaces in a series of encapsulations, providing a series of simple interfaces for developers to build WeChat bots. After communicating with the author and testing it, I found many application scenarios, such as:
@@ -102,10 +102,10 @@ docker logs -f wechaty
 
 Scan the QR code in the logs or copy the URL address to your browser to scan, then use WeChat normally. You can see related information in the terminal.
 
-[ghostcloud-banner]: /assets/2016/ghostcloud-banner.webp
-[ghostcloud-log]: /assets/2016/ghostcloud-log.webp
-[ghostcloud-message]: /assets/2016/ghostcloud-message.webp
-[ghostcloud-qrcode]: /assets/2016/ghostcloud-qrcode.webp
+[ghostcloud-banner]: /assets/2016/12-ghostcloud-wechaty-docker-en/ghostcloud-banner.webp
+[ghostcloud-log]: /assets/2016/12-ghostcloud-wechaty-docker-en/ghostcloud-log.webp
+[ghostcloud-message]: /assets/2016/12-ghostcloud-wechaty-docker-en/ghostcloud-message.webp
+[ghostcloud-qrcode]: /assets/2016/12-ghostcloud-wechaty-docker-en/ghostcloud-qrcode.webp
 
 > Author: [Yan Dong (晏东)](https://github.com/shevyan), Founder & CEO of GhostCloud
 

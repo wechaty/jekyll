@@ -59,3 +59,15 @@ make serve
 ## Maintainers
 
 [wechaty/contributors](https://github.com/orgs/wechaty/teams/contributors/members)
+
+# Asset Management (DRY Principle)
+
+All post-specific assets are now stored in their respective English post folders under `/assets/2016/12-<post-name>-en/`. Old asset files have been removed from `/assets/2016/` and empty directories cleaned up. Please reference images using the new folder structure for maintainability and DRY compliance.
+
+Example:
+
+```yaml
+image: /assets/2016/12-<post-name>-en/<image-file>.webp
+```
+
+For more details, see the migration script or contact the maintainers.

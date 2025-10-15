@@ -5,7 +5,7 @@ categories: event
 tags:
   - talk
   - news
-image: /assets/2016/nodeparty-banner.webp
+image: /assets/2016/12-beijing-nodejs-meetup-party-en/nodeparty-banner.webp
 hidden: true
 ---
 
@@ -80,9 +80,9 @@ hidden: true
 主办
 Rockq社区
 
-[nodeparty-banner]: /assets/2016/nodeparty-banner.webp
-[nodeparty-speaker]: /assets/2016/nodeparty-speaker.webp
-[nodeparty-speaker2]: /assets/2016/nodeparty-speaker2.webp
+[nodeparty-banner]: /assets/2016/12-beijing-nodejs-meetup-party-en/nodeparty-banner.webp
+[nodeparty-speaker]: /assets/2016/12-beijing-nodejs-meetup-party-en/nodeparty-speaker.webp
+[nodeparty-speaker2]: /assets/2016/12-beijing-nodejs-meetup-party-en/nodeparty-speaker2.webp
 
 ---
 

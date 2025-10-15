@@ -7,7 +7,7 @@ tags:
   - news
   - tutorial
   - chatbot
-image: /assets/2016/ruirui-dance.webp
+image: /assets/2016/12-try-to-write-wexinrobot-en/ruirui-dance.webp
 excerpt: A personal story of how dance video creator Jiarui Li solved her community management challenges by building a WeChat chatbot using Wechaty framework with just 6 lines of JavaScript.
 ---
 
@@ -179,7 +179,7 @@ If you're interested in Wechaty and want to communicate, share, and learn togeth
 
 ![qr-code][qr-code]
 
-[ruirui-dance-image]: /assets/2016/ruirui-dance.webp
+[ruirui-dance-image]: /assets/2016/12-try-to-write-wexinrobot-en/ruirui-dance.webp
 [wechaty-pic]: /assets/2017/lijiarui-write-bot-wechaty-pic.webp
 [docker-pull]: /assets/2017/lijiarui-write-bot-docker-pull.webp
 [run-ding]: /assets/2017/lijiarui-write-bot-run-ding.webp
@@ -190,3 +190,7 @@ If you're interested in Wechaty and want to communicate, share, and learn togeth
 ---
 
 > Chinese version of this post: [尝试写微信聊天机器人，以及对chatBot的思考]({{ '/2016/12/10/try-to-write-wexinrobot/' | relative_url }})
+
+---
+
+> Chinese version of this post: [try to write wexinrobot]({{ '/2016/12/10/try-to-write-wexinrobot/' | relative_url }})

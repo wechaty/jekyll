@@ -7,7 +7,7 @@ tags:
   - news
   - chatbot
   - female-developer
-image: /assets/2016/gitchat-lijiarui-interview.webp
+image: /assets/2016/12-gitchat-lijiarui-interview-en/gitchat-lijiarui-interview.webp
 excerpt: An insightful GitChat interview with Jiarui Li, a female frontend engineer, discussing WeChat robots, Wechaty framework, and her entrepreneurial journey in chatbot automation.
 ---
 
@@ -108,3 +108,7 @@ Original article: [GitChat - Chat Transcript - Jiarui Li: A Female Developer Tak
 ---
 
 > Chinese version of this post: [Chat实录｜李佳芮：向前一步的程序媛]({{ '/2016/12/04/gitchat-lijiarui-interview/' | relative_url }})
+
+---
+
+> Chinese version of this post: [gitchat lijiarui interview]({{ '/2016/12/04/gitchat-lijiarui-interview/' | relative_url }})

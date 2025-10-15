@@ -5,7 +5,7 @@ categories: story
 tags:
   - code
   - news
-image: /assets/2016/ruirui-dance.webp
+image: /assets/2016/12-try-to-write-wexinrobot-en/ruirui-dance.webp
 hidden: true
 ---
 
@@ -177,7 +177,7 @@ Wechaty解放了我的一些重复性工作，我也希望能为Wechaty做点什
 
 ![qr-code][qr-code]
 
-[ruirui-dance-image]: /assets/2016/ruirui-dance.webp
+[ruirui-dance-image]: /assets/2016/12-try-to-write-wexinrobot-en/ruirui-dance.webp
 [wechaty-pic]: /assets/2017/lijiarui-write-bot-wechaty-pic.webp
 [docker-pull]: /assets/2017/lijiarui-write-bot-docker-pull.webp
 [run-ding]: /assets/2017/lijiarui-write-bot-run-ding.webp
