@@ -1,5 +1,5 @@
 ---
-title: ' Wechaty Java 移植组件开发 (English translation WIP)'
+title: 'Wechaty Java Component Porting Development'
 author: cunkoulaocai
 categories: project
 tags:
@@ -8,110 +8,106 @@ tags:
   - soc2020
   - ecosystem
 image: /assets/2020/08-java-wechaty-transplant-midpoc-en/java-wechaty-transplant-midpoc.webp
+excerpt: "This post is a mid-term report on porting Wechaty components to Java/Kotlin as part of the Summer 2020 Open Source Promotion Plan. It covers the development of memory-card and state-switch components, API porting, and challenges faced during the process."
 ---
 
-“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。
-旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。
-根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。
-官网：<https://isrc.iscas.ac.cn/summer2020> 官方新闻：<http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html>
-本项目 [Wechaty Java组件移植] 系 暑期2020 支持的开源项目。
+The "Open Source Promotion Plan - Summer 2020" (hereinafter referred to as Summer 2020) is a summer event for college students jointly organized by the Institute of Software, Chinese Academy of Sciences and the openEuler community. It aims to encourage students to actively participate in the development and maintenance of open source software and promote the vigorous development of outstanding open source software communities in China. Participants can also obtain bonuses and trophies from the "Open Source Promotion Plan - Summer 2020" event according to the difficulty and completion of the project.
+Official website: <https://isrc.iscas.ac.cn/summer2020> Official news: <http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html>
+This project [Wechaty Java Component Porting] is an open source project supported by Summer 2020.
 
-## 暑期2020 [Wechaty Java组件移植] POC 成果展示
+## Summer 2020 [Wechaty Java Component Porting] POC Showcase
 
-## [Wechaty Java组件移植]信息
+## [Wechaty Java Component Porting] Information
 
-- 导师：刁政欣
+- Mentor: Zhengxin Diao (刁政欣)
+- Student: Yang Chen (陈炀)
+- Project Name: Wechaty
+- Description: Port the typescript version of wechaty to the java/kotlin platform using java or kotlin
 
-- 学生：陈炀
+- Time planning:
 
-- 项目名称：Wechaty
-
-- 方案描述：用java或者kotlin将typescript版的wechaty移植到java/kotlin平台上
-
-- 时间规划：
-
-  memory-card存储
+  memory-card storage
 
   - 7.1 - 7.19
-  - 该模块移植是项目的基本要求,为了能够满足机器人重新登陆不需要扫码,保存机器人自身信息等功能,需要用到这个组件,这个组件将存储的功能和存储数据的结构相分离,以便能够简单的更换存储方式,支持阿里云oss,华为云obs,亚马逊s3,json存储等,同时提供了易用的api来使用
-  - 基本功能
+  - This module porting is a basic requirement of the project. In order to meet the functions of the robot not needing to scan the code to log in again and saving the robot's own information, this component is needed. This component separates the storage function from the storage data structure, so that the storage method can be easily replaced. It supports Alibaba Cloud OSS, Huawei Cloud OBS, Amazon S3, json storage, etc., and provides easy-to-use APIs.
+  - Basic functions
 
-  state-switch状态机
+  state-switch state machine
 
   - 7.20 - 7.26
-  - state-switch是用于管理异步操作的监视器/保护器,在原本的ts版本中可以通过Promise的特性来比较轻松的实现,在kotlin则需要其他的api来实现,思路 比较清晰,但是要找到合适的实现手段有点麻烦
-  - 基本功能
+  - state-switch is a monitor/protector for managing asynchronous operations. In the original ts version, it can be easily implemented through the characteristics of Promise. In kotlin, other APIs are needed to achieve it. The idea is relatively clear, but it is a bit troublesome to find a suitable implementation method.
+  - Basic functions
 
-  (选做) 其他api移植与测试
+  (Optional) Other API porting and testing
 
   - 7.27 - 8.7
-  - java-wechaty中还有许多api没有实现,api的风格也是仿照js来实现的,后续需要将这些api逐步实现,并且修改其api风格,以更适合java和kotlin等语言
-  - 扩展功能
+  - There are still many APIs in java-wechaty that have not been implemented, and the style of the APIs is also imitated from js. In the follow-up, these APIs need to be gradually implemented and their API style modified to be more suitable for languages ​​such as java and kotlin.
+  - Extended functions
 
-  (选做) 理解底层原理,添加一些新功能
+  (Optional) Understand the underlying principles and add some new functions
 
   - 8.8-8.15
-  - 此部分为选作内容,wechaty还有一些关于miniprogram,红包等功能还未实现,需要能够理解底层,以便进行后续的扩展,逐步增强wechaty的功能
-  - 扩展功能
+  - This part is optional. Wechaty has some functions about miniprogram, red envelopes, etc. that have not been implemented. It is necessary to understand the bottom layer for subsequent expansion and gradually enhance the functions of wechaty.
+  - Extended functions
 
-## 项目进度
+## Project progress
 
-- 已完成工作：
+- Work completed:
 
-1. 完成memory-card和states-witch组件的开发，由于其中一部分涉及到aws，而aws需要visa等银行卡才能注册，所以这个部分虽然编写了但是没有测试，但是我添加了一个阿里云的接口方便使用。
-2. 完成大部分typescript版api的移植，目前应该是几乎所有的ts版本的api都已经移植完毕，当然会有一些bug,并且在api的易用性上还没有达到很好的要求。
-3. 进行了一些现有api的测试，修复一些小bug，当然还有一些bug还没有修复,期待下一阶段开发.
+1. Completed the development of memory-card and states-witch components. Since a part of it involves aws, and aws requires a visa or other bank card to register, this part was written but not tested, but I added an Alibaba Cloud interface for easy use.
+2. Completed the porting of most of the typescript version of the API. At present, almost all the ts version of the API should have been ported. Of course, there will be some bugs, and the ease of use of the API has not yet reached a good requirement.
+3. Conducted some existing API tests and fixed some small bugs. Of course, there are still some bugs that have not been fixed. I look forward to the next stage of development.
 
-- 遇到的问题及解决方案：
+- Problems encountered and solutions:
 
-> 快速学习kotlin并了解程序架构和逻辑
+> Quickly learn kotlin and understand the program architecture and logic
 
-虽然说是`java`移植开发，但根据导师的建议和整个项目的整体性，我还是选择用kotlin开发，但是我之前还没有写过kotlin，我必须立马花些时间来学习kotlin，对于高级特性和有可能会遇到的错误只能遇到了再说了。整个程序逻辑架构还是比较清晰的，虽然还是花了点时间来明白工作流程
+Although it is `java` porting development, according to the mentor's suggestion and the integrity of the entire project, I still choose to use kotlin for development, but I have not written kotlin before, I must immediately spend some time to learn kotlin, for advanced features and possible errors can only be encountered and then said. The entire program logic architecture is still relatively clear, although it still took some time to understand the workflow.
 
-> java和kotlin中的异步支持
+> Asynchronous support in java and kotlin
 
-由于有了async和await以及Promise，js对于异步的支持是更好的，因此对于移植过程中的异步的操作，我们是需要仔细考虑的。当然由于用了kotlin，后续还可以尝试使用协程来进行编写。
+Due to async, await, and Promise, js has better support for asynchrony, so we need to carefully consider the asynchronous operations during the porting process. Of course, since kotlin is used, you can also try to use coroutines for writing later.
 
-> 协程的考虑
+> Consideration of coroutines
 
-在编写state-switch的时候，对于ts版的理解花费了点时间，主要还是因为promise的理解不到位，当理解了工作原理之后，由于kotlin中没有类似的api可以解决，因此花了点时间探索，最后在导师的建议之下，以及考虑到是用kotlin编写的，可以使用协程，暂时决定采用协程加上阻塞队列来实现，目前看来好像实现了效果。
+When writing state-switch, it took some time to understand the ts version, mainly because the understanding of promise was not in place. After understanding the working principle, because there is no similar api in kotlin to solve it, it took some time to explore. Finally, at the suggestion of the mentor, and considering that it was written in kotlin, you can use coroutines. It is temporarily decided to use coroutines plus a blocking queue to achieve it. It seems to have achieved the effect at present.
 
-这个协程还是蛮有意思的，kotlin的协程感觉有些地方还是很难理解的。
+This coroutine is quite interesting. Some parts of kotlin's coroutines are still difficult to understand.
 
-心得体会：在整个项目的后半段由于我这边出现了一点问题，导致拖慢了进度，好在是任务的难度没有很大，导师人也很好。最终不论有没有通过考核，这份参与开源项目的经历，都是值得回味的。
+Experience: In the second half of the project, there was a problem on my side, which slowed down the progress. Fortunately, the difficulty of the task was not very great, and the mentor was also very good. In the end, whether I passed the assessment or not, this experience of participating in an open source project is worthy of recollection.
 
-> 移植这东西我感觉蛮有意思的
+> I think porting is quite interesting
 
-不同的编程语言，有不同的思维方式的碰撞，花几天的时间快速学一门语言并进行实践也是蛮有意思的一件事情，整个移植虽然最主要的考虑到是功能的移植，但是还是要注意api的易用性，ts和java的api的风格还是有不少区别的。
+Different programming languages ​​have different ways of thinking. It is also a very interesting thing to quickly learn a language and practice it in a few days. Although the main consideration for the entire porting is the porting of functions, we must also pay attention to the ease of use of the API. There are still many differences in the API styles of ts and java.
 
-> github的开发流程简单体验
+> Simple experience of github development process
 
-用github的参与到开源社区中是一次很有意思的体验，虽然之前有在同一个小组进行github上的合作，但是流程还是不一样，还有github的CI/CD流程我也是第一次体会到，对于开源社区的会议讨论我也是第一次体会到。
+It is a very interesting experience to participate in the open source community with github. Although I have cooperated on github in the same group before, the process is still different. I also experienced the CI/CD process of github for the first time. I also experienced the meeting discussion of the open source community for the first time.
 
-> 高质量的单元测试
+> High-quality unit testing
 
-说实话我还是不太懂得怎么写出高质量的单元测试，后续要继续学习。
+To be honest, I still don't know how to write high-quality unit tests, and I need to continue to learn in the future.
 
-- 后续工作安排：
+- Follow-up work arrangement:
 
-从目前的进度来看，还是有一些东西需要完成的
+From the current progress, there are still some things to be completed
 
-1. 写一个springboot starter方便springboot项目进行集成，里面应该会有存储的配置以及token的配置
-2. 将memory-card组件进行拆分（不拆分感觉也行）
-3. 继续完善api测试，我试了一下有些api达不到想要的效果，比如tags接口就有问题
-4. 开发新的功能，现有的一些api还有一些未完成，还有一些功能没有实现
-5. 文档的更新和完善（最近好像是更新过文档了，但是还是有一些东西还没有完善)，好像是没有中文文档
+1. Write a springboot starter to facilitate the integration of springboot projects, which should include storage configuration and token configuration
+2. Split the memory-card component (it feels okay not to split it)
+3. Continue to improve api testing, I tried it some apis can not achieve the desired effect, such as the tags interface has problems
+4. Develop new functions, some of the existing apis are still not finished, and some functions have not been realized
+5. Update and improve documentation (it seems that the documentation has been updated recently, but there are still some things that have not been improved), it seems that there is no Chinese documentation
 
-## Demo Day视频
+## Demo Day Video
 
-youtube地址为：<https://www.youtube.com/watch?v=ipRq3kT32wI>
+YouTube link: <https://www.youtube.com/watch?v=ipRq3kT32wI>
 {% include iframe.html src="https://www.youtube.com/watch?v=ipRq3kT32wI" %}
 
-## 联系我们
+## Contact Us
 
-- 项目链接：<https://github.com/cunkoulaocai/java-wechaty>
-- 联系方式：+86 15806082601 | e: <1184016190@qq.com>
+- Project link: <https://github.com/cunkoulaocai/java-wechaty>
+- Contact: +86 15806082601 | e: <1184016190@qq.com>
 
 ---
 
-> Chinese version of this post: [java wechaty transplant midpoc]({{ '/2020/08/17/java-wechaty-transplant-midpoc/' | relative_url }})
+> This is a translated version of the original Chinese post. You can find the original post [here](/2020/08/17/java-wechaty-transplant-midpoc/).

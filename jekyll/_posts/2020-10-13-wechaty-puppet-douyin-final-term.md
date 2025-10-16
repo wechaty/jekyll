@@ -68,3 +68,7 @@ hidden: true
 ### 项目地址
 
 - 项目链接：[https://github.com/gavinwang23/douyin-autojs](https://github.com/gavinwang23/douyin-autojs) / [https://github.com/gavinwang23/wechaty-puppet-douyin](https://github.com/gavinwang23/wechaty-puppet-douyin)
+
+---
+
+> This post is also available in [English](/2020/10/13/wechaty-puppet-douyin-final-term-en/).

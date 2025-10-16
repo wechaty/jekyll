@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: "Wechaty & AWS 全球招募：创意为笔，用代码留下永恒印记！"
 author: aiamber
 categories: article
@@ -65,3 +66,7 @@ AI开发大赛重磅来袭！你的代码，改变世界！
 👉 立即报名，用代码点燃未来！你的每一行灵感，都在重构世界的算法！  
 
 [阅读原文](https://mp.weixin.qq.com/s/xhb-Z-pIqoZ5udIa7evq7A)  
+
+---
+
+> This post is also available in [English](/2025/05/23/wechaty-with-aws2025-en/).

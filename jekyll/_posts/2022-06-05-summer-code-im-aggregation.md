@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: "开源之夏 - IM 应用消息聚合"
 author: tanknee
 categories: project
@@ -123,3 +124,7 @@ docker 的相关文档：[https://docs.docker.com/](https://docs.docker.com/)。
 我自去年使用过 Wechaty 之后就一直有关注 Wechaty 的动向，想着来年考研结束后可以做一波 Wechaty 的[开源之夏](https://summer-ospp.ac.cn/#/org/prodetail/220260301)项目。好巧不巧，今年也给我蹲到了，所以就很有幸能够参与进来。
 
 本项目计划在六月底七月初正式开始施工，按照上文所写的工作量，差不多一个月就可以做出粗略的成品，八月左右开始进行完善和测试工作，并编写相关文档。
+
+---
+
+> This post is also available in [English](/2022/06/05/summer-code-im-aggregation-en/).

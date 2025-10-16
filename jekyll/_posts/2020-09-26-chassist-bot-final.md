@@ -125,3 +125,7 @@ hidden: true
 
 > Author: [@kxz18](https://github.com/kxz18)
 > Code: [@kxz18/CHAssisT](https://github.com/kxz18/CHAssisT)
+
+---
+
+> This post is also available in [English](/2020/09/26/chassist-bot-final-en/).

@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: "wechaty+LLM 助力基层社区自治"
 author: bigbrother666sh
 categories: article
@@ -92,3 +93,7 @@ image: /assets/2023/11-digital-socialworker-assisstant-en/0.webp
 我们也在2023年夏季尝试将此项目进行推广，但并不成功，这里面不存在技术问题，甚至也不存在商务问题（大部分有意向使用该系统的街镇都是有能力承担每年十几万的费用的），更多的阻力来自政务领域的特殊性。当然，另一个很大的因素是，团队至今都只是兼职，在市场和推广上其实也没有投入足够的精力。
 
 但无论如何，我们还是认为这个工作是有价值的，所以我们也在讨论将这个产品进行开源，同时服务更多的自治性组织，我们相信：借科技之力，是可以最大化降低组织的管理工作量的，而管理人员占比的降低是自治的必要条件之一！
+
+---
+
+> This post is also available in [English](/2023/11/21/digital-socialworker-assisstant-en/).

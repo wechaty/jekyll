@@ -10,7 +10,6 @@ tags:
   - ecosystem
 image: /assets/2020/08-java-wechaty-transplant-midpoc-en/java-wechaty-transplant-midpoc.webp
 ---
-hidden: true
 
 “开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。
 旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。
@@ -113,3 +112,5 @@ youtube地址为：<https://www.youtube.com/watch?v=ipRq3kT32wI>
 
 - 项目链接：<https://github.com/cunkoulaocai/java-wechaty>
 - 联系方式：+86 15806082601 | e: <1184016190@qq.com>
+
+> This post is also available in [English](/2020/08/17/java-wechaty-transplant-midpoc-en/).

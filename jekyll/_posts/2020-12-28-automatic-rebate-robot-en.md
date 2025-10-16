@@ -1,34 +1,38 @@
 ---
-title: ' "用wechaty制作返利机器人" (English translation WIP)'
+title: ' "Creating a Rebate Robot Using Wechaty"'
 author: jiangxiaotao1024
 categories: project
 tags:
   - ecommerce
 image: /assets/2020/12-automatic-rebate-robot-en/taokouling.webp
+excerpt: >
+  An e-commerce rebate robot built with Wechaty (TypeScript frontend) and Java backend, automatically identifying Taobao command codes and returning rebate links with multi-level commission distribution.
 ---
 
-## 实现的功能
+> This is a translated version of the original Chinese post. You can find the original post [here](/2020/12/28/automatic-rebate-robot/).
 
-1，通过发送淘口令会自动识别淘口令并返回一个返利链接
-2，通过返利链接支付完商品，该用户会收到预计返利金额
-3，订单交易完成，增加该用户的账户的金额，同时会收到增加的金额和余额提醒。上级代理，上上级代理也会有相应的提成
+## Implemented Features
 
-### 实现方式
+1. Automatically identifies Taobao command codes (淘口令) when sent and returns a rebate link
+2. After payment through the rebate link, the user receives the estimated rebate amount
+3. When the order transaction is completed, the user's account balance is increased, and they receive a notification of the added amount and balance. Upper-level agents and second-level agents also receive corresponding commissions
 
-前台使用ts版本的wechaty与用户进行交互。后台使用java版本大淘客sdk，数据库使用mysql。前台通过在ts导入jar包调用后台接口。
+### Implementation Method
 
-## 缺陷
+The frontend uses the TypeScript version of wechaty to interact with users. The backend uses the Java version of Dataoke SDK, with MySQL as the database. The frontend imports JAR packages in TypeScript to call backend interfaces.
 
-1，无法识别好友推荐人，所以收到好友申请时需要手动往数据库添加代理信息
-2，无法识别交易订单有哪个用户发起，所以需要给每个用户添加一个pid
+## Defects
 
-## 好友模块
+1. Cannot identify friend referrers, so when receiving friend requests, agent information needs to be manually added to the database
+2. Cannot identify which user initiated the transaction order, so a PID needs to be added for each user
 
-同意好友请求后设置该好友备注为wxid，方便后期查找
+## Friend Module
 
-## 消息模块
+After accepting a friend request, set the friend's remark to their wxid for easy lookup later
 
-对收到的文本信息进行解析返回对应的信息，如果调用api无法识别商品id则不返回返利链接;如果识别到商品id，但没有优惠信息返回无优惠;如果有优惠信息返回返利链接；
+## Message Module
+
+Parse received text information and return corresponding information. If the API call cannot identify the product ID, no rebate link is returned; if the product ID is identified but there's no discount information, return "no discount"; if there's discount information, return the rebate link.
 
 ![help](/assets/2020/12-automatic-rebate-robot-en/help.webp)
 ![chaxun](/assets/2020/12-automatic-rebate-robot-en/chaxun.webp)
@@ -36,10 +40,14 @@ image: /assets/2020/12-automatic-rebate-robot-en/taokouling.webp
 ![zhuanqian](/assets/2020/12-automatic-rebate-robot-en/zhuanqian.webp)
 ![taokouling](/assets/2020/12-automatic-rebate-robot-en/taokouling.webp)
 
-## 订单查询模块
+## Order Query Module
 
-登录后触发10s定时器，每隔10s查询这段时间的订单交易信息，解析出支付成功订单的优惠信息以及pid，根据pid查询对应的wxid，对该wxid用户发送预计佣金信息。对支付成功订单给该用户发送佣金信息，并按照比例，同时对上级，上上级发送返利信息。
+After login, trigger a 10-second timer that queries order transaction information for this period every 10 seconds. Parse out the discount information and PID of successfully paid orders. Query the corresponding wxid based on the PID and send estimated commission information to that wxid user. For successfully paid orders, send commission information to the user, and simultaneously send rebate information to upper-level and second-level agents according to the proportion.
 
 ---
 
 > Chinese version of this post: [automatic rebate robot]({{ '/2020/12/28/automatic-rebate-robot/' | relative_url }})
+
+---
+
+> This is a translated version of the original Chinese post. You can find the original post [here](/2020/12/28/automatic-rebate-robot/).

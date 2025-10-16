@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: "5G消息puppet-walnut的最佳实践-5G智能微秘书"
 author: leochen-g
 categories: article
@@ -115,3 +116,7 @@ npm run start
 由工业和信息化部主办，中国信息通信研究院联合5G应用产业方阵、IMT-2020(5G)推进组、中国通信标准化协会以及金砖国家未来网络研究院中国分院共同承办的第五届“绽放杯”5G应用征集大赛已于2022年4月28日正式启动，本届大赛以“5G赋能数字化 扬帆助力新征程”为主题，聚焦行业数字化转型升级、个人应用创新发展、社会数字化公共服务能力提升等重点方向，加速 5G 应用从“样板间”向“商品房”转变，推动5G应用规模化发展。
 
 [更多介绍及参赛方式](https://mp.weixin.qq.com/s/JSReqEBTuShME0Jzskaiog)
+
+---
+
+> This post is also available in [English](/2022/06/12/wechaty-walnut-aibot-en/).

@@ -96,3 +96,7 @@ tags:
 
 - 项目链接：[https://github.com/wechaty/cli]  
 - 联系方式：liuchinggg@gmail.com
+
+---
+
+> This post is also available in [English](/2021/08/26/ospp-mid-term-cli-en/).

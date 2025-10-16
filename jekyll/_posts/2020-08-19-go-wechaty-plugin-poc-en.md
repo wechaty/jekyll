@@ -1,5 +1,5 @@
 ---
-title: ' "暑期2020 [为 go-wechaty 设计实现插件体系] POC 成果展示" (English translation WIP)'
+title: 'Summer 2020: POC Showcase for Designing and Implementing a Plugin System for go-wechaty'
 author: finctive
 categories: project
 tags:
@@ -9,90 +9,89 @@ tags:
   - go
   - ecosystem
 image: /assets/2020/08-go-wechaty-plugin-poc-en/2020-08-19-go-wechaty.webp
+excerpt: "This post showcases the proof-of-concept for a plugin system for go-wechaty, a project from the Summer 2020 Open Source Promotion Plan. It details the design, implementation, and future plans for the plugin architecture."
 ---
 
-“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。
-旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。
-根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。
-官网：[https://isrc.iscas.ac.cn/summer2020](https://isrc.iscas.ac.cn/summer2020) 官方新闻：[http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html](http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html)
-本项目 [为 go-wechaty 设计实现插件体系] 系 暑期2020 支持的开源项目。
+The "Open Source Promotion Plan - Summer 2020" (hereinafter referred to as Summer 2020) is a summer event for college students jointly organized by the Institute of Software, Chinese Academy of Sciences and the openEuler community. It aims to encourage students to actively participate in the development and maintenance of open source software and promote the vigorous development of outstanding open source software communities in China. Participants can also obtain bonuses and trophies from the "Open Source Promotion Plan - Summer 2020" event according to the difficulty and completion of the project.
+Official website: [https://isrc.iscas.ac.cn/summer2020](https://isrc.iscas.ac.cn/summer2020) Official news: [http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html](http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html)
+This project [Design and implement a plug-in system for go-wechaty] is an open source project supported by Summer 2020.
 
-## [为 go-wechaty 设计实现插件体系]信息
+## [Design and implement a plug-in system for go-wechaty] Information
 
-- 导师：丁小雨、丁超飞、李博杰
-- 学生：林昊翰
-- 项目名称：为 go-wechaty 设计实现插件体系
+- Mentors: Xiaoyu Ding (丁小雨), Chaofei Ding (丁超飞), Bojie Li (李博杰)
+- Student: Haohan Lin (林昊翰)
+- Project name: Design and implement a plug-in system for go-wechaty
 
-### 方案描述
+### Description
 
-wechaty 是一款支持多协议的微信接入方案，随着社区多语言生态的建立，吸引了更多的开发者和爱好者的加入；同时需求的推动和技术的发展，插件系统逐渐完善，但是在多语言系统中 Plugin 体系尚未完成，我们希望通过这个任务，能够让更多的人加入 go-wechaty 的建设。
+wechaty is a WeChat access solution that supports multiple protocols. With the establishment of a multi-language ecosystem in the community, it has attracted more developers and enthusiasts to join; at the same time, driven by demand and technological development, the plug-in system has gradually improved, but in a multi-language system, the Plugin system has not yet been completed. We hope that through this task, more people can join the construction of go-wechaty.
 
-目前 go-wechaty examples/ding-dong-bot.go 有一个 ding-dong bot, 但是我们希望这个 ding-dong 是通用的，如果我们的 Plugin 体系能编写出来，也许实现 ding-dong 就只需要一行代码。
-例如：
+At present, go-wechaty examples/ding-dong-bot.go has a ding-dong bot, but we hope that this ding-dong is universal. If our Plugin system can be written, maybe implementing ding-dong will only require one line of code.
+For example:
 
 ```go
 bot.Use(DingDong{})
 ```
 
-go-wechaty 是 Go 语言实现 wechaty 的项目，同样支持多协议接入；同时借助 gorountine 和 channel 的语言特性，实现了更加合理的封装和设计。
+go-wechaty is a project that implements wechaty in Go language, and also supports multi-protocol access; at the same time, with the help of the language features of goroutine and channel, it has achieved a more reasonable encapsulation and design.
 
-### 时间规划
+### Time planning
 
-第一阶段(至8月15日)
+Phase 1 (until August 15)
 
-编写插件机制设计文档。其中，文档包含设计思路，实现逻辑，以及涉及到项目的变更等。根据 Go 语言特性，对插件机制的设计进行改进，并且尝试思考更多可能的方案。如果有需要，还应该编写相应的试验代码。
+Write a plug-in mechanism design document. Among them, the document contains design ideas, implementation logic, and project changes involved. According to the characteristics of the Go language, the design of the plug-in mechanism is improved, and more possible solutions are tried to be considered. If necessary, corresponding experimental code should also be written.
 
-第二阶段(至9月30日)
+Phase 2 (until September 30)
 
-根据第一阶段的设计文档编写代码，实现 go-wechaty 的插件机制；使用 go-wechaty 插件机制编写一个插件 Demo。
+Write code according to the design document of the first stage to realize the plug-in mechanism of go-wechaty; use the go-wechaty plug-in mechanism to write a plug-in Demo.
 
-## 项目进度
+## Project progress
 
-每周开发进度报告：[为 go-wechaty 设计实现 插件体系 · Issue #9 · wechaty/summer-of-code](https://github.com/wechaty/summer-of-code/issues/9)
+Weekly development progress report: [Design and implement a plug-in system for go-wechaty · Issue #9 · wechaty/summer-of-code](https://github.com/wechaty/summer-of-code/issues/9)
 
-在每周的进度报告中，能看到我开发项目的**详细过程以及进展**。
+In the weekly progress report, you can see the **detailed process and progress** of my project development.
 
-项目相关的代码仓库：
+Project-related code repositories:
 
-- 插件机制开发分支 [FINCTIVE/go-wechaty](https://github.com/FINCTIVE/go-wechaty/tree/plugin)
-- 插件示例代码仓库 [FINCTIVE/wechaty-demo-plugin](https://github.com/FINCTIVE/wechaty-demo-plugin)
+- Plug-in mechanism development branch [FINCTIVE/go-wechaty](https://github.com/FINCTIVE/go-wechaty/tree/plugin)
+- Plug-in example code repository [FINCTIVE/wechaty-demo-plugin](https://github.com/FINCTIVE/wechaty-demo-plugin)
 
-### 已完成工作
+### Work completed
 
-- 目前已经进行了 go-wechaty 插件机制的初步设计，并且编写了[相关文档](https://github.com/wechaty/summer-of-code/issues/9#issuecomment-673422731)。现在的插件设计仍需要继续改进迭代。
-- 原定第二阶段开始编写代码，但为了表述清晰、试验可行性，我已经编写实现了已有设计的代码。
+- At present, the preliminary design of the go-wechaty plug-in mechanism has been carried out, and [related documents](https://github.com/wechaty/summer-of-code/issues/9#issuecomment-673422731) have been written. The current plug-in design still needs to be continuously improved and iterated.
+- It was originally planned to start writing code in the second stage, but in order to express clearly and test feasibility, I have already written and implemented the code of the existing design.
 
-根据原定方案和时间规划，我认为我有完成度不足的方面，也有超前的方面；总体来说是合格的。
+According to the original plan and time plan, I think I have some aspects that are not complete enough, and some aspects that are ahead of schedule; overall, it is qualified.
 
-### 遇到的问题及解决方案
+### Problems encountered and solutions
 
-- 参与开源软件供应链点亮计划遇到的第一个问题是：如何参与开源社区、为开源社区做贡献？
+- The first problem encountered in participating in the open source software supply chain lighting plan is: how to participate in the open source community and contribute to the open source community?
 
-这是一个“从0到1”的问题。我在大学的前两年时间里并没有参与过大项目的开发，更别提要求较高的开源项目。开源项目的远程协作开发对我来说有极大吸引力，但我一直没有一个合适的机会参与其中（水平不足、不知道如何参与等情况让我屡次放弃跨出第一步）。本届开源软件供应链点亮计划正好提供了这次机会，让我参与到 Wechaty 社区中进行项目开发。Wechaty 社区是一个包容度很高的社区，社区内的导师们对学生提出的问题都会耐心解答。这次活动的经历增加了我参与开源软件开发的经验，同时争强了我的沟通交流能力。在以后的开发历程中，我会为继续为开源社区贡献代码。
+This is a "from 0 to 1" problem. I have not participated in the development of large projects in the first two years of college, let alone open source projects with higher requirements. The remote collaborative development of open source projects is very attractive to me, but I have never had a suitable opportunity to participate in it (insufficient level, not knowing how to participate, etc. have made me give up taking the first step many times). This open source software supply chain lighting plan just provided this opportunity for me to participate in the project development in the Wechaty community. The Wechaty community is a very inclusive community, and the mentors in the community will patiently answer the questions raised by the students. The experience of this event has increased my experience in developing open source software, and at the same time strengthened my communication and communication skills. In my future development process, I will continue to contribute code to the open source community.
 
-- 在开发过程中，Go 程序设计对我来说有一定难度。
+- In the development process, Go program design is a certain degree of difficulty for me.
 
-我的解决方案主要是自己学习、查阅资料。对于部分问题，社区里的导师们给了我很大帮助。
+My solution is mainly to learn and consult materials by myself. For some problems, the mentors in the community have given me a lot of help.
 
-### 后续工作安排
+### Follow-up work arrangement
 
-按照原定计划继续开发、迭代。
+Continue to develop and iterate according to the original plan.
 
-## 导师评审结果
+## Mentor review results
 
-- 项目完成度：已完成大部分编码工作，期待合入主干和收尾工作。
-- 学生参与度：完成了 90% 的设计工作，和 100% 的编码工作；能够积极参与相关任务。
-- 代码贡献量：在导师的指导下，独立完成多语言项目Go-Wechaty Plugin设计和编码工作。
-- 综合评价及建议：
-  - 评价：昊翰在项目过程中计划清晰，每周进度报告都有相应的成果和进度；前期准备了初期的设计文档，并根据文档进行相关代码实现；在实现中发现了前期设计的不足与偏差，能够在导师的沟通和学习中，完成优化。
-  - 建议：社区具有很高的包容和自由，你可以随意的提交代码请求到主干，只有能够达到一定的完整度就会被合入主干，如果没有达到，也可以得到其他贡献者的帮助；还有些合入主干的工作尚未完成，期待你的成果。
-- 最终评审结果：通过
+- Project completion: Most of the coding work has been completed, and I look forward to merging into the main branch and finishing the work.
+- Student participation: Completed 90% of the design work and 100% of the coding work; able to actively participate in related tasks.
+- Code contribution: Under the guidance of the mentor, independently completed the design and coding of the multi-language project Go-Wechaty Plugin.
+- Comprehensive evaluation and suggestions:
+  - Evaluation: Haohan has a clear plan during the project, and the weekly progress report has corresponding results and progress; the initial design document was prepared in the early stage, and the relevant code was implemented according to the document; the shortcomings and deviations of the early design were found in the implementation, and he was able to complete the optimization through communication and learning with the mentor.
+  - Suggestion: The community is very inclusive and free. You can submit code requests to the main branch at will. As long as it can reach a certain degree of completeness, it will be merged into the main branch. If it is not reached, you can also get help from other contributors; there is still some work to be merged into the main branch, and I look forward to your results.
+- Final review result: Pass
 
-## 联系我们
+## Contact us
 
-- 项目链接：[wechaty/go-wechaty](https://github.com/wechaty/go-wechaty)
-- 联系方式：finctive@foxmail.com
+- Project link: [wechaty/go-wechaty](https://github.com/wechaty/go-wechaty)
+- Contact: finctive@foxmail.com
 
 ---
 
-> Chinese version of this post: [go wechaty plugin poc]({{ '/2020/08/19/go-wechaty-plugin-poc/' | relative_url }})
+> This is a translated version of the original Chinese post. You can find the original post [here](/2020/08/19/go-wechaty-plugin-poc/).

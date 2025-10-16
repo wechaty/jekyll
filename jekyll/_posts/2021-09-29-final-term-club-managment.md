@@ -91,3 +91,7 @@ tags:
 
 - 项目链接：<https://github.com/mangguo188/wechaty-club-management>  
 - 联系方式：1017137803@qq.com
+
+---
+
+> This post is also available in [English](/2021/09/29/final-term-club-managment-en/).

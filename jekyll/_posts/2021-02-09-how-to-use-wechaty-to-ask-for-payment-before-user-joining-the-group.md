@@ -79,3 +79,7 @@ npm run serve
 2021年02月09日
 
 > 作者: [程序员LIYI](https://yishulun.com)，首发于公众号: [一个小小智能机器人：帮我们自动拉人，自动核实付费，自动将收款转到个人银行卡](https://mp.weixin.qq.com/s/TUKmK7IgJElECt7hNq5QEA)。以下内容重发时有修改。
+
+---
+
+> This post is also available in [English](/2021/02/09/how-to-use-wechaty-to-ask-for-payment-before-user-joining-the-group-en/).

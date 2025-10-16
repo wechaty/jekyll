@@ -1,5 +1,5 @@
 ---
-title: ' "暑期2020 [基于开放 API 封装 Wechaty 接口下的企业微信聊天机器人] POC 成果展示" (English translation WIP)'
+title: 'Summer 2020: POC Showcase for WeCom Chatbot Based on Wechaty Interface with Open API'
 author: sapio-s
 categories: project
 image: /assets/2020/08-puppet-work-midterm-en/pic2.webp
@@ -9,88 +9,86 @@ tags:
   - puppet-provider
   - wecom
   - ecosystem
+excerpt: "This post showcases the mid-term progress of developing a Wechaty puppet for WeChat Work (WeCom) platform, allowing developers to switch to WeCom functionality by simply changing a variable."
 ---
 
-本项目计划针对企业微信平台开发一个puppet，让 Wechaty 开发者可以仅仅通过改变一个变量，就能够切换使用企业微信的功能。
+This project plans to develop a puppet for the WeChat Work (WeCom) platform, allowing Wechaty developers to switch to using WeCom functionality by simply changing a variable.
 
-## 暑期2020 [基于开放 API 封装 Wechaty 接口下的企业微信聊天机器人] POC 成果展示
+## Summer 2020 [WeCom Chatbot Based on Wechaty Interface with Open API] POC Showcase
 
-## 暑期2020
+## Summer 2020
 
-“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。
-旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。
-根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。
-官网：<https://isrc.iscas.ac.cn/summer2020> 官方新闻：<http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html>
-本项目 [基于开放 API 封装 Wechaty 接口下的企业微信聊天机器人] 系 暑期2020 支持的开源项目。
+The "Open Source Promotion Plan - Summer 2020" (hereinafter referred to as Summer 2020) is a summer event for college students jointly organized by the Institute of Software, Chinese Academy of Sciences and the openEuler community. It aims to encourage students to actively participate in the development and maintenance of open source software and promote the vigorous development of outstanding open source software communities in China. Participants can also obtain bonuses and trophies from the "Open Source Promotion Plan - Summer 2020" event according to the difficulty and completion of the project.
+Official website: <https://isrc.iscas.ac.cn/summer2020> Official news: <http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html>
+This project [WeCom Chatbot Based on Wechaty Interface with Open API] is an open source project supported by Summer 2020.
 
-## [基于开放 API 封装 Wechaty 接口下的企业微信聊天机器人]信息
+## [WeCom Chatbot Based on Wechaty Interface with Open API] Information
 
-- 导师：高原
-- 学生：谢昱清
-
-- 项目名称：基于开放 API 封装 Wechaty 接口下的企业微信聊天机器人
-- 方案描述：
-- 时间规划：
-  - 准备工作
+- Mentor: Yuan Gao (高原)
+- Student: Yuqing Xie (谢昱清)
+- Project name: WeCom Chatbot Based on Wechaty Interface with Open API
+- Description:
+- Time planning:
+  - Preparation work
     - 2020.7.1 - 2020.7.19
-      - 掌握相关技术栈（typescript等），了解puppet构造。
-      - 与企业微信建立连接，完成node.js到企业微信的信息通路
+      - Master related technology stacks (typescript, etc.), understand puppet structure.
+      - Establish connection with WeCom, complete the information path from node.js to WeCom
     - 2020.7.20 - 2020.8.5
-      - 包括对话的加密解密，相关环境配置，node.js与微信SDK的交互。完成node.js进行企业微信消息拉取的demo。
-      - 注：原计划于2020.7.26完成，但是由于对预期成果理解有误，进展方向出现了偏差，延期一星期。
-      - 实现 puppet 上各个类型的消息接口
+      - Including encryption and decryption of conversations, related environment configuration, interaction between node.js and WeChat SDK. Complete a demo of node.js pulling WeCom messages.
+      - Note: Originally planned to be completed on 2020.7.26, but due to a misunderstanding of the expected results, the progress direction deviated, and it was postponed for one week.
+      - Implement message interfaces of various types on puppet
     - 2020.8.6 - 2020.8.30
-      - 正式开发puppet。完成状态函数，消息的读取及消息的存储等内容。可能需要拓展原本puppet的数据结构。其中第一周完成逻辑设计及基本的消息拉取。
-      - 注：企业微信puppet仅负责拉取消息，不必完成完整的交互过程，因此可能需要单独设计对应的bot进行测试。
-      - 定时读取消息，并在读取消息之后触发消息事件
+      - Officially develop puppet. Complete status functions, message reading and message storage. It may be necessary to expand the data structure of the original puppet. The first week completes the logic design and basic message pull.
+      - Note: WeCom puppet is only responsible for pulling messages, and does not need to complete the complete interaction process, so it may be necessary to design a corresponding bot separately for testing.
+      - Periodically read messages and trigger message events after reading messages
     - 2020.8.31 - 2020.9.13
-      - 完成企业微信puppet的所有所需功能，进行收尾工作。
-      - 企业微信会话存档 puppet 的使用文档
+      - Complete all required functions of WeCom puppet and perform finishing work.
+      - Usage documentation for WeCom session archive puppet
     - 2020.9.14 - 2020.9.20
-      - 在原有的文档上，增加企业微信puppet相关的内容。
+      - Add WeCom puppet-related content to the original documentation.
 
-## 项目进度
+## Project Progress
 
-- 已完成工作：
-  - 运用企业微信提供的API接口完成了消息的加密解密以及跨语言的信息传递；
-  - 完成了基本消息类型（text，markdown等文本信息）的封装；
-  - 简单配置了参数及内部逻辑，可以定时拉取形成“即时沟通”的效果；
-  - 完成了基础功能的demo。
+- Work completed:
+  - Used the API interface provided by WeCom to complete message encryption and decryption and cross-language information transmission;
+  - Completed the encapsulation of basic message types (text, markdown and other text information);
+  - Simply configured parameters and internal logic, which can be pulled regularly to form the effect of "instant communication";
+  - Completed the demo of basic functions.
 
-- 遇到的问题及解决方案：
-  - 对项目需求不明确，前期缺乏和导师的有效沟通，导致有一两周的进展与目标方向无关，成为了无用功。后期应当积极与导师沟通，尽快解决存疑的问题，避免出现类似的情况。
-  - 使用全新技术栈，除了需要花费较多时间入门外，在配置环境等方面出现了大量问题，有些甚至在网络上都无法搜索到解决方式。例如安装node-ffi时遇到的几个少见的安装bug：
-    - 编译时没有binding.cc这个文件，需要自己建一个空文件；
-    - node和npm需要降级，否则无法成功安装编译ffi/ref；
-    - 如果用C++编译ffi的example（factorial.c），需要更改宏结构，否则会报“Error: Dynamic Symbol Retrieval Error: Win32 error 127”。
+- Problems encountered and solutions:
+  - The project requirements were unclear, and there was a lack of effective communication with the mentor in the early stage, which led to one or two weeks of progress that had nothing to do with the target direction and became useless. In the later stage, we should actively communicate with the mentor to solve the doubtful problems as soon as possible to avoid similar situations.
+  - Using a brand new technology stack, in addition to spending a lot of time getting started, there were a lot of problems in configuring the environment, some of which could not even be searched for solutions on the Internet. For example, several rare installation bugs encountered when installing node-ffi:
+    - There is no binding.cc file during compilation, and you need to create an empty file yourself;
+    - Node and npm need to be downgraded, otherwise ffi/ref cannot be successfully installed and compiled;
+    - If you compile ffi's example (factorial.c) with C++, you need to change the macro structure, otherwise it will report "Error: Dynamic Symbol Retrieval Error: Win32 error 127".
 
-- 后续工作安排：
-  目前对于项目结构和项目需求已经较为明确，可以加快开发的进度。由于在撰写时间规划时，对于项目的要求有一些误解，因此后期工作安排进行了调整。
+- Follow-up work arrangement:
+  At present, the project structure and project requirements are relatively clear, and the development progress can be accelerated. Due to some misunderstandings about the project requirements when writing the time plan, the later work arrangements have been adjusted.
   - 8.17-8.23
-    - 引入manager，对puppet内部功能解耦合；
-    - 完成企业微信“获取媒体文件”的功能封装；
-    - 改善数据存储方式，可能将引入缓存。
+    - Introduce manager to decouple puppet's internal functions;
+    - Complete the function encapsulation of WeCom's "Get media files";
+    - Improve the data storage method, which may introduce caching.
   - 8.24-8.30
-    - 完成企业微信中图片、语音、视频等媒体消息格式的封装。
+    - Complete the encapsulation of media message formats such as pictures, voice, and video in WeCom.
   - 8.31-9.06
-    - 完成企业微信“所有消息格式”列表中所有格式的封装；（由于种类较wechaty定义的多，因此可能需要修改部分消息的存储格式）
-    - 视情况完成企业微信“外部联系人”等消息的获取。（应当是无法直接拉取到的）
+    - Complete the encapsulation of all formats in the WeCom "All message formats" list; (Since there are more types than those defined by wechaty, it may be necessary to modify the storage format of some messages)
+    - Complete the acquisition of messages such as WeCom "external contacts" as appropriate. (Should not be directly pulled)
   - 9.07-9.13
-    - 完成puppet中剩余函数的处理；
-    - 视情况完成企业微信“获取会话同意情况”、“开启成员列表”等功能的封装。
+    - Complete the processing of the remaining functions in puppet;
+    - Complete the encapsulation of WeCom's "Get session consent status", "Enable member list" and other functions as appropriate.
   - 9.14-9.20
-    - 打包发布npm包，撰写使用文档。
+    - Package and publish npm package, write usage documentation.
   - 9.21-9.27
-    - 完善项目功能，撰写最终报告。
+    - Improve project functions and write final report.
 
-## 联系我们
+## Contact us
 
-- 项目链接：<https://github.com/Sapio-S/wechaty-puppet-official/>
-- 联系方式：1205402283@mail.qq.com
+- Project link: <https://github.com/Sapio-S/wechaty-puppet-official/>
+- Contact: 1205402283@mail.qq.com
 
 > Author: [@Sapio-S](https://github.com/Sapio-S) Learning & practicing.
 > Code: [@code](https://github.com/Sapio-S/wechaty-puppet-official)
 
 ---
 
-> Chinese version of this post: [puppet work midterm]({{ '/2020/08/19/puppet-work-midterm/' | relative_url }})
+> This is a translated version of the original Chinese post. You can find the original post [here](/2020/08/19/puppet-work-midterm/).

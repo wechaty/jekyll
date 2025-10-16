@@ -1,5 +1,5 @@
 ---
-title: ' "暑期2020 [基于python-wechaty的群聊助手机器人] POC 成果展示" (English translation WIP)'
+title: 'Summer 2020: POC Showcase for Python-Wechaty Group Chat Assistant Bot'
 author: kxz18
 categories: project
 image: /assets/2020/08-python-wechaty-groupchat-assistant-bot-poc-en/header.webp
@@ -8,99 +8,82 @@ tags:
   - summer-2020
   - summer-of-wechaty
   - productivity
+excerpt: "This post showcases the proof-of-concept for a Python-Wechaty based group chat assistant bot, a project from the Summer 2020 Open Source Promotion Plan. The bot features plugins for message tagging, scheduled messages, and group member management."
 ---
 
-“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。
-旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。
-根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。
-官网：[https://isrc.iscas.ac.cn/summer2020](https://isrc.iscas.ac.cn/summer2020) 官方新闻：[http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html](http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html)
-本项目 [项目名称] 系 暑期2020 支持的开源项目。
+The "Open Source Promotion Plan - Summer 2020" (hereinafter referred to as Summer 2020) is a summer event for college students jointly organized by the Institute of Software, Chinese Academy of Sciences and the openEuler community. It aims to encourage students to actively participate in the development and maintenance of open source software and promote the vigorous development of outstanding open source software communities in China. Participants can also obtain bonuses and trophies from the "Open Source Promotion Plan - Summer 2020" event according to the difficulty and completion of the project.
+Official website: [https://isrc.iscas.ac.cn/summer2020](https://isrc.iscas.ac.cn/summer2020) Official news: [http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html](http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html)
+This project [Project Name] is an open source project supported by Summer 2020.
 
 Code: [@kxz18/python-wechaty-groupchat-bot](https://github.com/kxz18/python-wechaty-groupchat-bot)
 
-## [基于python-wechaty的群聊助手机器人]信息
+## [python-wechaty-based group chat assistant robot] Information
 
-- 导师：吴京京
-
-- 学生：孔祥哲
-
-- 项目名称：基于python-wechaty的群聊助手机器人
-
-- 方案描述：
-
-  本项目需要基于python-wechaty实现一个群聊助手机器人。该机器人主要由四个插件组成。第一个插件是群聊消息打标插件，通过群成员引用重要消息回复机器人的方式记录重要信息，以便之后以问答的方式进行查找。在基本功能开发完成之后将用深度学习的方法优化问答的容错性，从而提升交互水平。第二个插件是定时消息插件，用于定时消息的发放。第三个插件是群成员的管理插件，当有新人进群时进行欢迎，当一定人数群成员对某位群成员言行表示不适时自动从群聊中删除该位群成员。第四个插件用于提升交互，为帮助系统插件，提供自定义的功能文档，辅助前三个插件工作。四个插件中第一个插件是项目的基本要求。
-
-  项目主要分为四个阶段进行。第一阶段是基本功能的实现，也就是群聊消息打标插件的实现。第二阶段是扩展功能的实现，主要实现定时消息插件和群成员的管理插件。第三阶段优化交互性能，实现帮助系统插件，利用深度学习对消息打标插件的问答系统进行优化。最后是选做阶段，在项目计划完成后如果还有时间，进行rasa聊天机器人api的对接，丰富插件功能。
-
-- 时间规划:
-
-  - 群聊消息打标插件
+- Mentor: Jingjing Wu (吴京京)
+- Student: Xiangzhe Kong (孔祥哲)
+- Project name: python-wechaty-based group chat assistant robot
+- Description:
+  This project needs to implement a group chat assistant robot based on python-wechaty. The robot is mainly composed of four plug-ins. The first plug-in is a group chat message tagging plug-in, which records important information by group members quoting important messages and replying to the robot, so that it can be searched in a question-and-answer manner later. After the basic functions are developed, deep learning methods will be used to optimize the fault tolerance of question and answer, thereby improving the level of interaction. The second plug-in is a timed message plug-in for the distribution of timed messages. The third plug-in is a group member management plug-in. When a new person enters the group, they will be welcomed. When a certain number of group members express discomfort with a certain group member's words and deeds, the group member will be automatically deleted from the group chat. The fourth plug-in is used to enhance interaction, as a help system plug-in, to provide customized functional documents to assist the first three plug-ins. The first of the four plug-ins is the basic requirement of the project.
+  The project is mainly divided into four stages. The first stage is the realization of basic functions, that is, the realization of the group chat message tagging plug-in. The second stage is the realization of extended functions, mainly realizing the timed message plug-in and the group member management plug-in. The third stage optimizes the interactive performance, implements the help system plug-in, and uses deep learning to optimize the question-and-answer system of the message tagging plug-in. The last is the optional stage. If there is still time after the project plan is completed, the rasa chatbot api will be connected to enrich the plug-in functions.
+- Time planning:
+  - Group chat message tagging plugin
     - 7.1 - 7.19
-    - 该模块为本项目的基本要求，需要实现通过引用消息进行回复对重要的群聊消息进行打标，并存入本地的数据库。在对应问题被提出时机器人能通过搜索存储的打标消息给出相应的回答，如果匹配的答案置信度不高，则提供可能的关键词向用户进行确认。同时支持展示全部或一定时间段内的打标消息，用户可以对其中的消息进行手动删除或定时删除，打标消息本身也可以提供有效期参数，在过了有效期后自动删除。后期提供帮助系统，用户可随时查看不同功能的帮助信息。
-  - 基本功能
-  - 定时消息插件
+    - This module is the basic requirement of this project. It is necessary to realize the marking of important group chat messages by quoting messages for reply, and store them in the local database. When the corresponding question is raised, the robot can give the corresponding answer by searching the stored marked messages. If the confidence of the matched answer is not high, it will provide possible keywords to confirm with the user. At the same time, it supports displaying all or a certain period of marked messages. Users can manually delete or regularly delete them. The marked messages themselves can also provide a validity period parameter, which will be automatically deleted after the validity period. In the later stage, a help system is provided, and users can view the help information of different functions at any time.
+  - Basic functions
+  - Timed message plugin
     - 7.20 - 7.26
-    - 用户指定消息内容和发送时间，由机器人定时发出消息。
-    - 扩展功能
-  - 群成员管理插件
+    - The user specifies the message content and sending time, and the robot sends the message regularly.
+    - Extended functions
+  - Group member management plugin
     - 7.27 - 8.2
-    - 进行踢人和进群欢迎的管理，踢人要求3位以上群成员对某人表示不满（群成员总共只有3人以下或4人时分别需要1人和2人表示不满）。此插件需要机器人拥有相关的权限。
-    - 扩展功能
-  - 对前几个模块的交互方面进行提升
+    - Manage kicking people and welcoming people into the group. Kicking people requires more than 3 group members to express dissatisfaction with someone (when there are only less than 3 or 4 group members in total, 1 and 2 people need to express dissatisfaction respectively). This plug-in requires the robot to have relevant permissions.
+    - Extended functions
+  - Improve the interaction of the first few modules
     - 8.3 - 8.23
-    - 对交互方面进行统一优化，提高解析用户命令时的容错性，目前已有的想法是尝试用深度学习方法对问答系统的匹配准确性进行提升（在基础版本中使用 cosine 相似度对问题和答案进行匹配）、在用户命令解析失败但和某些模式很相近时进行确认等。同时该过程中会不断模拟用户场景发现机器人在交互上不够人性化的地方并进行修正。
-    - 扩展功能
-  - （选做）rasa chat bot 插件
+    - The interaction will be uniformly optimized to improve the fault tolerance when parsing user commands. The current idea is to try to use deep learning methods to improve the matching accuracy of the question-and-answer system (in the basic version, cosine similarity is used to match questions and answers), and to confirm when the user command parsing fails but is very similar to some patterns. At the same time, the process will continuously simulate user scenarios to find out where the robot is not user-friendly in interaction and correct it.
+    - Extended functions
+  - (Optional) rasa chat bot plugin
     - 8.24 - 8.31
-    - 接入rasa chat bot 的API，此为选做内容，如果在以上内容都完成且仍有较充裕的时间的情况下，可以考虑尝试进行制作。
-    - 选做内容
+    - Access the API of the rasa chat bot. This is optional. If all the above contents are completed and there is still plenty of time, you can consider trying to make it.
+    - Optional content
 
-## 项目进度
+## Project progress
 
-- 已完成工作：
-  目前已经完成四个插件的开发以及对应的单元测试。即项目的前两个阶段已经完成，第三阶段完成一部分，正在进行中。
-
-  目前已经制作了presentation对项目的功能和结构做简单讲解:
+- Work done:
+  At present, the development of four plug-ins and corresponding unit tests have been completed. That is, the first two stages of the project have been completed, and the third stage has been partially completed and is in progress.
+  At present, a presentation has been made to briefly explain the function and structure of the project:
   
   {% include iframe.html src="https://www.youtube.com/embed/WlxClO3C_Sc" %}
 
-  对已经实现的功能也进行了live coding演示，演示内容见：
+  A live coding demonstration of the implemented functions was also carried out. The demonstration content is as follows:
 
   {% include iframe.html src="https://www.youtube.com/embed/TcsK58aokUA" %}
 
-- 遇到的问题及解决方案：
+- Problems encountered and solutions:
+  In the development process, there are mainly two types of problems, one is technical problems, and the other is the choice of software architecture.
+  Technical problems are mainly due to unfamiliarity with third-party libraries. For example, in the development process, I was not familiar with the python-wechaty interface and could not get the information I wanted quickly and accurately, and I did not know how to use the async function as a callback function when using apscheduler. Since python-wechaty is still in the development stage and the documentation is not perfect, the problem is mainly to refer to the code on github, trace the relevant classes and functions to see the code to solve the problem, and if it can't be solved or the solution is not correct, I will directly consult the mentor. For third-party libraries like apscheduler, there are more complete documents, so I can directly seek answers from the documents. There are also some multi-threading problems, such as the multi-threading access problem caused by keeping the connection with the database after modifying the database (passing the connection with the database from the main thread to the sub-thread). This kind of problem will be solved by directly searching for a more template-like writing method on the Internet. Another problem is that a WeChat account is required to access WeChat for testing. When I first started testing, it was always easy to be blocked by Tencent. After communicating with my mentor, I raised the account for a long time (simulating human behavior), and finally I could use it to hang up the robot for testing.
+  In terms of software architecture selection, since I don't have much experience in software architecture, I will first design some architectures with my existing knowledge, and then communicate with my mentor whether such architectures are reasonable and ask him to give some suggestions. For some common architecture problems, I will also search for traditional architecture patterns to imitate.
+  In general, most of the problems can be solved. Generally, solutions can be found from documents, github issues, the code itself, various forums and blogs. At the same time, you should communicate more with your mentor. The mentor has rich experience and can give more efficient answers to many questions. Communicating more with your mentor can not only solve problems, but also learn a lot of new things.
 
-  在开发过程中主要遇到的是两类问题，一类是技术问题，另一类是对软件架构的选择。
+- Follow-up work arrangement:
+  The follow-up work is consistent with the previous plan on the route, and since the completion date of the previous tasks is earlier than expected, the overall plan can be moved forward.
 
-  技术方面的问题主要在于对第三方库不熟悉。例如在开发过程中对python-wechaty接口不熟悉，无法快速准确拿到想要的信息，以及使用apscheduler时不知如何用async的函数作为回调函数。由于python-wechaty目前还处于开发阶段，文档还不完善，因此遇到问题主要直接参考github上的代码，沿着相关的类和函数向上追溯看代码解决问题，实在解决不了或者无法确定解决方法是否正确的会直接向导师咨询。而像apscheduler这类第三方库有较为完善的文档，因此直接从文档中寻求答案。也有一些多线程方面的问题，例如因修改数据库后一直保留与数据库的连接而产生的多线程访问问题（把与数据库的连接从主线程传到了子线程中），这类就会直接上网搜索比较模板的写法来解决。还有一个问题是接入微信进行测试需要一个微信号，刚开始进行测试的时候总是容易被腾讯封锁，在与导师交流后养了很久的帐号（模拟人类行为），最后才能用来挂机器人测试。
+## Contact us
 
-  而在软件架构选择方面，由于自己软件架构的经验不多，所以会先以自己已有的知识设计一些架构，然后和导师交流这样的架构是否合理，请他给出一些建议。对于一些比较常见的架构问题，我也会自己搜索一下传统的架构模式进行模仿。
+- Project link: [https://github.com/kxz18/python-wechaty-groupchat-bot](https://github.com/kxz18/python-wechaty-groupchat-bot)
+- Contact: +86 15068701650 | e: 15068701650@163.com
 
-  总的来说，问题大多都是可以解决的，一般从文档、github issue、代码本身、各类论坛和博客中总能找到解决方法。同时也要多和导师交流，导师的经验比较丰富，对很多问题都能给出比较高效的解答，多和导师交流不仅能把问题解决，也能学到很多新的东西。
+## Mentor review
 
-- 后续工作安排：
-  后续工作在路线上与之前计划的一致，同时由于前面的任务完成日期比预期提早，因此整体计划可以前移。
+### Review object
 
-## 联系我们
+- Review content: *Interim report*
+- Submitter: *Xiangzhe Kong (孔祥哲)*
 
-- 项目链接：[https://github.com/kxz18/python-wechaty-groupchat-bot](https://github.com/kxz18/python-wechaty-groupchat-bot)
-- 联系方式：+86 15068701650 | e: 15068701650@163.com
+### Review results
 
-## 导师评审
+- Project completion: *Xiangzhe Kong (孔祥哲) quickly completed most of the functions according to the original project requirements, and the code quality is very good. During the period, he kept in close contact with me, actively consulted questions, and solved various problems in the project. At present, the project has come to an end, and the remaining work is the development of additional expansion functions of the project and some code testing.*
+- Student participation: *Xiangzhe Kong (孔祥哲) has been developing with high efficiency since the beginning of the project, has enough code submissions every day, actively completes the project functions, and can accurately analyze the various problems in the project. Basically, the whole process is led by the student, and I am just here to solve the problems he raised.*
+- Code contribution: *The student undertakes the main work of the project, including in-depth analysis of requirements, module development and discussion of expansion modules. I mainly play a guiding role to solve some of the problems raised by the student.*
 
-### 评审对象
-
-- 评审内容：*中期报告*
-- 提交人：*孔祥哲*
-
-### 评审结果
-
-- 项目完成度：*孔祥哲根据原定项目需求，迅速完成大部分功能，切代码质量非常好。期间与我保持着密切的联系，主动咨询问题，解决项目中的各种难题。目前项目已进入尾声，剩下项目的附加扩展功能开发以及部分代码测试的工作。*
-- 学生参与度：*孔祥哲同学自项目开始之期就开始高效率的开发，每天都有足够的代码提交量，积极完成项目功能，且能够精准的剖析出项目中存在的各种问题，基本上全程都由该同学在主导，我只是来解决他所提出的问题。*
-- 代码贡献量：*该同学承担着该项目的主要工作，包括需求深度分析，模块开发和扩展模块的讨论，我主要承担着一个指导的作用，解决该同学提出的部分问题。*
-- 综合评价及建议：*该同学的编程能力，对业务的分析能力都非常好，期间能够快速精准的发现主要问题，加快项目的开发速度，是一个十分优秀的实践者。由于该学生在过程中表现出的高效率，暂无其他建议，希望该同学能够继续按照自己的兴趣，继续学习，期待你以后的高光时刻。*
-- 最终评审结果：“通过”
-
----
-
-> Chinese version of this post: [python wechaty groupchat assistant bot poc]({{ '/2020/08/14/python-wechaty-groupchat-assistant-bot-poc/' | relative_url }})
+> This is a translated version of the original Chinese post. You can find the original post [here](/2020/08/14/python-wechaty-groupchat-assistant-bot-poc/).

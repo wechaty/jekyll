@@ -1,5 +1,5 @@
 ---
-title: ' "沟通后端系统和微信消息的桥梁" (English translation WIP)'
+title: ' "Bridge Between Backend Systems and WeChat"'
 author: johnwang71
 image: /assets/2020/12-bridge-between-backend-and-wechat-en/homepage.webp
 categories: project
@@ -7,23 +7,32 @@ tags:
   - nodejs
   - donut
   - productivity
+excerpt: >
+  A minimal WeChat gateway with just over 100 lines of code, designed to bridge communication between various backend systems and WeChat using RESTful bidirectional calls.
 ---
 
-困惑于各类后端系统与同事、客户和其他相关方的沟通：一方面是后端系统纷繁复杂，开发语言众多；另一方面是不同人群对邮件、短信等各自的喜好程度不同，相对而言，微信是商务人群中使用量较大的，虽然微信提供了公众号等方式集成，但恰恰是大多数微信使用者只会在非常必须才会去用的服务方式。
+> This is a translated version of the original Chinese post. You can find the original post [here](/2020/12/10/bridge-between-backend-and-wechat/).
 
-之前基于微信网页版的插件较多，也尝试过集成，不幸的是微信收掉了绝大多数微信用户的网页版登录权限。最近一个偶然机会接触到[wechaty](https://github.com/wechaty)，阅读了先前贡献者们的经验分享，立即有了参与的冲动，按机器人指导完成了注册获取token，开始了体验开发之旅。
+Confused about communication between various backend systems and colleagues, clients, and other related parties: on one hand, backend systems are complex and diverse with numerous development languages; on the other hand, different groups have different preferences for email, SMS, etc. Relatively speaking, WeChat has a large usage rate among business people. Although WeChat provides integration methods such as official accounts, this is precisely the service method that most WeChat users will only use when absolutely necessary.
 
-## 超小的微信网关
+There were many plugins based on the WeChat web version before, and I tried to integrate them, but unfortunately WeChat shut down web login permissions for most WeChat users. Recently, I had the chance to discover [wechaty](https://github.com/wechaty). After reading the experience sharing of previous contributors, I immediately had the urge to participate. I followed the bot's instructions to complete registration and get a token, and started the development experience journey.
 
-本来最熟悉Java，但wechaty是js的，正好也用nodejs在做其他工作，就从它开始吧。考虑到需要与其他系统集成，将wechaty封装成微信通讯网关，设计使用restful的双向调用，解耦网关和后端系统。虽然最近特别事杂，紧赶慢赶也终于在15天token有效期完成了最小化产品的提交，可以满足包括好友、微信群操作和文字类消息互动的全部商务需求，仅仅100行代码出头。
-运行也很简单，参考README即可：
-![安装](/assets/2020/12-bridge-between-backend-and-wechat-en/00.webp)
+## A Super Small WeChat Gateway
 
-感谢wechaty提供了很好的思路，感谢wechaty-puppet提供了良好的设计，让我能够站在巨人肩膀之上快速完成工作，感谢所有帮助过和感兴趣的小伙伴！
+Although I'm most familiar with Java, wechaty is in JS, and I happen to be doing other work with Node.js, so let's start with that. Considering the need to integrate with other systems, I wrapped wechaty into a WeChat communication gateway, designed to use RESTful bidirectional calls to decouple the gateway from backend systems. Although I've been particularly busy recently, rushing to complete it, I finally submitted a minimum viable product within the 15-day token validity period. It can meet all business needs including friend and WeChat group operations and text message interactions, with just over 100 lines of code.
 
-经过一段时间测试，基本没发现掉线，服务也正常。
-如果喜欢，请了解体验审阅 <https://github.com/johnwang71/wechaty-integration> 这段短小的代码，更欢迎提出好的建议和问题！
+Running it is also very simple, just refer to the README:
+![Installation](/assets/2020/12-bridge-between-backend-and-wechat-en/00.webp)
+
+Thanks to wechaty for providing great ideas, thanks to wechaty-puppet for providing excellent design, allowing me to stand on the shoulders of giants and quickly complete the work. Thanks to all the friends who have helped and are interested!
+
+After a period of testing, basically no disconnections have been found, and the service is operating normally.
+If you like it, please review and experience <https://github.com/johnwang71/wechaty-integration> this short code, and welcome to provide good suggestions and issues!
 
 ---
 
 > Chinese version of this post: [bridge between backend and wechat]({{ '/2020/12/10/bridge-between-backend-and-wechat/' | relative_url }})
+
+---
+
+> This is a translated version of the original Chinese post. You can find the original post [here](/2020/12/10/bridge-between-backend-and-wechat/).

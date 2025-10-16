@@ -83,3 +83,7 @@ tags:
 官网：[https://summer.iscas.ac.cn/](https://summer.iscas.ac.cn/)
 
 本项目 [基于 Wechaty 开发开源的二师兄社群逗乐机器人] 系 暑期2021 支持的开源项目。
+
+---
+
+> This post is also available in [English](/2021/07/13/ospp-plan-wechaty-piggy-bro-en/).

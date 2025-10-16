@@ -76,3 +76,5 @@ hidden: true
 - 项目链接：[https://github.com/Roxanne718/wechaty-puppet-lark](https://github.com/wechaty/wechaty-puppet-lark)
 
 - 联系方式：+86 17822015718 | email: 953299708@qq.com
+
+> This post is also available in [English](/2020/08/19/wechaty-puppet-lark-mid-term-blog-en/).

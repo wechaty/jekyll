@@ -56,3 +56,7 @@ tags:
 官网：<https://summer.iscas.ac.cn/#/homepage>
 
 本项目 [开发基于微信实现微俱乐部会员&活动管理的微信小程序] 系暑期2021支持的开源项目。
+
+---
+
+> This post is also available in [English](/2021/07/15/ospp-plan-wechaty-club-managment-en/).

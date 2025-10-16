@@ -64,3 +64,7 @@ hidden: true
 {% include iframe.html src="https://youtu.be/0ARx1cCf5p0" %}
 
 > YouTube: <https://youtu.be/0ARx1cCf5p0>
+
+---
+
+> This post is also available in [English](/2020/12/08/python-wechaty-open-source-journey-en/).

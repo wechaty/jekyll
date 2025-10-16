@@ -53,3 +53,7 @@ hidden: true
       - 在原有的文档上，增加企业微信puppet相关的内容。
 - 项目链接：<https://github.com/Sapio-S/wechaty-puppet-official/>
 - 联系方式：1205402283@mail.qq.com
+
+---
+
+> This post is also available in [English](/2020/08/19/puppet-work-plan-en/).

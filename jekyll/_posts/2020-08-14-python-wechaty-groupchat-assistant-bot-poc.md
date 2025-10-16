@@ -10,7 +10,6 @@ tags:
   - summer-of-wechaty
   - productivity
 ---
-hidden: true
 
 “开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。
 旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。
@@ -102,3 +101,5 @@ Code: [@kxz18/python-wechaty-groupchat-bot](https://github.com/kxz18/python-wech
 - 代码贡献量：*该同学承担着该项目的主要工作，包括需求深度分析，模块开发和扩展模块的讨论，我主要承担着一个指导的作用，解决该同学提出的部分问题。*
 - 综合评价及建议：*该同学的编程能力，对业务的分析能力都非常好，期间能够快速精准的发现主要问题，加快项目的开发速度，是一个十分优秀的实践者。由于该学生在过程中表现出的高效率，暂无其他建议，希望该同学能够继续按照自己的兴趣，继续学习，期待你以后的高光时刻。*
 - 最终评审结果：“通过”
+
+> This post is also available in [English](/2020/08/14/python-wechaty-groupchat-assistant-bot-poc-en/).

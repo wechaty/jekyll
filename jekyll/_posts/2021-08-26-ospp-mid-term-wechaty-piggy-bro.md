@@ -119,3 +119,7 @@ tags:
 
   微信：ReiKohaku
   E-mail：hbsjzjwj@163.com
+
+---
+
+> This post is also available in [English](/2021/08/26/ospp-mid-term-wechaty-piggy-bro-en/).

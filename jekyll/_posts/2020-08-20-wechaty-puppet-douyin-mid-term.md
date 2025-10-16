@@ -65,3 +65,7 @@ hidden: true
 ### Live coding
 
 {% include iframe.html src="https://www.youtube.com/embed/OF7UfQ4o_5c" %}
+
+---
+
+> This post is also available in [English](/2020/08/20/wechaty-puppet-douyin-mid-term-en/).

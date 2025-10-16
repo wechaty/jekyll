@@ -91,3 +91,7 @@ hidden: true
 
 > Author: [@Sapio-S](https://github.com/Sapio-S) Learning & practicing.
 > Code: [@code](https://github.com/Sapio-S/wechaty-puppet-official)
+
+---
+
+> This post is also available in [English](/2020/08/19/puppet-work-midterm-en/).

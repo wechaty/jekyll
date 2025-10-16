@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: 同心助力，战役有AI!
 author: bigbrother666sh
 categories: article
@@ -130,3 +131,7 @@ Wechaty is a Conversational RPA SDK for chatbot makers. With only 6 lines of cod
 作为中国首个自主研发、功能丰富、开源开放的产业级深度学习平台，百度飞桨于2016年正式开源，当前飞桨平台汇聚了超过400万开发者，助力企业单位、高等院校、科研机构的AI开发者提升模型开发效率与体验、推动AI技术在各行业的实际落地与应用。AI Studio是基于百度深度学习平台飞桨的人工智能学习与实训社区，提供在线编程环境、免费GPU算力、海量实训项目和开放数据，帮助开发者快速创建和部署模型。
 
 bigbrother on behalf of the [ShanghaiITVolunteer](https://github.com/ShanghaiITVolunteer)
+
+---
+
+> This post is also available in [English](/2022/05/20/wechaty-ai-antigenbot-en/).

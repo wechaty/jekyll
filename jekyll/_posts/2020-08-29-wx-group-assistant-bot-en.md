@@ -1,5 +1,5 @@
 ---
-title: ' "微信营销群机器人客服" (English translation WIP)'
+title: 'WeChat Marketing Group Customer Service Bot'
 author: zlh
 categories: project
 image: /assets/2020/08-wx-group-assistant-bot-en/wx-bot.webp
@@ -8,36 +8,35 @@ tags:
   - padplus
   - project
   - ecommerce
+excerpt: "A WeChat group assistant bot designed to help e-commerce customer service teams monitor and manage marketing groups by detecting and removing malicious marketers using keyword blacklists and AI voice recognition."
 ---
 
-几乎人人都有微信，对于电商客服来说，通过微信群的方式管理好自己的客户是维护好客户关系很重要的方式。由于电商客服工作繁忙，他们急需一款机器人帮他们处理日常微信群管理中繁重的工作。
+Almost everyone has WeChat, and for e-commerce customer service, managing customers through WeChat groups is an important way to maintain good customer relationships. Due to the busy work of e-commerce customer service, they urgently need a bot to help them handle the heavy workload in daily WeChat group management.
 
-一个客服会同时管理数十甚至上百个群，除了通过已有机器人功能定时批量发送营销内容，对接意向客户咨询之外，客服普遍反馈她们会花较多时间警告、清理群里的恶意营销分子。
+A customer service representative will simultaneously manage dozens or even hundreds of groups. In addition to using existing bot functions to send marketing content in bulk regularly and connect with prospective customer inquiries, customer service representatives generally report that they spend a lot of time warning and removing malicious marketers in groups.
 
-之所以出现这种情况，是因为这些群往往是通过线下活动（如会议、营销活动）扫码入群拉拢的。而线下获客成本较高，且这些潜客人群往往具有精准定向的特点（例如：通过线下母婴活动获客基本都是准妈妈），因而很容易吸引同行销售抢客户，或进行恶意营销，有时候也会拉入别的机器人。因此，客服反应他们需要在群里增加微信机器人，在传统的客户关系维护工作之外，帮忙监控微信群中的恶意营销。在这种背景下，我们设计这款机器人模块，帮他们减轻监控工作的负担，专注于核心业务。
+This situation occurs because these groups are often pulled together through offline activities (such as conferences and marketing events) by scanning QR codes. Offline customer acquisition costs are high, and these prospective customer groups often have precise targeting characteristics (for example, customer acquisition through offline mother and baby activities is basically expectant mothers). Therefore, it is easy to attract peer sales to grab customers or conduct malicious marketing, and sometimes other bots are also pulled in. Therefore, customer service responded that they need to add WeChat bots to the group to help monitor malicious marketing in WeChat groups in addition to traditional customer relationship maintenance work. Against this background, we designed this bot module to help them reduce the burden of monitoring work and focus on core business.
 
-## 解决方案
+## Solution
 
-根据客服历史上遭遇的恶意营销案例，总结关键词（如骂人、销售抢单），生成关键词黑名单，并通过配置文件（支持简单的and/or，包含/不包含逻辑）的方式，对客服进行培训后由其进行定期维护。
+Based on historical malicious marketing cases encountered by customer service, summarize keywords (such as swearing, sales order grabbing), generate a keyword blacklist, and through configuration files (supporting simple and/or, include/exclude logic), train customer service and have them maintain it regularly.
 
-当群中某人发言触发关键词黑名单后，机器人将@此人并进行警告。两次警告后再犯的，直接由机器人踢出群。
+When someone in the group triggers the keyword blacklist, the bot will @ this person and issue a warning. After two warnings, if they offend again, the bot will directly kick them out of the group.
 
-支持识别文字和微信语音，语音调取百度AI语音识别接口转成文字。
+Supports recognition of text and WeChat voice, voice calls Baidu AI voice recognition interface to convert to text.
 
-## 代码实现
+## Code Implementation
 
-项目的地址 [wx-bot](https://github.com/mathsyouth/wx-bot)
+Project address: [wx-bot](https://github.com/mathsyouth/wx-bot)
 
-## 实现效果
+## Implementation Results
 
-目前客服反馈通过关键词的方式能够较好地识别一些恶意营销的案例，总体感觉上减少了之前一半的监控工作。不过由于偶尔也会有误报的情况，通过直接@对方的方式容易造成误会，因此关键词的配置更新比较缓慢。客服反应即便不需要很精准，能够解决大部分问题她们就比较满意了。
+Currently, customer service feedback shows that the keyword method can better identify some malicious marketing cases. Overall, it feels like it has reduced half of the previous monitoring work. However, due to occasional false positives, directly @-ing the other party can easily cause misunderstandings, so keyword configuration updates are relatively slow. Customer service responded that even if it doesn't need to be very accurate, they are quite satisfied if it can solve most of the problems.
 
-## 下一步计划
+## Next Steps
 
-目前机器人功能比较简单，只能根据关键词进行识别，客服虽然已能够熟练运用配置文件，但是也有部分客服反应关键词总结起来比较费脑，想要更智能的方法自动识别某些特定主题的文字。因而下一步计划采用深度学习的语言模型（先采用词嵌入的预训练模型，如百度云NLP模块提供的功能），对过往数据进行总结建模。计划先基于现有数据，尝试一下效果。如准确性达不到要求，也可以考虑不在前台直接@，而是在后台通过个人微信提示客服，避免给客户造成误会的情况发生。
+At present, the bot function is relatively simple and can only recognize based on keywords. Although customer service can already use configuration files proficiently, some customer service also responded that summarizing keywords is quite brain-consuming, and they want a smarter method to automatically recognize text on certain specific topics. Therefore, the next step is to use a deep learning language model (first using a pre-trained model of word embeddings, such as the functions provided by Baidu Cloud NLP module) to summarize and model past data. Plan to try the effect based on existing data first. If the accuracy does not meet the requirements, you can also consider not @ in the foreground directly, but remind customer service through personal WeChat in the background to avoid causing misunderstandings to customers.
 
-除此以外，客服们还对营销机器人在客户画像上提出了新需求，待后续更新。
+In addition, customer service has also raised new requirements for marketing bots in customer profiling, which will be updated later.
 
----
-
-> Chinese version of this post: [wx group assistant bot]({{ '/2020/08/29/wx-group-assistant-bot/' | relative_url }})
+> This is a translated version of the original Chinese post. You can find the original post [here](/2020/08/29/wx-group-assistant-bot/).

@@ -78,3 +78,7 @@ opencv的简单操作，嘿嘿~
 在频繁给django发送请求后,server端的cpu和内存"爆炸",这部分不确定是django的问题还是Paddlehub的问题,目前这个问题似乎没有再出现(真是让人迷惑)。
 
 > 作者: [ninetailskim](https://github.com/ninetailskim/)，始于兴趣 陷于技术 忠于瞎搞
+
+---
+
+> This post is also available in [English](/2021/05/24/how-to-build-a-panda-face-generator-with-paddlepaddle-en/).

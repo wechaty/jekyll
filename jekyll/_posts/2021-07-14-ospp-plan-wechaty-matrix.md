@@ -83,3 +83,7 @@ tags:
 官网：<https://summer.iscas.ac.cn/#/homepage>
 
 本项目 [基于 Matrix AppService Wechaty 项目的用户、群与消息等基础功能的完善] 系暑期2021支持的开源项目。
+
+---
+
+> This post is also available in [English](/2021/07/14/ospp-plan-wechaty-matrix-en/).

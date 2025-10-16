@@ -101,3 +101,7 @@ tags:
 
   微信：ReiKohaku
   E-mail：hbsjzjwj@163.com
+
+---
+
+> This post is also available in [English](/2021/10/06/ospp-final-term-wechaty-piggy-bro-en/).
