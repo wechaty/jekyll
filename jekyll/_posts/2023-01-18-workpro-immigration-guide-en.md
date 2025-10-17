@@ -9,7 +9,7 @@ tags:
   - workpro
   - wxwork
   - ecosystem
-image: /assets/2023/01-workpro-immigration-guide/workpro.webp
+image: /assets/2023/01-workpro-immigration-guide-en/workpro.webp
 excerpt: >
   Migration guide for Node Wechaty users upgrading to WorkPro puppet service, including version compatibility, code changes, token migration, and important configuration notes for TLS and reconnection handling.
 ---

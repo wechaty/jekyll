@@ -8,7 +8,7 @@ tags:
   - puppet-provider
   - workpro
   - wxwork
-image: /assets/2023/01-workpro-immigration-guide/workpro.webp
+image: /assets/2023/01-workpro-immigration-guide-en/workpro.webp
 ---
 
 ## 前言

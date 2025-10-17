@@ -8,7 +8,7 @@ tags:
   - web协议
   - python
   - featured
-image: /assets/2021/04-python-wechaty-use-web/wechaty-love-wechaty-desktop.webp
+image: /assets/2021/04-python-wechaty-use-web-en/wechaty-love-wechaty-desktop.webp
 hidden: true
 ---
 

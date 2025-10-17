@@ -6,7 +6,7 @@ tags:
   - matrix
   - featured
   - ecosystem
-image: /assets/2021/02-matrix-with-wechaty/2020-03-matrix-appservice-wechaty.webp
+image: /assets/2021/02-matrix-with-wechaty-en/2020-03-matrix-appservice-wechaty.webp
 excerpt: >
   Detailed deployment guide for using Matrix chat with matrix-appservice-wechaty to enable WeChat conversations through the Matrix protocol.
 ---

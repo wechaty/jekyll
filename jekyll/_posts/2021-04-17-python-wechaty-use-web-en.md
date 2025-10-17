@@ -9,7 +9,7 @@ tags:
   - python
   - featured
   - ecosystem
-image: /assets/2021/04-python-wechaty-use-web/wechaty-love-wechaty-desktop.webp
+image: /assets/2021/04-python-wechaty-use-web-en/wechaty-love-wechaty-desktop.webp
 excerpt: >
   Detailed guide on using python-wechaty with web protocol to develop chatbots, including Docker setup for web protocol service and connecting with python-wechaty to build functional bots.
 ---

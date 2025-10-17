@@ -8,7 +8,7 @@ tags:
   - puppet-provider
   - workpro
   - ecosystem
-image: /assets/2022/12-introducing-workpro-puppet/wecom.webp
+image: /assets/2022/12-introducing-workpro-puppet-en/wecom.webp
 excerpt: >
   After long-term preparation and development, WorkPro, the successor to WxWork, officially enters beta testing as a new Wechaty Puppet Service! Free 7-day trial tokens available, with formal operating plans coming soon.
 ---
@@ -19,7 +19,7 @@ After long-term preparation and development, WorkPro, the successor to WxWork, h
 
 WorkPro is a new puppet service based on wechaty-puppet-service created by [RPAChat](http://rpachat.com/). RPAChat, from Silicon Valley, USA, focuses on turning IM software into bots through RPA technology. RPAChat is providing conversation-based marketing cloud solutions for well-known brands such as P&G, L'ORÉAL Paris, Swisse, and POPMART.
 
-![rpachat-logo.webp](/assets/2022/12-introducing-workpro-puppet/rpachat-logo.webp)
+![rpachat-logo.webp](/assets/2022/12-introducing-workpro-puppet-en/rpachat-logo.webp)
 
 WxWork, as our previous generation enterprise WeChat puppet service, has served everyone for over two years. Due to design and architectural reasons, WxWork has some defects that cannot be resolved, such as:
 
@@ -39,7 +39,7 @@ WorkPro's architecture is directly based on wechaty-grpc related functions, alig
 
 For friends interested in this puppet service, we provide a free 7-day trial token. Please scan the QR code with WeChat or enterprise WeChat to add customer service for consultation.
 
-![qrcode.webp](/assets/2022/12-introducing-workpro-puppet/qrcode.webp)
+![qrcode.webp](/assets/2022/12-introducing-workpro-puppet-en/qrcode.webp)
 
 ## WorkPro Getting-Started
 
