@@ -209,8 +209,6 @@ export enum WechatyLogOperationSecurityRule {
 > 作者: [Archy Will He 何魏奇](https://github.com/archywillhe/)，functional programmer, interested in computational semantics，目前在全职做[吖奇说(ARCHY.SH)](https://archy.sh)这个项目。Working with GPT-2 (and hopefully with 3 soon!)
 >
 > Github Repo: [wechaty-log-monitor plugin](https://github.com/archywillhe/wechaty-log-monitor)
->
-> [![flair](https://camo.githubusercontent.com/c551a231a6cda28e59291fa091ddcb7b9899f6ec/68747470733a2f2f737461636b65786368616e67652e636f6d2f75736572732f666c6169722f313334303435332e706e67)](https://stackoverflow.com/users/2041954/%E5%90%96%E5%A5%87%E8%AF%B4-%E4%BD%95%E9%AD%8F%E5%A5%87archy-will-he)
 
 ---
 
