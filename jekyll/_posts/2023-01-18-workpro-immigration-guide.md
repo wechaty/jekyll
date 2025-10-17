@@ -71,3 +71,7 @@ image: /assets/2023/01-workpro-immigration-guide/workpro.webp
 - 会话已读功能
 - 发送接收视频号消息、位置消息功能
 - 系统消息
+
+---
+
+> This post is also available in [English](/2023/01/18/workpro-immigration-guide-en/).

@@ -11,14 +11,14 @@ tags:
   - featured
   - ospp
   - ospp-admin
-image: /assets/2021/06-summer-2021-open-source/001.webp
+image: /assets/2021/06-summer-2021-open-source-en/001.webp
 ---
 
 ## 自我介绍
 
 高原：句子互动联合创始人&CTO，开源项目Wechaty commiter，前亚马逊，Expedia工程师，Bot Friday联合发起人。
 
-![intro](/assets/2021/06-summer-2021-open-source/002.webp)
+![intro](/assets/2021/06-summer-2021-open-source-en/002.webp)
 
 ## Wechaty开源之路直播纪实
 
@@ -105,7 +105,7 @@ Wechaty始于chatbot爱好者：李卓桓，他是一个很懒又聪明的人，
 
 到了2018年，微信网页版限制登录，一大部分用户无法使用，社区出现非网页版接入方案；为了开发者无缝切换方案，运行稳定，提升效率，实施了新的策略，实现方式和代码都不同，对wechaty进行了一次重大的重塑，引入Puppet概念，puppet是自动化测试的框架，相当于一个适配器。
 
-![intro](/assets/2021/06-summer-2021-open-source/009.webp)
+![intro](/assets/2021/06-summer-2021-open-source-en/009.webp)
 
 - 绿色部分：为上层，是开发者直接接触到的部分，为不同的类，像刚刚例子中用到的，都是开发者在写业务逻辑时需要频繁调用使用的。
 
@@ -135,31 +135,31 @@ Wechaty始于chatbot爱好者：李卓桓，他是一个很懒又聪明的人，
 
 ### 算卦机器人 <https://wechaty.js.org/2020/06/28/build-divination-yibot/>
 
-![intro](/assets/2021/06-summer-2021-open-source/010.webp)
+![intro](/assets/2021/06-summer-2021-open-source-en/010.webp)
 
 ### 诗歌搜索机器人 <https://wechaty.js.org/2020/07/07/wechat-poem-robot/>
 
-![intro](/assets/2021/06-summer-2021-open-source/011.webp)
+![intro](/assets/2021/06-summer-2021-open-source-en/011.webp)
 
 ### 聚会娱乐机器人 <https://wechaty.js.org/2020/06/06/wechaty-game-bot/>
 
-![intro](/assets/2021/06-summer-2021-open-source/012.webp)
+![intro](/assets/2021/06-summer-2021-open-source-en/012.webp)
 
 ### 外卖机器人 <https://wechaty.js.org/2019/12/23/wechaty-north-america-ricepo/>
 
-![intro](/assets/2021/06-summer-2021-open-source/013.webp)
+![intro](/assets/2021/06-summer-2021-open-source-en/013.webp)
 
 ### 中文学习助理 <https://wechaty.js.org/2020/06/19/archyshuo-anki-assistant/>
 
-![intro](/assets/2021/06-summer-2021-open-source/014.webp)
+![intro](/assets/2021/06-summer-2021-open-source-en/014.webp)
 
 ### 奇绩创坛机器人 <https://wechaty.js.org/2020/08/08/qijibot-sales-automation/>
 
-![intro](/assets/2021/06-summer-2021-open-source/015.webp)
+![intro](/assets/2021/06-summer-2021-open-source-en/015.webp)
 
 ### 工作日报机器人 <https://wechaty.js.org/2020/07/11/wechaty-daily-report/>
 
-![intro](/assets/2021/06-summer-2021-open-source/016.webp)
+![intro](/assets/2021/06-summer-2021-open-source-en/016.webp)
 
 若感兴趣，还有更多：<https://wechaty.js.org/blog/>
 
@@ -172,6 +172,10 @@ Wechaty始于chatbot爱好者：李卓桓，他是一个很懒又聪明的人，
 ## 欢迎正在阅读的你参与其中
 
 如果有人有兴趣一起加入，一起来在企业级的scrm软件上面为营销过程提效的话，欢迎大家联系我，我们一起聊一聊能否一起合作。
-![intro](/assets/2021/06-summer-2021-open-source/008.webp)
+![intro](/assets/2021/06-summer-2021-open-source-en/008.webp)
 
 > 作者:[windmemory](https://github.com/windmemory)
+
+---
+
+> This post is also available in [English](/2021/06/05/summer-2021-open-source-en/).

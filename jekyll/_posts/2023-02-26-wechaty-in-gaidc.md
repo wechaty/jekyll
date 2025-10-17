@@ -62,3 +62,7 @@ Wechaty的Contributors卧虎藏龙
 本次开源开放麦活动的PPT分享
 
 {% include iframe.html src="https://docs.google.com/presentation/d/1g7CsjONxBqZFp1WjWO2yMwlbqIDJ2fCc32ukafsAd2g/edit?usp=sharing" %}
+
+---
+
+> This post is also available in [English](/2023/02/26/wechaty-in-gaidc-en/).

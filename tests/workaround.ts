@@ -11,11 +11,11 @@ const BIG_SIZE_TO_BE_FIXED_FILE_LIST = [
   'jekyll/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-24.webp',
   'jekyll/assets/2020/wechaty-log-monitor/archy-demo.webp',
   'jekyll/assets/2020/your-wechat-bot/demo.webp',
-  'jekyll/assets/2021/06-summer-2021-open-source/002.webp',
-  'jekyll/assets/2021/07-wechaty-with-paddlepaddle/botbay.webp',
-  'jekyll/assets/2021/07-wechaty-with-paddlepaddle/panda_emoji.webp',
-  'jekyll/assets/2021/07-wechaty-with-paddlepaddle/pic_mask.webp',
-  'jekyll/assets/2021/07-wechaty-with-paddlepaddle/wanderer.webp',
+  'jekyll/assets/2021/06-summer-2021-open-source-en/002.webp',
+  'jekyll/assets/2021/07-wechaty-with-paddlepaddle-en/botbay.webp',
+  'jekyll/assets/2021/07-wechaty-with-paddlepaddle-en/panda_emoji.webp',
+  'jekyll/assets/2021/07-wechaty-with-paddlepaddle-en/pic_mask.webp',
+  'jekyll/assets/2021/07-wechaty-with-paddlepaddle-en/wanderer.webp',
   /**
    * PDFs
    */

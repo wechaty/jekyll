@@ -139,3 +139,7 @@ WorkPro 的架构是直接根据 wechaty-grpc 的相关功能，对齐的是 wec
 | 登出事件 | ✅ | ✅ |
 | 主动退出登录 | ✅ | ❌ |
 | 发朋友圈 | ✅ | ❌ | 依赖体验版 Wechaty |
+
+---
+
+> This post is also available in [English](/2022/12/23/introducing-workpro-puppet-en/).

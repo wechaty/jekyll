@@ -1,25 +1,27 @@
 ---
-title: "用Matrix和wechaty来聊微信"
+title: "Using Matrix and Wechaty to Chat on WeChat"
 author: yswtrue
 categories: tutorial
 tags:
   - matrix
   - featured
+  - ecosystem
 image: /assets/2021/02-matrix-with-wechaty/2020-03-matrix-appservice-wechaty.webp
-hidden: true
+excerpt: >
+  Detailed deployment guide for using Matrix chat with matrix-appservice-wechaty to enable WeChat conversations through the Matrix protocol.
 ---
 
-[Matrix chat](https://matrix.org/)是一个很不错的聊天软件，它支持了多种聊天协议和聊天机器人。并且支持通过[matrix-appservice-wechaty](https://github.com/wechaty/matrix-appservice-wechaty)来支持微信聊天。
-现在我来梳理一下matrix-appservice-wechaty的部署方法。
+[Matrix chat](https://matrix.org/) is an excellent chat software that supports multiple chat protocols and chat bots. It also supports WeChat chatting through [matrix-appservice-wechaty](https://github.com/wechaty/matrix-appservice-wechaty).
+Now let me walk through the deployment method for matrix-appservice-wechaty.
 
-## 需要准备的东西
+## Prerequisites
 
-1. 域名（假设你的域名是example.com）
-2. 服务器，最好国内的
+1. Domain name (let's assume your domain is example.com)
+2. Server, preferably within China
 
-### 配置流程
+### Configuration Process
 
-#### 配置域名解析
+#### Configure Domain Resolution
 
 | Type  | Host                  | Priority | Weight | Port | Target               |
 | ----- | --------------------- | -------- | ------ | ---- | -------------------- |
@@ -29,7 +31,7 @@ hidden: true
 | CNAME | jitsi (*)             | -        | -      | -    | matrix.<your-domain> |
 | SRV   | _matrix-identity._tcp | 10       | 0      | 443  | matrix.<your-domain> |
 
-#### 配置matrix chat
+#### Configure Matrix Chat
 
 ```bash
 git clone https://github.com/spantaleev/matrix-docker-ansible-deploy.git
@@ -48,17 +50,17 @@ echo 'example.com ansible_host=example.com ansible_ssh_user=root' >> inventory/h
 ansible-playbook -i inventory/hosts setup.yml --tags=setup-all,start
 ```
 
-等一切部署完之后可以检测一下有没有问题
+After everything is deployed, you can check if there are any issues:
 
 ```bash
 ansible-playbook -i inventory/hosts setup.yml --tags=self-check
 ```
 
-#### 配置matrix-appservice-wechaty
+#### Configure matrix-appservice-wechaty
 
-连接远程服务器
+Connect to the remote server.
 
-新建`docker-compose.yml`并填入如下内容
+Create `docker-compose.yml` and fill in the following content:
 
 ```yaml
 version: '2'
@@ -94,9 +96,9 @@ services:
         - 8788:8788
 ```
 
-`padlocal_token`需要[申请](https://wechaty.js.org/docs/puppet-services/)
-`random_token`是随机字符串，可以用uuid
-如果没有`padlocal_token`可以使用`wechaty-puppet-puppeteer`，把内容改为
+`padlocal_token` needs to be [requested](https://wechaty.js.org/docs/puppet-services/)
+`random_token` is a random string, you can use uuid
+If you don't have a `padlocal_token`, you can use `wechaty-puppet-puppeteer` by changing the content to:
 
 ```yaml
 version: '2'
@@ -116,7 +118,7 @@ services:
         - 8788:8788
 ```
 
-然后新增文件`/matrix/synapse/config/wechaty-config.yaml`，并填入如下内容
+Then create the file `/matrix/synapse/config/wechaty-config.yaml` and fill in the following content:
 
 ```properties
 domain: example.com
@@ -124,30 +126,30 @@ homeserverUrl: https://matrix.example.com
 registration: /data/wechaty-registration.yaml
 ```
 
-运行`docker-compose run --rm matrix-appservice-wechaty --config /data/wechaty-config.yaml --url "http://example:8788" --generate-registration`生成配置文件
+Run `docker-compose run --rm matrix-appservice-wechaty --config /data/wechaty-config.yaml --url "http://example:8788" --generate-registration` to generate the configuration file.
 
-然后编辑`/matrix/synapse/config/homeserver.yaml`
-修改`app_service_config_files`那一行为`app_service_config_files: ["/data/wechaty-registration.yaml"]`
+Then edit `/matrix/synapse/config/homeserver.yaml`
+Change the `app_service_config_files` line to `app_service_config_files: ["/data/wechaty-registration.yaml"]`
 
-运行`systemctl restart matrix-*`重启matrix服务
+Run `systemctl restart matrix-*` to restart Matrix services.
 
-#### 注册并登录
+#### Register and Login
 
-1. 打开`https://example.com`，然后注册账号
-2. 点击`People`右边的➕，然后输入`@wechaty:example.com`点击`Go`
-3. 在打开的聊天窗口，等出现`This room has been registered as your bridge management/status room.`
-4. 然后发送`!login`，如果提示 `You are not enable matrix-appservice-wechaty yet. Please talk to the wechaty bot to check you in.
-I had enabled it for you ;-)` 就再发送一遍
-5. 扫描二维码登录
+1. Open `https://example.com`, then register an account
+2. Click the ➕ next to `People`, then enter `@wechaty:example.com` and click `Go`
+3. In the opened chat window, wait for `This room has been registered as your bridge management/status room.` to appear
+4. Then send `!login`. If you see the prompt `You are not enable matrix-appservice-wechaty yet. Please talk to the wechaty bot to check you in.
+I had enabled it for you ;-)` send it again
+5. Scan the QR code to login
 
-### 参考资料
+### References
 
-1. [](https://github.com/spantaleev/matrix-docker-ansible-deploy)
-2. [](https://wechaty.js.org/2021/01/28/csharp-wechaty-for-padlocal-puppet-service/)
-3. [](https://github.com/wechaty/wechaty-puppet-puppeteer)
+1. <https://github.com/spantaleev/matrix-docker-ansible-deploy>
+2. <https://wechaty.js.org/2021/01/28/csharp-wechaty-for-padlocal-puppet-service/>
+3. <https://github.com/wechaty/wechaty-puppet-puppeteer>
 
-> 作者: [Roy](https://blog.yswtrue.com)。首发于博客: [用Matrix和wechaty来聊微信](https://blog.yswtrue.com/yong-matrix/)
+> Author: [Roy](https://blog.yswtrue.com). Originally published on blog: [Using Matrix and Wechaty to Chat on WeChat](https://blog.yswtrue.com/yong-matrix/)
 
 ---
 
-> This post is also available in [English](/2021/02/04/matrix-with-wechaty-en/).
+> 本文也有[中文版本](/2021/02/04/matrix-with-wechaty/)。
