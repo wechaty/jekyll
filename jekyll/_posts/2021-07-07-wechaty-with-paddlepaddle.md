@@ -10,6 +10,7 @@ tags:
   - chatbot
   - competition
 image: /assets/2021/07-wechaty-with-paddlepaddle-en/header.webp
+hidden: true
 ---
 
 硬核ML Chatbot 大赛重磅来袭!

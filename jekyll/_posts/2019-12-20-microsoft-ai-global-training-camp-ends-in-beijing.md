@@ -7,6 +7,7 @@ tags:
   - microsoft
   - ai
   - news
+hidden: true
 ---
 
 Global AI Bootcamp是微软发起的全球AI开发者训练营活动，旨在凝聚全球的开发者共同学习交流，共同推进人工智能行业快速发展。在2019年12月14日同一天内，全球几十个国家，130个城市，上万人共同参与了这场AI人的狂欢盛会。当日18点30分，AI Bootcamp北京站也在宇宙中心五道口PNP创业孵化器内如期开幕，近百名中国AI开发者参与活动，聆听八位业内专家倾囊分享。
@@ -122,3 +123,7 @@ PreAngel是一支专注于人工智能技术创业项目的天使基金，核心
 {% include iframe.html src="https://www.youtube.com/watch?v=jKbMFxDw0T4?start=210" %}
 
 附录： [国内用户，B站地址](https://www.bilibili.com/video/av80153181/)
+
+---
+
+> This post is also available in [English](/2019/12/20/microsoft-ai-global-training-camp-ends-in-beijing-en/).

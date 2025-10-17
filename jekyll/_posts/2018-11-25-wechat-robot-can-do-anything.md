@@ -4,6 +4,7 @@ author: zhuangbiaowei
 categories: article
 tags:
   - news
+hidden: true
 ---
 
 作为一个会写代码的产品经理，我最近自己在玩一个微信机器人的开源框架：[wechaty](https://github.com/wechaty/wechaty)，因为上手特别简单，通过修改hello world，我也写出了自己的微信机器人，所以引发了很多的联想，打算和朋友们聊聊这些想法。
@@ -99,3 +100,7 @@ tags:
 ![开源社](/assets/2018/11-25-wechat-robot-can-do-anything-en/kaiyuanshe.webp)
 
 > 作者: [庄表伟](https://github.com/zhuangbiaowei/)，[开源社](http://www.kaiyuanshe.cn/)理事/执行长。首发于简书: [微信机器人能够做些什么事？](https://www.jianshu.com/p/9698395511e0)
+
+---
+
+> This post is also available in [English](/2018/11/25/wechat-robot-can-do-anything-en/).
