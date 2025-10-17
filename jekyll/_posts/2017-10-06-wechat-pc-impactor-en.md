@@ -1,53 +1,55 @@
 ---
-title: 关于对微信PC版Hook的一点研究分享
+title: Research and Sharing on WeChat PC Version Hook
 author: h4dex
 categories: hacking
 tags:
   - code
   - hook
   - news
+  - ecosystem
 image: /assets/2017/h4dex-inject.webp
-hidden: true
+excerpt: >
+  Technical exploration of hooking WeChat PC version through DLL injection, including code samples for message interception, contact list reading, and profile extraction using Version.dll hijacking.
 ---
 
 ![Wechat Windows Impactor](/assets/2017/h4dex-inject.webp)
 
-因为易语言代码有的朋友们可能看起来怪怪的 如果没有接触过它，并不是那么通俗易懂。所以改成了cpp代码供审阅.  由于书写仓促 错误的部分希望大家指正，小弟在此多谢！
+Because some friends may find the Easy Language code a bit strange - if you haven't encountered it before, it's not that intuitive. So I changed it to cpp code for review. Due to hasty writing, I hope everyone can point out errors. Thank you very much!
 
-感谢 易语言精易论坛坛友(xdssoft,恨不能遗忘,gh0st少主)分享的开源代码参考！
+Thanks to Easy Language JingYi Forum members (xdssoft, 恨不能遗忘, gh0st少主) for sharing open source code for reference!
 
-> 准备工作：  
+> Preparation:
 
 ```text
-PEid、Ollydbg、IDA pro、CheatEngine、DLL自动注入工具、微信电脑版2.4.1.37/79
+PEid, Ollydbg, IDA pro, CheatEngine, DLL Auto-Injection Tool, WeChat PC Version 2.4.1.37/79
 ```
 
-## 关于对微信PC版Hook的一点研究分享
+## Research and Sharing on WeChat PC Version Hook
 
-### HOOK 注入类  hookinject.h
+### HOOK Injection Class hookinject.h
 
-> 这里的例子是用Version.dll
+> This example uses Version.dll
 
-因为version.dll优于WeChatWin.dll先加载
+Because version.dll is loaded before WeChatWin.dll
 
-version.dll是Windows NT系统以上版本检测应用程序接口相关文件。这里就用这个用途不是很必要的DLL模拟注入。
+version.dll is a Windows NT system and above version detection application program interface related file. Here we use this not very necessary DLL to simulate injection.
 
-首先需要载入真正的 Version.dll
+First, we need to load the real Version.dll
 
 ```cpp
 ///
-/// TODO:安装我们伪造的 Version.Dll
+/// TODO: Install our fake Version.Dll
 ///
 
 class hookInject {
 
     public:
 
-    const DLL_PROCESS_DETACH = 0    //进程卸载 系统查看当前映射到进程空间中的所有DLL文件映像
-    const DLL_PROCESS_ATTACH = 1    //进程映射 系统查看当前映射到进程空间中的所有DLL文件映像
-    const DLL_THREAD_ATTACH = 2     //线程映射
-    const DLL_THREAD_DETACH = 3     //线程卸载
-    const DLL_PROCESS_VERIFIER = 4  //进程更改 系统查看当前映射到进程空间中的所有DLL文件映像
+    const DLL_PROCESS_DETACH = 0    // Process unload, system views all DLL file images currently mapped to process space
+    const DLL_PROCESS_ATTACH = 1    // Process map, system views all DLL file images currently mapped to process space
+    const DLL_THREAD_ATTACH = 2     // Thread map
+    const DLL_THREAD_DETACH = 3     // Thread unload
+    const DLL_PROCESS_VERIFIER = 4  // Process change, system views all DLL file images currently mapped to process space
     const WM_COPYDATA =0x4A         //
 
     int lib = 0;
@@ -72,7 +74,7 @@ class hookInject {
     lib = LoadLibraryA ("C:\windows\system32\Version.dll");
 
     if(lib == 0){
-        //载入不成功则返回0 则返回注入失败！
+        // Failed to load, return 0, injection failed!
         return FALSE;
     }
 
@@ -83,11 +85,11 @@ class hookInject {
         }
 
         //*
-        其他的函数也一样需要写..检测真正Version动态库
-        调用时 每个函数所在内存的地址.  否则可能会造成 crash !!
+        Other functions also need to be written similarly... Check the real Version dynamic library
+        When calling, the memory address where each function is located. Otherwise it may cause a crash!!
         FARPROC GetProcAddress(
-            HMODULE hModule, // DLL模块句柄
-            LPCSTR lpProcName // 函数名
+            HMODULE hModule, // DLL module handle
+            LPCSTR lpProcName // Function name
         );
 
         *//
@@ -98,16 +100,16 @@ class hookInject {
             return FALSE;
         }
 
-        return TRUE;     //如果所有
+        return TRUE;     // If all
     }
 
-    // 接下来呢是伪造所有的函数调用
+    // Next is to fake all function calls
 
     int GetFileVersionInfoA(int i,int j,int k,int q){
         return Jmp(GetFileVersionInfoA,i,j,k,q);
     }
 
-    /// ... 其他 同理
+    /// ... Others, same principle
 
     int Jmp(int addr ,int i = NULL,int j = NULL, int k = NULL,int q = NULL,int w = NULL,int e = NULL,int r = NULL,int t = NULL,int y = NULL,int u = NULL,int o = NULL,int a = NULL,int s = NULL,int d = NULL){
         return _Jmp(addr,i,j,k,q,w,e,r,t,y,u,i,o,a,s,d);
@@ -115,10 +117,10 @@ class hookInject {
 
     int _Jmp(*p ,int i,int j, int k,int q,int w,int e,int r,int t,int y,int u,int o,int a,int s,int d){
         __asm{
-            LEAVE;              //清空堆栈
-            POP EAX;            //把EAX重新压入栈
-            XCHG [ESP],EAX;     //数据交换
-            JMP EAX;            //再跳到eax寄存器
+            LEAVE;              // Clear stack
+            POP EAX;            // Push EAX back to stack
+            XCHG [ESP],EAX;     // Data exchange
+            JMP EAX;            // Jump to eax register
         }
         return 0;
     }
@@ -127,13 +129,13 @@ class hookInject {
 
 ```
 
-### 应用注入类          Impactor.h
+### Application Injection Class Impactor.h
 
 ```cpp
 class Impactor{
     public:
 
-    static int baseAddr = 0; //初始化 0 就是木有！
+    static int baseAddr = 0; // Initialize 0 means none!
 
     void GetBaseAddress(){
 
@@ -144,9 +146,9 @@ class Impactor{
         MODULEENTRY32 buffer; //struct
 
         while(baseAddr = 0){
-            hSnapShot = ::CreateToolhelp32Snapshot(8,GetCurrentProcessId());              //创建系统快照
-            buffer.dwSize = 0x224; // 初始化buffer大小  548
-            //buffer.dwSize = sizeof(buffer); 检测大小
+            hSnapShot = ::CreateToolhelp32Snapshot(8,GetCurrentProcessId());              // Create system snapshot
+            buffer.dwSize = 0x224; // Initialize buffer size 548
+            //buffer.dwSize = sizeof(buffer); Check size
 
             last = ::Module32First(hSnapShot,&buffer);
 
@@ -169,9 +171,9 @@ class Impactor{
     }
 
     ///
-    ///  获取收发类型和内容 相当于 WxSync
+    /// Get send/receive type and content, equivalent to WxSync
     ///
-    ///param  之所以用整形 因为 他们都是指针形式~
+    /// param - using int because they are all pointer forms~
     ///
     ///
     void GetSyncType (int msg,int wxid,int type){
@@ -187,9 +189,9 @@ class Impactor{
 
         //const unsigned char *buf;
 
-        /* 这里有错误~~~看原版吧
-        取出传址内存指针 3000字节 长度的的字符数组(串)
-        传递给全局变量 SyncType
+        /* There is an error here~~~ see the original version
+        Extract address memory pointer 3000 bytes length character array (string)
+        Pass to global variable SyncType
         */
 
     }
@@ -198,7 +200,7 @@ class Impactor{
 
 ```
 
-### 自己信息获取        GetProfile.h
+### Self Info Retrieval GetProfile.h
 
 ```cpp
 
@@ -209,21 +211,21 @@ class GetProfile{
 
     void GetProfile(){
 
-        //callback方式 取 下列
-        //看易语言版本的代码吧
+        // callback method to get the following
+        // see Easy Language version code
 
-        //三个指针地址分别为
-        //0x169fc9
-        //0x2db500
-        //0x2db695
+        // Three pointer addresses are respectively
+        // 0x169fc9
+        // 0x2db500
+        // 0x2db695
 
         /*
-        ;//取微信号和昵称的 CALL
+        ;// CALL to get WeChat ID and nickname
         PUSHAD
         CALL 00000006
         POPAD
 
-        ;//取WXID的CALL
+        ;// CALL to get WXID
         PUSHAD
         PUSH DWORD PTR [ESP+20]
         CALL 0000000A
@@ -235,37 +237,37 @@ class GetProfile{
         __asm{
             MOV [EBP-4],ECX
         }
-        //取 100字节大小数据地址 就是微信号 需要转换 Unicode
+        // Get 100 bytes size data address which is WeChat ID, needs Unicode conversion
     }
 
     void GetWxAlias(){
         __asm{
             MOV [EBP-4],EAX;
         }
-        //取 100字节大小数据地址 就是微信号
-        //手机号 也可以同时取出. 预留30个字节的内存空间
+        // Get 100 bytes size data address which is WeChat ID
+        // Phone number can also be extracted simultaneously. Reserve 30 bytes of memory space
 
         ReadProcessMemory(-1,baseAddr+0xE2EE20,手机号,30,0);
     }
 
     void GetWxId(int wxid){
-        //根据WXID指针传递取 100字节大小数据地址 就是wxid
+        // Get 100 bytes size data address based on WXID pointer which is wxid
     }
 
 }
 ```
 
-### 好友读取 (列表)类   GetContact.h
+### Contact Reading (List) Class GetContact.h
 
 ```cpp
 class GetContact{
     void GetContactList(){
 
-        //方法和上面类似
-        //0x30c820   WXID
-        //0x30c839   微信号
-        //0x30c8a2   备注
-        //0x30c8b8   昵称
+        // Method is similar to above
+        // 0x30c820   WXID
+        // 0x30c839   WeChat ID
+        // 0x30c8a2   Remark
+        // 0x30c8b8   Nickname
 
         /*
         ;CALL
@@ -276,14 +278,14 @@ class GetContact{
 
     }
 
-    //获取微信号
+    // Get WeChat ID
     void GetAlias(){
         /*
         MOV [EBP-4],EAX
         */
     }
 
-    //获取头像
+    // Get avatar
     void GetAvatar(){
         /*
         MOV [EBP-4],EAX
@@ -291,33 +293,33 @@ class GetContact{
 
     }
 
-    //获取昵称
+    // Get nickname
     void GetNickName(){
         /*
         MOV [EBP-4],EAX
         */
     }
 
-    //获取备注
+    // Get remark name
     void GetRemarkName(){
         /*
         MOV [EBP-4],EAX
         */
     }
 
-    //获取WXID
+    // Get WXID
     void GetWxid(){
         /*
         MOV [EBP-4],EAX
         */
-        //需要1000字节地址大小
-        //遍历
+        // Need 1000 bytes address size
+        // Traverse
     }
 
 }
 ```
 
-### 注入执行类  WechatWatchDog.cpp
+### Injection Execution Class WechatWatchDog.cpp
 
 ```cpp
 #include "stdafx.h"  
@@ -346,8 +348,8 @@ void hook_install(){
     GetProfile::GetProfile();
     GetContact::GetContactList();
 
-    //根据基址增加偏移0x237A78
-    //(微信基址+偏移,修改内存数据的方式,执行方法指针,偏移)
+    // Add offset 0x237A78 based on base address
+    // (WeChat base address + offset, memory data modification method, execution method pointer, offset)
     Hook_Get_Type_CallBack.Install(baseAddr + 0x237A78 ,&_asmGetTypeCall,&Impactor::GetSyncType, *GetSyncType,0x11);
 
     /*
@@ -359,7 +361,7 @@ void hook_install(){
     POPAD
     */
 
-    //根据基址增加偏移0x1412D7
+    // Add offset 0x1412D7 based on base address
     Sync_CallBack.Install(baseAddr + 0x1412D7,&_asmGetSyncCall, *GetSync,0x7);
 
     /*
@@ -397,20 +399,20 @@ void hook_install(){
 
     void SendCollectImg(*SendCollectImg){
 
-        //监听收藏的图片发送
-        //也可以把机器图片放入内存再根据地址发送~
+        // Monitor collected image sending
+        // Can also put machine images in memory and send based on address~
 
-        //释放CALL
+        // Release CALL
 
     }
 
     void SendUserAndMsg(int Msg,int User){
-        //相当于 SYNC 消息监听！
+        // Equivalent to SYNC message monitoring!
 
-        /*死循环判断  10000字节地址是否有内容，转换Ansi
-        判断内容报头 是否为 列表数组成员 ，如果带有 @chatroom就是 群组
+        /*Infinite loop to check if 10000 bytes address has content, convert to Ansi
+        Check if content header is a list array member, if it contains @chatroom it's a group
 
-        输出打印    或者通过socket方式传递给外部程序~~
+        Output print or pass to external program via socket~~
         */
     }
 
@@ -420,38 +422,38 @@ void hook_install(){
 ### DLLMain.cpp
 
 ```text
-略
+Omitted
 ```
 
-### 后记
+### Postscript
 
-里面有一套源码的DLL动态自动注入 非常不错~
+There's a set of DLL dynamic auto-injection source code which is very good~
 
-附件：
-微信PC Hook易语言源码 （共3套）
-附带 etcp.dll  源码  VS2013 编译通过
+Attachments:
+WeChat PC Hook Easy Language Source Code (3 sets in total)
+Includes etcp.dll source code, compiled with VS2013
 
 ```text
-CALLBACK 类 因为在原代码中没有公开，是调用其他人开发的 ecom (相当于可集成的 Com组件/Lib)
+CALLBACK class - because it's not disclosed in the original code, it calls other developers' ecom (equivalent to integrable Com components/Lib)
 
-所以这里我也不太清楚这个如何实现..
+So I'm not very clear how to implement this...
 
-因本人能力有限，欢迎大家共同研究参与补充 ~
+Due to my limited ability, everyone is welcome to jointly research and participate in supplementing ~
 
-谢谢！
+Thank you!
 
 ```
 
-下载：[Download Src](/assets/2017/wechat-windows-impactor-src.zip)
+Download: [Download Src](/assets/2017/wechat-windows-impactor-src.zip)
 
-完整下载地址：附带微信`2.4.5.73`安装包 没有微信`2.4.1.79`
+Complete download address: Including WeChat `2.4.5.73` installation package, no WeChat `2.4.1.79`
 
-链接：[download full package](http://pan.baidu.com/s/1hsEeDoC)   密码：wttk
+Link: [download full package](http://pan.baidu.com/s/1hsEeDoC)   Password: wttk
 
-感谢@huan 的邀请。
+Thanks to @huan for the invitation.
 
-> h4dex  2017年10月6日
+> h4dex, October 6, 2017
 
 ---
 
-> This post is also available in [English version](/2017/10/06/wechat-pc-impactor-en/).
+> 本文也有[中文版本](/2017/10/06/wechat-pc-impactor/)。

@@ -10,6 +10,7 @@ tags:
   - featured
   - entertainment
 image: /assets/2020/wechat-poem-robot/chat.webp
+hidden: true
 ---
 
 [![Wechaty Badge](https://img.shields.io/badge/Powered%20By-Wechaty-green.svg#align=left&display=inline&height=20&margin=%5Bobject%20Object%5D&originHeight=20&originWidth=132&status=done&style=none&width=132)](https://github.com/wechaty/wechaty)
@@ -340,3 +341,7 @@ Redis 开发者 [Salvatore Sanfilippo](http://invece.org/) 在[这篇文章](htt
 互联网每天产生和复制那么多技术博文，能有多少是可以在多年之后仍然给人启发的呢？
 
 > 作者: [ray7551](https://github.com/ray7551/)
+
+---
+
+> This post is also available in [English version](/2020/07/07/wechat-poem-robot-en/).

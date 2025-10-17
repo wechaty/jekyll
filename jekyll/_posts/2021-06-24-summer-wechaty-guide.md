@@ -14,14 +14,15 @@ tags:
   - ospp-2021
   - ospp-admin
   - news
-image: /assets/2021/06-summer-wechaty-guide/teaser.webp
+image: /assets/2021/06-summer-wechaty-guide-en/teaser.webp
+hidden: true
 ---
 
 开源软件供应链点亮计划-暑期 2021 的见面会在 [ninetailskim](https://wechaty.js.org/contributors/ninetailskim/)的主持下圆满完成，关于开源软件供应链点亮计划的详细内容，详见 [Wechaty Summer of Code 2021 Kickoff Meeting](https://wechaty.js.org/2021/06/24/wechaty-soc-kick-off-meeting/)
 
 ## 开源软件供应链点亮计划组委会活动里程碑
 
-![agenda](/assets/2021/06-summer-wechaty-guide/agenda.webp)
+![agenda](/assets/2021/06-summer-wechaty-guide-en/agenda.webp)
 
 注：所有通过结项考核的同学都会收到对应项目的全额奖金，项目是否评为优秀不影响奖金的发放。
 
@@ -491,3 +492,7 @@ TBW
 - 结项之后，优质项目将会被 merge 到 Wechaty 官方 org 下。
 
 期待在2021年的夏天，你也能在3个月后，顺利通过结项审核，并赢得 OSPP 颁发的优秀奖励！
+
+---
+
+> This post is also available in [English version](/2021/06/24/summer-wechaty-guide-en/).

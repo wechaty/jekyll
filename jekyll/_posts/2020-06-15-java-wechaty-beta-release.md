@@ -7,6 +7,7 @@ tags:
   - java
   - featured
 image: /assets/2020/java-wechaty/2020-06-15-java-wechaty.webp
+hidden: true
 ---
 
 终于有一个 Java 版的微信机器人了。
@@ -174,3 +175,7 @@ Java-wechaty [项目地址](https://github.com/wechaty/java-wechaty)。 加入�
 
 > Author: [@diaozxin007](https://github.com/diaozxin007) The author of Java-wechaty
 > Code: [@Java-wechaty](https://github.com/wechaty/java-wechaty)
+
+---
+
+> This post is also available in [English version](/2020/06/15/java-wechaty-beta-release-en/).

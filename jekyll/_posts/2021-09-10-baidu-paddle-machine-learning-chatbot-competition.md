@@ -3,7 +3,7 @@ title: Baidu Paddle ❤️ Wechaty & Mixlab ML Chatbot 大赛作品推荐
 author: valerieeeee
 categories:
   - project
-image: /assets/2021/09-baidu-paddle-machine-learning-chatbot-competition/baidu-wechaty.webp
+image: /assets/2021/09-baidu-paddle-machine-learning-chatbot-competition-en/baidu-wechaty.webp
 tags:
   - baidu
   - paddle
@@ -11,6 +11,7 @@ tags:
   - competition
   - news
   - game
+hidden: true
 ---
 
 由 Wechaty、PaddlePaddle 和 Mixlab 联合主办，未来事务管理局作为媒体支持的「AI创造营 ：Metaverse启动机之重构现世」硬核 Machine Learning (ML) Chatbot 创意赛的项目提交阶段已经结束，共收回33个项目，相比第一、二期创意赛(21个和24个)有了明显提高！
@@ -142,7 +143,7 @@ Wander [ 001 ]是一个以AI chatbot为主体的跨媒体互联网艺术项目�
 
 截至2021年8月，已有超过1000名参与者带领Wander旅行。我们希望Wander能让人们重新审视熟悉的环境，从我们最熟悉的通讯软件里给人带去惊喜。
 
-![扫码或微信搜索：WanderingBot，添加好友后即可互动](/assets/2021/09-baidu-paddle-machine-learning-chatbot-competition/wander.webp)
+![扫码或微信搜索：WanderingBot，添加好友后即可互动](/assets/2021/09-baidu-paddle-machine-learning-chatbot-competition-en/wander.webp)
 
 GitHub: <https://github.com/sunyuqian1997/Wander001-V2.1>
 
@@ -305,7 +306,11 @@ MixLab是容纳了多元学科人才的跨界创新社区，目前已汇集5w+�
 
 ## 关于PaddleNLP
 
-PaddleNLP是飞桨生态文本领域的核心开发库，具备简洁易用的文本领域全流程API、多场景的应用示例、非常丰富的预训练模型，深度适配飞桨框架2.x版。
+PaddleNLP是飞桨生态文本领域的核心开发库,具备简洁易用的文本领域全流程API、多场景的应用示例、非常丰富的预训练模型,深度适配飞桨框架2.x版。
 只有你想不到，没有PaddleNLP做不到！
 
-客服、闲聊、“凡尔赛”，对诗、写作、彩虹屁，起名、对联、码代码，参考官方示例，解锁更多超能力！
+客服、闲聊、"凡尔赛"，对诗、写作、彩虹屁，起名、对联、码代码，参考官方示例，解锁更多超能力！
+
+---
+
+> This post is also available in [English version](/2021/09/10/baidu-paddle-machine-learning-chatbot-competition-en/).

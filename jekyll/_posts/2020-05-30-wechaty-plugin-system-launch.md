@@ -8,6 +8,7 @@ tags:
   - meetup
   - featured
 image: /assets/2020/05-30-wechaty-plugin-system-launch/001.webp
+hidden: true
 ---
 
 ## 如果你不了解Wechaty，一句话快速了解
@@ -71,3 +72,7 @@ Wechaty.instance() // Global Instance
 15:30 - 16:00 Wechaty Plugin开发者 王墨炱 基于插件的Wechaty开发
 
 ![006](/assets/2020/05-30-wechaty-plugin-system-launch/006.webp)
+
+---
+
+> This post is also available in [English](/2020/05/30/wechaty-plugin-system-launch-en/).
