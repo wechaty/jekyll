@@ -1,5 +1,5 @@
 ---
-title: ' "OSPP 2021-期初报告-基于 Matrix AppService Wechaty 项目的用户、群与消息等基础功能的完善" (English translation WIP)'
+title: "OSPP 2021 - Initial Report - Improving Basic Functions of Matrix AppService Wechaty Project for Users, Groups and Messages"
 author: zrn-fight
 categories:
   - project
@@ -13,76 +13,75 @@ tags:
   - ospp
   - ospp-2021
   - plan
+excerpt: "Summer 2021 project plan for enhancing the Matrix AppService Wechaty bridge with image messaging, nickname display, and automated testing."
 ---
 
-## 基于 Matrix AppService Wechaty 项目的用户、群与消息等基础功能的完善
+## Improving Basic Functions of Matrix AppService Wechaty Project for Users, Groups and Messages
 
-- 导师：李卓桓，yswtrue
+- Mentors: Li Zhuohuan, yswtrue
 
-- 学生：林宇靖，张瑞宁
+- Students: Lin Yujing, Zhang Ruining
 
-- 项目介绍： <https://github.com/wechaty/summer/issues/59>
+- Project Introduction: <https://github.com/wechaty/summer/issues/59>
 
-- 模块列表
-  - 架设一套自己的 Matrix 系统
-  - 架设 [matrix-appservice-wechaty](https://github.com/wechaty/matrix-appservice-wechaty/) 并整合到 Matrix 系统中
-  - 对 Matrix AppService Wechaty 的功能进行分析，然后列出需要完善的功能列表，以及欠缺的功能列表，并完成计划列表中的计划。 在初期开发中，实现图片消息的接收和发送，完成原型验证 POC
-  - 进行测试，完善项目文档
-  - 配置 GitHub Actions 实现自动化测试（可选）
+- Module List
+  - Set up your own Matrix system
+  - Set up [matrix-appservice-wechaty](https://github.com/wechaty/matrix-appservice-wechaty/) and integrate it into the Matrix system
+  - Analyze the functions of Matrix AppService Wechaty, then list the functions that need to be improved and the missing functions, and complete the plans in the plan list. In the initial development, implement image message reception and sending to complete proof of concept (POC)
+  - Conduct testing and improve project documentation
+  - Configure GitHub Actions to implement automated testing (optional)
   
-- 计划安排:
-  - 架设一套自己的 Matrix 系统
+- Schedule:
+  - Set up your own Matrix system
     - 7/12 - 7/18
-    - 配置好设置好matrix服务器，测通相关接口
-  - 架设 [matrix-appservice-wechaty](https://github.com/wechaty/matrix-appservice-wechaty/) 并整合到 Matrix 系统中
+    - Configure and set up matrix server, test related interfaces
+  - Set up [matrix-appservice-wechaty](https://github.com/wechaty/matrix-appservice-wechaty/) and integrate it into the Matrix system
     - 7/19 - 7/25
-    - 学习现有源码，进行代码整合，提高代码质量
-  - 对 Matrix AppService Wechaty 的功能进行分析，然后列出需要完善的功能列表，以及欠缺的功能列表，并完成计划列表中的计划
+    - Learn existing source code, integrate code, improve code quality
+  - Analyze the functions of Matrix AppService Wechaty, then list the functions that need to be improved and the missing functions, and complete the plans in the plan list
     - 7/26 - 8/1
-    - 熟悉项目功能，根据仓库issue和实际代码列出需要完善的功能
-    - 无
-  - 实现图片消息的接收和发送，完成原型验证 POC
+    - Familiarize with project functions, list functions to be improved based on repository issues and actual code
+    - None
+  - Implement image message reception and sending, complete proof of concept POC
     - 8/2 - 8/8
-    - 添加图片消息的接收和发送模块，使 Matrix AppService Wechaty支持图像消息
-    - 无
-  - 项目中期总结
+    - Add image message reception and sending modules, make Matrix AppService Wechaty support image messages
+    - None
+  - Project mid-term summary
     - 8/9 - 8/15
-    - 实现阶段性目标，总结项目阶段性成果
-    - 无
-  - 项目完善
+    - Achieve phased goals, summarize phased project results
+    - None
+  - Project improvement
     - 8/16 - 8/31
-    - 根据需要完善的功能列表完善群聊用户昵称显示，头像显示
-    - 无
-  - 项目优化
+    - Improve group chat user nickname display and avatar display according to the list of functions to be improved
+    - None
+  - Project optimization
     - 9/1 - 9/15
-    - 添加完善中英文。撰写整个项目过程的总结文章。配置 GitHub Actions 实现自动化测试，增加单元测试等
-    - 无
-  - 项目结项
+    - Add and improve Chinese and English. Write summary articles for the entire project process. Configure GitHub Actions to implement automated testing, add unit tests, etc.
+    - None
+  - Project completion
     - 9/16 - 9/30
-    - 总结项目成果，项目经验，准备结项材料
-    - 无
+    - Summarize project results and project experience, prepare completion materials
+    - None
 
-- 项目链接：
+- Project Link:
     [matrix-appservice-wechaty](https://github.com/wechaty/matrix-appservice-wechaty)
-- 联系方式：
-  - 林宇靖：545641826@qq.com
-  - 张瑞宁：3134191406@qq.com
+- Contact Information:
+  - Lin Yujing: 545641826@qq.com
+  - Zhang Ruining: 3134191406@qq.com
 
-- 分工合作:
-  - 分工：林宇靖同学需主要负责项目功能实现和gitlab项目维护，张瑞宁主要同学负责代码审查和gitlab项目维护。共同撰写中英文文档
-  - 证书：保证张瑞宁同学证书署名的情况下，尽量加上林宇靖同学的名字
-  - 津贴分配：林宇靖同学:张瑞宁同学=3:1
+- Division of Labor:
+  - Division: Student Lin Yujing is mainly responsible for project function implementation and GitLab project maintenance. Student Zhang Ruining is mainly responsible for code review and GitLab project maintenance. Write Chinese and English documentation together
+  - Certificate: Ensure Zhang Ruining's name is on the certificate, and try to add Lin Yujing's name as well
+  - Stipend Distribution: Lin Yujing: Zhang Ruining = 3:1
 
 > Author:[@Rhyme](https://github.com/lprintf) [@zrn-fight](https://github.com/zrn-fight)
 
-## 关于暑期2021
+## About Summer 2021
 
-“开源软件供应链点亮计划-暑期2021”（以下简称 暑期2021）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。 旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。 根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2021”活动奖金和奖杯。
+"Open Source Promotion Plan - Summer 2021" (hereinafter referred to as Summer 2021) is a summer activity for university students jointly organized by the Institute of Software, Chinese Academy of Sciences and the openEuler community. It aims to encourage students to actively participate in the development and maintenance of open source software and promote the vigorous development of excellent domestic open source software communities. According to the difficulty and completion of the project, participants can also receive activity bonuses and trophies from the "Open Source Promotion Plan - Summer 2021".
 
-官网：<https://summer.iscas.ac.cn/#/homepage>
+Official website: <https://summer.iscas.ac.cn/#/homepage>
 
-本项目 [基于 Matrix AppService Wechaty 项目的用户、群与消息等基础功能的完善] 系暑期2021支持的开源项目。
-
----
+This project [Improving Basic Functions of Matrix AppService Wechaty Project for Users, Groups and Messages] is an open source project supported by Summer 2021.
 
 > Chinese version of this post: [ospp plan wechaty matrix]({{ '/2021/07/14/ospp-plan-wechaty-matrix/' | relative_url }})

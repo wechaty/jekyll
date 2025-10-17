@@ -1,5 +1,5 @@
 ---
-title: ' "如何用paddlepaddle及wechaty制作熊猫头表情生成机器人" (English translation WIP)'
+title: "How to Build a Panda Face Meme Generator with PaddlePaddle and Wechaty"
 author: ninetailskim
 categories: article
 tags:
@@ -7,76 +7,110 @@ tags:
   - study
   - introduction
 image: /assets/2021/05-how-to-build-a-panda-face-generator-with-paddlepaddle-en/shut-up-and-kiss-me.webp
+excerpt: "Building an AI-powered bot that generates panda head memes from portrait photos using Wechaty and PaddlePaddle for fun chat interactions."
 ---
 
-很高兴能分享前段时间折腾的小项目，一只熊猫头表情生成机器人。因为本熊是个很热爱meme文化的人，而在聊天过程中，我总是需要表情包来支撑起我匮乏的语言表达能力以及抒发我无法通过文字表达的感情。这次使用wechaty和paddlepaddle制作了一个根据人像生成对应熊猫头的表情包制作机器人。经本人不正经的测试，本表情包制作机器人可以给你的对话增加更多的乐趣，聊天室内外充满了快活的空气~
+> This is a translated version of the original Chinese post. You can find the original post [here](/2021/05/24/how-to-build-a-panda-face-generator-with-paddlepaddle/).
 
-你可以在这里看到大致的效果
+I'm happy to share a small project I've been working on - a panda head meme generator bot. As someone who loves meme culture, I always need emojis and memes to support my limited language expression ability and express feelings that I cannot convey through text. This time, I used Wechaty and PaddlePaddle to create a meme-making bot that generates panda head memes based on portrait photos. Through my informal testing, this meme-making bot can add more fun to your conversations, filling the chat room with a joyful atmosphere~
+
+You can see the general effect here
 {% include iframe.html src="https://www.bilibili.com/video/BV1NK4y1N7m5" %}
 
-## 项目介绍和使用
+## Project Introduction and Usage
 
-项目的github仓库[地址](https://github.com/ninetailskim/PandaFaceGenerator)
-在刚想到将wechaty与paddlepaddle结合的时候，其实是有很多的想法的，除了这个表情包生成器，还有游戏，交互写故事等想法，最后选择先做了这个表情包生成器，因为它足够简单却有趣，作为第一个试水作品最合适了。
-简单介绍这个机器人的功能：
-1.接收到人脸照片/视频会提取人脸,制作对应的熊猫头表情包
-2.输入文字会给表情包的底部加上想要的文字
+Project GitHub repository [address](https://github.com/ninetailskim/PandaFaceGenerator)
 
-本项目使用的是没有使用token的网页登录的方式。因为一些个人原因整个项目分为两个大部分，一个是js端，用于分类消息类型，并向服务器端发送请求，这部分为wechaty的使用；另一个是django服务器端，负责处理js端发来的请求，制作表情包并返回结果，这部分则为paddlepaddle的使用。本项目基本上是采取解决不了问题就躲开问题的处理方式，所以有些地方的处理为了快速实践出功能，而采取了一些“非人类”的解决方法，还请大佬们见谅嘿嘿。
+When I first thought of combining Wechaty and PaddlePaddle, I actually had many ideas. In addition to this meme generator, there were also ideas for games, interactive story writing, etc. In the end, I chose to make this meme generator first because it is simple yet interesting, making it the most suitable for a first test project.
 
-JS端，wechaty-getting-started目录下：
+Brief introduction to the robot's functions:
+
+1. When receiving face photos/videos, it will extract faces and create corresponding panda head memes
+2. Inputting text will add the desired text to the bottom of the meme
+
+This project uses web login without tokens. Due to some personal reasons, the entire project is divided into two major parts: one is the JS side, used to classify message types and send requests to the server side, this part uses Wechaty; the other is the Django server side, responsible for processing requests from the JS side, making memes and returning results, this part uses PaddlePaddle. This project basically adopts the approach of avoiding problems that cannot be solved, so some processing adopts some "inhuman" solutions for rapid feature implementation. Please forgive me, experts, hehe.
+
+JS side, under the wechaty-getting-started directory:
 set WECHATY_LOG=verbose
 set WECHATY_PUPPET=wechaty-puppet-wechat
 npx ts-node examples/advanced/Panda-Face-bot.js
 
-Django端，PDjango目录下：
+Django side, under the PDjango directory:
 python manage.py runserver 0.0.0.0:8080
 
-**框架图**
-![框架图：分成wehcaty和django两部分](/assets/2021/05-how-to-build-a-panda-face-generator-with-paddlepaddle-en/framework.webp)
+**Framework Diagram**
+![Framework diagram: divided into wechaty and django parts](/assets/2021/05-how-to-build-a-panda-face-generator-with-paddlepaddle-en/framework.webp)
 
-## wechaty部分
+## Wechaty Part
 
-前面说的“个人原因”其实是因为python版本的wechaty我一开始没搞定，所以不得已采用“非人类”方式将整体架构拆开为两部分。当熟悉python版本后，完全可以把整个项目用python实践出来。
-Wechaty端,我直接魔改的官方的advance例子中的media-file-bot.js文件,增加了两个模块:
-**1.网络请求模块,因为我需要调用自己的django服务器,所以写了这一个模块,给自己的端口上发请求,然后处理返回的结果,返回表情包,或者告诉用户我没有在你发送的图片/视频中发现人脸**
-网络请求部分，为一个get请求。用于发送文本和图像信息。因为wechaty端和django端都部署在了本地，所以图像的信息只是图像在本地的保存地址。对于get请求响应的处理则更简单，django端在顺利处理图像后同样会返回图片的本地地址，wechaty端只需构建filebox，然后发送即可。
+The "personal reasons" mentioned earlier are actually because I couldn't get the Python version of Wechaty to work at first, so I had to use an "inhuman" method to split the overall architecture into two parts. After becoming familiar with the Python version, the entire project can be fully implemented in Python.
 
-**2.保存文字的模块,要针对不同的信息发出者,保存其对应的文字,结果保存在一个sender.json文件中**
-这个部分是为了给我们的表情包加上文字。即是当一个用户发送一个文本消息时，则将用户id和这个文本作为一个键值对保存起来，在收到图片消息后，根据图片消息的id来找到其对应的文本消息，将这两者打包发送给django服务器端。但是这里遇到的一个问题：这个请求不太好解析中文字符。服务端受到的text会变成乱码，所以这里的“非人类”的处理方式是当收到文本消息时将键值对保存到json文件里。而在发送请求时，则发送用户的id（用户的id是没有中文字符的）；在服务端则根据id从json文件里查找id对应的文本。
+On the Wechaty side, I directly modified the media-file-bot.js file from the official advanced example and added two modules:
 
-## 服务器端部分
+### 1. Network request module
 
-django的部分非常的简单,在view中添加一个处理get请求的方法就好,这部分处理一下请求中的数据,根据数据去调用pandaFace脚本就好。下面主动点讲一下pandaFace脚本。
+Because I need to call my own Django server, I wrote this module to send requests to my own port, then process the returned results, return memes, or tell users that I didn't find a face in the image/video you sent.
 
-pandaFace脚本则是处理图像的主文件,提供了处理图片和视频的方法.大致的流程如下：
-**1.熊猫头表情包的人脸去除和人脸定位**
-这里需要使用paddlehub中的两个模型，一个是ace2p，一个是face_landmark_localization。通过这两个模型来获取作为模板的原表情中“人脸”的位置，我们之后处理用户发来的人脸，要根据这个标准来缩放，并绘制到指定位置上。
-**2.接收到的图片的人脸的提取和缩放,处理到灰度图,适当添加对比和亮度**
-同样使用上述的两个模型处理用户发来的肖像照，然后进入我花费时间最长的步骤——调整颜色。
-因为光照等原因，把图像转为灰度图的任务始终无法达到理想的效果。这里尝试了亮度、对比度、直方图等统一的方式做了一些处理，大家也可以进行测试。另外我觉得最可行的方法是直方图匹配，这方面值得继续改进。
-***亮度调节对比***
-![亮度对比图](/assets/2021/05-how-to-build-a-panda-face-generator-with-paddlepaddle-en/bright.webp)
-***对比度调节对比***
-![对比度对比图](/assets/2021/05-how-to-build-a-panda-face-generator-with-paddlepaddle-en/contract.webp)
-***gamma方式调节histogram调节对比***
-![gamma对比图](/assets/2021/05-how-to-build-a-panda-face-generator-with-paddlepaddle-en/gamma.webp)
-这部分试了很多个参数,但是对于不同的图片不太好做到统一,所以想到了直方图匹配(histogram match),但是这部分实验的图找不到了,之后补上,直方图匹配的代码也在脚本中提供了,但是默认并没有开启。
-***直方图匹配***的方法可以把人脸映射到和原版的表情包大概同一个色调,但是缺点是,直方图匹配的方式会损失细节,这样会出现跃迁式的像素变化,很丑,所以可能采用直方图匹配之后要做更多的处理。
+The network request part is a GET request used to send text and image information. Because both the Wechaty side and Django side are deployed locally, the image information is just the image's local storage address. Processing the GET request response is simpler - after the Django side successfully processes the image, it will also return the image's local address. The Wechaty side only needs to construct a FileBox and send it.
 
-**3.把2中的人脸根据1中的定位,贴到1中的熊猫头上**
-opencv的简单操作，嘿嘿~
-**4.添加文字**
-针对文字的方面,也通过归一化图片尺寸和一定的规则即可简单的添加在图片上。
+### 2. Text saving module
 
-## 总结+改进完善方向
+For different message senders, save their corresponding text, with results saved in a sender.json file.
 
-最终版本中没有开启直方图匹配(提供了这部分的代码,只是没有开启),但是还是可以尝试,直方图匹配后的结果图像"质量"更差,~~但是表情包的精髓不就是糊吗?糊到一堆水印,糊到满是包浆。~~
-最后统一采用了2.2的对比和3的亮度,如果要改进的话,应该还是可以提升一下直方图匹配的效果。
-除了人脸处理模块,其他的部分需要改进的大概是舍弃掉这种js+django服务器的模式,这样的效果有点慢。在熟悉wechaty的python版本后，则可以直接抛弃这一方法。
-在频繁给django发送请求后,server端的cpu和内存"爆炸",这部分不确定是django的问题还是Paddlehub的问题,目前这个问题似乎没有再出现(真是让人迷惑)。
+This part is to add text to our memes. That is, when a user sends a text message, the user ID and text are saved as a key-value pair. After receiving an image message, the corresponding text message is found based on the image message's ID, and both are packaged and sent to the Django server. But there's a problem encountered here: this request doesn't parse Chinese characters well. The text received by the server side becomes garbled, so the "inhuman" solution here is to save the key-value pair to a JSON file when receiving a text message. When sending requests, send the user's ID (the user's ID has no Chinese characters); on the server side, look up the text corresponding to the ID from the JSON file based on the ID.
 
-> 作者: [ninetailskim](https://github.com/ninetailskim/)，始于兴趣 陷于技术 忠于瞎搞
+## Server Side Part
+
+The Django part is very simple. Just add a method to handle GET requests in the view. This part processes the data in the request and calls the pandaFace script based on the data. Let me focus on the pandaFace script.
+
+The pandaFace script is the main file for processing images, providing methods to process images and videos. The general process is as follows:
+
+### 1. Face removal and face localization of panda head memes
+
+Here, two models from PaddleHub need to be used: ace2p and face_landmark_localization. Through these two models, we obtain the position of the "face" in the original meme template. When we later process the face sent by the user, we need to scale according to this standard and draw it to the specified position.
+
+### 2. Extract and scale the face from the received image
+
+Process it into grayscale, and appropriately add contrast and brightness.
+
+Similarly, use the above two models to process the portrait photo sent by the user, then enter the step that took me the longest time - color adjustment.
+
+Due to lighting and other reasons, the task of converting images to grayscale has never achieved ideal results. I tried some processing using brightness, contrast, histogram, and other unified methods. You can also test them. In addition, I think the most feasible method is histogram matching, which is worth continuing to improve.
+
+***Brightness Adjustment Comparison***
+![Brightness comparison](/assets/2021/05-how-to-build-a-panda-face-generator-with-paddlepaddle-en/bright.webp)
+
+***Contrast Adjustment Comparison***
+![Contrast comparison](/assets/2021/05-how-to-build-a-panda-face-generator-with-paddlepaddle-en/contract.webp)
+
+***Gamma Method Histogram Adjustment Comparison***
+![Gamma comparison](/assets/2021/05-how-to-build-a-panda-face-generator-with-paddlepaddle-en/gamma.webp)
+
+I tried many parameters in this part, but it's difficult to achieve uniformity for different images, so I thought of histogram matching. However, I couldn't find the experimental images for this part. I'll add them later. The histogram matching code is also provided in the script, but it's not enabled by default.
+
+The ***histogram matching*** method can map faces to approximately the same color tone as the original meme, but the disadvantage is that histogram matching loses detail, resulting in jumping pixel changes that look ugly. So after using histogram matching, more processing may be needed.
+
+### 3. Paste the face from step 2 onto the panda head from step 1
+
+Based on the positioning from step 1.
+
+Simple OpenCV operations, hehe~
+
+### 4. Add text
+
+For text, it can be simply added to the image through normalizing image size and certain rules.
+
+## Summary + Improvement Directions
+
+Histogram matching is not enabled in the final version (the code for this part is provided, just not enabled), but you can still try it. The resulting image "quality" after histogram matching is worse, ~~but isn't the essence of memes being blurry? Blurry with watermarks everywhere, blurry with patina.~~
+
+In the end, I uniformly adopted the contrast of 2.2 and brightness of 3. If improvement is needed, the histogram matching effect should still be improvable.
+
+Besides the face processing module, other parts that need improvement probably include abandoning this JS + Django server mode, which is a bit slow. After becoming familiar with the Python version of Wechaty, this method can be directly abandoned.
+
+After frequently sending requests to Django, the server side's CPU and memory "exploded". It's uncertain whether this is a Django problem or a PaddleHub problem. Currently, this problem doesn't seem to appear again (really confusing).
+
+> Author: [ninetailskim](https://github.com/ninetailskim/), started with interest, fell into technology, loyal to messing around
 
 ---
 

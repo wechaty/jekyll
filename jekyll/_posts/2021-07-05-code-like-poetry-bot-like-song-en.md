@@ -1,132 +1,133 @@
 ---
-title: ' "code如诗，bot如歌，由Wechaty引发的一个小白冒险之旅" (English translation WIP)'
+title: "Code Like Poetry, Bot Like Song - A Newbie's Adventure Journey Sparked by Wechaty"
 author: cixingguangming55555
 categories: article
 tags:
   - bot
-image: /assets/2021/07-code-like-poetry-bot-like-song-en/cover.webp 
+image: /assets/2021/07-code-like-poetry-bot-like-song-en/cover.webp
+excerpt: "A heartfelt journey from late-night client calls to discovering Wechaty and building bots - told through the eyes of a self-described amateur who found passion in code."
 ---
 
-## 非关
+## Preface
 
-短，分行，如诗。  
-这个世界，除了我喜欢的汉字的堆叠，竟然还有这样美妙的存在。  
-不是偶然。  
-是生命中的不期而遇。  
-更是一世的欣喜！  
-所以，偶有闲暇，我就会拾起手指，在短、分行中，感受内心的律动。  
-当然，我本闲散人，怎会成极客？高山仰止，心向往之，于惴惴中前行，算是对自己的一种安慰。  
+Short, line breaks, like poetry.
+In this world, besides the stacking of Chinese characters I love, there exists such a wonderful thing.
+It's not by chance.
+It's an unexpected encounter in life.
+More so, a lifetime's joy!
+So, whenever I have free time, I pick up my fingers and feel the rhythm of my heart in short, broken lines.
+Of course, I'm naturally lazy - how could I become a geek? Looking up at the high mountain, my heart yearns for it, moving forward with trepidation, this is a kind of comfort for myself.
 
-慢，曲达，如歌。  
-历程不重要。  
-代码不重要。  
-当第一次跑出想要的结果，我拍击的桌面，响彻了......  
-这是无数种我听到的声音中，最动人的，最悦耳的，虽然无人传唱，却在我心回荡！  
-这是那个叫bot的家伙，经由我的指节，它偶尔会破嗓，也偶尔会悠扬......  
-  
-## 缘起
+Slow, winding, like a song.
+The journey doesn't matter.
+The code doesn't matter.
+When I first ran the desired result, the desk I slapped echoed......
+This is the most moving, most pleasant sound among the countless sounds I've heard, though no one sings it, it echoes in my heart!
+This is that guy called bot, through my fingertips, it occasionally croaks, and occasionally melodious......
 
-见过凌晨四点的北京.....  
-见过凌晨五点的成都.....  
-这是凡尔赛的笔法，据说。  
-我经常必须见，回头见，不见还不散，请问，这是什么赛?  
+## Origin
 
-觉悟要高，执行要透。  
-客户经常这样对我说。我默然。  
-然后开始去思考，什么样的觉悟才是高觉悟，什么样的执行才是透了的？  
-  
-bot这个家伙的萌芽，来自于连续几个通宵之后，和客户在“亲切友好”的气氛中，灵感就这么砰的一声，迸发了出来。  
-客户拍着我的肩膀说，老张，你TMD能不能没事不要骚扰我，我连续好久接你半夜电话，都快成客服了。  
-我说，我TMD可以不骚扰你，你说吧，什么时候可以骚扰。  
-客户的脸笑成朵花，这是我看到的最美的花朵之一。  
-我们一生中，有些花，开的真的很美。  
-  
-信息的搜集，优先级的排序，时间的设定，发送的机制。  
-在一轮一轮中，终于敲定了方案。  
-客户再次笑了，嗯，觉悟还是够的，赶紧上。  
-  
-然后真的在友好的氛围中，开始了后面的历程。  
+Seen Beijing at 4 AM.....
+Seen Chengdu at 5 AM.....
+This is Versailles-style writing, they say.
+I often must see, see you later, won't leave without seeing - what kind of competition is this?
 
-## 历程
-  
-### 一
-  
-我对度娘没什么好感，相较google而言。  
-但是我最终还是从了度娘，她毕竟，也能给我一些，我想要的温柔，此处应该有掌声兼括号（不要想多了）。  
-github也经常慢如蜗牛。有时候，你得忍，小不忍，则乱大谋。  
-我认，我忍。  
-我就在度娘和github之间不断切换，穷尽了：微信 机器人 wx机器人 微信bot wechat机器人 ......  
-然后把眼睛睁大，注意力集中，在我熟悉的汉字里，我竟然一无所获......  
-那是2017年的8月。  
+Awareness must be high, execution must be thorough.
+Clients often tell me this. I remain silent.
+Then I start to think, what kind of awareness is high awareness, what kind of execution is thorough?
 
-功夫不负舔狗人。  
-舔的时间久了，上天或许会看在你无脑且勤奋的份上，不经意的给你一个惊喜（当然，舔狗始终是舔狗，舔狗要不忘初心）。  
-凭着我蹩脚的英语，和舔狗的执着，我终于发现了：  
-Wechaty!  
+The budding of this bot guy came from after several consecutive all-nighters, in a "cordial and friendly" atmosphere with the client, inspiration just burst out with a bang.
+The client patted my shoulder and said, Lao Zhang, TMD can you not bother me when there's nothing wrong? I've been answering your midnight calls for so long, I'm almost customer service.
+I said, TMD I can not bother you, you tell me, when can I bother you?
+The client's face bloomed into a flower, this is one of the most beautiful flowers I've seen.
+In our lifetime, some flowers really bloom beautifully.
 
-我印象最深刻的一句话是：五行代码就可以写一个微信机器人（据说是六行，我一直的印象是五行，我天生喜五，看我账号就知道，哈哈）。  
-你们懂的！那种欣喜若狂！  
-你们不懂吗？那种欣喜若狂!  
-反正我懂就可以了！此处有敲击桌子的重响，请不要模仿，以免你的老婆给你来个更重的狮子吼！  
+Information collection, priority sorting, time setting, sending mechanism.
+Round after round, the plan was finally finalized.
+The client smiled again, well, awareness is still sufficient, hurry up.
 
-坦率讲，看到扑面而来一屏英文的时候，当时的内心，其实想骂：这TMD全是英文啊？！（TMD是汉字，但不要曲解，意思是：挺萌的）。  
-然后就买了一个腾讯的vps（这又是另外的一种洁癖，我因为微信的原因，喜欢上了腾讯的种种，除了游戏，然后对阿里的各种弃之一隅）。  
-然后各种度娘，各种环境、代码报错。  
-TMD。  
-对，挺萌的。  
-Wechaty这个东东，上报一个问题的规矩居然这么复杂，我把fanyi.baidu.com都折腾烂了，才按照要求，把报错信息提了上去。  
-那是26 Aug 2017，为什么这么清晰，因为我从已经close掉的issue里面，拷贝出来的。  
-然后等待大神的......  
-  
-然后终于代码跑通了。  
-机器人发出的第一个信息：Hello World!你好，老张！  
+Then in a friendly atmosphere, the subsequent journey really began.
 
-### 二
-  
-客户和我开始了一段非常甜蜜的时光（大家脑洞不能大开，正经点）。  
-但是，这种友好而亲切的氛围，被两个问题打破：  
-这样白嫖开源，真的好吗？  
-网络安全问题（数据在内网），要关闭向腾讯VPS传递数据的端口。  
-  
-第一个问题还好，先白嫖吧，大家不都这么干的？所以第一个问题，还是白嫖大法好，至于未来的事情，仿佛可以不管。  
-第二个问题就无解了，只有拖字诀。  
-然后拖无可拖的时候，客户一脸遗憾的告诉我，我们要有觉悟，该关的必须关，该执行透的，一定要不遗余力，执行透彻。  
-2017的农历春节，我们执行透彻，关掉了基于Wechaty，运行得相当开心的微信机器人。  
-遗憾有之，失落更甚！  
+## Journey
 
-然后我利用业余时间，开始学习微信bot相关的一些知识。  
-时间很快就来到了2019。  
-疫情的爆发，忽然就改变了很多：世界的轨迹，生活的轨迹。这些，悉数被纳入新的运转规则里面。  
-在闭关对抗疫情的期间，我开始想，我能不能自己做一个bot？  
+### One
 
-或许我从来不曾想过，这样的想法究竟有多冒险？
-无知者无畏，与其说是对小白的褒奖，不如说是小白的真实写照。  
-自此以后，我一直对这个世界上无数和我一样的小白，保持着崇高的敬意。原因无它，我就是这样的小白，我们需要这样前仆后继的小白（阴险的笑）。  
+I don't have much affection for Baidu compared to Google.
+But I eventually gave in to Baidu. After all, she can also give me some of the tenderness I want (applause and parentheses should be here - don't overthink it).
+GitHub is also often slow as a snail. Sometimes you have to endure - small impatience spoils great plans.
+I accept, I endure.
+I kept switching between Baidu and GitHub, exhausting: WeChat robot, wx robot, WeChat bot, wechat robot......
+Then I widened my eyes, concentrated, and in the familiar Chinese characters, I found nothing......
+That was August 2017.
 
-冒险之旅开启。  
-除了无知的勇气外，我竟然面对的是：一入BOT深似海，再回眸时秃顶生。  
-我开始折腾，度娘、github、新发现的B站、翻墙去google。  
-然后，逐渐的，有一些东西，开始有了最初的模样。  
-那模样，至今我一直难忘。  
+Hard work pays off for the devoted.
+After licking for a long time, heaven may inadvertently give you a surprise considering your mindless yet diligent effort (of course, a licker is always a licker, lickers must not forget their original intention).
+With my poor English and the persistence of a licker, I finally discovered:
+Wechaty!
 
-## 曲达  
-  
-开始的版本抄了不少代码，且学之甚浅，以至于一直不敢让这些代码面世。  
-但依然得到了不少的关注。  
-于是在边学，边折腾中，开始了代码的重构。也终于鼓起勇气，把这些代码，放到了github上。  
-于我而言，仍旧对当时的勇气，莫名感怀。  
+The most impressive sentence to me was: five lines of code can write a WeChat robot (it's said to be six lines, but my impression has always been five lines, I naturally like five, look at my account and you'll know, haha).
+You understand! That kind of ecstasy!
+You don't understand? That kind of ecstasy!
+Anyway, I understand! There's the heavy sound of desk-banging here, please don't imitate, lest your wife give you an even heavier lion's roar!
 
-时至今日，势仍曲，事未达，行慢而路遥，仅堪堪迈出小小的一步。  
-行道如水，莫过于斯。  
-而于前行中有关bot的每一种声音，都清晰而嘹亮，如歌洋洋，历久不息。  
-旅程仍长，冒险还在，但心境竟然如常！  
+Frankly speaking, when I saw a screen full of English, my heart actually wanted to curse: This TMD is all in English?! (TMD is Chinese characters, but don't misinterpret, it means: quite cute).
+Then I bought a Tencent VPS (this is another kind of obsession, because of WeChat, I fell in love with all things Tencent, except games, and then abandoned all things Alibaba).
+Then various Baidu searches, various environment and code errors.
+TMD.
+Yes, quite cute.
+Reporting a problem for this Wechaty thing has such complex rules. I wore out fanyi.baidu.com before finally submitting the error information according to requirements.
+That was Aug 26, 2017. Why so clear? Because I copied it from an already closed issue.
+Then waiting for the great god......
 
-## 致谢
+Then the code finally ran through.
+The robot's first message: Hello World! Hello, Lao Zhang!
 
-致所有无私的人们！这个世界的真神，应该是你们！  
-致所有坚持的人们！你们前行不倦的身影，是最好的明灯！  
+### Two
 
-> 作者: [cixingguangming55555](https://github.com/cixingguangming55555)，老张学技术
+The client and I began a very sweet time (everyone, don't let your imagination run wild, be serious).
+But this friendly and cordial atmosphere was broken by two problems:
+Is it really okay to freeload from open source like this?
+Network security issues (data on internal network), need to close the port for transmitting data to Tencent VPS.
+
+The first problem is okay, freeload first, doesn't everyone do this? So for the first problem, freeloading is still the way to go. As for future matters, it seems manageable.
+The second problem has no solution, only the strategy of delay.
+Then when delay was no longer possible, the client regretfully told me, we must have awareness, what must be closed must be closed, what must be executed thoroughly must be executed thoroughly without reservation.
+In the 2017 Lunar New Year, we executed thoroughly and shut down the WeChat robot based on Wechaty that was running quite happily.
+Regret, yes. Loss, even more!
+
+Then I used my spare time to start learning some knowledge related to WeChat bots.
+Time quickly came to 2019.
+The outbreak of the pandemic suddenly changed many things: the trajectory of the world, the trajectory of life. These were all incorporated into new operational rules.
+During the lockdown fighting the pandemic, I started thinking, can I make a bot myself?
+
+Perhaps I never thought about how risky such an idea was?
+The ignorant are fearless. Rather than saying it's praise for a newbie, it's more like a true portrait of a newbie.
+From then on, I've always maintained a lofty respect for countless newbies like me in this world. No other reason, I am such a newbie, we need such successive newbies (sinister smile).
+
+The adventure journey begins.
+Besides the courage of ignorance, I actually faced: Once you enter BOT it's as deep as the sea, looking back you find baldness has grown.
+I started tinkering, Baidu, GitHub, newly discovered Bilibili, climbing over the wall to Google.
+Then, gradually, some things began to take their initial shape.
+That shape, I still can't forget to this day.
+
+## Winding Path
+
+The initial version copied a lot of code, and learned superficially, so I never dared to let this code see the light of day.
+But still got quite a bit of attention.
+So while learning and tinkering, I started code refactoring. Finally mustered the courage to put this code on GitHub.
+For me, I still have inexplicable feelings about that courage.
+
+To this day, the situation is still winding, things are not yet achieved, progress is slow and the road is long, barely taking a small step.
+The path is like water, nothing more than this.
+And every sound about bot in moving forward is clear and loud, like a song, lasting for a long time.
+The journey is still long, the adventure continues, but my state of mind is surprisingly normal!
+
+## Acknowledgments
+
+To all selfless people! The true gods of this world should be you!
+To all persevering people! Your tireless figures moving forward are the best beacon!
+
+> Author: [cixingguangming55555](https://github.com/cixingguangming55555), Lao Zhang Learning Technology
 
 ---
 

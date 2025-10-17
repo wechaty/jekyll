@@ -1,5 +1,5 @@
 ---
-title: ' "OSPP 2021-期初报告-基于 Wechaty 开发开源的二师兄社群逗乐机器人" (English translation WIP)'
+title: "OSPP 2021 - Initial Report - Developing Open Source Piggy Bro Community Entertainment Bot Based on Wechaty"
 author: reikohaku
 categories:
   - project
@@ -13,75 +13,76 @@ tags:
   - ospp
   - ospp-2021
   - plan
+excerpt: "Summer 2021 project plan for developing Piggy Bro, an extensible entertainment bot with jokes, idiom chains, games, and a backend garden game."
 ---
 
-* 项目名称：基于 Wechaty 开发开源的二师兄社群逗乐机器人
-* 导师：韩磊、鲁玉超、王玉丹
-* 学生：井维嘉
-* 模块列表
-  * 可扩展式开发框架
-  * 讲笑话、成语接龙、猜图片、猜歌名等功能
-  * 二师兄Logo及形象
-  * 二师兄后花园
-  * 使用、部署与开发文档
-* 项目要求：[https://github.com/wechaty/summer-of-wechaty/issues/83](https://github.com/wechaty/summer-of-wechaty/issues/83)
+* Project Name: Developing Open Source Piggy Bro Community Entertainment Bot Based on Wechaty
+* Mentors: Han Lei, Lu Yuchao, Wang Yudan
+* Student: Jing Weijia
+* Module List
+  * Extensible development framework
+  * Functions like telling jokes, idiom chain, guess pictures, guess song names, etc.
+  * Piggy Bro Logo and image design
+  * Piggy Bro Back Garden
+  * Usage, deployment and development documentation
+* Project Requirements: [https://github.com/wechaty/summer-of-wechaty/issues/83](https://github.com/wechaty/summer-of-wechaty/issues/83)
 
-* 项目链接：[https://github.com/ReiKohaku/piggy-bro](https://github.com/ReiKohaku/piggy-bro)
+* Project Link: [https://github.com/ReiKohaku/piggy-bro](https://github.com/ReiKohaku/piggy-bro)
 
-## 开发方案
+## Development Plan
 
-* 任务要求
-  基于 Wechaty 开发机器人，实现讲笑话、成语接龙、猜图片、猜歌名、查航班、查天气、微博爆款热搜提醒等功能；并设计Logo及形象；开发二师兄后花园。
-* 实现方案
-  利用 Wechaty 特性，实现一个简单的可扩展式脚手架，模块化实现各项功能。之后收集高可用API，实现要求的功能。后花园使用 Node.js + Vue 的开发模式，实现一个简单的小游戏。
+* Task Requirements
+  Develop a bot based on Wechaty to implement functions such as telling jokes, idiom chain, guessing pictures, guessing song names, checking flights, checking weather, Weibo hot search reminders, etc.; design Logo and image; develop Piggy Bro Back Garden.
+* Implementation Plan
+  Utilize Wechaty features to implement a simple extensible scaffold and modularly implement various functions. Then collect highly available APIs to implement required functions. The Back Garden uses Node.js + Vue development mode to implement a simple mini-game.
 
-## 开发时间计划
+## Development Timeline
 
-### 二师兄机器人开发（7月）
+### Piggy Bro Bot Development (July)
 
-* 开发可扩展式开发框架（7.1-7.7）
+* Develop Extensible Development Framework (7.1-7.7)
 
-  * 熟悉Wechaty开发模式
-  * 搭建二师兄开发脚手架
+  * Familiarize with Wechaty development mode
+  * Build Piggy Bro development scaffold
   
-* 具体功能实现（7.8-7.30）
+* Specific Function Implementation (7.8-7.30)
 
-  * 初步实现要求中的具体功能，可能包括且不限于：讲笑话、看热搜、查天气、成语接龙、猜图片、猜歌名
-  * 初步编写相关功能API的注册与部署文档
+  * Initially implement specific functions in requirements, which may include but are not limited to: telling jokes, checking hot searches, checking weather, idiom chain, guessing pictures, guessing song names
+  * Initially write API registration and deployment documentation for related functions
 
-### 二师兄周边设计（8月）
+### Piggy Bro Peripheral Design (August)
 
-* 设计二师兄Logo及形象（8.1-8.7）
-  * 为二师兄的Logo和形象做出初步描述
-  * Logo及形象定稿
+* Design Piggy Bro Logo and Image (8.1-8.7)
+  * Make initial description for Piggy Bro's Logo and image
+  * Finalize Logo and image
   
-* 开发二师兄后花园（8.8-8.30）
-  * 设计后花园游玩流程及各项数值
-  * 搭建二师兄后花园服务及页面
+* Develop Piggy Bro Back Garden (8.8-8.30)
+  * Design Back Garden gameplay flow and various values
+  * Build Piggy Bro Back Garden service and pages
 
-### 收尾工作（9月）
+### Finishing Work (September)
 
-* 编写文档与完善功能（9.1-9.30）
-  * 编写使用、部署及开发文档
-  * 整理代码并完善功能
+* Write Documentation and Improve Functions (9.1-9.30)
+  * Write usage, deployment and development documentation
+  * Organize code and improve functions
 
-## 其它
+## Other
 
-* 联系方式：
+* Contact Information:
   
-  微信：ReiKohaku
-  E-mail：hbsjzjwj@163.com
+  WeChat: ReiKohaku
+  E-mail: hbsjzjwj@163.com
 
 > Author: [@ReiKohaku](https://github.com/ReiKohaku)
 
-## 关于暑期2021
+## About Summer 2021
 
-“开源软件供应链点亮计划-暑期2021”（以下简称 暑期2021）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。
-旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。
-根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2021”活动奖金和奖杯。
-官网：[https://summer.iscas.ac.cn/](https://summer.iscas.ac.cn/)
+"Open Source Promotion Plan - Summer 2021" (hereinafter referred to as Summer 2021) is a summer activity for university students jointly organized by the Institute of Software, Chinese Academy of Sciences and the openEuler community.
+It aims to encourage students to actively participate in the development and maintenance of open source software and promote the vigorous development of excellent domestic open source software communities.
+According to the difficulty and completion of the project, participants can also receive activity bonuses and trophies from the "Open Source Promotion Plan - Summer 2021".
+Official website: [https://summer.iscas.ac.cn/](https://summer.iscas.ac.cn/)
 
-本项目 [基于 Wechaty 开发开源的二师兄社群逗乐机器人] 系 暑期2021 支持的开源项目。
+This project [Developing Open Source Piggy Bro Community Entertainment Bot Based on Wechaty] is an open source project supported by Summer 2021.
 
 ---
 
