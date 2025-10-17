@@ -1,5 +1,5 @@
 ---
-title: ' "Wechaty受邀参加GAIDC开源集市，邀请你一起来！" (English translation WIP)'
+title: "Wechaty Invited to GAIDC Open Source Market - Join Us!"
 author: juzibot
 categories: announcement
 tags:
@@ -7,87 +7,89 @@ tags:
   - ecosystem
   - wechaty-way
 image: /assets/2023/02-wechaty-invited-to-gaidc-en/2023-gaidc.webp
+excerpt: >
+  Wechaty is invited to participate in the GAIDC Open Source Market this weekend, joining AI projects and developers to share the "AI Carnival" with interactive challenges, community gatherings, and open mic sessions.
 ---
 
-## Wechaty受邀参加GAIDC开源集市邀请你一起来
+> This is a translated version of the original Chinese post. You can find the original post [here](/2023/02/23/wechaty-invited-to-gaidc/).
 
-随着专为对话而生的 ChatGPT 火爆，Wechaty 再次成为开源社区里备受关注的项目。
+## Wechaty Invited to GAIDC Open Source Market - Join Us
 
-过去 3 个月里，有数十个基于 Wechaty 把 ChatGPT 接入到聊天软件的项目在 GitHub 上开源，最受欢迎的项目已获得 8K+ Stars。
+With the explosion of ChatGPT, designed specifically for conversation, Wechaty has once again become a highly watched project in the open source community.
+
+Over the past 3 months, dozens of projects based on Wechaty that integrate ChatGPT into chat software have been open-sourced on GitHub, with the most popular project already having 8K+ Stars.
 
 ![image-1.webp](/assets/2023/02-wechaty-invited-to-gaidc-en/image-1.webp)
 
-通过 Wechaty，开发者仅需要 6 行代码就可以把聊天软件变成 Chatbot。增加几行代码就可以接入 ChatGPT、Stable Diffusion 等 AI 模型，获得丰富的对话能力，让聊天软件成为助力创作、提高效率的 AI 工具。
+Through Wechaty, developers only need 6 lines of code to turn chat software into a Chatbot. Adding a few more lines of code can integrate AI models such as ChatGPT and Stable Diffusion, gaining rich conversational capabilities and making chat software an AI tool that aids creation and improves efficiency.
 
-本周末(25日-26日)，Wechaty 受邀参加 GAIDC 开源集市，与更多 AI 项目和开发者一起切磋，共享“AI 狂欢”。
+This weekend (25th-26th), Wechaty is invited to participate in the GAIDC Open Source Market, exchanging ideas with more AI projects and developers, sharing the "AI Carnival."
 
-- 不管你是萌新的AI小白，想多接触行业的方方面面
-- 还是在职开发者，想精进自己的技能，或探索下其他职场可能性
-- 或是技术大牛，想从算法-算力-框架多视角下探讨大模型技术前沿应用实践
-- 或是科研爱好者，想知晓人工智能如何助力科学研究与发现(AI for science)
+- Whether you're a newbie to AI wanting to learn more about all aspects of the industry
+- Or an employed developer wanting to refine your skills or explore other career possibilities
+- Or a technical expert wanting to discuss cutting-edge applications of large model technology from multiple perspectives of algorithms, computing power, and frameworks
+- Or a research enthusiast wanting to know how artificial intelligence assists scientific research and discovery (AI for science)
 
-这场在临港中心举办的这场开发者先锋大会，一定不要错过！
+This developer pioneer conference held at Lingang Center is not to be missed!
 
-大会将有多元话题的前沿论坛，诸如AI编程、AI芯片、AI+健康、AI智能出行、AI+机器人、元宇宙等等，为你打开新世界的大门。
+The conference will feature cutting-edge forums on diverse topics such as AI programming, AI chips, AI+health, AI intelligent transportation, AI+robotics, metaverse, etc., opening the door to a new world for you.
 
 ![image-2.webp](/assets/2023/02-wechaty-invited-to-gaidc-en/image-2.webp)
 
-活动现场，还有互动体验区、AI图书展，以及多个热门领域AI企业现场招聘会，鱼和熊掌都能品一品。当然，如果你对万花筒般丰富的开源技术、开源文化感兴趣，不妨也来开源集市瞧瞧！
+At the event, there will also be interactive experience areas, AI book exhibitions, and on-site recruitment sessions for AI companies in multiple hot fields - you can have your cake and eat it too. Of course, if you're interested in the kaleidoscope of rich open source technology and open source culture, why not also visit the open source market!
 
-## 关于开源集市
+## About the Open Source Market
 
-为了让广大开发者、非技术从业者伙伴们领略多彩的开源文化与项目价值，本次大会特别设立了开源集市专区，邀请15～20 家国内外知名开源社区或相关组织共同参与建设，展示开源魅力、分享社区成果，吸纳更多志同道合的伙伴加入开源的大家庭，一同打怪升级，成长路上相伴而行。
+To allow developers and non-technical partners to appreciate colorful open source culture and project value, this conference has specially set up an open source market area, inviting 15~20 well-known domestic and international open source communities or related organizations to participate in construction, showcase open source charm, share community achievements, and attract more like-minded partners to join the open source family, level up together, and accompany each other on the growth path.
 
-时间：2月25日-26日9:30-17:00
+Time: February 25-26, 9:30-17:00
 
-地点：上海市浦东新区海港大道 555 号临港中心 二楼共享大厅（西侧通道2）
+Location: Lingang Center, 555 Haigang Avenue, Pudong New District, Shanghai, 2nd Floor Shared Hall (West Passage 2)
 
-值得再三划重点的是，开源集市不止面向技术开发者，也同样欢迎运营、产品、市场伙伴来一起交流切磋！
+It's worth emphasizing repeatedly that the open source market is not only for technical developers but also welcomes operations, product, and marketing partners to exchange and learn together!
 
-## 玩转开源集市
+## Navigating the Open Source Market
 
-本次集市活动召集了各个前沿技术方向的开源项目，既有用于大厂发起的用于深度图学习的开源框架，也有初创企业致力于解放创造力的新一代编程语言，还有只需 6 行代码，即可将任意聊天软件变成机器人的神奇工具！
+This market event has gathered open source projects from various cutting-edge technology directions, including open source frameworks for deep graph learning initiated by large companies, next-generation programming languages dedicated to liberating creativity by startups, and magical tools that can turn any chat software into a robot with just 6 lines of code!
 
 ![image-3.webp](/assets/2023/02-wechaty-invited-to-gaidc-en/image-3.webp)
 
-整个集市专区呈长条状，伙伴们入场时，会拿到一份 “集市游玩手册”(类似导览小册子)，介绍20个摊位对应的项目，以及集市专区的游戏玩法说明。
+The entire market area is strip-shaped. When partners enter, they will receive a "Market Play Guide" (similar to a tour booklet), introducing the 20 booths' corresponding projects and the gameplay instructions for the market area.
 
-每家社区会为伙伴们准备 1～3 个挑战任务（其中开发者的为技术类实战，非技术背景的朋友则是非coding的问题），顺利通关者可收获一定的“源力”点数，并兑换相应各社区周边礼品。
+Each community will prepare 1~3 challenge tasks for partners (technical hands-on tasks for developers, non-coding questions for friends with non-technical backgrounds). Those who successfully complete the challenges can earn a certain amount of "Source Power" points and redeem corresponding community merchandise gifts.
 
 ![image-4.webp](/assets/2023/02-wechaty-invited-to-gaidc-en/image-4.webp)
 
 ![image-5.webp](/assets/2023/02-wechaty-invited-to-gaidc-en/image-5.webp)
 
-并且，每个摊位每天都有10枚“天选开源人”贴纸（1枚=3个“源力点数”），奖励给来摊位深入交流探讨的伙伴。在集市专区出口处，大家可报上各自收获成果及相应联系方式；活动结束前的半小时再统计一遍，累计点数最多的，收获价值感满满的盲盒大礼盒（价值150～1000元不等），奖品信息拭目以待！
+Moreover, each booth has 10 "Chosen Open Source Person" stickers every day (1 sticker = 3 "Source Power points"), rewarding partners who come to the booth for in-depth exchanges. At the exit of the market area, everyone can report their respective achievements and corresponding contact information; count again half an hour before the event ends, and those with the most accumulated points will receive blind box gift boxes full of value (worth 150~1000 yuan), stay tuned for prize information!
 
-## 特色环节
+## Special Segments
 
-为了尽可能丰富大家体验、加深对真实开源的理解，本次集市专区还有两大特色环节：
+To enrich everyone's experience as much as possible and deepen understanding of real open source, this market area has two special segments:
 
-### 1. 开源团聚环节
+### 1. Open Source Gathering Segment
 
-25日下午13:30-17:00有组织2～3场团聚（每场60～90min），组局者有充分的自由度自发挥，可以是恳谈会、吐槽会、圆桌、工作坊等多元形式，话题也可以跳脱纯技术本身尽可能拓展延伸，大会官网也可同步信息，尽快和大家同步！
+On the afternoon of the 25th from 13:30-17:00, there will be 2~3 organized gatherings (60~90 minutes each). Organizers have full freedom to play, which can be in diverse forms such as heart-to-heart talks, complaint sessions, roundtables, workshops, etc. Topics can also break away from pure technology itself and expand as much as possible. The conference official website can also synchronize information and sync with everyone as soon as possible!
 
 ![image-6.webp](/assets/2023/02-wechaty-invited-to-gaidc-en/image-6.webp)
 
-### 2. 开源开放麦
+### 2. Open Source Open Mic
 
-26号下午 13:00-15:00 在小舞台区域（离集市专区步行1～2min），各项目代表也会受邀上舞台，分享各自项目的建立初衷、发展状况和未来愿景等等，每家 5～6min 闪电演讲的时间，大家也别错过哦！
+On the afternoon of the 26th from 13:00-15:00 in the small stage area (1~2 minutes walk from the market area), project representatives will also be invited to the stage to share their projects' founding intentions, development status, future visions, etc., with 5~6 minutes of lightning talk time for each, don't miss it!
 
 ![image-7.webp](/assets/2023/02-wechaty-invited-to-gaidc-en/image-7.webp)
 
 ![image-8.webp](/assets/2023/02-wechaty-invited-to-gaidc-en/image-8.webp)
 
-## 报名方式
+## Registration Method
 
-点击[报名链接](https://www.globalaidc.com/event/zh/pc/e80e0000-06d7-0e04-797b-08daf2220682/apply?attendeeTypeId=e80e0000-06d7-0e04-4a0c-08daf229e183&groupOrganizationCode=YYW260)注册后即可报名。活动当天，会有 Wechaty 社区的伙伴在现场与大家互动，欢迎社区的开发者们前来“面基”
+Click the [registration link](https://www.globalaidc.com/event/zh/pc/e80e0000-06d7-0e04-797b-08daf2220682/apply?attendeeTypeId=e80e0000-06d7-0e04-4a0c-08daf229e183&groupOrganizationCode=YYW260) to register. On the day of the event, Wechaty community partners will be on site to interact with everyone. Community developers are welcome to come for an "offline meetup"!
 
-## GAIDC 峰会背景
+## GAIDC Summit Background
 
-由世界人工智能大会组委会、上海市经济和信息化委员会、上海市人才工作领导小组办公室、中国（上海）自由贸易试验区临港新片区管理委员会共同指导，上海市人工智能行业协会和上海临港经济发展（集团）有限公司共同主办的2023全球人工智能开发者先锋大会（GAIDC）将于2023年2月25日—26日在上海举行。
+Guided jointly by the World Artificial Intelligence Conference Organizing Committee, Shanghai Municipal Commission of Economy and Informatization, Shanghai Talent Work Leading Group Office, and China (Shanghai) Pilot Free Trade Zone Lingang New Area Management Committee, and co-hosted by the Shanghai Artificial Intelligence Industry Association and Shanghai Lingang Economic Development (Group) Co., Ltd., the 2023 Global Artificial Intelligence Developer Pioneer Conference (GAIDC) will be held in Shanghai on February 25-26, 2023.
 
-GAIDC始于WAIC上海人工智能开发者大会，历经三年发展沉淀，全面迭代升级。本届大会主题为“向光而行的AI开发者”，以AI开发者为核心，为AI开发者带来产业之光、科技之光、未来之光。大会在上海最早迎接日出的地方——临港，通过论坛、团聚、学习赛、项目路演、人才交流、书友会、互动体验等多个板块，聚焦专业前沿内容，联合超过20家国内外开源组织、开发者社区，力邀全球技术大牛、导师大咖和AI开发者共同线下参与，同时与上千万专业开发者线上互动交流，营造自由活泼氛围。
+GAIDC originated from the WAIC Shanghai Artificial Intelligence Developer Conference. After three years of development and precipitation, it has undergone comprehensive iteration and upgrade. This conference's theme is "AI Developers Walking Towards the Light," centered on AI developers, bringing the light of industry, technology, and the future to AI developers. The conference is held in Lingang, the place in Shanghai that welcomes the sunrise earliest. Through forums, gatherings, learning competitions, project roadshows, talent exchanges, book clubs, interactive experiences, and other sections, it focuses on professional cutting-edge content, joins forces with more than 20 domestic and international open source organizations and developer communities, invites global technical experts, mentor celebrities, and AI developers to participate offline together, while interacting and communicating online with tens of millions of professional developers, creating a free and lively atmosphere.
 
----
-
-> Chinese version of this post: [wechaty invited to gaidc]({{ '/2023/02/23/wechaty-invited-to-gaidc/' | relative_url }})
+> This is a translated version of the original Chinese post. You can find the original post [here](/2023/02/23/wechaty-invited-to-gaidc/).

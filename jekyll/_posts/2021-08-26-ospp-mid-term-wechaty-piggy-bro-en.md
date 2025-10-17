@@ -1,5 +1,5 @@
 ---
-title: ' "OSPP 2021-期中报告-基于 Wechaty 开发开源的二师兄社群逗乐机器人" (English translation WIP)'
+title: "OSPP 2021 - Mid-term Report - Developing Open Source Piggy Bro Community Entertainment Bot Based on Wechaty"
 author: reikohaku
 categories:
   - project
@@ -13,112 +13,114 @@ tags:
   - ospp
   - ospp-2021
   - mid-term
+excerpt: >
+  Mid-term report for the OSPP 2021 project developing Piggy Bro, an open-source multi-functional group chat bot based on Wechaty with extensible interceptor architecture, featuring weather queries, jokes, idiom chains, riddles, and more.
 ---
 
-## 暑期2021
+> This is a translated version of the original Chinese post. You can find the original post [here](/2021/08/26/ospp-mid-term-wechaty-piggy-bro/).
 
-“开源软件供应链点亮计划-暑期2021”（以下简称 暑期2021）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。
-旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。
-根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2021”活动奖金和奖杯。
-官网：[https://summer.iscas.ac.cn/](https://summer.iscas.ac.cn/)
+## Summer 2021
 
-本项目 [基于 Wechaty 开发开源的二师兄社群逗乐机器人] 系 暑期2021 支持的开源项目。
+The "Summer 2021 of Open Source Promotion Plan" (hereinafter referred to as Summer 2021) is a summer activity for college students jointly organized by the Institute of Software Chinese Academy of Sciences and the openEuler community.
+It aims to encourage college students to actively participate in the development and maintenance of open source software and promote the vigorous development of excellent domestic open source software communities.
+According to the difficulty of the project and completion status, participants can also receive awards and trophies from the "Summer 2021 of Open Source Promotion Plan".
+Official website: [https://summer.iscas.ac.cn/](https://summer.iscas.ac.cn/)
 
-## 项目信息
+This project [Developing Open Source Piggy Bro Community Entertainment Bot Based on Wechaty] is an open source project supported by Summer 2021.
 
-* 导师：韩磊、鲁玉超、王玉丹
-* 学生：井维嘉
-* 项目介绍：[https://github.com/wechaty/summer-of-wechaty/issues/83](https://github.com/wechaty/summer-of-wechaty/issues/83)
+## Project Information
 
-* 项目名称：基于 Wechaty 开发开源的二师兄社群逗乐机器人
+* Mentors: Han Lei, Lu Yuchao, Wang Yudan
+* Student: Jing Weijia
+* Project Introduction: [https://github.com/wechaty/summer-of-wechaty/issues/83](https://github.com/wechaty/summer-of-wechaty/issues/83)
 
-* 方案描述
+* Project Name: Developing Open Source Piggy Bro Community Entertainment Bot Based on Wechaty
 
-  本项目需要基于Wechaty开发一个多功能群聊机器人。
+* Solution Description
 
-  该机器人的核心功能是编写并配置**拦截器**来实现对消息的响应。拦截器是一种**固定传入参数和返回值类型的函数**，通过编写拦截器的逻辑，可以**拦截消息**或**放行消息给下一个拦截器**，同时**做出一定的响应**。
+  This project requires developing a multi-functional group chat bot based on Wechaty.
 
-  本项目**预置了若干功能**，如查天气、讲笑话、成语接龙、猜字谜等以供使用和参考。同时，本项目希望能够**允许用户自行添加功能**，所以用户可以通过自己编写拦截器的方式，来为机器人添加功能。
+  The core functionality of this bot is to write and configure **interceptors** to respond to messages. An interceptor is a **function with fixed input parameters and return value types**. By writing the interceptor logic, you can **intercept messages** or **pass messages to the next interceptor**, while **making certain responses**.
 
-  本项目也将提供一个**二师兄后花园**页面，作为扩展的帮助文档、状态查询和日活功能使用。
+  This project **presets several functions**, such as weather queries, telling jokes, idiom chains, riddles, etc. for use and reference. At the same time, this project hopes to **allow users to add functions by themselves**, so users can add functions to the bot by writing their own interceptors.
 
-* 时间规划：
+  This project will also provide a **Piggy Bro Garden** page as extended help documentation, status query, and daily activity functions.
 
-  * 开发可扩展式开发框架（7.1-7.7）
-    * 熟悉Wechaty开发模式
-    * 搭建二师兄开发脚手架
-  * 具体功能实现（7.8-7.30）
-    * 初步实现要求中的具体功能，可能包括且不限于：讲笑话、看热搜、查天气、成语接龙、猜图片、猜歌名
-    * 初步编写相关功能API的注册与部署文档
+* Timeline:
 
-  * 设计二师兄Logo及形象（8.1-8.7）
-    * 为二师兄的Logo和形象做出初步描述
-    * Logo及形象定稿
-  * 开发二师兄后花园（8.8-8.30）
-    * 设计后花园功能和页面布局
-    * 搭建二师兄后花园服务及页面
+  * Develop Extensible Development Framework (7.1-7.7)
+    * Familiarize with Wechaty development mode
+    * Build Piggy Bro development scaffolding
+  * Specific Function Implementation (7.8-7.30)
+    * Initially implement specific functions in requirements, which may include but are not limited to: telling jokes, checking trending topics, weather queries, music search, idiom chains, picture guessing, song name guessing
+    * Initially write registration and deployment documentation for related function APIs
 
-  * 编写文档与完善功能（9.1-9.30）
-    * 编写使用、部署及开发文档
-    * 整理代码并完善功能
+  * Design Piggy Bro Logo and Image (8.1-8.7)
+    * Make preliminary descriptions of Piggy Bro's logo and image
+    * Finalize logo and image
+  * Develop Piggy Bro Garden (8.8-8.30)
+    * Design garden functionality and page layout
+    * Build Piggy Bro Garden service and pages
 
-## 项目进度
+  * Write Documentation and Improve Functions (9.1-9.30)
+    * Write usage, deployment, and development documentation
+    * Organize code and improve functions
 
-* 已完成工作
+## Project Progress
 
-  目前已经完成了机器人基本框架的全部搭建，并且提供了讲笑话、看热搜、查天气、搜音乐、成语接龙、猜字谜的预置功能。
+* Completed Work
 
-  二师兄的Logo已基本定稿。
+  Currently, the basic framework of the bot has been fully built, and preset functions such as telling jokes, checking trending topics, weather queries, music search, idiom chains, and riddles are provided.
 
-* 遇到的问题及解决方案
+  The Piggy Bro logo has been basically finalized.
 
-  目前的主要问题是不能很好地应对自然语义的复杂环境。
+* Problems Encountered and Solutions
 
-  由于设计上希望响应尽可能快速、高效，目前提供的示例插件均使用正则表达式来检查功能触发、解析参数。这样做有两个缺点：
+  The main problem at present is that it cannot handle the complex environment of natural language semantics well.
 
-  * 正则表达式的覆盖虽广，却也不全面。
+  Due to the design goal of making responses as fast and efficient as possible, the example plugins currently provided all use regular expressions to check function triggers and parse parameters. This has two disadvantages:
 
-    例如查天气功能中，预设了两种触发方式：“二师兄，查xx天气”和“二师兄，xx天气如何/怎么样”。但事实上问天气不止有这些问法，还有如“xx的天好不好”、“xx在下雨吗”等问法。这些特殊的问法并不能被正则表达式解析。
+  * Although regular expressions have broad coverage, they are not comprehensive.
 
-  * 正则表达式对参数的提取不是非常好。
+    For example, in the weather query function, two trigger methods are preset: "Piggy Bro, check XX weather" and "Piggy Bro, how is the weather in XX". But in fact, there are more ways to ask about weather, such as "Is the weather in XX good", "Is it raining in XX", etc. These special phrasings cannot be parsed by regular expressions.
 
-    依旧以查天气功能距离，“二师兄，xx天气如何”这句话，关键在于提取出地名。但是由于“二师兄”这一触发词后面就是参数，所以提取地名就稍显困难。另外就如上一条举例，“xx在下雨吗”这类问话中，用户还表达了**xx是否在下雨**这一含义，这时更符合自然语言的应答应该是“xx在下雨”或“xx没有在下雨”。正则表达式暂时还做不到这些。
+  * Regular expressions are not very good at extracting parameters.
 
-  关于这一问题的解决方案，有一种是接入微信开放平台的语境检测API，这样可以较为准确地识别语义。另外也可以考虑使用**jieba**库分词来解决语义分析和参数提取的问题。
+    Still taking the weather query function as an example, for the sentence "Piggy Bro, how is the weather in XX", the key is to extract the location name. But because the trigger word "Piggy Bro" is followed directly by the parameter, extracting the location name is somewhat difficult. In addition, as mentioned in the previous point, in questions like "Is it raining in XX", the user also expresses the meaning of **whether it is raining in XX**. At this time, a more natural language response should be "It is raining in XX" or "It is not raining in XX". Regular expressions cannot achieve this yet.
 
-* 后续工作安排
+  Regarding the solution to this problem, one approach is to integrate the semantic detection API from WeChat Open Platform, which can identify semantics more accurately. Another option is to consider using the **jieba** library for word segmentation to solve semantic analysis and parameter extraction problems.
 
-  后续工作与计划基本一致，优先考虑完成计划清单上的任务。
+* Follow-up Work Arrangement
+
+  Follow-up work is basically consistent with the plan, with priority given to completing tasks on the schedule.
   
-  另外，计划着手对于拦截器的逻辑做进一步优化，允许开发者为功能配置预检和帮助文本。
+  In addition, there are plans to further optimize the interceptor logic to allow developers to configure pre-checks and help text for functions.
   
-  关于自然语义识别这方面将会视产能而定。、
+  Natural language recognition will depend on productivity.
 
-## 项目成果
+## Project Results
 
-项目仓库：[https://github.com/ReiKohaku/piggy-bro](https://github.com/ReiKohaku/piggy-bro)
+Project Repository: [https://github.com/ReiKohaku/piggy-bro](https://github.com/ReiKohaku/piggy-bro)
 
-### Live Code视频
+### Live Code
 
 {% include iframe.html src="https://www.youtube.com/embed/i1AhcgQzQHw" %}
 
-### PPT展示视频
+### PPT Presentation Video
 
 {% include iframe.html src="https://www.youtube.com/embed/VQ56QFz69Ek" %}
 
-### 项目PPT
+### Project PPT
 
 {% include iframe.html src="/assets/2021/08-ospp-mid-term-wechaty-piggy-bro-en/mid-term-ppt.pdf" %}
 
-## 其它
+## Miscellaneous
 
-* 项目链接：[https://github.com/wechaty/summer-of-wechaty/issues/83](https://github.com/wechaty/summer-of-wechaty/issues/83)
+* Project Link: [https://github.com/wechaty/summer-of-wechaty/issues/83](https://github.com/wechaty/summer-of-wechaty/issues/83)
 
-* 联系方式：
+* Contact Information:
 
-  微信：ReiKohaku
-  E-mail：hbsjzjwj@163.com
+  WeChat: ReiKohaku
+  E-mail: hbsjzjwj@163.com
 
----
-
-> Chinese version of this post: [ospp mid term wechaty piggy bro]({{ '/2021/08/26/ospp-mid-term-wechaty-piggy-bro/' | relative_url }})
+> This is a translated version of the original Chinese post. You can find the original post [here](/2021/08/26/ospp-mid-term-wechaty-piggy-bro/).

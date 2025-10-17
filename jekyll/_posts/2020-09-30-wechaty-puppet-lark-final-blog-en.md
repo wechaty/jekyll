@@ -1,5 +1,5 @@
 ---
-title: ' "基于开放 API 封装 Wechaty 接口下的飞书聊天机器人：期末" (English translation WIP)'
+title: "Lark Chatbot based on Open API for Wechaty: Final Report"
 author: roxanne718
 categories: project
 image: /assets/2020/09-wechaty-puppet-lark-final-blog-en/wechaty-lark-final.webp
@@ -9,73 +9,79 @@ tags:
   - summer-of-wechaty
   - lark
   - ecosystem
+excerpt: >
+  Building a Lark (Feishu) chatbot using Wechaty by encapsulating open APIs
 ---
 
-“开源软件供应链点亮计划-暑期2020”（以下简称暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。
-根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。
-官网：[https://isrc.iscas.ac.cn/summer2020](https://isrc.iscas.ac.cn/summer2020) 官方新闻：[http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html](http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html)
-本项目 [基于开放 API 封装 Wechaty 接口下的飞书聊天机器人] 系 暑期2020 支持的开源项目。
+The "Open Source Promotion Plan - Summer 2020" (hereinafter referred to as Summer 2020) is a summer activity for college students jointly organized by the Institute of Software Chinese Academy of Sciences and the openEuler community. It aims to encourage students to actively participate in the development and maintenance of open source software and promote the vigorous development of excellent domestic open source software communities.
+According to the difficulty and completion of the project, participants can also receive activity bonuses and trophies from the "Open Source Promotion Plan - Summer 2020".
+Official website: [https://isrc.iscas.ac.cn/summer2020](https://isrc.iscas.ac.cn/summer2020) Official news: [http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html](http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html)
+This project [Lark Chatbot based on Open API for Wechaty] is an open source project supported by Summer 2020.
 
-## [基于开放 API 封装 Wechaty 接口下的飞书聊天机器人]信息
+## [Lark Chatbot based on Open API for Wechaty] Information
 
-- 导师：高原 吴京京
-- 学生：范蕊
+- Mentors: Gao Yuan, Wu Jingjing
+- Student: Fan Rui
 
-- 项目名称：基于开放 API 封装 Wechaty 接口下的飞书聊天机器人
-- 方案描述：
-  - 通过飞书订阅消息事件读取消息
-  - 通过飞书订阅通讯录事件实时更新通讯录内成员信息
-  - 对接飞书接口，实现 puppet 上各个类型的消息接口
-  - 设计配置参数
-  - 撰写飞书 puppet 的使用文档
-- 时间规划
-  - 熟悉技术栈
+- Project Name: Lark Chatbot based on Open API for Wechaty
+- Project Description:
+  - Read messages through Lark subscription message events
+  - Real-time update of member information in the address book through Lark subscription address book events
+  - Interface with Lark API to implement message interfaces of various types on puppet
+  - Design configuration parameters
+  - Write usage documentation for Lark puppet
+- Timeline
+  - Familiarize with technology stack
     - 7.1-7.20
-    - 阅读Wechaty-puppet-plus源代码，学习TypeScript，熟悉飞书服务端API
-  - 与飞书建立连接
+    - Read Wechaty-puppet-plus source code, learn TypeScript, familiarize with Lark server API
+  - Establish connection with Lark
     - 7.20-7.31
-    - 通过Express与飞书建立连接，实现文本信息的收发（即ding-dong-bot机器人）
-  - 完成文本信息的收发puppet
+    - Establish connection with Lark through Express, implement text message sending and receiving (i.e. ding-dong-bot)
+  - Complete text message sending and receiving puppet
     - 8.1-8.5
-    - 将文本信息的收发结合到lark-puppet中
-    - 搭建项目基础框架
-  - 完成其他基础消息类型的收发
+    - Integrate text message sending and receiving into lark-puppet
+    - Build project basic framework
+  - Complete other basic message type sending and receiving
     - 8.6-8.20
-    - 完成其他消息类型的收发，包括：图片、视频、文件
-  - 完成消息卡片的收发
+    - Complete sending and receiving of other message types, including: pictures, videos, files
+  - Complete message card sending and receiving
     - 8.21-8.30
-    - 通过消息卡片与用户建立多次交互式通信
-  - 设置配置参数
+    - Establish multiple interactive communications with users through message cards
+  - Set configuration parameters
     - 8.31-9.7
-  - 代码重构
+  - Code refactoring
     - 9.8-9.20
-  - 撰写使用文档
+  - Write usage documentation
     - 9.21-9.30
 
-## 项目总结
+## Project Summary
 
-- 项目成果：
-  - 项目仓库位于: <https://github.com/Roxanne718/wechaty-puppet-lark>
-  - Live coding视频:{% include iframe.html src="https://youtu.be/eutz5EMlJCI" %}
-  - Demo 视频:{% include iframe.html src="https://youtu.be/_y5DktHdL9U" %}
+- Project achievements:
+  - Project repository located at: <https://github.com/Roxanne718/wechaty-puppet-lark>
+  - Live coding video:{% include iframe.html src="https://youtu.be/eutz5EMlJCI" %}
+  - Demo video:{% include iframe.html src="https://youtu.be/_y5DktHdL9U" %}
   
-- 遇到的问题及解决方案：
-  - 使用Ngrox进行内网穿透时，每次重启子域名都会发生变化，在老师的建议和指导下最终采用localtunnel解决了这一问题。
-  - 由于对TypeScript和HTTP请求的理解不太透彻，遇到了一些消息格式上的问题，通过查阅资料、学习其他同学的代码等解决了这些问题。
-  - 目前虽然完成了基础功能，但是项目并不能达到发布水准，如果想要像在微信中使用 wechaty 那样开发飞书机器人，还需要完成以下事情：
-    - contact类、room类等的封装
-    - 其他 payload 消息的封装与处理
-    - 将 puppet 封装到 wechaty 中
-  - 感谢 wechaty 社区对我的包容、帮助和鼓励。虽然只有短短三个月的时间，但在这个项目中收获了很多。在与导师的交流中学到了很多新的东西，也认识到了很多优秀的同伴。目前这个项目还没有达到我预期的水准，后续我还会继续跟进、完善，希望能完成一套完整的飞书机器人框架。
-  - 这是我第一次严格意义上自己独立开发，在开发过程中遇到不少问题，如前后接口不一致、项目后期修改了前期的逻辑等等。在为新的 bug 焦头烂额的过程中我越来越理解到了工程化的重要性，希望自己能汲取教训，在今后的开发中做得更好。
-  - 最后，希望“开源软件供应链点亮计划”系列活动越办越好，相信未来的开发者们也能从中获得成长、成为中国开源软件链新的贡献者。
+- Problems encountered and solutions:
+  - When using Ngrok for intranet penetration, the subdomain name changes every time it restarts. Under the teacher's suggestion and guidance, we finally used localtunnel to solve this problem.
+  - Due to insufficient understanding of TypeScript and HTTP requests, I encountered some message format problems, which were solved by consulting materials and learning from other students' code.
+  - Although the basic functions have been completed, the project cannot reach publication standards. If you want to develop Lark bots like using wechaty in WeChat, you still need to complete the following things:
+    - Encapsulation of contact class, room class, etc.
+    - Encapsulation and processing of other payload messages
+    - Encapsulate puppet into wechaty
+  - Thank you to the wechaty community for your tolerance, help and encouragement. Although it was only three months, I gained a lot from this project. I learned a lot of new things from communicating with my mentor and met many excellent partners. At present, this project has not reached my expected level. I will continue to follow up and improve, hoping to complete a complete Lark robot framework.
+  - This is my first time developing independently in the strict sense. I encountered many problems during the development process, such as inconsistent front and back interfaces, and modifications to the early logic in the later stages of the project. In the process of being overwhelmed by new bugs, I increasingly understand the importance of engineering. I hope I can learn from the lessons and do better in future development.
+  - Finally, I hope the "Open Source Promotion Plan" series of activities will get better and better. I believe future developers can also grow from it and become new contributors to China's open source software chain.
 
-## 联系我们
+## Contact Us
 
-- 项目链接：[https://github.com/Roxanne718/wechaty-puppet-lark](https://github.com/Roxanne718/wechaty-puppet-lark)
+- Project link: [https://github.com/Roxanne718/wechaty-puppet-lark](https://github.com/Roxanne718/wechaty-puppet-lark)
 
-- 联系方式：+86 17822015718 | email: 953299708@qq.com
+- Contact: +86 17822015718 | email: 953299708@qq.com
 
 ---
 
 > Chinese version of this post: [wechaty puppet lark final blog]({{ '/2020/09/30/wechaty-puppet-lark-final-blog/' | relative_url }})
+
+---
+
+> This is a translated version of the original Chinese post. You can find the original post [here](/2020/09/30/wechaty-puppet-lark-final-blog/).

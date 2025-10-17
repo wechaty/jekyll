@@ -1,5 +1,5 @@
 ---
-title: ' "OSPP 2021-期中报告-基于 Blessed 的 Wechaty 命令行文本客户端软件" (English translation WIP)'
+title: ' "OSPP 2021 - Mid-term Report - Wechaty Command-line Text Client Software Based on Blessed"'
 author: chinggg
 categories:
   - project
@@ -12,90 +12,92 @@ tags:
   - ospp-2021
   - mid-term
   - ecosystem
+excerpt: >
+  Mid-term report for the OSPP 2021 project developing a Blessed-based command-line text client for Wechaty, supporting all Wechaty puppet providers in a terminal interface.
 ---
 
-“[开源软件供应链点亮计划-暑期2021](https://summer.iscas.ac.cn)”（以下简称 暑期2021）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。活动联合各大开源社区，针对重要开源软件的开发与维护提供项目，并向全球高校学生开放报名。 学生可自主选择感兴趣的项目进行申请，并在中选后获得该软件资深维护者（社区导师）亲自指导的机会。 根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2021”活动奖金和奖杯。
+> This is a translated version of the original Chinese post. You can find the original post [here](/2021/08/26/ospp-mid-term-cli/).
 
-本项目 [基于 Blessed 的 Wechaty 命令行文本客户端软件] 系 暑期2021 支持的开源项目。
+The "[Open Source Software Supply Chain Lighting Program - Summer 2021](https://summer.iscas.ac.cn)" (hereinafter referred to as Summer 2021) is a summer activity for college students jointly organized by the Institute of Software at the Chinese Academy of Sciences and the openEuler community. It aims to encourage students to actively participate in the development and maintenance of open source software and promote the vigorous development of excellent domestic open source software communities. The activity unites major open source communities to provide projects for the development and maintenance of important open source software, open to college students around the world. Students can independently choose projects of interest to apply for, and after being selected, have the opportunity to receive personal guidance from senior maintainers of the software (community mentors). Depending on the difficulty of the project and completion status, participants can also receive bonuses and trophies from the "Open Source Software Supply Chain Lighting Program - Summer 2021" activity.
 
-## [基于 Blessed 的 Wechaty 命令行文本客户端软件]信息
+This project [Wechaty Command-line Text Client Software Based on Blessed] is an open source project supported by Summer 2021.
 
-- 导师：李卓桓
-- 学生：刘靖
-- 项目介绍：[https://github.com/wechaty/summer/issues/80](https://github.com/wechaty/summer/issues/80)
+## [Wechaty Command-line Text Client Software Based on Blessed] Information
 
-- 项目名称：基于 Blessed 的 Wechaty 命令行文本客户端软件
-- 方案描述：
-  - 仿照 Linux 命令行终端的 IRC 文本客户端，实现一个基于 Wechaty 的即时通讯客户端，通过 Wechaty 支持所有现有的 [Wechaty Puppet Providers](https://wechaty.js.org/docs/puppet-providers/)，比如微信、企业微信、飞书、Whatsapp 等。  
-  - 利用 [Blessed](https://github.com/chjj/blessed) 和 [blesssed-contrib](https://github.com/yaronn/blessed-contrib) 提供的组件，绘制终端图形界面程序
-  - 监听消息接收和键鼠点击等事件，动态调整组件的内容，提供接近一般聊天软件的交互体验
-  - 使用 [react-blessed](https://github.com/Yomguithereal/react-blessed)、RxJS 和 Redux 重构代码
-- 时间规划：  
-  - 第一阶段（7.1 - 8.14）对接后端事件，选择恰当的架构与技术栈完成数据的存储、展示与更新
-    - 自行探索做出 demo
+- Mentor: Li Zhuohuan
+- Student: Liu Jing
+- Project Introduction: [https://github.com/wechaty/summer/issues/80](https://github.com/wechaty/summer/issues/80)
+
+- Project Name: Wechaty Command-line Text Client Software Based on Blessed
+- Solution Description:
+  - Modeled after Linux command-line terminal IRC text clients, implement an instant messaging client based on Wechaty, supporting all existing [Wechaty Puppet Providers](https://wechaty.js.org/docs/puppet-providers/) through Wechaty, such as WeChat, WeCom, Lark, WhatsApp, etc.
+  - Use components provided by [Blessed](https://github.com/chjj/blessed) and [blessed-contrib](https://github.com/yaronn/blessed-contrib) to draw terminal graphical interface programs
+  - Listen to events such as message reception and keyboard/mouse clicks, dynamically adjust component content, and provide an interactive experience close to general chat software
+  - Refactor code using [react-blessed](https://github.com/Yomguithereal/react-blessed), RxJS, and Redux
+- Time Planning:
+  - Phase 1 (7.1 - 8.14) Interface with backend events, select appropriate architecture and technology stack to complete data storage, display, and update
+    - Self-exploration to create demo
       - 7.1 - 7.14
-      - 实现简单的消息接收和联系人列表展示
-      - 与导师沟通架构设计和需使用的技术栈
-    - 军训期间，项目暂缓
+      - Implement simple message reception and contact list display
+      - Communicate with mentor about architectural design and technology stack to be used
+    - During military training, project paused
       - 7.15 - 7.29
-      - 时间有限，学习前端相关知识或抽空实现较简单的功能
-    - 改进代码结构，重点推进数据的存储与状态的管理
+      - Limited time, learn front-end related knowledge or implement simpler functions when possible
+    - Improve code structure, focus on advancing data storage and state management
       - 8.1 - 8.14
-      - 实现消息内容按来源存储与查看
-      - 联系人与群聊信息的缓存
-      - 撰写中期报告
-  - 第二阶段（8.15 - 9.30）重点完善前端交互，持续改进用户体验
-    - 提供更多的交互选项和管理功能
+      - Implement message content storage and viewing by source
+      - Caching of contact and group chat information
+      - Write mid-term report
+  - Phase 2 (8.15 - 9.30) Focus on improving frontend interaction, continuously improving user experience
+    - Provide more interaction options and management functions
       - 8.15 - 8.30
-      - 根据未读消息数量对联系人进行状态管理和智能排序
-    - 实现消息的发送
+      - Perform state management and intelligent sorting of contacts based on unread message count
+    - Implement message sending
       - 9.1 - 9.14
-    - 完善文档，编写样例代码和测试
+    - Improve documentation, write sample code and tests
       - 9.15 - 9.30
 
-## 项目进度
+## Project Progress
 
-- 已完成工作：  
-  - 所有消息的接收和存储
-  - 联系人与群聊信息的展示与缓存
-  - GitHub CI/CD 和 NPM 包的发布
-  - 按当前聊天对象显示相应对话记录
-  - 选中群聊时显示其所有成员
-  - 消息的发送
-- 遇到的问题及解决方案：
-  - 首先是技术上的问题，主要是 [Blessed](https://github.com/chjj/blessed) 长期无人维护，使用者也少，缺乏可参考的文档和资源。为了解决组件使用中遇到的 bug，常常需要深入阅读源码，为此我学习了使用 VS Code 调试 Node.js 程序的方法，成功找到了一些问题的原因并解决，还在导师的鼓励下[向社区博客投稿](https://wechaty.js.org/2021/08/08/vscode-debug-nodejs/)。不过由于终端环境本身的限制和不同平台的兼容问题，Blessed 在渲染能力和交互性等方面确实不尽如人意，部分预想的功能可能终究难以实现。
-  - 还有就是架构选型和时间规划上的问题，在本身就缺乏独立开发经验的情况下，我一开始执着于架构的选择，企图从一开始就确定好所有方案，浏览了相关项目后反而更迷茫，转而开始实现功能后才发现 Blessed 有诸多预想之外的问题，还是要自己亲自实践逐一踩坑，软件开发没有银弹。
-  - 最后就是开源项目维护上的问题，在导师的帮助下，使用 Issue 来细分任务并管理进度，利用 GitHub Actions 进行 CI/CD，发布 NPM 包
-- 后续工作安排：  
-  - 目前基本的聊天功能已粗略实现，联系人和群聊管理还要和导师讨论以何种形式呈现
-  - 考虑到 blessed 和终端的特性，一般聊天软件的设计（如新对话置顶）可能无法照搬
-  - 在保证可用性的情况下，使用 React 和 Redux 重构项目
+- Completed Work:
+  - Reception and storage of all messages
+  - Display and caching of contact and group chat information
+  - GitHub CI/CD and NPM package publishing
+  - Display corresponding conversation records according to current chat object
+  - Display all members when a group chat is selected
+  - Message sending
+- Problems Encountered and Solutions:
+  - First are technical issues, mainly that [Blessed](https://github.com/chjj/blessed) has been unmaintained for a long time, has few users, and lacks reference documentation and resources. To solve bugs encountered when using components, I often needed to read the source code in depth. For this purpose, I learned how to debug Node.js programs using VS Code, successfully found the causes of some problems and solved them, and even [contributed to the community blog](https://wechaty.js.org/2021/08/08/vscode-debug-nodejs/) with encouragement from my mentor. However, due to limitations of the terminal environment itself and compatibility issues across different platforms, Blessed's rendering capabilities and interactivity are indeed unsatisfactory, and some anticipated functions may ultimately be difficult to implement.
+  - There are also issues with architecture selection and time planning. Lacking independent development experience, I initially obsessed over architecture choices, trying to determine all solutions from the start. After browsing related projects, I became even more confused. Only after I turned to implementing functions did I discover that Blessed had many unexpected problems - you still have to practice and encounter pitfalls one by one yourself; there is no silver bullet in software development.
+  - Finally, there's the issue of open source project maintenance. With my mentor's help, I used Issues to subdivide tasks and manage progress, utilized GitHub Actions for CI/CD, and published NPM packages
+- Future Work Arrangements:
+  - Currently, basic chat functions have been roughly implemented; contact and group chat management still need to be discussed with the mentor regarding presentation format
+  - Considering the characteristics of blessed and terminals, designs from general chat software (such as bringing new conversations to the top) may not be directly applicable
+  - While ensuring usability, refactor the project using React and Redux
 
-## 项目成果
+## Project Results
 
-项目仓库: <https://github.com/wechaty/cli>  
+Project Repository: <https://github.com/wechaty/cli>
 
-### live coding视频
+### Live Coding Video
 
 {% include iframe.html src="https://www.youtube.com/watch?v=1U0ONeHV7z8" %}
 
-> 国内链接：<https://www.bilibili.com/video/BV1L3411q72g/>
+> Domestic link: <https://www.bilibili.com/video/BV1L3411q72g/>
 
-### PPT展示视频
+### PPT Presentation Video
 
 {% include iframe.html src="https://www.youtube.com/watch?v=xPsAwLglVdM" %}
 
-> 国内链接：<https://www.bilibili.com/video/BV1PQ4y1a7pM/>
+> Domestic link: <https://www.bilibili.com/video/BV1PQ4y1a7pM/>
 
-### 项目PPT
+### Project PPT
 
 {% include iframe.html src="/assets/2021/08-ospp-mid-term-cli-en/mid-slides.pdf" %}
 
-## 联系我们
+## Contact Us
 
-- 项目链接：[https://github.com/wechaty/cli]  
-- 联系方式：liuchinggg@gmail.com
+- Project Link: [https://github.com/wechaty/cli]
+- Contact: liuchinggg@gmail.com
 
----
-
-> Chinese version of this post: [ospp mid term cli]({{ '/2021/08/26/ospp-mid-term-cli/' | relative_url }})
+> This is a translated version of the original Chinese post. You can find the original post [here](/2021/08/26/ospp-mid-term-cli/).

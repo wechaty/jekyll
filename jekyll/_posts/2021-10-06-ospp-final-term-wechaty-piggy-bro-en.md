@@ -1,5 +1,5 @@
 ---
-title: ' "OSPP 2021-结项报告-基于 Wechaty 开发开源的二师兄社群逗乐机器人" (English translation WIP)'
+title: "OSPP 2021 - Final Report - Developing Open Source Piggy Bro Community Entertainment Bot Based on Wechaty"
 author: reikohaku
 categories:
   - project
@@ -13,94 +13,96 @@ tags:
   - ospp
   - ospp-2021
   - final-term
+excerpt: >
+  Final report for the OSPP 2021 project developing Piggy Bro, an open-source multi-functional group chat bot based on Wechaty, featuring jokes, weather, music search, trending topics, idiom chains, riddles, and more.
 ---
 
-## 暑期2021
+> This is a translated version of the original Chinese post. You can find the original post [here](/2021/10/06/ospp-final-term-wechaty-piggy-bro/).
 
-“开源软件供应链点亮计划-暑期2021”（以下简称 暑期2021）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。
-旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。
-根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2021”活动奖金和奖杯。
-官网：[https://summer.iscas.ac.cn/](https://summer.iscas.ac.cn/)
+## Summer 2021
 
-本项目 [基于 Wechaty 开发开源的二师兄社群逗乐机器人] 系 暑期2021 支持的开源项目。
+The "Summer 2021 of Open Source Promotion Plan" (hereinafter referred to as Summer 2021) is a summer activity for college students jointly organized by the Institute of Software Chinese Academy of Sciences and the openEuler community.
+It aims to encourage college students to actively participate in the development and maintenance of open source software and promote the vigorous development of excellent domestic open source software communities.
+According to the difficulty of the project and completion status, participants can also receive awards and trophies from the "Summer 2021 of Open Source Promotion Plan".
+Official website: [https://summer.iscas.ac.cn/](https://summer.iscas.ac.cn/)
 
-## 项目信息
+This project [Developing Open Source Piggy Bro Community Entertainment Bot Based on Wechaty] is an open source project supported by Summer 2021.
 
-* 导师：韩磊、鲁玉超、王玉丹
-* 学生：井维嘉
-* 项目介绍：[https://github.com/wechaty/summer-of-wechaty/issues/83](https://github.com/wechaty/summer-of-wechaty/issues/83)
+## Project Information
 
-* 项目名称：基于 Wechaty 开发开源的二师兄社群逗乐机器人
+* Mentors: Han Lei, Lu Yuchao, Wang Yudan
+* Student: Jing Weijia
+* Project Introduction: [https://github.com/wechaty/summer-of-wechaty/issues/83](https://github.com/wechaty/summer-of-wechaty/issues/83)
 
-* 方案描述
+* Project Name: Developing Open Source Piggy Bro Community Entertainment Bot Based on Wechaty
 
-  本项目需要基于Wechaty开发一个多功能群聊机器人。
+* Solution Description
 
-  该机器人的核心功能是编写并配置**拦截器**来实现对消息的响应。拦截器是一种**固定传入参数和返回值类型的函数**，通过编写拦截器的逻辑，可以**拦截消息**或**放行消息给下一个拦截器**，同时**做出一定的响应**。
+  This project requires developing a multi-functional group chat bot based on Wechaty.
 
-  本项目**预置了若干功能**，如查天气、讲笑话、成语接龙、猜字谜等以供使用和参考。同时，本项目希望能够**允许用户自行添加功能**，所以用户可以通过自己编写拦截器的方式，来为机器人添加功能。
+  The core functionality of this bot is to write and configure **interceptors** to respond to messages. An interceptor is a **function with fixed input parameters and return value types**. By writing the interceptor logic, you can **intercept messages** or **pass messages to the next interceptor**, while **making certain responses**.
 
-  本项目也将提供一个**二师兄后花园**页面，作为扩展的帮助文档、状态查询和日活功能使用。
+  This project **presets several functions**, such as weather queries, telling jokes, idiom chains, riddles, etc. for use and reference. At the same time, this project hopes to **allow users to add functions by themselves**, so users can add functions to the bot by writing their own interceptors.
 
-* 时间规划：
+  This project will also provide a **Piggy Bro Garden** page as extended help documentation, status query, and daily activity functions.
 
-  * 开发可扩展式开发框架（7.1-7.7）
-    * 熟悉Wechaty开发模式
-    * 搭建二师兄开发脚手架
-  * 具体功能实现（7.8-7.30）
-    * 初步实现要求中的具体功能，可能包括且不限于：讲笑话、看热搜、查天气、成语接龙、猜图片、猜歌名
-    * 初步编写相关功能API的注册与部署文档
+* Timeline:
 
-  * 设计二师兄Logo及形象（8.1-8.7）
-    * 为二师兄的Logo和形象做出初步描述
-    * Logo及形象定稿
-  * 开发二师兄后花园（8.8-8.30）
-    * 设计后花园功能和页面布局
-    * 搭建二师兄后花园服务及页面
+  * Develop Extensible Development Framework (7.1-7.7)
+    * Familiarize with Wechaty development mode
+    * Build Piggy Bro development scaffolding
+  * Specific Function Implementation (7.8-7.30)
+    * Initially implement specific functions in requirements, which may include but are not limited to: telling jokes, checking trending topics, weather queries, music search, idiom chains, picture guessing, song name guessing
+    * Initially write registration and deployment documentation for related function APIs
 
-  * 编写文档与完善功能（9.1-9.30）
-    * 编写使用、部署及开发文档
-    * 整理代码并完善功能
+  * Design Piggy Bro Logo and Image (8.1-8.7)
+    * Make preliminary descriptions of Piggy Bro's logo and image
+    * Finalize logo and image
+  * Develop Piggy Bro Garden (8.8-8.30)
+    * Design garden functionality and page layout
+    * Build Piggy Bro Garden service and pages
 
-## 项目总结
+  * Write Documentation and Improve Functions (9.1-9.30)
+    * Write usage, deployment, and development documentation
+    * Organize code and improve functions
 
-项目仓库：[https://github.com/ReiKohaku/piggy-bro](https://github.com/ReiKohaku/piggy-bro)
+## Project Summary
 
-### 项目成果
+Project Repository: [https://github.com/ReiKohaku/piggy-bro](https://github.com/ReiKohaku/piggy-bro)
 
-截至到项目结束，取得了如下成果：
+### Project Results
 
-* 搭建了在任意支持的环境中可以自行部署的开箱即用的微信机器人。
-* 内置了讲笑话、查天气、搜音乐、看热搜、成语接龙和猜字谜六项基本娱乐功能。
-* 设计了“具备电子感、偏卡通的、类似大众心目中传统二师兄形象”的Logo。
-* 编写了基本的后花园服务和页面，通过阅读文档可以学会部署的方法。后花园提供了使用帮助和状态查询两个模块。
-* 编写了详细的部署文档，以及功能开发相关的文档。
+By the end of the project, the following results were achieved:
 
-项目原计划的核心目标已经全部完成。
+* Built an out-of-the-box WeChat bot that can be self-deployed in any supported environment.
+* Built-in six basic entertainment functions: telling jokes, weather queries, music search, checking trending topics, idiom chains, and riddles.
+* Designed a logo with "electronic feel, cartoon-like, similar to the traditional Piggy Bro image in the public's mind".
+* Wrote basic garden service and pages. By reading the documentation, you can learn deployment methods. The garden provides two modules: usage help and status query.
+* Wrote detailed deployment documentation and function development-related documentation.
 
-### Live Code视频
+All core objectives originally planned for the project have been completed.
+
+### Live Code Video
 
 {% include iframe.html src="https://www.youtube.com/embed/51EwCNB_Y90" %}
 
-国内链接：[https://v.qq.com/x/page/t3300psc439.html](https://v.qq.com/x/page/t3300psc439.html)
+Domestic link: [https://v.qq.com/x/page/t3300psc439.html](https://v.qq.com/x/page/t3300psc439.html)
 
-### PPT展示视频
+### PPT Presentation Video
 
 {% include iframe.html src="https://www.youtube.com/embed/Na9pGdf_6oY" %}
 
-国内链接：[https://v.qq.com/x/page/m3300a8rnft.html](https://v.qq.com/x/page/m3300a8rnft.html)
+Domestic link: [https://v.qq.com/x/page/m3300a8rnft.html](https://v.qq.com/x/page/m3300a8rnft.html)
 
-### 项目PPT
+### Project PPT
 
 {% include iframe.html src="/assets/2021/10-ospp-final-term-wechaty-piggy-bro-en/final-ppt.pdf" %}
 
-## 其它
+## Others
 
-* 联系方式：
+* Contact:
 
-  微信：ReiKohaku
-  E-mail：hbsjzjwj@163.com
+  WeChat: ReiKohaku
+  E-mail: hbsjzjwj@163.com
 
----
-
-> Chinese version of this post: [ospp final term wechaty piggy bro]({{ '/2021/10/06/ospp-final-term-wechaty-piggy-bro/' | relative_url }})
+> This is a translated version of the original Chinese post. You can find the original post [here](/2021/10/06/ospp-final-term-wechaty-piggy-bro/).

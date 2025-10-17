@@ -1,5 +1,5 @@
 ---
-title: ' "OSPP 2021-结项报告-基于 Blessed 的 Wechaty 命令行文本客户端软件" (English translation WIP)'
+title: "OSPP 2021 - Final Report - Wechaty Command-line Text Client Software Based on Blessed"
 author: chinggg
 categories:
   - project
@@ -12,92 +12,94 @@ tags:
   - ospp-2021
   - final-term
   - ecosystem
+excerpt: >
+  Final report for the OSPP 2021 project developing a Blessed-based command-line text client for Wechaty, enabling users to chat using keyboard in terminal and developers to observe bot behavior in real-time.
 ---
 
-本项目基于 blessed 为 wechaty 开发了一个命令行文本客户端，让用户可以使用键盘在终端里聊天，也方便开发者实时观察机器人的行为。
+> This is a translated version of the original Chinese post. You can find the original post [here](/2021/09/30/ospp-final-term-cli/).
 
-## [基于 Blessed 的 Wechaty 命令行文本客户端软件]信息
+This project developed a command-line text client for Wechaty based on Blessed, allowing users to chat using keyboard in the terminal and making it convenient for developers to observe bot behavior in real-time.
 
-- 导师：李卓桓
-- 学生：刘靖
-- 项目名称：基于 Blessed 的 Wechaty 命令行文本客户端软件
-- 项目介绍：[https://github.com/wechaty/summer/issues/80](https://github.com/wechaty/summer/issues/80)
-- 方案描述：
-  - 仿照 Linux 命令行终端的 IRC 文本客户端，实现一个基于 Wechaty 的即时通讯客户端，通过 Wechaty 支持所有现有的 [Wechaty Puppet Providers](https://wechaty.js.org/docs/puppet-providers/)，比如微信、企业微信、飞书、Whatsapp 等。  
-  - 利用 [Blessed](https://github.com/chjj/blessed) 和 [blesssed-contrib](https://github.com/yaronn/blessed-contrib) 提供的组件，绘制终端图形界面程序
-  - 监听消息接收和键鼠点击等事件，动态调整组件的内容，提供接近一般聊天软件的交互体验
-  - 使用 [react-blessed](https://github.com/Yomguithereal/react-blessed)、RxJS 和 Redux 重构代码（选做）
-- 时间规划：  
-  - 第一阶段（7.1 - 8.14）对接后端事件，选择恰当的架构与技术栈完成数据的存储、展示与更新
-    - 自行探索做出 demo
+## [Wechaty Command-line Text Client Software Based on Blessed] Information
+
+- Mentor: Li Zhuohuan
+- Student: Liu Jing
+- Project Name: Wechaty Command-line Text Client Software Based on Blessed
+- Project Introduction: [https://github.com/wechaty/summer/issues/80](https://github.com/wechaty/summer/issues/80)
+- Solution Description:
+  - Following the IRC text client of Linux command-line terminals, implement an instant messaging client based on Wechaty, supporting all existing [Wechaty Puppet Providers](https://wechaty.js.org/docs/puppet-providers/) through Wechaty, such as WeChat, WeChat Work, Lark, WhatsApp, etc.  
+  - Utilize components provided by [Blessed](https://github.com/chjj/blessed) and [blessed-contrib](https://github.com/yaronn/blessed-contrib) to draw terminal graphical interface programs
+  - Listen to events such as message reception and keyboard/mouse clicks, dynamically adjust component content to provide interactive experience close to general chat software
+  - Refactor code using [react-blessed](https://github.com/Yomguithereal/react-blessed), RxJS and Redux (optional)
+- Timeline:  
+  - Phase 1 (7.1 - 8.14) Connect backend events, select appropriate architecture and technology stack to complete data storage, display and update
+    - Self-explore to make demo
       - 7.1 - 7.14
-      - 实现简单的消息接收和联系人列表展示
-      - 与导师沟通架构设计和需使用的技术栈
-    - 军训期间，项目暂缓
+      - Implement simple message reception and contact list display
+      - Communicate with mentor on architecture design and technology stack to use
+    - During military training, project paused
       - 7.15 - 7.29
-      - 时间有限，学习前端相关知识或抽空实现较简单的功能
-    - 改进代码结构，重点推进数据的存储与状态的管理
+      - Limited time, learn front-end related knowledge or find time to implement simpler functions
+    - Improve code structure, focus on data storage and state management
       - 8.1 - 8.14
-      - 实现消息内容按来源存储与查看
-      - 联系人与群聊信息的缓存
-      - 撰写中期报告
-  - 第二阶段（8.15 - 9.30）重点完善前端交互，持续改进用户体验
-    - 提供更多的交互选项和管理功能
+      - Implement message content storage and viewing by source
+      - Contact and group chat information caching
+      - Write mid-term report
+  - Phase 2 (8.15 - 9.30) Focus on improving front-end interaction, continuously improve user experience
+    - Provide more interaction options and management functions
       - 8.15 - 8.30
-      - 根据未读消息数量对联系人进行状态管理和智能排序
-    - 实现消息的发送
+      - Perform state management and intelligent sorting of contacts based on unread message count
+    - Implement message sending
       - 9.1 - 9.14
-    - 完善文档，编写样例代码和测试
+    - Improve documentation, write sample code and tests
       - 9.15 - 9.30
 
-## 项目总结
+## Project Summary
 
-- 项目成果：整个项目就是一个在终端里运行的 Wechaty 聊天客户端，可以从以下几个角度总结成果：
-  - 数据的获取和展示：在应用启动时会一次性获取所有联系人和群聊，然后监听消息并显示在相应的聊天界面中，由于底层 puppet 实现可能无法在启动时获取所有信息，因此还提供了重新获取联系人和群聊数据的选项。
-  - 界面交互的设计：基本完成，界面左侧是好友和群聊列表，右侧是活跃聊天（指有消息往来的好友和群聊）列表，中间大块展示消息记录，中间下侧有发送消息的输入框，最下方是快捷菜单栏，用户可以按下快捷键来触发各种功能，部分功能会在上层弹出窗口，再按一次则窗口消失。值得一提的是对 Vim 常用按键的支持，用户可以使用 `j/k/C-u/C-d/g/G` 来移动选框，按下 `/` 则会弹出搜索框，直接输入聊天名称即可尝试搜索并跳转到对应的聊天。
-  - 聊天功能的覆盖：基础的文本消息收发已经完成，聊天的管理实现起来也是较为容易，但由于对现有代码架构不满意，并没有想好群和联系人管理该以怎样的布局和交互方式呈现，且与机器人自动化管理聊天的场景不同，用户对联系人和群聊进行增删改的频率并不高，且误操作的后果比较严重，所以管理功能的优先级比较低。
-  - 开源生态的完善：首先是开源协作的规范，开发过程通过有意义的 commit message 得以保存，在 issue 和 PR 中使用英语讨论技术细节也能让世界各地的开发者方便地检索和交流。为了提高开发效率，在 Wechaty 社区通用的一套 CI/CD 流程，并采用了 ESM 作为模块管理方式。为便于使用，除了 npm 安装外，还提供了 Docker 构建方式。
+- Project Results: The entire project is a Wechaty chat client running in the terminal. Results can be summarized from the following perspectives:
+  - Data acquisition and display: All contacts and group chats are fetched at once when the application starts, then messages are monitored and displayed in the corresponding chat interface. Since the underlying puppet implementation may not be able to obtain all information at startup, an option to re-fetch contact and group chat data is also provided.
+  - Interface interaction design: Basically completed. The left side of the interface is the friends and group chat list, the right side is the active chat (friends and group chats with message exchanges) list, the middle large block displays message records, the middle lower side has an input box for sending messages, and the bottom is the quick menu bar. Users can press shortcuts to trigger various functions. Some functions will pop up windows in the upper layer, and pressing again will make the window disappear. Worth mentioning is support for common Vim keys - users can use `j/k/C-u/C-d/g/G` to move the selection box, and pressing `/` will pop up a search box where you can directly enter the chat name to try searching and jumping to the corresponding chat.
+  - Chat function coverage: Basic text message sending and receiving has been completed. Chat management is relatively easy to implement, but due to dissatisfaction with the existing code architecture and not having figured out what layout and interaction methods should be used for group and contact management, and unlike the scenario where bots automatically manage chats, users don't frequently add/delete/modify contacts and group chats, and the consequences of misoperation are quite serious, so management functions have lower priority.
+  - Open source ecosystem improvement: First is the standardization of open source collaboration. The development process is preserved through meaningful commit messages. Using English to discuss technical details in issues and PRs also allows developers worldwide to easily retrieve and communicate. To improve development efficiency, a set of CI/CD processes common in the Wechaty community is used, and ESM is adopted as the module management method. For ease of use, besides npm installation, a Docker build method is also provided.
 
-  部分效果图如下：
+  Some effect images are shown below:
   ![demo](/assets/2021/09-ospp-final-term-cli-en/final-demo.webp)
 
-- 遇到的问题及解决方案：
+- Problems Encountered and Solutions:
 
-  首先是界面设计：最初设计的界面过于理想化，实际在终端中有着诸多限制，包括文字的自动换行，键盘鼠标的交互都有缺陷，最终仿照了 [dockly](https://github.com/lirantal/dockly) 使用菜单栏+快捷键的方式提供交互，算是比较理想的解决方案。
+  First is interface design: The initially designed interface was too idealistic. There are actually many limitations in the terminal, including automatic text wrapping and defects in keyboard and mouse interaction. Finally, following [dockly](https://github.com/lirantal/dockly), using menu bar + shortcuts to provide interaction is a relatively ideal solution.
 
-  其次是代码细节上的问题：[Blessed](https://github.com/chjj/blessed) 长期无人维护，使用者也少，缺乏可参考的文档和资源，为了解决组件使用中遇到的 bug，我学习了使用 VS Code 调试 Node.js 程序的方法，成功找到了问题的原因并解决，还在导师的鼓励下[向社区博客投稿](https://wechaty.js.org/2021/08/08/vscode-debug-nodejs/)。
+  Second are code detail issues: [Blessed](https://github.com/chjj/blessed) has been unmaintained for a long time, with few users and lacking reference documentation and resources. To solve bugs encountered when using components, I learned how to debug Node.js programs with VS Code, successfully found the cause of the problem and solved it, and even [contributed to the community blog](https://wechaty.js.org/2021/08/08/vscode-debug-nodejs/) with mentor encouragement.
 
-  最后是架构上的问题：其实在一开始我就搜集了许多小项目准备借鉴，还学习了 RxJS 的基础知识，但个人缺乏独立开发的经验，且由于场景的差异无法直接套用，只好以功能的实现来主导开发，将所有代码集中在两三个文件中。这种方式在一开始其实非常直观易于理解，但到了项目开发的后期，需要维护和控制的状态越来越多，代码粗放式增长使得维护困难，终于体现出了使用设计模式和框架的重要性。预期之后会参照 [accursed](https://github.com/cancerberoSgx/accursed) 尝试使用 React 来渲染，并相应地重构代码。
-- 后续工作安排：  
-  - 目前基本的聊天功能已粗略实现，联系人和群聊管理还要和导师讨论以何种形式呈现
-  - 考虑到 blessed 和终端的特性，一般聊天软件的设计（如新对话置顶）可能无法照搬
-  - 在保证可用性的情况下，使用 React 和 Redux 重构项目
+  Finally are architectural issues: Actually from the beginning I collected many small projects to reference and learned basic RxJS knowledge, but lacking personal experience in independent development and due to scenario differences being unable to directly apply them, I could only lead development with feature implementation, concentrating all code in two or three files. This approach was actually very intuitive and easy to understand at the beginning, but in the later stages of project development, with more and more states needing maintenance and control, code grew extensively making maintenance difficult, finally showing the importance of using design patterns and frameworks. Expected to later reference [accursed](https://github.com/cancerberoSgx/accursed) to try using React for rendering and refactor code accordingly.
+- Follow-up Work Arrangement:  
+  - Currently basic chat functions have been roughly implemented. Contact and group chat management still needs discussion with mentor on what form to present
+  - Considering the characteristics of blessed and terminals, general chat software designs (like new conversations pinned to top) may not be directly applicable
+  - While ensuring usability, refactor the project using React and Redux
 
-### live coding视频
+### Live Coding Video
 
 {% include iframe.html src="https://youtu.be/D5QbX183kb8" %}
 
-> 国内链接：<https://www.bilibili.com/video/BV1444y1t7So/>
+> Domestic link: <https://www.bilibili.com/video/BV1444y1t7So/>
 
-### PPT展示视频
+### PPT Presentation Video
 
 {% include iframe.html src="https://youtu.be/PssH9epe0tU" %}
 
-> 国内链接：<https://www.bilibili.com/video/BV1Wg411F7Gh/>
+> Domestic link: <https://www.bilibili.com/video/BV1Wg411F7Gh/>
 
-### 项目PPT
+### Project PPT
 
 {% include iframe.html src="/assets/2021/09-ospp-final-term-cli-en/final-slides.pdf" %}
 
-## 联系我们
+## Contact Us
 
-- 项目链接：[https://github.com/wechaty/cli]  
-- 联系方式：liuchinggg@gmail.com
+- Project Link: [https://github.com/wechaty/cli]  
+- Contact: liuchinggg@gmail.com
 
-“[开源软件供应链点亮计划-暑期2021](https://summer.iscas.ac.cn)”（以下简称 暑期2021）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。活动联合各大开源社区，针对重要开源软件的开发与维护提供项目，并向全球高校学生开放报名。 学生可自主选择感兴趣的项目进行申请，并在中选后获得该软件资深维护者（社区导师）亲自指导的机会。 根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2021”活动奖金和奖杯。
+The "[Summer 2021 of Open Source Promotion Plan](https://summer.iscas.ac.cn)" (hereinafter referred to as Summer 2021) is a summer activity for college students jointly organized by the Institute of Software Chinese Academy of Sciences and the openEuler community. It aims to encourage college students to actively participate in the development and maintenance of open source software and promote the vigorous development of excellent domestic open source software communities. The activity collaborates with major open source communities to provide projects for the development and maintenance of important open source software, and opens registration to college students worldwide. Students can independently choose projects of interest to apply for, and after being selected, gain the opportunity to receive personal guidance from senior maintainers (community mentors) of the software. According to the difficulty of the project and completion status, participants can also receive awards and trophies from the "Summer 2021 of Open Source Promotion Plan".
 
-本项目 [基于 Blessed 的 Wechaty 命令行文本客户端软件] 系 暑期2021 支持的开源项目。
+This project [Wechaty Command-line Text Client Software Based on Blessed] is an open source project supported by Summer 2021.
 
----
-
-> Chinese version of this post: [ospp final term cli]({{ '/2021/09/30/ospp-final-term-cli/' | relative_url }})
+> This is a translated version of the original Chinese post. You can find the original post [here](/2021/09/30/ospp-final-term-cli/).

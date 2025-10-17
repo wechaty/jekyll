@@ -1,5 +1,5 @@
 ---
-title: ' "开源之夏 - IM 应用消息聚合" (English translation WIP)'
+title: "Summer of Code - IM Message Aggregation"
 author: tanknee
 categories: project
 tags:
@@ -7,123 +7,125 @@ tags:
   - puppet-whatsapp
   - productivity
 image: /assets/2022/06-summer-code-im-aggregation-en/title.webp
+excerpt: >
+  A Summer of Code project to aggregate messages from different IM applications (WeChat, WeCom, WhatsApp) and forward them at scheduled times to reduce information overload and improve productivity.
 ---
 
-如今，社交应用的种类日渐丰富，每个人每天都会面对海量的信息，而注意力和时间是有限的，频繁地在各个社交平台上浏览、查阅、回复消息会消耗大量的精力。为了提升工作效率，减少无效信息的干扰，我们希望能够聚合不同 IM 应用（例如微信，企业微信和 WhatsApp）的消息，并在每天的固定时间点转发上一个周期内的所有消息到指定应用。
+> This is a translated version of the original Chinese post. You can find the original post [here](/2022/06/05/summer-code-im-aggregation/).
 
-## IM 消息聚合应用功能概览
+Nowadays, the types of social applications are becoming increasingly diverse. Everyone faces massive amounts of information daily, while attention and time are limited. Frequently browsing, checking, and replying to messages on various social platforms consumes a lot of energy. To improve work efficiency and reduce invalid information interference, we hope to aggregate messages from different IM applications (such as WeChat, WeCom, and WhatsApp) and forward all messages from the previous cycle to a specified application at fixed times each day.
 
-### 通过 Wechaty 对接微信、企业微信、WhatsApp
+## IM Message Aggregation Application Function Overview
 
-* 利用 Wechaty 的能力实现这三类社交 APP 基础类型消息的收发功能
+### Integrating WeChat, WeCom, and WhatsApp Through Wechaty
 
-  * 文字消息
-  * 图片消息
-  * 文件消息
-  * 动态表情
-  * 卡片链接
+* Use Wechaty's capabilities to implement sending and receiving basic message types for these three types of social apps
 
-### 以上三者应用间的消息实现互通
+  * Text messages
+  * Image messages
+  * File messages
+  * Animated emojis
+  * Card links
 
-* 通过消息的转发调度方案，使得企业微信和 WhatsApp 的消息可以汇总到微信上
-* 消息同步：同步其他应用的消息
+### Message Interoperability Between the Three Applications
 
-### 支持分时间段选择接收消息的社交软件
+* Through message forwarding and scheduling scheme, WeCom and WhatsApp messages can be aggregated to WeChat
+* Message synchronization: synchronize messages from other applications
 
-* 支持通过配置来选择任一社交软件来作为消息的汇总应用、选择接收消息的时间等。
-* 支持用 docker 快速部署项目
-* 支持更多的 IM 应用
-* 支持拓展第三方应用，接入机器人，天气查询之类的应用
+### Support Time-Period Selection of Social Software for Receiving Messages
 
-## 消息转发调度
+* Support configuration to select any social software as the message aggregation application, select message receiving time, etc.
+* Support quick project deployment with Docker
+* Support more IM applications
+* Support extending third-party applications, connecting bots, weather queries, and similar applications
 
-到达某个用户指定的时间点后，消息聚合应用自动从存储池中拉取历史消息并转发到汇总应用。
+## Message Forwarding and Scheduling
 
-其转发调度的大致流程如下。
+After reaching a user-specified time point, the message aggregation application automatically pulls historical messages from the storage pool and forwards them to the aggregation application.
 
-![消息转发调度的流程](/assets/2022/06-summer-code-im-aggregation-en/1.webp)
+The general process of forwarding and scheduling is as follows.
 
-为了保障用户的隐私信息，原则上消息聚合应用应该默认在转发之后删除原本存储的消息。
+![Message forwarding and scheduling process](/assets/2022/06-summer-code-im-aggregation-en/1.webp)
 
-为了增强该部分的可用性，可以对消息进行针对性的过滤和处理。
+To protect users' privacy information, in principle, the message aggregation application should delete the originally stored messages by default after forwarding.
 
-例如当应用接收到某些触发了设定好的规则的信息：
+To enhance the usability of this part, messages can be filtered and processed in a targeted manner.
 
-1. @我的消息
-2. 正则表达式匹配成功的消息
-3. 指定群聊的消息
-4. 指定好友发送的消息
-5. 特定类别的消息（图片，链接，动画表情等）
+For example, when the application receives information that triggers pre-set rules:
 
-那么就可以进行一些自定义的操作，例如：
+1. Messages that @me
+2. Messages that successfully match regular expressions
+3. Messages from specified group chats
+4. Messages sent by specified friends
+5. Specific categories of messages (images, links, animated emojis, etc.)
 
-1. 发送指定的网络请求
-2. 转发消息给某个指定用户
-3. 给指定邮件地址发送邮件
+Then some custom operations can be performed, such as:
 
-在转发消息到汇总应用的时候，需要额外发送一条消息来告知用户接下来转发的消息是来自哪个社交应用，例如（以下内容发送自微信）。
+1. Send specified network requests
+2. Forward messages to a specified user
+3. Send emails to specified email addresses
 
-## 项目配置
+When forwarding messages to the aggregation application, an additional message needs to be sent to inform users which social application the following forwarded messages come from, for example (the following content is sent from WeChat).
 
-为了让用户体验更加一致，也为了避免在启动 docker 服务之后繁琐的配置，用户应通过微信对话式的交互操作来配置消息聚合应用，我们期望可以实现如下功能的配置：
+## Project Configuration
 
-1. 汇总应用
-2. 消息转发的时间（可以是一个序列，多个时间）
-3. 白名单机制（正则表达式，消息类型，@我等多条件组合）
-4. 黑名单机制
-5. 关键字触发后的操作
-6. 清空消息池
-7. 通过交互式命令暂停消息转发
-8. 通过交互式操作重新启动消息转发
+To make the user experience more consistent and avoid cumbersome configuration after starting the Docker service, users should configure the message aggregation application through conversational interaction operations in WeChat. We expect to be able to configure the following functions:
 
-![交互式操作](/assets/2022/06-summer-code-im-aggregation-en/2.webp)
+1. Aggregation application
+2. Message forwarding time (can be a sequence, multiple times)
+3. Whitelist mechanism (regular expressions, message types, @me and other multi-condition combinations)
+4. Blacklist mechanism
+5. Operations after keyword triggers
+6. Clear message pool
+7. Pause message forwarding through interactive commands
+8. Restart message forwarding through interactive operations
 
-除上述配置相关的内容以外，该交互式操作还应该支持：
+![Interactive operations](/assets/2022/06-summer-code-im-aggregation-en/2.webp)
 
-1. 查询应用状态，如应用是否正在运行，消息池内有多少条消息。
-2. 查询其他几个社交应用账号是否在线。
+In addition to the above configuration-related content, the interactive operations should also support:
 
-## 拓展
+1. Query application status, such as whether the application is running, how many messages are in the message pool.
+2. Query whether accounts of other social applications are online.
 
-### 多IM应用接入
+## Extensions
 
-本应用应该设计一组完善的接口，方便开发者和使用者接入更多的 IM 应用，例如 Telegram，QQ 等。Wechaty 社区已经适配了很多 IM 应用，我们可以对这些应用进行一个简单的适配，例如开发一个 adapter 层来统一 puppet 和消息聚合应用之间数据通信。
+### Multi-IM Application Integration
 
-![消息聚合应用架构设计](/assets/2022/06-summer-code-im-aggregation-en/4.webp)
+This application should design a complete set of interfaces to facilitate developers and users to integrate more IM applications, such as Telegram, QQ, etc. The Wechaty community has already adapted many IM applications. We can perform simple adaptation of these applications, such as developing an adapter layer to unify data communication between puppets and the message aggregation application.
 
-### 第三方应用接入
+![Message aggregation application architecture design](/assets/2022/06-summer-code-im-aggregation-en/4.webp)
 
-为了增强项目的可玩性和拓展性，可以引入一个插件框架，应用在生命周期内向插件暴露几个 hook 函数，方便第三方开发者开发应用嵌入到消息聚合的流程中。
+### Third-Party Application Integration
 
-hook 大致可以分为这么几类：
+To enhance the playability and extensibility of the project, a plugin framework can be introduced. The application exposes several hook functions to plugins during its lifecycle, facilitating third-party developers to develop applications embedded in the message aggregation process.
 
-1. 项目启动
-2. 接收消息
-3. 向汇总应用转发消息
-4. 接收来自用户的指令
+Hooks can be roughly divided into these categories:
 
-如下图所示，当消息聚合应用启动的时候，会触发所有注册了“启动成功” hook 的拓展的回调函数，在接收到 IM 消息的时候也会触发所有注册了“接收消息” hook 的拓展的回调函数， 其他几项都是差不多的逻辑。
+1. Project startup
+2. Receive messages
+3. Forward messages to aggregation application
+4. Receive commands from users
 
-![生命周期事件](/assets/2022/06-summer-code-im-aggregation-en/3.webp)
+As shown in the figure below, when the message aggregation application starts, it will trigger the callback functions of all extensions that have registered the "startup success" hook. When receiving IM messages, it will also trigger the callback functions of all extensions that have registered the "receive messages" hook. The other items follow similar logic.
 
-部分触发关键字的消息会被发送到第三方应用：
+![Lifecycle events](/assets/2022/06-summer-code-im-aggregation-en/3.webp)
 
-![交互式命令事件](/assets/2022/06-summer-code-im-aggregation-en/5.webp)
+Some messages that trigger keywords will be sent to third-party applications:
 
-## docker 镜像打包
+![Interactive command events](/assets/2022/06-summer-code-im-aggregation-en/5.webp)
 
-我们计划使用 docker 集成项目所需要的运行环境，方便用户在自己的机器或者服务器上快速部署 IM 消息聚合项目。
+## Docker Image Packaging
 
-docker 的相关文档：[https://docs.docker.com/](https://docs.docker.com/)。
+We plan to use Docker to integrate the runtime environment required by the project, facilitating users to quickly deploy the IM message aggregation project on their own machines or servers.
 
----
-
-## 小结
-
-我自去年使用过 Wechaty 之后就一直有关注 Wechaty 的动向，想着来年考研结束后可以做一波 Wechaty 的[开源之夏](https://summer-ospp.ac.cn/#/org/prodetail/220260301)项目。好巧不巧，今年也给我蹲到了，所以就很有幸能够参与进来。
-
-本项目计划在六月底七月初正式开始施工，按照上文所写的工作量，差不多一个月就可以做出粗略的成品，八月左右开始进行完善和测试工作，并编写相关文档。
+Docker related documentation: [https://docs.docker.com/](https://docs.docker.com/).
 
 ---
 
-> Chinese version of this post: [summer code im aggregation]({{ '/2022/06/05/summer-code-im-aggregation/' | relative_url }})
+## Summary
+
+Since using Wechaty last year, I have been following Wechaty's developments, thinking that after finishing the postgraduate entrance examination next year, I could do a wave of Wechaty's [Summer of Code](https://summer-ospp.ac.cn/#/org/prodetail/220260301) projects. What a coincidence, I managed to get it this year, so I'm very fortunate to be able to participate.
+
+This project is planned to officially start construction in late June and early July. According to the workload described above, a rough product can be made in about a month. Around August, perfection and testing work will begin, along with writing related documentation.
+
+> This is a translated version of the original Chinese post. You can find the original post [here](/2022/06/05/summer-code-im-aggregation/).

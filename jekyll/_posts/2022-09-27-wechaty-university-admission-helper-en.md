@@ -1,102 +1,103 @@
 ---
-title: ' "基于 Wechaty 实现高校招生宣传小助手的实践" (English translation WIP)'
+title: "Practice of Implementing a University Admission Assistant Based on Wechaty"
 author: ligen131
 categories: article
 tags:
   - bot
-  - 后端
+  - backend
   - node.js
   - typescript
-  - 高校招生
+  - university-admission
 image: /assets/2022/09-wechaty-university-admission-helper-en/cover.webp
+excerpt: >
+  A bot that intelligently recognizes keywords and automatically replies with admission information, implemented based on Wechaty and Node.js for university recruitment promotion.
 ---
-一个能够智能识别关键词并自动回复招生信息的机器人，基于 Wechaty, Node.js 实现。
 
-## 背景
+A bot that intelligently recognizes keywords and automatically replies with admission information, implemented based on Wechaty and Node.js.
 
-这是一篇迟到了三个月的文章，此时终于有机会能够补上。通过这篇文章，记录一下遇到的一些问题与解决方案。
+## Background
 
-三个月前的六月，正值高考放榜，各大高校都在进行火热的招生宣讲。随着咨询的人越来越多，招生宣传的拉的微信群也越来越多，于是突发奇想，反正大家问的问题无非就是今年招多少人，去年分数线如何，学校环境如何，专业如何等等，那这些重复性的回答工作为何不交给机器人来做呢？
+This is an article three months overdue, and I finally have the opportunity to make up for it. Through this article, I'll record some problems encountered and their solutions.
 
-## 实现
+Three months ago in June, right when gaokao (national college entrance examination) results were released, major universities were conducting intense recruitment presentations. As more and more people came to consult, more and more WeChat groups for recruitment promotion were created. Then I had a sudden idea - everyone's questions are basically the same: how many students are enrolled this year, what was last year's cutoff score, how's the school environment, how are the majors, etc. So why not let a bot handle these repetitive response tasks?
 
-由于当时正好是期末周，于是草草实现了一个基于关键词的自动回复功能。通过分析大家咨询的问题，我把每个人发的信息分为两个部分：和招生相关的词汇、疑问词汇。当这两种词汇同时出现时，基本可以断定是家长或者学生正在咨询招生相关问题。
+## Implementation
+
+Since it happened to be finals week at the time, I hastily implemented an auto-reply function based on keywords. By analyzing everyone's consultation questions, I divided each person's message into two parts: admission-related vocabulary and question vocabulary. When these two types of vocabulary appear together, it can basically be determined that a parent or student is consulting about admission-related issues.
 
 ```javascript
 export const ADMISSION_WORDS = [
-  `计划`,
-  `分数`,
-  `录取`,
-  `人数`,
-  `招`,
-  `专业`,
+  `plan`,
+  `score`,
+  `admission`,
+  `number`,
+  `recruit`,
+  `major`,
 ];
 export const QUESTIONS_WORDS = [
-  `请问`,
-  `吗`,
-  `呢`,
-  `问`,
-  `多少`,
+  `may I ask`,
+  `?`,
+  `how`,
+  `ask`,
+  `how many`,
 ];
 ```
 
-这两个数组经过后期反复的调整，最终变为上面这样。
+After repeated adjustments in the later period, these two arrays finally became like the above.
 
-再设置一下固定的回复语句，一个自动回复的机器人就这么完成了。
+Then set up fixed reply sentences, and an auto-reply bot was completed.
 
-## 问题
+## Problems
 
-用了一段时间之后，问题层出不穷。
+After using it for a while, problems emerged one after another.
 
-### 发送图片
+### Sending Images
 
-首先，如果要将招生信息全部结合到文字中，那么最终回复的文字会相当的长，会造成刷屏的效果，所以必须要实现图片的发送功能，把部分信息通过图片发送。
+First, if all admission information were combined into text, the final reply text would be quite long, causing a screen-flooding effect. So the image sending function must be implemented to send part of the information through images.
 
-当时使用的是 `wechaty-puppet-xp`，而 `puppet-xp` 的图片发送接口并不完善，通过阅读源代码发现只支持通过 URL 发送图片，遂将图片上传到图床，然后获取网址再发送。
+At that time, I was using `wechaty-puppet-xp`, and `puppet-xp`'s image sending interface was not complete. By reading the source code, I found it only supports sending images via URL, so I uploaded images to an image hosting service, then obtained the URL and sent it.
 
 ```javascript
 img = FileBox.fromUrl(reply.content);
 ```
 
-上面的 `img` 就可以通过 `Wechaty` 的 `say()` 接口直接进行发送了。
+The `img` above can be sent directly through Wechaty's `say()` interface.
 
-效果如下：
-![问答示例](/assets/2022/09-wechaty-university-admission-helper-en/question_and_answer.webp)
+The effect is as follows:
+![Q&A example](/assets/2022/09-wechaty-university-admission-helper-en/question_and_answer.webp)
 
-### 误判
+### Misjudgment
 
-当招生组老师发送招生信息时，发现机器人也会自动回复。如下图所示。
-![误判了招生组老师的信息](/assets/2022/09-wechaty-university-admission-helper-en/error.webp)
+When recruitment team teachers sent admission information, I found that the bot would also automatically reply. As shown in the figure below.
+![Misjudged recruitment team teacher's information](/assets/2022/09-wechaty-university-admission-helper-en/error.webp)
 
-猜想是同时满足了刚才说的两种关键词的原因，于是调整了关键词词库，并添加了过滤掉招生组老师与本校学长学姐的消息，通过微信号识别特定的人，若满足条件则不发送招生信息。
+I guessed it was because both types of keywords mentioned earlier were satisfied simultaneously, so I adjusted the keyword dictionary and added filtering for messages from recruitment team teachers and school seniors. Specific people are identified through WeChat IDs, and if conditions are met, admission information is not sent.
 
-### 非招生群
+### Non-recruitment Groups
 
-由于我的机器人同时挂在了好几个群里，会出现不是招生宣传的微信群也会发送招生宣传的消息。于是加上了命令控制是否在本群发送招生信息的开关（默认不开启）。
-![命令控制示例](/assets/2022/09-wechaty-university-admission-helper-en/command.webp)
+Since my bot was running in several groups at the same time, non-recruitment promotion WeChat groups would also send recruitment promotion messages. So I added a command to control the switch for whether to send admission information in this group (not enabled by default).
+![Command control example](/assets/2022/09-wechaty-university-admission-helper-en/command.webp)
 
-命令中包含学校信息，是因为一开始实现是基于可以为多个学校同时提供服务的想法，每个群可以独立发送不同高校的招生信息。
+The command includes school information because the initial implementation was based on the idea of providing services for multiple schools simultaneously, and each group can independently send admission information for different universities.
 
-### 定时发送
+### Scheduled Sending
 
-由于微信群有新成员不可查看历史信息的限制，招生组老师让我加上了一个定时发送的功能，通过定时发送招生信息，让后面加入微信群的成员可以及时获取最新消息。
-![定时发送](/assets/2022/09-wechaty-university-admission-helper-en/timing.webp)
+Due to WeChat group's restriction that new members cannot view historical information, the recruitment team teacher asked me to add a scheduled sending function. Through scheduled sending of admission information, members who join the WeChat group later can get the latest information in a timely manner.
+![Scheduled sending](/assets/2022/09-wechaty-university-admission-helper-en/timing.webp)
 
-### 扰民
+### Disturbance
 
-由于机器人是对每一条消息进行识别，所以会导致如果想要咨询的人连续发了多条消息，机器人对每一条消息都会回复一串长长的文字，于是又加上了间隔一段时间再发送的机制，如果 10 分钟内识别到连续两条需要回复的消息，那么第二条消息将不会进行回复。
+Since the bot identifies every message, if someone who wants to consult sends multiple messages in succession, the bot will reply with a long string of text to each message. So I added a mechanism to send after an interval. If two consecutive messages requiring replies are identified within 10 minutes, the second message will not receive a reply.
 
-## 总结
+## Summary
 
-有了机器人的帮助，还是给招生老师的工作减轻了不少，不过这个功能仍然存在许多问题，需要后续继续加以改进。
+With the bot's help, the workload of recruitment teachers has been reduced quite a bit. However, this function still has many problems and needs to be continuously improved in the future.
 
-项目地址：[github ligen131/Sunbot](https://github.com/ligen131/Sunbot)，欢迎给我一个 Star⭐
+Project address: [github ligen131/Sunbot](https://github.com/ligen131/Sunbot), welcome to give me a Star⭐
 
-除了招生小助手之外，还实现了不少好玩的功能，比如之前很火的 wordle 游戏，词云功能等等。或许会在另一篇文章中讲到。
-![wordle 游戏](/assets/2022/09-wechaty-university-admission-helper-en/wordle.webp)
+In addition to the admission assistant, many other interesting functions have been implemented, such as the previously popular wordle game, word cloud function, etc. Perhaps I'll talk about it in another article.
+![wordle game](/assets/2022/09-wechaty-university-admission-helper-en/wordle.webp)
 
-> 作者: [ligen131](https://ligen131.com)，生命不息，折腾不止。
-
----
-
-> Chinese version of this post: [wechaty university admission helper]({{ '/2022/09/27/wechaty-university-admission-helper/' | relative_url }})
+> Author: [ligen131](https://ligen131.com), Life goes on, tinkering never stops.
+>
+> This is a translated version of the original Chinese post. You can find the original post [here](/2022/09/27/wechaty-university-admission-helper/).

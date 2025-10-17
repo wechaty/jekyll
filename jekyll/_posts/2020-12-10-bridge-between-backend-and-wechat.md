@@ -24,3 +24,7 @@ hidden: true
 
 经过一段时间测试，基本没发现掉线，服务也正常。
 如果喜欢，请了解体验审阅 <https://github.com/johnwang71/wechaty-integration> 这段短小的代码，更欢迎提出好的建议和问题！
+
+---
+
+> This post is also available in [English](/2020/12/10/bridge-between-backend-and-wechat-en/).

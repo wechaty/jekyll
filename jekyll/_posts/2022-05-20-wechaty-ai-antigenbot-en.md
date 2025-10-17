@@ -1,136 +1,136 @@
 ---
-title: ' 同心助力，战役有AI! (English translation WIP)'
+title: "United Effort, Fighting the Pandemic with AI!"
 author: bigbrother666sh
 categories: article
 tags:
   - ai
   - antigen
 image: /assets/2022/05-wechaty-ai-antigenbot-en/a1fup-y7cpd.webp
+excerpt: >
+  During Shanghai's 2022 COVID lockdown, volunteers developed an AI antigen bot using Wechaty and PaddlePaddle to help community residents manage group purchases, forward messages, and analyze antigen test results, significantly improving community pandemic response efficiency.
 ---
 
-2022年5月9日，上海闵行区政府从防控机制、防控措施和防控成效等方面对“无疫小区”申请名单的充分论证，公布了首批“无疫小区”名单，“嘉怡水岸睿府“赫然在列。嘉怡水岸睿府小区的抗疫成效卓然，
-分析其取得阶段性胜利的原因，离不开居民区党支部、居委会坚守阵地毫不松懈；离不开楼栋自治，保障楼道里的“最后一百米”；离不开团购报备制度，涉疫信息的透明度，更得益于看不见的人工智能“硬核”技术的加持--永不疲倦的 **“AI抗疫机器人”**。
+On May 9, 2022, the Minhang District Government of Shanghai, after thorough deliberation on prevention and control mechanisms, measures, and effectiveness of "COVID-free community" applications, announced the first batch of "COVID-free communities," with "Jiayi Waterfront Smart Residences" prominently listed. The anti-pandemic achievements of Jiayi Waterfront Smart Residences community are remarkable.
+Analyzing the reasons for its phased victory, it is inseparable from the residential area party branch and neighborhood committee standing firm without relaxation; inseparable from building self-governance, ensuring the "last hundred meters" in corridors; inseparable from the group purchase reporting system and transparency of epidemic-related information, and more benefited from the invisible AI "hardcore" technology support - the tireless **"AI Anti-Pandemic Bot"**.
 
-## 小荷才露尖尖角
+## Early Buds Just Showing
 
-疫情初期，整个小区对疫情静态管理的经验不足，导致居民团购混乱无序，物资到达后运力紧张，志愿者配送路线无法追溯，居委会和志愿者的工作压力急剧上升，时有物资错发、漏发，以及搞错阳性楼栋的问题。由于人工调度的固有属性可能降低社区治理的效率，4月初，嘉怡水岸小区志愿者在微信群里展开激烈的讨论和思辩，提出楼栋自治的方案。然而在效率提升和误差消除方面仍然莫衷一是。
+In the early stage of the pandemic, the entire community lacked experience in static pandemic management, leading to chaotic and disorderly resident group purchases. After supplies arrived, transportation capacity was tight, volunteer delivery routes couldn't be traced, and work pressure on the neighborhood committee and volunteers sharply increased. There were frequent issues with supplies being incorrectly delivered, missed, or sent to the wrong positive buildings. Due to the inherent attributes of manual scheduling that could reduce community governance efficiency, in early April, Jiayi Waterfront community volunteers engaged in intense discussion and debate in WeChat groups, proposing building self-governance solutions. However, there was still no consensus on efficiency improvement and error elimination.
 
 ![img](/assets/2022/05-wechaty-ai-antigenbot-en/augyv-hwwkr.webp)
 
-（志愿者们在小区外分拣物资）
+(Volunteers sorting supplies outside the community)
 
-不负韶华，在青春的赛道上奋力奔跑。为了解决这些困难，年轻的小区志愿者吴光正、凌思凯、李思颖，作为小区的一份子，决心发挥专长，从技术的角度来解决小区面临的困境。三位 IT 领域的青年志愿者，在繁重的工作结束后的夜晚，熬夜讨论系统设计架构，尝试以最快最有效的方式搭建起一套解放人力的物资调度配送系统。仅仅2个晚上，物资配送系统搭建成功。这个系统在帮助居委会自动处理物资团购信息、快速制作定制化的表单方面，发挥了积极的作用。
+Living up to youth, running hard on the track of youth. To solve these difficulties, young community volunteers Wu Guangzheng, Ling Sikai, and Li Siying, as members of the community, determined to leverage their expertise and solve the community's difficulties from a technical perspective. Three young volunteers in the IT field stayed up late after heavy work at night discussing system design architecture, attempting to build a supplies scheduling and delivery system that frees up manpower in the fastest and most effective way. In just 2 nights, the supplies delivery system was successfully built. This system played an active role in helping the neighborhood committee automatically process group purchase information and quickly create customized forms.
 
 ![img](/assets/2022/05-wechaty-ai-antigenbot-en/avzr0-npy78.webp)
 
-（志愿者们拿着处理好的物资配送表单派送中）
+(Volunteers distributing with processed supply delivery forms)
 
-## 携一颗玲珑心，且行且从容
+## With an Exquisite Heart, Proceeding Calmly
 
-系统成功地服务小区后，程序员志愿者们想做得更多。他们试图寻求一个解决方案，以极低的学习成本将居委会和志愿者们从繁杂而重复的事务中解放出来，有时间去思考更重要的事情，消弭未来可能出现的危机。
-同舟共济、团结一心，咬定青山不放松。Wechaty社区贡献者吴京京（wj-Mcat）和赵泽明（bigbrother）的加入让嘉怡水岸小区志愿者们的设想成为可能。基于 python-wechaty 开发的 AI 抗疫机器人项目 AntigenBot 诞生了！这个系统不仅将最初开发的物资配送系统融入机器人体系，还开发了消息多功能转发插件，助力嘉怡水岸的居委会工作人员与小区居民并肩战疫。
-与病毒赛跑的脚步永不停歇。 Wechaty 社区联合飞桨社区志愿者和开源社区的志愿者，在系统插件的开发上与病毒赛跑。基于PaddleDetection和PaddleOCR开发抗原图片检测功能以及各地健康码识别功能，也于近期部署上线，可以说是非常实用了。
-目前AI 抗疫机器人在嘉怡水岸小区稳定运行了一个月，获得了居委会和居民们的一致好评。
+After the system successfully served the community, programmer volunteers wanted to do more. They tried to seek a solution to free the neighborhood committee and volunteers from complicated and repetitive tasks with extremely low learning costs, giving them time to think about more important things and eliminate future crises.
+United in the same boat, with one heart, holding firmly to green mountains. The joining of Wechaty community contributors Wu Jingjing (wj-Mcat) and Zhao Zeming (bigbrother) made the vision of Jiayi Waterfront community volunteers possible. The AI anti-pandemic bot project AntigenBot developed based on python-wechaty was born! This system not only integrated the initially developed supplies delivery system into the bot system but also developed a multi-functional message forwarding plugin to help Jiayi Waterfront neighborhood committee staff and community residents fight the pandemic side by side.
+The pace of racing against the virus never stops. The Wechaty community joined forces with PaddlePaddle community volunteers and open-source community volunteers to race against the virus in system plugin development. Antigen image detection function and health code recognition function for various regions developed based on PaddleDetection and PaddleOCR were also recently deployed online, which can be said to be very practical.
+Currently, the AI anti-pandemic bot has been running stably in Jiayi Waterfront community for one month, receiving unanimous praise from the neighborhood committee and residents.
 
 ![img](/assets/2022/05-wechaty-ai-antigenbot-en/ay0xw-gh4nt.webp)
 
-（居委会工作人员与志愿者们一起配送物资）
+(Neighborhood committee staff distributing supplies together with volunteers)
 
 ![img](/assets/2022/05-wechaty-ai-antigenbot-en/an3j3-lw6f4.webp)
 
-（蒋书记与志愿者们一起讨论抗疫工作）
+(Secretary Jiang discussing anti-pandemic work with volunteers)
 
-嘉怡水岸小区居委会蒋书记表示：“整套系统从开发、调试、磨合、正式运行短短的几天，让居委会在民生保障工作有了质的飞跃，大大降低了居委会的人力和时间成本，有更多的时间和精力去做好疫情防控工作。”
+Secretary Jiang of Jiayi Waterfront community neighborhood committee said: "The entire system took just a few days from development, debugging, running-in to official operation, enabling the neighborhood committee to make a qualitative leap in livelihood security work, greatly reducing the neighborhood committee's manpower and time costs, giving us more time and energy to do pandemic prevention and control work well."
 
-## AI抗疫机器人功能模块说明
+## AI Anti-Pandemic Bot Function Module Description
 
-### 团购配送模块
+### Group Purchase Delivery Module
 
-**应用场景：** 居委会从多个渠道收到一定数量的团购清单，物资到达后需要按照清单上的楼栋和门牌号派送给业主
+**Application Scenario:** The neighborhood committee receives a certain number of group purchase lists from multiple channels. After supplies arrive, they need to be delivered to owners according to building numbers and door numbers on the list.
 
-**功能描述：** 居委会管理员只需将团购清单文件发送给机器人，其将会自动解析地址格式，一秒生成对应配送文件，实现精准配送。
+**Function Description:** The neighborhood committee administrator only needs to send the group purchase list file to the bot, which will automatically parse the address format and generate the corresponding delivery file in one second, achieving precise delivery.
 
-**开发志愿者：** 吴光正，刘通
+**Development Volunteers:** Wu Guangzheng, Liu Tong
 
-### 消息多功能转发模块
+### Multi-functional Message Forwarding Module
 
-**应用场景：** 居委会定时/不定时向所管理的小区楼栋群发布政府通知、团购信息和重要消息等。
+**Application Scenario:** The neighborhood committee regularly/irregularly publishes government notices, group purchase information, and important messages to the community building groups they manage.
 
-**功能描述：** 居委会管理员只需向机器人发送消息内容（文字/图片/小程序等），内容将会在一定时间段内将消息转发给所有指定楼栋群，支持定时转发、延迟转发、授权转发。
+**Function Description:** The neighborhood committee administrator only needs to send message content (text/images/mini-programs, etc.) to the bot, which will forward the message to all specified building groups within a certain time period, supporting timed forwarding, delayed forwarding, and authorized forwarding.
 
-**开发志愿者：** 吴京京，赵泽明 （来自 Wechaty 社区）
+**Development Volunteers:** Wu Jingjing, Zhao Zeming (from Wechaty community)
 
 ![img](/assets/2022/05-wechaty-ai-antigenbot-en/a1ett-6rr3x.webp)
 
-[模块详情](https://github.com/ShanghaiITVolunteer/AntigenWechatBot)
+[Module Details](https://github.com/ShanghaiITVolunteer/AntigenWechatBot)
 
-### 抗原图片分析模块
+### Antigen Image Analysis Module
 
-**应用场景：** 基于深度学习的AI抗原识别，助力社区实现风险的高效自查
+**Application Scenario:** AI antigen recognition based on deep learning, helping communities achieve efficient self-examination of risks.
 
-**功能描述：** 机器人提醒业主进行抗原检测，并分析是否有漏发、重发等行为，最终将所有数据整理成Excel数据和图片压缩包数据，自动上传到规定的平台。
+**Function Description:** The bot reminds owners to conduct antigen testing and analyzes whether there are missed, duplicate, or other issues. Finally, all data is organized into Excel data and image compressed package data, automatically uploaded to the designated platform.
 
-**开发志愿者：** 刘建建、马赫、韩鹏远（来自飞桨社区）
+**Development Volunteers:** Liu Jianjian, Ma He, Han Pengyuan (from PaddlePaddle community)
 
 ![img](/assets/2022/05-wechaty-ai-antigenbot-en/a3vh5-c3zmu.webp)
 
-[模块详情](https://github.com/ShanghaiITVolunteer/AntigenWechatBot/issues/44)
+[Module Details](https://github.com/ShanghaiITVolunteer/AntigenWechatBot/issues/44)
 
-在项目开发的过程中，青年志愿者更希望守护公民的数据隐私，特邀开源社法律顾问委员会，海华永泰律师事务所的陈元熹律师，作为项目的法律指导，Wechaty 开源项目作者李卓桓老师和开源社理事庄表伟老师作为项目技术顾问，为项目出谋划策。
-AI 抗疫机器人AntigenBot 项目在嘉怡水岸小区抗疫工作流程的基础上，通过第一性原理简化方法，提升效率，规避风险。经过一系列的优化提升，负责机器人方面的社区的管理人员可以实现“开箱即用”、“一看就懂”的使用方法。
+During the project development process, young volunteers hoped to protect citizens' data privacy. They specially invited the Legal Advisory Committee of KAIYUANSHE, lawyer Chen Yuanxi from Haihua Yongtai Law Firm as legal guidance for the project, Wechaty open-source project author Teacher Li Zhuohuan, and KAIYUANSHE board member Teacher Zhuang Biaowei as project technical advisors to provide advice and suggestions.
+The AI Anti-Pandemic Bot AntigenBot project, based on the Jiayi Waterfront community anti-pandemic workflow, simplifies methods through first principles, improves efficiency, and avoids risks. After a series of optimizations and improvements, community management personnel responsible for the bot can achieve "out-of-the-box" and "understand at a glance" usage methods.
 
 ![img](/assets/2022/05-wechaty-ai-antigenbot-en/aa0nw-g84t1.webp)
 
-（项目UI界面原型）
+(Project UI interface prototype)
 
-最后，借用该项目的发起人之一吴光正同学的话来说：“这个bot 的目的不是用冷冰冰的机器来取代基层工作者和人民之间的联系。与之相反，我们旨在将基层工作者从重复、繁杂、琐碎的工作中解放出来，让他们更有动力去深入了解人民的高层次需求，以建立更温暖更友善的联系，并更好的服务于人民，建立鱼水情。我相信，只有增强这种联系，我们上海才能共同努力，一起克服这如洪水猛兽般的疫情！”
+Finally, borrowing the words of Wu Guangzheng, one of the project initiators: "The purpose of this bot is not to replace the connection between grassroots workers and people with cold machines. On the contrary, we aim to free grassroots workers from repetitive, complicated, and trivial work, giving them more motivation to deeply understand people's higher-level needs, establish warmer and friendlier connections, and better serve the people, establishing fish-water relations. I believe that only by strengthening this connection can we in Shanghai work together and overcome this pandemic that is as fierce as floods and wild beasts!"
 
-（满屏的感谢）
+(Screen full of thanks)
 
 ![img](/assets/2022/05-wechaty-ai-antigenbot-en/arjkv-k9fni.webp)
 
 ![img](/assets/2022/05-wechaty-ai-antigenbot-en/a2izi-ehkxh.webp)
 
-（嘉怡水岸小区居委会和居民并肩战役）
+(Jiayi Waterfront community neighborhood committee and residents fighting side by side)
 
-## 力所能及，义不容辞
+## Within Our Capability, An Unshirkable Duty
 
-其实，该项目还有一个分支项目待投入使用，就是Wechaty 社区贡献者 luyuchao（超哥）领衔开发的 wechat QA 问答机器人-- 专门针对社群工作者，拼团团长，业务群运营经理，帮助他们解决重复性问答的问题（[项目传送门](https://github.com/choogoo/wechat-openai-qa-bot)）。可以说AI机器人插件的开发是无限的，使用的场景是可扩展的，这个项目的意义显而易见。
-我们还认为，微信虽然是一个封闭的系统，但是基于基层组织与群众联系的快捷工具微信做一些工具类的开发在目前的疫情形势下是必然之举。就算在疫情后期和疫情结束，我们的AI 抗疫机器人项目也可以继续发挥它的作用，转变为AI 社区助理机器人，用科学的管理工具帮助基层工作者处理信息化相关的事务。
-另一方面对于AI产业来说，虽然过去数年我国在科研方面有长足的进步，学术论文和实验室成果都已经处于世界前列，但是在具体的产业落地方面，整体渗透率尚不足5%……本轮疫情重压之下，基层社区作为政府治理的“末梢神经”暴露出很多的问题，这些问题必将是未来需要加强投入进行提升的地方，同时对于AI产业而言，这也必将是宝贵的落地场景，正如伽利略的名言——“科学的唯一目的是减轻人类生存的苦难“。
+In fact, this project also has a branch project waiting to be put into use, which is the WeChat QA question-and-answer bot led by Wechaty community contributor luyuchao (Brother Chao) - specifically for community workers, group purchase leaders, and business group operation managers, helping them solve repetitive question-and-answer problems ([project portal](https://github.com/choogoo/wechat-openai-qa-bot)). It can be said that the development of AI bot plugins is unlimited, usage scenarios are extensible, and the significance of this project is obvious.
+We also believe that although WeChat is a closed system, developing some tool-based applications based on WeChat as a convenient tool for contact between grassroots organizations and the masses is an inevitable move under the current pandemic situation. Even in the late stage of the pandemic and after it ends, our AI Anti-Pandemic Bot project can continue to play its role, transforming into an AI Community Assistant Bot, using scientific management tools to help grassroots workers handle informatization-related affairs.
+On the other hand, for the AI industry, although our country has made significant progress in scientific research in recent years, with academic papers and laboratory results already at the forefront of the world, in terms of specific industrial implementation, the overall penetration rate is still less than 5%... Under the heavy pressure of this round of pandemic, grassroots communities as the "peripheral nerves" of government governance have exposed many problems. These problems will be areas that need strengthened investment and improvement in the future. At the same time, for the AI industry, this will also be a valuable implementation scenario, as Galileo's famous saying goes - "The sole purpose of science is to alleviate the suffering of human existence."
 
-## 致谢
+## Acknowledgments
 
-**嘉怡水岸志愿者团队：** 吴光正，刘通，李思颖，凌思凯
+**Jiayi Waterfront Volunteer Team:** Wu Guangzheng, Liu Tong, Li Siying, Ling Sikai
 
-**Wechaty社区团队：** 李卓桓，吴京京，赵泽明，luyuchao，Padlocal好大
+**Wechaty Community Team:** Li Zhuohuan, Wu Jingjing, Zhao Zeming, luyuchao, Padlocal Haoda
 
-**开源社：** 陈元熹，庄表伟，李思颖
+**KAIYUANSHE:** Chen Yuanxi, Zhuang Biaowei, Li Siying
 
-**飞桨社区团队：** 飞桨运营飞飞，刘建建，马赫，韩鹏远
+**PaddlePaddle Community Team:** PaddlePaddle Operations Feifei, Liu Jianjian, Ma He, Han Pengyuan
 
-## 社区介绍
+## Community Introduction
 
-### Wechaty 社区
+### Wechaty Community
 
 ![img](/assets/2022/05-wechaty-ai-antigenbot-en/logo.webp)
 
 Wechaty is a Conversational RPA SDK for chatbot makers. With only 6 lines of code, you can create a bot on the most popular IMs like WeChat, Whatsapp, WeCom, Gitter, etc.
 
-### 开源社
+### KAIYUANSHE
 
 ![img](/assets/2022/05-wechaty-ai-antigenbot-en/aa8zj-zyze7.webp)
 
-开源社成立于 2014 年，是由志愿贡献于开源事业的个人成员，依 “贡献、共识、共治” 原则所组成，始终维持厂商中立、公益、非营利的特点，是最早以 “开源治理、国际接轨、社区发展、开源项目” 为使命的开源社区联合体。开源社积极与支持开源的社区、企业以及政府相关单位紧密合作，以 “立足中国、贡献全球” 为愿景，旨在共创健康可持续发展的开源生态，推动中国开源社区成为全球开源体系的积极参与及贡献者。
+KAIYUANSHE was founded in 2014 and is composed of individual members who voluntarily contribute to the open-source cause, following the principles of "contribution, consensus, and co-governance." It always maintains vendor neutrality, public welfare, and non-profit characteristics. It is the earliest open-source community alliance with the mission of "open-source governance, international alignment, community development, and open-source projects." KAIYUANSHE actively cooperates closely with communities, enterprises, and relevant government units that support open source. With the vision of "based in China, contributing globally," it aims to co-create a healthy and sustainable open-source ecosystem and promote Chinese open-source communities to become active participants and contributors to the global open-source system.
 
-### 飞桨社区
+### PaddlePaddle Community
 
 ![img](/assets/2022/05-wechaty-ai-antigenbot-en/adt2z-wdcvt.webp)
 
-作为中国首个自主研发、功能丰富、开源开放的产业级深度学习平台，百度飞桨于2016年正式开源，当前飞桨平台汇聚了超过400万开发者，助力企业单位、高等院校、科研机构的AI开发者提升模型开发效率与体验、推动AI技术在各行业的实际落地与应用。AI Studio是基于百度深度学习平台飞桨的人工智能学习与实训社区，提供在线编程环境、免费GPU算力、海量实训项目和开放数据，帮助开发者快速创建和部署模型。
+As China's first independently developed, feature-rich, open-source industrial-grade deep learning platform, Baidu PaddlePaddle was officially open-sourced in 2016. Currently, the PaddlePaddle platform has gathered more than 4 million developers, helping AI developers from enterprise units, universities, and research institutions improve model development efficiency and experience, and promoting the actual implementation and application of AI technology in various industries. AI Studio is an artificial intelligence learning and training community based on Baidu's deep learning platform PaddlePaddle, providing online programming environment, free GPU computing power, massive training projects, and open data to help developers quickly create and deploy models.
 
 bigbrother on behalf of the [ShanghaiITVolunteer](https://github.com/ShanghaiITVolunteer)
 
----
-
-> Chinese version of this post: [wechaty ai antigenbot]({{ '/2022/05/20/wechaty-ai-antigenbot/' | relative_url }})
+> This is a translated version of the original Chinese post. You can find the original post [here](/2022/05/20/wechaty-ai-antigenbot/).

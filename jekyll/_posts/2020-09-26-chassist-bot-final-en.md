@@ -1,5 +1,5 @@
 ---
-title: ' "暑期2020 [基于python-wechaty的群聊助手机器人] 结项成果展示" (English translation WIP)'
+title: 'Summer 2020: Final Presentation of Python-Wechaty Group Chat Assistant Bot'
 author: kxz18
 categories: project
 image: /assets/2020/09-chassist-bot-final-en/logo.webp
@@ -8,123 +8,124 @@ tags:
   - summer-of-wechaty
   - summer-2020
   - entertainment
+excerpt: "Final presentation of the CHAssisT bot, a Python-Wechaty-based group chat assistant featuring message tagging, scheduled messages, member management, and deep learning-enhanced Q&A capabilities, completed as part of Summer 2020 Open Source Promotion Plan."
 ---
 
-“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。
-旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。
-根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。
-官网：[https://isrc.iscas.ac.cn/summer2020](https://isrc.iscas.ac.cn/summer2020) 官方新闻：[http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html](http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html)
-本项目 [基于python-wechaty的群聊助手机器人] 系 暑期2020 支持的开源项目。
+The "Open Source Promotion Plan - Summer 2020" (hereinafter referred to as Summer 2020) is a summer event for college students jointly organized by the Institute of Software, Chinese Academy of Sciences and the openEuler community.
+It aims to encourage students to actively participate in the development and maintenance of open source software and promote the vigorous development of outstanding open source software communities in China.
+Participants can also obtain bonuses and trophies from the "Open Source Promotion Plan - Summer 2020" event according to the difficulty and completion of the project.
+Official website: [https://isrc.iscas.ac.cn/summer2020](https://isrc.iscas.ac.cn/summer2020) Official news: [http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html](http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html)
+This project [Python-Wechaty-based Group Chat Assistant Bot] is an open source project supported by Summer 2020.
 
-## 一、项目信息
+## 1. Project Information
 
-### 1.1 基本信息
+### 1.1 Basic Information
 
-- 导师：吴京京
+- Mentor: Jingjing Wu (吴京京)
 
-- 学生：孔祥哲
+- Student: Xiangzhe Kong (孔祥哲)
 
-- 项目名称：基于python-wechaty的群聊助手机器人
+- Project Name: Python-Wechaty-based Group Chat Assistant Bot
 
-### 1.2 方案描述
+### 1.2 Solution Description
 
-本项目需要基于python-wechaty实现一个群聊助手机器人。该机器人主要由四个插件组成。第一个插件是群聊消息打标插件，通过群成员引用重要消息回复机器人的方式记录重要信息，以便之后以问答的方式进行查找。在基本功能开发完成之后将用深度学习的方法优化问答的容错性，从而提升交互水平。第二个插件是定时消息插件，用于定时消息的发放。第三个插件是群成员的管理插件，当有新人进群时进行欢迎，当一定人数群成员对某位群成员言行表示不适时自动从群聊中删除该位群成员。第四个插件用于提升交互，为帮助系统插件，提供自定义的功能文档，辅助前三个插件工作。四个插件中第一个插件是项目的基本要求。
+This project requires the implementation of a group chat assistant bot based on python-wechaty. The bot is mainly composed of four plugins. The first plugin is a group chat message tagging plugin that records important information by having group members quote important messages and reply to the bot, so that it can be searched later in a Q&A manner. After the basic functions are developed, deep learning methods will be used to optimize the fault tolerance of the Q&A, thereby improving the interaction level. The second plugin is a scheduled message plugin for distributing scheduled messages. The third plugin is a group member management plugin. When a new person joins the group, they will be welcomed. When a certain number of group members express discomfort with a certain group member's words and deeds, the group member will be automatically deleted from the group chat. The fourth plugin is used to enhance interaction as a help system plugin, providing customized functional documentation to assist the first three plugins. Among the four plugins, the first plugin is the basic requirement of the project.
 
-项目主要分为三个阶段进行。第一阶段是基本功能的实现，也就是群聊消息打标插件的实现。第二阶段是扩展功能的实现，主要实现定时消息插件和群成员的管理插件。第三阶段优化交互性能，实现帮助系统插件，利用深度学习对消息打标插件的问答系统进行优化。
+The project is mainly divided into three stages. The first stage is the realization of basic functions, that is, the implementation of the group chat message tagging plugin. The second stage is the realization of extended functions, mainly implementing the scheduled message plugin and the group member management plugin. The third stage optimizes interactive performance, implements the help system plugin, and uses deep learning to optimize the Q&A system of the message tagging plugin.
 
-### 1.3 时间规划
+### 1.3 Time Planning
 
-- 群聊消息打标插件
-  - 7.1 - 7.19
-  - 该模块为本项目的基本要求，需要实现通过引用消息进行回复对重要的群聊消息进行打标，并存入本地的数据库。在对应问题被提出时机器人能通过搜索存储的打标消息给出相应的回答，如果匹配的答案置信度不高，则提供可能的关键词向用户进行确认。同时支持展示全部或一定时间段内的打标消息，用户可以对其中的消息进行手动删除或定时删除，打标消息本身也可以提供有效期参数，在过了有效期后自动删除。后期提供帮助系统，用户可随时查看不同功能的帮助信息。
-  - 基本功能
-- 定时消息插件
-  - 7.20 - 7.26
-  - 用户指定消息内容和发送时间，由机器人定时发出消息。
-  - 扩展功能
-- 群成员管理插件
-  - 7.27 - 8.2
-  - 进行踢人和进群欢迎的管理，踢人要求3位以上群成员对某人表示不满（群成员总共只有3人以下或4人时分别需要1人和2人表示不满）。此插件需要机器人拥有相关的权限。
-  - 扩展功能
-- 对前几个模块的交互方面进行提升
-  - 8.3 - 9.24
-  - 对交互方面进行统一优化，提高解析用户命令时的容错性，尝试用深度学习方法对问答系统的匹配准确性进行提升（在基础版本中使用 cosine 相似度对问题和答案进行匹配）、在用户命令解析失败但和某些模式很相近时进行确认等。同时该过程中会不断模拟用户场景发现机器人在交互上不够人性化的地方并进行修正。
-  - 扩展功能
+- Group Chat Message Tagging Plugin
+  - July 1 - July 19
+  - This module is the basic requirement of this project. It is necessary to tag important group chat messages by quoting messages for reply, and store them in a local database. When the corresponding question is raised, the bot can give a corresponding answer by searching the stored tagged messages. If the confidence of the matched answer is not high, it will provide possible keywords to confirm with the user. At the same time, it supports displaying all or a certain period of tagged messages. Users can manually delete or regularly delete them. The tagged messages themselves can also provide a validity period parameter, which will be automatically deleted after the validity period. Later, a help system is provided, and users can view the help information of different functions at any time.
+  - Basic Functions
+- Scheduled Message Plugin
+  - July 20 - July 26
+  - The user specifies the message content and sending time, and the bot sends the message regularly.
+  - Extended Functions
+- Group Member Management Plugin
+  - July 27 - August 2
+  - Manage kicking people and welcoming people into the group. Kicking people requires more than 3 group members to express dissatisfaction with someone (when there are only less than 3 or 4 group members in total, 1 and 2 people need to express dissatisfaction respectively). This plugin requires the bot to have relevant permissions.
+  - Extended Functions
+- Improve the Interaction of the Previous Modules
+  - August 3 - September 24
+  - Uniformly optimize the interaction, improve the fault tolerance when parsing user commands, try to use deep learning methods to improve the matching accuracy of the Q&A system (in the basic version, cosine similarity is used to match questions and answers), and confirm when user command parsing fails but is very similar to certain patterns. At the same time, this process will continuously simulate user scenarios to find where the bot is not user-friendly in interaction and correct it.
+  - Extended Functions
 
-## 二、项目总结
+## 2. Project Summary
 
-### 2.1 项目成果
+### 2.1 Project Achievements
 
-目前三阶段的任务已经完成，需求的功能已经实现，相应的单元测试也已经实现，并且配置了 github 的 CI 流程，用于代码提交的检测。同时为项目的 github 项目提供了 readme 进行使用说明，也设计了项目 Logo 和项目名称，项目名称为CHAssisT，寓意为 chat + assistant，即聊天助手。Logo 设计如下图：
+At present, the tasks of the three stages have been completed, the required functions have been realized, the corresponding unit tests have also been implemented, and the CI process of GitHub has been configured for code submission detection. At the same time, a readme is provided for the GitHub project for usage instructions, and a project logo and project name have been designed. The project name is CHAssisT, which means chat + assistant, that is, chat assistant. The logo design is shown below:
 
 <img src="/assets/2020/09-chassist-bot-final-en/logo.webp" alt="logo" style="zoom: 33%;" />
 
-整体的机器人插件由四个独立的插件整合而成，如果想使用某个独立的插件，也可以单独使用。具体的使用方法可以参考项目 github 中的 readme：
+The overall bot plugin is integrated from four independent plugins. If you want to use a certain independent plugin, you can also use it separately. For specific usage methods, please refer to the readme in the project GitHub:
 
-[https://github.com/kxz18/CHAssisT](https://github.com/kxz18/CHAssisT)。
+[https://github.com/kxz18/CHAssisT](https://github.com/kxz18/CHAssisT).
 
-由于中期考核前已经将项目的功能都完成了，因此中期的 presentation 中对项目的功能和结构进行了简单讲解，如果对项目架构比较感兴趣，可以参考这个视频：  
+Since the project functions were completed before the mid-term evaluation, the mid-term presentation briefly explained the functions and structure of the project. If you are interested in the project architecture, you can refer to this video:  
 
 {% include iframe.html src="https://www.youtube.com/embed/WlxClO3C_Sc" %}
 
-中期之后主要进行了一些深度学习上的实验尝试，并对于机器人的交互进行了一定优化，在后阶段的 presentation 中对此进行了阐述：
+After the mid-term, I mainly conducted some experimental attempts in deep learning and optimized the interaction of the bot to a certain extent, which was explained in the later stage presentation:
 
 {% include iframe.html src="https://www.youtube.com/embed/BCQx_g8t9l4" %}
 
-在bilibili也进行了视频上传：[https://www.bilibili.com/video/BV1zz4y1Z7iJ/](https://www.bilibili.com/video/BV1zz4y1Z7iJ/)
+The video was also uploaded to Bilibili: [https://www.bilibili.com/video/BV1zz4y1Z7iJ/](https://www.bilibili.com/video/BV1zz4y1Z7iJ/)
 
-为了能更好地展示项目成果，也按照社区要求对已经实现的功能进行了live coding演示，演示内容见：
+In order to better demonstrate the project results, a live coding demonstration of the implemented functions was also conducted according to community requirements. The demonstration content is as follows:
 
 {% include iframe.html src="https://www.youtube.com/embed/uqBwzAckhzk" %}
 
-在bilibili也进行了视频上传：[https://www.bilibili.com/video/BV1iz4y1Z74S/](https://www.bilibili.com/video/BV1iz4y1Z74S/)
+The video was also uploaded to Bilibili: [https://www.bilibili.com/video/BV1iz4y1Z74S/](https://www.bilibili.com/video/BV1iz4y1Z74S/)
 
-### 2.2 项目心得
+### 2.2 Project Experience
 
-进行本项目的整个过程可以看成是简单的软件工程实践，遇到的问题及解决的方式也与软件工程中的常见问题及解决类似。
+The whole process of this project can be seen as a simple software engineering practice, and the problems encountered and the ways to solve them are also similar to common problems and solutions in software engineering.
 
-一开始是进行需求的确认。因为原始的需求只是一些比较朦胧的想法，很多细节都没有落实，所以开始项目的第一步就是和导师确认各种需求的细节。在确认需求的时候，首先是进行了一次讨论，对原始的想法有了大致的了解，列了一个大致的需求文档。但是光有需求文档对于具体实现是不够的，因此又采取了用户故事的模式对需求细节进行确定。用户故事即模拟一个用户，逐一模拟各个功能的使用，将使用过程及过程中遇到的问题记录下来，用于在具体实现的时候进行参照。
+At first, requirements were confirmed. Because the original requirements were just some vague ideas, and many details were not implemented, the first step to start the project was to confirm the details of various requirements with the mentor. When confirming the requirements, a discussion was first conducted to have a general understanding of the original ideas, and a general requirements document was listed. However, having a requirements document alone is not enough for specific implementation, so the user story mode was adopted to determine the details of requirements. User stories simulate a user, simulate the use of each function one by one, and record the use process and the problems encountered in the process for reference in specific implementation.
 
-之后是进行软件架构，因为需求比较多，显然如果直接动手写的话可能会导致无从下手、重复代码多、可维护性差、拓展性差等问题，所以在进行实际的代码书写之前先根据功能进行了模块的划分，用 uml 图的方式进行了结构的确立。这样的方式可以把庞大的需求分解成一个个子任务，同时可以将普适的结构抽象成接口，方便实现的同时也可以享有较规整的代码结构带来的益处。这一步需要花费的精力通常会比实际写代码花费的精力还多，因为好的架构可以事半功倍，反之亦然。当然，在动工前想出的架构一定不会是完美的，在动工后可能会（最后也的确是）出现各种各样的问题，此时也需要自行或咨询导师进行架构的调整。
+Next is software architecture. Because there are many requirements, obviously if you start writing directly, it may lead to problems such as not knowing where to start, a lot of duplicate code, poor maintainability, and poor extensibility. So before actually writing code, modules were divided according to functions, and the structure was established using UML diagrams. This method can decompose huge requirements into individual subtasks, and at the same time abstract universal structures into interfaces, which is convenient for implementation and can also enjoy the benefits of a relatively neat code structure. This step usually takes more effort than actually writing code, because a good architecture can get twice the result with half the effort, and vice versa. Of course, the architecture conceived before starting work will definitely not be perfect. Various problems may (and indeed do) occur after starting work. At this time, you also need to adjust the architecture yourself or consult your mentor.
 
 ![uml](/assets/2020/09-chassist-bot-final-en/uml.webp)
 
-最后也就是代码实现，在实际实现的过程中时常会遇到一些第三方库使用的问题。由于“不懂就问”的方式其实效率比较低下，因此在导师的建议下，在遇到问题时如果是 wechaty 框架的问题就先自行翻阅相关代码，直接阅读代码通常能解决大部分因为不知道如何使用接口或者不知道函数作用而引起的问题；如果是其他第三方库的问题则可以通过 github issue、documentary、google 等方式尝试自行解决。如果自行解决无果则将问题记录下来，当无法解决的问题达到一定数量时再与导师进行会议沟通。这样的问题解决方式确实比较高效，无论对自己还是对导师而言节省了大量时间。
+Finally, there is the code implementation. In the actual implementation process, some problems with the use of third-party libraries are often encountered. Since the method of "asking when you don't understand" is actually quite inefficient, at the mentor's suggestion, when encountering problems, if it is a problem with the wechaty framework, first read the relevant code yourself. Directly reading the code can usually solve most problems caused by not knowing how to use the interface or not knowing the role of the function; if it is a problem with other third-party libraries, you can try to solve it yourself through GitHub issues, documentation, Google, etc. If you can't solve it yourself, record the problem. When the number of unsolvable problems reaches a certain amount, then have a meeting with the mentor to communicate. This problem-solving method is indeed quite efficient, saving a lot of time for both myself and my mentor.
 
-功能实现的正确性检测方面，是用单元测试的形式进行的。并且由于开源代码并不只是给自己看的，因此还需要遵循一定的代码规范，于是也增加了代码风格检查。这两者最后也都配置到项目的 CI 中，防止不规范的代码合并到库中。而交互性方面则是通过自己真实使用发现机器人一些不够人性化的地方，比如定时任务设置后没有进行回复，导致用户不知道机器人到底有没有设置好定时任务等。通过寻找实际使用时遇到的问题和疑惑来确定需要优化的方向。
+In terms of correctness detection of function implementation, it is done in the form of unit testing. And because open source code is not just for yourself, it is also necessary to follow certain code specifications, so code style checking was also added. Both of these were eventually configured into the project's CI to prevent non-standard code from being merged into the library. In terms of interactivity, I found some places where the bot is not user-friendly enough through my own real use, such as not replying after setting a scheduled task, which causes users to not know whether the bot has set the scheduled task or not. Determine the direction that needs to be optimized by finding problems and doubts encountered in actual use.
 
-当然，即使用了将近一个月来进行软件的优化，但因为这是单人开发的项目，所以一定还会有很多考虑不周到的地方，比如定时发送消息没有进行持久化存储、交互有些地方还不够人性化、英语支持不够等问题。如果这个项目之后可以真正投入使用的话，这些可能是需要优先优化的点。
+Of course, even though nearly a month was spent optimizing the software, because this is a single-person development project, there must be many things that are not well considered, such as scheduled message sending not being persistently stored, some places in the interaction are not user-friendly enough, and English support is not enough. If this project can be put into actual use later, these may be points that need to be optimized with priority.
 
-## 三、评审结果
+## 3. Review Results
 
-- 项目完成度：
+- Project Completion:
 
-  该同学能够按照原定计划完成要求中的每一个功能，且完成度非常好，效率也是非常高，经仔细对比，完成度为100%；
+  The student was able to complete every function in the requirements according to the original plan, and the completion was very good, and the efficiency was also very high. After careful comparison, the completion was 100%;
 
-- 学生参与度：
+- Student Participation:
 
-  该同学在项目实际开发过程中认真独立完成项目中的每个模块，且有多次需求和技术的讨论过程，积极推动我们的良性沟通。经过查看项目中的所有提交记录，所有代码均为该同学完成，前期的需求调研，中期的技术探讨，后期的结项审核该同学均有深入参与。
+  The student conscientiously and independently completed each module in the project during the actual development process, and had multiple discussions on requirements and technology, actively promoting our positive communication. After viewing all the submission records in the project, all the code was completed by this student. The student was deeply involved in the early requirements research, mid-term technical discussions, and late-stage project review.
 
-- 代码贡献量：
+- Code Contribution:
 
-  该同学在此次项目中，所有的代码均为其贡献，所有的需求讨论均为其推动，是此次项目的项目的主要负责人。
+  In this project, all the code was contributed by this student, and all requirements discussions were driven by him. He is the main person in charge of this project.
 
-- 综合评价及建议：
+- Comprehensive Evaluation and Suggestions:
 
-  该同学积极且高效的完成项目中的所有任务，推动项目中各种进度，努力挖掘潜在问题并能够提前找出来，且对开源拥有非常高的热情，也期待后续能够在开源社区能够做出更多的贡献。
+  The student actively and efficiently completed all tasks in the project, promoted various progress in the project, worked hard to explore potential problems and could find them in advance, and has a very high enthusiasm for open source. I also look forward to making more contributions to the open source community in the future.
 
-  此外，我建议该同学努力学习更多软件相关的软技能，并严格要求自己的代码规范能力，扩大知识范围，深入钻研某一个领域，始终对开源保持着浓厚的热情。
+  In addition, I suggest that the student work hard to learn more software-related soft skills, strictly require his code standardization ability, expand his knowledge, study a certain field in depth, and always maintain a strong enthusiasm for open source.
 
-- 最终评审结果：通过
+- Final Review Result: Pass
 
-## 联系我们
+## Contact Us
 
-- 项目链接：[https://github.com/kxz18/CHAssisT](https://github.com/kxz18/CHAssisT)
-- 联系方式：+86 15068701650 | e: 15068701650@163.com
+- Project link: [https://github.com/kxz18/CHAssisT](https://github.com/kxz18/CHAssisT)
+- Contact: +86 15068701650 | e: 15068701650@163.com
 
 > Author: [@kxz18](https://github.com/kxz18)
 > Code: [@kxz18/CHAssisT](https://github.com/kxz18/CHAssisT)
 
 ---
 
-> Chinese version of this post: [chassist bot final]({{ '/2020/09/26/chassist-bot-final/' | relative_url }})
+> This is a translated version of the original Chinese post. You can find the original post [here](/2020/09/26/chassist-bot-final/).

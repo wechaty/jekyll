@@ -1,56 +1,60 @@
 ---
-title: ' "Python-Wechaty 南京开源峰会之旅" (English translation WIP)'
+title: ' "Python-Wechaty Journey at Nanjing Open Source Summit"'
 author: wj-mcat
 categories: story
 tags:
   - news
   - python
 image: /assets/2020/12-python-wechaty-open-source-journey-en/wechaty-nanjing-picture.webp
+excerpt: >
+  A personal story about starting the python-wechaty open source project, participating in the 2020 Open Source Summit in Nanjing, and the lessons learned from contributing to open source.
 ---
 
-开源应该是每一个优秀程序员的必经之路
+> This is a translated version of the original Chinese post. You can find the original post [here](/2020/12/08/python-wechaty-open-source-journey/).
 
-## python-wechaty之开源软件2020峰会
+Open source should be a necessary path for every excellent programmer.
 
-非常有幸能够参加此次是开源软件供应链2020峰会，本次峰会由中国科学院软件研究所、[openEuler](https://openeuler.org/zh/)社区主办，中科院软件研究所南京软件技术研究院承办，峰会主题为“共献·开源”，包括1个主论坛、7个分论坛以及1场学生专题报告，而我代表`wechaty`社区导师之一参加此“开源&教育”分论坛的分享活动，会上有来自全国各地的开源软件从业者、企业技术专家、高校及科研机构代表、开源社区代表、学生等300余人现场参会、2.3万余人同步线上参会。
+## python-wechaty at the 2020 Open Source Software Summit
 
-## 我是如何开始python-wechaty开源项目的
+I was very fortunate to be able to participate in the 2020 Open Source Software Supply Chain Summit. This summit was hosted by the Institute of Software at the Chinese Academy of Sciences and the [openEuler](https://openeuler.org/zh/) community, and organized by the Nanjing Software Technology Research Institute of the Institute of Software at the Chinese Academy of Sciences. The theme of the summit was "Contribute · Open Source", including 1 main forum, 7 sub-forums, and 1 student special report. I attended as one of the `wechaty` community mentors to participate in the "Open Source & Education" sub-forum sharing activities. The conference had more than 300 attendees from open source software practitioners, enterprise technical experts, representatives from universities and research institutions, open source community representatives, and students from all over the country, with more than 23,000 people participating online simultaneously.
 
-其实一切都要从一场活动开始...
+## How I Started the python-wechaty Open Source Project
 
-> 各位同学以及已经工作了的同事，都可以尝试着参加一些开放性的沙龙和技术峰会，在会上你能够和其他人交流想法，探讨问题，结识志同道合的人，收获你意想不到的体验。
+Actually, it all started from an event...
 
-在分享会上我了解到`wechaty`项目，特别是被佳芮的live coding环节吸引到了，通过简单的几行代码就可以开发一个非常好玩的聊天机器人，接下来通过一段时间的学习和探索掌握了`wechaty`的基本使用。
+> Students and colleagues who are already working can try to participate in some open salons and technical summits. At the conferences, you can exchange ideas with others, discuss problems, meet like-minded people, and gain experiences you never expected.
 
-然而，最初的`wechaty`版本只有`TypeScript`版本，并没有目前的多语言版本，而我自己又是一个`python`的忠实粉丝，觉得这么好用的一个开源框架怎么可能没有一个`python`开发版本呢？这个疑问一直围绕在我的心头。
+At the sharing session, I learned about the `wechaty` project, and I was particularly attracted by Jiarui's live coding session. With just a few simple lines of code, you can develop a very fun chatbot. After a period of learning and exploration, I mastered the basic usage of `wechaty`.
 
-终于，在今年二月份疫情期间，大家都被困在家里，预期说被困，不如说是解放。因为我们拥有大把的时间坐在房间，和网友讨论各种问题，而`wechaty`社区尤为活跃，当是我已能够帮助大家解决一部分问题。
+However, the original `wechaty` version only had a `TypeScript` version and did not have the current multi-language versions. I myself am a loyal fan of `python`, and I thought how could such a useful open source framework not have a `python` development version? This question kept lingering in my mind.
 
-突然，其中就有人开始问我心目中的那个问题了：为什么`wechaty`没有一个`python`版本的开发框架呢？作者（李卓桓）便开始鼓励我们上手开发，而我当时第一个报名（也不知道当时有什么勇气，现在看来非常感谢当初的那份无畏勇气），经过了两个月的折腾之后，便有了[python-wechaty](https://github.com/wechaty/python-wechaty)的第一个ding-dong版本。
+Finally, during the epidemic in February this year, everyone was trapped at home. Rather than saying trapped, it's better to say liberated. Because we had plenty of time to sit in our rooms and discuss various issues with netizens, and the `wechaty` community was particularly active. By then, I was already able to help everyone solve some problems.
 
-## 开源项目并没有你想的那么难
+Suddenly, someone started asking the question that was on my mind: Why doesn't `wechaty` have a `python` version of the development framework? The author (Li Zhuohuan) began to encourage us to start developing, and I was the first to sign up (I don't know what courage I had at that time, but now I'm very grateful for that fearless courage). After two months of struggling, we had the first ding-dong version of [python-wechaty](https://github.com/wechaty/python-wechaty).
 
-其实在这两个月期间我过的还是挺痛苦的，因为作者（李卓桓）给`python-wechaty`制定的代码质量要求还挺高的（高是一个相对性词），需要经过各种代码审查才能够通过，而这些代码审查的工具我是从来都没有用过，在实际开发的过程中遇到了各种坑儿。让我印象最深刻的就是需要解决python中最经典的问题：包的循环引用的问题。虽然解决方案有很多，可是需要寻找一种能够通过严格代码审查的解决方案对应当时我的而言还是非常有难度。
+## Open Source Projects Are Not as Difficult as You Think
 
-在开发的过程中，每个函数的命名，注释以及代码风格当时都做了很多的[讨论](https://github.com/wechaty/python-wechaty/wiki/Coding-Style)，让我印象最深刻的就是关于数组类型的命名的讨论：比如好友ID列表变量命名，有`room_ids` 和 `room_id_list` 两种风格的讨论。通过这些非常细致的技术讨论，让我对编程有了一个全新的认识：写代码并不只是完成了一个功能就行了，而是需要在阅读性，代码风格，代码鲁棒性等各个层面作出权衡。
+Actually, I had a pretty tough time during those two months because the author (Li Zhuohuan) set quite high code quality requirements for `python-wechaty` (high is a relative term). Various code reviews were needed to pass, and I had never used these code review tools before, encountering various pitfalls during actual development. What impressed me most was the need to solve the most classic problem in Python: the circular reference problem of packages. Although there are many solutions, finding one that can pass strict code review was still very difficult for me at the time.
 
-虽然以上都是一些小细节的问题，可是正是细节处才能够体现出能力，而只需要付出足够的时间，就能够被解决，你就能够拥有这些能力。
+During the development process, there were many [discussions](https://github.com/wechaty/python-wechaty/wiki/Coding-Style) about the naming of each function, comments, and code style. What impressed me most was the discussion about naming array types: for example, for a list of friend IDs variable naming, there were discussions between two styles: `room_ids` and `room_id_list`. Through these very detailed technical discussions, I gained a new understanding of programming: writing code is not just about completing a function, but also requires trade-offs in terms of readability, code style, code robustness, and various other aspects.
 
-所以开源项目并没有你想象的那么难，**只需要你付出足够的努力就可以获得对应的硬实力**。
+Although the above are all small detail issues, it is precisely in the details that ability can be demonstrated. As long as you put in enough time, they can be solved, and you can have these abilities.
 
-## 开源项目并没有你想的那么简单
+So open source projects are not as difficult as you imagine. **You just need to put in enough effort to gain the corresponding hard skills.**
 
-自从开源项目逐步稳定，参与的人也越来越多，于是你作为项目的主要推动人，需要组织和管理项目的`issue`和`pull request`，需要协调参与项目的每个人，而大家都是来自于开源社区，处于一个松散合作，并非使用强制性约束来做项目，所以此时的项目管理就变得非常难以推动。
+## Open Source Projects Are Not as Simple as You Think
 
-于是我请教了`wechaty`开源社区多个不同的作者，他们不吝赐教，给予我非常多有价值的建议以及未来的一些规划的看法，于是我开始进行一些调整，和团队的人积极沟通每一个细节问题，并能够顺利的基于github中的issue和pr来管理所有的事情。
+Since the open source project has gradually stabilized and more and more people are participating, as the main promoter of the project, you need to organize and manage the project's `issues` and `pull requests`, and coordinate everyone participating in the project. Since everyone comes from the open source community and is in loose cooperation rather than using mandatory constraints to do the project, project management becomes very difficult to push forward.
 
-开源项目其实是一种以开源的思想来和世界上任何一个人合作开发，并没有一种强制性的约束，更多的是开放性思维来协作，这些东西都是需要深度学习的，
+So I consulted with several different authors from the `wechaty` open source community. They generously shared their knowledge and gave me a lot of valuable advice and views on future planning. So I started making some adjustments, actively communicating with team members on every detail, and was able to smoothly manage everything based on issues and PRs in GitHub.
 
-所以开源项目并没有你想象的那么简单，**只需要你付出足够的坚持就可以获得对应的软实力**
+Open source projects are actually a way to collaborate with anyone in the world with an open source mindset, without any mandatory constraints. It's more about cooperation with an open mindset. These things all need to be learned deeply.
 
-## 一定要积极参加开源项目
+So open source projects are not as simple as you imagine. **You just need to persist enough to gain the corresponding soft skills.**
 
-其实很多开源项目都非常欢迎新鲜的血液，也愿意去指导那些愿意学习的同学，所以如果你有一颗想要开源的心，就勇敢的尝试参与开源项目把，在里面你将收获非常多的提升和帮助，也会帮你认识很多优秀的人。
+## You Must Actively Participate in Open Source Projects
+
+In fact, many open source projects are very welcoming to fresh blood and are willing to guide students who are willing to learn. So if you have a heart that wants to open source, bravely try to participate in open source projects. You will gain a lot of improvement and help, and you will also meet many excellent people.
 
 ## Talk: Multi-Wechaty SDK for Chatbot
 
@@ -58,12 +62,10 @@ image: /assets/2020/12-python-wechaty-open-source-journey-en/wechaty-nanjing-pic
 
 > YouTube: <https://youtu.be/ncSWIRtHyAo>
 
-## Vlog： Wechaty社区南京开源峰会之旅
+## Vlog: Wechaty Community's Journey at Nanjing Open Source Summit
 
 {% include iframe.html src="https://youtu.be/0ARx1cCf5p0" %}
 
 > YouTube: <https://youtu.be/0ARx1cCf5p0>
-
----
-
-> Chinese version of this post: [python wechaty open source journey]({{ '/2020/12/08/python-wechaty-open-source-journey/' | relative_url }})
+>
+> This is a translated version of the original Chinese post. You can find the original post [here](/2020/12/08/python-wechaty-open-source-journey/).

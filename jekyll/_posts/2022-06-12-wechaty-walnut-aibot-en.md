@@ -1,5 +1,5 @@
 ---
-title: ' "5G消息puppet-walnut的最佳实践-5G智能微秘书" (English translation WIP)'
+title: "Best Practice of 5G Messaging puppet-walnut - 5G Intelligent Assistant"
 author: leochen-g
 categories: article
 tags:
@@ -7,67 +7,68 @@ tags:
   - puppet-walnut
   - news
 image: /assets/2022/06-wechaty-walnut-aibot-en/walnut-aibot.webp
+excerpt: >
+  As the first prize winner of the 2022 5G Messaging Developer Marathon, this article introduces the 5G Intelligent Assistant platform built with Wechaty's puppet-walnut, demonstrating best practices for 5G messaging bot development.
 ---
+
+> This is a translated version of the original Chinese post. You can find the original post [here](/2022/06/12/wechaty-walnut-aibot/).
   
-很高兴能够以《'启航计划'2022年5G消息开发者马拉松》比赛一等奖获得者的身份来写这篇文章，否则这个5G智能微秘书平台可能无法算上最佳实践了😄。同时也感谢在比赛过程中给我提供建议和指导的李卓桓老师和康嘉老师，还有`puppet-walnut`的作者丁生同学。
+I'm glad to write this article as the first prize winner of the "Launch Plan - 2022 5G Messaging Developer Marathon" competition, otherwise this 5G Intelligent Assistant platform might not be considered a best practice 😄. I'd also like to thank Teacher Li Zhuohuan and Teacher Kang Jia for providing suggestions and guidance during the competition, as well as student Ding Sheng, the author of `puppet-walnut`.
 
-## 项目背景
+## Project Background
 
-5G消息作为一种新的短信方式，逐渐出现在人们的视野之中。和大部分人一样，第一次看到5G消息，一直不了解它是一个什么样的展示形式，它该怎么应用于现实的生活场景之中，以及我们开发者该怎么进行去对接5G消息。直到看到Wechaty社区
-发了一个《'启航计划'2022年5G消息开发者马拉松》比赛通知，我才开始关注起来，原来5G消息是可以直接用Wechaty来对接的，而对接5G消息也有它对应的`puppet-walnut`。那我的第一想法就是之前做的[微信版智能微秘书](https://wechaty.js.org/2020/05/31/wechaty-web-panel-plugin/)
-是不是可以直接对接过来使用呢？
+As a new form of text messaging, 5G messaging is gradually appearing in people's vision. Like most people, when I first saw 5G messaging, I didn't understand what form it takes, how it should be applied to real-life scenarios, and how we developers should integrate with 5G messaging. It wasn't until I saw the Wechaty community post a notice for the "Launch Plan - 2022 5G Messaging Developer Marathon" competition that I started paying attention. I discovered that 5G messaging can be directly integrated with Wechaty, and integrating with 5G messaging has its corresponding `puppet-walnut`. My first thought was whether the [WeChat Intelligent Assistant](https://wechaty.js.org/2020/05/31/wechaty-web-panel-plugin/) I had previously developed could be directly integrated for use?
 
-为此我查阅了不少社区资料和[硬核桃官网](https://www.5g-msg.com/#/) 介绍，终于把5G消息搞明白了，其实5G消息的另一个名称是RCS融合通信(Rich Communications Services)，它支持文字、图文、视频、红包、位置、联系人、文档、图文卡片等更丰富的内容形式发送。这样看起来的话，和微信很相似，那么对接之前的智能微秘书平台也没有任何问题了，只需要把群组相关的功能去除一部分即可。因为5G消息目前是没有群组的概念，只有联系
-人的概念。
+For this, I consulted quite a bit of community documentation and [HardWalnut official website](https://www.5g-msg.com/#/) introductions, and finally understood 5G messaging. Actually, another name for 5G messaging is RCS (Rich Communications Services). It supports sending richer content forms such as text, images, videos, red envelopes, locations, contacts, documents, and rich media cards. Looking at it this way, it's very similar to WeChat, so integrating with the previous Intelligent Assistant platform shouldn't be a problem at all - just need to remove some group-related functions. Because 5G messaging currently doesn't have the concept of groups, only the concept of contacts.
 
-那这样一来智能微秘书平台所有的功能都可以完全复用过来，省去了很多开发成本，对接起来也很简单。这一切都得益于Wechaty整体架构的设计，一个新的IM就是一个`puppet`，改的是底层`puppet`，不变的是业务逻辑和方法，这种方式真的可以给开发者省去很多时间，把大部分时间和关注点放在功能逻辑之上，做一个功能就能适用所有的`puppet`。接下来就让我来详细介绍一下5G智能微秘书平台，并且告诉大家如何快速的去实现一个5G智能微秘书。
+This way, all functions of the Intelligent Assistant platform can be completely reused, saving a lot of development costs, and the integration is also very simple. All this is thanks to Wechaty's overall architectural design. A new IM is just a `puppet`, what changes is the underlying `puppet`, what remains unchanged is the business logic and methods. This approach can really save developers a lot of time, putting most time and focus on functional logic. One feature can be applied to all `puppets`. Next, let me introduce in detail the 5G Intelligent Assistant platform and tell everyone how to quickly implement a 5G Intelligent Assistant.
 
-## 关于5G智能微秘书平台
+## About the 5G Intelligent Assistant Platform
 
 ![image](/assets/2022/06-wechaty-walnut-aibot-en/web.webp)
 
-5G智能微秘书，是一个基于Wechaty开发的智能对话器人管理平台，和其他单一bot不同的是，我们可以通过这个平台，配置生成出众多不同功能的对话机器人。
+The 5G Intelligent Assistant is an intelligent conversation bot management platform developed based on Wechaty. Unlike other single bots, we can configure and generate many different functional conversation bots through this platform.
 
-它对接了多个智能对话平台来供你选择，来也、天行、图灵、腾讯闲聊等。也内置了用户定时任务、每日提醒、纪念日提醒、当日提醒、定时资讯等众多功能来方便用户使用。
+It integrates multiple intelligent conversation platforms for your choice, including Laiye, Tianxing, Turing, Tencent Xianliao, etc. It also has built-in user scheduled tasks, daily reminders, anniversary reminders, same-day reminders, scheduled news, and many other functions for user convenience.
 
-同时添加了素材管理，和openapi功能，可以把5G消息应用在更多的场景之中，使5G消息的发送更为灵活。
+At the same time, material management and openapi functions have been added, allowing 5G messaging to be applied in more scenarios, making 5G message sending more flexible.
 
-## 功能介绍及演示
+## Function Introduction and Demonstration
 
-关于5G智能微秘书平台的功能介绍和功能演示，以一段比赛时所提交的的视频来展示
+For the function introduction and demonstration of the 5G Intelligent Assistant platform, here's a video submitted during the competition
 
 - Bilibili: <https://www.bilibili.com/video/BV1RY411M7k9>
 - Youtube: <https://youtu.be/kzg3rZsw2jc>
 
 {% include iframe.html src="https://www.youtube.com/embed/kzg3rZsw2jc" %}
 
-## 如何使用
+## How to Use
 
-### 一、获取5G消息平台账号
+### 1. Obtain 5G Messaging Platform Account
 
-这一步直接参考社区文档[《2022-小白如何从0到1上手puppet-walnut》](https://wechaty.js.org/2022/04/22/how-to-start-puppet-walnut/) 即可，讲解的很详细，我这里就不重复说明了。目前非参与比赛的个人开发者是有1个月的体验时间。
-如果想拥有更多体验时间，可以参与下个阶段的 [《第五届“绽放杯”5G应用征集大赛》](https://mp.weixin.qq.com/s/JSReqEBTuShME0Jzskaiog) ，欢迎大家踊跃参加报名。
+For this step, you can directly refer to the community documentation [《2022 - How to Get Started with puppet-walnut from 0 to 1》](https://wechaty.js.org/2022/04/22/how-to-start-puppet-walnut/), which explains it in detail. I won't repeat it here. Currently, individual developers not participating in the competition have 1 month of trial time.
+If you want more trial time, you can participate in the next phase of the [《Fifth "Blooming Cup" 5G Application Collection Competition》](https://mp.weixin.qq.com/s/JSReqEBTuShME0Jzskaiog). Everyone is welcome to actively sign up.
 
-### 二、获取5G智能微秘书平台账号
+### 2. Obtain 5G Intelligent Assistant Platform Account
 
-5G智能微秘书平台目前已经发布到公网[http://walnut.aibotk.com/](http://walnut.aibotk.com/) ，注册登录后获取个人中心的`APIKEY`和`APISECRET`备用
+The 5G Intelligent Assistant platform has been released to the public network [http://walnut.aibotk.com/](http://walnut.aibotk.com/). After registration and login, obtain the `APIKEY` and `APISECRET` from the personal center for backup.
 
-### 三、拉取5G智能微秘书客户端代码并安装依赖
+### 3. Pull the 5G Intelligent Assistant Client Code and Install Dependencies
 
-由于目前还有下个阶段的比赛，所以客户端代码还没有开源出来，大家可以关注这个仓库：[https://github.com/leochen-g/walnut-aibot](https://github.com/leochen-g/walnut-aibot) ，下个阶段完赛后会第一时间开源出来，如果想提前体验可以邮箱
-联系我。邮箱地址：leo.gengchen@foxmail.com
+Since there is still a next phase of the competition, the client code has not been open-sourced yet. You can follow this repository: [https://github.com/leochen-g/walnut-aibot](https://github.com/leochen-g/walnut-aibot). It will be open-sourced immediately after the next phase of the competition. If you want to experience it in advance, you can contact me by email.
+Email address: leo.gengchen@foxmail.com
 
 > node > 16
 
-获取客户端后安装依赖
+After obtaining the client, install dependencies
 
 ```shell
 npm run install
 ```
 
-### 四、配置参数并运行
+### 4. Configure Parameters and Run
 
-把之前第一步和第二步获得的参数填入到代码中
+Fill in the parameters obtained from steps 1 and 2 into the code
 
 ```javascript
 const {WechatyBuilder} = require('wechaty')
@@ -78,44 +79,42 @@ bot = WechatyBuilder.build({
     name, // generate xxxx.memory-card.json and save login data for the next login
     puppet: 'wechaty-puppet-walnut',
     puppetOptions: {
-        sipId: '****', // Chatbot的sipId
-        appId: '******', // Chatbot的AppId
-        appKey: '*******' // Chatbot的AppKey
+        sipId: '****', // Chatbot's sipId
+        appId: '******', // Chatbot's AppId
+        appKey: '*******' // Chatbot's AppKey
     },
 });
 
 bot.use(
     WechatyWebPanelPlugin({
-        apiKey: '*******', // 微秘书平台apikey
-        apiSecret: '*******', // 微秘书平台apisecret
+        apiKey: '*******', // Assistant platform apikey
+        apiSecret: '*******', // Assistant platform apisecret
     })
 )
 bot.start()
     .catch((e) => console.error(e));
 ```
 
-开始运行
+Start running
 
 ```shell
 npm run start
 ```
 
-接下来就是手机端可以与5G智能微秘书进行对话了。
+Next, the mobile can have a conversation with the 5G Intelligent Assistant.
 
-## 答辩文稿
+## Defense Manuscript
 
-分享一下答辩时的文稿，可以让大家更清楚的了解5G智能微秘书是怎样一个平台
+Sharing the defense manuscript can help everyone understand more clearly what kind of platform the 5G Intelligent Assistant is
 
 {% include iframe.html src="/assets/2022/06-wechaty-walnut-aibot-en/walnut-share.pdf" %}
 
-## 关于绽放杯
+## About the Blooming Cup
 
-最后，新的一期5G应用征集大赛也要开始了，欢迎对5G消息有兴趣的开发者参与进来。这是首次绽放杯对个人开发者进行开放，而且奖项丰厚，属于国家级赛事，含金量很高的，赶快报名参加吧。
+Finally, a new phase of the 5G Application Collection Competition is about to start. Developers interested in 5G messaging are welcome to participate. This is the first time the Blooming Cup is open to individual developers, with generous prizes. It's a national-level competition with high value, so sign up quickly.
 
-由工业和信息化部主办，中国信息通信研究院联合5G应用产业方阵、IMT-2020(5G)推进组、中国通信标准化协会以及金砖国家未来网络研究院中国分院共同承办的第五届“绽放杯”5G应用征集大赛已于2022年4月28日正式启动，本届大赛以“5G赋能数字化 扬帆助力新征程”为主题，聚焦行业数字化转型升级、个人应用创新发展、社会数字化公共服务能力提升等重点方向，加速 5G 应用从“样板间”向“商品房”转变，推动5G应用规模化发展。
+Hosted by the Ministry of Industry and Information Technology, and co-organized by the China Academy of Information and Communications Technology together with the 5G Application Industry Alliance, IMT-2020 (5G) Promotion Group, China Communications Standards Association, and the China Branch of the BRICS Future Network Institute, the Fifth "Blooming Cup" 5G Application Collection Competition was officially launched on April 28, 2022. This competition takes "5G Empowers Digitalization, Sets Sail to Help the New Journey" as its theme, focusing on key directions such as industry digital transformation and upgrading, personal application innovation development, and social digital public service capability improvement, accelerating the transformation of 5G applications from "model rooms" to "commercial housing," and promoting the large-scale development of 5G applications.
 
-[更多介绍及参赛方式](https://mp.weixin.qq.com/s/JSReqEBTuShME0Jzskaiog)
+[More information and competition methods](https://mp.weixin.qq.com/s/JSReqEBTuShME0Jzskaiog)
 
----
-
-> Chinese version of this post: [wechaty walnut aibot]({{ '/2022/06/12/wechaty-walnut-aibot/' | relative_url }})
+> This is a translated version of the original Chinese post. You can find the original post [here](/2022/06/12/wechaty-walnut-aibot/).

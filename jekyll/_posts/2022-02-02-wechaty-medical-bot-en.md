@@ -1,5 +1,5 @@
 ---
-title: ' "基于wechaty开发的医疗小助手" (English translation WIP)'
+title: "Medical Assistant Bot Developed with Wechaty"
 author: smartnikocj
 categories: article
 tags:
@@ -8,60 +8,64 @@ tags:
   - medicine
   - improve-efficiency
 image: /assets/2022/02-wechaty-medical-bot-en/title-image.webp
+excerpt: >
+  A medical assistant bot built with Wechaty to help resident doctors manage clinical work, providing personalized reminders for ward rotations, professional knowledge queries, and automating repetitive communications in healthcare settings.
 ---
 
-## 1. 前言
+> This is a translated version of the original Chinese post. You can find the original post [here](/2022/02/02/wechaty-medical-bot/).
 
-随着移动互联网即时通讯工具的发展和普及，人与人之间的交流越来越依赖通讯工具，比如`Wechat`成为各种工作场景的重要沟通工具。医疗作为特殊行业，医生与医生、医生与护士以及医生与患者等之间的沟通对疾病诊断、治疗、随访等尤其重要。作为专科医生，多数患者都因某种常见疾病就诊，很多时候沟通内容都是重复的，如何通过机器或程序帮助我们完成重复内容的沟通，从而提高工作效率呢？此外，医疗知识多而繁杂，如何通过机器或程序帮助我们更好记忆呢？
+## 1. Foreword
 
-## 2. 住院总医师与临床工作简介
+With the development and popularization of mobile internet instant messaging tools, communication between people increasingly relies on communication tools. For example, `WeChat` has become an important communication tool in various work scenarios. Healthcare is a special industry where communication between doctors and doctors, doctors and nurses, and doctors and patients is particularly important for disease diagnosis, treatment, follow-up, etc. As a specialist doctor, most patients come for certain common diseases, and communication content is often repetitive. How can machines or programs help us complete repetitive communications to improve work efficiency? In addition, medical knowledge is extensive and complex. How can machines or programs help us remember better?
 
-笔者为某医院外科医生，爱好编程，大学期间自学python，用于数据自动化处理、病历资料自动化收集、科研统计与作图等，极大提高了笔者的工作效率以及数据的准确性。目前担任**住院总医师**（简称`住院总`），相信大家都听过`996`工作制度，而住院总工作为期1-2年，每天24小时均在病区，以便随call随到，有些医院可能有1周休息1天。住院总的工作强度，绝对是有过之而无不及。住院总是住院医师培养的高级阶段，是住院医师向主治医师成长过程中必要的阶段。一般住院总负责科室所有事情，包括但不仅限于科室排班，负责进修医生、轮科医师、实习医师的临床轮转安排、出科考试；转达医院的各种文件、指令；各科室普通和急诊会诊，特别是急诊会诊，随call随到；负责病房抢救工作等。另外，外科住院总需参加手术，可能在手术时就错过了重要事情的提醒。其次，进修及轮科医生是定期轮转，每次更换新学员都需重复提醒、指导和教学。那么，这个过程中就会涉及到很多重复、重要的消息提醒、文件转达、临床工作注意事项提示等，如何减轻住院总的工作压力、协助记忆、提高工作效率呢？
+## 2. Introduction to Chief Resident and Clinical Work
 
-于是基于`wechaty`开发了一个**医疗小助手**，由于笔者编程能力有限，此文只做简单介绍，具体代码参考[wechaty官网](https://github.com/wechaty/wechaty)。
+The author is a surgeon at a hospital, passionate about programming. During university, I self-learned Python for automated data processing, automated collection of medical record materials, research statistics and charting, which greatly improved my work efficiency and data accuracy. Currently serving as **Chief Resident** (abbreviated as `Chief Resident`). I believe everyone has heard of the `996` work system. The Chief Resident position lasts 1-2 years, with 24 hours a day in the ward to be on call. Some hospitals may have 1 day off per week. The work intensity of Chief Residents is definitely more demanding. Chief Resident is an advanced stage in resident training, a necessary stage for residents to grow into attending physicians. Generally, Chief Residents are responsible for all department matters, including but not limited to department scheduling, responsible for clinical rotation arrangements and exit exams for visiting doctors, rotating physicians, and interns; conveying various hospital documents and instructions; consultations for various departments both routine and emergency, especially emergency consultations requiring immediate availability; responsible for ward emergency rescue work, etc. Additionally, surgical Chief Residents need to participate in surgeries and may miss important reminders during operations. Secondly, visiting and rotating doctors rotate periodically, and each time new trainees arrive, reminders, guidance, and teaching need to be repeated. So how can we reduce the work pressure of Chief Residents, assist memory, and improve work efficiency during this process involving many repetitive and important message reminders, file delivery, and clinical work precaution notifications?
 
-## 3. 医疗小助手目前已实现的功能
+Therefore, a **Medical Assistant Bot** was developed based on `wechaty`. Due to the author's limited programming ability, this article only provides a brief introduction. For specific code, please refer to the [wechaty official website](https://github.com/wechaty/wechaty).
 
-### 3.1 个性化提醒，用于提醒轮科医生临床工作注意事项
+## 3. Currently Implemented Functions of the Medical Assistant Bot
 
-入院诊断、临床路径录入
+### 3.1 Personalized Reminders for Clinical Work Precautions for Rotating Doctors
+
+Admission diagnosis and clinical pathway entry
 ![new-admission-dignosis](/assets/2022/02-wechaty-medical-bot-en/new-admission-dignosis.webp)
 
-新入院注意事项
+New admission precautions
 ![new-admission](/assets/2022/02-wechaty-medical-bot-en/new-admission.webp)
 
-病程书写注意事项
+Progress note writing precautions
 ![soap](/assets/2022/02-wechaty-medical-bot-en/soap.webp)
 
-早查房应关注的项目和内容
+Items and content to focus on during morning rounds
 ![pre-wardround](/assets/2022/02-wechaty-medical-bot-en/pre-wardround.webp)
 ![recall](/assets/2022/02-wechaty-medical-bot-en/recall.webp)
 
-换药和操作后医疗垃圾分类
+Medical waste classification after dressing changes and procedures
 ![debridement](/assets/2022/02-wechaty-medical-bot-en/debridement.webp)
 
-出院注意事项以及术后复查
+Discharge precautions and post-operative follow-up
 ![discharge](/assets/2022/02-wechaty-medical-bot-en/discharge.webp)
 
-病案提交
+Medical record submission
 ![file-submit](/assets/2022/02-wechaty-medical-bot-en/file-submit.webp)
 
-周末交接班
+Weekend handover
 ![weekend](/assets/2022/02-wechaty-medical-bot-en/weekend.webp)
 ![exchange](/assets/2022/02-wechaty-medical-bot-en/exchange.webp)
 
-### 3.2 专业知识查询
+### 3.2 Professional Knowledge Queries
 
-术后补液原则
+Post-operative fluid replacement principles
 ![fluid](/assets/2022/02-wechaty-medical-bot-en/fluid.webp)
 
-常见镇痛药物
+Common analgesic drugs
 ![analgesia](/assets/2022/02-wechaty-medical-bot-en/analgesia.webp)
 
-抢救药物
+Emergency rescue drugs
 ![life-saving](/assets/2022/02-wechaty-medical-bot-en/life-saving.webp)
 
-### 3.3 其他
+### 3.3 Others
 
 ![light](/assets/2022/02-wechaty-medical-bot-en/light.webp)
 
@@ -69,29 +73,27 @@ image: /assets/2022/02-wechaty-medical-bot-en/title-image.webp
 
 ![tue-note](/assets/2022/02-wechaty-medical-bot-en/tue-note.webp)
 
-## 4. 效果
+## 4. Results
 
-虽然医疗小助手目前仅有部分功能，但很大程度缓解了本人住院总工作负担，定期提醒和推送提高了各位医生的自觉性。目前病案规定天数内提交率100%，换药车以及换药室医疗垃圾均按规定分类丢弃等。
+Although the Medical Assistant Bot currently only has some functions, it has greatly alleviated my burden as Chief Resident. Regular reminders and notifications have improved doctors' initiative. Currently, the medical record submission rate within the specified timeframe is 100%, and medical waste at dressing carts and dressing rooms is disposed of according to classification regulations.
 
-## 5. 待开发功能与展望
+## 5. Functions to be Developed and Prospects
 
-限于个人临床工作忙以及编程能力有限，目前医疗小助手功能较少，但自己制定了一些目标，以后开发更多的功能，若有机会后续再跟大家分享，也欢迎大家提宝贵意见(`smartnikocj@gmail.com`)。
+Due to busy clinical work and limited programming ability, the Medical Assistant Bot currently has few functions. However, I have set some goals to develop more functions in the future. If there's an opportunity, I will share more with everyone later. Welcome to provide valuable suggestions (`smartnikocj@gmail.com`).
 
-`待开发功能`：
+`Functions to be developed`:
 
-- 轮科医生排班与考勤
-- 通讯录（每月轮转医生不同，定期更新通讯录，随时查询，方便沟通）
-- 病案书写注意事项（定期推送病案书写知识点）
-- 专业知识定期推送（形成知识网络，定期推送，随时查询，让进修及轮科医生学习更多本专业知识）
-- 常用药物使用注意事项（如定期推送本科常用药物配伍禁忌）
-- 抢救流程及药物（定期推送，反复学习，当遇到抢救时胸有成竹）
-- 医患沟通（回答患者常见提问等）
-- 等等
+- Rotating doctor scheduling and attendance
+- Contact directory (different rotating doctors each month, regularly update directory, query anytime for convenient communication)
+- Medical record writing precautions (regularly push medical record writing key points)
+- Regular professional knowledge push (form knowledge network, regular push, query anytime, let visiting and rotating doctors learn more professional knowledge)
+- Common medication usage precautions (such as regularly pushing drug interaction contraindications for commonly used drugs in our department)
+- Emergency procedures and drugs (regularly push, repeatedly learn, so when encountering emergencies, be well-prepared)
+- Doctor-patient communication (answer common patient questions, etc.)
+- And more
 
-## 6. 致谢
+## 6. Acknowledgments
 
-感谢[wechaty](https://wechaty.js.org/)社区开发者们的辛勤付出，感谢[Huan](https://github.com/huan)的宝贵建议。希望本项目可以持续发展下去。
+Thanks to the hard work of [wechaty](https://wechaty.js.org/) community developers, and thanks to [Huan](https://github.com/huan) for valuable suggestions. Hope this project can continue to develop.
 
 ---
-
-> Chinese version of this post: [wechaty medical bot]({{ '/2022/02/02/wechaty-medical-bot/' | relative_url }})

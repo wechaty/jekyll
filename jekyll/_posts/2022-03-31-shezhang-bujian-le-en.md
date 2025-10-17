@@ -1,151 +1,152 @@
 ---
-title: ' 借助世界上最大的单体中文NLP大模型和Wechaty，我们做出了一个可以跟人类玩“剧本杀”的AI! (English translation WIP)'
+title: "With the World's Largest Monolithic Chinese NLP Model and Wechaty, We Built an AI That Can Play Script Murder Games with Humans!"
 author: bigbrother666sh
 categories: article
 tags:
   - puppet-xp
   - ai
-  - 剧本杀
-image: /assets/2022/03-shezhang-bujian-le-en/aoc7k-iob2u.webp 
+  - murder-mystery-game
+image: /assets/2022/03-shezhang-bujian-le-en/aoc7k-iob2u.webp
+excerpt: >
+  Building an AI player for murder mystery games using Wechaty and the world's largest Chinese NLP model, creating immersive interactive narrative experiences where AI seamlessly joins human players through WeChat.
 ---
-  
-## 借助世界上最大的单体中文NLP大模型和Wechaty，我们做出了一个可以跟人类玩“剧本杀”的AI
 
-**项目地址，欢迎围观**：<https://github.com/bigbrother666sh/shezhangbujianle>
+> This is a translated version of the original Chinese post. You can find the original post [here](/2022/03/31/shezhang-bujian-le/).
 
-## 核心创意与演示
+## With the World's Largest Monolithic Chinese NLP Model and Wechaty, We Built an AI That Can Play Murder Mystery Games with Humans
 
-我们为本项目特别改编了一个微型线上剧本杀剧本，本子有五个角色，分别由五名玩家扮演，但我们每场只会召集四个玩家，并在他们不知情的情况下，派出AI扮演剩下的那个角色。
+**Project Repository, Welcome to Visit**: <https://github.com/bigbrother666sh/shezhangbujianle>
 
-玩家无需下载客户端或者打开网页，直接使用微信就能玩（感谢神器**Wechaty**）。
+## Core Concept and Demonstration
 
-本着细节拉满的原则，我们也为AI准备了一个微信账号，并精心为她设定了昵称和头像，甚至每场游戏前我们还会紧扣时事的为她准备近三天的朋友圈内容，而游戏后还会继续连发三天朋友圈内容提供延展剧情（非常类似"规则怪谈"）。
+For this project, we specially adapted a micro online script murder mystery script. The script has five characters, each played by five players, but we only recruit four players per game and, without their knowledge, have AI play the remaining character.
+
+Players don't need to download clients or open web pages - they can play directly using WeChat (thanks to the amazing **Wechaty**).
+
+Following the principle of maximizing detail, we also prepared a WeChat account for the AI, carefully setting her nickname and avatar. We even prepare three days of Moments content closely tied to current events before each game, and continue posting Moments for three days after the game to provide extended plot (very similar to "creepypasta").
 
 ![img](/assets/2022/03-shezhang-bujian-le-en/1.webp)  ![img](/assets/2022/03-shezhang-bujian-le-en/2.webp)
 
-整体剧情并不复杂，讲的是某高校社团中五个骨干成员因为一件事情牵涉到各自利益而产生的种种勾心斗角。玩家要做的也非常简单，就是想方设法、拉帮结派的说服其他人接受自己的主张……不过我们这次对原作做了比较大的改动，剧作中AI所扮演的角色（蔡晓）受控于某邪恶的科技巨头（“北极鹅”公司），
-她要帮助“北极鹅”实行一个庞大的阴谋，而这个阴谋其实笼罩了所有人……坦率的说，从游戏角度，这个角色的难度还挺高，承担着推动剧情的作用，并且游戏机制设定最后所有的疑点矛头都会指向她，
-如果在现实的剧本杀游戏中，这个角色也应该是由DM扮演，而非普通玩家，当然这也就大大增加了对AI的考验。
+The overall plot is not complicated - it tells of five core members of a university club involved in various intrigues due to a matter affecting their interests. What players need to do is also very simple - find ways to form alliances and persuade others to accept their views... However, we made relatively major changes to the original work. The character the AI plays (Cai Xiao) is controlled by an evil tech giant (the "Arctic Goose" company).
+She must help "Arctic Goose" execute a grand conspiracy that actually envelops everyone... Frankly speaking, from a gaming perspective, this character is quite difficult, bearing the role of driving the plot, and the game mechanism is set up so that all doubts will eventually point to her.
+In actual script murder games, this character should be played by the DM rather than an ordinary player, which of course greatly increases the challenge for the AI.
 
-下面让我们来看看AI的实际表现吧！（演示视频正在制作中，大家现在可以移步github项目主页看录屏gif）。
+Let's take a look at the AI's actual performance! (Demo videos are being produced. You can now visit the github project homepage to see recorded gifs).
 
-### 谭明VS蔡晓（AI)
+### Tan Ming VS Cai Xiao (AI)
 
-剧情中谭明为了实现自己的目的，不择手段的策划了一个诡计，并计划私下与蔡晓达成联盟，然而他不知道的是蔡晓其实在下一盘更大的棋，正想借他的诡计实现自己的阴谋……所以AI对谭明的策略就是可劲儿的忽悠他并想方设法利用他。
-实际表现中，AI很好的贯彻了这个思路，甚至发挥想象力的使用了色诱绝技……坦率的讲，这招也极大的超出了我们的预料……
+In the plot, Tan Ming unscrupulously plans a scheme to achieve his goals and plans to secretly form an alliance with Cai Xiao. However, what he doesn't know is that Cai Xiao is actually playing a bigger game, wanting to use his scheme to achieve her own conspiracy... So the AI's strategy for Tan Ming is to deceive him as much as possible and find ways to use him.
+In actual performance, the AI implemented this approach well, even imaginatively using seduction tactics... Frankly speaking, this move greatly exceeded our expectations...
 
-### 孔墨VS蔡晓（AI)
+### Kong Mo VS Cai Xiao (AI)
 
-剧情中孔墨的任务是调查真相，这个角色的玩家需要主动出击找其他玩家尽可能多了解情况，但有的时候会碰到比较内向的玩家。这种情况下我们会利用"导演机制"先主动发起一轮对话，
-可以看到AI在这种情况下能够很好的在后续轮次中进行线索"暗示"，起到推动剧情的作用。
+In the plot, Kong Mo's task is to investigate the truth. The player of this character needs to take initiative to find other players to learn as much as possible, but sometimes encounters more introverted players. In such cases, we use the "director mechanism" to proactively initiate a round of dialogue first.
+You can see that in such situations, the AI can provide good clue "hints" in subsequent rounds, playing a role in driving the plot.
 
-### 李超VS蔡晓（AI)
+### Li Chao VS Cai Xiao (AI)
 
-剧情中的李超跟AI所扮演的蔡晓持有完全相反的立场，所以蔡晓需要说服李超，同时在一些事情上对其进行隐瞒……
+Li Chao in the plot holds a completely opposite position from Cai Xiao played by the AI, so Cai Xiao needs to persuade Li Chao while concealing some things...
 
-### 孙若VS蔡晓（AI)
+### Sun Ruo VS Cai Xiao (AI)
 
-剧情中孙若是一个比较复杂的角色，他（她，这个角色不限定性别）其实也跟蔡晓一样被改造为了"AI人"，但是他（她）自己却并不知道，并且延伸剧情的谜底也在这个人物身上。所以AI与孙若之间的对话需要体现一定的"深度"，不能不说，但也不能全说。
-最终效果如何，大家自己看吧~
+In the plot, Sun Ruo is a relatively complex character. He (or she, this character has no gender restriction) has actually been transformed into an "AI person" like Cai Xiao, but doesn't know it himself (herself), and the answer to the extended plot lies in this character. So the dialogue between AI and Sun Ruo needs to show a certain "depth" - can't say nothing, but can't say everything either.
+As for the final effect, see for yourself~
 
-### 蔡晓（AI）在公聊（房间)
+### Cai Xiao (AI) in Group Chat (Room)
 
-最后放一段编导组与AI的毕业群聊画面，大家再整体感受下。:smile:
+Finally, here's a segment of graduation group chat between the production team and AI. Let everyone feel the overall experience. :smile:
 
-从剧情角度，AI对孙若的最后一句话充满了深意……当然，从技术角度，我更相信这只是巧合，然而这恰是本作好玩的地方之一——AI的不确定性会极大丰富原有剧情。
+From a plot perspective, the AI's last words to Sun Ruo are full of meaning... Of course, from a technical perspective, I believe this is just a coincidence. However, this is precisely one of the fun parts of this work - the AI's uncertainty greatly enriches the original plot.
 
-_【以上演示录屏请大家移步 [项目github主页](https://github.com/bigbrother666sh/shezhangbujianle) 观看。】_
+_[For the above demo recordings, please visit the [project github homepage](https://github.com/bigbrother666sh/shezhangbujianle).]_
 
-## 项目挑战
+## Project Challenges
 
-所谓100个人就有100种微信使用风格，直接使用微信作为用户交互界面虽然极大降低了开发工作量和用户使用成本，但是也带来很多挑战。
+As the saying goes, 100 people have 100 different WeChat usage styles. Although using WeChat directly as the user interaction interface greatly reduces development workload and user costs, it also brings many challenges.
 
-很大的一个挑战就是用户输入文本的预处理。比如，有些用户喜欢输入大段的空格或者频繁换行代替逗号或者句号，这就很容易造成simnet_bow报错（simbet_bow是百度飞桨paddlehub提供的一个预训练
-模型，我们在本项目中用于判断用户提问），所以我们需要先用re把这些都替换为逗号；另外，上面说到的有些用户习惯先把问题提出再另外发一条只@人的消息，按我们最初的处理方案，
-使用正则把@+昵称全部删除，就会产生"空文本"，simnet_bow还会报错，最后我们的方案是只去掉@，当然这可能会造成一句话中人名重复，但好在本次使用的生成模型源1.0貌似对此的抗干扰能力还不错……
+A major challenge is preprocessing user input text. For example, some users like to input large blocks of spaces or frequent line breaks instead of commas or periods, which easily causes simnet_bow errors (simnet_bow is a pre-trained model provided by Baidu's PaddlePaddle PaddleHub, which we use in this project to judge user questions). So we need to first use regex to replace these with commas. Additionally, as mentioned above, some users habitually ask questions first and then send another message only @-mentioning people. According to our initial processing plan,
+using regex to delete all @ + nicknames would produce "empty text", and simnet_bow would still error. Our final solution is to only remove the @. Of course, this may cause name repetition in a sentence, but fortunately the generation model Yuan 1.0 used this time seems to have good interference resistance...
 
-另外，我们这次使用的是完全免费的puppet-xp方案，但是它目前的功能实在有限，仅能实现文本信息的收发，这导致了很多限制，甚至留下了一些硬伤，这一点下文会详细介绍。
+Additionally, we used the completely free puppet-xp solution this time, but its current functionality is really limited, only able to send and receive text messages. This caused many limitations and even left some flaws, which will be introduced in detail below.
 
-类似的例子还有很多，比如puppet-xp无法识别除微信自带的第一页以外的emoji等等，考虑到出现频率不高，我们也就忽略了，所以稍微懂点技术的朋友，恳请你们测试的时候 **千万不要抱着"极限测试"的思想** ，关注AI生成本身就好:smile:
+There are many similar examples, such as puppet-xp being unable to recognize emojis other than those on WeChat's built-in first page. Considering the low frequency of occurrence, we ignored them. So friends who understand technology a bit, please **never approach testing with an "extreme testing" mindset** when testing - just focus on the AI generation itself :smile:
 
-## 导演机制
+## Director Mechanism
 
-因为种种限制，我们还必须为AI设定一个辅助机制，在本项目中就是所谓的"**导演**"。他的作用是在出现AI不适用的情况下对AI进行"手动引导"，这些情况有一些是游戏机制本身，有一些是因为目前我们采用的wechaty puppet-xp协议限制（有关wechaty和puppet协议的关系可以查看wechaty主页（<https://github.com/wechaty>）。
+Due to various limitations, we must also set up an auxiliary mechanism for the AI, which in this project is the so-called "**Director**". His role is to "manually guide" the AI when situations arise where the AI is not applicable. Some of these situations are due to the game mechanism itself, and some are due to limitations of the wechaty puppet-xp protocol we currently use (regarding the relationship between wechaty and puppet protocols, you can check the wechaty homepage (<https://github.com/wechaty>)).
 
-具体而言这些情况包括：
+Specifically, these situations include:
 
-### 用户注册问题
+### User Registration Issue
 
-首先由于目前puppet-xp拿不到用户的群昵称，所以程序无从得知哪个用户对应哪个角色，我们为此设定了一个游戏规则，即用户需要先添加其他用户好友，然后发一句"这是xxx"（角色名），我们会要求用户对所有其他玩家都这样做，这样就不会暴露AI，并且这也确实有必要，因为真人也不能每次都翻看群昵称
-来确定发消息的玩家到底扮演的是谁。
-但是我们不能保证每个用户都会遵守，所以就需要导演来手动帮助AI完成这个识别。
+First, since puppet-xp currently cannot get users' group nicknames, the program has no way of knowing which user corresponds to which character. We set a game rule for this: users need to first add other users as friends, then send a message "This is XXX" (character name). We require users to do this for all other players. This way the AI won't be exposed, and this is indeed necessary because real people can't check group nicknames every time
+to determine which character the messaging player is playing.
+However, we cannot guarantee every user will comply, so the director needs to manually help the AI complete this identification.
 
-### 主动消息发送
+### Proactive Message Sending
 
-项目测试中，我们也发现会出现冷场问题，比如一时间大家都不说话，或者某两个用户聊的火热，而忽略了其他玩家……从玩家角度来说，这是蛮主观的问题，可能我就是不知道该说什么，按程序"一问一答"的设计，这个时候AI也只能等。所以我们设定了主动消息或者说**闲聊**机制，具体来说就是预设一些问题，导演账号向AI账号发送特定指令就会触发。
+During project testing, we also found awkward silence issues, such as everyone not talking for a while, or two users chatting enthusiastically while ignoring other players... From a player's perspective, this is quite a subjective problem - maybe I just don't know what to say. According to the program's "question-answer" design, the AI can only wait at this time. So we set up a proactive message or **small talk** mechanism. Specifically, we preset some questions, and when the director account sends specific instructions to the AI account, it triggers.
 
-### 应急消息发送
+### Emergency Message Sending
 
-目前puppet-xp仅能识别文本消息（当然浪潮源1.0目前也只支持text in text out，然而其实多模态的方案目前也不少），我们为此规定玩家必须发文本，这其实已经很限制了。结果测试中我们发现puppet-xp还不支持引用消息，而这在项目实际场景中出现的频率还不低！为此我们不得不针对一些常见问题
-预设了回答文本， 当出现无法识别消息的情况，就由导演发送指令指挥AI发送……
-有同学可能会问，你们不能直接用AI登录的微信客户端发送么？答案是——其实也可以，只是这样显得比较"不智能"，当然从玩家体验角度，可能这样也不错。只是这里面有一个小细节，你必须通过AI所登录的Windows客户端发送，而不通过同时登录的移动端发送，因为puppet-xp会错误的把多终端同步的信息
-当成是对方发来的信息，这样的话，就会引发AI"回复自己的消息"。
+Currently puppet-xp can only recognize text messages (of course Yuan 1.0 currently only supports text in text out, though actually multimodal solutions are not uncommon now). We stipulated that players must send text, which is actually quite limiting. In testing we found that puppet-xp doesn't support quoted messages either, and this occurs quite frequently in the project's actual scenarios! For this we had to preset
+answer texts for some common questions. When unrecognizable messages appear, the director sends instructions to command the AI to send...
+Some students might ask, can't you just send directly through the WeChat client logged in by AI? The answer is - actually yes, but this seems less "intelligent". Of course from a player experience perspective, this might be fine too. There's just a small detail here: you must send through the Windows client logged in by AI, not through the simultaneously logged-in mobile terminal, because puppet-xp mistakenly treats multi-terminal synchronized information
+as information sent by the other party, which would trigger the AI "replying to its own messages".
 
-话说，我们在预设消息中把AI设定为"神经比较大条"的性格，会不经意间"说漏嘴"一些剧情，所以实际应用下来，应急消息往往会产生比较戏剧性的效果。从作品本身而言，这个机制可能会是一个很好玩的东西，所以对于应急消息我们没有写在程序中，而是通过外部jason文件进行维护，大家可以随时增加。
+Speaking of which, in preset messages we set the AI's personality as "carefree", occasionally "letting slip" some plot details. So in actual application, emergency messages often produce quite dramatic effects. From the work itself, this mechanism might be a very fun thing. So for emergency messages we didn't write them in the program but maintain them through external JSON files, which everyone can add to at any time.
 
-### 流程引导
+### Process Guidance
 
-在用户视角中导演更像是"主持人"的角色，他负责拉群、分配角色等等，而对于AI也是这样，游戏什么时候开始、什么时候结束，这些也是导演通过指令告知程序的。而我们也设计了AI角色在游戏开始和结束时特殊的剧情。
+From the user's perspective, the director is more like a "host" role, responsible for creating groups, assigning roles, etc. For the AI it's the same - when the game starts and ends are also informed to the program by the director through instructions. We also designed special plots for the AI character at the game's start and end.
 
-说到这，其实我还是很希望puppet-xp能够再完善一些，可以支持群操作（拉群、解散群、加群）以及朋友圈操作（发送朋友圈、朋友圈留言等），这些都会更加丰富我们的玩法，比如AI可以在游戏中突然给玩家的最近一条朋友圈留言，而留言包含了一些线索，这一定很带劲！
+Speaking of this, I actually hope puppet-xp can be further improved to support group operations (creating groups, disbanding groups, joining groups) and Moments operations (posting Moments, commenting on Moments, etc.). These would greatly enrich our gameplay. For example, the AI could suddenly comment on a player's recent Moments post during the game, and the comment contains some clues - that would definitely be exciting!
 
-## 回到作品本身，先有创意还是先有技术
+## Back to the Work Itself: Creativity First or Technology First?
 
-本项目的初衷是结合NLP大模型和wechaty做一个好玩的东西，这是一个模糊的定义，但我作为项目发起人从一开始就清楚，这至少是一个创意和技术各占50%的事儿……
+The original intention of this project was to combine NLP large models and wechaty to make something fun. This is a vague definition, but as the project initiator, I was clear from the beginning that this is at least a 50% creativity and 50% technology matter...
 
-然而实践中，到底是先有技术还是先有创意却很纠结，如果我们先去做创意的话，那么很可能设计很多不可实现的东西，后期就得改创意；反过来如果从技术出发来考虑，那么做出来的东西一定不好玩，好的技术必然是"对用户不可见的"。最终对于这个问题，**我的答案是唯有一起考虑**！而这就要求项目主创
-必然是懂技术的，所以各位能够在本项目中看到一个有趣的现象——写剧本的人跟写代码的人是同一个！我担心的是，可能随着AI的深化普及，可能python会成为每一个创作者的必备技能，好比现在没有作家不会用word，没有自媒体人不会用视频剪辑软件一样。
+However, in practice, whether technology or creativity comes first is quite tangled. If we start with creativity, we might design many unrealizable things and have to change creativity later. Conversely, if we consider from technology first, what we make won't be fun - good technology must be "invisible to users". Ultimately, for this question, **my answer is to consider both together**! This requires that project creators
+must understand technology. So everyone can see an interesting phenomenon in this project - the person who writes the script is the same person who writes the code! What I worry about is that with the deepening popularization of AI, Python might become an essential skill for every creator, just like now no writer doesn't know how to use Word, and no self-media person doesn't know how to use video editing software.
 
-而引入AI后，带来的另一个有趣的问题是，本作还是一个"剧本杀"么？
+And after introducing AI, another interesting question arises: is this work still a "script murder game"?
 
-不得不承认，本作最后的呈现与之前我们设想的不一样，或者说很不一样。NLP大模型的生成能力，使得AI可以和用户共同"演绎"出很多新的剧情， 比如下面这段，"谭明"找AI复盘，结果AI告诉他其实他和张家怡（游戏情节人物）是gay！
+I have to admit, the final presentation of this work is different from what we envisioned before, or very different. The generation capability of NLP large models enables the AI to "perform" many new plots together with users. For example, in the following segment, "Tan Ming" reviews with the AI, and the AI tells him that he and Zhang Jiayi (a game character) are gay!
 
 ![img](/assets/2022/03-shezhang-bujian-le-en/3.webp)
 
-针对这种情况，我们索性也直接在游戏规则中加入了一条："如果其他人提到了你所不知道的剧情，请相信那只是没有出现在你的剧本中，而非不存在"，并且我们也不提供复盘文本，而是鼓励他们互相（自然也包括AI）对信息进行复盘。
-在这个复盘过程中，玩家也早晚会发现某个玩家其实是AI（剧情中AI所扮演的角色是一个被植入了AI程序的女大学生，但大部分玩家都会认为这个角色是我们的工作人员假扮的，而他们最后会发现这个账号真的只是一个AI！），
-为此，我们准备了相应的延展剧情，在"剧本杀"游戏后1~3天以朋友圈的形式进行发送，这非常类似于 **"规则怪谈"**，而互相私聊复盘的机制以及"共同恐惧"的剧情效果也让本作兼具 **陌生人社交**的属性……可以说本作最好玩的部分恰恰是在"剧本杀"游戏结束后才刚开始。
+For this situation, we simply added a rule to the game: "If others mention plots you don't know about, please believe they just don't appear in your script, not that they don't exist." We also don't provide review text but encourage them to review information with each other (naturally including the AI).
+During this review process, players will sooner or later discover that one player is actually AI (the character the AI plays in the plot is a female college student implanted with an AI program, but most players will think this character is pretended by our staff, and they will finally discover this account is really just an AI!).
+For this, we prepared corresponding extended plots, sent in Moments 1-3 days after the "script murder" game. This is very similar to **"creepypasta"**. The mechanism of private chat reviews and the plot effect of "shared fear" also give this work attributes of **stranger social networking**... It can be said that the most fun part of this work just begins after the "script murder" game ends.
 
-这一切都让本作成为一部 **"活着的故事"**，是一部由玩家和AI在不知不觉中共同创造的故事，我将之称为 **"交互式叙事"**。（其实这就是我一开始最想实现的形式，但我不知道怎么实现，最后选择了剧本杀模式，但没想到最后我得到的还是我最初所设想的。）
+All this makes this work a **"living story"**, a story co-created unknowingly by players and AI. I call it **"interactive narrative"**. (Actually this is the form I most wanted to achieve from the beginning, but I didn't know how to implement it. Finally I chose the script murder mode, but unexpectedly I still got what I initially envisioned.)
 
-而这种叙事有时也会产生非常感人的随机剧情。
+And this narrative sometimes also produces very touching random plots.
 
 ![img](/assets/2022/03-shezhang-bujian-le-en/4.webp)
 
-本项目中作为每次生成example的语料文件可以说直接决定了AI的表现，因此我们也一并将语料文件进行开源，因为在这种“开发范式”下，这些语料本质上就是代码的一部分。
+In this project, the corpus files used as examples for each generation can be said to directly determine the AI's performance. Therefore, we also open source the corpus files, because under this "development paradigm", these corpora are essentially part of the code.
 
-而本项目中的人类编辑跟AI的关系也更像是"教练员与运动员"的关系，编导组会在每轮测试后根据AI当场表现针对性更新语料，从而提高AI后续的表现。这种人类教练员与AI运动员之间的"迭代合作"模式也是值得探讨的。（相对而言，目前虚拟人普遍的“中之人”做法相当于人类和提线木偶的关系。）
+The relationship between human editors and AI in this project is more like that between "coaches and athletes". The production team will update the corpus based on the AI's on-site performance after each round of testing, thereby improving the AI's subsequent performance. This "iterative cooperation" model between human coaches and AI athletes is also worth exploring. (Relatively speaking, the current widespread "puppeteer" approach for virtual humans is equivalent to the relationship between humans and marionettes.)
 
-总之，本项目所积累的种种工程方案或可作为一种全新的“目的性对话”解决方案，不仅仅可以应用于娱乐创作，还可以泛化于教育、客服、销售、政务、心理咨询、情感陪护等各领域。
+In short, the various engineering solutions accumulated by this project may serve as a new "purposeful dialogue" solution, which can be applied not only to entertainment creation but also generalized to education, customer service, sales, government affairs, psychological counseling, emotional companionship, and other fields.
 
-## 致敬
+## Tribute
 
-本项目综合使用了浪潮源1.0大模型和百度飞桨的paddlehub预训练模型外，以及——**wechaty**。
-如果没有它，我们将只能让用户通过某个网页或者APP与AI进行交流，这不仅极大的增加了开发工作量，也大大削弱了实际体验，甚至无法实现我们的关键创意：让AI角色悄无声息的潜入玩家中，
-并不知不觉的把所有人笼罩在“细思极恐”中。
+This project comprehensively uses Inspur Yuan 1.0 large model and Baidu PaddlePaddle's PaddleHub pre-trained models, as well as - **Wechaty**.
+Without it, we could only let users interact with AI through a web page or APP, which not only greatly increases development workload but also greatly weakens the actual experience, and even makes it impossible to realize our key creative idea: let the AI character silently infiltrate among players,
+and unknowingly shroud everyone in "the more you think about it, the more terrifying it becomes".
 
-所以在这里，我要向 **@Wechaty** 社区致敬！”好用到哭“——你们对得起这个评价！ 也向爱写诗的**laozhang**（puppet-xp作者）致敬！感谢你把这么好的东西无私的奉献了出来！
+So here, I want to pay tribute to the **@Wechaty** community! "So good it makes you cry" - you live up to this evaluation! Also pay tribute to the poetry-loving **laozhang** (puppet-xp author)! Thank you for selflessly dedicating such a good thing!
 
-## 写在最后的话
+## Final Words
 
-蔡晓和"北极鹅"的故事并未完结，让我们在这里最后上一张蔡晓的"北极鹅"工卡吧！
+The story of Cai Xiao and "Arctic Goose" is not yet over. Let's finally show Cai Xiao's "Arctic Goose" employee badge here!
 
 ![img](/assets/2022/03-shezhang-bujian-le-en/5.webp)
 
-（作为一个喜欢将细节拉满的团队，这张工卡里面其实隐藏着两个彩蛋，你能找到么？）
+(As a team that likes to maximize details, this employee badge actually hides two easter eggs. Can you find them?)
 
-**【有关本作更加详细的AI prompt配置细节、源代码以及人物剧本、效果演示录屏等请移步 [项目github主页](https://github.com/bigbrother666sh/shezhangbujianle) 】**
+**[For more detailed AI prompt configuration details, source code, character scripts, effect demo recordings, etc., please visit the [project github homepage](https://github.com/bigbrother666sh/shezhangbujianle)]**
 
----
-
-> Chinese version of this post: [shezhang bujian le]({{ '/2022/03/31/shezhang-bujian-le/' | relative_url }})
+> This is a translated version of the original Chinese post. You can find the original post [here](/2022/03/31/shezhang-bujian-le/).

@@ -1,5 +1,5 @@
 ---
-title: ' "考研监督群管 - 考研路上的好帮手" (English translation WIP)'
+title: "Postgraduate Exam Supervision Group Assistant - A Good Helper on the Postgraduate Exam Journey"
 author: imooooc
 categories:
   - article
@@ -7,67 +7,69 @@ image: /assets/2023/03-postgraduate-supervision-group-assistant-en/cover_title.w
 tags:
   - chatbot
   - assistant
+excerpt: >
+  A Wechaty-based bot for managing postgraduate exam study groups, featuring daily check-ins, study time tracking, scheduled reminders, and automatic countdown updates to help students focus on their studies.
 ---
 
-## 背景
+> This is a translated version of the original Chinese post. You can find the original post [here](/2023/03/03/postgraduate-supervision-group-assistant/).
 
-打算考研了，自发组建了一个考研小组，目前主要是解决管理群聊的功能，每个成员都被要求在群里每日学习打卡，而群管需要进行记录，包括打卡，学习时长计算，缺卡提醒，定时消息通知，以及自动修改每日考研倒计时的标题等等。因此便想到了用wechaty做一个bot机器人管理员。
+## Background
 
-## 传统的监督方式
+Planning to take the postgraduate entrance examination, I spontaneously organized a postgraduate study group. Currently, it mainly solves the function of managing group chats. Each member is required to check in daily for study in the group, and the group admin needs to keep records, including check-ins, study time calculation, missing check-in reminders, scheduled message notifications, and automatically updating the daily postgraduate exam countdown title, etc. Therefore, I thought of using wechaty to create a bot admin.
 
-早些时候，我看有些群主或管理员每天都要手动对成员打卡情况进行统计，想下面这样
+## Traditional Supervision Methods
+
+In earlier times, I saw some group owners or admins manually statistics member check-in situations every day, like this
 
 ![image-0](/assets/2023/03-postgraduate-supervision-group-assistant-en/image-0.webp)
 
-费时又费力，还有每天手动更改考研倒计时的，不仅不够及时准确，而且每天这么设置很是麻烦。![image-1](/assets/2023/03-postgraduate-supervision-group-assistant-en/image-1.webp)
+Time-consuming and laborious. There's also manually changing the postgraduate exam countdown every day, which is not only not timely and accurate enough, but also very troublesome to set up every day.![image-1](/assets/2023/03-postgraduate-supervision-group-assistant-en/image-1.webp)
 
-向上述所说的那些事情，其实都是一些重复性的劳动，完全可以交给机器人来完成，因此我想到了使用**wechaty**来实现一个考研监督群管的功能。
+Things like those mentioned above are actually repetitive labor that can be completely left to a robot to complete. Therefore, I thought of using **wechaty** to implement a postgraduate exam supervision group admin function.
 
-## 目前实现的功能
+## Currently Implemented Functions
 
-- [x]  定时消息通知
-- [x]  定时自动修改群名
-- [x]  记录群员打卡
-- [ ]  ~~缺卡提醒~~
-- [x]  学习时长计算
-- [ ] ~~新人欢迎提醒~~
-- [ ]  ~~群员退群提醒~~
+- [x]  Scheduled message notifications
+- [x]  Scheduled automatic group name modification
+- [x]  Record group member check-ins
+- [ ]  ~~Missing check-in reminders~~
+- [x]  Study time calculation
+- [ ] ~~Welcome reminder for new members~~
+- [ ]  ~~Group member leaving reminder~~
 
-## 打卡格式
+## Check-in Format
 
-提供两种简易和标准两种场景：
+Provides two scenarios: simple and standard:
 
-| 场景 | 功能描述                             | 说明                                           | 备注                                       |
+| Scenario | Function Description                             | Description                                           | Notes                                       |
 | :--- | :----------------------------------- | ---------------------------------------------- | ------------------------------------------ |
-| 简易 | @bot助理 打卡                        | 只打卡记录天数，不计算学习时长，表示今日已学习 | @bot助理 打卡                              |
-| 标准 | @bot助理 打卡 + 空格 + 时间(单位：h) | 打卡，并记录学习时长                           | 时间单位为h，数字精确到1位小数（四舍五入） |
+| Simple | @bot assistant check-in                        | Only record check-in days, don't calculate study time, indicates studied today | @bot assistant check-in                              |
+| Standard | @bot assistant check-in + space + time (unit: h) | Check-in and record study time                           | Time unit is h, number accurate to 1 decimal place (rounded) |
 
-示例1：
-@bot助理 打卡
+Example 1:
+@bot assistant check-in
 
-示例2：
-@bot助理 打卡 2.5h
+Example 2:
+@bot assistant check-in 2.5h
 
-## 实现的效果
+## Implemented Effects
 
-- 简易版模式
+- Simple version mode
 
 ![image-2](/assets/2023/03-postgraduate-supervision-group-assistant-en/image-2.webp)
 
-- 标准版模式
+- Standard version mode
 
 ![image-3](/assets/2023/03-postgraduate-supervision-group-assistant-en/image-3.webp)
 
-- 定时提醒以及更新群名“考研倒计时”
+- Scheduled reminders and updating group name "Postgraduate Exam Countdown"
 
 ![image-4](/assets/2023/03-postgraduate-supervision-group-assistant-en/image-4.webp)
 
-后续可能会对数据存储进行完善，目前数据量比较小，我是把所有学生的打卡数据记录在一个json文件里，以后可以考虑使用数据库并将操作封装成接口调用的形式。
+Data storage may be improved in the future. Currently, the data volume is relatively small. I record all students' check-in data in a json file. In the future, I can consider using a database and encapsulating operations as API calls.
 
-同时可能会上新一些新的功能，比如当天晚上把学习过的内容发表一个总结出来，第二天由bot在早上进行提醒，以便对前一天所学知识进行巩固，还有缺卡提醒，如果学生连续3天没有进行打卡了，则由bot进行相应的提醒和激励等等。
+At the same time, some new functions may be added, such as posting a summary of the content studied that evening, with the bot reminding in the morning the next day to consolidate knowledge learned the previous day. There are also missing check-in reminders - if a student hasn't checked in for 3 consecutive days, the bot will provide corresponding reminders and encouragement, etc.
 
-这个机器人大大方便了我们的日常学习和生活，能让我们节省很多时间，相比其他考研监督群的管理来讲，不用每天手动修改考研倒计时，不用每天用个excel表格记录成员学习打卡情况，能够让我更加专注于考研本身，其他杂七杂八的事情交给机器人处理。最后，2024考研加油吧，今年必上岸，冲冲冲！
+This robot greatly facilitates our daily study and life, allowing us to save a lot of time. Compared to other postgraduate exam supervision group management, there's no need to manually modify the postgraduate exam countdown every day, no need to use an Excel spreadsheet to record member study check-in situations every day, allowing me to focus more on the postgraduate exam itself, leaving other miscellaneous matters to the robot. Finally, keep going for the 2024 postgraduate exam, definitely get admitted this year, charge charge charge!
 
----
-
-> Chinese version of this post: [postgraduate supervision group assistant]({{ '/2023/03/03/postgraduate-supervision-group-assistant/' | relative_url }})
+> This is a translated version of the original Chinese post. You can find the original post [here](/2023/03/03/postgraduate-supervision-group-assistant/).

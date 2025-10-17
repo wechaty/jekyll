@@ -1,5 +1,5 @@
 ---
-title: ' "基于RPA封装的Wechaty接口下的抖音聊天机器人结项报告" (English translation WIP)'
+title: ' "Douyin Chatbot based on RPA with Wechaty Interface - Final Report"'
 author: wangjunwei
 categories: project
 image: /assets/2020/10-wechaty-puppet-douyin-final-term-en/wechaty-puppet-douyin-logo.webp
@@ -8,52 +8,56 @@ tags:
   - summer-of-wechaty
   - summer-2020
   - ecosystem
+excerpt: >
+  Final report for the Summer 2020 project building a Douyin (TikTok) chatbot using RPA with autojs on Android, connected via socket to a Wechaty puppet.
 ---
 
-“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。
+> This is a translated version of the original Chinese post. You can find the original post [here](/2020/10/13/wechaty-puppet-douyin-final-term/).
 
-旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。
+The "Open Source Software Supply Chain Lighting Program - Summer 2020" (hereinafter referred to as Summer 2020) is a summer activity for university students jointly organized by the Institute of Software at the Chinese Academy of Sciences and the openEuler community.
 
-根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。
+It aims to encourage students to actively participate in the development and maintenance of open source software and promote the vigorous development of excellent domestic open source software communities.
 
-官网：[https://isrc.iscas.ac.cn/summer2020](https://isrc.iscas.ac.cn/summer2020) 官方新闻：[http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html](http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html)
+Depending on the difficulty and completion of the project, participants can also receive activity bonuses and trophies from the "Open Source Software Supply Chain Lighting Program - Summer 2020".
 
-本项目 [基于 RPA 封装 Wechaty 接口下的抖音聊天机器人] 系 暑期2020 支持的开源项目。
+Official website: [https://isrc.iscas.ac.cn/summer2020](https://isrc.iscas.ac.cn/summer2020) Official news: [http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html](http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html)
 
-## 结项报告：基于 RPA 封装 Wechaty 接口下的抖音聊天机器人
+This project [Douyin Chatbot based on RPA with Wechaty Interface] is an open source project supported by Summer 2020.
 
-## 项目信息
+## Final Report: Douyin Chatbot based on RPA with Wechaty Interface
 
-- 项目名称：基于 RPA 封装 Wechaty 接口下的抖音聊天机器人
-- 方案描述：安卓端通过autojs操作抖音，通过socket与puppet连接，再与wechaty相连
-- 时间规划：7.19-8.15完成各种方案的尝试和探索，8.15-9.15完成puppet的各种接口接入
+## Project Information
 
-## 项目进度
+- Project Name: Douyin Chatbot based on RPA with Wechaty Interface
+- Solution Description: On the Android side, control Douyin through autojs, connect to the puppet via socket, and then connect to wechaty
+- Timeline: July 19 - August 15 to complete various solution attempts and exploration, August 15 - September 15 to complete various interface integrations for the puppet
 
-- 项目成果：
-  - 熟悉了wechaty的使用的操作方法
-  - 探索了各种方案：
-    - 抖音的发送私信的openapi需要用户为企业用户，只有企业抖音号api才有效
-    - 探索了monkeyDEV和IDA逆向私信协议的方法
-    - 没有找到chrome跑安卓app的方法，或者方法失效
-    - 尝试了通过安卓和ios端抓包的方式获取抖音的私信方法，结果抓不到私信的消息
-    - autojs控制安卓app的方法，现在正在采用，也是现在唯一可运行的方法，目前完成了抖音基本操作方法的封装和socket的通信
-  - 抖音的autojs控制版本完成了自动登录，消息监听，发送消息等方法
-  - 用socket和autojs的方法跑了一个简易dingdongbot，[视频演示地址](https://youtu.be/TY4hn9TIWlA)(youtube)
-  - 完成了抖音puppet初版和autojs操作抖音的方法
-  - puppet完成了通信的基本功能，puppet跑dingdongbot
-  - wechaty puppet配合autojs可实现消息自动回复
-- 遇到的问题及解决方案：
-  - 本次代码遇到了很多问题，很少接触ts的编码，有很多不熟悉的地方
-  - 初期在私信方法的选择上尝试了很多种方案，最终选择了autojs作为操作抖音私信的工具，但是不那么稳定，性能很低需要一定硬件支持
-  - autojs有时候很不稳定，调试也异常麻烦，只能一点一点推进，app控件的名字很随机，不同的抖音版本控件名字不同，所以app需要统一版本
-  - 跑通一个抖音puppet需要一个安卓手机或者电脑开模拟器跑autojs，然后用nodejs跑wechaty和puppet，需要跑两个服务，有点麻烦
-  - 在探索获取抖音的图片消息时，通过auto来查找图片存在一定问题，运行速度较慢，先打开图片然后缓存然后再加载图片转码成base64然后再发送到puppet
-  - eslist语法格式在开始的时候因为不熟悉，经常报出各种错误
-  - puppet的接口和方法不熟悉，模仿着写了一个抖音puppet，最终能跑dingdongbot了
-  - 消息频繁的时候可能会造成消息堆积，autojs处理消息需要时间，当autojs进入某一会话时，此会话发来消息，那么这个消息可能读取不到，但是在此会话外的消息可以读取到并处理回复
-  - 抖音puppet还需很多改进和添加新的消息类型和功能...
-  - 因为实习996的缘故，后期推进太少，加入社区还需努力
+## Project Progress
+
+- Project Achievements:
+  - Became familiar with the usage and operation methods of wechaty
+  - Explored various solutions:
+    - Douyin's private message sending openapi requires users to be enterprise users; the api is only effective for enterprise Douyin accounts
+    - Explored MonkeyDEV and IDA reverse engineering methods for private message protocols
+    - Couldn't find a method to run Android apps in Chrome, or the methods were ineffective
+    - Tried to obtain Douyin's private message method by packet capturing on Android and iOS, but couldn't capture private messages
+    - The autojs method of controlling Android apps is currently being adopted and is the only currently operational method; the encapsulation of basic Douyin operation methods and socket communication has been completed
+  - The autojs-controlled version of Douyin has completed automatic login, message listening, message sending and other methods
+  - Ran a simple dingdongbot using socket and autojs methods, [video demonstration](https://youtu.be/TY4hn9TIWlA) (YouTube)
+  - Completed the first version of the Douyin puppet and the autojs method for operating Douyin
+  - The puppet completed the basic communication functions and can run dingdongbot
+  - Wechaty puppet combined with autojs can implement automatic message replies
+- Problems Encountered and Solutions:
+  - Encountered many problems with this code; had little exposure to TypeScript coding and many unfamiliar areas
+  - Initially tried many solutions for choosing the private message method, and ultimately chose autojs as the tool for operating Douyin private messages, but it's not very stable and has low performance requiring certain hardware support
+  - Autojs is sometimes very unstable, debugging is abnormally troublesome, can only progress bit by bit; app control names are very random, different Douyin versions have different control names, so the app needs a unified version
+  - Running a Douyin puppet requires an Android phone or computer running an emulator with autojs, then using nodejs to run wechaty and puppet, need to run two services, which is a bit troublesome
+  - When exploring how to get Douyin image messages, there are certain problems with finding images through auto, the running speed is slow, first open the image then cache it then load the image to transcode it into base64 and then send it to the puppet
+  - ESLint syntax formatting was unfamiliar at the beginning and often reported various errors
+  - Unfamiliar with puppet interfaces and methods, wrote a Douyin puppet by imitation, and finally it can run dingdongbot
+  - When messages are frequent, message accumulation may occur; autojs needs time to process messages; when autojs enters a certain session and this session sends a message, that message may not be read, but messages outside this session can be read and replied to
+  - The Douyin puppet needs many improvements and new message types and functions to be added...
+  - Due to the 996 work schedule during my internship, there was too little progress in the later stages; need to work harder to contribute to the community
 
 ### PPT
 
@@ -63,10 +67,8 @@ tags:
 
 {% include iframe.html src="https://www.youtube.com/embed/OF7UfQ4o_5c" %}
 
-### 项目地址
+### Project Links
 
-- 项目链接：[https://github.com/gavinwang23/douyin-autojs](https://github.com/gavinwang23/douyin-autojs) / [https://github.com/gavinwang23/wechaty-puppet-douyin](https://github.com/gavinwang23/wechaty-puppet-douyin)
+- Project links: [https://github.com/gavinwang23/douyin-autojs](https://github.com/gavinwang23/douyin-autojs) / [https://github.com/gavinwang23/wechaty-puppet-douyin](https://github.com/gavinwang23/wechaty-puppet-douyin)
 
----
-
-> Chinese version of this post: [wechaty puppet douyin final term]({{ '/2020/10/13/wechaty-puppet-douyin-final-term/' | relative_url }})
+> This is a translated version of the original Chinese post. You can find the original post [here](/2020/10/13/wechaty-puppet-douyin-final-term/).

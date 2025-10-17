@@ -1,5 +1,5 @@
 ---
-title: ' "Wechaty & AWS 全球招募：创意为笔，用代码留下永恒印记！" (English translation WIP)'
+title: "Wechaty & AWS Global Recruitment: Leave an Eternal Mark with Your Code!"
 author: aiamber
 categories: article
 tags:
@@ -8,64 +8,66 @@ tags:
   - chatbot
   - competition
 image: /assets/2025/05-wechaty-with-aws2025-en/banner.webp
+excerpt: >
+  Wechaty & AWS AI development competition globally recruiting developers to create innovative AI chatbots using large language models - three tracks including efficiency, public welfare, and life improvement with generous prizes.
 ---
 
-🔥 **Wechaty & AWS 全球招募：创意为笔，用代码留下永恒印记！** 🔥  
-AI开发大赛重磅来袭！你的代码，改变世界！  
-[阅读原文](https://mp.weixin.qq.com/s/xhb-Z-pIqoZ5udIa7evq7A)  
+> This is a translated version of the original Chinese post. You can find the original post [here](/2025/05/23/wechaty-with-aws2025/).
 
-## 回望1993：技术浪潮的起点
+🔥 **Wechaty & AWS Global Recruitment: Leave an Eternal Mark with Your Code!** 🔥  
+AI Development Competition Arrives! Your Code Changes the World!  
+[Read Original Article](https://mp.weixin.qq.com/s/xhb-Z-pIqoZ5udIa7evq7A)  
 
-1993年1月23日，人类历史上第一个软件应用诞生了。  
-至此，信息获取和传播进入人人可及的新时代，我们的沟通方式、经济形态、文化呈现方式、生活日常... 都发生了巨大的变化。  
+## Looking Back to 1993: The Beginning of the Tech Wave
 
-1993年 万维网首个搜索应用诞生，奠定互联网信息革命基础。  
-1994年 Netscape Navigator浏览器开启图形化网页时代。  
-1999年 Napster掀起数字音乐革命浪潮；国内出现最早的互联网即时通讯软件；中国互联网黄金时代揭幕。  
-2000年 Salesforce开创SaaS模式，企业服务进入云时代。  
-2003年 LinkedIn建立职业社交新范式；淘宝网诞生，C2C电商改写零售格局。  
-2004年 Facebook走出哈佛校园，社交网络全球化加速。  
-2005年 YouTube重构视频传播形态。  
-2009年 WhatsApp重塑即时通讯；淘宝首创双十一购物节，开创全球电商促销全新思维。  
-2010年 Instagram定义移动端视觉社交新范式。  
-2011年 Snapchat"阅后即焚"颠覆社交隐私观念；微信正式上线，构建超级社交生态。  
-2012年 Tinder革新在线约会体验；“滴滴出行”前身嘀嘀打车APP问世，提供出租车在线叫车服务。  
-2015年 拼多多以社交裂变破局下沉市场，重构电商竞争格局。  
-2016年 **Wechaty**第一行代码诞生，全球最大的中文对话 RPA 框架；Pokémon Go引爆AR全民热潮；抖音上线，短视频重塑内容消费形态。  
-2018年 Fortnite开创大逃杀游戏风潮；拼多多纳斯达克上市，新电商模式获资本认可。  
-2020年 Zoom日均用户突破2亿，远程办公成常态；抖音国际版TikTok下载量登顶全球、钉钉支撑2亿学生“停课不停学”。  
-2022年 生成式AI横空出世，引发生产力革命。  
+On January 23, 1993, the first software application in human history was born.  
+From then on, information access and dissemination entered a new era accessible to everyone. Our communication methods, economic forms, cultural presentation methods, daily life... all underwent tremendous changes.  
+
+1993: The first search application of the World Wide Web was born, laying the foundation for the Internet information revolution.  
+1994: Netscape Navigator browser opened the era of graphical web pages.  
+1999: Napster sparked the digital music revolution wave; the earliest Internet instant messaging software appeared domestically; China's Internet golden age unveiled.  
+2000: Salesforce pioneered the SaaS model, enterprise services entered the cloud era.  
+2003: LinkedIn established a new professional social networking paradigm; Taobao.com was born, C2C e-commerce rewrote the retail landscape.  
+2004: Facebook left Harvard campus, social network globalization accelerated.  
+2005: YouTube reconstructed video dissemination forms.  
+2009: WhatsApp reshaped instant messaging; Taobao pioneered the Double Eleven shopping festival, creating new thinking for global e-commerce promotions.  
+2010: Instagram defined mobile visual social networking new paradigm.  
+2011: Snapchat's "disappearing messages" subverted social privacy concepts; WeChat officially launched, building a super social ecosystem.  
+2012: Tinder revolutionized online dating experience; "Didi Chuxing" predecessor DiDi taxi app was born, providing online taxi-hailing services.  
+2015: Pinduoduo broke through the sinking market with social fission, reconstructing e-commerce competitive landscape.  
+2016: **Wechaty** first line of code was born, the world's largest Chinese conversational RPA framework; Pokémon Go ignited AR national enthusiasm; Douyin launched, short videos reshaped content consumption forms.  
+2018: Fortnite pioneered the battle royale game craze; Pinduoduo listed on NASDAQ, new e-commerce model gained capital recognition.  
+2020: Zoom daily users exceeded 200 million, remote work became normal; TikTok international version downloads topped global charts, DingTalk supported 200 million students "stopping classes without stopping learning."  
+2022: Generative AI emerged, triggering productivity revolution.  
 ...  
 
-## 技术平权：人人皆可筑梦
+## Technology Democratization: Everyone Can Build Dreams
 
-放到整个历史长河来看，互联网技术的发展，对人类的意义是什么呢？也许是每一个平凡的我们，都可以有机会留下我们存在过的证据。  
+Looking at the entire history, what does the development of Internet technology mean to humanity? Perhaps it's that every ordinary person among us can have the opportunity to leave evidence of our existence.  
 
-## 呼唤创作：你的应用，你的印记
+## Call for Creation: Your Application, Your Mark
 
-在这个既向历史致敬又共塑未来的时刻，你的创意、你的故事、你的需求，都可以化作一款应用。或许是一款记录心情与瞬间的日记应用，陪伴你走过青春；或许是一份能简化父母生活的工具，为他们打造专属的健康提醒；或许是一种对现实不满的宣泄，让小小的App成为你表达态度的平台；也许只是一款留住旅行记忆的影集，让每一张照片都传递出真实的温度...  
+At this moment of both paying tribute to history and co-creating the future, your creativity, your story, your needs can all be transformed into an application. Perhaps it's a diary app that records moods and moments, accompanying you through youth; perhaps it's a tool that can simplify parents' lives, creating exclusive health reminders for them; perhaps it's an outlet for dissatisfaction with reality, making a small App a platform for you to express your attitude; maybe it's just a photo album that preserves travel memories, letting every photo convey real warmth...  
 
-技术的门槛已大幅降低，云端的基础设施正以无限的弹性支持你的每一次尝试。无论你是编程小白，还是技术达人，都可使用 **Wechaty** 自由创造、反复迭代，直到它成为真正属于你的作品。  
+The threshold of technology has been greatly reduced. Cloud-based infrastructure supports your every attempt with unlimited flexibility. Whether you're a programming novice or a tech expert, you can use **Wechaty** to create freely and iterate repeatedly until it becomes a work that truly belongs to you.  
 
-## 参加比赛
+## Join the Competition
 
 ![detail](/assets/2025/05-wechaty-with-aws2025-en/detail.webp)
 
-🚀 AI正在重塑开发的边界，代码不再是少数人的专利，而是全民创造的钥匙！无论你是技术大牛还是创意先锋，这里都有你的舞台！  
+🚀 AI is reshaping the boundaries of development. Code is no longer the patent of a few, but the key to universal creation! Whether you're a tech expert or creative pioneer, there's a stage for you here!  
 
-💡 三大赛道任你选 💡  
-🛠️ 效率狂人：让AI替你打工，解放创造力！  
-❤️ 公益先锋：用技术给世界加个“补丁”！  
-🌟 生活黑客：打造专属外挂，把生存变生活！  
+💡 Three Tracks to Choose From 💡  
+🛠️ Efficiency Fanatic: Let AI work for you, liberate creativity!  
+❤️ Public Welfare Pioneer: Use technology to "patch" the world!  
+🌟 Life Hacker: Create exclusive cheats, turn survival into living!  
 
-🎁 豪华奖励：10万启动金、拉斯维加斯技术之旅、顶级资源加持……甚至还有“禅意机械键盘”和“全球寺庙算力加持”等你来拿！  
+🎁 Generous Rewards: 100,000 startup fund, Las Vegas tech trip, top resource support... even "Zen mechanical keyboard" and "global temple computing power support" waiting for you!  
 
-⏳ 本次大赛需要来自 Wechaty 开源社区的选手**使用 AWS 和 Wechaty 两个产品**来打造属于自己基于大模型的创意ai ChatBot。  
+⏳ This competition requires participants from the Wechaty open source community to **use both AWS and Wechaty products** to create their own creative AI ChatBot based on large models.  
 
-👉 立即报名，用代码点燃未来！你的每一行灵感，都在重构世界的算法！  
+👉 Register now, ignite the future with code! Every line of your inspiration is reconstructing the world's algorithm!  
 
-[阅读原文](https://mp.weixin.qq.com/s/xhb-Z-pIqoZ5udIa7evq7A)  
+[Read Original Article](https://mp.weixin.qq.com/s/xhb-Z-pIqoZ5udIa7evq7A)  
 
----
-
-> Chinese version of this post: [wechaty with aws2025]({{ '/2025/05/23/wechaty-with-aws2025/' | relative_url }})
+> This is a translated version of the original Chinese post. You can find the original post [here](/2025/05/23/wechaty-with-aws2025/).

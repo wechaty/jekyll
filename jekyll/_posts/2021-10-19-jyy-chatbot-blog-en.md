@@ -1,66 +1,70 @@
 ---
-title: ' "献给新生女儿的礼物：基于wechaty和语义开放平台打造的育儿机器人" (English translation WIP)'
+title: "A Gift for My Newborn Daughter: Parenting Chatbot Built with Wechaty and Semantic Open Platform"
 author: jxitc
 image: /assets/2021/10-jyy-chatbot-blog-en/jyy.webp
 categories:
   - tutorial
 tags:
   - opensource
+excerpt: >
+  Building a smart parenting chatbot using Wechaty and semantic analysis to automatically record baby's daily activities through WeChat, converting natural language into structured data for data-driven parenting.
 ---
 
-最近的生活里多了个女儿(蒋一一)，为了数字化育儿，我写了这个机器人，可以自动通过微信记录小宝宝的日常起居，将结构化育儿数据记录下来，以达到数据驱动育儿。
-> 关于我：毕业于复旦/剑桥自然语言处理组。2013-2018年在创业公司出门问问带领团队负责语义分析算法、开放平台开发，支持了包括了谷歌、江淮、微鲸、大众等众多客户。现在在WhatsApp负责假新闻、反广告机器学习开发。欢迎关注我[知户主页](https://www.zhihu.com/people/xjiangxjxjxjx)。
+> This is a translated version of the original Chinese post. You can find the original post [here](/2021/10/19/jyy-chatbot-blog/).
 
-## 需求：如何养娃
+Recently my life has been enriched by a new daughter (Jiang Yiyi). For digital parenting, I wrote this bot that can automatically record the baby's daily routine through WeChat, storing structured parenting data to achieve data-driven parenting.
+> About me: Graduated from Fudan/Cambridge Natural Language Processing group. From 2013-2018, led teams at startup Mobvoi responsible for semantic analysis algorithms and open platform development, supporting many clients including Google, JAC, WHALEY, Volkswagen, etc. Currently at WhatsApp responsible for fake news and anti-spam machine learning development. Welcome to follow my [Zhihu profile](https://www.zhihu.com/people/xjiangxjxjxjx).
 
-新生儿无法用完整语言来表达自己的需求，因此作为父母，除了”哭闹”这样的被动信号，我们也需要“主动记录”宝宝日常的一些行为作息数据，来确保宝宝健康成长。这些数据包括：
+## The Need: How to Raise a Baby
 
-- *喂奶量*: 新生儿在生长初期的喂奶量相对固定的(虽然存在个体差异)，因此需要追踪宝宝每天的喂奶量和喂奶频率。例如，在我开发机器人的时候，我女儿蒋一一正好两周，她需要每隔3~4小时左右喂一次奶，每天6~8次左右。
-- *尿布*: 尿布的量是为了追踪宝宝每日是否摄入了足够的营养和水分。例如，蒋一一需要每天至少6片以上的湿尿布，否则可能意味着水分摄入不足。
-- *睡眠*: 为了追踪宝宝每日睡眠情况。比如，蒋一一每天大约要睡15小时左右，这样才能保证她的大脑和身体的发育。同时，充足的睡眠也保证了父母的有足够的时间追剧打王者荣耀。
+Newborns cannot express their needs in complete language, so as parents, in addition to passive signals like "crying", we also need to "actively record" the baby's daily behavioral and rest data to ensure healthy growth. This data includes:
 
-因此，为了科学养娃，我决定写这个微信机器人，允许用户的自然语言输入，并自动转换成结构化数据，以便之后分析处理:
+- *Feeding Amount*: Newborns have relatively fixed feeding amounts in early growth (although individual differences exist), so we need to track the baby's daily feeding amount and frequency. For example, when I was developing the bot, my daughter Jiang Yiyi was exactly two weeks old. She needed to be fed about every 3-4 hours, about 6-8 times a day.
+- *Diapers*: Diaper quantity is to track whether the baby has taken in enough nutrition and water daily. For example, Jiang Yiyi needs at least 6 or more wet diapers per day, otherwise it may mean insufficient water intake.
+- *Sleep*: To track the baby's daily sleep situation. For instance, Jiang Yiyi needs to sleep about 15 hours a day to ensure her brain and body development. At the same time, sufficient sleep also ensures parents have enough time to watch shows and play games.
 
-比如：
+Therefore, for scientific parenting, I decided to write this WeChat bot that allows natural language input from users and automatically converts it to structured data for later analysis:
+
+For example:
 
 ```lang-text
-# 输入
-蒋一一上午9点喝了30毫升的奶
+# Input
+Jiang Yiyi drank 30 milliliters of milk at 9 AM
 ```
 
 ```lang-text
-# 输出
-event: 喂奶
+# Output
+event: feeding
 time: 2021-10-19 09:00:00
 quantity: 30
 ```
 
-## 技术设计思路：语义开放平台
+## Technical Design: Semantic Open Platform
 
-从自然语言文本中提取关键信息，简单的当然可以用正则表达式来实现，例如：
+To extract key information from natural language text, the simple approach would be using regular expressions, for example:
 
 ```lang-text
 (?<time>(上午|下午)?\d+点).*(?<event>喂奶|奶粉|睡觉|起床|拉屎|拉尿).*(?<quantity>\d+(毫升|克))?
 ```
 
-但显然用正经的语义分析算法才是更好的选择。这里的语义分析算法特指任务型对话使用的，基于*意图分类*（分类算法）和*语义槽提取*（序列标注算法）的数据驱动的语义分析算法。详情可以百度/谷歌关键字*NLU* *语义分析* *任务型对话*，或者直接看这篇[科普文](https://bbs.huaweicloud.com/blogs/detail/200427)。
+But obviously using proper semantic analysis algorithms is a better choice. The semantic analysis algorithms here specifically refer to those used in task-oriented dialogue, data-driven semantic analysis algorithms based on *intent classification* (classification algorithm) and *slot extraction* (sequence labeling algorithm). For details, you can search keywords *NLU* *semantic analysis* *task-oriented dialogue*, or directly read this [popular science article](https://bbs.huaweicloud.com/blogs/detail/200427).
 
-相比于之前基于规则的识别，基于机器学习模型的算法有以下优势：
+Compared to previous rule-based recognition, machine learning model-based algorithms have the following advantages:
 
-1. *识别范围更广*：不需要严格规则匹配，有非常大的自由度来应对不同遣词造句。
-2. *易于维护扩展*：特别是对于复杂语义系统，规则的数量会指数级增长，以至于不可维护。而基于机器学习的语义分析，只需要提供带标注的训练文本，机器学习算法会自动的搞定剩下的。
+1. *Broader Recognition Range*: No need for strict rule matching, with great freedom to handle different phrasings.
+2. *Easy Maintenance and Extension*: Especially for complex semantic systems, the number of rules grows exponentially to become unmaintainable. With machine learning-based semantic analysis, you only need to provide annotated training text and the machine learning algorithm will automatically handle the rest.
 
-并且，在2021年的当下，基础的语义分析都已经平台化了，这意味着：
-3. 不需要从头开始训练模型，可以完全图形化界面配置自己的语义分析。
-4. 对于一些常见任务有现成的处理方法，比如时间（今天、明天9点、下周五），度量衡（三十毫升，40°， 一米半）
-5. 也可以方便的拓展到带上下文的对话语义分析。
+Moreover, in 2021, basic semantic analysis has been platformized, which means:
+3. No need to train models from scratch, can completely configure your own semantic analysis through graphical interfaces.
+4. There are ready-made processing methods for common tasks, such as time (today, tomorrow at 9 o'clock, next Friday), measurements (thirty milliliters, 40°, one and a half meters)
+5. Can also be easily extended to dialogue semantic analysis with context.
 
-在这个任务里，我使用的是[出门问问的语义开放平台](https://ai.chumenwenwen.com/pages/home)。市面上有很多其他的语义分析开放平台（比如百度、科大讯飞、Facebook的wit.ai)，我选择出门问问这个平台的原因很简单，因为是我自己写的。
+For this task, I used [Mobvoi's Semantic Open Platform](https://ai.chumenwenwen.com/pages/home). There are many other semantic analysis open platforms on the market (like Baidu, iFlytek, Facebook's wit.ai). I chose Mobvoi's platform for a simple reason - because I wrote it myself.
 
-具体的使用方法可以参见平台的文档，总之，我大概花了10分钟的，提交了一些训练数据，就自动得到了一个可以用的语义分析模型，并且支持HTTP GET直接调用, 实际调用如下：
+Specific usage methods can be found in the platform documentation. In short, I spent about 10 minutes submitting some training data and automatically got a usable semantic analysis model that supports direct HTTP GET calls. Actual call example:
 
 ```lang-text
-// input: 蒋一一喂奶了30毫升
+// input: Jiang Yiyi was fed 30 milliliters
 
 // output:
 "semantic": {
@@ -90,24 +94,22 @@ quantity: 30
 
 ```
 
-## 技术设计思路: 微信机器人
+## Technical Design: WeChat Bot
 
-相比语义开放平台，微信API的部分就比较简单直接。
+Compared to the semantic open platform, the WeChat API part is relatively simple and straightforward.
 
-我直接参考了wechaty的ding-dong-bot.js代码，直接把``onMessage``加入对出门问问开放平台的调用，然后就可以写入GoogleDoc数据存储以便之后分析。详细代码我会更新在我的[代码仓库](https://github.com/jxitc/jyy_bot)。
+I directly referenced wechaty's ding-dong-bot.js code, adding calls to Mobvoi's open platform in the ``onMessage`` function, then writing to Google Docs for data storage for later analysis. Detailed code will be updated in my [code repository](https://github.com/jxitc/jyy_bot).
 
-不过，在前期调研的过程中，也看了很多不同的微信代码库，包括以前用过的itchat也无法登录个人微信了。除了其他的基于dll代码注入的方法，wechaty是我尝试下来唯一能用的API了。不过长期来讲，利用个人微信号来做机器人本来就是风险很大的事情，所以我在代码设计的时候也做了抽象封装，便于如果真的个人微信API不能用的情况下，方便移植到其他平台（微信公众号、企业微信等等）。
+However, during preliminary research, I also looked at many different WeChat code libraries, including itchat which I used before but can no longer log into personal WeChat. Apart from other methods based on dll code injection, wechaty is the only API I've tried that works. But in the long term, using personal WeChat accounts for bots is inherently risky, so I did abstraction encapsulation in code design to facilitate migration to other platforms (WeChat Official Account, WeChat Work, etc.) if personal WeChat API really becomes unusable.
 
-## 延伸：是否存在商业价值
+## Extension: Is There Commercial Value?
 
-这个小机器人本身难度不是很大，它能替代的事情也无非是帮忙记录带娃过程中的一些数据而已，甚至不比手动记录或者excel记录方便多少。
+This small bot itself is not very difficult. What it replaces is merely helping record some data during childcare, not even much more convenient than manual recording or Excel.
 
-但我觉得这个项目更重要的意义是打通了微信工作流，通过自然语言处理的方式将平时的自然语言转换成计算机可以处理的结构化语义，这样就可以在此基础上搭建各种自动化流程。
+But I think the more important meaning of this project is opening up the WeChat workflow, converting everyday natural language into computer-processable structured semantics through natural language processing, which can then be used to build various automation processes.
 
-各种智能客服、RPA机器人平台也就是为了这个愿景而创造出来的。不过这些基于通用场景的平台工具，在有些时候仍然缺乏灵活性以支持自己的实际场景。
+Various intelligent customer service and RPA robot platforms were created for this vision. However, these platform tools based on general scenarios sometimes still lack flexibility to support actual scenarios.
 
-因此，我想通过这个小项目，探索出来一套低成本的DIY自动化工作流程，以便之后复制到更多的个人工作流中。
+Therefore, I want to explore through this small project a set of low-cost DIY automated workflows to replicate to more personal workflows in the future.
 
----
-
-> Chinese version of this post: [jyy chatbot blog]({{ '/2021/10/19/jyy-chatbot-blog/' | relative_url }})
+> This is a translated version of the original Chinese post. You can find the original post [here](/2021/10/19/jyy-chatbot-blog/).

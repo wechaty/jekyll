@@ -147,3 +147,7 @@ _【以上演示录屏请大家移步 [项目github主页](https://github.com/bi
 （作为一个喜欢将细节拉满的团队，这张工卡里面其实隐藏着两个彩蛋，你能找到么？）
 
 **【有关本作更加详细的AI prompt配置细节、源代码以及人物剧本、效果演示录屏等请移步 [项目github主页](https://github.com/bigbrother666sh/shezhangbujianle) 】**
+
+---
+
+> This post is also available in [English](/2022/03/31/shezhang-bujian-le-en/).

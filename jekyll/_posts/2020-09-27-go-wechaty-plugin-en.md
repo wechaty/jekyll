@@ -1,5 +1,5 @@
 ---
-title: ' "暑期2020 [为 go-wechaty 设计实现插件体系] 结项报告" (English translation WIP)'
+title: "Summer 2020 [Design and Implement Plugin System for go-wechaty] Final Report"
 author: finctive
 categories: project
 tags:
@@ -9,48 +9,54 @@ tags:
   - go
   - ecosystem
 image: /assets/2020/09-go-wechaty-plugin-en/2020-09-27-go-wechaty-plugin.webp
+excerpt: >
+  Designing and implementing a plugin system for go-wechaty to enable easy extension and reusability
 ---
 
-“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。
-旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。
-根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。
-官网：[https://isrc.iscas.ac.cn/summer2020](https://isrc.iscas.ac.cn/summer2020) 官方新闻：[http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html](http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html)
-本项目 [为 go-wechaty 设计实现插件体系] 系 暑期2020 支持的开源项目。
+> This is a translated version of the original Chinese post. You can find the original post [here](/2020/09/27/go-wechaty-plugin/).
 
-## [为 go-wechaty 设计实现插件体系]信息
+---
 
-- 导师：丁小雨、丁超飞、李博杰
-- 学生：林昊翰
-- 项目名称：为 go-wechaty 设计实现插件体系
+The "Open Source Promotion Plan - Summer 2020" (hereinafter referred to as Summer 2020) is a summer activity for college students jointly organized by the Institute of Software Chinese Academy of Sciences and the openEuler community.
+It aims to encourage students to actively participate in the development and maintenance of open source software and promote the vigorous development of excellent domestic open source software communities.
+According to the difficulty and completion of the project, participants can also receive activity bonuses and trophies from the "Open Source Promotion Plan - Summer 2020".
+Official website: [https://isrc.iscas.ac.cn/summer2020](https://isrc.iscas.ac.cn/summer2020) Official news: [http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html](http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html)
+This project [Design and Implement Plugin System for go-wechaty] is an open source project supported by Summer 2020.
 
-### 方案描述
+## [Design and Implement Plugin System for go-wechaty] Information
 
-wechaty 是一款支持多协议的微信接入方案，随着社区多语言生态的建立，吸引了更多的开发者和爱好者的加入；同时需求的推动和技术的发展，插件系统逐渐完善，但是在多语言系统中 Plugin 体系尚未完成，我们希望通过这个任务，能够让更多的人加入 go-wechaty 的建设。
+- Mentors: Ding Xiaoyu, Ding Chaofei, Li Bojie
+- Student: Lin Haohan
+- Project Name: Design and Implement Plugin System for go-wechaty
 
-目前 go-wechaty examples/ding-dong-bot.go 有一个 ding-dong bot, 但是我们希望这个 ding-dong 是通用的，如果我们的 Plugin 体系能编写出来，也许实现 ding-dong 就只需要一行代码。
-例如：
+### Project Description
+
+Wechaty is a multi-protocol WeChat access solution. With the establishment of a multi-language ecosystem in the community, it has attracted more developers and enthusiasts to join. At the same time, driven by demand and technological development, the plugin system has gradually improved. However, the plugin system in the multi-language system has not been completed yet. We hope that through this task, more people can join the construction of go-wechaty.
+
+Currently, go-wechaty has a ding-dong bot in examples/ding-dong-bot.go, but we hope this ding-dong can be universal. If we can write the plugin system, implementing ding-dong may only require one line of code.
+For example:
 
 ```go
 bot.Use(DingDong{})
 ```
 
-go-wechaty 是 Go 语言实现 wechaty 的项目，同样支持多协议接入；同时借助 gorountine 和 channel 的语言特性，实现了更加合理的封装和设计。
+go-wechaty is a Go language implementation of the wechaty project, which also supports multi-protocol access. At the same time, leveraging the language features of goroutine and channel, it achieves more reasonable encapsulation and design.
 
-### 时间规划
+### Timeline
 
-第一阶段(7月1日至8月15日)
+Phase 1 (July 1 to August 15)
 
-编写插件机制设计文档，与导师交流沟通。其中，文档包含设计思路，实现逻辑，以及涉及到项目代码变更等。根据 Go 语言特性，对插件机制的设计进行改进，并且尝试思考更多可能的方案。如果有需要，还应该编写相应的试验代码。
+Write the plugin mechanism design document and communicate with mentors. The document includes design ideas, implementation logic, and project code changes. According to the characteristics of the Go language, improve the design of the plugin mechanism and try to think of more possible solutions. If necessary, corresponding experimental code should also be written.
 
-第二阶段(8月16日至9月30日)
+Phase 2 (August 16 to September 30)
 
-根据第一阶段的设计文档编写代码，实现 go-wechaty 的插件机制；使用 go-wechaty 插件机制编写一个插件 Demo，并解决插件机制使用过程中遇上的问题，回过头修改插件机制的设计和实现。
+Write code according to the design document of the first phase to implement the plugin mechanism of go-wechaty; use the go-wechaty plugin mechanism to write a plugin demo, solve problems encountered in the use of the plugin mechanism, and go back to modify the design and implementation of the plugin mechanism.
 
-## 项目总结
+## Project Summary
 
-### 视频
+### Videos
 
-结项报告
+Final Report
 
 {% include iframe.html src="https://www.youtube.com/watch?v=Gku0nM0JOnE" %}
 
@@ -58,31 +64,31 @@ Live Coding
 
 {% include iframe.html src="https://www.youtube.com/watch?v=I_3s2BrbnV0" %}
 
-### 项目成果
+### Project Achievements
 
-截止至项目结束，取得了以下成果：
+As of the end of the project, the following achievements have been made:
 
-- 设计并实现了 go-wechaty 的插件机制，该插件系统具有基本的管理功能，并且参考了 Go 语言的设计特性。
+- Designed and implemented the plugin mechanism of go-wechaty. The plugin system has basic management functions and refers to the design characteristics of the Go language.
 
-- 根据 go-wechaty 插件机制实现了一个插件 Demo,验证了插件机制的可行性、易用性。
+- Implemented a plugin demo based on the go-wechaty plugin mechanism, which verified the feasibility and ease of use of the plugin mechanism.
 
-项目原计划的核心目标已经全部完成。
+The core goals of the original project plan have all been completed.
 
-#### go-wechaty 插件机制设计文档
+#### go-wechaty Plugin Mechanism Design Document
 
-每周进度汇报与讨论Issue：[为 go-wechaty 设计实现 插件体系](https://github.com/wechaty/summer-of-code/issues/9#)
+Weekly progress report and discussion issue: [Design and implement plugin system for go-wechaty](https://github.com/wechaty/summer-of-code/issues/9#)
 
-相关代码仓库：[go-wechaty Plugin 分支 PR](https://github.com/wechaty/go-wechaty/pull/67)
+Related code repository: [go-wechaty Plugin branch PR](https://github.com/wechaty/go-wechaty/pull/67)
 
-新增加 `wechaty.Plugin` 结构类型存储插件相应的回调函数，它支持 Wechaty 中的所有事件注册函数(比如 `OnMessage()`)，使用方式与 Wechaty 实例一致，便于把 Bot 代码封装成为插件。
+Added `wechaty.Plugin` structure type to store plugin-related callback functions. It supports all event registration functions in Wechaty (such as `OnMessage()`), and the usage is consistent with the Wechaty instance, making it easy to encapsulate Bot code into plugins.
 
-新增加 `wechaty.Context` 结构类型用于一轮消息事件的控制、传递。在每一次接收到新的消息事件时传入一个新的变量。同时，该结构实现了 `context.Context` 接口。
+Added `wechaty.Context` structure type for controlling and passing message events in one round. A new variable is passed in each time a new message event is received. At the same time, this structure implements the `context.Context` interface.
 
-以下是 go-wechaty 插件机制的功能说明：
+The following is a description of the functions of the go-wechaty plugin mechanism:
 
-- 调用顺序（优先级）
+- Call order (priority)
 
-按照注册顺序依次调用。其中，Bot 逻辑代码与插件逻辑代码可以存在交错执行顺序。即：
+Called in the order of registration. Among them, bot logic code and plugin logic code can have interleaved execution order. That is:
 
 ```go
 var bot = wechaty.NewWechaty()
@@ -95,29 +101,29 @@ bot.OnMessage(func(context *wechaty.Context, message *user.Message) {
 }
 ```
 
-执行顺序：Part A → pluginB → pluginC → Part D
+Execution order: Part A → pluginB → pluginC → Part D
 
-- 开关
+- Switches
 
-  - 禁用、启用插件。
+  - Disable and enable plugins.
 
-    对应方法：`Plugin.SetEnable`
+    Corresponding method: `Plugin.SetEnable`
 
-    通过加锁的方式修改插件属性变量。这个方法是并发安全的。
+    Modify plugin property variables by locking. This method is concurrency safe.
 
-  - 在本轮消息事件中，暂时禁用某一个插件。
+  - Temporarily disable a plugin in this round of message events.
 
-    对应方法：`Context.DisableOnce`
+    Corresponding method: `Context.DisableOnce`
 
-  - 消息拦截，跳过后续插件对该本轮消息事件的处理。同时终止所有仍在进行的插件代码操作，即先前插件产生的 Goroutine。
+  - Message interception, skip the processing of subsequent plugins for this round of message events. At the same time, terminate all ongoing plugin code operations, i.e. goroutines generated by previous plugins.
 
-    对应方法：`Context.Abort` 以及 `Context.Done`
+    Corresponding methods: `Context.Abort` and `Context.Done`
 
-  - 在并发程序中，控制插件内部 goroutine 的结束。用法与 Go 语言中的 context.Context ([WithCancel  ()](https://golang.org/pkg/context/#WithCancel))相同。
+  - In concurrent programs, control the termination of goroutines inside the plugin. The usage is the same as context.Context ([WithCancel()](https://golang.org/pkg/context/#WithCancel)) in the Go language.
 
-    对应方法：`Context.Abort` 以及 `Context.Done`
+    Corresponding methods: `Context.Abort` and `Context.Done`
 
-    示例：
+    Example:
 
     ```go
     plugin := NewPlugin()
@@ -139,23 +145,23 @@ bot.OnMessage(func(context *wechaty.Context, message *user.Message) {
     // context.Abort() will terminate the goroutine
     ```
 
-- 数据传递
+- Data passing
 
-通过 Context 传递数据，数据只在本轮消息事件有效。
+Pass data through Context, data is only valid in this round of message events.
 
-不支持并发读写。
+Concurrent read and write are not supported.
 
-对应方法：`Context.SetData`, `Context.GetData`
+Corresponding methods: `Context.SetData`, `Context.GetData`
 
-#### 示例插件 wordcounter 说明
+#### Example Plugin wordcounter Description
 
-相关代码仓库：[示例插件 wordcounter](https://github.com/FINCTIVE/wordcounter)
+Related code repository: [Example plugin wordcounter](https://github.com/FINCTIVE/wordcounter)
 
-该插件运行于以上设计的 go-wechaty 插件机制，本插件开发的主要目的是验证插件机制的可用性以及易用性。
+This plugin runs on the above-designed go-wechaty plugin mechanism. The main purpose of developing this plugin is to verify the availability and ease of use of the plugin mechanism.
 
-插件的功能为统计限定小时内群成员发言词数（仅统计文字类消息）。
+The function of the plugin is to count the number of words spoken by group members within a limited number of hours (only text messages are counted).
 
-插件的使用方式如下，调用方只需要传入相应的配置信息即可。
+The usage of the plugin is as follows. The caller only needs to pass in the corresponding configuration information.
 
 ```go
 import "github.com/FINCTIVE/wordcounter"
@@ -172,43 +178,41 @@ func main() {
 }
 ```
 
-### 遇到的问题及解决方案
+### Problems Encountered and Solutions
 
-- 如何参与开源社区、为开源社区做贡献？
+- How to participate in the open source community and contribute to it?
 
-我在大学的前两年时间里并没有参与过大项目的开发，更别提要求较高的开源项目。开源项目的远程协作开发对我来说有极大吸引力，但我一直没有一个合适的机会参与其中（水平不足、不知道如何参与等情况让我屡次放弃跨出第一步）。本届开源软件供应链点亮计划正好提供了这次机会，让我参与到 Wechaty 社区中进行项目开发。Wechaty 社区是一个包容度很高的社区，社区内的导师们会对学生提出的问题耐心解答。这次活动的经历增加了我参与开源软件开发的经验，同时争强了我的沟通交流能力。在以后的开发历程中，我会为继续为开源社区贡献代码。
+In the first two years of college, I had not participated in the development of large projects, let alone open source projects with high requirements. Remote collaborative development of open source projects is very attractive to me, but I have never had a suitable opportunity to participate (lack of skills, not knowing how to participate, etc. made me give up taking the first step many times). This Open Source Promotion Plan just provided this opportunity for me to participate in the Wechaty community for project development. The Wechaty community is a highly inclusive community, and the mentors in the community will patiently answer students' questions. This activity experience increased my experience in participating in open source software development and strengthened my communication skills. In the future development process, I will continue to contribute code to the open source community.
 
-- 在开发过程中，常常遇到陌生的技术问题，需要学习新知识。
+- During the development process, I often encountered unfamiliar technical problems and needed to learn new knowledge.
 
-在本项目的开发过程中，我遇到的主要问题来自对 Go 程序开发的不熟悉，在许多细节上会产生疑惑。实际测试程序时，也有一些小问题需要解决，比如 Docker 的使用、排错。我的解决方案主要是自己学习、查阅资料。这次项目开发的经历大大提升了我的编程能力。
+During the development of this project, the main problems I encountered came from unfamiliarity with Go program development, and I had doubts about many details. When actually testing the program, there were also some small problems to be solved, such as the use of Docker and troubleshooting. My solution was mainly to learn by myself and consult materials. This project development experience greatly improved my programming ability.
 
-对于部分无法自己解决的问题，社区里的导师们给了我很大帮助，导师们在阅读我的代码后给出了许多具有针对性的建议，这对我完成项目开发是十分必要的，感谢导师们的付出。
+For some problems that I couldn't solve by myself, the mentors in the community gave me great help. After reading my code, the mentors gave many targeted suggestions, which were very necessary for me to complete the project development. Thank you for the efforts of the mentors.
 
-- 项目开发时间较长，常常有想要拖延的念头，动力不足。
+- The project development time is long, and I often have the idea of procrastination and lack of motivation.
 
-得益于 Wechaty 社区优秀的管理方式，参与项目开发的学生需要在相应的Issue上填写每周开发报告，报告中需要汇总每周工作成果，制定下周开发计划。由于有每周汇报的压力，我的拖延现象降低了许多。这次项目开发经验也让我学习到了制定计划的重要性。
+Thanks to the excellent management method of the Wechaty community, students participating in project development need to fill in weekly development reports on the corresponding Issue, and the reports need to summarize the work results of the week and formulate the development plan for the next week. Due to the pressure of weekly reports, my procrastination has been greatly reduced. This project development experience also taught me the importance of making plans.
 
-## 导师评审结果
+## Mentor Review Results
 
-- 项目完成度：*按照原计划方案，完成原计划的功能开发*
+- Project completion: *According to the original plan, the functional development of the original plan was completed*
 
-- 学生参与度：*项目参加活动的部分，全部由学生完成*
+- Student participation: *The part of the project participating in the activity was all completed by the student*
 
-- 代码贡献量：*Plugin 100% 由学生完成，包涵一个示例 Plugin，占到整个开源项目的10%-20%。*
+- Code contribution: *Plugin 100% completed by students, including an example Plugin, accounting for 10%-20% of the entire open source project.*
 
-- 综合评价及建议：
+- Comprehensive evaluation and suggestions:
 
-  - 昊翰同学的学习能力，和能动性特别强，能够很快的上手新的知识和方法；从最初的对开源项目的无从下手，到熟悉常规的共享代码的方式，以及对 Go 的掌握，都能感受到进步和收获；相信这么一次短暂的活动经历，能在你今后的工作和生活中成为谈资。
+  - Student Haohan has a particularly strong learning ability and initiative, and can quickly get started with new knowledge and methods; from the initial inability to start with open source projects, to becoming familiar with the conventional way of sharing code, and mastering Go, we can all feel the progress and gains; I believe that such a short activity experience can become a talking point in your future work and life.
 
-  - 相信大部分从学校过渡到工作中，都会对长周期的项目产生动摇，其实你只需要按照原计划去完成既定工作就好，大项目拆解成小项目是计划和执行中很重要的部分；报告中提到了周计划，很欣慰你看到了这点带给你的价值，它使你没有偏离原有计划的方向，也希望你今后的工作中能从此有所收获。
+  - I believe that most people transitioning from school to work will waver on long-cycle projects. In fact, you just need to complete the established work according to the original plan. Breaking down large projects into small projects is a very important part of planning and execution; the report mentioned weekly planning, and I am very pleased that you see the value it brings to you. It keeps you from deviating from the direction of the original plan, and I also hope that you can benefit from this in your future work.
 
-- 最终评审结果：*通过*
+- Final review result: *Passed*
 
-## 联系我们
+## Contact Us
 
-- 项目链接：[wechaty/go-wechaty](https://github.com/wechaty/go-wechaty)
-- 联系方式：finctive@foxmail.com
-
----
+- Project link: [wechaty/go-wechaty](https://github.com/wechaty/go-wechaty)
+- Contact: finctive@foxmail.com
 
 > Chinese version of this post: [go wechaty plugin]({{ '/2020/09/27/go-wechaty-plugin/' | relative_url }})

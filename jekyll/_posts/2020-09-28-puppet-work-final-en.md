@@ -1,5 +1,5 @@
 ---
-title: ' "暑期2020 [基于开放 API 封装 Wechaty 接口下的企业微信聊天机器人] 终结成果展示" (English translation WIP)'
+title: "Summer 2020 [WeChat Work Chatbot based on Open API for Wechaty] Final Results"
 author: sapio-s
 categories: project
 image: /assets/2020/09-puppet-work-final-en/manager-backgroud.webp
@@ -9,81 +9,87 @@ tags:
   - puppet-provider
   - wecom
   - ecosystem
+excerpt: >
+  Developing a puppet for WeChat Work platform to enable Wechaty developers to use WeChat Work features by simply changing a variable
 ---
 
-本项目计划针对企业微信平台开发一个puppet，让 Wechaty 开发者可以仅仅通过改变一个变量，就能够切换使用企业微信的功能。
+> This is a translated version of the original Chinese post. You can find the original post [here](/2020/09/28/puppet-work-final/).
 
-## 暑期2020 [基于开放 API 封装 Wechaty 接口下的企业微信聊天机器人] 终结成果展示
+---
 
-## 暑期2020
+This project plans to develop a puppet for the WeChat Work platform, allowing Wechaty developers to switch to using WeChat Work functions by simply changing a variable.
 
-“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。
-旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。
-根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。
-官网：<https://isrc.iscas.ac.cn/summer2020> 官方新闻：<http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html>
-本项目 [基于开放 API 封装 Wechaty 接口下的企业微信聊天机器人] 系 暑期2020 支持的开源项目。
+## Summer 2020 [WeChat Work Chatbot based on Open API for Wechaty] Final Results
 
-## [基于开放 API 封装 Wechaty 接口下的企业微信聊天机器人]
+## Summer 2020
 
-- 导师：高原
-- 学生：谢昱清
+The "Open Source Promotion Plan - Summer 2020" (hereinafter referred to as Summer 2020) is a summer activity for college students jointly organized by the Institute of Software Chinese Academy of Sciences and the openEuler community.
+It aims to encourage students to actively participate in the development and maintenance of open source software and promote the vigorous development of excellent domestic open source software communities.
+According to the difficulty and completion of the project, participants can also receive activity bonuses and trophies from the "Open Source Promotion Plan - Summer 2020".
+Official website: <https://isrc.iscas.ac.cn/summer2020> Official news: <http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html>
+This project [WeChat Work Chatbot based on Open API for Wechaty] is an open source project supported by Summer 2020.
 
-- 项目名称：wechaty-puppet-wecom: 基于开放 API 封装 Wechaty 接口下的企业微信聊天机器人
-- 方案描述：
-- 时间规划：
-  - 准备工作
+## [WeChat Work Chatbot based on Open API for Wechaty]
+
+- Mentor: Gao Yuan
+- Student: Xie Yuqing
+
+- Project Name: wechaty-puppet-wecom: WeChat Work Chatbot based on Open API for Wechaty
+- Project Description:
+- Timeline:
+  - Preparation work
   - 2020.7.1 - 2020.7.19
-    - 掌握相关技术栈（typescript等），了解puppet构造。
-    - 与企业微信建立连接，完成node.js到企业微信的信息通路
+    - Master related technology stack (typescript, etc.) and understand puppet structure.
+    - Establish connection with WeChat Work and complete the information channel from node.js to WeChat Work
   - 2020.7.20 - 2020.8.5
-    - 包括对话的加密解密，相关环境配置，node.js与微信SDK的交互。完成node.js进行企业微信消息拉取的demo。
-    - 注：原计划于2020.7.26完成，但是由于对预期成果理解有误，进展方向出现了偏差，延期一星期。
-    - 实现 puppet 上各个类型的消息接口
+    - Including encryption and decryption of conversations, related environment configuration, interaction between node.js and WeChat SDK. Complete a demo of node.js pulling WeChat Work messages.
+    - Note: Originally planned to be completed on 2020.7.26, but due to a misunderstanding of the expected results, the progress direction deviated and was postponed by one week.
+    - Implement message interfaces of various types on puppet
   - 2020.8.6 - 2020.8.30
-    - 正式开发puppet。完成状态函数，消息的读取及消息的存储等内容。可能需要拓展原本puppet的数据结构。其中第一周完成逻辑设计及基本的消息拉取。
-    - 注：企业微信puppet仅负责拉取消息，不必完成完整的交互过程，因此可能需要单独设计对应的bot进行测试。
-    - 实现puppet上对媒体文件信息的拉取
+    - Officially develop puppet. Complete status functions, message reading and message storage. May need to extend the original puppet data structure. Complete logical design and basic message pulling in the first week.
+    - Note: WeChat Work puppet is only responsible for pulling messages and does not need to complete the complete interaction process, so a corresponding bot may need to be designed separately for testing.
+    - Implement media file information pulling on puppet
   - 2020.8.31 - 2020.9.20
-    - 基本完成puppet的全部功能，可以将媒体文件暂存在文件夹下。
-    - 重构代码+收尾完善
+    - Basically complete all functions of puppet and can temporarily store media files in folders.
+    - Code refactoring + final improvement
   - 2020.9.21 - 2020.9.30
-    - 简单封装了contact、room等类，改变了媒体文件的传送方式，完成了FileBox的相关函数。撰写readme等文档，明确仍需开发的内容，完成项目结题报告。
+    - Simply encapsulated classes such as contact and room, changed the transmission method of media files, and completed related functions of FileBox. Write readme and other documents, clarify the content that still needs to be developed, and complete the project completion report.
 
-## 项目进度
+## Project Progress
 
-- 项目成果：
-  - 运用企业微信提供的API接口完成了消息的加密解密以及跨语言的信息传递；
-  - 完成了全部消息类型（文本信息及媒体信息）的封装；
-  - 简单配置了参数及内部逻辑，可以定时拉取形成“即时沟通”的效果；
-  - 撰写简单的配置说明。
-  - 关于代码结构与功能演示的视频
+- Project achievements:
+  - Used the API interface provided by WeChat Work to complete message encryption and decryption and cross-language information transmission;
+  - Completed the encapsulation of all message types (text messages and media messages);
+  - Simply configured parameters and internal logic to achieve the effect of "instant communication" through timed pulling;
+  - Wrote simple configuration instructions.
+  - Video about code structure and function demonstration
   
 {% include iframe.html src="https://player.bilibili.com/player.html?bvid=BV1CA41177DG" %}
 
-- 遇到的问题及解决方案：
-  - 对项目需求不明确，前期缺乏和导师的有效沟通，导致有一两周的进展与目标方向无关，成为了无用功。后期应当积极与导师沟通，尽快解决存疑的问题，避免出现类似的情况。
-  - 使用全新技术栈，除了需要花费较多时间入门外，在配置环境等方面出现了大量问题，有些甚至在网络上都无法搜索到解决方式。例如安装node-ffi时遇到的几个少见的安装bug：
-    - 编译时没有binding.cc这个文件，需要自己建一个空文件；
-    - node和npm需要降级，否则无法成功安装编译ffi/ref；
-    - 如果用C++编译ffi的example（factorial.c），需要更改宏结构，否则会报“Error: Dynamic Symbol Retrieval Error: Win32 error 127”。
-  - 时间管理出现了一些意外。在学校一共上了七周的小学期，以及三周秋季正式的课，加上平时不注重时间管理，导致长时间进度落后。以后也需要注意抓紧时间，不能拖延，将能做的事情尽早解决。
+- Problems encountered and solutions:
+  - The project requirements were unclear, and there was a lack of effective communication with the mentor in the early stage, which led to one or two weeks of progress being unrelated to the target direction and becoming useless work. In the later stage, I should actively communicate with the mentor and resolve doubtful issues as soon as possible to avoid similar situations.
+  - Using a brand new technology stack, in addition to spending a lot of time getting started, there were a lot of problems in configuring the environment, some of which could not even be found online. For example, several rare installation bugs encountered when installing node-ffi:
+    - There is no binding.cc file during compilation, you need to create an empty file yourself;
+    - Node and npm need to be downgraded, otherwise ffi/ref cannot be installed and compiled successfully;
+    - If you use C++ to compile ffi's example (factorial.c), you need to change the macro structure, otherwise it will report "Error: Dynamic Symbol Retrieval Error: Win32 error 127".
+  - There were some accidents in time management. I attended a total of seven weeks of mini semester at school, as well as three weeks of official autumn classes. In addition, I usually don't pay attention to time management, which resulted in long-term progress lagging behind. In the future, I also need to pay attention to seizing time, not procrastinating, and solving things that can be done as soon as possible.
 
-## 心得与体验
+## Insights and Experiences
 
-在项目期间，我感觉自己对于代码的理解能力在不断提高，回首一看，原先不懂的现在都明白个大概了，收获真的很大。在写这个报告的时候其实才算是对整个wechaty的架构有了一个比较清晰的认识，从7月初的完全不懂到八月的逐渐入门再到现在的恍然大悟（或许也没有真正领悟），很有成就感。
+During the project, I felt that my understanding of code was constantly improving. Looking back, I now understand roughly what I didn't understand before, and the gains are really great. When writing this report, I actually had a relatively clear understanding of the entire wechaty architecture. From being completely clueless in early July to gradually getting started in August to suddenly realizing now (maybe not really understanding), it is very fulfilling.
   
-当然遗憾和不足也同样很多。主要的问题还是在于自身，对语言的不熟悉、时间上的冲突，导致目前的结果并不十分令人满意，遗留下了不少的坑待填。对于我而言这也是一个很重要的教训，未来做项目也要规划好时间，及早了解需要的技术栈，这样才能更好地完成任务。
+Of course, there are also many regrets and shortcomings. The main problem is still myself. Unfamiliarity with the language and time conflicts have led to results that are not very satisfactory, leaving many pitfalls to be filled. This is also a very important lesson for me. In the future, I should also plan my time well when doing projects and understand the required technology stack early so that I can complete tasks better.
   
-另：其实本来觉得自己的代码虽然肯定不能直接发布使用，也勉强算是马马虎虎完成了主要的功能。但是一看别人的blog，我陷入了深深的尴尬，其实可以完成度更高、做得更好的。希望这学期学校开设的软件工程等等课程可以让我更深入地理解并熟悉完整开发流程吧！
+Also: Actually, I originally thought that although my code could definitely not be published directly, it could barely be said to have completed the main functions. But when I looked at other people's blogs, I fell into deep embarrassment. Actually, it could have been completed better with a higher degree of completion. I hope that the software engineering courses offered by the school this semester will allow me to more deeply understand and become familiar with the complete development process!
 
-## 联系我们
+## Contact Us
 
-- 项目链接：<https://github.com/Sapio-S/wechaty-puppet-official/>
-- 联系方式：1205402283@mail.qq.com
+- Repo: <https://github.com/Sapio-S/wechaty-puppet-official/>
+- Email: <1205402283@mail.qq.com>
 
 > Author: [@Sapio-S](https://github.com/Sapio-S) Learning & practicing.
 > Code: [@code](https://github.com/Sapio-S/wechaty-puppet-official)
 
 ---
 
-> Chinese version of this post: [puppet work final]({{ '/2020/09/28/puppet-work-final/' | relative_url }})
+> This is a translated version of the original Chinese post. You can find the original post [here](/2020/09/28/puppet-work-final/).

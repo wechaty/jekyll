@@ -1,5 +1,5 @@
 ---
-title: ' "New Wechaty Puppet Service: PadLocal" (English translation WIP)'
+title: ' "New Wechaty Puppet Service: PadLocal"'
 author: padlocal
 image: /assets/2020/10-puppet-padlocal-intro-en/logo.webp
 categories: announcement
@@ -9,60 +9,61 @@ tags:
   - padlocal
   - puppet-provider
   - puppet-service
+excerpt: >
+  Introducing PadLocal, a new Wechaty puppet service with a unique stateless architecture. All traffic is proxied through the local puppet client, ensuring better IP isolation, data security, and system scalability.
 ---
 
-大家好，我是 PadLocal 的开发者，大伙都称我“好大”。最近一两年，我们团队开始做社群相关产品，自然而然也用了 Wechaty，慢慢地对 Wechaty 以及整个社区也越来越认可和信任。
+> This is a translated version of the original Chinese post. You can find the original post [here](/2020/10/12/puppet-padlocal-intro/).
 
-几年前做爬虫系统的时候，第一次接触到了 Wechaty。这个项目需要定期推送爬虫的状态信息，以及主动查询爬取的相关内容。正好当时有一句很流行的话：“对话即服务”，于是就想是不是可以通过微信来实现这些功能？借助 Wechaty 很快就实现了所有功能，最终效果也非常不错。
+Hello everyone, I'm the developer of PadLocal, and everyone calls me "Haoda". In the past year or two, our team has been working on community-related products, and naturally, we've been using Wechaty. Gradually, we've come to appreciate and trust Wechaty and the entire community more and more.
+
+A few years ago, while working on a web scraping system, I first encountered Wechaty. That project required regularly pushing scraper status updates and actively querying scraped content. At the time, there was a popular phrase: "Conversation as a Service", so I wondered if we could implement these features through WeChat. With the help of Wechaty, we quickly implemented all the functionality, and the final results were excellent.
 
 ## PadLocal: Wechaty puppet service provider
 
-但那时候社区中的 puppet 还不是特别完美，使用过程中有一些槽点。而且 puppet 生命周期不是特别稳定，用了一段时间可能就不再维护，我们担心这种不确定性会影响到我们的业务，于是萌生了自己去开发一个 puppet 的想法。再加上我自己也是国内比较早的一批 iOS 开发者，自信对 iOS 有比较深入的理解，以前也玩过一点逆向，觉得这样的想法也并非天方夜谭。
+However, at that time, the puppets in the community were not particularly perfect, and there were some pain points during usage. Moreover, puppet lifecycles were not very stable - after using one for a while, it might no longer be maintained. We were concerned that this uncertainty would affect our business, so we decided to develop our own puppet. Additionally, as one of the early iOS developers in China, I was confident in my deep understanding of iOS and had also dabbled in reverse engineering, so this idea didn't seem impossible.
 
-于是从 App 脱壳、用 IDA 反编译微信，开始了漫漫逆向之路。在做这件事之前，我们预计这个过程比较难，会遇到各种难啃的骨头，但万万没有想到会如此艰辛。虽然之前玩过逆向，不过也就是为了好玩，改改 App小功能、抢抢红包啥的，比较初级。刚开始的阶段还挺愉快，因为每一步你很容易看到自己的成长，每次打个怪就感觉升了一级。但慢慢深入下去，就遇到很多真正难啃的骨头，各种伎俩、资料、请教都失败之后，叹气之余感觉自己如那头黔驴一样。也产生过放弃的念头，但始终还是不甘心，仍然咬咬牙坚持了下来。在这里和大家分享几个这样“狼狈”的时刻：
+Thus began the long journey of reverse engineering, starting from decrypting the App and decompiling WeChat with IDA. Before doing this, we anticipated that the process would be difficult and we'd encounter various hard nuts to crack, but we never expected it to be so arduous. Although I had played with reverse engineering before, it was just for fun - modifying small App features, grabbing red envelopes, etc., fairly elementary stuff. The initial stage was quite pleasant because you could easily see your growth with each step, feeling like you leveled up with each monster defeated. But as we went deeper, we encountered truly difficult challenges, and after various tricks, research, and consultations all failed, we sighed and felt like the "donkey from Guizhou" (a Chinese idiom about exhausting one's tricks). We had thoughts of giving up, but we were always unwilling to quit and persevered by gritting our teeth. Here I'd like to share a few such "embarrassing" moments:
 
-1. **处理代码混淆**
+1. **Handling Code Obfuscation**
 
- 微信会对比较敏感的代码进行混淆处理，关于代码混淆推荐大家参考 [ollvm](https://github.com/obfuscator-llvm/obfuscator/wiki) 。总体来说，代码混淆大概有这几种手段：1. **控制流平坦化**，2. **虚假控制流**，3. **指令替换**
-。Quarkslab 的这篇文章 [“Deobfuscation: recovering an OLLVM-protected program”](https://blog.quarkslab.com/deobfuscation-recovering-an-ollvm-protected-program.html) 也介绍一点解混淆的方法，但是文章中提到的例子相比微信中遇到的，只能是小巫见大巫。举个例子微信某个函数混淆后大概有 7W 多行，用 IDA 反编译就可以花一整天时间。通过每天慢慢盘这些代码，总结出了许多规则。于是自己写的一个小工具去解混淆，通过不断尝试与修正，最终成功将代码解混淆了出来。
+   WeChat obfuscates sensitive code. For code obfuscation, I recommend checking out [ollvm](https://github.com/obfuscator-llvm/obfuscator/wiki). Generally speaking, code obfuscation has several techniques: 1. **Control Flow Flattening**, 2. **Bogus Control Flow**, 3. **Instruction Substitution**. Quarkslab's article ["Deobfuscation: recovering an OLLVM-protected program"](https://blog.quarkslab.com/deobfuscation-recovering-an-ollvm-protected-program.html) also introduces some deobfuscation methods, but the examples mentioned in the article are child's play compared to what we encountered in WeChat. For instance, one of WeChat's functions after obfuscation had over 70,000 lines, and decompiling it with IDA could take an entire day. By slowly analyzing this code every day, we summarized many patterns. So I wrote a small tool for deobfuscation, and through continuous trial and correction, we finally successfully deobfuscated the code.
 
-1. **0305算法**
+1. **0305 Algorithm**
 
- 微信本身对客户端会进行比较严格的校验，包括设备环境、设备指纹等信息。就是说用网上说的一些工具，去修改微信功能（比如用来抢红包），其实很容易被微信识别出来，封号也许是迟早的事情。这里就需要一些加解密和签名校验机制，其中 0305 算法是里面比较困难的一种。首先代码本身混淆过，其次即使解混淆出来，也很难看出来它的逻辑性，比如具体采用了什么算法以及加解密、签名校验流程。于是乎仍然只能慢慢探索，不断观察每一步数据的变化，摸索出一些可能的样式。最终经过非常多的尝试，才命中正确算法和流程。
+   WeChat itself performs strict verification on the client, including device environment and device fingerprint information. This means that using tools found online to modify WeChat features (like grabbing red envelopes) can easily be detected by WeChat, and getting banned is probably just a matter of time. This requires encryption/decryption and signature verification mechanisms, and the 0305 algorithm is one of the more difficult ones. First, the code itself is obfuscated, and secondly, even after deobfuscation, it's very difficult to understand its logic, such as what specific algorithm is used and the encryption/decryption and signature verification process. So we could only slowly explore, continuously observing the data changes at each step, figuring out some possible patterns. Finally, after many attempts, we hit upon the correct algorithm and process.
 
-经历过这样几个难点而且都成功解决之后，其实底气也足了很多。之后再遇到（其实还很多），仍然会有沮丧的时刻，但更多还是相信能够完成挑战。总体来说，这一路走来就是一步一个坑。解决了一个问题，开开心心重新抬起头来，“天晴了雨停了，我又觉得我行了” 。可过不了多久，微信又会分分钟教你做人，所以对微信一直保持着一颗敬畏之心。
+After experiencing and successfully solving these difficulties, we actually felt much more confident. When we encountered more challenges afterward (and there were still many), there were still moments of frustration, but more often we believed we could complete the challenge. Overall, this journey has been one pitfall after another. After solving one problem and happily raising our heads again, thinking "the sky has cleared, the rain has stopped, and I think I can do it again", WeChat would soon teach us a lesson, so we've always maintained a sense of awe towards WeChat.
 
-最终，我们做出了一个完整实现的 puppet，叫做 PadLocal。至于为什么叫 “PadLocal” ？这就要谈到我们 puppet 的整体设计，以及相比其他 puppet 有什么不同之处。PadLocal 最大的特点是：
+Finally, we created a fully implemented puppet called PadLocal. As for why it's called "PadLocal"? This relates to our puppet's overall design and how it differs from other puppets. PadLocal's biggest features are:
 
-* 账号状态的托管方式
-* 与 WeChatServer 的通信方式
+* Account state hosting method
+* Communication method with WeChatServer
 
-在设计 puppet 的时候，我们首先调查了社区内其他 puppet , 并研究了他们的实现原理。我们发现，其他 puppet 设计思路大多是这样：由 puppet server 进行管理和维持托管账号的状态。所有的请求都是通过 `puppet -> puppet server -> WeChatServer` 这样一条链路完成。消息推送部分，puppet 和 puppet server 之间建立长连接，同时 puppet server 和 WeChatServer 也建立对应的长连接。当有新消息推送的时候，是通过 `WeChatServer -> puppet server ->  puppet` 这样的链路到达 puppet 端。这样的设计中 puppet server 就充当了一种有状态的代理角色，所有流量都是由服务器完成转发。在我们看来这样的设计可能有几个潜在的劣势：
+When designing the puppet, we first investigated other puppets in the community and studied their implementation principles. We found that most other puppets are designed like this: the puppet server manages and maintains the state of hosted accounts. All requests are completed through the chain `puppet -> puppet server -> WeChatServer`. For message pushing, a long connection is established between puppet and puppet server, and a corresponding long connection is also established between puppet server and WeChatServer. When new messages are pushed, they reach the puppet end through the chain `WeChatServer -> puppet server -> puppet`. In this design, the puppet server acts as a stateful proxy, with all traffic being forwarded by the server. In our view, this design may have several potential disadvantages:
 
-1. 因为最终和 WeChatServer 通信的都是 puppet server。如果一个 puppet server 上托管了多个账号，且没有对各个账号配置对应的代理策略，那么这些账号将共享 puppet server 的 IP。从风控角度来看，容易产生风险。而且一旦其中某些账号风险等级比较高，容易对同一个 IP 池的其他账号造成污染，伤及无辜。
-2. 所有流量都是通过 puppet server 转发，对其带宽产生了不小压力，特别是当托管账号中产生了大量图片、视频等多媒体资源时。
-3. 由于 puppet server 维护了托管账号状态，所以 puppet server 是有状态的。从系统架构角度来看，有状态的服务器在系统稳定性、可用性、容量规划等方面都存在不小挑战。如果集群中某些服务器宕机，而备机切换机制设计不够完善的话，容易出现部分账号处于不可用的状态。  
-4. 为了保证 puppet 有更好的可用性和体验，通常 puppet server 会缓存（不一定永久保存）某些数据（比如聊天数据）。也就是说，服务端无可避免地需要触碰托管账号的业务数据。这就需要 puppet 的提供者保持极高的行业自律，而且通过充分的机制保证客户数据的安全性。
+1. Because ultimately all communication with WeChatServer is done by the puppet server. If a puppet server hosts multiple accounts and doesn't configure corresponding proxy strategies for each account, these accounts will share the puppet server's IP. From a risk control perspective, this easily creates risks. Moreover, once some accounts have a relatively high risk level, it's easy to contaminate other accounts in the same IP pool, harming the innocent.
+2. All traffic is forwarded through the puppet server, creating considerable pressure on its bandwidth, especially when hosted accounts generate large amounts of multimedia resources such as images and videos.
+3. Since the puppet server maintains the state of hosted accounts, the puppet server is stateful. From a system architecture perspective, stateful servers face significant challenges in system stability, availability, and capacity planning. If some servers in the cluster go down and the backup switchover mechanism is not well designed, some accounts can easily become unavailable.
+4. To ensure better availability and experience for the puppet, puppet servers usually cache (not necessarily permanently store) certain data (such as chat data). This means that the server inevitably needs to touch the business data of hosted accounts. This requires puppet providers to maintain extremely high industry self-discipline and ensure customer data security through adequate mechanisms.
 
-基于对以上这些问题的思考，我们将所有流量转发工作都放在了 puppet 来做，**这就是 PadLocal 中 Local 的来源**。我们利用了 GRPC 的双向通信机制，让 puppet 成为代理，将所有流量通过 puppet 转发给 WeChatServer。同时由 puppet 来维持和 WeChatServer 之间的长连接。这样的好处显而易见：
+Based on our thinking about these issues, we put all traffic forwarding work on the puppet side, **which is the origin of "Local" in PadLocal**. We utilized GRPC's bidirectional communication mechanism to make the puppet a proxy, forwarding all traffic to WeChatServer through the puppet. At the same time, the puppet maintains the long connection with WeChatServer. The advantages of this are obvious:
 
-1. 托管账号和 WeChatServer 通信所使用的 IP 都是 puppet 端的 IP，不同账号天然就不存在共享 IP 的风险。
-2. 下载图片、视频等多媒体资源的流量不需要经过 PadLocal server。而且不经过服务器，效率也更高。
-3. 账号状态维护在 puppet 端完成，于是 PadLocal server 就可以设计为 stateless 的了，应对扩容等问题天然就会简单很多，simple is beautiful。
-4. PadLocal server 不会保存任何业务数据，没有数据安全方面风险。
+1. The IP used for communication between hosted accounts and WeChatServer is the IP of the puppet side, so different accounts naturally don't have the risk of sharing IPs.
+2. Traffic for downloading images, videos, and other multimedia resources doesn't need to go through the PadLocal server. Moreover, not going through the server is more efficient.
+3. Account state maintenance is completed on the puppet side, so the PadLocal server can be designed as stateless, making it naturally much simpler to deal with issues like scaling - simple is beautiful.
+4. The PadLocal server doesn't save any business data, eliminating data security risks.
 
-整体架构的拓扑图就如下所示：
+The topology diagram of the overall architecture is as follows:
 
-![拓扑图](/assets/2020/10-puppet-padlocal-intro-en/topological-graph.webp)
+![Topological Graph](/assets/2020/10-puppet-padlocal-intro-en/topological-graph.webp)
 
-再回过头来看，通过实现一个 puppet，我们自身也收获了非常多的东西。首先对 Wechaty 有了更加深入的了解，能更真切体会设计者的初衷，以及其中的权衡取舍。Wechaty 能够如此易用，都是精心设计后的结果。这是一个美妙的旅程；其次实现一个 Wechaty puppet 是一件十分有挑战的事情，能够完成这样一件事情当然成就感满满；再者可以从内部视角，比较深入和全面的了解微信端上的运行机制和设计思想。作为国民级的通信软件，微信的设计十分出色，各种各样机制、设计理念完全可以担当行业标准，无愧是这个领域绝对的王者。
+Looking back, by implementing a puppet, we ourselves have gained a lot. First, we have a deeper understanding of Wechaty and can better appreciate the designer's original intentions and the trade-offs involved. Wechaty's ease of use is the result of careful design. This has been a wonderful journey. Secondly, implementing a Wechaty puppet is a very challenging task, and completing such a task is of course very fulfilling. Furthermore, from an internal perspective, we can gain a deeper and more comprehensive understanding of WeChat's operational mechanisms and design philosophy. As a national-level communication software, WeChat's design is excellent, and various mechanisms and design concepts can completely serve as industry standards - it's truly the absolute king in this field.
 
-现在我们决定对外发布 PadLocal puppet，目的希望能够帮助大家在微信生态实现各种创意，同时也帮助微信生态更加丰富、更加健康的发展。我们的存在不是为了作恶，而是帮助建设一个更加美好的社会。对于将来的计划，我们会一直随着微信版本的迭代，积极地持续维护着这个 puppet。
+Now we've decided to publicly release the PadLocal puppet. Our goal is to help everyone realize various creative ideas in the WeChat ecosystem, and also help the WeChat ecosystem develop in a richer and healthier way. Our existence is not for malicious purposes, but to help build a better society. For future plans, we will continue to actively maintain this puppet as WeChat versions iterate.
 
-PadLocal 目前是还出于 beta testing 阶段，仍然有一些小问题需要去解决。我们希望能够有更多的开发者参与进来，一起让这个 puppet 走向下一个更成熟的阶段。我们有奖励机制以感谢对 PadLocal 作出贡献的伙伴，具体规则仍在商定之中。目前 Token 以“申请+审核”的方式，向大家逐步开放。如果你感兴趣，欢迎联系[管理员同学](mailto:oxddoxdd@gmail.com)，并说明你通过 PadLocal 实现什么样的创意。我们也正在准备更加详细文档和指引，敬请期待。
+PadLocal is currently still in the beta testing stage, and there are still some minor issues that need to be resolved. We hope that more developers will participate and work together to bring this puppet to the next, more mature stage. We have a reward mechanism to thank partners who contribute to PadLocal, and specific rules are still being discussed. Currently, Tokens are gradually being opened to everyone through an "application + review" process. If you're interested, please contact the [administrator](mailto:oxddoxdd@gmail.com) and explain what kind of creative ideas you want to implement with PadLocal. We are also preparing more detailed documentation and guidance, so stay tuned.
 
-最后，长城非一日建成，我们也是站在巨人的肩膀上才能完成这样的工作，感谢所有帮助过 PadLocal 诞生的小伙伴，比心。
-
----
+Finally, Rome wasn't built in a day, and we were only able to complete this work by standing on the shoulders of giants. Thank you to all the friends who helped PadLocal come into being - much love.
 
 > Chinese version of this post: [puppet padlocal intro]({{ '/2020/10/12/puppet-padlocal-intro/' | relative_url }})
