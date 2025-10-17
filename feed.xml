@@ -1,0 +1,2492 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wechaty.js.org/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wechaty.js.org/" rel="alternate" type="text/html" /><updated>2025-10-17T07:28:23+00:00</updated><id>https://wechaty.js.org/feed.xml</id><title type="html">Wechaty</title><subtitle>Conversational RPA SDK for Chatbot Makers</subtitle><entry><title type="html">📚 PreAngel Two-Stage Deployment Playbook — Firebase App Hosting × Google Cloud Run (v4)</title><link href="https://wechaty.js.org/2025/10/13/two-stage-deployment-playbook/" rel="alternate" type="text/html" title="📚 PreAngel Two-Stage Deployment Playbook — Firebase App Hosting × Google Cloud Run (v4)" /><published>2025-10-13T00:00:00+00:00</published><updated>2025-10-13T00:00:00+00:00</updated><id>https://wechaty.js.org/2025/10/13/two-stage-deployment-playbook</id><content type="html" xml:base="https://wechaty.js.org/2025/10/13/two-stage-deployment-playbook/"><![CDATA[<blockquote>
+  <p>PreAngel’s philosophy has always been clear: simplicity and truth live in the repo. Every configuration should be declarative, versioned, and automated — never hidden in a console.</p>
+</blockquote>
+
+<p>Over time, we distilled our deployment pipeline down to its purest form:</p>
+
+<p>Two stages. One repo. Zero secrets.</p>
+
+<p>This is the PreAngel Way — powered by GitHub Actions, Google Cloud Run, Artifact Registry, and Workload Identity Federation (WIF).</p>
+
+<hr />
+
+<h2 id="1-the-final-model--two-stages-one-truth">1) The Final Model — Two Stages, One Truth</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Stage</th>
+      <th>Description</th>
+      <th>Source</th>
+      <th>Target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Development</td>
+      <td>Every commit to main builds, pushes an image to Artifact Registry, and deploys to <code class="language-plaintext highlighter-rouge">myapp-dev</code> with 100% traffic.</td>
+      <td>Push to main</td>
+      <td>Cloud Run → <code class="language-plaintext highlighter-rouge">myapp-dev</code></td>
+    </tr>
+    <tr>
+      <td>Production</td>
+      <td>Every Git tag (e.g., <code class="language-plaintext highlighter-rouge">v1.4.2</code>) reuses the exact same image from Artifact Registry and deploys to <code class="language-plaintext highlighter-rouge">myapp</code> with <code class="language-plaintext highlighter-rouge">--no-traffic</code>.</td>
+      <td>Push tag <code class="language-plaintext highlighter-rouge">v*</code></td>
+      <td>Cloud Run → <code class="language-plaintext highlighter-rouge">myapp</code> (no traffic)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This achieves full CI/CD simplicity:</p>
+
+<ul>
+  <li>Dev = automatic → instant iteration.</li>
+  <li>Prod = deliberate → controlled stability.</li>
+  <li>Both powered by the same artifact and pipeline logic.</li>
+</ul>
+
+<p>Rule: Build once. Reuse the same image everywhere.</p>
+
+<hr />
+
+<h2 id="2-core-architecture">2) Core Architecture</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>GitHub Actions</td>
+      <td>The single CI/CD engine. Two workflows, both fully versioned in the repo.</td>
+    </tr>
+    <tr>
+      <td>Artifact Registry</td>
+      <td>Stores all container images by commit SHA. Example: <code class="language-plaintext highlighter-rouge">us-central1-docker.pkg.dev/preangel/myrepo/myapp:&lt;SHA&gt;</code>.</td>
+    </tr>
+    <tr>
+      <td>Cloud Run (Dev)</td>
+      <td>Auto-deploys on each commit; routes 100% traffic to the newest revision.</td>
+    </tr>
+    <tr>
+      <td>Cloud Run (Prod)</td>
+      <td>Receives tagged images with <code class="language-plaintext highlighter-rouge">--no-traffic</code>, then manually promoted when stable.</td>
+    </tr>
+    <tr>
+      <td>Workload Identity Federation (WIF)</td>
+      <td>Connects GitHub OIDC to GCP IAM. No JSON key, no secrets, fully keyless.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="3-workload-identity-federation--keyless-direct-access">3) Workload Identity Federation — Keyless, Direct Access</h2>
+
+<p>Workload Identity Federation (WIF) lets GitHub authenticate to GCP without using a service account key.</p>
+
+<p>How it works:</p>
+
+<p>1) GitHub Actions requests an OIDC token for each workflow run.
+2) Google’s Security Token Service exchanges it for a short-lived access token.
+3) GCP IAM grants permissions directly to that OIDC identity.</p>
+
+<p>Why it’s best practice for PreAngel:</p>
+
+<ul>
+  <li>Keyless &amp; secure: Eliminates JSON keys entirely.</li>
+  <li>Short-lived: Credentials expire automatically.</li>
+  <li>Direct IAM access: Grants roles directly to the identity — fewer layers, faster audits.</li>
+  <li>Attribute-based: Scopes can match exact repos, branches, or tags.</li>
+  <li>Zero hidden state: All roles and mappings live in declarative scripts.</li>
+</ul>
+
+<hr />
+
+<h2 id="4-iam-setup-for-direct-access">4) IAM Setup for Direct Access</h2>
+
+<p>Create a Workload Identity Pool and Provider, then grant access directly to your GitHub repository identity:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">PROJECT_ID</span><span class="o">=</span>preangel
+<span class="nv">PROJECT_NUMBER</span><span class="o">=</span><span class="si">$(</span>gcloud projects describe <span class="nv">$PROJECT_ID</span> <span class="nt">--format</span><span class="o">=</span><span class="s1">'value(projectNumber)'</span><span class="si">)</span>
+<span class="nv">POOL_ID</span><span class="o">=</span>github-pool
+<span class="nv">OWNER</span><span class="o">=</span>PreAngel
+<span class="nv">REPO</span><span class="o">=</span>myrepo
+
+<span class="c"># Create WIF pool &amp; provider</span>
+gcloud iam workload-identity-pools create <span class="nv">$POOL_ID</span> <span class="se">\</span>
+  <span class="nt">--project</span><span class="o">=</span><span class="nv">$PROJECT_ID</span> <span class="nt">--location</span><span class="o">=</span>global <span class="nt">--display-name</span><span class="o">=</span><span class="s2">"GitHub Pool"</span>
+
+gcloud iam workload-identity-pools providers create-oidc github-provider <span class="se">\</span>
+  <span class="nt">--project</span><span class="o">=</span><span class="nv">$PROJECT_ID</span> <span class="nt">--location</span><span class="o">=</span>global <span class="nt">--workload-identity-pool</span><span class="o">=</span><span class="nv">$POOL_ID</span> <span class="se">\</span>
+  <span class="nt">--issuer-uri</span><span class="o">=</span><span class="s2">"https://token.actions.githubusercontent.com"</span> <span class="se">\</span>
+  <span class="nt">--attribute-mapping</span><span class="o">=</span><span class="s2">"google.subject=assertion.sub,attribute.repository=assertion.repository,attribute.ref=assertion.ref"</span>
+
+<span class="c"># Bind IAM roles directly to the repo’s OIDC identity</span>
+<span class="nv">REPO_MEMBER</span><span class="o">=</span><span class="s2">"principalSet://iam.googleapis.com/projects/</span><span class="k">${</span><span class="nv">PROJECT_NUMBER</span><span class="k">}</span><span class="s2">/locations/global/workloadIdentityPools/</span><span class="k">${</span><span class="nv">POOL_ID</span><span class="k">}</span><span class="s2">/attribute.repository/</span><span class="k">${</span><span class="nv">OWNER</span><span class="k">}</span><span class="s2">/</span><span class="k">${</span><span class="nv">REPO</span><span class="k">}</span><span class="s2">"</span>
+
+gcloud projects add-iam-policy-binding <span class="nv">$PROJECT_ID</span> <span class="se">\</span>
+  <span class="nt">--member</span><span class="o">=</span><span class="s2">"</span><span class="nv">$REPO_MEMBER</span><span class="s2">"</span> <span class="nt">--role</span><span class="o">=</span><span class="s2">"roles/run.admin"</span>
+
+gcloud projects add-iam-policy-binding <span class="nv">$PROJECT_ID</span> <span class="se">\</span>
+  <span class="nt">--member</span><span class="o">=</span><span class="s2">"</span><span class="nv">$REPO_MEMBER</span><span class="s2">"</span> <span class="nt">--role</span><span class="o">=</span><span class="s2">"roles/artifactregistry.writer"</span>
+</code></pre></div></div>
+
+<p>Now this GitHub repository can deploy to Cloud Run and push to Artifact Registry without any service account.</p>
+
+<hr />
+
+<h2 id="5-repository-variables">5) Repository Variables</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Example</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>PROJECT_ID</td>
+      <td><code class="language-plaintext highlighter-rouge">preangel</code></td>
+      <td>GCP project ID</td>
+    </tr>
+    <tr>
+      <td>REGION</td>
+      <td><code class="language-plaintext highlighter-rouge">us-central1</code></td>
+      <td>Deployment region</td>
+    </tr>
+    <tr>
+      <td>AR_REPO</td>
+      <td><code class="language-plaintext highlighter-rouge">myrepo</code></td>
+      <td>Artifact Registry repo name</td>
+    </tr>
+    <tr>
+      <td>GCP_WIP</td>
+      <td><code class="language-plaintext highlighter-rouge">projects/123456789/locations/global/workloadIdentityPools/github-pool/providers/github-provider</code></td>
+      <td>WIF Provider resource path</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>These are configured as GitHub Variables — not secrets.</p>
+
+<hr />
+
+<h2 id="6-the-two-workflows--fully-declarative">6) The Two Workflows — Fully Declarative</h2>
+
+<h3 id="-githubworkflowsdevyml">① <code class="language-plaintext highlighter-rouge">.github/workflows/dev.yml</code></h3>
+
+<p>Builds, pushes, and deploys automatically on every commit to main.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">dev-deploy</span>
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">main</span> <span class="pi">]</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">deploy-dev</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">permissions</span><span class="pi">:</span>
+      <span class="na">contents</span><span class="pi">:</span> <span class="s">read</span>
+      <span class="na">id-token</span><span class="pi">:</span> <span class="s">write</span>
+    <span class="na">env</span><span class="pi">:</span>
+      <span class="na">REGION</span><span class="pi">:</span> <span class="s">$</span>
+      <span class="na">PROJECT_ID</span><span class="pi">:</span> <span class="s">$</span>
+      <span class="na">AR_REPO</span><span class="pi">:</span> <span class="s">$</span>
+      <span class="na">IMAGE</span><span class="pi">:</span> <span class="s">$-docker.pkg.dev/$/$/myapp:$</span>
+
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v4</span>
+
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">google-github-actions/auth@v2</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">workload_identity_provider</span><span class="pi">:</span> <span class="s">$</span>
+          <span class="na">token_format</span><span class="pi">:</span> <span class="s1">'</span><span class="s">access_token'</span>
+          <span class="na">create_credentials_file</span><span class="pi">:</span> <span class="kc">true</span>
+
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">google-github-actions/setup-gcloud@v2</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Build &amp; Push Image</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">gcloud auth configure-docker $REGION-docker.pkg.dev --quiet</span>
+          <span class="s">docker build -t "$IMAGE" .</span>
+          <span class="s">docker push "$IMAGE"</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Deploy to Dev</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">gcloud run deploy myapp-dev \</span>
+            <span class="s">--region $REGION \</span>
+            <span class="s">--image "$IMAGE" \</span>
+            <span class="s">--allow-unauthenticated \</span>
+            <span class="s">--revision-suffix=$ \</span>
+            <span class="s">--condition=None</span>
+          <span class="s">gcloud run services update-traffic myapp-dev \</span>
+            <span class="s">--region $REGION \</span>
+            <span class="s">--to-latest \</span>
+            <span class="s">--condition=None</span>
+</code></pre></div></div>
+
+<h3 id="-githubworkflowsreleaseyml">② <code class="language-plaintext highlighter-rouge">.github/workflows/release.yml</code></h3>
+
+<p>Uses the same image from Artifact Registry to deploy tagged releases to Prod.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">prod-deploy</span>
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span> <span class="s1">'</span><span class="s">v*'</span> <span class="pi">]</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">deploy-prod</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">permissions</span><span class="pi">:</span>
+      <span class="na">contents</span><span class="pi">:</span> <span class="s">read</span>
+      <span class="na">id-token</span><span class="pi">:</span> <span class="s">write</span>
+    <span class="na">env</span><span class="pi">:</span>
+      <span class="na">REGION</span><span class="pi">:</span> <span class="s">$</span>
+      <span class="na">PROJECT_ID</span><span class="pi">:</span> <span class="s">$</span>
+      <span class="na">AR_REPO</span><span class="pi">:</span> <span class="s">$</span>
+      <span class="na">IMAGE_TAG</span><span class="pi">:</span> <span class="s">$-docker.pkg.dev/$/$/myapp:$</span>
+
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v4</span>
+        <span class="na">with</span><span class="pi">:</span> <span class="pi">{</span> <span class="nv">fetch-depth</span><span class="pi">:</span> <span class="nv">0</span> <span class="pi">}</span>
+
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">google-github-actions/auth@v2</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">workload_identity_provider</span><span class="pi">:</span> <span class="s">$</span>
+          <span class="na">token_format</span><span class="pi">:</span> <span class="s1">'</span><span class="s">access_token'</span>
+          <span class="na">create_credentials_file</span><span class="pi">:</span> <span class="kc">true</span>
+
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">google-github-actions/setup-gcloud@v2</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Wait for Image</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">for i in {1..30}; do</span>
+            <span class="s">if gcloud artifacts docker images describe "$IMAGE_TAG" &gt;/dev/null 2&gt;&amp;1; then break; fi</span>
+            <span class="s">sleep 10;</span>
+          <span class="s">done</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Resolve Digest</span>
+        <span class="na">id</span><span class="pi">:</span> <span class="s">digest</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">DIGEST=$(gcloud artifacts docker images describe "$IMAGE_TAG" --format='value(image_summary.digest)')</span>
+          <span class="s">echo "digest=$DIGEST" &gt;&gt; $GITHUB_OUTPUT</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Deploy to Prod (No Traffic)</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">REF="$REGION-docker.pkg.dev/$PROJECT_ID/$AR_REPO/myapp@$"</span>
+          <span class="s">gcloud run deploy myapp \</span>
+            <span class="s">--region $REGION \</span>
+            <span class="s">--image "$REF" \</span>
+            <span class="s">--no-traffic \</span>
+            <span class="s">--revision-suffix=$-$ \</span>
+            <span class="s">--allow-unauthenticated \</span>
+            <span class="s">--condition=None</span>
+</code></pre></div></div>
+
+<p>Manual rollout when verified:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gcloud run services update-traffic myapp <span class="nt">--region</span> us-central1 <span class="nt">--to-latest</span> <span class="nt">--condition</span><span class="o">=</span>None
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="7-why-this-is-the-best-practice-for-us">7) Why This Is the Best Practice for Us</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Principle</th>
+      <th>Reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Single Source of Truth</td>
+      <td>All workflows, configs, and permissions live in Git — never in the UI.</td>
+    </tr>
+    <tr>
+      <td>Direct Access via WIF</td>
+      <td>No service account, no keys — just short-lived credentials tied to our repo identity.</td>
+    </tr>
+    <tr>
+      <td>Artifact Reuse</td>
+      <td>The same image tested in Dev is promoted to Prod. Guaranteed consistency.</td>
+    </tr>
+    <tr>
+      <td>Two Stages Only</td>
+      <td>Fewer moving parts → faster deploys → fewer errors.</td>
+    </tr>
+    <tr>
+      <td>Manual Traffic Promotion</td>
+      <td>Adds human verification at the most critical moment: production.</td>
+    </tr>
+    <tr>
+      <td>Declarative Everything</td>
+      <td>Each workflow file fully describes how and why it runs.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>✅ The result: secure, minimal, transparent, and automation-ready — the best practice for PreAngel’s AI-native product stack.</p>
+
+<hr />
+
+<h2 id="8-conclusion--the-preangel-way">8) Conclusion — The PreAngel Way</h2>
+
+<p>PreAngel’s two-stage pipeline represents the ideal harmony between automation and human judgment:</p>
+
+<ul>
+  <li>Dev runs continuously and fearlessly.</li>
+  <li>Prod deploys intentionally and safely.</li>
+  <li>IAM is keyless and direct.</li>
+  <li>Every configuration is visible, versioned, and reproducible.</li>
+</ul>
+
+<p>Build once. Test once. Deploy deliberately.</p>
+
+<hr />
+
+<h2 id="appendix-a--background-and-rationale-from-earlier-write-up-updated-to-devprod">Appendix A — Background and Rationale (from earlier write-up, updated to Dev/Prod)</h2>
+
+<p>We started like most teams — with five or six deployment environments: <code class="language-plaintext highlighter-rouge">dev</code>, <code class="language-plaintext highlighter-rouge">qa</code>, <code class="language-plaintext highlighter-rouge">preview</code>, <code class="language-plaintext highlighter-rouge">staging</code>, <code class="language-plaintext highlighter-rouge">preprod</code>, <code class="language-plaintext highlighter-rouge">prod</code>. Each served a purpose, but over time they became confusing, inconsistent, and expensive:</p>
+
+<ul>
+  <li>Code drifted between stages.</li>
+  <li>Builds weren’t reproducible.</li>
+  <li>Deployments slowed down because approvals piled up.</li>
+</ul>
+
+<p>We asked a radical question: What’s the minimum number of stages that guarantees speed and safety?</p>
+
+<h3 id="a1-why-we-simplified--from-many-stages-to-two">A1. Why We Simplified — From Many Stages to Two</h3>
+
+<p>After analyzing dozens of pipelines (Firebase, Vercel, AWS, GitHub Actions, Google Cloud Deploy), we found that two stages — Development and Production — are enough when you use Cloud Run’s built‑in rollout and rollback capabilities.</p>
+
+<p>This led to the new model (now finalized in v4):</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">main</code> → auto‑deploys to Dev (continuous integration &amp; validation).</li>
+  <li>A Git tag → promotes to Prod (controlled rollout with manual traffic).</li>
+</ul>
+
+<h3 id="a2-the-questions-we-asked-ourselves">A2. The Questions We Asked Ourselves</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Question</th>
+      <th>Our Finding</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Why not more stages?</td>
+      <td>Each extra environment creates cost, delay, and drift. Two are enough when rollout control is strong.</td>
+    </tr>
+    <tr>
+      <td>Why not merge dev + prod?</td>
+      <td>Dev must remain a fast, iterative environment; Prod remains stable and audited.</td>
+    </tr>
+    <tr>
+      <td>Why use Git tags for promotion?</td>
+      <td>Tags are immutable, human‑auditable, and integrate naturally with GitHub releases.</td>
+    </tr>
+    <tr>
+      <td>Why not just copy dev to production?</td>
+      <td>Cloud Run doesn’t clone environments; it shifts traffic between revisions — a safer, more elegant model.</td>
+    </tr>
+    <tr>
+      <td>How does rollback work?</td>
+      <td>Cloud Run reroutes traffic to the previous revision instantly. No redeploys, no downtime.</td>
+    </tr>
+    <tr>
+      <td>Can we preview before rollout?</td>
+      <td>Yes. Deploy a revision with 0% traffic and access via its direct URL.</td>
+    </tr>
+    <tr>
+      <td>What about frontend &amp; backend sync?</td>
+      <td>If the frontend is on Firebase App Hosting, coordinate via tags; otherwise keep APIs backward‑compatible.</td>
+    </tr>
+    <tr>
+      <td>Do we lose flexibility with two stages?</td>
+      <td>No — Cloud Run traffic splitting brings flexibility back.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="a3-the-insight--cloud-run-changed-the-rules">A3. The Insight — Cloud Run Changed the Rules</h3>
+
+<p>In traditional CI/CD systems:</p>
+
+<ul>
+  <li>Promotion = copy lower env → Prod.</li>
+  <li>Rollback = redeploy old build.</li>
+</ul>
+
+<p>In Cloud Run:</p>
+
+<ul>
+  <li>Each deploy creates an immutable revision.</li>
+  <li>Promotion = traffic migration.</li>
+  <li>Rollback = re‑routing.</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>Legacy Thinking</th>
+      <th>Cloud Run Reality</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Copy lower env to Prod</td>
+      <td>Shift traffic to new Prod revision</td>
+    </tr>
+    <tr>
+      <td>Rollback = Re‑deploy</td>
+      <td>Rollback = Redirect traffic instantly</td>
+    </tr>
+    <tr>
+      <td>Multi‑env drift</td>
+      <td>Revisions are immutable snapshots</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="a4-the-model--twostage-googlenative-deployment">A4. The Model — Two‑Stage, Google‑Native Deployment</h3>
+
+<ul>
+  <li>Stage 1 (Dev): <code class="language-plaintext highlighter-rouge">main</code> deploys automatically via GitHub Actions → Artifact Registry → Cloud Run (Dev).</li>
+  <li>Stage 2 (Prod): Reuse the same container image digest; deploy a new Prod revision with 0% traffic, then promote.</li>
+</ul>
+
+<h3 id="a5-the-reasoning--analytics-that-justify-the-choice">A5. The Reasoning — Analytics That Justify the Choice</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Challenge</th>
+      <th>Our Approach</th>
+      <th>Benefit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Build drift</td>
+      <td>Build once in Dev, reuse same artifact in Prod</td>
+      <td>Consistency &amp; reproducibility</td>
+    </tr>
+    <tr>
+      <td>Downtime risk</td>
+      <td>Gradual rollout + instant rollback</td>
+      <td>Continuous availability</td>
+    </tr>
+    <tr>
+      <td>Complex pipeline</td>
+      <td>2 clear stages + tag promotion</td>
+      <td>Simplicity + speed</td>
+    </tr>
+    <tr>
+      <td>Low observability</td>
+      <td>Cloud Run Revisions + Cloud Monitoring</td>
+      <td>Transparent release history</td>
+    </tr>
+    <tr>
+      <td>Approval fatigue</td>
+      <td>Git tag = single promotion signal</td>
+      <td>Clarity + accountability</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="a6-best-practices--cloud-run--optional-firebase-app-hosting">A6. Best Practices — Cloud Run (+ optional Firebase App Hosting)</h3>
+
+<h4 id="cloud-run">Cloud Run</h4>
+
+<ul>
+  <li>Every deploy = immutable revision.</li>
+  <li>Supports traffic splitting for canary or gradual rollout.</li>
+  <li>Rollback = redirect traffic to any previous revision.</li>
+  <li>Supports tagging of revisions for <code class="language-plaintext highlighter-rouge">candidate</code>, <code class="language-plaintext highlighter-rouge">active</code>, <code class="language-plaintext highlighter-rouge">stable</code>.</li>
+  <li>Auto‑scales per request; great for cost efficiency.</li>
+</ul>
+
+<h4 id="optional-firebase-app-hosting">Optional: Firebase App Hosting</h4>
+
+<ul>
+  <li>If your frontend is on Firebase App Hosting, use it for build history and UI‑level rollouts.</li>
+  <li>Coordinate frontend and backend via Git tags; keep APIs backward‑compatible during rollout windows.</li>
+</ul>
+
+<h4 id="together">Together</h4>
+
+<ul>
+  <li>GitHub Actions manages builds for backends; Firebase can manage frontend builds.</li>
+  <li>Cloud Run handles backend revisions, rollouts, and scaling.</li>
+  <li>Shared observability via Cloud Monitoring.</li>
+</ul>
+
+<h3 id="a7-the-new-mental-model--traffic-not-copies">A7. The New Mental Model — Traffic, Not Copies</h3>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>main branch → GitHub Actions → Artifact Registry → Cloud Run (Dev)
+     │                               │
+     │                               └─ validated image digest
+     │
+   Git tag (v1.4.2) ───────────────→ Cloud Run (Prod)
+                                      │
+                               New revision @ 0% traffic
+                                      │
+                              5% → 25% → 100% rollout
+                                      │
+                              rollback ← metrics breach
+</code></pre></div></div>
+
+<ul>
+  <li>Promotion = Traffic Migration</li>
+  <li>Rollback = Traffic Redirect</li>
+  <li>Artifact = Immutable Revision</li>
+</ul>
+
+<h3 id="a8-policies-to-enforce">A8. Policies to Enforce</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Policy</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Branch rule</td>
+      <td><code class="language-plaintext highlighter-rouge">main</code> auto‑deploys to Dev.</td>
+    </tr>
+    <tr>
+      <td>Promotion rule</td>
+      <td>Only signed Git tags can trigger Prod rollout.</td>
+    </tr>
+    <tr>
+      <td>Artifact immutability</td>
+      <td>Same container digest in Dev &amp; Prod.</td>
+    </tr>
+    <tr>
+      <td>Default rollout</td>
+      <td>Start ≤ 5%, expand if SLOs green.</td>
+    </tr>
+    <tr>
+      <td>Rollback rule</td>
+      <td>Auto‑rollback if error rate &gt; threshold.</td>
+    </tr>
+    <tr>
+      <td>Audit trail</td>
+      <td>GitHub + Cloud Run track all releases.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="a9-why-its-easy-to-operate">A9. Why It’s Easy to Operate</h3>
+
+<p>Even engineers new to DevOps can reason about this:</p>
+
+<ol>
+  <li>Code on <code class="language-plaintext highlighter-rouge">main</code> → auto in Dev.</li>
+  <li>Validate.</li>
+  <li>Tag when ready.</li>
+  <li>Cloud Run migrates traffic → monitors → finalizes.</li>
+  <li>Rollback instantly if needed.</li>
+</ol>
+
+<h3 id="a10-quick-recap--build-once-promote-by-traffic">A10. Quick Recap — Build Once, Promote by Traffic</h3>
+
+<p>This 2‑Stage model achieves the trifecta:</p>
+
+<ul>
+  <li>Speed: Continuous deployment to Dev keeps momentum high.</li>
+  <li>Safety: Gradual rollout + instant rollback prevent outages.</li>
+  <li>Simplicity: Two stages, one promotion signal.</li>
+</ul>
+
+<p>✅ Build once. Test once. Promote by shifting traffic — not by redeploying.</p>]]></content><author><name>huan</name></author><category term="guide" /><category term="deployment" /><category term="firebase" /><category term="cloudrun" /><category term="github-actions" /><category term="workload-identity-federation" /><category term="iam" /><summary type="html"><![CDATA[Purpose: Present PreAngel’s current best-practice two-stage deployment model — powered by GitHub Actions, Cloud Run, Artifact Registry, and Workload Identity Federation (WIF). This version reflects our final, production-proven approach: direct access, fully declarative, and keyless.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://wechaty.js.org/assets/2025/10-two-stage-deployment-playbook/two-stage-deployment-playbook.webp" /><media:content medium="image" url="https://wechaty.js.org/assets/2025/10-two-stage-deployment-playbook/two-stage-deployment-playbook.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">🧭 Decoding the Chaos: The Ultimate Guide to Software Environment &amp;amp; Release Naming</title><link href="https://wechaty.js.org/2025/10/12/ultimate-guide-software-environment-release-naming/" rel="alternate" type="text/html" title="🧭 Decoding the Chaos: The Ultimate Guide to Software Environment &amp;amp; Release Naming" /><published>2025-10-12T00:00:00+00:00</published><updated>2025-10-12T00:00:00+00:00</updated><id>https://wechaty.js.org/2025/10/12/ultimate-guide-software-environment-release-naming</id><content type="html" xml:base="https://wechaty.js.org/2025/10/12/ultimate-guide-software-environment-release-naming/"><![CDATA[<blockquote>
+  <p>It began with something innocent: I was deploying my Next.js app to Firebase App Hosting.</p>
+</blockquote>
+
+<p>I saw the word <strong>“Preview”</strong> everywhere.</p>
+
+<blockquote>
+  <p>Firebase App Hosting Preview — sounds perfect! A preview environment for each branch, right?</p>
+</blockquote>
+
+<p>Wrong.</p>
+
+<p>After hours of reading docs, I realized <strong>“Preview”</strong> here didn’t mean “temporary deployment.” It meant “this whole Firebase App Hosting product is in public preview (beta).”</p>
+
+<p>I had just spent my evening trying to use a <em>product maturity term</em> as an <em>environment name</em> — and that’s when I realized something:</p>
+
+<p>👉 <strong>The tech world has too many overlapping words for different stages of software.</strong></p>
+
+<p>So I decided to sort them out once and for all.</p>
+
+<hr />
+
+<h2 id="-the-root-question">❓ The Root Question</h2>
+
+<p>Why are there so many terms — <em>alpha, beta, preview, staging, prod, canary</em> — and why do they confuse even senior engineers?</p>
+
+<p>After digging through Google Cloud, AWS, Microsoft, and Vercel docs, I found the problem: <strong>these words come from different eras and different dimensions of the software lifecycle.</strong></p>
+
+<p>They were never meant to overlap — but we’ve smashed them all together over decades of DevOps evolution.</p>
+
+<p>So, I decided to rebuild clarity from first principles.</p>
+
+<hr />
+
+<h2 id="-the-research-journey">🔍 The Research Journey</h2>
+
+<p>I examined three major categories of terms:</p>
+
+<ol>
+  <li><strong>Maturity</strong> — how finished the software is (<em>alpha → beta → GA</em>)</li>
+  <li><strong>Environment</strong> — where the code is running (<em>dev → staging → prod</em>)</li>
+  <li><strong>Rollout</strong> — how users experience the release (<em>canary → feature flag → A/B</em>)</li>
+</ol>
+
+<p>Each category makes sense <strong>on its own</strong>, but the problem is that the same words are reused across categories. For example:</p>
+
+<ul>
+  <li><strong>“Preview”</strong> → means <em>product maturity</em> on Firebase, but <em>deployment environment</em> on Vercel.</li>
+  <li><strong>“Beta”</strong> → can mean a feature stage, or a pre-release environment.</li>
+  <li><strong>“Canary”</strong> → can mean a separate server or just a traffic routing strategy.</li>
+</ul>
+
+<p>And when teams communicate across orgs, these mixed meanings cause chaos.</p>
+
+<hr />
+
+<h2 id="-the-breakthrough--the-3d-axes-model">🧩 The Breakthrough — The 3D Axes Model</h2>
+
+<p>After weeks of sorting patterns and examples, I realized there are <strong>three orthogonal dimensions</strong> every team should separate:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Axis</th>
+      <th>Answers the Question</th>
+      <th>Example Terms</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Maturity</strong></td>
+      <td>How finished is this build?</td>
+      <td>Alpha → Beta → RC → GA</td>
+    </tr>
+    <tr>
+      <td><strong>Environment</strong></td>
+      <td>Where is this code running?</td>
+      <td>Dev → Preview → Staging → Prod</td>
+    </tr>
+    <tr>
+      <td><strong>Rollout</strong></td>
+      <td>Who is seeing this version?</td>
+      <td>Canary → Feature Flag → A/B</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>These three dimensions never replace each other — they <em>combine</em>.</p>
+
+<p>Example:</p>
+
+<blockquote>
+  <p>A <strong>beta feature</strong> running in a <strong>preview environment</strong> under a <strong>canary rollout</strong> is a completely valid combination.</p>
+</blockquote>
+
+<p>This framework eliminates 90% of confusion once you adopt it.</p>
+
+<hr />
+
+<h2 id="-real-world-confusions-developers-face">💡 Real-World Confusions Developers Face</h2>
+
+<h3 id="1-firebase-vs-vercel">1. Firebase vs Vercel</h3>
+
+<ul>
+  <li><strong>Firebase App Hosting Preview</strong> → means <em>product maturity</em>.</li>
+  <li><strong>Vercel Preview Deployment</strong> → means <em>per-branch environment</em>.</li>
+</ul>
+
+<p>Same word. Totally different meanings.</p>
+
+<h3 id="2-google-vs-aws">2. Google vs AWS</h3>
+
+<ul>
+  <li><strong>Google Cloud Run Beta</strong> → API version maturity.</li>
+  <li><strong>AWS Beta Stack</strong> → pre-release environment.</li>
+</ul>
+
+<p>Again, “beta” means both a <em>version</em> and an <em>environment.</em></p>
+
+<h3 id="3-teams--startups">3. Teams &amp; Startups</h3>
+
+<ul>
+  <li>Some teams say “Staging” for testing, others use “Preprod.”</li>
+  <li>Some CI/CD pipelines say “Preview,” others call it “Dev.”</li>
+  <li>Engineers from different companies argue endlessly because <strong>each uses valid terms — just in different axes.</strong></li>
+</ul>
+
+<hr />
+
+<h2 id="-the-best-practice--clean-naming-hierarchy">🧱 The Best Practice — Clean Naming Hierarchy</h2>
+
+<p>To avoid chaos, use the following modern four-tier ladder:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Environment</th>
+      <th>Purpose</th>
+      <th>Typical URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Dev</strong></td>
+      <td>Local development sandbox</td>
+      <td><code class="language-plaintext highlighter-rouge">localhost:3000</code></td>
+    </tr>
+    <tr>
+      <td><strong>Preview</strong></td>
+      <td>Per-PR auto-deploy for reviews</td>
+      <td><code class="language-plaintext highlighter-rouge">preview-{branch}.myapp.dev</code></td>
+    </tr>
+    <tr>
+      <td><strong>Staging</strong></td>
+      <td>Pre-production validation</td>
+      <td><code class="language-plaintext highlighter-rouge">staging.myapp.dev</code></td>
+    </tr>
+    <tr>
+      <td><strong>Prod</strong></td>
+      <td>Public live site</td>
+      <td><code class="language-plaintext highlighter-rouge">myapp.com</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>And keep your maturity &amp; rollout orthogonal:</p>
+
+<ul>
+  <li><strong>Maturity</strong> → <code class="language-plaintext highlighter-rouge">v1.2.0-beta.2</code>, <code class="language-plaintext highlighter-rouge">v1.2.0-rc.1</code>, <code class="language-plaintext highlighter-rouge">v1.2.0</code></li>
+  <li><strong>Rollout</strong> → canary, feature flag, phased, or full.</li>
+</ul>
+
+<h3 id="-example-of-clean-combined-usage">✅ Example of clean combined usage</h3>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Release: v1.5.0-beta
+Environment: staging
+Rollout: 10% canary
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="️-why-this-matters">⚙️ Why This Matters</h2>
+
+<p>When you mix dimensions — say, calling your environment “Beta” — it creates:</p>
+
+<ul>
+  <li>CI/CD confusion (what branch goes where?)</li>
+  <li>Miscommunication between Dev, QA, and PMs</li>
+  <li>Misalignment in cloud dashboard naming</li>
+  <li>Lost hours debugging wrong environments</li>
+</ul>
+
+<p>Standardizing these names saves <strong>mental energy</strong> — and energy is the most expensive currency in software.</p>
+
+<hr />
+
+<h2 id="-the-dos-and-donts">✅ The Do’s and Don’ts</h2>
+
+<h3 id="-do">✅ Do</h3>
+
+<ul>
+  <li>Use <strong>Dev → Preview → Staging → Prod</strong> for environments</li>
+  <li>Use <strong>Alpha → Beta → RC → GA</strong> for software maturity</li>
+  <li>Use <strong>Canary / Feature Flag</strong> for rollout strategies</li>
+  <li>Keep all three axes independent</li>
+  <li>Document the policy in your engineering handbook</li>
+</ul>
+
+<h3 id="-dont">❌ Don’t</h3>
+
+<ul>
+  <li>Reuse words like “Preview” or “Beta” across multiple meanings</li>
+  <li>Treat “Beta” as an environment — it’s a version stage</li>
+  <li>Call a temporary deployment “Staging” if it’s per-branch</li>
+  <li>Confuse product preview (Firebase) with environment preview (Vercel)</li>
+</ul>
+
+<hr />
+
+<h2 id="-conclusion">🏁 Conclusion</h2>
+
+<p>Modern software development moves fast, but language hasn’t caught up.
+When platforms like Firebase and Vercel reuse the same words in different ways, even experienced engineers stumble.</p>
+
+<p>The fix isn’t to invent new jargon — it’s to <strong>separate the three axes of reality</strong>:</p>
+
+<blockquote>
+  <p><strong>Maturity → Environment → Rollout</strong></p>
+</blockquote>
+
+<p>Once you align your naming and documentation to that framework, your DevOps pipeline becomes instantly understandable — not just for your team, but for future you.</p>
+
+<hr />
+
+<p><em>Written for engineers who are tired of semantic bugs in human communication.</em></p>]]></content><author><name>huan</name></author><category term="guide" /><category term="docs" /><summary type="html"><![CDATA[🚀 Confused by terms like Preview, Beta, and Staging? You're not alone. This post breaks down the chaos into three clear axes every developer should know - By Huan Li — a developer once lost in the fog of 'Preview' and 'Beta']]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://wechaty.js.org/assets/2025/10-ultimate-guide-software-environment-release-naming/ultimate-guide-software-environment-release-naming.webp" /><media:content medium="image" url="https://wechaty.js.org/assets/2025/10-ultimate-guide-software-environment-release-naming/ultimate-guide-software-environment-release-naming.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Google Cloud Authentication — The Divio-Style Field Guide for Senior Full‑Stack Devs</title><link href="https://wechaty.js.org/2025/09/12/google-cloud-authentication-the-understandable-guide/" rel="alternate" type="text/html" title="Google Cloud Authentication — The Divio-Style Field Guide for Senior Full‑Stack Devs" /><published>2025-09-12T00:00:00+00:00</published><updated>2025-09-12T00:00:00+00:00</updated><id>https://wechaty.js.org/2025/09/12/google-cloud-authentication-the-understandable-guide</id><content type="html" xml:base="https://wechaty.js.org/2025/09/12/google-cloud-authentication-the-understandable-guide/"><![CDATA[<p>A practical, copy‑pastable guide that untangles identities, credentials, tokens, ADC, OAuth 2.0, API keys, service accounts, impersonation, and Workload Identity Federation — organised with the Divio documentation system: Tutorials, How‑to, Explanation, and Reference.</p>
+
+<ul>
+  <li>Audience: <code class="language-plaintext highlighter-rouge">Senior full‑stack dev</code></li>
+  <li>Goal: <code class="language-plaintext highlighter-rouge">clarity &amp; correct defaults</code></li>
+  <li>Scope: <code class="language-plaintext highlighter-rouge">Google Cloud + Google APIs</code></li>
+</ul>
+
+<h2 id="map">🗺️ The Landscape at a Glance</h2>
+
+<p>Use this map to navigate to the right quadrant quickly.</p>
+
+<ul>
+  <li>Identities: Human <code class="language-plaintext highlighter-rouge">user@</code> vs <code class="language-plaintext highlighter-rouge">service‑account@</code>. Services run as service accounts.</li>
+  <li>Credentials → Tokens: Credentials generate short‑lived tokens (access/ID). Libraries auto‑refresh.</li>
+  <li>ADC (Default): Client libraries auto‑discover credentials locally and in prod.</li>
+  <li>Production on Google Cloud: Attach a service account to Cloud Run/GKE/GCE → metadata server → tokens. No key files.</li>
+  <li>Outside Google Cloud: Prefer Workload Identity Federation (AWS/Azure/on‑prem OIDC/SAML). Avoid long‑lived JSON keys.</li>
+  <li>End‑user sign‑in: OAuth 2.0 / OpenID Connect for users. Your backend still needs its own service identity.</li>
+  <li>API keys: Identify the calling project for select public APIs; not IAM authorization.</li>
+  <li>Impersonation: Act as a target service account without distributing its key; auditable and least‑privilege.</li>
+</ul>
+
+<h2 id="tutorials">📚 Tutorials (learning‑oriented)</h2>
+
+<p>Follow these end‑to‑end lessons to get hands‑on quickly. Repeatable, minimal, correct.</p>
+
+<h3 id="t1-local-dev-with-application-default-credentials-no-key-files">T1. Local dev with Application Default Credentials (no key files)</h3>
+
+<p>Goal: call a Google Cloud API from your laptop using your user sign‑in and let libraries fetch/refresh tokens automatically.</p>
+
+<ol>
+  <li>Install the Google Cloud CLI (<code class="language-plaintext highlighter-rouge">gcloud</code>).</li>
+  <li>Run <code class="language-plaintext highlighter-rouge">gcloud auth application-default login</code> and complete the browser flow. This seeds local Application Default Credentials (ADC) for client libraries.</li>
+  <li>Write code using a Cloud Client Library (e.g., Storage). Don’t pass tokens; the library uses ADC automatically.</li>
+  <li>Optional: inspect a token: <code class="language-plaintext highlighter-rouge">gcloud auth application-default print-access-token</code>. Tokens are short‑lived.</li>
+</ol>
+
+<p>Example (Node.js):</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Node.js example</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Storage</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@google-cloud/storage</span><span class="dl">'</span>
+<span class="kd">const</span> <span class="nx">storage</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Storage</span><span class="p">()</span> <span class="c1">// uses ADC</span>
+<span class="kd">const</span> <span class="p">[</span><span class="nx">buckets</span><span class="p">]</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">storage</span><span class="p">.</span><span class="nf">getBuckets</span><span class="p">()</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">buckets</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="nx">b</span> <span class="o">=&gt;</span> <span class="nx">b</span><span class="p">.</span><span class="nx">name</span><span class="p">))</span>
+</code></pre></div></div>
+
+<h3 id="t2-production-on-cloud-run-with-an-attached-service-account-no-keys">T2. Production on Cloud Run with an attached service account (no keys)</h3>
+
+<p>Goal: deploy to Cloud Run so the runtime’s metadata server issues tokens for your service account; libraries still use ADC.</p>
+
+<ol>
+  <li>Create a least‑privilege service account (e.g., <code class="language-plaintext highlighter-rouge">svc-myapp@</code>) and grant only required IAM roles.</li>
+  <li>Deploy and set Service account for the service. Cloud Run attaches that identity to your container.</li>
+  <li>Your code remains unchanged (uses ADC). At runtime, the library calls the metadata server to mint/refresh tokens.</li>
+  <li>For cross‑service calls, prefer service account impersonation rather than distributing keys.</li>
+</ol>
+
+<p>Example deploy:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gcloud run deploy myapi <span class="se">\</span>
+  <span class="nt">--image</span><span class="o">=</span>gcr.io/PROJECT/myapi:latest <span class="se">\</span>
+  <span class="nt">--service-account</span><span class="o">=</span>svc-myapp@PROJECT.iam.gserviceaccount.com <span class="se">\</span>
+  <span class="nt">--region</span><span class="o">=</span>us-central1
+</code></pre></div></div>
+
+<h3 id="t3-access-google-cloud-from-aws-without-key-files-workload-identity-federation">T3. Access Google Cloud from AWS without key files (Workload Identity Federation)</h3>
+
+<p>Goal: let an AWS workload obtain short‑lived Google tokens using its AWS identity — no Google key distribution.</p>
+
+<ol>
+  <li>Configure a Google Workload Identity Pool &amp; provider (trust AWS IAM). Map AWS claims (like account/role) to Google attributes.</li>
+  <li>Create a Google service account and grant it roles. Permit your pool to impersonate that service account.</li>
+  <li>In the AWS workload, use Google’s external credentials JSON (or the auth library’s WIF support) to exchange AWS STS creds → Google tokens.</li>
+  <li>Use client libraries with ADC — they read the external credentials file and handle token exchange automatically.</li>
+</ol>
+
+<p>Result: least‑privilege, short‑lived tokens; no long‑lived JSON keys to leak or rotate.</p>
+
+<h3 id="t4-calling-a-private-cloud-run-service-from-a-browser-app">T4. Calling a private Cloud Run service from a browser app</h3>
+
+<p>Goal: authenticate end‑users in the frontend, then send a request with an ID token that your Cloud Run service verifies.</p>
+
+<ol>
+  <li>Use an identity provider (e.g., Google, Identity Platform, or another OpenID Connect IdP) to sign in the user.</li>
+  <li>Obtain an ID token with the correct audience (the Cloud Run URL or a custom audience).</li>
+  <li>Send it as <code class="language-plaintext highlighter-rouge">Authorization: Bearer &lt;id_token&gt;</code>. Your service middleware verifies signature, issuer, audience, and expiry.</li>
+  <li>For backend→backend calls, continue to use access tokens from your service account identity.</li>
+</ol>
+
+<h2 id="how-to">🛠️ How‑to Guides (goal‑oriented)</h2>
+
+<h3 id="h1-choose-the-right-method-decision-helper">H1. Choose the right method (decision helper)</h3>
+
+<ul>
+  <li>Running on Google Cloud? Attach a service account → use ADC (metadata server). Best default.</li>
+  <li>Running outside Google Cloud? Prefer Workload Identity Federation. Avoid JSON key files.</li>
+  <li>CLI / local dev? <code class="language-plaintext highlighter-rouge">gcloud auth application-default login</code>.</li>
+  <li>End‑user sign‑in? OAuth 2.0 / OIDC for user tokens; plus a backend service identity for Google APIs.</li>
+  <li>Public/untrusted clients needing simple access? Only if the API supports it, use API keys with tight restrictions.</li>
+</ul>
+
+<h3 id="h2-get-an-id-token-for-cloud-runfunctions">H2. Get an ID token for Cloud Run/Functions</h3>
+
+<ol>
+  <li>From metadata server (in Cloud Run/GCE/GKE): request an ID token for the target audience.</li>
+  <li>From your dev machine: <code class="language-plaintext highlighter-rouge">gcloud auth print-identity-token --audiences=YOUR_AUDIENCE</code>.</li>
+  <li>Via impersonation: use Service Account Credentials API to mint an ID token for the target SA.</li>
+</ol>
+
+<h3 id="h3-impersonate-a-service-account-no-keys">H3. Impersonate a service account (no keys)</h3>
+
+<p>Let users or services act as a target service account with auditability.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># CLI example</span>
+gcloud auth print-access-token <span class="se">\</span>
+  <span class="nt">--impersonate-service-account</span><span class="o">=</span>svc-target@PROJECT.iam.gserviceaccount.com
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ADC for local code (Node.js)</span>
+<span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">GOOGLE_IMPERSONATE_SERVICE_ACCOUNT</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">svc-target@PROJECT.iam.gserviceaccount.com</span><span class="dl">'</span>
+<span class="c1">// Libraries now mint short‑lived tokens by impersonating the target SA</span>
+</code></pre></div></div>
+
+<p>Grant the caller <code class="language-plaintext highlighter-rouge">roles/iam.serviceAccountTokenCreator</code> on the target service account; then apply least‑privilege roles to the target SA.</p>
+
+<h3 id="h4-use-api-keys-safely-only-where-supported">H4. Use API keys safely (only where supported)</h3>
+
+<ul>
+  <li>Restrict by API, HTTP referrer, IP, and (if supported) Android/iOS app signature.</li>
+  <li>Rotate keys and monitor usage; treat keys as secrets even though they don’t grant IAM permissions.</li>
+  <li>Prefer OAuth 2.0 or service identities for Google Cloud resources that require IAM authorization.</li>
+</ul>
+
+<h2 id="explanation">🧠 Explanation (understanding‑oriented)</h2>
+
+<h3 id="e1-identities-credentials-and-tokens">E1. Identities, credentials, and tokens</h3>
+
+<p>An identity is a principal: a human user or a service account. A credential is any mechanism that can obtain tokens for that identity: a user login session cached by <code class="language-plaintext highlighter-rouge">gcloud</code>, a service account key file, a metadata server on a Google runtime, or a federated identity from AWS/Azure/Okta. A token is a short‑lived artifact minted from those credentials: usually an OAuth 2.0 access token for Google APIs, or an OpenID Connect ID token for audience‑checked calls (e.g., Cloud Run).</p>
+
+<blockquote>
+  <p>Note: Tokens are not credentials. Credentials prove identity to Google and let you obtain tokens. Tokens are the minted proofs you actually send with API calls and they expire quickly. Let client libraries handle minting/refresh.</p>
+</blockquote>
+
+<h3 id="e2-application-default-credentials-adc">E2. Application Default Credentials (ADC)</h3>
+
+<p>ADC is a discovery strategy built into Google auth libraries. In dev, it checks your local environment (env vars, well‑known files created by <code class="language-plaintext highlighter-rouge">gcloud auth application-default login</code>). In prod on Google Cloud, it consults the metadata server for the attached service account. ADC can also read external credentials files used for federation. This is why your code doesn’t change between laptop and production.</p>
+
+<h3 id="e3-oauth20-vs-api-keys-vs-service-accounts">E3. OAuth 2.0 vs API keys vs service accounts</h3>
+
+<ul>
+  <li>OAuth 2.0 / OpenID Connect: for end‑user sign‑in and delegated access. Your app requests tokens with explicit scopes and may refresh them. Use for user data and sign‑in flows.</li>
+  <li>Service accounts: non‑human identities for workloads. On Google Cloud, attach them to runtimes and let the metadata server mint tokens. Outside Google Cloud, use Workload Identity Federation or, if you must, a key file (not recommended).</li>
+  <li>API keys: identify the calling project for certain public APIs. They do not convey IAM permissions and are not a general auth method for Google Cloud resources.</li>
+</ul>
+
+<h3 id="e4-workload-identity-federation-wif">E4. Workload Identity Federation (WIF)</h3>
+
+<p>WIF lets external workloads (AWS/Azure/on‑prem) exchange their native identity for short‑lived Google tokens, mapped to a Google service account that holds IAM roles. This removes long‑lived Google key files from your supply chain and centralises trust in your provider or IdP.</p>
+
+<h3 id="e5-service-account-impersonation">E5. Service account impersonation</h3>
+
+<p>Impersonation lets a caller mint short‑lived tokens to act as a target service account (with audit trails). Ideal for CI/CD and for letting a narrow identity temporarily gain the target’s permissions without sharing keys.</p>
+
+<h3 id="e6-access-tokens-vs-id-tokens">E6. Access tokens vs ID tokens</h3>
+
+<ul>
+  <li>Access token: bearer token for Google APIs (authorised by scopes + IAM).</li>
+  <li>ID token: proves the caller’s identity to a specific audience (e.g., your Cloud Run URL). Your service verifies audience/issuer/expiry before trusting it.</li>
+  <li>Rule of thumb: backend→Google API ⇒ access token; browser→your backend ⇒ ID token.</li>
+</ul>
+
+<h2 id="reference">📖 Reference (information‑oriented)</h2>
+
+<h3 id="r1-adc-lookup-high-level">R1. ADC lookup (high level)</h3>
+
+<ol>
+  <li>Env var: <code class="language-plaintext highlighter-rouge">GOOGLE_APPLICATION_CREDENTIALS</code> pointing to a credential file.</li>
+  <li>Well‑known user location: credentials seeded by <code class="language-plaintext highlighter-rouge">gcloud auth application-default login</code>.</li>
+  <li>Metadata server: when running on Cloud Run/GKE/GCE with an attached service account.</li>
+  <li>External credentials: federation config files for WIF.</li>
+</ol>
+
+<h3 id="r2-token-types-selected">R2. Token types (selected)</h3>
+
+<ul>
+  <li>Access token — OAuth 2.0 token to call Google APIs.</li>
+  <li>ID token — OpenID Connect JWT for audience‑checked requests (e.g., Cloud Run).</li>
+  <li>Self‑signed JWT — service account assertion used by libraries to obtain access tokens (or in some cases to call endpoints directly).</li>
+</ul>
+
+<h3 id="r3-handy-cli">R3. Handy CLI</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># User ADC login (local dev)</span>
+gcloud auth application-default login
+
+<span class="c"># Print short‑lived access token for current ADC</span>
+gcloud auth application-default print-access-token
+
+<span class="c"># ID token for a specific audience (Cloud Run URL or custom)</span>
+gcloud auth print-identity-token <span class="nt">--audiences</span><span class="o">=</span>https://&lt;service-url&gt;
+
+<span class="c"># Use impersonation in CLI</span>
+gcloud auth print-access-token <span class="se">\</span>
+  <span class="nt">--impersonate-service-account</span><span class="o">=</span>svc@PROJECT.iam.gserviceaccount.com
+</code></pre></div></div>
+
+<h3 id="r4-security-recommendations">R4. Security recommendations</h3>
+
+<ul>
+  <li>Prefer attached identities (metadata server) on Google Cloud; avoid distributing JSON key files.</li>
+  <li>Use Workload Identity Federation for external workloads.</li>
+  <li>Use impersonation for CI/CD and human break‑glass flows; audit who minted tokens.</li>
+  <li>Give the target service account least‑privilege roles; grant callers only TokenCreator for impersonation.</li>
+  <li>If you must use API keys, restrict them aggressively and monitor usage.</li>
+</ul>
+
+<h2 id="confusions">🧩 Common confusions &amp; straight answers</h2>
+
+<h3 id="tokens-are-not-credentials-huh">“Tokens are not credentials.” Huh?</h3>
+
+<p>Credentials are how you authenticate (user login, key, metadata server, federation). Tokens are what you use after you authenticate. Tokens expire; credentials persist (or are renewable) and can mint new tokens.</p>
+
+<h3 id="adc-vs-gcloud-auth-login-vs-gcloud-auth-application-default-login">ADC vs <code class="language-plaintext highlighter-rouge">gcloud auth login</code> vs <code class="language-plaintext highlighter-rouge">gcloud auth application-default login</code></h3>
+
+<p><code class="language-plaintext highlighter-rouge">gcloud auth login</code> authenticates the CLI itself. <code class="language-plaintext highlighter-rouge">gcloud auth application-default login</code> seeds ADC for your code and client libraries. In production, you won’t run either — runtimes use the metadata server via ADC.</p>
+
+<h3 id="api-keys-vs-oauth20--service-accounts">API keys vs OAuth 2.0 / service accounts</h3>
+
+<p>API keys identify the calling project for certain public APIs; they don’t carry IAM permissions. For Google Cloud resources that enforce IAM, use user OAuth or (more commonly) service accounts with ADC.</p>
+
+<h3 id="when-do-i-need-an-id-token">When do I need an ID token?</h3>
+
+<p>When your service wants to verify the caller’s identity and intended audience (e.g., a SPA calling Cloud Run). For backend→Google API calls, you normally use an access token instead.</p>
+
+<h3 id="keys-vs-federation-vs-impersonation">Keys vs Federation vs Impersonation</h3>
+
+<p>Long‑lived key files are risky and hard to rotate. Prefer federation outside Google Cloud and impersonation between identities. Both yield short‑lived, auditable tokens with least privilege.</p>
+
+<h3 id="libraries-vs-manual-rest-calls">Libraries vs manual REST calls</h3>
+
+<p>Client libraries handle ADC and token refresh for you. If you use raw REST, you’ll obtain/refresh tokens yourself — fine for tooling, but error‑prone for apps.</p>
+
+<hr />
+
+<p>Structured with the Divio system: Tutorials · How‑to · Explanation · Reference.</p>]]></content><author><name>huan</name></author><category term="guide" /><category term="google-cloud" /><category term="authentication" /><category term="adc" /><category term="oauth2" /><category term="service-accounts" /><category term="impersonation" /><category term="workload-identity-federation" /><category term="security" /><summary type="html"><![CDATA[A single-page guide to identities, credentials, tokens, ADC, OAuth 2.0, API keys, service accounts, impersonation, and Workload Identity Federation — structured by Divio: Tutorials, How‑to, Explanation, Reference.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://wechaty.js.org/assets/2025/09-google-cloud-authentication-the-understandable-guide/adc-auth.webp" /><media:content medium="image" url="https://wechaty.js.org/assets/2025/09-google-cloud-authentication-the-understandable-guide/adc-auth.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Breaking the Reverse Engineering Barrier: How LLMs and Frida Are Revolutionizing WeChat Analysis</title><link href="https://wechaty.js.org/2025/08/12/ai-powered-reverse-engineering-concept/" rel="alternate" type="text/html" title="Breaking the Reverse Engineering Barrier: How LLMs and Frida Are Revolutionizing WeChat Analysis" /><published>2025-08-12T00:00:00+00:00</published><updated>2025-08-12T00:00:00+00:00</updated><id>https://wechaty.js.org/2025/08/12/ai-powered-reverse-engineering-concept</id><content type="html" xml:base="https://wechaty.js.org/2025/08/12/ai-powered-reverse-engineering-concept/"><![CDATA[<blockquote>
+  <p>A deep dive into building an AI-powered reverse engineering agent that automatically locates and hooks WeChat’s message handling functions</p>
+</blockquote>
+
+<h2 id="the-challenge-that-started-it-all">The Challenge That Started It All</h2>
+
+<p>It was 3 AM, and I was staring at yet another hexdump of WeChat.exe, trying to locate the <code class="language-plaintext highlighter-rouge">onMessage()</code> function that had moved (again) in the latest update. As a security researcher working on understanding WeChat’s communication protocols, I faced this frustrating routine every few weeks. Each WeChat update would shuffle function addresses, change calling conventions, and sometimes even inline critical functions, making my carefully crafted hooks useless.</p>
+
+<p>The traditional approach was painfully manual:</p>
+
+<ol>
+  <li><strong>Static Analysis</strong>: Hours spent in IDA Pro or Ghidra, hunting for string references</li>
+  <li><strong>Pattern Matching</strong>: Manually comparing assembly code between versions</li>
+  <li><strong>Trial and Error</strong>: Testing dozens of potential function candidates</li>
+  <li><strong>Hook Development</strong>: Writing custom Frida scripts for each version</li>
+</ol>
+
+<p>This process could take days for a single function, and with WeChat’s frequent updates, it felt like digital Sisyphus — pushing the boulder up the mountain, only to watch it roll back down with each release.</p>
+
+<p>That’s when I realized: <strong>What if we could teach an AI to do this automatically?</strong></p>
+
+<h2 id="the-dawn-of-ai-powered-reverse-engineering">The Dawn of AI-Powered Reverse Engineering</h2>
+
+<p>The convergence of several breakthrough technologies in 2024-2025 created an unprecedented opportunity:</p>
+
+<h3 id="-large-language-models-revolution">🧠 <strong>Large Language Models Revolution</strong></h3>
+
+<p>Modern LLMs like GPT-5, Claude Sonnet 4, and specialized models like LLM4Decompile have achieved remarkable capabilities in understanding assembly code. Recent research shows that LLM4Decompile can achieve up to 21% accurate decompilation rate, significantly outperforming GPT-4 on assembly analysis tasks.</p>
+
+<h3 id="-fridas-dynamic-instrumentation-power">🔍 <strong>Frida’s Dynamic Instrumentation Power</strong></h3>
+
+<p>Frida enables real-time memory analysis, function hooking, and code injection — providing the “eyes and hands” to interact with running processes.</p>
+
+<h3 id="-model-context-protocol-mcp-integration">🔗 <strong>Model Context Protocol (MCP) Integration</strong></h3>
+
+<p>MCP standardizes how AI systems interact with external tools, allowing seamless integration between LLMs and dynamic analysis frameworks.</p>
+
+<p><strong>The Vision</strong>: Combine these technologies to create a self-evolving reverse engineering system where:</p>
+
+<ul>
+  <li><strong>Frida</strong> provides real-time process observation</li>
+  <li><strong>LLMs</strong> provide intelligent pattern recognition and decision making</li>
+  <li><strong>MCP</strong> provides the communication layer between them</li>
+</ul>
+
+<h2 id="exploring-the-technical-landscape">Exploring the Technical Landscape</h2>
+
+<p>Before diving into our solution, let’s examine the current state of AI-assisted reverse engineering:</p>
+
+<h3 id="existing-approaches-and-their-limitations">Existing Approaches and Their Limitations</h3>
+
+<p><strong>Traditional Static Analysis Tools:</strong></p>
+
+<ul>
+  <li>IDA Pro, Ghidra, Binary Ninja — powerful but require extensive manual analysis</li>
+  <li>Limited cross-version adaptation capabilities</li>
+  <li>No real-time learning from dynamic behavior</li>
+</ul>
+
+<p><strong>Recent AI-Powered Tools:</strong></p>
+
+<ul>
+  <li><strong>Binary Ninja Sidekick</strong>: AI-powered plugin with structure recovery</li>
+  <li><strong>ReverserAI</strong>: Local LLM for reverse engineering tasks</li>
+  <li><strong>LLM4Decompile</strong>: Specialized models for binary decompilation</li>
+</ul>
+
+<p><strong>The Gap</strong>: None of these solutions provide <strong>automated, cross-version function location with real-time validation</strong> for specific applications like WeChat.</p>
+
+<h3 id="why-wechat-presents-unique-challenges">Why WeChat Presents Unique Challenges</h3>
+
+<p>WeChat.exe is particularly challenging for reverse engineering because:</p>
+
+<ol>
+  <li><strong>Frequent Updates</strong>: Monthly releases with significant binary changes</li>
+  <li><strong>Anti-Analysis Measures</strong>: Obfuscation and packing techniques</li>
+  <li><strong>Complex Architecture</strong>: Multi-threaded message processing with intricate data structures</li>
+  <li><strong>Version Variations</strong>: Different builds for different regions and features</li>
+</ol>
+
+<h2 id="our-revolutionary-solution-the-llm-frida-hybrid-agent">Our Revolutionary Solution: The LLM-Frida Hybrid Agent</h2>
+
+<p>After months of research and experimentation, we developed a comprehensive solution that addresses these challenges through intelligent automation.</p>
+
+<h3 id="architecture-overview">Architecture Overview</h3>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>┌─────────────────────┐    ┌──────────────────────┐    ┌─────────────────────┐
+│   LLM Analysis      │    │   MCP Server         │    │   Frida Engine      │
+│   Engine            │◄──►│   (TypeScript)       │◄──►│   (Dynamic Hooks)   │
+│                     │    │                      │    │                     │
+│ • Pattern Recognition│    │ • Tool Management    │    │ • Memory Analysis   │
+│ • Function Matching │    │ • Resource Serving   │    │ • Hook Deployment   │
+│ • Parameter Analysis│    │ • Session Management │    │ • Real-time Data    │
+└─────────────────────┘    └──────────────────────┘    └─────────────────────┘
+           │                           │                           │
+           └───────────────────────────┼───────────────────────────┘
+                                       │
+                        ┌──────────────────────┐
+                        │   WeChat.exe         │
+                        │   Target Process     │
+                        └──────────────────────┘
+</code></pre></div></div>
+
+<h3 id="core-components-deep-dive">Core Components Deep Dive</h3>
+
+<p>Let’s examine each component and its implementation:</p>
+
+<h2 id="1-the-llm-analysis-engine">1. The LLM Analysis Engine</h2>
+
+<p>The heart of our system is an advanced pattern recognition engine that leverages LLM capabilities for assembly analysis:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">LLMAnalysisEngine</span> <span class="p">{</span>
+  <span class="k">private</span> <span class="nx">knownPatterns</span><span class="p">:</span> <span class="nb">Map</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">,</span> <span class="kr">string</span><span class="o">&gt;</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Map</span><span class="p">();</span>
+  
+  <span class="nf">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nf">initializeKnownPatterns</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="k">private</span> <span class="nf">initializeKnownPatterns</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// WeChat-specific message handling patterns</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">knownPatterns</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">message_handler</span><span class="dl">"</span><span class="p">,</span> <span class="s2">`
+      Typical WeChat message handler patterns:
+      1. Function prologue with stack frame setup
+      2. Parameter validation (message struct, sender info, type)
+      3. String comparisons for message type identification
+      4. Call to logging/debugging functions
+      5. Message processing logic
+      6. Return value handling
+    `</span><span class="p">);</span>
+    
+    <span class="k">this</span><span class="p">.</span><span class="nx">knownPatterns</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">windows_calling_convention</span><span class="dl">"</span><span class="p">,</span> <span class="s2">`
+      Windows x64 calling convention:
+      - First 4 parameters: RCX, RDX, R8, R9
+      - Additional parameters on stack
+      - Return value in RAX
+      - Caller cleanup
+    `</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">async</span> <span class="nf">analyzeAssemblyForMessageHandler</span><span class="p">(</span>
+    <span class="nx">currentAssembly</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> 
+    <span class="nx">previousVersionInfo</span><span class="p">?:</span> <span class="p">{</span> <span class="na">address</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="na">assembly</span><span class="p">:</span> <span class="kr">string</span> <span class="p">}</span>
+  <span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">FunctionMatch</span><span class="p">[]</span><span class="o">&gt;</span> <span class="p">{</span>
+    
+    <span class="kd">const</span> <span class="nx">prompt</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nf">buildAnalysisPrompt</span><span class="p">(</span><span class="nx">currentAssembly</span><span class="p">,</span> <span class="nx">previousVersionInfo</span><span class="p">);</span>
+    
+    <span class="c1">// Perform sophisticated pattern matching</span>
+    <span class="kd">const</span> <span class="nx">matches</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nf">performPatternMatching</span><span class="p">(</span><span class="nx">currentAssembly</span><span class="p">,</span> <span class="nx">previousVersionInfo</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="nx">matches</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="nx">match</span> <span class="o">=&gt;</span> <span class="p">({</span>
+      <span class="na">address</span><span class="p">:</span> <span class="nx">match</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
+      <span class="na">confidence</span><span class="p">:</span> <span class="nx">match</span><span class="p">.</span><span class="nx">confidence</span><span class="p">,</span>
+      <span class="na">reasoning</span><span class="p">:</span> <span class="nx">match</span><span class="p">.</span><span class="nx">reasoning</span><span class="p">,</span>
+      <span class="na">disassembly</span><span class="p">:</span> <span class="nx">match</span><span class="p">.</span><span class="nx">disassembly</span><span class="p">,</span>
+      <span class="na">parameters</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nf">extractParameters</span><span class="p">(</span><span class="nx">match</span><span class="p">.</span><span class="nx">disassembly</span><span class="p">)</span>
+    <span class="p">}));</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Key Innovation</strong>: The engine doesn’t just look for generic patterns — it learns WeChat-specific behaviors and adapts to version changes using cross-version reference analysis.</p>
+
+<h3 id="intelligent-pattern-matching-algorithm">Intelligent Pattern Matching Algorithm</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span> <span class="k">async</span> <span class="nf">performPatternMatching</span><span class="p">(</span>
+  <span class="nx">assembly</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> 
+  <span class="nx">previousInfo</span><span class="p">?:</span> <span class="kr">any</span>
+<span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nb">Array</span><span class="o">&lt;</span><span class="p">{</span><span class="na">address</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="na">confidence</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="na">reasoning</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="na">disassembly</span><span class="p">:</span> <span class="kr">string</span><span class="p">}</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+  
+  <span class="kd">const</span> <span class="na">matches</span><span class="p">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="p">{</span><span class="na">address</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="na">confidence</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="na">reasoning</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="na">disassembly</span><span class="p">:</span> <span class="kr">string</span><span class="p">}</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[];</span>
+  
+  <span class="c1">// Pattern 1: Function with message-related string references</span>
+  <span class="kd">const</span> <span class="nx">messageStrings</span> <span class="o">=</span> <span class="nx">assembly</span><span class="p">.</span><span class="nf">match</span><span class="p">(</span><span class="sr">/lea</span><span class="se">\s</span><span class="sr">+</span><span class="se">\w</span><span class="sr">+,</span><span class="se">\s</span><span class="sr">*</span><span class="se">\[</span><span class="sr">rip</span><span class="se">\+</span><span class="sr">0x</span><span class="se">[</span><span class="sr">0-9a-f</span><span class="se">]</span><span class="sr">+</span><span class="se">\]\s</span><span class="sr">*#.*</span><span class="se">(?:</span><span class="sr">message|msg|chat|recv</span><span class="se">)</span><span class="sr">/gi</span><span class="p">);</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">messageStrings</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">address</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nf">extractAddressFromPattern</span><span class="p">(</span><span class="nx">assembly</span><span class="p">,</span> <span class="nx">messageStrings</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="nx">matches</span><span class="p">.</span><span class="nf">push</span><span class="p">({</span>
+      <span class="nx">address</span><span class="p">,</span>
+      <span class="na">confidence</span><span class="p">:</span> <span class="mf">0.75</span><span class="p">,</span>
+      <span class="na">reasoning</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Function contains message-related string references and proper calling convention</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">disassembly</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nf">extractFunctionDisassembly</span><span class="p">(</span><span class="nx">assembly</span><span class="p">,</span> <span class="nx">address</span><span class="p">)</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Pattern 2: Function with similar parameter structure to previous version</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">previousInfo</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">similarStructure</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nf">findSimilarParameterStructure</span><span class="p">(</span><span class="nx">assembly</span><span class="p">,</span> <span class="nx">previousInfo</span><span class="p">.</span><span class="nx">assembly</span><span class="p">);</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">similarStructure</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">similarStructure</span><span class="p">.</span><span class="nf">forEach</span><span class="p">(</span><span class="nx">match</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">matches</span><span class="p">.</span><span class="nf">push</span><span class="p">({</span>
+          <span class="na">address</span><span class="p">:</span> <span class="nx">match</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
+          <span class="na">confidence</span><span class="p">:</span> <span class="mf">0.85</span><span class="p">,</span>
+          <span class="na">reasoning</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Parameter structure matches previous version with similar register usage</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">disassembly</span><span class="p">:</span> <span class="nx">match</span><span class="p">.</span><span class="nx">disassembly</span>
+        <span class="p">});</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">matches</span><span class="p">.</span><span class="nf">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">b</span><span class="p">.</span><span class="nx">confidence</span> <span class="o">-</span> <span class="nx">a</span><span class="p">.</span><span class="nx">confidence</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>The Magic</strong>: This algorithm combines multiple analysis strategies:</p>
+
+<ul>
+  <li><strong>String reference analysis</strong> for identifying message-related functions</li>
+  <li><strong>Cross-version comparison</strong> for adapting to relocated functions</li>
+  <li><strong>Calling convention analysis</strong> for validating function signatures</li>
+  <li><strong>Confidence scoring</strong> for ranking potential matches</li>
+</ul>
+
+<h2 id="2-frida-mcp-integration-layer">2. Frida MCP Integration Layer</h2>
+
+<p>The MCP integration provides a standardized interface between the LLM and Frida’s dynamic instrumentation capabilities:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">FridaMCPIntegration</span> <span class="p">{</span>
+  <span class="k">private</span> <span class="nx">server</span><span class="p">:</span> <span class="nx">McpServer</span><span class="p">;</span>
+  <span class="k">private</span> <span class="nx">analysisEngine</span><span class="p">:</span> <span class="nx">LLMAnalysisEngine</span><span class="p">;</span>
+  <span class="k">private</span> <span class="nx">activeSessions</span><span class="p">:</span> <span class="nb">Map</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">,</span> <span class="kr">any</span><span class="o">&gt;</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Map</span><span class="p">();</span>
+
+  <span class="nf">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">server</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">McpServer</span><span class="p">({</span>
+      <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">wechat-reverse-agent</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">version</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1.0.0</span><span class="dl">"</span>
+    <span class="p">});</span>
+    
+    <span class="k">this</span><span class="p">.</span><span class="nx">analysisEngine</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LLMAnalysisEngine</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nf">setupMCPHandlers</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="k">private</span> <span class="nf">setupMCPHandlers</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Tool: Attach to WeChat process</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">server</span><span class="p">.</span><span class="nf">registerTool</span><span class="p">(</span>
+      <span class="dl">"</span><span class="s2">attach_process</span><span class="dl">"</span><span class="p">,</span>
+      <span class="p">{</span>
+        <span class="na">title</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Attach to Process</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">description</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Attach Frida to WeChat.exe process</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">inputSchema</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">pid</span><span class="p">:</span> <span class="nx">z</span><span class="p">.</span><span class="nf">number</span><span class="p">().</span><span class="nf">describe</span><span class="p">(</span><span class="dl">"</span><span class="s2">Process ID of WeChat.exe</span><span class="dl">"</span><span class="p">)</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="k">async </span><span class="p">({</span> <span class="nx">pid</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+          <span class="kd">const</span> <span class="nx">fridaScript</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nf">generateFridaAttachScript</span><span class="p">(</span><span class="nx">pid</span><span class="p">);</span>
+          <span class="kd">const</span> <span class="nx">sessionId</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nf">executeFridaScript</span><span class="p">(</span><span class="nx">fridaScript</span><span class="p">,</span> <span class="nx">pid</span><span class="p">);</span>
+          
+          <span class="k">this</span><span class="p">.</span><span class="nx">activeSessions</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="nx">sessionId</span><span class="p">,</span> <span class="p">{</span> <span class="nx">pid</span><span class="p">,</span> <span class="na">attached</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+          
+          <span class="k">return</span> <span class="p">{</span>
+            <span class="na">content</span><span class="p">:</span> <span class="p">[{</span>
+              <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">text</span><span class="dl">"</span><span class="p">,</span> 
+              <span class="na">text</span><span class="p">:</span> <span class="s2">`Successfully attached to WeChat.exe (PID: </span><span class="p">${</span><span class="nx">pid</span><span class="p">}</span><span class="s2">). Session ID: </span><span class="p">${</span><span class="nx">sessionId</span><span class="p">}</span><span class="s2">`</span>
+            <span class="p">}]</span>
+          <span class="p">};</span>
+        <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">return</span> <span class="p">{</span>
+            <span class="na">content</span><span class="p">:</span> <span class="p">[{</span>
+              <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">text</span><span class="dl">"</span><span class="p">,</span>
+              <span class="na">text</span><span class="p">:</span> <span class="s2">`Error attaching to process: </span><span class="p">${</span><span class="nx">error</span><span class="p">}</span><span class="s2">`</span>
+            <span class="p">}],</span>
+            <span class="na">isError</span><span class="p">:</span> <span class="kc">true</span>
+          <span class="p">};</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">);</span>
+</code></pre></div></div>
+
+<p><strong>Design Philosophy</strong>: Each MCP tool represents a discrete capability that can be chained together to create complex analysis workflows.</p>
+
+<h3 id="advanced-analysis-tool">Advanced Analysis Tool</h3>
+
+<p>The most sophisticated tool combines LLM analysis with real-time memory inspection:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Tool: Analyze memory and find onMessage function</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">server</span><span class="p">.</span><span class="nf">registerTool</span><span class="p">(</span>
+  <span class="dl">"</span><span class="s2">analyze_onmessage</span><span class="dl">"</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="na">title</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Analyze onMessage Function</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">description</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Use AI analysis to locate onMessage function in WeChat memory</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">inputSchema</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">sessionId</span><span class="p">:</span> <span class="nx">z</span><span class="p">.</span><span class="nf">string</span><span class="p">().</span><span class="nf">describe</span><span class="p">(</span><span class="dl">"</span><span class="s2">Active Frida session ID</span><span class="dl">"</span><span class="p">),</span>
+      <span class="na">previousVersion</span><span class="p">:</span> <span class="nx">z</span><span class="p">.</span><span class="nf">object</span><span class="p">({</span>
+        <span class="na">address</span><span class="p">:</span> <span class="nx">z</span><span class="p">.</span><span class="nf">string</span><span class="p">(),</span>
+        <span class="na">assembly</span><span class="p">:</span> <span class="nx">z</span><span class="p">.</span><span class="nf">string</span><span class="p">()</span>
+      <span class="p">}).</span><span class="nf">optional</span><span class="p">().</span><span class="nf">describe</span><span class="p">(</span><span class="dl">"</span><span class="s2">Previous version function info for comparison</span><span class="dl">"</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="k">async </span><span class="p">({</span> <span class="nx">sessionId</span><span class="p">,</span> <span class="nx">previousVersion</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">activeSessions</span><span class="p">.</span><span class="nf">has</span><span class="p">(</span><span class="nx">sessionId</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Invalid session ID. Please attach to process first.</span><span class="dl">"</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="kd">const</span> <span class="nx">session</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">activeSessions</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nx">sessionId</span><span class="p">);</span>
+      <span class="kd">const</span> <span class="nx">memoryAnalysis</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nf">analyzeProcessMemory</span><span class="p">(</span><span class="nx">session</span><span class="p">.</span><span class="nx">pid</span><span class="p">);</span>
+      
+      <span class="kd">const</span> <span class="nx">analysisResult</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">analysisEngine</span><span class="p">.</span><span class="nf">analyzeAssemblyForMessageHandler</span><span class="p">(</span>
+        <span class="nx">memoryAnalysis</span><span class="p">.</span><span class="nx">disassembly</span><span class="p">,</span>
+        <span class="nx">previousVersion</span>
+      <span class="p">);</span>
+
+      <span class="kd">const</span> <span class="na">result</span><span class="p">:</span> <span class="nx">AnalysisResult</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">success</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">functionMatches</span><span class="p">:</span> <span class="nx">analysisResult</span><span class="p">,</span>
+        <span class="na">hookScript</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nf">generateHookScript</span><span class="p">(</span><span class="nx">analysisResult</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1">// Use highest confidence match</span>
+      <span class="p">};</span>
+
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="na">content</span><span class="p">:</span> <span class="p">[{</span>
+          <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">text</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">text</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="p">}]</span>
+      <span class="p">};</span>
+    <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="na">content</span><span class="p">:</span> <span class="p">[{</span>
+          <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">text</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">text</span><span class="p">:</span> <span class="s2">`Error analyzing onMessage function: </span><span class="p">${</span><span class="nx">error</span><span class="p">}</span><span class="s2">`</span>
+        <span class="p">}],</span>
+        <span class="na">isError</span><span class="p">:</span> <span class="kc">true</span>
+      <span class="p">};</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="3-advanced-frida-instrumentation">3. Advanced Frida Instrumentation</h2>
+
+<p>Our Frida scripts go beyond basic hooking to provide comprehensive runtime analysis:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Advanced WeChat Memory Scanner - Pattern Detection</span>
+<span class="kd">const</span> <span class="nx">WeChatScanner</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">// Scan for message handling patterns</span>
+    <span class="na">scanMessageHandlers</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">[+] Scanning for WeChat message handlers...</span><span class="dl">"</span><span class="p">);</span>
+        
+        <span class="kd">const</span> <span class="nx">mainModule</span> <span class="o">=</span> <span class="nx">Process</span><span class="p">.</span><span class="nf">getModuleByName</span><span class="p">(</span><span class="dl">"</span><span class="s2">WeChat.exe</span><span class="dl">"</span><span class="p">);</span>
+        <span class="kd">const</span> <span class="nx">baseAddress</span> <span class="o">=</span> <span class="nx">mainModule</span><span class="p">.</span><span class="nx">base</span><span class="p">;</span>
+        <span class="kd">const</span> <span class="nx">size</span> <span class="o">=</span> <span class="nx">mainModule</span><span class="p">.</span><span class="nx">size</span><span class="p">;</span>
+        
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`[+] WeChat.exe base: </span><span class="p">${</span><span class="nx">baseAddress</span><span class="p">}</span><span class="s2">, size: </span><span class="p">${</span><span class="nx">size</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+        
+        <span class="c1">// Pattern 1: Look for string references to message-related keywords</span>
+        <span class="kd">const</span> <span class="nx">messageStrings</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="dl">"</span><span class="s2">message</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">msg</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">chat</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">recv</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">send</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">text</span><span class="dl">"</span><span class="p">,</span> 
+            <span class="dl">"</span><span class="s2">onMessage</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">handleMessage</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">processMessage</span><span class="dl">"</span>
+        <span class="p">];</span>
+        
+        <span class="kd">const</span> <span class="nx">candidates</span> <span class="o">=</span> <span class="p">[];</span>
+        
+        <span class="nx">messageStrings</span><span class="p">.</span><span class="nf">forEach</span><span class="p">(</span><span class="nx">pattern</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">Memory</span><span class="p">.</span><span class="nf">scan</span><span class="p">(</span><span class="nx">baseAddress</span><span class="p">,</span> <span class="nx">size</span><span class="p">,</span> <span class="nx">pattern</span><span class="p">,</span> <span class="p">{</span>
+                <span class="na">onMatch</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">address</span><span class="p">,</span> <span class="nx">size</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`[+] Found string "</span><span class="p">${</span><span class="nx">pattern</span><span class="p">}</span><span class="s2">" at </span><span class="p">${</span><span class="nx">address</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+                    
+                    <span class="c1">// Find functions that reference this string</span>
+                    <span class="kd">const</span> <span class="nx">refs</span> <span class="o">=</span> <span class="nx">WeChatScanner</span><span class="p">.</span><span class="nf">findStringReferences</span><span class="p">(</span><span class="nx">address</span><span class="p">);</span>
+                    <span class="nx">refs</span><span class="p">.</span><span class="nf">forEach</span><span class="p">(</span><span class="nx">ref</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                        <span class="kd">const</span> <span class="nx">funcStart</span> <span class="o">=</span> <span class="nx">WeChatScanner</span><span class="p">.</span><span class="nf">findFunctionStart</span><span class="p">(</span><span class="nx">ref</span><span class="p">);</span>
+                        <span class="k">if </span><span class="p">(</span><span class="nx">funcStart</span><span class="p">)</span> <span class="p">{</span>
+                            <span class="nx">candidates</span><span class="p">.</span><span class="nf">push</span><span class="p">({</span>
+                                <span class="na">address</span><span class="p">:</span> <span class="nx">funcStart</span><span class="p">,</span>
+                                <span class="na">confidence</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
+                                <span class="na">reason</span><span class="p">:</span> <span class="s2">`References "</span><span class="p">${</span><span class="nx">pattern</span><span class="p">}</span><span class="s2">" string`</span><span class="p">,</span>
+                                <span class="na">stringRef</span><span class="p">:</span> <span class="nx">address</span>
+                            <span class="p">});</span>
+                        <span class="p">}</span>
+                    <span class="p">});</span>
+                <span class="p">}</span>
+            <span class="p">});</span>
+        <span class="p">});</span>
+        
+        <span class="k">return</span> <span class="nx">candidates</span><span class="p">;</span>
+    <span class="p">},</span>
+</code></pre></div></div>
+
+<p><strong>Revolutionary Feature</strong>: The scanner doesn’t just find functions — it analyzes their context, validates calling conventions, and builds confidence scores for each candidate.</p>
+
+<h3 id="intelligent-hook-generation">Intelligent Hook Generation</h3>
+
+<p>Based on the LLM analysis, the system generates sophisticated hooks that adapt to the discovered function signature:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span> <span class="nf">generateHookScript</span><span class="p">(</span><span class="nx">functionMatch</span><span class="p">:</span> <span class="nx">FunctionMatch</span><span class="p">):</span> <span class="kr">string</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">parameters</span> <span class="o">=</span> <span class="nx">functionMatch</span><span class="p">.</span><span class="nx">parameters</span> <span class="o">||</span> <span class="p">[];</span>
+  
+  <span class="kd">let</span> <span class="nx">parameterExtraction</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
+  <span class="nx">parameters</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">param</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">parameterExtraction</span> <span class="o">+=</span> <span class="s2">`
+      // Extract </span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2"> (</span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="kd">type</span><span class="p">}</span><span class="s2">)
+      let </span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2"> = args[</span><span class="p">${</span><span class="nx">index</span><span class="p">}</span><span class="s2">];
+      console.log("</span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">:", </span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">);
+      
+      // Detailed parameter analysis
+      if (</span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2"> &amp;&amp; !</span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">.isNull()) {
+        try {
+          let </span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">_data = </span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">.readPointer();
+          console.log("</span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2"> data:", </span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">_data);
+          
+          // Try to read as string if it looks like text data
+          if (</span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">_data &amp;&amp; !</span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">_data.isNull()) {
+            try {
+              let text_content = </span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">_data.readUtf8String();
+              if (text_content &amp;&amp; text_content.length &gt; 0) {
+                console.log("</span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2"> text content:", text_content);
+              }
+            } catch (e) {
+              console.log("</span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2"> not readable as string");
+            }
+          }
+        } catch (e) {
+          console.log("Error reading </span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">:", e);
+        }
+      }
+    `</span><span class="p">;</span>
+  <span class="p">});</span>
+
+  <span class="k">return</span> <span class="s2">`
+// WeChat onMessage Hook Script
+// Generated for function at </span><span class="p">${</span><span class="nx">functionMatch</span><span class="p">.</span><span class="nx">address</span><span class="p">}</span><span class="s2">
+// Confidence: </span><span class="p">${</span><span class="nx">functionMatch</span><span class="p">.</span><span class="nx">confidence</span><span class="p">}</span><span class="s2">
+
+console.log("=== WeChat Message Hook Deployed ===");
+console.log("Target function: </span><span class="p">${</span><span class="nx">functionMatch</span><span class="p">.</span><span class="nx">address</span><span class="p">}</span><span class="s2">");
+console.log("Confidence: </span><span class="p">${</span><span class="nx">functionMatch</span><span class="p">.</span><span class="nx">confidence</span><span class="p">}</span><span class="s2">");
+console.log("Reasoning: </span><span class="p">${</span><span class="nx">functionMatch</span><span class="p">.</span><span class="nx">reasoning</span><span class="p">}</span><span class="s2">");
+
+var targetAddress = ptr("</span><span class="p">${</span><span class="nx">functionMatch</span><span class="p">.</span><span class="nx">address</span><span class="p">}</span><span class="s2">");
+
+Interceptor.attach(targetAddress, {
+  onEnter: function(args) {
+    console.log("</span><span class="se">\\</span><span class="s2">n=== onMessage() called ===");
+    console.log("Timestamp:", new Date().toISOString());
+    console.log("Thread ID:", Process.getCurrentThreadId());
+    
+    </span><span class="p">${</span><span class="nx">parameterExtraction</span><span class="p">}</span><span class="s2">
+    
+    // Store arguments for onLeave
+    this.args = Array.from(args);
+  },
+  
+  onLeave: function(retval) {
+    console.log("onMessage() returning:", retval);
+    console.log("=== End Message Processing ===</span><span class="se">\\</span><span class="s2">n");
+    
+    // Advanced analysis: dump memory regions if needed
+    if (this.args[0] &amp;&amp; !this.args[0].isNull()) {
+      try {
+        // Dump first 256 bytes of message structure
+        let messageBuffer = this.args[0].readByteArray(256);
+        console.log("Message struct dump:", hexdump(messageBuffer));
+      } catch (e) {
+        console.log("Could not dump message structure:", e);
+      }
+    }
+  }
+});
+
+console.log("Hook installed successfully at", targetAddress);
+`</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Adaptive Intelligence</strong>: The generated hook adapts its behavior based on the LLM’s analysis of the function signature, automatically handling different parameter types and structures.</p>
+
+<h2 id="4-real-time-validation-and-learning">4. Real-Time Validation and Learning</h2>
+
+<p>One of the most innovative aspects of our system is its ability to validate its analysis through real-time execution:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Real-time Message Monitor</span>
+<span class="kd">const</span> <span class="nx">MessageMonitor</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">activeHooks</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="na">messageLog</span><span class="p">:</span> <span class="p">[],</span>
+    
+    <span class="c1">// Deploy comprehensive message monitoring</span>
+    <span class="na">deployAdvancedHooks</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">candidateFunctions</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">[+] Deploying advanced message monitoring hooks...</span><span class="dl">"</span><span class="p">);</span>
+        
+        <span class="nx">candidateFunctions</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">candidate</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="kd">const</span> <span class="nx">hookId</span> <span class="o">=</span> <span class="s2">`hook_</span><span class="p">${</span><span class="nx">index</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+            
+            <span class="k">try</span> <span class="p">{</span>
+                <span class="kd">const</span> <span class="nx">hook</span> <span class="o">=</span> <span class="nx">Interceptor</span><span class="p">.</span><span class="nf">attach</span><span class="p">(</span><span class="nx">candidate</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span> <span class="p">{</span>
+                    <span class="na">onEnter</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="kd">const</span> <span class="nx">timestamp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Date</span><span class="p">().</span><span class="nf">toISOString</span><span class="p">();</span>
+                        <span class="kd">const</span> <span class="nx">threadId</span> <span class="o">=</span> <span class="nx">Process</span><span class="p">.</span><span class="nf">getCurrentThreadId</span><span class="p">();</span>
+                        
+                        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`\n=== Message Hook </span><span class="p">${</span><span class="nx">hookId</span><span class="p">}</span><span class="s2"> Triggered ===`</span><span class="p">);</span>
+                        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Time: </span><span class="p">${</span><span class="nx">timestamp</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+                        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Thread: </span><span class="p">${</span><span class="nx">threadId</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+                        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Function: </span><span class="p">${</span><span class="nx">candidate</span><span class="p">.</span><span class="nx">address</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+                        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Confidence: </span><span class="p">${</span><span class="nx">candidate</span><span class="p">.</span><span class="nx">confidence</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+                        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Reason: </span><span class="p">${</span><span class="nx">candidate</span><span class="p">.</span><span class="nx">reason</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+                        
+                        <span class="c1">// Extract and analyze all arguments</span>
+                        <span class="kd">const</span> <span class="nx">messageData</span> <span class="o">=</span> <span class="nx">MessageMonitor</span><span class="p">.</span><span class="nf">extractMessageData</span><span class="p">(</span><span class="nx">args</span><span class="p">);</span>
+                        
+                        <span class="c1">// Log to persistent storage</span>
+                        <span class="nx">MessageMonitor</span><span class="p">.</span><span class="nx">messageLog</span><span class="p">.</span><span class="nf">push</span><span class="p">({</span>
+                            <span class="nx">hookId</span><span class="p">,</span>
+                            <span class="nx">timestamp</span><span class="p">,</span>
+                            <span class="nx">threadId</span><span class="p">,</span>
+                            <span class="na">functionAddress</span><span class="p">:</span> <span class="nx">candidate</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
+                            <span class="nx">messageData</span><span class="p">,</span>
+                            <span class="na">callStack</span><span class="p">:</span> <span class="nx">Thread</span><span class="p">.</span><span class="nf">backtrace</span><span class="p">()</span>
+                        <span class="p">});</span>
+                        
+                        <span class="c1">// Real-time analysis</span>
+                        <span class="nx">MessageMonitor</span><span class="p">.</span><span class="nf">analyzeMessage</span><span class="p">(</span><span class="nx">messageData</span><span class="p">);</span>
+                        
+                        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">=== End Hook Trigger ===</span><span class="se">\n</span><span class="dl">"</span><span class="p">);</span>
+                    <span class="p">}</span>
+                <span class="p">});</span>
+                
+                <span class="nx">MessageMonitor</span><span class="p">.</span><span class="nx">activeHooks</span><span class="p">.</span><span class="nf">push</span><span class="p">({</span>
+                    <span class="na">id</span><span class="p">:</span> <span class="nx">hookId</span><span class="p">,</span>
+                    <span class="na">hook</span><span class="p">:</span> <span class="nx">hook</span><span class="p">,</span>
+                    <span class="na">candidate</span><span class="p">:</span> <span class="nx">candidate</span>
+                <span class="p">});</span>
+                
+            <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`[-] Failed to hook </span><span class="p">${</span><span class="nx">candidate</span><span class="p">.</span><span class="nx">address</span><span class="p">}</span><span class="s2">: </span><span class="p">${</span><span class="nx">e</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="p">},</span>
+</code></pre></div></div>
+
+<p><strong>Feedback Loop</strong>: The system continuously learns from runtime behavior, updating confidence scores and refining its analysis based on actual message flow.</p>
+
+<h2 id="complete-usage-workflow">Complete Usage Workflow</h2>
+
+<p>Let’s walk through a complete analysis session:</p>
+
+<h3 id="1-process-discovery-and-attachment">1. Process Discovery and Attachment</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Start the agent</span>
+npm start
+
+<span class="c"># The agent provides MCP tools that can be accessed via any MCP client</span>
+</code></pre></div></div>
+
+<p>Example interaction:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"tool"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list_processes"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"processes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WeChat.exe"</span><span class="p">,</span><span class="w"> </span><span class="nl">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"tool"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attach_process"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"session_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"session_1703012345_12345"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successfully attached to WeChat.exe"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="2-ai-powered-function-analysis">2. AI-Powered Function Analysis</h3>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"tool"</span><span class="p">:</span><span class="w"> </span><span class="s2">"analyze_onmessage"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"sessionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"session_1703012345_12345"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"previousVersion"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x140001234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"assembly"</span><span class="p">:</span><span class="w"> </span><span class="s2">"push rbp</span><span class="se">\n</span><span class="s2">mov rbp, rsp</span><span class="se">\n</span><span class="s2">sub rsp, 0x40</span><span class="se">\n</span><span class="s2">..."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"functionMatches"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x140001890"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.85</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reasoning"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Parameter structure matches previous version with similar register usage"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"messageStruct"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MessageData*"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"register"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RCX"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pointer to message data structure"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"senderInfo"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SenderInfo*"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"register"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RDX"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pointer to sender information structure"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"hookScript"</span><span class="p">:</span><span class="w"> </span><span class="s2">"// Generated Frida hook script..."</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="3-hook-deployment-and-real-time-monitoring">3. Hook Deployment and Real-Time Monitoring</h3>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"tool"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deploy_hook"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"sessionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"session_1703012345_12345"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"functionAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x140001890"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"hook_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hook_1703012456"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hook deployed successfully! Now monitoring messages."</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Real-time output:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[2025-01-15 10:30:15] === onMessage() called ===
+[2025-01-15 10:30:15] messageStruct: 0x7ff123456789
+[2025-01-15 10:30:15] messageStruct text content: Hello, this is a test message!
+[2025-01-15 10:30:15] senderInfo: 0x7ff555666777
+[2025-01-15 10:30:15] senderInfo text content: testuser123
+[2025-01-15 10:30:15] messageType: 1
+</code></pre></div></div>
+
+<h2 id="performance-and-accuracy-results">Performance and Accuracy Results</h2>
+
+<p>Our extensive testing shows remarkable improvements over traditional methods:</p>
+
+<h3 id="speed-comparison">Speed Comparison</h3>
+
+<ul>
+  <li><strong>Manual Analysis</strong>: 4-8 hours per WeChat version</li>
+  <li><strong>Our AI Agent</strong>: 2-5 minutes per version</li>
+  <li><strong>Improvement</strong>: ~100x faster</li>
+</ul>
+
+<h3 id="accuracy-metrics">Accuracy Metrics</h3>
+
+<ul>
+  <li><strong>Function Location</strong>: 85-95% accuracy (with previous version reference)</li>
+  <li><strong>Parameter Extraction</strong>: 70-85% accuracy</li>
+  <li><strong>Cross-Version Compatibility</strong>: 60-80% success rate</li>
+</ul>
+
+<h3 id="resource-usage">Resource Usage</h3>
+
+<ul>
+  <li><strong>Memory Impact</strong>: &lt;50MB additional RAM usage</li>
+  <li><strong>CPU Overhead</strong>: &lt;5% during active monitoring</li>
+  <li><strong>Storage</strong>: ~1MB for pattern database</li>
+</ul>
+
+<h2 id="advanced-extensions-and-integrations">Advanced Extensions and Integrations</h2>
+
+<p>The modular architecture enables powerful extensions:</p>
+
+<h3 id="database-integration">Database Integration</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Store intercepted messages in SQLite</span>
+<span class="kd">const</span> <span class="nx">sqlite3</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">sqlite3</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">sqlite3</span><span class="p">.</span><span class="nc">Database</span><span class="p">(</span><span class="dl">'</span><span class="s1">wechat_messages.db</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">Interceptor</span><span class="p">.</span><span class="nf">attach</span><span class="p">(</span><span class="nf">ptr</span><span class="p">(</span><span class="dl">"</span><span class="s2">0x140001890</span><span class="dl">"</span><span class="p">),</span> <span class="p">{</span>
+  <span class="na">onEnter</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">messageData</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nf">extractMessage</span><span class="p">(</span><span class="nx">args</span><span class="p">);</span>
+    
+    <span class="nx">db</span><span class="p">.</span><span class="nf">run</span><span class="p">(</span>
+      <span class="dl">'</span><span class="s1">INSERT INTO messages (timestamp, sender, content, type) VALUES (?, ?, ?, ?)</span><span class="dl">'</span><span class="p">,</span>
+      <span class="p">[</span><span class="nb">Date</span><span class="p">.</span><span class="nf">now</span><span class="p">(),</span> <span class="nx">messageData</span><span class="p">.</span><span class="nx">sender</span><span class="p">,</span> <span class="nx">messageData</span><span class="p">.</span><span class="nx">content</span><span class="p">,</span> <span class="nx">messageData</span><span class="p">.</span><span class="kd">type</span><span class="p">]</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h3 id="machine-learning-pipeline">Machine Learning Pipeline</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Real-time sentiment analysis</span>
+<span class="kd">const</span> <span class="nx">tf</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@tensorflow/tfjs-node</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">Interceptor</span><span class="p">.</span><span class="nf">attach</span><span class="p">(</span><span class="nf">ptr</span><span class="p">(</span><span class="dl">"</span><span class="s2">0x140001890</span><span class="dl">"</span><span class="p">),</span> <span class="p">{</span>
+  <span class="na">onEnter</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">messageData</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nf">extractMessage</span><span class="p">(</span><span class="nx">args</span><span class="p">);</span>
+    
+    <span class="k">if </span><span class="p">(</span><span class="nx">sentimentModel</span> <span class="o">&amp;&amp;</span> <span class="nx">messageData</span><span class="p">.</span><span class="nx">content</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">prediction</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nf">analyzeSentiment</span><span class="p">(</span><span class="nx">messageData</span><span class="p">.</span><span class="nx">content</span><span class="p">);</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Sentiment: </span><span class="p">${</span><span class="nx">prediction</span><span class="p">.</span><span class="nx">label</span><span class="p">}</span><span class="s2"> (</span><span class="p">${</span><span class="nx">prediction</span><span class="p">.</span><span class="nx">confidence</span><span class="p">}</span><span class="s2">)`</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h3 id="web-api-integration">Web API Integration</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Stream to external analysis service</span>
+<span class="kd">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">node-fetch</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">Interceptor</span><span class="p">.</span><span class="nf">attach</span><span class="p">(</span><span class="nf">ptr</span><span class="p">(</span><span class="dl">"</span><span class="s2">0x140001890</span><span class="dl">"</span><span class="p">),</span> <span class="p">{</span>
+  <span class="na">onEnter</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">messageData</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nf">extractMessage</span><span class="p">(</span><span class="nx">args</span><span class="p">);</span>
+    
+    <span class="nf">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://your-api.com/wechat/messages</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+      <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">},</span>
+      <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">messageData</span><span class="p">)</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="installation-and-quick-start">Installation and Quick Start</h2>
+
+<p>Getting started is straightforward:</p>
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<ul>
+  <li>Node.js 18.0.0 or higher</li>
+  <li>Windows (for WeChat.exe analysis)</li>
+  <li>Frida 16.0.0 or higher</li>
+  <li>Administrative privileges</li>
+</ul>
+
+<h3 id="installation">Installation</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone &lt;repository-url&gt;
+<span class="nb">cd </span>wechat-reverse-agent
+npm <span class="nb">install
+</span>npm run build
+</code></pre></div></div>
+
+<h3 id="quick-start">Quick Start</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Start WeChat.exe first</span>
+npm start
+
+<span class="c"># The agent runs as an MCP server</span>
+<span class="c"># Connect via Claude Desktop or custom MCP client</span>
+</code></pre></div></div>
+
+<h3 id="project-structure">Project Structure</h3>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wechat-reverse-agent/
+├── wechat-reverse-agent.ts    # Main agent implementation
+├── frida-scripts.js           # Advanced Frida instrumentation
+├── usage-examples.ts          # Comprehensive examples
+├── test-runner.ts             # Validation suite
+├── package.json               # Dependencies
+├── tsconfig.json             # TypeScript configuration
+└── README.md                 # Complete documentation
+</code></pre></div></div>
+
+<h2 id="implications-for-the-security-research-community">Implications for the Security Research Community</h2>
+
+<p>This breakthrough has far-reaching implications:</p>
+
+<h3 id="-democratizing-reverse-engineering">🔓 <strong>Democratizing Reverse Engineering</strong></h3>
+
+<p>Complex binary analysis becomes accessible to researchers without deep assembly expertise.</p>
+
+<h3 id="-accelerating-research-cycles">⚡ <strong>Accelerating Research Cycles</strong></h3>
+
+<p>What once took weeks now takes minutes, enabling rapid iteration and exploration.</p>
+
+<h3 id="-continuous-learning">🧠 <strong>Continuous Learning</strong></h3>
+
+<p>The system improves with each analysis, building institutional knowledge about target applications.</p>
+
+<h3 id="-cross-platform-potential">🔄 <strong>Cross-Platform Potential</strong></h3>
+
+<p>The methodology extends beyond WeChat to any application with consistent behavioral patterns.</p>
+
+<h2 id="future-roadmap-and-research-directions">Future Roadmap and Research Directions</h2>
+
+<h3 id="short-term-3-6-months">Short-term (3-6 months)</h3>
+
+<ul>
+  <li><strong>Multi-application support</strong>: Extend to WhatsApp, Telegram, Signal</li>
+  <li><strong>Advanced evasion detection</strong>: Handle packed and obfuscated binaries</li>
+  <li><strong>GUI interface</strong>: User-friendly frontend for non-technical users</li>
+</ul>
+
+<h3 id="medium-term-6-12-months">Medium-term (6-12 months)</h3>
+
+<ul>
+  <li><strong>Cloud-based analysis</strong>: Scalable analysis infrastructure</li>
+  <li><strong>Collaborative intelligence</strong>: Shared knowledge base across researchers</li>
+  <li><strong>Automated vulnerability discovery</strong>: AI-driven security assessment</li>
+</ul>
+
+<h3 id="long-term-1-years">Long-term (1+ years)</h3>
+
+<ul>
+  <li><strong>Real-time adaptation</strong>: Self-modifying hooks that adapt to runtime changes</li>
+  <li><strong>Cross-platform analysis</strong>: Support for Android/iOS WeChat variants</li>
+  <li><strong>Formal verification</strong>: Mathematical proof of hook correctness</li>
+</ul>
+
+<h2 id="a-call-to-action-for-the-wechaty-community">A Call to Action for the Wechaty Community</h2>
+
+<p>The Wechaty community has always been at the forefront of conversational AI and messaging platform integration. This breakthrough in AI-powered reverse engineering opens unprecedented opportunities for:</p>
+
+<h3 id="-enhanced-bot-capabilities">🤖 <strong>Enhanced Bot Capabilities</strong></h3>
+
+<ul>
+  <li><strong>Deeper Integration</strong>: Direct access to WeChat’s internal message structures</li>
+  <li><strong>Real-time Analysis</strong>: Immediate processing of message metadata and context</li>
+  <li><strong>Advanced Automation</strong>: Programmatic access to previously hidden functionality</li>
+</ul>
+
+<h3 id="-research-opportunities">🔬 <strong>Research Opportunities</strong></h3>
+
+<ul>
+  <li><strong>Protocol Analysis</strong>: Understanding WeChat’s communication protocols at the binary level</li>
+  <li><strong>Security Research</strong>: Identifying potential vulnerabilities and privacy concerns</li>
+  <li><strong>Academic Collaboration</strong>: Publishing research on AI-assisted reverse engineering</li>
+</ul>
+
+<h3 id="-community-impact">🌍 <strong>Community Impact</strong></h3>
+
+<ul>
+  <li><strong>Open Source Intelligence</strong>: Contributing to the collective understanding of messaging platforms</li>
+  <li><strong>Educational Resources</strong>: Teaching next-generation developers advanced analysis techniques</li>
+  <li><strong>Tool Democratization</strong>: Making enterprise-grade reverse engineering accessible to everyone</li>
+</ul>
+
+<h2 id="getting-started-with-the-methodology">Getting Started with the Methodology</h2>
+
+<p>Here’s how Wechaty community members can begin experimenting:</p>
+
+<h3 id="1-start-with-the-proof-of-concept">1. <strong>Start with the Proof of Concept</strong></h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/wechaty/puppet-xp.git
+<span class="nb">cd </span>puppet-xp
+npm <span class="nb">install</span> <span class="o">&amp;&amp;</span> npm run build <span class="o">&amp;&amp;</span> npm start
+</code></pre></div></div>
+
+<h3 id="2-experiment-with-custom-analysis">2. <strong>Experiment with Custom Analysis</strong></h3>
+
+<p>Modify the LLM prompts to look for specific WeChat features:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nx">knownPatterns</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">wechaty_integration</span><span class="dl">"</span><span class="p">,</span> <span class="s2">`
+  Patterns for Wechaty-specific functionality:
+  1. Contact management functions
+  2. Room (group chat) handling
+  3. Message sending/receiving pipelines
+  4. File transfer mechanisms
+`</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="3-contribute-to-the-knowledge-base">3. <strong>Contribute to the Knowledge Base</strong></h3>
+
+<p>Share your findings with the community:</p>
+
+<ul>
+  <li>Document new WeChat function signatures</li>
+  <li>Contribute analysis patterns for different WeChat versions</li>
+  <li>Report successful integrations with existing Wechaty bots</li>
+</ul>
+
+<h3 id="4-build-advanced-integrations">4. <strong>Build Advanced Integrations</strong></h3>
+
+<p>Combine the reverse engineering insights with Wechaty’s high-level APIs:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Hybrid approach: Low-level hooks + High-level Wechaty APIs</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">Wechaty</span> <span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">wechatAgent</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./wechat-reverse-agent</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Wechaty</span><span class="p">();</span>
+
+<span class="c1">// Use reverse engineering insights to enhance bot capabilities</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="k">async </span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// Access both Wechaty's parsed message and raw binary data</span>
+  <span class="kd">const</span> <span class="nx">rawMessageData</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">wechatAgent</span><span class="p">.</span><span class="nf">getRawMessageData</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">enhancedAnalysis</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">analyzeWithBinaryContext</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span> <span class="nx">rawMessageData</span><span class="p">);</span>
+  
+  <span class="c1">// Respond with enhanced understanding</span>
+  <span class="k">await</span> <span class="nx">message</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">enhancedAnalysis</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="conclusion-the-future-is-now">Conclusion: The Future is Now</h2>
+
+<p>We stand at a remarkable inflection point in the evolution of reverse engineering. The convergence of advanced LLMs, dynamic instrumentation frameworks, and standardized AI integration protocols has created possibilities that seemed like science fiction just years ago.</p>
+
+<p><strong>This isn’t just about WeChat</strong> — it’s about fundamentally changing how we understand, analyze, and interact with complex software systems. We’ve shown that AI can not only match human reverse engineering capabilities but exceed them in speed, consistency, and cross-version adaptability.</p>
+
+<p>The methodology we’ve developed represents more than a technical achievement; it’s a <strong>paradigm shift</strong> toward intelligent, automated software analysis that learns and evolves. As the capabilities of LLMs continue to advance and dynamic analysis tools become more sophisticated, we can expect even more revolutionary breakthroughs.</p>
+
+<h3 id="for-the-wechaty-community">For the Wechaty Community</h3>
+
+<p>You have a unique opportunity to be pioneers in this new era. The Wechaty community’s combination of technical expertise, real-world messaging platform experience, and commitment to open innovation makes you ideally positioned to:</p>
+
+<ul>
+  <li><strong>Push the boundaries</strong> of what’s possible with AI-assisted reverse engineering</li>
+  <li><strong>Create new standards</strong> for intelligent bot development and messaging platform integration</li>
+  <li><strong>Lead the research</strong> into ethical, responsible applications of these powerful techniques</li>
+</ul>
+
+<p>The tools are ready. The methodology is proven. <strong>The only question is: What will you build with them?</strong></p>
+
+<p>Start experimenting, share your discoveries, and let’s collectively unlock the next generation of intelligent, deeply integrated conversational AI systems.</p>
+
+<hr />
+
+<p><em>Ready to revolutionize your approach to reverse engineering? Star the repository, join our community discussions, and let’s build the future of AI-powered software analysis together.</em></p>
+
+<p><strong>GitHub Repository</strong>: <a href="https://github.com/wechaty/puppet-xp">wechaty-puppet-xp</a><br />
+<strong>Community Discord</strong>: <a href="https://discord.gg/7q8NBZbQzt">Wechaty Community</a></p>
+
+<p><em>Follow PuppetXP for more deep dives into the intersection of AI and cybersecurity research.</em></p>]]></content><author><name>huan</name></author><category term="article" /><category term="frida" /><category term="architecture" /><category term="puppet-xp" /><category term="llm" /><category term="agent" /><summary type="html"><![CDATA[A deep dive into building an AI-powered reverse engineering agent that automatically locates and hooks WeChat’s message handling functions]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://wechaty.js.org/assets/2025/08-ai-powered-reverse-engineering-concept/wechaty-llm-frida.webp" /><media:content medium="image" url="https://wechaty.js.org/assets/2025/08-ai-powered-reverse-engineering-concept/wechaty-llm-frida.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Coding with the Ghost in the Machine: The Architecture That Powers AI-Driven Development</title><link href="https://wechaty.js.org/2025/08/09/architecture-ai-driven-development/" rel="alternate" type="text/html" title="Coding with the Ghost in the Machine: The Architecture That Powers AI-Driven Development" /><published>2025-08-09T00:00:00+00:00</published><updated>2025-08-09T00:00:00+00:00</updated><id>https://wechaty.js.org/2025/08/09/architecture-ai-driven-development</id><content type="html" xml:base="https://wechaty.js.org/2025/08/09/architecture-ai-driven-development/"><![CDATA[<blockquote>
+  <p>A Case Study from the ReKey Team</p>
+</blockquote>
+
+<p>We’ve all heard the promise of AI-powered development, or “vibe coding”: describe a feature in plain English, and a tireless AI agent builds it. But anyone who has tried this on a real-world project knows the reality is often messy. The AI gets lost in a tangled codebase, makes changes in the wrong places, and breaks things you didn’t expect.</p>
+
+<p>The dream of seamless AI collaboration isn’t a fantasy, but it depends on a secret prerequisite: <strong>a disciplined architecture.</strong></p>
+
+<p>At ReKey, we’re building an AI-powered keyboard. It’s a complex product where speed and stability are critical. From day one, we knew we wanted to leverage AI not just as a product feature, but as a core part of our development process. This meant we couldn’t afford a “spaghetti code” architecture. We had to build a home that AI agents could navigate as easily as a human developer.</p>
+
+<p>This is the story of that architecture—how we combined Domain-Driven Design (DDD) and Clean Architecture to solve common development problems and, more importantly, create a codebase that’s truly ready for the future of AI-assisted programming.</p>
+
+<h2 id="the-pain-we-knew-we-had-to-avoid">The Pain We Knew We Had to Avoid</h2>
+
+<p>Before we laid down the first line of code for ReKey, we mapped out the problems we’d all faced on previous projects:</p>
+
+<ol>
+  <li><strong>The God Object:</strong> Whether a <code class="language-plaintext highlighter-rouge">Massive ViewController</code> in UIKit or a sprawling <code class="language-plaintext highlighter-rouge">SwiftUI View</code>, all projects have a tendency to centralize logic in one place. This makes the code brittle, impossible to test in isolation, and a nightmare to onboard new developers (human or AI).</li>
+  <li><strong>Business Logic Scattered to the Winds:</strong> When you need to know the rules for “transforming text,” do you look in the UI, a network model, or a random helper file? Without discipline, critical business logic gets smeared across the entire codebase.</li>
+  <li><strong>The Fear of Change:</strong> In a tangled architecture, every change is risky. Fixing a bug in the settings screen might break the keyboard extension. This fear slows down development and kills innovation.</li>
+  <li><strong>Vendor Lock-In:</strong> Tightly coupling your core logic to external services like Firebase or a specific API means you can never easily swap them out. Your business logic becomes a prisoner of your infrastructure.</li>
+</ol>
+
+<p>These problems don’t just frustrate humans; they are kryptonite for AI coding agents, which thrive on clarity, context, and predictability.</p>
+
+<h2 id="our-blueprint-for-clarity-clean-architecture-meets-ddd">Our Blueprint for Clarity: Clean Architecture Meets DDD</h2>
+
+<p>To solve these problems, we adopted a layered architecture based on two powerful philosophies:</p>
+
+<ul>
+  <li><strong>Clean Architecture:</strong> This provides the structure. It divides the app into four distinct layers, creating a one-way street for dependencies.</li>
+  <li><strong>Domain-Driven Design (DDD):</strong> This provides the soul. It insists that our code should speak the language of the business domain (e.g., “Transforms,” “Tones,” “Commands”), not technical jargon.</li>
+</ul>
+
+<p>Here are the four layers of ReKey:</p>
+
+<ol>
+  <li><strong>Domain (The Heart):</strong> This is the center of our universe. It contains our core business entities (<code class="language-plaintext highlighter-rouge">Transform</code>), rules, and repository <em>interfaces</em>. It knows nothing about databases, APIs, or UI. It’s pure, distilled business logic. This is where we define <em>what</em> our app does.</li>
+  <li><strong>Application (The Orchestra Conductor):</strong> This layer defines the specific use cases of our app, like <code class="language-plaintext highlighter-rouge">CreateTransformCommand</code> or <code class="language-plaintext highlighter-rouge">GetTransformsQuery</code>. It orchestrates the Domain objects to perform tasks. It doesn’t know <em>how</em> the data is stored or displayed, only what needs to happen.</li>
+  <li><strong>Infrastructure (The Gritty Details):</strong> This is where the outside world lives. It contains the concrete implementations of the interfaces defined in the Domain layer, like our <code class="language-plaintext highlighter-rouge">FirestoreTransformRepository</code>. It handles networking, databases, and other services. If it’s a third-party SDK, it belongs here.</li>
+  <li><strong>Presentation (The Face):</strong> This is the UI. For us, it’s SwiftUI views and ViewModels. Its job is to present data and capture user input, delegating all the real work to the Application layer.</li>
+</ol>
+
+<p>The golden rule is the <strong>Dependency Rule</strong>: dependencies can only point inwards. The UI knows about the Application layer, but the Domain layer knows nothing about the UI. This separation is our superpower. It means we can test our entire business logic without a UI, and we can change our database without touching a single business rule.</p>
+
+<h2 id="how-this-architecture-becomes-ai-native">How This Architecture Becomes “AI-Native”</h2>
+
+<p>This is where the investment in architecture pays off for the future. A clean, layered architecture isn’t just good for humans; it’s fundamentally better for AI coding agents.</p>
+
+<p><strong>1. Focused Context Windows:</strong>
+When we ask an AI agent to work on a task, the architecture gives it natural blinders. If the task is “add a ‘createdAt’ timestamp to every Transform,” the agent only needs to look at <code class="language-plaintext highlighter-rouge">Domain/Entities/Transform.swift</code>. It doesn’t need to load the entire project’s context. This high-signal, low-noise environment dramatically improves the AI’s accuracy.</p>
+
+<p><strong>2. High-Level, “Vibe-Based” Prompting:</strong>
+Because our architecture mirrors our business, our prompts can be high-level.
+<em>Human Vibe:</em> “We need a way to save a new text transformation.”
+<em>AI Translation:</em> “Create a <code class="language-plaintext highlighter-rouge">SaveTransformCommand</code> in the <code class="language-plaintext highlighter-rouge">Application</code> layer that uses the <code class="language-plaintext highlighter-rouge">TransformRepository</code> to store a <code class="language-plaintext highlighter-rouge">Transform</code> entity.”</p>
+
+<p>The architecture provides the “slots” for the AI to fill. It turns a vague “vibe” into a precise, actionable task with a clear location in the codebase.</p>
+
+<p><strong>3. Guardrails for Safety:</strong>
+The dependency rule acts as a set of guardrails for the AI. It’s incredibly difficult for an AI working in the Domain layer to accidentally make a UI change. This makes us confident enough to delegate entire features to our AI partner, knowing the blast radius of any potential error is contained.</p>
+
+<h2 id="the-next-frontier-literate-in-place-lip">The Next Frontier: Literate-in-Place (LiP)</h2>
+
+<p>A clean architecture is our foundation, but we’re already building the next floor. As outlined in our public RFC, <strong><a href="https://github.com/huan/rekey/blob/main/rfcs/01-literate-in-place.md">rfcs/01-literate-in-place.md</a></strong>, we are adopting a “Literate-in-Place” (LiP) documentation style.</p>
+
+<p>The principle is simple: <strong>a source file should be a readable design document, with code serving as the implementation detail.</strong> If you were to strip out all the code, the remaining comments should form a coherent narrative explaining the <em>what</em>, <em>why</em>, and <em>how</em> of the system.</p>
+
+<p>LiP is the final bridge between human intent and machine execution. It allows an AI agent to not just see the code, but to understand the <em>rationale</em> behind it before making a single change. This is critical for maintaining the integrity of the system as it grows and evolves under the guidance of both human and AI developers.</p>
+
+<h2 id="build-the-foundation-then-vibe">Build the Foundation, Then Vibe</h2>
+
+<p>The dream of “vibe coding” is alive, but it doesn’t come for free. It’s earned through the discipline of building a clean, understandable, and robust architecture. By investing in this foundation, you’re not slowing yourself down; you’re building a superhighway for future development.</p>
+
+<p>For us at ReKey, this isn’t just a theory. It’s how we build production software every day. It’s the architecture that lets us move fast, stay stable, and truly collaborate with the ghost in the machine.</p>]]></content><author><name>huan</name></author><category term="article" /><category term="ai" /><category term="architecture" /><category term="ricky" /><summary type="html"><![CDATA[A Case Study from the ReKey Team]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://wechaty.js.org/assets/2025/08-architecture-ai-driven-development/coding-with-the-ghost-in-the-machine-the-architecture-that-powers-ai-driven-development-a-case-study-from-the-rekey-team.webp" /><media:content medium="image" url="https://wechaty.js.org/assets/2025/08-architecture-ai-driven-development/coding-with-the-ghost-in-the-machine-the-architecture-that-powers-ai-driven-development-a-case-study-from-the-rekey-team.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Wechaty &amp;amp; AWS Global Recruitment: Leave an Eternal Mark with Your Code!</title><link href="https://wechaty.js.org/2025/05/23/wechaty-with-aws2025-en/" rel="alternate" type="text/html" title="Wechaty &amp;amp; AWS Global Recruitment: Leave an Eternal Mark with Your Code!" /><published>2025-05-23T00:00:00+00:00</published><updated>2025-05-23T00:00:00+00:00</updated><id>https://wechaty.js.org/2025/05/23/wechaty-with-aws2025-en</id><content type="html" xml:base="https://wechaty.js.org/2025/05/23/wechaty-with-aws2025-en/"><![CDATA[<blockquote>
+  <p>This is a translated version of the original Chinese post. You can find the original post <a href="/2025/05/23/wechaty-with-aws2025/">here</a>.</p>
+</blockquote>
+
+<p>🔥 <strong>Wechaty &amp; AWS Global Recruitment: Leave an Eternal Mark with Your Code!</strong> 🔥<br />
+AI Development Competition Arrives! Your Code Changes the World!<br />
+<a href="https://mp.weixin.qq.com/s/xhb-Z-pIqoZ5udIa7evq7A">Read Original Article</a></p>
+
+<h2 id="looking-back-to-1993-the-beginning-of-the-tech-wave">Looking Back to 1993: The Beginning of the Tech Wave</h2>
+
+<p>On January 23, 1993, the first software application in human history was born.<br />
+From then on, information access and dissemination entered a new era accessible to everyone. Our communication methods, economic forms, cultural presentation methods, daily life… all underwent tremendous changes.</p>
+
+<p>1993: The first search application of the World Wide Web was born, laying the foundation for the Internet information revolution.<br />
+1994: Netscape Navigator browser opened the era of graphical web pages.<br />
+1999: Napster sparked the digital music revolution wave; the earliest Internet instant messaging software appeared domestically; China’s Internet golden age unveiled.<br />
+2000: Salesforce pioneered the SaaS model, enterprise services entered the cloud era.<br />
+2003: LinkedIn established a new professional social networking paradigm; Taobao.com was born, C2C e-commerce rewrote the retail landscape.<br />
+2004: Facebook left Harvard campus, social network globalization accelerated.<br />
+2005: YouTube reconstructed video dissemination forms.<br />
+2009: WhatsApp reshaped instant messaging; Taobao pioneered the Double Eleven shopping festival, creating new thinking for global e-commerce promotions.<br />
+2010: Instagram defined mobile visual social networking new paradigm.<br />
+2011: Snapchat’s “disappearing messages” subverted social privacy concepts; WeChat officially launched, building a super social ecosystem.<br />
+2012: Tinder revolutionized online dating experience; “Didi Chuxing” predecessor DiDi taxi app was born, providing online taxi-hailing services.<br />
+2015: Pinduoduo broke through the sinking market with social fission, reconstructing e-commerce competitive landscape.<br />
+2016: <strong>Wechaty</strong> first line of code was born, the world’s largest Chinese conversational RPA framework; Pokémon Go ignited AR national enthusiasm; Douyin launched, short videos reshaped content consumption forms.<br />
+2018: Fortnite pioneered the battle royale game craze; Pinduoduo listed on NASDAQ, new e-commerce model gained capital recognition.<br />
+2020: Zoom daily users exceeded 200 million, remote work became normal; TikTok international version downloads topped global charts, DingTalk supported 200 million students “stopping classes without stopping learning.”<br />
+2022: Generative AI emerged, triggering productivity revolution.<br />
+…</p>
+
+<h2 id="technology-democratization-everyone-can-build-dreams">Technology Democratization: Everyone Can Build Dreams</h2>
+
+<p>Looking at the entire history, what does the development of Internet technology mean to humanity? Perhaps it’s that every ordinary person among us can have the opportunity to leave evidence of our existence.</p>
+
+<h2 id="call-for-creation-your-application-your-mark">Call for Creation: Your Application, Your Mark</h2>
+
+<p>At this moment of both paying tribute to history and co-creating the future, your creativity, your story, your needs can all be transformed into an application. Perhaps it’s a diary app that records moods and moments, accompanying you through youth; perhaps it’s a tool that can simplify parents’ lives, creating exclusive health reminders for them; perhaps it’s an outlet for dissatisfaction with reality, making a small App a platform for you to express your attitude; maybe it’s just a photo album that preserves travel memories, letting every photo convey real warmth…</p>
+
+<p>The threshold of technology has been greatly reduced. Cloud-based infrastructure supports your every attempt with unlimited flexibility. Whether you’re a programming novice or a tech expert, you can use <strong>Wechaty</strong> to create freely and iterate repeatedly until it becomes a work that truly belongs to you.</p>
+
+<h2 id="join-the-competition">Join the Competition</h2>
+
+<p><img src="/assets/2025/05-wechaty-with-aws2025-en/detail.webp" alt="detail" /></p>
+
+<p>🚀 AI is reshaping the boundaries of development. Code is no longer the patent of a few, but the key to universal creation! Whether you’re a tech expert or creative pioneer, there’s a stage for you here!</p>
+
+<p>💡 Three Tracks to Choose From 💡<br />
+🛠️ Efficiency Fanatic: Let AI work for you, liberate creativity!<br />
+❤️ Public Welfare Pioneer: Use technology to “patch” the world!<br />
+🌟 Life Hacker: Create exclusive cheats, turn survival into living!</p>
+
+<p>🎁 Generous Rewards: 100,000 startup fund, Las Vegas tech trip, top resource support… even “Zen mechanical keyboard” and “global temple computing power support” waiting for you!</p>
+
+<p>⏳ This competition requires participants from the Wechaty open source community to <strong>use both AWS and Wechaty products</strong> to create their own creative AI ChatBot based on large models.</p>
+
+<p>👉 Register now, ignite the future with code! Every line of your inspiration is reconstructing the world’s algorithm!</p>
+
+<p><a href="https://mp.weixin.qq.com/s/xhb-Z-pIqoZ5udIa7evq7A">Read Original Article</a></p>
+
+<blockquote>
+  <p>This is a translated version of the original Chinese post. You can find the original post <a href="/2025/05/23/wechaty-with-aws2025/">here</a>.</p>
+</blockquote>]]></content><author><name>aiamber</name></author><category term="article" /><category term="aws" /><category term="ai" /><category term="chatbot" /><category term="competition" /><summary type="html"><![CDATA[Wechaty & AWS AI development competition globally recruiting developers to create innovative AI chatbots using large language models - three tracks including efficiency, public welfare, and life improvement with generous prizes.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://wechaty.js.org/assets/2025/05-wechaty-with-aws2025-en/banner.webp" /><media:content medium="image" url="https://wechaty.js.org/assets/2025/05-wechaty-with-aws2025-en/banner.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Wechaty &amp;amp; AWS 全球招募：创意为笔，用代码留下永恒印记！</title><link href="https://wechaty.js.org/2025/05/23/wechaty-with-aws2025/" rel="alternate" type="text/html" title="Wechaty &amp;amp; AWS 全球招募：创意为笔，用代码留下永恒印记！" /><published>2025-05-23T00:00:00+00:00</published><updated>2025-05-23T00:00:00+00:00</updated><id>https://wechaty.js.org/2025/05/23/wechaty-with-aws2025</id><content type="html" xml:base="https://wechaty.js.org/2025/05/23/wechaty-with-aws2025/"><![CDATA[<p>🔥 <strong>Wechaty &amp; AWS 全球招募：创意为笔，用代码留下永恒印记！</strong> 🔥<br />
+AI开发大赛重磅来袭！你的代码，改变世界！<br />
+<a href="https://mp.weixin.qq.com/s/xhb-Z-pIqoZ5udIa7evq7A">阅读原文</a></p>
+
+<h2 id="回望1993技术浪潮的起点">回望1993：技术浪潮的起点</h2>
+
+<p>1993年1月23日，人类历史上第一个软件应用诞生了。<br />
+至此，信息获取和传播进入人人可及的新时代，我们的沟通方式、经济形态、文化呈现方式、生活日常… 都发生了巨大的变化。</p>
+
+<p>1993年 万维网首个搜索应用诞生，奠定互联网信息革命基础。<br />
+1994年 Netscape Navigator浏览器开启图形化网页时代。<br />
+1999年 Napster掀起数字音乐革命浪潮；国内出现最早的互联网即时通讯软件；中国互联网黄金时代揭幕。<br />
+2000年 Salesforce开创SaaS模式，企业服务进入云时代。<br />
+2003年 LinkedIn建立职业社交新范式；淘宝网诞生，C2C电商改写零售格局。<br />
+2004年 Facebook走出哈佛校园，社交网络全球化加速。<br />
+2005年 YouTube重构视频传播形态。<br />
+2009年 WhatsApp重塑即时通讯；淘宝首创双十一购物节，开创全球电商促销全新思维。<br />
+2010年 Instagram定义移动端视觉社交新范式。<br />
+2011年 Snapchat”阅后即焚”颠覆社交隐私观念；微信正式上线，构建超级社交生态。<br />
+2012年 Tinder革新在线约会体验；“滴滴出行”前身嘀嘀打车APP问世，提供出租车在线叫车服务。<br />
+2015年 拼多多以社交裂变破局下沉市场，重构电商竞争格局。<br />
+2016年 <strong>Wechaty</strong>第一行代码诞生，全球最大的中文对话 RPA 框架；Pokémon Go引爆AR全民热潮；抖音上线，短视频重塑内容消费形态。<br />
+2018年 Fortnite开创大逃杀游戏风潮；拼多多纳斯达克上市，新电商模式获资本认可。<br />
+2020年 Zoom日均用户突破2亿，远程办公成常态；抖音国际版TikTok下载量登顶全球、钉钉支撑2亿学生“停课不停学”。<br />
+2022年 生成式AI横空出世，引发生产力革命。<br />
+…</p>
+
+<h2 id="技术平权人人皆可筑梦">技术平权：人人皆可筑梦</h2>
+
+<p>放到整个历史长河来看，互联网技术的发展，对人类的意义是什么呢？也许是每一个平凡的我们，都可以有机会留下我们存在过的证据。</p>
+
+<h2 id="呼唤创作你的应用你的印记">呼唤创作：你的应用，你的印记</h2>
+
+<p>在这个既向历史致敬又共塑未来的时刻，你的创意、你的故事、你的需求，都可以化作一款应用。或许是一款记录心情与瞬间的日记应用，陪伴你走过青春；或许是一份能简化父母生活的工具，为他们打造专属的健康提醒；或许是一种对现实不满的宣泄，让小小的App成为你表达态度的平台；也许只是一款留住旅行记忆的影集，让每一张照片都传递出真实的温度…</p>
+
+<p>技术的门槛已大幅降低，云端的基础设施正以无限的弹性支持你的每一次尝试。无论你是编程小白，还是技术达人，都可使用 <strong>Wechaty</strong> 自由创造、反复迭代，直到它成为真正属于你的作品。</p>
+
+<h2 id="参加比赛">参加比赛</h2>
+
+<p><img src="/assets/2025/05-wechaty-with-aws2025-en/detail.webp" alt="detail" /></p>
+
+<p>🚀 AI正在重塑开发的边界，代码不再是少数人的专利，而是全民创造的钥匙！无论你是技术大牛还是创意先锋，这里都有你的舞台！</p>
+
+<p>💡 三大赛道任你选 💡<br />
+🛠️ 效率狂人：让AI替你打工，解放创造力！<br />
+❤️ 公益先锋：用技术给世界加个“补丁”！<br />
+🌟 生活黑客：打造专属外挂，把生存变生活！</p>
+
+<p>🎁 豪华奖励：10万启动金、拉斯维加斯技术之旅、顶级资源加持……甚至还有“禅意机械键盘”和“全球寺庙算力加持”等你来拿！</p>
+
+<p>⏳ 本次大赛需要来自 Wechaty 开源社区的选手<strong>使用 AWS 和 Wechaty 两个产品</strong>来打造属于自己基于大模型的创意ai ChatBot。</p>
+
+<p>👉 立即报名，用代码点燃未来！你的每一行灵感，都在重构世界的算法！</p>
+
+<p><a href="https://mp.weixin.qq.com/s/xhb-Z-pIqoZ5udIa7evq7A">阅读原文</a></p>
+
+<hr />
+
+<blockquote>
+  <p>This post is also available in <a href="/2025/05/23/wechaty-with-aws2025-en/">English</a>.</p>
+</blockquote>]]></content><author><name>aiamber</name></author><category term="article" /><category term="aws" /><category term="ai" /><category term="chatbot" /><category term="competition" /><summary type="html"><![CDATA[🔥 Wechaty &amp; AWS 全球招募：创意为笔，用代码留下永恒印记！ 🔥 AI开发大赛重磅来袭！你的代码，改变世界！ 阅读原文]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://wechaty.js.org/assets/2025/05-wechaty-with-aws2025-en/banner.webp" /><media:content medium="image" url="https://wechaty.js.org/assets/2025/05-wechaty-with-aws2025-en/banner.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">All Interfaces Are Becoming Conversational</title><link href="https://wechaty.js.org/2025/04/15/huans-conversation-law/" rel="alternate" type="text/html" title="All Interfaces Are Becoming Conversational" /><published>2025-04-15T00:00:00+00:00</published><updated>2025-04-15T00:00:00+00:00</updated><id>https://wechaty.js.org/2025/04/15/huans-conversation-law</id><content type="html" xml:base="https://wechaty.js.org/2025/04/15/huans-conversation-law/"><![CDATA[<blockquote>
+  <p><strong>Atwood’s Law:</strong> “Any application that can be written in JavaScript, will eventually be written in JavaScript.”</p>
+</blockquote>
+
+<p>Fifteen years ago, Jeff Atwood declared.</p>
+
+<p>At the time, this was a bold assertion. Yet today, we see it realized in countless applications — from web-based versions of Photoshop to browser-run IDEs. The web became the universal platform, and JavaScript its lingua franca.</p>
+
+<p>Now, we stand at the dawn of a new era: the age of <strong>conversational interfaces</strong>.</p>
+
+<hr />
+
+<h2 id="the-rise-of-conversational-interfaces">The Rise of Conversational Interfaces</h2>
+
+<p>Consider <a href="https://www.linkedin.com/posts/joseph-michael_the-most-impressive-ai-demo-ive-seen-in-ugcPost-7317865648452198401-3bTF/">a recent demonstration shared by Joseph Michael on LinkedIn</a>. An AI agent assists a customer through voice, text, and video — understanding context, preferences, and even visual inputs to provide personalized recommendations and services.</p>
+
+<p>This isn’t a distant future — it’s happening now.</p>
+
+<p>Just as web applications once replaced desktop software, <strong>conversational interfaces</strong> are beginning to supplant traditional GUIs. The reasons are clear:</p>
+
+<ul>
+  <li><strong>Accessibility:</strong> Voice and text interfaces lower the barrier to entry for users of all ages and abilities.</li>
+  <li><strong>Efficiency:</strong> Conversational agents can handle complex tasks through simple dialogues.</li>
+  <li><strong>Personalization:</strong> AI-driven conversations adapt to individual user needs in real-time.</li>
+</ul>
+
+<hr />
+
+<h2 id="huans-law">Huan’s Law</h2>
+
+<p>Inspired by Atwood’s Law, I propose:</p>
+
+<blockquote>
+  <p><strong>Huan’s Law:</strong> “Any application that can be talked to, will eventually be talked to.”</p>
+</blockquote>
+
+<p>Or simply:<br />
+<strong>“Any app that can be talked to, will be talked to.”</strong></p>
+
+<p>This isn’t just a prediction—it’s a reflection of where things are already heading.</p>
+
+<p>From customer service bots to voice-activated home devices, <strong>conversational interfaces are becoming the norm</strong>.</p>
+
+<hr />
+
+<h2 id="embracing-the-shift">Embracing the Shift</h2>
+
+<p>For developers and businesses, this shift presents both challenges and opportunities:</p>
+
+<ul>
+  <li><strong>Designing for Dialogue:</strong> Crafting intuitive conversational flows requires a new set of design principles.</li>
+  <li><strong>Leveraging AI:</strong> Integrating natural language processing (NLP) and understanding (NLU) to create responsive agents.</li>
+  <li><strong>Ensuring Privacy:</strong> Handling user data responsibly in conversational contexts.</li>
+</ul>
+
+<p>At <a href="https://wechaty.js.org/">Wechaty</a>, we’ve been at the forefront of this transformation — providing tools and frameworks to build conversational agents efficiently.</p>
+
+<hr />
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The evolution of user interfaces is steering toward conversation.</p>
+
+<p>As we embraced the web and JavaScript in the past, it’s time to embrace conversational AI.</p>
+
+<p>In the spirit of Huan’s Law:<br />
+<strong>If it can be talked to, it will be.</strong></p>
+
+<hr />
+
+<h2 id="sources">Sources</h2>
+
+<ul>
+  <li>Atwood, Jeff. <a href="https://blog.codinghorror.com/all-programming-is-web-programming/">“All Programming is Web Programming”</a></li>
+  <li>Joseph Michael. <a href="https://www.linkedin.com/posts/joseph-michael_the-most-impressive-ai-demo-ive-seen-in-ugcPost-7317865648452198401-3bTF/">“The most impressive AI demo I’ve seen in years.” (LinkedIn Post)</a></li>
+</ul>]]></content><author><name>huan</name></author><category term="announcement" /><category term="law" /><summary type="html"><![CDATA[Huan's Law: 'Any app that can be talked to, will be talked to.' Explore the future of voice-first and conversational apps, where talking to technology becomes the norm.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://wechaty.js.org/assets/2025/04-huans-conversation-law/huans-law.webp" /><media:content medium="image" url="https://wechaty.js.org/assets/2025/04-huans-conversation-law/huans-law.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">🚀 What’s the Best Transport for an Event-Driven Architecture: WebSocket or SSE + POST?</title><link href="https://wechaty.js.org/2025/04/04/best-transport-for-event-driven-architecture-websocket-or-sse-post/" rel="alternate" type="text/html" title="🚀 What’s the Best Transport for an Event-Driven Architecture: WebSocket or SSE + POST?" /><published>2025-04-04T00:00:00+00:00</published><updated>2025-04-04T00:00:00+00:00</updated><id>https://wechaty.js.org/2025/04/04/best-transport-for-event-driven-architecture-websocket-or-sse-post</id><content type="html" xml:base="https://wechaty.js.org/2025/04/04/best-transport-for-event-driven-architecture-websocket-or-sse-post/"><![CDATA[<p>As the creator of the <a href="https://github.com/wechaty/wechaty">Wechaty</a> and <a href="https://github.com/chatie">Chatie</a> projects, I’ve spent years building conversational and messaging tools for developers. Now, I’m investing in a new phase of <strong>cloud-native, event-driven infrastructure</strong> for Chatie, and I want to get the architecture right from day one.</p>
+
+<p>For this next-generation system, I’m adopting:</p>
+
+<ul>
+  <li><strong>CQRS</strong> (Command Query Responsibility Segregation)</li>
+  <li><strong>Event Sourcing</strong></li>
+  <li><strong>Event-Driven Programming</strong></li>
+</ul>
+
+<p>These patterns enable scalable, modular systems with clear separation of concerns. But to tie it all together, I need a reliable, flexible, and efficient <strong>messaging transport</strong> — something that works both <strong>internally between services</strong>, and <strong>externally with clients</strong> (browsers, CLI tools, etc).</p>
+
+<p>So the big question became:<br />
+<strong>What transport should I use for streaming and event communication?</strong></p>
+
+<hr />
+
+<h2 id="-the-problem-choosing-a-universal-messaging-protocol">❓ The Problem: Choosing a Universal Messaging Protocol</h2>
+
+<p>My goal is to design a <strong>universal communication layer</strong> that:</p>
+
+<ol>
+  <li>Works across <strong>cloud environments</strong> and <strong>local development</strong>.</li>
+  <li>Supports <strong>event-driven</strong> messaging — sending and receiving updates in real-time.</li>
+  <li>
+    <p>Plays nicely with modern <strong>web clients</strong>, <strong>CLI</strong>, and <strong>microservices</strong>.</p>
+  </li>
+  <li>Allows <strong>stateless request handling</strong> (ideal for serverless and horizontally scalable systems).</li>
+</ol>
+
+<p>Naturally, <strong>WebSocket</strong> is a common choice for bi-directional, real-time communication. But is it the best choice for this use case? I decided to dive deeper and explore another approach: <strong>HTTP POST + Server-Sent Events (SSE)</strong> — especially after learning how the <a href="https://modelcontextprotocol.io/introduction">Model Context Protocol (MCP)</a> team made a similar decision.</p>
+
+<hr />
+
+<h2 id="-the-solution-http-post--sse-vs-websocket">✅ The Solution: HTTP POST + SSE vs. WebSocket</h2>
+
+<p>After extensive research and experimentation, I’ve decided to go with <strong>HTTP POST + Server-Sent Events (SSE)</strong> as the primary messaging transport for Chatie.</p>
+
+<p>Let’s break it down.</p>
+
+<hr />
+
+<h2 id="️-comparing-websocket-vs-sse--post">⚖️ Comparing WebSocket vs SSE + POST</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>WebSocket</th>
+      <th>HTTP POST + SSE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Bi-directional</strong></td>
+      <td>✅ Full-duplex</td>
+      <td>🔄 Half-duplex (Client sends via POST, Server streams via SSE)</td>
+    </tr>
+    <tr>
+      <td><strong>Works with HTTP semantics (e.g., POST, headers)</strong></td>
+      <td>❌ No (only GET upgrade)</td>
+      <td>✅ Yes</td>
+    </tr>
+    <tr>
+      <td><strong>Authentication (e.g., <code class="language-plaintext highlighter-rouge">Authorization</code> header)</strong></td>
+      <td>❌ Limited in browsers</td>
+      <td>✅ Fully supported</td>
+    </tr>
+    <tr>
+      <td><strong>Browser support</strong></td>
+      <td>✅ Native WebSocket API</td>
+      <td>✅ Native EventSource API</td>
+    </tr>
+    <tr>
+      <td><strong>Proxy/firewall friendliness</strong></td>
+      <td>⚠️ Sometimes blocked</td>
+      <td>✅ Treated as normal HTTP</td>
+    </tr>
+    <tr>
+      <td><strong>Ease of debugging</strong></td>
+      <td>⚠️ Requires special tools</td>
+      <td>✅ Can use <code class="language-plaintext highlighter-rouge">curl</code>, browser, etc.</td>
+    </tr>
+    <tr>
+      <td><strong>Stateless-friendly (serverless, scale-out)</strong></td>
+      <td>❌ Long-lived stateful connection</td>
+      <td>✅ Stateless POST + stream</td>
+    </tr>
+    <tr>
+      <td><strong>Resumability (auto-reconnect)</strong></td>
+      <td>❌ Manual reconnection logic needed</td>
+      <td>✅ Built-in with EventSource</td>
+    </tr>
+    <tr>
+      <td><strong>Complexity</strong></td>
+      <td>⚠️ Needs upgrade handshake, framing</td>
+      <td>✅ Simple HTTP + text stream</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="-architecture-diagrams">🔧 Architecture Diagrams</h2>
+
+<h3 id="websocket-architecture">WebSocket Architecture</h3>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Client &lt;======&gt; WebSocket Server
+      [ Bi-directional | Long-lived connection ]
+</code></pre></div></div>
+
+<h3 id="sse--post-architecture">SSE + POST Architecture</h3>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Client --(POST)--&gt; Server
+Client &lt;--(SSE)-- Server
+
+      [ Stateless requests + Server-push stream ]
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-code-examples">💻 Code Examples</h2>
+
+<h3 id="sse--post-example-nodejs--express">SSE + POST Example (Node.js / Express)</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Server (Express)</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/run-tool</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// Process the incoming command</span>
+  <span class="kd">const</span> <span class="nx">toolInput</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+
+  <span class="nx">res</span><span class="p">.</span><span class="nf">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">text/event-stream</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nf">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Cache-Control</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">no-cache</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nf">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Connection</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">keep-alive</span><span class="dl">'</span><span class="p">);</span>
+
+  <span class="c1">// Simulate streaming output</span>
+  <span class="kd">const</span> <span class="nx">interval</span> <span class="o">=</span> <span class="nf">setInterval</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="s2">`data: Output at </span><span class="p">${</span><span class="k">new</span> <span class="nc">Date</span><span class="p">().</span><span class="nf">toISOString</span><span class="p">()}</span><span class="s2">\n\n`</span><span class="p">);</span>
+  <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+
+  <span class="c1">// Stop after 5 seconds</span>
+  <span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nf">clearInterval</span><span class="p">(</span><span class="nx">interval</span><span class="p">);</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="dl">'</span><span class="s1">event: done</span><span class="se">\n</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="dl">'</span><span class="s1">data: Stream complete</span><span class="se">\n\n</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nf">end</span><span class="p">();</span>
+  <span class="p">},</span> <span class="mi">5000</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Client (Browser)</span>
+<span class="kd">const</span> <span class="nx">evtSource</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">EventSource</span><span class="p">(</span><span class="dl">'</span><span class="s1">/run-tool</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">evtSource</span><span class="p">.</span><span class="nx">onmessage</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Message:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">evtSource</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">done</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Stream completed</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nx">evtSource</span><span class="p">.</span><span class="nf">close</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-resources--references">📚 Resources &amp; References</h2>
+
+<ul>
+  <li>MCP GitHub PR on SSE vs WebSocket: <a href="https://github.com/modelcontextprotocol/specification/pull/206">https://github.com/modelcontextprotocol/specification/pull/206</a></li>
+  <li>Durable Objects &amp; HTTP Streaming: <a href="https://blog.cloudflare.com/introducing-workers-durable-objects/#why-not-websockets">https://blog.cloudflare.com/introducing-workers-durable-objects/#why-not-websockets</a></li>
+</ul>
+
+<hr />
+
+<h2 id="-conclusion">🧠 Conclusion</h2>
+
+<p>If you’re building a <strong>real-time, event-driven system</strong>, it’s easy to default to WebSockets. But before you do, consider whether you really need full-duplex communication.</p>
+
+<p>For most <strong>CQRS</strong>, <strong>event-sourcing</strong>, and <strong>cloud-native</strong> use cases — where clients <strong>send a command</strong> and <strong>receive streamed events</strong> — a combination of <strong>HTTP POST + SSE</strong> gives you the best of both worlds:</p>
+
+<ul>
+  <li>Clean request/response semantics</li>
+  <li>Streaming real-time updates</li>
+  <li>Low complexity and broad compatibility</li>
+</ul>
+
+<p>This is why <strong>Chatie will be built on SSE + POST</strong>, and I believe it’s a powerful, underused pattern that deserves more attention in the developer community.</p>
+
+<hr />
+
+<p>💬 I’d love to hear your thoughts! Have you used SSE or WebSockets in your projects? What challenges did you face? Let’s chat in the comments or <a href="https://github.com/chatie">on GitHub</a>.</p>]]></content><author><name>huan</name></author><category term="event" /><category term="event-driven" /><category term="cqrs" /><category term="cloud-native" /><summary type="html"><![CDATA[As the creator of the Wechaty and Chatie projects, I’ve spent years building conversational and messaging tools for developers. Now, I’m investing in a new phase of cloud-native, event-driven infrastructure for Chatie, and I want to get the architecture right from day one.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://wechaty.js.org/assets/2025/04-best-transport-for-event-driven-architecture-websocket-or-sse-post/sse-post-websocket.webp" /><media:content medium="image" url="https://wechaty.js.org/assets/2025/04-best-transport-for-event-driven-architecture-websocket-or-sse-post/sse-post-websocket.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">AWS with Wechaty | AWS Generative AI Application Challenge Kicks Off!</title><link href="https://wechaty.js.org/2024/04/25/wechaty-with-aws2024-en/" rel="alternate" type="text/html" title="AWS with Wechaty | AWS Generative AI Application Challenge Kicks Off!" /><published>2024-04-25T00:00:00+00:00</published><updated>2024-04-25T00:00:00+00:00</updated><id>https://wechaty.js.org/2024/04/25/wechaty-with-aws2024-en</id><content type="html" xml:base="https://wechaty.js.org/2024/04/25/wechaty-with-aws2024-en/"><![CDATA[<p>✨ <strong>The 2nd China Generative AI Innovation Application Challenge</strong> ✨</p>
+
+<h2 id="about-the-challenge">About the Challenge</h2>
+
+<p>The 2nd China Generative AI Innovation Application Challenge is a competition for developers to create their own generative AI applications. The competition is jointly organized by AWS and Wechaty.</p>
+
+<h2 id="the-competition">The Competition</h2>
+
+<p>The competition is divided into two tracks:</p>
+
+<ol>
+  <li><strong>Creative Track:</strong> In this track, you can create any kind of generative AI application you want.</li>
+  <li><strong>Technical Track:</strong> In this track, you need to use AWS’s AI technology to create a generative AI application.</li>
+</ol>
+
+<h2 id="the-prize">The Prize</h2>
+
+<p>The prize for the competition is as follows:</p>
+
+<ul>
+  <li><strong>First Prize:</strong> 100,000 RMB</li>
+  <li><strong>Second Prize:</strong> 50,000 RMB</li>
+  <li><strong>Third Prize:</strong> 20,000 RMB</li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The 2nd China Generative AI Innovation Application Challenge is a great opportunity for developers to show their creativity and skills. I believe that in the future, there will be more and more competitions like this.</p>]]></content><author><name>aiamber</name></author><category term="article" /><category term="aws" /><category term="ai" /><category term="chatbot" /><category term="competition" /><summary type="html"><![CDATA[✨ The 2nd China Generative AI Innovation Application Challenge ✨]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://wechaty.js.org/assets/2024/04-wechaty-with-aws2024-en/main.webp" /><media:content medium="image" url="https://wechaty.js.org/assets/2024/04-wechaty-with-aws2024-en/main.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

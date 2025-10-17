@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      AI Chatbot Competition -- Metaverse启动机之重构现世！ | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>AI Chatbot Competition – Metaverse启动机之重构现世！ | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="AI Chatbot Competition – Metaverse启动机之重构现世！" />
+<meta name="author" content="valerieeeee" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="硬核ML Chatbot 大赛重磅来袭! 由Wechaty、PaddlePaddle和Mixlab联合主办，未来事务管理局作为媒体支持的「AI创造营 ：Metaverse启动机之重构现世」ML Chatbot 大赛正式启动！" />
+<meta property="og:description" content="硬核ML Chatbot 大赛重磅来袭! 由Wechaty、PaddlePaddle和Mixlab联合主办，未来事务管理局作为媒体支持的「AI创造营 ：Metaverse启动机之重构现世」ML Chatbot 大赛正式启动！" />
+<link rel="canonical" href="https://wechaty.js.org/2021/07/07/wechaty-with-paddlepaddle/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/07/07/wechaty-with-paddlepaddle/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/07-wechaty-with-paddlepaddle-en/header.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-07-07T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/07-wechaty-with-paddlepaddle-en/header.webp" />
+<meta property="twitter:title" content="AI Chatbot Competition – Metaverse启动机之重构现世！" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"valerieeeee"},"dateModified":"2021-07-07T00:00:00+00:00","datePublished":"2021-07-07T00:00:00+00:00","description":"硬核ML Chatbot 大赛重磅来袭! 由Wechaty、PaddlePaddle和Mixlab联合主办，未来事务管理局作为媒体支持的「AI创造营 ：Metaverse启动机之重构现世」ML Chatbot 大赛正式启动！","headline":"AI Chatbot Competition – Metaverse启动机之重构现世！","image":"https://wechaty.js.org/assets/2021/07-wechaty-with-paddlepaddle-en/header.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/07/07/wechaty-with-paddlepaddle/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"valerieeeee"},"url":"https://wechaty.js.org/2021/07/07/wechaty-with-paddlepaddle/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#article">article</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">AI Chatbot Competition -- Metaverse启动机之重构现世！</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/valerieeeee">
+                            <img class="rounded-circle" src="/assets/contributors/valerieeeee/avatar.webp" alt="Valerie WANG" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> Valerie WANG <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jul 07, 2021 · <span class="reading-time">
+  
+  
+    1 min read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/07-wechaty-with-paddlepaddle-en/header.webp" alt="AI Chatbot Competition -- Metaverse启动机之重构现世！">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_button_wechat" title='Wechat'>
+          <img id="qrcode" title="Wechat"
+            src="/assets/contributors/wechaty/icon.png"
+            width="64" height="64"
+          />
+        </a>
+        <a class="a2a_button_wechat" title='Wechat'></a>
+        <a class="a2a_button_sina_weibo" title='Weibo'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+        <!-- AddToAny BEGIN -->
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>硬核ML Chatbot 大赛重磅来袭!
+由Wechaty、PaddlePaddle和Mixlab联合主办，未来事务管理局作为媒体支持的「AI创造营 ：Metaverse启动机之重构现世」ML Chatbot 大赛正式启动！</p>
+
+<p>Metaverse元宇宙的奥秘，等你来揭晓！
+我们向所有科幻爱好者发出邀约！
+期待“你”充分开发自己的脑洞，借助飞桨PaddlePaddle技术，构建未来世界的超级Chatbot。</p>
+
+<h2 id="-惊喜奖品大揭秘">🌟 惊喜奖品大揭秘!🌟</h2>
+
+<p><img src="/assets/2021/07-wechaty-with-paddlepaddle-en/prize.webp" alt="prize" /></p>
+
+<h2 id="-更多比赛福利">✨ 更多比赛福利!✨</h2>
+
+<ul>
+  <li>报名即送GPU算力+wechaty token <a href="https://wechaty.js.org/docs/puppet-providers/padlocal/">由PadLocal-Wechaty puppet service provider提供</a></li>
+  <li>优秀项目官方送你出道</li>
+  <li>Paddle &amp; Wechaty工程师1对1指导</li>
+  <li>PPDE(飞桨开发者技术专家)绿色通道</li>
+</ul>
+
+<p><img src="/assets/2021/07-wechaty-with-paddlepaddle-en/qr.webp" alt="qr" /></p>
+
+<p>扫码报名，马上获取比赛福利!</p>
+
+<h3 id="往期作品回顾ai创造营">往期作品回顾「AI创造营」</h3>
+
+<blockquote>
+  <p>AI创造营是百度大脑AI Studio平台举办的系列创意赛，目前已成功举办两期，涌现出许多好玩有趣的AI创意项目，精彩内容请往下看！</p>
+</blockquote>
+
+<p>《新一代超能力：隔空取物》当前累计star数 248+。有了Paddle Paddle技术的加持，偶像爱豆的照片统统可以“贴”在电脑桌面上，陪你看剧听歌工作。
+<img src="/assets/2021/07-wechaty-with-paddlepaddle-en/pic_mask.webp" alt="pic_mask" /></p>
+
+<p>《未来流浪者》已累计近200 star，是一个基于PaddleHub、Wechaty与彩云小梦的科幻机器人，可以实现未来旅行者跟人类的互动，即时发送位置、照片和游记等。
+<img src="/assets/2021/07-wechaty-with-paddlepaddle-en/wanderer.webp" alt="wanderer" /></p>
+
+<p>《BotBay专属机器人小助手》是以生物多样性为命题的机器人赋能平台，采用一入口(微信)，一平台(botPlatform)，多支撑(PaddleWorkers)的模式进行设计与开发，借比赛实现自己的科幻梦想。
+<img src="/assets/2021/07-wechaty-with-paddlepaddle-en/botbay.webp" alt="botbay" /></p>
+
+<p>《熊猫头表情生成器》是一个可以生成个人专属熊猫头表情包的聊天机器人，个性化聊天内容由你来掌控。!
+<img src="/assets/2021/07-wechaty-with-paddlepaddle-en/panda_emoji.webp" alt="panda_emoji" /></p>
+
+<h3 id="创意赛直播讲解">创意赛直播讲解</h3>
+
+<p>7月13日19:00-20:00，锁定飞桨直播间，飞桨模型教学&amp;Wechaty使用说明&amp;创意思路引导，统统满足你！无论是刚入门人工智能的初阶选手、还是没接触过Wechaty的小白用户都可以大胆参赛！直播最后还有互动交流环节，讲师现场答疑解惑。</p>
+
+<h3 id="线下脑暴创意大比拼">线下脑暴创意大比拼</h3>
+
+<ul>
+  <li>7月18日：上海场线下脑暴会</li>
+  <li>7月25日：北京场线下脑暴会</li>
+</ul>
+
+<p>现场名额有限，赶快入群获取报名链接吧！
+<img src="/assets/2021/07-wechaty-with-paddlepaddle-en/qrcode.webp" alt="qrcode" /></p>
+
+<hr />
+
+<blockquote>
+  <p>This post is also available in <a href="/2021/07/07/wechaty-with-paddlepaddle-en/">English</a>.</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#baidu">baidu</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ai">ai</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#featured">featured</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#chatbot">chatbot</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#competition">competition</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/valerieeeee">
+                            <img class="rounded-circle" src="/assets/contributors/valerieeeee/avatar.webp" alt="Valerie WANG" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by Valerie WANG </h5>
+						AI Chatbot Wechaty x PaddleHub UP 主
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Don't edit anything here. Set your disqus id in _config.yml -->
+
+<div id="comments" class="mt-5">
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript">
+        var disqus_shortname = 'wechaty'; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+    Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
+</div>
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/07/07/wechaty-with-paddlepaddle-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/07-wechaty-with-paddlepaddle-en/header.webp">  AI Chatbot Competition - Metaverse Launcher: Reconstructing Reality!</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/07/10/google-season-of-docs-guide/"> Google Season Of Docs (GSoD) Guide  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/07-google-season-of-docs-guide/guide.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>
