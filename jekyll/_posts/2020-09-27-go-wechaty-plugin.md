@@ -209,3 +209,7 @@ func main() {
 
 - 项目链接：[wechaty/go-wechaty](https://github.com/wechaty/go-wechaty)
 - 联系方式：finctive@foxmail.com
+
+---
+
+> This post is also available in [English](/2020/09/27/go-wechaty-plugin-en/).
