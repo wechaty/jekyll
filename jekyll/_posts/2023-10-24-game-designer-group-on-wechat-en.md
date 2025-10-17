@@ -1,36 +1,36 @@
 ---
-title: "Game-Copilot辅助游戏工作室进行头脑风暴"
+title: "Game-Copilot Assists Game Studios with Brainstorming"
 author: karrykeksis
 categories: article
 tags:
   - blog
   - game
   - agent
+  - ecosystem
 image: /assets/2023/10-game-designer-group-on-wechat-en/1.webp
-hidden: true
 ---
 
-> This post is also available in [English](/2023/10/24/game-designer-group-on-wechat-en/)
+> This post is also available in [Chinese](/2023/10/24/game-designer-group-on-wechat/)
 
-## 介绍
+## Introduction
 
-在现代游戏开发过程中，创新和创意的重要性不言而喻。然而，即使对于最有才华的开发者来说，灵感也可能会枯竭。为了解决这个问题，我们创建了一个基于GPT-4的辅助工具，我们称之为Game Copilot。这个工具是一个包含十一个agent的聊天室，旨在帮助游戏创业者进行头脑风暴和优化游戏。  
+In the modern game development process, the importance of innovation and creativity goes without saying. However, even for the most talented developers, inspiration can run dry. To solve this problem, we created a GPT-4-based assistant tool we call Game Copilot. This tool is a chat room containing eleven agents, designed to help game entrepreneurs brainstorm and optimize games.
 
-## 工作机制
+## Working Mechanism
 
-Game Copilot是怎么工作的呢？它利用GPT-4的强大功能，提供世界观，机制，玩法，角色等游戏必要的元素，为开发者提供灵感。它能够表现出高发散性，并能对过去的游戏，小说，当前世界背景进行参考，以帮助开发者构建独特且引人入胜的游戏体验。  
+How does Game Copilot work? It leverages the powerful capabilities of GPT-4, providing essential game elements such as world views, mechanics, gameplay, and characters to provide inspiration for developers. It can demonstrate high divergence and reference past games, novels, and current world backgrounds to help developers build unique and engaging game experiences.
 
-## 项目信息
+## Project Information
 
-Game Copilot主要适用于独立工作室和RPG类游戏的开发。不论你是一位游戏创业者，还是一位寻求新灵感的开发者，Game Copilot都能为你提供帮助。  
+Game Copilot is primarily suitable for independent studios and RPG game development. Whether you're a game entrepreneur or a developer seeking new inspiration, Game Copilot can help you.
 
-为了提高易用性，我们通过wechaty接入了企业微信，使得用户能在任何地方，任何时候记录自己的灵感，并进行迭代。无论是在挤公交车，还是在休闲的咖啡馆，只需打开企业微信，就能轻松访问Game Copilot。  
+To improve ease of use, we've integrated WeCom (Enterprise WeChat) through wechaty, enabling users to record their inspiration and iterate anywhere, anytime. Whether on a crowded bus or in a relaxing café, just open WeCom and easily access Game Copilot.
 
-网页版：
-[体验链接](https://game-copilot-frontend.zeabur.app)
-企微Bot版：开发中。
+Web version:
+[Experience Link](https://game-copilot-frontend.zeabur.app)
+WeCom Bot version: Under development.
 
-## 后端架构
+## Backend Architecture
 
 ### Technology
 
@@ -49,21 +49,17 @@ Game Copilot主要适用于独立工作室和RPG类游戏的开发。不论你�
 ### Game Design Workflow
 
 1. Register and Login
-2. Start a Game: Sense we are using paid API for generating, each user will have limit on the number of games they can
-   design.
-3. Primary Information Collector: User will chat with a information collector agent. Then generate a basic description
-   of the game user want to design.
+2. Start a Game: Since we are using paid API for generating, each user will have a limit on the number of games they can design.
+3. Primary Information Collector: User will chat with an information collector agent. Then generate a basic description of the game user wants to design.
 4. Design Iteration:
-    1. Firstly, user will chat with a group of agents, including an ideation agent and a critic agents. They will help
-       user to brainstorm fancy ideas and give feedbacks on those ideas and current game design.
+    1. Firstly, user will chat with a group of agents, including an ideation agent and critic agents. They will help user brainstorm fancy ideas and give feedbacks on those ideas and current game design.
     2. When user is satisfied with new ideas and comments, they can issue a full game design iteration.
-    3. After a full design are generated, user can review and modify the design.
-        1. More specifically, user can issue a "command", such as "add some new ideas in here" or "give me more options
-           for this part".
+    3. After a full design is generated, user can review and modify the design.
+        1. More specifically, user can issue a "command", such as "add some new ideas in here" or "give me more options for this part".
         2. Agents will generate the requested result.
         3. User and Agents chat with each other to discuss the result.
         4. Finally, user can choose to accept or reject the modification.
-    4. This "Design Iteration" can be repeated for several times until user is satisfied with our result.
+    4. This "Design Iteration" can be repeated several times until user is satisfied with the result.
 
 ![agent workflow](/assets/2023/10-game-designer-group-on-wechat-en/2.webp)
 
@@ -97,8 +93,7 @@ Game Copilot主要适用于独立工作室和RPG类游戏的开发。不论你�
 
 1. Common Description
     1. **All** API should be invoked with an "agent-token" in request body. `{ "token": "<token>"}`
-    2. **All** API except `bootstrap` message should be invoked with an "session-id" (may be generated
-       by `uuid.uuid4().hex`) in request body. `{ "session_id": "<uuid>" }`
+    2. **All** API except `bootstrap` message should be invoked with a "session-id" (may be generated by `uuid.uuid4().hex`) in request body. `{ "session_id": "<uuid>" }`
     3. Reset message (Force terminate session): `{ "type": "reset" }`
     4. Error message: `{ "type": "error", "detailed": "<str>" }`, For example:
         1. Invalid session id

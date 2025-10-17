@@ -11,7 +11,10 @@ tags:
   - knex
   - featured
 image: /assets/2020/im-game-robot/qrcat.webp 
+hidden: true
 ---
+
+> This post is also available in [English](/2020/06/06/wechaty-game-bot-en/)
 
 几年前大家开始通过微信拜年，基于vbot折腾过机器人，想要给所有alias不为空的好友发送定制问候，在发送不到10人消息之后，自己微信的WEB端口被封。无奈尝下没有技术和被墙的泪水。
 

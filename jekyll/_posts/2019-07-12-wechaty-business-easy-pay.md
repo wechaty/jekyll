@@ -7,6 +7,7 @@ tags:
   - featured
   - ecommerce
 image: /assets/2019/wechaty-pay-paypic.webp
+hidden: true
 ---
 
 ## Wechaty - 让线上没有难做的生意
@@ -102,3 +103,7 @@ function sendPayment (priceAmount, timestamp) {
 ![微信](/assets/2019/wechaty-pay-wechat.webp)
 
 > 作者: [Shawn](https://mugglepay.com)，全栈创业狗，致力于利用技术提升支付领域效率。
+
+---
+
+> This post is also available in [English](/2019/07/12/wechaty-business-easy-pay-en/).

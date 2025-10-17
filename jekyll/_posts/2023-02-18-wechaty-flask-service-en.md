@@ -1,49 +1,51 @@
 ---
-title: "使用wechaty与Flask搭建消息通知服务"
+title: "Building a Message Notification Service with Wechaty and Flask"
 author: houruirui
 categories: project
 tags:
   - productivity
+  - ecosystem
 image: /assets/2023/02-wechaty-flask-service-en/wechaty.webp
-hidden: true
+excerpt: >
+  Learn how to build a WeChat message notification service using Wechaty and Flask, enabling proactive message sending and multi-service notifications through a single WeChat account with the PadLocal protocol.
 ---
 [![Powered by Wechaty](https://img.shields.io/badge/Powered%20By-Wechaty-green.svg)](https://wechaty.js.org)
 [![Wechaty Contributor Program](https://img.shields.io/badge/Wechaty-Contributor%20Program-green.svg)](https://wechaty.js.org/docs/contributor-program)
 [![Juzi.BOT Developer Program](https://img.shields.io/badge/Wechaty%20Contributor%20Program-Juzi.BOT-orange.svg)](https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty/)
 
-> 作者: [Houruirui](https://github.com/Houruirui)，代码爱好者。
+> Author: [Houruirui](https://github.com/Houruirui), coding enthusiast.
 
 [Wechaty-Flask-Service](https://github.com/Houruirui/wechaty-flask)
 
 <!-- more -->
 
-目前，市面上有各种各样的接口提供了消息推送，比如钉钉，spark， IFTTT， telegram等等. 但是，每个人手机里各种各样的消息推送常常让人应接不暇。而微信，作为最广泛使用的聊天工具，鲜有人错过阅读微信消息。 所以，最方便的还是通过微信机器人来进行消息推送。
+Currently, there are various APIs on the market that provide message push notifications, such as DingTalk, Spark, IFTTT, Telegram, etc. However, the overwhelming variety of message notifications in everyone's phones can be too much to handle. WeChat, as the most widely used chat tool, is rarely ignored when it comes to reading messages. Therefore, the most convenient approach is to push messages through a WeChat bot.
 
-通过搜索，了解到目前市场的消息机器人有itchat， wxpy，wechaty等等。可是随着腾讯施加压力，基于web微信的itchat和wxpy无法使用。而wechaty支持多种协议，比web协议更加安全，于是决定采用wechaty基于ipad协议 ( padLocal ) 来搭建机器人。但是，在实际的应用当中，而且wechaty是通过消息回调的形式实现的，这样的情况下，就没有办法让机器人主动发消息，还有一个问题是可能你有很多个应用都需要使用微信通知，但是一个Token只能供一个微信账号使用，那怎么样才能让多个服务都通过这一个微信来发通知呢？对于这两个问题，我想到的办法首先自己实现初始化机器人，在完成初始化后直接返回机器人而不让机器人进入消息监听循环，从而主动控制机器人收发消息；在多服务的场景下，用flask建立后端服务，维护初始化好的机器人，这样不同的业务可以直接向后端发起请求而实现消息通知。
+Through research, I found that current message bots in the market include itchat, wxpy, wechaty, and others. However, with Tencent applying pressure, itchat and wxpy based on web WeChat can no longer be used. Wechaty supports multiple protocols and is more secure than the web protocol, so I decided to use wechaty based on the iPad protocol (PadLocal) to build the bot. However, in practical applications, wechaty is implemented through message callback functions, which means there's no way to make the bot proactively send messages. Another issue is that you may have many applications that need WeChat notifications, but one token can only be used for one WeChat account. How can multiple services send notifications through this single WeChat account? For these two problems, my solution was to first implement bot initialization myself, and after completing initialization, directly return the bot without letting it enter the message listening loop, thus actively controlling the bot to send and receive messages. In a multi-service scenario, I used Flask to build a backend service to maintain the initialized bot, allowing different services to send requests directly to the backend to implement message notifications.
 
-让我们进入正题！
+Let's get to the point!
 
-## 环境和依赖
+## Environment and Dependencies
 
 python
 aioflask
 asyncio
 
-## Wechaty Puppet Hostie部署
+## Deploying Wechaty Puppet Hostie
 
-因为原生的wechaty是基于JavaScript和TypeScript写的，所以需要通过docker搭建Wechaty Puppet Hostie 服务作为中转， 从而可以通过python调用。
+Since the native wechaty is written in JavaScript and TypeScript, you need to set up a Wechaty Puppet Hostie service through Docker as a relay, which can then be called through Python.
 
-- **部署前置准备:**
+- **Pre-deployment Requirements:**
 
-一个满足以下三点要求的服务器：
+A server that meets the following three requirements:
 
 >Public IP
 >Public Port
 >Docker
 
-- **部署Wechaty Puppet Hostie**
+- **Deploy Wechaty Puppet Hostie**
 
-具体代码如下（本人服务器为 Ununtu 18.04）
+The specific code is as follows (my server is Ubuntu 18.04):
 
 ```bash
 #! /usr/bin/bash
@@ -65,17 +67,17 @@ export WECHATY_TOKEN=$(curl -s https://www.uuidgenerator.net/api/version4)
   wechaty/wechaty
 ```
 
-代码中的WECHATY_PUPPET_PADLOCAL_TOKEN是需要向官方申请，可以得到的一个可以试用7天的token，后续通过社区的激励计划，还可以免费获得时效更长的token。[详情参见这里](https://wechaty.js.org/docs/contributor-program/)。
+The WECHATY_PUPPET_PADLOCAL_TOKEN in the code needs to be applied for from the official team. You can get a 7-day trial token, and through the community incentive program, you can also get a longer-lasting token for free. [See details here](https://wechaty.js.org/docs/contributor-program/).
 
-- **验证Wechaty Puppet Hostie**
+- **Verify Wechaty Puppet Hostie**
 
-访问 <https://api.chatie.io/v0/hosties/WECHATY_TOKEN>, 其中WECHATY_TOKEN是指你刚刚自行设定的Token，当返回结果为服务器的Public IP时则说明部署成功，为0.0.0.0时则说明部署失败~
+Access <https://api.chatie.io/v0/hosties/WECHATY_TOKEN>, where WECHATY_TOKEN is the token you just set yourself. When the returned result is the server's public IP, deployment is successful; if it returns 0.0.0.0, deployment has failed~
 
-## 项目思路
+## Project Approach
 
-关于机器人方面，我读了官方examples里面的代码发现机器人都是继承Wechaty基类来通过自定义回调函数来实现各种功能。利用事件驱动的回调函数这样是很被动的，而我想得到一个可直接调用的Wechaty对象，不通过start()函数进入事件循环监听, 而可以主动的发送信息。经过一天的阅读代码和自我摸索，终于实现了创建一个可以直接调用的机器人对象，稍后请参考详细代码，其中最重要的还是需要进入事件监听，然后在监听到成功登录的事件以后，中断监听，返回已经登录好的机器人对象， 从而实现直接调用。
+Regarding the bot, I read the code in the official examples and found that all bots inherit from the Wechaty base class to implement various functions through custom callback functions. Using event-driven callback functions is very passive, and I wanted to get a directly callable Wechaty object without entering the event loop monitoring through the start() function, so it could actively send messages. After a day of reading code and self-exploration, I finally managed to create a directly callable bot object. Please refer to the detailed code later. The most important thing is still needing to enter event listening, then after listening to the successful login event, interrupt the listening and return the already logged-in bot object, thus enabling direct calls.
 
-首先我们初始化机器人对象，我是想把消息通知发送到群聊当中，在使用过程中发现，在初始化好机器人后并没有加载好微信群，所以我们需要先用官方提供的examples来获取到微信群的id，然后手动加载微信群。同时，我还发现如果同步的发送消息，flask需要5-10s才能处理完请求，所以在这里我使用了用线程处理不同的请求，实现了消息的并发。
+First, we initialize the bot object. I wanted to send message notifications to group chats, and during use, I discovered that WeChat groups weren't loaded after initializing the bot, so we need to first use the official examples to get the WeChat group IDs, then manually load the WeChat groups. Additionally, I found that if messages are sent synchronously, Flask needs 5-10 seconds to process the request, so here I used threads to handle different requests, implementing message concurrency.
 
 ```python
 from aioflask import Flask
@@ -351,10 +353,10 @@ def send_message():
         print("send msg fail, error:", traceback.format_exc())
     return 'fail'
 
-# 你需要发送通知的群聊，需要使用官方example提前获取
+# Group chats you need to send notifications to - you need to get IDs in advance using official examples
 ROOMS = {
-    "快乐一家人": ["1111111111111@chatroom", None],
-    "父老乡亲": ["222222222@chatroom", None]
+    "Happy Family": ["1111111111111@chatroom", None],
+    "Fellow Villagers": ["222222222@chatroom", None]
 }
 
 if __name__ == '__main__':
@@ -365,12 +367,12 @@ if __name__ == '__main__':
 
 ```
 
-至此我们的基本框架已经搭好，大家可以通过本例的基础代码实现更复杂的工程。
+At this point, our basic framework is set up. You can implement more complex projects based on this example code.
 
-## 感谢
+## Acknowledgments
 
-在最后我们要感谢所有为我们提供工具和服务的团队和个人。特别感谢开源项目[Wechaty](https://github.com/wechaty/wechaty)团队和免费提供服务的padLocal团队。
+Finally, we want to thank all the teams and individuals who provided us with tools and services. Special thanks to the open source project [Wechaty](https://github.com/wechaty/wechaty) team and the PadLocal team for providing free services.
 
 ---
 
-> This post is also available in [English](/2023/02/18/wechaty-flask-service-en/).
+> 本文也有[中文版本](/2023/02/18/wechaty-flask-service/)。

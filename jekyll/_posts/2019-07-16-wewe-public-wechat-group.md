@@ -8,6 +8,7 @@ tags:
   - social
   - utility
 image: /assets/2019/wewe-screenshot.webp
+hidden: true
 ---
 
 几周前, 我在几个论坛分享了 [透明创业实验](https://blog.t9t.io/transparent-startup-experiment-2019-05-20/), 并且建了一个微信群方便交流.
@@ -54,3 +55,7 @@ image: /assets/2019/wewe-screenshot.webp
 ### wewe 还是一个正在开发中的项目, 欢迎留言交流你对它的看法
 
 > Author: [@timqian](https://github.com/timqian) Building transparent products at [t9t.io](https://t9t.io)
+
+---
+
+> This post is also available in [English](/2019/07/16/wewe-public-wechat-group-en/).
