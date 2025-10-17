@@ -6,6 +6,7 @@ tags:
   - news
   - ecosystem
   - wechaty-way
+hidden: true
 image: /assets/2023/02-wechaty-in-gaidc-en/1.webp
 ---
 

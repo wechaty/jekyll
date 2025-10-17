@@ -1,20 +1,21 @@
 ---
-title: "使用 wechaty langchain 部署私有 chatgpt"
+title: "Deploying Private ChatGPT with Wechaty and LangChain"
 author: bestk
 categories: article
 tags:
   - chatgpt
   - langchain
+  - ecosystem
 image: /assets/2023/07-wechaty-chat-with-langchain-en/logo.webp
-hidden: true
+excerpt: >
+  Building a private GPT chatbot on WeChat using Wechaty and LangChain with Pinecone vector database for document embedding and intelligent Q&A capabilities.
 ---
 
+WeChaty is an open-source WeChat bot framework based on Node.js, while LangChain is a tool for deploying private GPT models. By combining WeChaty and LangChain, you can create a privatized GPT bot that runs on the WeChat platform.
 
-WeChaty 是一个基于 Node.js 的开源微信机器人框架，而 LangChain 是一个用于部署私有化 GPT 模型的工具。通过结合 WeChaty 和 LangChain，你可以创建一个私有化的 GPT 机器人，使其在微信平台上运行。
+Setup:
 
-Setup：
-
-我们使用 `wechaty-puppet-wechat4u`
+We use `wechaty-puppet-wechat4u`
 
 ```Text
 package.json:
@@ -22,7 +23,7 @@ package.json:
 "wechaty-puppet-wechat4u": "1.14.1"
 "langchain": "^0.0.102",
 "@pinecone-database/pinecone": "^0.1.6",
-"pdf-parse": "^1.1.1", // 篇幅原因这里只演示 pdf
+"pdf-parse": "^1.1.1", // Only demonstrating PDF here for brevity
 ```
 
 ```javascript
@@ -38,16 +39,16 @@ const wechaty = WechatyBuilder.build({
 
 ```
 
-设置 pinecone ,openai
+Set up Pinecone and OpenAI:
 
 ```bash
-PROMPTLAYER_API_KEY=pl_... # PROMPTLAYER 是一个用于记录 api 调用时 prompt 与 response 的工具
+PROMPTLAYER_API_KEY=pl_... # PROMPTLAYER is a tool for logging API call prompts and responses
 PINECONE_API_KEY=89e...
 PINECONE_ENVIRONMENT=us-west4-gcp-free
 PINECONE_INDEX=...
 ```
 
-以下代码为当接收到支持的文件对文件进行向量化成功后返回提示
+The following code vectorizes supported files when received and returns a prompt upon successful completion:
 
   ```javascript
    wechaty.on('message', async message => {
@@ -66,7 +67,7 @@ PINECONE_INDEX=...
       if (supportFileType(filebox.mediaType)) {
         await saveFile(filebox)
         await loadDocuments()
-        await send(room || contact, `${filebox.name} Embeddings 成功`)
+        await send(room || contact, `${filebox.name} Embeddings successful`)
         return
       }
     }
@@ -75,7 +76,7 @@ PINECONE_INDEX=...
 
 ![image1.webp](/assets/2023/07-wechaty-chat-with-langchain-en/image1.webp)
 
-langchain 相关代码
+LangChain-related code:
 
   ```javascript
   import { PineconeClient } from "@pinecone-database/pinecone";
@@ -110,16 +111,16 @@ langchain 相关代码
               ".doc": (path) => new DocxLoader(path),
               ".docx": (path) => new DocxLoader(path),
           });
-      // 将数据转成 document 对象，每个文件会作为一个 document
+      // Convert data to document objects, each file becomes a document
       const rawDocuments = await loader.load();
       console.log(`documents: ${rawDocuments.length}`);
 
-      // 初始化加载器
+      // Initialize loader
       const textSplitter = new RecursiveCharacterTextSplitter({ chunkSize: 500 });
-      // 切割加载的 document
+      // Split loaded documents
       const splitDocs = await textSplitter.splitDocuments(rawDocuments);
 
-      // 持久化数据
+      // Persist data
       // const docsearch = await Chroma.fromDocuments(splitDocs, embeddings, { collectionName: "private_doc" });
       // docsearch.persist();
 
@@ -134,9 +135,9 @@ langchain 相关代码
 
   async function askDocument(question) {
       const llm = new PromptLayerOpenAI({ plTags: ["langchain-requests", "chatbot"] })
-      // 初始化 openai 的 embeddings 对象
+      // Initialize OpenAI embeddings object
 
-      // 加载数据
+      // Load data
       const vectorStore = await PineconeStore.fromExistingIndex(
           new OpenAIEmbeddings(),
           { pineconeIndex }
@@ -167,4 +168,4 @@ langchain 相关代码
 
 ---
 
-> This post is also available in [English](/2023/07/07/wechaty-chat-with-langchain-en/).
+> 本文也有[中文版本](/2023/07/07/wechaty-chat-with-langchain/)。

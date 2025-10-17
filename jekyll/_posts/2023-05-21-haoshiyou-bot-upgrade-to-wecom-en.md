@@ -1,22 +1,24 @@
 ---
-title: "好室友机器人升级为企业微信, 结合使用ChatGPT"
+title: "Haoshiyou Bot Upgraded to WeCom with ChatGPT Integration"
 author: aishiqi
 categories: article
 tags:
   - chatgpt
   - haoshiyou
   - bayarea
+  - ecosystem
 image: /assets/2023/05-haoshiyou-bot-upgrade-to-wecom-en/logo.webp
-hidden: true
+excerpt: >
+  Upgrading Haoshiyou roommate-finding bot from personal WeChat to WeCom (WeChat Work) for better stability, featuring ChatGPT integration and deployment solutions for China network restrictions.
 ---
 
+Due to instability with the previous personal WeChat account, the Haoshiyou bot stopped working for a period. Recently, through conversations with Huan and Jiarui, we learned that using WeCom (WeChat Work) can reduce this risk, so we upgraded the Haoshiyou bot to a corporate account.
 
-好室友机器人由于之前个人微信号不稳定，不工作有一段时间了，最近我们和Huan，Jiarui聊天中了解到使用企业微信可以降低这个风险，于是我们将好室友机器人升级成了企业号。
-企业号需要在国内挂靠国内实体企业，开通后，将群主转让给企业微信号，可以将普通微信群转换成企业群。
+Corporate accounts need to be registered under a mainland Chinese entity. After opening, by transferring group ownership to the WeCom account, you can convert regular WeChat groups into corporate groups.
 
-Setup：
+Setup:
 
-我们使用 `wechaty-puppet-service`
+We use `wechaty-puppet-service`
 
 ```Text
 package.json:
@@ -31,40 +33,40 @@ const bot = WechatyBuilder.build({
   name: 'haoshiyou-bot',
   puppet: 'wechaty-puppet-service',
   puppetOptions: {
-    token: 'puppet_workpro_你的Token',
+    token: 'puppet_workpro_YourToken',
   }
 })
 ```
 
-环境变量设置句子的发现服务器
+Set environment variables for Juzibot's discovery server
 
 ```bash
 WECHATY_PUPPET_SERVICE_AUTHORITY="token-service-discovery-test.juzibot.com"
 WECHATY_PUPPET_SERVICE_NO_TLS_INSECURE_CLIENT=true
 ```
 
-注意
+Notes:
 
-- 句子的发现服务器在美国连接不太稳定，Residential网络还行，虽然中途也出现过连不上的情况，不过之后就没有发生了。在Digital Ocean租用的服务器从来就没有能连接上过，显示连接超时。于是我们租了阿里云主机，发现Github又不稳定，不过可以通过SSH直接push，命令如下。国内ChatGPT API也不能访问，后面详细说。访问MongoDB Atlas没有问题。
+- Juzibot's discovery server has unstable connections from the US. Residential networks work reasonably well, though connection issues occurred occasionally but haven't happened since. Servers rented from Digital Ocean could never connect, showing connection timeouts. So we rented an Alibaba Cloud host, where we found GitHub to be unstable, but you can push directly via SSH with the following command. ChatGPT API is also inaccessible from mainland China, more details below. MongoDB Atlas access works fine.
 
   ```bash
   git remote add server ssh://root@YourServerIP:~/path_to_your_project/
   git push server master
   ```
 
-  - contact.alias() 必须要是对方也是企业号时才有用。room.alias(contact)可以正常使用。
-  - room.memberAll() 返回的用户不是按照加群时间排序，我们根据这个信息来移除加群比较久的不活跃用户，需要用数据库来维护这个加群顺序。其实如果打开企业微信群，看到的好友是按照字母顺序排序的而不是加群顺序，可能puppet在这个地方就读不出来加群顺序。注意，当服务器关闭的时候，新加的好友是不在数据库中的。可以在服务器自动的时候扫描一下所有的群，不在数据库中的用户认为是此刻加入的并添加到数据库中。我们还使用个人微信号导出了加群顺序，并根据群昵称匹配到企业号群。注意个人微信号看到的用户ID和企业号所看到相同用户的ID是不一样的。
+  - contact.alias() only works when the other party is also a corporate account. room.alias(contact) works normally.
+  - room.memberAll() does not return users sorted by join time. We rely on this information to remove long-time inactive users, so we need to maintain this join order in a database. Actually, when you open a WeCom group, friends are sorted alphabetically rather than by join order, so the puppet might not be able to read the join order at this level. Note that when the server is shut down, newly added friends won't be in the database. You can scan all groups when the server starts, and users not in the database can be considered as having joined at that moment and added to the database. We also exported the join order from a personal WeChat account and matched it to the WeCom group based on group nicknames. Note that user IDs seen by personal WeChat accounts differ from IDs seen by WeCom for the same users.
 
-  服务器刚部署没有历史聊天记录，我们可以从iPhone手机中导出微信聊天记录，使用这个开源软件 `https://github.com/BlueMatthew/WechatExporter` 可以更改模板来自定义导出的格式。例如：
+  When the server is newly deployed without historical chat records, we can export WeChat chat history from an iPhone using this open-source software `https://github.com/BlueMatthew/WechatExporter` and customize export formats by modifying templates. For example:
   `WechatExporter/res/templates_txt`
 
   ```Text
     %%NAME%% (%%TIME%%):%%MESSAGE%%
   ```
 
-  可用字段可以在源码中搜索 `%%`。
+  Available fields can be found by searching for `%%` in the source code.
 
-  我们使用 ChatGPT 进行信息处理和实现 AI 客服。在国内，无法直接访问 ChatGPT，因此我们使用 NodeJS 创建了一个简单的代理服务器，下面是代码示例。请注意，此处使用的是 HTTP 协议，它不安全，需要进行加密处理。
+We use ChatGPT for information processing and implementing AI customer service. In mainland China, ChatGPT cannot be accessed directly, so we created a simple proxy server using NodeJS. Below is a code example. Note that this uses HTTP protocol, which is not secure and needs encryption.
 
   ```javascript
     import express from 'express';
@@ -75,7 +77,7 @@ WECHATY_PUPPET_SERVICE_NO_TLS_INSECURE_CLIENT=true
     app.use(bodyParser.json());
 
     const proxyApiKeys = {
-      '随机数': true,
+      'RandomString': true,
     }
 
     let chatGPTAPIs = {};
@@ -126,7 +128,7 @@ WECHATY_PUPPET_SERVICE_NO_TLS_INSECURE_CLIENT=true
     });
   ```
 
-  客户端如下：
+  Client code as follows:
 
   ```javascript
     import axios, { AxiosResponse } from 'axios';
@@ -139,9 +141,9 @@ WECHATY_PUPPET_SERVICE_NO_TLS_INSECURE_CLIENT=true
 
         public async ask(message: string, conversationId?: string) {
             try {
-                let url = 'http://你的IP:3000/chatgpt';
+                let url = 'http://YourIP:3000/chatgpt';
                 let request = {
-                    proxyApiKey: "上面的随机数",
+                    proxyApiKey: "RandomStringAbove",
                     message: message,
                     sendMessageOptions: {
                         systemMessage: ChatGPT.systemMessage,
@@ -174,21 +176,21 @@ WECHATY_PUPPET_SERVICE_NO_TLS_INSECURE_CLIENT=true
     }
   ```
 
-ChatGPT 默认会自由发挥，例如我们并不是通过公众号添加的：
+ChatGPT defaults to freestyle responses. For example, we're not actually added through official accounts:
 
 ![image3.webp](/assets/2023/05-haoshiyou-bot-upgrade-to-wecom-en/image3.webp)
 
-我们把好室友的介绍，以及我们对ChatGPT的要求放到系统消息（上述的`systemMessage`）中，就可以了。
+We put Haoshiyou's introduction and our requirements for ChatGPT into the system message (the `systemMessage` mentioned above), and it works.
 
 ![image1.webp](/assets/2023/05-haoshiyou-bot-upgrade-to-wecom-en/image1.webp)
 
 ![image2.webp](/assets/2023/05-haoshiyou-bot-upgrade-to-wecom-en/image2.webp)
 
-不过ChatGPT对`systemMessage`的权重比较低，偶尔也会忽略。
+However, ChatGPT gives lower weight to `systemMessage` and occasionally ignores it.
 
-目前好室友机器人已经运行了一段时间了，Wechaty和juzi puppet都很稳定。
-我们会继续开发好室友机器人V2，将支持租房之外更多的活动群，以便更好的服务湾区小伙伴。
+The Haoshiyou bot has been running for a while now. Both Wechaty and Juzi puppet are very stable.
+We will continue developing Haoshiyou bot V2, which will support more activity groups beyond housing rentals to better serve the Bay Area community.
 
 ---
 
-> This post is also available in [English](/2023/05/21/haoshiyou-bot-upgrade-to-wecom-en/).
+> 本文也有[中文版本](/2023/05/21/haoshiyou-bot-upgrade-to-wecom/)。

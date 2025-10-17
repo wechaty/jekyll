@@ -2,6 +2,7 @@
 title: "AWS with Wechaty | AWS 生成式 AI 应用挑战赛重磅来袭！"
 author: aiamber
 categories: article
+hidden: true
 tags:
   - aws
   - ai

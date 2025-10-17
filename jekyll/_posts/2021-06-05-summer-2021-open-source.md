@@ -12,6 +12,7 @@ tags:
   - ospp
   - ospp-admin
 image: /assets/2021/06-summer-2021-open-source-en/001.webp
+hidden: true
 ---
 
 ## 自我介绍
