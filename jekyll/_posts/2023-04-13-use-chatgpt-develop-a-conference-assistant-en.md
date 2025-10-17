@@ -23,6 +23,7 @@ While not that exaggerated, there's no doubt that ChatGPT will bring huge change
 First, I've always had an idea I wanted to implement in WeChat groups, so I simply organized the requirements:
 
 Develop a chatbot using the latest version of Wechaty to record meeting chat information and export documents based on commands:
+
 1. When we say #开会 (start meeting) in the group, start recording chat information
 2. When #结束 (end) is said in the group, stop recording
 3. When #会议纪要 (meeting minutes) is said in the group, export the chat records during the meeting to a Word document and send it to the group

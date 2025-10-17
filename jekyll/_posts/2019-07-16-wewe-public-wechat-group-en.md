@@ -8,7 +8,7 @@ tags:
   - social
   - utility
   - ecosystem
-image: /assets/2019/wewe-screenshot-en.webp
+image: /assets/2019/wewe-screenshot.webp
 excerpt: >
   wewe is an open-source tool that records and publicly shares WeChat and Slack group chat messages, making discussions searchable and accessible to everyone, with topic extraction and chat analysis features.
 ---
@@ -46,7 +46,7 @@ Requirements
 
 How to Join
 
-- WeChat: Add [timbot](../assets/2019/wewe-timbot-en.webp) as a friend, with remark "join wewe", then invite the bot into the group chat. If the content is suitable for publicity, I'll start collecting
+- WeChat: Add [timbot](../assets/2019/wewe-timbot.webp) as a friend, with remark "join wewe", then invite the bot into the group chat. If the content is suitable for publicity, I'll start collecting
 - Slack: Join the [t9t.io slack group](https://join.slack.com/t/t9tio/shared_invite/enQtNjgzMzkwMDM0NTE3LTE5ZTUzYjU4Y2I0YzRiZjNkYTkzMzE1ZmM0NDdmYzRlZmMxNGY1MzZlN2EwYjYyNWVlMWY0Nzk2MDBhNWZlY2I)
 
 ## FAQ

@@ -7,7 +7,7 @@ tags:
   - featured
   - ecommerce
   - ecosystem
-image: /assets/2019/wechaty-pay-paypic-en.webp
+image: /assets/2019/wechaty-pay-paypic.webp
 excerpt: >
   A Wechaty-based payment solution for small businesses and individual developers without business licenses, enabling instant WeChat and Alipay payment notifications and automatic order confirmations for daily revenues under 5K RMB.
 ---
@@ -20,13 +20,13 @@ This article is mainly aimed at small and medium enterprises or individual devel
 
 Since using Wechaty, funds arrive promptly with immediate notifications after payment. Ready to use out of the box, high concurrency, super stable with no lost orders.
 
-![Making Online Business Easy](/assets/2019/wechaty-pay-paypic-en.webp)
+![Making Online Business Easy](/assets/2019/wechaty-pay-paypic.webp)
 
 ### Background
 
 WeChat and Alipay payment QR codes are everywhere, making business easy for supermarkets, fruit shops, and street food vendors. However, online payment isn't that simple. Most interfaces require enterprise qualification certification or registered domains and permissions, setting a very high threshold for small and medium merchants. Most people manually confirm orders after receiving payments, frequently resulting in delayed or missed orders. Yet market solutions are far from satisfactory. So how can we use Wechaty to optimize this online payment process?
 
-![Comparison of Various Payment Solutions](/assets/2019/wechaty-pay-paycompare-en.webp)
+![Comparison of Various Payment Solutions](/assets/2019/wechaty-pay-paycompare.webp)
 
 ### Technical Implementation
 
@@ -87,7 +87,7 @@ Alipay works similarly, though there isn't currently a product packaging as exce
 
 Finally, all WeChat and Alipay orders can be managed in one place! Each order's time, amount, and daily revenue statistics are clear at a glance.
 
-![Backend Order Management](/assets/2019/wechaty-pay-paymentsx-en.webp)
+![Backend Order Management](/assets/2019/wechaty-pay-paymentsx.webp)
 
 ### Product Implementation
 
@@ -98,11 +98,11 @@ Still find the steps a bit cumbersome? Try this cloud service based on Juzi BOT.
 * Security guaranteed, no personal account passwords recorded
 * Funds arrive in real-time, no third-party intermediary
 
-![Juzi BOT](/assets/2019/wechaty-pay-botorange-en.webp)
+![Juzi BOT](/assets/2019/wechaty-pay-botorange.webp)
 
 For continued technical product discussion, add WeChat below 👇. This article is for technical product reference only. Official certified interfaces are recommended. Please do not use this project for anything that violates WeChat, Alipay regulations, or other illegal activities!
 
-![WeChat](/assets/2019/wechaty-pay-wechat-en.webp)
+![WeChat](/assets/2019/wechaty-pay-wechat.webp)
 
 > Author: [Shawn](https://mugglepay.com), full-stack startup entrepreneur, committed to using technology to improve payment industry efficiency.
 

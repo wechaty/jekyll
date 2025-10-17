@@ -17,7 +17,7 @@ Global AI Bootcamp is a global AI developer training event initiated by Microsof
 - Global AI Bootcamp: <https://globalai.community/global-ai-bootcamp>
 - Global AI Bootcamp Beijing: <https://globalai.community/global-ai-bootcamp/china-beijing>
 
-![global-bootcamp](/assets/2019/microsoft-ai-global-training-camp/image-1-en.webp)
+![global-bootcamp](/assets/2019/microsoft-ai-global-training-camp-en/image-1.webp)
 
 The Microsoft AI Bootcamp Beijing was jointly initiated and organized by three Microsoft AI MVPs:
 
@@ -25,27 +25,27 @@ The Microsoft AI Bootcamp Beijing was jointly initiated and organized by three M
 - Microsoft Data & AI Solution Architect, former Microsoft MVP Chen Yanping
 - Microsoft AI MVP, Juzi BOT Founder & CEO Li Jiarui
 
-![image-2](/assets/2019/microsoft-ai-global-training-camp/image-2-en.webp)
+![image-2](/assets/2019/microsoft-ai-global-training-camp-en/image-2.webp)
 
 The event featured eight guests from different AI fields, with topics covering all aspects from the infrastructure layer to the application layer. Because the content was so compelling, several guests went over their allotted time. At the end of this article, we've included the full event livestream replay video—a full 5 hours. Developers who couldn't attend in person can now learn remotely.
 
-![image-3](/assets/2019/microsoft-ai-global-training-camp/image-3-en.webp)
+![image-3](/assets/2019/microsoft-ai-global-training-camp-en/image-3.webp)
 
 ## Event Check-in
 
 Wish you were here.
 
-![pnp](/assets/2019/microsoft-ai-global-training-camp/image-5-en.webp)
+![pnp](/assets/2019/microsoft-ai-global-training-camp-en/image-5.webp)
 
-![register](/assets/2019/microsoft-ai-global-training-camp/image-4-en.webp)
+![register](/assets/2019/microsoft-ai-global-training-camp-en/image-4.webp)
 
 ### 1. Opening Remarks by Organizers
 
 Microsoft AI MVPs
 
-![image-6](/assets/2019/microsoft-ai-global-training-camp/image-6-en.webp)
-![image-7](/assets/2019/microsoft-ai-global-training-camp/image-7-en.webp)
-![image-8](/assets/2019/microsoft-ai-global-training-camp/image-8-en.webp)
+![image-6](/assets/2019/microsoft-ai-global-training-camp-en/image-6.webp)
+![image-7](/assets/2019/microsoft-ai-global-training-camp-en/image-7.webp)
+![image-8](/assets/2019/microsoft-ai-global-training-camp-en/image-8.webp)
 
 ### 2. First Half Guest Presentations
 
@@ -54,11 +54,11 @@ Microsoft AI MVPs
 - Lanzhou University PhD Wu Qiang
 - VMware Software Engineer Zhang Yihe
 
-![image-9](/assets/2019/microsoft-ai-global-training-camp/image-9-en.webp)
-![image-10](/assets/2019/microsoft-ai-global-training-camp/image-10-en.webp)
-![image-11](/assets/2019/microsoft-ai-global-training-camp/image-11-en.webp)
-![image-12](/assets/2019/microsoft-ai-global-training-camp/image-12-en.webp)
-![image-13](/assets/2019/microsoft-ai-global-training-camp/image-13-en.webp)
+![image-9](/assets/2019/microsoft-ai-global-training-camp-en/image-9.webp)
+![image-10](/assets/2019/microsoft-ai-global-training-camp-en/image-10.webp)
+![image-11](/assets/2019/microsoft-ai-global-training-camp-en/image-11.webp)
+![image-12](/assets/2019/microsoft-ai-global-training-camp-en/image-12.webp)
+![image-13](/assets/2019/microsoft-ai-global-training-camp-en/image-13.webp)
 
 ### 3. Second Half Guest Presentations
 
@@ -67,26 +67,26 @@ Microsoft AI MVPs
 - Juzi BOT Founder Li Jiarui
 - Microsoft Data & AI Architect Chen Yanping
 
-![image-14](/assets/2019/microsoft-ai-global-training-camp/image-14-en.webp)
-![image-15](/assets/2019/microsoft-ai-global-training-camp/image-15-en.webp)
-![image-16](/assets/2019/microsoft-ai-global-training-camp/image-16-en.webp)
-![image-17](/assets/2019/microsoft-ai-global-training-camp/image-17-en.webp)
+![image-14](/assets/2019/microsoft-ai-global-training-camp-en/image-14.webp)
+![image-15](/assets/2019/microsoft-ai-global-training-camp-en/image-15.webp)
+![image-16](/assets/2019/microsoft-ai-global-training-camp-en/image-16.webp)
+![image-17](/assets/2019/microsoft-ai-global-training-camp-en/image-17.webp)
 
 ### 4. Developer Q&A Session
 
 The on-site discussion was quite lively, with over a dozen developers asking questions and interacting with the guests, receiving Microsoft gifts in return. Those who stayed until the end also received Microsoft Azure Passes.
 
-![image-18](/assets/2019/microsoft-ai-global-training-camp/image-18-en.webp)
-![image-19](/assets/2019/microsoft-ai-global-training-camp/image-19-en.webp)
-![image-20](/assets/2019/microsoft-ai-global-training-camp/image-20-en.webp)
-![image-21](/assets/2019/microsoft-ai-global-training-camp/image-21-en.webp)
-![image-22](/assets/2019/microsoft-ai-global-training-camp/image-22-en.webp)
-![image-23](/assets/2019/microsoft-ai-global-training-camp/image-23-en.webp)
-![image-24](/assets/2019/microsoft-ai-global-training-camp/image-24-en.webp)
+![image-18](/assets/2019/microsoft-ai-global-training-camp-en/image-18.webp)
+![image-19](/assets/2019/microsoft-ai-global-training-camp-en/image-19.webp)
+![image-20](/assets/2019/microsoft-ai-global-training-camp-en/image-20.webp)
+![image-21](/assets/2019/microsoft-ai-global-training-camp-en/image-21.webp)
+![image-22](/assets/2019/microsoft-ai-global-training-camp-en/image-22.webp)
+![image-23](/assets/2019/microsoft-ai-global-training-camp-en/image-23.webp)
+![image-24](/assets/2019/microsoft-ai-global-training-camp-en/image-24.webp)
 
 After five hours of presentations and discussions, the event concluded with everyone shouting "AI MVP."
 
-![image-25](/assets/2019/microsoft-ai-global-training-camp/image-25-en.webp)
+![image-25](/assets/2019/microsoft-ai-global-training-camp-en/image-25.webp)
 
 This event was fully supported by Microsoft MVP, DataFun, Plug and Play, Pre-Angel, and Juzi BOT.
 

@@ -6,14 +6,14 @@ tags:
   - hook
   - featured
   - ecosystem
-image: /assets/2018/h4dex-wechatprotocol-en.webp
+image: /assets/2018/h4dex-wechatprotocol.webp
 excerpt: >
   An in-depth technical analysis of WeChat's Android client communication protocol, including network architecture, message formats, synchronization mechanisms, and a reference implementation called MicroChat based on Mars framework.
 ---
 
 In early January, I accidentally discovered in a WeChat enthusiast study group a discussion about **MicroChat** (based on Mars) - code utilizing the WeChat Android APP client communication protocol! Shocked and in awe of the author, I downloaded it excitedly and made some modifications and application tests to the original version based on reference articles. Later, I tested and added some functional implementations, as well as ideas for extending simulated arbitrary device login verification and specific function handling. My abilities are limited and my technical skills are weak, but with a passion for technology and to share my experiences with more learners, I've compiled this article to give everyone a first look. I've also expanded on some basic MicroChat functions. If there are any errors, please feel free to criticize and correct!
 
-![Wechat Protocol](/assets/2018/h4dex-wechatprotocol-en.webp)
+![Wechat Protocol](/assets/2018/h4dex-wechatprotocol.webp)
 
 ## Preparation
 
@@ -70,11 +70,11 @@ For specific text, refer to: https://gist.github.com/yongboy/9341884
 After obtaining the optimal IP for long.weixin.qq.com, establish a TCP long connection to 101.227.131.105
 ```
 
-2. If DNS query is unavailable, the program switches to using hardcoded IP to connect to services;
-3. If DNS is available, the returned IP is the result of ISP intelligent resolution, and the program uses the returned IP to connect to services;
-4. The program uses HTTPS links during registration, verification, unblocking, mini-programs, and other built-in content requests, with encryption protocol being Tencent's mmtls;
-5. The client uses TCP 80/8080 to connect to remote servers. Both 80/8080 ports can provide services simultaneously or individually;
-6. Port 80 is for short connections, 8080 for long connections. The program will prioritize port 8080;
+1. If DNS query is unavailable, the program switches to using hardcoded IP to connect to services;
+2. If DNS is available, the returned IP is the result of ISP intelligent resolution, and the program uses the returned IP to connect to services;
+3. The program uses HTTPS links during registration, verification, unblocking, mini-programs, and other built-in content requests, with encryption protocol being Tencent's mmtls;
+4. The client uses TCP 80/8080 to connect to remote servers. Both 80/8080 ports can provide services simultaneously or individually;
+5. Port 80 is for short connections, 8080 for long connections. The program will prioritize port 8080;
 
 ```text
 Request confirmation after connection to retrieve data.
@@ -100,7 +100,7 @@ GET http://wx.qlogo.cn/mmhead/Q3auHgzwzM7NR4TYFcoNjbxZpfO9aiaE7RU5lXGUw13SMicL6i
 Images and other static resources are assigned to the wx.qlogo.cn domain, downloaded and cached locally asynchronously based on loading or manual access.
 ```
 
-7. When 2 consecutive heartbeat sends fail, the client will prompt "Current network conditions are poor, submit feedback data?" After confirmation, the client attempts to submit feedback data via web;
+1. When 2 consecutive heartbeat sends fail, the client will prompt "Current network conditions are poor, submit feedback data?" After confirmation, the client attempts to submit feedback data via web;
 
 ```text
 Heartbeat frequency is approximately 5 minutes

@@ -5,14 +5,14 @@ categories: migration
 tags:
   - code
   - news
-image: /assets/2018/06-24-migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-en/code-migration-en.webp
+image: /assets/2018/06-24-migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-en/code-migration.webp
 ---
 
 Wechaty has been updated to version 0.16(BETA) these days and begin to support all kinds of wechat solutions including web, ipad, ios, etc. My product based on wechaty has to migration from wechaty solution based on web to ipad solution.
 
 This blog introduces how to porting code from wechaty puppeteer to padchat.
 
-![code](/assets/2018/06-24-migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-en/code-migration-en.webp)
+![code](/assets/2018/06-24-migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-en/code-migration.webp)
 
 ## 1. Puppeteer VS Padchat
 
@@ -47,9 +47,9 @@ Participate in our alpha test here: [Wechaty v0.17 Padchat Testing: Win32/iPad/A
 
 #### 3. Set environment variable and run
 
-image: /assets/2018/06-24-migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-en/code-migration-en.webp
+image: /assets/2018/06-24-migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-en/code-migration.webp
 ```shell
-![code](/assets/2018/06-24-migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-en/code-migration-en.webp)
+![code](/assets/2018/06-24-migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-en/code-migration.webp)
 ```
 
 ### NPM

@@ -7,8 +7,11 @@ tags:
   - wechaty-puppet-wechat
   - web-protocol
   - news
-image: /assets/2021/04-wechaty-uos-web/wechaty-puppet-wechat.webp
+image: /assets/2021/04-wechaty-uos-web-en/wechaty-puppet-wechat.webp
+hidden: true
 ---
+
+> This post is also available in [English](/2021/04/13/wechaty-uos-web-en/)
 
 很高兴能够写这篇文章通知大家Wechaty的web协议又能大放光彩了，如果之前你的微信提示不能登录web端，那么这个更新将会是你的福音。因为现在的`wechaty-puppet-wechat`已经支持使用UOS微信桌面版协议登录，赶快来尝试一下吧。
 

@@ -7,12 +7,12 @@ tags:
   - install
   - news
   - ecosystem
-image: /assets/2018/wechaty-installation-in-windows-en.webp
+image: /assets/2018/wechaty-installation-in-windows.webp
 excerpt: >
   A comprehensive guide to installing Wechaty on Windows 10 Home, covering common installation errors and solutions including Python 2.7, node-gyp, windows-build-tools, and puppeteer configuration.
 ---
 
-![Installing Wechaty on Windows 10](/assets/2018/wechaty-installation-in-windows-en.webp)
+![Installing Wechaty on Windows 10](/assets/2018/wechaty-installation-in-windows.webp)
 
 Thanks to @huan @lijiarui for allowing me to share my experience installing Wechaty on the Windows 10 Home platform. I hope my documentation and analysis of the installation process can help others installing Wechaty on this platform.
 
@@ -153,7 +153,7 @@ Can't find Python executable "C:\Python36\python.EXE", you can set the PYTHON en
 
 You may wonder about this existing Python 3 path. Personally, I think this inaccurate error message can be considered a bug in the npm package.
 
-**2. Install windows-build-tools**
+### 2. Install windows-build-tools
 
 Referring to the windows-build-tools official documentation, there are two methods:
 
@@ -185,7 +185,7 @@ This path on macOS is as follows, where the numbers may differ:
 ~/node_modules/puppeteer/.local-chromium/mac-526987/chrome-mac
 ```
 
-**4. .NET Framework 4.5.1 [Windows Vista / 7 only]**
+### 4. .NET Framework 4.5.1 [Windows Vista / 7 only]
 
 If using Windows Vista / 7, you need to manually install .Net Framework.
 

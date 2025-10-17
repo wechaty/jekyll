@@ -8,7 +8,10 @@ tags:
   - puppet-provider
   - workpro
 image: /assets/2022/12-introducing-workpro-puppet-en/wecom.webp
+hidden: true
 ---
+
+> This post is also available in [English](/2022/12/23/introducing-workpro-puppet-en/)
 
 经过长期的筹备与开发， WxWork 的继任者 WorkPro 作为 Wechaty 社区新的 Puppet Service 如今正式进入 beta 测试阶段了！欢迎社区的小伙伴申请7天的免费测试 token ，正式的运营方案也将很快出台，敬请期待！
 
@@ -139,7 +142,3 @@ WorkPro 的架构是直接根据 wechaty-grpc 的相关功能，对齐的是 wec
 | 登出事件 | ✅ | ✅ |
 | 主动退出登录 | ✅ | ❌ |
 | 发朋友圈 | ✅ | ❌ | 依赖体验版 Wechaty |
-
----
-
-> This post is also available in [English](/2022/12/23/introducing-workpro-puppet-en/).

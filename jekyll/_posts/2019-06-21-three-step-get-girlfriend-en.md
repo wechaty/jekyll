@@ -7,7 +7,7 @@ tags:
   - featured
   - entertainment
   - ecosystem
-image: /assets/2019/everyday-header-en.webp
+image: /assets/2019/everyday-header.webp
 excerpt: >
   A beginner-friendly Node.js tutorial for building a WeChat bot that sends daily weather updates, sweet messages, and relationship reminders to your significant other, with optional AI chatbot integration.
 ---
@@ -38,9 +38,9 @@ Let's see if frontend developers can send this project to trending! Haha
 
 Before the three-step tutorial, let's look at the effect
 
-![image](/assets/2019/everyday-1-en.webp)
+![image](/assets/2019/everyday-1.webp)
 
-![image](/assets/2019/everyday-2-en.webp)
+![image](/assets/2019/everyday-2.webp)
 
 You can see messages sent at specified times, including weather information, weather reminders, and how many days you've been together. When the bot is enabled, your girlfriend can chat with the assistant. However, current open-source bot APIs aren't very intelligent, and semantic matching may not be very accurate. So remember not to enable the bot when your girlfriend is angry, or incorrect responses might get you in trouble! 😨
 
@@ -61,11 +61,11 @@ Download and install the Node version for your system. For Windows, `.msi` packa
 > Mac Node installation guide: [https://blog.csdn.net/qq_32407233/article/details/83758899](https://blog.csdn.net/qq_32407233/article/details/83758899)
 > Linux Node installation guide: [https://www.cnblogs.com/liuqi/p/6483317.html](https://www.cnblogs.com/liuqi/p/6483317.html)
 
-![image](/assets/2019/everyday-3-en.webp)
+![image](/assets/2019/everyday-3.webp)
 
 After installation, hold `Shift+Right Click` and select "Open command window here". Execute `node -v` in the command line - if a version number appears, installation succeeded.
 
-![image](/assets/2019/everyday-4-en.webp)
+![image](/assets/2019/everyday-4.webp)
 
 ### Step 2: Download Code and Configure
 
@@ -73,26 +73,26 @@ Code repository: [https://github.com/gengchen528/wechatBot](https://github.com/g
 
 * Visit this address and directly download the zip package to your desktop, then extract it
 
-![image](/assets/2019/everyday-5-en.webp)
+![image](/assets/2019/everyday-5.webp)
 
 * Enter the directory and find the `index.js` file in the `config` directory
 
-![image](/assets/2019/everyday-6-en.webp)
+![image](/assets/2019/everyday-6.webp)
 
-![image](/assets/2019/everyday-7-en.webp)
+![image](/assets/2019/everyday-7.webp)
 
 * Right-click the `index.js` file and select "Open with". If you don't have a code editor, use Notepad. If you have a code editor, use that directly. Non-developers can download `notepad++`, download link: [https://pan.baidu.com/s/1mWdEOaTQ1D6kihQveN1JHw](https://pan.baidu.com/s/1mWdEOaTQ1D6kihQveN1JHw) Password: fn9g. Developers can use their preferred editor.
 
-![image](/assets/2019/everyday-8-en.webp)
+![image](/assets/2019/everyday-8.webp)
 
 * Configuration items to modify: Your girlfriend's WeChat remark name `NAME` must be changed, or you'll be sending messages to me 😂. WeChat nickname `NICKNAME` should also be filled in. Your anniversary `MEMORIAL_DAY` needless to say, must be changed.
 * If sending weather info, your girlfriend's city `CITY` must be modified. For the `LOCATION` spelling, I suggest checking Moji Weather's official website [https://tianqi.moji.com/weather/china/](https://tianqi.moji.com/weather/china/)
 
-![image](/assets/2019/everyday-9-en.webp)
+![image](/assets/2019/everyday-9.webp)
 
 * After finding the corresponding area's weather on Moji Weather, check the webpage URL. Fill the green-marked pinyin into `CITY` and the red-marked pinyin into `LOCATION`
 
-![image](/assets/2019/everyday-10-en.webp)
+![image](/assets/2019/everyday-10.webp)
 
 * Daily send time `SENDDATE` - the rules can be found in the `index.js` file in the `schedule` directory. `0 06 8 * * *` means every day at 8:06:00 AM. Usually, we only need to configure the first three fields.
 * To enable bot chat, set `AUTOREPLY` to `true`. I've abandoned Turing Bot for reasons mentioned above and switched to Tianxing Bot, but don't expect too much - it's not that intelligent 😂. Currently, since my API calls are still abundant, I've made it available in the project code. Just modify `AUTOREPLY` to enable auto-reply.
@@ -121,17 +121,17 @@ module.exports = {
 
 After configuring and saving the file, return to the project's main directory. For Windows, hold `Shift+Right Click` and select "Open command window here".
 
-![image](/assets/2019/everyday-11-en.webp)
+![image](/assets/2019/everyday-11.webp)
 
 * Then enter `npm install`.
 
-![image](/assets/2019/everyday-12-en.webp)
+![image](/assets/2019/everyday-12.webp)
 
 * After installation completes, enter `npm run start`. A file will download (it's quite large, so wait a bit). When the QR code appears, scan it with your WeChat app to log in. Then enjoy the chat! 😆
 
-![image](/assets/2019/everyday-13-en.webp)
+![image](/assets/2019/everyday-13.webp)
 
-![image](/assets/2019/everyday-14-en.webp)
+![image](/assets/2019/everyday-14.webp)
 
 * If `npm run start` fails, first execute `npm install wechaty-puppet-puppeteer@^0.17.14 --no-save` then execute `npm run start`
 
@@ -149,7 +149,7 @@ After configuring and saving the file, return to the project's main directory. F
     1. [Newly registered WeChat accounts cannot log in](https://github.com/wechaty/wechaty/issues/872)
 2. Cannot install puppet-puppeteer && Chromium when executing npm run start
 3. Deployment issues on Centos7
-    ![image](/assets/2019/everyday-15-en.webp)
+    ![image](/assets/2019/everyday-15.webp)
     Problem cause: [https://segmentfault.com/a/1190000011382062](https://segmentfault.com/a/1190000011382062)
     Solution:
 
@@ -172,13 +172,13 @@ This project is developed out of personal interest. It's open-sourced for techni
 
 If your WeChat account cannot log in or you have technical questions to discuss, add my WeChat assistant and send 'join group' - it will automatically send the exchange group QR code. This secondary account also has more advanced features waiting for you to discover. (Note: Friend requests are automatically approved within 20s)
 
-![image](/assets/2019/everyday-16-en.webp)
+![image](/assets/2019/everyday-16.webp)
 
 Try it yourself and I'm sure you'll discover more fun features!
 
 Also, my public account has integrated Microsoft Xiaoice. After following, send voice messages and a young lady's voice will chat with you. You can also text chat with her. Feel free to try if interested - singles welcome!
 
-![image](/assets/2019/everyday-17-en.webp)
+![image](/assets/2019/everyday-17.webp)
 
 > Author: [Leo_chen](https://github.com/leochen-g/), frontend engineer, enjoys using Node for various small projects, working at a big data company. This article was first published on Juejin: [Build a WeChat Sweet-Talk Bot in Three Steps with Node.js](https://juejin.im/post/5d09fa9f51882508bd2065f4)
 

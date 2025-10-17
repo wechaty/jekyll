@@ -7,7 +7,7 @@ tags:
   - featured
   - utility
   - ecosystem
-image: /assets/2018/wechaty-lightbot-logo-en.webp
+image: /assets/2018/wechaty-lightbot-logo.webp
 excerpt: >
   Lightbot is a comprehensive WeChat group management platform built with Wechaty, featuring auto-reply, keyword management, violation detection, user analytics, and chat data visualization for effective community operations.
 ---
@@ -260,7 +260,7 @@ bot.on('message', async function (message) {
 
 ## Statistical Analysis Platform
 
-![Login Interface](/assets/2018/wechaty-lightbot-1-en.webp)
+![Login Interface](/assets/2018/wechaty-lightbot-1.webp)
 
 ### Architecture Design
 
@@ -288,13 +288,13 @@ bot.on('message', async function (message) {
 >
 > Supports query condition filtering
 
-![Sensitive Word Management](/assets/2018/wechaty-lightbot-2-en.webp)
+![Sensitive Word Management](/assets/2018/wechaty-lightbot-2.webp)
 
 #### Sensitive Word Management
 
 > Management of sensitive words
 
-![Sensitive Word Management](/assets/2018/wechaty-lightbot-3-en.webp)
+![Sensitive Word Management](/assets/2018/wechaty-lightbot-3.webp)
 
 #### Chat Management
 
@@ -302,7 +302,7 @@ bot.on('message', async function (message) {
 
 > Pagination query based on group, user role, and time
 
-![Chat Records](/assets/2018/wechaty-lightbot-4-en.webp)
+![Chat Records](/assets/2018/wechaty-lightbot-4.webp)
 
 ##### Dialogue Mode
 
@@ -310,7 +310,7 @@ bot.on('message', async function (message) {
 >
 > Filter out redundant personnel's messages, only showing filtered users' chat records
 
-![Chat Records](/assets/2018/wechaty-lightbot-5-en.webp)
+![Chat Records](/assets/2018/wechaty-lightbot-5.webp)
 
 #### User Management
 
@@ -318,7 +318,7 @@ bot.on('message', async function (message) {
 >
 > Set user roles (user, shill, administrator) for group activity analysis.
 
-![User Management](/assets/2018/wechaty-lightbot-6-en.webp)
+![User Management](/assets/2018/wechaty-lightbot-6.webp)
 
 #### Group Management
 
@@ -326,7 +326,7 @@ bot.on('message', async function (message) {
 >
 > Set responsible account (this is set to reflect operations staff performance level)
 
-![User Management](/assets/2018/wechaty-lightbot-7-en.webp)
+![User Management](/assets/2018/wechaty-lightbot-7.webp)
 
 #### Statistical Analysis
 
