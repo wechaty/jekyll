@@ -192,4 +192,4 @@ When billing feels intuitive, you stop wasting time decoding invoices and start 
 
 ## 💬 Join the Conversation
 
-If this vision of a simpler, human-centered Azure billing system resonates with you, share it with your team or tag me on [LinkedIn](https://www.linkedin.com/in/huan42/) or [Twitter](https://twitter.com/huan2024). Let’s spark a discussion on how enterprise cloud products can be both powerful **and** intuitive — because clarity isn’t a luxury; it’s a feature.
+If this vision of a simpler, human-centered Azure billing system resonates with you, share it with your team or tag me on [LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7391734593449582593/) or [Twitter](https://x.com/huan2024/status/1985969297366401207). Let’s spark a discussion on how enterprise cloud products can be both powerful **and** intuitive — because clarity isn’t a luxury; it’s a feature.
