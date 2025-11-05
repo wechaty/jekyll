@@ -12,7 +12,7 @@ tags:
 image: /assets/2025/11-rethinking-azure-billing/rethinking-azure-billing.webp
 ---
 
-> When I first started using Microsoft Azure, I thought I understood the basics of cloud billing: a subscription, a credit card, and an invoice. Easy, right? 
+> When I first started using Microsoft Azure, I thought I understood the basics of cloud billing: a subscription, a credit card, and an invoice. Easy, right?
 
 But soon I was knee-deep in a swamp of mysterious terms — *MCA, EA, MOSP, CSP,* billing scopes, profiles, invoice sections… it felt like wandering through the ruins of multiple civilizations stacked on top of each other. Even worse, I actually **lost money** once because I didn’t understand which credits applied where. 😩
 
@@ -29,6 +29,7 @@ Below is that re-imagined design. It’s not just prettier — it’s fundamenta
 The goal is simple: **anyone** — developer, finance manager, or intern — should be able to understand how money flows in Azure **without** reading a 60-page doc.
 
 **Principles:**
+
 1. Two trees: *Money* (who pays) and *Work* (who builds).
 2. Each node has one clear purpose.
 3. Naming uses plain English, not acronyms.
@@ -40,18 +41,22 @@ The goal is simple: **anyone** — developer, finance manager, or intern — sho
 ## 💡 The New Hierarchy — Built for Humans
 
 ### **The Money Tree (Billing)**
-```
+
+```text
 Agreement → Invoice Group → Cost Center → Project
 ```
+
 - **Agreement** – your commercial contract with Microsoft.
 - **Invoice Group** – produces one invoice; defines currency, tax, and payment method.
 - **Cost Center** – department or business unit that owns a budget.
 - **Project** – the atomic billing unit; the thing that actually runs and accrues cost.
 
 ### **The Work Tree (Operations)**
-```
+
+```text
 Organization → Portfolio → Project → Environment → Service Group → Resource
 ```
+
 - **Organization** – your company tenant.
 - **Portfolio** – product family or domain.
 - **Project** – the same Project as in the Money Tree — a shared node.
@@ -65,7 +70,7 @@ Organization → Portfolio → Project → Environment → Service Group → Res
 
 ## 🪄 A Clearer Visual: The Two Trees
 
-```
+```text
 Money Tree                          Work Tree
 Agreement                            Organization
   ↳ Invoice Group                      ↳ Portfolio
@@ -96,22 +101,28 @@ We merge the overlapping roles of *subscription* and *project*, and remove redun
 ## 🧩 Why This Design Works
 
 ### 1. **One Shared Language**
+
 Finance and engineering finally talk about the same objects. “Project ReMic” means the same thing whether you’re approving budgets or deploying code.
 
 ### 2. **Instant Mental Model**
+
 At first sight, you can trace cost from *Resource → Project → Cost Center → Invoice Group → Agreement* — a single clean chain.
 
 ### 3. **Predictable Ownership**
+
 Every level has a default role:
+
 - Agreement Admin → finance exec
 - Invoice Manager → accounts payable
 - Cost Center Owner → product lead
 - Project Admin → engineering manager
 
 ### 4. **Zero-Surprise Transfers**
+
 Moving a Project from one Cost Center to another doesn’t break access, billing, or budgets — it’s a pointer change, not a re-deployment.
 
 ### 5. **Environment-Aware Budgets**
+
 Every Project has built-in *prod*, *stage*, and *dev* environments with auto-split budgets (e.g. 80/15/5). Dev environments even auto-pause after hours.
 
 ---
@@ -130,7 +141,8 @@ Example pattern: `{Org}-{Unit}-{Project}-{Env}-{Region}`
 | Service Group | `api` | Logical service cluster |
 
 Tags auto-propagate to all resources:
-```
+
+```text
 org=PreAngel
 cost_center=CC-RnD
 project=PRJ-ReMic
@@ -141,6 +153,7 @@ owner=team-ml
 ---
 
 ## 🧮 Example: The Money Flow
+
 1. **Agreement** (PreAngel LLC) pays **Invoice Group** (US-Invoice) monthly.
 2. US-Invoice has three **Cost Centers**: CC-R&D, CC-Infra, CC-GTM.
 3. CC-R&D owns two **Projects**: ReMic and ReKey.
@@ -152,9 +165,11 @@ That’s it. Anyone can trace a dollar end-to-end without opening six portal pag
 ---
 
 ## 🧠 Why Microsoft Should Care
+
 This isn’t just aesthetics. Clarity saves money. Every confused customer creates support tickets, billing errors, and lost trust.
 
 If Azure adopted this model:
+
 - Fewer billing disputes.
 - Easier FinOps automation.
 - Clearer API semantics.
@@ -166,15 +181,15 @@ Even internal teams at Microsoft could benefit: fewer internal translation layer
 ---
 
 ## 🚀 Final Thoughts
+
 Azure’s current billing hierarchy — MCA, EA, MOSP, CSP — reflects its long corporate evolution, not intentional product design. But if we reset from day 1, we can have something simpler, elegant, and universal.
 
 **Design objective:** minimum mental load, maximum clarity.
 
 When billing feels intuitive, you stop wasting time decoding invoices and start focusing on what cloud should empower you to do — build.
 
-
-
 ---
 
 ## 💬 Join the Conversation
+
 If this vision of a simpler, human-centered Azure billing system resonates with you, share it with your team or tag me on [LinkedIn](https://www.linkedin.com/in/huan42/) or [Twitter](https://twitter.com/huan2024). Let’s spark a discussion on how enterprise cloud products can be both powerful **and** intuitive — because clarity isn’t a luxury; it’s a feature.
