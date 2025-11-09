@@ -273,4 +273,4 @@ When the concepts match intuition, the mental load drops, the speed rises, and t
 If this vision resonates with you—whether you’re a developer, architect, or product designer—join us in the conversation.\
 Share your feedback, your pain points, and your ideas for making developer tools as elegant as their underlying systems.
 
-👉 **Tag your reflections with** `linkedin` **or** `twitter`, and let’s build a new language of clarity together.
+👉 **Tag your reflections with** [LinkedIn](https://www.linkedin.com/posts/huan42_cloudcomputing-developerexperience-iam-activity-7393134290273943553-cbPc?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAABJtEEBYS2BLpPbA3dSW85b09JUIKBcSeY) **or** [Twitter](https://x.com/huan2024/status/1987368121246843327), and let’s build a new language of clarity together.
