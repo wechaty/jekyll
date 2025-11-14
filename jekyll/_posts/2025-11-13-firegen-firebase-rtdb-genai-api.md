@@ -32,11 +32,11 @@ We all want to leverage the power of models like Veo, Gemini, and TTS, but integ
 
 What should take 15 minutes ends up taking 3 days. Why?
 
-1.  **Inconsistent SDKs:** Vertex AI has multiple SDKs with different APIs, outdated docs, and breaking changes.
-2.  **Async Complexity (LROs):** Video generation takes time. Handling LROs means writing custom polling, exponential backoff, TTL management, and dead-letter queues.
-3.  **Storage Gymnastics:** Juggling GCS URIs, signed URLs, and moving files between GCS and Firebase Storage is cognitive overhead you don't need.
-4.  **Auth Confusion:** Navigating OIDC tokens and service accounts across Google services is a nightmare.
-5.  **Model Chaos:** Guessing which model ID fits your prompt and which parameters are valid.
+1. **Inconsistent SDKs:** Vertex AI has multiple SDKs with different APIs, outdated docs, and breaking changes.
+2. **Async Complexity (LROs):** Video generation takes time. Handling LROs means writing custom polling, exponential backoff, TTL management, and dead-letter queues.
+3. **Storage Gymnastics:** Juggling GCS URIs, signed URLs, and moving files between GCS and Firebase Storage is cognitive overhead you don't need.
+4. **Auth Confusion:** Navigating OIDC tokens and service accounts across Google services is a nightmare.
+5. **Model Chaos:** Guessing which model ID fits your prompt and which parameters are valid.
 
 **The result?** Founders spend their time fighting infrastructure instead of shipping features and validating ideas with real users.
 
@@ -46,9 +46,9 @@ FireGen is a Firebase Extension that abstracts all this complexity away. We turn
 
 The workflow is dead simple:
 
-1.  Write a job request to `firegen-jobs/{jobId}`.
-2.  Subscribe to that node using `onValue`.
-3.  Get the results when `status: "succeeded"`.
+1. Write a job request to `firegen-jobs/{jobId}`.
+2. Subscribe to that node using `onValue`.
+3. Get the results when `status: "succeeded"`.
 
 That’s it. FireGen handles everything else behind the scenes using Cloud Functions v2, RTDB triggers, and Firebase Task Queues.
 
@@ -107,17 +107,17 @@ You’ll notice FireGen has zero configuration parameters. This is by design. We
 
 We built FireGen specifically for developers who want to move fast and focus on the product.
 
-  * **Ship in Minutes, Not Days:** We compressed the 3-day debugging cycle into a 15-minute setup.
-  * **Firebase-Native:** Built on familiar primitives (RTDB, Functions v2, Task Queue). No new infrastructure needed.
-  * **LROs Handled:** Async (Veo video) and Sync (Images/TTS) operations are unified. The client code is identical. We handle the polling, backoff, and retries.
-  * **Big-File Friendly:** Integrates with GCS and provides signed URLs, bypassing Firebase's limits.
+* **Ship in Minutes, Not Days:** We compressed the 3-day debugging cycle into a 15-minute setup.
+* **Firebase-Native:** Built on familiar primitives (RTDB, Functions v2, Task Queue). No new infrastructure needed.
+* **LROs Handled:** Async (Veo video) and Sync (Images/TTS) operations are unified. The client code is identical. We handle the polling, backoff, and retries.
+* **Big-File Friendly:** Integrates with GCS and provides signed URLs, bypassing Firebase's limits.
 
 ### Optimized for AI Coding Agents
 
 This is critical for the modern stack. We designed FireGen to be the perfect interface for AI coding agents.
 
-1.  **AI-to-AI Communication:** The AI-Assisted mode allows AI agents to generate media using natural language, without needing to understand the underlying API schemas.
-2.  **Dedicated AI Docs:** We maintain a specific `LLMS.md` file in the repository, providing a complete API reference tailored specifically for AI agents integrating with FireGen.
+1. **AI-to-AI Communication:** The AI-Assisted mode allows AI agents to generate media using natural language, without needing to understand the underlying API schemas.
+2. **Dedicated AI Docs:** We maintain a specific `LLMS.md` file in the repository, providing a complete API reference tailored specifically for AI agents integrating with FireGen.
 
 ## Usage Example: The Full Lifecycle
 
@@ -167,11 +167,11 @@ FireGen is the tool I wish we had.
 
 FireGen is open-source (MIT Licensed) and built with a modern, robust stack:
 
-  * **Platform:** Firebase (Cloud Functions v2, RTDB, Task Queue)
-  * **AI Models:** Vertex AI (Veo 3.1, Gemini 2.5 Flash for Image, TTS, and the AI Analyzer)
-  * **Language:** TypeScript (Node.js 22)
-  * **Validation:** Zod (for strict schema validation)
-  * **Integration:** Pure Vertex AI REST API (we ditched the bloated SDKs for direct control and stability)
+* **Platform:** Firebase (Cloud Functions v2, RTDB, Task Queue)
+* **AI Models:** Vertex AI (Veo 3.1, Gemini 2.5 Flash for Image, TTS, and the AI Analyzer)
+* **Language:** TypeScript (Node.js 22)
+* **Validation:** Zod (for strict schema validation)
+* **Integration:** Pure Vertex AI REST API (we ditched the bloated SDKs for direct control and stability)
 
 ## Conclusion: Focus on Product, Not Plumbing
 
