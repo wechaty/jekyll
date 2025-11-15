@@ -8,7 +8,7 @@ tags:
   - firebase
   - vertex-ai
   - developer-experience
-image: /assets/2025/11-firegen-firebase-rtdb-genai-api/firegen.webp
+image: /assets/2025/11-firegen-firebase-rtdb-genai-api/firegen-prompt.webp
 ---
 
 > FireGen: Generative AI as simple as Firebase Realtime Database.
@@ -51,6 +51,8 @@ The workflow is dead simple:
 3. Get the results when `status: "succeeded"`.
 
 That’s it. FireGen handles everything else behind the scenes using Cloud Functions v2, RTDB triggers, and Firebase Task Queues.
+
+![Old Way v.s. FireGen Way](/assets/2025/11-firegen-firebase-rtdb-genai-api/old-vs-firegen.webp)
 
 ## The Magic: The AI-Native Developer Experience
 
