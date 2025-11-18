@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      使用koa2+wechaty打造个人微信小秘书 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>使用koa2+wechaty打造个人微信小秘书 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="使用koa2+wechaty打造个人微信小秘书" />
+<meta name="author" content="leochen-g" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="你是不是有闲置的微信号? 你想不想有个小秘书定时提醒你将要做的事情？ 你是否为忘记一些纪念日而懊恼？ 你是否加班到很晚，而忘记了今天和别人有约？ 你是不是下班还记得拿快递，到家后才发现忘记了？ 你是不是想学习一下如何做一个微信小秘书？" />
+<meta property="og:description" content="你是不是有闲置的微信号? 你想不想有个小秘书定时提醒你将要做的事情？ 你是否为忘记一些纪念日而懊恼？ 你是否加班到很晚，而忘记了今天和别人有约？ 你是不是下班还记得拿快递，到家后才发现忘记了？ 你是不是想学习一下如何做一个微信小秘书？" />
+<link rel="canonical" href="https://wechaty.js.org/2019/04/02/koa-wechaty-assistant/" />
+<meta property="og:url" content="https://wechaty.js.org/2019/04/02/koa-wechaty-assistant/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2019/koa-wechaty.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-04-02T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2019/koa-wechaty.webp" />
+<meta property="twitter:title" content="使用koa2+wechaty打造个人微信小秘书" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"leochen-g"},"dateModified":"2019-04-02T00:00:00+00:00","datePublished":"2019-04-02T00:00:00+00:00","description":"你是不是有闲置的微信号? 你想不想有个小秘书定时提醒你将要做的事情？ 你是否为忘记一些纪念日而懊恼？ 你是否加班到很晚，而忘记了今天和别人有约？ 你是不是下班还记得拿快递，到家后才发现忘记了？ 你是不是想学习一下如何做一个微信小秘书？","headline":"使用koa2+wechaty打造个人微信小秘书","image":"https://wechaty.js.org/assets/2019/koa-wechaty.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2019/04/02/koa-wechaty-assistant/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"leochen-g"},"url":"https://wechaty.js.org/2019/04/02/koa-wechaty-assistant/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">使用koa2+wechaty打造个人微信小秘书</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/leochen-g">
+                            <img class="rounded-circle" src="/assets/contributors/leochen-g/avatar.webp" alt="Leo chen" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> Leo chen <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Apr 02, 2019 · <span class="reading-time">
+  
+  
+    20 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2019/koa-wechaty.webp" alt="使用koa2+wechaty打造个人微信小秘书">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_button_wechat" title='Wechat'>
+          <img id="qrcode" title="Wechat"
+            src="/assets/contributors/wechaty/icon.png"
+            width="64" height="64"
+          />
+        </a>
+        <a class="a2a_button_wechat" title='Wechat'></a>
+        <a class="a2a_button_sina_weibo" title='Weibo'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+        <!-- AddToAny BEGIN -->
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<ul>
+  <li>你是不是有闲置的微信号?</li>
+  <li>你想不想有个小秘书定时提醒你将要做的事情？</li>
+  <li>你是否为忘记一些纪念日而懊恼？</li>
+  <li>你是否加班到很晚，而忘记了今天和别人有约？</li>
+  <li>你是不是下班还记得拿快递，到家后才发现忘记了？</li>
+  <li>你是不是想学习一下如何做一个微信小秘书？</li>
+</ul>
+
+<p>如果以上问题你有一条符合的话，那就可以安心读下去了，因为微信小秘书可以帮你解决大部分的问题。当然没有符合的话，也可以继续读下去，因为既然来了就说明你还是有兴趣的😆。如果小秘书不符合你要求的话<a href="https://juejin.im/post/5c77c6bef265da2de6611cff">《用Node+wechaty写一个爬虫脚本每天定时给女(男)朋友发微信暖心话》</a>也可以看一下奥！</p>
+
+<h2 id="技术栈">技术栈</h2>
+
+<p><a href="https://nodejs.org/zh-cn/">node</a>: 建议最新稳定版，由于wechaty依赖，所以至少node &gt; 10以上版本
+<a href="https://koa.bootcss.com/">Koa</a>: web开发框架，用来编写服务端应用程序</p>
+
+<p><a href="http://www.runoob.com/mongodb/mongodb-tutorial.html">MongoDB</a>:非关系数据库</p>
+
+<p><a href="https://mongoosejs.com/docs/guide.html">mongoose</a>:连接 mongodb的一个库</p>
+
+<p><a href="https://wechaty.js.org/v/zh/">wechaty</a>:提供网页版微信相关操作api接口</p>
+
+<p><a href="https://github.com/node-schedule/node-schedule">node-schedule</a> - 定时任务</p>
+
+<h2 id="项目地址">项目地址</h2>
+
+<p>github:<a href="https://github.com/gengchen528/wechat-assistant">https://github.com/gengchen528/wechat-assistant</a></p>
+
+<h2 id="功能">功能</h2>
+
+<p>很听你话的私人小秘书，帮你创建定时任务，每日提醒，纪念日提醒，当日提醒</p>
+
+<p>文字支持格式：<strong>（关键词之间需要用空格分开，特别是昵称和时间要分隔开才行的，时间是24小时制，暂时还不支持表情😭）</strong></p>
+
+<ul>
+  <li>“提醒 我 18:30 快要下班了，准备一下，不要忘记带东西” <strong>（当天指定时间提醒）</strong></li>
+  <li>“提醒 其他人昵称 2019-09-10 10:00 工作再忙，也要记得喝水”<strong>（委托小秘书提醒其他人）</strong></li>
+  <li>“提醒 我 每天 8:00 出门记得带钥匙，公交卡还有饭盒”<strong>（每日指定时间提醒）</strong></li>
+  <li>“提醒 wo 2019-09-10 10:00 还有两天就是女朋友的生日，要提前准备一下” <strong>（指定日期时间提醒）</strong></li>
+</ul>
+
+<p>效果图如下：</p>
+
+<p>提醒自己</p>
+
+<p><img src="/assets/2019/koa-wechaty-1.webp" alt="image" /></p>
+
+<p>委托提醒（前提是你和你想要提醒的人都是小秘书的好友，采用的是昵称查找用户，不是备注要注意）</p>
+
+<p><img src="/assets/2019/koa-wechaty-2.webp" alt="image" /></p>
+
+<p>数据库中已添加任务</p>
+
+<p><img src="/assets/2019/koa-wechaty-3.webp" alt="image" /></p>
+
+<h2 id="准备工作">准备工作</h2>
+
+<p>由于本项目使用了MongoDB数据库，所以需要在电脑或服务器中自行安装，这里就不在赘述安装过程啦，不懂怎么安装的小伙伴可以<a href="http://www.runoob.com/mongodb/mongodb-window-install.html">戳链接</a>，MongoDB的可视化工具，我在Mac上使用的是<a href="http://www.mongodb-tools.com/tool/mongobooster/">mongobooster</a>，有需要的小伙伴可以去下载一下。</p>
+
+<h2 id="代码说明">代码说明</h2>
+
+<h3 id="目录结构">目录结构</h3>
+
+<p><img src="/assets/2019/koa-wechaty-4.webp" alt="image" /></p>
+
+<ul>
+  <li>config: koa,定时任务器，superagent的配置目录</li>
+  <li>mongodb: mongodb连接相关配置文件,schema设计与model的主要目录</li>
+  <li>untils: 抽取的共用方法</li>
+</ul>
+
+<h3 id="wechaty核心代码">wechaty核心代码</h3>
+
+<p>index.js</p>
+
+<p>微信登录，定时任务初始化，小秘书具体实现的主要文件。接口<code class="language-plaintext highlighter-rouge">getScheduleList</code>在每次登陆后会从数据库拉取未执行的定时任务并进行初始化，防止意外掉线后无法恢复定时任务。同时每次设置定时任务，接口<code class="language-plaintext highlighter-rouge">addSchedule</code>会直接向数据库中插入一条任务记录并把任务添加到定时任务列表中。每次任务执行完毕后，接口<code class="language-plaintext highlighter-rouge">updateSchedule</code>都会更新数据库中指定任务的状态，防止任务重复执行。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">import</span> <span class="p">{</span> <span class="nx">Wechaty</span><span class="p">,</span> <span class="nx">Friendship</span> <span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span>
+    <span class="k">import</span> <span class="nx">schedule</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">./config/schedule</span><span class="dl">'</span>
+    <span class="k">import</span> <span class="p">{</span> <span class="nx">FileBox</span> <span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">file-box</span><span class="dl">'</span>
+    <span class="k">import</span> <span class="nx">Qrterminal</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">qrcode-terminal</span><span class="dl">'</span>
+    <span class="k">import</span> <span class="p">{</span> <span class="nx">request</span> <span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">./config/superagent</span><span class="dl">'</span>
+    <span class="k">import</span> <span class="nx">untils</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">./untils/index</span><span class="dl">'</span>
+    <span class="kd">const</span> <span class="nx">host</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">http://127.0.0.1:3008/api</span><span class="dl">'</span>
+
+    <span class="c1">// 每次登录初始化定时任务</span>
+    <span class="nx">initSchedule</span> <span class="o">=</span> <span class="k">async</span><span class="p">(</span><span class="nx">list</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="k">for </span><span class="p">(</span><span class="nx">item</span> <span class="k">of</span> <span class="nx">list</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kd">let</span> <span class="nx">time</span> <span class="o">=</span> <span class="nx">item</span><span class="p">.</span><span class="nx">isLoop</span> <span class="p">?</span> <span class="nx">item</span><span class="p">.</span><span class="nx">time</span> <span class="p">:</span> <span class="k">new</span> <span class="nc">Date</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">time</span><span class="p">)</span>
+                <span class="nx">schedule</span><span class="p">.</span><span class="nf">setSchedule</span><span class="p">(</span><span class="nx">time</span><span class="p">,</span> <span class="k">async</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                    <span class="kd">let</span> <span class="nx">contact</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Contact</span><span class="p">.</span><span class="nf">find</span><span class="p">({</span> <span class="na">name</span><span class="p">:</span> <span class="nx">item</span><span class="p">.</span><span class="nx">subscribe</span> <span class="p">})</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">你的专属提醒开启啦！</span><span class="dl">'</span><span class="p">)</span>
+                    <span class="k">await</span> <span class="nx">contact</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">content</span><span class="p">)</span>
+                    <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">item</span><span class="p">.</span><span class="nx">isLoop</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nf">request</span><span class="p">(</span><span class="nx">host</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">/updateSchedule</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span> <span class="dl">''</span><span class="p">,</span> <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="nx">item</span><span class="p">.</span><span class="nx">_id</span> <span class="p">}).</span><span class="nf">then</span><span class="p">((</span><span class="nx">result</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                            <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">更新定时任务成功</span><span class="dl">'</span><span class="p">)</span>
+                        <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                            <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">更新错误</span><span class="dl">'</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+                        <span class="p">})</span>
+                    <span class="p">}</span>
+                <span class="p">})</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">初始化定时任务失败</span><span class="dl">'</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 二维码生成</span>
+    <span class="nx">onScan</span> <span class="o">=</span> <span class="p">(</span><span class="nx">qrcode</span><span class="p">,</span> <span class="nx">status</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">Qrterminal</span><span class="p">.</span><span class="nf">generate</span><span class="p">(</span><span class="nx">qrcode</span><span class="p">)</span>
+        <span class="kd">const</span> <span class="nx">qrImgUrl</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">https://api.qrserver.com/v1/create-qr-code/?data=</span><span class="dl">'</span><span class="p">,</span> <span class="nf">encodeURIComponent</span><span class="p">(</span><span class="nx">qrcode</span><span class="p">)].</span><span class="nf">join</span><span class="p">(</span><span class="dl">''</span><span class="p">)</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">qrImgUrl</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 登录事件</span>
+    <span class="nx">onLogin</span> <span class="o">=</span> <span class="k">async</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`贴心助理</span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2">登录了`</span><span class="p">)</span>
+        <span class="nf">request</span><span class="p">(</span><span class="nx">host</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">/getScheduleList</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">).</span><span class="nf">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="kd">let</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">text</span><span class="p">)</span>
+            <span class="kd">let</span> <span class="nx">scheduleList</span> <span class="o">=</span> <span class="nx">text</span><span class="p">.</span><span class="nx">data</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">定时任务列表</span><span class="dl">'</span><span class="p">,</span> <span class="nx">scheduleList</span><span class="p">)</span>
+            <span class="nf">initSchedule</span><span class="p">(</span><span class="nx">scheduleList</span><span class="p">)</span>
+        <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">获取任务列表错误</span><span class="dl">'</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 登出事件</span>
+    <span class="nx">onLogout</span> <span class="o">=</span> <span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2"> 登出了`</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 消息监听</span>
+    <span class="nx">onMessage</span> <span class="o">=</span> <span class="k">async</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">contact</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="k">from</span><span class="p">()</span>
+        <span class="kd">const</span> <span class="nx">content</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">text</span><span class="p">()</span>
+        <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">room</span><span class="p">()</span>
+        <span class="k">if </span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nf">self</span><span class="p">())</span> <span class="k">return</span>
+        <span class="k">if </span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">const</span> <span class="nx">roomName</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">topiac</span><span class="p">()</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`群名: </span><span class="p">${</span><span class="nx">roomName</span><span class="p">}</span><span class="s2"> 发消息人: </span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nf">name</span><span class="p">()}</span><span class="s2"> 内容: </span><span class="p">${</span><span class="nx">content</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`发消息人: </span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nf">name</span><span class="p">()}</span><span class="s2"> 消息内容: </span><span class="p">${</span><span class="nx">content</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+
+            <span class="kd">let</span> <span class="nx">keywordArray</span> <span class="o">=</span> <span class="nx">content</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">\s</span><span class="sr">+/g</span><span class="p">,</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span><span class="p">).</span><span class="nf">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">)</span> <span class="c1">// 把多个空格替换成一个空格，并使用空格作为标记，拆分关键词</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">分词后效果</span><span class="dl">"</span><span class="p">,</span> <span class="nx">keywordArray</span><span class="p">)</span>
+            <span class="k">if </span><span class="p">(</span><span class="nx">keywordArray</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">提醒</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kd">let</span> <span class="nx">scheduleObj</span> <span class="o">=</span> <span class="nx">untils</span><span class="p">.</span><span class="nf">contentDistinguish</span><span class="p">(</span><span class="nx">contact</span><span class="p">,</span> <span class="nx">keywordArray</span><span class="p">)</span>
+                <span class="nf">addSchedule</span><span class="p">(</span><span class="nx">scheduleObj</span><span class="p">)</span>
+                <span class="nx">contact</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="dl">'</span><span class="s1">小助手已经把你的提醒牢记在小本本上了</span><span class="dl">'</span><span class="p">)</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">contact</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="dl">'</span><span class="s1">很高兴你能和我聊天，来试试我的新功能吧！回复案例：“提醒 我 18:30 下班回家”，创建你的专属提醒，记得关键词之间使用空格分隔开</span><span class="dl">'</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 添加定时提醒</span>
+    <span class="nx">addSchedule</span> <span class="o">=</span> <span class="k">async</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nf">request</span><span class="p">(</span><span class="nx">host</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">/addSchedule</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span> <span class="dl">''</span><span class="p">,</span> <span class="nx">obj</span><span class="p">).</span><span class="nf">then</span><span class="p">(</span><span class="k">async</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">res</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">text</span><span class="p">)</span>
+            <span class="kd">let</span> <span class="nx">nickName</span> <span class="o">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">subscribe</span>
+            <span class="kd">let</span> <span class="nx">time</span> <span class="o">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">time</span>
+            <span class="kd">let</span> <span class="nx">Rule1</span> <span class="o">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">isLoop</span> <span class="p">?</span> <span class="nx">time</span> <span class="p">:</span> <span class="k">new</span> <span class="nc">Date</span><span class="p">(</span><span class="nx">time</span><span class="p">)</span>
+            <span class="kd">let</span> <span class="nx">content</span> <span class="o">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">content</span>
+            <span class="kd">let</span> <span class="nx">contact</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Contact</span><span class="p">.</span><span class="nf">find</span><span class="p">({</span> <span class="na">name</span><span class="p">:</span> <span class="nx">nickName</span> <span class="p">})</span>
+            <span class="nx">schedule</span><span class="p">.</span><span class="nf">setSchedule</span><span class="p">(</span><span class="nx">Rule1</span><span class="p">,</span> <span class="k">async</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">你的专属提醒开启啦！</span><span class="dl">'</span><span class="p">)</span>
+                <span class="k">await</span> <span class="nx">contact</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">content</span><span class="p">)</span>
+                <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">isLoop</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nf">request</span><span class="p">(</span><span class="nx">host</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">/updateSchedule</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span> <span class="dl">''</span><span class="p">,</span> <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">_id</span> <span class="p">}).</span><span class="nf">then</span><span class="p">((</span><span class="nx">result</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">更新定时任务成功</span><span class="dl">'</span><span class="p">)</span>
+                    <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">更新错误</span><span class="dl">'</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+                    <span class="p">})</span>
+                <span class="p">}</span>
+            <span class="p">})</span>
+        <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">错误</span><span class="dl">'</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 自动加好友</span>
+    <span class="nx">onFriendShip</span> <span class="o">=</span> <span class="k">async</span><span class="p">(</span><span class="nx">friendship</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">logMsg</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="nx">logMsg</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">添加好友</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">friendship</span><span class="p">.</span><span class="nf">contact</span><span class="p">().</span><span class="nf">name</span><span class="p">()</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">logMsg</span><span class="p">)</span>
+            <span class="k">switch </span><span class="p">(</span><span class="nx">friendship</span><span class="p">.</span><span class="nf">type</span><span class="p">())</span> <span class="p">{</span>
+                <span class="cm">/**
+                 *
+                 * 1. New Friend Request
+                 *
+                 * when request is set, we can get verify message from `request.hello`,
+                 * and accept this request by `request.accept()`
+                 */</span>
+                <span class="k">case</span> <span class="nx">Friendship</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="na">Receive</span><span class="p">:</span>
+                    <span class="k">await</span> <span class="nx">friendship</span><span class="p">.</span><span class="nf">accept</span><span class="p">()</span>
+                    <span class="k">break</span>
+                    <span class="cm">/**
+                     *
+                     * 2. Friend Ship Confirmed
+                     *
+                     */</span>
+                <span class="k">case</span> <span class="nx">Friendship</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="na">Confirm</span><span class="p">:</span>
+                    <span class="nx">logMsg</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">friend ship confirmed with </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">friendship</span><span class="p">.</span><span class="nf">contact</span><span class="p">().</span><span class="nf">name</span><span class="p">()</span>
+                    <span class="k">break</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">logMsg</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">message</span>
+        <span class="p">}</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">logMsg</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Wechaty</span><span class="p">({</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">WechatEveryDay</span><span class="dl">'</span> <span class="p">})</span>
+    <span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">,</span> <span class="nx">onScan</span><span class="p">)</span>
+    <span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span> <span class="nx">onLogin</span><span class="p">)</span>
+    <span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">logout</span><span class="dl">'</span><span class="p">,</span> <span class="nx">onLogout</span><span class="p">)</span>
+    <span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="nx">onMessage</span><span class="p">)</span>
+    <span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">friendship</span><span class="dl">'</span><span class="p">,</span> <span class="nx">onFriendShip</span><span class="p">)</span>
+    <span class="nx">bot</span><span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+        <span class="p">.</span><span class="nf">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">开始登陆微信</span><span class="dl">'</span><span class="p">)</span> <span class="p">})</span>
+        <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="nx">e</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>untils/index.js</p>
+
+<p>这里主要是输入关键词后的处理方法，在<code class="language-plaintext highlighter-rouge">index.js中</code>，我把用户输入的关键词根据空格来进行分词处理，放到一个数组中，然后传入<code class="language-plaintext highlighter-rouge">contentDistinguish（）</code>方法中。根据关键词的不同来进行处理是否是属于每日任务，当日定时任务，还是属于指定日期任。因为不同的定时任务类型，在时间格式上是有所区分的，每日任务我采用的是<code class="language-plaintext highlighter-rouge">Cron风格定时器</code>，类似<code class="language-plaintext highlighter-rouge">0 30 8 * * *</code>(每天8点30提醒)这种，而指定日期时间和当日任务我使用的是<code class="language-plaintext highlighter-rouge">new Date('2019-9-10 12:30:00')</code>来处理。
+同时为了兼容性，在日期处理上采用了全角替换半角的冒号格式，内容上为了更符合<code class="language-plaintext highlighter-rouge">秘书</code>的身份，将主语我全部替换成你，也处理了自己给自己创建定时任务与你给别人创建定时任务内容上的不同。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nx">getToday</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="c1">// 获取今天日期</span>
+        <span class="kd">const</span> <span class="nx">date</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Date</span><span class="p">()</span>
+        <span class="kd">let</span> <span class="nx">year</span> <span class="o">=</span> <span class="nx">date</span><span class="p">.</span><span class="nf">getFullYear</span><span class="p">()</span>
+        <span class="kd">let</span> <span class="nx">month</span> <span class="o">=</span> <span class="nx">date</span><span class="p">.</span><span class="nf">getMonth</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="kd">let</span> <span class="nx">day</span> <span class="o">=</span> <span class="nx">date</span><span class="p">.</span><span class="nf">getDate</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nx">year</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">-</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">month</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">-</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">day</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span>
+    <span class="p">}</span>
+
+    <span class="nx">convertTime</span> <span class="o">=</span> <span class="p">(</span><span class="nx">time</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="c1">// 转换定时格式</span>
+        <span class="kd">let</span> <span class="nx">array</span> <span class="o">=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">:</span><span class="dl">'</span><span class="p">)</span>
+        <span class="k">return</span> <span class="dl">"</span><span class="s2">0 </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">array</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> * * *</span><span class="dl">'</span>
+    <span class="p">}</span>
+
+    <span class="nx">contentDistinguish</span> <span class="o">=</span> <span class="p">(</span><span class="nx">contact</span><span class="p">,</span> <span class="nx">keywordArray</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">scheduleObj</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="kd">let</span> <span class="nx">today</span> <span class="o">=</span> <span class="nf">getToday</span><span class="p">()</span>
+        <span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">setter</span> <span class="o">=</span> <span class="nx">contact</span><span class="p">.</span><span class="nf">name</span><span class="p">()</span> <span class="c1">// 设置定时任务的用户</span>
+        <span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">subscribe</span> <span class="o">=</span> <span class="p">(</span><span class="nx">keywordArray</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">我</span><span class="dl">"</span><span class="p">)</span> <span class="p">?</span> <span class="nx">contact</span><span class="p">.</span><span class="nf">name</span><span class="p">()</span> <span class="p">:</span> <span class="nx">keywordArray</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1">// 定时任务接收者</span>
+        <span class="k">if </span><span class="p">(</span><span class="nx">keywordArray</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">每天</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 判断是否属于循环任务</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">已设置每日定时任务</span><span class="dl">'</span><span class="p">)</span>
+            <span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">isLoop</span> <span class="o">=</span> <span class="kc">true</span>
+            <span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">time</span> <span class="o">=</span> <span class="nf">convertTime</span><span class="p">(</span><span class="nx">keywordArray</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+            <span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">content</span> <span class="o">=</span> <span class="p">(</span><span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">setter</span> <span class="o">===</span> <span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">)</span> <span class="p">?</span> <span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">content</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">亲爱的</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">subscribe</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">，温馨提醒：</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">keywordArray</span><span class="p">[</span><span class="mi">4</span><span class="p">].</span><span class="nf">replace</span><span class="p">(</span><span class="dl">'</span><span class="s1">我</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">你</span><span class="dl">'</span><span class="p">)</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">亲爱的</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">subscribe</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">，</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">setter</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">委托我提醒你，</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">keywordArray</span><span class="p">[</span><span class="mi">4</span><span class="p">].</span><span class="nf">replace</span><span class="p">(</span><span class="dl">'</span><span class="s1">我</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">你</span><span class="dl">'</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">keywordArray</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="nx">keywordArray</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">-</span><span class="dl">'</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">已设置指定日期时间任务</span><span class="dl">'</span><span class="p">)</span>
+            <span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">isLoop</span> <span class="o">=</span> <span class="kc">false</span>
+            <span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">time</span> <span class="o">=</span> <span class="nx">keywordArray</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">keywordArray</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="nf">replace</span><span class="p">(</span><span class="dl">'</span><span class="s1">：</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">:</span><span class="dl">'</span><span class="p">)</span>
+            <span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">content</span> <span class="o">=</span> <span class="p">(</span><span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">setter</span> <span class="o">===</span> <span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">)</span> <span class="p">?</span> <span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">content</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">亲爱的</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">subscribe</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">，温馨提醒：</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">keywordArray</span><span class="p">[</span><span class="mi">4</span><span class="p">].</span><span class="nf">replace</span><span class="p">(</span><span class="dl">'</span><span class="s1">我</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">你</span><span class="dl">'</span><span class="p">)</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">亲爱的</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">subscribe</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">，</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">setter</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">委托我提醒你，</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">keywordArray</span><span class="p">[</span><span class="mi">4</span><span class="p">].</span><span class="nf">replace</span><span class="p">(</span><span class="dl">'</span><span class="s1">我</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">你</span><span class="dl">'</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">已设置当天任务</span><span class="dl">'</span><span class="p">)</span>
+            <span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">isLoop</span> <span class="o">=</span> <span class="kc">false</span>
+            <span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">time</span> <span class="o">=</span> <span class="nx">today</span> <span class="o">+</span> <span class="nx">keywordArray</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nf">replace</span><span class="p">(</span><span class="dl">'</span><span class="s1">：</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">:</span><span class="dl">'</span><span class="p">)</span>
+            <span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">content</span> <span class="o">=</span> <span class="p">(</span><span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">setter</span> <span class="o">===</span> <span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">)</span> <span class="p">?</span> <span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">content</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">亲爱的</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">subscribe</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">，温馨提醒：</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">keywordArray</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="nf">replace</span><span class="p">(</span><span class="dl">'</span><span class="s1">我</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">你</span><span class="dl">'</span><span class="p">)</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">亲爱的</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">subscribe</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">，</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">scheduleObj</span><span class="p">.</span><span class="nx">setter</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">委托我提醒你，</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">keywordArray</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="nf">replace</span><span class="p">(</span><span class="dl">'</span><span class="s1">我</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">你</span><span class="dl">'</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">scheduleObj</span>
+    <span class="p">}</span>
+    <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">getToday</span><span class="p">,</span>
+        <span class="nx">convertTime</span><span class="p">,</span>
+        <span class="nx">contentDistinguish</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="koa核心代码">koa核心代码</h3>
+
+<p>koa就不用多说了，TJ大神继express后的又一神作，很轻量，而且摆脱了“回调地狱”的问题，放一张大神头像镇楼（发型很帅啊，哈哈）</p>
+
+<p><img src="/assets/2019/koa-wechaty-5.webp" alt="image" /></p>
+
+<p>koa服务默认使用3008端口，如果修改的话，需要在index.js中修改host的地址。这里目前写了三个接口，分别是添加定时任务，获取定时任务列表和更新任务列表，对应的数据库curd操作均在<code class="language-plaintext highlighter-rouge">mongodb/model.js</code>中完成</p>
+
+<p>config/koa.js</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">import</span> <span class="nx">Koa</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">koa</span><span class="dl">'</span>
+    <span class="k">import</span> <span class="nx">Router</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">koa-router</span><span class="dl">'</span>
+    <span class="k">import</span> <span class="nx">bodyParser</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">koa-bodyparser</span><span class="dl">'</span>
+    <span class="k">import</span> <span class="nx">model</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">../mongodb/model</span><span class="dl">'</span>
+
+    <span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Koa</span><span class="p">()</span>
+    <span class="kd">const</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Router</span><span class="p">()</span>
+    <span class="nx">app</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="nf">bodyParser</span><span class="p">())</span>
+
+    <span class="nx">router</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/addSchedule</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="c1">// 添加定时任务</span>
+        <span class="kd">let</span> <span class="nx">body</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">接收参数</span><span class="dl">'</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span>
+        <span class="kd">let</span> <span class="nx">res</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">model</span><span class="p">.</span><span class="nf">insert</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="p">{</span> <span class="na">code</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="na">msg</span><span class="p">:</span> <span class="dl">"</span><span class="s2">ok</span><span class="dl">"</span><span class="p">,</span> <span class="na">data</span><span class="p">:</span> <span class="nx">res</span> <span class="p">}</span>
+        <span class="nf">next</span><span class="p">()</span>
+    <span class="p">})</span>
+
+    <span class="nx">router</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/getScheduleList</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="c1">// 获取定时任务列表</span>
+        <span class="kd">const</span> <span class="nx">condition</span> <span class="o">=</span> <span class="p">{</span> <span class="na">hasExpired</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}</span>
+        <span class="kd">let</span> <span class="nx">res</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">model</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="nx">condition</span><span class="p">)</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="p">{</span> <span class="na">code</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="na">msg</span><span class="p">:</span> <span class="dl">"</span><span class="s2">ok</span><span class="dl">"</span><span class="p">,</span> <span class="na">data</span><span class="p">:</span> <span class="nx">res</span> <span class="p">}</span>
+        <span class="nf">next</span><span class="p">()</span>
+    <span class="p">})</span>
+    <span class="nx">router</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/updateSchedule</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="c1">// 更新定时任务</span>
+        <span class="kd">const</span> <span class="nx">condition</span> <span class="o">=</span> <span class="p">{</span> <span class="na">_id</span><span class="p">:</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">id</span> <span class="p">}</span>
+        <span class="kd">let</span> <span class="nx">res</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">model</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span><span class="nx">condition</span><span class="p">)</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="p">{</span> <span class="na">code</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="na">msg</span><span class="p">:</span> <span class="dl">"</span><span class="s2">ok</span><span class="dl">"</span><span class="p">,</span> <span class="na">data</span><span class="p">:</span> <span class="nx">res</span> <span class="p">}</span>
+        <span class="nf">next</span><span class="p">()</span>
+    <span class="p">})</span>
+
+    <span class="kd">const</span> <span class="nx">handler</span> <span class="o">=</span> <span class="k">async</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="k">await</span> <span class="nf">next</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">respose</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="nx">err</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">||</span> <span class="nx">err</span><span class="p">.</span><span class="nx">status</span> <span class="o">||</span> <span class="mi">500</span><span class="p">;</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">html</span><span class="dl">'</span><span class="p">;</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">&lt;p&gt;出错啦&lt;/p&gt;</span><span class="dl">'</span><span class="p">;</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nf">emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">,</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nx">app</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="nx">handler</span><span class="p">)</span>
+    <span class="nx">app</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">server error:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+    <span class="p">})</span>
+
+    <span class="nx">app</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="nx">router</span><span class="p">.</span><span class="nf">routes</span><span class="p">())</span>
+    <span class="nx">app</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="nx">router</span><span class="p">.</span><span class="nf">allowedMethods</span><span class="p">())</span>
+    <span class="nx">app</span><span class="p">.</span><span class="nf">listen</span><span class="p">(</span><span class="mi">3008</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">[demo] route-use-middleware is starting at port 3008</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">})</span>
+</code></pre></div></div>
+
+<h3 id="mongose核心代码">mongose核心代码</h3>
+
+<p>mongodb/config.js</p>
+
+<p>这里主要是MongoDB的主要配置文件，使用了mongoose链接MongoDB数据库，默认端口27017，创建了一个名为<code class="language-plaintext highlighter-rouge">wechatAssitant</code>的库</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">import</span> <span class="nx">mongoose</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">mongoose</span><span class="dl">'</span>
+
+    <span class="kd">const</span> <span class="nx">db_url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">mongodb://localhost:27017/wechatAssitant</span><span class="dl">'</span>
+    <span class="kd">let</span> <span class="nx">db</span> <span class="o">=</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nf">connect</span><span class="p">(</span><span class="nx">db_url</span><span class="p">,</span> <span class="p">{</span> <span class="na">useNewUrlParser</span><span class="p">:</span> <span class="kc">true</span> <span class="p">})</span>
+
+    <span class="c1">//连接成功</span>
+    <span class="nx">mongoose</span><span class="p">.</span><span class="nx">connection</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">connect</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Mongoose connection open to </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">db_url</span><span class="p">)</span>
+    <span class="p">})</span>
+
+    <span class="c1">//连接异常</span>
+    <span class="nx">mongoose</span><span class="p">.</span><span class="nx">connection</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Mongoose connection erro </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="c1">//连接断开</span>
+    <span class="nx">mongoose</span><span class="p">.</span><span class="nx">connection</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">disconnected</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Mongoose connection disconnected </span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="kr">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">mongoose</span>
+
+<span class="nx">mongodb</span><span class="o">/</span><span class="nx">schema</span><span class="p">.</span><span class="nx">js</span>
+</code></pre></div></div>
+
+<p>在Mongoose里一切都是从Schema开始的，每一个Schema都会映射到MongoDB的一个collection上。Schema定义了collection里documents的模板（或者说是框架）,如下代码定义了定时任务的Schema：</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">import</span> <span class="nx">mongoose</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">./config</span><span class="dl">'</span>
+    <span class="kd">const</span> <span class="nx">Schema</span> <span class="o">=</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span>
+
+    <span class="kd">let</span> <span class="nx">assistant</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Schema</span><span class="p">({</span>
+        <span class="na">subscribe</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="c1">// 订阅者</span>
+        <span class="na">setter</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="c1">// 设定任务者</span>
+        <span class="na">content</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="c1">// 订阅内容</span>
+        <span class="na">time</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="c1">// 定时日期</span>
+        <span class="na">isLoop</span><span class="p">:</span> <span class="nb">Boolean</span><span class="p">,</span> <span class="c1">// 是否为循环定时任务</span>
+        <span class="na">hasExpired</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="nb">Boolean</span><span class="p">,</span> <span class="na">default</span><span class="p">:</span> <span class="kc">false</span> <span class="p">},</span> <span class="c1">// 判断任务是否过期</span>
+        <span class="na">createdAt</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="nb">Date</span><span class="p">,</span> <span class="na">default</span><span class="p">:</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span> <span class="p">},</span>
+    <span class="p">})</span>
+
+    <span class="kr">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nf">model</span><span class="p">(</span><span class="dl">'</span><span class="s1">Assistant</span><span class="dl">'</span><span class="p">,</span> <span class="nx">assistant</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>mongodb/model.js</p>
+
+<p>为了使用定义好的Schema，我们需要把Schema转换成我们可以使用的model(其实是把Schema编译成model，所以对于Schema的一切定义都要在compile之前完成)。也就是说model才是我们可以进行操作的handle，具体实现代码<code class="language-plaintext highlighter-rouge">mongoose.model('Assistant', assistant)</code>，这里我们已经在schema.js文件中直接导出，直接在model.js中引用</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">import</span> <span class="nx">Assistant</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">./schema</span><span class="dl">'</span>
+
+    <span class="kr">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">insert</span><span class="p">:</span> <span class="p">(</span><span class="nx">conditions</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="c1">// 添加定时任务</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nc">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">Assistant</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="nx">conditions</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">doc</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                    <span class="k">if </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">return</span> <span class="nf">reject</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">创建成功</span><span class="dl">'</span><span class="p">,</span> <span class="nx">doc</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="nf">resolve</span><span class="p">(</span><span class="nx">doc</span><span class="p">)</span>
+                <span class="p">})</span>
+            <span class="p">})</span>
+        <span class="p">},</span>
+
+        <span class="na">find</span><span class="p">:</span> <span class="p">(</span><span class="nx">conditions</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="c1">// 获取定时任务列表</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nc">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">Assistant</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="nx">conditions</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">doc</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                    <span class="k">if </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">return</span> <span class="nf">reject</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="nf">resolve</span><span class="p">(</span><span class="nx">doc</span><span class="p">)</span>
+                <span class="p">})</span>
+            <span class="p">})</span>
+        <span class="p">},</span>
+        <span class="na">update</span><span class="p">:</span> <span class="p">(</span><span class="nx">conditions</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="c1">// 更新定时任务状态</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nc">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">Assistant</span><span class="p">.</span><span class="nf">updateOne</span><span class="p">(</span><span class="nx">conditions</span><span class="p">,</span> <span class="p">{</span> <span class="na">hasExpired</span><span class="p">:</span> <span class="kc">true</span> <span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">doc</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                    <span class="k">if </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">return</span> <span class="nf">reject</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="nf">resolve</span><span class="p">(</span><span class="nx">doc</span><span class="p">)</span>
+                <span class="p">})</span>
+            <span class="p">})</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="项目运行">项目运行</h2>
+
+<p>由于需要安装chromium,所以要先配置一下镜像，注意由于wechaty的限制，必须使用node10以上版本</p>
+
+<h3 id="npm或者yarn-配置淘宝源">npm或者yarn 配置淘宝源</h3>
+
+<h4 id="很重要防止下载chromium失败因为下载文件在150m左右所以在执行npm-run-start后需要等待下载大概一两分钟以上请耐心等待">(很重要，防止下载chromium失败，因为下载文件在150M左右，所以在执行npm run start后需要等待下载大概一两分钟以上，请耐心等待)</h4>
+
+<p>npm</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm config <span class="nb">set </span>registry https://registry.npm.taobao.org
+npm config <span class="nb">set </span>disturl https://npm.taobao.org/dist
+npm config <span class="nb">set </span>puppeteer_download_host https://npm.taobao.org/mirrors
+
+</code></pre></div></div>
+
+<p>yarn</p>
+
+<pre><code class="language-yarn">yarn config set registry https://registry.npm.taobao.org
+yarn config set disturl https://npm.taobao.org/dist
+yarn config set puppeteer_download_host https://npm.taobao.org/mirrors
+</code></pre>
+
+<h3 id="下载项目安装依赖">下载项目安装依赖</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com:gengchen528/wechat-assistant.git
+<span class="nb">cd </span>wechat-assistant.git
+npm <span class="nb">install
+</span>npm run start
+</code></pre></div></div>
+
+<h3 id="扫描登录">扫描登录</h3>
+
+<p>用微信扫描控制台显示的二维码，在手机上同意登录即可。使用其他微信发送指定格式文字进行添加定时任务。</p>
+
+<h2 id="服务器部署">服务器部署</h2>
+
+<p>1、如果需要在服务器中部署，需要先扫描二维码登录一次，生成微信维持登录状态的json文件，如下图：</p>
+
+<p><img src="/assets/2019/koa-wechaty-6.webp" alt="image" />
+2、生成此文件后，可以使用pm2工具进行进程守护。由于为了方便，本地开发的时候，我设置的<code class="language-plaintext highlighter-rouge">npm run start</code>同时执行了两条命令，所以在服务器端部署的时候，建议先启动<code class="language-plaintext highlighter-rouge">koa.js</code>后再启动<code class="language-plaintext highlighter-rouge">index.js</code></p>
+
+<h2 id="常见问题">常见问题</h2>
+
+<ol>
+  <li>
+    <p>我的微信号无法登陆</p>
+
+    <p>从2017年6月下旬开始，使用基于web版微信接入方案存在大概率的被限制登陆的可能性。 主要表现为：无法登陆Web 微信，但不影响手机等其他平台。 验证是否被限制登陆： <a href="https://wx.qq.com">https://wx.qq.com</a> 上扫码查看是否能登陆。 更多内容详见：</p>
+
+    <p><a href="https://github.com/wechaty/wechaty/issues/603">Can not login with error message: 当前登录环境异常。为了你的帐号安全，暂时不能登录web微信。</a></p>
+
+    <p><a href="https://github.com/wechaty/wechaty/issues/990">[谣言] 微信将会关闭网页版本</a></p>
+
+    <p><a href="https://github.com/wechaty/wechaty/issues/872">新注册的微信号无法登陆</a></p>
+  </li>
+  <li>
+    <p>执行npm run start时无法安装puppet-puppeteer&amp;&amp;Chromium</p>
+  </li>
+</ol>
+
+<p>Centos7下部署出现以下问题</p>
+
+<p><img src="/assets/2019/koa-wechaty-7.webp" alt="image" /></p>
+
+<p>问题原因: <a href="https://segmentfault.com/a/1190000011382062">https://segmentfault.com/a/1190000011382062</a></p>
+
+<p>解决方案:</p>
+
+<h3 id="依赖库">依赖库</h3>
+
+<p>yum install pango.x86_64 libXcomposite.x86_64 libXcursor.x86_64 libXdamage.x86_64 libXext.x86_64 libXi.x86_64 libXtst.x86_64 cups-libs.x86_64 libXScrnSaver.x86_64 libXrandr.x86_64 GConf2.x86_64 alsa-lib.x86_64 atk.x86_64 gtk3.x86_64 -y</p>
+
+<h3 id="字体">字体</h3>
+
+<p>yum install ipa-gothic-fonts xorg-x11-fonts-100dpi xorg-x11-fonts-75dpi xorg-x11-utils xorg-x11-fonts-cyrillic xorg-x11-fonts-Type1 xorg-x11-fonts-misc -y</p>
+
+<ul>
+  <li>windows下，下载puppeteer失败</li>
+</ul>
+
+<p>链接：<a href="https://pan.baidu.com/s/1YF09nELpO-4KZh3D2nAOhA">https://pan.baidu.com/s/1YF09nELpO-4KZh3D2nAOhA</a>
+提取码：0mrz</p>
+
+<p>把下载的文件放到如下图路径，并解压到当前文件夹中即可
+<img src="/assets/2019/koa-wechaty-8.webp" alt="image" /></p>
+
+<ol>
+  <li>支持 红包、转账、朋友圈… 吗</li>
+</ol>
+
+<p>支付相关 - 红包、转账、收款 等都不支持</p>
+
+<ol>
+  <li>更多关于wechaty功能相关接口</li>
+</ol>
+
+<p><a href="https://wechaty.js.org/v/zh/">参考wechaty官网文档</a></p>
+
+<ol>
+  <li>
+    <p>其他问题解决方案</p>
+
+    <ul>
+      <li>本地是否安装了mongodb数据库</li>
+      <li>先检查node版本是否大于10</li>
+      <li>确认npm或yarn已经配置好淘宝源</li>
+      <li>存在package-lock.json文件先删除</li>
+      <li>删除<code class="language-plaintext highlighter-rouge">node_modules</code>后重新执行<code class="language-plaintext highlighter-rouge">npm install</code> 或<code class="language-plaintext highlighter-rouge">cnpm install</code></li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="注意">注意</h2>
+
+<p>本项目属于个人兴趣开发，开源出来是为了技术交流，请勿使用此项目做违反微信规定或者其他违法事情。
+ 建议使用小号进行测试，有被微信封禁网页端登录权限的风险（客户端不受影响），请确保自愿使用。</p>
+
+<h2 id="最后">最后</h2>
+
+<p>我的小秘书已经学会了自动加好友功能，所以有兴趣的小伙伴可以加我的微信进行测试，她也可以是你的私人小秘书😆（注意别发太多信息，会把她玩坏的）</p>
+
+<p><img src="/assets/2019/koa-wechaty-9.webp" alt="image" /></p>
+
+<p>赶快亲自试一试吧，相信你会挖掘出更多好玩的功能</p>
+
+<p>github:<a href="https://github.com/gengchen528/wechat-assistant">https://github.com/gengchen528/wechat-assistant</a></p>
+
+<p>另外我的公众号已经接入微软小冰，关注后发语音会有小姐姐的声音陪你聊天，也可以和她文字聊天，有兴趣可以试试看，单身的欢迎来撩</p>
+
+<p><img src="/assets/2019/koa-wechaty-10.webp" alt="image" /></p>
+
+<blockquote>
+  <p>作者: <a href="https://github.com/leochen-g/">Leo_chen</a>，前端工程师，喜欢使用node做各种小项目，就职于大数据公司。本篇文章首发于掘金: <a href="https://juejin.im/post/5ca1dd846fb9a05e6c77b72f?utm_source=gold_browser_extension">使用koa2+wechaty打造个人微信小秘书</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#code">code</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#productivity">productivity</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/leochen-g">
+                            <img class="rounded-circle" src="/assets/contributors/leochen-g/avatar.webp" alt="Leo chen" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by Leo chen </h5>
+						高级前端工程师一枚，喜欢用node做各种项目，生命不止，折腾不息！
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2018/11/25/wechat-robot-can-do-anything/"> 微信机器人能够做些什么事？</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2019/04/02/node-wechaty-spider-en/"> Write a Web Scraper with Node + Wechaty to Send Daily Warm Messages to Your Girlfriend (or Boyfriend)  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2019/node-wechaty-1.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

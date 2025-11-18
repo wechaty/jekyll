@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Lightbot统计分析管理平台 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Lightbot统计分析管理平台 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Lightbot统计分析管理平台" />
+<meta name="author" content="zhoumh1988" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="感谢 @lijiarui 邀请我分享我们的LIGHTBOT统计分析管理平台，希望能够帮助开发者使用wechaty提供更多的业务方向。" />
+<meta property="og:description" content="感谢 @lijiarui 邀请我分享我们的LIGHTBOT统计分析管理平台，希望能够帮助开发者使用wechaty提供更多的业务方向。" />
+<link rel="canonical" href="https://wechaty.js.org/2018/08/14/wechaty-lightbot-analytics/" />
+<meta property="og:url" content="https://wechaty.js.org/2018/08/14/wechaty-lightbot-analytics/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2018/wechaty-lightbot-logo.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-08-14T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2018/wechaty-lightbot-logo.webp" />
+<meta property="twitter:title" content="Lightbot统计分析管理平台" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zhoumh1988"},"dateModified":"2018-08-14T00:00:00+00:00","datePublished":"2018-08-14T00:00:00+00:00","description":"感谢 @lijiarui 邀请我分享我们的LIGHTBOT统计分析管理平台，希望能够帮助开发者使用wechaty提供更多的业务方向。","headline":"Lightbot统计分析管理平台","image":"https://wechaty.js.org/assets/2018/wechaty-lightbot-logo.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2018/08/14/wechaty-lightbot-analytics/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"zhoumh1988"},"url":"https://wechaty.js.org/2018/08/14/wechaty-lightbot-analytics/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Lightbot统计分析管理平台</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/zhoumh1988">
+                            <img class="rounded-circle" src="/assets/contributors/zhoumh1988/avatar.webp" alt="LittleStrong" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> LittleStrong <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Aug 14, 2018 · <span class="reading-time">
+  
+  
+    9 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2018/wechaty-lightbot-logo.webp" alt="Lightbot统计分析管理平台">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_button_wechat" title='Wechat'>
+          <img id="qrcode" title="Wechat"
+            src="/assets/contributors/wechaty/icon.png"
+            width="64" height="64"
+          />
+        </a>
+        <a class="a2a_button_wechat" title='Wechat'></a>
+        <a class="a2a_button_sina_weibo" title='Weibo'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+        <!-- AddToAny BEGIN -->
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>感谢 @lijiarui 邀请我分享我们的LIGHTBOT统计分析管理平台，希望能够帮助开发者使用wechaty提供更多的业务方向。</p>
+
+<p>本人刚开始学习使用node，因此代码相对比较low，还请见谅。😄</p>
+
+<h2 id="项目介绍">项目介绍</h2>
+
+<blockquote>
+  <p>Lightbot统计分析管理平台在光链项目微信群中将主要起到两方面的作用，分别是<strong>维护管理</strong>和<strong>数据抓取</strong>两方面。机器人将做到内容的简单回复，包括好友自动通过，回复关键词自动邀请加入群组，这两个功能将保证投资人入群申请能够及时通过。在日常的群维护上，机器人将做到记录用户违规回复，超过3次警告并删除，同时，进行非工作时间常规问题关键词的自动回复，这两个功能将做到群维护的24小时无间断执行。同时也涉及到关键词管理，包括常规关键词和违规关键词，关键词将由管理员在后台进行设定，同时也能够根据群聊环境和项目进展进行及时调整。在违规用户方面，后台也将进行记录，方面管理员进行提醒和处理。
+在数据和人员管理方面，Lightbot统计分析管理平台将根据回复计算统计群成员，包括用户和管理员的的总体日活，周活和月活，方便群内做好正对性运营和管理。在文字方面，也将做好统计，具体体现在字数上，这一点也将对群聊质量进行把控。在用户分析上，后台数据将协助进行用户画像的归纳，包括性别，地域等，在群聊习惯方面，也将汇总回复时间等，方便管理员进行更有针对性的群聊回复。在机器人的后台，可以查多个微信群的具体的聊天记录，同时提供角色设置功能，角色包括用户、管理员、水军等，这两个功能将使管理员在后台查看具体至每个群每个角色的具体聊天内容，在统计数据的同时将完整的聊天记录同时抓取。</p>
+</blockquote>
+
+<p>整个项目分为4大模块：</p>
+
+<ul>
+  <li>lightbot机器人（已完成）</li>
+  <li>api接口服务（已完成50%）</li>
+  <li>web端展示界面（已完成50%）</li>
+  <li>cron定时任务（开发中）</li>
+</ul>
+
+<h2 id="lightbot功能">Lightbot功能</h2>
+
+<h3 id="自动抓取群信息">自动抓取群信息</h3>
+
+<blockquote>
+  <p>通过遍历用户固定的群组，抓取群信息和群成员信息。并自动抓取用户的文本和图片留言。</p>
+
+  <p>我们在微信机器人登录的同时遍历要抓取的群组，抓取成功后做插入或更新操作，之后抓取群成员信息，同样在抓取成功后做插入或更新操作。
+缓存用户信息的目的是为了后期做用户活跃度统计，同时还可针对性筛选用户进行对话模式展示。</p>
+</blockquote>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Wechaty</span><span class="p">({</span> <span class="na">puppet</span><span class="p">:</span> <span class="dl">'</span><span class="s1">padchat</span><span class="dl">'</span> <span class="p">})</span>
+<span class="kd">const</span> <span class="nx">default_rooms</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">Test1</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">Test2</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">Test3</span><span class="dl">'</span><span class="p">];</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">user</span> <span class="o">=&gt;</span> <span class="p">{</span>
+   <span class="nx">default_rooms</span><span class="p">.</span><span class="nf">forEach</span><span class="p">(</span><span class="k">async</span> <span class="nx">topic</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">r</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Room</span><span class="p">.</span><span class="nf">find</span><span class="p">({</span>
+            <span class="na">topic</span><span class="p">:</span> <span class="nx">topic</span>
+        <span class="p">});</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`The room </span><span class="p">${</span><span class="nx">topic</span><span class="p">}</span><span class="s2"> is </span><span class="p">${</span><span class="nf">isNotEmpty</span><span class="p">(</span><span class="nx">r</span><span class="p">)}</span><span class="s2">`</span><span class="p">);</span>
+        <span class="k">if </span><span class="p">(</span><span class="nx">r</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nf">saveRoom</span><span class="p">(</span><span class="nx">r</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="代码">代码</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 保存群组信息</span>
+<span class="kd">const</span> <span class="nx">saveRoom</span> <span class="o">=</span> <span class="k">async</span> <span class="nf">function </span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">record</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="nx">record</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">room</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+    <span class="nx">record</span><span class="p">.</span><span class="nx">topic</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">topic</span><span class="p">();</span>
+    <span class="kd">let</span> <span class="nx">members</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">memberList</span><span class="p">();</span>
+    <span class="nx">record</span><span class="p">.</span><span class="nx">member_num</span> <span class="o">=</span> <span class="nx">members</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+    <span class="nx">Query</span><span class="p">.</span><span class="nf">saveRoom</span><span class="p">(</span><span class="nx">record</span><span class="p">);</span>
+    <span class="nx">members</span><span class="p">.</span><span class="nf">forEach</span><span class="p">(</span><span class="k">async</span> <span class="nx">c</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if </span><span class="p">(</span><span class="nx">c</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">c</span><span class="p">.</span><span class="nf">self</span><span class="p">())</span> <span class="p">{</span>
+            <span class="nf">saveUser</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span> <span class="nx">room</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="c1">// 保存用户信息</span>
+<span class="kd">const</span> <span class="nx">saveUser</span> <span class="o">=</span> <span class="k">async</span> <span class="nf">function </span><span class="p">(</span><span class="nx">contact</span><span class="p">,</span> <span class="nx">roomid</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">Query</span><span class="p">.</span><span class="nf">isExisted</span><span class="p">(</span><span class="nx">contact</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">roomid</span><span class="p">,</span> <span class="k">async</span> <span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if </span><span class="p">(</span><span class="nx">res</span> <span class="o">===</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="k">if </span><span class="p">(</span><span class="nx">roomid</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">User</span><span class="p">(</span><span class="nx">contact</span><span class="p">);</span>
+                <span class="nx">user</span><span class="p">.</span><span class="nf">setRoomid</span><span class="p">(</span><span class="nx">roomid</span><span class="p">);</span>
+                <span class="nx">user</span><span class="p">.</span><span class="nf">setGender</span><span class="p">(</span><span class="nx">contact</span><span class="p">.</span><span class="nf">gender</span><span class="p">());</span>
+                <span class="k">if </span><span class="p">(</span><span class="nf">isNotEmpty</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nf">parseInt</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">id</span> <span class="o">||</span> <span class="mi">0</span><span class="p">)</span> <span class="o">!==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">user</span><span class="p">.</span><span class="nf">setId</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+                    <span class="k">if </span><span class="p">(</span><span class="nf">isEmpty</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="dl">''</span><span class="p">))</span> <span class="p">{</span>
+                        <span class="nx">Query</span><span class="p">.</span><span class="nf">syncContactName</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span> <span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                            <span class="nx">info</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s2">`同步用户</span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nf">name</span><span class="p">()}</span><span class="s2">昵称`</span><span class="p">);</span>
+                        <span class="p">});</span>
+                    <span class="p">}</span>
+                    <span class="k">if </span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">avatar</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="nx">res</span><span class="p">.</span><span class="nx">avatar</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="kd">let</span> <span class="nx">avatar</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">contact</span><span class="p">.</span><span class="nf">avatar</span><span class="p">();</span>
+                        <span class="nx">avatar</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">avatar</span><span class="p">.</span><span class="nf">toDataURL</span><span class="p">();</span>
+                        <span class="nx">Query</span><span class="p">.</span><span class="nf">insertImage</span><span class="p">(</span><span class="nx">avatar</span><span class="p">,</span> <span class="nx">imgId</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                            <span class="nx">user</span><span class="p">.</span><span class="nf">setAvatar</span><span class="p">(</span><span class="nx">imgId</span><span class="p">);</span>
+                            <span class="nx">Query</span><span class="p">.</span><span class="nf">syncContactAvatar</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span> <span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                                <span class="nx">info</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s2">`同步用户</span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nf">name</span><span class="p">()}</span><span class="s2">头像`</span><span class="p">);</span>
+                            <span class="p">});</span>
+                        <span class="p">})</span>
+                    <span class="p">}</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="kd">let</span> <span class="nx">avatar</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">contact</span><span class="p">.</span><span class="nf">avatar</span><span class="p">();</span>
+                    <span class="nx">avatar</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">avatar</span><span class="p">.</span><span class="nf">toDataURL</span><span class="p">();</span>
+                    <span class="nx">Query</span><span class="p">.</span><span class="nf">insertImage</span><span class="p">(</span><span class="nx">avatar</span><span class="p">,</span> <span class="nx">imgId</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                        <span class="nx">user</span><span class="p">.</span><span class="nf">setAvatar</span><span class="p">(</span><span class="nx">imgId</span><span class="p">);</span>
+                        <span class="nx">Query</span><span class="p">.</span><span class="nf">addUser</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span> <span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                            <span class="nx">info</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s2">`新增用户</span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nf">name</span><span class="p">()}</span><span class="s2">信息`</span><span class="p">);</span>
+                        <span class="p">});</span>
+                    <span class="p">})</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">err</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>其中Query是我写的一个数据库存储的工具类</p>
+
+  <p>用户头像我是用base64转码存储到数据库中，因此我会先保存用户头像，然后关联到用户表中，整个项目的所有图片我都是采用这种方式存储的，介于base64转码后，字符串过长，因此单独提取出来做一个表存储。通过id的形式关联到各主表中。</p>
+
+</blockquote>
+
+<h3 id="智能回复">智能回复</h3>
+
+<ul>
+  <li>我们监听了用户的发言，根据用户的发言做智能回复。因为我们是要做留言字数的统计，从而区分优劣会员，因此我们只抓取文本和图片形式的留言。（图片形式的后期考虑引入AI识别功能，自动对图片做分析。）</li>
+  <li>管理平台有一套关键词的管理功能，可自行设置关键词的内容，支持模糊匹配和完全匹配。同时我们还添加了敏感词过滤，但凡踩坑3次以上的用户，那不好意思了～88了您嘞。做这个功能的主要目的还是为了保证和谐的群环境。</li>
+  <li>我们的智能回复并不是24小时都回复，只是为了减少我们运营人员的工作量，只在他们休息的时候工作，做到群管理无人值守。</li>
+</ul>
+
+<h4 id="业务代码">业务代码</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 消息自动回复</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nf">function </span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nf">self</span><span class="p">())</span> <span class="p">{</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="kd">const</span> <span class="nx">content</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">text</span><span class="p">()</span>
+    <span class="kd">const</span> <span class="nx">sender</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="k">from</span><span class="p">()</span>
+    <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">room</span><span class="p">()</span>
+
+    <span class="k">if </span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nf">type</span><span class="p">()</span> <span class="o">!==</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">Text</span> <span class="o">&amp;&amp;</span> <span class="nx">message</span><span class="p">.</span><span class="nf">type</span><span class="p">()</span> <span class="o">!==</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">Image</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">info</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s2">`消息类型：</span><span class="p">${</span><span class="nx">message</span><span class="p">.</span><span class="nf">type</span><span class="p">()}</span><span class="s2">,content=</span><span class="p">${</span><span class="nx">content</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="kd">let</span> <span class="nx">topic</span> <span class="o">=</span> <span class="nx">room</span> <span class="p">?</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">topic</span><span class="p">()</span> <span class="p">:</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">room</span> <span class="o">&amp;&amp;</span> <span class="nx">default_rooms</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="nx">topic</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="c1">// 判断是否是新用户，若是保存到数据库</span>
+            <span class="nf">saveUser</span><span class="p">(</span><span class="nx">sender</span><span class="p">,</span> <span class="nx">room</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">err</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="s2">`saveUser error When get message. Error is : </span><span class="p">${</span><span class="nx">e</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="c1">// 记录聊天信息</span>
+            <span class="k">if </span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nf">type</span><span class="p">()</span> <span class="o">==</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">Image</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// 存储图片</span>
+                <span class="kd">let</span> <span class="nx">filebox</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">message</span><span class="p">.</span><span class="nf">toFileBox</span><span class="p">();</span>
+                <span class="kd">let</span> <span class="nx">msgContent</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">filebox</span><span class="p">.</span><span class="nf">toDataURL</span><span class="p">();</span>
+                <span class="nx">Query</span><span class="p">.</span><span class="nf">addChat</span><span class="p">(</span><span class="nx">msgContent</span><span class="p">,</span> <span class="nx">sender</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">room</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="c1">// 存储文本</span>
+                <span class="nx">Query</span><span class="p">.</span><span class="nf">addChat</span><span class="p">(</span><span class="nx">content</span><span class="p">,</span> <span class="nx">sender</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">room</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="k">async</span> <span class="nx">chatId</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                    <span class="c1">// 判断回复内容是否违规</span>
+                    <span class="nx">Query</span><span class="p">.</span><span class="nf">isFoul</span><span class="p">(</span><span class="nx">content</span><span class="p">,</span> <span class="nx">chatId</span><span class="p">,</span> <span class="k">async</span> <span class="nx">kid</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                        <span class="k">if </span><span class="p">(</span><span class="nx">kid</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                            <span class="c1">// 记录并查询用户违规次数</span>
+                            <span class="nx">Query</span><span class="p">.</span><span class="nf">recordFoul</span><span class="p">(</span><span class="nx">sender</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">room</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">chatId</span><span class="p">,</span> <span class="nx">kid</span><span class="p">,</span> <span class="k">async</span> <span class="nx">times</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                                <span class="k">if </span><span class="p">(</span><span class="nx">times</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+                                    <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="s2">`您已违规3次！`</span><span class="p">,</span> <span class="nx">sender</span><span class="p">);</span>
+                                    <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">del</span><span class="p">(</span><span class="nx">sender</span><span class="p">);</span>
+                                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                                    <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="s2">`您的回复内容已违规，再违规</span><span class="p">${</span><span class="mi">3</span><span class="o">-</span><span class="nx">times</span><span class="p">}</span><span class="s2">次将被踢出群组。`</span><span class="p">,</span> <span class="nx">sender</span><span class="p">);</span>
+                                <span class="p">}</span>
+                            <span class="p">});</span>
+                        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                            <span class="kd">let</span> <span class="nx">now</span> <span class="o">=</span> <span class="nf">moment</span><span class="p">();</span>
+                            <span class="c1">// 判断是否在机器人工作时间</span>
+                            <span class="k">if </span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nf">isAfter</span><span class="p">(</span><span class="nx">rest_time</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nx">now</span><span class="p">.</span><span class="nf">isBefore</span><span class="p">(</span><span class="nx">rest_time</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="p">{</span>
+                                <span class="c1">// 查看是否踩中了关键词</span>
+                                <span class="nx">Query</span><span class="p">.</span><span class="nf">queryKeyword</span><span class="p">(</span><span class="nx">content</span><span class="p">,</span> <span class="nx">chatId</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="k">async</span> <span class="nx">reply</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                                    <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">reply</span><span class="p">,</span> <span class="nx">sender</span><span class="p">);</span>
+                                <span class="p">});</span>
+                            <span class="p">}</span>
+                        <span class="p">}</span>
+                    <span class="p">});</span>
+                <span class="p">});</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">err</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="s2">`When save message. Error is </span><span class="p">${</span><span class="nx">e</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h3 id="自动通过好友并回复信息">自动通过好友并回复信息</h3>
+
+<p>为了减少运营人员对新用户申请的处理，我们借助wechaty实现了好友自动通过并回复信息的动能。并指示用户下一步的操作，可以回复指定内容自助加入群组。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">friendship</span><span class="dl">'</span><span class="p">,</span> <span class="nx">friendship</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h4 id="相关代码">相关代码</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">friendship</span> <span class="o">=</span> <span class="k">async</span> <span class="nx">friendship</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">friendship</span><span class="p">.</span><span class="nf">type</span><span class="p">()</span> <span class="o">===</span> <span class="nx">Friendship</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">RECEIVE</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 1. receive new friendship request from new contact</span>
+        <span class="kd">const</span> <span class="nx">contact</span> <span class="o">=</span> <span class="nx">friendship</span><span class="p">.</span><span class="nf">contact</span><span class="p">()</span>
+        <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">friendship</span><span class="p">.</span><span class="nf">accept</span><span class="p">()</span>
+        <span class="k">if </span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">let</span> <span class="nx">msg</span> <span class="o">=</span> <span class="s2">`你好，光链小助手欢迎你！
+回复“加入光链群”即可加入光链微信群，回复“联系小助手”稍后小助手将回复您。
+光链是全球首个“安全性，高性能，去中心化”三要素完备的公链。
+请关注光链其它社群及推广渠道：
+telegram电报群: t.me/lightchain_cn
+官方新浪微博：LightChain光链
+一直播ID：346346982
+交易平台：
+OKEx: www.okex.com
+IDAX：www.idax.mn
+KKcoin: www.kkcoin.com`</span><span class="p">;</span>
+            <span class="nx">contact</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+            <span class="nx">info</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s2">`Request from </span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nf">name</span><span class="p">()}</span><span class="s2"> is accept succesfully!`</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">err</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="s2">`Request from </span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nf">name</span><span class="p">()}</span><span class="s2"> failed to accept!`</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">friendship</span><span class="p">.</span><span class="nf">type</span><span class="p">()</span> <span class="o">===</span> <span class="nx">Friendship</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">CONFIRM</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 2. confirm friendship</span>
+        <span class="nx">info</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s2">`new friendship confirmed with </span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nf">name</span><span class="p">()}</span><span class="s2">`</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nf">function </span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">content</span> <span class="o">==</span> <span class="dl">'</span><span class="s1">加入光链群</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="nx">room</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">Query</span><span class="p">.</span><span class="nf">queryRoomRandom</span><span class="p">(</span><span class="k">async</span> <span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Room</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">roomid</span><span class="p">);</span>
+            <span class="k">if </span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kd">let</span> <span class="nx">topic</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">topic</span><span class="p">();</span>
+                <span class="k">try</span> <span class="p">{</span>
+                    <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="nx">sender</span><span class="p">);</span>
+                    <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="s2">`欢迎 </span><span class="p">${</span><span class="nx">sender</span><span class="p">.</span><span class="nf">name</span><span class="p">()}</span><span class="s2"> 加入 </span><span class="p">${</span><span class="nx">topic</span><span class="p">}</span><span class="s2"> `</span><span class="p">,</span> <span class="nx">sender</span><span class="p">);</span>
+                <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">err</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="s2">`Can't join room. </span><span class="p">${</span><span class="nx">e</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+  <span class="p">...</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>监听好友申请，自动通过申请，并提示下一步操作。</p>
+
+  <p>在监听消息时，如果完全匹配到加入光链群，并且是直接发给机器人的，那么会根据群组人数排序加入群组。</p>
+</blockquote>
+
+<h2 id="统计分析平台">统计分析平台</h2>
+
+<p><img src="/assets/2018/wechaty-lightbot-1.webp" alt="登陆界面" /></p>
+
+<h3 id="架构设计">架构设计</h3>
+
+<blockquote>
+  <p>渲染引擎是React</p>
+
+  <p>前端框架采用的是阿里巴巴蚂蚁金服开源的<a href="https://ant.design/">Ant Design</a>。</p>
+
+  <p>整体架构是在<a href="https://github.com/zuiidea/antd-admin">Ant Admin</a>基础上改的。</p>
+
+  <p>数据库采用的mysql8.0</p>
+
+  <p>服务是node server我自己封装的。</p>
+</blockquote>
+
+<h3 id="业务功能">业务功能</h3>
+
+<blockquote>
+  <p>目前只实现了各个模块的管理功能</p>
+
+  <p>统计相关功能将在月底前开发完成，届时我会上来更新blog，感谢大家的支持。</p>
+</blockquote>
+
+<h4 id="关键词管理">关键词管理</h4>
+
+<blockquote>
+  <p>关键词分页查询</p>
+
+  <p>关键词支持完全匹配和模糊匹配，优先完全匹配。</p>
+
+  <p>支持查询条件筛选</p>
+</blockquote>
+
+<p><img src="/assets/2018/wechaty-lightbot-2.webp" alt="敏感词管理" /></p>
+
+<h4 id="敏感词管理">敏感词管理</h4>
+
+<blockquote>
+  <p>对敏感词的管理
+<img src="/assets/2018/wechaty-lightbot-3.webp" alt="敏感词管理" /></p>
+</blockquote>
+
+<h4 id="聊天管理">聊天管理</h4>
+
+<h5 id="聊天记录">聊天记录</h5>
+
+<blockquote>
+  <p>根据群，用户角色和时间进行分页查询</p>
+</blockquote>
+
+<p><img src="/assets/2018/wechaty-lightbot-4.webp" alt="聊天记录" /></p>
+
+<h5 id="对话模式">对话模式</h5>
+
+<blockquote>
+  <p>根据群，特定用户，时间进行数据筛选</p>
+
+  <p>过滤掉多余人员的发言，只显示筛选用户的聊天记录</p>
+</blockquote>
+
+<p><img src="/assets/2018/wechaty-lightbot-5.webp" alt="聊天记录" /></p>
+
+<h4 id="用户管理">用户管理</h4>
+
+<blockquote>
+  <p>快速查看用户基本信息</p>
+
+  <p>设置用户的角色（用户，水军，管理员），从而进行群活跃分析。</p>
+</blockquote>
+
+<p><img src="/assets/2018/wechaty-lightbot-6.webp" alt="用户管理" /></p>
+
+<h4 id="群组管理">群组管理</h4>
+
+<blockquote>
+  <p>查看群组信息</p>
+
+  <p>设置责任账户（这个是为了体现运营人员水平而设置的）</p>
+</blockquote>
+
+<p><img src="/assets/2018/wechaty-lightbot-7.webp" alt="用户管理" /></p>
+
+<h4 id="统计分析">统计分析</h4>
+
+<p>功能开发中，敬请期待。。。</p>
+
+<blockquote>
+  <p>Author: <a href="https://github.com/zhoumh1988">@LittleStrong</a>, WEB Development Manager at <a href="http://itrustdata.com/">iTrustdata</a>, 喜欢挖坑与填坑😝</p>
+</blockquote>
+
+<hr />
+
+<blockquote>
+  <p>This post is also available in <a href="/2018/08/14/wechaty-lightbot-analytics-en/">English</a>.</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#analytics">analytics</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#featured">featured</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#utility">utility</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ecosystem">ecosystem</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/zhoumh1988">
+                            <img class="rounded-circle" src="/assets/contributors/zhoumh1988/avatar.webp" alt="LittleStrong" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by LittleStrong </h5>
+						WEB Development Manager at iTrustdata, 喜欢挖坑与填坑😝
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2018/08/14/wechaty-lightbot-analytics-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2018/wechaty-lightbot-logo.webp">  Lightbot Statistical Analysis Management Platform</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2018/08/30/ai-bot-wechaty-en/"> Thoughts on AI, Bot, and Wechaty  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2018/08-ai-bot-wechaty-en/hi-ai.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Huan: 介绍对话机器人（Chatbot）与对话式用户交互界面（CUI） | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Huan: 介绍对话机器人（Chatbot）与对话式用户交互界面（CUI） | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Huan: 介绍对话机器人（Chatbot）与对话式用户交互界面（CUI）" />
+<meta name="author" content="huan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Huan Li (李卓桓) provides a concise introduction to Chatbots and Conversational User Interfaces (CUI), explaining their definitions, capabilities, and relationship with Instant Messaging platforms." />
+<meta property="og:description" content="Huan Li (李卓桓) provides a concise introduction to Chatbots and Conversational User Interfaces (CUI), explaining their definitions, capabilities, and relationship with Instant Messaging platforms." />
+<link rel="canonical" href="https://wechaty.js.org/2021/01/20/chatbot-conversational-user-interface-zh/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/01/20/chatbot-conversational-user-interface-zh/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/01-chatbot-conversational-user-interface-zh/chatbot.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-20T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/01-chatbot-conversational-user-interface-zh/chatbot.webp" />
+<meta property="twitter:title" content="Huan: 介绍对话机器人（Chatbot）与对话式用户交互界面（CUI）" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"huan"},"dateModified":"2021-01-20T00:00:00+00:00","datePublished":"2021-01-20T00:00:00+00:00","description":"Huan Li (李卓桓) provides a concise introduction to Chatbots and Conversational User Interfaces (CUI), explaining their definitions, capabilities, and relationship with Instant Messaging platforms.","headline":"Huan: 介绍对话机器人（Chatbot）与对话式用户交互界面（CUI）","image":"https://wechaty.js.org/assets/2021/01-chatbot-conversational-user-interface-zh/chatbot.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/01/20/chatbot-conversational-user-interface-zh/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"huan"},"url":"https://wechaty.js.org/2021/01/20/chatbot-conversational-user-interface-zh/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#tutorial">tutorial</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Huan: 介绍对话机器人（Chatbot）与对话式用户交互界面（CUI）</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> Huan Li <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jan 20, 2021 · <span class="reading-time">
+  
+  
+    1 min read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/01-chatbot-conversational-user-interface-zh/chatbot.webp" alt="Huan: 介绍对话机器人（Chatbot）与对话式用户交互界面（CUI）">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_button_wechat" title='Wechat'>
+          <img id="qrcode" title="Wechat"
+            src="/assets/contributors/wechaty/icon.png"
+            width="64" height="64"
+          />
+        </a>
+        <a class="a2a_button_wechat" title='Wechat'></a>
+        <a class="a2a_button_sina_weibo" title='Weibo'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+        <!-- AddToAny BEGIN -->
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>Wechaty 是一个为对话式用户交互界面提供接口服务的 SDK，通过 RPA 技术，为 Chatbot 开发者提供便利的即时通讯平台接入服务，打造更加优秀的 Conversational AI 对话机器人。</p>
+
+<p>为什么我们要做 Chatbot ，我们经常提起的 Chatbot 等名词究竟是什么，它们有哪些优势？本文希望可以简明扼要的介绍清楚：</p>
+
+<ol>
+  <li>什么是对话机器人（Chatbot）</li>
+  <li>什么是对话式用户交互界面（Conversational User Interface, CUI）</li>
+  <li>Chatbot 能做什么</li>
+  <li>什么是 Conversational AI (CAI)</li>
+  <li>CUI 与即时通讯平台（Instant Messaging, IM）</li>
+</ol>
+
+<h2 id="什么是对话机器人chatbot">什么是对话机器人（Chatbot）</h2>
+
+<p>Chatbot 是一个有能力与用户通过自然语言进行交谈的软件。</p>
+
+<p>一般 Chatbot 都会运行在现有的即时消息软件平台上，比如 Slack、微信、钉钉。它也可以直接嵌入在独立网站或者移动手机 APP 中。</p>
+
+<h2 id="什么是对话式用户交互界面conversational-user-interface-cui">什么是对话式用户交互界面（Conversational User Interface, CUI）</h2>
+
+<p>对话式用户交互界面（Conversational User Interface, CUI）与以前使用按钮、输入框和滚动条的图形界面（Graphical User Interface, GUI）类似，但是 CUI 是通过模拟人类说话来与用户进行交互。</p>
+
+<p>比如，网站是图形界面，也就是说主要的用户界面是按钮，图片，滚动条等。与之对比，Chatbot 是一个对话界面，它的主要用户界面是用户和软件之间的对话。</p>
+
+<p>现在 CUI 非常常见，你很可能已经使用过CUI了。比如如果你用 iPhone，那么应该接触过 Siri；如果你经常在线购物，那么你应该在淘宝上被小二机器人服务过。</p>
+
+<p>所有的这些服务都是基于对话为中心进行设计的。设计对话的目标是让人与计算机之间的协作变得简单。区别于使用传统的计算机语言，对话机器人能够让用户通过与计算机进行像与其他人一样的“交谈”来完成任务。</p>
+
+<h2 id="chatbot-能做什么">Chatbot 能做什么</h2>
+
+<p>Chatbot 能够应用在很多日常任务中。比如查天气，完成在线的订单；可以推广和销售产品、提升用户活跃度；也可以帮助你为客户提供实时的问题回答，提升用户体验等。</p>
+
+<p>对话机器人可以降低人员成本，提升客户服务质量。和人工坐席相比，它最大的优势是可以永远实时回复，并且可以同时回复很多人。</p>
+
+<p>开发者可以 Chatbot 开发公司现有员工岗位的能力。想象一下 Chatbot 作为团队一员，能够每天24小时，每周7天不间断的工作，还不用领工资；它还可以被打造成为一个全面手，同时作为销售员、市场专员、客户服务坐席，一人独挡一面，为客户提供一站式全方位的支持。</p>
+
+<h2 id="什么是-conversational-ai-cai">什么是 Conversational AI (CAI)</h2>
+
+<p>对话式交互是计算机从文本命令到图形界面之后，随着人工智能能力的不断增强，计算机软件系统下一代的人机交互界面。为对话式用户交互界面提供的 AI 能力，就是 Conversational AI (CAI)。</p>
+
+<p>人工智能的发展是近些年来对话机器人能够越来越强大的基础原动力。近些年的世界变化表明，这些智能技术它们所不断学习和进步的速度，远远超越了我们人类。</p>
+
+<h2 id="cui-与即时通讯平台instant-messaging-im">CUI 与即时通讯平台（Instant Messaging, IM）</h2>
+
+<p>对话式用户交互界面(CUI)也需要适配各种平台，就像现有的响应式网页设计（Responsive Web Design）界面需要适配不同的屏幕分辨率和兼容电脑鼠标和手机触屏一样。</p>
+
+<p>CUI 基于不同的平台，你的 Chatbot 需要适应不同平台之间的不同特点。换言之，你需要确保你的用户在不同的设备和平台上访问你的对话机器人时，能够得到一致的体验。目前，最流行的对话平台包括：微信、Whatsapp、Slack、钉钉、飞书等。</p>
+
+<h2 id="写在最后">写在最后</h2>
+
+<p>Chatbot 是一个蕴含着巨大机会的新领域。今天的 Chatbot，就好像是 1996 年的网页。</p>
+
+<p>Google，Microsoft，Facebook，Amazon，和 Apple 这些大公司已经发现了 CUI 可以作为未来拓展用户的重要途径。这种基于自然语言的 Chatbot 可能很快替代大量的 APPs ，使用户可以直接通过语言来和他们喜欢的数字服务进行交互。理解对话式用户交互界面（CUI）是理解未来科技发展的重要一步。</p>
+
+<p>Chatbot 现在不断在迭代升级，对各种商业场景的未来都会产生巨大影响。你绝不应该错过这个绝佳的机会，今天就尽快建立一个属于你自己的 Chatbot 并通过它实现与你的客户的自然语言沟通，提升用户体验把！</p>
+
+<blockquote>
+  <p>Teaser image credit: <a href="https://learn.g2.com/chatbot">What Is a Chatbot? The Full Guide to Chatbots in 2020</a></p>
+</blockquote>
+
+<h2 id="关于-wechaty-sdk">关于 Wechaty SDK</h2>
+
+<p>Wechaty 是一个通过 RPA 技术，为 WeChat/Whatsapp 个人账号提供 API 接口的开源 SDK 。</p>
+
+<p>你可以通过阅读 <a href="https://wechaty.js.org/docs/tutorials/">Tutorial Doc</a>，快速的通过 Wechaty SDK 完成基于你自己的第一个 WeChat/Whatsapp  Chatbot。</p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#chatbot">chatbot</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#cui">cui</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#conversational-user-interface">conversational-user-interface</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by Huan Li <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Author @ Wechaty, Architect @ Chatie, LLM Code Generation Enthusiast, Serial Entrepreneur, Burner🔥
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/01/19/wechaty-api-restful/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/01-wechaty-api-restful/luyomo.webp">  Wechaty restful api</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/01/20/chatbot-conversational-user-interface/"> Huan: Introducing Chatbot and Conversational User Interface (CUI)  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/01-chatbot-conversational-user-interface/chatbot.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

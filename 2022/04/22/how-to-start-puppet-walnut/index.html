@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      2022-小白如何从0到1上手puppet-walnut | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>2022-小白如何从0到1上手puppet-walnut | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="2022-小白如何从0到1上手puppet-walnut" />
+<meta name="author" content="fabian" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="小白如何从0到1上手 Puppet-Walnut" />
+<meta property="og:description" content="小白如何从0到1上手 Puppet-Walnut" />
+<link rel="canonical" href="https://wechaty.js.org/2022/04/22/how-to-start-puppet-walnut/" />
+<meta property="og:url" content="https://wechaty.js.org/2022/04/22/how-to-start-puppet-walnut/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2022/04-how-to-start-puppet-walnut/puppet-walnut.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-04-22T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2022/04-how-to-start-puppet-walnut/puppet-walnut.webp" />
+<meta property="twitter:title" content="2022-小白如何从0到1上手puppet-walnut" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"fabian"},"dateModified":"2022-04-22T00:00:00+00:00","datePublished":"2022-04-22T00:00:00+00:00","description":"小白如何从0到1上手 Puppet-Walnut","headline":"2022-小白如何从0到1上手puppet-walnut","image":"https://wechaty.js.org/assets/2022/04-how-to-start-puppet-walnut/puppet-walnut.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2022/04/22/how-to-start-puppet-walnut/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"fabian"},"url":"https://wechaty.js.org/2022/04/22/how-to-start-puppet-walnut/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">2022-小白如何从0到1上手puppet-walnut</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/fabian">
+                            <img class="rounded-circle" src="/assets/contributors/fabian/avatar.webp" alt="fabian" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> fabian <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Apr 22, 2022 · <span class="reading-time">
+  
+  
+    6 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2022/04-how-to-start-puppet-walnut/puppet-walnut.webp" alt="2022-小白如何从0到1上手puppet-walnut">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_button_wechat" title='Wechat'>
+          <img id="qrcode" title="Wechat"
+            src="/assets/contributors/wechaty/icon.png"
+            width="64" height="64"
+          />
+        </a>
+        <a class="a2a_button_wechat" title='Wechat'></a>
+        <a class="a2a_button_sina_weibo" title='Weibo'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+        <!-- AddToAny BEGIN -->
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<h2 id="小白如何从0到1上手-puppet-walnut">小白如何从0到1上手 Puppet-Walnut</h2>
+
+<blockquote>
+  <p>今天和大家分享从未接触过5G消息开发的小白如何从0到1的申请到5G消息的测试账号，以及如何使用Wechaty社区中的walnut puppet来实现5G消息的一些功能。</p>
+</blockquote>
+
+<h3 id="一进入硬核桃5g开发者社区进行账号的注册">一、进入硬核桃5G开发者社区进行账号的注册</h3>
+
+<h4 id="1-点击网址链接进入硬核桃5g开发者社区如下图所示点击网页中的免费注册按钮">1. 点击<a href="https://www.5g-msg.com/#/">网址链接</a>进入硬核桃5G开发者社区，如下图所示，点击网页中的「免费注册」按钮</h4>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/1.webp" alt="img" /></p>
+
+<h4 id="2-如下图所示输入账户名密码手机号进行相关注册">2. 如下图所示，输入账户名、密码、手机号进行相关注册</h4>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/2.webp" alt="img" /></p>
+
+<h4 id="3-如下图输入手机短信验证码">3. 如下图，输入手机短信验证码</h4>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/3.webp" alt="img" /></p>
+
+<h4 id="4-注册成功如果怕忘记密码可以再绑定一个邮箱绑定邮箱的操作此处忽略">4. 注册成功！如果怕忘记密码，可以再绑定一个邮箱~（绑定邮箱的操作此处忽略）</h4>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/4.webp" alt="img" /></p>
+
+<h3 id="二报名参加-启航计划-5g消息开发者大赛">二、报名参加 “启航计划” 5G消息开发者大赛</h3>
+
+<blockquote>
+  <p>在完成第一步的账号注册后，我们已经有了一个硬核桃5G开发者社区的账号</p>
+</blockquote>
+
+<h4 id="1-登陆第一步注册的账号之后点击启航计划5g消息开发者大赛进入活动界面">1. 登陆第一步注册的账号之后，点击「“<a href="https://www.5g-msg.com/#/sailPlan">启航计划”</a><a href="https://www.5g-msg.com/#/sailPlan">5G消息</a><a href="https://www.5g-msg.com/#/sailPlan">开发者大赛</a>」进入活动界面</h4>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/5.webp" alt="img" /></p>
+
+<h4 id="2-点击下图中的立即报名">2. 点击下图中的「立即报名」</h4>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/6.webp" alt="img" /></p>
+
+<h4 id="3-如下图所示填写参赛相关信息如有邀请码请填写邀请码没有可不填填写完毕之后点击提交按钮">3. 如下图所示，填写参赛相关信息（如有邀请码请填写邀请码，没有可不填），填写完毕之后点击「提交」按钮</h4>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/7.webp" alt="img" /></p>
+
+<h4 id="4-报名成功分享邀请码邀请朋友参赛">4. 报名成功！分享邀请码，邀请朋友参赛</h4>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/8.webp" alt="img" /></p>
+
+<h3 id="三申请试用硬核桃开发套件">三、申请试用硬核桃开发套件</h3>
+
+<blockquote>
+  <p>在申请开发资源前，请先进行实名认证。如若之前已经通过认证，无需二次认证，可直接申请所需开发资源。</p>
+</blockquote>
+
+<h4 id="1-实名认证">1. 实名认证</h4>
+
+<p>账号实名认证（个人）或者企业账号认证，两种方式二选一即可。</p>
+
+<ul>
+  <li>点击下图中的「前去认证」按钮对账户进行实名认证</li>
+</ul>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/14.webp" alt="img" /></p>
+
+<ul>
+  <li>如下图所示，填写相关资料进行账户实名认证</li>
+</ul>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/15.webp" alt="img" /></p>
+
+<ul>
+  <li>资料提交成功后，账户实名认证状态会如下图所示变为「待审核」</li>
+</ul>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/16.webp" alt="img" /></p>
+
+<ul>
+  <li>如果提交的资料没问题，等待30分钟之内，认证状态会变为「认证通过」</li>
+</ul>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/17.webp" alt="img" /></p>
+
+<h4 id="2-企业账号认证">2. 企业账号认证</h4>
+
+<ul>
+  <li>接下来我们继续申请企业账号认证，点击下图中的「前去认证」</li>
+</ul>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/18.webp" alt="img" /></p>
+
+<ul>
+  <li>如下图所示，填写相关资料进行企业账号认证</li>
+</ul>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/19.webp" alt="img" /></p>
+
+<ul>
+  <li>资料提交成功后，企业账号认证状态会如下图所示变为「待审核」</li>
+</ul>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/20.webp" alt="img" /></p>
+
+<ul>
+  <li>如果提交的资料没问题，等待30分钟之内，认证状态会变为「认证通过」</li>
+</ul>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/21.webp" alt="img" /></p>
+
+<h4 id="3-开发资源申请">3. 开发资源申请</h4>
+
+<ul>
+  <li>点击下图中的「开发者中心」按钮，选择下拉框中的「硬核桃开发套件」</li>
+</ul>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/29.webp" alt="img" /></p>
+
+<ul>
+  <li>点击下图中的「免费试用」按钮</li>
+</ul>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/11.webp" alt="img" /></p>
+
+<ul>
+  <li>点击「硬核桃开发套件」按钮回到下图中的界面，点击「提交」</li>
+</ul>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/22.webp" alt="img" /></p>
+
+<ul>
+  <li>如下图所示，填写相关资料后点击「提交」按钮（非必填信息可以空着）。参赛作品以电联接口账号信息为准。</li>
+</ul>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/23.webp" alt="img" /></p>
+
+<ul>
+  <li>显示账号信息提交成功！</li>
+</ul>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/24.webp" alt="img" /></p>
+
+<ul>
+  <li>此时配置状态如下图所示显示「未配置」</li>
+</ul>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/25.webp" alt="img" /></p>
+
+<ul>
+  <li>等待配置完成，配置完成后状态如下图所示显示「已配置」，此时点击「查看」，显示分配的 Chatbot资源信息。</li>
+</ul>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/30.webp" alt="img" /></p>
+
+<h3 id="四硬核桃调测模拟终端">四、硬核桃调测模拟终端</h3>
+
+<blockquote>
+  <p>5G消息是短信的升级，请在<strong>安卓手机</strong>安装终端模拟器进行5G消息的测试。</p>
+</blockquote>
+
+<h4 id="1-app下载">1. APP下载</h4>
+
+<ul>
+  <li>下载页面<a href="https://www.5g-msg.com/#/kaifataojian">https://www.5g-msg.com/#/kaifataojian</a>，页面内查找终端测试消息 APP，点击进行下载，如图：</li>
+</ul>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/31.webp" alt="img" /></p>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/32.webp" alt="img" /></p>
+
+<h4 id="2-app安装">2. APP安装</h4>
+
+<ul>
+  <li>下载完成后，点击安装，<strong>替代系统默认短信权限</strong>，无需担心原有短信数据。由于安卓手机权限不一致的原因，若无法替代系统默认短信权限，可能导致终端模拟器无法正常使用，建议更换另一款安卓手机，重新安装。</li>
+</ul>
+
+<h4 id="3-app登录">3. APP登录</h4>
+
+<ul>
+  <li>安装成功后，打开 APP，点击【右上角三竖点】，选【设置】，选【常规】，选【融合通信登录】，登录界面如图：</li>
+</ul>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/33.webp" alt="img" /></p>
+
+<ul>
+  <li>输入账号（申请 Chatbot 时的手机号码）信息，点击登录，成功后返回，可查看到【小程序服务】。</li>
+</ul>
+
+<h4 id="4-chatbot查看">4. Chatbot查看</h4>
+
+<ul>
+  <li>点击【小程序服务】，可在【小程序列表】中，输入Chatbot名称，搜索 Chatbot。点击 Chatbot，进入交互界面。完成首次交互后，也可在【消息列表】中，进行 Chatbot 的消息交互。</li>
+</ul>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/34.webp" alt="img" /></p>
+
+<h3 id="五开始接入wechaty社区的puppet-walnut">五、开始接入Wechaty社区的puppet-walnut</h3>
+
+<blockquote>
+  <p>在完成第二步的硬核桃开发者套件申请试用后，我们已经有了从硬核桃5G开发者社区申请到的Chatbot的AppId、Chatbot的AppKey、Chatbot的sipId。上报填报chatbot的公网回调地址</p>
+</blockquote>
+
+<h4 id="1-设置环境变量">1. 设置环境变量</h4>
+
+<ul>
+  <li>
+    <p>Windows</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">set </span><span class="nv">WECHATY_LOG</span><span class="o">=</span>verbose
+<span class="nb">set </span><span class="nv">WECHATY_PUPPET</span><span class="o">=</span>wechaty-puppet-walnut
+<span class="nb">set </span><span class="nv">WECHATY_PUPPET_WALNUT_APPID</span><span class="o">=</span>Chatbot的AppId
+<span class="nb">set </span><span class="nv">WECHATY_PUPPET_WALNUT_APPKEY</span><span class="o">=</span>Chatbot的AppKey
+<span class="nb">set </span><span class="nv">WECHATY_PUPPET_WALNUT_SIPID</span><span class="o">=</span>Chatbot的sipId
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Linux &amp; MacOs</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">WECHATY_LOG</span><span class="o">=</span>verbose
+<span class="nb">export </span><span class="nv">WECHATY_PUPPET</span><span class="o">=</span>wechaty-puppet-walnut
+<span class="nb">export </span><span class="nv">WECHATY_PUPPET_WALNUT_APPID</span><span class="o">=</span>Chatbot的AppId
+<span class="nb">export </span><span class="nv">WECHATY_PUPPET_WALNUT_APPKEY</span><span class="o">=</span>Chatbot的AppKey
+<span class="nb">export </span><span class="nv">WECHATY_PUPPET_WALNUT_SIPID</span><span class="o">=</span>Chatbot的sipId
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="2-安装依赖">2. 安装依赖</h4>
+
+<blockquote>
+  <ol>
+    <li>Node.js version 16+</li>
+    <li>NPM version 7+</li>
+    <li>TypeScript version 4.4+</li>
+  </ol>
+</blockquote>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install </span>wechaty
+npm <span class="nb">install </span>wechaty-puppet-walnut
+</code></pre></div></div>
+
+<h4 id="3-配置公网映射开发环境">3. 配置公网映射（开发环境）</h4>
+
+<p>将我们之前上报的公网回调地址<strong>映射到我们本地的3000端口</strong>即可。</p>
+
+<blockquote>
+  <p>这边推荐使用开源的frp工具</p>
+
+  <ul>
+    <li>Github repo: <a href="https://github.com/fatedier/frp">https://github.com/fatedier/frp</a></li>
+    <li>教程👉 <a href="https://fabian4.site/blog/22217.html">https://fabian4.site/blog/22217.html</a></li>
+  </ul>
+
+  <p>walnut中包含一个<strong>koa</strong>的服务 默认监听端口为3000（可在启动配置中更改）</p>
+</blockquote>
+
+<h4 id="4-使用示例">4. 使用示例</h4>
+
+<h5 id="1-创建实例">(1). 创建实例</h5>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="nx">WechatyBuilder</span><span class="p">.</span><span class="nf">build</span><span class="p">({</span>
+  <span class="na">puppet</span><span class="p">:</span> <span class="k">new</span> <span class="nc">PuppetWalnut</span><span class="p">(),</span>
+<span class="p">})</span>  <span class="c1">// get a Wechaty instance</span>
+  <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">user</span><span class="p">:</span> <span class="kr">any</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">log</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s2">`User </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2"> logged in`</span><span class="p">))</span>
+    <span class="c1">// get the message chatbot received from users</span>
+  <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="k">async </span><span class="p">(</span><span class="nx">message</span><span class="p">:</span> <span class="nx">Message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s2">`Message: </span><span class="p">${</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+  <span class="p">})</span>
+
+<span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+
+<span class="kd">const</span> <span class="nx">contact</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Contact</span><span class="p">.</span><span class="nf">find</span><span class="p">({</span> <span class="na">id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">xxxxxxxxxxx</span><span class="dl">'</span> <span class="p">})</span>
+</code></pre></div></div>
+
+<h5 id="2-文本消息">(2). 文本消息</h5>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="nx">contact</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="dl">'</span><span class="s1">This is a simple text message.</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/26.webp" alt="img" /></p>
+
+<h5 id="3-图片消息">(3). 图片消息</h5>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">contact</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">FileBox</span><span class="p">.</span><span class="nf">fromFile</span><span class="p">(</span><span class="dl">'</span><span class="s1">C:</span><span class="se">\\</span><span class="s1">Users</span><span class="se">\\</span><span class="s1">Desktop</span><span class="se">\\</span><span class="s1">1.png</span><span class="dl">'</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/27.webp" alt="img" /></p>
+
+<h5 id="4-富文本消息">(4). 富文本消息</h5>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">post</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Post</span><span class="p">.</span><span class="nf">builder</span><span class="p">()</span>
+  <span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">This is a single rich card.</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">This is the description of the rich card. It</span><span class="se">\'</span><span class="s1">s the first field that will be truncated if it exceeds the maximum width or height of a card.</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="nx">FileBox</span><span class="p">.</span><span class="nf">fromFile</span><span class="p">(</span><span class="dl">'</span><span class="s1">C:</span><span class="se">\\</span><span class="s1">Users</span><span class="se">\\</span><span class="s1">Desktop</span><span class="se">\\</span><span class="s1">1.png</span><span class="dl">'</span><span class="p">))</span>
+  <span class="p">.</span><span class="nf">type</span><span class="p">(</span><span class="nx">PUPPET</span><span class="p">.</span><span class="nx">types</span><span class="p">.</span><span class="nx">Post</span><span class="p">.</span><span class="nx">Unspecified</span><span class="p">)</span>
+  <span class="p">.</span><span class="nf">build</span><span class="p">()</span>
+
+<span class="k">await</span> <span class="nx">contact</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">post</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/assets/2022/04-how-to-start-puppet-walnut/28.webp" alt="img" /></p>
+
+<h4 id="6-消息支持">6. 消息支持</h4>
+
+<blockquote>
+  <p>最新支持情况请参考 <a href="https://github.com/wechaty/puppet-walnut#%E6%B6%88%E6%81%AF%E7%A7%8D%E7%B1%BB%E6%94%AF%E6%8C%81">https://github.com/wechaty/puppet-walnut#%E6%B6%88%E6%81%AF%E7%A7%8D%E7%B1%BB%E6%94%AF%E6%8C%81</a></p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th>消息类型</th>
+      <th>从属(根据接口返回)</th>
+      <th>api</th>
+      <th>接收</th>
+      <th>发送</th>
+      <th>群聊</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>文本</td>
+      <td><code class="language-plaintext highlighter-rouge">text</code></td>
+      <td><code class="language-plaintext highlighter-rouge">message.text</code></td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>图片</td>
+      <td><code class="language-plaintext highlighter-rouge">image</code></td>
+      <td><code class="language-plaintext highlighter-rouge">message.toImage()</code></td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>视频</td>
+      <td><code class="language-plaintext highlighter-rouge">video</code></td>
+      <td><code class="language-plaintext highlighter-rouge">message.toFilebox()</code></td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>音频</td>
+      <td><code class="language-plaintext highlighter-rouge">audio</code></td>
+      <td><code class="language-plaintext highlighter-rouge">message.toFilebox()</code></td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>位置</td>
+      <td><code class="language-plaintext highlighter-rouge">location</code></td>
+      <td><code class="language-plaintext highlighter-rouge">message.toLocation()</code></td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>文件</td>
+      <td><code class="language-plaintext highlighter-rouge">other</code></td>
+      <td><code class="language-plaintext highlighter-rouge">message.toFilebox()</code></td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>联系人</td>
+      <td><code class="language-plaintext highlighter-rouge">other</code></td>
+      <td><code class="language-plaintext highlighter-rouge">message.toContact()</code></td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>富文本卡片</td>
+      <td><code class="language-plaintext highlighter-rouge">post</code></td>
+      <td><code class="language-plaintext highlighter-rouge">message.toPost()</code></td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="7-wechaty-api支持">7. Wechaty Api支持</h4>
+
+<blockquote>
+  <p>最新支持情况请参考 <a href="https://github.com/wechaty/puppet-walnut#wechaty-api-%E6%94%AF%E6%8C%81">https://github.com/wechaty/puppet-walnut#wechaty-api-%E6%94%AF%E6%8C%81</a></p>
+</blockquote>
+
+<h5 id="1-contact">(1). Contact</h5>
+
+<ul>
+  <li>
+    <h4 id="properties"><a href="https://wechaty.js.org/docs/api/contact#properties">Properties</a></h4>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Support</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>id</td>
+          <td><code class="language-plaintext highlighter-rouge">string</code></td>
+          <td>Get Contact id. This function is depending on the Puppet Implementation, see <a href="https://github.com/wechaty/wechaty/wiki/Puppet#3-puppet-compatible-table">puppet-compatible-table</a></td>
+          <td>✅</td>
+          <td>Phone number</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <h4 id="instance-methods"><a href="https://wechaty.js.org/docs/api/contact#instance-methods">Instance Methods</a></h4>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Instance Methods</th>
+          <th>Return type</th>
+          <th>Support</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>say(text Or Contact Or File)</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise</code></td>
+          <td>✅</td>
+          <td>⚠Contact not Support</td>
+        </tr>
+        <tr>
+          <td>name()</td>
+          <td><code class="language-plaintext highlighter-rouge">String</code></td>
+          <td>✅</td>
+          <td>Phone number</td>
+        </tr>
+        <tr>
+          <td>alias(newAlias)</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>friend()</td>
+          <td><code class="language-plaintext highlighter-rouge">Boolean or null</code></td>
+          <td>✅</td>
+          <td>True</td>
+        </tr>
+        <tr>
+          <td>type()</td>
+          <td><code class="language-plaintext highlighter-rouge">ContactType.Unknown or ContactType.Personal or ContactType.Official</code></td>
+          <td>✅</td>
+          <td>ContactType.Personal</td>
+        </tr>
+        <tr>
+          <td>gender()</td>
+          <td><code class="language-plaintext highlighter-rouge">ContactGender.Unknown or ContactGender.Male or ContactGender.Female</code></td>
+          <td>✅</td>
+          <td>ContactGender.Unknown</td>
+        </tr>
+        <tr>
+          <td>province()</td>
+          <td><code class="language-plaintext highlighter-rouge">String or null</code></td>
+          <td>❌</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>city()</td>
+          <td><code class="language-plaintext highlighter-rouge">String or null</code></td>
+          <td>❌</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>avatar()</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise</code></td>
+          <td>✅</td>
+          <td>Default avatar</td>
+        </tr>
+        <tr>
+          <td>sync()</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>self()</td>
+          <td><code class="language-plaintext highlighter-rouge">Boolean</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <blockquote>
+      <p>Default avatar 👉 <a href="https://raw.githubusercontent.com/wechaty/puppet-walnut/main/docs/images/avatar.png">https://raw.githubusercontent.com/wechaty/puppet-walnut/main/docs/images/avatar.png</a></p>
+    </blockquote>
+  </li>
+  <li>
+    <h4 id="static-methods"><a href="https://wechaty.js.org/docs/api/contact#static-methods">Static Methods</a></h4>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Static Methods</th>
+          <th>Return Type</th>
+          <th>Support</th>
+          <th>Detail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>find(query)</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise &lt;Contact \| null&gt;</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>findAll(Query Arguements)</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise &lt;Contact []&gt;</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h5 id="2-message">(2). Message</h5>
+
+<ul>
+  <li>
+    <h4 id="instance-methods-1"><a href="https://wechaty.js.org/docs/api/message#instance-methods">Instance Methods</a></h4>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Instance methods</th>
+          <th>Return type</th>
+          <th>Support</th>
+          <th>Detail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>talker()</td>
+          <td><code class="language-plaintext highlighter-rouge">Contact</code> or <code class="language-plaintext highlighter-rouge">null</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>to()</td>
+          <td><code class="language-plaintext highlighter-rouge">Contact</code> or <code class="language-plaintext highlighter-rouge">null</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>room()</td>
+          <td><code class="language-plaintext highlighter-rouge">Room</code> or <code class="language-plaintext highlighter-rouge">null</code></td>
+          <td>✅</td>
+          <td>null</td>
+        </tr>
+        <tr>
+          <td>text()</td>
+          <td><code class="language-plaintext highlighter-rouge">string</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>say(text Or Contact Or File)</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise</code></td>
+          <td>✅</td>
+          <td>⚠Contact not Support</td>
+        </tr>
+        <tr>
+          <td>type()</td>
+          <td><code class="language-plaintext highlighter-rouge">MessageType</code></td>
+          <td>✅</td>
+          <td>Message.Text</td>
+        </tr>
+        <tr>
+          <td>self()</td>
+          <td><code class="language-plaintext highlighter-rouge">boolean</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>mention()</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise</code></td>
+          <td>❌</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>mentionSelf()</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise</code></td>
+          <td>❌</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>forward(to)</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>date()</td>
+          <td><code class="language-plaintext highlighter-rouge">Date</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>age()</td>
+          <td><code class="language-plaintext highlighter-rouge">Number</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>toFileBox()</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>toContact()</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>toUrlLink()</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <h4 id="static-method"><a href="https://wechaty.js.org/docs/api/message#static-method">Static Method</a></h4>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Static Methods</th>
+          <th>Return type</th>
+          <th>Support</th>
+          <th>Detail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>find()</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>findAll()</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Author: <a href="https://github.com/fabian4">@fabian</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#5g">5g</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#puppet-walnut">puppet-walnut</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#chatbot">chatbot</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ecosystem">ecosystem</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/fabian">
+                            <img class="rounded-circle" src="/assets/contributors/fabian/avatar.webp" alt="fabian" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by fabian </h5>
+						a passionate learner
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2022/04/21/coin-price-robot/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2022/04-coin-price-robot/robot.webp">  基于开放 API 封装 Wechaty 接口下的虚拟币行情机器人</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2022/04/28/a-wechaty-bot-with-some-plugins/"> xin_bot：一个尝试使用python-wechaty插件系统开发的娱乐性机器人  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2022/04-a-wechaty-bot-with-some-plugins/title_bg.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

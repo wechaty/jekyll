@@ -1,0 +1,3093 @@
+{
+  "docs": [{
+      "title": "Confident-Cluster Decoding: A New Way to Make LLMs Less Random and More Trustworthy",
+      "url": "/2025/11/17/confident-cluster-decoding/",
+      "tags": ["ideas","llm","decoding","coding-agents","tool-calling","uncertainty"],
+      "categories": ["ideas"],
+  "excerpt": "Greedy decoding is too brittle, sampling is too random — Confident-Cluster Decoding (CCD) keeps only the tokens the model is truly confident about, exposes all top contenders, and turns that “soft uncertainty” into so..."
+    },{
+      "title": "Announcing FireGen: Turn Firebase RTDB into Your Universal Generative AI API",
+      "url": "/2025/11/13/firegen-firebase-rtdb-genai-api/",
+      "tags": ["google-cloud","firebase","vertex-ai","developer-experience"],
+      "categories": ["announcement"],
+  "excerpt": "FireGen is a Firebase Extension that transforms your Realtime Database into a universal Generative AI job queue, simplifying AI integration for solo founders and developers."
+    },{
+      "title": "Rethinking IAM: Designing a Human-Centered Command Line for Cloud Identity",
+      "url": "/2025/11/08/rethinking-iam-human-centered-cli/",
+      "tags": ["google-cloud","iam","cli-design","developer-experience"],
+      "categories": ["guide"],
+  "excerpt": "A deep redesign of Google Cloud IAM’s language and CLI—simplified from first principles to minimize cognitive load and make identity management readable and intuitive."
+    },{
+      "title": "Rethinking Azure Billing: The Simple Design Microsoft Should Have Built",
+      "url": "/2025/11/04/rethinking-azure-billing/",
+      "tags": ["azure","cloud-billing","design","finops"],
+      "categories": ["guide"],
+  "excerpt": "A founder’s deep dive into Azure’s confusing billing system — MCA, EA, MOSP, and beyond — and a redesign proposal that finally makes sense. This reimagined model simplifies Azure billing into a clear, human-friendly h..."
+    },{
+      "title": "📚 PreAngel Two-Stage Deployment Playbook — Firebase App Hosting × Google Cloud Run (v4)",
+      "url": "/2025/10/13/two-stage-deployment-playbook/",
+      "tags": ["deployment","firebase","cloudrun","github-actions","workload-identity-federation","iam"],
+      "categories": ["guide"],
+  "excerpt": "Purpose: Present PreAngel’s current best-practice two-stage deployment model — powered by GitHub Actions, Cloud Run, Artifact Registry, and Workload Identity Federation (WIF). This version reflects our final, producti..."
+    },{
+      "title": "🧭 Decoding the Chaos: The Ultimate Guide to Software Environment & Release Naming",
+      "url": "/2025/10/12/ultimate-guide-software-environment-release-naming/",
+      "tags": ["docs"],
+      "categories": ["guide"],
+  "excerpt": "🚀 Confused by terms like Preview, Beta, and Staging? You're not alone. This post breaks down the chaos into three clear axes every developer should know - By Huan Li — a developer once lost in the fog of 'Preview' and..."
+    },{
+      "title": "Google Cloud Authentication — The Divio-Style Field Guide for Senior Full‑Stack Devs",
+      "url": "/2025/09/12/google-cloud-authentication-the-understandable-guide/",
+      "tags": ["google-cloud","authentication","adc","oauth2","service-accounts","impersonation","workload-identity-federation","security"],
+      "categories": ["guide"],
+  "excerpt": "A practical, copy‑pastable guide that untangles identities, credentials, tokens, ADC, OAuth 2.0, API keys, service accounts, impersonation, and Workload Identity Federation — organised with the Divio documentation sys..."
+    },{
+      "title": "Breaking the Reverse Engineering Barrier: How LLMs and Frida Are Revolutionizing WeChat Analysis",
+      "url": "/2025/08/12/ai-powered-reverse-engineering-concept/",
+      "tags": ["frida","architecture","puppet-xp","llm","agent"],
+      "categories": ["article"],
+  "excerpt": "A deep dive into building an AI-powered reverse engineering agent that automatically locates and hooks WeChat’s message handling functions"
+    },{
+      "title": "Coding with the Ghost in the Machine: The Architecture That Powers AI-Driven Development",
+      "url": "/2025/08/09/architecture-ai-driven-development/",
+      "tags": ["ai","architecture","ricky"],
+      "categories": ["article"],
+  "excerpt": "A Case Study from the ReKey Team"
+    },{
+      "title": "Wechaty & AWS Global Recruitment: Leave an Eternal Mark with Your Code!",
+      "url": "/2025/05/23/wechaty-with-aws2025-en/",
+      "tags": ["aws","ai","chatbot","competition"],
+      "categories": ["article"],
+  "excerpt": "Wechaty & AWS AI development competition globally recruiting developers to create innovative AI chatbots using large language models - three tracks including efficiency, public welfare, and life improvement with gener..."
+    },{
+      "title": "All Interfaces Are Becoming Conversational",
+      "url": "/2025/04/15/huans-conversation-law/",
+      "tags": ["law"],
+      "categories": ["announcement"],
+  "excerpt": "Huan's Law: 'Any app that can be talked to, will be talked to.' Explore the future of voice-first and conversational apps, where talking to technology becomes the norm."
+    },{
+      "title": "🚀 What's the Best Transport for an Event-Driven Architecture: WebSocket or SSE + POST?",
+      "url": "/2025/04/04/best-transport-for-event-driven-architecture-websocket-or-sse-post/",
+      "tags": ["event-driven","cqrs","cloud-native"],
+      "categories": ["event"],
+  "excerpt": "As the creator of the Wechaty and Chatie projects, I’ve spent years building conversational and messaging tools for developers. Now, I’m investing in a new phase of cloud-native, event-driven infrastructure for Chatie..."
+    },{
+      "title": "AWS with Wechaty | AWS Generative AI Application Challenge Kicks Off!",
+      "url": "/2024/04/25/wechaty-with-aws2024-en/",
+      "tags": ["aws","ai","chatbot","competition"],
+      "categories": ["article"],
+  "excerpt": "✨ The 2nd China Generative AI Innovation Application Challenge ✨"
+    },{
+      "title": "Building an Intelligent Medical WeChat Bot with Dify, GPT-4 Turbo, and Wechaty",
+      "url": "/2024/03/30/wechatbot-with-wechaty-dify-gpt4-en/",
+      "tags": ["dify","gpt4-turbo","ecosystem"],
+      "categories": ["article"],
+  "excerpt": "Building an intelligent medical follow-up and health education WeChat bot using Dify's GPT-4 Turbo Agent platform and Wechaty, featuring conversation context management and knowledge base integration."
+    },{
+      "title": "2024GDC: Wechaty Showcasing the Power of AI and Automation at GDC 2024",
+      "url": "/2024/03/26/wechaty-in-2024gdc/",
+      "tags": ["news","ecosystem","wechaty-way"],
+      "categories": ["announcement"],
+  "excerpt": ""
+    },{
+      "title": "Unveiling the Treasures of Collaboration: My Wechaty GSoD'21 Gifts",
+      "url": "/2024/02/18/wechaty-gsod-gifts/",
+      "tags": ["google","gsod","gifts"],
+      "categories": ["gsod"],
+  "excerpt": "Hello, friends and fellow tech enthusiasts!"
+    },{
+      "title": "TensorFlow.js: Machine Learning in JavaScript",
+      "url": "/2024/02/05/devfest-silicon-valley-google-developer-group-tensorflow-js/",
+      "tags": ["tensorflow","machine-learning"],
+      "categories": ["talk"],
+  "excerpt": "Huan takes us on a journey into the world of machine learning right in your browser with TensorFlow.js. Whether you’re a developer, tech enthusiast, or just curious about the intersection of JavaScript and ML, this ta..."
+    },{
+      "title": "Wechaty + LLM Empowering Grassroots Community Autonomy",
+      "url": "/2023/11/21/digital-socialworker-assisstant-en/",
+      "tags": ["workpro","llm","agent"],
+      "categories": ["article"],
+  "excerpt": "When neighborhood committees meet Wechaty + large language models - a digital social worker assistant using AI to help community workers manage 198 policy documents and generate activity planning reports with natural ..."
+    },{
+      "title": "Game-Copilot Assists Game Studios with Brainstorming",
+      "url": "/2023/10/24/game-designer-group-on-wechat-en/",
+      "tags": ["blog","game","agent","ecosystem"],
+      "categories": ["article"],
+  "excerpt": "This post is also available in Chinese"
+    },{
+      "title": "wechaty+TypeChat: Control Your WeChat with Natural Language",
+      "url": "/2023/08/06/use-llm-control-your-wechat-en/",
+      "tags": ["blog","study","introduction","ecosystem"],
+      "categories": ["article"],
+  "excerpt": "This post is also available in Chinese"
+    },{
+      "title": "Live from WAIC 2023: Wechaty at the Open Source Bazaar",
+      "url": "/2023/07/08/wechaty-in-waic2023-en/",
+      "tags": ["news","ecosystem","wechaty-way"],
+      "categories": ["announcement"],
+  "excerpt": "Wechaty was invited to the WAIC 2023 Open Source Bazaar, creating a lively and interactive atmosphere. This post captures the highlights from the event, including our community's engagement and presentations."
+    },{
+      "title": "Deploying Private ChatGPT with Wechaty and LangChain",
+      "url": "/2023/07/07/wechaty-chat-with-langchain-en/",
+      "tags": ["chatgpt","langchain","ecosystem"],
+      "categories": ["article"],
+  "excerpt": "Building a private GPT chatbot on WeChat using Wechaty and LangChain with Pinecone vector database for document embedding and intelligent Q&A capabilities."
+    },{
+      "title": "Community meeting: generate Wechaty code with LLM & FLAML",
+      "url": "/2023/06/22/flaml-code-generation-llm/",
+      "tags": ["llm","code-generation"],
+      "categories": ["event"],
+  "excerpt": "FLAML (Fast Library for Automated Machine Learning, https://github.com/microsoft/FLAML) is a lightweight Python library for efficient automation of machine learning and AI operations, including selection of models, hy..."
+    },{
+      "title": "Haoshiyou Bot Upgraded to WeCom with ChatGPT Integration",
+      "url": "/2023/05/21/haoshiyou-bot-upgrade-to-wecom-en/",
+      "tags": ["chatgpt","haoshiyou","bayarea","ecosystem"],
+      "categories": ["article"],
+  "excerpt": "Upgrading Haoshiyou roommate-finding bot from personal WeChat to WeCom (WeChat Work) for better stability, featuring ChatGPT integration and deployment solutions for China network restrictions."
+    },{
+      "title": "Plans and Preview for Wechaty 2.0",
+      "url": "/2023/05/09/preview-on-wechaty-2.0-en/",
+      "tags": ["talk","meetup","news"],
+      "categories": ["announcement"],
+  "excerpt": "We are excited to share our plans for Wechaty 2.0, which will merge experimental features into the main branch. This update includes new functionalities like video channel messages, system messages, message quoting, a..."
+    },{
+      "title": "Announcing Wechaty Puppet WXKF",
+      "url": "/2023/04/23/introducing-wechaty-puppet-wxkf-en/",
+      "tags": ["news","puppet","wxkf","juzi"],
+      "categories": ["announcement"],
+  "excerpt": "We are excited to introduce wechaty-puppet-wxkf, a new, fully open-source puppet based on the official WeChat Customer Service API. This puppet runs locally, does not depend on external services, and offers robust fea..."
+    },{
+      "title": "Developing a Conference Assistant with ChatGPT & Wechaty in 10 Minutes",
+      "url": "/2023/04/13/use-chatgpt-develop-a-conference-assistant-en/",
+      "tags": ["blog","study","introduction","ecosystem"],
+      "categories": ["article"],
+  "excerpt": "This post is also available in Chinese"
+    },{
+      "title": "a free wechat openai qa-bot by wechaty-puppet-xp",
+      "url": "/2023/03/29/a-free-wechat-openai-qa-bot-by-xp/",
+      "tags": ["blog","study","introduction"],
+      "categories": ["article"],
+  "excerpt": ""
+    },{
+      "title": "Postgraduate Exam Supervision Group Assistant - A Good Helper on the Postgraduate Exam Journey",
+      "url": "/2023/03/03/postgraduate-supervision-group-assistant-en/",
+      "tags": ["chatbot","assistant"],
+      "categories": ["article"],
+  "excerpt": "A Wechaty-based bot for managing postgraduate exam study groups, featuring daily check-ins, study time tracking, scheduled reminders, and automatic countdown updates to help students focus on their studies."
+    },{
+      "title": "Live from the Scene: Wechaty at GAIDC Open Source Marketplace",
+      "url": "/2023/02/26/wechaty-in-gaidc-en/",
+      "tags": ["news","ecosystem","wechaty-way"],
+      "categories": ["announcement"],
+  "excerpt": "Wechaty community was invited to participate in the GAIDC Open Source Marketplace on the weekend, where the scene was bustling with many enthusiastic participants interacting with Wechaty. Let's take a look at the exc..."
+    },{
+      "title": "Wechaty Invited to GAIDC Open Source Market - Join Us!",
+      "url": "/2023/02/23/wechaty-invited-to-gaidc-en/",
+      "tags": ["news","ecosystem","wechaty-way"],
+      "categories": ["announcement"],
+  "excerpt": "Wechaty is invited to participate in the GAIDC Open Source Market this weekend, joining AI projects and developers to share the \"AI Carnival\" with interactive challenges, community gatherings, and open mic sessions."
+    },{
+      "title": "Building a Message Notification Service with Wechaty and Flask",
+      "url": "/2023/02/18/wechaty-flask-service-en/",
+      "tags": ["productivity","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "Learn how to build a WeChat message notification service using Wechaty and Flask, enabling proactive message sending and multi-service notifications through a single WeChat account with the PadLocal protocol."
+    },{
+      "title": "Wechaty Puppet Service WorkPro Migration Guide",
+      "url": "/2023/01/18/workpro-immigration-guide-en/",
+      "tags": ["news","puppet-service","puppet-provider","workpro","wxwork","ecosystem"],
+      "categories": ["tutorial"],
+  "excerpt": "Migration guide for Node Wechaty users upgrading to WorkPro puppet service, including version compatibility, code changes, token migration, and important configuration notes for TLS and reconnection handling."
+    },{
+      "title": "Wechaty Puppet Service WorkPro Release Announcement",
+      "url": "/2022/12/23/introducing-workpro-puppet-en/",
+      "tags": ["news","puppet-service","puppet-provider","workpro","ecosystem"],
+      "categories": ["announcement"],
+  "excerpt": "After long-term preparation and development, WorkPro, the successor to WxWork, officially enters beta testing as a new Wechaty Puppet Service! Free 7-day trial tokens available, with formal operating plans coming soon."
+    },{
+      "title": "5分钟把ChatGPT装进微信里",
+      "url": "/2022/12/07/play-chatgpt-with-wechaty/",
+      "tags": ["chatgpt","wechaty-puppet-wechat"],
+      "categories": ["article"],
+  "excerpt": "基于wechaty创建一个自己的ChatGPT机器人"
+    },{
+      "title": "Practice of Implementing a University Admission Assistant Based on Wechaty",
+      "url": "/2022/09/27/wechaty-university-admission-helper-en/",
+      "tags": ["bot","backend","node.js","typescript","university-admission"],
+      "categories": ["article"],
+  "excerpt": "A bot that intelligently recognizes keywords and automatically replies with admission information, implemented based on Wechaty and Node.js for university recruitment promotion."
+    },{
+      "title": "免费UOS协议快速接入可视化配置面板",
+      "url": "/2022/07/26/free-uos-ui/",
+      "tags": ["code","puppet-wechat","web-protocol"],
+      "categories": ["talk"],
+  "excerpt": "经历过UOS web协议的重放荣光，又经过一段时间的封禁，又有大神把UOS web协议救回来了。免费的快乐又重新回来了，不是吗?"
+    },{
+      "title": "Wechaty community meetup: Office Hour, Feb 22th, 2022",
+      "url": "/2022/07/22/wechaty-office-hour/",
+      "tags": ["wechaty-puppet-walnut","wechaty-ui","meetup"],
+      "categories": ["talk"],
+  "excerpt": "7月22日，周五，社区在线上举办了一个 Office Hour 的视频会议，由 @Huan，@wj-Mcat，@Leo_chen 共同讨论了一下社区中一些新项目的进展，并且相互提出了一些建议。"
+    },{
+      "title": "三步开发聊天机器人一秒生成漫画头像",
+      "url": "/2022/07/21/three-steps-to-develop-a-chatbot-to-generate-cartoon-avatars-in-one-second/",
+      "tags": ["puppet-service","code","ai"],
+      "categories": ["article"],
+  "excerpt": "大家好，我是胡琦。由于各种原因以及没能好好坚持笔记写作的习惯，距离上次分享有小半年了，今天给大家带来的是《三步开发聊天机器人一秒生成漫画头像》，其实就一个小小的功能：通过给微信群聊发送特定关键字触发聊天机器人头像漫画化处理程序，从而生成动漫化的头像。怎么实现呢？总的思路就是基于 ModelArts AI Gallery 快速验证 AnimateGanv2 现实照片动漫化能力，基于 Flask 快速部署动漫化服务，基于 Wechat..."
+    },{
+      "title": "Wechaty Gateway 使用教程",
+      "url": "/2022/06/23/wechaty-gateway-use/",
+      "tags": ["puppet-xp","gateway","wechat4u","padlocal"],
+      "categories": ["article"],
+  "excerpt": "前言"
+    },{
+      "title": "Best Practice of 5G Messaging puppet-walnut - 5G Intelligent Assistant",
+      "url": "/2022/06/12/wechaty-walnut-aibot-en/",
+      "tags": ["code","puppet-walnut","news"],
+      "categories": ["article"],
+  "excerpt": "As the first prize winner of the 2022 5G Messaging Developer Marathon, this article introduces the 5G Intelligent Assistant platform built with Wechaty's puppet-walnut, demonstrating best practices for 5G messaging bo..."
+    },{
+      "title": "Summer of Code - IM Message Aggregation",
+      "url": "/2022/06/05/summer-code-im-aggregation-en/",
+      "tags": ["summer-code","puppet-whatsapp","productivity"],
+      "categories": ["project"],
+  "excerpt": "A Summer of Code project to aggregate messages from different IM applications (WeChat, WeCom, WhatsApp) and forward them at scheduled times to reduce information overload and improve productivity."
+    },{
+      "title": "Wechaty Helps Tang Monk Recite Sutras and Buddha Play Football",
+      "url": "/2022/05/26/wechaty-help-organize-football-activity-en/",
+      "tags": ["ai"],
+      "categories": ["article"],
+  "excerpt": "Using Wechaty to create a helpful bot for organizing football activities - automatically sharing injury prevention tips and football-related content when relevant topics are discussed in the group."
+    },{
+      "title": "United Effort, Fighting the Pandemic with AI!",
+      "url": "/2022/05/20/wechaty-ai-antigenbot-en/",
+      "tags": ["ai","antigen"],
+      "categories": ["article"],
+  "excerpt": "During Shanghai's 2022 COVID lockdown, volunteers developed an AI antigen bot using Wechaty and PaddlePaddle to help community residents manage group purchases, forward messages, and analyze antigen test results, sign..."
+    },{
+      "title": "2022-关于开发wechaty-huggingface-pipeline的提议",
+      "url": "/2022/05/05/wechaty-huggingface-proposal/",
+      "tags": ["plugin","chatbot","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "关于开发wechaty-huggingface-pipeline的提议"
+    },{
+      "title": "xin_bot：一个尝试使用python-wechaty插件系统开发的娱乐性机器人",
+      "url": "/2022/04/28/a-wechaty-bot-with-some-plugins/",
+      "tags": ["chatbot","python","study","padlocal"],
+      "categories": ["article"],
+  "excerpt": "xin_bot，一个提供了一些小娱乐功能的wechaty机器人，考虑到后续功能的扩展，尝试使用python-wechaty的插件系统进行代码组织。"
+    },{
+      "title": "2022-小白如何从0到1上手puppet-walnut",
+      "url": "/2022/04/22/how-to-start-puppet-walnut/",
+      "tags": ["5g","puppet-walnut","chatbot","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "小白如何从0到1上手 Puppet-Walnut"
+    },{
+      "title": "基于开放 API 封装 Wechaty 接口下的虚拟币行情机器人",
+      "url": "/2022/04/21/coin-price-robot/",
+      "tags": ["blog","study","price","robot","introduction"],
+      "categories": ["article"],
+  "excerpt": "基于开放 API 封装 Wechaty 接口下的虚拟币行情机器人"
+    },{
+      "title": "2022-基于5G平台puppet接入post消息",
+      "url": "/2022/04/20/post-message-for-puppet-walnut/",
+      "tags": ["5g","puppet-walnut","chatbot","ecosystem","plan"],
+      "categories": ["project"],
+  "excerpt": "基于 5G 平台开发 puppet 模块接入 wechaty"
+    },{
+      "title": "Wechaty introduction at Microsoft Regional Director Summit",
+      "url": "/2022/04/07/microsoft-rd-summit-talk-wechaty-huan/",
+      "tags": ["microsoft","regional-director","summit","sticky","news"],
+      "categories": ["talk"],
+  "excerpt": "This is my speaking at Microsoft RD Summit on April 7, 2022."
+    },{
+      "title": "With the World's Largest Monolithic Chinese NLP Model and Wechaty, We Built an AI That Can Play Script Murder Games with Humans!",
+      "url": "/2022/03/31/shezhang-bujian-le-en/",
+      "tags": ["puppet-xp","ai","murder-mystery-game"],
+      "categories": ["article"],
+  "excerpt": "Building an AI player for murder mystery games using Wechaty and the world's largest Chinese NLP model, creating immersive interactive narrative experiences where AI seamlessly joins human players through WeChat."
+    },{
+      "title": "Hardcore Peach 5G Chatbot Open-Source SDK Wechaty | Core Power Salon 6",
+      "url": "/2022/03/30/gsma-rcs-wechaty-walnut-5g-chatbot-en/",
+      "tags": ["news","cqrs","ddd","event-driven"],
+      "categories": ["announcement"],
+  "excerpt": "5G Chatbot (RCS) is China’s version of the GSMA RCS standard for rich messaging."
+    },{
+      "title": "Event-driven Programming with CQRS Wechaty",
+      "url": "/2022/03/17/event-driven-wechaty-cqrs/",
+      "tags": ["news","cqrs","ddd","event-driven"],
+      "categories": ["announcement"],
+  "excerpt": "Command Query Responsibility Segregation (CQRS) is a software architecture pattern that separates the command(write) and query(read) layers. — CQRS, Martin Fowler, 14 July 2011"
+    },{
+      "title": "Puppet-Whatsapp 1.0 Released!",
+      "url": "/2022/03/14/puppet-whatsapp-1.0-released/",
+      "tags": ["news","open-source","puppet"],
+      "categories": ["announcement"],
+  "excerpt": "Puppet-Whatsapp has been published for more than a year, announcement here, and it was still in alpha stage with only login and text message supported. Recently Juzi.bot was planning to support whatsapp in the web app..."
+    },{
+      "title": "China Open Source Power Ranking Released | Wechaty Founder Ranked TOP 7",
+      "url": "/2022/03/03/opensource-win-github-ranking-huan-007-en/",
+      "tags": ["news","open-source"],
+      "categories": ["announcement"],
+  "excerpt": "“Open source” was one of the hottest tech keywords in China in 2021, with more people paying attention and contributing to it. Yet, opinions vary on the actual state of open source in China. Some ask: how many Chinese..."
+    },{
+      "title": "Refactoring Friday BOT with NestJS, Domain-driven Design (DDD), and CQRS",
+      "url": "/2022/02/27/refactoring-friday-bot-with-nestjs-ddd-cqrs/",
+      "tags": ["news","ddd","cqrs","friday","nestjs"],
+      "categories": ["announcement"],
+  "excerpt": "Friday BOT has been refactored to using NestJS framework, by following the Domain-driven Design (DDD) and the Command Query Responsibility Segregation (CQRS) this week, by merging this HUGE(307 files changed) Pull Req..."
+    },{
+      "title": "Wechaty community meetup: PadLocal Office Hour, @padlocal, Feb 5th, 2022",
+      "url": "/2022/02/22/padlocal-office-hour/",
+      "tags": ["puppet-padlocal","ipad","meetup"],
+      "categories": ["talk"],
+  "excerpt": "2月5日，周六，社区在线上举办了一个 Padlocal 专题的视频会议，由 Padlocal 的作者 @Haoda 讲解了 Padlocal 的起源与技术架构，并对 Padlocal 的一些 issues 进行了回复。"
+    },{
+      "title": "2022-基于5G平台开发puppet模块接入wechaty",
+      "url": "/2022/02/17/wechaty-puppet-walnut-final-report/",
+      "tags": ["5g","puppet-walnut","chatbot","ecosystem","plan"],
+      "categories": ["project"],
+  "excerpt": "基于 5G 平台开发 puppet 模块接入 wechaty"
+    },{
+      "title": "2022寒假-王天睿-JuziBot项目开发-期中报告-智能信息助理",
+      "url": "/2022/02/17/second-intern-juzibot-report/",
+      "tags": ["juzibot"],
+      "categories": ["article"],
+  "excerpt": "期中报告"
+    },{
+      "title": "GSoD'21 Performance Stipend Disbursement",
+      "url": "/2022/02/12/gsod21-performance-stipend-disbursement/",
+      "tags": ["google","gsod","event","gsod-2021",2021,"docs"],
+      "categories": ["gsod"],
+  "excerpt": "GSoD’21 Performance Stipend Disbursement"
+    },{
+      "title": "Sales Assistant Robot Based on Wechaty - Project Final Report",
+      "url": "/2022/02/10/sales-assistant-final-en/",
+      "tags": ["productivity"],
+      "categories": ["project"],
+  "excerpt": ""
+    },{
+      "title": "如何使用python-wechaty搭建英文取名机器人",
+      "url": "/2022/02/10/build-an-english-named-robot/",
+      "tags": ["python","entertainment"],
+      "categories": ["project"],
+  "excerpt": ""
+    },{
+      "title": "Medical Assistant Bot Developed with Wechaty",
+      "url": "/2022/02/02/wechaty-medical-bot-en/",
+      "tags": ["assistant","wechat","medicine","improve-efficiency"],
+      "categories": ["article"],
+  "excerpt": "A medical assistant bot built with Wechaty to help resident doctors manage clinical work, providing personalized reminders for ward rotations, professional knowledge queries, and automating repetitive communications i..."
+    },{
+      "title": "Authing 团队管理 + Wechaty 机器人 = 无限可能",
+      "url": "/2022/01/29/authing-wechaty-intergration/",
+      "tags": ["sso","authing","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "用户故事"
+    },{
+      "title": "2022寒假-王天睿-JuziBot项目开发-期中报告-智能信息助理",
+      "url": "/2022/01/18/begin-intern-juzibot-report/",
+      "tags": ["juzibot"],
+      "categories": ["article"],
+  "excerpt": "2022寒假-王天睿-JuziBot项目开发-期中报告-智能信息助理"
+    },{
+      "title": "基于Wechaty的个人助理，++生活效率&&有效对抗内卷",
+      "url": "/2022/01/16/wechaty-assistant-bot-opensource/",
+      "tags": ["assistant","wechat","improve-efficiency","against-involution"],
+      "categories": ["article"],
+  "excerpt": "项目地址"
+    },{
+      "title": "将 wechaty-puppet 升级为1.0以上版本",
+      "url": "/2022/01/11/upgrade-to-wechaty-puppet-1.0/",
+      "tags": ["wechaty-puppet","wechaty-1.0"],
+      "categories": ["article"],
+  "excerpt": "将 wechaty-puppet 升级为1.0以上版本"
+    },{
+      "title": "Chatbot and Angular (Beijing GDG | Community Talk | NG+)",
+      "url": "/2022/01/06/angular-tensorflow-js-en/",
+      "tags": ["angular","tensorflow.js","gdg"],
+      "categories": ["talk"],
+  "excerpt": "AI has accelerated research in conversational interaction. With the ubiquity of mobile instant messaging, Chatbot use cases are flourishing. How do we build a chatbot powered by modern AI?"
+    },{
+      "title": "wechaty 基于 nodejs 原生 http 包的服务",
+      "url": "/2022/01/04/wechaty-with-node-server/",
+      "tags": ["restful-api","http-server"],
+      "categories": ["article"],
+  "excerpt": "很开心加入了 Wechaty 社区，也在我的日常工作中提供了很多帮助。根据日常的工作需要，我自己加入了一些自己需要的功能。"
+    },{
+      "title": "2021-期中报告-基于5G平台开发puppet模块接入wechaty",
+      "url": "/2021/12/21/mid-term-wechaty-puppet-walnut-report/",
+      "tags": ["5g","puppet-walnut","chatbot","ecosystem","plan"],
+      "categories": ["project"],
+  "excerpt": "基于 5G 平台开发 puppet 模块接入 wechaty"
+    },{
+      "title": "Design and implementation of wechaty puppet module based on Tiktok",
+      "url": "/2021/12/16/try-to-build-a-wechaty-tiktok-puppet/",
+      "tags": ["puppet-tiktok","tiktok","automotive"],
+      "categories": ["project"],
+  "excerpt": "Context"
+    },{
+      "title": "wechaty-puppet-padlocal 实现初探",
+      "url": "/2021/12/15/inner-glance-of-padlocal/",
+      "tags": ["blog","padlocal","typescript"],
+      "categories": ["article"],
+  "excerpt": "引言"
+    },{
+      "title": "基于Wechaty的销售助理机器人--项目中期进展",
+      "url": "/2021/12/14/sales-assistant-mid-term-progress/",
+      "tags": ["productivity"],
+      "categories": ["project"],
+  "excerpt": "销售在跟客户沟通的过程中，会出现回复客户不及时，以及回复时存在错别字和病句的现象。所以HR部门要利用机器人记录这种情况，用于计算销售人员的绩效。11月份我完成了销售回复报表，管理者可以看到某销售的表现，某顾客是否被妥善回复，以及销售超时回复的具体情况。"
+    },{
+      "title": "成功结项！大学生的一小步，开发者的一大步",
+      "url": "/2021/11/30/report-for-summer-2021/",
+      "tags": ["blog","study","wechaty-puppet-walnut","5g-rcs","ospp","ospp-2021","summer-of-wechaty","summer-2021"],
+      "categories": ["article"],
+  "excerpt": "当你还在疑惑如何进行5G消息开发 打算申请 Chatbot 账号，租用一台服务器，买一款测试手机时 长沙理工大学和哈尔滨工程大学的两位学生 通过参与“开源软件供应链点亮计划 - 暑期2021”（以下简称“开源之夏”） 已经完成了5G消息的入门开发 那么距离更多的开发者投入到5G消息，还会远吗？"
+    },{
+      "title": " \"Successful Completion! A Small Step for College Students, a Big Step for Developers\" ",
+      "url": "/2021/11/30/report-for-summer-2021-en/",
+      "tags": ["blog","study","wechaty-puppet-walnut","5g-rcs","ospp","ospp-2021","summer-of-wechaty","summer-2021"],
+      "categories": ["article"],
+  "excerpt": "Abstract"
+    },{
+      "title": "使用Wechaty构建一个微信转发机器人",
+      "url": "/2021/11/30/a-wechat-message-forward-robot/",
+      "tags": ["study","wechat","message-forward","puppet-donut"],
+      "categories": ["article"],
+  "excerpt": "构建一个微信转发机器人"
+    },{
+      "title": "Design and implementation of wechaty puppet module based on Tiktok",
+      "url": "/2021/11/29/try-to-build-a-wechaty-tiktok-puppet/",
+      "tags": ["puppet-tiktok","tiktok","automotive"],
+      "categories": ["project"],
+  "excerpt": "Context"
+    },{
+      "title": "Wechaty Docker Multi-Platform for Raspberry Pi (ARM)",
+      "url": "/2021/11/27/docker-multi-platform-for-raspberry-pi-arm/",
+      "tags": ["docker","raspberry-pi","arm","news"],
+      "categories": ["announcement"],
+  "excerpt": "For a long time, wechaty docker image was build for platform amd64. Today, Wechaty is supporting new platform: Raspberry Pi (ARM)!"
+    },{
+      "title": "2021-期初报告-基于5G平台开发puppet模块接入wechaty",
+      "url": "/2021/11/24/begin-term-wechaty-puppet-5g-report/",
+      "tags": ["5g","puppet-walnut","chatbot","ecosystem","plan"],
+      "categories": ["project"],
+  "excerpt": "基于 5G 平台开发 puppet 模块接入 wechaty"
+    },{
+      "title": "juzibot-期初报告-信息管理机器人-机器人与部分算法实现",
+      "url": "/2021/11/21/juzi-ai-lab-plan-algo/",
+      "tags": ["internship","juzi-ai-lab","algorithm-internship","plan","productivity"],
+      "categories": ["project"],
+  "excerpt": "项目信息"
+    },{
+      "title": "基于Wechaty的销售助理机器人--项目规划",
+      "url": "/2021/11/11/sales-assistant-bot/",
+      "tags": ["productivity"],
+      "categories": ["project"],
+  "excerpt": "销售在跟客户沟通的过程中，会出现回复客户不及时，以及回复时存在错别字和病句的现象。所以HR部门要利用机器人记录这种情况，用于计算销售人员的绩效。"
+    },{
+      "title": "支持5G消息的 puppet-walnut 接入介绍",
+      "url": "/2021/11/07/how-to-develop-wechaty-puppet-module-supporting-5g-messages/",
+      "tags": ["blog","study","introduction","wechaty-puppet-walnut"],
+      "categories": ["article"],
+  "excerpt": "很荣幸能参加”暑期2021“活动，接触到开发支持电信运营商 5G Chatbot / RCS 的 Wechaty 接入 Puppet 模块这一开源项目,下面来和大家分享一下开发流程，希望能帮助更多的开发者快速上手这个项目。"
+    },{
+      "title": "Google Season of Docs 2021 Team Report - Introduction and Explanation",
+      "url": "/2021/11/07/gsod-2021-improve-introduction-and-explanation-project-joint-report/",
+      "tags": ["google","gsod",2021,"docs","introduction","explanations","project","report"],
+      "categories": ["gsod"],
+  "excerpt": "This is the joint project report for Improve the Introduction and Explanations secondary project under Google Season of Docs 2021."
+    },{
+      "title": "COSCon21 Community Governance (GC): Wechaty Open Source Community Documentation Collaboration — Google Season of Docs Practice",
+      "url": "/2021/11/05/kaiyuanshe-oss-con-2021-wechaty-gsod-en/",
+      "tags": ["coscon","news","kaiyuanshe","gsod"],
+      "categories": ["talk"],
+  "excerpt": "Huan Li (李卓桓) shares Wechaty's experience as the first Chinese project selected for Google Season of Docs 2021, involving 12 technical writing experts in documentation optimization."
+    },{
+      "title": "彩虹屁机器人  开心每一天",
+      "url": "/2021/11/03/rainbow-fart-wechaty-robot-project/",
+      "tags": ["code","entertainment","rainbow-fart","python"],
+      "categories": ["project"],
+  "excerpt": "一、彩虹屁机器人 开心每一天"
+    },{
+      "title": "GSoD 2021 report on Improve the gRPC and OpenAPI ecosystem",
+      "url": "/2021/10/30/gsod-2021-report-on-improve-the-grpc-and-openapi-ecosystem/",
+      "tags": ["grpc","gsod","openapi","report"],
+      "categories": ["gsod"],
+  "excerpt": "Introduction"
+    },{
+      "title": "Programmer's Day Panel: Five Open Source Engineers Share Their Journeys (Milvus Community)",
+      "url": "/2021/10/29/zilliz-milvus-open-source-panel-en/",
+      "tags": ["zilliz","milvus","opensource","news"],
+      "categories": ["interview"],
+  "excerpt": "How can open source boost your market competitiveness? How can open source become a new entrepreneurial model after leaving big tech companies? How to build a strong resume through open-source experience? And how do c..."
+    },{
+      "title": "OSSChat is What You Need for Open Source Community Operations",
+      "url": "/2021/10/28/osschat-is-what-you-need-for-opensouce-community-operations-en/",
+      "tags": ["osschat","chatopera","github","utility","sticky"],
+      "categories": ["project"],
+  "excerpt": "OSSChat now supports auto-reply for WeChat bots, helping you manage your open-source community by bridging WeChat groups with GitHub Issues."
+    },{
+      "title": "OpenTEKr｜OSS Pioneer｜Interview with Huan Li",
+      "url": "/2021/10/28/opentekr-oss-pioneer-interview-huan/",
+      "tags": ["opentekr","opensource","news"],
+      "categories": ["interview"],
+  "excerpt": "The “OSS Pioneer - The People” series is launched by OpenTEKr to help you to know more about the leaders who are constantly working hard to develop in China open source ecosystem and understand the stories behind thei..."
+    },{
+      "title": "Google Season of Docs 2021 Final Blog - Tutorials",
+      "url": "/2021/10/20/wechaty-tutorials-final-blog/",
+      "tags": ["google","gsod",2021,"docs","tutorials","project"],
+      "categories": ["gsod"],
+  "excerpt": "We have been a part of Google Season of Docs 2021 for creating and improving the Wechaty documentation, specifically the Tutorials section. It was an amazing journey of 17 weeks (roughly 4 months) contributing to the ..."
+    },{
+      "title": "A Gift for My Newborn Daughter: Parenting Chatbot Built with Wechaty and Semantic Open Platform",
+      "url": "/2021/10/19/jyy-chatbot-blog-en/",
+      "tags": ["opensource"],
+      "categories": ["tutorial"],
+  "excerpt": "Building a smart parenting chatbot using Wechaty and semantic analysis to automatically record baby's daily activities through WeChat, converting natural language into structured data for data-driven parenting."
+    },{
+      "title": "今年的 COSCon 中国开源年会，让我们聊点不一样的",
+      "url": "/2021/10/12/kai-yuan-she-2021/",
+      "tags": ["event","opensource","kaiyuanshe"],
+      "categories": ["event"],
+  "excerpt": "人们常常说，在熬过了数十年寒冬，2020 -2021 我们终于迎来了本土开源的拐点，国家政策的引导、基础软件的崛起、开放协作精神的觉醒……各种各样的数据报告也无一不支撑着这一观点。"
+    },{
+      "title": "Wechaty OSPP (Summer of Open Source) Final Demo Day",
+      "url": "/2021/10/09/summer-2021-wechaty-soc-final-demo-day-en/",
+      "tags": ["ospp-admin","summer-2021","summer-of-wechaty","ospp","ospp-2021","ecosystem","news","meetup","featured","final"],
+      "categories": ["announcement"],
+  "excerpt": "Final Demo Day showcase for Wechaty's 9 Summer 2021 OSPP projects, featuring student presentations on WeChat mini-programs, Python puppets, 5G RCS chatbots, Lark integration, CLI clients, Matrix bridges, QQ support, o..."
+    },{
+      "title": "小白入门：如何用科技拯救你的记忆力",
+      "url": "/2021/10/09/how-to-save-your-memory-with-technology/",
+      "tags": ["blog","study","introduction"],
+      "categories": ["article"],
+  "excerpt": "过去的一周接触到了 wechaty ，非常兴奋，首先对于这个神奇的东西感到惊奇，其次我是一个比较喜欢解决问题的人，可以用它解决很多实际问题，于是便开始了我的 wechaty 之路，下面和大家简单说一下我做的一个小demo，本文介绍使用的技术都是基本中的基本，几乎是对前端技术稍有了解的人就可以轻易完成，此举旨在帮助刚接触 wechaty 的同学（包括我）建立信心，不至于被挫败感吓跑。"
+    },{
+      "title": "Google Season of Docs 2021 Volunteer Report: Document Quality",
+      "url": "/2021/10/09/gsod-document-quality-final-report/",
+      "tags": ["google","gsod",2021,"docs","volunteer","project","news"],
+      "categories": ["gsod"],
+  "excerpt": "It’s a great honor to be part of Wechaty family in Google Season of Docs 2021. This report demonstrates the improvement of document quality."
+    },{
+      "title": "OSPP 2021-结项报告-开发支持电信运营商 5G Chatbot / RCS 的 Wechaty 接入 Puppet 模块",
+      "url": "/2021/10/07/ospp-final-term-5g-chatbot-puppet/",
+      "tags": ["summer-of-wechaty","summer-2021","ospp","ecosystem","ospp-2021","final-term"],
+      "categories": ["project","ospp"],
+  "excerpt": "[开发支持电信运营商 5G Chatbot / RCS 的 Wechaty 接入 Puppet 模块]信息"
+    },{
+      "title": "OSPP 2021 - Final Report - Developing Open Source Piggy Bro Community Entertainment Bot Based on Wechaty",
+      "url": "/2021/10/06/ospp-final-term-wechaty-piggy-bro-en/",
+      "tags": ["chat","summer-of-wechaty","summer-2021","ecosystem","ospp","ospp-2021","final-term"],
+      "categories": ["project","ospp"],
+  "excerpt": "Final report for the OSPP 2021 project developing Piggy Bro, an open-source multi-functional group chat bot based on Wechaty, featuring jokes, weather, music search, trending topics, idiom chains, riddles, and more."
+    },{
+      "title": "OSPP 2021-结项报告-开发支持 QQ 聊天软件的 Wechaty Puppet Provider 模块",
+      "url": "/2021/10/06/ospp-final-term-qq-puppet/",
+      "tags": ["summer-of-wechaty","summer-2021","ospp","ospp-2021","final-term","ecosystem","puppet","qq"],
+      "categories": ["project","ospp"],
+  "excerpt": "本项目通过 Wechaty Puppet 的接口，可以将 QQ 进行 RPA 封装，使其成为 wechaty-puppet-oicq 供 Wechaty 开发者方便接入 QQ 平台，使其成为 Wechaty 可以使用的社区生态模块。"
+    },{
+      "title": "OSPP 2021-结项报告-基于 Itchat 为 Python Wechaty 实现社区首个 Python 语言的本地 Puppet",
+      "url": "/2021/10/05/ospp-final-term-wechaty-itchat-puppet/",
+      "tags": ["itchat","puppet","summer-of-wechaty","summer-2021","ecosystem","ospp","ospp-2021","final-term"],
+      "categories": ["project","ospp"],
+  "excerpt": "“开源软件供应链点亮计划-暑期2021”（以下简称 暑期2021）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。 旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。 根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2021”活动奖金和奖杯。 官网：https://summer.iscas.ac.cn/"
+    },{
+      "title": "OSPP 2021-结项报告-基于 Wechaty Puppet Official Account 项目的用户与消息等基础功能的完善",
+      "url": "/2021/10/03/ospp-final-term-wechaty-puppet-oa/",
+      "tags": ["puppet","summer-of-wechaty","summer-2021","ecosystem","ospp","ospp-2021","final-term"],
+      "categories": ["project","ospp"],
+  "excerpt": "“开源软件供应链点亮计划-暑期2021”（以下简称 暑期2021）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。活动联合各大开源社区，针对重要开源软件的开发与维护提供项目，并向全球高校学生开放报名。 学生可自主选择感兴趣的项目进行申请，并在中选后获得该软件资深维护者（社区导师）亲自指导的机会。 根据项目的难易程度和完..."
+    },{
+      "title": "OSPP 2021 - Final Report - Wechaty Command-line Text Client Software Based on Blessed",
+      "url": "/2021/09/30/ospp-final-term-cli-en/",
+      "tags": ["summer-of-wechaty","summer-2021","ospp","ospp-2021","final-term","ecosystem"],
+      "categories": ["project","ospp"],
+  "excerpt": "Final report for the OSPP 2021 project developing a Blessed-based command-line text client for Wechaty, enabling users to chat using keyboard in terminal and developers to observe bot behavior in real-time."
+    },{
+      "title": "OSPP 2021-结项报告-基于开放 API 封装 Wechaty 接口下的飞书聊天机器人",
+      "url": "/2021/09/29/ospp-final-term-wechaty-puppet-lark-en/",
+      "tags": ["final-term","ospp","ospp-2021","summer-2021","puppet-provider","lark","summer-of-wechaty","ecosystem"],
+      "categories": ["project","ospp"],
+  "excerpt": "Code: wechaty-puppet-lark"
+    },{
+      "title": "GSoD 2021-Final-Term-Blog-References",
+      "url": "/2021/09/29/gsod21-final-blog-references/",
+      "tags": ["google","gsod-2021","gsod","end-term","evaluation",2021,"docs"],
+      "categories": ["gsod"],
+  "excerpt": "After four months of immense learning, we come to the end of Google Season of Docs 2021, here is the final blog of the References team."
+    },{
+      "title": "OSPP 2021 - Final Report - Developing WeChat Mini Program for Club Member & Activity Management Based on Wechaty",
+      "url": "/2021/09/29/final-term-club-managment-en/",
+      "tags": ["summer-of-wechaty","summer-2021","ecosystem","ospp","ospp-2021","final-term"],
+      "categories": ["project","ospp"],
+  "excerpt": "Final report for the OSPP 2021 project developing a WeChat mini program for club member and activity management based on Wechaty, featuring registration services, member management, and activity organization."
+    },{
+      "title": "人类的本质是复读机 - 可能是世界上最无聊的机器人",
+      "url": "/2021/09/28/the-stupidest-bot-ever-created/",
+      "tags": ["typescript","python","entertainment"],
+      "categories": ["project"],
+  "excerpt": ""
+    },{
+      "title": "OSPP 2021-结项报告-基于 Matrix AppService Wechaty 项目的用户、群与消息等基础功能的完善",
+      "url": "/2021/09/28/ospp-final-term-matrix-wechaty/",
+      "tags": ["matrix","summer-of-wechaty","summer-2021","ospp","ospp-2021","final-term","ecosystem"],
+      "categories": ["project","ospp"],
+  "excerpt": "Matrix AppService Wechaty 是一个 Matrix 应用服务（ AppService ），它可以把 Wechaty 支持的应用桥接到 Matrix 服务器中，帮助我们在 Matrix 客户端收发微信，飞书等通讯平台的消息。本项目基于 Matrix AppService Wechaty 完善了消息收发，用户信息展示，部署和开发流程优化等功能。"
+    },{
+      "title": "GSoD 2021-End-Term-How-to-guide-Blog",
+      "url": "/2021/09/24/gsod-end-term-how-to-guide-blog/",
+      "tags": ["google","gsod","gsod-2021","end-term","evaluation",2021,"docs"],
+      "categories": ["gsod"],
+  "excerpt": "This is the End-term Blog for Wechaty How-to-guide documentation for which we are working as a part of Google Season of Docs 2021. It is much more than a summer internship program, it is a year-round effort for the or..."
+    },{
+      "title": "如何使用python-wechaty来搭建一个自动转发消息的微信机器人",
+      "url": "/2021/09/21/how-to-get-an-automatic-message-forwarding-weixin-chatbot-with-python-wechaty-aliyun/",
+      "tags": ["study","python"],
+      "categories": ["article"],
+  "excerpt": ""
+    },{
+      "title": "GSoD'21 Tenth Meeting",
+      "url": "/2021/09/12/gsod-2021-tenth-meeting/",
+      "tags": ["google","gsod","event","gsod-2021",2021,"zoom","docs"],
+      "categories": ["gsod"],
+  "excerpt": "Google Season of Docs’21 tenth meeting"
+    },{
+      "title": "收藏文档，随时查找",
+      "url": "/2021/09/11/wechaty-zmore-collection-search/",
+      "tags": ["collection","crawl","zmore","search","website","seo"],
+      "categories": ["article"],
+  "excerpt": "随时转发，随时收藏，随时查找"
+    },{
+      "title": "Baidu Paddle ❤️ Wechaty & Mixlab ML Chatbot Competition Works Recommendation",
+      "url": "/2021/09/10/baidu-paddle-machine-learning-chatbot-competition-en/",
+      "tags": ["baidu","paddle","machine-learning","competition","news","game","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "33 creative ML chatbot projects were submitted to the AI Creator Camp competition jointly hosted by Wechaty, PaddlePaddle, and Mixlab, showcasing innovative applications in OCR, image processing, gaming, and AI conver..."
+    },{
+      "title": "OSPP 2021-期中报告-开发支持 QQ 聊天软件的 Wechaty Puppet Provider 模块",
+      "url": "/2021/08/31/ospp-mid-term-qq-puppet/",
+      "tags": ["summer-of-wechaty","summer-2021","ospp","ospp-2021","mid-term","other","puppet","qq"],
+      "categories": ["project","ospp"],
+  "excerpt": "本项目通过 Wechaty Puppet 的接口，可以将 QQ 进行 RPA 封装，使其成为 wechaty-puppet-oicq 供 Wechaty 开发者方便接入 QQ 平台，使其成为 Wechaty 可以使用的社区生态模块。"
+    },{
+      "title": "OSPP 2021-期中报告-基于开放 API 封装 Wechaty 接口下的飞书聊天机器人",
+      "url": "/2021/08/30/ospp-mid-term-wechaty-puppet-lark/",
+      "tags": ["mid-term","ospp","ospp-2021","plan","summer-2021","puppet-provider","lark","summer-of-wechaty","ecosystem"],
+      "categories": ["project","ospp"],
+  "excerpt": "Code: wechaty-puppet-lark"
+    },{
+      "title": "OSPP 2021-期中报告-基于 Matrix AppService Wechaty 项目的用户、群与消息等基础功能的完善",
+      "url": "/2021/08/30/ospp-mid-term-matrix-wechaty/",
+      "tags": ["matrix","mid-term","summer-of-wechaty","ecosystem","summer-2021","ospp","ospp-2021"],
+      "categories": ["project","ospp"],
+  "excerpt": "“开源软件供应链点亮计划-暑期2021”（以下简称 暑期2021）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。活动联合各大开源社区，针对重要开源软件的开发与维护提供项目，并向全球高校学生开放报名。 学生可自主选择感兴趣的项目进行申请，并在中选后获得该软件资深维护者（社区导师）亲自指导的机会。 根据项目的难易程度和完..."
+    },{
+      "title": "OSPP 2021-期中报告-开发支持电信运营商 5G Chatbot / RCS 的 Wechaty 接入 Puppet 模块",
+      "url": "/2021/08/30/ospp-mid-term-5g-chatbot-puppet/",
+      "tags": ["summer-of-wechaty","summer-2021","ospp","ospp-2021","plan","mid-term","other"],
+      "categories": ["project","ospp"],
+  "excerpt": "“开源软件供应链点亮计划-暑期2021”（以下简称 暑期2021）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。活动联合各大开源社区，针对重要开源软件的开发与维护提供项目，并向全球高校学生开放报名。 学生可自主选择感兴趣的项目进行申请，并在中选后获得该软件资深维护者（社区导师）亲自指导的机会。 根据项目的难易程度和完..."
+    },{
+      "title": "对话故事生成，创造自己的无限世界",
+      "url": "/2021/08/29/wechaty-story-generation/",
+      "tags": ["nlp","story_generation","paddlepaddle"],
+      "categories": ["article"],
+  "excerpt": "对话故事生成，创造自己的无限世界"
+    },{
+      "title": "OSPP 2021-期中报告-基于 Itchat 为 Python Wechaty 实现社区首个 Python 语言的本地 Puppet",
+      "url": "/2021/08/29/ospp-mid-term-wechaty-itchat-puppet/",
+      "tags": ["itchat","puppet","summer-of-wechaty","summer-2021","ecosystem","ospp","ospp-2021","mid-term"],
+      "categories": ["project","ospp"],
+  "excerpt": "“开源软件供应链点亮计划-暑期2021”（以下简称 暑期2021）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。 旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。 根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2021”活动奖金和奖杯。 官网：https://summer.iscas.ac.cn/"
+    },{
+      "title": "OSPP 2021 Mid‑term: WeChat‑based Micro‑Club Membership & Event Management Mini Program",
+      "url": "/2021/08/29/ospp-mid-term-club-managment-en/",
+      "tags": ["summer-of-wechaty","summer-2021","ospp","ospp-2021","mid-term","ecosystem"],
+      "categories": ["project","ospp"],
+  "excerpt": "Project Introduction"
+    },{
+      "title": "基于python-Wechaty的微信群虚拟币报价机器人",
+      "url": "/2021/08/26/wechaty-bot-of-coins/",
+      "tags": ["finance","wechaty-bot","python","coins"],
+      "categories": ["project"],
+  "excerpt": "本项目基于python-wechaty库，通过几行代码就能实现微信机器人的基础功能。 项目地址:coins_market_push"
+    },{
+      "title": "OSPP 2021-期中报告-基于 Wechaty Puppet Official Account 项目的用户与消息等基础功能的完善",
+      "url": "/2021/08/26/ospp-mid-term-wechaty-puppet-oa/",
+      "tags": ["puppet","summer-of-wechaty","summer-2021","ecosystem","ospp","ospp-2021","mid-term"],
+      "categories": ["project","ospp"],
+  "excerpt": "暑期2021"
+    },{
+      "title": "OSPP 2021 - Mid-term Report - Developing Open Source Piggy Bro Community Entertainment Bot Based on Wechaty",
+      "url": "/2021/08/26/ospp-mid-term-wechaty-piggy-bro-en/",
+      "tags": ["chat","summer-of-wechaty","summer-2021、","ecosystem","ospp","ospp-2021","mid-term"],
+      "categories": ["project","ospp"],
+  "excerpt": "Mid-term report for the OSPP 2021 project developing Piggy Bro, an open-source multi-functional group chat bot based on Wechaty with extensible interceptor architecture, featuring weather queries, jokes, idiom chains,..."
+    },{
+      "title": " \"OSPP 2021 - Mid-term Report - Wechaty Command-line Text Client Software Based on Blessed\"",
+      "url": "/2021/08/26/ospp-mid-term-cli-en/",
+      "tags": ["summer-of-wechaty","summer-2021","ospp","ospp-2021","mid-term","ecosystem"],
+      "categories": ["project","ospp"],
+  "excerpt": "Mid-term report for the OSPP 2021 project developing a Blessed-based command-line text client for Wechaty, supporting all Wechaty puppet providers in a terminal interface."
+    },{
+      "title": "Wechaty Docs Collaboration Practice in Google Season of Docs",
+      "url": "/2021/08/26/gdg-community-talk-google-season-of-docs-en/",
+      "tags": ["gsod","google","gdg","news"],
+      "categories": ["talk"],
+  "excerpt": "Google Season of Docs (GSoD) is a program by Google since 2019 that funds and mentors open-source communities to improve their documentation. It also helps developers learn professional technical writing through real-..."
+    },{
+      "title": "Wander[001] - 未来流浪者：微信中的科幻机器人 V2.1",
+      "url": "/2021/08/25/future-wander-bot-001/",
+      "tags": ["blog","study","introduction"],
+      "categories": ["article"],
+  "excerpt": "作者: 起司，扣扣"
+    },{
+      "title": "<x 世纪星际终端>基于 wechaty 的 AR+LBS 漂流瓶轻社交游戏",
+      "url": "/2021/08/21/super-interstellar-terminal/",
+      "tags": ["blog","ar","game","introduction"],
+      "categories": ["article"],
+  "excerpt": "基于微信聊天的 结合增强现实技术（AR）+LBS(暂时基于图像） 的星际漂流瓶 的轻社交游戏。重新认识你身边的世界，或许我们早已与外星生命共同生活着。"
+    },{
+      "title": "GSoD'21 Eighth Meeting",
+      "url": "/2021/08/15/gsod-2021-eighth-meeting/",
+      "tags": ["google","gsod","event","gsod-2021",2021,"zoom","docs"],
+      "categories": ["gsod"],
+  "excerpt": "Google Season of Docs’21 Eighth meeting"
+    },{
+      "title": "Wechaty卡通P图插件，18行代码帮你实现变脸功能 ",
+      "url": "/2021/08/13/wechaty-face-carton/",
+      "tags": ["code","face-carton","plugin"],
+      "categories": ["article"],
+  "excerpt": "Wechaty 人像转换插件，让你的 Wechaty 机器人实现照片卡通化，年龄变化，性别变化等功能。之前有看到过一些机器学习视频，可以把照片漫画化，感觉很有意思，就想着能不能结合 Wechaty 做一个可以自动返回动漫化照片的机器人。经过一番资料查找，发现腾讯有个人脸变换的功能，经过测试后，发现就是我想要的功能，而且效果还不错，关键是每个月有 1000 次的免费额度，这就很香了。三种转换模式就是 3000 次，白嫖不香么 😏，白..."
+    },{
+      "title": "GSoD 2021-Mid-Term-How-to-guide-Blog",
+      "url": "/2021/08/13/gsod-mid-term-how-to-guide-blog/",
+      "tags": ["google","gsod","gsod-2021","mid-term","evaluation",2021,"docs"],
+      "categories": ["gsod"],
+  "excerpt": "This is the Mid-term Blog for Wechaty How-to-guide documentation for which we are working as a part of Google Season of Docs 2021. We have reached half a way and it’s time to celebrate and describe our past experience."
+    },{
+      "title": "The community matrix server is online!",
+      "url": "/2021/08/12/the-matrix-server-of-wechaty/",
+      "tags": ["matrix"],
+      "categories": ["announcement"],
+  "excerpt": "About Matrix"
+    },{
+      "title": "『PaddlePaddle X Wechaty』有颜又有才的Living_Bot",
+      "url": "/2021/08/11/livingbot-paddlepaddle-wechaty/",
+      "tags": ["paddlepaddle","paddlehub","utility"],
+      "categories": ["project"],
+  "excerpt": "『PaddlePaddle X Wechaty』有颜又有才的Living_Bot"
+    },{
+      "title": "Docker Open Source Program ❤️ Wechaty",
+      "url": "/2021/08/10/docker-open-source-program/",
+      "tags": ["docker","program","news"],
+      "categories": ["announcement"],
+  "excerpt": "In November, 2020, Docker announced the launch of a special program to expand our support for Open Source projects that use Docker. The eligible projects that meet the program’s requirements (ie. they must be open sou..."
+    },{
+      "title": "使用 VS Code 调试 Node.js 应用",
+      "url": "/2021/08/08/vscode-debug-nodejs/",
+      "tags": ["code","debug","nodejs"],
+      "categories": ["article","tutorial"],
+  "excerpt": "「暑期 2021」活动中，我为 Wechaty 开发命令行环境下的客户端 wechaty-cli，使用 blessed 这个终端图形化组件库可以轻松做出炫酷的仿 IRC 聊天软件，原以为只需调库即可完成任务，但事情远没有那么简单…"
+    },{
+      "title": "Google Season of Docs 2021 Mid Term Blog: Tutorials",
+      "url": "/2021/08/03/gsod-2021-mid-term-blog-tutorials/",
+      "tags": ["google","gsod",2021,"docs","tutorials","project"],
+      "categories": ["gsod"],
+  "excerpt": "This is the mid term blog for demonstrating all our work that we have done till 8 weeks for creating and improving the Wechaty Tutorials documentation as a part of Google Season of Docs 2021."
+    },{
+      "title": "GSoD'21 Seventh Meeting",
+      "url": "/2021/08/01/gsod-2021-seventh-meeting/",
+      "tags": ["google","gsod","event","gsod-2021",2021,"zoom","docs"],
+      "categories": ["gsod"],
+  "excerpt": "Google Season of Docs’21 seventh meeting"
+    },{
+      "title": "Wechaty Community & Walnut Community: College Students Playing with 5G Messages? So Easy!",
+      "url": "/2021/07/30/walnut-5g-press-en/",
+      "tags": ["ospp","wechaty-puppet-5g","ospp-2021","china-unicom"],
+      "categories": ["ospp"],
+  "excerpt": "Recently, the Walnut Community held a developer event for college students. Walnut@IronJia, Wechaty@Li Zhuohuan, and Wechaty@Li Jiarui have been guiding students’ development work throughout the event."
+    },{
+      "title": "零基础小白HOWTO系列 -- 搭建第一个基于PadLocal的Python-Wechaty应用",
+      "url": "/2021/07/24/newbie-how-to-build-python-wechaty-with-padlocal/",
+      "tags": ["blog","newbie","howto","python"],
+      "categories": ["article"],
+  "excerpt": "写在前面：本HowTo系列用来记录个人在Wechaty的学习和研究过程中的点滴经验，希望能帮助更多人避免我踩过的坑，快速熟悉Wechaty这个工具"
+    },{
+      "title": "GSoD'21 Second Month Evaluation",
+      "url": "/2021/07/23/gsod-2021-second-month-evaluation/",
+      "tags": ["google","gsod","evaluation",2021,"docs"],
+      "categories": ["gsod"],
+  "excerpt": "Google Season of Docs’21 second month evaluation"
+    },{
+      "title": "Wechaty: Build a Conversational UI App for WhatsApp and WeChat with 6 Lines of Code",
+      "url": "/2021/07/22/gdg-shanghai-wechaty-en/",
+      "tags": ["gdg","google","news"],
+      "categories": ["talk"],
+  "excerpt": "In this week’s Community Talk live stream at 8pm, GDG Shanghai invited Huan (Li Zixuan), author of the Wechaty Conversational SDK, to chat with developers on Bilibili about building chatbots with Wechaty."
+    },{
+      "title": "Wechaty 实现 Milvus 社区群消息同步",
+      "url": "/2021/07/20/milvus-sync-bot/",
+      "tags": ["blog","milvus","syncbot"],
+      "categories": ["article"],
+  "excerpt": "作者: shiyu22， 程序媛"
+    },{
+      "title": "GSoD'21 Sixth Meeting",
+      "url": "/2021/07/18/gsod-2021-sixth-meeting/",
+      "tags": ["google","gsod","event","gsod-2021",2021,"zoom","docs"],
+      "categories": ["gsod"],
+  "excerpt": "Google Season of Docs’21 sixth meeting"
+    },{
+      "title": "OSPP 2021-期初报告-基于 Wechaty Puppet Official Account 项目的用户与消息等基础功能的完善",
+      "url": "/2021/07/17/ospp-plan-wechaty-puppet-oa/",
+      "tags": ["puppet","summer-of-wechaty","summer-2021","ecosystem","ospp","ospp-2021","plan"],
+      "categories": ["project","ospp"],
+  "excerpt": "项目名称：基于 Wechaty Puppet Official Account 项目的用户与消息等基础功能的完善 导师：吴京京 学生：zzzyer 模块列表 文本消息收发模块 图片消息收发模块 推送事件 项目介绍：https://github.com/wechaty/summer-of-wechaty/issues/82"
+    },{
+      "title": "OSPP'21 first meeting for CLI & Matrix projects",
+      "url": "/2021/07/16/ospp-huan-first-meeting-cli-matrix/",
+      "tags": ["matrix","summer-of-wechaty","summer-2021","ospp","ospp-2021","meeting"],
+      "categories": ["ospp"],
+  "excerpt": "基于 Matrix AppService Wechaty 项目的用户、群与消息等基础功能的完善 #59"
+    },{
+      "title": "Revealed: Why 2021 Google Season of Docs Chose Wechaty",
+      "url": "/2021/07/16/gsod-2021-publish-article-en/",
+      "tags": ["google","gsod","event","gsod-2021",2021,"docs","news","ecosystem"],
+      "categories": ["gsod"],
+  "excerpt": "Wechaty has partnered with Google Season of Docs 2021 with an approved budget of $9,500 USD to improve documentation and support technical writers in the open source community."
+    },{
+      "title": "OSPP 2021 - Initial Report - Developing WeChat Mini Program for Micro-Club Member & Activity Management",
+      "url": "/2021/07/15/ospp-plan-wechaty-club-managment-en/",
+      "tags": ["summer-of-wechaty","summer-2021","ospp","ospp-2021","plan","other"],
+      "categories": ["project","ospp"],
+  "excerpt": "Summer 2021 project plan for building a WeChat mini-program that helps club admins manage members, publish activities, and organize event albums."
+    },{
+      "title": "OSPP 2021-期初报告-开发支持电信运营商5G Chatbot/RCS的 Wechaty接入Puppet模块",
+      "url": "/2021/07/15/ospp-plan-5g-chatbot-puppet/",
+      "tags": ["5g","chatbot","ecosystem","summer-of-wechaty","summer-2021","ospp","ospp-2021","plan"],
+      "categories": ["project","ospp"],
+  "excerpt": "开发支持电信运营商5G Chatbot/RCS的 Wechaty接入Puppet模块"
+    },{
+      "title": "OSPP 2021-期初报告-基于开放 API 封装 Wechaty 接口下的飞书聊天机器人",
+      "url": "/2021/07/14/ospp-plan-wechaty-puppet-lark/",
+      "tags": ["ospp","ospp-2021","plan","summer-2021","puppet-provider","lark","summer-of-wechaty","ecosystem"],
+      "categories": ["project","ospp"],
+  "excerpt": "[基于开放 API 封装 Wechaty 接口下的飞书聊天机器人]具体计划"
+    },{
+      "title": "OSPP 2021 - Initial Report - Improving Basic Functions of Matrix AppService Wechaty Project for Users, Groups and Messages",
+      "url": "/2021/07/14/ospp-plan-wechaty-matrix-en/",
+      "tags": ["matrix","summer-of-wechaty","ecosystem","summer-2021","ospp","ospp-2021","plan"],
+      "categories": ["project","ospp"],
+  "excerpt": "Summer 2021 project plan for enhancing the Matrix AppService Wechaty bridge with image messaging, nickname display, and automated testing."
+    },{
+      "title": "OSPP 2021 - Initial Report - Blessed-based Wechaty Command Line Text Client Software",
+      "url": "/2021/07/14/ospp-plan-blessed-cli-en/",
+      "tags": ["summer-of-wechaty","summer-2021","ecosystem","ospp","ospp-2021","plan"],
+      "categories": ["project","ospp"],
+  "excerpt": "Summer 2021 project plan for building an IRC-style terminal client for Wechaty using Blessed, supporting real-time messaging and contact management."
+    },{
+      "title": "New Windows Puppet Project wechaty-puppet-xp Launches",
+      "url": "/2021/07/13/wechaty-puppet-xp-start-up-en/",
+      "tags": ["meetup","xp","news","ecosystem"],
+      "categories": ["story"],
+  "excerpt": "Wechaty contributors gathered for an offline meetup to officially launch the wechaty-puppet-xp project, a free Windows WeChat desktop protocol implementation."
+    },{
+      "title": "OSPP 2021 - Initial Report - Developing Open Source Piggy Bro Community Entertainment Bot Based on Wechaty",
+      "url": "/2021/07/13/ospp-plan-wechaty-piggy-bro-en/",
+      "tags": ["chat","summer-of-wechaty","summer-2021","ecosystem","ospp","ospp-2021","plan"],
+      "categories": ["project","ospp"],
+  "excerpt": "Summer 2021 project plan for developing Piggy Bro, an extensible entertainment bot with jokes, idiom chains, games, and a backend garden game."
+    },{
+      "title": "OSPP 2021-期初报告-基于 Itchat 为 Python Wechaty 实现社区首个 Python 语言的本地 Puppet",
+      "url": "/2021/07/13/ospp-plan-wechaty-itchat-puppet/",
+      "tags": ["itchat","puppet","summer-of-wechaty","summer-2021","ecosystem","ospp","ospp-2021","plan"],
+      "categories": ["project","ospp"],
+  "excerpt": "项目名称：基于 Itchat 为 Python Wechaty 实现社区首个 Python 语言的本地 Puppet 导师：吴京京、李卓桓 学生：肖良玉 项目链接：https://github.com/lyleshaw/python-wechaty-puppet-itchat 项目介绍: https://github.com/wechaty/summer/issues/75 详细方案"
+    },{
+      "title": "OSPP 2021-期初报告-开发支持 QQ 聊天软件的 Wechaty Puppet Provider 模块",
+      "url": "/2021/07/11/ospp-plan-qq-puppet/",
+      "tags": ["qq","puppet","summer-of-wechaty","summer-2021","ecosystem","ospp","ospp-2021","plan"],
+      "categories": ["project","ospp"],
+  "excerpt": "项目名称：开发支持 QQ 聊天软件的 Wechaty Puppet Provider 模块 导师：李佳芮、李卓桓 学生：anaivebird 模块列表 node.js qq protocol client implement(based on takayama-lily/oicq) Puppeteer puppet for qq wrapper 滑块登陆 设备信息存储 项目介绍：https://github.com/wechaty..."
+    },{
+      "title": "Google Season Of Docs (GSoD) Guide",
+      "url": "/2021/07/10/google-season-of-docs-guide/",
+      "tags": ["event","google","gsod","gsod-2021","docs","guide","news"],
+      "categories": ["announcement","gsod"],
+  "excerpt": "Google Season of Docs is an annual program organized by Google."
+    },{
+      "title": "AI Chatbot Competition - Metaverse Launcher: Reconstructing Reality!",
+      "url": "/2021/07/07/wechaty-with-paddlepaddle-en/",
+      "tags": ["baidu","ai","news","featured","chatbot","competition","ecosystem"],
+      "categories": ["article"],
+  "excerpt": "Hardcore ML Chatbot competition jointly hosted by Wechaty, PaddlePaddle, and Mixlab - the \"AI Creative Camp: Metaverse Launcher - Reconstructing Reality\" invites sci-fi enthusiasts to build futuristic chatbots with GP..."
+    },{
+      "title": "GSoD'21 Fifth Meeting",
+      "url": "/2021/07/06/gsod-2021-fifth-meeting/",
+      "tags": ["google","gsod","event","gsod-2021",2021,"zoom","docs"],
+      "categories": ["gsod"],
+  "excerpt": "Google Season of Docs’21 fifth meeting"
+    },{
+      "title": "Good News: Login with Windows WeChat Desktop Protocol, Free Wechaty Protocol Coming Soon",
+      "url": "/2021/07/05/puppet-laozhang-wechat-bot-en/",
+      "tags": ["blog","study","introduction","news","ecosystem"],
+      "categories": ["article"],
+  "excerpt": "After the free web protocol revival, Wechaty's free Windows protocol is coming soon, solving issues with accurately obtaining wxid and roomid that plagued the web protocol."
+    },{
+      "title": "Code Like Poetry, Bot Like Song - A Newbie's Adventure Journey Sparked by Wechaty",
+      "url": "/2021/07/05/code-like-poetry-bot-like-song-en/",
+      "tags": ["bot"],
+      "categories": ["article"],
+  "excerpt": "A heartfelt journey from late-night client calls to discovering Wechaty and building bots - told through the eyes of a self-described amateur who found passion in code."
+    },{
+      "title": "零基础小白在Wechaty社区发表自己的第一篇博客",
+      "url": "/2021/07/02/how-to-publish-blog-on-wechaty/",
+      "tags": ["blog","study","introduction"],
+      "categories": ["article"],
+  "excerpt": "很开心过去10天里面接触了 Wechaty 社区，两次使用 GitHub 向 Wechaty 社区提交了博客（虽然提交了很多次才最终通过），但也因此对于书写博客时出现的问题比较了解，对许多问题记忆犹新。今天就和大家分享一下我自己的经验，零基础或有那么一丢丢基础的小白如何在 Wechaty 社区发布自己的第一篇博客。"
+    },{
+      "title": "Wechaty Open Source Promotion Plan 2021 Kickoff Meeting",
+      "url": "/2021/06/24/wechaty-soc-kick-off-meeting/",
+      "tags": ["summer-of-wechaty","summer-2021","talk","news","meetup","featured","ospp","ospp-admin"],
+      "categories": ["announcement","ospp"],
+  "excerpt": "“开源软件供应链点亮计划-暑期2021”（以下简称 暑期2021）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。活动联合各大开源社区，针对重要开源软件的开发与维护提供项目，并向全球高校学生开放报名。 学生可自主选择感兴趣的项目进行申请，并在中选后获得该软件资深维护者（社区导师）亲自指导的机会。 根据项目的难易程度和完..."
+    },{
+      "title": "OSPP (Open Source Promotion Plan) Guide - 2021",
+      "url": "/2021/06/24/summer-wechaty-guide-en/",
+      "tags": ["event",2021,"summer-2021","summer-of-wechaty","guide","ospp","ospp-2021","ospp-admin","news","ecosystem"],
+      "categories": ["announcement","ospp"],
+  "excerpt": "Comprehensive guide for OSPP 2021 participants covering milestones, daily work requirements, mid-term and final reports, with templates and examples from successful 2020 students."
+    },{
+      "title": "The Wechaty Way: Best Practices Guide for Open Source Collaboration",
+      "url": "/2021/06/23/the-wechaty-way-en/",
+      "tags": ["wechaty-way","guide","ospp","ospp-admin","news","ecosystem"],
+      "categories": ["announcement"],
+  "excerpt": "A comprehensive guide to Wechaty community's open source collaboration practices, including meeting procedures, blog publishing, issue management, and PR workflows following The Apache Way."
+    },{
+      "title": "GSoD'21 Fourth Meeting",
+      "url": "/2021/06/22/gsod-2021-fourth-meeting/",
+      "tags": ["google","gsod","event","gsod",2021,"zoom","docs"],
+      "categories": ["gsod"],
+  "excerpt": "Google Season of Docs’21 fourth meeting"
+    },{
+      "title": "GSoD'21 First Month Evaluation",
+      "url": "/2021/06/22/gsod-2021-first-month-evaluation/",
+      "tags": ["google","gsod","evaluation",2021,"docs"],
+      "categories": ["gsod"],
+  "excerpt": "Google Season of Docs’21 first month evaluation"
+    },{
+      "title": "基于Nodejs+Wechaty开发微信机器人管理平台",
+      "url": "/2021/06/17/wxrobot-backend-management/",
+      "tags": ["nodejs","vue","padplus","project","nuxt","feature","utility"],
+      "categories": ["project"],
+  "excerpt": "微信机器人开源库调研，GitHub 找到以下 3 个开源作品："
+    },{
+      "title": "New Wechaty Puppet Service: SimplePad",
+      "url": "/2021/06/17/puppet-simplepad-hello-en/",
+      "tags": ["puppet","featured","simplepad","puppet-provider","puppet-service"],
+      "categories": ["announcement"],
+  "excerpt": "Introducing SimplePad - a flexible HTTP-based Wechaty Puppet service that offers language-agnostic API access with pay-per-use pricing model."
+    },{
+      "title": "OSPP 2021 Project Status",
+      "url": "/2021/06/11/ospp-startup-discussion/",
+      "tags": ["ospp","ospp-2021","ospp-admin","summer-of-wechaty","summer-2021"],
+      "categories": ["event"],
+  "excerpt": "临近OSPP2021项目最终审核，需要与各位导师确定一下项目的状态以及安排接下来两周的任务，故有了此次的线上会议。"
+    },{
+      "title": "Introduction to gRPC",
+      "url": "/2021/06/08/introduction-to-grpc/",
+      "tags": ["article","blog","grpc","gsod","protoc"],
+      "categories": ["article"],
+  "excerpt": "Overview"
+    },{
+      "title": "手把手教你用python-wechaty+paddlehub+阿里云白嫖一个智能微信机器人",
+      "url": "/2021/06/08/how-to-get-a-weixin-chatbot-with-python-wechaty-and-paddlehub-and-aliyun/",
+      "tags": ["blog","study","python","paddlehub"],
+      "categories": ["article"],
+  "excerpt": "这绝对是全网最细教程，没有之一"
+    },{
+      "title": "Design and document APIs with Swagger",
+      "url": "/2021/06/08/design-and-document-apis-with-swagger/",
+      "tags": ["article","blog","gsod","openapi","swagger"],
+      "categories": ["article"],
+  "excerpt": "What is Swagger and OpenAPI?"
+    },{
+      "title": "GSoD'21 Third Meeting",
+      "url": "/2021/06/06/gsod-2021-third-meeting/",
+      "tags": ["google","gsod","event","gsod",2021,"zoom","docs"],
+      "categories": ["gsod"],
+  "excerpt": "Google Season of Docs’21 third meeting"
+    },{
+      "title": "Open Source Leaders Talk - Wechaty's Open Source Journey",
+      "url": "/2021/06/05/summer-2021-open-source-en/",
+      "tags": ["summer-of-wechaty","summer-2021","talk","news","meetup","featured","ospp","ospp-admin","ecosystem"],
+      "categories": ["announcement"],
+  "excerpt": "Yuan Gao (高原), Juzibot CTO and Wechaty committer, shares Wechaty's open source journey from 2016 to 2021, covering what Wechaty is, how to use it, the evolution of the Puppet architecture, and outstanding community pr..."
+    },{
+      "title": "Wechaty local forums and past events",
+      "url": "/2021/05/30/wechaty-local-forums-and-past-events/",
+      "tags": ["blog","event","talk","workshop","meetup","interview","news"],
+      "categories": ["article"],
+  "excerpt": "Timeline"
+    },{
+      "title": "Documentation Structure",
+      "url": "/2021/05/30/simin-documentation-structure/",
+      "tags": ["introduction","gsod"],
+      "categories": ["article"],
+  "excerpt": "Documentation Structure"
+    },{
+      "title": "How to Build a Panda Face Meme Generator with PaddlePaddle and Wechaty",
+      "url": "/2021/05/24/how-to-build-a-panda-face-generator-with-paddlepaddle-en/",
+      "tags": ["blog","study","introduction"],
+      "categories": ["article"],
+  "excerpt": "Building an AI-powered bot that generates panda head memes from portrait photos using Wechaty and PaddlePaddle for fun chat interactions."
+    },{
+      "title": "GSoD'21 Second Meeting",
+      "url": "/2021/05/23/gsod-2021-second-meeting/",
+      "tags": ["google","gsod","event","gsod",2021,"zoom","docs"],
+      "categories": ["gsod"],
+  "excerpt": "Google Season of Docs’21 Week 1 meeting"
+    },{
+      "title": "Win10通过Docker搭建Web协议服务开发机器人",
+      "url": "/2021/05/18/win10-use-docker-build-web-protocol-server-develop-bot/",
+      "tags": ["blog","study","web-protocol","python"],
+      "categories": ["article"],
+  "excerpt": "介绍"
+    },{
+      "title": "GSoD 2021 proposal to Improve the gRPC and OpenAPI ecosystem",
+      "url": "/2021/05/18/gsod-2021-proposal-to-improve-the-grpc-and-openapi-ecosystem/",
+      "tags": ["grpc","gsod","openapi","proposal"],
+      "categories": ["gsod"],
+  "excerpt": "About me"
+    },{
+      "title": "GSoD'21 Week 1 meeting",
+      "url": "/2021/05/16/gsod-2021-week1-meeting/",
+      "tags": ["google","gsod","event","gsod",2021,"zoom","docs"],
+      "categories": ["gsod"],
+  "excerpt": "Google Season of Docs’21 Week 1 meeting"
+    },{
+      "title": "Google Season of Docs 2021 Team Proposal - Introduction and Explanation",
+      "url": "/2021/05/13/gsod-2021-improve-introduction-and-explanation-project-joint-proposal/",
+      "tags": ["google","gsod",2021,"docs","tutorials","project","proposal","team-proposal"],
+      "categories": ["gsod"],
+  "excerpt": "This is the joint project proposal for Improve the Introduction and Explanations secondary project under Google Season of Docs 2021. It is estimated that this project will take approximately 06 weeks."
+    },{
+      "title": "Google Season of Docs 2021 Team Proposal - Volunteering",
+      "url": "/2021/05/12/gsod-2021-volunteering-proposal/",
+      "tags": ["docs","volunteering","gsod","proposal","team-proposal"],
+      "categories": ["gsod"],
+  "excerpt": "GSoD’21 Project Proposal for Volunteering"
+    },{
+      "title": "Google Season of Docs 2021 Team Proposal: Reconstruct Wechaty landing page with value propositions",
+      "url": "/2021/05/12/gsod-2021-reconstruct-landing-page-team-proposal/",
+      "tags": ["google","gsod",2021,"reconstruct","landing","page","value","propositions","proposal","team-proposal"],
+      "categories": ["gsod"],
+  "excerpt": "Team Members"
+    },{
+      "title": "Google Season of Docs 2021 Team Proposal: How-to Guides",
+      "url": "/2021/05/12/gsod-2021-how-to-guide-team-proposal/",
+      "tags": ["tutorials","project","proposal","team-proposal","google","gsod",2021,"docs"],
+      "categories": ["gsod"],
+  "excerpt": "This is the project proposal for Wechaty How-to-guide documentation on which we will be working as a part of Google Season of Docs 2021. We have proposed our timeline so as to complete this work during a span of 09 we..."
+    },{
+      "title": "Google Season of Docs 2021 Team Proposal - References",
+      "url": "/2021/05/11/shraddhavp-soumi-combined-reference-proposal/",
+      "tags": ["documentation","gsod",2021,"project","proposal","team-proposal"],
+      "categories": ["gsod"],
+  "excerpt": "PROPOSAL STATEMENT"
+    },{
+      "title": "Google Season of Docs 2021 Team Proposal - Tutorials",
+      "url": "/2021/05/11/gsod-2021-team-proposal-tutorials/",
+      "tags": ["google","gsod",2021,"docs","tutorials","project","proposal","team-proposal"],
+      "categories": ["gsod"],
+  "excerpt": "This is the project proposal for creating and improving the Wechaty Tutorials documentation on which we will be working as a part of Google Season of Docs 2021. We are looking forward to completing this work during a ..."
+    },{
+      "title": "Hello Wechaty GSoD’21 Technical Writers!",
+      "url": "/2021/05/08/gsod-2021-selected-technical-writers/",
+      "tags": ["google","gsod","gsod-2021","event",2021,"zoom","news","featured","docs"],
+      "categories": ["gsod","announcement"],
+  "excerpt": "It’s a great honor for Wechaty to participate in Google Season of Docs 2021 as one of the great top 30 open-source sponsored projects all over the world！"
+    },{
+      "title": "Vasvi Sood: 2021 Google Season of Docs Application",
+      "url": "/2021/05/06/vasvi-applicant-for-technical-writer-gsod/",
+      "tags": ["documentation","gsod",2021,"project","proposal"],
+      "categories": ["gsod"],
+  "excerpt": "Sophomore,NIT Hamirpur"
+    },{
+      "title": "Shraddha Vasant Prasad: 2021 Google Season of Docs Technical Proposal",
+      "url": "/2021/05/05/shraddhavp-interactive-wechaty-tutorial/",
+      "tags": ["documentation","gsod",2021,"project","proposal"],
+      "categories": ["gsod"],
+  "excerpt": "I am Shraddha Vasant Prasad, 2020 graduate and currntly working as a Software Engineer At American Express, I describe myself as “Developer in the making and a Blogger by passion”"
+    },{
+      "title": "Hi I'm Rohitesh interested in volunteering",
+      "url": "/2021/05/04/rohitesh-applicant-for-volunteering-gsod/",
+      "tags": ["introduction","volunteering","gsod"],
+      "categories": ["gsod"],
+  "excerpt": "GSoD’21 Project Proposal for Volunteering"
+    },{
+      "title": "Google Season of Docs 2021 Volunteering Proposal",
+      "url": "/2021/05/04/gsod21-simin-proposal/",
+      "tags": ["proposal"],
+      "categories": ["gsod"],
+  "excerpt": "Google Season of Docs 2021 Volunteering Proposal"
+    },{
+      "title": "Google Season of Docs 2021 Applicant: Souvik Biswas",
+      "url": "/2021/05/04/gsod-2021-applicant-sbis04/",
+      "tags": ["google","gsod",2021,"docs","introduction","project","proposal"],
+      "categories": ["gsod"],
+  "excerpt": "I am Souvik Biswas, currently pursuing a Bachelor of Technology degree (2018 - 2022) in Computer Science &amp; Engineering from the Indian Institute of Information Technology Kalyani. Also, a freelance technical write..."
+    },{
+      "title": "Sajen Sarvajith K: Blog Post for interactive tutorial (Google Season of Docs 2021 Proposal)",
+      "url": "/2021/05/03/sajen-sarvajith-blog-post/",
+      "tags": ["interactive","tutorial","google","gsod21","docs","project","proposal"],
+      "categories": ["gsod"],
+  "excerpt": "Biographical Information"
+    },{
+      "title": "Abhishek Jaiswal :Project Proposal for GSoD'21",
+      "url": "/2021/05/03/project-proposal-wechaty/",
+      "tags": ["introduction","google","gsod",2021,"docs","project","proposal"],
+      "categories": ["gsod"],
+  "excerpt": "Introduction"
+    },{
+      "title": "Joseph Mawa: 2021 Google Season of Docs Technical Proposal",
+      "url": "/2021/05/03/joseph-mawa-google-season-of-docs-project-technical-proposal/",
+      "tags": ["google","gsod",2021,"gsod'21","project","proposal"],
+      "categories": ["gsod"],
+  "excerpt": "My name is Joseph Mawa. I am a technical writer and web developer. Below is my proposal for the project Create easy to learn tutorials for beginner users of Wechaty under Google Season of Docs 2021."
+    },{
+      "title": "Soumi Bardhan: Interactive tutorials for newcomers",
+      "url": "/2021/05/03/interactive-tutorials-for-newcomers/",
+      "tags": ["python","google","gsod",2021,"docs","introduction","project","proposal"],
+      "categories": ["gsod"],
+  "excerpt": "GSoD 2021 Project Proposal"
+    },{
+      "title": "Shwetal Soni: GSOD'21 project proposal for wechaty",
+      "url": "/2021/05/03/gsod-project-proposal-shwetal-wechaty/",
+      "tags": ["gsod","docs","introduction","project","proposal"],
+      "categories": ["gsod"],
+  "excerpt": "GSOD21 Proposal for Wechaty"
+    },{
+      "title": "Create easy to learn tutorials for beginner users of Wechaty",
+      "url": "/2021/05/03/gsod-2021-applicant-jaya2320/",
+      "tags": ["google","gsod",2021,"docs","introduction","project","proposal"],
+      "categories": ["gsod"],
+  "excerpt": "My name is Jaya Gupta, I am a 3rd year Informational Technology Student currently persuing my B.Tech from HMRITM, Delhi. I have learned various programming languages such as C , C, PYTHON, DJANGO, Machine Learning, De..."
+    },{
+      "title": "WeChat Group Robot - Bible Reading Assistant",
+      "url": "/2021/05/02/wechaty-bible-chatbot-en/",
+      "tags": ["nodejs","chatroom-tool","bible","other"],
+      "categories": ["project"],
+  "excerpt": "A WeChat bot that automates daily Bible reading article distribution, tracks member check-ins, and provides Bible content search features for Christian groups."
+    },{
+      "title": "Reconstruct Wechaty landing page with value propositions",
+      "url": "/2021/05/01/landing-page-value-proposition/",
+      "tags": ["gsod",2021,"gsod-2021","google","news","featured","marketing","value-proposation","proposal"],
+      "categories": ["gsod"],
+  "excerpt": "What is Value Proposition? A value proposition is a statement that answers the ‘why’ someone should do business with you. It should convince a potential customer why your service or product will be of more value to th..."
+    },{
+      "title": "Google Season of Docs ❤️ Wechaty",
+      "url": "/2021/04/30/google-season-of-docs/",
+      "tags": ["google","gsod",2021,"gsod-2021","docs","news","featured","documentation"],
+      "categories": ["announcement","gsod"],
+  "excerpt": "What is Google Season of Docs? Season of Docs is an annual program organised by Google. Its goal is to bring technical writers and open source organisations together to foster collaboration and improvement of document..."
+    },{
+      "title": "AI Poet Chatbot powered by Python Wechaty & PaddleHub",
+      "url": "/2021/04/24/ai-chatbot-paddlehub/",
+      "tags": ["baidu","ai","chatbot","paddle"],
+      "categories": ["tutorial"],
+  "excerpt": "小白也能超快上手的AI ChatBot教程，这次教大家一个用基于Python Wechaty和 PaddlePaddle 框架运行的，用AI续写情话的对话机器人。"
+    },{
+      "title": "AI ChatBot Creation Camp Kicks Off!",
+      "url": "/2021/04/22/wechaty-with-paddlepaddle-en/",
+      "tags": ["baidu","ai","news","featured","chatbot","competition"],
+      "categories": ["article"],
+  "excerpt": "What capabilities does a ChatBot need in the age of artificial intelligence? Is it an intelligent housekeeper that helps you organize all the materials that “if you code it, you have seen it”? Is it a master of fighti..."
+    },{
+      "title": "入门：小白如何在wechaty社区发布自己的第一篇博客（一）",
+      "url": "/2021/04/22/how-to-publish-blog-on-wechaty/",
+      "tags": ["blog","study","introduction"],
+      "categories": ["article"],
+  "excerpt": "很高兴能执笔这篇博客，第一次使用github向wechaty社区提交博客时Q到了@huan（提交了十几次才最终通过），因此也被印象深刻了。今天和大家分享一下零基础或有那么一丢丢基础的小白如何从0到1的在wechaty发布博客（成为一个贡献者）。"
+    },{
+      "title": "Teaching You to Develop Bots with python-wechaty and Web Protocol",
+      "url": "/2021/04/17/python-wechaty-use-web-en/",
+      "tags": ["code","wechaty-puppet-wechat","web-protocol","python","featured","ecosystem"],
+      "categories": ["article"],
+  "excerpt": "Detailed guide on using python-wechaty with web protocol to develop chatbots, including Docker setup for web protocol service and connecting with python-wechaty to build functional bots."
+    },{
+      "title": "教你用go-wecahty和web协议开发机器人",
+      "url": "/2021/04/16/go-wechaty-use-web/",
+      "tags": ["code","wechaty-puppet-wechat","web-protocol","go"],
+      "categories": ["article"],
+  "excerpt": "写这篇文章的原因: 最近发现 web 协议以某种方式又复活了，所以想让 go-wechaty 的小伙伴也能使用 web 协议。"
+    },{
+      "title": "Chatie API Service Incident Report",
+      "url": "/2021/04/15/chatie-api-server-down/",
+      "tags": ["chatie","down","heroku","cloudflare"],
+      "categories": ["article"],
+  "excerpt": "The Wechaty Puppet Service is running on top of the https://www.chatie.io service, which is open-sourced at here. It has been running for 5+ years on a Heroku free Dyno with Cloudflare CDN, everything works like a charm."
+    },{
+      "title": "Major News: Login with UOS WeChat Desktop Protocol, Wechaty Free Web Protocol Regains Glory",
+      "url": "/2021/04/13/wechaty-uos-web-en/",
+      "tags": ["code","wechaty-puppet-wechat","web-protocol","news","ecosystem"],
+      "categories": ["article"],
+  "excerpt": "This post is also available in Chinese"
+    },{
+      "title": "Go开发微信群聊互动机器人",
+      "url": "/2021/04/12/wechat-group-chat-interactive-robot/",
+      "tags": ["golang","padplus"],
+      "categories": ["tutorial"],
+  "excerpt": "公司小程序的相关通知需要及时、定时推送到相关的群，由于微信web网页登录基本全部被封建，所有在查阅了大量微信机器人的资料后，选择了wechaty进行机器人开发， 以此达到用户可以通过指令进行绑定微信群、查询活动、活动推送等功能，借此提高用户粘性，提高活动的达成率。"
+    },{
+      "title": "Wechaty Contributor Beijing Meetup 2021/04",
+      "url": "/2021/04/05/wechaty-contributor-meetup-en/",
+      "tags": ["meetup","padlocal"],
+      "categories": ["story"],
+  "excerpt": "A casual gathering of Wechaty contributors in Beijing during Qingming Festival, discussing PadLocal, community history, and the future of Wechaty."
+    },{
+      "title": "微信群中的加密货币报价机器人",
+      "url": "/2021/04/01/wechat-group-cryptocurrency-robot/",
+      "tags": ["cryptocurrency","padplus"],
+      "categories": ["tutorial"],
+  "excerpt": ""
+    },{
+      "title": "使用wechaty提醒加密货币行情",
+      "url": "/2021/03/31/wechaty-cryptocurrency-websocket/",
+      "tags": ["python","cryptocurrency","binance","devops"],
+      "categories": ["project"],
+  "excerpt": ""
+    },{
+      "title": "RCS Messaging Chatbot",
+      "url": "/2021/03/27/rcs-messaging-chatbot/",
+      "tags": ["news","rcs"],
+      "categories": ["article"],
+  "excerpt": "Rich Communication Services (RCS) is a communication protocol between mobile-telephone carriers and between phone and carrier, aiming at replacing SMS messages with a text-message system that is richer, provides phone..."
+    },{
+      "title": "Applying the documentation system to Wechaty docs",
+      "url": "/2021/03/25/google-season-of-docs-documentation-system/",
+      "tags": ["gsod","google","gsod-2021","docs","news","documentation"],
+      "categories": ["announcement","gsod"],
+  "excerpt": "This year, Wechaty organization is applying the Google Season of Docs program because we want to improve our documentation for the community."
+    },{
+      "title": "基于标签的多功能服务系统&检测你身边的VIP用户",
+      "url": "/2021/03/17/tag-based-bot-detect-vip-customer/",
+      "tags": ["mysql","social"],
+      "categories": ["project"],
+  "excerpt": "随着时间的推移，我们在不断的认识新的朋友，不断加新的好友， 在我们的微信里， 好友列表会有很多，甚至上千人，有的时候我们自己也理不清哪些好友是我们的客户，哪些好友是我们的朋友同学，哪些好友是我们在某次活动相识，甚至哪些好友只是萍水相逢但是实际上却极有可能是我们很好的潜在客户或者未来的合作伙伴，而因为平时的忽视可能就这样错过。"
+    },{
+      "title": "Wechaty+微信小程序实现群内活动报名",
+      "url": "/2021/03/17/node-wechaty-and-wechaty-puppet-padlocal/",
+      "tags": ["node","padlocal"],
+      "categories": ["article"],
+  "excerpt": "超哥之前开发了一个叫做「群组大师」的小程序，听名字就知道，是用来管理群组的，管理群组的什么呢？"
+    },{
+      "title": "Summer of Wechaty, 我们来啦",
+      "url": "/2021/03/14/summer-2021-kick-off-meeting/",
+      "tags": ["summer-2021","summer-of-wechaty","ospp","ospp-admin","ospp-2021"],
+      "categories": ["event"],
+  "excerpt": "去年夏天，Wechaty 社区参与了“开源软件供应链点亮计划-暑期2020”（以下简称暑期2020）活动，在为期三个月的开发结束后，多位同学顺利完成开发，为 Wechaty 社区实现多平台、多语言、多功能贡献了智慧和力量。点此了解更多。"
+    },{
+      "title": "Python-wechaty & wechaty-puppet-padlocal的初探",
+      "url": "/2021/03/08/python-wechaty-and-wechaty-puppet-padlocal/",
+      "tags": ["cloud","python","padlocal","puppet-service"],
+      "categories": ["article"],
+  "excerpt": "本文为本地运行python-wechaty + 云上虚拟机运行wechaty-puppet-padlocal的简易教学"
+    },{
+      "title": "Wechaty Puppet Providers Trends",
+      "url": "/2021/03/04/wechaty-puppet-providers-trends/",
+      "tags": ["wechaty-puppet","news","featured","visualization"],
+      "categories": ["announcement"],
+  "excerpt": "Do you want know which Wechaty Puppet Provider is most used by our Wechaty developers?"
+    },{
+      "title": "微信群消息助手（wechat chatroom assistant）",
+      "url": "/2021/02/28/wechat-chatroom-assistant/",
+      "tags": ["python","padlocal","productivity"],
+      "categories": ["project"],
+  "excerpt": ""
+    },{
+      "title": "Google Cloud Shell Tutorials for Wechaty",
+      "url": "/2021/02/20/google-cloud-shell-tutorials/",
+      "tags": ["google-cloud-shell","getting-started","news","featured"],
+      "categories": ["tutorial"],
+  "excerpt": "Today, We have created a Google Cloud Shell Tutorial for easy getting started with Wechaty!"
+    },{
+      "title": "一次愉快的南京开源峰会之旅",
+      "url": "/2021/02/17/summer-wechaty-nanjing-summit-journey/",
+      "tags": ["summer-2020","summer-of-wechaty","open-source","talk"],
+      "categories": ["story"],
+  "excerpt": "写在前面：本来此篇博文应该在去年完成，由于其它事情耽搁一直拖延到现在。"
+    },{
+      "title": "Wechaty-Puppet-Whatsapp Has been Published",
+      "url": "/2021/02/15/publishment-of-wechaty-whatsapp-puppet/",
+      "tags": ["news","release","puppet-provider","whatsapp"],
+      "categories": ["announcement"],
+  "excerpt": "With the introduction of wechaty puppet and the growth of the wechaty ecosystem and community, we’re happy to introduce wechaty-puppet-whatsapp which connects Wechaty API, the conversational RPA SDK for chatbot makers..."
+    },{
+      "title": "基于wechaty的个人知识库机器人",
+      "url": "/2021/02/14/ziki-wechaty-helper/",
+      "tags": ["wiki","productivity"],
+      "categories": ["project"],
+  "excerpt": "搭建个人知识库可以帮助将繁多和碎片化的知识进行分类收集，形成有条理的结构化知识体系，同时提供知识点的快速检索。"
+    },{
+      "title": "Gource Visualization for Wechaty",
+      "url": "/2021/02/14/gource-visualizing-wechaty-history/",
+      "tags": ["gource","visualization","news","history","memory"],
+      "categories": ["story"],
+  "excerpt": "Gource is an amazing and flexible tool that can be used to display activity from your repositories using a video visualization that people love. — How to use Gource to visualize your code repos"
+    },{
+      "title": "Building a Paid Private Domain Traffic Assistant Using Micro Merchants + Wechaty",
+      "url": "/2021/02/09/how-to-use-wechaty-to-ask-for-payment-before-user-joining-the-group-en/",
+      "tags": ["group","payment","tutorial","case-study","ecommerce","productivity"],
+      "categories": ["project"],
+  "excerpt": "A WeChat bot that automatically accepts friend requests, collects payments, and adds users to groups based on keywords - all within WeChat."
+    },{
+      "title": "Getting Started Without Leave Your Browser: Wechaty ❤️ Gitpod",
+      "url": "/2021/02/06/wechaty-getting-started-without-leave-your-browser/",
+      "tags": ["getting-started","gitpod","news"],
+      "categories": ["tutorial"],
+  "excerpt": "Gitpod is an online IDE which can be launched from any GitHub page. Simply prefix any GitHub-URL with “https://gitpod.io#” or use our browser extension that adds a button to GitHub pages. Within seconds, Gitpod provid..."
+    },{
+      "title": "Using Matrix and Wechaty to Chat on WeChat",
+      "url": "/2021/02/04/matrix-with-wechaty-en/",
+      "tags": ["matrix","featured","ecosystem"],
+      "categories": ["tutorial"],
+  "excerpt": "Detailed deployment guide for using Matrix chat with matrix-appservice-wechaty to enable WeChat conversations through the Matrix protocol."
+    },{
+      "title": "Python Wechaty如何使用PadLocal Puppet Service",
+      "url": "/2021/02/03/python-wechaty-for-padlocal-puppet-service/",
+      "tags": ["python","puppet-service","padlocal"],
+      "categories": ["tutorial"],
+  "excerpt": "本文描述Python语言下如何使用iPad协议的PadLocal Token。其他Wechaty多语言开发也能做参考。"
+    },{
+      "title": ".NET Wechaty如何使用PadLocal Puppet Service",
+      "url": "/2021/01/28/csharp-wechaty-for-padlocal-puppet-service/",
+      "tags": ["dotnet","csharp","puppet-service"],
+      "categories": ["tutorial"],
+  "excerpt": ".NET Wechaty 如何使用 PadLocal Puppet Service"
+    },{
+      "title": "基于Wechaty实现运维自动化交互及微信消息通知",
+      "url": "/2021/01/26/wechaty-charbot-lite/",
+      "tags": ["wechaty-charbot","productivity"],
+      "categories": ["project"],
+  "excerpt": "如今运维人员都在强调自动化，降低运维成本。尽管现在搭建一套运维自动化体系架构并不难，然后有些工作还是必须需要运维手动工作，比如上线动作（上线的过程自动化，但是操作点由谁来操作，比如jenkins上谁去点击构建），或者开发找dba执行sql等日常操作，这些暂时都必须人为手动操作。次数多了，难免会想这些怎么去实现自动化，无需人为干预！针对这些运维痛点，目前已实现qq机器人实现上述自动化操作。其背后的逻辑是，当@机器人后，机器人自动往运..."
+    },{
+      "title": "Wechaty 0.56 Released!",
+      "url": "/2021/01/25/wechaty-0.56-released/",
+      "tags": ["news","release"],
+      "categories": ["announcement"],
+  "excerpt": "V0.56 is the latest stable version of Wechaty, it is recommended to be upgraded for all developers."
+    },{
+      "title": "Huan: Introducing Chatbot and Conversational User Interface (CUI)",
+      "url": "/2021/01/20/chatbot-conversational-user-interface/",
+      "tags": ["news","chatbot","cui","conversational-user-interface"],
+      "categories": ["tutorial"],
+  "excerpt": "Wechaty is an SDK that provides interface services for conversational user interface. Through RPA technology, it provides Chatbot developers with convenient instant messaging platform access services to create better ..."
+    },{
+      "title": "Wechaty restful api",
+      "url": "/2021/01/19/wechaty-api-restful/",
+      "tags": ["nodejs","code","restful","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "This article will explain why I started to use wechaty, made the restful api wrapping the bot and what I would do as the next step."
+    },{
+      "title": "基于wechaty的拼车小程序（1）",
+      "url": "/2021/01/15/carpool-bot-with-wechaty-1/",
+      "tags": ["nodejs","code","travel"],
+      "categories": ["project"],
+  "excerpt": "产品构想"
+    },{
+      "title": "Introducing Wechaty Puppet Service (Providers)",
+      "url": "/2021/01/14/wechaty-puppet-service/",
+      "tags": ["puppet-service","puppet-provider","news"],
+      "categories": ["announcement"],
+  "excerpt": "Wechaty is an SDK for chatbot makers. It uses Robotic Progress Automation (RPA) technology to help developers to be more productive for building Conversational User Interface (CUI), which we call it a Chatbot."
+    },{
+      "title": "A OKR Review for the Summer 2020 Summit",
+      "url": "/2021/01/04/summer-2020-summit-okr/",
+      "tags": ["okr","news"],
+      "categories": ["announcement"],
+  "excerpt": "In Nov 14, 2020, The Open Source Promotion Plan - Summer 2020 Summit was held in Nanjing (thanks ISCAS &amp; openEuler Community for the organizing!). As an open-source organization we enjoyed this program and we have..."
+    },{
+      "title": "This Summer: Stories of Wechaty Community and 9 Rising Open Source Contributors",
+      "url": "/2020/12/31/summer-2020-student-developers-en/",
+      "tags": ["news","summer-2020","summer-of-wechaty","featured"],
+      "categories": ["announcement"],
+  "excerpt": "Nine undergraduate and graduate students became rising contributors to Wechaty community during Summer 2020: Bi Kaiqiao (毕凯乔), Wang Junwei (王俊伟), Xie Yuqing (谢昱清), Fan Rui (范蕊), Jiang Shanshan (江姗姗), Lin Haohan (林昊翰),..."
+    },{
+      "title": "Osschat a bridge to the apache way in China",
+      "url": "/2020/12/31/osschat-a-bridge-to-the-apache-way-in-china/",
+      "tags": ["osschat","talk","news","meetup","featured"],
+      "categories": ["announcement"],
+  "excerpt": "OSSChat 是一个机器人工具，用于桥接 IM 应用（如微信）与 Apache 社区工具（如邮件列表、Jira），OSS.Chat项目的任务是将微信和其他社交平台（未来）以及GitHub出现的问题和邮件列表之间的三方沟通和翻译障碍发送给开源开发社区，使ASF的文化、技术和协作流程能够更高效、更容易被接受。"
+    },{
+      "title": " Chatbot SDK Wechaty Wins Major Award from Top Domestic Open Source Organization",
+      "url": "/2020/12/31/open-source-award-wechaty-en/",
+      "tags": ["award","honor","open-source","news"],
+      "categories": ["announcement"],
+  "excerpt": "Wechaty wins recognition as an outstanding open source project at the 10th China Cloud Computing Standards and Applications Conference, standing alongside giants like Alibaba, Xiaomi, and Huawei."
+    },{
+      "title": ".NET Wechaty Getting Start",
+      "url": "/2020/12/31/dotnet-wechaty-getting-start/",
+      "tags": ["dotnet","csharp","getting-started"],
+      "categories": ["tutorial"],
+  "excerpt": ".NET Wechaty 是使用.Net Core对TS版本Wechaty的翻译。"
+    },{
+      "title": "2020 Wechaty 666: 6 lines of code, 6 platforms, and 6 languages",
+      "url": "/2020/12/30/wechaty-2020-dinner-666/",
+      "tags": [666,2020,"dinner","news"],
+      "categories": ["event"],
+  "excerpt": "Time past fast, the year 2020 has gone."
+    },{
+      "title": " \"Creating a Rebate Robot Using Wechaty\"",
+      "url": "/2020/12/28/automatic-rebate-robot-en/",
+      "tags": ["ecommerce"],
+      "categories": ["project"],
+  "excerpt": "An e-commerce rebate robot built with Wechaty (TypeScript frontend) and Java backend, automatically identifying Taobao command codes and returning rebate links with multi-level commission distribution."
+    },{
+      "title": "java-wechaty auto get news",
+      "url": "/2020/12/28/auto-push-news/",
+      "tags": ["java"],
+      "categories": ["tutorial"],
+  "excerpt": "In daily life, most people always want to know latest news. This tutorial will record how to automatically get the current latest news."
+    },{
+      "title": "Python-Wechaty之自动回复&关键字入群插件",
+      "url": "/2020/12/25/python-wechaty-room-inviter-plugin/",
+      "tags": ["python","plugin"],
+      "categories": ["tutorial"],
+  "excerpt": "经不可靠统计，大部分聊天机器人的初学者都是以：自动回复和关键字入群这两个基础功能上手，然后才会逐步开发更多更复杂的功能，在此我将介绍如何使用python-wechaty快速实现这两个功能。"
+    },{
+      "title": "基于Wechaty开发的企业级机器人助手",
+      "url": "/2020/12/23/wxwork-and-donut/",
+      "tags": ["nodejs","productivity"],
+      "categories": ["project"],
+  "excerpt": "GitHub 上搜了一圈，看到了挺多微信 bot 的方案，后面决定使用 wechaty，因为感觉设计得很优雅，6 行代码就可以轻松构建一个 wxbot。"
+    },{
+      "title": "Wechaty Author Huan Li Selected for 'China's Open Source Pioneers 33'",
+      "url": "/2020/12/23/open-source-pioneer-huan-en/",
+      "tags": ["award","honor","open-source","news"],
+      "categories": ["announcement"],
+  "excerpt": "Huan Li (李卓桓), author of Wechaty, BOT5 Club Chair, Tencent Chatbot TVP, and PreAngel Partner, was selected for the 2020 'China's Open Source Pioneers 33' annual list by SegmentFault."
+    },{
+      "title": "wechaty-robot-lite 微信小助手",
+      "url": "/2020/12/10/wechaty-robot-lite/",
+      "tags": ["assistant"],
+      "categories": ["tutorial"],
+  "excerpt": "最近在dy上看到有相关wx机器人（SCRM）在进行相关推广，而之前学习的时候，用基于python开发的itchat玩过一段时间，后来，某一天突然发现微信登不上了，官方的微信网页版也不能登陆了（至于是啥原因，咱也不知道，也不敢去研究）。"
+    },{
+      "title": " \"Bridge Between Backend Systems and WeChat\"",
+      "url": "/2020/12/10/bridge-between-backend-and-wechat-en/",
+      "tags": ["nodejs","donut","productivity"],
+      "categories": ["project"],
+  "excerpt": "A minimal WeChat gateway with just over 100 lines of code, designed to bridge communication between various backend systems and WeChat using RESTful bidirectional calls."
+    },{
+      "title": "基于Wechaty开发的群聊小助手",
+      "url": "/2020/12/08/wechaty-bot-hostie/",
+      "tags": ["nodejs","donut","social"],
+      "categories": ["project"],
+  "excerpt": "GitHub上搜了一圈，看到了挺多微信bot的方案，后面决定使用wechaty，因为感觉设计得很优雅，6行代码就可以轻松构建一个wxbot。"
+    },{
+      "title": " \"Python-Wechaty Journey at Nanjing Open Source Summit\"",
+      "url": "/2020/12/08/python-wechaty-open-source-journey-en/",
+      "tags": ["news","python"],
+      "categories": ["story"],
+  "excerpt": "A personal story about starting the python-wechaty open source project, participating in the 2020 Open Source Summit in Nanjing, and the lessons learned from contributing to open source."
+    },{
+      "title": "Wechaty Puppet Service WxWork Beta 版发布公告",
+      "url": "/2020/12/07/puppet-wxwork-beta-release/",
+      "tags": ["news","puppet-service","puppet-provider","wxwork"],
+      "categories": ["announcement"],
+  "excerpt": "最新消息： WorkPro 作为 WxWork 的继任者已经正式上线了！WxWork 现已废弃，请尽快转移到 WorkPro 上。 对于这个 WorkPro 服务感兴趣的朋友，我们提供7天的免费试用 token ，请用微信或企微扫码添加客服咨询。"
+    },{
+      "title": "Open Source Software Supply Chain Lighting Plan Summer 2020 Results: Wechaty-based Projects Win Outstanding Contribution and Most Potential Awards!",
+      "url": "/2020/11/14/summer-2020-wechaty-en/",
+      "tags": ["award","summer-of-wechaty","open-source","news"],
+      "categories": ["announcement"],
+  "excerpt": "Wechaty community achieves remarkable success in Summer 2020 program with two students winning Outstanding Contribution and Most Potential awards from 388 participating projects across 42 communities."
+    },{
+      "title": "Open Source Forum: Wechaty's Open Source Journey",
+      "url": "/2020/11/14/summer-2020-summit-talks-en/",
+      "tags": ["summer-of-wechaty",2020,"news","talk"],
+      "categories": ["event"],
+  "excerpt": "Wechaty community participated in the Open Source Software Supply Chain Summit 2020, with Huan Li (李卓桓) sharing Wechaty's open source journey and Jingjing Wu (吴京京) presenting Multi-Wechaty SDK for Chatbot."
+    },{
+      "title": "Microsoft MVP Blog: Six Lines Of Code. Two MVPs. One Chatbot.",
+      "url": "/2020/11/10/six-lines-code-two-ai-mvps-one-chatbot/",
+      "tags": ["news","mvp","microsoft"],
+      "categories": ["story"],
+  "excerpt": "Six lines of code. Two MVPs. One chatbot."
+    },{
+      "title": "基于Wechaty打造实时爬取产品信息并分享给用户群",
+      "url": "/2020/11/10/product-spider-for-sharing/",
+      "tags": ["padplus","project","python","typescript","ecommerce"],
+      "categories": ["project"],
+  "excerpt": "基于Wechaty打造实时爬取产品信息并分享给用户群"
+    },{
+      "title": "Official-Account Puppet Released",
+      "url": "/2020/11/06/wechaty-puppet-oa-released-en/",
+      "tags": ["news","puppet-provider","official-account"],
+      "categories": ["announcement"],
+  "excerpt": "Developing a customized WeChat official account is a complex process, which requires reading a lot of documents. Especially, developing a robot with a custom reply function based on WeChat official account, and wechat..."
+    },{
+      "title": "Chatie status page has been published!",
+      "url": "/2020/11/06/chatie-status-page-published/",
+      "tags": ["news","chatie"],
+      "categories": ["announcement"],
+  "excerpt": "Today, we have published a cloud service status page at https://chatie.statuspage.io , please feel free to have a look at it. It’s currently under construction and we will publish our service status over there in the ..."
+    },{
+      "title": "node-wechaty let's water",
+      "url": "/2020/11/03/lets-water-bot/",
+      "tags": ["water","productivity"],
+      "categories": ["project"],
+  "excerpt": "let’s water wechaty-bot"
+    },{
+      "title": "基于wechaty的定时消息推送（可以哄女朋友）、智能聊天和私人助理",
+      "url": "/2020/10/30/daily-message-and-chatbot/",
+      "tags": ["nodejs","padplus","project","social"],
+      "categories": ["project"],
+  "excerpt": "自从2017年微信web端API限制以后，itchat等一大批bot歇菜了，一直都在找一款合适的替品 目前来看，大部分都是针对windows微信客户端，基于HOOK的dll注入实现对微信的操控，有一定的封号风险，只能用固定的版本，部署在linux服务器端比较困难，意味着只能一直开着电- -wechaty，支持IPAD,,MAC等多种协议，不用去调用WEB网页API,并且可以布署在服务器，满足我所有需求。项目地址 看完官方文档后（t..."
+    },{
+      "title": "基于Nodejs+Wechaty开发微信机器人管理平台",
+      "url": "/2020/10/27/wxbot-admin-platform/",
+      "tags": ["nodejs","vue","padplus","project","nuxt","feature","utility"],
+      "categories": ["project"],
+  "excerpt": "微信机器人开源库调研，GitHub 找到以下 3 个开源作品："
+    },{
+      "title": "Python-Wechaty Live Coding",
+      "url": "/2020/10/26/python-wechaty-live-coding/",
+      "tags": ["news","python"],
+      "categories": ["tutorial"],
+  "excerpt": "Wechaty 作为一个对话SDK，拥有适配多平台的优秀能力，同时还具备多语言的特性，今天我们将以一个简单的视频来介绍如何开始使用Python-Wechaty编写一个最简单的聊天机器人。"
+    },{
+      "title": "Wechaty bot in Java to sync group messages",
+      "url": "/2020/10/26/java-wechaty-group-message-sync/",
+      "tags": ["java","aws","productivity"],
+      "categories": ["project"],
+  "excerpt": "In the previous blog, we have deployed wechaty bot with node.js to aws. This blog is about to develop wechaty bot with Java and implement the function of sync messages in between different groups."
+    },{
+      "title": "通过Wechaty使用深度学习模型预测图片类型",
+      "url": "/2020/10/25/use-wechaty-to-predict-image/",
+      "tags": ["python","pytorch","machine-learning","productivity"],
+      "categories": ["project"],
+  "excerpt": "Use wechaty to apply pytorch model via WeChat."
+    },{
+      "title": "基于Wechaty打造定时多功能机器人(一)",
+      "url": "/2020/10/22/wetchat-bot-chat/",
+      "tags": ["padplus","productivity","nodejs"],
+      "categories": ["project"],
+  "excerpt": "智能群聊天机器人"
+    },{
+      "title": "基于wechaty实现的微信机器人，根据淘口令生成高佣转链接，并创建新的淘口令。",
+      "url": "/2020/10/22/wechat-fanli-robot/",
+      "tags": ["node.js","typescript","ecommerce"],
+      "categories": ["project"],
+  "excerpt": "基于wechaty实现的微信机器人，根据淘口令生成高佣转链接，并创建新的淘口令。"
+    },{
+      "title": "基于wechaty开发网课答案查询机器人",
+      "url": "/2020/10/15/wechaty-wangke-bot/",
+      "tags": ["puppet","padlocal","wangke","education"],
+      "categories": ["project"],
+  "excerpt": "自己有运营一个网课答案查询的微信公众号，无奈服务器压力有时候会大，会出现回复不及时的问题，所以突发冥想开发一个个人号作为备用。"
+    },{
+      "title": "基于RPA封装的Wechaty接口下的快手聊天机器人结项报告",
+      "url": "/2020/10/13/wechaty-puppet-kuaishou-final-term/",
+      "tags": ["kuaishou","summer-of-wechaty","summer-2020","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。"
+    },{
+      "title": " \"Douyin Chatbot based on RPA with Wechaty Interface - Final Report\"",
+      "url": "/2020/10/13/wechaty-puppet-douyin-final-term-en/",
+      "tags": ["douyin","summer-of-wechaty","summer-2020","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "Final report for the Summer 2020 project building a Douyin (TikTok) chatbot using RPA with autojs on Android, connected via socket to a Wechaty puppet."
+    },{
+      "title": " \"New Wechaty Puppet Service: PadLocal\"",
+      "url": "/2020/10/12/puppet-padlocal-intro-en/",
+      "tags": ["news","puppet","padlocal","puppet-provider","puppet-service"],
+      "categories": ["announcement"],
+  "excerpt": "Introducing PadLocal, a new Wechaty puppet service with a unique stateless architecture. All traffic is proxied through the local puppet client, ensuring better IP isolation, data security, and system scalability."
+    },{
+      "title": "Lark Chatbot based on Open API for Wechaty: Final Report",
+      "url": "/2020/09/30/wechaty-puppet-lark-final-blog-en/",
+      "tags": ["featured","summer-2020","summer-of-wechaty","lark","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "Building a Lark (Feishu) chatbot using Wechaty by encapsulating open APIs"
+    },{
+      "title": "Wechat File Schedule Box",
+      "url": "/2020/09/30/wechat-file-schedule-box-clafixed/",
+      "tags": ["padplus","productivity","nodejs","sync","netdisk"],
+      "categories": ["project"],
+  "excerpt": "使用Wechaty以少量的代码实现一个微信文件日程匣子项目。可快速将微信中的内容同步（转存）到其他网盘中。同时还添加自动识别处理日程等的小功能。"
+    },{
+      "title": "Summer 2020 [WeChat Work Chatbot based on Open API for Wechaty] Final Results",
+      "url": "/2020/09/28/puppet-work-final-en/",
+      "tags": ["summer-2020","summer-of-wechaty","puppet-provider","wecom","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "Developing a puppet for WeChat Work platform to enable Wechaty developers to use WeChat Work features by simply changing a variable"
+    },{
+      "title": "基于Python-wechaty建立一个斗图机器人 POC 结项博客",
+      "url": "/2020/09/27/python-wechaty-meme-bot-final/",
+      "tags": ["python","summer-of-wechaty","summer-2020","tensorflow","machine-learning","social"],
+      "categories": ["project"],
+  "excerpt": "“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。 旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。 根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。 官网：https://isrc.iscas.ac.cn/summer2020 官方新闻：http:/..."
+    },{
+      "title": "Summer 2020 Final Report: Designing and Implementing Plugin System for go-wechaty",
+      "url": "/2020/09/27/go-wechaty-plugin-en/",
+      "tags": ["plugins","summer-of-wechaty","summer-2020","go","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "Final report for designing and implementing a comprehensive plugin system for go-wechaty, including plugin management features, context handling, and a demo plugin to demonstrate the system's usability."
+    },{
+      "title": "Summer 2020 [Go-wechaty Github Action optimization] Final POC",
+      "url": "/2020/09/27/go-wechaty-gh-actions-optimization-final-poc-en/",
+      "tags": ["summer-of-wechaty","summer-2020","go","devops"],
+      "categories": ["project"],
+  "excerpt": "Using Github Actions to optimize Go-wechaty related projects and improve user and developer experience"
+    },{
+      "title": "Summer 2020: Words‑per‑Day Plugin — Final Report",
+      "url": "/2020/09/26/wechaty-words-per-day-plugin-final-en/",
+      "tags": ["plugins","summer-of-wechaty","summer-2020","entertainment"],
+      "categories": ["project"],
+  "excerpt": "Project overview"
+    },{
+      "title": "Summer 2020: Final Presentation of Python-Wechaty Group Chat Assistant Bot",
+      "url": "/2020/09/26/chassist-bot-final-en/",
+      "tags": ["python","summer-of-wechaty","summer-2020","entertainment"],
+      "categories": ["project"],
+  "excerpt": "Final presentation of the CHAssisT bot, a Python-Wechaty-based group chat assistant featuring message tagging, scheduled messages, member management, and deep learning-enhanced Q&A capabilities, completed as part of S..."
+    },{
+      "title": "基于Wechaty打造智能聊天机器人(一)",
+      "url": "/2020/09/22/wechaty-group-chat-robot/",
+      "tags": ["padplus","project","nodejs","entertainment"],
+      "categories": ["project"],
+  "excerpt": "由于在去年我粉上了杨超越，广州演唱会期间加入了深圳站粉丝群，群主为了活跃气氛，在小群里拉了一个闲聊机器人，当时就想着自己也是一个技术开发，好早之前也有注册过图灵机器人，看着这个机器人的玩法感觉跟图灵机器人好像，就想着要不要自己去开发一个，但是当时这个念头也只是一闪而过，当时工作比较忙，也没放在心上。 今年遇上了疫情，大家都只能在家里了，在群里闲聊的时候变多了，就想着能不能自己整个村狗机器人出来聊天，我们那个群跟机器人玩的大多是以下..."
+    },{
+      "title": "微信群过于频繁提醒功能",
+      "url": "/2020/09/16/speaker-mention-manager/",
+      "tags": ["nodejs","padplus","project","productivity"],
+      "categories": ["project"],
+  "excerpt": "自己在的知识讨论分享群里人数比较多，经常有人在群里闲聊，发言太多，导致有用的信息容易被淹没。"
+    },{
+      "title": "构建我的第一个微信机器人",
+      "url": "/2020/09/14/my-first-wechaty-bot/",
+      "tags": ["windows","other"],
+      "categories": ["project"],
+  "excerpt": "手头上的事情越来越多，回复微信都是件很麻烦的事，对于IT行业的人来说，能用机器解决的事就不应该手动去做，于是就有了构建微信机器人的想法。"
+    },{
+      "title": "微信群广告检测机器人",
+      "url": "/2020/09/14/ads-filer-groupbot/",
+      "tags": ["ads-monitor"],
+      "categories": ["npm"],
+  "excerpt": ""
+    },{
+      "title": "Wechaty 将 TS 转发到 Python 的探索实践",
+      "url": "/2020/09/12/post-ts-to-python/",
+      "tags": ["padplus","project","nodejs","python","utility"],
+      "categories": ["project"],
+  "excerpt": "报时机器人，每逢整点在群里发送报时信息。"
+    },{
+      "title": "实现微信产品问题反馈群实时监控与问题自动录入",
+      "url": "/2020/09/04/issue-feedback-room-monitor/",
+      "tags": ["issue","padplus"],
+      "categories": ["tutorial"],
+  "excerpt": "因为我们的用户都喜欢通过微信群讨论的方式进行产品问题反馈，这无疑给日常的线上问题处理的效率带来极大的影响。曾经尝试对用户习惯进行线上填写方式的引导，但最终以失败告终。无奈下看看弄一个微信群监控机器人是否可行。"
+    },{
+      "title": "基于wechaty的英语学习群助手",
+      "url": "/2020/08/31/wechaty-english-learning-assistant/",
+      "tags": ["padplus","project","sqlite3","education"],
+      "categories": ["project"],
+  "excerpt": "针对英语学习社群，为提高群的活跃度，通过关键词触发，实现英文每日一句、中英文互译、励志话语推送，彩虹屁功能。"
+    },{
+      "title": "WeChat Marketing Group Customer Service Bot",
+      "url": "/2020/08/29/wx-group-assistant-bot-en/",
+      "tags": ["nodejs","padplus","project","ecommerce"],
+      "categories": ["project"],
+  "excerpt": "A WeChat group assistant bot designed to help e-commerce customer service teams monitor and manage marketing groups by detecting and removing malicious marketers using keyword blacklists and AI voice recognition."
+    },{
+      "title": "基于Wechaty-IPAD协议的预警消息转发机器人",
+      "url": "/2020/08/28/wechaty-alert-padplus/",
+      "tags": ["padplus","utility"],
+      "categories": ["project"],
+  "excerpt": "微信机器人 - 实时转发预警信息"
+    },{
+      "title": "Deploy Wechaty in AWS ec2",
+      "url": "/2020/08/28/deploy-wechaty-in-aws/",
+      "tags": ["nodejs","aws","devops"],
+      "categories": ["project"],
+  "excerpt": "This article is about to deploy wechaty node.js application into AWS EC2 steps by steps."
+    },{
+      "title": "简易命令行控制的「微信机器人」及群聊信息过滤实现",
+      "url": "/2020/08/28/command-line-filter/",
+      "tags": ["javascript","utility"],
+      "categories": ["project"],
+  "excerpt": "生活中学校通知信息都会借助微信群聊发布，并且时常会要求“收到请回复”。这就导致了少数重要信息与大量无关信息混杂在一起，屏蔽与不屏蔽都不是好办法。遂实现了命令行控制的「微信机器人」，并在此基础上完成了群聊信息过滤功能。"
+    },{
+      "title": "使用jekyll include在wechaty博客中快速插入视频",
+      "url": "/2020/08/24/add-video-to-wechaty-blog/",
+      "tags": ["jekyll","plugin"],
+      "categories": ["tutorial"],
+  "excerpt": "撰写暑期2020中期POC博客的时候，遇到了在博文中插入视频、PPT等iframe的需求，可以在markdown文档中直接使用bilibili等视频网站提供的视频嵌入代码，然而这样视频的样式不够美观，iframe没有铺满整个宽度并保持一定宽高比。"
+    },{
+      "title": "Gitter.im is supported by Wechaty now!",
+      "url": "/2020/08/23/wechaty-puppet-gitter/",
+      "tags": ["news","puppet","gitter","puppet-provider"],
+      "categories": ["announcement"],
+  "excerpt": "Wechaty is a RPA SDK for Chatbot Makers. It mainly works with WeChat accounts (both individual and official), and now we have published Gitter support for wechaty, which can make us easy to build a chatbot on Gitter.i..."
+    },{
+      "title": "暑期2020中期路演日（Mid-Term Demo Day）",
+      "url": "/2020/08/22/summer-2020-wechaty-soc-midterm-demo-day/",
+      "tags": ["summer-of-wechaty","summer-2020","talk","news","meetup","featured"],
+      "categories": ["announcement"],
+  "excerpt": "“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动，旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展，点击查看官方新闻。"
+    },{
+      "title": "行情播报微信机器人",
+      "url": "/2020/08/22/market-wechat-robot/",
+      "tags": ["market","oracle","python","finance"],
+      "categories": ["project"],
+  "excerpt": "使用Wechaty开发的行情播报微信机器人，为微信群组用户提供实时行情信息播报服务。用户可以通过添加管理员微信，然后自动加入播报群组。 机器人将采用行情早晚报和事件播报的形式在群组中进行行情播报。"
+    },{
+      "title": "基于Wechaty的群学习内容推送工具",
+      "url": "/2020/08/21/wechaty-xiaowang-learning-tool/",
+      "tags": ["typescript","education"],
+      "categories": ["project"],
+  "excerpt": "准备考研期间，希望在每天定时能获得天气推送，每日英语一题，早间新闻来丰富自己的学习；同时又不想要专门去点开某个App来看（这样不仅费心，还容易跑神）"
+    },{
+      "title": "暑期2020[基于 RPA 封装 Wechaty 接口下的快手聊天机器人]中期报告",
+      "url": "/2020/08/20/wechaty-puppet-kuaishou-mid-term/",
+      "tags": ["kuaishou","puppet","summer-of-wechaty","summer-2020","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。 旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。 根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。 官网：https://isrc.iscas.ac.cn/summer2020 官方新闻：http:/..."
+    },{
+      "title": "Mid-term Report: Douyin Chatbot Based on Wechaty Interface Encapsulated by RPA",
+      "url": "/2020/08/20/wechaty-puppet-douyin-mid-term-en/",
+      "tags": ["douyin","summer-of-wechaty","summer-2020","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "This mid-term report presents progress on developing a Wechaty puppet for Douyin (TikTok) using RPA automation with AutoJS on Android, covering implementation challenges, solutions, and next steps."
+    },{
+      "title": "基于wechaty-puppet-padplus的微信文件传输助手",
+      "url": "/2020/08/20/wechaty-file-assistant-bot/",
+      "tags": ["nodejs","padplus","productivity"],
+      "categories": ["project"],
+  "excerpt": "微信助手是很常见的运营工具，不仅能够给微信群带来活跃度，还能针对各种社群开发不同的玩法。 本目标是做一个文件传输助手，当群内有人@机器人并say关键词时，机器人从已有文件业务系统中找到文件并发出；同时在群中直接发送一个文件，机器人可将文件自动上传至文件业务系统。"
+    },{
+      "title": "基于wechaty的简易shell",
+      "url": "/2020/08/20/kotlin-wechaty-simple-shell/",
+      "tags": ["serverchen","shell","utility"],
+      "categories": ["project"],
+  "excerpt": "这个项目是基于SpringBoot和SpringMVC的，语言是kotlin，构建工具是maven。"
+    },{
+      "title": "暑期2020 [Go-wechaty Github Action optimization] POC 成果展示",
+      "url": "/2020/08/20/go-wechaty-github-action-optimization-mid-term/",
+      "tags": ["summer-of-wechaty","summer-2020","go","devops"],
+      "categories": ["project"],
+  "excerpt": "“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。 旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。 根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。"
+    },{
+      "title": "阿兹纳莫曲线",
+      "url": "/2020/08/19/wechaty-zizz-gcaufy/",
+      "tags": ["fun"],
+      "categories": ["fun"],
+  "excerpt": ""
+    },{
+      "title": "Lark Chatbot Based on Wechaty Interface with Open API: Mid-term Report",
+      "url": "/2020/08/19/wechaty-puppet-lark-mid-term-blog-en/",
+      "tags": ["summer-2020","summer-of-wechaty","lark","puppet","chatbot","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "Mid-term progress report for developing a Lark chatbot puppet using Wechaty interface and Open API, including implementation of message handling, contact list management, and event subscriptions."
+    },{
+      "title": "Summer 2020: Project Plan for WeCom Chatbot Based on Wechaty Interface with Open API",
+      "url": "/2020/08/19/puppet-work-plan-en/",
+      "tags": ["summer-of-wechaty","summer-2020","wecom","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "This post outlines the project plan for developing a Wechaty puppet for WeChat Work (WeCom) platform, allowing developers to switch to using WeCom functionality by simply changing a variable."
+    },{
+      "title": "Summer 2020: POC Showcase for WeCom Chatbot Based on Wechaty Interface with Open API",
+      "url": "/2020/08/19/puppet-work-midterm-en/",
+      "tags": ["summer-2020","summer-of-wechaty","puppet-provider","wecom","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "This post showcases the mid-term progress of developing a Wechaty puppet for WeChat Work (WeCom) platform, allowing developers to switch to WeCom functionality by simply changing a variable."
+    },{
+      "title": "Summer 2020: POC Showcase for Designing and Implementing a Plugin System for go-wechaty",
+      "url": "/2020/08/19/go-wechaty-plugin-poc-en/",
+      "tags": ["plugins","summer-of-wechaty","summer-2020","go","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "This post showcases the proof-of-concept for a plugin system for go-wechaty, a project from the Summer 2020 Open Source Promotion Plan. It details the design, implementation, and future plans for the plugin architecture."
+    },{
+      "title": "一个简单的微信群组「关键字」回答机器人",
+      "url": "/2020/08/18/wechaty-for-new-student/",
+      "tags": ["padplus","productivity"],
+      "categories": ["project"],
+  "excerpt": "基于 wechaty （包含 wechaty-puppet-padplus 插件）开发。"
+    },{
+      "title": "Wechaty Java Component Porting Development",
+      "url": "/2020/08/17/java-wechaty-transplant-midpoc-en/",
+      "tags": ["java","soc","soc2020","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "This post is a mid-term report on porting Wechaty components to Java/Kotlin as part of the Summer 2020 Open Source Promotion Plan. It covers the development of memory-card and state-switch components, API porting, and..."
+    },{
+      "title": "SpringBoot搭建wechaty智能聊天机器",
+      "url": "/2020/08/17/java-wechaty-bot/",
+      "tags": ["springboot","java","weixin-openai","entertainment"],
+      "categories": ["project"],
+  "excerpt": "本项目是基础wechaty项目实现微信的聊天功能、通过微信对话开放平台提供的API进行智能的应答、实现了微信的智能聊天、最后非常感谢wechaty的无私奉献。"
+    },{
+      "title": "Summer 2020: Words‑per‑Day Plugin — Mid‑term Results",
+      "url": "/2020/08/15/wechaty-words-per-day-plugin-mid-term-en/",
+      "tags": ["plugins","summer-of-wechaty","summer-2020","entertainment"],
+      "categories": ["project"],
+  "excerpt": "“Open Source Supply Chain — Summer 2020” (aka Summer 2020) is a student-focused program jointly organized by the Institute of Software, Chinese Academy of Sciences, and the openEuler community. It encourages students ..."
+    },{
+      "title": "Summer 2020: POC Showcase for Python-Wechaty Group Chat Assistant Bot",
+      "url": "/2020/08/14/python-wechaty-groupchat-assistant-bot-poc-en/",
+      "tags": ["python","summer-2020","summer-of-wechaty","productivity"],
+      "categories": ["project"],
+  "excerpt": "This post showcases the proof-of-concept for a Python-Wechaty based group chat assistant bot, a project from the Summer 2020 Open Source Promotion Plan. The bot features plugins for message tagging, scheduled messages..."
+    },{
+      "title": "基于Python-wechaty建立一个斗图机器人 POC 成果展示",
+      "url": "/2020/08/13/python-wechaty-meme-bot-mid-term/",
+      "tags": ["python","summer-of-wechaty","summer-2020","tensorflow","machine-learning","entertainment"],
+      "categories": ["project"],
+  "excerpt": "暑期2020 基于Python-wechaty建立一个斗图机器人 POC 成果展示"
+    },{
+      "title": "传统工业与信息化的结合",
+      "url": "/2020/08/11/car-product-rcbot/",
+      "tags": ["bot","car","automotive"],
+      "categories": ["project"],
+  "excerpt": "现状与目标：我是谁？我要做什么？"
+    },{
+      "title": "Wechaty Contributor Meetup -- Shenzhen August 5",
+      "url": "/2020/08/09/wechaty-shenzhen-meetup/",
+      "tags": ["meetup","news"],
+      "categories": ["event"],
+  "excerpt": "8 月 5 日，周五晚上，大家按照约定时间到达吃饭地点，我与@lijiarui、@Gcaufy没有线下见过面，有一种见网友的感觉。好在很快就熟悉了。 对于我来说意义非凡，非常荣幸，第一次接触 star 数那么多的项目作者，而且还是两位，好似追星族见了明星的感觉。"
+    },{
+      "title": "Chatbots Duet: Using wechaty-log-monitor Plugin to Implement DevOps like 'QR Code Rescue on Disconnect'",
+      "url": "/2020/08/09/wechaty-log-monitor-en/",
+      "tags": ["plugin","devops","featured","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "To enable better readily availability for my chatbot in production, I wrote the wechaty-log-monitor plugin to perform log-related DevOps for Wechaty running in production."
+    },{
+      "title": "How I Rebuilt the Sales System at MiraclePlus with a Chatbot",
+      "url": "/2020/08/08/qijibot-sales-automation-en/",
+      "tags": ["featured","qiji","productivity","social"],
+      "categories": ["project"],
+  "excerpt": "In addition to media exposure, deep outreach through people is a good way to acquire customers. For the team, it is necessary to ensure that everyone’s outreach is standardized. For individuals, it is necessary to str..."
+    },{
+      "title": "twitter2wechat",
+      "url": "/2020/08/06/wechaty-twitter-to-wechat/",
+      "tags": ["padplus","project","twitter","utility"],
+      "categories": ["project"],
+  "excerpt": ""
+    },{
+      "title": "Wechaty Workshop for Puppet Makers: How to make a Puppet for Wechaty",
+      "url": "/2020/08/05/wechaty-puppet-maker/",
+      "tags": ["puppet","news","workshop","tutorial","puppet-provider","official-account"],
+      "categories": ["event"],
+  "excerpt": "Wechaty 通过精妙的代码设计，实现了基于一套应用层代码，自由切换不同的接入方式，帮助开发者以最大程度的易用性，快速实现多个平台的聊天机器人接入。"
+    },{
+      "title": "A Small Gathering of the Wechaty Guangzhou Team and Teacher Jiarui",
+      "url": "/2020/08/04/wechaty-guangzhou-gathering-en/",
+      "tags": ["guangzhou","meetup"],
+      "categories": ["event"],
+  "excerpt": ""
+    },{
+      "title": "股票盯盘助手",
+      "url": "/2020/08/02/wechaty-stock-bot/",
+      "tags": ["padplus","project","stock","finance"],
+      "categories": ["project"],
+  "excerpt": ""
+    },{
+      "title": "wechaty plugin for easily extending capabilities",
+      "url": "/2020/08/01/wechaty-distribute-instruction-handler/",
+      "tags": ["padplus","project","chatbot","cli","plugin"],
+      "categories": ["npm"],
+  "excerpt": ""
+    },{
+      "title": "更有效率的二手捡漏助手",
+      "url": "/2020/07/31/wechaty-effective-secondhand-bot/",
+      "tags": ["padplus","project","electron","ecommerce"],
+      "categories": ["project"],
+  "excerpt": "作为一个爱逛二手闲置数码的程序员，怎么淘到自己喜欢且性价比高的设备是个技术活~"
+    },{
+      "title": "暑期2020 [Go-wechaty Github Action optimization] 计划书",
+      "url": "/2020/07/30/go-wechaty-gh-optimization-poc/",
+      "tags": ["go","summer-of-wechaty","summer-2020","devops"],
+      "categories": ["project"],
+  "excerpt": "“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。 旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。 根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。"
+    },{
+      "title": "基于开放 API 封装 Wechaty 接口下的飞书聊天机器人：期初",
+      "url": "/2020/07/29/wechaty-puppet-lark-plan-blog/",
+      "tags": ["summer-2020","puppet-provider","lark","summer-of-wechaty","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "“开源软件供应链点亮计划-暑期2020”（以下简称暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。 根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。 官网：https://isrc.iscas.ac.cn/summer2020 官方新闻：http://w..."
+    },{
+      "title": "微信群积分机器人（Wechat group integral robot）",
+      "url": "/2020/07/29/wechat-group-integral-robot/",
+      "tags": ["padplus","ecommerce"],
+      "categories": ["project"],
+  "excerpt": ""
+    },{
+      "title": "暑期2020[基于 RPA 封装 Wechaty 接口下的快手聊天机器人]计划书",
+      "url": "/2020/07/28/wechaty-rpa-kuaishou-plan/",
+      "tags": ["kuaishou","puppet","summer-of-wechaty","summer-2020","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。 旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。 根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。 官网：https://isrc.iscas.ac.cn/summer2020 官方新闻：http:/..."
+    },{
+      "title": "基于RPA封装的Wechaty接口下的抖音聊天机器人",
+      "url": "/2020/07/28/wechaty-puppet-douyin/",
+      "tags": ["douyin","summer-of-wechaty","summer-2020","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。"
+    },{
+      "title": "wechaty-rainbowbot 基于Wechaty实现的企业业务系统与营销团队微信群之间通信的桥梁",
+      "url": "/2020/07/28/wechaty-enterprise-rainbowbot/",
+      "tags": ["padplus","project","koa","weixin-openai","productivity"],
+      "categories": ["project"],
+  "excerpt": ""
+    },{
+      "title": "Rae-oa系统微信群辅助机器人(rae-wechaty)",
+      "url": "/2020/07/28/rae-oa-wechaty/",
+      "tags": ["puppet-provider","productivity"],
+      "categories": ["project"],
+  "excerpt": "之前公司web组组长有个微信机器人每周催我们交周报,私信发过去会自动更新到公司内部wiki上,一度惊为天人,后来看到公共号以及掘金上突然有好多人推荐wechaty,据说是6行代码完成一个微信聊天机器人,正好老婆那边想要个能辅助她工作的系统,就是这么巧~"
+    },{
+      "title": "Wechaty Java Transplant Component Development",
+      "url": "/2020/07/27/java-wechaty-transplant-en/",
+      "tags": ["java","soc2020","soc","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "“Open Source Software Supply Chain Lighting Plan - Summer 2020” (hereinafter referred to as Summer 2020) is a summer activity for college students jointly organized by the Institute of Software, Chinese Academy of Sci..."
+    },{
+      "title": "智障机器人(retarded-robot)",
+      "url": "/2020/07/27/hr-retarded-robot/",
+      "tags": ["padplus","project","productivity"],
+      "categories": ["project"],
+  "excerpt": "内容列表"
+    },{
+      "title": "微信群内抽奖机器人(wechaty_lottery)",
+      "url": "/2020/07/23/wechaty-group-lottery/",
+      "tags": ["padplus","productivity","entertainment"],
+      "categories": ["project"],
+  "excerpt": "背景"
+    },{
+      "title": " \"Praise Robot Based on Wechaty\" ",
+      "url": "/2020/07/23/kuakua-bot-wechaty-en/",
+      "tags": ["padplus","entertainment","social"],
+      "categories": ["project"],
+  "excerpt": ""
+    },{
+      "title": "A Job-seeking Community Management Tool Based on Wechaty",
+      "url": "/2020/07/23/early-bird-chatbot-en/",
+      "tags": ["bot","job","intern"],
+      "categories": ["event"],
+  "excerpt": "The Early Bird platform was created by a group of engineers working in Silicon Valley. Due to the global pandemic, this year’s job-seeking season has become very special. For companies, reducing recruitment demand has..."
+    },{
+      "title": "Wechaty插件系统发布，让你的机器人快速接入复杂管理和智能对话能力",
+      "url": "/2020/07/22/wechaty-plugin-milestone/",
+      "tags": ["plugin"],
+      "categories": ["announcement"],
+  "excerpt": "Wechaty 的故事开始于用RPA的方式模拟登录微信，在过去的几年里，服务了数万名开发者，收获了 Github 的 8000 Star。 https://github.com/wechaty/wechaty 我们将过去对于绝大多数人难以想象的工作量，通过数万行代码封装成了最短六行代码就可以模拟登录微信的npm包。"
+    },{
+      "title": "Wechaty Summer of Code 2020 Kickoff Meeting",
+      "url": "/2020/07/20/wechaty-soc-kick-off-meeting/",
+      "tags": ["summer-of-wechaty","summer-2020","talk","news","meetup","featured"],
+      "categories": ["announcement"],
+  "excerpt": "“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。 旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。 根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。"
+    },{
+      "title": "Building an Assistant with Wechaty and WeChat Open AI Platform",
+      "url": "/2020/07/20/wechaty-openai-agent-en/",
+      "tags": ["openai","talk","featured","ecosystem"],
+      "categories": ["tutorial"],
+  "excerpt": "Invited by WWC (Women Who Code), I shared online how to build an assistant using Wechaty and WeChat Open AI Platform to help answer common questions."
+    },{
+      "title": "微信代购机器人（WeChat Purchasing Robot）",
+      "url": "/2020/07/20/wechat-purchasing-robot/",
+      "tags": ["padplus","ecommerce"],
+      "categories": ["project"],
+  "excerpt": ""
+    },{
+      "title": "基于开放 API 封装 Wechaty 接口下的钉钉聊天机器人",
+      "url": "/2020/07/19/wechaty-puppet-dingtalk/",
+      "tags": ["summer-of-wechaty","summer-2020","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。 根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。 官网：https://isrc.iscas.ac.cn/summer2020 官方新闻：http://..."
+    },{
+      "title": "Youdao AI Cloud Translation Plugin",
+      "url": "/2020/07/19/wechaty-plugin-youdao-en/",
+      "tags": ["plugins","featured","ecosystem"],
+      "categories": ["npm"],
+  "excerpt": "Integrate Youdao AI Cloud translation capabilities as a Wechaty plugin, enabling developers to easily add translation features to their bots."
+    },{
+      "title": "暑期2020 [为 go-wechaty 设计实现插件体系] 计划书",
+      "url": "/2020/07/19/go-wechaty-plugin-dev-plan/",
+      "tags": ["plugins","summer-of-wechaty","summer-2020","go","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。 旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。 根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。 官网：https://isrc.iscas.ac.cn/summer2020 官方新闻：http:/..."
+    },{
+      "title": "Summer 2020 [Write a \"Word of the Day\" Plugin] Project Plan",
+      "url": "/2020/07/18/wechaty-words-per-day-plugin-plan-en/",
+      "tags": ["plugins","summer-of-wechaty","summer-2020","entertainment"],
+      "categories": ["project"],
+  "excerpt": "This post outlines the project plan for creating a \"Word of the Day\" plugin for Wechaty as part of the Summer 2020 open-source program. The plan covers the basic framework, NPM package publication, corpus enrichment, ..."
+    },{
+      "title": "基于Python-wechaty建立一个斗图机器人",
+      "url": "/2020/07/18/python-wechaty-meme-bot/",
+      "tags": ["python","summer-of-wechaty","summer-2020","pytorch","machine-learning","entertainment"],
+      "categories": ["project"],
+  "excerpt": "“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。"
+    },{
+      "title": "Group Chat Assistant Bot based on python-wechaty",
+      "url": "/2020/07/18/python-wechaty-groupchat-assistant-bot-en/",
+      "tags": ["python","summer-2020","summer-of-wechaty","utility"],
+      "categories": ["project"],
+  "excerpt": "This post outlines the plan for creating a Group Chat Assistant Bot using python-wechaty as part of the Summer 2020 open-source program. The project includes features like message tagging, scheduled messages, and grou..."
+    },{
+      "title": "Implementing a WeChat Task Assistant with Wechaty",
+      "url": "/2020/07/17/wechaty-teamin-assistant-en/",
+      "tags": ["padplus","productivity","wechat-robot","teamin","chatbot","featured"],
+      "categories": ["project"],
+  "excerpt": "This post introduces a WeChat task assistant built with Wechaty. The author shares the motivation, design, and technical challenges of creating a chatbot that can understand natural language to manage daily tasks and ..."
+    },{
+      "title": "微信转发机器人(wechaty-forwardbot)",
+      "url": "/2020/07/15/wechaty-forwarder-bot/",
+      "tags": ["padplus","productivity","social"],
+      "categories": ["project"],
+  "excerpt": "运营群需要有价值的内容，才能把用户留住。但是自己又懒得搞这些内容 所以最好就是,直接把别人群有价值的内容转发到自己群 既能偷懒，还能留住用户，岂不美哉？"
+    },{
+      "title": "群消息同步机器人",
+      "url": "/2020/07/12/wechat-roommessage-bot/",
+      "tags": ["padplus","project","productivity","hospitality"],
+      "categories": ["project"],
+  "excerpt": ""
+    },{
+      "title": "用 Wechaty 实现工作日报管理系统",
+      "url": "/2020/07/11/wechaty-daily-report/",
+      "tags": ["padplus","productivity"],
+      "categories": ["project"],
+  "excerpt": ""
+    },{
+      "title": "每日微信音乐卡片分享机器人（wechat-daycard）",
+      "url": "/2020/07/09/wechat-music-daycard/",
+      "tags": ["padplus","entertainment"],
+      "categories": ["project"],
+  "excerpt": ""
+    },{
+      "title": "Implementing a WeChat Poetry Search Robot with Wechaty (wechat poem robot)",
+      "url": "/2020/07/07/wechat-poem-robot-en/",
+      "tags": ["padplus","wechat-robot","regex","regex101","featured","entertainment","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "Building an intelligent WeChat poetry search chatbot using Wechaty and iPad protocol, with regex-powered keyword extraction and a PHP+MySQL poetry database backend."
+    },{
+      "title": "WeChat Calculator Bot",
+      "url": "/2020/07/06/wechat-calculator-bot-en/",
+      "tags": ["padplus","productivity"],
+      "categories": ["project"],
+  "excerpt": "Build a simple WeChat calculator bot using Wechaty that can perform basic arithmetic operations through chat messages"
+    },{
+      "title": "Multi-language Wechaty Meeting: Mocking & Code Quality",
+      "url": "/2020/07/05/multilanguage-meeting-notes/",
+      "tags": ["news","meeting","talk","featured"],
+      "categories": ["event"],
+  "excerpt": "漫长的会议"
+    },{
+      "title": "微信群打卡统计机器人",
+      "url": "/2020/07/03/a-room-punch-bot/",
+      "tags": ["assistant"],
+      "categories": ["tutorial"],
+  "excerpt": "一个可以OCR 打卡并生成统计方块图的机器人。"
+    },{
+      "title": "910taoBot-为了美好的生活",
+      "url": "/2020/07/03/910taobot-for-better-life/",
+      "tags": ["padplus","productivity"],
+      "categories": ["project"],
+  "excerpt": "由于现在工作生活加了好多的微信群,并且这些群里的消息不一定每条都是你想看的，所以为了防止过多的消息提醒,所以会把群消息给屏蔽掉。但是这样有可能会错过一些@自己 或者需要自己回复的一些消息。因此想要弄一个微信机器人，潜伏在这些微信群。遇到有@设定人之后 把消息转发给自己。以达到提醒自己的目的。以防错过一些重要消息。 同时还可以让机器人成为生活助手，定时发送天气预报、智能聊天、查快递……"
+    },{
+      "title": "十分钟实现一个智能问答微信聊天机器人",
+      "url": "/2020/07/02/wechat-bot-in-ten-minutes/",
+      "tags": ["nodejs","padplus","productivity"],
+      "categories": ["project"],
+  "excerpt": ""
+    },{
+      "title": "使用wechaty助力公众号主维护社群",
+      "url": "/2020/07/01/a-guide-to-official-account-bot/",
+      "tags": ["official-account","productivity","social"],
+      "categories": ["project"],
+  "excerpt": "作为公众号的号主，有粉丝加微信想要进群是一件很开心的事情，但是久了以后会发现通过好友、改备注、拉群这些事情耗费太多精力了。还好有幸发现了 wechaty 这个项目。昨天试了一下，真的大大解放了我的双手，这篇博客就以公众号号主的角度，来看看怎么用 wechaty 来开发一个机器人小助手的。"
+    },{
+      "title": "带货机器人（wechat robot seller）",
+      "url": "/2020/06/30/wechat-robot-seller/",
+      "tags": ["padplus","ecommerce"],
+      "categories": ["project"],
+  "excerpt": ""
+    },{
+      "title": "Go Wechaty Beta Released!",
+      "url": "/2020/06/29/go-wechaty-beta-released/",
+      "tags": ["go","news","featured"],
+      "categories": ["announcement"],
+  "excerpt": "go-wechaty 是 wechaty 多语言版本中的 golang 语言实现,目的是方便 go 语言开发者更容易的去使用 wechaty。"
+    },{
+      "title": "TomChat-为生活增趣味",
+      "url": "/2020/06/28/tom-chat-fun/",
+      "tags": ["assistant","productivity","entertainment"],
+      "categories": ["project"],
+  "excerpt": "A chatbot by wechaty.You can learn about today in history, current weather and chat with Tom."
+    },{
+      "title": "使用wechaty自助算卦",
+      "url": "/2020/06/28/build-divination-yibot/",
+      "tags": ["typescript","entertainment","case-study"],
+      "categories": ["project"],
+  "excerpt": "写这个小东西，本就是想玩耍一下，发现很有意思！ 面临人生重大抉择犹豫不定，头脑乱成浆糊的时候，鄙人会问卦，根据卦象客观分析当前的局势。但是从来不问命，只是借用卦象来让自己以一种不含感情的分析方式重新认识当前面临的形势。朋友中有一两个有类似爱好的，对易经有些兴趣，我们几个谈论的时候，其他人就会要求我们给他们解卦。"
+    },{
+      "title": "北京周边跨城顺风车消息汇总",
+      "url": "/2020/06/23/hitchhiker-info-subtotal/",
+      "tags": ["nodejs","padplus","travel","mysql"],
+      "categories": ["project"],
+  "excerpt": "北京的房价涨幅对于北漂的工资涨幅来说永远都是高不可攀的；有很多人到了成家立业的年纪，又不想回到老家，所以距离北京近，房价可以接受的北京周边就是就是一个不错的选择，但是在环京买了房，工作还是在北京，由此衍生出了一批跨城上下班的圈子。 由于北京车牌限制，限行策略，堵车等问题，所以导致很多人不能愉快的自驾上下班，坐公共交通工具又不是特别方便，所以大家会选择和邻居或是朋友拼车上下班，既方便了大家通勤，也节省了路上的开销成本。 但是由于拼车..."
+    },{
+      "title": "Wonderful Wechaty devops toolset",
+      "url": "/2020/06/20/wonderful-wechaty-devops-tools/",
+      "tags": ["devops","tool","talk","news","featured"],
+      "categories": ["announcement"],
+  "excerpt": "Wechaty 的代码质量，是大家公认的比较高的水准。而在整个项目的搭建和发展的过程中，DevOps 工具是 Wechaty 代码质量的重要保证，这里，就和大家一起聊聊关于 Wechaty DevOps Toolset。"
+    },{
+      "title": "基于python-wechaty的CPS BOT",
+      "url": "/2020/06/19/python-wechaty-cps-bot/",
+      "tags": ["python","donut","ecommerce"],
+      "categories": ["project"],
+  "excerpt": "无非就是想撸羊毛，自己又懒的一个一个找，一个一个发。已知目前的返佣app非常的多，比如：好省，蜜源，粉象，芬香等等等等。归根到底无非是利用淘宝、京东、拼多多、苏宁的开放平台做的。所以想到是否可以利用已有的开放平台来做一个属于自己的撸羊毛项目。"
+    },{
+      "title": "Multi Language Wechaty Beta Release Announcement!",
+      "url": "/2020/06/19/multi-language-wechaty-beta-release/",
+      "tags": ["release","event","news"],
+      "categories": ["announcement"],
+  "excerpt": "Multi-language Wechaty Beta Released! We have Python, Go, Java, and Scala released on June 19, 2020!"
+    },{
+      "title": "Archy.sh: a WeChat Assistant That Generates Anki Flashcards for Chinese Learners 吖奇说：一个帮助外国人与海归学习中文的微信助理，可生成Anki卡片",
+      "url": "/2020/06/19/archyshuo-anki-assistant/",
+      "tags": ["typescript","python","nlp","anki","productivity"],
+      "categories": ["project"],
+  "excerpt": "a chatbot that can extract difficult Chinese words from WeChat 公众号 articles, annotate them with Pinyin and definitions, and generate Anki notes."
+    },{
+      "title": "学术场景应用：YanBot",
+      "url": "/2020/06/17/wechaty-academic-yanbot/",
+      "tags": ["nodejs","academic","padplus","healthcare"],
+      "categories": ["project"],
+  "excerpt": "备注"
+    },{
+      "title": "Python Wechaty Beta Released: A Simple Bot",
+      "url": "/2020/06/17/python-wechaty-beta-released/",
+      "tags": ["python","news","featured"],
+      "categories": ["announcement"],
+  "excerpt": "Python-wechaty能够使用少量代码即可完成一个机器人，使用起来非常简单，基于OOP的设计思路能够很好监听和处理微信内部大量的事件，比如：自动回复消息，定时发送消息，拉人入群，好友申请同意等等。此外，目前的插件系统里面有很多拿来即用的工具，比如拉人入群等。当然开发一个自己的插件也是非常简单，无需很高深的概念，只需要你能够理解事件和OOP即可。"
+    },{
+      "title": "简单聊聊java版Puppet Manager的实现",
+      "url": "/2020/06/16/java-puppet-manager/",
+      "tags": ["java"],
+      "categories": ["article"],
+  "excerpt": "我们来简单聊一聊java-wechaty中Puppet Manager的实现。"
+    },{
+      "title": "Java Wechaty Beta Released: Finally a WeChat Bot in Java",
+      "url": "/2020/06/15/java-wechaty-beta-release-en/",
+      "tags": ["news","java","featured","ecosystem"],
+      "categories": ["announcement"],
+  "excerpt": "Java Wechaty Beta has been released, bringing the power of Wechaty chatbot development to the Java ecosystem with full TS version feature parity and plugin support."
+    },{
+      "title": "资讯自动推送机器人（Daily push wechat robot）",
+      "url": "/2020/06/15/daily-push-bot/",
+      "tags": ["python","padplus","media"],
+      "categories": ["project"],
+  "excerpt": ""
+    },{
+      "title": "发段子 舔狗 毒鸡汤 美图bot",
+      "url": "/2020/06/15/b-bot-for-fun/",
+      "tags": ["padplus","social"],
+      "categories": ["project"],
+  "excerpt": ""
+    },{
+      "title": "CPS chat bot",
+      "url": "/2020/06/13/cps-chat-bot/",
+      "tags": ["ecommerce"],
+      "categories": ["project"],
+  "excerpt": "tips: 使用微信群，推广电商商品及优惠券，机器人使用 wechaty-puppet-padplus."
+    },{
+      "title": "Wechaty Summer of Code 2020 Talk",
+      "url": "/2020/06/08/wechaty-summer-of-code-2020-talk/",
+      "tags": ["summer-of-wechaty","summer-2020","talk","news","meetup","featured"],
+      "categories": ["announcement"],
+  "excerpt": "作者: juzibot"
+    },{
+      "title": "Party Game Bot",
+      "url": "/2020/06/06/wechaty-game-bot-en/",
+      "tags": ["nodejs","padplus","game","redis","sqlite","knex","featured","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "This post is also available in Chinese"
+    },{
+      "title": "使用Wechaty开发微信群管理小助手",
+      "url": "/2020/06/04/group-wechat-bot/",
+      "tags": ["padplus","real-estate"],
+      "categories": ["project"],
+  "excerpt": "我们设计了一个租房平台的微信小程序，为了方便推广，针对每个地区开设了一个或多个微信群，每天会在群里发文字和小程序的二维码来推广小程序和阐述群规定。因为所开的群太多，如果是人工发送这些东西，会很浪费时间。因为发的东西都是固定的，所以考虑使用微信机器人。"
+    },{
+      "title": "A Bot for Downloading Short Videos Without Watermarks",
+      "url": "/2020/06/03/wechaty-mqbot-video-downloader-en/",
+      "tags": ["nodejs","vue","padplus","productivity","nuxt"],
+      "categories": ["project"],
+  "excerpt": "This post introduces a Wechaty-based bot that allows users to download short videos from major Chinese platforms without watermarks. The author shares the motivation behind creating this tool and provides a guide on h..."
+    },{
+      "title": "优惠券搜索机器人（Coupon wechat bot）",
+      "url": "/2020/06/02/coupon-wechat-bot/",
+      "tags": ["padplus","ecommerce"],
+      "categories": ["project"],
+  "excerpt": ""
+    },{
+      "title": "你的微信小助手",
+      "url": "/2020/05/31/your-wechat-bot/",
+      "tags": ["padplus","social"],
+      "categories": ["project"],
+  "excerpt": "我有一个三百多人的前端开发群，每天都有很多个好友请求，让我添加他们进前端开发群。"
+    },{
+      "title": "基于Nodejs+Wechaty开发微信机器人管理平台",
+      "url": "/2020/05/31/wxbot-management-platform/",
+      "tags": ["nodejs","vue","padplus","project","nuxt","feature","utility"],
+      "categories": ["project"],
+  "excerpt": "前言"
+    },{
+      "title": "wechaty Web Panel的plugin诞生",
+      "url": "/2020/05/31/wechaty-web-panel-plugin/",
+      "tags": ["code","web-panel","plugin","feature","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "背景介绍"
+    },{
+      "title": "wechaty Web Panel的构思与实现",
+      "url": "/2020/05/31/wechaty-docker-assistant/",
+      "tags": ["code","web-panel","feature","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "平台构思"
+    },{
+      "title": "Wechaty Plugin System Launch Event: Join Us on May 30th",
+      "url": "/2020/05/30/wechaty-plugin-system-launch-en/",
+      "tags": ["talk","news","meetup","featured","ecosystem"],
+      "categories": ["announcement"],
+  "excerpt": "Wechaty officially launches its complete plugin system, allowing developers to call pre-packaged plugin capabilities with just one line of code. Join our May 30th event to learn more."
+    },{
+      "title": "团队小助手",
+      "url": "/2020/05/20/wechaty-team-robot/",
+      "tags": ["padplus","productivity"],
+      "categories": ["project"],
+  "excerpt": "之前跟一个律师的朋友聊天了解到，他们很多保全的业务，如果忘记保全，标的大的话损失就严重了，非常需要一个提醒的功能，而这个提醒可以通知团队里的多个同事。如果能以微信的方式通知是最好不过，通过微信和小程序模版消息来做通知的话，无法通知到每一个团队成员。用微信机器人来实现的话是再好不过了。于是在Github找了很多开源的产品，经多方面了解，wechaty是目前市场上最好的机器人 –Wechaty是适用于微信个人的Bot SDK ，可以使..."
+    },{
+      "title": "How to Build an Investment and Financing Chatbot with QnAMaker.ai - Azure Show",
+      "url": "/2020/05/19/qnamaker-juzi-bot-for-investors-rui-en/",
+      "tags": ["mvp","news","talk"],
+      "categories": ["tutorial"],
+  "excerpt": "In the first episode of Azure Show's 'From Scratch' series, Rui Li, founder of Juzi Interactive and a Microsoft AI MVP, demonstrates how to build a chatbot for investors using Azure's QnAMaker.ai. This session provide..."
+    },{
+      "title": "Wechaty 2016–2020: Four Years in Open Source — Huan",
+      "url": "/2020/05/19/open-source-wechaty-huan-2020-en/",
+      "tags": ["mvp","news","talk"],
+      "categories": ["event"],
+  "excerpt": "Huan Li (李卓桓) shares the story of Wechaty’s open-source journey (2016–2020) and introduces the project in a concise 20-minute talk from Azure Show."
+    },{
+      "title": "使用Wechaty管理你的顾客",
+      "url": "/2020/05/17/use-wechaty-manage-ur-customers/",
+      "tags": ["padplus","social"],
+      "categories": ["project"],
+  "excerpt": "作为一个店面开了十多年个体工商户，积攒了很多的客户。希望能够减少人为的操作，去解决一些常见的问题，比如："
+    },{
+      "title": "repe-assistant 社群活动助手",
+      "url": "/2020/05/16/group-repe-assistant/",
+      "tags": ["padplus","utility"],
+      "categories": ["project"],
+  "excerpt": "repe社群助手主要是为了提高社群活跃度以及群活动管理而设计。管理员使用后台web发起一系列活动并设置动态的参与口令，群成员只需要发送对应口令即可参与活动，并且能够结合积分系统做一些约束和奖励。"
+    },{
+      "title": "Nio bot蔚来车主群服务机器人",
+      "url": "/2020/05/12/weilai-nio-bot/",
+      "tags": ["padplus","automotive"],
+      "categories": ["project"],
+  "excerpt": "需求"
+    },{
+      "title": "用Wecahty制作订阅机器人(B站)",
+      "url": "/2020/05/11/wechaty-subscription-bot/",
+      "tags": ["subscribe"],
+      "categories": ["tutorial"],
+  "excerpt": "项目背景"
+    },{
+      "title": "Wechaty Multi-language Developers Meetup",
+      "url": "/2020/05/09/wechaty-multi-language-developers-meetup/",
+      "tags": ["summer-of-wechaty","summer-2020","talk","news","meetup","featured"],
+      "categories": ["announcement"],
+  "excerpt": "关于Wechaty"
+    },{
+      "title": "Wechaty 实时公交查询",
+      "url": "/2020/05/05/when-bus-come/",
+      "tags": ["padplus","travel"],
+      "categories": ["project"],
+  "excerpt": "需求"
+    },{
+      "title": "微信群管辅助",
+      "url": "/2020/04/30/wechaty-chat-room-manager/",
+      "tags": ["utility"],
+      "categories": ["project"],
+  "excerpt": "微信群管辅助"
+    },{
+      "title": "How to Build a Promotion Robot with Wechaty",
+      "url": "/2020/04/30/wechat-promote-tool-en/",
+      "tags": ["ecommerce"],
+      "categories": ["project"],
+  "excerpt": "1. Project Background"
+    },{
+      "title": "Cps demo of wechat bot with wechaty",
+      "url": "/2020/04/23/cps-of-wechat-bot-with-wechaty/",
+      "tags": ["cps","ecommerce"],
+      "categories": ["project"],
+  "excerpt": "tips: if you try to use wechaty web version, you will be know it can’t work, so this post show you how to use ipad version to make bot work, if you never use wechaty any version, this post also pass the web version, b..."
+    },{
+      "title": "Minimalist Implementation of Wechaty Server",
+      "url": "/2020/04/21/wechaty-min-forwarder-en/",
+      "tags": ["project","macpro","social","productivity"],
+      "categories": ["project"],
+  "excerpt": "Requirement"
+    },{
+      "title": "在树莓派上运行wechaty",
+      "url": "/2020/04/20/run-wechaty-on-raspberry-pi/",
+      "tags": ["iot","raspberrypi"],
+      "categories": ["tutorial"],
+  "excerpt": "一、介绍"
+    },{
+      "title": "Open-source Wechaty in Python, Go, and Java",
+      "url": "/2020/04/20/open-source-wechaty-in-python-go-and-java/",
+      "tags": ["go","java","python","talk","news","meetup","featured"],
+      "categories": ["announcement"],
+  "excerpt": "作者:juzibot"
+    },{
+      "title": "Microsoft Online Tech Forum - Interview with Jiarui Li",
+      "url": "/2020/04/17/microsoft-tech-forum-rui-interview-en/",
+      "tags": ["microsoft","chatbot","news"],
+      "categories": ["interview"],
+  "excerpt": "Highlights"
+    },{
+      "title": "Application of Chatbot in the Customized Tourism Industry",
+      "url": "/2020/04/10/chatbot-on-uniqueway-en/",
+      "tags": ["travel"],
+      "categories": ["tutorial"],
+  "excerpt": "1. Introduction to Customized Tourism"
+    },{
+      "title": "How to Build a WeChat Chatbot from 0 to 1",
+      "url": "/2020/04/09/how-to-build-a-chatbot-from-zero-to-one-on-wechaty-en/",
+      "tags": ["chatbot","globalai","talk","news","meetup","featured"],
+      "categories": ["announcement"],
+  "excerpt": "1. What is a chatbot?"
+    },{
+      "title": "使用句子秒回控制家里的台灯",
+      "url": "/2020/04/06/iot-based-on-juzibot/",
+      "tags": ["iot","arduino"],
+      "categories": ["tutorial"],
+  "excerpt": "多年前，我曾基于XMPP协议设计了一套物联网系统，每个设备对应一个XMPP账号。后台可以方便地看到各种设备的在线状态，而无需开发心跳API。还可以通过群发消息，批量对设备进行远程操作。"
+    },{
+      "title": "WeChat Check-in Robot",
+      "url": "/2020/04/05/wechaty-check-in-robot-en/",
+      "tags": ["checkin","social","game"],
+      "categories": ["project"],
+  "excerpt": "1. Development Background"
+    },{
+      "title": "使用Wechaty助力金融营销实践",
+      "url": "/2020/03/30/financial-marketing-practice/",
+      "tags": ["financial"],
+      "categories": ["tutorial"],
+  "excerpt": "首先，先为我拙劣的代码道个歉。临时野生程序员JS为现学，各种不规范请见谅。"
+    },{
+      "title": "Kaiyuanshe (开源社): Meet the \"SLASH\" Youth Huan Li (李卓桓)",
+      "url": "/2020/03/27/kaiyuanshe-interview-huan-slash-youth-en/",
+      "tags": ["news","interview","open-source","kaiyuanshe"],
+      "categories": ["story"],
+  "excerpt": "An interview with Huan Li (李卓桓) on his multi-hyphenate “SLASH” path—founder, investor, author, programmer, advisor, and extreme-sports enthusiast—and his views on entrepreneurship, open source, and life."
+    },{
+      "title": "nCoV2019疫情播报",
+      "url": "/2020/03/26/ncov2019-data-broadcasting/",
+      "tags": ["typescript","bupt","healthcare"],
+      "categories": ["project"],
+  "excerpt": "之前用pywx尝试玩过wxbot，我这种完全属于自嗨，但后来众所周知，web版被限制了，在github上瞎逛发现了wechaty这么个神奇玩意儿，真的太棒了。疫情播报的代码1月就已经在使用了，只可惜是py写的，这次借wechaty，改写成nodejs，也算是一次新语言的挑战。"
+    },{
+      "title": "使用 SQLite 和 pullword 实现简易的业务助手",
+      "url": "/2020/03/17/sqlite-wechat-assistant/",
+      "tags": ["sqlite"],
+      "categories": ["tutorial"],
+  "excerpt": "需求之初是，希望有一个机器人能够替我们完成各种机械式的操作，来提高我们的工作效率。"
+    },{
+      "title": "MetaPuppetForPython - 用Python写Wechaty程序",
+      "url": "/2020/03/07/meta-puppet-for-python/",
+      "tags": ["python","socket","puppet"],
+      "categories": ["tutorial"],
+  "excerpt": "一个支持Wechaty调用的Python框架"
+    },{
+      "title": "wechaty 在UMIUNI北美校友圈中的应用",
+      "url": "/2020/03/02/wechaty-north-america-umiuni/",
+      "tags": ["meetup"],
+      "categories": ["event"],
+  "excerpt": "内容简介"
+    },{
+      "title": "Exploration and Practice of Fragmented Data Response and BAU Routine Operation and Maintenance of wechatfordata",
+      "url": "/2020/03/01/wechaty-data-bau-en/",
+      "tags": ["code","productivity"],
+      "categories": ["project"],
+  "excerpt": "The new crown epidemic broke out in February 2020. The response and maintenance of business data of a large multinational pharmaceutical company increased rapidly with the outbreak of the epidemic. For a time, the res..."
+    },{
+      "title": "Sending and Receiving WeChat Messages Using [Matrix]",
+      "url": "/2020/03/01/matrix-wechat-bridge-en/",
+      "tags": ["matrix","featured","ecosystem"],
+      "categories": ["tutorial"],
+  "excerpt": "This post is also available in Chinese"
+    },{
+      "title": "Wechaty New Release Version v0.30: Lots of New Features!",
+      "url": "/2020/02/08/wechaty-new-release-version-0.30/",
+      "tags": ["release","news"],
+      "categories": ["announcement"],
+  "excerpt": "Wechaty v0.30 Released! We have lots of new features added and bugs fixed!"
+    },{
+      "title": "RICEPO Authentic Chinese Food Delivery in North America",
+      "url": "/2019/12/23/wechaty-north-america-ricepo-en/",
+      "tags": ["meetup"],
+      "categories": ["event"],
+  "excerpt": "Content Outline"
+    },{
+      "title": "Year-End Highlight: Microsoft AI Global Bootcamp Beijing Concludes",
+      "url": "/2019/12/20/microsoft-ai-global-training-camp-ends-in-beijing-en/",
+      "tags": ["event","microsoft","ai","news","ecosystem"],
+      "categories": ["event"],
+  "excerpt": "On December 14, 2019, the Microsoft Global AI Bootcamp Beijing event brought together nearly 100 AI developers to learn from eight industry experts, as part of a global celebration spanning 130 cities and tens of thou..."
+    },{
+      "title": "Wechaty Leaderboard is Born, Calling for ChatBots from the Entire Site",
+      "url": "/2019/12/06/wechaty-recruit-chatbot-en/",
+      "tags": ["juzi"],
+      "categories": ["event"],
+  "excerpt": "Since its launch, the Wechaty project has received attention from developers around the world. In three years, it has received 6,700 positive stars, becoming the world’s largest developer community for WeChat intellig..."
+    },{
+      "title": "Application of Chatbot in Offline Events",
+      "url": "/2019/11/28/chatbot-for-social-events-en/",
+      "tags": ["chatbot","wechat","event"],
+      "categories": ["talk"],
+  "excerpt": "Hello everyone, my name is Alex, Wang Lei. I am a programmer with 10 years of experience and a community organizer. Since 2011, my friends and I have launched an English enthusiast community: PET (Post English Time), ..."
+    },{
+      "title": "Wechaty Lecture at Peking University Open Source Class",
+      "url": "/2019/10/18/wechaty-pku-lecture-en/",
+      "tags": ["meetup","lecture","news","ecosystem"],
+      "categories": ["event"],
+  "excerpt": "On October 18, 2019, Wechaty was presented to over 120 students at Peking University's Software and Microelectronics School, covering project architecture, community governance, and the Maodou Classroom Assistant case..."
+    },{
+      "title": "First WWDC in Silicon Valley",
+      "url": "/2019/08/31/wechaty-wwdc-in-silicon-valley-en/",
+      "tags": ["meetup","news","featured"],
+      "categories": ["event"],
+  "excerpt": "The First WWDC in Silicon Valley"
+    },{
+      "title": "Connect to Wechat: Bot Builder Adapter for Wechat Individual Account",
+      "url": "/2019/08/23/bot-builder-adapter-for-wechat/",
+      "tags": ["talk","news","meetup","featured","adapter","botbuilder","botframework"],
+      "categories": ["announcement"],
+  "excerpt": "适用于微信个人帐户的Microsoft Bot Framework v4 适配器"
+    },{
+      "title": "dotnet club uses Wechaty to collect valuable WeChat threads",
+      "url": "/2019/08/12/dotnet-club-use-wechaty-to-collect-valuable-wechat-threads-en/",
+      "tags": ["bot","dotnetclub","featured"],
+      "categories": ["story"],
+  "excerpt": "Talking with experts in a field often feels like a revelation. Some questions linger in our minds for a long time without an answer, sometimes for a while, sometimes for years. It’s like a child prodigy in a martial a..."
+    },{
+      "title": "Bot Friday - Second Edition",
+      "url": "/2019/07/26/bot-friday-second-en/",
+      "tags": ["bot5","talk","meetup","news"],
+      "categories": ["event"],
+  "excerpt": "« Event Notification: Tencent + Juzi Interaction Second Edition, Chatbot Friday «"
+    },{
+      "title": "Introduction to Rasa: Dialogue Systems, Products, and Technology",
+      "url": "/2019/07/23/introduce-rasa-product-tech-en/",
+      "tags": ["bot","rasa","meetup","news"],
+      "categories": ["event"],
+  "excerpt": "« Announcement for this event: Tencent + JuZi Interactive = Colliding Ideas, Igniting Technology «"
+    },{
+      "title": "Bot Friday Zero — Seminar Minutes",
+      "url": "/2019/07/19/bot5-seminar-minutes-0-en/",
+      "tags": ["bot5","minutes","seminar","meetup","talk","rasa","tencent","video","nlp"],
+      "categories": ["event"],
+  "excerpt": "Kickoff minutes for Bot Friday (Zero) at Tencent Beijing on Jul 19, 2019 — Rasa-to-production talk by Qinghua Duan, founding members, roundtable insights, next-meetup plan, with slides and full video."
+    },{
+      "title": "How to Send WeChat Mini Programs Using PadPro",
+      "url": "/2019/07/18/send-miniprogram-using-padpro-en/",
+      "tags": ["code","featured","ecosystem"],
+      "categories": ["feature"],
+  "excerpt": "This post is also available in Chinese"
+    },{
+      "title": "wewe - Making Group Messages Public to the World",
+      "url": "/2019/07/16/wewe-public-wechat-group-en/",
+      "tags": ["startup","featured","social","utility","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "wewe is an open-source tool that records and publicly shares WeChat and Slack group chat messages, making discussions searchable and accessible to everyone, with topic extraction and chat analysis features."
+    },{
+      "title": "Wechaty - Making Online Business Easy",
+      "url": "/2019/07/12/wechaty-business-easy-pay-en/",
+      "tags": ["code","featured","ecommerce","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "A Wechaty-based payment solution for small businesses and individual developers without business licenses, enabling instant WeChat and Alipay payment notifications and automatic order confirmations for daily revenues ..."
+    },{
+      "title": "Summary of Learning Wechaty and Padpro",
+      "url": "/2019/07/08/summary-of-learning-wechaty-and-padpro/",
+      "tags": ["code"],
+      "categories": ["tutorial"],
+  "excerpt": "总结 wechaty 的基础用法； 介绍 wechaty 与 puppet 及 padpro 模块之间的关系、数据流向、事件监听机制等； 详细介绍合作开发的本地环境配置。"
+    },{
+      "title": "Data Stream about Room-Join Event from Wechat to Wechaty",
+      "url": "/2019/07/08/data-stream-about-room-join-from-wechat-to-wechaty/",
+      "tags": ["code"],
+      "categories": ["tutorial"],
+  "excerpt": "介绍wechaty中的room-join事件的产生，及其数据流的变化"
+    },{
+      "title": "Build a WeChat Sweet-Talk Bot in Three Steps with Node.js - Beginner Friendly",
+      "url": "/2019/06/21/three-step-get-girlfriend-en/",
+      "tags": ["code","featured","entertainment","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "A beginner-friendly Node.js tutorial for building a WeChat bot that sends daily weather updates, sweet messages, and relationship reminders to your significant other, with optional AI chatbot integration."
+    },{
+      "title": "Wechaty-As-A-Service Why and How",
+      "url": "/2019/06/13/wechaty-as-a-service-why-and-how/",
+      "tags": ["code","saas","news","utility"],
+      "categories": ["project"],
+  "excerpt": "代码"
+    },{
+      "title": "New DevOps Toolset for @Chatie Organization",
+      "url": "/2019/06/12/chatie-devops-toolset/",
+      "tags": ["open-source","devops","npm","news"],
+      "categories": ["npm"],
+  "excerpt": "The powerful and easy to use Chatie DevOps Toolset:"
+    },{
+      "title": "居然有人能忘记吃饭？写个微信机器人提醒他",
+      "url": "/2019/05/11/remind-eat-bot/",
+      "tags": ["code","social"],
+      "categories": ["project"],
+  "excerpt": "居然有人忘记吃饭？？？"
+    },{
+      "title": "Write a Web Scraper with Node + Wechaty to Send Daily Warm Messages to Your Girlfriend (or Boyfriend)",
+      "url": "/2019/04/02/node-wechaty-spider-en/",
+      "tags": ["code","featured","social","entertainment","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "This post is also available in Chinese"
+    },{
+      "title": "使用koa2+wechaty打造个人微信小秘书",
+      "url": "/2019/04/02/koa-wechaty-assistant/",
+      "tags": ["code","productivity"],
+      "categories": ["project"],
+  "excerpt": "你是不是有闲置的微信号? 你想不想有个小秘书定时提醒你将要做的事情？ 你是否为忘记一些纪念日而懊恼？ 你是否加班到很晚，而忘记了今天和别人有约？ 你是不是下班还记得拿快递，到家后才发现忘记了？ 你是不是想学习一下如何做一个微信小秘书？"
+    },{
+      "title": "What Can a WeChat Bot Do?",
+      "url": "/2018/11/25/wechat-robot-can-do-anything-en/",
+      "tags": ["ai","news","ecosystem"],
+      "categories": ["article"],
+  "excerpt": "As a product manager who can code, I explore the limitless possibilities of WeChat bots using Wechaty - from chat history recording to community management, multi-group broadcasting, and ChatOps integration."
+    },{
+      "title": "Microsoft Tech Summit - Quickly Build a Chatbot",
+      "url": "/2018/10/21/microsoft-tech-summit-chatbot-quick-started-en/",
+      "tags": ["talk","news","chatbot","luis"],
+      "categories": ["event"],
+  "excerpt": "A hands-on lab from Microsoft Tech Summit 2018 that shows you how to quickly build a WeChat chatbot using Microsoft LUIS and Wechaty."
+    },{
+      "title": "Birthday Cake",
+      "url": "/2018/10/09/birthday-cake-2018-en/",
+      "tags": ["contribution"],
+      "categories": ["article"],
+  "excerpt": "Are you brave enough to attend Wechaty’s birthday party when you don’t even dare to go to your class reunion? A story about how to divide a cake."
+    },{
+      "title": "Wechaty Country Wide Developer Conference",
+      "url": "/2018/09/15/country-wide-developer-conference/",
+      "tags": ["meetup","news","featured"],
+      "categories": ["event"],
+  "excerpt": ""
+    },{
+      "title": "Thoughts on AI, Bot, and Wechaty",
+      "url": "/2018/08/30/ai-bot-wechaty-en/",
+      "tags": ["ai"],
+      "categories": ["article"],
+  "excerpt": "Artificial Intelligence (AI) has experienced several ups and downs over the past sixty years. In 2016, it finally caused a global sensation when AlphaGo defeated the world Go champion, ushering in a new era of develop..."
+    },{
+      "title": "Lightbot Statistical Analysis Management Platform",
+      "url": "/2018/08/14/wechaty-lightbot-analytics-en/",
+      "tags": ["analytics","featured","utility","ecosystem"],
+      "categories": ["project"],
+  "excerpt": "Lightbot is a comprehensive WeChat group management platform built with Wechaty, featuring auto-reply, keyword management, violation detection, user analytics, and chat data visualization for effective community opera..."
+    },{
+      "title": "Docker Wechaty Getting Started",
+      "url": "/2018/08/14/docker-wechaty-getting-started/",
+      "tags": ["docker","news"],
+      "categories": ["tutorial"],
+  "excerpt": ""
+    },{
+      "title": "用wechaty实现新闻资讯播报机器人",
+      "url": "/2018/08/13/wechaty-xiaoli-bot/",
+      "tags": ["code","media"],
+      "categories": ["project"],
+  "excerpt": ""
+    },{
+      "title": "Deploying Wechaty Bot from GitHub to Heroku as Easy as Clicking a Button",
+      "url": "/2018/08/09/heroku-deploy-button-for-wechaty-starter-template/",
+      "tags": ["heroku","deploy","news"],
+      "categories": ["tutorial"],
+  "excerpt": ""
+    },{
+      "title": "Build Wechaty Chatbot at OpenSource Factory",
+      "url": "/2018/08/05/build-wechaty-chatbot-at-opensource-factory/",
+      "tags": ["release","event","news"],
+      "categories": ["announcement"],
+  "excerpt": "尹婷：动手实现微信聊天机器人"
+    },{
+      "title": "Installing Wechaty on Windows 10",
+      "url": "/2018/07/24/wechaty-installation-in-windows-10-en/",
+      "tags": ["windows","install","news","ecosystem"],
+      "categories": ["tutorial"],
+  "excerpt": "A comprehensive guide to installing Wechaty on Windows 10 Home, covering common installation errors and solutions including Python 2.7, node-gyp, windows-build-tools, and puppeteer configuration."
+    },{
+      "title": "Wechaty New Release Version v0.18: SLOC from 27,630 to 7,817",
+      "url": "/2018/07/12/wechaty-new-release-version-0.18/",
+      "tags": ["release","news","featured"],
+      "categories": ["announcement"],
+  "excerpt": ""
+    },{
+      "title": "Migrating Wechaty v0.14 to v0.18 Guide - From Puppeteer To Padchat",
+      "url": "/2018/06/24/migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-en/",
+      "tags": ["code","news"],
+      "categories": ["migration"],
+  "excerpt": "Wechaty has been updated to version 0.16(BETA) these days and begin to support all kinds of wechat solutions including web, ipad, ios, etc. My product based on wechaty has to migration from wechaty solution based on w..."
+    },{
+      "title": "Wechaty New Version 0.16(BETA, with super power) Released",
+      "url": "/2018/06/21/wechaty-new-release-version-0.16/",
+      "tags": ["release","news"],
+      "categories": ["announcement"],
+  "excerpt": ""
+    },{
+      "title": "My Exploration and Views on WeChat Bots",
+      "url": "/2018/05/06/talk-about-wechat-robot-en/",
+      "tags": ["sdk"],
+      "categories": ["article"],
+  "excerpt": "First of all, thank you to Huan LI for the invitation to write this blog post. I haven’t been doing research related to WeChat bots for very long, and there was a long interruption in the middle. I started in June las..."
+    },{
+      "title": "New Feature: Multi-Instance Support for Wechaty v0.16(WIP)",
+      "url": "/2018/04/23/blessed-twins-bot/",
+      "tags": ["code","news"],
+      "categories": ["feature"],
+  "excerpt": ""
+    },{
+      "title": "Integrate Wechat Personal Account to Microsoft BotFramework with a BotBuilder Wechaty Connector",
+      "url": "/2018/04/18/botbuilder-wechaty-connector/",
+      "tags": ["botbuilder","featured"],
+      "categories": ["npm"],
+  "excerpt": ""
+    },{
+      "title": "WeChat App Communication Protocol Case Study Reference Guide",
+      "url": "/2018/03/10/wechat-protocol-reference-guide-en/",
+      "tags": ["hook","featured","ecosystem"],
+      "categories": ["hacking"],
+  "excerpt": "An in-depth technical analysis of WeChat's Android client communication protocol, including network architecture, message formats, synchronization mechanisms, and a reference implementation called MicroChat based on M..."
+    },{
+      "title": "Can Typescript really live up to its hype?",
+      "url": "/2018/03/09/can-typescript-really-live-up-to-its-hype/",
+      "tags": ["typescript"],
+      "categories": ["article"],
+  "excerpt": ""
+    },{
+      "title": "女生科技体验节，Wechaty杂货铺",
+      "url": "/2018/02/06/techie-festival-faq/",
+      "tags": ["datagirls"],
+      "categories": ["tutorial"],
+  "excerpt": "这篇文章主要针对女生科技体验节Wechaty专场，同学们问的问题的汇总。因为很多同学没有太多编程基础，所以这篇文章讲解会比较基础。"
+    },{
+      "title": "Girl Techie Festival, Wechaty FAQ",
+      "url": "/2018/02/06/techie-festival-faq-en/",
+      "tags": ["datagirls"],
+      "categories": ["tutorial"],
+  "excerpt": "This article is a summary of the questions asked by students at the Wechaty session of the Girl Techie Festival. Because many students do not have much programming experience, this article will be more basic."
+    },{
+      "title": "Girl Techie Festival, Wechaty Special Tech Review",
+      "url": "/2018/01/29/girl-techie-festival-en/",
+      "tags": ["talk","news"],
+      "categories": ["event"],
+  "excerpt": "Girls naturally love beautiful clothes, a wardrobe full of jewelry, and cosmetics. They go on dates with their best friends on weekends, go shopping, and have afternoon tea. This seems to be the standard image of girl..."
+    },{
+      "title": "Building a Face Recognition Chatbot - Wechaty Blinder",
+      "url": "/2018/01/25/how-to-build-face-blinder-bot-en/",
+      "tags": ["code","talk","machine-learning","tensorflow","featured","utility","social"],
+      "categories": ["project"],
+  "excerpt": "Learn how to build a WeChat face recognition bot using Wechaty, TensorFlow, and FaceNet to help identify people in photos"
+    },{
+      "title": "Wechaty Contributor Dinner with Data Girls",
+      "url": "/2018/01/14/wechaty-contributor-dinner-data-girl/",
+      "tags": ["meetup","news"],
+      "categories": ["event"],
+  "excerpt": "This Wechaty Contributors Dinner is sponsored by Data Girl."
+    },{
+      "title": "Everything You Need to Know About Chatbots",
+      "url": "/2018/01/09/all-you-need-to-know-about-chatbot-en/",
+      "tags": ["datagirls","history","artificial-intelligence","business"],
+      "categories": ["event"],
+  "excerpt": "A comprehensive exploration of chatbot history from ELIZA to modern AI assistants, covering commercial applications, technical implementations, and current limitations in the evolving conversational AI landscape."
+    },{
+      "title": "Wechaty-Mail: An email tool build on Wechaty",
+      "url": "/2017/12/25/wechaty-mail-tool/",
+      "tags": ["code","utility"],
+      "categories": ["project"],
+  "excerpt": "As soon as I learn how to use 6 lines of JavaScript to achieve a simple chatbot based on Wechaty, I was deeply attracted and decide to develop an easy-to-use email tool based on it. Wechaty-Mail is an application base..."
+    },{
+      "title": "wechaty-electron: Making Your Wechaty a Client Service",
+      "url": "/2017/11/26/wechaty-electron-making-your-wechaty-as-a-client-service-en/",
+      "tags": ["code","featured","utility","electron","desktop"],
+      "categories": ["project"],
+  "excerpt": "A technical exploration of creating a desktop client for Wechaty using Electron, enabling real-time WeChat group broadcasting with manual intervention capabilities and cross-platform deployment."
+    },{
+      "title": "解析WebWxApp代码来增强wechaty功能（一）",
+      "url": "/2017/11/25/analysis-and-enhancement-wechaty/",
+      "tags": ["code","featured"],
+      "categories": ["hacking"],
+  "excerpt": ""
+    },{
+      "title": "I Built a Points Red Packet Robot with Wechaty",
+      "url": "/2017/11/08/red-pocket-wechaty-iyjian-en/",
+      "tags": ["code","finance","automation","experience"],
+      "categories": ["project"],
+  "excerpt": "A developer's journey building an automated WeChat robot for exchanging credit card reward points through red packets, sharing technical challenges and lessons learned from scaling to 3000+ users."
+    },{
+      "title": "Ten minutes to build a daily paper bot",
+      "url": "/2017/10/28/ten-minutes-to-build-a-daily-paper-bot/",
+      "tags": ["code","media"],
+      "categories": ["project"],
+  "excerpt": "I built a bot to deliver the daily paper about machine learning and fintech to the users.Considering the development of lowest cost, I chose wechaty. It’s so awesome that it only took me 10 mintues to make the bot work."
+    },{
+      "title": "Research and Sharing on WeChat PC Version Hook",
+      "url": "/2017/10/06/wechat-pc-impactor-en/",
+      "tags": ["code","hook","news","ecosystem"],
+      "categories": ["hacking"],
+  "excerpt": "Technical exploration of hooking WeChat PC version through DLL injection, including code samples for message interception, contact list reading, and profile extraction using Version.dll hijacking."
+    },{
+      "title": "Wechaty New Version 0.9.0 Released",
+      "url": "/2017/10/04/wechaty-new-release-version-0.9.0/",
+      "tags": ["release","news"],
+      "categories": ["announcement"],
+  "excerpt": ""
+    },{
+      "title": "Using Jsdoc to sync the doc with the latest code",
+      "url": "/2017/09/20/add-wechaty-jsdoc/",
+      "tags": ["document"],
+      "categories": ["announcement"],
+  "excerpt": "In order to sync the doc with the latest code, it’s best to use jsdoc to describe the API and use jsdoc-to-markdown to generate markdown format documents to the docs directory."
+    },{
+      "title": "Score Your Face Photo: a ML & Wechaty practice",
+      "url": "/2017/09/18/wechaty-selfie-bot/",
+      "tags": ["code","featured","machine-learning","game"],
+      "categories": ["project"],
+  "excerpt": "Recently I found a fun and easy middleware to use for WeChat, called Wechaty."
+    },{
+      "title": "Wechaty - the missing bot SDK for WeChat",
+      "url": "/2017/09/10/wechaty-the-bot-sdk/",
+      "tags": ["api","unofficial","news"],
+      "categories": ["story"],
+  "excerpt": "Recently I was in San Francisco talking to a lot of my friends in the Chatbot community, and realized how the Wechaty community is becoming central to Chatbot development in China."
+    },{
+      "title": "Shanghai WWDC - Wechaty Worldwide Developers Conference",
+      "url": "/2017/08/28/wechaty-shanghai-meetup/",
+      "tags": ["meetup","news"],
+      "categories": ["event"],
+  "excerpt": "Most of the Wechaty core team are in Beijing, but there are a few of us here in Shanghai too. @lijiarui was in town for a few days and so we had a small get together!"
+    },{
+      "title": "Run Your Telegram Bot with Wechaty",
+      "url": "/2017/07/17/run-your-telegram-bot-with-wechaty/",
+      "tags": ["code","telegram","news","utility"],
+      "categories": ["project"],
+  "excerpt": "Before introducing Wechaty Telegram Bot Adaptor, I would like to say something about Telegram chatbots. Recent days, I have a lot of fun playing chatbots on Telegram. After lynched hundreds of tanners in Werewolf game..."
+    },{
+      "title": "How to Build a Chatbot",
+      "url": "/2017/07/13/how-to-build-a-chatbot-en/",
+      "tags": ["talk","featured","tutorial","development"],
+      "categories": ["tutorial"],
+  "excerpt": "A comprehensive guide to building chatbots from the founder of Juzi Interactive, covering the evolution from PC to web to mobile apps to chatbots, and practical implementation using Wechaty framework."
+    },{
+      "title": "Wechaty Sticker is ON SALE!",
+      "url": "/2017/07/06/wechaty-sticker-on-sale/",
+      "tags": ["news","badge"],
+      "categories": ["shop"],
+  "excerpt": ""
+    },{
+      "title": "An interesting weekend with Wechaty",
+      "url": "/2017/06/24/an-interesting-weekend-with-wechaty/",
+      "tags": ["code","featured","social"],
+      "categories": ["project"],
+  "excerpt": "Thanks for inviting me to write this article that give me a chance to share my story for each other. And Wechaty is a very awesome library that is powerful and easy to use. The most important point is that is interest..."
+    },{
+      "title": "The First Wechaty WWDC Party in 2017",
+      "url": "/2017/06/06/the-first-chatie-wwdc-party/",
+      "tags": ["meetup","news","featured"],
+      "categories": ["event"],
+  "excerpt": "On June 6, 2017, 6 pm, we have a great first Wechaty World Wide Developer Conference (WWDC) at Su Shi Restaurant of Wudaokou, Beijing."
+    },{
+      "title": "A Simple Wechaty Bot with Intelligence Powered by TensorFlow",
+      "url": "/2017/06/05/a-simple-wechaty-bot-with-intelligence-powered-by-tf/",
+      "tags": ["code","machine-learning","tensorflow","news","utility"],
+      "categories": ["project"],
+  "excerpt": "Wechaty is an powerful library to help developers interact with WeChat programmatically, creating a bot for a varity of purposes. A very significant purpose of a bot is to chat with users, implementing tons of busines..."
+    },{
+      "title": "How to use interval in Wechaty to overcome some web-wechat API limitations",
+      "url": "/2017/05/25/use-interval-in-wechaty/",
+      "tags": ["code","api"],
+      "categories": ["hacking"],
+  "excerpt": ""
+    },{
+      "title": "Deliver dialogs with SuperScript",
+      "url": "/2017/05/17/deliver-dialogs-with-superscript/",
+      "tags": ["code","news"],
+      "categories": ["tutorial"],
+  "excerpt": "Hailiang WANG is Lead of Rockq Community and also a software developer. He used to work in IBM China Innovation Center and IBM China Development Lab. Since last year, he has focused on deep learning technologies, NLP,..."
+    },{
+      "title": "Wechaty Contributor Dinner",
+      "url": "/2017/04/21/wechaty-meeting-dinner-en/",
+      "tags": ["meetup","news"],
+      "categories": ["event"],
+  "excerpt": ""
+    },{
+      "title": "Interact Wechaty with Ruby on Rails from scratch",
+      "url": "/2017/04/21/interact-wechaty-with-ruby-on-rails-from-scratch/",
+      "tags": ["code","featured"],
+      "categories": ["tutorial"],
+  "excerpt": ""
+    },{
+      "title": "Using Chatie to Implement WeChat Bot Business Logic for [Haoshiyou] Group Management",
+      "url": "/2017/04/16/how-chatie-is-used-in-haoshiyou-project-en/",
+      "tags": ["code","startup","featured","real-estate"],
+      "categories": ["project"],
+  "excerpt": "To help friends new to Silicon Valley find roommates and rent apartments, we established several WeChat groups in our local area. Our basic philosophy for this project is simple focus and finish-and-go."
+    },{
+      "title": "Adding Image and Video Sending Function to Bots",
+      "url": "/2017/04/13/support-message-type-of-image-and-video-en/",
+      "tags": ["code"],
+      "categories": ["feature"],
+  "excerpt": "For company activities, we needed to manage users joining groups and provide automatic responses. Earlier at Node Party Beijing, I was exposed to @huan’s sharing, and Wechaty was perfect for supporting this activity w..."
+    },{
+      "title": "Adding Hot Reload Function for WeChat Bots",
+      "url": "/2017/03/20/added-hot-reload-for-bots-en/",
+      "tags": ["code"],
+      "categories": ["feature"],
+  "excerpt": ""
+    },{
+      "title": "The secret lives of WeChat’s chatbots",
+      "url": "/2017/02/22/the-secret-lives-of-wechat-chatbots/",
+      "tags": ["interview","news"],
+      "categories": ["story"],
+  "excerpt": "Chatbots rocketed into the limelight last year, bolstered by the enthusiasm of Facebook and Microsoft, though the technology wasn’t mature yet."
+    },{
+      "title": "Wechaty 101: from v0.0 to v0.7",
+      "url": "/2017/01/06/wechaty-101-presentation/",
+      "tags": ["talk","news"],
+      "categories": ["announcement"],
+  "excerpt": "This talk was presented at Node Party Beijing #18 Dec 2016, all about ChatBots."
+    },{
+      "title": "Getting Started with Wechaty - Live Coding Tutorial",
+      "url": "/2017/01/01/getting-started-wechaty/",
+      "tags": ["code","news"],
+      "categories": ["tutorial"],
+  "excerpt": ""
+    },{
+      "title": "How a Girl Built a WeChat Chatbot with 6 Lines of Code",
+      "url": "/2016/12/10/try-to-write-wexinrobot-en/",
+      "tags": ["code","news","tutorial","chatbot"],
+      "categories": ["story"],
+  "excerpt": "A personal story of how dance video creator Jiarui Li solved her community management challenges by building a WeChat chatbot using Wechaty framework with just 6 lines of JavaScript."
+    },{
+      "title": "Wechaty Case Study - a letter from JasLin",
+      "url": "/2016/12/08/jaslin-user-case/",
+      "tags": ["case"],
+      "categories": ["story"],
+  "excerpt": "Usercase of using wechat robot with Wechaty"
+    },{
+      "title": "Node Party #18 - Rediscovering Chatbots",
+      "url": "/2016/12/07/beijing-nodejs-meetup-party-en/",
+      "tags": ["talk","news","chatbot","meetup"],
+      "categories": ["event"],
+  "excerpt": "Node Party #18 focuses on chatbot development with Wechaty and explores practical scenarios for conversational AI. Join us for talks by Zhuohuan LI (李卓桓), Jiarui LI (李佳芮), and Shoukun WANG (王守崑) on December 11th in Be..."
+    },{
+      "title": "Running Wechaty WeChat Bot Framework with Docker",
+      "url": "/2016/12/05/ghostcloud-wechaty-docker-en/",
+      "tags": ["code","docker"],
+      "categories": ["tutorial"],
+  "excerpt": "Learn how to use Docker to run Wechaty WeChat bot framework, from basic setup to deployment with GhostCloud EcOS"
+    },{
+      "title": "Chat Transcript - Jiarui Li (李佳芮): A Female Developer Taking a Step Forward",
+      "url": "/2016/12/04/gitchat-lijiarui-interview-en/",
+      "tags": ["interview","news","chatbot","female-developer"],
+      "categories": ["story"],
+  "excerpt": "An insightful GitChat interview with Jiarui Li, a female frontend engineer, discussing WeChat robots, Wechaty framework, and her entrepreneurial journey in chatbot automation."
+    },{
+      "title": "Welcome to Wechaty!",
+      "url": "/2016/12/03/welcome-to-wechaty/",
+      "tags": ["code","news"],
+      "categories": ["announcement"],
+  "excerpt": ""
+    },{
+      "title": "About",
+      "url": "/about.html",
+      "tags": null,
+      "categories": null,
+  "excerpt": "[![Wechaty](https://wechaty.github.io/wechaty/images/wechaty-logo-green-en.png)](https://github.com/wechaty/wechaty) ## CONNECTING CHATBOTS Wechaty is a Bot SDK for Wechat **Individual** Account which can help you cre..."
+    },{
+      "title": "Buy me a coffee",
+      "url": "/buy-me-a-coffee.html",
+      "tags": null,
+      "categories": null,
+  "excerpt": "Hi! I am Sal, web designer &amp; developer at WowThemes.net. The free items I create are my side projects and Mundana for Jekyll is one of them. You can find all the work I release for free here. You have my permissio..."
+    },{
+      "title": "Categories",
+      "url": "/categories.html",
+      "tags": null,
+      "categories": null,
+  "excerpt": "Categories announcement Announcing FireGen: Turn Firebase RTDB into Your Universal Generative AI API FireGen is a Firebase Extension that transforms your Realtime Database into a universal Generative AI job queue, sim..."
+    },{
+      "title": "Contact",
+      "url": "/contact.html",
+      "tags": null,
+      "categories": null,
+  "excerpt": "Please send your message to Wechaty. We will reply as soon as possible!"
+    },{
+      "title": "Contributors Directory",
+      "url": "/contributors/",
+      "tags": null,
+      "categories": null,
+  "excerpt": ""
+    },{
+      "title": "Wechaty - News",
+      "url": "/news/",
+      "tags": null,
+      "categories": null,
+  "excerpt": "Wechaty - RPA SDK for Chatbot Makers"
+    },{
+      "title": "Wechaty - Blog Updates",
+      "url": "/blog/",
+      "tags": null,
+      "categories": null,
+  "excerpt": "Wechaty Latest Community Blog Updates"
+    },{
+      "title": "Privacy Policy",
+      "url": "/privacy-policy.html",
+      "tags": null,
+      "categories": null,
+  "excerpt": "“Wechaty” takes your privacy seriously. To better protect your privacy we provide this privacy policy notice explaining the way your personal information is collected and used. Collection of Routine Information This w..."
+    },{
+      "title": "Tags",
+      "url": "/tags.html",
+      "tags": null,
+      "categories": null,
+  "excerpt": "Tags {% for tag in site.tags %} {{ tag[0] }} {% assign pages_list = tag[1] %} {% for post in pages_list %} {% if post.hidden %} {% continue %} {% endif %} {% if post.title != null %} {% if group == null or group == po..."
+    },{
+      "title": "/feed.xml",
+      "url": "/feed.xml",
+      "tags": null,
+      "categories": null,
+  "excerpt": "{% if page.xsl %}{% endif %}Jekyll{{ site.time | date_to_xmlschema }}{{ page.url | absolute_url | xml_escape }}{% assign title = site.title | default: site.name %}{% if page.collection != \"posts\" %}{% assign collectio..."
+    },{
+      "title": "Wechaty - Blog Updates",
+      "url": "/blog/page2/",
+      "tags": null,
+      "categories": null,
+  "excerpt": "Wechaty Latest Community Blog Updates"
+    },{
+      "title": "Wechaty - Blog Updates",
+      "url": "/blog/page3/",
+      "tags": null,
+      "categories": null,
+  "excerpt": "Wechaty Latest Community Blog Updates"
+    },{
+      "title": "Wechaty - Blog Updates",
+      "url": "/blog/page4/",
+      "tags": null,
+      "categories": null,
+  "excerpt": "Wechaty Latest Community Blog Updates"
+    },{
+      "title": "Wechaty - Blog Updates",
+      "url": "/blog/page5/",
+      "tags": null,
+      "categories": null,
+  "excerpt": "Wechaty Latest Community Blog Updates"
+    },{
+      "title": "Wechaty - Blog Updates",
+      "url": "/blog/page6/",
+      "tags": null,
+      "categories": null,
+  "excerpt": "Wechaty Latest Community Blog Updates"
+    },{
+      "title": "Wechaty - Blog Updates",
+      "url": "/blog/page7/",
+      "tags": null,
+      "categories": null,
+  "excerpt": "Wechaty Latest Community Blog Updates"
+    },{
+      "title": "Wechaty - Blog Updates",
+      "url": "/blog/page8/",
+      "tags": null,
+      "categories": null,
+  "excerpt": "Wechaty Latest Community Blog Updates"
+    },{
+      "title": "Wechaty - Blog Updates",
+      "url": "/blog/page9/",
+      "tags": null,
+      "categories": null,
+  "excerpt": "Wechaty Latest Community Blog Updates"
+    },{
+      "title": "Wechaty - Blog Updates",
+      "url": "/blog/page10/",
+      "tags": null,
+      "categories": null,
+  "excerpt": "Wechaty Latest Community Blog Updates"
+    },{
+      "title": "Wechaty - Blog Updates",
+      "url": "/blog/page11/",
+      "tags": null,
+      "categories": null,
+  "excerpt": "Wechaty Latest Community Blog Updates"
+    },{
+      "title": "Wechaty - Blog Updates",
+      "url": "/blog/page12/",
+      "tags": null,
+      "categories": null,
+  "excerpt": "Wechaty Latest Community Blog Updates"
+    },{
+      "title": "Wechaty - Blog Updates",
+      "url": "/blog/page13/",
+      "tags": null,
+      "categories": null,
+  "excerpt": "Wechaty Latest Community Blog Updates"
+    },{
+      "title": "Wechaty - Blog Updates",
+      "url": "/blog/page14/",
+      "tags": null,
+      "categories": null,
+  "excerpt": "Wechaty Latest Community Blog Updates"
+    },{
+      "title": "Wechaty - Blog Updates",
+      "url": "/blog/page15/",
+      "tags": null,
+      "categories": null,
+  "excerpt": "Wechaty Latest Community Blog Updates"
+    },{
+      "title": "Wechaty - Blog Updates",
+      "url": "/blog/page16/",
+      "tags": null,
+      "categories": null,
+  "excerpt": "Wechaty Latest Community Blog Updates"
+    },{
+      "title": "Wechaty - Blog Updates",
+      "url": "/blog/page17/",
+      "tags": null,
+      "categories": null,
+  "excerpt": "Wechaty Latest Community Blog Updates"
+    },{
+      "title": "sitemap.xml",
+      "url": "/sitemap.xml",
+      "tags": null,
+      "categories": null,
+  "excerpt": "{% if page.xsl %} {% endif %} {% assign collections = site.collections | where_exp:'collection','collection.output != false' %}{% for collection in collections %}{% assign docs = collection.docs | where_exp:'doc','doc..."
+    },{
+      "title": "robots.txt",
+      "url": "/robots.txt",
+      "tags": null,
+      "categories": null,
+  "excerpt": "Sitemap: {{ \"sitemap.xml\" | absolute_url }}"
+    }]
+}

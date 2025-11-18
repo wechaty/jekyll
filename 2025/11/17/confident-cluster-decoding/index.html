@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Confident-Cluster Decoding: A New Way to Make LLMs Less Random and More Trustworthy | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Confident-Cluster Decoding: A New Way to Make LLMs Less Random and More Trustworthy | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Confident-Cluster Decoding: A New Way to Make LLMs Less Random and More Trustworthy" />
+<meta name="author" content="huan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Greedy decoding is too brittle, sampling is too random — Confident-Cluster Decoding (CCD) keeps only the tokens the model is truly confident about, exposes all top contenders, and turns that “soft uncertainty” into something coding agents and tool-calling systems can actually reason about." />
+<meta property="og:description" content="Greedy decoding is too brittle, sampling is too random — Confident-Cluster Decoding (CCD) keeps only the tokens the model is truly confident about, exposes all top contenders, and turns that “soft uncertainty” into something coding agents and tool-calling systems can actually reason about." />
+<link rel="canonical" href="https://wechaty.js.org/2025/11/17/confident-cluster-decoding/" />
+<meta property="og:url" content="https://wechaty.js.org/2025/11/17/confident-cluster-decoding/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2025/11-confident-cluster-decoding/ccd-greedy.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-11-17T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2025/11-confident-cluster-decoding/ccd-greedy.webp" />
+<meta property="twitter:title" content="Confident-Cluster Decoding: A New Way to Make LLMs Less Random and More Trustworthy" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"huan"},"dateModified":"2025-11-17T00:00:00+00:00","datePublished":"2025-11-17T00:00:00+00:00","description":"Greedy decoding is too brittle, sampling is too random — Confident-Cluster Decoding (CCD) keeps only the tokens the model is truly confident about, exposes all top contenders, and turns that “soft uncertainty” into something coding agents and tool-calling systems can actually reason about.","headline":"Confident-Cluster Decoding: A New Way to Make LLMs Less Random and More Trustworthy","image":"https://wechaty.js.org/assets/2025/11-confident-cluster-decoding/ccd-greedy.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2025/11/17/confident-cluster-decoding/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"huan"},"url":"https://wechaty.js.org/2025/11/17/confident-cluster-decoding/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"],
+        ignoreHtmlClass: "no-mathjax",
+        processHtmlClass: "mathjax-process"
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" crossorigin="anonymous"></script>
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#ideas">ideas</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Confident-Cluster Decoding: A New Way to Make LLMs Less Random and More Trustworthy</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> Huan Li <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Nov 17, 2025 · <span class="reading-time">
+  
+  
+    15 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2025/11-confident-cluster-decoding/ccd-greedy.webp" alt="Confident-Cluster Decoding: A New Way to Make LLMs Less Random and More Trustworthy">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_button_wechat" title='Wechat'>
+          <img id="qrcode" title="Wechat"
+            src="/assets/contributors/wechaty/icon.png"
+            width="64" height="64"
+          />
+        </a>
+        <a class="a2a_button_wechat" title='Wechat'></a>
+        <a class="a2a_button_sina_weibo" title='Weibo'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+        <!-- AddToAny BEGIN -->
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<blockquote>
+  <p>Greedy decoding is too brittle, sampling is too random</p>
+</blockquote>
+
+<div style="clear: both;"></div>
+
+<p><strong>Confident-Cluster Decoding (CCD)</strong> keeps only the tokens the model is truly confident about, exposes all top contenders, and turns that “soft uncertainty” into something coding agents and tool-calling systems can actually reason about.</p>
+
+<hr />
+
+<h2 id="1-the-moment-i-realized-greedy-decoding-was-lying-to-me">1. The Moment I Realized Greedy Decoding Was Lying to Me</h2>
+
+<p>Like many people building with large language models, I started with the usual recipe:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">temperature = 0</code></li>
+  <li><code class="language-plaintext highlighter-rouge">topK = 1</code></li>
+  <li><code class="language-plaintext highlighter-rouge">candidateCount = 1</code></li>
+  <li><code class="language-plaintext highlighter-rouge">seed</code> pinned to a constant value</li>
+</ul>
+
+<p>Greedy decoding. No randomness. No drama.<br />
+Especially for <strong>code generation</strong> and <strong>tool calling</strong>, this feels like the “right” choice:</p>
+
+<ul>
+  <li>I want <strong>deterministic behavior</strong>.</li>
+  <li>I want <strong>minimal hallucination</strong>.</li>
+  <li>I want <strong>valid JSON</strong>, <strong>compilable code</strong>, and <strong>stable outputs</strong> I can safely automate around.</li>
+</ul>
+
+<p>In my <a href="https://github.com/shipfail/firegen">FireGen</a> project, I use Gemini to:</p>
+
+<ul>
+  <li>take a user prompt + a schema,</li>
+  <li>reason step-by-step about how to fill that schema,</li>
+  <li>and output a <strong>strict JSON object</strong> for a REST API call.</li>
+</ul>
+
+<p>With <code class="language-plaintext highlighter-rouge">temperature = 0</code>, <code class="language-plaintext highlighter-rouge">topK = 1</code>, and a fixed <code class="language-plaintext highlighter-rouge">seed</code>, it worked <em>really</em> well.<br />
+Most of the time the model behaved like a perfectly deterministic machine.</p>
+
+<p>But sometimes, very rarely, I noticed something weird:</p>
+
+<blockquote>
+  <p>Same prompt, same model, same parameters —<br />
+and the model produced a <em>slightly different</em> answer.</p>
+</blockquote>
+
+<p>Not a huge difference, but enough to matter if you care about strict behavior.</p>
+
+<p>So I started asking: <strong>“Wait, I’m using greedy decoding. Where is the randomness coming from?”</strong></p>
+
+<p>That’s how this whole idea started.</p>
+
+<hr />
+
+<h2 id="2-whats-actually-going-on-under-the-hood">2. What’s Actually Going On Under the Hood?</h2>
+
+<p>Even with “no randomness” in the sampling step, there’s still a lot of non-determinism inside a modern LLM stack:</p>
+
+<ul>
+  <li>Parallel floating-point operations are <strong>not associative</strong>. The order of additions/multiplications can change the final bits.</li>
+  <li>Different hardware / kernels / compilers may produce <strong>slightly different logits</strong>.</li>
+  <li>If two tokens have probabilities like <strong>0.12794 vs 0.12713</strong> (typical for top-1 vs top-2 tokens in modern LLMs), a tiny numerical nudge can flip which one wins.</li>
+</ul>
+
+<p>From the model’s perspective, both tokens are basically <strong>equally good</strong>.</p>
+
+<p>From greedy decoding’s perspective, this becomes a <strong>hard, brittle choice</strong>:</p>
+
+<ul>
+  <li>If token A barely wins → we always pick A.</li>
+  <li>If token B barely wins (due to tiny numeric changes) → we always pick B.</li>
+</ul>
+
+<p>In other words, greedy decoding is <strong>pretending</strong> there is exactly one “right” answer, even when the model’s own distribution is screaming:</p>
+
+<blockquote>
+  <p>“Actually, I’m not sure. I have a few candidates I like almost equally.”</p>
+</blockquote>
+
+<p>This mismatch is the core problem:</p>
+
+<ul>
+  <li><strong>Greedy decoding discards all uncertainty.</strong></li>
+  <li><strong>Sampling reintroduces randomness from the tail.</strong></li>
+</ul>
+
+<p>For developers building <strong>coding agents</strong> and <strong>tool-calling systems</strong>, that’s a bad trade-off.</p>
+
+<hr />
+
+<h2 id="3-the-realization-dont-just-pick-one-token--keep-the-whole-confident-cluster">3. The Realization: Don’t Just Pick One Token — Keep the Whole Confident Cluster</h2>
+
+<p>Once I started thinking in probabilities instead of just “top-1 vs sampling”, the idea became obvious:</p>
+
+<blockquote>
+  <p>At each decoding step, instead of pretending there is exactly one winner,<br />
+<strong>grab the whole set of tokens whose probabilities are almost as high as the top token.</strong></p>
+</blockquote>
+
+<p>This led to the core concept:</p>
+
+<h3 id="confident-cluster"><strong>Confident Cluster</strong></h3>
+
+<p>At a given step <code class="language-plaintext highlighter-rouge">t</code>:</p>
+
+<ul>
+  <li>Let <code class="language-plaintext highlighter-rouge">P_max</code> be the probability of the <strong>top token</strong>.</li>
+  <li>Define a threshold <code class="language-plaintext highlighter-rouge">α</code> in <code class="language-plaintext highlighter-rouge">(0, 1]</code>. For example, <code class="language-plaintext highlighter-rouge">α = 0.9545</code> (≈ two-sigma coverage).</li>
+  <li>Define the <strong>confident cluster</strong>:</li>
+</ul>
+
+\[C_t(\alpha) = \{ v \mid p_t(v) \ge \alpha \cdot P_{\max} \}\]
+
+<p>In plain English:</p>
+
+<blockquote>
+  <p>“Take the top token, then include any other token whose probability is at least 80% of that top token’s probability.”</p>
+</blockquote>
+
+<p>This cluster has nice properties:</p>
+
+<ul>
+  <li>It’s <strong>small</strong> but meaningful.</li>
+  <li>Every token in it is <strong>high-confidence</strong>, relative to the model’s own belief.</li>
+  <li>It automatically adapts:
+    <ul>
+      <li>If the model is very confident → cluster size is often 1.</li>
+      <li>If the model is uncertain between a few options → cluster contains multiple tokens.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>And then came the algorithm:</p>
+
+<h3 id="-confident-cluster-decoding-ccd">🧠 Confident-Cluster Decoding (CCD)</h3>
+
+<p>Use the <strong>confident cluster</strong> at every step instead of just a single argmax token or a large sampling set.</p>
+
+<p>CCD doesn’t throw away the uncertainty. It <strong>exposes it</strong>.</p>
+
+<hr />
+
+<h2 id="4-how-ccd-works-without-the-math-headache">4. How CCD Works (Without the Math Headache)</h2>
+
+<p><img src="/assets/2025/11-confident-cluster-decoding/ccd-diagram.webp" alt="Confident-Cluster Decoding Diagram" /></p>
+
+<p>You don’t need to be a theoretician to understand CCD. The mental model is simple.</p>
+
+<p>Assume your LLM API can give you, for each step:</p>
+
+<ul>
+  <li>The <strong>top K tokens</strong>, and</li>
+  <li>Their <strong>log probabilities</strong>.</li>
+</ul>
+
+<p>Then you can turn that into CCD with just a few lines of logic.</p>
+
+<h3 id="step-1-get-top-k-candidates">Step 1: Get top-K candidates</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">probs</span> <span class="o">=</span> <span class="nf">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">)</span>                  <span class="c1"># or use logprobs from the API
+</span><span class="n">top_probs</span><span class="p">,</span> <span class="n">top_indices</span> <span class="o">=</span> <span class="nf">topk</span><span class="p">(</span><span class="n">probs</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">top_k</span><span class="p">)</span>
+
+<span class="n">p_max</span> <span class="o">=</span> <span class="n">top_probs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
+
+<h3 id="step-2-build-the-confident-cluster">Step 2: Build the confident cluster</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.9545</span>  <span class="c1"># two-sigma coverage
+</span><span class="n">threshold</span> <span class="o">=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">p_max</span>
+
+<span class="n">mask</span> <span class="o">=</span> <span class="n">top_probs</span> <span class="o">&gt;=</span> <span class="n">threshold</span>
+<span class="n">cluster_indices</span> <span class="o">=</span> <span class="n">top_indices</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<span class="n">cluster_probs</span>   <span class="o">=</span> <span class="n">top_probs</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Now <code class="language-plaintext highlighter-rouge">cluster_indices</code> is your <strong>confident cluster</strong>.</p>
+
+<h3 id="step-3-decide-how-to-use-the-cluster">Step 3: Decide how to use the cluster</h3>
+
+<p>This is where CCD branches into <strong>different modes</strong>, depending on your use case.</p>
+
+<h4 id="41-ccd-deterministic-greedy-but-honest">4.1 CCD-Deterministic (Greedy but Honest)</h4>
+
+<ul>
+  <li>
+    <p>Choose the top token, as usual:</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">chosen</span> <span class="o">=</span> <span class="n">cluster_indices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># argmax
+</span></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>But <em>also</em> keep <code class="language-plaintext highlighter-rouge">cluster_indices</code> and <code class="language-plaintext highlighter-rouge">cluster_probs</code> around as metadata.</p>
+  </li>
+</ul>
+
+<p>You now have:</p>
+
+<ul>
+  <li>The <strong>exact same output as greedy decoding</strong>, but</li>
+  <li>Extra information about <strong>how uncertain each step was</strong>, and</li>
+  <li>Which <strong>other tokens</strong> were almost equally strong candidates.</li>
+</ul>
+
+<p>You can use this to:</p>
+
+<ul>
+  <li>Flag fragile positions (cluster size &gt; 1 near a schema boundary).</li>
+  <li>Trigger extra validation when the model is uncertain.</li>
+  <li>Log uncertainty for debugging and analysis.</li>
+</ul>
+
+<h4 id="42-ccd-cluster-sampling-controlled-diversity">4.2 CCD-Cluster Sampling (Controlled Diversity)</h4>
+
+<p>Instead of sampling from the entire distribution (which includes low-probability junk), you:</p>
+
+<ul>
+  <li>
+    <p>Re-normalize probabilities <strong>inside the confident cluster only</strong>:</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">q</span> <span class="o">=</span> <span class="n">cluster_probs</span> <span class="o">/</span> <span class="n">cluster_probs</span><span class="p">.</span><span class="nf">sum</span><span class="p">()</span>
+<span class="n">chosen</span> <span class="o">=</span> <span class="nf">random_choice</span><span class="p">(</span><span class="n">cluster_indices</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>This gives you <strong>high-confidence variety</strong>:</p>
+
+<ul>
+  <li>Great for generating multiple plausible code snippets or refactorings,</li>
+  <li>Without dipping into hallucination-prone low-probability tokens.</li>
+</ul>
+
+<h4 id="43-ccd-branching-multi-path-reasoning">4.3 CCD-Branching (Multi-Path Reasoning)</h4>
+
+<p>At key positions (e.g., early in the output, or around important decisions), you can:</p>
+
+<ul>
+  <li>Branch over all tokens in the confident cluster,</li>
+  <li>Decode forward on each branch,</li>
+  <li>
+    <p>Then <strong>select the best branch</strong> based on external checks:</p>
+
+    <ul>
+      <li>For code: run unit tests, static analysis, or linting.</li>
+      <li>For JSON: check schema validity.</li>
+      <li>For QA: use majority vote or minimum Bayes risk.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>This gives you an agent-style <strong>“explore top plausible options, then verify”</strong> workflow.</p>
+
+<hr />
+
+<h2 id="5-why-ccd-is-a-big-deal-for-coding-agents--tool-calling">5. Why CCD Is a Big Deal for Coding Agents &amp; Tool Calling</h2>
+
+<p>Most decoding research historically has focused on <strong>open-ended natural language</strong>:</p>
+
+<ul>
+  <li>Chat responses</li>
+  <li>Stories</li>
+  <li>Summaries</li>
+  <li>Dialogue</li>
+</ul>
+
+<p>In those domains, sampling-based methods like <strong>top-p</strong>, <strong>typical decoding</strong>, or <strong>contrastive search</strong> make a lot of sense. You want:</p>
+
+<ul>
+  <li>Fluent, varied text,</li>
+  <li>Less repetition,</li>
+  <li>More creativity.</li>
+</ul>
+
+<p>But coding agents and tool-calling systems live in a different world:</p>
+
+<ul>
+  <li>A single bad token can break everything.</li>
+  <li>Structural correctness is <em>mandatory</em>.</li>
+  <li>Hallucinations are rarely “harmless.”</li>
+</ul>
+
+<p>CCD is designed for <strong>this</strong> world:</p>
+
+<ol>
+  <li>
+    <p><strong>It stays near the peak of the distribution.</strong><br />
+You never sample from obviously low-probability tokens.</p>
+  </li>
+  <li>
+    <p><strong>It embraces uncertainty instead of hiding it.</strong><br />
+You don’t pretend there’s only one right token when the model is torn between several.</p>
+  </li>
+  <li>
+    <p><strong>It plays nicely with deterministic workflows.</strong><br />
+CCD-Deterministic lets you keep greedy decoding but <strong>wrap it in uncertainty awareness</strong>.</p>
+  </li>
+  <li>
+    <p><strong>It gives agents something to reason about.</strong><br />
+The cluster can guide:</p>
+    <ul>
+      <li>branching,</li>
+      <li>validation,</li>
+      <li>when-to-ask-a-human decisions,</li>
+      <li>and more.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>If you’re building:</p>
+
+<ul>
+  <li>code copilots,</li>
+  <li>auto-refactoring tools,</li>
+  <li>schema-based tool callers,</li>
+  <li>workflow orchestrators,</li>
+</ul>
+
+<p>…then CCD is a decoding layer that actually understands your priorities.</p>
+
+<hr />
+
+<h2 id="6-how-is-this-different-from-top-k-top-p-typical-min-p-etc">6. How Is This Different from top-k, top-p, typical, min-p, etc.?</h2>
+
+<p>If you’ve been following decoding research, you might ask:</p>
+
+<blockquote>
+  <p>“Isn’t this just another truncation method?”</p>
+</blockquote>
+
+<p>Yes and no.</p>
+
+<p>CCD is related to several known ideas, but it has its <em>own</em> emphasis.</p>
+
+<h3 id="vs-top-k">vs. Top-k</h3>
+
+<ul>
+  <li><strong>Top-k:</strong> “Take exactly k most probable tokens.”</li>
+  <li><strong>CCD:</strong> “Take all tokens whose probability is at least <code class="language-plaintext highlighter-rouge">α * P_max</code>.”</li>
+</ul>
+
+<p>Top-k doesn’t care whether token #k is <strong>way</strong> less probable than the top token.<br />
+CCD explicitly enforces a <strong>relative confidence</strong> relationship.</p>
+
+<h3 id="vs-top-p-nucleus-sampling">vs. Top-p (nucleus sampling)</h3>
+
+<ul>
+  <li><strong>Top-p:</strong> “Smallest set of tokens whose cumulative probability ≥ p.”</li>
+  <li><strong>CCD:</strong> “All tokens whose probability is close to the top token’s probability.”</li>
+</ul>
+
+<p>Top-p can include <strong>low-probability tokens</strong> in flatter distributions, as long as they help reach the cumulative mass threshold. CCD never does that.</p>
+
+<h3 id="vs-epsilon--min-p-sampling">vs. Epsilon / Min-p Sampling</h3>
+
+<p>Some recent work proposes <strong>min-p</strong> or <strong>epsilon sampling</strong>:</p>
+
+<ul>
+  <li>Use probability thresholds (absolute or dynamic) to define a sampling set.</li>
+  <li>These are very related and worth citing in an academic context.</li>
+</ul>
+
+<p>But in practice, most of those methods are still optimized for:</p>
+
+<ul>
+  <li><strong>sampling</strong>, not deterministic decoding,</li>
+  <li>improving <strong>natural language generation</strong>, not coding / tooling reliability.</li>
+</ul>
+
+<p>CCD’s main goals are:</p>
+
+<ul>
+  <li><strong>Deterministic-mode compatibility</strong> (CCD-Deterministic),</li>
+  <li><strong>Token-level uncertainty exposure</strong>, and</li>
+  <li>Serving as a <strong>building block for agents</strong>, not just a sampler.</li>
+</ul>
+
+<h3 id="vs-typical--contrastive-decoding">vs. Typical / Contrastive Decoding</h3>
+
+<ul>
+  <li><strong>Typical decoding</strong> is about the “typical set” of surprisal given entropy.</li>
+  <li><strong>Contrastive search</strong> is about mixing LM scores with hidden-state-based penalties to avoid degeneracy.</li>
+</ul>
+
+<p>Both are powerful, but they operate at a different conceptual layer. CCD is:</p>
+
+<ul>
+  <li>simpler,</li>
+  <li>purely probability-based,</li>
+  <li>and more directly plugged into code &amp; schema-centric workflows.</li>
+</ul>
+
+<hr />
+
+<h2 id="7-where-this-idea-came-from-firegen-origin-story">7. Where This Idea Came From (FireGen Origin Story)</h2>
+
+<p>The story in one paragraph:</p>
+
+<ul>
+  <li>I was building <strong><a href="https://github.com/ShipFail/firegen">FireGen</a></strong>, a Firebase Extension that uses LLMs to turn prompts into REST API calls using Vertex/Gemini models.</li>
+  <li>I used <strong>fully deterministic decoding</strong> (<code class="language-plaintext highlighter-rouge">temperature = 0</code>, <code class="language-plaintext highlighter-rouge">topK = 1</code>, fixed <code class="language-plaintext highlighter-rouge">seed</code>) because any non-determinism in schema generation is dangerous.</li>
+  <li>It worked well — until I noticed <strong>rare nondeterministic outputs</strong> despite “no randomness.”</li>
+  <li>Investigating further, I realized: <strong>the model is often nearly indifferent between several tokens</strong>. The nondeterminism wasn’t a bug; it was a symptom of hidden uncertainty.</li>
+  <li>That led to the question: “If the model likes several tokens almost equally, why am I forcing it to pick exactly one and pretend the others don’t exist?”</li>
+</ul>
+
+<p>Confident-Cluster Decoding is my answer to that question.</p>
+
+<p>FireGen was just the <strong>first lab</strong> where I saw this. The more I think about CCD, the more I believe it’s relevant to <strong>any serious coding agent or structured LLM system.</strong></p>
+
+<hr />
+
+<h2 id="8-our-bigger-plan-from-blog-post--open-source--research-paper">8. Our Bigger Plan: From Blog Post → Open Source → Research Paper</h2>
+
+<p>This blog post is just <strong>step 1</strong>.</p>
+
+<p>Here’s the bigger plan:</p>
+
+<ol>
+  <li>
+    <p><strong>Formalize CCD properly</strong><br />
+We already have a draft academic paper spec’d out in Markdown / Quarto, with:</p>
+
+    <ul>
+      <li>formal definitions,</li>
+      <li>CCD variants,</li>
+      <li>implementation details,</li>
+      <li>and an experiment plan across code generation, QA, reasoning, and JSON tasks.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Run solid experiments</strong><br />
+Evaluate CCD on:</p>
+
+    <ul>
+      <li>code benchmarks (HumanEval, MBPP or similar),</li>
+      <li>factual QA,</li>
+      <li>math reasoning (GSM8K-style),</li>
+      <li>structured JSON generation tasks.</li>
+    </ul>
+
+    <p>Compare against:</p>
+
+    <ul>
+      <li>greedy,</li>
+      <li>top-p,</li>
+      <li>top-k,</li>
+      <li>min-p / epsilon sampling,</li>
+      <li>typical decoding (if available).</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Open-source reference implementation</strong><br />
+Implement CCD as a small, drop-in layer around:</p>
+
+    <ul>
+      <li>Gemini (via its logprob APIs),</li>
+      <li>an open-source stack (Llama/Mistral via vLLM / HF Transformers).</li>
+    </ul>
+
+    <p>Ideally, CCD turns into something like:</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">ccd</span> <span class="kn">import</span> <span class="n">CCDDecoder</span>
+
+<span class="n">decoder</span> <span class="o">=</span> <span class="nc">CCDDecoder</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">top_k</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="sh">"</span><span class="s">deterministic</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">output</span><span class="p">,</span> <span class="n">metadata</span> <span class="o">=</span> <span class="n">decoder</span><span class="p">.</span><span class="nf">generate</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Submit a paper (arXiv + conference)</strong><br />
+Focus on the intersection of:</p>
+
+    <ul>
+      <li><strong>LLM coding agents</strong>, and</li>
+      <li><strong>decoding / uncertainty / reliability</strong>.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Use CCD in real coding agents</strong><br />
+Integrate CCD into:</p>
+
+    <ul>
+      <li>code-writing agents,</li>
+      <li>test-driven repair loops,</li>
+      <li>schema-based tool calling,</li>
+      <li>and eventually higher-level multi-agent systems.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>If this resonates with you, you’re exactly the kind of person I’d love to collaborate with.</p>
+
+<hr />
+
+<h2 id="9-how-you-can-play-with-ccd-today">9. How You Can Play With CCD Today</h2>
+
+<p>Even without formal library support, you can already experiment with CCD if:</p>
+
+<ul>
+  <li>Your LLM API gives you <strong>top-K logprobs</strong> at each step, or</li>
+  <li>You’re running your model in an environment like <strong>vLLM</strong> or <strong>Transformers</strong> where you control the decoding loop.</li>
+</ul>
+
+<h3 id="minimal-ccd-deterministic-sketch">Minimal CCD-Deterministic Sketch</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">ccd_greedy_decode</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">prompt</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9545</span><span class="p">,</span> <span class="n">top_k</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_tokens</span><span class="o">=</span><span class="mi">256</span><span class="p">):</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">.</span><span class="nf">encode</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
+    <span class="n">clusters</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># store step-wise cluster metadata
+</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">max_tokens</span><span class="p">):</span>
+        <span class="n">logits</span> <span class="o">=</span> <span class="nf">model</span><span class="p">(</span><span class="n">tokens</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>              <span class="c1"># last-step logits
+</span>        <span class="n">probs</span> <span class="o">=</span> <span class="nf">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">)</span>
+        <span class="n">top_probs</span><span class="p">,</span> <span class="n">top_indices</span> <span class="o">=</span> <span class="nf">topk</span><span class="p">(</span><span class="n">probs</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">top_k</span><span class="p">)</span>
+
+        <span class="n">p_max</span> <span class="o">=</span> <span class="n">top_probs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">threshold</span> <span class="o">=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">p_max</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">top_probs</span> <span class="o">&gt;=</span> <span class="n">threshold</span>
+
+        <span class="n">cluster_indices</span> <span class="o">=</span> <span class="n">top_indices</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+        <span class="n">cluster_probs</span>   <span class="o">=</span> <span class="n">top_probs</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+
+        <span class="c1"># deterministic choice == greedy
+</span>        <span class="n">next_token</span> <span class="o">=</span> <span class="n">cluster_indices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">tokens</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">next_token</span><span class="p">)</span>
+
+        <span class="n">clusters</span><span class="p">.</span><span class="nf">append</span><span class="p">({</span>
+            <span class="sh">"</span><span class="s">cluster_tokens</span><span class="sh">"</span><span class="p">:</span> <span class="n">cluster_indices</span><span class="p">,</span>
+            <span class="sh">"</span><span class="s">cluster_probs</span><span class="sh">"</span><span class="p">:</span> <span class="n">cluster_probs</span><span class="p">,</span>
+            <span class="sh">"</span><span class="s">chosen</span><span class="sh">"</span><span class="p">:</span> <span class="n">next_token</span>
+        <span class="p">})</span>
+
+        <span class="k">if</span> <span class="n">next_token</span> <span class="o">==</span> <span class="n">tokenizer</span><span class="p">.</span><span class="n">eos_token_id</span><span class="p">:</span>
+            <span class="k">break</span>
+
+    <span class="n">text</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">.</span><span class="nf">decode</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">text</span><span class="p">,</span> <span class="n">clusters</span>
+</code></pre></div></div>
+
+<p>You can start by:</p>
+
+<ul>
+  <li>Logging <code class="language-plaintext highlighter-rouge">len(cluster_tokens)</code> at each step.</li>
+  <li>Checking where the model had <strong>low</strong> vs <strong>high</strong> uncertainty.</li>
+  <li>Comparing CCD-Deterministic to standard greedy and seeing where they diverge under small perturbations.</li>
+</ul>
+
+<hr />
+
+<h2 id="10-closing-thoughts-decoding-as-a-first-class-design-space">10. Closing Thoughts: Decoding as a First-Class Design Space</h2>
+
+<p>For a long time, decoding has been treated as an implementation detail. Something you tweak with <code class="language-plaintext highlighter-rouge">temperature</code> and <code class="language-plaintext highlighter-rouge">top_p</code> until it “feels right.”</p>
+
+<p>But as we move into the world of:</p>
+
+<ul>
+  <li><strong>coding agents</strong>,</li>
+  <li><strong>tool-calling LLMs</strong>,</li>
+  <li><strong>workflow orchestrators</strong>, and</li>
+  <li>systems we actually depend on,</li>
+</ul>
+
+<p>we need to treat decoding as a <strong>first-class design space</strong>:</p>
+
+<ul>
+  <li>What information about uncertainty do we preserve?</li>
+  <li>How do we constrain the model’s behavior without suffocating it?</li>
+  <li>How do we let agents <em>see</em> and <em>use</em> the model’s uncertainty instead of hiding it?</li>
+</ul>
+
+<p>Confident-Cluster Decoding is my attempt to answer those questions in a simple, practical way.</p>
+
+<p>If this sparks ideas for you:</p>
+
+<ul>
+  <li>Feel free to steal it, implement it, hack on it.</li>
+  <li>If you’re running a lab or a company working on coding agents, I’d <em>love</em> to hear your thoughts.</li>
+  <li>If you want to collaborate on the paper, benchmarks, or open-source library, my inbox is wide open.</li>
+</ul>
+
+<p>This is just the beginning — and I think CCD is one of those small, composable ideas that will quietly show up in a lot of serious LLM systems over the next few years.</p>
+
+<hr />
+
+<p><em>Thanks for reading. If you experiment with CCD, please share what you find — failures, weird cases, cool successes — they’re all gold for improving the idea.</em></p>
+
+<hr />
+
+<h3 id="build-ccd-with-us">Build CCD With Us</h3>
+
+<p>Ready to take CCD for a spin? Head over to the <a href="https://github.com/shipfail/confident-cluster-decoding">Confident-Cluster Decoding GitHub repo</a> to follow the roadmap, open issues, or contribute experiments.</p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ideas">ideas</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#llm">llm</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#decoding">decoding</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#coding-agents">coding-agents</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#tool-calling">tool-calling</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#uncertainty">uncertainty</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by Huan Li <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Author @ Wechaty, Architect @ Chatie, LLM Code Generation Enthusiast, Serial Entrepreneur, Burner🔥
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2025/11/13/firegen-firebase-rtdb-genai-api/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2025/11-firegen-firebase-rtdb-genai-api/firegen-prompt.webp">  Announcing FireGen: Turn Firebase RTDB into Your Universal Generative AI API</a>
+            </div>
+          
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      wechaty plugin for easily extending capabilities | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>wechaty plugin for easily extending capabilities | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="wechaty plugin for easily extending capabilities" />
+<meta name="author" content="watertao" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Conversational RPA SDK for Chatbot Makers" />
+<meta property="og:description" content="Conversational RPA SDK for Chatbot Makers" />
+<link rel="canonical" href="https://wechaty.js.org/2020/08/01/wechaty-distribute-instruction-handler/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/08/01/wechaty-distribute-instruction-handler/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/wechaty-plugin-xyao/arc.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-08-01T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/wechaty-plugin-xyao/arc.webp" />
+<meta property="twitter:title" content="wechaty plugin for easily extending capabilities" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"watertao"},"dateModified":"2020-08-01T00:00:00+00:00","datePublished":"2020-08-01T00:00:00+00:00","description":"Conversational RPA SDK for Chatbot Makers","headline":"wechaty plugin for easily extending capabilities","image":"https://wechaty.js.org/assets/2020/wechaty-plugin-xyao/arc.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/08/01/wechaty-distribute-instruction-handler/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"watertao"},"url":"https://wechaty.js.org/2020/08/01/wechaty-distribute-instruction-handler/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#npm">npm</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">wechaty plugin for easily extending capabilities</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/watertao">
+                            <img class="rounded-circle" src="/assets/contributors/watertao/avatar.webp" alt="watertao" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> watertao <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Aug 01, 2020 · <span class="reading-time">
+  
+  
+    7 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/wechaty-plugin-xyao/arc.webp" alt="wechaty plugin for easily extending capabilities">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_button_wechat" title='Wechat'>
+          <img id="qrcode" title="Wechat"
+            src="/assets/contributors/wechaty/icon.png"
+            width="64" height="64"
+          />
+        </a>
+        <a class="a2a_button_wechat" title='Wechat'></a>
+        <a class="a2a_button_sina_weibo" title='Weibo'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+        <!-- AddToAny BEGIN -->
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p><a href="https://github.com/wechaty/wechaty"><img src="https://img.shields.io/badge/Powered%20By-Wechaty-green.svg" alt="Powered by Wechaty" /></a>
+<a href="https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty"><img src="https://img.shields.io/badge/Wechaty-开源激励计划-green.svg" alt="Wechaty开源激励计划" /></a></p>
+
+<p>wechaty-plugin-xyao 插件可以让你的 wechaty bot 具备以分布式模块执行自定义指令的能力。</p>
+
+<h2 id="why-wechaty-plugin-xyao">why wechaty-plugin-xyao</h2>
+
+<p>使用这个插件，至少会带来以下几个优势：</p>
+
+<ol>
+  <li>如果 bot 的业务处理和微信通讯两部分逻辑都集中在单个进程，随着业务逻辑的增长，部分逻辑出现问题可能导致整个 bot crash，且单进程受限于单个节点的处理能力，也限制了能力的扩展。将微信通讯与业务解耦，业务和业务独立部署，能够有效缓解这些问题。</li>
+  <li>独立出的业务处理模块可以采用任意适合该领域业务的语言（目前提供了一个基于 java springboot 的 brain 模块开发框架）。</li>
+  <li>由于采用了基于 pub/sub 的消息中间件作为机器人和 brain 的通讯，因此即使两者之间由于 NAT 无法提供基于固定公网 IP 的 RPC 服务，也可以通过这种方式打通交互。</li>
+</ol>
+
+<h2 id="demo">demo</h2>
+
+<p><img src="/assets/2020/wechaty-plugin-xyao/interaction-sample.webp" alt="sample" /></p>
+
+<p>上例中， bot 将 <code class="language-plaintext highlighter-rouge">fin:</code> 前缀的指令通过队列交给 fin 关联的模块处理，而 <code class="language-plaintext highlighter-rouge">x:</code> 前缀的指令交给 x 对应的模块。那些无法被识别
+为指令的消息（比如 <code class="language-plaintext highlighter-rouge">你好</code> <code class="language-plaintext highlighter-rouge">午饭吃什么</code>），则统一交给某个指定模块处理（通常是一个具备智能闲聊能力的处理模块，比如 百度 unit）。</p>
+
+<p>这些处理模块被称之为 <code class="language-plaintext highlighter-rouge">brain 模块</code>，它们为 bot 赋予了某一个特定领域的处理能力。</p>
+
+<h2 id="计划中的-brain-模块">计划中的 brain 模块</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>brain</th>
+      <th>status</th>
+      <th>description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://github.com/watertao/xyao-brain-trunk">xyao-brain-trunk</a></td>
+      <td>开发中</td>
+      <td>提供了微信机器人基本的处理能力，比如自定义 cron 形式的提醒，设置 todo-list, 消息搬运等特性</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/watertao/xyao-brain-jira">xyao-brain-jira</a></td>
+      <td>开发中</td>
+      <td>提供 atlassion jira 相关的指令，比如将某个群组与某个 JIRA 项目绑定，定期推送每日 issue 进度及工时登录，检查 issue 规范性等</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/watertao/xyao-brain-fin-info">xyao-brain-fin-info</a></td>
+      <td>开发中</td>
+      <td>提供股市相关信息的查询或推送特性</td>
+    </tr>
+    <tr>
+      <td>xyao-brain-translate</td>
+      <td>待开发</td>
+      <td>提供中英文互翻的特性</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="requirements">Requirements</h2>
+
+<ol>
+  <li>Node.js v16+</li>
+  <li>Wechaty v0.40+</li>
+  <li>This Plugin</li>
+  <li>Redis server</li>
+  <li>one or more brain service</li>
+</ol>
+
+<h2 id="usage">Usage</h2>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Wechaty</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">PuppetPadplus</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty-puppet-padplus</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Xyao</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../src/mod</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">your PAD-PLUS token</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">puppet</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PuppetPadplus</span><span class="p">({</span> <span class="nx">token</span> <span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Wechaty</span><span class="p">({</span>
+  <span class="nx">puppet</span><span class="p">,</span>
+  <span class="na">name</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">x.yao</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">})</span>
+
+<span class="kd">const</span> <span class="nx">xyaoConfig</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">redis_host</span><span class="p">:</span> <span class="dl">'</span><span class="s1">localhost</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">redis_port</span><span class="p">:</span> <span class="mi">6379</span><span class="p">,</span>
+  <span class="na">redis_password</span><span class="p">:</span> <span class="dl">'</span><span class="s1">123456</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">redis_retry_interval</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
+  <span class="na">masters</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">wxid_of_master</span><span class="dl">'</span><span class="p">],</span>
+  <span class="na">brains_cli</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">x</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">jira</span><span class="dl">'</span><span class="p">],</span>
+  <span class="na">brains_ai</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ai918</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">log_appender</span><span class="p">:</span> <span class="dl">'</span><span class="s1">dateFile</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">log_file</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/data/wechaty-xyao/xyao.log</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">log_level</span><span class="p">:</span> <span class="dl">'</span><span class="s1">INFO</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span>
+    <span class="nc">Xyao</span><span class="p">(</span><span class="nx">xyaoConfig</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="配置插件">配置插件</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">redis_host</code>: redis ip</li>
+  <li><code class="language-plaintext highlighter-rouge">redis_port</code>: redis 端口</li>
+  <li><code class="language-plaintext highlighter-rouge">redis_password</code>: redis 密码</li>
+  <li><code class="language-plaintext highlighter-rouge">redis_retry_interval</code>: redis 断线重连间隔</li>
+  <li><code class="language-plaintext highlighter-rouge">masters</code>: 机器人的主人账号(注意是contact.id)，有部分指令必须是主人发起的才会执行</li>
+  <li><code class="language-plaintext highlighter-rouge">brains_cli</code>: brain 列表</li>
+  <li><code class="language-plaintext highlighter-rouge">brains_ai</code>: 未被识别为指令的的消息会交给这个 brain 模块</li>
+  <li><code class="language-plaintext highlighter-rouge">log_appender</code>: <code class="language-plaintext highlighter-rouge">dateFile</code> 输出到指定文件，按日期分割； <code class="language-plaintext highlighter-rouge">stdout</code> 输出到控制台</li>
+  <li><code class="language-plaintext highlighter-rouge">log_file</code>: 日志文件路径</li>
+  <li><code class="language-plaintext highlighter-rouge">log_level</code>: 日志级别</li>
+</ol>
+
+<h2 id="部署架构参考">部署架构参考</h2>
+
+<p><img src="/assets/2020/wechaty-plugin-xyao/arc.webp" alt="architecture" /></p>
+
+<p>bot 在收到消息后，先尝试识别指令，识别为指令后，按前缀通过队列分发给指定的 brain 模块去处理。</p>
+
+<p>每个 brain 模块都有自己唯一的标识，该标识会作为指令的前缀，比如 <code class="language-plaintext highlighter-rouge">fin:index</code> 指令会交给标识为 <code class="language-plaintext highlighter-rouge">fin</code> 的 brain 模块。</p>
+
+<h2 id="-指令">🌀 指令</h2>
+
+<p>指令是一条带有规定格式的微信消息。</p>
+
+<p>比如跟机器人私聊或者在群内 @ 机器人，跟它说：</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jira:bind-project -p READK223
+</code></pre></div></div>
+
+<p>那么这条消息将被机器人识别为指令，</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">jira</code> 是 brain 模块标识，机器人根据此标识将指令传递给相应的 brain 处理模块</li>
+  <li><code class="language-plaintext highlighter-rouge">bind-project</code> 是指令关键字，brain 模块根据此关键字决定采用哪段业务处理逻辑</li>
+  <li><code class="language-plaintext highlighter-rouge">-p READK223</code> 是指令的选项，通常一个指令会有0到多个选项，采用不同的选项，会影响业务处理的逻辑。在开发 brain 模块 的时候，建议都支持 help 和 echo 指令，比如：</li>
+</ul>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jira:help
+jira:help bind-project
+jira:echo tell me what i have said
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">jira:help</code> 返回标识为 jira 的 brain 模块所支持的所有的指令</li>
+  <li><code class="language-plaintext highlighter-rouge">jira:help bind-project</code> 返回 bind-project 指令的详情，包括支持的选项说明</li>
+  <li><code class="language-plaintext highlighter-rouge">jira:echo tell me what i have said</code> 返回 echo 的内容，用于检验该 brain 模块当前是否在线并正常工作</li>
+</ul>
+
+<h2 id="-brain-模块">🧠 brain 模块</h2>
+
+<p>通过 wechaty-plugin-xyao 插件创建的 wechaty 机器人，它只负责微信消息的收发，若要使它具备一定的业务处理能力，就需要为其扩展 brain 模块。
+机器人收到消息并识别为指令后，将指令通过 redis 交给相应的 brain 模块，brain 根据指令种类及选项参数进行相应的业务处理，并将处理结果通过redis
+再交给机器人，由机器人发送微信消息给指定的用户。</p>
+
+<p>所以我们可以简单的理解为：wechaty 机器人是耳朵和嘴巴，而 brain 模块则是大脑。你可以部署多种用于处理不同领域问题的大脑，比如股票行情，企业内部
+的项目管理，当然也包括常见的群组管理，定时通知，翻译等领域。</p>
+
+<p>brain 模块的开发并不限定语言或平台，任何能够连上 redis 并且可以处理 json 的语言都可以开发 brain。</p>
+
+<h3 id="基于-java-springboot-快速开发-brain-模块">基于 java springboot 快速开发 brain 模块</h3>
+
+<p>为了简化 brain 模块的开发，可参考基于 java springboot 的 brain 开发框架（比如 <a href="https://github.com/watertao/xyao-brain-trunk">xyao-brain-trunk</a> ），它会尽量将业务无关部分的逻辑统一处理掉，并默认提供了 help 或 echo 指令。</p>
+
+<p>项目目录结构如下：</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>├── myapp
+|   ├── src
+|   |   └── main
+|   |       ├── java
+|   |       |   └── io
+|   |       |       └── github
+|   |       |           └── watertao
+|   |       |               └──xyao
+|   |       |                  └──infras
+|   |       |                  └──instruction
+|   |       └── resources
+|   |           └── application.properties
+│   └── pom.xml
+</code></pre></div></div>
+
+<p>其中 <code class="language-plaintext highlighter-rouge">io.github.watertao.xyao.infras</code> 这个 package 中包含了与 redis 通讯，指令的序列化和反序列化以及 echo 和 help 指令。同时也定义了
+开发指令时需用到的一些 annotation 和 模型类。</p>
+
+<p><code class="language-plaintext highlighter-rouge">io.github.watertao.xyao.instruction</code> 这个 package 用于放置自定义指令处理类。</p>
+
+<p><code class="language-plaintext highlighter-rouge">application.properties</code> 是配置文件，它包含了以下配置：</p>
+
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># dev: 开发模式； prod: 生产模式。 这两种模式的主要区别是日志的输出不同，前者输出到控制台，后者输出到文件。一般我们在生产环境下，jar
+# 包同级目录中放一个 config/application.properties 用于覆盖 jar 内的 properties。
+</span><span class="py">spring.profiles.active</span> <span class="p">=</span> <span class="s">dev</span>
+
+<span class="c"># 本模块的 brain 标识
+</span><span class="py">xyao.brain</span> <span class="p">=</span> <span class="s">fin</span>
+
+<span class="c"># bot 的 topic 名，本模块可以通过这个 topic 以 x.yao 的身份向指定用户或群组发送消息
+</span><span class="py">xyao.channel</span> <span class="p">=</span> <span class="s">x.yao</span>
+
+<span class="c"># help -w 指令时向用户发送一个 UrlLink 形式的帮助文档
+</span><span class="py">xyao.help.url</span> <span class="p">=</span> <span class="s">https://github.com/watertao/xyao-brain-fin-info/wiki/%5B-%23fin-%5D-Instruction-Manual-of-xyao-brain-fin-info</span>
+<span class="py">xyao.help.title</span> <span class="p">=</span> <span class="s">[ #fin ] Instruction Manual of xyao brain fin info</span>
+<span class="py">xyao.help.description</span> <span class="p">=</span> <span class="s">xyao-brain-fin-info is a brain module of wechaty-plugin-xyao, it provides common features, such as showing Shanghai or Shenzhen index, the real time price of specified stock , etc...</span>
+<span class="py">xyao.help.thumbnail</span> <span class="p">=</span> <span class="s">https://coding-net-production-file-ci.codehub.cn/1190d970-ce81-11ea-9a30-ed2db94588f5.jpeg?sign=yZ8k7anwCH4ma8CRXmTKSOc/2pRhPTEyNTcyNDI1OTkmaz1BS0lEYXk4M2xGbWFTNlk0TFRkek1WTzFTZFpPeUpTTk9ZcHImZT0xNTk1OTAyNDM3JnQ9MTU5NTY4NjQzNyZyPTMwMDE1OTAmZj0vMTE5MGQ5NzAtY2U4MS0xMWVhLTlhMzAtZWQyZGI5NDU4OGY1LmpwZWcmYj1jb2RpbmctbmV0LXByb2R1Y3Rpb24tZmlsZQ==</span>
+
+<span class="c"># redis 连接配置
+</span><span class="py">spring.redis.host</span> <span class="p">=</span> <span class="s">localhost</span>
+<span class="py">spring.redis.port</span> <span class="p">=</span> <span class="s">6379</span>
+<span class="py">spring.redis.password</span> <span class="p">=</span> <span class="s">123456</span>
+
+<span class="c"># 日志输出级别
+</span><span class="py">logging.root.level</span> <span class="p">=</span> <span class="s">INFO</span>
+<span class="c"># 系统日志输出 pattern，缺省为 %d{yyyy/MM/dd-HH:mm:ss SSS} %-5level - %msg %n
+</span><span class="py">logging.encodePattern</span> <span class="p">=</span> <span class="s">%d{yyyy/MM/dd-HH:mm:ss SSS} %-5level - %msg %n</span>
+<span class="c"># logging.path = /myapp/log
+# 日志文件的文件名，缺省为 spring.log
+# logging.file = myapp.log
+# 日志文件按时间切割的模式，缺省为 yyyy-MM-dd
+# logging.splitPattern = yyyy-MM-dd
+# 日志文件保留的个数，缺省为 30
+# logging.maxHistory = 30
+</span></code></pre></div></div>
+
+<p>以开发一个返回随机数的指令为例。brain 标识为 <code class="language-plaintext highlighter-rouge">foo</code>, 指令名为 <code class="language-plaintext highlighter-rouge">random</code>，参数 <code class="language-plaintext highlighter-rouge">-m</code> 代表随机数小于该参数指定的数。</p>
+
+<ol>
+  <li>修改 application.properties：</li>
+</ol>
+
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">xyao.brain</span> <span class="p">=</span> <span class="s">foo</span>
+</code></pre></div></div>
+
+<p>(其他诸如 redis 连接参数，日志 以及 帮助信息等配置自行按照实际情况修改)</p>
+
+<ol>
+  <li>添加 <code class="language-plaintext highlighter-rouge">io.github.watertao.xyao.instruction.RandomHandler</code> 类：</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.github.watertao.xyao.instruction</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">io.github.watertao.xyao.infras.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.commons.cli.CommandLine</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.commons.cli.Options</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Service</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Random</span><span class="o">;</span>
+
+<span class="nd">@Service</span><span class="o">(</span><span class="s">"random"</span><span class="o">)</span>  <span class="c1">// bean name 必须是指令名</span>
+<span class="nd">@Instruction</span><span class="o">(</span>
+        <span class="n">syntax</span> <span class="o">=</span> <span class="s">"random &lt;option&gt;"</span><span class="o">,</span> <span class="c1">// 帮助信息中的语法</span>
+        <span class="n">description</span> <span class="o">=</span> <span class="s">"返回随机数，可通过参数设置最大范围"</span><span class="o">,</span>  <span class="c1">// 帮助信息中的 描述</span>
+        <span class="n">masterOnly</span> <span class="o">=</span> <span class="kc">false</span><span class="o">,</span> <span class="c1">// 这条指令是否只能是 master 发起</span>
+        <span class="n">msgEnv</span> <span class="o">=</span> <span class="nc">MessageEnvironmentEnum</span><span class="o">.</span><span class="na">BOTH</span>    <span class="c1">// 这条指令使用的范围是私聊还是群聊，或都支持</span>
+<span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RandomHandler</span> <span class="kd">extends</span> <span class="nc">AbstractInstructionHandler</span> <span class="o">{</span>
+
+    <span class="c1">// 注入此 bean 用于发送消息至 redis</span>
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">XyaoChannelProxy</span> <span class="n">channelProxy</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="nc">Options</span> <span class="nf">defineOptions</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">Options</span> <span class="n">options</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Options</span><span class="o">();</span>
+        <span class="n">options</span><span class="o">.</span><span class="na">addOption</span><span class="o">(</span><span class="s">"m"</span><span class="o">,</span> <span class="s">"max"</span><span class="o">,</span> <span class="kc">true</span><span class="o">,</span><span class="s">"随机数的最大范围"</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">options</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">handle</span><span class="o">(</span><span class="nc">XyaoInstruction</span> <span class="n">instruction</span><span class="o">,</span> <span class="nc">CommandLine</span> <span class="n">command</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Integer</span> <span class="n">max</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>   <span class="c1">// 默认最大范围是 10</span>
+
+        <span class="c1">// 如果用户指定了 m 选项，则最大范围设置成该选项值</span>
+        <span class="c1">// （为了演示，忽略非数字字符的异常情况处理）</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">hasOption</span><span class="o">(</span><span class="s">"m"</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">max</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">command</span><span class="o">.</span><span class="na">getOptionValue</span><span class="o">(</span><span class="s">"n"</span><span class="o">));</span>
+        <span class="o">}</span>
+
+        <span class="nc">Integer</span> <span class="n">randomNum</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Random</span><span class="o">().</span><span class="na">nextInt</span><span class="o">(</span><span class="n">max</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+
+        <span class="c1">// 通过父类方法 makeResponseMessage 构建响应消息，该方法会将回复对象以及群组设置为指令发起人和指令发起时的群组</span>
+        <span class="nc">XyaoMessage</span> <span class="n">xyaoMessage</span> <span class="o">=</span> <span class="n">makeResponseMessage</span><span class="o">(</span><span class="n">instruction</span><span class="o">);</span>
+        <span class="n">xyaoMessage</span><span class="o">.</span><span class="na">getEntities</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">XyaoMessage</span><span class="o">.</span><span class="na">StringEntity</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">randomNum</span><span class="o">)));</span>
+
+        <span class="c1">// 发送响应至 redis</span>
+        <span class="n">channelProxy</span><span class="o">.</span><span class="na">publish</span><span class="o">(</span><span class="n">xyaoMessage</span><span class="o">);</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>接着我们通过向机器人发送私聊或群内 @ 机器人，发送消息： <code class="language-plaintext highlighter-rouge">foo:random -m 100</code> ，机器人就会回复 0~100 以内的随机数。</p>
+
+<p>完成一个指令就是这么简单 😁。</p>
+
+<h2 id="maintainer">Maintainer</h2>
+
+<ol>
+  <li>watertao,<a href="https://github.com/watertao">Tao Wu</a>,&lt;1059912278@qq.com&gt;</li>
+</ol>
+
+<h2 id="copyright--license">Copyright &amp; License</h2>
+
+<ol>
+  <li>Code released under the Apache-2.0 License</li>
+</ol>
+
+<blockquote>
+  <p>作者: <a href="https://github.com/watertao/">watertao</a>
+Code: <a href="https://github.com/watertao/wechaty-plugin-xyao">Github</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#padplus">padplus</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#project">project</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#chatbot">chatbot</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#cli">cli</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#plugin">plugin</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/watertao">
+                            <img class="rounded-circle" src="/assets/contributors/watertao/avatar.webp" alt="watertao" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by watertao </h5>
+						证券金融行IT打杂
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/07/31/wechaty-effective-secondhand-bot/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/wechaty-electron/header.webp">  更有效率的二手捡漏助手</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/08/02/wechaty-stock-bot/"> 股票盯盘助手  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/wechaty-stock-bot/header.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

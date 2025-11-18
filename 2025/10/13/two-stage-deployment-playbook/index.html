@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      📚 PreAngel Two-Stage Deployment Playbook — Firebase App Hosting × Google Cloud Run (v4) | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📚 PreAngel Two-Stage Deployment Playbook — Firebase App Hosting × Google Cloud Run (v4) | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="📚 PreAngel Two-Stage Deployment Playbook — Firebase App Hosting × Google Cloud Run (v4)" />
+<meta name="author" content="huan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Purpose: Present PreAngel’s current best-practice two-stage deployment model — powered by GitHub Actions, Cloud Run, Artifact Registry, and Workload Identity Federation (WIF). This version reflects our final, production-proven approach: direct access, fully declarative, and keyless." />
+<meta property="og:description" content="Purpose: Present PreAngel’s current best-practice two-stage deployment model — powered by GitHub Actions, Cloud Run, Artifact Registry, and Workload Identity Federation (WIF). This version reflects our final, production-proven approach: direct access, fully declarative, and keyless." />
+<link rel="canonical" href="https://wechaty.js.org/2025/10/13/two-stage-deployment-playbook/" />
+<meta property="og:url" content="https://wechaty.js.org/2025/10/13/two-stage-deployment-playbook/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2025/10-two-stage-deployment-playbook/two-stage-deployment-playbook.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-10-13T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2025/10-two-stage-deployment-playbook/two-stage-deployment-playbook.webp" />
+<meta property="twitter:title" content="📚 PreAngel Two-Stage Deployment Playbook — Firebase App Hosting × Google Cloud Run (v4)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"huan"},"dateModified":"2025-10-13T00:00:00+00:00","datePublished":"2025-10-13T00:00:00+00:00","description":"Purpose: Present PreAngel’s current best-practice two-stage deployment model — powered by GitHub Actions, Cloud Run, Artifact Registry, and Workload Identity Federation (WIF). This version reflects our final, production-proven approach: direct access, fully declarative, and keyless.","headline":"📚 PreAngel Two-Stage Deployment Playbook — Firebase App Hosting × Google Cloud Run (v4)","image":"https://wechaty.js.org/assets/2025/10-two-stage-deployment-playbook/two-stage-deployment-playbook.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2025/10/13/two-stage-deployment-playbook/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"huan"},"url":"https://wechaty.js.org/2025/10/13/two-stage-deployment-playbook/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#guide">guide</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">📚 PreAngel Two-Stage Deployment Playbook — Firebase App Hosting × Google Cloud Run (v4)</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> Huan Li <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Oct 13, 2025 · <span class="reading-time">
+  
+  
+    12 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2025/10-two-stage-deployment-playbook/two-stage-deployment-playbook.webp" alt="📚 PreAngel Two-Stage Deployment Playbook — Firebase App Hosting × Google Cloud Run (v4)">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_button_wechat" title='Wechat'>
+          <img id="qrcode" title="Wechat"
+            src="/assets/contributors/wechaty/icon.png"
+            width="64" height="64"
+          />
+        </a>
+        <a class="a2a_button_wechat" title='Wechat'></a>
+        <a class="a2a_button_sina_weibo" title='Weibo'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+        <!-- AddToAny BEGIN -->
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<blockquote>
+  <p>PreAngel’s philosophy has always been clear: simplicity and truth live in the repo. Every configuration should be declarative, versioned, and automated — never hidden in a console.</p>
+</blockquote>
+
+<p>Over time, we distilled our deployment pipeline down to its purest form:</p>
+
+<p>Two stages. One repo. Zero secrets.</p>
+
+<p>This is the PreAngel Way — powered by GitHub Actions, Google Cloud Run, Artifact Registry, and Workload Identity Federation (WIF).</p>
+
+<hr />
+
+<h2 id="1-the-final-model--two-stages-one-truth">1) The Final Model — Two Stages, One Truth</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Stage</th>
+      <th>Description</th>
+      <th>Source</th>
+      <th>Target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Development</td>
+      <td>Every commit to main builds, pushes an image to Artifact Registry, and deploys to <code class="language-plaintext highlighter-rouge">myapp-dev</code> with 100% traffic.</td>
+      <td>Push to main</td>
+      <td>Cloud Run → <code class="language-plaintext highlighter-rouge">myapp-dev</code></td>
+    </tr>
+    <tr>
+      <td>Production</td>
+      <td>Every Git tag (e.g., <code class="language-plaintext highlighter-rouge">v1.4.2</code>) reuses the exact same image from Artifact Registry and deploys to <code class="language-plaintext highlighter-rouge">myapp</code> with <code class="language-plaintext highlighter-rouge">--no-traffic</code>.</td>
+      <td>Push tag <code class="language-plaintext highlighter-rouge">v*</code></td>
+      <td>Cloud Run → <code class="language-plaintext highlighter-rouge">myapp</code> (no traffic)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This achieves full CI/CD simplicity:</p>
+
+<ul>
+  <li>Dev = automatic → instant iteration.</li>
+  <li>Prod = deliberate → controlled stability.</li>
+  <li>Both powered by the same artifact and pipeline logic.</li>
+</ul>
+
+<p>Rule: Build once. Reuse the same image everywhere.</p>
+
+<hr />
+
+<h2 id="2-core-architecture">2) Core Architecture</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>GitHub Actions</td>
+      <td>The single CI/CD engine. Two workflows, both fully versioned in the repo.</td>
+    </tr>
+    <tr>
+      <td>Artifact Registry</td>
+      <td>Stores all container images by commit SHA. Example: <code class="language-plaintext highlighter-rouge">us-central1-docker.pkg.dev/preangel/myrepo/myapp:&lt;SHA&gt;</code>.</td>
+    </tr>
+    <tr>
+      <td>Cloud Run (Dev)</td>
+      <td>Auto-deploys on each commit; routes 100% traffic to the newest revision.</td>
+    </tr>
+    <tr>
+      <td>Cloud Run (Prod)</td>
+      <td>Receives tagged images with <code class="language-plaintext highlighter-rouge">--no-traffic</code>, then manually promoted when stable.</td>
+    </tr>
+    <tr>
+      <td>Workload Identity Federation (WIF)</td>
+      <td>Connects GitHub OIDC to GCP IAM. No JSON key, no secrets, fully keyless.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="3-workload-identity-federation--keyless-direct-access">3) Workload Identity Federation — Keyless, Direct Access</h2>
+
+<p>Workload Identity Federation (WIF) lets GitHub authenticate to GCP without using a service account key.</p>
+
+<p>How it works:</p>
+
+<p>1) GitHub Actions requests an OIDC token for each workflow run.
+2) Google’s Security Token Service exchanges it for a short-lived access token.
+3) GCP IAM grants permissions directly to that OIDC identity.</p>
+
+<p>Why it’s best practice for PreAngel:</p>
+
+<ul>
+  <li>Keyless &amp; secure: Eliminates JSON keys entirely.</li>
+  <li>Short-lived: Credentials expire automatically.</li>
+  <li>Direct IAM access: Grants roles directly to the identity — fewer layers, faster audits.</li>
+  <li>Attribute-based: Scopes can match exact repos, branches, or tags.</li>
+  <li>Zero hidden state: All roles and mappings live in declarative scripts.</li>
+</ul>
+
+<hr />
+
+<h2 id="4-iam-setup-for-direct-access">4) IAM Setup for Direct Access</h2>
+
+<p>Create a Workload Identity Pool and Provider, then grant access directly to your GitHub repository identity:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">PROJECT_ID</span><span class="o">=</span>preangel
+<span class="nv">PROJECT_NUMBER</span><span class="o">=</span><span class="si">$(</span>gcloud projects describe <span class="nv">$PROJECT_ID</span> <span class="nt">--format</span><span class="o">=</span><span class="s1">'value(projectNumber)'</span><span class="si">)</span>
+<span class="nv">POOL_ID</span><span class="o">=</span>github-pool
+<span class="nv">OWNER</span><span class="o">=</span>PreAngel
+<span class="nv">REPO</span><span class="o">=</span>myrepo
+
+<span class="c"># Create WIF pool &amp; provider</span>
+gcloud iam workload-identity-pools create <span class="nv">$POOL_ID</span> <span class="se">\</span>
+  <span class="nt">--project</span><span class="o">=</span><span class="nv">$PROJECT_ID</span> <span class="nt">--location</span><span class="o">=</span>global <span class="nt">--display-name</span><span class="o">=</span><span class="s2">"GitHub Pool"</span>
+
+gcloud iam workload-identity-pools providers create-oidc github-provider <span class="se">\</span>
+  <span class="nt">--project</span><span class="o">=</span><span class="nv">$PROJECT_ID</span> <span class="nt">--location</span><span class="o">=</span>global <span class="nt">--workload-identity-pool</span><span class="o">=</span><span class="nv">$POOL_ID</span> <span class="se">\</span>
+  <span class="nt">--issuer-uri</span><span class="o">=</span><span class="s2">"https://token.actions.githubusercontent.com"</span> <span class="se">\</span>
+  <span class="nt">--attribute-mapping</span><span class="o">=</span><span class="s2">"google.subject=assertion.sub,attribute.repository=assertion.repository,attribute.ref=assertion.ref"</span>
+
+<span class="c"># Bind IAM roles directly to the repo’s OIDC identity</span>
+<span class="nv">REPO_MEMBER</span><span class="o">=</span><span class="s2">"principalSet://iam.googleapis.com/projects/</span><span class="k">${</span><span class="nv">PROJECT_NUMBER</span><span class="k">}</span><span class="s2">/locations/global/workloadIdentityPools/</span><span class="k">${</span><span class="nv">POOL_ID</span><span class="k">}</span><span class="s2">/attribute.repository/</span><span class="k">${</span><span class="nv">OWNER</span><span class="k">}</span><span class="s2">/</span><span class="k">${</span><span class="nv">REPO</span><span class="k">}</span><span class="s2">"</span>
+
+gcloud projects add-iam-policy-binding <span class="nv">$PROJECT_ID</span> <span class="se">\</span>
+  <span class="nt">--member</span><span class="o">=</span><span class="s2">"</span><span class="nv">$REPO_MEMBER</span><span class="s2">"</span> <span class="nt">--role</span><span class="o">=</span><span class="s2">"roles/run.admin"</span>
+
+gcloud projects add-iam-policy-binding <span class="nv">$PROJECT_ID</span> <span class="se">\</span>
+  <span class="nt">--member</span><span class="o">=</span><span class="s2">"</span><span class="nv">$REPO_MEMBER</span><span class="s2">"</span> <span class="nt">--role</span><span class="o">=</span><span class="s2">"roles/artifactregistry.writer"</span>
+</code></pre></div></div>
+
+<p>Now this GitHub repository can deploy to Cloud Run and push to Artifact Registry without any service account.</p>
+
+<hr />
+
+<h2 id="5-repository-variables">5) Repository Variables</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Example</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>PROJECT_ID</td>
+      <td><code class="language-plaintext highlighter-rouge">preangel</code></td>
+      <td>GCP project ID</td>
+    </tr>
+    <tr>
+      <td>REGION</td>
+      <td><code class="language-plaintext highlighter-rouge">us-central1</code></td>
+      <td>Deployment region</td>
+    </tr>
+    <tr>
+      <td>AR_REPO</td>
+      <td><code class="language-plaintext highlighter-rouge">myrepo</code></td>
+      <td>Artifact Registry repo name</td>
+    </tr>
+    <tr>
+      <td>GCP_WIP</td>
+      <td><code class="language-plaintext highlighter-rouge">projects/123456789/locations/global/workloadIdentityPools/github-pool/providers/github-provider</code></td>
+      <td>WIF Provider resource path</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>These are configured as GitHub Variables — not secrets.</p>
+
+<hr />
+
+<h2 id="6-the-two-workflows--fully-declarative">6) The Two Workflows — Fully Declarative</h2>
+
+<h3 id="-githubworkflowsdevyml">① <code class="language-plaintext highlighter-rouge">.github/workflows/dev.yml</code></h3>
+
+<p>Builds, pushes, and deploys automatically on every commit to main.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">dev-deploy</span>
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">main</span> <span class="pi">]</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">deploy-dev</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">permissions</span><span class="pi">:</span>
+      <span class="na">contents</span><span class="pi">:</span> <span class="s">read</span>
+      <span class="na">id-token</span><span class="pi">:</span> <span class="s">write</span>
+    <span class="na">env</span><span class="pi">:</span>
+      <span class="na">REGION</span><span class="pi">:</span> <span class="s">$</span>
+      <span class="na">PROJECT_ID</span><span class="pi">:</span> <span class="s">$</span>
+      <span class="na">AR_REPO</span><span class="pi">:</span> <span class="s">$</span>
+      <span class="na">IMAGE</span><span class="pi">:</span> <span class="s">$-docker.pkg.dev/$/$/myapp:$</span>
+
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v4</span>
+
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">google-github-actions/auth@v2</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">workload_identity_provider</span><span class="pi">:</span> <span class="s">$</span>
+          <span class="na">token_format</span><span class="pi">:</span> <span class="s1">'</span><span class="s">access_token'</span>
+          <span class="na">create_credentials_file</span><span class="pi">:</span> <span class="kc">true</span>
+
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">google-github-actions/setup-gcloud@v2</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Build &amp; Push Image</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">gcloud auth configure-docker $REGION-docker.pkg.dev --quiet</span>
+          <span class="s">docker build -t "$IMAGE" .</span>
+          <span class="s">docker push "$IMAGE"</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Deploy to Dev</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">gcloud run deploy myapp-dev \</span>
+            <span class="s">--region $REGION \</span>
+            <span class="s">--image "$IMAGE" \</span>
+            <span class="s">--allow-unauthenticated \</span>
+            <span class="s">--revision-suffix=$ \</span>
+            <span class="s">--condition=None</span>
+          <span class="s">gcloud run services update-traffic myapp-dev \</span>
+            <span class="s">--region $REGION \</span>
+            <span class="s">--to-latest \</span>
+            <span class="s">--condition=None</span>
+</code></pre></div></div>
+
+<h3 id="-githubworkflowsreleaseyml">② <code class="language-plaintext highlighter-rouge">.github/workflows/release.yml</code></h3>
+
+<p>Uses the same image from Artifact Registry to deploy tagged releases to Prod.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">prod-deploy</span>
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span> <span class="s1">'</span><span class="s">v*'</span> <span class="pi">]</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">deploy-prod</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">permissions</span><span class="pi">:</span>
+      <span class="na">contents</span><span class="pi">:</span> <span class="s">read</span>
+      <span class="na">id-token</span><span class="pi">:</span> <span class="s">write</span>
+    <span class="na">env</span><span class="pi">:</span>
+      <span class="na">REGION</span><span class="pi">:</span> <span class="s">$</span>
+      <span class="na">PROJECT_ID</span><span class="pi">:</span> <span class="s">$</span>
+      <span class="na">AR_REPO</span><span class="pi">:</span> <span class="s">$</span>
+      <span class="na">IMAGE_TAG</span><span class="pi">:</span> <span class="s">$-docker.pkg.dev/$/$/myapp:$</span>
+
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v4</span>
+        <span class="na">with</span><span class="pi">:</span> <span class="pi">{</span> <span class="nv">fetch-depth</span><span class="pi">:</span> <span class="nv">0</span> <span class="pi">}</span>
+
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">google-github-actions/auth@v2</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">workload_identity_provider</span><span class="pi">:</span> <span class="s">$</span>
+          <span class="na">token_format</span><span class="pi">:</span> <span class="s1">'</span><span class="s">access_token'</span>
+          <span class="na">create_credentials_file</span><span class="pi">:</span> <span class="kc">true</span>
+
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">google-github-actions/setup-gcloud@v2</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Wait for Image</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">for i in {1..30}; do</span>
+            <span class="s">if gcloud artifacts docker images describe "$IMAGE_TAG" &gt;/dev/null 2&gt;&amp;1; then break; fi</span>
+            <span class="s">sleep 10;</span>
+          <span class="s">done</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Resolve Digest</span>
+        <span class="na">id</span><span class="pi">:</span> <span class="s">digest</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">DIGEST=$(gcloud artifacts docker images describe "$IMAGE_TAG" --format='value(image_summary.digest)')</span>
+          <span class="s">echo "digest=$DIGEST" &gt;&gt; $GITHUB_OUTPUT</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Deploy to Prod (No Traffic)</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">REF="$REGION-docker.pkg.dev/$PROJECT_ID/$AR_REPO/myapp@$"</span>
+          <span class="s">gcloud run deploy myapp \</span>
+            <span class="s">--region $REGION \</span>
+            <span class="s">--image "$REF" \</span>
+            <span class="s">--no-traffic \</span>
+            <span class="s">--revision-suffix=$-$ \</span>
+            <span class="s">--allow-unauthenticated \</span>
+            <span class="s">--condition=None</span>
+</code></pre></div></div>
+
+<p>Manual rollout when verified:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gcloud run services update-traffic myapp <span class="nt">--region</span> us-central1 <span class="nt">--to-latest</span> <span class="nt">--condition</span><span class="o">=</span>None
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="7-why-this-is-the-best-practice-for-us">7) Why This Is the Best Practice for Us</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Principle</th>
+      <th>Reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Single Source of Truth</td>
+      <td>All workflows, configs, and permissions live in Git — never in the UI.</td>
+    </tr>
+    <tr>
+      <td>Direct Access via WIF</td>
+      <td>No service account, no keys — just short-lived credentials tied to our repo identity.</td>
+    </tr>
+    <tr>
+      <td>Artifact Reuse</td>
+      <td>The same image tested in Dev is promoted to Prod. Guaranteed consistency.</td>
+    </tr>
+    <tr>
+      <td>Two Stages Only</td>
+      <td>Fewer moving parts → faster deploys → fewer errors.</td>
+    </tr>
+    <tr>
+      <td>Manual Traffic Promotion</td>
+      <td>Adds human verification at the most critical moment: production.</td>
+    </tr>
+    <tr>
+      <td>Declarative Everything</td>
+      <td>Each workflow file fully describes how and why it runs.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>✅ The result: secure, minimal, transparent, and automation-ready — the best practice for PreAngel’s AI-native product stack.</p>
+
+<hr />
+
+<h2 id="8-conclusion--the-preangel-way">8) Conclusion — The PreAngel Way</h2>
+
+<p>PreAngel’s two-stage pipeline represents the ideal harmony between automation and human judgment:</p>
+
+<ul>
+  <li>Dev runs continuously and fearlessly.</li>
+  <li>Prod deploys intentionally and safely.</li>
+  <li>IAM is keyless and direct.</li>
+  <li>Every configuration is visible, versioned, and reproducible.</li>
+</ul>
+
+<p>Build once. Test once. Deploy deliberately.</p>
+
+<hr />
+
+<h2 id="appendix-a--background-and-rationale-from-earlier-write-up-updated-to-devprod">Appendix A — Background and Rationale (from earlier write-up, updated to Dev/Prod)</h2>
+
+<p>We started like most teams — with five or six deployment environments: <code class="language-plaintext highlighter-rouge">dev</code>, <code class="language-plaintext highlighter-rouge">qa</code>, <code class="language-plaintext highlighter-rouge">preview</code>, <code class="language-plaintext highlighter-rouge">staging</code>, <code class="language-plaintext highlighter-rouge">preprod</code>, <code class="language-plaintext highlighter-rouge">prod</code>. Each served a purpose, but over time they became confusing, inconsistent, and expensive:</p>
+
+<ul>
+  <li>Code drifted between stages.</li>
+  <li>Builds weren’t reproducible.</li>
+  <li>Deployments slowed down because approvals piled up.</li>
+</ul>
+
+<p>We asked a radical question: What’s the minimum number of stages that guarantees speed and safety?</p>
+
+<h3 id="a1-why-we-simplified--from-many-stages-to-two">A1. Why We Simplified — From Many Stages to Two</h3>
+
+<p>After analyzing dozens of pipelines (Firebase, Vercel, AWS, GitHub Actions, Google Cloud Deploy), we found that two stages — Development and Production — are enough when you use Cloud Run’s built‑in rollout and rollback capabilities.</p>
+
+<p>This led to the new model (now finalized in v4):</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">main</code> → auto‑deploys to Dev (continuous integration &amp; validation).</li>
+  <li>A Git tag → promotes to Prod (controlled rollout with manual traffic).</li>
+</ul>
+
+<h3 id="a2-the-questions-we-asked-ourselves">A2. The Questions We Asked Ourselves</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Question</th>
+      <th>Our Finding</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Why not more stages?</td>
+      <td>Each extra environment creates cost, delay, and drift. Two are enough when rollout control is strong.</td>
+    </tr>
+    <tr>
+      <td>Why not merge dev + prod?</td>
+      <td>Dev must remain a fast, iterative environment; Prod remains stable and audited.</td>
+    </tr>
+    <tr>
+      <td>Why use Git tags for promotion?</td>
+      <td>Tags are immutable, human‑auditable, and integrate naturally with GitHub releases.</td>
+    </tr>
+    <tr>
+      <td>Why not just copy dev to production?</td>
+      <td>Cloud Run doesn’t clone environments; it shifts traffic between revisions — a safer, more elegant model.</td>
+    </tr>
+    <tr>
+      <td>How does rollback work?</td>
+      <td>Cloud Run reroutes traffic to the previous revision instantly. No redeploys, no downtime.</td>
+    </tr>
+    <tr>
+      <td>Can we preview before rollout?</td>
+      <td>Yes. Deploy a revision with 0% traffic and access via its direct URL.</td>
+    </tr>
+    <tr>
+      <td>What about frontend &amp; backend sync?</td>
+      <td>If the frontend is on Firebase App Hosting, coordinate via tags; otherwise keep APIs backward‑compatible.</td>
+    </tr>
+    <tr>
+      <td>Do we lose flexibility with two stages?</td>
+      <td>No — Cloud Run traffic splitting brings flexibility back.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="a3-the-insight--cloud-run-changed-the-rules">A3. The Insight — Cloud Run Changed the Rules</h3>
+
+<p>In traditional CI/CD systems:</p>
+
+<ul>
+  <li>Promotion = copy lower env → Prod.</li>
+  <li>Rollback = redeploy old build.</li>
+</ul>
+
+<p>In Cloud Run:</p>
+
+<ul>
+  <li>Each deploy creates an immutable revision.</li>
+  <li>Promotion = traffic migration.</li>
+  <li>Rollback = re‑routing.</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>Legacy Thinking</th>
+      <th>Cloud Run Reality</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Copy lower env to Prod</td>
+      <td>Shift traffic to new Prod revision</td>
+    </tr>
+    <tr>
+      <td>Rollback = Re‑deploy</td>
+      <td>Rollback = Redirect traffic instantly</td>
+    </tr>
+    <tr>
+      <td>Multi‑env drift</td>
+      <td>Revisions are immutable snapshots</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="a4-the-model--twostage-googlenative-deployment">A4. The Model — Two‑Stage, Google‑Native Deployment</h3>
+
+<ul>
+  <li>Stage 1 (Dev): <code class="language-plaintext highlighter-rouge">main</code> deploys automatically via GitHub Actions → Artifact Registry → Cloud Run (Dev).</li>
+  <li>Stage 2 (Prod): Reuse the same container image digest; deploy a new Prod revision with 0% traffic, then promote.</li>
+</ul>
+
+<h3 id="a5-the-reasoning--analytics-that-justify-the-choice">A5. The Reasoning — Analytics That Justify the Choice</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Challenge</th>
+      <th>Our Approach</th>
+      <th>Benefit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Build drift</td>
+      <td>Build once in Dev, reuse same artifact in Prod</td>
+      <td>Consistency &amp; reproducibility</td>
+    </tr>
+    <tr>
+      <td>Downtime risk</td>
+      <td>Gradual rollout + instant rollback</td>
+      <td>Continuous availability</td>
+    </tr>
+    <tr>
+      <td>Complex pipeline</td>
+      <td>2 clear stages + tag promotion</td>
+      <td>Simplicity + speed</td>
+    </tr>
+    <tr>
+      <td>Low observability</td>
+      <td>Cloud Run Revisions + Cloud Monitoring</td>
+      <td>Transparent release history</td>
+    </tr>
+    <tr>
+      <td>Approval fatigue</td>
+      <td>Git tag = single promotion signal</td>
+      <td>Clarity + accountability</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="a6-best-practices--cloud-run--optional-firebase-app-hosting">A6. Best Practices — Cloud Run (+ optional Firebase App Hosting)</h3>
+
+<h4 id="cloud-run">Cloud Run</h4>
+
+<ul>
+  <li>Every deploy = immutable revision.</li>
+  <li>Supports traffic splitting for canary or gradual rollout.</li>
+  <li>Rollback = redirect traffic to any previous revision.</li>
+  <li>Supports tagging of revisions for <code class="language-plaintext highlighter-rouge">candidate</code>, <code class="language-plaintext highlighter-rouge">active</code>, <code class="language-plaintext highlighter-rouge">stable</code>.</li>
+  <li>Auto‑scales per request; great for cost efficiency.</li>
+</ul>
+
+<h4 id="optional-firebase-app-hosting">Optional: Firebase App Hosting</h4>
+
+<ul>
+  <li>If your frontend is on Firebase App Hosting, use it for build history and UI‑level rollouts.</li>
+  <li>Coordinate frontend and backend via Git tags; keep APIs backward‑compatible during rollout windows.</li>
+</ul>
+
+<h4 id="together">Together</h4>
+
+<ul>
+  <li>GitHub Actions manages builds for backends; Firebase can manage frontend builds.</li>
+  <li>Cloud Run handles backend revisions, rollouts, and scaling.</li>
+  <li>Shared observability via Cloud Monitoring.</li>
+</ul>
+
+<h3 id="a7-the-new-mental-model--traffic-not-copies">A7. The New Mental Model — Traffic, Not Copies</h3>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>main branch → GitHub Actions → Artifact Registry → Cloud Run (Dev)
+     │                               │
+     │                               └─ validated image digest
+     │
+   Git tag (v1.4.2) ───────────────→ Cloud Run (Prod)
+                                      │
+                               New revision @ 0% traffic
+                                      │
+                              5% → 25% → 100% rollout
+                                      │
+                              rollback ← metrics breach
+</code></pre></div></div>
+
+<ul>
+  <li>Promotion = Traffic Migration</li>
+  <li>Rollback = Traffic Redirect</li>
+  <li>Artifact = Immutable Revision</li>
+</ul>
+
+<h3 id="a8-policies-to-enforce">A8. Policies to Enforce</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Policy</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Branch rule</td>
+      <td><code class="language-plaintext highlighter-rouge">main</code> auto‑deploys to Dev.</td>
+    </tr>
+    <tr>
+      <td>Promotion rule</td>
+      <td>Only signed Git tags can trigger Prod rollout.</td>
+    </tr>
+    <tr>
+      <td>Artifact immutability</td>
+      <td>Same container digest in Dev &amp; Prod.</td>
+    </tr>
+    <tr>
+      <td>Default rollout</td>
+      <td>Start ≤ 5%, expand if SLOs green.</td>
+    </tr>
+    <tr>
+      <td>Rollback rule</td>
+      <td>Auto‑rollback if error rate &gt; threshold.</td>
+    </tr>
+    <tr>
+      <td>Audit trail</td>
+      <td>GitHub + Cloud Run track all releases.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="a9-why-its-easy-to-operate">A9. Why It’s Easy to Operate</h3>
+
+<p>Even engineers new to DevOps can reason about this:</p>
+
+<ol>
+  <li>Code on <code class="language-plaintext highlighter-rouge">main</code> → auto in Dev.</li>
+  <li>Validate.</li>
+  <li>Tag when ready.</li>
+  <li>Cloud Run migrates traffic → monitors → finalizes.</li>
+  <li>Rollback instantly if needed.</li>
+</ol>
+
+<h3 id="a10-quick-recap--build-once-promote-by-traffic">A10. Quick Recap — Build Once, Promote by Traffic</h3>
+
+<p>This 2‑Stage model achieves the trifecta:</p>
+
+<ul>
+  <li>Speed: Continuous deployment to Dev keeps momentum high.</li>
+  <li>Safety: Gradual rollout + instant rollback prevent outages.</li>
+  <li>Simplicity: Two stages, one promotion signal.</li>
+</ul>
+
+<p>✅ Build once. Test once. Promote by shifting traffic — not by redeploying.</p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#deployment">deployment</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#firebase">firebase</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#cloudrun">cloudrun</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#github-actions">github-actions</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#workload-identity-federation">workload-identity-federation</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#iam">iam</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by Huan Li <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Author @ Wechaty, Architect @ Chatie, LLM Code Generation Enthusiast, Serial Entrepreneur, Burner🔥
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2025/10/12/ultimate-guide-software-environment-release-naming/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2025/10-ultimate-guide-software-environment-release-naming/ultimate-guide-software-environment-release-naming.webp">  🧭 Decoding the Chaos: The Ultimate Guide to Software Environment & Release Naming</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2025/11/04/rethinking-azure-billing/"> Rethinking Azure Billing: The Simple Design Microsoft Should Have Built  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2025/11-rethinking-azure-billing/rethinking-azure-billing.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>
