@@ -1,12 +1,12 @@
 ---
- title: "小白入门：如何用科技拯救你的记忆力"
- author: stefan
- categories: article
- tags:
-   - blog
-   - study
-   - introduction
- image: /assets/2021/10-how-to-save-your-memory-with-technology/bgc.webp
+title: "小白入门：如何用科技拯救你的记忆力"
+author: stefan
+categories: article
+tags:
+  - blog
+  - study
+  - introduction
+image: /assets/2021/10-how-to-save-your-memory-with-technology/bgc.webp
 mermaid: true
 ---
 
