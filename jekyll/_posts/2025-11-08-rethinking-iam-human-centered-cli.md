@@ -9,6 +9,7 @@ tags:
   - cli-design
   - developer-experience
 image: /assets/2025/11-rethinking-iam-human-centered-cli/rethinking-iam-human-centered-cli.webp
+mermaid: true
 ---
 
 > Modern cloud IAM systems—like Google Cloud IAM—are marvels of power, precision, and policy granularity. Yet, they also carry a legacy of complexity.

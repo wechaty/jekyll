@@ -27,6 +27,8 @@ mermaid: true
 ```
 ````
 
+Set `mermaid: true` on pages that include ```mermaid code fences and the site will load the Mermaid runtime automatically. Leave it off (default) to avoid the extra script, or flip `mermaid.enable_by_default` in `_config.yml` if you ever want it globally.
+
 ## Math notation
 
 MathJax only loads on pages that opt in with a `math: true` front matter flag. This keeps most posts light while still allowing LaTeX wherever needed.
