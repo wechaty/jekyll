@@ -490,3 +490,9 @@ This is just the beginning — and I think CCD is one of those small, composable
 ---
 
 *Thanks for reading. If you experiment with CCD, please share what you find — failures, weird cases, cool successes — they’re all gold for improving the idea.*
+
+---
+
+### Build CCD With Us
+
+Ready to take CCD for a spin? Head over to the [Confident-Cluster Decoding GitHub repo](https://github.com/shipfail/confident-cluster-decoding) to follow the roadmap, open issues, or contribute experiments.
