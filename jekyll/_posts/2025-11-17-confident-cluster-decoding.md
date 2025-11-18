@@ -19,8 +19,6 @@ image: /assets/2025/11-confident-cluster-decoding/ccd-greedy.webp
 
 **Confident-Cluster Decoding (CCD)** keeps only the tokens the model is truly confident about, exposes all top contenders, and turns that “soft uncertainty” into something coding agents and tool-calling systems can actually reason about.
 
-
-
 ---
 
 ## 1. The Moment I Realized Greedy Decoding Was Lying to Me
@@ -30,6 +28,7 @@ Like many people building with large language models, I started with the usual r
 - `temperature = 0`
 - `topK = 1`
 - `candidateCount = 1`
+- `seed` pinned to a constant value
 
 Greedy decoding. No randomness. No drama.  
 Especially for **code generation** and **tool calling**, this feels like the “right” choice:
@@ -44,7 +43,7 @@ In my [FireGen](https://github.com/shipfail/firegen) project, I use Gemini to:
 - reason step-by-step about how to fill that schema,
 - and output a **strict JSON object** for a REST API call.
 
-With `temperature = 0` and `topK = 1`, it worked *really* well.  
+With `temperature = 0`, `topK = 1`, and a fixed `seed`, it worked *really* well.  
 Most of the time the model behaved like a perfectly deterministic machine.
 
 But sometimes, very rarely, I noticed something weird:
@@ -66,7 +65,7 @@ Even with “no randomness” in the sampling step, there’s still a lot of non
 
 - Parallel floating-point operations are **not associative**. The order of additions/multiplications can change the final bits.
 - Different hardware / kernels / compilers may produce **slightly different logits**.
-- If two tokens have probabilities like **0.501 vs 0.498**, a tiny numerical nudge can flip which one wins.
+- If two tokens have probabilities like **0.12794 vs 0.12713** (typical for top-1 vs top-2 tokens in modern LLMs), a tiny numerical nudge can flip which one wins.
 
 From the model’s perspective, both tokens are basically **equally good**.
 
@@ -102,7 +101,7 @@ This led to the core concept:
 At a given step `t`:
 
 - Let `P_max` be the probability of the **top token**.
-- Define a threshold `α` in `(0, 1]`. For example, `α = 0.8`.
+- Define a threshold `α` in `(0, 1]`. For example, `α = 0.9545` (≈ two-sigma coverage).
 - Define the **confident cluster**:
 
 \[
@@ -133,6 +132,8 @@ CCD doesn’t throw away the uncertainty. It **exposes it**.
 
 ## 4. How CCD Works (Without the Math Headache)
 
+![Confident-Cluster Decoding Diagram]( /assets/2025/11-confident-cluster-decoding/ccd-diagram.webp )
+
 You don’t need to be a theoretician to understand CCD. The mental model is simple.
 
 Assume your LLM API can give you, for each step:
@@ -154,7 +155,7 @@ p_max = top_probs[0]
 ### Step 2: Build the confident cluster
 
 ```python
-alpha = 0.8  # for example
+alpha = 0.9545  # two-sigma coverage
 threshold = alpha * p_max
 
 mask = top_probs >= threshold
@@ -332,8 +333,8 @@ Both are powerful, but they operate at a different conceptual layer. CCD is:
 
 The story in one paragraph:
 
-- I was building **FireGen**, a Firebase Extension that uses LLMs to turn prompts into REST API calls using Vertex/Gemini models.
-- I used **fully deterministic decoding** (`temperature = 0`, `topK = 1`) because any non-determinism in schema generation is dangerous.
+- I was building **[FireGen](https://github.com/ShipFail/firegen)**, a Firebase Extension that uses LLMs to turn prompts into REST API calls using Vertex/Gemini models.
+- I used **fully deterministic decoding** (`temperature = 0`, `topK = 1`, fixed `seed`) because any non-determinism in schema generation is dangerous.
 - It worked well — until I noticed **rare nondeterministic outputs** despite “no randomness.”
 - Investigating further, I realized: **the model is often nearly indifferent between several tokens**. The nondeterminism wasn’t a bug; it was a symptom of hidden uncertainty.
 - That led to the question: “If the model likes several tokens almost equally, why am I forcing it to pick exactly one and pretend the others don’t exist?”
@@ -417,7 +418,7 @@ Even without formal library support, you can already experiment with CCD if:
 ### Minimal CCD-Deterministic Sketch
 
 ```python
-def ccd_greedy_decode(model, tokenizer, prompt, alpha=0.8, top_k=10, max_tokens=256):
+def ccd_greedy_decode(model, tokenizer, prompt, alpha=0.9545, top_k=10, max_tokens=256):
     tokens = tokenizer.encode(prompt)
     clusters = []  # store step-wise cluster metadata
 

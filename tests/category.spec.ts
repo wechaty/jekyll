@@ -28,6 +28,7 @@ test('front matter key `categories` must contains at lease one preset category',
     'ospp', // Open Source Promotion Plan, Chinese clone of Google summer of code
     'hacking',
     'interview',
+    'ideas',
     'migration',
     'milestone',
     'npm',
