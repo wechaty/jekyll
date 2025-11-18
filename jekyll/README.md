@@ -38,7 +38,6 @@ MathJax only loads on pages that opt in with a `math: true` front matter flag. T
 - Use `$$...$$` or `\[...\]` for display math blocks.
 - Set `math: false` explicitly if you globally enable math later but want to skip it for a page.
 
-
 ## Serve from local
 
 Run the Jekyll at localhost for blog preview.
