@@ -8,6 +8,7 @@ tags:
   - ddd
   - event-driven
 image: /assets/2022/03-event-driven-wechaty-cqrs/cqrs-wechaty.webp
+mermaid: true
 ---
 
 > Command Query Responsibility Segregation (CQRS) is a software architecture pattern that separates the command(write) and query(read) layers.  
