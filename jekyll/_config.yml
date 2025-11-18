@@ -7,6 +7,10 @@ url: https://wechaty.js.org
 baseurl:
 email: wechaty@googlegroups.com
 mailchimp-list: https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70
+
+math:
+  enable_by_default: false
+
 google:
   tag_manager:
     container_id: GTM-PD2PL84
@@ -49,6 +53,9 @@ defaults:
 # Syntax
 markdown: kramdown
 highlighter: rouge
+
+kramdown:
+  math_engine: mathjax
 
 # Paginate
 paginate: 30

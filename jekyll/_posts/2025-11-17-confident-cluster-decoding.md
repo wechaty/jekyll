@@ -11,6 +11,7 @@ tags:
   - tool-calling
   - uncertainty
 image: /assets/2025/11-confident-cluster-decoding/ccd-greedy.webp
+math: true
 ---
 
 > Greedy decoding is too brittle, sampling is too random
@@ -104,9 +105,9 @@ At a given step `t`:
 - Define a threshold `α` in `(0, 1]`. For example, `α = 0.9545` (≈ two-sigma coverage).
 - Define the **confident cluster**:
 
-\[
+$$
 C_t(\alpha) = \{ v \mid p_t(v) \ge \alpha \cdot P_{\max} \}
-\]
+$$
 
 In plain English:
 

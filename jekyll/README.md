@@ -27,6 +27,16 @@ mermaid: true
 ```
 ````
 
+## Math notation
+
+MathJax only loads on pages that opt in with a `math: true` front matter flag. This keeps most posts light while still allowing LaTeX wherever needed.
+
+- Add `math: true` alongside your usual metadata whenever the page contains formulas.
+- Use `$...$` or `\(...\)` for inline math.
+- Use `$$...$$` or `\[...\]` for display math blocks.
+- Set `math: false` explicitly if you globally enable math later but want to skip it for a page.
+
+
 ## Serve from local
 
 Run the Jekyll at localhost for blog preview.
