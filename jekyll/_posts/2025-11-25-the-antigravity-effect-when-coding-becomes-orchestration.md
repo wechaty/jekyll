@@ -24,15 +24,16 @@ Antigravity isn’t just an editor; it’s an **Operating System for Artificial 
 
 When you open Antigravity, you aren't just opening an IDE. You are walking into a room with three high-powered executives ready to work for you 24/7:
 
-1.  **The CTO (Gemini 3 Pro)**: Your AI coding agent co-founder. It knows every framework, refactors legacy code in seconds, and architects scalable systems while you sleep.
-2.  **The Design Director (Nano Banana Pro)**: Your creative visionary. It generates premium UI assets, icons, and entire design systems on the fly, ensuring your product looks like a million bucks from Day 1.
-3.  **The Testing Director (Browser Use)**: Your QA lead. It doesn't just run unit tests; it launches a real browser, clicks buttons, fills forms, and verifies user flows exactly like a human would.
+1. **The CTO (Gemini 3 Pro)**: Your AI coding agent co-founder. It knows every framework, refactors legacy code in seconds, and architects scalable systems while you sleep.
+2. **The Design Director (Nano Banana Pro)**: Your creative visionary. It generates premium UI assets, icons, and entire design systems on the fly, ensuring your product looks like a million bucks from Day 1.
+3. **The Testing Director (Browser Use)**: Your QA lead. It doesn't just run unit tests; it launches a real browser, clicks buttons, fills forms, and verifies user flows exactly like a human would.
 
 This is a powerful team for anyone who wants to build a one-person billion-dollar company! This team is more complete—and faster—than most of the founding teams applying to YC today.
 
 With this team, you unlock a new era of development **Vibe Coding**.
 
 ### What is Vibe Coding?
+
 > **Vibe Coding** *(n.)*: The state of flow where you focus purely on architecture and creativity, while your autonomous executive team handles the implementation, design, and testing in parallel.
 
 If you're a solo founder, prepare to become a full-stack organization overnight.
@@ -47,8 +48,8 @@ We’ve all been there: you have a brilliant idea, but you're stuck on a React h
 
 Antigravity solves this by giving you a **CTO** that works in parallel with you. The workspace is separated into two distinct, powerful surfaces:
 
-*   **The Editor:** Your familiar canvas for synchronous work—fixing typos, tweaking UI, committing small changes.
-*   **The Agent Manager:** Your Mission Control where your CTO operates.
+* **The Editor:** Your familiar canvas for synchronous work—fixing typos, tweaking UI, committing small changes.
+* **The Agent Manager:** Your Mission Control where your CTO operates.
 
 This is the **"Aha" Moment** for founders. You can spawn a high-priority agent to "Research and implement OAuth for the API" in the Manager. While your CTO is planning, fetching dependencies, and writing the code in the background, you can be in the Editor polishing the landing page text.
 
@@ -92,8 +93,8 @@ At its core, Antigravity is a platform, and its power is rooted in the "monster"
 
 **Gemini 3 Pro**—the brain behind your CTO—sets a new standard for code understanding, complex dependency management, and multi-step planning. But what I love most is the platform's commitment to openness. Antigravity doesn't lock you in. You can also run powerful autonomous agents powered by:
 
-*   **Claude Sonnet 4.5**
-*   **GPT-OSS** (Open Source Specialist)
+* **Claude Sonnet 4.5**
+* **GPT-OSS** (Open Source Specialist)
 
 This model optionality ensures Antigravity remains the most powerful and flexible coding environment for years to come.
 
@@ -120,10 +121,11 @@ Antigravity isn’t just an IDE upgrade; it’s the future of software developme
 Download the public preview today. Spawn your first parallel agent, watch your Testing Director manage the browser, and let the monster loose. You will have your own **"Aha" Moment** guaranteed.
 
 ### 🚀 Join the Revolution
+
 Don't just watch the future happen—build it.
 
-*   **[Download Antigravity Public Preview](https://antigravity.google)**
-*   **[Join the Discord Community](https://discord.gg/antigravity)**
+* **[Download Antigravity Public Preview](https://antigravity.google)**
+* **[Join the Discord Community](https://discord.gg/antigravity)**
 
 *Read the official announcements here:*
 
