@@ -10,11 +10,9 @@ tags:
 image: /assets/2025/11-the-antigravity-effect-when-coding-becomes-orchestration/mission-control-detailed.webp
 ---
 
-> **A Note from Huan, Google Developer Expert in AI**
+> As an internal tester for **Google Antigravity**, I've had a front-row seat to the single biggest step-change in software development since the original IDE. But this isn't just about faster coding. It's about **scaling yourself**.
 
 I’ve been biting my tongue for weeks.
-
-As an internal tester for **Google Antigravity**, I've had a front-row seat to the single biggest step-change in software development since the original IDE. But this isn't just about faster coding. It's about **scaling yourself**.
 
 For solo founders and non-technical creators, the dream has always been to build a "unicorn" product without needing a unicorn team. We are finally there.
 
