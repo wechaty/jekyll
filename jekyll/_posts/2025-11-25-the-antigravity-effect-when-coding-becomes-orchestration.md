@@ -20,7 +20,7 @@ We are witnessing a fundamental shift: from **coding** to **orchestrating**.
 
 Antigravity isn’t just an editor; it’s an **Operating System for Artificial Intelligence**. But more importantly, it gives you something money can't easily buy: an instant, world-class founding team.
 
-### Meet Your New AI Co-Founder Team
+## Meet Your New AI Co-Founder Team
 
 When you open Antigravity, you aren't just opening an IDE. You are walking into a room with three high-powered executives ready to work for you 24/7:
 
@@ -32,7 +32,7 @@ This is a powerful team for anyone who wants to build a one-person billion-dolla
 
 With this team, you unlock a new era of development **Vibe Coding**.
 
-### What is Vibe Coding?
+**What is Vibe Coding?**
 
 > **Vibe Coding** *(n.)*: The state of flow where you focus purely on architecture and creativity, while your autonomous executive team handles the implementation, design, and testing in parallel.
 
