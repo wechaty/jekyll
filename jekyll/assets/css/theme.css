@@ -689,6 +689,9 @@ article:first-letter {
 	margin:0 .2em 0 0;
 	vertical-align:top;
 }
+article > p:first-of-type {
+	clear: both;
+}
 article h1,article h2,article h3,article h4,article h5,article h6,article .h1,article .h2,article .h3,article .h4,article .h5,article .h6 {
 	margin-bottom:2rem;
 	margin-top:2rem;
