@@ -1,0 +1,28 @@
+{
+    "name": "Jekyll Site",
+    "image": "mcr.microsoft.com/devcontainers/jekyll:2-bullseye",
+    "features": {
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "lts"
+        },
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "configureZshAsDefaultShell": true
+        },
+        "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+            "packages": "ffmpeg,imagemagick"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "Shopify.ruby",
+                "ecmel.vscode-html-css",
+                "davidanson.vscode-markdownlint"
+            ]
+        }
+    },
+    "forwardPorts": [
+        4000
+    ],
+    "postCreateCommand": "npm install && cd jekyll && bundle install"
+}
