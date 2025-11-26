@@ -91,12 +91,36 @@ This means your **Vibe Coding** process is now truly end-to-end—you can design
 
 At its core, Antigravity is a platform, and its power is rooted in the "monster" models it orchestrates.
 
-**Gemini 3 Pro**—the brain behind your CTO—sets a new standard for code understanding, complex dependency management, and multi-step planning. But what I love most is the platform's commitment to openness. Antigravity doesn't lock you in. You can also run powerful autonomous agents powered by:
+**Gemini 3 Pro**—the brain behind your CTO—sets a new standard for code understanding, complex dependency management, and multi-step planning. You can even choose the specific "brain" for the task, toggling between **Gemini 3 Pro (High)** for complex reasoning or lighter models for speed.
+
+But what I love most is the platform's commitment to openness. Antigravity doesn't lock you in. You can also run powerful autonomous agents powered by:
 
 * **Claude Sonnet 4.5**
 * **GPT-OSS** (Open Source Specialist)
 
 This model optionality ensures Antigravity remains the most powerful and flexible coding environment for years to come.
+
+---
+
+## 5. Critical Take: The UI Needs to Catch Up ⚠️
+
+I love this tool, but I have to be honest: the UI naming conventions are confusing and, frankly, need a rethink.
+
+Antigravity presents you with two main modes: **Planning** and **Fast**.
+To a human, "Planning" implies a passive state—drafting a roadmap, discussing architecture, or thinking without acting. In other agents like Claude Code, "Plan" mode is exactly that: a safe space for discussion.
+
+**In Antigravity, "Planning" is a misnomer.** It should be called **"Architect & Execute"**.
+
+When you are in Planning mode, the agent isn't just taking notes. It is actively researching, checking files, and—here is the critical bug—sometimes it just **starts executing code** without waiting for your final "go." I've had moments where I thought we were just brainstorming a implementation design, and suddenly the agent is running migration scripts. That is a "rogue agent" behavior that needs better harnessing.
+
+Similarly, **"Fast"** mode is a poor name. It sounds like a performance setting, but it really means **"Direct Execution"** or **"Doer Mode"**.
+
+**My advice:** Ignore the labels.
+
+* Treat **Planning** as **"The Architect"** (use for complex, multi-file tasks).
+* Treat **Fast** as **"The Builder"** (use for quick fixes and simple commands).
+
+The intelligence is there, but the controls are still in beta. You need to learn the quirks to master the machine.
 
 ---
 
