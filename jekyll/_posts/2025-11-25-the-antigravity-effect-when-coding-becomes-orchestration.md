@@ -155,3 +155,13 @@ Don't just watch the future happen—build it.
 
 * [Introducing Google Antigravity](https://antigravity.google/blog/introducing-google-antigravity)
 * [Nano Banana Pro in Google Antigravity](https://antigravity.google/blog/nano-banana-pro-in-google-antigravity)
+
+---
+
+### Credits
+
+This blog post, including all its images, was drafted entirely with Antigravity.
+
+![Antigravity](/assets/2025/11-the-antigravity-effect-when-coding-becomes-orchestration/antigravity-screenshot-32x9.webp)
+
+We hope this demonstration of Antigravity's capabilities inspires your own journey into the future of development.
