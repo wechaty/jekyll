@@ -1,6 +1,6 @@
 {
   "name": "wechaty-jekyll",
-  "version": "0.11.82",
+  "version": "0.11.124",
   "description": "Wechaty Official Website for News, Blogs, Contributor Profiles",
   "private": true,
   "type": "module",
@@ -13,7 +13,7 @@
     "lint": "npm-run-all lint:es lint:ts lint:md lint:fn lint:yml",
     "lint:es": "eslint \"src/**/*.ts\" \"tests/**/*.spec.ts\" --ignore-pattern tests/fixtures/",
     "lint:ts": "tsc --isolatedModules --noEmit",
-    "lint:md": "markdownlint --ignore _site/ --ignore node_modules/ \"**/*.md\"",
+    "lint:md": "markdownlint --fix --ignore _site/ --ignore node_modules/ \"**/*.md\"",
     "lint:fn": "file-name-linter .file-name-linter.json",
     "lint:yml": "true || yamllint jekyll/_data/*.yml",
     "test": "npm-run-all lint test:unit",

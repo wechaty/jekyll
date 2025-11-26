@@ -6,7 +6,10 @@ tags:
   - matrix
   - featured
 image: /assets/2020/matrix-wechaty/2020-03-matrix-appservice-wechaty.webp
+hidden: true
 ---
+
+> This post is also available in [English](/2020/03/01/matrix-wechat-bridge-en/)
 
 我周围的人都知道我很讨厌微信————臃肿、慢速、开放性低而且还极其费电，于是呢我当然发挥裁剪流氓软件的能力，直接把微信的后台打了个半残，所以我周围的人一直说我微信经常找不到我，那是当然的，微信连后台都没了，能实时找得到我就怪了。  
 
@@ -145,7 +148,7 @@ WantedBy=multi-user.target
 之后就可以使用 `systemctl enable` 命令和 `systemctl start` 命令来启动 Wechaty Matrix Bridge 了。  
 仅建议在调试完成，可以成功运行的情况下使用 systemctl 启动。  
 
-## Let's Go！
+## Let's Go
 
 来到你的 Matrix 客户端上，对 `@wechaty:你的服务器` 发起 **私聊** ，等待 Bot 加入后它应该会提示  
 

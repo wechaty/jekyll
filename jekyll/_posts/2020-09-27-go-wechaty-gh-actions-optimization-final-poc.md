@@ -7,7 +7,8 @@ tags:
   - summer-2020
   - go
   - devops
-image: /assets/2020/go-wechaty-gh-actions-optimization-final-poc/header.webp
+image: /assets/2020/09-go-wechaty-gh-actions-optimization-final-poc-en/header.webp
+hidden: true
 ---
 
 “开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。
@@ -68,3 +69,7 @@ image: /assets/2020/go-wechaty-gh-actions-optimization-final-poc/header.webp
   - 光彬同学能够很好的主动扩充自己尚未掌握的知识领域，甚至于在一定方向上能够主动的去探索新的技术方案，这一点在工作中是很重要的技能，希望你能够不段的扩充自己的知识领域，能够解决更多未知的问题。
   - 技术方面相信你有足够的积极性去解决，就像你在总结中提到的你会意识到自己技术上的提升空间，但是另一方面希望你能够在开源方面有更多的收获，它可以使你在今后的工作中能够推动更多项目协同上的改进。
 - 最终评审结果：*通过*
+
+---
+
+> This post is also available in [English](/2020/09/27/go-wechaty-gh-actions-optimization-final-poc-en/).

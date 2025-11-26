@@ -6,8 +6,11 @@ tags:
   - bot
   - job
   - intern
-image: /assets/2020/early-bird-chatbot/bird.webp
+image: /assets/2020/07-early-bird-chatbot-en/bird.webp
+hidden: true
 ---
+
+> This post is also available in English: [A Job-seeking Community Management Tool Based on Wechaty]({{ '/2020/07/23/early-bird-chatbot-en/' | relative_url }})
 
 早鸟平台是一群硅谷在职的工程师创建的平台。受全球疫情的影响，今年的求职季变得很特殊，对于企业来说，缩减招聘需求成了一段时间的常态。对于求职者来说面试周期拉长、求职压力倍增。而早鸟作为专业的求职交流公益平台，在全球疫情蔓延，经济低迷的情况下，更应该助广大毕业生或求职者一臂之力。
 
@@ -27,12 +30,13 @@ image: /assets/2020/early-bird-chatbot/bird.webp
 [https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty](https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty)
 
 细节如下：
+
 > 为了参与开源激励计划，需要开发者填写表单，联系Juzi BOT（微信号：juzibot）或等待其主动联系均可。
-直接填写： Wechaty 开源激励计划2.0申请表 。
+> 直接填写： Wechaty 开源激励计划2.0申请表 。
 >
 > 在收到开源激励计划申请表和 Github 项目信息后，Juzi BOT（微信号：juzibot）将依照开源激励计划申请表中的联系方式主动联系。
-在确认开发者愿意将最终成品代码开源同时在Wechaty社区内撰写一篇博客后，将为开发者发放一个有效期 15 天的 Token 。
-开源激励计划的 Token 为 padplus 协议，目前主要支持 node.js 的开发，如果想要使用 Java / Python / Go 进行开发，可以申请 Donut Token，其针对多语言进行了优化，但需要进行付费购买。
+> 在确认开发者愿意将最终成品代码开源同时在Wechaty社区内撰写一篇博客后，将为开发者发放一个有效期 15 天的 Token 。
+> 开源激励计划的 Token 为 padplus 协议，目前主要支持 node.js 的开发，如果想要使用 Java / Python / Go 进行开发，可以申请 Donut Token，其针对多语言进行了优化，但需要进行付费购买。
 >
 > 在提供有效期 15 天的 Token 后，我们期待开发者将 MVP （最小可行化产品）代码在 Github 中开源，并储存在一个 public repo 中。
 
@@ -56,8 +60,8 @@ image: /assets/2020/early-bird-chatbot/bird.webp
 
 如图：
 
-![1](/assets/2020/early-bird-chatbot/job.webp)
-![2](/assets/2020/early-bird-chatbot/covid.webp)
+![1](/assets/2020/07-early-bird-chatbot-en/job.webp)
+![2](/assets/2020/07-early-bird-chatbot-en/covid.webp)
 
 ## 目录结构
 
@@ -86,7 +90,7 @@ npm install
 1. 修改`config`配置
    打开`config/index.js` 文件，将里面的配置改为自己的。
 2. 修改天行接口配置
-   天行 api 官网 ：[https://tianapi.com/](https://tianapi.com/)  
+   天行 api 官网 ：[https://tianapi.com/](https://tianapi.com/)
     注册成功后，申请以下接口：
    - [海外疫情]
 

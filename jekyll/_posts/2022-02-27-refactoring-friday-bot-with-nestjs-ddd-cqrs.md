@@ -9,6 +9,7 @@ tags:
   - friday
   - nestjs
 image: /assets/2022/02-refactoring-friday-bot-with-nestjs-ddd-cqrs/event-storming-people.webp
+mermaid: true
 ---
 
 Friday BOT has been refactored to using [NestJS](https://nestjs.com/) framework, by following the [Domain-driven Design](https://medium.com/raa-labs/part-1-domain-driven-design-like-a-pro-f9e78d081f10) (DDD) and the [Command Query Responsibility Segregation](https://www.sderosiaux.com/articles/2019/08/29/cqrs-why-and-all-the-things-to-consider/) (CQRS) this week, by merging this HUGE(307 files changed) [Pull Request](https://github.com/wechaty/friday/pull/112):

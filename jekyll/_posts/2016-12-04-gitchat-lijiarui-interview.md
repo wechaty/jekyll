@@ -5,7 +5,8 @@ categories: story
 tags:
   - interview
   - news
-image: /assets/2016/gitchat-lijiarui-interview.webp
+image: /assets/2016/12-gitchat-lijiarui-interview-en/gitchat-lijiarui-interview.webp
+hidden: true
 ---
 
 11月24日周四晚8点，GitChat团队开启了来自一位前端女技术工程师李佳芮的问答交流，以下是主持人小冰将交流过程重新整理，记录下了分享者和用户之间对微信机器人的交流精彩片段。
@@ -100,3 +101,7 @@ Hubot-WeChat Hubot：是一个具有真实微信号的机器人，可以自动�
 原文地址：[GitChat - Chat实录｜李佳芮：向前一步的程序媛][gitchat-url]
 
 [gitchat-url]: http://mp.weixin.qq.com/s/dWHAj8XtiKG-1fIS5Og79g
+
+---
+
+> English version of this post: [Chat Transcript - Jiarui Li (李佳芮): A Female Developer Taking a Step Forward]({{ '/2016/12/04/gitchat-lijiarui-interview-en/' | relative_url }})

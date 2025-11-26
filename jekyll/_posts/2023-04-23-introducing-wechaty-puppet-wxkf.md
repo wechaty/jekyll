@@ -8,6 +8,7 @@ tags:
   - wxkf
   - juzi
 image: /assets/2023/04-introducing-wechaty-puppet-wxkf/logo.webp
+hidden: true
 ---
 
 Wechaty 社区的朋友们，我们,[句子互动](https://www.juzibot.com),这次带来了全新的 puppet, [wechaty-puppet-wxkf](https://github.com/juzibot/wechaty-puppet-wxkf) ，基于微信客服官方接口。这个 puppet 是一个本地运行的 puppet ，不依赖服务，同时完全开源。
@@ -235,3 +236,5 @@ axios.post(url, xmlString, { // xmlString is the raw crypted message directly fr
 一个社区的繁荣离不开大家的贡献。感谢 Wechaty 社区的成员们。是你们的热情和支持，让我们能够不断走出舒适区，开发新的产品。你们的反馈和建议也让我们对 puppet 的开发有更多的心得与经验，做出更好的产品。
 
 我们[句子互动](https://www.juzibot.com)将一如既往的支持 Wechaty 社区，为开源社区的繁荣做出我们的一份贡献。期待下次再见。
+
+> This post is also available in [English](/2023/04/23/introducing-wechaty-puppet-wxkf-en/).

@@ -8,7 +8,10 @@ tags:
   - social
   - entertainment
 image: /assets/2019/node-wechaty-1.webp
+hidden: true
 ---
+
+> This post is also available in [English](/2019/04/02/node-wechaty-spider-en/)
 
 微信每日说，每日自动发送微信消息给你心爱的人。
 

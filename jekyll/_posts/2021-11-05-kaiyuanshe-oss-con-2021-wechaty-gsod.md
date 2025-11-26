@@ -7,7 +7,8 @@ tags:
   - news
   - kaiyuanshe
   - gsod
-image: /assets/2021/11-kaiyuanshe-oss-con-2021-wechaty-gsod/huan-oss-con-2021.webp
+image: /assets/2021/11-kaiyuanshe-oss-con-2021-wechaty-gsod-en/huan-oss-con-2021.webp
+hidden: true
 ---
 
 Google Season of Docs （GSoD）是 Google 自 2019 年发起的一项面向全球开源社区的文档支持计划，目标是为开源社区提供资金、指导完善他们的开源项目文档，并且通过了解开源社区的文档协作情况，帮助更多开发者习得专业的技术文档写作方法。
@@ -53,3 +54,7 @@ Poster generator open-source project links:
 - [A poster generator for COSCon 2021](https://github.com/kaiyuanshe/coscon-poster)
 - [COSCon 2021 海报生成器](https://kaiyuanshe.github.io/coscon-poster/)
 - [A poster generator for ApacheCon Asia 2021](https://github.com/Ovilia/acasia-poster)
+
+---
+
+> English version: [COSCon21 Community Governance (GC): Wechaty Open Source Community Documentation Collaboration — Google Season of Docs Practice](/2021/11/05/kaiyuanshe-oss-con-2021-wechaty-gsod-en/)

@@ -5,7 +5,8 @@ categories: tutorial
 tags:
   - matrix
   - featured
-image: /assets/2021/02-matrix-with-wechaty/2020-03-matrix-appservice-wechaty.webp
+image: /assets/2021/02-matrix-with-wechaty-en/2020-03-matrix-appservice-wechaty.webp
+hidden: true
 ---
 
 [Matrix chat](https://matrix.org/)是一个很不错的聊天软件，它支持了多种聊天协议和聊天机器人。并且支持通过[matrix-appservice-wechaty](https://github.com/wechaty/matrix-appservice-wechaty)来支持微信聊天。
@@ -146,3 +147,7 @@ I had enabled it for you ;-)` 就再发送一遍
 3. [](https://github.com/wechaty/wechaty-puppet-puppeteer)
 
 > 作者: [Roy](https://blog.yswtrue.com)。首发于博客: [用Matrix和wechaty来聊微信](https://blog.yswtrue.com/yong-matrix/)
+
+---
+
+> This post is also available in [English](/2021/02/04/matrix-with-wechaty-en/).

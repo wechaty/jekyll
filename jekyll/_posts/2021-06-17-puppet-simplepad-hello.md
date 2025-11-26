@@ -1,7 +1,8 @@
 ---
 title: "New Wechaty Puppet Service: SimplePad"
 author: simplepad
-image: /assets/2021/06-puppet-simplepad-hello/logo.webp
+image: /assets/2021/06-puppet-simplepad-hello-en/logo.webp
+hidden: true
 categories: announcement
 tags:
   - puppet
@@ -31,7 +32,7 @@ tags:
 我想说的是,有关系而且关系还挺大.
 
 在开发SimplePad之前我也调查了目前市场上的Wechaty方案,意识到了前面说的几个痛点,为了解决上面说的几个问题,已经先开发了一套Http协议调用形式的协议系统,而SimplePad反而是之后才进行开发的.所以自然而然,整个SimplePad的API部分也是完全使用了这套系统的接口.对于我们互联网开发工作者而言,Http是使用最多也是最熟悉的协议方案,协议清晰易懂,调试方便,这也是SimplePad名称的由来和核心意义.希望给大家提供一个方便使用,调试简单的Puppet.开发者在拥有Token后可以选择使用Puppet,也可以选择直接调用Http协议的形式来实现相应的操作.这里我为大家画了一个简单的流程图.
-![process](/assets/2021/06-puppet-simplepad-hello/process.webp)
+![process](/assets/2021/06-puppet-simplepad-hello-en/process.webp)
 
 所以对于上面说的几个问题,SimplePad提供的方案更为灵活.
 
@@ -44,3 +45,7 @@ tags:
 以上就是SimplePad开发的初衷和由来,以及我在解决目前社区痛点问题上的思路和一些小小的优势,更深入的使用和体验欢迎大家来探索.
 
 也期望大家能够和我积极[交流反馈](https://github.com/chatrbot/wechaty-puppet-simplepad/issues),我会尽最大努力让开发者们获得最优的使用体验.
+
+---
+
+> This post is also available in [English](/2021/06/17/puppet-simplepad-hello-en/).

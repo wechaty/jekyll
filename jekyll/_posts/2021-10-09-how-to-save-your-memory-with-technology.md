@@ -1,12 +1,13 @@
 ---
- title: "小白入门：如何用科技拯救你的记忆力"
- author: stefan
- categories: article
- tags:
-   - blog
-   - study
-   - introduction
- image: /assets/2021/10-how-to-save-your-memory-with-technology/bgc.webp
+title: "小白入门：如何用科技拯救你的记忆力"
+author: stefan
+categories: article
+tags:
+  - blog
+  - study
+  - introduction
+image: /assets/2021/10-how-to-save-your-memory-with-technology/bgc.webp
+mermaid: true
 ---
 
 过去的一周接触到了 wechaty ，非常兴奋，首先对于这个神奇的东西感到惊奇，其次我是一个比较喜欢解决问题的人，可以用它解决很多实际问题，于是便开始了我的 wechaty 之路，下面和大家简单说一下我做的一个小demo，本文介绍使用的技术都是基本中的基本，几乎是对前端技术稍有了解的人就可以轻易完成，此举旨在帮助刚接触 wechaty 的同学（包括我）建立信心，不至于被挫败感吓跑。

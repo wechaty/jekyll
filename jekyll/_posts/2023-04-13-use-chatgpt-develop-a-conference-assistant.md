@@ -6,8 +6,11 @@ tags:
   - blog
   - study
   - introduction
-image: /assets/2023/04-use-chatgpt-develop-a-conference-assistant/rare-book.webp
+image: /assets/2023/04-use-chatgpt-develop-a-conference-assistant-en/rare-book.webp
+hidden: true
 ---
+
+> This post is also available in [English](/2023/04/13/use-chatgpt-develop-a-conference-assistant-en/)
 
 ## 背景
 

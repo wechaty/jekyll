@@ -5,7 +5,8 @@ categories: story
 tags:
   - news
   - interview
-image: /assets/2020/03-slash-huan-kaiyuanshe/slash-huan.webp
+image: /assets/2020/03-kaiyuanshe-interview-huan-slash-youth-en/slash-huan.webp
+hidden: true
 ---
 
 近年来非常流行“SLASH（斜杠）青年”一词，指的是不再满足“专一职业”的生活方式，而选择拥有多重职业和身份的多元生活的青年。
@@ -14,7 +15,7 @@ image: /assets/2020/03-slash-huan-kaiyuanshe/slash-huan.webp
 
 ## 1 履历：拒绝被单一标签化
 
-![Huan LI (李卓桓)](/assets/2020/03-slash-huan-kaiyuanshe/huan.webp)
+![Huan LI (李卓桓)](/assets/2020/03-kaiyuanshe-interview-huan-slash-youth-en/huan.webp)
 
 > <https://blog.zixia.net/2007/06/28/computer-with-huan-preface/>  
 > LinkedIn：<https://www.linkedin.com/in/zixia/>
@@ -58,7 +59,7 @@ image: /assets/2020/03-slash-huan-kaiyuanshe/slash-huan.webp
 
 我发布的开源项目，合计 Stars 数量超过一万，模块被其他代码库引用数量数千，每月模块下载量 3 万余次，Docker Pull 总计百万余次。
 
-![Huan GitHub](/assets/2020/03-slash-huan-kaiyuanshe/huan-github.webp)
+![Huan GitHub](/assets/2020/03-kaiyuanshe-interview-huan-slash-youth-en/huan-github.webp)
 
 同时，我还在 GitHub 上被其他开源组织、作者邀请为 Owner 和 Maintainer 。
 
@@ -76,7 +77,7 @@ image: /assets/2020/03-slash-huan-kaiyuanshe/slash-huan.webp
 
 网站：<http://www.aka.net.cn> （2003年版）
 
-![AKA Website](/assets/2020/03-slash-huan-kaiyuanshe/aka.webp)
+![AKA Website](/assets/2020/03-kaiyuanshe-interview-huan-slash-youth-en/aka.webp)
 
 > 1998 年 10 月阿卡组织的杂志第一期：<http://www.aka.net.cn/Magazine/Aka1/aka1-cover.html>  
 > 应该是国内最早翻译《大教堂和集市》这篇文章的了 <http://www.aka.net.cn/Magazine/Aka1/c&b.html>
@@ -143,7 +144,7 @@ PreAngel 的 LP 多为行业中知名天使投资人和成功企业家，比如�
 
 这是我的优势，我能够更容易的和技术专家型创始人交流和合作的良好基础。
 
-![左起：马云、李卓桓、周星驰](/assets/2020/03-slash-huan-kaiyuanshe/mayun-huan-zhouxingchi.webp)
+![左起：马云、李卓桓、周星驰](/assets/2020/03-kaiyuanshe-interview-huan-slash-youth-en/mayun-huan-zhouxingchi.webp)
 
 > 左起：马云、李卓桓、周星驰
 
@@ -187,7 +188,7 @@ AI/ML 领域对开源也进行了最佳实践：从论文完全在 arxiv 上公�
 
 如果新朋友是这种人，我们就会特别聊得来。因为这样的人无论在工作还是生活中，冲劲和闯劲特别大，抗压能力也会更强。
 
-![滑翔中的 Huan LI (李卓桓)](/assets/2020/03-slash-huan-kaiyuanshe/huan-paragliding.webp)
+![滑翔中的 Huan LI (李卓桓)](/assets/2020/03-kaiyuanshe-interview-huan-slash-youth-en/huan-paragliding.webp)
 
 > 滑翔中的 Huan LI (李卓桓)
 
@@ -205,7 +206,7 @@ AI/ML 领域对开源也进行了最佳实践：从论文完全在 arxiv 上公�
 
 从那时起，我开始平衡自己的工作和生活，这也是一种”双赢“的思维。
 
-![“阳光少年” Huan LI (李卓桓) ](/assets/2020/03-slash-huan-kaiyuanshe/huan-ski.webp)
+![“阳光少年” Huan LI (李卓桓) ](/assets/2020/03-kaiyuanshe-interview-huan-slash-youth-en/huan-ski.webp)
 
 > “阳光少年” Huan LI (李卓桓)  
 
@@ -215,16 +216,20 @@ AI/ML 领域对开源也进行了最佳实践：从论文完全在 arxiv 上公�
 
 对年轻人的建议，就是 Follow your heart ，不要害怕犯错误。年轻的时候试错成本小，多犯错误便能够多成长，迭代升级，进而真正知道自己想要的是什么。
 
-## 写在后面：
+## 写在后面
 
 十分感谢李先生接受我们的采访，也感谢大家对开源的支持。
 
 在人工智能领域里，李卓桓先生最关注的是聊天机器人方向，即 NLP （自然语言处理），他最近出版了一本专门讨论 Chatbot 行业的书籍——[《Chatbot从0到1》](https://item.m.jd.com/product/12630213.html)和 TensorFlow 2 手册[《简明的 TensorFlow 2》](https://item.m.jd.com/product/12980534.html)，欢迎大家购买阅读！
 
-| [![《Chatbot从0到1》](/assets/2020/03-slash-huan-kaiyuanshe/chatbot-0-to-1.webp)](https://item.m.jd.com/product/12630213.html) | [![《简明的 TensorFlow 2》](/assets/2020/03-slash-huan-kaiyuanshe/concise-tensorflow-2.webp)](https://item.m.jd.com/product/12980534.html) |
+| [![《Chatbot从0到1》](/assets/2020/03-kaiyuanshe-interview-huan-slash-youth-en/chatbot-0-to-1.webp)](https://item.m.jd.com/product/12630213.html) | [![《简明的 TensorFlow 2》](/assets/2020/03-kaiyuanshe-interview-huan-slash-youth-en/concise-tensorflow-2.webp)](https://item.m.jd.com/product/12980534.html) |
 
 \| 作者：李卓桓 稻子  
 \| 编辑：杨紫琳  
 \| 设计：刘颖洁
 
 > 转载于：[开源社](https://mp.weixin.qq.com/s/JS-fzyFwWYnJ0_2_GBu6lw)
+
+---
+
+> 英文版: [Kaiyuanshe (开源社): Meet the "SLASH" Youth Huan Li (李卓桓)](/2020/03/27/kaiyuanshe-interview-huan-slash-youth-en/)

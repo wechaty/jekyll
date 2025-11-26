@@ -14,7 +14,7 @@ image: /assets/2021/08-super-interstellar-terminal/title.webp
 
 ## A. 项目介绍
 
-### A.1 项目模块：
+### A.1 项目模块
 
 > 项目由下面的模块组成，每个模块都可以单独使用，也可组合使用，如：直接按需就调用图像生成外星人、外星生物、外星植物、外星建筑
 
@@ -703,7 +703,7 @@ ImgGenerateModule可以单独使用或`app.py`也可单独建立flask的图像�
 
 看到这个项目，要不要也一起合作来把AI融到游戏里啊 @任天堂 （JUST JOKING. DON'T TAKE IT SERIOUSELY.)
 
-#### c. 来更多脑洞一起创作玩法与剧本吧！
+#### c. 来更多脑洞一起创作玩法与剧本吧
 
 希望更多有兴趣的脑洞，一起想想我们可以怎么玩，让我们玩得更high一点吧！
 

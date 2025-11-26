@@ -7,6 +7,7 @@ tags:
   - ecosystem
   - wechaty-way
 image: /assets/2023/07-wechaty-in-waic2023/2023-waic.webp
+hidden: true
 ---
 
 ## Wechaty受邀参加WAIC2023开源集市现场直击
@@ -58,3 +59,5 @@ Wechaty的贡献者和开发者来自全球各地
 本次开源开放麦活动的PPT分享
 
 {% include iframe.html src="https://docs.google.com/presentation/d/1jgU1T-hTcqMxUQ1IUI6NxsO4jkbXZzGd/edit?usp=drive_link&ouid=111409902278378475632&rtpof=true&sd=true" %}
+
+> This post is also available in [English](/2023/07/08/wechaty-in-waic2023-en/).

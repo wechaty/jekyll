@@ -4,7 +4,8 @@ author: zrn-fight
 categories:
   - project
   - ospp
-image: /assets/2021/07-ospp-plan-wechaty-matrix/wechaty-matrix-plan.webp
+image: /assets/2021/07-ospp-plan-wechaty-matrix-en/wechaty-matrix-plan.webp
+hidden: true
 tags:
   - matrix
   - summer-of-wechaty
@@ -82,3 +83,7 @@ tags:
 官网：<https://summer.iscas.ac.cn/#/homepage>
 
 本项目 [基于 Matrix AppService Wechaty 项目的用户、群与消息等基础功能的完善] 系暑期2021支持的开源项目。
+
+---
+
+> This post is also available in [English](/2021/07/14/ospp-plan-wechaty-matrix-en/).

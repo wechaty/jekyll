@@ -4,7 +4,8 @@ author: houruirui
 categories: project
 tags:
   - productivity
-image: /assets/2023/02-wechaty-flask-service/wechaty.webp
+image: /assets/2023/02-wechaty-flask-service-en/wechaty.webp
+hidden: true
 ---
 [![Powered by Wechaty](https://img.shields.io/badge/Powered%20By-Wechaty-green.svg)](https://wechaty.js.org)
 [![Wechaty Contributor Program](https://img.shields.io/badge/Wechaty-Contributor%20Program-green.svg)](https://wechaty.js.org/docs/contributor-program)
@@ -28,7 +29,7 @@ python
 aioflask
 asyncio
 
-## Wechaty Puppet Hostie部署：
+## Wechaty Puppet Hostie部署
 
 因为原生的wechaty是基于JavaScript和TypeScript写的，所以需要通过docker搭建Wechaty Puppet Hostie 服务作为中转， 从而可以通过python调用。
 
@@ -369,3 +370,7 @@ if __name__ == '__main__':
 ## 感谢
 
 在最后我们要感谢所有为我们提供工具和服务的团队和个人。特别感谢开源项目[Wechaty](https://github.com/wechaty/wechaty)团队和免费提供服务的padLocal团队。
+
+---
+
+> This post is also available in [English](/2023/02/18/wechaty-flask-service-en/).

@@ -7,7 +7,8 @@ tags:
   - talk
   - meetup
   - news
-image: /assets/2019/bot5-seminar-0/group-photo.webp
+image: /assets/2019/07-bot5-seminar-minutes-0-en/group-photo.webp
+hidden: true
 ---
 
 << 本次活动通知: [腾讯+句子互动=碰撞思想，点燃科技](https://mp.weixin.qq.com/s?__biz=MzU3OTk2MzA1Nw==&mid=2247485197&idx=1&sn=404c319ad11b9e12515d127dfabf7efd) <<
@@ -50,7 +51,7 @@ image: /assets/2019/bot5-seminar-0/group-photo.webp
 
 #### Slides
 
-{% include iframe.html src="/assets/2019/bot5-seminar-0/rasa-core-qhduan.pdf" %}
+{% include iframe.html src="/assets/2019/07-bot5-seminar-minutes-0-en/rasa-core-qhduan.pdf" %}
 
 #### Video
 
@@ -155,11 +156,11 @@ Our Vision: Became the hottest place for a Friday night out with the chatbots! T
 
 ### 5 集体合影
 
-![合照](/assets/2019/bot5-seminar-0/group-photo.webp)
+![合照](/assets/2019/07-bot5-seminar-minutes-0-en/group-photo.webp)
 
 ## After Party 🍻
 
-![After Party](/assets/2019/bot5-seminar-0/after-party.webp)
+![After Party](/assets/2019/07-bot5-seminar-minutes-0-en/after-party.webp)
 
 Bot Friday Zero 主场活动结束后，意(ji)犹(chang)未(lu)尽(lu)的三个人前往第三极大厦十字路口对面的管氏串吧继续补充能量，大家一起头脑风暴了活动的参加人员、可持续性发展、讨论主题，以及活动名称等，并成功的消灭了4L鲜啤。
 
@@ -189,3 +190,5 @@ Bot Friday Zero 主场活动结束后，意(ji)犹(chang)未(lu)尽(lu)的三个
 1. 如果对活动纪要有修订或补充意见，请回复对本次活动纪要留言；
 1. 如果参加下次沙龙活动，请回复下次自己愿意分享的主题；
 1. 如果计划邀请新朋友参加下次沙龙活动，请让新朋友回复一句话的自我介绍；
+
+> English version: [Bot Friday Zero — Seminar Minutes](/2019/07/19/bot5-seminar-minutes-0-en/)

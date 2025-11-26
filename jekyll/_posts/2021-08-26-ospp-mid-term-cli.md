@@ -4,7 +4,8 @@ author: chinggg
 categories:
   - project
   - ospp
-image: /assets/2021/08-ospp-mid-term-cli/terminal-wechaty.webp
+image: /assets/2021/08-ospp-mid-term-cli-en/terminal-wechaty.webp
+hidden: true
 tags:
   - summer-of-wechaty
   - summer-2021
@@ -89,9 +90,13 @@ tags:
 
 ### 项目PPT
 
-{% include iframe.html src="/assets/2021/08-ospp-mid-term-cli/mid-slides.pdf" %}
+{% include iframe.html src="/assets/2021/08-ospp-mid-term-cli-en/mid-slides.pdf" %}
 
 ## 联系我们
 
 - 项目链接：[https://github.com/wechaty/cli]  
 - 联系方式：liuchinggg@gmail.com
+
+---
+
+> This post is also available in [English](/2021/08/26/ospp-mid-term-cli-en/).

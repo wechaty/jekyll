@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: "基于 Wechaty 实现高校招生宣传小助手的实践"
 author: ligen131
 categories: article
@@ -8,7 +9,7 @@ tags:
   - node.js
   - typescript
   - 高校招生
-image: /assets/2022/09-wechaty-university-admission-helper/cover.webp
+image: /assets/2022/09-wechaty-university-admission-helper-en/cover.webp
 ---
 一个能够智能识别关键词并自动回复招生信息的机器人，基于 Wechaty, Node.js 实现。
 
@@ -61,26 +62,26 @@ img = FileBox.fromUrl(reply.content);
 上面的 `img` 就可以通过 `Wechaty` 的 `say()` 接口直接进行发送了。
 
 效果如下：
-![问答示例](/assets/2022/09-wechaty-university-admission-helper/question_and_answer.webp)
+![问答示例](/assets/2022/09-wechaty-university-admission-helper-en/question_and_answer.webp)
 
 ### 误判
 
 当招生组老师发送招生信息时，发现机器人也会自动回复。如下图所示。
-![误判了招生组老师的信息](/assets/2022/09-wechaty-university-admission-helper/error.webp)
+![误判了招生组老师的信息](/assets/2022/09-wechaty-university-admission-helper-en/error.webp)
 
 猜想是同时满足了刚才说的两种关键词的原因，于是调整了关键词词库，并添加了过滤掉招生组老师与本校学长学姐的消息，通过微信号识别特定的人，若满足条件则不发送招生信息。
 
 ### 非招生群
 
 由于我的机器人同时挂在了好几个群里，会出现不是招生宣传的微信群也会发送招生宣传的消息。于是加上了命令控制是否在本群发送招生信息的开关（默认不开启）。
-![命令控制示例](/assets/2022/09-wechaty-university-admission-helper/command.webp)
+![命令控制示例](/assets/2022/09-wechaty-university-admission-helper-en/command.webp)
 
 命令中包含学校信息，是因为一开始实现是基于可以为多个学校同时提供服务的想法，每个群可以独立发送不同高校的招生信息。
 
 ### 定时发送
 
 由于微信群有新成员不可查看历史信息的限制，招生组老师让我加上了一个定时发送的功能，通过定时发送招生信息，让后面加入微信群的成员可以及时获取最新消息。
-![定时发送](/assets/2022/09-wechaty-university-admission-helper/timing.webp)
+![定时发送](/assets/2022/09-wechaty-university-admission-helper-en/timing.webp)
 
 ### 扰民
 
@@ -93,6 +94,10 @@ img = FileBox.fromUrl(reply.content);
 项目地址：[github ligen131/Sunbot](https://github.com/ligen131/Sunbot)，欢迎给我一个 Star⭐
 
 除了招生小助手之外，还实现了不少好玩的功能，比如之前很火的 wordle 游戏，词云功能等等。或许会在另一篇文章中讲到。
-![wordle 游戏](/assets/2022/09-wechaty-university-admission-helper/wordle.webp)
+![wordle 游戏](/assets/2022/09-wechaty-university-admission-helper-en/wordle.webp)
 
 > 作者: [ligen131](https://ligen131.com)，生命不息，折腾不止。
+
+---
+
+> This post is also available in [English](/2022/09/27/wechaty-university-admission-helper-en/).

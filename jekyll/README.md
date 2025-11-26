@@ -27,6 +27,17 @@ mermaid: true
 ```
 ````
 
+Set `mermaid: true` on pages that include ```mermaid code fences and the site will load the Mermaid runtime automatically. Leave it off (default) to avoid the extra script, or flip `mermaid.enable_by_default` in `_config.yml` if you ever want it globally.
+
+## Math notation
+
+MathJax only loads on pages that opt in with a `math: true` front matter flag. This keeps most posts light while still allowing LaTeX wherever needed.
+
+- Add `math: true` alongside your usual metadata whenever the page contains formulas.
+- Use `$...$` or `\(...\)` for inline math.
+- Use `$$...$$` or `\[...\]` for display math blocks.
+- Set `math: false` explicitly if you globally enable math later but want to skip it for a page.
+
 ## Serve from local
 
 Run the Jekyll at localhost for blog preview.
@@ -59,3 +70,15 @@ make serve
 ## Maintainers
 
 [wechaty/contributors](https://github.com/orgs/wechaty/teams/contributors/members)
+
+# Asset Management (DRY Principle)
+
+All post-specific assets are now stored in their respective English post folders under `/assets/2016/12-<post-name>-en/`. Old asset files have been removed from `/assets/2016/` and empty directories cleaned up. Please reference images using the new folder structure for maintainability and DRY compliance.
+
+Example:
+
+```yaml
+image: /assets/2016/12-<post-name>-en/<image-file>.webp
+```
+
+For more details, see the migration script or contact the maintainers.

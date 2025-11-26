@@ -666,6 +666,34 @@ article {
 article p,article pre,article figure,article img,article blockquote,article iframed,article embed {
 	margin-bottom:2rem;
 }
+article table {
+	width: 100%;
+	margin-bottom: 2rem;
+	border-collapse: separate; /* Required for border-radius */
+	border-spacing: 0;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+	background: #fff;
+	border: 1px solid #f0f0f0;
+}
+article table th, article table td {
+	padding: 1rem 1.5rem;
+	vertical-align: top;
+	border-bottom: 1px solid #f5f5f5;
+}
+article table th {
+	background-color: #fff;
+	font-weight: 700;
+	color: #222;
+	text-transform: uppercase;
+	font-size: 0.85rem;
+	letter-spacing: 0.05em;
+	border-bottom: 2px solid #f0f0f0;
+}
+article table tr:last-child td {
+	border-bottom: none;
+}
 article blockquote {
 	padding-left:40px;
 	margin-left:0px;
@@ -688,6 +716,9 @@ article:first-letter {
 	line-height:1;
 	margin:0 .2em 0 0;
 	vertical-align:top;
+}
+article > p:first-of-type {
+	clear: both;
 }
 article h1,article h2,article h3,article h4,article h5,article h6,article .h1,article .h2,article .h3,article .h4,article .h5,article .h6 {
 	margin-bottom:2rem;

@@ -5,7 +5,8 @@ categories: story
 tags:
   - code
   - news
-image: /assets/2016/ruirui-dance.webp
+image: /assets/2016/12-try-to-write-wexinrobot-en/ruirui-dance.webp
+hidden: true
 ---
 
 我一直和我的小伙伴在业余时间拍摄舞蹈教学视频，叫“舞哩”，原创了几百个视频，近千万的播放，所以就建了微信群来和粉丝交流。
@@ -176,8 +177,12 @@ Wechaty解放了我的一些重复性工作，我也希望能为Wechaty做点什
 
 ![qr-code][qr-code]
 
-[ruirui-dance-image]: /assets/2016/ruirui-dance.webp
+[ruirui-dance-image]: /assets/2016/12-try-to-write-wexinrobot-en/ruirui-dance.webp
 [wechaty-pic]: /assets/2017/lijiarui-write-bot-wechaty-pic.webp
 [docker-pull]: /assets/2017/lijiarui-write-bot-docker-pull.webp
 [run-ding]: /assets/2017/lijiarui-write-bot-run-ding.webp
 [qr-code]: /assets/2017/lijiarui-write-bot-qr-code.webp
+
+---
+
+> English version of this post: [How a Girl Built a WeChat Chatbot with 6 Lines of Code]({{ '/2016/12/10/try-to-write-wexinrobot-en/' | relative_url }})

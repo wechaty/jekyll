@@ -7,6 +7,7 @@ tags:
   - featured
   - entertainment
 image: /assets/2019/everyday-header.webp
+hidden: true
 ---
 
 三步教你用Node做一个微信脱单神器，小白可上手！也可以用来哄女友，哄女(男\基)友我们程序猿(媛)是认真的
@@ -178,3 +179,7 @@ module.exports = {
 ![image](/assets/2019/everyday-17.webp)
 
 > 作者: [Leo_chen](https://github.com/leochen-g/)，前端工程师，喜欢使用node做各种小项目，就职于大数据公司。本篇文章首发于掘金: [三步教你用Node做一个微信哄女友(基友)神器，小白可上手](https://juejin.im/post/5d09fa9f51882508bd2065f4)
+
+---
+
+> This post is also available in [English](/2019/06/21/three-step-get-girlfriend-en/).

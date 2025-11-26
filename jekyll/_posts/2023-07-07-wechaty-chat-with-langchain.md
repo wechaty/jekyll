@@ -5,7 +5,8 @@ categories: article
 tags:
   - chatgpt
   - langchain
-image: /assets/2023/07-wechaty-chat-with-langchain/logo.webp
+image: /assets/2023/07-wechaty-chat-with-langchain-en/logo.webp
+hidden: true
 ---
 
 
@@ -72,7 +73,7 @@ PINECONE_INDEX=...
    })  
   ```
 
-![image1.webp](/assets/2023/07-wechaty-chat-with-langchain/image1.webp)
+![image1.webp](/assets/2023/07-wechaty-chat-with-langchain-en/image1.webp)
 
 langchain 相关代码
 
@@ -163,3 +164,7 @@ langchain 相关代码
 
   export { askDocument, loadDocuments, supportFileType };
   ```
+
+---
+
+> This post is also available in [English](/2023/07/07/wechaty-chat-with-langchain-en/).

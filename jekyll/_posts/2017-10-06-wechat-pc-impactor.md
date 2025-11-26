@@ -7,6 +7,7 @@ tags:
   - hook
   - news
 image: /assets/2017/h4dex-inject.webp
+hidden: true
 ---
 
 ![Wechat Windows Impactor](/assets/2017/h4dex-inject.webp)
@@ -450,3 +451,7 @@ CALLBACK 类 因为在原代码中没有公开，是调用其他人开发的 eco
 感谢@huan 的邀请。
 
 > h4dex  2017年10月6日
+
+---
+
+> This post is also available in [English version](/2017/10/06/wechat-pc-impactor-en/).

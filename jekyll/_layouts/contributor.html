@@ -100,7 +100,7 @@ layout: default
 
 
       <!-- Posts Start -->
-      {% assign posts = site.posts | where:"author", page.slug %}
+      {% assign posts = site.posts | where:"author", page.slug | where_exp: "p", "p.hidden != true" %}
       {% assign posts_size = posts | size %}
       {% if posts_size > 0 %}
         <h4 class="font-weight-bold spanborder"><span>Posts by {{page.name}}</span></h4>

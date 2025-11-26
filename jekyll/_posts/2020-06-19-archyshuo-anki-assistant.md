@@ -136,5 +136,3 @@ p.s. 写中文写到中间有些累与懒🥴「吖奇说记忆卡片」小程�
 >
 > Github Repo: [Archy the Anki bot (吖奇说Anki助理)](https://github.com/archywillhe/archy-the-anki-bot)
 >
-> [![flair](https://camo.githubusercontent.com/c551a231a6cda28e59291fa091ddcb7b9899f6ec/68747470733a2f2f737461636b65786368616e67652e636f6d2f75736572732f666c6169722f313334303435332e706e67)](https://stackoverflow.com/users/2041954/%E5%90%96%E5%A5%87%E8%AF%B4-%E4%BD%95%E9%AD%8F%E5%A5%87archy-will-he)
->

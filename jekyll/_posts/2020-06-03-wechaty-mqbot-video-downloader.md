@@ -1,5 +1,5 @@
 ---
-title: "无水印下载短视频机器人"
+title: "基于 Wechaty 的无水印短视频下载机器人"
 author: remainsu
 categories: project
 tags:
@@ -8,16 +8,18 @@ tags:
   - padplus
   - productivity
   - nuxt
-image: /assets/2020/mqbot/qrcode.webp 
+hidden: true
 ---
 
-20年初开始接触到Tiktok(国际版抖音)，一直尝试做到今天，收获很多。同时也维护起了自己的一个圈子，圈子内很多人吐槽“短视频去水印工具”，这个比较常用的就是微信小程序，但是大多数都是一堆堆的广告，反应速度大多被作者故意设置了延时（这样可以多看几秒广告）
+> This post is also available in [English](/2020/06/03/wechaty-mqbot-video-downloader-en/).
 
-于是就想着是不是可以自己做一个这样的工具，同时也可以通过这种方式进行引流。
+2020 年初，我开始接触抖音，一直在摸索，也学到了很多东西，自己也建立了一个社群，圈子里很多人吐槽短视频去水印的工具，最常见的就是小程序，但大部分小程序广告满天飞，而且响应时间开发者会故意延迟（让你多看几秒广告）。
 
-首先想到的就是微信机器人，因为这个用起来太方便了，不论是监控群还是对个人，然后再朋友的推荐之下就接触到了wechaty，上手及用，真的是太简单了。
+所以，我想，为什么不自己做一个呢？顺便还可以引流。
 
-现在机器人已经上线，并支持国内各大短视频平台的视频无水印下载，只需要发送给机器人视频链接即可。
+最先想到的就是微信机器人，不管是监控群还是自用，都非常方便，朋友推荐了 Wechaty，上手非常容易。
+
+目前机器人已经上线，支持国内所有主流短视频平台无水印下载，你只需要将视频链接发送给机器人即可。
 
 ## 项目使用
 
@@ -63,7 +65,7 @@ node dtot.js
 ```
 
 效果如图，扫码后即可完成登录
-![演示图片](/assets/2020/mqbot/denglu1.webp)
+![演示图片](/assets/2020/06-wechaty-mqbot-video-downloader-en/denglu1.webp)
 
 ## 主要功能
 
@@ -75,11 +77,11 @@ node dtot.js
 
 ### 1. 发送复制链接
 
-![演示图片](/assets/2020/mqbot/fasong1.webp)
+![演示图片](/assets/2020/06-wechaty-mqbot-video-downloader-en/fasong1.webp)
 
 ### 2. 发送给机器人，会得到及时的返回结果，复制到浏览器即可下载
 
-![演示图片](/assets/2020/mqbot/wancheng1.webp)
+![演示图片](/assets/2020/06-wechaty-mqbot-video-downloader-en/wancheng1.webp)
 
 ## 最后
 
@@ -89,7 +91,7 @@ node dtot.js
 
 欢迎扫码加我的机器人，验证填写 “tiktok”，也欢迎将我推荐给需要的朋友，无水印下载就是这么简单。
 
-![演示图片](/assets/2020/mqbot/ewm1.webp)
+![演示图片](/assets/2020/06-wechaty-mqbot-video-downloader-en/ewm1.webp)
 
 > 作者: [remainsu](https://github.com/remainsu)
 > Code: [Github](https://github.com/remainsu/qmrobot)

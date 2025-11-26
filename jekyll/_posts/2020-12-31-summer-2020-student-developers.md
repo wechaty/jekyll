@@ -7,14 +7,15 @@ tags:
   - summer-2020
   - summer-of-wechaty
   - featured
-image: /assets/2020/12-summer-2020-student-developers/award.webp
+image: /assets/2020/12-summer-2020-student-developers-en/award.webp
+hidden: true
 ---
 
 今夏， Wechaty 社区诞生了 9 位后浪贡献者：毕凯乔、王俊伟、谢昱清、范蕊、江姗姗、林昊翰、唐光彬、肖梓霖与孔祥哲。他们都还是正在就读本科与研究所的学生。
 
-9 位后浪贡献者与 Wechaty 的故事要从今年中科院软件所和华为 openEuler 项目共同举办的“开源软件供应链点亮计划——暑期 2020” 说起。
+9 位后浪贡献者与 Wechaty 的故事要从今年中科院软件所和华为 openEuler 项目共同举办的"开源软件供应链点亮计划——暑期 2020" 说起。
 
-![summer 2020](/assets/2020/12-summer-2020-student-developers/summer-2020.webp)
+![summer 2020](/assets/2020/12-summer-2020-student-developers-en/summer-2020.webp)
 
 ## 故事的开始
 
@@ -30,7 +31,7 @@ image: /assets/2020/12-summer-2020-student-developers/award.webp
 
 > 暑期2020的优秀学生最具潜力奖！
 
-![Wechaty Summer 2020 孔祥哲](/assets/2020/12-summer-2020-student-developers/kongxiangzhe.webp)
+![Wechaty Summer 2020 孔祥哲](/assets/2020/12-summer-2020-student-developers-en/kongxiangzhe.webp)
 
 - 学生：孔祥哲，清华大学（大二）
 - 导师：吴京京
@@ -62,7 +63,7 @@ image: /assets/2020/12-summer-2020-student-developers/award.webp
 
 ## 项目 2 - 基于开放 API 封装 Wechaty 接口下的飞书聊天机器人
 
-![Wechaty Summer 2020 范蕊](/assets/2020/12-summer-2020-student-developers/fanrui.webp)
+![Wechaty Summer 2020 范蕊](/assets/2020/12-summer-2020-student-developers-en/fanrui.webp)
 
 - 学生：范蕊，南开大学（大四）
 - 导师：高原，李佳芮
@@ -112,11 +113,11 @@ image: /assets/2020/12-summer-2020-student-developers/award.webp
 
 总体上来说，本次项目肖子霖同学完成得不错。从一开始的表情包的识别，包括文字识别和情感识别，到后来的“能”斗图的机器人，再到最后的“会”斗图的机器人，肖子霖同学都用实际行动完成了项目。
 
-最后一个建议：从目前呈现的效果来看，“怼”的效果可能还欠缺一点火候，希望后期可以“怼”得更好。
+最后一个建议：从目前呈现的效果来看，"怼"的效果可能还欠缺一点火候，希望后期可以"怼"得更好。
 
-## 项目 4 - 编写一个“每日一句”插件
+## 项目 4 - 编写一个"每日一句"插件
 
-![Wechaty Summer 2020 江姗姗](/assets/2020/12-summer-2020-student-developers/shanshan.webp)
+![Wechaty Summer 2020 江姗姗](/assets/2020/12-summer-2020-student-developers-en/shanshan.webp)
 
 > 暑期2020的优秀学生突出贡献奖！
 
@@ -293,3 +294,7 @@ Go-wechaty Github Action optimization 主要通过使用 Github Actions 的特�
 | [https://docs.google.com/document/...](https://docs.google.com/document/d/1fVCk8qRYc4RKGMf2UY5HOe07hEhPUOpGC34v88GEFJg/edit#heading=h.64c95c3y2l4v) | Meeting Notes |
 
 > Special thanks to Milvus community for the [template](https://mp.weixin.qq.com/s?__biz=MzUzMDI5OTA5NQ==&mid=2247486935&idx=2&sn=07bbbc323872d5ef3a48e3096e2c6f02)
+
+---
+
+> English version: [This Summer: Stories of Wechaty Community and 9 Rising Open Source Contributors](/2020/12/31/summer-2020-student-developers-en/)

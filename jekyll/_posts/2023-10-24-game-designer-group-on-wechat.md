@@ -6,8 +6,11 @@ tags:
   - blog
   - game
   - agent
-image: /assets/2023/10-game-designer-group-on-wechat/1.webp
+image: /assets/2023/10-game-designer-group-on-wechat-en/1.webp
+hidden: true
 ---
+
+> This post is also available in [English](/2023/10/24/game-designer-group-on-wechat-en/)
 
 ## 介绍
 
@@ -62,7 +65,7 @@ Game Copilot主要适用于独立工作室和RPG类游戏的开发。不论你�
         4. Finally, user can choose to accept or reject the modification.
     4. This "Design Iteration" can be repeated for several times until user is satisfied with our result.
 
-![agent workflow](/assets/2023/10-game-designer-group-on-wechat/2.webp)
+![agent workflow](/assets/2023/10-game-designer-group-on-wechat-en/2.webp)
 
 ### Data Model
 

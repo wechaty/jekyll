@@ -4,7 +4,8 @@ author: reikohaku
 categories:
   - project
   - ospp
-image: /assets/2021/08-ospp-mid-term-wechaty-piggy-bro/piggy-bro-logo.webp
+image: /assets/2021/08-ospp-mid-term-wechaty-piggy-bro-en/piggy-bro-logo.webp
+hidden: true
 tags:
   - chat
   - summer-of-wechaty
@@ -118,3 +119,7 @@ tags:
 
   微信：ReiKohaku
   E-mail：hbsjzjwj@163.com
+
+---
+
+> This post is also available in [English](/2021/08/26/ospp-mid-term-wechaty-piggy-bro-en/).

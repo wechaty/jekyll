@@ -1,14 +1,15 @@
 ---
-title: "教你用python-wecahty和web协议开发机器人"
+title: "手把手教你用python-wechaty和web协议开发机器人"
 author: wj-mcat
 categories: article
 tags:
   - code
   - wechaty-puppet-wechat
-  - web-protocol
+  - web协议
   - python
   - featured
-image: /assets/2021/04-python-wechaty-use-web/wechaty-love-wechaty-desktop.webp
+image: /assets/2021/04-python-wechaty-use-web-en/wechaty-love-wechaty-desktop.webp
+hidden: true
 ---
 
 写这篇文章的原因: go-wechaty作者[dchaofei](https://github.com/dchaofei)抢先写了[web协议复活的博客](https://wechaty.js.org/2021/04/16/go-wechaty-use-web/)，作为[python-wechaty](http://github.com/wechaty/python-wechaty)的作者我也需要给大家更加详细的介绍如何使用[python-wechaty](http://github.com/wechaty/python-wechaty)来登陆web版本的微信。
@@ -97,4 +98,8 @@ python-wechaty是一个非常简单的聊天机器人框架，理论上能够对
 * [Python Wechaty Getting Started](https://wechaty.js.org/docs/polyglot/python/)
 * [puppet-providers](https://wechaty.js.org/docs/puppet-providers/wechat)
 
-> 作者: [wj-mcat](https://github.com/wj-Mcat) 自然语言处理算法工程师，python-wechaty 作者
+> 作者: [wj-mcat](https://github.com/wj-Mcat)，自然语言处理算法工程师，python-wechaty作者
+
+---
+
+> This post is also available in [English](/2021/04/17/python-wechaty-use-web-en/).

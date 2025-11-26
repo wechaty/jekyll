@@ -78,7 +78,7 @@ image: /assets/2021/03-node-wechaty-and-wechaty-puppet-padlocal/grouupmaster.web
 
 ![bot_step9.jpeg](/assets/2021/03-node-wechaty-and-wechaty-puppet-padlocal/bot_step9.webp)
 
-## demo源码：
+## demo源码
 
 特别说明：
 

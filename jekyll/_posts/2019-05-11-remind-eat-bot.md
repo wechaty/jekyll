@@ -48,7 +48,7 @@ node remindEat.js
 
 ![image](/assets/2019/remind-eat-2.webp)
 
-## 实现原理：
+## 实现原理
 
 这个机器人主要使用两个库：
 

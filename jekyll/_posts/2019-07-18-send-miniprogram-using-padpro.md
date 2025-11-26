@@ -6,7 +6,10 @@ tags:
   - code
   - featured
 image: /assets/2019/maodou-ketang-demo.webp
+hidden: true
 ---
+
+> This post is also available in [English](/2019/07/18/send-miniprogram-using-padpro-en/)
 
 3个月前，也就是2019.4.18，我们公司启动了一个小程序项目 -- **毛豆课堂**。这个项目是依托[毛豆网](https://maodou.io)的音视频互动直播技术，搭建一个专注少儿素质课程的在线教育平台。
 

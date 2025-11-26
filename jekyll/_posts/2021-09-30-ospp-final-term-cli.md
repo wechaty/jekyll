@@ -4,7 +4,8 @@ author: chinggg
 categories:
   - project
   - ospp
-image: /assets/2021/09-ospp-final-term-cli/terminal-wechaty.webp
+image: /assets/2021/09-ospp-final-term-cli-en/terminal-wechaty.webp
+hidden: true
 tags:
   - summer-of-wechaty
   - summer-2021
@@ -59,7 +60,7 @@ tags:
   - 开源生态的完善：首先是开源协作的规范，开发过程通过有意义的 commit message 得以保存，在 issue 和 PR 中使用英语讨论技术细节也能让世界各地的开发者方便地检索和交流。为了提高开发效率，在 Wechaty 社区通用的一套 CI/CD 流程，并采用了 ESM 作为模块管理方式。为便于使用，除了 npm 安装外，还提供了 Docker 构建方式。
 
   部分效果图如下：
-  ![demo](/assets/2021/09-ospp-final-term-cli/final-demo.webp)
+  ![demo](/assets/2021/09-ospp-final-term-cli-en/final-demo.webp)
 
 - 遇到的问题及解决方案：
 
@@ -87,7 +88,7 @@ tags:
 
 ### 项目PPT
 
-{% include iframe.html src="/assets/2021/09-ospp-final-term-cli/final-slides.pdf" %}
+{% include iframe.html src="/assets/2021/09-ospp-final-term-cli-en/final-slides.pdf" %}
 
 ## 联系我们
 
@@ -97,3 +98,7 @@ tags:
 “[开源软件供应链点亮计划-暑期2021](https://summer.iscas.ac.cn)”（以下简称 暑期2021）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。活动联合各大开源社区，针对重要开源软件的开发与维护提供项目，并向全球高校学生开放报名。 学生可自主选择感兴趣的项目进行申请，并在中选后获得该软件资深维护者（社区导师）亲自指导的机会。 根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2021”活动奖金和奖杯。
 
 本项目 [基于 Blessed 的 Wechaty 命令行文本客户端软件] 系 暑期2021 支持的开源项目。
+
+---
+
+> This post is also available in [English](/2021/09/30/ospp-final-term-cli-en/).

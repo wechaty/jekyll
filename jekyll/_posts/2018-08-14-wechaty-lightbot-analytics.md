@@ -8,6 +8,7 @@ tags:
   - utility
   - ecosystem
 image: /assets/2018/wechaty-lightbot-logo.webp
+hidden: true
 ---
 
 感谢 @lijiarui 邀请我分享我们的LIGHTBOT统计分析管理平台，希望能够帮助开发者使用wechaty提供更多的业务方向。
@@ -331,3 +332,7 @@ bot.on('message', async function (message) {
 功能开发中，敬请期待。。。
 
 > Author: [@LittleStrong](https://github.com/zhoumh1988), WEB Development Manager at [iTrustdata](http://itrustdata.com/), 喜欢挖坑与填坑😝
+
+---
+
+> This post is also available in [English](/2018/08/14/wechaty-lightbot-analytics-en/).

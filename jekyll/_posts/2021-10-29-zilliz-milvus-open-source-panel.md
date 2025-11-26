@@ -8,7 +8,8 @@ tags:
   - milvus
   - opensource
   - news
-image: /assets/2021/10-zilliz-milvus-open-source-panel/zilliz-1024.webp
+image: /assets/2021/10-zilliz-milvus-open-source-panel-en/zilliz-1024.webp
+hidden: true
 ---
 
 > 「开源」如何帮你增加市场竞争力？
@@ -18,7 +19,7 @@ image: /assets/2021/10-zilliz-milvus-open-source-panel/zilliz-1024.webp
 
 1024 程序员节， Milvus 社区邀请到了五位开源界程序员大牛，为大家分享自己成长的心路历程。
 
-![1024程序员节](/assets/2021/10-zilliz-milvus-open-source-panel/zilliz-poster.webp)
+![1024程序员节](/assets/2021/10-zilliz-milvus-open-source-panel-en/zilliz-poster.webp)
 
 ## 视频回放
 
@@ -106,6 +107,8 @@ image: /assets/2021/10-zilliz-milvus-open-source-panel/zilliz-1024.webp
 **李建盛**：开源的道理很简单，可以总结为保持开放、保持多样。
 
 **顾钧**：开源社区非常友善，新手不用紧张，欢迎你们加入开源。
+
+> English version: [Programmer's Day Panel: Five Open Source Engineers Share Their Journeys (Milvus Community)](/2021/10/29/zilliz-milvus-open-source-panel-en/)
 
 ## 你为什么跳出大厂，出来创业？
 

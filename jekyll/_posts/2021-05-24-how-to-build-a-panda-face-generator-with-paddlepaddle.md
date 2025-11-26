@@ -6,7 +6,8 @@ tags:
   - blog
   - study
   - introduction
-image: /assets/2021/05-how-to-build-a-panda-face-generator-with-paddlepaddle/shut-up-and-kiss-me.webp
+image: /assets/2021/05-how-to-build-a-panda-face-generator-with-paddlepaddle-en/shut-up-and-kiss-me.webp
+hidden: true
 ---
 
 很高兴能分享前段时间折腾的小项目，一只熊猫头表情生成机器人。因为本熊是个很热爱meme文化的人，而在聊天过程中，我总是需要表情包来支撑起我匮乏的语言表达能力以及抒发我无法通过文字表达的感情。这次使用wechaty和paddlepaddle制作了一个根据人像生成对应熊猫头的表情包制作机器人。经本人不正经的测试，本表情包制作机器人可以给你的对话增加更多的乐趣，聊天室内外充满了快活的空气~
@@ -33,7 +34,7 @@ Django端，PDjango目录下：
 python manage.py runserver 0.0.0.0:8080
 
 **框架图**
-![框架图：分成wehcaty和django两部分](/assets/2021/05-how-to-build-a-panda-face-generator-with-paddlepaddle/framework.webp)
+![框架图：分成wehcaty和django两部分](/assets/2021/05-how-to-build-a-panda-face-generator-with-paddlepaddle-en/framework.webp)
 
 ## wechaty部分
 
@@ -56,11 +57,11 @@ pandaFace脚本则是处理图像的主文件,提供了处理图片和视频的�
 同样使用上述的两个模型处理用户发来的肖像照，然后进入我花费时间最长的步骤——调整颜色。
 因为光照等原因，把图像转为灰度图的任务始终无法达到理想的效果。这里尝试了亮度、对比度、直方图等统一的方式做了一些处理，大家也可以进行测试。另外我觉得最可行的方法是直方图匹配，这方面值得继续改进。
 ***亮度调节对比***
-![亮度对比图](/assets/2021/05-how-to-build-a-panda-face-generator-with-paddlepaddle/bright.webp)
+![亮度对比图](/assets/2021/05-how-to-build-a-panda-face-generator-with-paddlepaddle-en/bright.webp)
 ***对比度调节对比***
-![对比度对比图](/assets/2021/05-how-to-build-a-panda-face-generator-with-paddlepaddle/contract.webp)
+![对比度对比图](/assets/2021/05-how-to-build-a-panda-face-generator-with-paddlepaddle-en/contract.webp)
 ***gamma方式调节histogram调节对比***
-![gamma对比图](/assets/2021/05-how-to-build-a-panda-face-generator-with-paddlepaddle/gamma.webp)
+![gamma对比图](/assets/2021/05-how-to-build-a-panda-face-generator-with-paddlepaddle-en/gamma.webp)
 这部分试了很多个参数,但是对于不同的图片不太好做到统一,所以想到了直方图匹配(histogram match),但是这部分实验的图找不到了,之后补上,直方图匹配的代码也在脚本中提供了,但是默认并没有开启。
 ***直方图匹配***的方法可以把人脸映射到和原版的表情包大概同一个色调,但是缺点是,直方图匹配的方式会损失细节,这样会出现跃迁式的像素变化,很丑,所以可能采用直方图匹配之后要做更多的处理。
 
@@ -77,3 +78,7 @@ opencv的简单操作，嘿嘿~
 在频繁给django发送请求后,server端的cpu和内存"爆炸",这部分不确定是django的问题还是Paddlehub的问题,目前这个问题似乎没有再出现(真是让人迷惑)。
 
 > 作者: [ninetailskim](https://github.com/ninetailskim/)，始于兴趣 陷于技术 忠于瞎搞
+
+---
+
+> This post is also available in [English](/2021/05/24/how-to-build-a-panda-face-generator-with-paddlepaddle-en/).

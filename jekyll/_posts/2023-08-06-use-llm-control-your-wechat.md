@@ -6,8 +6,11 @@ tags:
   - blog
   - study
   - introduction
-image: /assets/2023/08-use-llm-control-your-wechat/rare-book.webp
+image: /assets/2023/08-use-llm-control-your-wechat-en/rare-book.webp
+hidden: true
 ---
+
+> This post is also available in [English](/2023/08/06/use-llm-control-your-wechat-en/)
 
 随着ChatGPT火爆，LLM应用如雨后春笋，层出不穷。几乎任何人都可以基于大预言模型开发出自己的天猫精灵、小爱同学、小度小度...
 
@@ -274,9 +277,9 @@ async function onMessage (msg: Message) {
 
 ## 效果
 
-![send](/assets/2023/08-use-llm-control-your-wechat/1.webp)
+![send](/assets/2023/08-use-llm-control-your-wechat-en/1.webp)
 
-![res](/assets/2023/08-use-llm-control-your-wechat/2.webp)
+![res](/assets/2023/08-use-llm-control-your-wechat-en/2.webp)
 
 向管理员群发送控制指令：
 

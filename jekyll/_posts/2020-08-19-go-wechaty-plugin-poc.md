@@ -8,7 +8,8 @@ tags:
   - summer-2020
   - go
   - ecosystem
-image: /assets/2020/go-wechaty-plugin-midterm/2020-08-19-go-wechaty.webp
+image: /assets/2020/08-go-wechaty-plugin-poc-en/2020-08-19-go-wechaty.webp
+hidden: true
 ---
 
 “开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。
@@ -92,3 +93,5 @@ go-wechaty 是 Go 语言实现 wechaty 的项目，同样支持多协议接入�
 
 - 项目链接：[wechaty/go-wechaty](https://github.com/wechaty/go-wechaty)
 - 联系方式：finctive@foxmail.com
+
+> This post is also available in [English](/2020/08/19/go-wechaty-plugin-poc-en/).

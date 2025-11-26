@@ -1,6 +1,6 @@
 ---
 title: "All Interfaces Are Becoming Conversational"
-description: "Huan's Law: 'Any app that can be talked to, will be talked to.' Explore the future of voice-first and conversational apps, where talking to technology becomes the norm."
+excerpt: "Huan's Law: 'Any app that can be talked to, will be talked to.' Explore the future of voice-first and conversational apps, where talking to technology becomes the norm."
 author: huan
 categories: announcement
 tags:

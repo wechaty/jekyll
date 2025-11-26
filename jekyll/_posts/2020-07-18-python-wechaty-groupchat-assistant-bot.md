@@ -2,13 +2,16 @@
 title: "基于python-wechaty的群聊助手机器人"
 author: kxz18
 categories: project
-image: /assets/2020/groupchat-assistant-bot/header.webp
+image: /assets/2020/07-python-wechaty-groupchat-assistant-bot-en/header.webp
 tags:
   - python
   - summer-2020
   - summer-of-wechaty
   - utility
+hidden: true
 ---
+
+> This post is also available in [English](/2020/07/18/python-wechaty-groupchat-assistant-bot-en/).
 
 ## 暑期2020
 

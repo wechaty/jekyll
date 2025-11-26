@@ -2,12 +2,13 @@
 title: "微信营销群机器人客服"
 author: zlh
 categories: project
-image: /assets/2020/wx-group-assistant-bot/wx-bot.webp
+image: /assets/2020/08-wx-group-assistant-bot-en/wx-bot.webp
 tags:
   - nodejs
   - padplus
   - project
   - ecommerce
+hidden: true
 ---
 
 几乎人人都有微信，对于电商客服来说，通过微信群的方式管理好自己的客户是维护好客户关系很重要的方式。由于电商客服工作繁忙，他们急需一款机器人帮他们处理日常微信群管理中繁重的工作。
@@ -37,3 +38,7 @@ tags:
 目前机器人功能比较简单，只能根据关键词进行识别，客服虽然已能够熟练运用配置文件，但是也有部分客服反应关键词总结起来比较费脑，想要更智能的方法自动识别某些特定主题的文字。因而下一步计划采用深度学习的语言模型（先采用词嵌入的预训练模型，如百度云NLP模块提供的功能），对过往数据进行总结建模。计划先基于现有数据，尝试一下效果。如准确性达不到要求，也可以考虑不在前台直接@，而是在后台通过个人微信提示客服，避免给客户造成误会的情况发生。
 
 除此以外，客服们还对营销机器人在客户画像上提出了新需求，待后续更新。
+
+---
+
+> This post is also available in [English](/2020/08/29/wx-group-assistant-bot-en/).

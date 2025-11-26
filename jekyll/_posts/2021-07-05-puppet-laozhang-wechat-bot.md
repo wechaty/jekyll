@@ -7,7 +7,8 @@ tags:
   - study
   - introduction
   - news
-image: /assets/2021/07-puppet-laozhang-wechat-bot/wechat_bot.webp
+image: /assets/2021/07-puppet-laozhang-wechat-bot-en/wechat_bot.webp
+hidden: true
 ---
 
 继”wechaty免费版web协议重放荣光“之后，很高兴向大家预告Wechaty免费版Windows协议即将与大家见面，如果之前苦于web协议不能获取准确的wxid、roomid等问题，那么这个更新将会解决你的困扰。
@@ -83,3 +84,7 @@ phase2：Q4丰富wechaty-puppet-laozhang功能接口，同时准备提供一个�
 
 - [Wechaty+微信小程序实现群内活动报名](https://wechaty.js.org/2021/03/17/node-wechaty-and-wechaty-puppet-padlocal/)
 - [入门：小白如何在wechaty社区发布自己的第一篇博客（一）](https://wechaty.js.org/2021/04/22/how-to-publish-blog-on-wechaty/)
+
+---
+
+> This post is also available in [English](/2021/07/05/puppet-laozhang-wechat-bot-en/).

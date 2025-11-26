@@ -13,7 +13,7 @@ image: /assets/2020/12-07-wxwork/wecom.webp
 最新消息： [WorkPro](https://wechaty.js.org/2022/12/23/introducing-workpro-puppet/) 作为 WxWork 的继任者已经正式上线了！WxWork 现已废弃，请尽快转移到 WorkPro 上。
 对于这个 WorkPro 服务感兴趣的朋友，我们提供7天的免费试用 token ，请用微信或企微扫码添加客服咨询。
 
-![qrcode.webp](/assets/2022/12-introducing-workpro-puppet/qrcode.webp)
+![qrcode.webp](/assets/2022/12-introducing-workpro-puppet-en/qrcode.webp)
 
 恭喜 WxWork 作为 Wechaty 社区新的 Puppet Service 正式进入 Beta 版！经过历时一个月的测试，WxWork 现在已经通过社区验证，可以正式售卖给社区的小伙伴了！
 
@@ -168,7 +168,7 @@ WxWork 通过了 Alpha test 的内容，以下是 Rock 支持的功能清单，�
 
 WxWork 的产品测试，已完成 100%，同时，[句子互动](https://www.juzibot.com) 提供基于企业微信的 SCRM 系统，并基于 WxWork 提供了可视化的工具，有兴趣的小伙伴也可以来 [句客宝](https://qiwei.juzibot.com/user/login?isWechaty=true) 通过企业微信扫码登陆后体验。
 
-## 最后，要在此感谢 puppet provider 为社区持续做出如下贡献：
+## 最后，要在此感谢 puppet provider 为社区持续做出如下贡献
 
 1. 为每个 wechaty contributor 提供2个免费token
 2. 未申请开源激励计划的开发者，提供15天的免费测试token

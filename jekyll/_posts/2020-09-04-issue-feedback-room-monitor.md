@@ -12,7 +12,7 @@ image: /assets/2020/issue-feedback-room-monitor/way.webp
 
 在之前公司我曾经用python通过itchat弄过一个群播报BI数据的机器人，但因为itcaht采用的是微信web协议，微信监控特别严，很多号都不能使用，即使登录上去了还会经常莫名掉线，极不稳定。因此这回肯定不能再通过web协议的方式来弄了。于是带着一点点期盼发现了Wechaty这个支持微信ipad协议的SDK。
 
-## Wechaty官方定义：
+## Wechaty官方定义
 
 > Wechaty是一个开源的的个人号微信机器人接口，使用Typescript构建的Node.js应用。支持多种微信接入方案，包括网页，ipad，ios，windows，android 等。同时支持 Linux, Windows, Darwin(OSX/Mac) 和 Docker 多个平台。
 
@@ -20,7 +20,7 @@ image: /assets/2020/issue-feedback-room-monitor/way.webp
 
 Wechaty目前已经支持了`Java`、`Python`、`Go`、`PHP`等多种语言，但是该SDK原生是用`TypeScript`编写的，并且github上大量的demo和开源项目都是用`node.js`写的，再加上Wechaty宣称可以通过6行代码就可以实现一个机器人，于是最终决定用之前一点稚嫩的`JavaScript`前端开发经验拥抱`node.js`吧！
 
-### 参考资料：
+### 参考资料
 
 * **官方** [API文档](https://wechaty.js.org/docs/)
 
@@ -32,7 +32,7 @@ Wechaty目前已经支持了`Java`、`Python`、`Go`、`PHP`等多种语言，�
 
 通过短时间的学习和尝试后，发现基本微信机器人常用的功能实现几乎都能从这些开源的项目中直接拿到，然后再结合自己的需求再进行改装就可以了，确实开发起来挺方便的。
 
-### 开发之前，首先要明确一下此次的功能需求：
+### 开发之前，首先要明确一下此次的功能需求
 
 * **自动聊天**：群聊中通过 `@[机器人]xxx`,  机器人回复问题反馈模版信息  （已完成）
 
@@ -64,7 +64,7 @@ Wechaty目前已经支持了`Java`、`Python`、`Go`、`PHP`等多种语言，�
 |-- package.json
 ```
 
-### 二、核心包：
+### 二、核心包
 
 * **Wechaty核心包**：  `npm install --save wechaty`
 

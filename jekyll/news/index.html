@@ -1,10 +1,10 @@
 ---
 title: Wechaty - News
 layout: default
-description: Wechaty - RPA SDK for Chatbot Makers
+excerpt: Wechaty - RPA SDK for Chatbot Makers
 ---
 
-{% assign news_posts = site.tags['news'] %}
+{% assign news_posts = site.tags['news'] | where_exp: "p", "p.hidden != true" %}
 
 <div class="container">
 

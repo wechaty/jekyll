@@ -69,19 +69,19 @@ tags:
 
 npm包：<https://www.npmjs.com/package/wechaty-puppet-walnut>
 
-### live coding视频：
+### live coding视频
 
 {% include iframe.html src="https://www.youtube.com/watch?v=4-0lW0kvelE" %}
 
 > 国内版：<https://www.bilibili.com/video/BV1b44y1t7vz>
 
-### PPT展示视频：
+### PPT展示视频
 
 {% include iframe.html src="https://www.youtube.com/watch?v=cQydTnaym7Y" %}
 
 > 国内版：<https://www.bilibili.com/video/BV12L4y1z7sQ>
 
-### 项目PPT：
+### 项目PPT
 
 {% include iframe.html src="/assets/2021/10-ospp-final-term-5g-chatbot-puppet/5g-chatbot-ppt.pdf" %}
 

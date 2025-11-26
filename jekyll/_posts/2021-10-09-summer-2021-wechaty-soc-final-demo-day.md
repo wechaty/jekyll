@@ -13,7 +13,8 @@ tags:
   - meetup
   - featured
   - final
-image: /assets/2021/10-summer-2021-wechaty-soc-final-demo-day/final-demo-day.webp
+image: /assets/2021/10-summer-2021-wechaty-soc-final-demo-day-en/final-demo-day.webp
+hidden: true
 ---
 
 “[开源软件供应链点亮计划-暑期2021](https://summer.iscas.ac.cn)”（以下简称 暑期2021）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。活动联合各大开源社区，针对重要开源软件的开发与维护提供项目，并向全球高校学生开放报名。 学生可自主选择感兴趣的项目进行申请，并在中选后获得该软件资深维护者（社区导师）亲自指导的机会。
@@ -231,7 +232,7 @@ Wechaty 在多平台、多功能多个维度上，共发布了 9 项任务，并
 {% include iframe.html src="https://youtu.be/51EwCNB_Y90" %}
 > [Tencent video link](https://v.qq.com/x/page/g3310wbhou9.html)
 
-## 欢迎报名开源之夏 2022！
+## 欢迎报名开源之夏 2022
 
 ### 报名学生开发者
 
@@ -317,3 +318,7 @@ Wechaty 社区秉持开源开放的的原则，所有会议记录、在线会议
 - 在 Wechaty 开发者群内，为学生开发者们的Plan Blog、POC Blog和Finished Blog点赞和提出想法。
 - 直接参与已经完成部分工作的项目开发，为学生开发者们负责的复杂项目添砖加瓦。
 - [了解更多](https://github.com/wechaty/summer)
+
+---
+
+> This post is also available in [English](/2021/10/09/summer-2021-wechaty-soc-final-demo-day-en/).

@@ -5,7 +5,8 @@ categories: event
 tags:
   - talk
   - news
-image: /assets/2016/nodeparty-banner.webp
+image: /assets/2016/12-beijing-nodejs-meetup-party-en/nodeparty-banner.webp
+hidden: true
 ---
 
 ![Node Party Banner][nodeparty-banner]
@@ -26,7 +27,7 @@ image: /assets/2016/nodeparty-banner.webp
 * 地址: 东城区 东四北大街107号科林大厦B座107室(近北新桥地铁站)
 * 报名地址：<http://www.bagevent.com/event/291037>
 
-## 内容：
+## 内容
 
 13:00 ~ 13:30 入场
 
@@ -79,6 +80,10 @@ image: /assets/2016/nodeparty-banner.webp
 主办
 Rockq社区
 
-[nodeparty-banner]: /assets/2016/nodeparty-banner.webp
-[nodeparty-speaker]: /assets/2016/nodeparty-speaker.webp
-[nodeparty-speaker2]: /assets/2016/nodeparty-speaker2.webp
+[nodeparty-banner]: /assets/2016/12-beijing-nodejs-meetup-party-en/nodeparty-banner.webp
+[nodeparty-speaker]: /assets/2016/12-beijing-nodejs-meetup-party-en/nodeparty-speaker.webp
+[nodeparty-speaker2]: /assets/2016/12-beijing-nodejs-meetup-party-en/nodeparty-speaker2.webp
+
+---
+
+> English version of this post: [Node Party #18 - Rediscovering Chatbots]({{ '/2016/12/07/beijing-nodejs-meetup-party-en/' | relative_url }})

@@ -40,7 +40,7 @@ Github Fork: [1,500+]
 Npm install: [1,000,000+](https://npm-stat.com/charts.html?package=wechaty&from=2016-05-01&to=2021-03-23)
 Issue/PR: [2,190+]
 
-### 开发者群体：
+### 开发者群体
 
 微信群：5,000+
 被开源项目所使用：800+

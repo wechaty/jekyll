@@ -4,7 +4,8 @@ author: chinggg
 categories:
   - project
   - ospp
-image: /assets/2021/07-ospp-plan-blessed-cli/wechaty-cli-logo.webp
+image: /assets/2021/07-ospp-plan-blessed-cli-en/wechaty-cli-logo.webp
+hidden: true
 tags:
   - summer-of-wechaty
   - summer-2021
@@ -36,7 +37,7 @@ tags:
 学习 blessed 和 Wechaty 的使用，并研究 [node-facenet](https://github.com/huan/node-facenet/tree/master/src/manager/ui) 和 [console-tg-client](https://github.com/lekzd/console-tg-client) 的架构设计，多和导师进行沟通，利用事件绑定或 RxJS 实现文本消息的收发功能和未读状态的提示，并提供一定的联系人和群对话管理功能，达到接近现有 IRC 客户端的完整程度。
 
 设计方案如下图所示：
-![diagram](/assets/2021/07-ospp-plan-blessed-cli/wechaty-cli-diagram.webp)
+![diagram](/assets/2021/07-ospp-plan-blessed-cli-en/wechaty-cli-diagram.webp)
 
 ## 项目开发时间计划
 
@@ -78,3 +79,7 @@ tags:
 官网：[https://summer.iscas.ac.cn/](https://summer.iscas.ac.cn/)
 
 本项目 [基于 Blessed 的 Wechaty 命令行文本客户端软件] 系 暑期2021 支持的开源项目。
+
+---
+
+> This post is also available in [English](/2021/07/14/ospp-plan-blessed-cli-en/).

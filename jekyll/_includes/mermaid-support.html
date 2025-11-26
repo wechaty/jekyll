@@ -1,0 +1,32 @@
+{% assign mermaid_enabled = page.mermaid %}
+{% if mermaid_enabled == nil %}
+  {% assign mermaid_enabled = site.mermaid.enable_by_default | default: false %}
+{% endif %}
+{% if mermaid_enabled %}
+  <script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" crossorigin="anonymous"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      if (!window.mermaid) {
+        return;
+      }
+
+      const codeBlocks = document.querySelectorAll('pre code.language-mermaid, code.language-mermaid');
+      codeBlocks.forEach(function (codeEl) {
+        const container = document.createElement('div');
+        container.className = 'mermaid';
+        container.textContent = codeEl.textContent;
+
+        const parent = codeEl.parentElement;
+        if (parent && parent.tagName.toLowerCase() === 'pre') {
+          parent.parentElement.replaceChild(container, parent);
+        } else if (parent) {
+          parent.replaceChild(container, codeEl);
+        } else {
+          codeEl.replaceWith(container);
+        }
+      });
+
+      window.mermaid.initialize({ startOnLoad: true, securityLevel: 'loose' });
+    });
+  </script>
+{% endif %}

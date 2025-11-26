@@ -7,7 +7,8 @@ tags:
   - google
   - gdg
   - news
-image: /assets/2021/08-gdg-community-talk-google-season-of-docs/gdg-community-talk-gsod-wechaty.webp
+image: /assets/2021/08-gdg-community-talk-google-season-of-docs-en/gdg-community-talk-gsod-wechaty.webp
+hidden: true
 ---
 
 Google Season of Docs （GSoD）是 Google 自 2019 年发起的一项面向全球开源社区的文档支持计划，目标是为开源社区提供资金、指导完善他们的开源项目文档，并且通过了解开源社区的文档协作情况，帮助更多开发者习得专业的技术文档写作方法。
@@ -58,3 +59,6 @@ _Wechaty Google Season of Docs_ Slides is hosted on Google Slides(Docs) at [here
 活动将由不同的谷歌开发者社区举办并邀请来自国内的不同技术方向的谷歌开发者专家以及对技术有热情、愿意分享的嘉宾，一起来聊一聊最近做的项目，最近写的代码，或者三五技术好友互相探讨聊天。
 
 > Source: [听 Google Season of Docs 入选项目谈文档协作](https://mp.weixin.qq.com/s/uBOhGXdJIXZ_5_Cu0gUq-Q)
+> English version: [Wechaty Docs Collaboration Practice in Google Season of Docs](/2021/08/26/gdg-community-talk-google-season-of-docs-en/)
+
+---

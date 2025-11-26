@@ -6,7 +6,8 @@ tags:
   - angular
   - tensorflow.js
   - gdg
-image: /assets/2022/01-angular-tensorflow-js/ai-angular-tensorflow-js.webp
+image: /assets/2022/01-angular-tensorflow-js-en/ai-angular-tensorflow-js.webp
+hidden: true
 ---
 
 > AI, Wechaty, Angular, and mix them altogether in JavaScript
@@ -153,7 +154,7 @@ npm install @tensorflow-models/toxicity
 ng generate service toxicity
 ```
 
-[![TensorFlow.js Toxicity Model](/assets/2022/01-angular-tensorflow-js/toxicity.webp)](https://storage.googleapis.com/tfjs-models/demos/toxicity/index.html)
+[![TensorFlow.js Toxicity Model](/assets/2022/01-angular-tensorflow-js-en/toxicity.webp)](https://storage.googleapis.com/tfjs-models/demos/toxicity/index.html)
 
 Learn more:
 
@@ -177,7 +178,7 @@ Knowledge, ideas, and insights for the Next Generation.
 
 {% include iframe.html src="https://youtu.be/SACugbTNQnc" %}
 
-![NG2020 Conference Huan Wechaty Angular TensorFlow.js](/assets/2022/01-angular-tensorflow-js/huan-ng-2020.webp)
+![NG2020 Conference Huan Wechaty Angular TensorFlow.js](/assets/2022/01-angular-tensorflow-js-en/huan-ng-2020.webp)
 
 > Source: [NG+ Developers Conference](https://ng-plus.dev/#/conferences?year=2020)
 
@@ -189,8 +190,9 @@ Knowledge, ideas, and insights for the Next Generation.
 
 「社区说」是由谷歌开发者社区 (Google Developer Group)与谷歌开发者专家计划 (Google Developer Expert) 联合推出的，与热爱技术的开发者们交流技术，直播代码，讨论产品，分享心得的小型线上会议，每次时长45分钟到1小时。
 
-![GDG Community Talk Huan Wechaty Angular TensorFlow.js](/assets/2022/01-angular-tensorflow-js/huan-gdg-2021-community-talk.webp)
+![GDG Community Talk Huan Wechaty Angular TensorFlow.js](/assets/2022/01-angular-tensorflow-js-en/huan-gdg-2021-community-talk.webp)
 
 活动将由不同的谷歌开发者社区举办，并邀请国内相关技术方向的谷歌开发者专家以及对技术有热情、愿意分享的嘉宾，一起聊聊最近做的项目、写的代码，或者三五技术好友探讨聊天。
 
 > Source: [社区说｜聊天机器人与 Angular](https://mp.weixin.qq.com/s/cluw2QQepzacuZFA1pJvcw)
+> English version: [Chatbot and Angular (Beijing GDG | Community Talk | NG+)](/2022/01/06/angular-tensorflow-js-en/)

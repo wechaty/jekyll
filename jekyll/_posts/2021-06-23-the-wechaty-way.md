@@ -9,7 +9,8 @@ tags:
   - ospp
   - ospp-admin
   - news
-image: /assets/2021/06-the-wechaty-way/teaser.webp
+image: /assets/2021/06-the-wechaty-way-en/teaser.webp
+hidden: true
 ---
 
 Wechaty (Conversational RPA SDK) 2016 年发布于 GitHub，是一个基于 Apache-2.0 许可证的开源项目。经过5年多的发展，现在 Wechaty 开源社区已经拥有数十位 Committers，百余位 Contributors ，并被超过一万名 GitHub 开发者 Star。目前，使用 Wechaty 的开发者已覆盖数万人，并拥有基于微信群的数千人活跃开发者群。
@@ -20,7 +21,7 @@ Wechaty自身对代码质量的管理，使用了 GitHub Actions 的 DevOps 工�
 
 在开源社区管理上，Wechaty 遵循 The Apache Way ，拥有 PMC / Committer 管理制度，和完善的 Issue / PR / Release 等管理制度。截止2021年，Wechaty 已经有近百万次 NPM 安装下载，并由社区自发推动了 Python, Go, Java, Scala, .NET, PHP, Rust 等语言的适配和发布，是国内最活跃的 Conversational AI Chatbot 开发者社区。
 
-## Wechaty 介绍 PPT：
+## Wechaty 介绍 PPT
 
 通过阅读下面3个PPT，你可以对Wechaty及其发展历程有一个基础的了解。
 
@@ -72,7 +73,7 @@ Meeting Notes 有以下几个价值：
 
 这是 Meeting Notes 的模板内容(可以在 Meeting Notes 最底部拿到文字版，我这里放了图片方便看格式)：
 
-![meeting-notes](/assets/2021/06-the-wechaty-way/meeting-notes.webp)
+![meeting-notes](/assets/2021/06-the-wechaty-way-en/meeting-notes.webp)
 
 具体使用流程指南：
 
@@ -107,7 +108,7 @@ Meeting Notes 有以下几个价值：
 
 [Wechaty ❤️ Google Season of Docs: Kick-off meeting with 20 Technical Writers!](https://www.youtube.com/watch?v=hTkM_XPpFfU&list=PL8hd9KDTdarDXf_Rxtr8meKhxtgcXMInh&index=43) 就是一个很好的示例。因为一次会议的时间很长，其他人看视频的时候就可以很容易根据下图介绍知道 **视频中 0:01:41 的时候讲的内容是 Introducing the Meeting Agenda**， 同时点击 **0:01:41** 可以快速跳转到视频播放的地方。
 
-![youtube-example](/assets/2021/06-the-wechaty-way/youtube-example.webp)
+![youtube-example](/assets/2021/06-the-wechaty-way-en/youtube-example.webp)
 
 上传视频以后，主持人要去社区发布一个会议的博客，并嵌入视频内容，这样就能保证这次会议进行了存档并可以共享个社区的任何开发者。
 
@@ -201,7 +202,7 @@ Wechaty 的 Contributor [xpt](https://stackoverflow.com/users/2125837/xpt) 在 S
 - 完成 CLA 的签署
 - 关联相关的 Issue 链接
 
-![pr](/assets/2021/06-the-wechaty-way/pr.webp)
+![pr](/assets/2021/06-the-wechaty-way-en/pr.webp)
 
 ## Wechaty RFC
 
@@ -209,7 +210,7 @@ Wechaty 的 Contributor [xpt](https://stackoverflow.com/users/2125837/xpt) 在 S
 
 如这是 Wechaty Commiter [高原](https://wechaty.js.org/contributors/windmemory/) 发布的[提案](https://github.com/wechaty/wechaty/issues/1776)：
 
-![rfc](/assets/2021/06-the-wechaty-way/rfc.webp)
+![rfc](/assets/2021/06-the-wechaty-way-en/rfc.webp)
 
 ## 进阶，了解 Apache Way，知道如何更好的参与开源项目
 
@@ -220,7 +221,7 @@ Wechaty 的 Contributor [xpt](https://stackoverflow.com/users/2125837/xpt) 在 S
 - [孵化场的地址](http://incubator.apache.org/)
 - [生命周期](http://incubator.apache.org/cookbook/)
 
-### 佳芮推荐：
+### 佳芮推荐
 
 - [Apache 介绍](http://www.apache.org/foundation/)
 - [什么是 Apache Way，Apache Way 是指 Apache 管理和运营项目的方法](http://apache.org/theapacheway/)
@@ -228,3 +229,7 @@ Wechaty 的 Contributor [xpt](https://stackoverflow.com/users/2125837/xpt) 在 S
 - [什么是 Infrastructure Team](https://selfserve.apache.org/)
 - [视频-ASF是如何运营的以及他的价值](https://www.youtube.com/watch?v=TQwrH0PlpZg)
 - [视频-如何高效管理开源项目](https://www.youtube.com/watch?v=hpAv54KIgK8)
+
+---
+
+> This post is also available in [English version](/2021/06/23/the-wechaty-way-en/).

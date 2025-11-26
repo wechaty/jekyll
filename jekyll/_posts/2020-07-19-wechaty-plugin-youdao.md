@@ -6,6 +6,7 @@ tags:
   - plugins
   - featured
 image: /assets/2020/youdao-plugin/head.webp
+hidden: true
 ---
 
 [![badge](https://img.shields.io/badge/Powered%20By-Wechaty-green.svg#align=left&display=inline&height=20&margin=%5Bobject%20Object%5D&originHeight=20&originWidth=132&status=done&style=none&width=132)](https://github.com/wechaty/wechaty)
@@ -88,3 +89,7 @@ contact.say('Hello').to(user)
 
 > 作者: [Chs97](https://github.com/chs97/)
 > Code: [Github](https://github.com/chs97/wechaty-plugin-youdao)
+
+---
+
+> This post is also available in [English](/2020/07/19/wechaty-plugin-youdao-en/).

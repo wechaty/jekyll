@@ -5,7 +5,9 @@ categories: tutorial
 tags:
   - code
   - docker
-image: /assets/2016/ghostcloud-banner.webp
+excerpt: "学习如何使用 Docker 运行 Wechaty 微信机器人框架，从基础设置到使用 GhostCloud EcOS 部署"
+image: /assets/2016/12-ghostcloud-wechaty-docker-en/ghostcloud-banner.webp
+hidden: true
 ---
 
 Wechaty(<https://github.com/wechaty/wechaty>)是一款开源的微信SDK，它基于微信公开的API，对接口进行了一系列的封装，提供一系列简单的接口，然后开发者可以在其之上进行微信机器人的开发。在跟作者沟通试用以后，发现其中有着非常多的应用场景，比如：
@@ -102,7 +104,9 @@ docker logs -f wechaty
 
 扫描日志中的二维码或将URL地址复制到浏览器中扫描，然后正常的使用微信，可以看到终端中会有相关信息。
 
-[ghostcloud-banner]: /assets/2016/ghostcloud-banner.webp
-[ghostcloud-log]: /assets/2016/ghostcloud-log.webp
-[ghostcloud-message]: /assets/2016/ghostcloud-message.webp
-[ghostcloud-qrcode]: /assets/2016/ghostcloud-qrcode.webp
+[ghostcloud-banner]: /assets/2016/12-ghostcloud-wechaty-docker-en/ghostcloud-banner.webp
+[ghostcloud-log]: /assets/2016/12-ghostcloud-wechaty-docker-en/ghostcloud-log.webp
+[ghostcloud-message]: /assets/2016/12-ghostcloud-wechaty-docker-en/ghostcloud-message.webp
+[ghostcloud-qrcode]: /assets/2016/12-ghostcloud-wechaty-docker-en/ghostcloud-qrcode.webp
+
+> English version: [Running Wechaty WeChat Bot Framework with Docker](/2016/12/05/ghostcloud-wechaty-docker-en/)

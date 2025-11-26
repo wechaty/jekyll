@@ -7,6 +7,7 @@ tags:
   - nodejs
   - donut
   - productivity
+hidden: true
 ---
 
 困惑于各类后端系统与同事、客户和其他相关方的沟通：一方面是后端系统纷繁复杂，开发语言众多；另一方面是不同人群对邮件、短信等各自的喜好程度不同，相对而言，微信是商务人群中使用量较大的，虽然微信提供了公众号等方式集成，但恰恰是大多数微信使用者只会在非常必须才会去用的服务方式。
@@ -23,3 +24,7 @@ tags:
 
 经过一段时间测试，基本没发现掉线，服务也正常。
 如果喜欢，请了解体验审阅 <https://github.com/johnwang71/wechaty-integration> 这段短小的代码，更欢迎提出好的建议和问题！
+
+---
+
+> This post is also available in [English](/2020/12/10/bridge-between-backend-and-wechat-en/).

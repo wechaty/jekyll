@@ -5,14 +5,14 @@ categories: migration
 tags:
   - code
   - news
-image: /assets/2018/code-migration-en.webp
+image: /assets/2018/06-24-migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-en/code-migration.webp
 ---
 
 Wechaty has been updated to version 0.16(BETA) these days and begin to support all kinds of wechat solutions including web, ipad, ios, etc. My product based on wechaty has to migration from wechaty solution based on web to ipad solution.
 
 This blog introduces how to porting code from wechaty puppeteer to padchat.
 
-![code](/assets/2018/code-migration-en.webp)
+![code](/assets/2018/06-24-migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-en/code-migration.webp)
 
 ## 1. Puppeteer VS Padchat
 
@@ -40,7 +40,6 @@ git pull
 rm -rf package-lock.json
 rm -rf node_modules/
 npm install
-```
 
 #### 2. Get Token
 
@@ -48,10 +47,9 @@ Participate in our alpha test here: [Wechaty v0.17 Padchat Testing: Win32/iPad/A
 
 #### 3. Set environment variable and run
 
-Remeber to set `WECHATY_PUPPET=padchat` to change from puppeteer to padchat
-
+image: /assets/2018/06-24-migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-en/code-migration.webp
 ```shell
-WECHATY_PUPPET_PADCHAT_TOKEN=your padchat token WECHATY_PUPPET=padchat  node examples/ding-dong-bot.js
+![code](/assets/2018/06-24-migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-en/code-migration.webp)
 ```
 
 ### NPM

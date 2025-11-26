@@ -1,0 +1,21 @@
+{% assign math_enabled = page.math %}
+{% if math_enabled == nil %}
+  {% assign math_enabled = site.math.enable_by_default | default: false %}
+{% endif %}
+{% if math_enabled %}
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"],
+        ignoreHtmlClass: "no-mathjax",
+        processHtmlClass: "mathjax-process"
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" crossorigin="anonymous"></script>
+{% endif %}

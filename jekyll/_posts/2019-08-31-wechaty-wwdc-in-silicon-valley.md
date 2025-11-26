@@ -6,7 +6,8 @@ tags:
   - meetup
   - news
   - featured
-image: /assets/2019/chatie-wwdc-in-sv-110718.webp
+image: /assets/2019/08-wechaty-wwdc-in-silicon-valley-en/chatie-wwdc-in-sv-110718.webp
+hidden: true
 ---
 
 ## 第一次的  WWDC in Silicon Valley
@@ -80,6 +81,6 @@ Guess what! Something happened. 對的！就是 Chatie WWDC in Silicon Valley!!
 
 讓我們繼續期待未來的下一次聚會，相信會非常非常的快的
 
-[meetup-photo]: /assets/2019/chatie-wwdc-in-sv-110718.webp
+[meetup-photo]: /assets/2019/08-wechaty-wwdc-in-silicon-valley-en/chatie-wwdc-in-sv-110718.webp
 
 > Author: [@kis87988](https://github.com/kis87988) William Chen, Software Engineer

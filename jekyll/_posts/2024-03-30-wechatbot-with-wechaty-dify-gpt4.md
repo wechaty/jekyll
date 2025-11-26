@@ -5,7 +5,8 @@ categories: article
 tags:
   - dify
   - gpt4-turbo
-image: /assets/2024/03-wechatbot-with-wechaty-dify-gpt4/bp-post.webp
+image: /assets/2024/03-wechatbot-with-wechaty-dify-gpt4-en/bp-post.webp
+hidden: true
 ---
 
 > 作者: [gscfwid](https://github.com/gscfwid/)，An anesthetist in a big ship of mainland.
@@ -178,3 +179,7 @@ async function sendMessage(message, userName) {
 接下来的设置就都是在 Dify 平台了，目前我还在制作中。我设想是上传从网络中下载的科普文章作为知识库，限定 GPT-4 只在知识库中作答。Anyway，就不属于技术讨论的范畴了。
 
 以上就是利用 Dify 和 Wechaty 实现微信智能对话机器人的核心代码。通过 Dify 强大的对话模型和 Wechaty 方便的微信集成,我们可以快速搭建一个实用的医疗科普机器人。当然,这只是一个基础版本,我们还可以继续添加更多功能,如自定义 prompt、知识库搜索等,来进一步提升机器人的智能化水平。
+
+---
+
+> This post is also available in [English](/2024/03/30/wechatbot-with-wechaty-dify-gpt4-en/).

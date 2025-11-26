@@ -2,12 +2,13 @@
 title: "暑期2020 基于开放 API 封装 Wechaty 接口下的企业微信聊天机器人 计划书"
 author: sapio-s
 categories: project
-image: /assets/2020/work-puppet/pic.webp
+image: /assets/2020/08-puppet-work-plan-en/pic.webp
 tags:
   - summer-of-wechaty
   - summer-2020
   - wecom
   - ecosystem
+hidden: true
 ---
 
 本项目计划针对企业微信平台开发一个puppet，让 Wechaty 开发者可以仅仅通过改变一个变量，就能够切换使用企业微信的功能。
@@ -52,3 +53,7 @@ tags:
       - 在原有的文档上，增加企业微信puppet相关的内容。
 - 项目链接：<https://github.com/Sapio-S/wechaty-puppet-official/>
 - 联系方式：1205402283@mail.qq.com
+
+---
+
+> This post is also available in [English](/2020/08/19/puppet-work-plan-en/).

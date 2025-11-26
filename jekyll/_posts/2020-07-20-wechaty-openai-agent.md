@@ -7,6 +7,7 @@ tags:
   - talk
   - featured
 image: /assets/2020/wechaty-weixin-openai/teaser-image.webp
+hidden: true
 ---
 
 应 [WWC(Women Who Code)](#women-who-code) 邀请，我在线上分享了如何用「Wechaty」和「微信对话开放平台」做个助理帮助回答常见问题。
@@ -343,3 +344,7 @@ PS：在现场演示过程中，我们的测试了很多种的负面情绪的消
 > Author: [@windmemory](https://github.com/windmemory) Wechaty contributor, author of [wechaty-puppet-padchat](https://github.com/wechaty/wechaty-puppet-padchat), [wechaty-puppet-padpro](https://github.com/wechaty/wechaty-puppet-padpro), [wechaty-puppet-padplus](https://github.com/wechaty/wechaty-puppet-padplus). CTO of [Juzi.Bot](https://pre-angel.com/portfolios/juzibot/)
 >
 > Code: [wwc-wechaty](https://github.com/windmemory/wwc-wechaty)
+
+---
+
+> This post is also available in [English](/2020/07/20/wechaty-openai-agent-en/).

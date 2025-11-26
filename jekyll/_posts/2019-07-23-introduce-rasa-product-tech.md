@@ -7,6 +7,7 @@ tags:
   - rasa
   - meetup
   - news
+hidden: true
 ---
 
 << 本次活动通知: [腾讯+句子互动=碰撞思想，点燃科技](https://mp.weixin.qq.com/s?__biz=MzU3OTk2MzA1Nw==&mid=2247485197&idx=1&sn=404c319ad11b9e12515d127dfabf7efd) <<
@@ -68,7 +69,7 @@ Rasa Core主要完成了基于故事的对话管理，包括解析故事并生�
 
 对于2.Rasa使用基于LSTM的Learn to Rank方法，大体上是将当前轮用户意图、上一轮系统行为、当前槽值状态向量化，然后与所有系统行为做相似度学习，以此决定当前轮次的一个或多个系统行为
 
-![rasa-1.png](/assets/2019/rasa-1.webp)
+![rasa-1.png](/assets/2019/07-introduce-rasa-product-tech-en/rasa-1.webp)
 
 ### Rasa X
 
@@ -87,11 +88,11 @@ Rasa X可能暂时还不能让所有非开发人员也能快速方便的使用�
 
 Pipeline 的过程是这样的：
 
-![rasa-2.png](/assets/2019/rasa-2.webp)
+![rasa-2.png](/assets/2019/07-introduce-rasa-product-tech-en/rasa-2.webp)
 
 1. 用户输入文字，送入解释器，即Rasa NLU
 2. NLU给出结果，如图
-    ![rasa-3.png](/assets/2019/rasa-3.webp)
+    ![rasa-3.png](/assets/2019/07-introduce-rasa-product-tech-en/rasa-3.webp)
 3. 从Tracker到Policy，Tracker用于跟踪对话状态，Tracker输出的是Embedding
     1. 用户意图的Embedding
     2. 系统动作（上一步）的Embedding

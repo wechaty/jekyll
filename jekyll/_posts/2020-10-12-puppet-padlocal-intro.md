@@ -1,7 +1,7 @@
 ---
 title: "New Wechaty Puppet Service: PadLocal"
 author: padlocal
-image: /assets/2020/padlocal/logo.webp
+image: /assets/2020/10-puppet-padlocal-intro-en/logo.webp
 categories: announcement
 tags:
   - news
@@ -9,6 +9,7 @@ tags:
   - padlocal
   - puppet-provider
   - puppet-service
+hidden: true
 ---
 
 大家好，我是 PadLocal 的开发者，大伙都称我“好大”。最近一两年，我们团队开始做社群相关产品，自然而然也用了 Wechaty，慢慢地对 Wechaty 以及整个社区也越来越认可和信任。
@@ -34,8 +35,8 @@ tags:
 
 最终，我们做出了一个完整实现的 puppet，叫做 PadLocal。至于为什么叫 “PadLocal” ？这就要谈到我们 puppet 的整体设计，以及相比其他 puppet 有什么不同之处。PadLocal 最大的特点是：
 
-* 账号状态的托管方式
-* 与 WeChatServer 的通信方式
+- 账号状态的托管方式
+- 与 WeChatServer 的通信方式
 
 在设计 puppet 的时候，我们首先调查了社区内其他 puppet , 并研究了他们的实现原理。我们发现，其他 puppet 设计思路大多是这样：由 puppet server 进行管理和维持托管账号的状态。所有的请求都是通过 `puppet -> puppet server -> WeChatServer` 这样一条链路完成。消息推送部分，puppet 和 puppet server 之间建立长连接，同时 puppet server 和 WeChatServer 也建立对应的长连接。当有新消息推送的时候，是通过 `WeChatServer -> puppet server ->  puppet` 这样的链路到达 puppet 端。这样的设计中 puppet server 就充当了一种有状态的代理角色，所有流量都是由服务器完成转发。在我们看来这样的设计可能有几个潜在的劣势：
 
@@ -53,7 +54,7 @@ tags:
 
 整体架构的拓扑图就如下所示：
 
-![拓扑图](/assets/2020/padlocal/topological-graph.webp)
+![拓扑图](/assets/2020/10-puppet-padlocal-intro-en/topological-graph.webp)
 
 再回过头来看，通过实现一个 puppet，我们自身也收获了非常多的东西。首先对 Wechaty 有了更加深入的了解，能更真切体会设计者的初衷，以及其中的权衡取舍。Wechaty 能够如此易用，都是精心设计后的结果。这是一个美妙的旅程；其次实现一个 Wechaty puppet 是一件十分有挑战的事情，能够完成这样一件事情当然成就感满满；再者可以从内部视角，比较深入和全面的了解微信端上的运行机制和设计思想。作为国民级的通信软件，微信的设计十分出色，各种各样机制、设计理念完全可以担当行业标准，无愧是这个领域绝对的王者。
 
@@ -62,3 +63,7 @@ tags:
 PadLocal 目前是还出于 beta testing 阶段，仍然有一些小问题需要去解决。我们希望能够有更多的开发者参与进来，一起让这个 puppet 走向下一个更成熟的阶段。我们有奖励机制以感谢对 PadLocal 作出贡献的伙伴，具体规则仍在商定之中。目前 Token 以“申请+审核”的方式，向大家逐步开放。如果你感兴趣，欢迎联系[管理员同学](mailto:oxddoxdd@gmail.com)，并说明你通过 PadLocal 实现什么样的创意。我们也正在准备更加详细文档和指引，敬请期待。
 
 最后，长城非一日建成，我们也是站在巨人的肩膀上才能完成这样的工作，感谢所有帮助过 PadLocal 诞生的小伙伴，比心。
+
+---
+
+> This post is also available in [English](/2020/10/12/puppet-padlocal-intro-en/).

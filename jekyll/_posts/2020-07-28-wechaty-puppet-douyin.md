@@ -2,7 +2,7 @@
 title: "基于RPA封装的Wechaty接口下的抖音聊天机器人"
 author: wangjunwei
 categories: project
-image: /assets/2020/wechaty-puppet-douyin/wechaty-puppet-douyin-logo.webp
+image: /assets/2020/10-wechaty-puppet-douyin-final-term-en/wechaty-puppet-douyin-logo.webp
 tags:
   - douyin
   - summer-of-wechaty

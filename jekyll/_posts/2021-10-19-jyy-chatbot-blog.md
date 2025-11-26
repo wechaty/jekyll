@@ -1,7 +1,8 @@
 ---
 title: "献给新生女儿的礼物：基于wechaty和语义开放平台打造的育儿机器人"
 author: jxitc
-image: /assets/2021/10-jyy-chatbot-blog/jyy.webp
+image: /assets/2021/10-jyy-chatbot-blog-en/jyy.webp
+hidden: true
 categories:
   - tutorial
 tags:
@@ -107,3 +108,7 @@ quantity: 30
 各种智能客服、RPA机器人平台也就是为了这个愿景而创造出来的。不过这些基于通用场景的平台工具，在有些时候仍然缺乏灵活性以支持自己的实际场景。
 
 因此，我想通过这个小项目，探索出来一套低成本的DIY自动化工作流程，以便之后复制到更多的个人工作流中。
+
+---
+
+> This post is also available in [English](/2021/10/19/jyy-chatbot-blog-en/).
