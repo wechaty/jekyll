@@ -10,6 +10,9 @@
         },
         "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
             "packages": "ffmpeg,imagemagick,webp"
+        },
+        "ghcr.io/devcontainers/features/sshd:1": {
+            "version": "latest"
         }
     },
     "customizations": {
