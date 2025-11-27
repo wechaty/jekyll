@@ -1,9 +1,10 @@
 ---
 title: "Breaking the Reverse Engineering Barrier: How LLMs and Frida Are Revolutionizing WeChat Analysis"
 author: huan
-categories: article
+categories: ideas
 tags:
   - frida
+  - hackathon
   - architecture
   - puppet-xp
   - llm

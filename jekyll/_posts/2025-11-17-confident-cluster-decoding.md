@@ -4,10 +4,11 @@ excerpt: "Greedy decoding is too brittle, sampling is too random — Confident-C
 categories: ideas
 author: huan
 tags:
-  - ideas
+  - paper
   - llm
   - decoding
   - coding-agents
+  - hackathon
   - tool-calling
   - uncertainty
 image: /assets/2025/11-confident-cluster-decoding/ccd-greedy.webp

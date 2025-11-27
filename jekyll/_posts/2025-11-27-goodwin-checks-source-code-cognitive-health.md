@@ -5,6 +5,8 @@ categories: ideas
 author: huan
 tags:
   - agent
+  - paper
+  - hackathon
   - cognitive-health
   - testing
   - llm

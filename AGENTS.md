@@ -32,14 +32,14 @@ Every post must have the following YAML front matter:
 
 ```yaml
 ---
-title: "Your Title Here"
-excerpt: "A brief summary of the post."
-categories: ideas  # or other existing categories
-author: huan # MUST match a filename in jekyll/_contributors/ (e.g. huan.md)
+title: "post_title"
+excerpt: "post_excerpt"
+categories: "category_name"  # replace by best category name from existing categories
+author: "author_name" # MUST match a filename in jekyll/_contributors/ (e.g. huan.md)
 tags:
   - tag1
   - tag2
-image: /assets/YYYY/MM-slug-slug-slug/your-teaser-image.webp
+image: /assets/YYYY/MM-slug-slug-slug/post-teaser-image.webp
 ---
 ```
 

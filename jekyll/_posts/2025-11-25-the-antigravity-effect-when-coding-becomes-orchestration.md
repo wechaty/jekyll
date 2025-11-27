@@ -1,7 +1,7 @@
 ---
 title: "The Antigravity Effect: When Coding Becomes Orchestration"
 author: huan
-categories: ideas
+categories: tools
 tags:
   - antigravity
   - gemini

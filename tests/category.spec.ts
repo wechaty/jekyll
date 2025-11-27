@@ -38,6 +38,9 @@ test('front matter key `categories` must contains at lease one preset category',
     'story',
     'talk',
     'tutorial',
+    'tools',
+    'paper',
+    'ideas',
   ]
   const isPreset = (category: string) => PRESET_CATEGORIES_LIST.includes(category)
 

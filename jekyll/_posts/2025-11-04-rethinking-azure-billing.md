@@ -2,10 +2,11 @@
 title: "Rethinking Azure Billing: The Simple Design Microsoft Should Have Built"
 excerpt: "A founder’s deep dive into Azure’s confusing billing system — MCA, EA, MOSP, and beyond — and a redesign proposal that finally makes sense. This reimagined model simplifies Azure billing into a clear, human-friendly hierarchy so anyone, from engineers to finance teams, can understand how money flows in the cloud at first glance."
 description: "A founder’s deep dive into Azure’s confusing billing system — MCA, EA, MOSP, and beyond — and a redesign proposal that finally makes sense. This reimagined model simplifies Azure billing into a clear, human-friendly hierarchy so anyone, from engineers to finance teams, can understand how money flows in the cloud at first glance."
-categories: guide
+categories: ideas
 author: huan
 tags:
   - azure
+  - hackathon
   - cloud-billing
   - design
   - finops
