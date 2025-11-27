@@ -8,14 +8,13 @@ tags:
   - cognitive-health
   - testing
   - llm
-image: /assets/2025/11-goodwin-checks-source-code-cognitive-health/goodwin-checks-teaser.webp
+image: /assets/2025/11-goodwin-checks-source-code-cognitive-health/source-code-for-ai-agents.webp
 ---
 
 > Before every mission, a woman asks a soldier a poker question.
->
 > That tiny scene is the best design pattern I’ve seen for long-running AI agents.
 
-In *Source Code* (2011), Captain Colter Stevens repeatedly wakes up inside another man’s last eight minutes of life. Before each mission, his handler Colleen Goodwin appears on a screen and asks a strangely specific question about card odds.
+In [*Source Code* (2011)](https://www.imdb.com/title/tt0945513/), Captain Colter Stevens repeatedly wakes up inside another man’s last eight minutes of life. Before each mission, his handler Colleen Goodwin appears on a screen and asks a strangely specific question about card odds.
 
 It looks like flavor dialogue.
 
@@ -25,10 +24,7 @@ That question is a **cognitive health check**.
 
 And once you see it that way, it becomes impossible *not* to map the movie onto the way we run today’s LLM-based coding agents.
 
-This post is a technical exploration of that mapping, written for:
-
-* **Primary:** researchers who care about evals, reliability, and agentic systems.
-* **Secondary:** senior AI agent builders (Codex / Claude Code / Gemini CLI / Copilot / etc.).
+This post is a technical exploration of that mapping, aimed at people who care about evals, reliability, and agentic systems — from researchers to senior AI agent builders.
 
 We’ll do four things:
 
@@ -243,6 +239,8 @@ Let’s fix that.
 
 Here’s the proposal: we **steal the movie’s structure** and turn it into a design pattern.
 
+![Goodwin Protocol](/assets/2025/11-goodwin-checks-source-code-cognitive-health/goodwin-protocol.webp)
+
 ### 3.1 Cast of characters
 
 * **Stevens** → the **worker coding agent**
@@ -444,6 +442,8 @@ Even if (1) and (2) get lossy, (3) acts like a **checksum** on the agent’s und
 ## 4. Hackathon Memo: Build Goodwin Checks for Real
 
 This is the part of the post that’s really a memo to my future self (and anyone who wants to build this with me at a hackathon).
+
+![Goodwin Checks Teaser](/assets/2025/11-goodwin-checks-source-code-cognitive-health/goodwin-checks-teaser.webp)
 
 ### 4.1 One-liner
 
