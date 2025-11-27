@@ -25,7 +25,7 @@ layout: default
                             <img class="rounded-circle" src="{{author.avatar}}" alt="{{author.name}}" width="70"/>
                           </a>
                         {% endif %}
-						<small class="ml-3"> {{ author.name }} <span><a target="_blank" href="{{ author.twitter }}" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+						<small class="ml-3"> <a href="{{ site.baseurl }}/contributors/{{ author.slug }}">{{ author.name }}</a> <span><a target="_blank" href="{{ author.twitter }}" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
                             <span class="text-muted d-block mt-1">{{ page.date | date: '%b %d, %Y' }} · {% include meta-read-time.html %}</span>
 						</small>
 					</div>
@@ -98,7 +98,7 @@ layout: default
                         {% endif %}
 					</div>
 					<div class="col-md-10">
-                        <h5 class="font-weight-bold">Written by {{ author.name }} {% if author.twitter %}<span><a target="_blank" href="{{ author.twitter }}" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span>{% endif %}</h5>
+                        <h5 class="font-weight-bold">Written by <a href="{{ site.baseurl }}/contributors/{{ author.slug }}">{{ author.name }}</a> {% if author.twitter %}<span><a target="_blank" href="{{ author.twitter }}" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span>{% endif %}</h5>
 						{{ author.bio }}
 					</div>
 				</div>
