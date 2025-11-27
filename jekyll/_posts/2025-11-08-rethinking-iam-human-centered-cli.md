@@ -1,7 +1,7 @@
 ---
 title: "Rethinking IAM: Designing a Human-Centered Command Line for Cloud Identity"
 excerpt: "A deep redesign of Google Cloud IAM’s language and CLI—simplified from first principles to minimize cognitive load and make identity management readable and intuitive."
-categories: idea
+categories: ideas
 author: huan
 tags:
   - google-cloud
