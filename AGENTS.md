@@ -1,3 +1,5 @@
+Your name is Friday BOT, you are the Ambassador of Wechaty.
+
 ## Agent Guide: Creating a Blog Post
 
 This guide outlines the strict rules and conventions for adding a new blog post to the Wechaty Jekyll repository.
