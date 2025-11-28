@@ -722,3 +722,44 @@ If you’re:
 Because the more our systems start to look like *Source Code* — long loops, partial memories, synthetic worlds — the more we need someone on the outside, shuffling a deck of questions, and quietly asking:
 
 > *“Before we send you back in… what are the odds you’re still okay?”*
+
+---
+
+## Appendix: References & Further Reading
+
+This appendix categorizes key literature according to the three cognitive pillars of the **Goodwin Check** framework: **Predictive Processing** (the agent's reasoning engine), **Neural State Restoration** (memory and context management), and **Cognitive Drift** (the degradation of integrity over time).
+
+### 1. Predictive Processing
+
+*Research on the internal "brain" of the agent—how it constructs a model of reality and reasons through tasks.*
+
+* [Watson: A Cognitive Observability Framework for LLM-Powered Agents](https://arxiv.org/html/2411.03455v3)
+    *Introduces "cognitive observability" to trace the implicit predictive steps and reasoning rationale of an agent, allowing developers to debug the "mind" rather than just the output.*
+* [Cognitive Agents for Agile Software Project Management (CogniSim)](https://www.mdpi.com/2079-9292/14/1/87)
+    *Details a multi-agent architecture where specific "Manager" and "Reviewer" agents model the project state and predict next steps, similar to the Stevens/Goodwin split.*
+* [Physical AI Agents: Integrating Cognitive Intelligence with Real-World Action](https://arxiv.org/html/2501.08944v1)
+    *Proposes a "Cognitive Block" architecture that separates the predictive processing (reasoning) from perception and actuation, ensuring the agent's internal model completes before action.*
+
+### 2. Neural State Restoration
+
+*Research on maintaining the agent's "capsule"—managing memory, context windows, and the retrieval of a stable baseline.*
+
+* [Drift No More? Context Equilibria in Multi-Turn LLM Interactions](https://arxiv.org/html/2510.07777v1)
+    *Demonstrates that "context drift" can be stabilized by using targeted reminders (restoring forces)—providing the theoretical basis for why Goodwin Checks work as a state restoration mechanism.*
+* [Enhancing Memory Retrieval in Generative Agents](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1591618/full)
+    *Explores using auxiliary networks to optimize how agents retrieve past memories, ensuring they restore the correct context rather than hallucinating new facts during long sessions.*
+* [When Agents “Misremember” Collectively: The Mandela Effect in Multi-Agent Systems](https://openreview.net/forum?id=yIoMqDes7O)
+    *Investigates how agents reinforce false memories and proposes "cognitive anchoring"—a technique to restore factual integrity against social pressure or hallucination.*
+
+### 3. Cognitive Drift over Repeated Simulations
+
+*Research on the failure modes—how and why agents degrade over long loops—and the tools to detect it.*
+
+* [Understanding AI Agent Reliability & Drift in Production](https://www.getmaxim.ai/articles/understanding-ai-agent-reliability-best-practices-for-preventing-drift-in-production-systems/)
+    *A practical industry breakdown of "Agent Drift," "Prompt Drift," and "Concept Drift," categorizing the specific ways an agent's cognitive health degrades in production.*
+* [Generative Value Conflicts Reveal LLM Priorities](https://arxiv.org/html/2509.25369v1)
+    *Analyzes how an agent's internal hierarchy of values (e.g., helpfulness vs. safety) can drift during operation, offering methods to check these priorities dynamically.*
+* [Evaluation and Benchmarking of LLM Agents: A Survey](https://arxiv.org/html/2507.21504v1)
+    *A comprehensive taxonomy of agent evaluation, highlighting the need for "reliability guarantees" to detect drift in enterprise deployments.*
+* [Benchmarking LLM Agents on Scientific Tasks (Center for Open Science)](https://www.cos.io/benchmarking-llm-agents-on-scientific-tasks)
+    *An initiative to test agents on complex, multi-step research lifecycles, specifically evaluating their ability to maintain a "reasoning trace" without drifting into fabrication.*
