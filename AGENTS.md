@@ -51,6 +51,7 @@ image: /assets/YYYY/MM-slug-slug-slug/post-teaser-image.webp
   - Example: If `jekyll/_contributors/huan.md` exists, use `author: huan`.
   - If the author does not exist, you must create a new contributor file in `jekyll/_contributors/` first.
 - **Mermaid**: If the post contains a mermaid code block, you MUST include `mermaid: true`.
+- **Mermaid Syntax**: Always use double quotes for text labels in Mermaid charts (e.g., `A["Label (with parens)"]`) to prevent syntax errors.
 - **Math**: If the post contains LaTeX equations (e.g., `$$`), you MUST include `mathjax: true`.
 
 ## 4. Markdown Linting Rules
