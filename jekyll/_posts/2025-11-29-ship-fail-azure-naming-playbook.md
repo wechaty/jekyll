@@ -34,26 +34,57 @@ So, I simplified the model even further. This post is the result: **The Unified 
 Instead of juggling a "Finance View" and an "Ops View," we merge them into a single vertical line. This is the only hierarchy you need to keep in your head.
 
 ```mermaid
-graph TD
-    subgraph Unified_Tree ["🌳 The Unified Tree"]
+graph LR
+    %% Styling
+    classDef l1 fill:#ffcc80,stroke:#e65100,stroke-width:2px,color:black
+    classDef l2 fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:black
+    classDef l3 fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:black
+    classDef l4 fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:black
+    classDef l5 fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:black
+    classDef l6 fill:#ffebee,stroke:#c62828,stroke-width:2px,color:black
+
+    subgraph Level1 ["Level 1: The Entity"]
         direction TB
-        Entity["Level 1: The Entity<br/>(Agreement + Organization)"]
-        Umbrella["Level 2: The Umbrella<br/>(Cost Center + Portfolio)"]
-        Project["Level 3: The Project<br/>(Billing Unit + Workload)"]
+        Root["PreAngel LLC<br/>(Agreement + Tenant)"]:::l1
     end
 
-    subgraph Operations ["⚙️ Operations"]
-        Env["Environment<br/>(dev / prod)"]
-        Res["Resources<br/>(VM, DB, App)"]
+    subgraph Level2 ["Level 2: The Umbrella"]
+        direction TB
+        Umb1["PreAngel<br/>(Production Portfolio)"]:::l2
+        Umb2["Ship.Fail<br/>(Experiments)"]:::l2
     end
 
-    Entity --> Umbrella
-    Umbrella --> Project
-    Project --> Env
-    Env --> Res
+    subgraph Level3 ["Level 3: The Project"]
+        direction TB
+        Prj1["Zixia"]:::l3
+        Prj2["ReMic"]:::l3
+        Prj3["Thoth"]:::l3
+    end
 
-    style Unified_Tree fill:#e3f2fd,stroke:#1565c0
-    style Project fill:#f96,stroke:#333,stroke-width:4px,color:black
+    subgraph Level4 ["Level 4: Environment"]
+        direction TB
+        Env["Dev / Prod"]:::l4
+    end
+
+    subgraph Level5 ["Level 5: Resource Group"]
+        direction TB
+        RG["rg-shipfail-remic-dev-web<br/>(Segmented by Component)"]:::l5
+    end
+
+    subgraph Level6 ["Level 6: Resource"]
+        direction TB
+        Res["vm-shipfail-remic-dev-web<br/>(Type-First Naming)"]:::l6
+    end
+
+    %% Connections
+    Root --> Umb1 & Umb2
+    Umb1 --> Prj1
+    Umb2 --> Prj2 & Prj3
+    
+    %% Focus on one path to keep it readable
+    Prj2 --> Env
+    Env --> RG
+    RG --> Res
 ```
 
 My goal was simple: **Every name in my cloud must map directly to a node on this chart.**
