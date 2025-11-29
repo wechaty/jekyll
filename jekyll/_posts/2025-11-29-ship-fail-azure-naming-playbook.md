@@ -10,7 +10,7 @@ tags:
   - naming
   - ship-fail
 mermaid: true
-image: /assets/2025/11-ship-fail-azure-naming-playbook/cover.webp
+image: /assets/2025/11-ship-fail-azure-naming-playbook/cover.svg
 ---
 
 > **TL;DR:** I used to dread opening my Azure portal—it was a graveyard of forgotten resources and confusing bills. Today, it’s a clean machine that matches exactly how I run my business. Here is the 'Unified Tree' naming playbook I used to turn chaos into clarity, so you can steal it for your own cloud.
@@ -95,26 +95,26 @@ My goal was simple: **Every name in my cloud must map directly to a node on this
 
 Before touching any names, I wrote down the constraints that matter to **me**:
 
-1.  **One company, one tree.**
+1. **One company, one tree.**
     I’m a local US company: **PreAngel LLC**. Because I am one company, Finance and Ops are the same tree. I don't need to track "Internal Cross-Charging."
 
-2.  **Three umbrellas, not fifty cost centers.**
+2. **Three umbrellas, not fifty cost centers.**
     I spend money in three big contexts, which are also my three big portfolios:
-    *   **PreAngel** – real production products.
-    *   **ShipFail** – hackathon ideas and MVP experiments.
-    *   **ToBeMigrated** – old things I haven’t cleaned up yet.
+    * **PreAngel** – real production products.
+    * **ShipFail** – hackathon ideas and MVP experiments.
+    * **ToBeMigrated** – old things I haven’t cleaned up yet.
 
-3.  **Named Projects, not random subscriptions.**
+3. **Named Projects, not random subscriptions.**
     I don’t want to think "sub-9a12f3…". I want to think:
-    *   **Zixia** – a product under the **PreAngel** umbrella.
-    *   **Thoth** – an experiment under **ShipFail**.
-    *   **ReMic** – another experiment under **ShipFail**.
+    * **Zixia** – a product under the **PreAngel** umbrella.
+    * **Thoth** – an experiment under **ShipFail**.
+    * **ReMic** – another experiment under **ShipFail**.
 
-4.  **Exactly two environments per Project.**
-    *   `dev` – every merge to `main` deploys here.
-    *   `prod` – only deliberate promotions land here.
+4. **Exactly two environments per Project.**
+    * `dev` – every merge to `main` deploys here.
+    * `prod` – only deliberate promotions land here.
 
-5.  **Names must explain themselves.**
+5. **Names must explain themselves.**
     If future-me can’t decode a name in under three seconds, it’s a bad name.
 
 ---
@@ -139,43 +139,49 @@ That’s it. After this table, I no longer say "subscription" or "invoice sectio
 ## 4. Naming Conventions, Layer by Layer
 
 I designed my naming system to satisfy three main goals:
-1.  **Type first:** Sort similar things together (all VMs, all DBs).
-2.  **Context visible:** Answer "who pays?" and "what project?" instantly.
-3.  **Environment explicit:** Never mistake `dev` for `prod`.
+
+1. **Type first:** Sort similar things together (all VMs, all DBs).
+2. **Context visible:** Answer "who pays?" and "what project?" instantly.
+3. **Environment explicit:** Never mistake `dev` for `prod`.
 
 ### 4.1 Umbrella
+
 Umbrellas are mostly a tagging concept, but I use a canonical string for each:
-*   `umb-preangel`
-*   `umb-shipfail`
-*   `umb-tobemigrated`
+
+* `umb-preangel`
+* `umb-shipfail`
+* `umb-tobemigrated`
 
 ### 4.2 Project
+
 Projects are the atomic unit of the Unified Tree. Their names are explicit:
 `prj-<umbrella>-<project>`
 
-*   `prj-preangel-zixia`
-*   `prj-shipfail-thoth`
-*   `prj-shipfail-remic`
+* `prj-preangel-zixia`
+* `prj-shipfail-thoth`
+* `prj-shipfail-remic`
 
 When I see `prj-shipfail-remic`, my brain instantly decodes: *This is the **ReMic** Project, under the **ShipFail** umbrella.*
 
 ### 4.3 Resource Groups
+
 Resource Groups are the backbone of my structure. They encode **Umbrella**, **Project**, **Environment**, and optionally a **Segment**.
 
 `rg-<umbrella>-<project>-<env>-<segment?>`
 
-*   `rg-shipfail-remic-dev-web`
-*   `rg-shipfail-remic-prod-api`
-*   `rg-preangel-zixia-prod-data`
+* `rg-shipfail-remic-dev-web`
+* `rg-shipfail-remic-prod-api`
+* `rg-preangel-zixia-prod-data`
 
 ### 4.4 Resources
+
 Resources follow a "type-first" convention. The name starts with a short type code, then echoes the same structure:
 
 `<shorttype>-<umbrella>-<project>-<env>-<segment?>`
 
-*   `vm-shipfail-remic-dev-web` (A dev web VM for ReMic)
-*   `st-shipfail-thoth-dev-data` (A dev storage account for Thoth)
-*   `fn-preangel-zixia-prod-web` (A prod web function for Zixia)
+* `vm-shipfail-remic-dev-web` (A dev web VM for ReMic)
+* `st-shipfail-thoth-dev-data` (A dev storage account for Thoth)
+* `fn-preangel-zixia-prod-web` (A prod web function for Zixia)
 
 ---
 
@@ -203,10 +209,11 @@ Entity: PreAngel LLC
 ```
 
 Every box in that tree has a name that tells the same story. Future-me can open any of those names in the cloud console and instantly know:
-1.  This belongs to **ShipFail** (Context/Budget).
-2.  Specifically to the **ReMic** Project (Workload).
-3.  In the **dev** or **prod** environment (Stage).
-4.  And in the **web** or **api** segment (Component).
+
+1. This belongs to **ShipFail** (Context/Budget).
+2. Specifically to the **ReMic** Project (Workload).
+3. In the **dev** or **prod** environment (Stage).
+4. And in the **web** or **api** segment (Component).
 
 ---
 
@@ -226,12 +233,13 @@ Segment   = web | api | data | tools | ...
 Every **Resource Group** and every important **Resource** must have all of these tags.
 
 **Example: A prod API database for Zixia**
-*   **Name:** `db-preangel-zixia-prod-api`
-*   **Tags:**
-    *   `Umbrella = PreAngel`
-    *   `Project = Zixia`
-    *   `Env = prod`
-    *   `Segment = api`
+
+* **Name:** `db-preangel-zixia-prod-api`
+* **Tags:**
+  * `Umbrella = PreAngel`
+  * `Project = Zixia`
+  * `Env = prod`
+  * `Segment = api`
 
 Now I can answer questions like *"How much am I spending on **dev** environments?"* or *"Show me everything in **ShipFail**"* with a simple filter.
 
@@ -241,12 +249,12 @@ Now I can answer questions like *"How much am I spending on **dev** environments
 
 Here’s the practical checklist I used when I sat down to clean up my Azure resources. You can literally copy-paste this into your own notebook.
 
-1.  **Decide the Umbrellas:** I committed to exactly three (`PreAngel`, `ShipFail`, `ToBeMigrated`).
-2.  **List your Projects:** Under each Umbrella, list the concrete Projects (e.g., `Zixia`, `Thoth`).
-3.  **Rename Projects:** Rename the Project object (Subscription) to `prj-<umbrella>-<project>`.
-4.  **Create Resource Groups:** Create RGs for `dev` and `prod` following `rg-<umbrella>-<project>-<env>-<segment?>`.
-5.  **Move Resources:** Move existing resources into the new RGs. If a resource sparks confusion ("why is this here?"), delete it or move it to `ToBeMigrated`.
-6.  **Apply Tags:** Tag everything. No exceptions.
+1. **Decide the Umbrellas:** I committed to exactly three (`PreAngel`, `ShipFail`, `ToBeMigrated`).
+2. **List your Projects:** Under each Umbrella, list the concrete Projects (e.g., `Zixia`, `Thoth`).
+3. **Rename Projects:** Rename the Project object (Subscription) to `prj-<umbrella>-<project>`.
+4. **Create Resource Groups:** Create RGs for `dev` and `prod` following `rg-<umbrella>-<project>-<env>-<segment?>`.
+5. **Move Resources:** Move existing resources into the new RGs. If a resource sparks confusion ("why is this here?"), delete it or move it to `ToBeMigrated`.
+6. **Apply Tags:** Tag everything. No exceptions.
 
 ---
 
