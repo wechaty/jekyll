@@ -194,38 +194,3 @@ When billing feels intuitive, you stop wasting time decoding invoices and start 
 ## 💬 Join the Conversation
 
 If this vision of a simpler, human-centered Azure billing system resonates with you, share it with your team or tag me on [LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7391734593449582593/) or [Twitter](https://x.com/huan2024/status/1985969297366401207). Let’s spark a discussion on how enterprise cloud products can be both powerful **and** intuitive — because clarity isn’t a luxury; it’s a feature.
-
-## Appendix: Azure Naming & Structure Cheat Sheet
-
-**Pattern:** `<type>-<umbrella>-<project>-<env>` (types like `mg`, `sub`, `rg`, `vm`, `st`, `kv`). Umbrella is `ship` (Ship.Fail) or `preangel` (PreAngel); project is a single short word; env is `prod`, `dev`, or `lab`. If you can read the name and instantly say umbrella → project → env → cost center, the system is working.
-
-### Money Tree (Billing)
-
-- **Billing profile:** `BP-PreAngel-Main` (one and done).
-- **Cost centers / invoice sections:** `CC-Ship-Lab`, `CC-PreAngel-Prod`, `CC-Shared-Infra`.
-- **Subscriptions (projects):** `sub-ship-lab` → `CC-Ship-Lab`, `sub-preangel-prod` → `CC-PreAngel-Prod`, `sub-preangel-dev` → `CC-Shared-Infra`. Keep the list short.
-
-### Work Tree (Tech / Org)
-
-- **Management groups:** `mg-ship` holds `sub-ship-lab`; `mg-preangel` holds `sub-preangel-prod` and `sub-preangel-dev`.
-- **Resource groups:** `rg-<umbrella>-<project>-<env>` such as `rg-ship-remic-dev`, `rg-ship-tools-dev`, `rg-preangel-remic-prod`.
-- **Individual resources:** Optional prefixes (`vm-ship-tools-dev`, `st-ship-undoc-dev`, `kv-preangel-remic-prod`). Accuracy of the RG name matters most.
-
-### Mandatory Tags
-
-Apply to every resource group and important resource:
-
-- `Umbrella`: `Ship` or `PreAngel`
-- `Project`: `ReMic`, `ReKey`, `UnDoc`, `Shared`, `Tools`, etc.
-- `Env`: `prod`, `dev`, or `lab`
-- `CostCenter`: `CC-Ship-Lab`, `CC-PreAngel-Prod`, or `CC-Shared-Infra`
-
-### Micro-Checklist & Graduation Path
-
-1. Pick umbrella → `ship` for lab/hackathon, `preangel` for production.
-2. Pick project → one lowercase word.
-3. Pick env → `dev`, `prod`, or `lab`.
-4. Create RG → `rg-<umbrella>-<project>-<env>` and keep all related resources inside.
-5. Apply tags → `Umbrella`, `Project`, `Env`, `CostCenter`.
-6. Dev VM lives at `sub-ship-lab` / `rg-ship-tools-dev` / `vm-ship-tools-dev`.
-7. When a project graduates, spin up `rg-preangel-<project>-prod` under `sub-preangel-prod` while keeping the old dev RG for experiments if needed.

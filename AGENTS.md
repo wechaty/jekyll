@@ -35,7 +35,7 @@ Every post must have the following YAML front matter:
 ```yaml
 ---
 title: "post_title"
-excerpt: "post_excerpt"
+excerpt: "post_excerpt" # make it a strong hook, max 160 characters
 categories: "category_name"  # replace by best category name from existing categories
 author: "author_name" # MUST match a filename in jekyll/_contributors/ (e.g. huan.md)
 tags:
