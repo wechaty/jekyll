@@ -50,6 +50,8 @@ image: /assets/YYYY/MM-slug-slug-slug/post-teaser-image.webp
 - **Author**: The `author` field MUST match a filename in `jekyll/_contributors/` (without the `.md` extension).
   - Example: If `jekyll/_contributors/huan.md` exists, use `author: huan`.
   - If the author does not exist, you must create a new contributor file in `jekyll/_contributors/` first.
+- **Mermaid**: If the post contains a mermaid code block, you MUST include `mermaid: true`.
+- **Math**: If the post contains LaTeX equations (e.g., `$$`), you MUST include `mathjax: true`.
 
 ## 4. Markdown Linting Rules
 
