@@ -1,6 +1,6 @@
 ---
 title: "Ship.Fail Azure Naming Playbook: From Mental Model to Real Resources"
-excerpt: "I used to dread opening my Azure portal—it was a graveyard of forgotten resources and confusing bills. Today, it’s a clean machine that matches exactly how I run my business. Here is the 'Two Trees' naming playbook I used to turn chaos into clarity, so you can steal it for your own cloud."
+excerpt: "I used to dread opening my Azure portal—it was a graveyard of forgotten resources and confusing bills. Today, it’s a clean machine that matches exactly how I run my business. Here is the 'Unified Tree' naming playbook I used to turn chaos into clarity, so you can steal it for your own cloud."
 categories: engineering
 author: huan
 tags:
@@ -9,92 +9,51 @@ tags:
   - finops
   - naming
   - ship-fail
-image: /assets/2025/11-ship-fail-azure-naming-playbook/cover.webp
 mermaid: true
+image: /assets/2025/11-ship-fail-azure-naming-playbook/cover.webp
 ---
 
-> I used to dread opening my Azure portal—it was a graveyard of forgotten resources and confusing bills. Today, it’s a clean machine that matches exactly how I run my business. Here is the 'Two Trees' naming playbook I used to turn chaos into clarity, so you can steal it for your own cloud.
+> **TL;DR:** I used to dread opening my Azure portal—it was a graveyard of forgotten resources and confusing bills. Today, it’s a clean machine that matches exactly how I run my business. Here is the 'Unified Tree' naming playbook I used to turn chaos into clarity, so you can steal it for your own cloud.
 
 ## 0. Context: Part 3 of a Small Trilogy
 
-In my [first post](/2025/11/04/rethinking-azure-billing/), I redesigned the way I *think* about cloud billing: a simple two-tree model for money and work, with clear concepts like Agreement, Cost Center, Project, Environment, and Service Group.
+In my [first post](/ideas/2025/11/04/rethinking-azure-billing/), I redesigned the way I *think* about cloud billing. I started with a "Two Tree" model: one for Money (Finance) and one for Work (Ops).
 
-In the [second post](/2025/11/25/the-antigravity-effect-when-coding-becomes-orchestration/), I locked in how I *ship*: a "Vibe Coding" workflow where AI orchestration handles the heavy lifting, and every Project has exactly two environments—`dev` for fast iteration and `prod` for deliberate releases.
+In the [second post](/tools/2025/11/25/the-antigravity-effect-when-coding-becomes-orchestration/), I locked in how I *ship*: a "Vibe Coding" workflow where AI orchestration handles the heavy lifting, and every Project has exactly two environments—`dev` for fast iteration and `prod` for deliberate releases.
 
-Those two posts gave me a **mental model**:
-1.  How money should flow.
-2.  How code should flow.
+But as I sat down to actually name my resources in Azure, I realized something crucial for a solo founder or small team: **The Two Trees are actually one.**
 
-But I was still missing something important: **how names should look** in my real Azure cloud.
+I don't have a separate Finance department fighting with Engineering. I am both. The "Legal Entity" paying the bill is the same "Organization" managing the tenant. The "Cost Center" is the same as the "Portfolio".
 
-This post is that missing piece. This is the story of how I sat down, stared at my messy list of resources, and designed a naming convention that matches my mental model, respects my limited working memory, and makes future-me say "oh, that’s obvious" instead of "who created `rg-test2-old-123` and why?".
+So, I simplified the model even further. This post is the result: **The Unified Tree Playbook**.
 
 ---
 
-## 1. The Blueprint: Two Trees, One Bridge
+## 1. The Blueprint: The Unified Tree
 
-Before we get to the naming rules, let's recap the structure. The core idea is separating **Financial Responsibility** (The Money Tree) from **Operational Structure** (The Work Tree), connected by a single shared node: the **Project**.
-
-Here is the map of the territory:
+Instead of juggling a "Finance View" and an "Ops View," we merge them into a single vertical line. This is the only hierarchy you need to keep in your head.
 
 ```mermaid
 graph TD
-    subgraph Money_Tree["💰 The Money Tree (Finance)"]
-        Agreement["Agreement<br/>(Billing entity — e.g. PreAngel LLC)"]
-        Umb_pre["Umbrella<br/>(umb-preangel)"]
-        Umb_ship["Umbrella<br/>(umb-shipfail)"]
-        Umb_tbm["Umbrella<br/>(umb-tobemigrated)"]
+    subgraph Unified_Tree ["🌳 The Unified Tree"]
+        direction TB
+        Entity["Level 1: The Entity<br/>(Agreement + Organization)"]
+        Umbrella["Level 2: The Umbrella<br/>(Cost Center + Portfolio)"]
+        Project["Level 3: The Project<br/>(Billing Unit + Workload)"]
     end
 
-    subgraph Work_Tree["🛠️ The Work Tree (Ops)"]
-        Org["Organization<br/>(Tenant)"]
-        Portfolio["Portfolio<br/>(Product family)"]
+    subgraph Operations ["⚙️ Operations"]
+        Env["Environment<br/>(dev / prod)"]
+        Res["Resources<br/>(VM, DB, App)"]
     end
 
-    subgraph The_Bridge["🌉 The Bridge — Project (Shared node)"]
-        Project["prj-<umbrella>-<project><br/>(Project — atomic unit of billing & work)"]
-    end
+    Entity --> Umbrella
+    Umbrella --> Project
+    Project --> Env
+    Env --> Res
 
-    subgraph Operations["⚙️ Operations (Dev View)"]
-        Env_dev["env: dev<br/>(fast iteration)"]
-        Env_prod["env: prod<br/>(controlled releases)"]
-        RG_dev["rg-<umbrella>-<project>-dev-<segment?>"]
-        RG_prod["rg-<umbrella>-<project>-prod-<segment?>"]
-        Resource["<type>-<umbrella>-<project>-<env>-<segment?><br/>(type-first naming)"]
-        Tags["Tags required:<br/>Org, Umbrella, Project, Env, Segment"]
-    end
-
-    %% Finance connections
-    Agreement --> Umb_pre
-    Agreement --> Umb_ship
-    Agreement --> Umb_tbm
-    Umb_pre --> Project
-    Umb_ship --> Project
-    Umb_tbm --> Project
-
-    %% Operations connections
-    Org --> Portfolio
-    Portfolio --> Project
-
-    Project --> Env_dev
-    Project --> Env_prod
-
-    Env_dev --> RG_dev
-    Env_prod --> RG_prod
-
-    RG_dev --> Resource
-    RG_prod --> Resource
-
-    Resource --> Tags
-    RG_dev --> Tags
-    RG_prod --> Tags
-
-    %% Emphasis styling
+    style Unified_Tree fill:#e3f2fd,stroke:#1565c0
     style Project fill:#f96,stroke:#333,stroke-width:4px,color:black
-    style Money_Tree fill:#e1f5fe,stroke:#01579b
-    style Work_Tree fill:#fff3e0,stroke:#e65100
-    style Operations fill:#f1f8e9,stroke:#33691e
-    style Tags fill:#fff8e1,stroke:#f57f17
 ```
 
 My goal was simple: **Every name in my cloud must map directly to a node on this chart.**
@@ -105,11 +64,11 @@ My goal was simple: **Every name in my cloud must map directly to a node on this
 
 Before touching any names, I wrote down the constraints that matter to **me**:
 
-1.  **One company, one top-level identity.**
-    I’m a local US company: **PreAngel LLC**. I don’t want to think about multiple agreements or billing entities.
+1.  **One company, one tree.**
+    I’m a local US company: **PreAngel LLC**. Because I am one company, Finance and Ops are the same tree. I don't need to track "Internal Cross-Charging."
 
 2.  **Three umbrellas, not fifty cost centers.**
-    In reality, I spend money in three big ways:
+    I spend money in three big contexts, which are also my three big portfolios:
     *   **PreAngel** – real production products.
     *   **ShipFail** – hackathon ideas and MVP experiments.
     *   **ToBeMigrated** – old things I haven’t cleaned up yet.
@@ -133,14 +92,14 @@ Before touching any names, I wrote down the constraints that matter to **me**:
 
 This is the only place in this post where I will mention the old Azure terms directly. Everywhere else, I only use my own vocabulary.
 
-| My Name | What it means in my head | Azure Term (Reference Only) |
-| :--- | :--- | :--- |
-| **Agreement** | PreAngel LLC as a single paying entity | Billing Account + Billing Profile |
-| **Umbrella** | A budget bucket (PreAngel, ShipFail) | Invoice Section |
-| **Project** | A named workload (Zixia, ReMic) | Subscription |
-| **Environment** | `dev` or `prod` | (Naming Pattern / Tag) |
-| **Resource Group** | A logical segment (web, api, data) | Resource Group |
-| **Resource** | The actual thing (VM, DB) | Resource |
+| Level | My Name | What it means in my head | Azure Term (Reference Only) |
+| :--- | :--- | :--- | :--- |
+| **1** | **The Entity** | PreAngel LLC (The Root) | Billing Account + Tenant |
+| **2** | **The Umbrella** | A Context Bucket (ShipFail, PreAngel) | Invoice Section |
+| **3** | **The Project** | A Named Workload (Zixia, ReMic) | Subscription |
+| **4** | **Environment** | `dev` or `prod` | (Naming Pattern / Tag) |
+| **5** | **Resource Group** | A logical segment (web, api, data) | Resource Group |
+| **6** | **Resource** | The actual thing (VM, DB) | Resource |
 
 That’s it. After this table, I no longer say "subscription" or "invoice section" in my daily thinking. I say: *"Umbrella **ShipFail**, Project **ReMic**, `dev` environment, `web` Resource Group."*
 
@@ -160,7 +119,7 @@ Umbrellas are mostly a tagging concept, but I use a canonical string for each:
 *   `umb-tobemigrated`
 
 ### 4.2 Project
-Projects are where billing and operations meet, so I want their names to be very explicit:
+Projects are the atomic unit of the Unified Tree. Their names are explicit:
 `prj-<umbrella>-<project>`
 
 *   `prj-preangel-zixia`
@@ -191,46 +150,42 @@ Resources follow a "type-first" convention. The name starts with a short type co
 
 ## 5. Walking Through a Real Example: ShipFail / ReMic
 
-Let’s put everything together and see how a real Project looks in practice.
+Let’s put everything together and see how a real Project looks in practice. Because we have a Unified Tree, we don't need separate "Money" and "Work" diagrams. It's all one view.
 
-### The Money View 💰
+### The Unified View 🌳
+
 ```text
-Agreement: PreAngel LLC
+Entity: PreAngel LLC
 └─ Umbrella: ShipFail
      └─ Project: prj-shipfail-remic
-```
-When I see a bill for **ShipFail**, I know it aggregates all Projects under that Umbrella, including ReMic.
-
-### The Work View 🛠️
-```text
-Project: prj-shipfail-remic
-├─ Environment: dev
-│    ├─ Resource Group: rg-shipfail-remic-dev-web
-│    │     ├─ vm-shipfail-remic-dev-web
-│    │     └─ st-shipfail-remic-dev-web
-│    └─ Resource Group: rg-shipfail-remic-dev-api
-│          └─ fn-shipfail-remic-dev-api
-└─ Environment: prod
-     ├─ Resource Group: rg-shipfail-remic-prod-web
-     │     └─ vm-shipfail-remic-prod-web
-     └─ Resource Group: rg-shipfail-remic-prod-api
-           └─ db-shipfail-remic-prod-api
+          ├─ Environment: dev
+          │    ├─ Resource Group: rg-shipfail-remic-dev-web
+          │    │     ├─ vm-shipfail-remic-dev-web
+          │    │     └─ st-shipfail-remic-dev-web
+          │    └─ Resource Group: rg-shipfail-remic-dev-api
+          │          └─ fn-shipfail-remic-dev-api
+          └─ Environment: prod
+               ├─ Resource Group: rg-shipfail-remic-prod-web
+               │     └─ vm-shipfail-remic-prod-web
+               └─ Resource Group: rg-shipfail-remic-prod-api
+                     └─ db-shipfail-remic-prod-api
 ```
 
 Every box in that tree has a name that tells the same story. Future-me can open any of those names in the cloud console and instantly know:
-1.  This belongs to **ShipFail**.
-2.  Specifically to the **ReMic** Project.
-3.  In the **dev** or **prod** environment.
-4.  And in the **web** or **api** segment.
+1.  This belongs to **ShipFail** (Context/Budget).
+2.  Specifically to the **ReMic** Project (Workload).
+3.  In the **dev** or **prod** environment (Stage).
+4.  And in the **web** or **api** segment (Component).
 
 ---
 
 ## 6. Tags: The Labels That Save You at 2 AM
 
-Names are great for humans, but tags are where the real power comes from—for search, billing dashboards, and future automation. I keep my tag schema small and strict:
+Names are great for humans, but tags are where the real power comes from—for search, billing dashboards, and future automation.
+
+I keep my tag schema small and strict. **Crucially, I removed the `Org` tag.** Since everything is in PreAngel LLC, tagging it `Org=PreAngel` is just noise.
 
 ```text
-Org       = PreAngel
 Umbrella  = PreAngel | ShipFail | ToBeMigrated
 Project   = Zixia | Thoth | ReMic | ...
 Env       = dev | prod
@@ -242,7 +197,6 @@ Every **Resource Group** and every important **Resource** must have all of these
 **Example: A prod API database for Zixia**
 *   **Name:** `db-preangel-zixia-prod-api`
 *   **Tags:**
-    *   `Org = PreAngel`
     *   `Umbrella = PreAngel`
     *   `Project = Zixia`
     *   `Env = prod`
@@ -273,4 +227,4 @@ When the portal matches my mental model, I make fewer mistakes. When `dev` vs `p
 
 If you’re also a solo founder, hacker, or small team juggling multiple ideas, I hope this playbook helps you design a cloud that feels like it belongs to you, instead of the other way around.
 
-**Steal this system.** You don't have to use my names (`ShipFail`, `Zixia`), but the **shape**—Umbrellas, Projects, Environments, and Type-First Naming—will save your sanity.
+**Steal this system.** You don't have to use my names (`ShipFail`, `Zixia`), but the **shape**—The Unified Tree—will save your sanity.
