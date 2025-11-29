@@ -232,7 +232,7 @@ Segment   = web | api | data | tools | ...
 
 Every **Resource Group** and every important **Resource** must have all of these tags.
 
-**Example: A prod API database for Zixia**
+### Example: A prod API database for Zixia
 
 * **Name:** `db-preangel-zixia-prod-api`
 * **Tags:**
