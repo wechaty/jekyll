@@ -32,6 +32,7 @@ const allImageList = async () => {
     'png',
     'tiff',
     'webp',
+    'svg',
   ]
   const extListStr = extList.join(',')
 
@@ -74,13 +75,13 @@ test('image size should be fit for the web (no more than 1MB and 1920x1080)', as
   t.pass(`${fileList.length} files checked`)
 })
 
-test('we enforce all image type to .webp (#1035)', async t => {
+test('we enforce all image type to .webp or .svg (#1035)', async t => {
   /**
    * https://github.com/wechaty/wechaty.js.org/issues/1035
    */
   const fileList = await allImageList()
 
-  const isNotWebp       = (file: string) => !file.endsWith('.webp')
+  const isNotWebpOrSvg  = (file: string) => !file.endsWith('.webp') && !file.endsWith('.svg')
   const isNotWhitelist  = (file: string) => !inList(NOT_WEBP_TO_BE_FIXED_FILE_LIST)(file)
 
   // console.info('fileList len', fileList.length)
@@ -88,19 +89,19 @@ test('we enforce all image type to .webp (#1035)', async t => {
   // console.info('fileList not white len', fileList.filter(isNotWhitelist).length)
 
   const checkFileList = fileList
-    .filter(isNotWebp)
+    .filter(isNotWebpOrSvg)
     .filter(isNotWhitelist)
 
   let failed = false
   for (const file of checkFileList) {
     void file
-    t.fail(`${file} should be changed to use the .webp format`)
+    t.fail(`${file} should be changed to use the .webp or .svg format`)
     if (!failed) {
       failed = true
     }
   }
 
   if (!failed) {
-    t.pass('all image files are .webp')
+    t.pass('all image files are .webp or .svg')
   }
 })

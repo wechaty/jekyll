@@ -26,7 +26,7 @@ This guide outlines the strict rules and conventions for adding a new blog post 
     - Post: `2025-11-25-my-awesome-feature.md`
     - Asset Folder: `jekyll/assets/2025/11-my-awesome-feature/`
   - **Allowed Extensions**: `.webp`, `.pdf`, `.zip`, `.svg`.
-  - **Note**: `.png` and `.jpg` are NOT explicitly whitelisted in the linter rules seen (`.file-name-linter.json`), though they might work if not linted against. However, existing posts use `.webp` heavily. **Prefer `.webp`**.
+  - **Format Priority**: Generate **`.svg`** whenever possible; fallback to **`.webp`**.
 
 ## 3. Front Matter Requirements
 
