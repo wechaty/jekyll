@@ -17,9 +17,9 @@ image: /assets/2025/11-ship-fail-azure-naming-playbook/cover.svg
 
 ## 0. Context: Part 3 of a Small Trilogy
 
-In my [first post](/ideas/2025/11/04/rethinking-azure-billing/), I redesigned the way I *think* about cloud billing. I started with a "Two Tree" model: one for Money (Finance) and one for Work (Ops).
+In my [first post: Rethinking Azure Billing: The Simple Design Microsoft Should Have Built](/2025/11/04/rethinking-azure-billing/), I redesigned the way I *think* about cloud billing. I started with a "Two Tree" model: one for Money (Finance) and one for Work (Ops).
 
-In the [second post](/tools/2025/11/25/the-antigravity-effect-when-coding-becomes-orchestration/), I locked in how I *ship*: a "Vibe Coding" workflow where AI orchestration handles the heavy lifting, and every Project has exactly two environments—`dev` for fast iteration and `prod` for deliberate releases.
+In the [second post: 📚 PreAngel Two-Stage Deployment Playbook — Firebase App Hosting × Google Cloud Run (v4)](/2025/10/13/two-stage-deployment-playbook/), I locked in how I *ship*: a "Vibe Coding" workflow where AI orchestration handles the heavy lifting, and every Project has exactly two environments—`dev` for fast iteration and `prod` for deliberate releases.
 
 But as I sat down to actually name my resources in Azure, I realized something crucial for a solo founder or small team: **The Two Trees are actually one.**
 

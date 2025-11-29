@@ -66,6 +66,7 @@ Adhere to the following rules from `.markdownlint.json`:
 ## 5. Content Guidelines
 
 - Use standard Markdown.
+- **Internal Links**: Check `jekyll/_config.yml` `permalink` setting first; do not assume category inclusion in URLs.
 - Links to assets should be absolute paths starting with `/assets/...`.
 - Example image embed: `![Alt Text](/assets/2025/11-my-awesome-feature/image.webp)`
 
