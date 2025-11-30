@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      暑期2020 [Go-wechaty Github Action optimization] 结项 POC | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>暑期2020 [Go-wechaty Github Action optimization] 结项 POC | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="暑期2020 [Go-wechaty Github Action optimization] 结项 POC" />
+<meta name="author" content="nebell" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。 旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。 根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。" />
+<meta property="og:description" content="“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。 旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。 根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。" />
+<link rel="canonical" href="https://wechaty.js.org/2020/09/27/go-wechaty-gh-actions-optimization-final-poc/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/09/27/go-wechaty-gh-actions-optimization-final-poc/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/09-go-wechaty-gh-actions-optimization-final-poc-en/header.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-09-27T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/09-go-wechaty-gh-actions-optimization-final-poc-en/header.webp" />
+<meta property="twitter:title" content="暑期2020 [Go-wechaty Github Action optimization] 结项 POC" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"nebell"},"dateModified":"2020-09-27T00:00:00+00:00","datePublished":"2020-09-27T00:00:00+00:00","description":"“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。 旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。 根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。","headline":"暑期2020 [Go-wechaty Github Action optimization] 结项 POC","image":"https://wechaty.js.org/assets/2020/09-go-wechaty-gh-actions-optimization-final-poc-en/header.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/09/27/go-wechaty-gh-actions-optimization-final-poc/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"nebell"},"url":"https://wechaty.js.org/2020/09/27/go-wechaty-gh-actions-optimization-final-poc/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">暑期2020 [Go-wechaty Github Action optimization] 结项 POC</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/nebell">
+                            <img class="rounded-circle" src="/assets/contributors/nebell/avatar.webp" alt="Tang Guangbin" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/nebell">Tang Guangbin</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Sep 27, 2020 · <span class="reading-time">
+  
+  
+    1 min read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/09-go-wechaty-gh-actions-optimization-final-poc-en/header.webp" alt="暑期2020 [Go-wechaty Github Action optimization] 结项 POC">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。
+旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。
+根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。</p>
+
+<p>官网：<a href="https://isrc.iscas.ac.cn/summer2020">https://isrc.iscas.ac.cn/summer2020</a></p>
+
+<p>官方新闻：<a href="http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html">http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html</a></p>
+
+<p>本项目 [Go-wechaty Github Action optimization] 系 暑期2020 支持的开源项目。</p>
+
+<h2 id="项目信息">项目信息</h2>
+
+<ul>
+  <li>
+    <p>项目名称：Go-wechaty Github Action optimization</p>
+  </li>
+  <li>
+    <p>方案描述：使用 Github Actions 相关特性为 Go-wechaty 相关项目作相关优化，提高使用以及开发体验。</p>
+  </li>
+  <li>
+    <p>时间规划：</p>
+    <ul>
+      <li>7月1日到7月7日：阅读 Go-wechaty 及其插件的文档以及源码，分别进行本地手动编译测试、通过 Github Action 持续集成脚本编译测试。</li>
+      <li>7月7日到7月14日：编写 Github Action 脚本，实现 Go-wechaty 的 go-wechaty-getting-started 依赖进行更新，实现 Windows 平台下的ding-dong 编译测试。</li>
+      <li>7月14日到7月21日：寻找其他的 Github Action 用处，钻研 wechaty 已有的持续集成方案的优化方案。</li>
+      <li>8月1日到9月5日：完善 Dockerfile，以及触发 Dispatch 的条件。</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="项目总结">项目总结</h2>
+
+<ul>
+  <li>项目成果：
+    <ul>
+      <li>自动更新 go-wechaty-getting-started 依赖到最新版本
+        <ul>
+          <li>使用 <a href="https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows#repository_dispatch">Repository Dispatch</a> 跨仓库触发 Actions
+            <ul>
+              <li>达到更新条件时更新后向 go-wechaty-getting-started 提交 Pull-Request</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>完成 win 平台下 ding-dong 编译测试</li>
+      <li>完成 ding-dong 的 docker 并推送到 Github Packages
+        <ul>
+          <li>使用多阶段构建，减小镜像体积</li>
+          <li>尝试了 buildx</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>遇到的问题及解决方案：
+    <ul>
+      <li>学习Docker相关时，尝试使用buildx一次构建多个平台，但由于Github Packages不支持多平台镜像，改为测试了9月上线的ghcr。</li>
+      <li>在测试go-wechaty时，对触发条件理解不够深入，个人认为将发送dispatch作为step放在编译测试之后符合逻辑，仅仅用<code class="language-plaintext highlighter-rouge">if:Contains()</code>语句粗略的判断是否为<code class="language-plaintext highlighter-rouge">Pull-Request</code>事件从而跳过。经过导师提醒后，认识到这样容易发生混淆，在此感谢丁老师的提醒。</li>
+      <li>在Github Actions优化的核心目标实现后，在现有的项目基础上的优化失去方向，我在导师丁老师的提醒下转向对 Dockerfile 的优化，学习了相关内容，多阶段构建也减小了镜像体积，优化上手体验，再次感谢老师的指导。</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="视频报告">视频报告</h3>
+
+<div style="
+    position: relative;
+    padding-bottom: 70%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="//player.bilibili.com/player.html?aid=244737639&amp;bvid=BV1cv411y7jY&amp;cid=239638372&amp;page=1&amp;high_quality=1" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h2 id="导师评论">导师评论</h2>
+
+<h3 id="评审对象">评审对象</h3>
+
+<ul>
+  <li>评审内容：<em>结项报告</em></li>
+  <li>提交人：<em>唐光彬</em></li>
+</ul>
+
+<h3 id="评审结果">评审结果</h3>
+
+<ul>
+  <li>项目完成度：<em>完成了原既定的跨项目触发CI，以及Docker镜像的编译等工作。</em></li>
+  <li>学生参与度：<em>跨项目触发完全有学生完成，Docker编译部分由学生进行新方案的改进，Dockerfile在指导下完成优化</em></li>
+  <li>代码贡献量：<em>新方案的CI/CD的部分全部由学生完成，代码量涉及开源项目的5%-10，但不能以代码量论英雄，CI/CD对整个开源项目具有积极意义</em></li>
+  <li>综合评价及建议：
+    <ul>
+      <li>光彬同学能够很好的主动扩充自己尚未掌握的知识领域，甚至于在一定方向上能够主动的去探索新的技术方案，这一点在工作中是很重要的技能，希望你能够不段的扩充自己的知识领域，能够解决更多未知的问题。</li>
+      <li>技术方面相信你有足够的积极性去解决，就像你在总结中提到的你会意识到自己技术上的提升空间，但是另一方面希望你能够在开源方面有更多的收获，它可以使你在今后的工作中能够推动更多项目协同上的改进。</li>
+    </ul>
+  </li>
+  <li>最终评审结果：<em>通过</em></li>
+</ul>
+
+<hr />
+
+<blockquote>
+  <p>This post is also available in <a href="/2020/09/27/go-wechaty-gh-actions-optimization-final-poc-en/">English</a>.</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#summer-of-wechaty">summer-of-wechaty</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#summer-2020">summer-2020</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#go">go</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#devops">devops</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/nebell">
+                            <img class="rounded-circle" src="/assets/contributors/nebell/avatar.webp" alt="Tang Guangbin" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/nebell">Tang Guangbin</a> </h5>
+						A student.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/09/27/go-wechaty-gh-actions-optimization-final-poc-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/09-go-wechaty-gh-actions-optimization-final-poc-en/header.webp">  Summer 2020 [Go-wechaty Github Action optimization] Final POC</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/09/27/go-wechaty-plugin-en/"> Summer 2020 Final Report: Designing and Implementing Plugin System for go-wechaty  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/09-soc-go-plugin/2020-09-27-go-wechaty-plugin.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

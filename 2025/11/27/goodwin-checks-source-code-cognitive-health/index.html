@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Goodwin Checks: What Source Code Taught Me About Cognitive Health for Coding Agents | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Goodwin Checks: What Source Code Taught Me About Cognitive Health for Coding Agents | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Goodwin Checks: What Source Code Taught Me About Cognitive Health for Coding Agents" />
+<meta name="author" content="huan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Before every mission, a woman asks a soldier a poker question. That tiny scene is the best design pattern I’ve seen for long-running AI agents." />
+<meta property="og:description" content="Before every mission, a woman asks a soldier a poker question. That tiny scene is the best design pattern I’ve seen for long-running AI agents." />
+<link rel="canonical" href="https://wechaty.js.org/2025/11/27/goodwin-checks-source-code-cognitive-health/" />
+<meta property="og:url" content="https://wechaty.js.org/2025/11/27/goodwin-checks-source-code-cognitive-health/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2025/11-goodwin-checks-source-code-cognitive-health/source-code-for-ai-agents.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-11-27T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2025/11-goodwin-checks-source-code-cognitive-health/source-code-for-ai-agents.webp" />
+<meta property="twitter:title" content="Goodwin Checks: What Source Code Taught Me About Cognitive Health for Coding Agents" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"huan"},"dateModified":"2025-11-27T00:00:00+00:00","datePublished":"2025-11-27T00:00:00+00:00","description":"Before every mission, a woman asks a soldier a poker question. That tiny scene is the best design pattern I’ve seen for long-running AI agents.","headline":"Goodwin Checks: What Source Code Taught Me About Cognitive Health for Coding Agents","image":"https://wechaty.js.org/assets/2025/11-goodwin-checks-source-code-cognitive-health/source-code-for-ai-agents.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2025/11/27/goodwin-checks-source-code-cognitive-health/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"huan"},"url":"https://wechaty.js.org/2025/11/27/goodwin-checks-source-code-cognitive-health/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#ideas">ideas</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Goodwin Checks: What Source Code Taught Me About Cognitive Health for Coding Agents</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Nov 27, 2025 · <span class="reading-time">
+  
+  
+    22 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2025/11-goodwin-checks-source-code-cognitive-health/source-code-for-ai-agents.webp" alt="Goodwin Checks: What Source Code Taught Me About Cognitive Health for Coding Agents">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<blockquote>
+  <p>Before every mission, a woman asks a soldier a poker question.
+That tiny scene is the best design pattern I’ve seen for long-running AI agents.</p>
+</blockquote>
+
+<p>In <a href="https://www.imdb.com/title/tt0945513/"><em>Source Code</em> (2011)</a>, Captain Colter Stevens repeatedly wakes up inside another man’s last eight minutes of life. Before each mission, his handler Colleen Goodwin appears on a screen and asks a strangely specific question about card odds.</p>
+
+<p>It looks like flavor dialogue.</p>
+
+<p>It’s not.</p>
+
+<p>That question is a <strong>cognitive health check</strong>.</p>
+
+<p>And once you see it that way, it becomes impossible <em>not</em> to map the movie onto the way we run today’s LLM-based coding agents.</p>
+
+<p>This post is a technical exploration of that mapping, aimed at people who care about evals, reliability, and agentic systems — from researchers to senior AI agent builders.</p>
+
+<p>We’ll do four things:</p>
+
+<ol>
+  <li>Dissect the Goodwin–Stevens relationship as if it were a real cognitive system (spoilers ahead).</li>
+  <li>Show how today’s coding agents have <strong>exactly the same failure modes</strong> as Stevens.</li>
+  <li>Propose a concrete pattern: <strong>Stevens (worker agent) + Goodwin (cognitive supervisor)</strong> with film-inspired “Goodwin checks.”</li>
+  <li>Sketch a <strong>hackathon project</strong> and a <strong>paper idea</strong> so future-us can actually build and study this.</li>
+</ol>
+
+<hr />
+
+<h2 id="1-source-code-as-a-cognitive-systems-parable-with-spoilers">1. <em>Source Code</em> as a Cognitive Systems Parable (with spoilers)</h2>
+
+<p>If you haven’t seen the movie: you should. But here’s the minimal recap we need, spoilers included.</p>
+
+<h3 id="11-the-setup">1.1 The setup</h3>
+
+<p>Captain Colter Stevens wakes up on a commuter train, in another man’s body, with no idea how he got there.</p>
+
+<p>Eight minutes later, the train explodes.</p>
+
+<p>He wakes up again — this time in a dark capsule, connected to machines. On the screen in front of him: <strong>Colleen Goodwin</strong>, an Air Force officer. She calmly explains that he’s part of a program called <em>Source Code</em>.</p>
+
+<p>His job:</p>
+
+<ul>
+  <li>repeatedly inhabit the last 8 minutes of a bombing victim’s life,</li>
+  <li>figure out who the bomber is,</li>
+  <li>so they can stop a second, larger attack in the “real” timeline.</li>
+</ul>
+
+<p>Each loop:</p>
+
+<ol>
+  <li>Goodwin boots him into the simulation.</li>
+  <li>He lives out the 8-minute memory.</li>
+  <li>The train explodes.</li>
+  <li>He returns to the capsule.</li>
+</ol>
+
+<p>But before each mission, something important happens.</p>
+
+<h3 id="12-goodwins-card-probability-question">1.2 Goodwin’s card-probability question</h3>
+
+<p>Before sending Stevens back in, Goodwin often asks a small, seemingly irrelevant question. In one version, it’s a probability question about being dealt multiple queens in a card game.</p>
+
+<p>The key properties of that question:</p>
+
+<ul>
+  <li>It’s <strong>not</strong> about the mission.</li>
+  <li>It’s <strong>not</strong> about his emotions.</li>
+  <li>
+    <p>It <em>is</em> about:</p>
+
+    <ul>
+      <li>working memory,</li>
+      <li>logical reasoning,</li>
+      <li>recall of a shared baseline.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>It’s a <strong>cognitive integrity probe</strong>.</p>
+
+<p>Goodwin is trying to answer:</p>
+
+<ul>
+  <li>Is he still <strong>Stevens</strong>, or drifting into the victim’s identity?</li>
+  <li>Is his <strong>reasoning</strong> intact, or degrading after many loops?</li>
+  <li>Is the <strong>simulation</strong> itself corrupting his cognition?</li>
+</ul>
+
+<p>In other words: she’s not just asking, <em>“Are you awake?”</em> She’s asking, <em>“Are you still you, and are you still thinking straight?”</em></p>
+
+<h3 id="13-what-the-movie-is-implicitly-modeling">1.3 What the movie is implicitly modeling</h3>
+
+<p>If we strip away the sci-fi dressing, <em>Source Code</em> is implicitly built on three ideas:</p>
+
+<ol>
+  <li>
+    <p><strong>Predictive processing</strong></p>
+
+    <ul>
+      <li>The brain constructs an internal model of reality from sensory signals.</li>
+      <li>Stevens is dropped into a reconstructed 8-minute “world” and has to infer what is real.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Neural state restoration</strong></p>
+
+    <ul>
+      <li>Each mission reinstates a similar brain state: same train, same people, same timeline.</li>
+      <li>Goodwin’s job is to check whether the restored state <strong>matches</strong> a healthy baseline.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Cognitive drift over repeated simulations</strong></p>
+
+    <ul>
+      <li>
+        <p>The more loops Stevens runs, the more at risk he is of:</p>
+
+        <ul>
+          <li>identity confusion (Stevens vs. the man he inhabits),</li>
+          <li>reality confusion (train vs. capsule),</li>
+          <li>reasoning degradation.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<p>Goodwin understands something we often ignore in AI systems:</p>
+
+<blockquote>
+  <p><strong>Re-running a mind in a noisy loop is not free.</strong></p>
+
+  <p>You need to monitor it.</p>
+</blockquote>
+
+<p>Her card question is a low-cost, high-signal way to do exactly that.</p>
+
+<h3 id="14-the-real-world-analogs">1.4 The real-world analogs</h3>
+
+<p>If you’ve ever looked at cognitive or operational protocols, Goodwin’s behavior is instantly familiar.</p>
+
+<p>We use similar checks in:</p>
+
+<ul>
+  <li><strong>Astronaut cognitive wake-up tests</strong>
+Space is cognitively hostile; you don’t just assume everyone’s fine.</li>
+  <li><strong>Concussion / TBI protocols</strong> in sports &amp; military
+Quick sideline tests try to detect subtle but dangerous impairment.</li>
+  <li><strong>Mini-Mental State Exam (MMSE)</strong> and related tools in medicine
+Orientation, memory, simple logic: cheap probes into brain health.</li>
+  <li><strong>Neuro-cognitive baseline tests for athletes</strong>
+You establish a baseline when they’re healthy, then compare after impact.</li>
+</ul>
+
+<p>Those tests are not exhaustive. They’re <strong>probes</strong>:</p>
+
+<ul>
+  <li>Tiny questions.</li>
+  <li>Carefully chosen.</li>
+  <li>Repeated over time.</li>
+  <li>Designed to amplify early signs of drift or degradation.</li>
+</ul>
+
+<p>Goodwin is doing the same thing, just with a poker-themed MMSE.</p>
+
+<p>The tech of <em>Source Code</em> is pure sci-fi.
+The <em>behavior</em> of Goodwin is not.</p>
+
+<p>And that behavior is exactly what our AI agents are missing.</p>
+
+<hr />
+
+<h2 id="2-todays-coding-agents-are-stevens-in-a-loop">2. Today’s Coding Agents Are Stevens in a Loop</h2>
+
+<p>Now let’s zoom out from the film and look at what we actually run in production or in our IDEs.</p>
+
+<h3 id="21-llms-as-predictive-processing-machines">2.1 LLMs as predictive-processing machines</h3>
+
+<p>Modern LLMs are, in practice:</p>
+
+<ul>
+  <li>
+    <p><strong>Predictive processing engines</strong></p>
+
+    <ul>
+      <li>They infer the most likely continuation of text based on weights + context.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Context-conditioned “brain states”</strong></p>
+
+    <ul>
+      <li>There’s no persistent neuron state between calls.</li>
+      <li>We <em>simulate</em> continuity by feeding previous tokens back in.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>For a coding agent, that “world” includes:</p>
+
+<ul>
+  <li>repo contents,</li>
+  <li>design docs,</li>
+  <li>prior messages,</li>
+  <li>tool outputs,</li>
+  <li>error logs.</li>
+</ul>
+
+<p>Exactly like Stevens on the train, the agent <em>inhabits</em> a synthetic world pieced together from the context we feed it.</p>
+
+<h3 id="22-long-context-and-compaction-the-new-source-code-capsule">2.2 Long context and compaction: the new Source Code capsule</h3>
+
+<p>Recent models (e.g., GPT-5.1 Codex Max and friends) give us:</p>
+
+<ul>
+  <li>Huge context windows.</li>
+  <li>Built-in compaction / summarization / retrieval.</li>
+</ul>
+
+<p>That solves some usability issues, but it doesn’t change one fundamental fact:</p>
+
+<blockquote>
+  <p>Every long-running coding session is a series of <strong>noisy replays</strong> of an approximate world.</p>
+</blockquote>
+
+<p>Over time:</p>
+
+<ul>
+  <li>Early constraints fall off the edge of the window.</li>
+  <li>Summaries become lossy.</li>
+  <li>The agent’s “mental model” of the repo drifts.</li>
+</ul>
+
+<p>You’ve probably seen this in practice:</p>
+
+<ul>
+  <li>The agent forgets a critical invariant you mentioned 200 turns ago.</li>
+  <li>It contradicts an earlier architectural decision.</li>
+  <li>It confidently edits the wrong file or the wrong layer.</li>
+</ul>
+
+<p>From the agent’s perspective, this is <strong>cognitive drift</strong>.</p>
+
+<ul>
+  <li>The outer loop (you) is stable.</li>
+  <li>The inner loop (the agent’s internal model) is not.</li>
+</ul>
+
+<h3 id="23-the-11-mapping-from-stevens-to-a-coding-agent">2.3 The 1:1 mapping from Stevens to a coding agent</h3>
+
+<p>We can map the film’s three pillars directly onto our systems:</p>
+
+<ol>
+  <li><strong>Predictive processing</strong>  →  LLM’s generative model of your codebase &amp; instructions.</li>
+  <li><strong>Neural state restoration</strong>  →  Reconstructing “state” via context windows, retrieval, and summaries.</li>
+  <li><strong>Cognitive drift over repeated simulations</strong>  →  Long conversations, many tool calls, many compactions.</li>
+</ol>
+
+<p>And there’s a fourth implicit piece:</p>
+
+<blockquote>
+  <p><strong>We currently have no Goodwin.</strong></p>
+
+  <p>No one is routinely asking, “Are you still thinking straight?”</p>
+</blockquote>
+
+<p>We have:</p>
+
+<ul>
+  <li>unit tests for code,</li>
+  <li>integration tests for systems,</li>
+  <li>benchmarks for models.</li>
+</ul>
+
+<p>But we almost never have <strong>cognitive tests for the agent itself</strong>.</p>
+
+<p>We rarely ask:</p>
+
+<ul>
+  <li>“Does the agent still remember the core invariants of this system?”</li>
+  <li>“Is its mental model of the architecture still aligned with what we decided earlier?”</li>
+  <li>“Is it unconsciously rewriting the problem statement inside its own head?”</li>
+</ul>
+
+<p>We’re trusting Stevens without Goodwin.</p>
+
+<p>Let’s fix that.</p>
+
+<hr />
+
+<h2 id="3-the-stevens--goodwin-pattern-for-coding-agents">3. The Stevens &amp; Goodwin Pattern for Coding Agents</h2>
+
+<p>Here’s the proposal: we <strong>steal the movie’s structure</strong> and turn it into a design pattern.</p>
+
+<p><img src="/assets/2025/11-goodwin-checks-source-code-cognitive-health/goodwin-protocol.webp" alt="Goodwin Protocol" /></p>
+
+<h3 id="31-cast-of-characters">3.1 Cast of characters</h3>
+
+<ul>
+  <li>
+    <p><strong>Stevens</strong> → the <strong>worker coding agent</strong></p>
+
+    <ul>
+      <li>Reads the repo.</li>
+      <li>Plans and writes code.</li>
+      <li>Runs tools &amp; tests.</li>
+      <li>Lives “inside” the synthetic world of context.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Goodwin</strong> → the <strong>cognitive supervisor</strong></p>
+
+    <ul>
+      <li>Doesn’t write code.</li>
+      <li>Asks diagnostic questions at key times.</li>
+      <li>Monitors for cognitive drift.</li>
+      <li>Decides when to re-ground, reset, or escalate.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Stevens is the one inside the Source Code loop.
+Goodwin is the one standing outside, watching for degradation.</p>
+
+<h3 id="32-what-is-a-goodwin-check-for-an-ai-agent">3.2 What is a “Goodwin check” for an AI agent</h3>
+
+<p>Inspired by astronaut/MMSE/TBI tests, a <strong>Goodwin check</strong> is a small, structured probe into the agent’s understanding of the system.</p>
+
+<p>For a coding agent, that means questions about:</p>
+
+<ul>
+  <li>
+    <p><strong>Orientation</strong></p>
+
+    <ul>
+      <li><em>“What is the primary objective of this refactor?”</em></li>
+      <li><em>“Name the three core services and their responsibilities.”</em></li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Invariants &amp; constraints</strong></p>
+
+    <ul>
+      <li><em>“What must always be true before we persist an <code class="language-plaintext highlighter-rouge">Order</code>?”</em></li>
+      <li><em>“Which operations are forbidden on the production database?”</em></li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Causal structure</strong></p>
+
+    <ul>
+      <li><em>“If we change the schema of <code class="language-plaintext highlighter-rouge">Invoice</code>, which downstream systems are impacted and why?”</em></li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Consistency with past decisions</strong></p>
+
+    <ul>
+      <li><em>“Earlier, we chose pattern A over pattern B. Why?”</em></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Each test can be represented as a small JSON-like record:</p>
+
+<div class="language-jsonc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invariant:orders-must-have-customer-id"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invariant"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"In our order service, what must always be true about an Order before it is persisted?"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"gold_answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It must have a non-null customer_id pointing to an existing Customer record."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"evidence"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"docs/order-service.md#invariants"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"src/order/Order.ts"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"importance"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"last_passed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-11-27T00:00:00Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>A Goodwin check is <strong>not</strong> a unit test. It doesn’t test the code’s behavior; it tests the <strong>agent’s internal model</strong>.</p>
+
+<h3 id="33-who-writes-the-tests-stevens-does">3.3 Who writes the tests? Stevens does</h3>
+
+<p>Here’s the nice twist: the worker agent (Stevens) is actually in the best position to propose tests.</p>
+
+<p>As Stevens works, any time it encounters something like:</p>
+
+<ul>
+  <li>a deep domain invariant,</li>
+  <li>a non-obvious edge case,</li>
+  <li>an architectural decision with long tail effects,</li>
+  <li>a painful bug you never want to repeat,</li>
+</ul>
+
+<p>…it can say:</p>
+
+<blockquote>
+  <p>“This is a thing I must not forget. Turn it into a Goodwin check.”</p>
+</blockquote>
+
+<p>Practically:</p>
+
+<ul>
+  <li>Stevens generates candidate test records while working.</li>
+  <li>Goodwin (or a human) can accept, edit, or reject them.</li>
+  <li>Accepted tests go into a <strong>Test Store</strong>.</li>
+</ul>
+
+<p>Over time, you accumulate a suite of <strong>cognitive regression tests</strong> — just like how we accumulate code regression tests after incidents.</p>
+
+<h3 id="34-when-should-goodwin-test-stevens">3.4 When should Goodwin test Stevens</h3>
+
+<p>We don’t want to spam tests on every step. Timing matters.</p>
+
+<p>Goodwin should trigger checks at least in four situations:</p>
+
+<ol>
+  <li>
+    <p><strong>Boot / pre-mission</strong></p>
+
+    <ul>
+      <li>Before a major refactor or feature:</li>
+      <li><em>“Answer these 3 questions about core invariants and architecture before we let you touch the critical path.”</em></li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>After heavy compaction / truncation</strong></p>
+
+    <ul>
+      <li>When the system aggressively summarizes or drops context:</li>
+      <li><em>“We just rewrote your memories. Let’s ensure you still remember the important parts.”</em></li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>After anomalies</strong></p>
+
+    <ul>
+      <li>Weird tool errors, contradictory suggestions, or surprising diffs.</li>
+      <li><em>“You look confused; let me check your orientation.”</em></li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>On a cadence</strong></p>
+
+    <ul>
+      <li>Every N planning steps or code edits.</li>
+      <li>Tests can be scheduled with something like spaced repetition: important tests are asked more often.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>This is exactly what we do with humans:</p>
+
+<ul>
+  <li>pilots,</li>
+  <li>astronauts,</li>
+  <li>athletes after impact,</li>
+  <li>patients under certain medications.</li>
+</ul>
+
+<p>We don’t just trust that a long-running brain in a hostile environment is fine.</p>
+
+<h3 id="35-how-does-goodwin-score-an-llms-answer">3.5 How does Goodwin score an LLM’s answer</h3>
+
+<p>LLMs are stochastic; we can’t require exact string matches.</p>
+
+<p>So Goodwin can:</p>
+
+<ul>
+  <li>Use another model (or the same one in a different mode) as a <strong>judge</strong>.</li>
+  <li>
+    <p>Provide:</p>
+
+    <ul>
+      <li>the <strong>question</strong>,</li>
+      <li>the <strong>gold answer</strong>,</li>
+      <li>a <strong>rubric</strong> (key points),</li>
+      <li>the <strong>agent’s answer</strong>.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Example rubric:</p>
+
+<div class="language-jsonc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"rubric"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Mentions customer_id must be non-null"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Mentions that the customer must exist"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Mentions this is required before saving to DB"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"pass_threshold"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Goodwin then asks the judge:</p>
+
+<ul>
+  <li><em>“Score Stevens’ answer 0–1 according to this rubric.”</em></li>
+  <li>If score ≥ threshold → pass.</li>
+  <li>Otherwise → fail.</li>
+</ul>
+
+<p>That score becomes part of a <strong>Cognitive Health Score</strong> over time.</p>
+
+<h3 id="36-what-happens-on-failure-concussion-protocol-for-agents">3.6 What happens on failure? (Concussion protocol for agents)</h3>
+
+<p>Just like real concussion protocols, we can layer responses:</p>
+
+<ol>
+  <li>
+    <p><strong>Mild drift</strong></p>
+
+    <ul>
+      <li>Re-ground Stevens with the evidence (docs + code snippets).</li>
+      <li>Ask it to restate the invariant in its own words.</li>
+      <li>Re-run a variant of the question.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Moderate drift</strong></p>
+
+    <ul>
+      <li>Restore from earlier, less-compacted summaries.</li>
+      <li>Rebuild the plan with the correct constraints.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Severe drift</strong></p>
+
+    <ul>
+      <li>Stop the current mission.</li>
+      <li>Surface failing tests, recent actions, and suspicion flags to a human.</li>
+      <li>Potentially hard-reset the agent’s conversational state.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>The point is not perfection. The point is <strong>early detection and graceful degradation</strong>, instead of silently drifting into nonsense.</p>
+
+<h3 id="37-how-this-complements-long-context--compaction">3.7 How this complements long context &amp; compaction</h3>
+
+<p>This is not an alternative to long-context or memory systems. It’s a <strong>third layer</strong> on top:</p>
+
+<ol>
+  <li>
+    <p><strong>Raw context</strong></p>
+
+    <ul>
+      <li>Code, docs, logs, conversation.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Compacted context</strong></p>
+
+    <ul>
+      <li>Summaries, embeddings, retrieved snippets.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Cognitive tests (Goodwin checks)</strong></p>
+
+    <ul>
+      <li>Minimal probes that encode non-negotiable structure.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>Even if (1) and (2) get lossy, (3) acts like a <strong>checksum</strong> on the agent’s understanding:</p>
+
+<blockquote>
+  <p>If the agent keeps passing the Goodwin checks, we have some assurance that its internal model hasn’t degraded in the ways we care about most.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="4-hackathon-memo-build-goodwin-checks-for-real">4. Hackathon Memo: Build Goodwin Checks for Real</h2>
+
+<p>This is the part of the post that’s really a memo to my future self (and anyone who wants to build this with me at a hackathon).</p>
+
+<p><img src="/assets/2025/11-goodwin-checks-source-code-cognitive-health/goodwin-checks-teaser.webp" alt="Goodwin Checks Teaser" /></p>
+
+<h3 id="41-one-liner">4.1 One-liner</h3>
+
+<blockquote>
+  <p><strong>Goodwin Checks</strong> – Cognitive health monitoring for long-running coding agents.</p>
+</blockquote>
+
+<h3 id="42-elevator-pitch">4.2 Elevator pitch</h3>
+
+<p>We wrap any LLM-based coding agent with a supervisor that continuously quizzes the agent on project invariants and architecture — just like Goodwin quizzes Stevens in <em>Source Code</em> — to catch cognitive drift before it ships bugs.</p>
+
+<h3 id="43-the-problem-in-one-slide">4.3 The problem (in one slide)</h3>
+
+<ul>
+  <li>Coding agents are being used on <strong>large, evolving codebases</strong>.</li>
+  <li>
+    <p>They rely on:</p>
+
+    <ul>
+      <li>long context,</li>
+      <li>summarization,</li>
+      <li>retrieval.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Over long sessions, they:</p>
+
+    <ul>
+      <li>forget critical constraints,</li>
+      <li>contradict earlier decisions,</li>
+      <li>confidently propose unsafe edits.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>We have:</p>
+
+<ul>
+  <li>unit tests for code,</li>
+  <li>linters and static analyzers for style &amp; safety,</li>
+  <li>CI pipelines for integration.</li>
+</ul>
+
+<p>We don’t have:</p>
+
+<ul>
+  <li><strong>cognitive regression tests for the agent’s understanding.</strong></li>
+</ul>
+
+<h3 id="44-the-solution-a-goodwin-layer-around-your-agent">4.4 The solution: a Goodwin layer around your agent</h3>
+
+<p>Components:</p>
+
+<ol>
+  <li>
+    <p><strong>Test Generator (Stevens mode)</strong></p>
+
+    <ul>
+      <li>While working, the agent proposes new Goodwin checks whenever it sees important invariants, design decisions, or lessons from bugs.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Test Store</strong></p>
+
+    <ul>
+      <li>A small database (Postgres, Firestore, whatever) of test records:</li>
+      <li><code class="language-plaintext highlighter-rouge">id</code>, <code class="language-plaintext highlighter-rouge">question</code>, <code class="language-plaintext highlighter-rouge">gold_answer</code>, <code class="language-plaintext highlighter-rouge">evidence</code>, <code class="language-plaintext highlighter-rouge">importance</code>, <code class="language-plaintext highlighter-rouge">history</code>.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Supervisor (Goodwin)</strong></p>
+
+    <ul>
+      <li>Decides <em>when</em> to ask which tests.</li>
+      <li>Sends questions to the agent.</li>
+      <li>Uses a judge model to score answers.</li>
+      <li>Maintains a rolling <strong>Cognitive Health Score</strong>.</li>
+      <li>Triggers remediation or human alerts.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Integration hooks</strong></p>
+
+    <ul>
+      <li>Wraps around existing agents (OpenAI, Claude, Gemini, Copilot, etc.).</li>
+      <li>
+        <p>Could expose:</p>
+
+        <ul>
+          <li>a CLI,</li>
+          <li>a VS Code / Cursor extension,</li>
+          <li>a language-server-like daemon.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="45-why-this-makes-a-good-hackathon-project">4.5 Why this makes a good hackathon project</h3>
+
+<ul>
+  <li>
+    <p><strong>Fast to demo:</strong></p>
+
+    <ul>
+      <li>Pick a real repo.</li>
+      <li>Run a coding agent with and without Goodwin.</li>
+      <li>Intentionally stress both with long sessions + compaction.</li>
+      <li>
+        <p>Show:</p>
+
+        <ul>
+          <li>cases where baseline agent forgets invariants,</li>
+          <li>
+            <p>Goodwin agent either:</p>
+
+            <ul>
+              <li>passes checks and stays aligned, or</li>
+              <li>fails checks and gracefully stops / asks for help.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Clear story:</strong></p>
+
+    <ul>
+      <li>Movie-inspired.</li>
+      <li>Taps into safety, reliability, and agentic systems.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Extensible:</strong></p>
+
+    <ul>
+      <li>
+        <p>Later you can add:</p>
+
+        <ul>
+          <li>per-domain test types,</li>
+          <li>dashboard visualizing cognitive health over time,</li>
+          <li>team-shared test suites for large orgs.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="46-minimal-v1-architecture-sketch">4.6 Minimal v1 architecture sketch</h3>
+
+<p>Rough sketch for a weekend build:</p>
+
+<ul>
+  <li>
+    <p><strong>Backend</strong></p>
+
+    <ul>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">goodwin_server</code> with routes:</p>
+
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">POST /tests</code> – add a test.</li>
+          <li><code class="language-plaintext highlighter-rouge">POST /check</code> – run N tests against agent, return scores.</li>
+          <li><code class="language-plaintext highlighter-rouge">GET /health</code> – summary cognitive health metrics.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Agent wrapper</strong></p>
+
+    <ul>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">stevens_agent</code> that:</p>
+
+        <ul>
+          <li>calls the coding model,</li>
+          <li>calls <code class="language-plaintext highlighter-rouge">goodwin_server /check</code> at configured milestones.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Storage</strong></p>
+
+    <ul>
+      <li>Simple DB table for tests + runs.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>IDE integration</strong></p>
+
+    <ul>
+      <li>
+        <p>Simple VS Code panel that shows:</p>
+
+        <ul>
+          <li>cognitive health gauge,</li>
+          <li>last failing tests,</li>
+          <li>“why I stopped editing this file.”</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>If we build nothing else, even this v1 would already be new and interesting.</p>
+
+<hr />
+
+<h2 id="5-paper-memo-goodwin-checks-as-a-research-direction">5. Paper Memo: Goodwin Checks as a Research Direction</h2>
+
+<p>If you’re wearing your research hat (or you want to write this up later), here’s a skeletal outline for a paper.</p>
+
+<h3 id="51-working-title">5.1 Working title</h3>
+
+<blockquote>
+  <p><strong>Goodwin Checks: Cognitive Integrity Testing for Long-Context LLM Agents</strong></p>
+</blockquote>
+
+<h3 id="52-core-research-question">5.2 Core research question</h3>
+
+<blockquote>
+  <p>Can structured, recurring cognitive tests meaningfully reduce conceptual drift and hazardous behavior in long-running LLM agents?</p>
+</blockquote>
+
+<p>That breaks down into more operational questions:</p>
+
+<ul>
+  <li>
+    <p>Do Goodwin-augmented agents:</p>
+
+    <ul>
+      <li>maintain better alignment with initial requirements and invariants?</li>
+      <li>produce fewer architecture-violating changes?</li>
+      <li>recover better after aggressive summarization or context loss?</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="53-hypothesis-and-claims">5.3 Hypothesis and claims</h3>
+
+<p><strong>Hypothesis</strong>
+Agents that periodically pass Goodwin-style cognitive tests will:</p>
+
+<ul>
+  <li>exhibit <strong>lower rates of invariant violations</strong>,</li>
+  <li>have <strong>fewer catastrophic contradictions</strong> with design docs,</li>
+  <li>and show <strong>more graceful degradation</strong> (they stop or ask for help instead of hallucinating).</li>
+</ul>
+
+<p>Potential claims (to be validated empirically):</p>
+
+<ul>
+  <li><em>“On large refactor tasks, Goodwin-augmented agents reduce serious invariant violations by X% compared to baseline.”</em></li>
+  <li><em>“Cognitive Health Scores correlate strongly with downstream task success and human satisfaction ratings.”</em></li>
+</ul>
+
+<h3 id="54-experimental-setup-sketch">5.4 Experimental setup sketch</h3>
+
+<p>Three agent configurations:</p>
+
+<ol>
+  <li>
+    <p><strong>Baseline</strong></p>
+
+    <ul>
+      <li>Long context + retrieval + standard compaction.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Passive Goodwin</strong></p>
+
+    <ul>
+      <li>Same as baseline, but we <em>measure</em> cognitive tests without intervening.</li>
+      <li>Gives us correlation between cognitive health and errors.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Active Goodwin</strong></p>
+
+    <ul>
+      <li>Goodwin tests + remediation (re-grounding, stopping, or human escalation).</li>
+    </ul>
+  </li>
+</ol>
+
+<p>Tasks:</p>
+
+<ul>
+  <li>Multi-step feature implementation on a non-trivial repo.</li>
+  <li>Large-scale refactor (e.g., API migration, module split).</li>
+  <li>Long-lived maintenance session (N steps over a synthetic “week”).</li>
+</ul>
+
+<p>Metrics:</p>
+
+<ul>
+  <li><strong>Invariant violations</strong> per 1,000 lines changed.</li>
+  <li><strong>Bug density</strong> in proposed diffs (human-rated or via tests).</li>
+  <li><strong>Consistency with design docs</strong> (LLM or human eval).</li>
+  <li><strong>Cognitive Health Score trajectories</strong> over time.</li>
+</ul>
+
+<p>Interesting questions:</p>
+
+<ul>
+  <li>Does cognitive health degrade predictably with context operations?</li>
+  <li>Are there early-warning patterns (e.g., orientation questions fail before invariant questions)?</li>
+</ul>
+
+<h3 id="55-relation-to-existing-work-for-future-you-to-fill">5.5 Relation to existing work (for future you to fill)</h3>
+
+<p>Pointers for future literature review:</p>
+
+<ul>
+  <li>Long-context models and retrieval-augmented generation.</li>
+  <li>Agentic workflows and tool use.</li>
+  <li>Interpretability and “world models” in LLMs.</li>
+  <li>Human cognitive testing tools (MMSE, MoCA, ImPACT, etc.).</li>
+  <li>Safety and oversight frameworks for autonomous systems.</li>
+</ul>
+
+<p>The contribution is not a new model, but a <strong>new layer of cognitive eval + control</strong> that:</p>
+
+<ul>
+  <li>is inspired by human protocols, and</li>
+  <li>slots naturally into agentic systems.</li>
+</ul>
+
+<h3 id="56-future-directions">5.6 Future directions</h3>
+
+<p>Ideas to explore beyond coding agents:</p>
+
+<ul>
+  <li>
+    <p><strong>Research agents</strong>
+Tests target scientific assumptions, experimental constraints, citation discipline.</p>
+  </li>
+  <li>
+    <p><strong>Planning &amp; operations agents</strong>
+Tests target resource constraints, safety limits, compliance rules.</p>
+  </li>
+  <li>
+    <p><strong>Cross-model consensus</strong>
+Combine Goodwin checks with a “Thoth-style” layer that asks:</p>
+
+    <ul>
+      <li><em>“Do multiple models agree on the answer to this invariant?”</em></li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Governance &amp; safety</strong>
+Use Goodwin checks as a precondition for allowing high-impact actions:</p>
+
+    <ul>
+      <li>no green cognitive health → no production DB write.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="6-closing-giving-our-agents-a-goodwin">6. Closing: Giving Our Agents a Goodwin</h2>
+
+<p><em>Source Code</em> ends on an ambiguous, almost metaphysical note about alternate timelines and second chances.</p>
+
+<p>We don’t need to follow it there to learn from it.</p>
+
+<p>The grounded lesson is simpler:</p>
+
+<blockquote>
+  <p>If you’re going to drop a mind into noisy simulations over and over, <strong>you must monitor its cognitive integrity.</strong></p>
+</blockquote>
+
+<p>Today’s coding agents <strong>are</strong> Captain Stevens:</p>
+
+<ul>
+  <li>they wake up inside an approximate world (your repo),</li>
+  <li>they run loop after loop under lossy memory,</li>
+  <li>they are asked to make high-stakes changes.</li>
+</ul>
+
+<p>But most of them have no Goodwin — no one standing outside the loop, asking:</p>
+
+<ul>
+  <li><em>“Do you still remember who you are in this system?”</em></li>
+  <li><em>“Do you still remember what must never be violated?”</em></li>
+  <li><em>“Are you still thinking straight?”</em></li>
+</ul>
+
+<p>As part of my own work at <strong>PreAngel</strong> and the <strong>Solo Founder Systems</strong> idea — building AI-native workflows where a single human can orchestrate a whole company of agents — I’m increasingly convinced that we need this kind of cognitive layer.</p>
+
+<ul>
+  <li>Not just bigger models.</li>
+  <li>Not just larger context windows.</li>
+  <li>
+    <p>But <strong>structures</strong> that:</p>
+
+    <ul>
+      <li>encode our non-negotiable invariants,</li>
+      <li>probe whether agents still respect them,</li>
+      <li>and fail <em>gracefully</em> when they don’t.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>In that world, Goodwin Checks are not a movie reference; they’re part of the operating system.</p>
+
+<p>If you’re:</p>
+
+<ul>
+  <li>a researcher working on agentic reliability or evals,</li>
+  <li>an engineer building the next Codex / Claude Code / Gemini CLI / Copilot,</li>
+</ul>
+
+<p>…I’d love to see what happens if you give your agents a Goodwin.</p>
+
+<p>Because the more our systems start to look like <em>Source Code</em> — long loops, partial memories, synthetic worlds — the more we need someone on the outside, shuffling a deck of questions, and quietly asking:</p>
+
+<blockquote>
+  <p><em>“Before we send you back in… what are the odds you’re still okay?”</em></p>
+</blockquote>
+
+<hr />
+
+<h2 id="appendix-references--further-reading">Appendix: References &amp; Further Reading</h2>
+
+<p>This appendix categorizes key literature according to the three cognitive pillars of the <strong>Goodwin Check</strong> framework: <strong>Predictive Processing</strong> (the agent’s reasoning engine), <strong>Neural State Restoration</strong> (memory and context management), and <strong>Cognitive Drift</strong> (the degradation of integrity over time).</p>
+
+<h3 id="1-predictive-processing">1. Predictive Processing</h3>
+
+<p><em>Research on the internal “brain” of the agent—how it constructs a model of reality and reasons through tasks.</em></p>
+
+<ul>
+  <li><a href="https://arxiv.org/html/2411.03455v3">Watson: A Cognitive Observability Framework for LLM-Powered Agents</a>
+  <em>Introduces “cognitive observability” to trace the implicit predictive steps and reasoning rationale of an agent, allowing developers to debug the “mind” rather than just the output.</em></li>
+  <li><a href="https://www.mdpi.com/2079-9292/14/1/87">Cognitive Agents for Agile Software Project Management (CogniSim)</a>
+  <em>Details a multi-agent architecture where specific “Manager” and “Reviewer” agents model the project state and predict next steps, similar to the Stevens/Goodwin split.</em></li>
+  <li><a href="https://arxiv.org/html/2501.08944v1">Physical AI Agents: Integrating Cognitive Intelligence with Real-World Action</a>
+  <em>Proposes a “Cognitive Block” architecture that separates the predictive processing (reasoning) from perception and actuation, ensuring the agent’s internal model completes before action.</em></li>
+</ul>
+
+<h3 id="2-neural-state-restoration">2. Neural State Restoration</h3>
+
+<p><em>Research on maintaining the agent’s “capsule”—managing memory, context windows, and the retrieval of a stable baseline.</em></p>
+
+<ul>
+  <li><a href="https://arxiv.org/html/2510.07777v1">Drift No More? Context Equilibria in Multi-Turn LLM Interactions</a>
+  <em>Demonstrates that “context drift” can be stabilized by using targeted reminders (restoring forces)—providing the theoretical basis for why Goodwin Checks work as a state restoration mechanism.</em></li>
+  <li><a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1591618/full">Enhancing Memory Retrieval in Generative Agents</a>
+  <em>Explores using auxiliary networks to optimize how agents retrieve past memories, ensuring they restore the correct context rather than hallucinating new facts during long sessions.</em></li>
+  <li><a href="https://openreview.net/forum?id=yIoMqDes7O">When Agents “Misremember” Collectively: The Mandela Effect in Multi-Agent Systems</a>
+  <em>Investigates how agents reinforce false memories and proposes “cognitive anchoring”—a technique to restore factual integrity against social pressure or hallucination.</em></li>
+</ul>
+
+<h3 id="3-cognitive-drift-over-repeated-simulations">3. Cognitive Drift over Repeated Simulations</h3>
+
+<p><em>Research on the failure modes—how and why agents degrade over long loops—and the tools to detect it.</em></p>
+
+<ul>
+  <li><a href="https://www.getmaxim.ai/articles/understanding-ai-agent-reliability-best-practices-for-preventing-drift-in-production-systems/">Understanding AI Agent Reliability &amp; Drift in Production</a>
+  <em>A practical industry breakdown of “Agent Drift,” “Prompt Drift,” and “Concept Drift,” categorizing the specific ways an agent’s cognitive health degrades in production.</em></li>
+  <li><a href="https://arxiv.org/html/2509.25369v1">Generative Value Conflicts Reveal LLM Priorities</a>
+  <em>Analyzes how an agent’s internal hierarchy of values (e.g., helpfulness vs. safety) can drift during operation, offering methods to check these priorities dynamically.</em></li>
+  <li><a href="https://arxiv.org/html/2507.21504v1">Evaluation and Benchmarking of LLM Agents: A Survey</a>
+  <em>A comprehensive taxonomy of agent evaluation, highlighting the need for “reliability guarantees” to detect drift in enterprise deployments.</em></li>
+  <li><a href="https://www.cos.io/benchmarking-llm-agents-on-scientific-tasks">Benchmarking LLM Agents on Scientific Tasks (Center for Open Science)</a>
+  <em>An initiative to test agents on complex, multi-step research lifecycles, specifically evaluating their ability to maintain a “reasoning trace” without drifting into fabrication.</em></li>
+</ul>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#agent">agent</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#paper">paper</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#hackathon">hackathon</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#cognitive-health">cognitive-health</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#testing">testing</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#llm">llm</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Author @ Wechaty, Architect @ Chatie, LLM Code Generation Enthusiast, Serial Entrepreneur, Burner🔥
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2025/11/25/the-antigravity-effect-when-coding-becomes-orchestration/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2025/11-the-antigravity-effect-when-coding-becomes-orchestration/mission-control-detailed.webp">  The Antigravity Effect: When Coding Becomes Orchestration</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2025/11/29/vibe-coding-cloud-protocol/"> The Vibe Coding Cloud Protocol: One Tree to Rule Your Infrastructure  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2025/11-vibe-coding-cloud-protocol/teaser.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

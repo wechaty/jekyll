@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Google Cloud Authentication — The Divio-Style Field Guide for Senior Full‑Stack Devs | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Google Cloud Authentication — The Divio-Style Field Guide for Senior Full‑Stack Devs | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Google Cloud Authentication — The Divio-Style Field Guide for Senior Full‑Stack Devs" />
+<meta name="author" content="huan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A single-page guide to identities, credentials, tokens, ADC, OAuth 2.0, API keys, service accounts, impersonation, and Workload Identity Federation — structured by Divio: Tutorials, How‑to, Explanation, Reference." />
+<meta property="og:description" content="A single-page guide to identities, credentials, tokens, ADC, OAuth 2.0, API keys, service accounts, impersonation, and Workload Identity Federation — structured by Divio: Tutorials, How‑to, Explanation, Reference." />
+<link rel="canonical" href="https://wechaty.js.org/2025/09/12/google-cloud-authentication-the-understandable-guide/" />
+<meta property="og:url" content="https://wechaty.js.org/2025/09/12/google-cloud-authentication-the-understandable-guide/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2025/09-google-cloud-authentication-the-understandable-guide/adc-auth.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-09-12T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2025/09-google-cloud-authentication-the-understandable-guide/adc-auth.webp" />
+<meta property="twitter:title" content="Google Cloud Authentication — The Divio-Style Field Guide for Senior Full‑Stack Devs" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"huan"},"dateModified":"2025-09-12T00:00:00+00:00","datePublished":"2025-09-12T00:00:00+00:00","description":"A single-page guide to identities, credentials, tokens, ADC, OAuth 2.0, API keys, service accounts, impersonation, and Workload Identity Federation — structured by Divio: Tutorials, How‑to, Explanation, Reference.","headline":"Google Cloud Authentication — The Divio-Style Field Guide for Senior Full‑Stack Devs","image":"https://wechaty.js.org/assets/2025/09-google-cloud-authentication-the-understandable-guide/adc-auth.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2025/09/12/google-cloud-authentication-the-understandable-guide/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"huan"},"url":"https://wechaty.js.org/2025/09/12/google-cloud-authentication-the-understandable-guide/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#guide">guide</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Google Cloud Authentication — The Divio-Style Field Guide for Senior Full‑Stack Devs</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Sep 12, 2025 · <span class="reading-time">
+  
+  
+    10 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2025/09-google-cloud-authentication-the-understandable-guide/adc-auth.webp" alt="Google Cloud Authentication — The Divio-Style Field Guide for Senior Full‑Stack Devs">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>A practical, copy‑pastable guide that untangles identities, credentials, tokens, ADC, OAuth 2.0, API keys, service accounts, impersonation, and Workload Identity Federation — organised with the Divio documentation system: Tutorials, How‑to, Explanation, and Reference.</p>
+
+<ul>
+  <li>Audience: <code class="language-plaintext highlighter-rouge">Senior full‑stack dev</code></li>
+  <li>Goal: <code class="language-plaintext highlighter-rouge">clarity &amp; correct defaults</code></li>
+  <li>Scope: <code class="language-plaintext highlighter-rouge">Google Cloud + Google APIs</code></li>
+</ul>
+
+<h2 id="map">🗺️ The Landscape at a Glance</h2>
+
+<p>Use this map to navigate to the right quadrant quickly.</p>
+
+<ul>
+  <li>Identities: Human <code class="language-plaintext highlighter-rouge">user@</code> vs <code class="language-plaintext highlighter-rouge">service‑account@</code>. Services run as service accounts.</li>
+  <li>Credentials → Tokens: Credentials generate short‑lived tokens (access/ID). Libraries auto‑refresh.</li>
+  <li>ADC (Default): Client libraries auto‑discover credentials locally and in prod.</li>
+  <li>Production on Google Cloud: Attach a service account to Cloud Run/GKE/GCE → metadata server → tokens. No key files.</li>
+  <li>Outside Google Cloud: Prefer Workload Identity Federation (AWS/Azure/on‑prem OIDC/SAML). Avoid long‑lived JSON keys.</li>
+  <li>End‑user sign‑in: OAuth 2.0 / OpenID Connect for users. Your backend still needs its own service identity.</li>
+  <li>API keys: Identify the calling project for select public APIs; not IAM authorization.</li>
+  <li>Impersonation: Act as a target service account without distributing its key; auditable and least‑privilege.</li>
+</ul>
+
+<h2 id="tutorials">📚 Tutorials (learning‑oriented)</h2>
+
+<p>Follow these end‑to‑end lessons to get hands‑on quickly. Repeatable, minimal, correct.</p>
+
+<h3 id="t1-local-dev-with-application-default-credentials-no-key-files">T1. Local dev with Application Default Credentials (no key files)</h3>
+
+<p>Goal: call a Google Cloud API from your laptop using your user sign‑in and let libraries fetch/refresh tokens automatically.</p>
+
+<ol>
+  <li>Install the Google Cloud CLI (<code class="language-plaintext highlighter-rouge">gcloud</code>).</li>
+  <li>Run <code class="language-plaintext highlighter-rouge">gcloud auth application-default login</code> and complete the browser flow. This seeds local Application Default Credentials (ADC) for client libraries.</li>
+  <li>Write code using a Cloud Client Library (e.g., Storage). Don’t pass tokens; the library uses ADC automatically.</li>
+  <li>Optional: inspect a token: <code class="language-plaintext highlighter-rouge">gcloud auth application-default print-access-token</code>. Tokens are short‑lived.</li>
+</ol>
+
+<p>Example (Node.js):</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Node.js example</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Storage</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@google-cloud/storage</span><span class="dl">'</span>
+<span class="kd">const</span> <span class="nx">storage</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Storage</span><span class="p">()</span> <span class="c1">// uses ADC</span>
+<span class="kd">const</span> <span class="p">[</span><span class="nx">buckets</span><span class="p">]</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">storage</span><span class="p">.</span><span class="nf">getBuckets</span><span class="p">()</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">buckets</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="nx">b</span> <span class="o">=&gt;</span> <span class="nx">b</span><span class="p">.</span><span class="nx">name</span><span class="p">))</span>
+</code></pre></div></div>
+
+<h3 id="t2-production-on-cloud-run-with-an-attached-service-account-no-keys">T2. Production on Cloud Run with an attached service account (no keys)</h3>
+
+<p>Goal: deploy to Cloud Run so the runtime’s metadata server issues tokens for your service account; libraries still use ADC.</p>
+
+<ol>
+  <li>Create a least‑privilege service account (e.g., <code class="language-plaintext highlighter-rouge">svc-myapp@</code>) and grant only required IAM roles.</li>
+  <li>Deploy and set Service account for the service. Cloud Run attaches that identity to your container.</li>
+  <li>Your code remains unchanged (uses ADC). At runtime, the library calls the metadata server to mint/refresh tokens.</li>
+  <li>For cross‑service calls, prefer service account impersonation rather than distributing keys.</li>
+</ol>
+
+<p>Example deploy:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gcloud run deploy myapi <span class="se">\</span>
+  <span class="nt">--image</span><span class="o">=</span>gcr.io/PROJECT/myapi:latest <span class="se">\</span>
+  <span class="nt">--service-account</span><span class="o">=</span>svc-myapp@PROJECT.iam.gserviceaccount.com <span class="se">\</span>
+  <span class="nt">--region</span><span class="o">=</span>us-central1
+</code></pre></div></div>
+
+<h3 id="t3-access-google-cloud-from-aws-without-key-files-workload-identity-federation">T3. Access Google Cloud from AWS without key files (Workload Identity Federation)</h3>
+
+<p>Goal: let an AWS workload obtain short‑lived Google tokens using its AWS identity — no Google key distribution.</p>
+
+<ol>
+  <li>Configure a Google Workload Identity Pool &amp; provider (trust AWS IAM). Map AWS claims (like account/role) to Google attributes.</li>
+  <li>Create a Google service account and grant it roles. Permit your pool to impersonate that service account.</li>
+  <li>In the AWS workload, use Google’s external credentials JSON (or the auth library’s WIF support) to exchange AWS STS creds → Google tokens.</li>
+  <li>Use client libraries with ADC — they read the external credentials file and handle token exchange automatically.</li>
+</ol>
+
+<p>Result: least‑privilege, short‑lived tokens; no long‑lived JSON keys to leak or rotate.</p>
+
+<h3 id="t4-calling-a-private-cloud-run-service-from-a-browser-app">T4. Calling a private Cloud Run service from a browser app</h3>
+
+<p>Goal: authenticate end‑users in the frontend, then send a request with an ID token that your Cloud Run service verifies.</p>
+
+<ol>
+  <li>Use an identity provider (e.g., Google, Identity Platform, or another OpenID Connect IdP) to sign in the user.</li>
+  <li>Obtain an ID token with the correct audience (the Cloud Run URL or a custom audience).</li>
+  <li>Send it as <code class="language-plaintext highlighter-rouge">Authorization: Bearer &lt;id_token&gt;</code>. Your service middleware verifies signature, issuer, audience, and expiry.</li>
+  <li>For backend→backend calls, continue to use access tokens from your service account identity.</li>
+</ol>
+
+<h2 id="how-to">🛠️ How‑to Guides (goal‑oriented)</h2>
+
+<h3 id="h1-choose-the-right-method-decision-helper">H1. Choose the right method (decision helper)</h3>
+
+<ul>
+  <li>Running on Google Cloud? Attach a service account → use ADC (metadata server). Best default.</li>
+  <li>Running outside Google Cloud? Prefer Workload Identity Federation. Avoid JSON key files.</li>
+  <li>CLI / local dev? <code class="language-plaintext highlighter-rouge">gcloud auth application-default login</code>.</li>
+  <li>End‑user sign‑in? OAuth 2.0 / OIDC for user tokens; plus a backend service identity for Google APIs.</li>
+  <li>Public/untrusted clients needing simple access? Only if the API supports it, use API keys with tight restrictions.</li>
+</ul>
+
+<h3 id="h2-get-an-id-token-for-cloud-runfunctions">H2. Get an ID token for Cloud Run/Functions</h3>
+
+<ol>
+  <li>From metadata server (in Cloud Run/GCE/GKE): request an ID token for the target audience.</li>
+  <li>From your dev machine: <code class="language-plaintext highlighter-rouge">gcloud auth print-identity-token --audiences=YOUR_AUDIENCE</code>.</li>
+  <li>Via impersonation: use Service Account Credentials API to mint an ID token for the target SA.</li>
+</ol>
+
+<h3 id="h3-impersonate-a-service-account-no-keys">H3. Impersonate a service account (no keys)</h3>
+
+<p>Let users or services act as a target service account with auditability.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># CLI example</span>
+gcloud auth print-access-token <span class="se">\</span>
+  <span class="nt">--impersonate-service-account</span><span class="o">=</span>svc-target@PROJECT.iam.gserviceaccount.com
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ADC for local code (Node.js)</span>
+<span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">GOOGLE_IMPERSONATE_SERVICE_ACCOUNT</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">svc-target@PROJECT.iam.gserviceaccount.com</span><span class="dl">'</span>
+<span class="c1">// Libraries now mint short‑lived tokens by impersonating the target SA</span>
+</code></pre></div></div>
+
+<p>Grant the caller <code class="language-plaintext highlighter-rouge">roles/iam.serviceAccountTokenCreator</code> on the target service account; then apply least‑privilege roles to the target SA.</p>
+
+<h3 id="h4-use-api-keys-safely-only-where-supported">H4. Use API keys safely (only where supported)</h3>
+
+<ul>
+  <li>Restrict by API, HTTP referrer, IP, and (if supported) Android/iOS app signature.</li>
+  <li>Rotate keys and monitor usage; treat keys as secrets even though they don’t grant IAM permissions.</li>
+  <li>Prefer OAuth 2.0 or service identities for Google Cloud resources that require IAM authorization.</li>
+</ul>
+
+<h2 id="explanation">🧠 Explanation (understanding‑oriented)</h2>
+
+<h3 id="e1-identities-credentials-and-tokens">E1. Identities, credentials, and tokens</h3>
+
+<p>An identity is a principal: a human user or a service account. A credential is any mechanism that can obtain tokens for that identity: a user login session cached by <code class="language-plaintext highlighter-rouge">gcloud</code>, a service account key file, a metadata server on a Google runtime, or a federated identity from AWS/Azure/Okta. A token is a short‑lived artifact minted from those credentials: usually an OAuth 2.0 access token for Google APIs, or an OpenID Connect ID token for audience‑checked calls (e.g., Cloud Run).</p>
+
+<blockquote>
+  <p>Note: Tokens are not credentials. Credentials prove identity to Google and let you obtain tokens. Tokens are the minted proofs you actually send with API calls and they expire quickly. Let client libraries handle minting/refresh.</p>
+</blockquote>
+
+<h3 id="e2-application-default-credentials-adc">E2. Application Default Credentials (ADC)</h3>
+
+<p>ADC is a discovery strategy built into Google auth libraries. In dev, it checks your local environment (env vars, well‑known files created by <code class="language-plaintext highlighter-rouge">gcloud auth application-default login</code>). In prod on Google Cloud, it consults the metadata server for the attached service account. ADC can also read external credentials files used for federation. This is why your code doesn’t change between laptop and production.</p>
+
+<h3 id="e3-oauth20-vs-api-keys-vs-service-accounts">E3. OAuth 2.0 vs API keys vs service accounts</h3>
+
+<ul>
+  <li>OAuth 2.0 / OpenID Connect: for end‑user sign‑in and delegated access. Your app requests tokens with explicit scopes and may refresh them. Use for user data and sign‑in flows.</li>
+  <li>Service accounts: non‑human identities for workloads. On Google Cloud, attach them to runtimes and let the metadata server mint tokens. Outside Google Cloud, use Workload Identity Federation or, if you must, a key file (not recommended).</li>
+  <li>API keys: identify the calling project for certain public APIs. They do not convey IAM permissions and are not a general auth method for Google Cloud resources.</li>
+</ul>
+
+<h3 id="e4-workload-identity-federation-wif">E4. Workload Identity Federation (WIF)</h3>
+
+<p>WIF lets external workloads (AWS/Azure/on‑prem) exchange their native identity for short‑lived Google tokens, mapped to a Google service account that holds IAM roles. This removes long‑lived Google key files from your supply chain and centralises trust in your provider or IdP.</p>
+
+<h3 id="e5-service-account-impersonation">E5. Service account impersonation</h3>
+
+<p>Impersonation lets a caller mint short‑lived tokens to act as a target service account (with audit trails). Ideal for CI/CD and for letting a narrow identity temporarily gain the target’s permissions without sharing keys.</p>
+
+<h3 id="e6-access-tokens-vs-id-tokens">E6. Access tokens vs ID tokens</h3>
+
+<ul>
+  <li>Access token: bearer token for Google APIs (authorised by scopes + IAM).</li>
+  <li>ID token: proves the caller’s identity to a specific audience (e.g., your Cloud Run URL). Your service verifies audience/issuer/expiry before trusting it.</li>
+  <li>Rule of thumb: backend→Google API ⇒ access token; browser→your backend ⇒ ID token.</li>
+</ul>
+
+<h2 id="reference">📖 Reference (information‑oriented)</h2>
+
+<h3 id="r1-adc-lookup-high-level">R1. ADC lookup (high level)</h3>
+
+<ol>
+  <li>Env var: <code class="language-plaintext highlighter-rouge">GOOGLE_APPLICATION_CREDENTIALS</code> pointing to a credential file.</li>
+  <li>Well‑known user location: credentials seeded by <code class="language-plaintext highlighter-rouge">gcloud auth application-default login</code>.</li>
+  <li>Metadata server: when running on Cloud Run/GKE/GCE with an attached service account.</li>
+  <li>External credentials: federation config files for WIF.</li>
+</ol>
+
+<h3 id="r2-token-types-selected">R2. Token types (selected)</h3>
+
+<ul>
+  <li>Access token — OAuth 2.0 token to call Google APIs.</li>
+  <li>ID token — OpenID Connect JWT for audience‑checked requests (e.g., Cloud Run).</li>
+  <li>Self‑signed JWT — service account assertion used by libraries to obtain access tokens (or in some cases to call endpoints directly).</li>
+</ul>
+
+<h3 id="r3-handy-cli">R3. Handy CLI</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># User ADC login (local dev)</span>
+gcloud auth application-default login
+
+<span class="c"># Print short‑lived access token for current ADC</span>
+gcloud auth application-default print-access-token
+
+<span class="c"># ID token for a specific audience (Cloud Run URL or custom)</span>
+gcloud auth print-identity-token <span class="nt">--audiences</span><span class="o">=</span>https://&lt;service-url&gt;
+
+<span class="c"># Use impersonation in CLI</span>
+gcloud auth print-access-token <span class="se">\</span>
+  <span class="nt">--impersonate-service-account</span><span class="o">=</span>svc@PROJECT.iam.gserviceaccount.com
+</code></pre></div></div>
+
+<h3 id="r4-security-recommendations">R4. Security recommendations</h3>
+
+<ul>
+  <li>Prefer attached identities (metadata server) on Google Cloud; avoid distributing JSON key files.</li>
+  <li>Use Workload Identity Federation for external workloads.</li>
+  <li>Use impersonation for CI/CD and human break‑glass flows; audit who minted tokens.</li>
+  <li>Give the target service account least‑privilege roles; grant callers only TokenCreator for impersonation.</li>
+  <li>If you must use API keys, restrict them aggressively and monitor usage.</li>
+</ul>
+
+<h2 id="confusions">🧩 Common confusions &amp; straight answers</h2>
+
+<h3 id="tokens-are-not-credentials-huh">“Tokens are not credentials.” Huh?</h3>
+
+<p>Credentials are how you authenticate (user login, key, metadata server, federation). Tokens are what you use after you authenticate. Tokens expire; credentials persist (or are renewable) and can mint new tokens.</p>
+
+<h3 id="adc-vs-gcloud-auth-login-vs-gcloud-auth-application-default-login">ADC vs <code class="language-plaintext highlighter-rouge">gcloud auth login</code> vs <code class="language-plaintext highlighter-rouge">gcloud auth application-default login</code></h3>
+
+<p><code class="language-plaintext highlighter-rouge">gcloud auth login</code> authenticates the CLI itself. <code class="language-plaintext highlighter-rouge">gcloud auth application-default login</code> seeds ADC for your code and client libraries. In production, you won’t run either — runtimes use the metadata server via ADC.</p>
+
+<h3 id="api-keys-vs-oauth20--service-accounts">API keys vs OAuth 2.0 / service accounts</h3>
+
+<p>API keys identify the calling project for certain public APIs; they don’t carry IAM permissions. For Google Cloud resources that enforce IAM, use user OAuth or (more commonly) service accounts with ADC.</p>
+
+<h3 id="when-do-i-need-an-id-token">When do I need an ID token?</h3>
+
+<p>When your service wants to verify the caller’s identity and intended audience (e.g., a SPA calling Cloud Run). For backend→Google API calls, you normally use an access token instead.</p>
+
+<h3 id="keys-vs-federation-vs-impersonation">Keys vs Federation vs Impersonation</h3>
+
+<p>Long‑lived key files are risky and hard to rotate. Prefer federation outside Google Cloud and impersonation between identities. Both yield short‑lived, auditable tokens with least privilege.</p>
+
+<h3 id="libraries-vs-manual-rest-calls">Libraries vs manual REST calls</h3>
+
+<p>Client libraries handle ADC and token refresh for you. If you use raw REST, you’ll obtain/refresh tokens yourself — fine for tooling, but error‑prone for apps.</p>
+
+<hr />
+
+<p>Structured with the Divio system: Tutorials · How‑to · Explanation · Reference.</p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#google-cloud">google-cloud</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#authentication">authentication</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#adc">adc</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#oauth2">oauth2</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#service-accounts">service-accounts</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#impersonation">impersonation</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#workload-identity-federation">workload-identity-federation</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#security">security</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Author @ Wechaty, Architect @ Chatie, LLM Code Generation Enthusiast, Serial Entrepreneur, Burner🔥
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2025/08/12/ai-powered-reverse-engineering-concept/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2025/08-ai-powered-reverse-engineering-concept/wechaty-llm-frida.webp">  Breaking the Reverse Engineering Barrier: How LLMs and Frida Are Revolutionizing WeChat Analysis</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2025/10/12/ultimate-guide-software-environment-release-naming/"> 🧭 Decoding the Chaos: The Ultimate Guide to Software Environment & Release Naming  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2025/10-ultimate-guide-software-environment-release-naming/ultimate-guide-software-environment-release-naming.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>
