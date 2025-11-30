@@ -65,32 +65,32 @@ graph LR
     classDef l5 fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:black
     classDef l6 fill:#ffebee,stroke:#c62828,stroke-width:2px,color:black
 
-    subgraph Level1 ["Level 1: The Company"]
+    subgraph Level1 ["Level 1: Company"]
         direction TB
         Root["PreAngel LLC<br/>(Agreement + Tenant)"]:::l1
     end
 
-    subgraph Level2 ["Level 2: The Portfolio"]
+    subgraph Level2 ["Level 2: Portfolio"]
         direction TB
         Umb1["PreAngel<br/>(Production Portfolio)"]:::l2
         Umb2["Ship.Fail<br/>(Experiments)"]:::l2
     end
 
-    subgraph Level3 ["Level 3: The Project"]
+    subgraph Level3 ["Level 3: Project"]
         direction TB
         Prj1["Zixia"]:::l3
         Prj2["ReMic"]:::l3
         Prj3["Thoth"]:::l3
     end
 
-    subgraph Level4 ["Level 4: The Stage"]
+    subgraph Level4 ["Level 4: Stage"]
         direction TB
         Env["Dev / Prod"]:::l4
     end
 
     subgraph Level5 ["Level 5: Resource Group"]
         direction TB
-        RG["rg-shipfail-remic-dev-web<br/>(Segmented by Component)"]:::l5
+        RG["rg-shipfail-remic-dev-web<br/>(Split by Component)"]:::l5
     end
 
     subgraph Level6 ["Level 6: Resource"]
@@ -111,12 +111,12 @@ graph LR
 
 ### The 6 Levels of Sanity
 
-1.  **The Company:** Who pays? (PreAngel LLC)
-2.  **The Portfolio:** What is the *context*? (Ship.Fail for experiments, PreAngel for serious products)
-3. **The Project:** What is the *workload*? (Zixia, ReMic, Thoth)
-4. **The Stage:** Is this safe to break? (`dev` vs `prod`)
-5. **The Resource Group:** The logical container.
-6. **The Resource:** The actual VM, Database, or Function.
+1.  **Company:** Who pays? (PreAngel LLC)
+2.  **Portfolio:** What is the *context*? (Ship.Fail for experiments, PreAngel for serious products)
+3. **Project:** What is the *workload*? (Zixia, ReMic, Thoth)
+4. **Stage:** Is this safe to break? (`dev` vs `prod`)
+5. **Resource Group:** The logical container.
+6. **Resource:** The actual VM, Database, or Function.
 
 ---
 
@@ -128,11 +128,11 @@ I created a "Translation Layer" to map their complex terms to my simple reality.
 
 | Level | My Name | What it means to ME | Azure Term (Reference Only) |
 | :--- | :--- | :--- | :--- |
-| **1** | **The Company** | My Company (The Root) | Billing Account + Tenant |
-| **2** | **The Portfolio** | A Context Bucket | Invoice Section |
-| **3** | **The Project** | A Named Workload | Subscription |
-| **4** | **The Stage** | `dev` or `prod` | (Naming Pattern / Tag) |
-| **5** | **Resource Group** | A logical segment | Resource Group |
+| **1** | **Company** | My Company (The Root) | Billing Account + Tenant |
+| **2** | **Portfolio** | A Context Bucket | Invoice Section |
+| **3** | **Project** | A Named Workload | Subscription |
+| **4** | **Stage** | `dev` or `prod` | (Naming Pattern / Tag) |
+| **5** | **Resource Group** | A logical component | Resource Group |
 | **6** | **Resource** | The actual thing | Resource |
 
 **The Golden Rule:** After this table, I never use the word "Subscription" again. I only speak in **Projects**.
@@ -165,7 +165,7 @@ Projects are the atomic unit. They are named explicitly:
 
 This is where the magic happens. The Resource Group name encodes the entire lineage of the resource.
 
-`rg-<portfolio>-<project>-<stage>-<segment?>`
+`rg-<portfolio>-<project>-<stage>-<component?>`
 
 * `rg-shipfail-remic-dev-web`
 * `rg-preangel-zixia-prod-data`
@@ -176,7 +176,7 @@ This is where the magic happens. The Resource Group name encodes the entire line
 
 I use "Type-First" naming. Start with the resource type abbreviation, then echo the hierarchy.
 
-`<shorttype>-<portfolio>-<project>-<stage>-<segment?>`
+`<shorttype>-<portfolio>-<project>-<stage>-<component?>`
 
 * `vm-shipfail-remic-dev-web` (A VM)
 * `st-shipfail-thoth-dev-data` (A Storage Account)
@@ -229,13 +229,13 @@ I stripped my tagging strategy down to the bare essentials. I removed the `Org` 
 Portfolio = PreAngel | ShipFail | ToBeMigrated
 Project   = Zixia | Thoth | ReMic | ...
 Stage     = dev | prod
-Segment   = web | api | data | tools | ...
+Component = web | api | data | tools | ...
 ```
 
 **Example:** A production database for Zixia.
 
 * **Name:** `db-preangel-zixia-prod-api`
-* **Tags:** `Portfolio=PreAngel`, `Project=Zixia`, `Stage=prod`, `Segment=api`
+* **Tags:** `Portfolio=PreAngel`, `Project=Zixia`, `Stage=prod`, `Component=api`
 
 Now, when I want to know *"How much am I spending on all my 'dev' stages combined?"*, it is a single filter away.
 
