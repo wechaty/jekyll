@@ -111,8 +111,8 @@ graph LR
 
 ### The 6 Levels of Sanity
 
-1.  **Company:** Who pays? (PreAngel LLC)
-2.  **Portfolio:** What is the *context*? (Ship.Fail for experiments, PreAngel for serious products)
+1. **Company:** Who pays? (PreAngel LLC)
+2. **Portfolio:** What is the *context*? (Ship.Fail for experiments, PreAngel for serious products)
 3. **Project:** What is the *workload*? (Zixia, ReMic, Thoth)
 4. **Stage:** Is this safe to break? (`dev` vs `prod`)
 5. **Resource Group:** The logical container.
