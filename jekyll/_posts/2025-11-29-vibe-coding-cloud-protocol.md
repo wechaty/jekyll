@@ -65,7 +65,7 @@ graph LR
     classDef l5 fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:black
     classDef l6 fill:#ffebee,stroke:#c62828,stroke-width:2px,color:black
 
-    subgraph Level1 ["Level 1: The Entity"]
+    subgraph Level1 ["Level 1: The Company"]
         direction TB
         Root["PreAngel LLC<br/>(Agreement + Tenant)"]:::l1
     end
@@ -83,7 +83,7 @@ graph LR
         Prj3["Thoth"]:::l3
     end
 
-    subgraph Level4 ["Level 4: Environment"]
+    subgraph Level4 ["Level 4: The Stage"]
         direction TB
         Env["Dev / Prod"]:::l4
     end
@@ -111,10 +111,10 @@ graph LR
 
 ### The 6 Levels of Sanity
 
-1. **The Entity:** Who pays? (PreAngel LLC)
-2. **The Portfolio:** What is the *context*? (Ship.Fail for experiments, PreAngel for serious products)
+1.  **The Company:** Who pays? (PreAngel LLC)
+2.  **The Portfolio:** What is the *context*? (Ship.Fail for experiments, PreAngel for serious products)
 3. **The Project:** What is the *workload*? (Zixia, ReMic, Thoth)
-4. **The Environment:** Is this safe to break? (`dev` vs `prod`)
+4. **The Stage:** Is this safe to break? (`dev` vs `prod`)
 5. **The Resource Group:** The logical container.
 6. **The Resource:** The actual VM, Database, or Function.
 
@@ -128,10 +128,10 @@ I created a "Translation Layer" to map their complex terms to my simple reality.
 
 | Level | My Name | What it means to ME | Azure Term (Reference Only) |
 | :--- | :--- | :--- | :--- |
-| **1** | **The Entity** | My Company (The Root) | Billing Account + Tenant |
+| **1** | **The Company** | My Company (The Root) | Billing Account + Tenant |
 | **2** | **The Portfolio** | A Context Bucket | Invoice Section |
 | **3** | **The Project** | A Named Workload | Subscription |
-| **4** | **Environment** | `dev` or `prod` | (Naming Pattern / Tag) |
+| **4** | **The Stage** | `dev` or `prod` | (Naming Pattern / Tag) |
 | **5** | **Resource Group** | A logical segment | Resource Group |
 | **6** | **Resource** | The actual thing | Resource |
 
@@ -165,7 +165,7 @@ Projects are the atomic unit. They are named explicitly:
 
 This is where the magic happens. The Resource Group name encodes the entire lineage of the resource.
 
-`rg-<portfolio>-<project>-<env>-<segment?>`
+`rg-<portfolio>-<project>-<stage>-<segment?>`
 
 * `rg-shipfail-remic-dev-web`
 * `rg-preangel-zixia-prod-data`
@@ -176,7 +176,7 @@ This is where the magic happens. The Resource Group name encodes the entire line
 
 I use "Type-First" naming. Start with the resource type abbreviation, then echo the hierarchy.
 
-`<shorttype>-<portfolio>-<project>-<env>-<segment?>`
+`<shorttype>-<portfolio>-<project>-<stage>-<segment?>`
 
 * `vm-shipfail-remic-dev-web` (A VM)
 * `st-shipfail-thoth-dev-data` (A Storage Account)
@@ -191,16 +191,16 @@ Let’s walk through a real example. Imagine I am building a new AI tool called 
 Here is what my cloud looks like:
 
 ```text
-Entity: PreAngel LLC
+Company: PreAngel LLC
 └─ Portfolio: ShipFail
      └─ Project: prj-shipfail-remic
-          ├─ Environment: dev
+          ├─ Stage: dev
           │    ├─ Resource Group: rg-shipfail-remic-dev-web
           │    │     ├─ vm-shipfail-remic-dev-web
           │    │     └─ st-shipfail-remic-dev-web
           │    └─ Resource Group: rg-shipfail-remic-dev-api
           │          └─ fn-shipfail-remic-dev-api
-          └─ Environment: prod
+          └─ Stage: prod
                ├─ Resource Group: rg-shipfail-remic-prod-web
                │     └─ vm-shipfail-remic-prod-web
                └─ Resource Group: rg-shipfail-remic-prod-api
@@ -228,16 +228,16 @@ I stripped my tagging strategy down to the bare essentials. I removed the `Org` 
 ```text
 Portfolio = PreAngel | ShipFail | ToBeMigrated
 Project   = Zixia | Thoth | ReMic | ...
-Env       = dev | prod
+Stage     = dev | prod
 Segment   = web | api | data | tools | ...
 ```
 
 **Example:** A production database for Zixia.
 
 * **Name:** `db-preangel-zixia-prod-api`
-* **Tags:** `Portfolio=PreAngel`, `Project=Zixia`, `Env=prod`, `Segment=api`
+* **Tags:** `Portfolio=PreAngel`, `Project=Zixia`, `Stage=prod`, `Segment=api`
 
-Now, when I want to know *"How much am I spending on all my 'dev' environments combined?"*, it is a single filter away.
+Now, when I want to know *"How much am I spending on all my 'dev' stages combined?"*, it is a single filter away.
 
 ---
 
