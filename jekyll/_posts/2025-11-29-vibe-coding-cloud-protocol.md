@@ -198,218 +198,6 @@ The names barely change—mostly `shipfail` → `preangel`—but the Project mov
 
 A naming convention is useless if you have to look it up every time. It needs to be intuitive. Here is the **Ship.Fail Protocol**.
 
-### Rule #1: The Portfolio
-
-I have exactly three Portfolios (contexts). No more, no less.
-
-* `pf-preangel` (Real products making money)
-* `pf-shipfail` (Hackathons, MVPs, crazy ideas)
-* `pf-tobemigrated` (The "Box of Shame" for old stuff)
-
-### Rule #2: The Project
-
-Projects are the atomic unit in my head. They are named explicitly:
-
-```text
-prj-<portfolio>-<project>
-```
-
-Examples:
-
-* `prj-preangel-zixia`
-* `prj-shipfail-thoth`
-* `prj-shipfail-remic`
-
-How this plays out in practice:
-
-* In **PreAngel**, `prj-preangel-zixia` is both:
-
-  * the conceptual Project name, and
-  * the name I give to its dedicated Azure (subscription).
-* In **Ship.Fail**, `prj-shipfail-remic` is still the conceptual Project name, but:
-
-  * all Ship.Fail Projects share a single lab Azure (subscription), and
-  * the Project is implemented as a **family of Resource Groups and tags** with the `shipfail-remic` pattern.
-
-**Why this works:** When I see `prj-shipfail-thoth`, I know instantly: *This is an experiment (Ship.Fail) called Thoth.* Whether it currently lives as its own subscription (PreAngel style) or as Resource Groups inside the lab subscription (Ship.Fail style) is an implementation detail I can always look up—but the name and tags tell the story.
-
-### Rule #3: The Resource Group (The Backbone)
-
-This is where the magic happens. The Resource Group name encodes the entire lineage of the resource.
-
-```text
-rg-<portfolio>-<project>-<stage>-<component?>
-```
-
-Examples:
-
-* `rg-shipfail-remic-dev-web`
-* `rg-preangel-zixia-prod-data`
-
-Under Ship.Fail, this is also how Projects show up structurally:
-
-* `rg-shipfail-remic-dev-web`, `rg-shipfail-remic-dev-api`, `rg-shipfail-remic-prod-web`, ...
-* All of them live inside the **same Ship.Fail lab subscription**, but their names and tags still encode Portfolio, Project, Stage, and Component.
-
-**The "3-Second Rule":** If I can't tell you exactly what a Resource Group contains and who pays for it within 3 seconds of reading the name, **it is a bad name.**
-
-### Rule #4: The Resource (Type-First)
-
-I use type‑first naming. Start with the resource type abbreviation, then echo the hierarchy.
-
-```text
-<shorttype>-<portfolio>-<project>-<stage>-<component?>
-```
-
-Examples:
-
-* `vm-shipfail-remic-dev-web` (A VM)
-* `st-shipfail-thoth-dev-data` (A Storage Account)
-* `fn-preangel-zixia-prod-web` (A Function App)
-* `db-preangel-zixia-prod-api` (A Database)
-
-Type-first gives me a nice property when I sort by name:
-
-* all `vm-*` resources group together,
-* all `db-*` resources group together,
-* and my eyes can skim quickly.
-
-### A Before → After Rename Example
-
-Here’s how this looks in practice on a messy real-world example.
-
-**Before:**
-
-* Resource Group: `Default-Web-WestUS`
-* Storage Account: `mystorage123`
-
-Three months later, I have *no idea* what either of those are.
-
-**After:**
-
-```text
-Resource Group: rg-shipfail-remic-dev-web
-Storage Account: st-shipfail-remic-dev-web
-Tags:
-  Portfolio = ShipFail
-  Project   = ReMic
-  Stage     = dev
-  Component = web
-```
-
-Now the same pair of resources tells me, at a glance:
-
-* this is part of the **ReMic** Project,
-* under the **Ship.Fail** portfolio,
-* in the **dev** stage,
-* in the **web** component.
-
-I don’t need a wiki, a spreadsheet, or a memory palace. The name *is* the documentation.
-
----
-
-## 5. Do I Need Separate VNets for Every Project?
-
-One important constraint from the cloud world: a virtual network (VNet) lives inside **one** Azure (subscription). It can be peered to others, but it cannot be “shared” across subscriptions without extra setup.
-
-Instead of fighting this, I embraced it in the design:
-
-* **Ship.Fail (experiments):**
-
-  * Uses **one shared lab subscription** for all experiments.
-  * Inside it, I create **one VNet per region**, like:
-
-    * `vnet-shipfail-wus3`
-  * Then I carve subnets for stages:
-
-    * `snet-shipfail-dev-default`
-    * `snet-shipfail-prod-default`
-  * All Projects under Ship.Fail (Thoth, ReMic, etc.) reuse this same VNet and its subnets.
-
-* **PreAngel (production):**
-
-  * Each production Project usually gets its **own** VNet inside its own subscription, like:
-
-    * `vnet-preangel-zixia-wus3`
-  * This keeps blast radius small and makes it easy to reason about production networking per product.
-
-The names still follow the same structure, but Ship.Fail intentionally optimizes for **convenience and reuse**, while PreAngel optimizes for **isolation and long-term clarity**.
-
----
-
-## 6. Seeing It In Action
-
-Let’s walk through a real example. Imagine I am building a new AI tool called **ReMic** under my **Ship.Fail** incubator.
-
-### 6.1 ReMic as a Ship.Fail Project (Lab Mode)
-
-Here is what my cloud looks like in the Ship.Fail lab subscription:
-
-```text
-Company: PreAngel LLC
-└─ Umbrella: ShipFail
-     └─ Project: ReMic (conceptually: prj-shipfail-remic)
-          ├─ Resource Group: rg-shipfail-remic-dev-web
-          │     ├─ vm-shipfail-remic-dev-web
-          │     └─ st-shipfail-remic-dev-web
-          ├─ Resource Group: rg-shipfail-remic-dev-api
-          │     └─ fn-shipfail-remic-dev-api
-          ├─ Resource Group: rg-shipfail-remic-prod-web
-          │     └─ vm-shipfail-remic-prod-web
-          └─ Resource Group: rg-shipfail-remic-prod-api
-                └─ db-shipfail-remic-prod-api
-```
-
-All of these live inside the same Ship.Fail lab Azure (subscription), reuse the same VNet (`vnet-shipfail-wus3`), and are separated by tags and naming only.
-
-Future-me can open any of those names in the cloud console and instantly know:
-
-1. **Umbrella:** It's a Ship.Fail experiment.
-2. **Project:** It's for ReMic.
-3. **Stage:** It's `dev` (continuous deployment) or `prod` (hand-picked versions).
-4. **Component:** It's the `web` or `api` layer.
-
-### 6.2 ReMic Graduates to PreAngel (Production Mode)
-
-Now suppose ReMic proves itself and deserves to become a serious product.
-
-I don’t throw away the tree; I simply **move it up one level**:
-
-* I create a new production Project under the PreAngel umbrella, implemented as its own Azure (subscription):
-
-  * `prj-preangel-remic`
-* Inside that subscription, I recreate the Resource Groups with the same pattern:
-
-```text
-Company: PreAngel LLC
-└─ Umbrella: PreAngel
-     └─ Project: prj-preangel-remic
-          ├─ Resource Group: rg-preangel-remic-dev-web
-          ├─ Resource Group: rg-preangel-remic-prod-web
-          └─ Resource Group: rg-preangel-remic-prod-api
-```
-
-* ReMic now gets its own dedicated VNet, e.g. `vnet-preangel-remic-wus3`.
-* I can migrate or redeploy workloads from the Ship.Fail lab into this new home.
-
-In practice, “graduation” often means **redeploying infrastructure using IaC** (Terraform, Bicep, ARM) into the new subscription, rather than literally clicking "Move" on every resource. But the naming and tagging stay the same, so the promotion feels natural.
-
-The mental model is the same. The only changes are:
-
-* `Portfolio` value: from `ShipFail` → `PreAngel`.
-* Physical level where the Project lives: from Resource Group family inside a shared subscription → its own subscription.
-
-* `Umbrella` value: from `ShipFail` → `PreAngel`.
-* Physical level where the Project lives: from Resource Group family inside a shared subscription → its own subscription.
-
-That’s how graduation works in this protocol.
-
----
-
-## 4. The Naming Playbook: Rules for the Road
-
-A naming convention is useless if you have to look it up every time. It needs to be intuitive. Here is the **Ship.Fail Protocol**.
-
 ### Rule #1: The Umbrella
 
 I have exactly three Umbrellas (contexts). No more, no less.
@@ -515,6 +303,103 @@ Now the same pair of resources tells me, at a glance:
 * under the **Ship.Fail** umbrella,
 * in the **dev** stage,
 * in the **web** component.
+
+I don’t need a wiki, a spreadsheet, or a memory palace. The name *is* the documentation.
+
+---
+
+## 5. Do I Need Separate VNets for Every Project?
+
+One important constraint from the cloud world: a virtual network (VNet) lives inside **one** Azure (subscription). It can be peered to others, but it cannot be “shared” across subscriptions without extra setup.
+
+Instead of fighting this, I embraced it in the design:
+
+* **Ship.Fail (experiments):**
+
+  * Uses **one shared lab subscription** for all experiments.
+  * Inside it, I create **one VNet per region**, like:
+
+    * `vnet-shipfail-wus3`
+  * Then I carve subnets for stages:
+
+    * `snet-shipfail-dev-default`
+    * `snet-shipfail-prod-default`
+  * All Projects under Ship.Fail (Thoth, ReMic, etc.) reuse this same VNet and its subnets.
+
+* **PreAngel (production):**
+
+  * Each production Project usually gets its **own** VNet inside its own subscription, like:
+
+    * `vnet-preangel-zixia-wus3`
+  * This keeps blast radius small and makes it easy to reason about production networking per product.
+
+The names still follow the same structure, but Ship.Fail intentionally optimizes for **convenience and reuse**, while PreAngel optimizes for **isolation and long-term clarity**.
+
+---
+
+## 6. Seeing It In Action
+
+Let’s walk through a real example. Imagine I am building a new AI tool called **ReMic** under my **Ship.Fail** incubator.
+
+### 6.1 ReMic as a Ship.Fail Project (Lab Mode)
+
+Here is what my cloud looks like in the Ship.Fail lab subscription:
+
+```text
+Company: PreAngel LLC
+└─ Umbrella: ShipFail
+     └─ Project: ReMic (conceptually: prj-shipfail-remic)
+          ├─ Resource Group: rg-shipfail-remic-dev-web
+          │     ├─ vm-shipfail-remic-dev-web
+          │     └─ st-shipfail-remic-dev-web
+          ├─ Resource Group: rg-shipfail-remic-dev-api
+          │     └─ fn-shipfail-remic-dev-api
+          ├─ Resource Group: rg-shipfail-remic-prod-web
+          │     └─ vm-shipfail-remic-prod-web
+          └─ Resource Group: rg-shipfail-remic-prod-api
+                └─ db-shipfail-remic-prod-api
+```
+
+All of these live inside the same Ship.Fail lab Azure (subscription), reuse the same VNet (`vnet-shipfail-wus3`), and are separated by tags and naming only.
+
+Future-me can open any of those names in the cloud console and instantly know:
+
+1. **Umbrella:** It's a Ship.Fail experiment.
+2. **Project:** It's for ReMic.
+3. **Stage:** It's `dev` (continuous deployment) or `prod` (hand-picked versions).
+4. **Component:** It's the `web` or `api` layer.
+
+### 6.2 ReMic Graduates to PreAngel (Production Mode)
+
+Now suppose ReMic proves itself and deserves to become a serious product.
+
+I don’t throw away the tree; I simply **move it up one level**:
+
+* I create a new production Project under the PreAngel umbrella, implemented as its own Azure (subscription):
+
+  * `prj-preangel-remic`
+* Inside that subscription, I recreate the Resource Groups with the same pattern:
+
+```text
+Company: PreAngel LLC
+└─ Umbrella: PreAngel
+     └─ Project: prj-preangel-remic
+          ├─ Resource Group: rg-preangel-remic-dev-web
+          ├─ Resource Group: rg-preangel-remic-prod-web
+          └─ Resource Group: rg-preangel-remic-prod-api
+```
+
+* ReMic now gets its own dedicated VNet, e.g. `vnet-preangel-remic-wus3`.
+* I can migrate or redeploy workloads from the Ship.Fail lab into this new home.
+
+In practice, “graduation” often means **redeploying infrastructure using IaC** (Terraform, Bicep, ARM) into the new subscription, rather than literally clicking "Move" on every resource. But the naming and tagging stay the same, so the promotion feels natural.
+
+The mental model is the same. The only changes are:
+
+* `Umbrella` value: from `ShipFail` → `PreAngel`.
+* Physical level where the Project lives: from Resource Group family inside a shared subscription → its own subscription.
+
+That’s how graduation works in this protocol.
 
 ### 6.3 Zixia as a PreAngel Project (Always Production-First)
 
