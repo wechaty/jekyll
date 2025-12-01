@@ -63,9 +63,8 @@ graph LR
     classDef l1 fill:#ffcc80,stroke:#e65100,stroke-width:2px,color:black
     classDef l2 fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:black
     classDef l3 fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:black
-    classDef l4 fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:black
-    classDef l5 fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:black
-    classDef l6 fill:#ffebee,stroke:#c62828,stroke-width:2px,color:black
+    classDef l4 fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:black
+    classDef l5 fill:#ffebee,stroke:#c62828,stroke-width:2px,color:black
 
     subgraph Level1 ["Level 1: Company"]
         direction TB
@@ -85,19 +84,14 @@ graph LR
         Prj3["Thoth"]:::l3
     end
 
-    subgraph Level4 ["Level 4: Stage"]
+    subgraph Level4 ["Level 4: Resource Group"]
         direction TB
-        Env["dev / prod"]:::l4
+        RG["rg-shipfail-remic-dev-web<br/>(Stage + Component)"]:::l4
     end
 
-    subgraph Level5 ["Level 5: Resource Group"]
+    subgraph Level5 ["Level 5: Resource"]
         direction TB
-        RG["rg-shipfail-remic-dev-web<br/>(Stage + Component)"]:::l5
-    end
-
-    subgraph Level6 ["Level 6: Resource"]
-        direction TB
-        Res["vm-shipfail-remic-dev-web<br/>(Type-First Naming)"]:::l6
+        Res["vm-shipfail-remic-dev-web<br/>(Type-First Naming)"]:::l5
     end
 
     %% Connections
@@ -106,19 +100,18 @@ graph LR
     Umb2 --> Prj2 & Prj3
     
     %% Focus on one path to keep it readable
-    Prj2 --> Env
-    Env --> RG
+    Prj2 --> RG
     RG --> Res
 ```
 
-### The 6 Levels of Sanity
+### The 5 Levels of Sanity
 
 1. **Company:** Who pays? (PreAngel LLC)
 2. **Portfolio:** What is the *context*? (Ship.Fail for experiments, PreAngel for serious products)
 3. **Project:** What is the *workload*? (Zixia, ReMic, Thoth)
-4. **Stage:** Is this safe to break? (`dev` vs `prod`)
-5. **Resource Group:** The container (Stage + Component).
-6. **Resource:** The actual VM, Database, or Function.
+4. **Resource Group:** The container (Stage + Component).
+   * **Stage:** `dev` (continuous deployment) vs `prod` (hand-picked versions).
+5. **Resource:** The actual VM, Database, or Function.
 
 ---
 
@@ -133,22 +126,19 @@ I created a "Translation Layer" to map their complex terms to my simple reality.
 | **1** | **Company**        | My company (the root that owns the credit card and the tenant).                                                                                                                                 | Billing account + tenant                                                                         |
 | **2** | **Portfolio**      | A context bucket: PreAngel (production), Ship.Fail (experiments), ToBeMigrated (legacy parking lot).                                                                                            | Invoice section                                                                                  |
 | **3** | **Project**        | A named workload like Zixia, Thoth, ReMic. In PreAngel: maps 1:1 to an Azure (subscription). In Ship.Fail: implemented as a family of Resource Groups inside a shared lab Azure (subscription). | Azure subscription (PreAngel) / Resource Group family in a shared Azure subscription (Ship.Fail) |
-| **4** | **Stage**          | `dev` or `prod`. A concept encoded in names + tags, not a separate Azure object.                                                                                                                | Environment concept (naming pattern / tag)                                                       |
-| **5** | **Resource Group** | A logical component inside a Project + Stage, like `web`, `api`, `data`, or `tools`.                                                                                                            | Resource group                                                                                   |
-| **6** | **Resource**       | The actual thing: VM, DB, storage account, function, key vault, etc.                                                                                                                            | Resource                                                                                         |
+| **4** | **Resource Group** | A logical container for a specific Stage (`dev`/`prod`) and Component (`web`/`api`).                                                                                                            | Resource group                                                                                   |
+| **5** | **Resource**       | The actual thing: VM, DB, storage account, function, key vault, etc.                                                                                                                            | Resource                                                                                         |
 
 **The Golden Rule:** After this table, I almost never say "subscription" out loud. I speak in **Portfolios** and **Projects**, and only mention Azure terms in parentheses when I really need to.
 
-### Stage Is Virtual (On Purpose)
+### Stage Is Virtual (But Critical)
 
-Stage (`dev` / `prod`) is not a separate Azure object. You will never see a "Stage" blade in the portal.
+Stage (`dev` / `prod`) is not a separate level in the hierarchy, but it is a critical dimension of the **Resource Group**.
 
-Instead, Stage is:
+* **dev**: Deploys continuously from Git commits.
+* **prod**: Deploys only hand-picked versions.
 
-* a field in the **name** of Resource Groups and Resources, and
-* a **tag value** that tools and dashboards can filter on.
-
-This is why the Unified Tree keeps Stage as its own level conceptually, even though the portal only shows it as part of names and tags.
+This is why the Unified Tree merges Stage into the Resource Group level.
 
 ### Same Tree, Two Implementations (Ship.Fail vs PreAngel)
 
@@ -156,7 +146,7 @@ Here’s the twist that makes everything click:
 
 The **Unified Tree** is always the same in my head:
 
-> Company → Portfolio → Project → Resource Group (w/Stage) → Resource
+> Company → Portfolio → Project → Resource Group (Stage + Component) → Resource
 
 But it is **implemented differently** for my two main portfolios:
 
@@ -378,7 +368,7 @@ Future-me can open any of those names in the cloud console and instantly know:
 
 1. **Portfolio:** It's a Ship.Fail experiment.
 2. **Project:** It's for ReMic.
-3. **Stage:** It's `dev` (safe to break) or `prod` (don’t casually delete).
+3. **Stage:** It's `dev` (continuous deployment) or `prod` (hand-picked versions).
 4. **Component:** It's the `web` or `api` layer.
 
 ### 6.2 ReMic Graduates to PreAngel (Production Mode)
