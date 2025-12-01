@@ -33,7 +33,7 @@ This post is Part 3 of my journey to fix it.
 * **Part 2:** [Vibe Coding to Production: The Case for a Two-Stage Pipeline](/2025/10/13/two-stage-deployment-playbook/) (The Workflow)
 * **Part 3 (This Post):** The Execution.
 
-Here is the **Ship.Fail Protocol**: The exact naming and tagging system I use to run my entire cloud empire of one.
+Here is the **Ship.Fail Protocol**: the exact naming and tagging system I use to run my entire cloud empire of one.
 
 ---
 
@@ -45,9 +45,11 @@ It sounded smart on paper. In reality, it was a disaster.
 
 As a solo founder, I don't have a Finance Department fighting with an Engineering Department. **I am both.** The entity paying the bill is the same entity writing the code.
 
-So I collapsed the complexity. I realized that for us—the builders, the hackers, the solo founders—**The Two Trees are actually one.**
+So I collapsed the complexity. I realized that for us—the builders, the hackers, the solo founders—**the two trees are actually one.**
 
 We don't need a "Finance View" and an "Ops View." We need a **Unified Tree**. A single vertical line that connects the credit card to the code.
+
+(In earlier posts, I called these top-level buckets **Umbrellas**. In this post, I’ll call them **Portfolios**. Same idea, slightly nicer word.)
 
 ---
 
@@ -83,14 +85,19 @@ graph LR
         Prj3["Thoth"]:::l3
     end
 
-    subgraph Level4 ["Level 4: Resource Group"]
+    subgraph Level4 ["Level 4: Stage"]
         direction TB
-        RG["rg-shipfail-remic-dev-web<br/>(Stage + Component)"]:::l4
+        Env["dev / prod"]:::l4
     end
 
-    subgraph Level5 ["Level 5: Resource"]
+    subgraph Level5 ["Level 5: Resource Group"]
         direction TB
-        Res["vm-shipfail-remic-dev-web<br/>(Type-First Naming)"]:::l5
+        RG["rg-shipfail-remic-dev-web<br/>(Stage + Component)"]:::l5
+    end
+
+    subgraph Level6 ["Level 6: Resource"]
+        direction TB
+        Res["vm-shipfail-remic-dev-web<br/>(Type-First Naming)"]:::l6
     end
 
     %% Connections
@@ -99,17 +106,19 @@ graph LR
     Umb2 --> Prj2 & Prj3
     
     %% Focus on one path to keep it readable
-    Prj2 --> RG
+    Prj2 --> Env
+    Env --> RG
     RG --> Res
 ```
 
-### The 5 Levels of Sanity
+### The 6 Levels of Sanity
 
 1. **Company:** Who pays? (PreAngel LLC)
 2. **Portfolio:** What is the *context*? (Ship.Fail for experiments, PreAngel for serious products)
 3. **Project:** What is the *workload*? (Zixia, ReMic, Thoth)
-4. **Resource Group:** The container (Stage + Component).
-5. **Resource:** The actual VM, Database, or Function.
+4. **Stage:** Is this safe to break? (`dev` vs `prod`)
+5. **Resource Group:** The container (Stage + Component).
+6. **Resource:** The actual VM, Database, or Function.
 
 ---
 
@@ -119,15 +128,27 @@ Azure's billing and management terminology is designed for Fortune 500 enterpris
 
 I created a "Translation Layer" to map their complex terms to my simple reality.
 
-| Level | My Name            | What it means to ME                                                                                                                                                                                    | Azure Term (Reference Only)                                                                      |
-| :---- | :----------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------- |
-| **1** | **Company**        | My company (the root that owns the credit card and the tenant)                                                                                                                                         | Billing account + tenant                                                                         |
-| **2** | **Portfolio**      | A context bucket: PreAngel (production), Ship.Fail (experiments), ToBeMigrated (legacy parking lot)                                                                                                    | Invoice section                                                                                  |
-| **3** | **Project**        | A named workload like Zixia, Thoth, ReMic. In PreAngel it maps 1:1 to an Azure (subscription). In Ship.Fail it is implemented as a family of Resource Groups inside a shared lab Azure (subscription). | Azure subscription (PreAngel) / Resource Group family in a shared Azure subscription (Ship.Fail) |
-| **4** | **Resource Group** | A logical container for a specific Stage (`dev`/`prod`) and Component (`web`/`api`)                                                                                                                    | Resource group                                                                                   |
-| **5** | **Resource**       | The actual thing: VM, DB, storage account, function, key vault, etc.                                                                                                                                   | Resource                                                                                         |
+| Level | My Name            | What it means to ME                                                                                                                                                                             | Azure Term (Reference Only)                                                                      |
+| ----- | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| **1** | **Company**        | My company (the root that owns the credit card and the tenant).                                                                                                                                 | Billing account + tenant                                                                         |
+| **2** | **Portfolio**      | A context bucket: PreAngel (production), Ship.Fail (experiments), ToBeMigrated (legacy parking lot).                                                                                            | Invoice section                                                                                  |
+| **3** | **Project**        | A named workload like Zixia, Thoth, ReMic. In PreAngel: maps 1:1 to an Azure (subscription). In Ship.Fail: implemented as a family of Resource Groups inside a shared lab Azure (subscription). | Azure subscription (PreAngel) / Resource Group family in a shared Azure subscription (Ship.Fail) |
+| **4** | **Stage**          | `dev` or `prod`. A concept encoded in names + tags, not a separate Azure object.                                                                                                                | Environment concept (naming pattern / tag)                                                       |
+| **5** | **Resource Group** | A logical component inside a Project + Stage, like `web`, `api`, `data`, or `tools`.                                                                                                            | Resource group                                                                                   |
+| **6** | **Resource**       | The actual thing: VM, DB, storage account, function, key vault, etc.                                                                                                                            | Resource                                                                                         |
 
 **The Golden Rule:** After this table, I almost never say "subscription" out loud. I speak in **Portfolios** and **Projects**, and only mention Azure terms in parentheses when I really need to.
+
+### Stage Is Virtual (On Purpose)
+
+Stage (`dev` / `prod`) is not a separate Azure object. You will never see a "Stage" blade in the portal.
+
+Instead, Stage is:
+
+* a field in the **name** of Resource Groups and Resources, and
+* a **tag value** that tools and dashboards can filter on.
+
+This is why the Unified Tree keeps Stage as its own level conceptually, even though the portal only shows it as part of names and tags.
 
 ### Same Tree, Two Implementations (Ship.Fail vs PreAngel)
 
@@ -135,7 +156,7 @@ Here’s the twist that makes everything click:
 
 The **Unified Tree** is always the same in my head:
 
-> Company → Portfolio → Project → Resource Group → Resource
+> Company → Portfolio → Project → Resource Group (w/Stage) → Resource
 
 But it is **implemented differently** for my two main portfolios:
 
@@ -143,7 +164,7 @@ But it is **implemented differently** for my two main portfolios:
 
   * **Project = Azure (subscription).**
   * Each serious product (like Zixia) gets its own Project at the subscription level.
-  * Inside that, I create Resource Groups for `dev` and `prod` stages + components (`web`, `api`, `data`, ...).
+  * Inside that, I create Resource Groups for `dev` and `prod` plus components (`web`, `api`, `data`, ...).
 * **Ship.Fail (Experiment Portfolio)**
 
   * Everything is **leveled down by one notch** to keep life simple.
@@ -154,13 +175,13 @@ You can visualize it like this:
 
 ```text
 PreAngel (Production)
-  Company → Portfolio → Project → Resource Group → Resource
+  Company → Portfolio → Project → Resource Group (w/Stage) → Resource
                         ^
                         |
                  Azure (subscription)
 
 Ship.Fail (Experiments)
-  Company → Portfolio → Project → Resource Group → Resource
+  Company → Portfolio → Project → Resource Group (w/Stage) → Resource
                   ^              ^
                   |              |
          Azure (subscription)   Project implemented as a Resource Group family
@@ -232,6 +253,8 @@ This is where the magic happens. The Resource Group name encodes the entire line
 rg-<portfolio>-<project>-<stage>-<component?>
 ```
 
+Examples:
+
 * `rg-shipfail-remic-dev-web`
 * `rg-preangel-zixia-prod-data`
 
@@ -263,15 +286,47 @@ Type-first gives me a nice property when I sort by name:
 * all `db-*` resources group together,
 * and my eyes can skim quickly.
 
+### A Before → After Rename Example
+
+Here’s how this looks in practice on a messy real-world example.
+
+**Before:**
+
+* Resource Group: `Default-Web-WestUS`
+* Storage Account: `mystorage123`
+
+Three months later, I have *no idea* what either of those are.
+
+**After:**
+
+```text
+Resource Group: rg-shipfail-remic-dev-web
+Storage Account: st-shipfail-remic-dev-web
+Tags:
+  Portfolio = ShipFail
+  Project   = ReMic
+  Stage     = dev
+  Component = web
+```
+
+Now the same pair of resources tells me, at a glance:
+
+* this is part of the **ReMic** Project,
+* under the **Ship.Fail** portfolio,
+* in the **dev** stage,
+* in the **web** component.
+
+I don’t need a wiki, a spreadsheet, or a memory palace. The name *is* the documentation.
+
 ---
 
-## 5. Networking in This Model: Shared vs Dedicated
+## 5. Do I Need Separate VNets for Every Project?
 
 One important constraint from the cloud world: a virtual network (VNet) lives inside **one** Azure (subscription). It can be peered to others, but it cannot be “shared” across subscriptions without extra setup.
 
 Instead of fighting this, I embraced it in the design:
 
-* **Ship.Fail:**
+* **Ship.Fail (experiments):**
 
   * Uses **one shared lab subscription** for all experiments.
   * Inside it, I create **one VNet per region**, like:
@@ -282,7 +337,8 @@ Instead of fighting this, I embraced it in the design:
     * `snet-shipfail-dev-default`
     * `snet-shipfail-prod-default`
   * All Projects under Ship.Fail (Thoth, ReMic, etc.) reuse this same VNet and its subnets.
-* **PreAngel:**
+
+* **PreAngel (production):**
 
   * Each production Project usually gets its **own** VNet inside its own subscription, like:
 
@@ -348,10 +404,12 @@ Company: PreAngel LLC
 * ReMic now gets its own dedicated VNet, e.g. `vnet-preangel-remic-wus3`.
 * I can migrate or redeploy workloads from the Ship.Fail lab into this new home.
 
+In practice, “graduation” often means **redeploying infrastructure using IaC** (Terraform, Bicep, ARM) into the new subscription, rather than literally clicking "Move" on every resource. But the naming and tagging stay the same, so the promotion feels natural.
+
 The mental model is the same. The only changes are:
 
 * `Portfolio` value: from `ShipFail` → `PreAngel`.
-* physical level where the Project lives: from Resource Group family inside a shared subscription → its own subscription.
+* Physical level where the Project lives: from Resource Group family inside a shared subscription → its own subscription.
 
 That’s how graduation works in this protocol.
 
@@ -406,33 +464,41 @@ Now, when I want to know *"How much am I spending on all my `dev` stages combine
 
 ---
 
-## 8. Your Turn: The Cleanup Checklist
+## 8. How Do I Actually Start Cleaning This Up Tomorrow?
 
 Ready to turn your graveyard into a machine? Here is the exact checklist I used. Steal it.
 
 1. **Define Your Portfolios.**
    Commit to 2–3 high-level contexts. (For me: `PreAngel`, `ShipFail`, `ToBeMigrated`.)
+
 2. **Decide Implementation Per Portfolio.**
 
    * For your “serious” portfolio (like PreAngel), let each Project be its own Azure (subscription).
    * For your “lab” portfolio (like Ship.Fail), pick one shared lab Azure (subscription) and implement Projects as families of Resource Groups inside it.
+
 3. **Inventory Your Projects.**
    List every Project you care about today and give it a clear name: `prj-<portfolio>-<project>`.
+
 4. **Create the Containers.**
    For each Project:
 
    * In PreAngel-style portfolios: create or rename the Azure (subscription) accordingly, then create Resource Groups using the `rg-...` pattern.
    * In Ship.Fail-style portfolios: create Resource Groups directly in the lab subscription using the `rg-...` pattern.
+
 5. **The Great Migration.**
    Move resources into their new homes. If something doesn’t obviously belong to a Project and Stage, that’s a red flag.
+
 6. **The Purge.**
    If you find a resource that doesn't fit into your new tree... **delete it.** If you can't name it, you don't need it.
+
 7. **Tag Everything.**
    No exceptions. Portfolio, Project, Stage, Component.
 
+If you only have 30 minutes, pick **one** Project (for me, it was ReMic), apply the naming + tags + VNet model just to that, and stop. Even that small slice of clarity feels shockingly good.
+
 ---
 
-## 9. Final Thought: Cognitive Freedom
+## 9. Final Thought: Cognitive Freedom for a Company of One
 
 This might look like a post about naming conventions. It’s not.
 
@@ -440,6 +506,6 @@ This might look like a post about naming conventions. It’s not.
 
 When your cloud environment matches your mental model, the friction disappears. You stop worrying about "phantom costs" and "zombie VMs." You stop hesitating before you deploy.
 
-You reclaim that mental energy and pour it back into what matters: **Building.**
+For a company of one, your cloud is more than infrastructure. It’s an exoskeleton for your brain. If it’s noisy and confusing, it drags you down. If it’s clean and aligned with how you think, it amplifies you.
 
 So go ahead. Steal this protocol. Rename your world. Let your experiments live in Ship.Fail, let your winners graduate to PreAngel, and get back to shipping.
