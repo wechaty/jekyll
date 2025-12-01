@@ -164,17 +164,17 @@ But it is **implemented differently** for my two main portfolios:
 You can visualize it like this:
 
 ```text
-PreAngel (Production)
-  Company → Portfolio → Project → Resource Group (w/Stage) → Resource
-                        ^
-                        |
-                 Azure (subscription)
+Production
+  Company → Portfolio (PreAngel) → Project → Resource Group (w/Stage) → Resource
+                                      ^
+                                      |
+                             Azure (subscription)
 
-Ship.Fail (Experiments)
-  Company → Portfolio → Project → Resource Group (w/Stage) → Resource
-                  ^              ^
-                  |              |
-         Azure (subscription)   Project implemented as a Resource Group family
+Lab: Hackathon Ideas / MVPs
+  Company → Portfolio (ShipFail) → [Project → Resource Group (w/Stage)] → Resource
+                  ^
+                  |
+         Azure (subscription)
 ```
 
 Same tree. Same words. Different physical layer where the Project lives.
