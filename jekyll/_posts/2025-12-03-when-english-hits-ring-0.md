@@ -301,7 +301,7 @@ Python did not kill C, and PromptWare will not kill Python. But it will sit abov
 
 ### 5.3. PromptWare at Ring 0: The Bernhardt Vision, Rebooted
 
-In his legendary talk "The Birth and Death of JavaScript," Gary Bernhardt jokes about a future where JavaScript eventually runs directly on the hardware:
+In his legendary PyCon 2014 talk [The Birth and Death of JavaScript](https://www.destroyallsoftware.com/talks/the-birth-and-death-of-javascript), Gary Bernhardt jokes about a future where JavaScript eventually runs directly on the hardware:
 
 - no Node,
 - no Linux,
