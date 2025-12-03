@@ -9,8 +9,7 @@ tags:
   - licensing
   - preangel
   - ai-native
-image: /assets/2025/12-when-english-hits-ring-0/post-teaser-image.svg
-mermaid: true
+image: /assets/2025/12-when-english-hits-ring-0/english-hits-ring-0.webp
 ---
 
 > Software 1.0 was code. Software 2.0 was data. Software 3.0 is us yelling at a stochastic parrot until it becomes a co-founder.
@@ -198,6 +197,8 @@ This is what I call PromptWare:
 
 And once you see the world that way, you cannot unsee it.
 
+![Software 3.0 - PromptWare]({{ 'assets/2025/12-when-english-hits-ring-0/software-3.0-promptware.webp' | relative_url }})
+
 ---
 
 ## 4. Beyond PromptWare: Agentware and Societyware (Software 4.0 and 5.0)
@@ -252,6 +253,8 @@ Software engineering turns into:
 At that point, the question "what license should my prompt use" becomes part of a much larger question:
 
 > What kind of civilization am I quietly compiling every time I ship a new agent?
+
+![Software 5.0 - SocietyWare]({{ 'assets/2025/12-when-english-hits-ring-0/software-5.0-societyware.webp' | relative_url }})
 
 ---
 
