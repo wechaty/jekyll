@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      The Vibe Coding Cloud Protocol: One Tree to Rule Your Infrastructure | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>The Vibe Coding Cloud Protocol: One Tree to Rule Your Infrastructure | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="The Vibe Coding Cloud Protocol: One Tree to Rule Your Infrastructure" />
+<meta name="author" content="huan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="I used to dread opening my Azure portal—it was a graveyard of forgotten resources and confusing bills. Today, it’s a clean machine that matches exactly how I run my business. Here is the ‘Unified Tree’ naming playbook I used to turn chaos into clarity, so you can steal it for your own cloud." />
+<meta property="og:description" content="I used to dread opening my Azure portal—it was a graveyard of forgotten resources and confusing bills. Today, it’s a clean machine that matches exactly how I run my business. Here is the ‘Unified Tree’ naming playbook I used to turn chaos into clarity, so you can steal it for your own cloud." />
+<link rel="canonical" href="https://wechaty.js.org/2025/11/29/vibe-coding-cloud-protocol/" />
+<meta property="og:url" content="https://wechaty.js.org/2025/11/29/vibe-coding-cloud-protocol/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2025/11-vibe-coding-cloud-protocol/teaser.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-11-29T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2025/11-vibe-coding-cloud-protocol/teaser.webp" />
+<meta property="twitter:title" content="The Vibe Coding Cloud Protocol: One Tree to Rule Your Infrastructure" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"huan"},"dateModified":"2025-11-29T00:00:00+00:00","datePublished":"2025-11-29T00:00:00+00:00","description":"I used to dread opening my Azure portal—it was a graveyard of forgotten resources and confusing bills. Today, it’s a clean machine that matches exactly how I run my business. Here is the ‘Unified Tree’ naming playbook I used to turn chaos into clarity, so you can steal it for your own cloud.","headline":"The Vibe Coding Cloud Protocol: One Tree to Rule Your Infrastructure","image":"https://wechaty.js.org/assets/2025/11-vibe-coding-cloud-protocol/teaser.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2025/11/29/vibe-coding-cloud-protocol/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"huan"},"url":"https://wechaty.js.org/2025/11/29/vibe-coding-cloud-protocol/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#engineering">engineering</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">The Vibe Coding Cloud Protocol: One Tree to Rule Your Infrastructure</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Nov 29, 2025 · <span class="reading-time">
+  
+  
+    16 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2025/11-vibe-coding-cloud-protocol/teaser.webp" alt="The Vibe Coding Cloud Protocol: One Tree to Rule Your Infrastructure">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<blockquote>
+  <p><strong>The Promise:</strong> By the end of this post, you will have a blueprint to turn your Azure portal from a terrifying graveyard of forgotten VMs into a sleek, predictable machine that mirrors your brain.</p>
+</blockquote>
+
+<h2 id="0-the-cloud-anxiety-is-real">0. The “Cloud Anxiety” Is Real</h2>
+
+<p>We’ve all been there. You log into the Azure portal to check on a quick experiment you ran three months ago.</p>
+
+<p>Suddenly, you see it.</p>
+
+<p>A resource group named <code class="language-plaintext highlighter-rouge">Default-Web-WestUS</code>. A storage account named <code class="language-plaintext highlighter-rouge">mystorage123</code>. A bill that is $50 higher than you expected because of a “Zombie VM” you swore you deleted.</p>
+
+<p>For a solo founder or a one-person startup incubator, this isn’t just messy—it’s <strong>cognitive debt</strong>. Every time you have to pause and ask <em>“Wait, what is this resource?”</em>, you are leaking the mental energy you should be using to build your product.</p>
+
+<p>I was drowning in this chaos. I needed a way out.</p>
+
+<p>This post is Part 3 of my journey to fix it.</p>
+
+<ul>
+  <li><strong>Part 1:</strong> <a href="/2025/11/04/rethinking-azure-billing/">Rethinking Azure Billing</a> (The Theory)</li>
+  <li><strong>Part 2:</strong> <a href="/2025/10/13/two-stage-deployment-playbook/">Vibe Coding to Production: The Case for a Two-Stage Pipeline</a> (The Workflow)</li>
+  <li><strong>Part 3 (This Post):</strong> The Execution.</li>
+</ul>
+
+<p>Here is the <strong>Ship.Fail Protocol</strong>: the exact naming and tagging system I use to run my entire cloud empire of one.</p>
+
+<hr />
+
+<h2 id="1-the-epiphany-the-unified-tree">1. The Epiphany: The “Unified Tree”</h2>
+
+<p>In my earlier drafts, I tried to be clever. I designed a “Two Tree” model: one hierarchy for <strong>Money</strong> (Finance) and another for <strong>Work</strong> (Ops).</p>
+
+<p>It sounded smart on paper. In reality, it was a disaster.</p>
+
+<p>As a solo founder, I don’t have a Finance Department fighting with an Engineering Department. <strong>I am both.</strong> The entity paying the bill is the same entity writing the code.</p>
+
+<p>So I collapsed the complexity. I realized that for us—the builders, the hackers, the solo founders—<strong>the two trees are actually one.</strong></p>
+
+<p>We don’t need a “Finance View” and an “Ops View.” We need a <strong>Unified Tree</strong>. A single vertical line that connects the credit card to the code.</p>
+
+<hr />
+
+<h2 id="2-the-blueprint-one-hierarchy-to-rule-them-all">2. The Blueprint: One Hierarchy to Rule Them All</h2>
+
+<p>This is the only mental model you need to keep in your head. If a resource doesn’t fit on this chart, <strong>it doesn’t exist.</strong></p>
+
+<pre><code class="language-mermaid">graph LR
+    %% Styling
+    classDef l1 fill:#ffcc80,stroke:#e65100,stroke-width:2px,color:black
+    classDef l2 fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:black
+    classDef l3 fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:black
+    classDef l4 fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:black
+    classDef l5 fill:#ffebee,stroke:#c62828,stroke-width:2px,color:black
+
+    subgraph Level1 ["Level 1: Company"]
+        direction TB
+        Root["PreAngel LLC&lt;br/&gt;(Agreement + Tenant)"]:::l1
+    end
+
+    subgraph Level2 ["Level 2: Umbrella"]
+        direction TB
+        Umb1["PreAngel&lt;br/&gt;(Production Umbrella)"]:::l2
+        Umb2["Ship.Fail&lt;br/&gt;(Experiments)"]:::l2
+    end
+
+    subgraph Level3 ["Level 3: Project"]
+        direction TB
+        Prj1["Zixia"]:::l3
+        Prj2["ReMic"]:::l3
+        Prj3["Thoth"]:::l3
+    end
+
+    subgraph Level4 ["Level 4: Resource Group"]
+        direction TB
+        RG["rg-shipfail-remic-dev-web&lt;br/&gt;(Stage + Component)"]:::l4
+    end
+
+    subgraph Level5 ["Level 5: Resource"]
+        direction TB
+        Res["vm-shipfail-remic-dev-web&lt;br/&gt;(Type-First Naming)"]:::l5
+    end
+
+    %% Connections
+    Root --&gt; Umb1 &amp; Umb2
+    Umb1 --&gt; Prj1
+    Umb2 --&gt; Prj2 &amp; Prj3
+    
+    %% Focus on one path to keep it readable
+    Prj2 --&gt; RG
+    RG --&gt; Res
+</code></pre>
+
+<h3 id="the-5-levels-of-sanity">The 5 Levels of Sanity</h3>
+
+<ol>
+  <li><strong>Company:</strong> Who pays? (PreAngel LLC)</li>
+  <li><strong>Umbrella:</strong> What is the <em>context</em>? (Ship.Fail for experiments, PreAngel for serious products)</li>
+  <li><strong>Project:</strong> What is the <em>workload</em>? (Zixia, ReMic, Thoth)</li>
+  <li><strong>Resource Group:</strong> The container (Stage + Component).
+    <ul>
+      <li><strong>Stage:</strong> <code class="language-plaintext highlighter-rouge">dev</code> (continuous deployment) vs <code class="language-plaintext highlighter-rouge">prod</code> (hand-picked versions).</li>
+    </ul>
+  </li>
+  <li><strong>Resource:</strong> The actual VM, Database, or Function.</li>
+</ol>
+
+<hr />
+
+<h2 id="3-the-translation-layer-or-how-to-ignore-microsofts-jargon">3. The Translation Layer (Or: How to Ignore Microsoft’s Jargon)</h2>
+
+<p>Azure’s billing and management terminology is designed for Fortune 500 enterprises with 10,000 employees. It is overkill for us.</p>
+
+<p>I created a “Translation Layer” to map their complex terms to my simple reality.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Level</th>
+      <th>My Name</th>
+      <th>What it means to ME</th>
+      <th>Azure Term (Reference Only)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1</strong></td>
+      <td><strong>Company</strong></td>
+      <td>My company (the root that owns the credit card and the tenant).</td>
+      <td>Billing account + tenant</td>
+    </tr>
+    <tr>
+      <td><strong>2</strong></td>
+      <td><strong>Umbrella</strong></td>
+      <td>A context bucket: PreAngel (production), Ship.Fail (experiments), ToBeMigrated (legacy parking lot).</td>
+      <td>Invoice section</td>
+    </tr>
+    <tr>
+      <td><strong>3</strong></td>
+      <td><strong>Project</strong></td>
+      <td>A named workload like Zixia, Thoth, ReMic. In PreAngel: maps 1:1 to an Azure (subscription). In Ship.Fail: implemented as a family of Resource Groups inside a shared lab Azure (subscription).</td>
+      <td>Azure subscription (PreAngel) / Resource Group family in a shared Azure subscription (Ship.Fail)</td>
+    </tr>
+    <tr>
+      <td><strong>4</strong></td>
+      <td><strong>Resource Group</strong></td>
+      <td>A logical container for a specific Stage (<code class="language-plaintext highlighter-rouge">dev</code>/<code class="language-plaintext highlighter-rouge">prod</code>) and Component (<code class="language-plaintext highlighter-rouge">web</code>/<code class="language-plaintext highlighter-rouge">api</code>).</td>
+      <td>Resource group</td>
+    </tr>
+    <tr>
+      <td><strong>5</strong></td>
+      <td><strong>Resource</strong></td>
+      <td>The actual thing: VM, DB, storage account, function, key vault, etc.</td>
+      <td>Resource</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>The Golden Rule:</strong> After this table, I almost never say “subscription” out loud. I speak in <strong>Umbrellas</strong> and <strong>Projects</strong>, and only mention Azure terms in parentheses when I really need to.</p>
+
+<h3 id="stage-is-virtual-but-critical">Stage Is Virtual (But Critical)</h3>
+
+<p>Stage (<code class="language-plaintext highlighter-rouge">dev</code> / <code class="language-plaintext highlighter-rouge">prod</code>) is not a separate level in the hierarchy, but it is a critical dimension of the <strong>Resource Group</strong>.</p>
+
+<ul>
+  <li><strong>dev</strong>: Deploys continuously from Git commits.</li>
+  <li><strong>prod</strong>: Deploys only hand-picked versions.</li>
+</ul>
+
+<p>This is why the Unified Tree merges Stage into the Resource Group level.</p>
+
+<h3 id="same-tree-two-implementations-shipfail-vs-preangel">Same Tree, Two Implementations (Ship.Fail vs PreAngel)</h3>
+
+<p>Here’s the twist that makes everything click:</p>
+
+<p>The <strong>Unified Tree</strong> is always the same in my head:</p>
+
+<blockquote>
+  <p>Company → Umbrella → Project → Resource Group (Stage + Component) → Resource</p>
+</blockquote>
+
+<p>But it is <strong>implemented differently</strong> for my two main umbrellas:</p>
+
+<ul>
+  <li>
+    <p><strong>PreAngel (Production Umbrella)</strong></p>
+
+    <ul>
+      <li><strong>Project = Azure (subscription).</strong></li>
+      <li>Each serious product (like Zixia) gets its own Project at the subscription level.</li>
+      <li>Inside that, I create Resource Groups for <code class="language-plaintext highlighter-rouge">dev</code> and <code class="language-plaintext highlighter-rouge">prod</code> plus components (<code class="language-plaintext highlighter-rouge">web</code>, <code class="language-plaintext highlighter-rouge">api</code>, <code class="language-plaintext highlighter-rouge">data</code>, …).</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Ship.Fail (Experiment Umbrella)</strong></p>
+
+    <ul>
+      <li>Everything is <strong>leveled down by one notch</strong> to keep life simple.</li>
+      <li>Ship.Fail uses <strong>one shared lab Azure (subscription)</strong>.</li>
+      <li>Each Project (Thoth, ReMic, etc.) lives as <strong>a family of Resource Groups</strong>, not its own subscription.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>You can visualize it like this:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Production
+  Company → Umbrella (PreAngel) → Project → Resource Group (w/Stage) → Resource
+                                      ^
+                                      |
+                             Azure (subscription)
+
+Lab: Hackathon Ideas / MVPs
+  Company → Umbrella (ShipFail) → [Project → Resource Group (w/Stage)] → Resource
+                  ^
+                  |
+         Azure (subscription)
+</code></pre></div></div>
+
+<p>Same tree. Same words. Different physical layer where the Project lives.</p>
+
+<p>And this leads to one of my favourite properties of this system: <strong>Projects can graduate.</strong></p>
+
+<p>When a Ship.Fail project becomes a “real” product:</p>
+
+<ul>
+  <li>
+    <p>In Ship.Fail, it starts life as:</p>
+
+    <ul>
+      <li>one entry in my Projects list (e.g., <code class="language-plaintext highlighter-rouge">ReMic</code>), and</li>
+      <li>a set of Resource Groups like <code class="language-plaintext highlighter-rouge">rg-shipfail-remic-dev-web</code>, <code class="language-plaintext highlighter-rouge">rg-shipfail-remic-prod-api</code> inside the shared lab subscription.</li>
+    </ul>
+  </li>
+  <li>
+    <p>When it “graduates” to PreAngel, I <strong>move it up one layer</strong>:</p>
+
+    <ul>
+      <li>I create a new production Project at the subscription layer (e.g., <code class="language-plaintext highlighter-rouge">prj-preangel-remic</code> as an Azure subscription name), and</li>
+      <li>I recreate its Resource Groups following the same pattern but under the PreAngel umbrella (e.g., <code class="language-plaintext highlighter-rouge">rg-preangel-remic-dev-web</code>, <code class="language-plaintext highlighter-rouge">rg-preangel-remic-prod-web</code>).</li>
+    </ul>
+  </li>
+</ul>
+
+<p>The names barely change—mostly <code class="language-plaintext highlighter-rouge">shipfail</code> → <code class="language-plaintext highlighter-rouge">preangel</code>—but the Project moves from “lab” mode to “production” mode.</p>
+
+<hr />
+
+<h2 id="4-the-naming-playbook-rules-for-the-road">4. The Naming Playbook: Rules for the Road</h2>
+
+<p>A naming convention is useless if you have to look it up every time. It needs to be intuitive. Here is the <strong>Ship.Fail Protocol</strong>.</p>
+
+<h3 id="rule-1-the-umbrella">Rule #1: The Umbrella</h3>
+
+<p>I have exactly three Umbrellas (contexts). No more, no less.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">umb-preangel</code> (Real products making money)</li>
+  <li><code class="language-plaintext highlighter-rouge">umb-shipfail</code> (Hackathons, MVPs, crazy ideas)</li>
+  <li><code class="language-plaintext highlighter-rouge">umb-tobemigrated</code> (The “Box of Shame” for old stuff)</li>
+</ul>
+
+<h3 id="rule-2-the-project">Rule #2: The Project</h3>
+
+<p>Projects are the atomic unit in my head. They are named explicitly:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>prj-&lt;umbrella&gt;-&lt;project&gt;
+</code></pre></div></div>
+
+<p>Examples:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">prj-preangel-zixia</code></li>
+  <li><code class="language-plaintext highlighter-rouge">prj-shipfail-thoth</code></li>
+  <li><code class="language-plaintext highlighter-rouge">prj-shipfail-remic</code></li>
+</ul>
+
+<p>How this plays out in practice:</p>
+
+<ul>
+  <li>
+    <p>In <strong>PreAngel</strong>, <code class="language-plaintext highlighter-rouge">prj-preangel-zixia</code> is both:</p>
+
+    <ul>
+      <li>the conceptual Project name, and</li>
+      <li>the name I give to its dedicated Azure (subscription).</li>
+    </ul>
+  </li>
+  <li>
+    <p>In <strong>Ship.Fail</strong>, <code class="language-plaintext highlighter-rouge">prj-shipfail-remic</code> is still the conceptual Project name, but:</p>
+
+    <ul>
+      <li>all Ship.Fail Projects share a single lab Azure (subscription), and</li>
+      <li>the Project is implemented as a <strong>family of Resource Groups and tags</strong> with the <code class="language-plaintext highlighter-rouge">shipfail-remic</code> pattern.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Why this works:</strong> When I see <code class="language-plaintext highlighter-rouge">prj-shipfail-thoth</code>, I know instantly: <em>This is an experiment (Ship.Fail) called Thoth.</em> Whether it currently lives as its own subscription (PreAngel style) or as Resource Groups inside the lab subscription (Ship.Fail style) is an implementation detail I can always look up—but the name and tags tell the story.</p>
+
+<h3 id="rule-3-the-resource-group-the-backbone">Rule #3: The Resource Group (The Backbone)</h3>
+
+<p>This is where the magic happens. The Resource Group name encodes the entire lineage of the resource.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rg-&lt;umbrella&gt;-&lt;project&gt;-&lt;stage&gt;-&lt;component?&gt;
+</code></pre></div></div>
+
+<p>Examples:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">rg-shipfail-remic-dev-web</code></li>
+  <li><code class="language-plaintext highlighter-rouge">rg-preangel-zixia-prod-data</code></li>
+</ul>
+
+<p>Under Ship.Fail, this is also how Projects show up structurally:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">rg-shipfail-remic-dev-web</code>, <code class="language-plaintext highlighter-rouge">rg-shipfail-remic-dev-api</code>, <code class="language-plaintext highlighter-rouge">rg-shipfail-remic-prod-web</code>, …</li>
+  <li>All of them live inside the <strong>same Ship.Fail lab subscription</strong>, but their names and tags still encode Umbrella, Project, Stage, and Component.</li>
+</ul>
+
+<p><strong>The “3-Second Rule”:</strong> If I can’t tell you exactly what a Resource Group contains and who pays for it within 3 seconds of reading the name, <strong>it is a bad name.</strong></p>
+
+<h3 id="rule-4-the-resource-type-first">Rule #4: The Resource (Type-First)</h3>
+
+<p>I use type‑first naming. Start with the resource type abbreviation, then echo the hierarchy.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;shorttype&gt;-&lt;umbrella&gt;-&lt;project&gt;-&lt;stage&gt;-&lt;component?&gt;
+</code></pre></div></div>
+
+<p>Examples:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">vm-shipfail-remic-dev-web</code> (A VM)</li>
+  <li><code class="language-plaintext highlighter-rouge">st-shipfail-thoth-dev-data</code> (A Storage Account)</li>
+  <li><code class="language-plaintext highlighter-rouge">fn-preangel-zixia-prod-web</code> (A Function App)</li>
+  <li><code class="language-plaintext highlighter-rouge">db-preangel-zixia-prod-api</code> (A Database)</li>
+</ul>
+
+<p>Type-first gives me a nice property when I sort by name:</p>
+
+<ul>
+  <li>all <code class="language-plaintext highlighter-rouge">vm-*</code> resources group together,</li>
+  <li>all <code class="language-plaintext highlighter-rouge">db-*</code> resources group together,</li>
+  <li>and my eyes can skim quickly.</li>
+</ul>
+
+<h3 id="a-before--after-rename-example">A Before → After Rename Example</h3>
+
+<p>Here’s how this looks in practice on a messy real-world example.</p>
+
+<p><strong>Before:</strong></p>
+
+<ul>
+  <li>Resource Group: <code class="language-plaintext highlighter-rouge">Default-Web-WestUS</code></li>
+  <li>Storage Account: <code class="language-plaintext highlighter-rouge">mystorage123</code></li>
+</ul>
+
+<p>Three months later, I have <em>no idea</em> what either of those are.</p>
+
+<p><strong>After:</strong></p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Resource Group: rg-shipfail-remic-dev-web
+Storage Account: st-shipfail-remic-dev-web
+Tags:
+  Umbrella  = ShipFail
+  Project   = ReMic
+  Stage     = dev
+  Component = web
+</code></pre></div></div>
+
+<p>Now the same pair of resources tells me, at a glance:</p>
+
+<ul>
+  <li>this is part of the <strong>ReMic</strong> Project,</li>
+  <li>under the <strong>Ship.Fail</strong> umbrella,</li>
+  <li>in the <strong>dev</strong> stage,</li>
+  <li>in the <strong>web</strong> component.</li>
+</ul>
+
+<p>I don’t need a wiki, a spreadsheet, or a memory palace. The name <em>is</em> the documentation.</p>
+
+<hr />
+
+<h2 id="5-do-i-need-separate-vnets-for-every-project">5. Do I Need Separate VNets for Every Project?</h2>
+
+<p>One important constraint from the cloud world: a virtual network (VNet) lives inside <strong>one</strong> Azure (subscription). It can be peered to others, but it cannot be “shared” across subscriptions without extra setup.</p>
+
+<p>Instead of fighting this, I embraced it in the design:</p>
+
+<ul>
+  <li>
+    <p><strong>Ship.Fail (experiments):</strong></p>
+
+    <ul>
+      <li>Uses <strong>one shared lab subscription</strong> for all experiments.</li>
+      <li>
+        <p>Inside it, I create <strong>one VNet per region</strong>, like:</p>
+
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">vnet-shipfail-wus3</code></li>
+        </ul>
+      </li>
+      <li>
+        <p>Then I carve subnets for stages:</p>
+
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">snet-shipfail-dev-default</code></li>
+          <li><code class="language-plaintext highlighter-rouge">snet-shipfail-prod-default</code></li>
+        </ul>
+      </li>
+      <li>All Projects under Ship.Fail (Thoth, ReMic, etc.) reuse this same VNet and its subnets.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>PreAngel (production):</strong></p>
+
+    <ul>
+      <li>
+        <p>Each production Project usually gets its <strong>own</strong> VNet inside its own subscription, like:</p>
+
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">vnet-preangel-zixia-wus3</code></li>
+        </ul>
+      </li>
+      <li>
+        <p>This keeps blast radius small and makes it easy to reason about production networking per product.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>The names still follow the same structure, but Ship.Fail intentionally optimizes for <strong>convenience and reuse</strong>, while PreAngel optimizes for <strong>isolation and long-term clarity</strong>.</p>
+
+<hr />
+
+<h2 id="6-seeing-it-in-action">6. Seeing It In Action</h2>
+
+<p>Let’s walk through a real example. Imagine I am building a new AI tool called <strong>ReMic</strong> under my <strong>Ship.Fail</strong> incubator.</p>
+
+<h3 id="61-remic-as-a-shipfail-project-lab-mode">6.1 ReMic as a Ship.Fail Project (Lab Mode)</h3>
+
+<p>Here is what my cloud looks like in the Ship.Fail lab subscription:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Company: PreAngel LLC
+└─ Umbrella: ShipFail
+     └─ Project: ReMic (conceptually: prj-shipfail-remic)
+          ├─ Resource Group: rg-shipfail-remic-dev-web
+          │     ├─ vm-shipfail-remic-dev-web
+          │     └─ st-shipfail-remic-dev-web
+          ├─ Resource Group: rg-shipfail-remic-dev-api
+          │     └─ fn-shipfail-remic-dev-api
+          ├─ Resource Group: rg-shipfail-remic-prod-web
+          │     └─ vm-shipfail-remic-prod-web
+          └─ Resource Group: rg-shipfail-remic-prod-api
+                └─ db-shipfail-remic-prod-api
+</code></pre></div></div>
+
+<p>All of these live inside the same Ship.Fail lab Azure (subscription), reuse the same VNet (<code class="language-plaintext highlighter-rouge">vnet-shipfail-wus3</code>), and are separated by tags and naming only.</p>
+
+<p>Future-me can open any of those names in the cloud console and instantly know:</p>
+
+<ol>
+  <li><strong>Umbrella:</strong> It’s a Ship.Fail experiment.</li>
+  <li><strong>Project:</strong> It’s for ReMic.</li>
+  <li><strong>Stage:</strong> It’s <code class="language-plaintext highlighter-rouge">dev</code> (continuous deployment) or <code class="language-plaintext highlighter-rouge">prod</code> (hand-picked versions).</li>
+  <li><strong>Component:</strong> It’s the <code class="language-plaintext highlighter-rouge">web</code> or <code class="language-plaintext highlighter-rouge">api</code> layer.</li>
+</ol>
+
+<h3 id="62-remic-graduates-to-preangel-production-mode">6.2 ReMic Graduates to PreAngel (Production Mode)</h3>
+
+<p>Now suppose ReMic proves itself and deserves to become a serious product.</p>
+
+<p>I don’t throw away the tree; I simply <strong>move it up one level</strong>:</p>
+
+<ul>
+  <li>
+    <p>I create a new production Project under the PreAngel umbrella, implemented as its own Azure (subscription):</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">prj-preangel-remic</code></li>
+    </ul>
+  </li>
+  <li>
+    <p>Inside that subscription, I recreate the Resource Groups with the same pattern:</p>
+  </li>
+</ul>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Company: PreAngel LLC
+└─ Umbrella: PreAngel
+     └─ Project: prj-preangel-remic
+          ├─ Resource Group: rg-preangel-remic-dev-web
+          ├─ Resource Group: rg-preangel-remic-prod-web
+          └─ Resource Group: rg-preangel-remic-prod-api
+</code></pre></div></div>
+
+<ul>
+  <li>ReMic now gets its own dedicated VNet, e.g. <code class="language-plaintext highlighter-rouge">vnet-preangel-remic-wus3</code>.</li>
+  <li>I can migrate or redeploy workloads from the Ship.Fail lab into this new home.</li>
+</ul>
+
+<p>In practice, “graduation” often means <strong>redeploying infrastructure using IaC</strong> (Terraform, Bicep, ARM) into the new subscription, rather than literally clicking “Move” on every resource. But the naming and tagging stay the same, so the promotion feels natural.</p>
+
+<p>The mental model is the same. The only changes are:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Umbrella</code> value: from <code class="language-plaintext highlighter-rouge">ShipFail</code> → <code class="language-plaintext highlighter-rouge">PreAngel</code>.</li>
+  <li>Physical level where the Project lives: from Resource Group family inside a shared subscription → its own subscription.</li>
+</ul>
+
+<p>That’s how graduation works in this protocol.</p>
+
+<h3 id="63-zixia-as-a-preangel-project-always-production-first">6.3 Zixia as a PreAngel Project (Always Production-First)</h3>
+
+<p>The <strong>PreAngel</strong> umbrella is where my “serious” products live. Zixia is one of them.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Company: PreAngel LLC
+└─ Umbrella: PreAngel
+     └─ Project: prj-preangel-zixia
+          ├─ Resource Group: rg-preangel-zixia-dev-web
+          │     └─ fn-preangel-zixia-dev-web
+          └─ Resource Group: rg-preangel-zixia-prod-web
+                └─ fn-preangel-zixia-prod-web
+</code></pre></div></div>
+
+<p>Its tags might look like this:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Umbrella  = PreAngel
+Project   = Zixia
+Stage     = dev / prod
+Component = web
+</code></pre></div></div>
+
+<p>Once again, future-me doesn’t have to remember anything. The information is written directly into the names and tags.</p>
+
+<hr />
+
+<h2 id="7-tags-the-konmari-of-the-cloud">7. Tags: The “KonMari” of the Cloud</h2>
+
+<p>Names are for humans. Tags are for robots (and billing dashboards).</p>
+
+<p>I stripped my tagging strategy down to the bare essentials. I removed the <code class="language-plaintext highlighter-rouge">Org</code> tag because <em>everything</em> is PreAngel LLC. Why tag the obvious?</p>
+
+<p><strong>The Essential Tag Set:</strong></p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Umbrella  = PreAngel | ShipFail | ToBeMigrated
+Project   = Zixia | Thoth | ReMic | ...
+Stage     = dev | prod
+Component = web | api | data | tools | ...
+</code></pre></div></div>
+
+<p><strong>Example:</strong> A production database for Zixia.</p>
+
+<ul>
+  <li><strong>Name:</strong> <code class="language-plaintext highlighter-rouge">db-preangel-zixia-prod-api</code></li>
+  <li><strong>Tags:</strong> <code class="language-plaintext highlighter-rouge">Umbrella=PreAngel</code>, <code class="language-plaintext highlighter-rouge">Project=Zixia</code>, <code class="language-plaintext highlighter-rouge">Stage=prod</code>, <code class="language-plaintext highlighter-rouge">Component=api</code></li>
+</ul>
+
+<p>Now, when I want to know <em>“How much am I spending on all my <code class="language-plaintext highlighter-rouge">dev</code> stages combined?”</em>, it is a single filter away.</p>
+
+<hr />
+
+<h2 id="8-how-do-i-actually-start-cleaning-this-up-tomorrow">8. How Do I Actually Start Cleaning This Up Tomorrow?</h2>
+
+<p>Ready to turn your graveyard into a machine? Here is the exact checklist I used. Steal it.</p>
+
+<ol>
+  <li>
+    <p><strong>Define Your Umbrellas.</strong>
+Commit to 2–3 high-level contexts. (For me: <code class="language-plaintext highlighter-rouge">PreAngel</code>, <code class="language-plaintext highlighter-rouge">ShipFail</code>, <code class="language-plaintext highlighter-rouge">ToBeMigrated</code>.)</p>
+  </li>
+  <li>
+    <p><strong>Decide Implementation Per Umbrella.</strong></p>
+
+    <ul>
+      <li>For your “serious” umbrella (like PreAngel), let each Project be its own Azure (subscription).</li>
+      <li>For your “lab” umbrella (like Ship.Fail), pick one shared lab Azure (subscription) and implement Projects as families of Resource Groups inside it.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Inventory Your Projects.</strong>
+List every Project you care about today and give it a clear name: <code class="language-plaintext highlighter-rouge">prj-&lt;umbrella&gt;-&lt;project&gt;</code>.</p>
+  </li>
+  <li>
+    <p><strong>Create the Containers.</strong>
+For each Project:</p>
+
+    <ul>
+      <li>In PreAngel-style umbrellas: create or rename the Azure (subscription) accordingly, then create Resource Groups using the <code class="language-plaintext highlighter-rouge">rg-...</code> pattern.</li>
+      <li>In Ship.Fail-style umbrellas: create Resource Groups directly in the lab subscription using the <code class="language-plaintext highlighter-rouge">rg-...</code> pattern.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>The Great Migration.</strong>
+Move resources into their new homes. If something doesn’t obviously belong to a Project and Stage, that’s a red flag.</p>
+  </li>
+  <li>
+    <p><strong>The Purge.</strong>
+If you find a resource that doesn’t fit into your new tree… <strong>delete it.</strong> If you can’t name it, you don’t need it.</p>
+  </li>
+  <li>
+    <p><strong>Tag Everything.</strong>
+No exceptions. Umbrella, Project, Stage, Component.</p>
+  </li>
+</ol>
+
+<p>If you only have 30 minutes, pick <strong>one</strong> Project (for me, it was ReMic), apply the naming + tags + VNet model just to that, and stop. Even that small slice of clarity feels shockingly good.</p>
+
+<hr />
+
+<h2 id="9-final-thought-cognitive-freedom-for-a-company-of-one">9. Final Thought: Cognitive Freedom for a Company of One</h2>
+
+<p>This might look like a post about naming conventions. It’s not.</p>
+
+<p><strong>It is a post about cognitive freedom.</strong></p>
+
+<p>When your cloud environment matches your mental model, the friction disappears. You stop worrying about “phantom costs” and “zombie VMs.” You stop hesitating before you deploy.</p>
+
+<p>For a company of one, your cloud is more than infrastructure. It’s an exoskeleton for your brain. If it’s noisy and confusing, it drags you down. If it’s clean and aligned with how you think, it amplifies you.</p>
+
+<p>So go ahead. Steal this protocol. Rename your world. Let your experiments live in Ship.Fail, let your winners graduate to PreAngel, and get back to shipping.</p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#azure">azure</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#cloud-billing">cloud-billing</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#finops">finops</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#naming">naming</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ship-fail">ship-fail</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Author @ Wechaty, Architect @ Chatie, LLM Code Generation Enthusiast, Serial Entrepreneur, Burner🔥
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2025/11/27/goodwin-checks-source-code-cognitive-health/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2025/11-goodwin-checks-source-code-cognitive-health/source-code-for-ai-agents.webp">  Goodwin Checks: What Source Code Taught Me About Cognitive Health for Coding Agents</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2025/12/01/missing-feature-ai-coding-agents/"> The Missing Feature in AI Coding Agents — And Why Only Claude Code Delivers It  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2025/12-missing-feature-ai-coding-agents/post-teaser-image.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" crossorigin="anonymous"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      if (!window.mermaid) {
+        return;
+      }
+
+      const codeBlocks = document.querySelectorAll('pre code.language-mermaid, code.language-mermaid');
+      codeBlocks.forEach(function (codeEl) {
+        const container = document.createElement('div');
+        container.className = 'mermaid';
+        container.textContent = codeEl.textContent;
+
+        const parent = codeEl.parentElement;
+        if (parent && parent.tagName.toLowerCase() === 'pre') {
+          parent.parentElement.replaceChild(container, parent);
+        } else if (parent) {
+          parent.replaceChild(container, codeEl);
+        } else {
+          codeEl.replaceWith(container);
+        }
+      });
+
+      window.mermaid.initialize({ startOnLoad: true, securityLevel: 'loose' });
+    });
+  </script>
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

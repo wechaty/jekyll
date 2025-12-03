@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Announcing FireGen: Turn Firebase RTDB into Your Universal Generative AI API | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Announcing FireGen: Turn Firebase RTDB into Your Universal Generative AI API | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Announcing FireGen: Turn Firebase RTDB into Your Universal Generative AI API" />
+<meta name="author" content="huan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="FireGen is a Firebase Extension that transforms your Realtime Database into a universal Generative AI job queue, simplifying AI integration for solo founders and developers." />
+<meta property="og:description" content="FireGen is a Firebase Extension that transforms your Realtime Database into a universal Generative AI job queue, simplifying AI integration for solo founders and developers." />
+<link rel="canonical" href="https://wechaty.js.org/2025/11/13/firegen-firebase-rtdb-genai-api/" />
+<meta property="og:url" content="https://wechaty.js.org/2025/11/13/firegen-firebase-rtdb-genai-api/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2025/11-firegen-firebase-rtdb-genai-api/firegen-prompt.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-11-13T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2025/11-firegen-firebase-rtdb-genai-api/firegen-prompt.webp" />
+<meta property="twitter:title" content="Announcing FireGen: Turn Firebase RTDB into Your Universal Generative AI API" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"huan"},"dateModified":"2025-11-13T00:00:00+00:00","datePublished":"2025-11-13T00:00:00+00:00","description":"FireGen is a Firebase Extension that transforms your Realtime Database into a universal Generative AI job queue, simplifying AI integration for solo founders and developers.","headline":"Announcing FireGen: Turn Firebase RTDB into Your Universal Generative AI API","image":"https://wechaty.js.org/assets/2025/11-firegen-firebase-rtdb-genai-api/firegen-prompt.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2025/11/13/firegen-firebase-rtdb-genai-api/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"huan"},"url":"https://wechaty.js.org/2025/11/13/firegen-firebase-rtdb-genai-api/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#announcement">announcement</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Announcing FireGen: Turn Firebase RTDB into Your Universal Generative AI API</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Nov 13, 2025 · <span class="reading-time">
+  
+  
+    8 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2025/11-firegen-firebase-rtdb-genai-api/firegen-prompt.webp" alt="Announcing FireGen: Turn Firebase RTDB into Your Universal Generative AI API">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<blockquote>
+  <p>FireGen: Generative AI as simple as Firebase Realtime Database.
+—— A Hackathon MVP announcement for Solo Founders and AI-Native Developers</p>
+</blockquote>
+
+<p>Hey everyone, I’m Huan. I’m thrilled to announce the open-source launch of FireGen, a Firebase Extension born out of a hackathon sprint and a deep frustration with the current state of AI integration.</p>
+
+<p>If you’re building with Firebase and Vertex AI, you know the pain. Integrating powerful models like Veo 3.1 (video generation) shouldn’t require a degree in Google Cloud infrastructure.</p>
+
+<p><strong>The Elevator Pitch:</strong> Solo founders and AI developers are wasting days fighting Vertex AI infrastructure—debugging SDKs, polling long-running operations (LROs), and juggling GCS files. FireGen abstracts it all away. It turns your Realtime Database (RTDB) into a universal AI job queue. You write a job node (or just a string!), subscribe to updates, and get results. Polling, retries, auth, and storage are handled.</p>
+
+<p>We turned 3 days of integration work into 15 minutes of setup.</p>
+
+<hr />
+
+<h2 id="the-problem-sdk-hell-and-the-innovation-bottleneck">The Problem: “SDK Hell” and the Innovation Bottleneck</h2>
+
+<p>Let’s be honest: the developer experience for integrating multiple AI models is broken.</p>
+
+<p>We all want to leverage the power of models like Veo, Gemini, and TTS, but integrating them into a Firebase backend is messy. The friction is killing innovation.</p>
+
+<p>What should take 15 minutes ends up taking 3 days. Why?</p>
+
+<ol>
+  <li><strong>Inconsistent SDKs:</strong> Vertex AI has multiple SDKs with different APIs, outdated docs, and breaking changes.</li>
+  <li><strong>Async Complexity (LROs):</strong> Video generation takes time. Handling LROs means writing custom polling, exponential backoff, TTL management, and dead-letter queues.</li>
+  <li><strong>Storage Gymnastics:</strong> Juggling GCS URIs, signed URLs, and moving files between GCS and Firebase Storage is cognitive overhead you don’t need.</li>
+  <li><strong>Auth Confusion:</strong> Navigating OIDC tokens and service accounts across Google services is a nightmare.</li>
+  <li><strong>Model Chaos:</strong> Guessing which model ID fits your prompt and which parameters are valid.</li>
+</ol>
+
+<p><strong>The result?</strong> Founders spend their time fighting infrastructure instead of shipping features and validating ideas with real users.</p>
+
+<h2 id="the-solution-firegen">The Solution: FireGen</h2>
+
+<p>FireGen is a Firebase Extension that abstracts all this complexity away. We turn your Realtime Database (RTDB) into a universal, queue-based Generative AI API.</p>
+
+<p>The workflow is dead simple:</p>
+
+<ol>
+  <li>Write a job request to <code class="language-plaintext highlighter-rouge">firegen-jobs/{jobId}</code>.</li>
+  <li>Subscribe to that node using <code class="language-plaintext highlighter-rouge">onValue</code>.</li>
+  <li>Get the results when <code class="language-plaintext highlighter-rouge">status: "succeeded"</code>.</li>
+</ol>
+
+<p>That’s it. FireGen handles everything else behind the scenes using Cloud Functions v2, RTDB triggers, and Firebase Task Queues.</p>
+
+<p><img src="/assets/2025/11-firegen-firebase-rtdb-genai-api/old-vs-firegen.webp" alt="Old Way v.s. FireGen Way" /></p>
+
+<h2 id="the-magic-the-ai-native-developer-experience">The Magic: The AI-Native Developer Experience</h2>
+
+<p>This is where FireGen truly shines, especially for AI-native developers and those using AI coding agents (like Gemini, Claude, or open-source tools). We offer two operational modes:</p>
+
+<h3 id="mode-1--ai-assisted-mode-the-just-write-a-string-api">Mode 1: 🤖 AI-Assisted Mode (The “Just Write a String” API)</h3>
+
+<p>This is the future of APIs, designed for AI-to-AI communication. Don’t worry about model IDs or complex JSON structures. Just write a string to RTDB:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">getDatabase</span><span class="p">,</span> <span class="nx">ref</span><span class="p">,</span> <span class="nx">push</span><span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">firebase/database</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">db</span> <span class="o">=</span> <span class="nf">getDatabase</span><span class="p">();</span>
+
+<span class="c1">// Just write a string - AI picks the model automatically</span>
+<span class="k">await</span> <span class="nf">push</span><span class="p">(</span><span class="nf">ref</span><span class="p">(</span><span class="nx">db</span><span class="p">,</span> <span class="dl">'</span><span class="s1">firegen-jobs</span><span class="dl">'</span><span class="p">),</span> 
+  <span class="dl">"</span><span class="s2">Create a 4-second vertical video of a waterfall with ambient sound</span><span class="dl">"</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p><strong>How it works:</strong>
+Our <strong>AI Request Analyzer</strong> (powered by Gemini 2.5 Flash) analyzes your prompt semantically. It automatically selects the best model (e.g., Veo 3.1 for video, Gemini Image, or TTS) and intelligently extracts parameters (duration, aspect ratio, audio).</p>
+
+<p>Crucially, it saves the entire reasoning chain back to the database (<code class="language-plaintext highlighter-rouge">assisted.reasons</code>) for complete transparency.</p>
+
+<h3 id="mode-2--explicit-mode-production-control">Mode 2: 🎯 Explicit Mode (Production Control)</h3>
+
+<p>When you need precise control for production, you can send a structured object that mirrors the Vertex AI REST API:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="nf">push</span><span class="p">(</span><span class="nf">ref</span><span class="p">(</span><span class="nx">db</span><span class="p">,</span> <span class="dl">'</span><span class="s1">firegen-jobs</span><span class="dl">'</span><span class="p">),</span> <span class="p">{</span>
+  <span class="na">model</span><span class="p">:</span> <span class="dl">"</span><span class="s2">veo-3.1-fast-generate-preview</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">request</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">instances</span><span class="p">:</span> <span class="p">[{</span><span class="na">prompt</span><span class="p">:</span> <span class="dl">"</span><span class="s2">A serene sunset over mountains</span><span class="dl">"</span><span class="p">}],</span>
+    <span class="na">parameters</span><span class="p">:</span> <span class="p">{</span><span class="na">durationSeconds</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="na">aspectRatio</span><span class="p">:</span> <span class="dl">"</span><span class="s2">16:9</span><span class="dl">"</span><span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="our-principles-simplicity-by-design">Our Principles: Simplicity by Design</h2>
+
+<p>We made opinionated design choices guided by the <strong>Principle of Least Power</strong> and <strong>Occam’s Razor</strong>. We want FireGen to be the simplest possible solution.</p>
+
+<h3 id="1-why-rtdb-yes-really">1. Why RTDB? (Yes, Really.)</h3>
+
+<p>We chose Realtime Database (RTDB) over Firestore intentionally. RTDB offers the lowest latency and the simplest SDK complexity for real-time updates.</p>
+
+<p>For an API interface where clients need immediate updates on job status, RTDB’s <code class="language-plaintext highlighter-rouge">onValue()</code> listener is superior, faster, and less complex than Firestore’s snapshot listeners. It perfectly embodies the Principle of Least Power.</p>
+
+<h3 id="2-why-zero-config">2. Why Zero Config?</h3>
+
+<p>You’ll notice FireGen has zero configuration parameters. This is by design. We don’t want users to worry about setting the optimal polling interval, the job TTL, or the database path. We’ve hard-coded optimized defaults (like the <code class="language-plaintext highlighter-rouge">/firegen-jobs</code> path) so it <em>just works</em> out of the box.</p>
+
+<h2 id="why-firegen-is-good-the-takeaways">Why FireGen is Good (The Takeaways)</h2>
+
+<p>We built FireGen specifically for developers who want to move fast and focus on the product.</p>
+
+<ul>
+  <li><strong>Ship in Minutes, Not Days:</strong> We compressed the 3-day debugging cycle into a 15-minute setup.</li>
+  <li><strong>Firebase-Native:</strong> Built on familiar primitives (RTDB, Functions v2, Task Queue). No new infrastructure needed.</li>
+  <li><strong>LROs Handled:</strong> Async (Veo video) and Sync (Images/TTS) operations are unified. The client code is identical. We handle the polling, backoff, and retries.</li>
+  <li><strong>Big-File Friendly:</strong> Integrates with GCS and provides signed URLs, bypassing Firebase’s limits.</li>
+</ul>
+
+<h3 id="optimized-for-ai-coding-agents">Optimized for AI Coding Agents</h3>
+
+<p>This is critical for the modern stack. We designed FireGen to be the perfect interface for AI coding agents.</p>
+
+<ol>
+  <li><strong>AI-to-AI Communication:</strong> The AI-Assisted mode allows AI agents to generate media using natural language, without needing to understand the underlying API schemas.</li>
+  <li><strong>Dedicated AI Docs:</strong> We maintain a specific <code class="language-plaintext highlighter-rouge">LLMS.md</code> file in the repository, providing a complete API reference tailored specifically for AI agents integrating with FireGen.</li>
+</ol>
+
+<h2 id="usage-example-the-full-lifecycle">Usage Example: The Full Lifecycle</h2>
+
+<p>Here’s how you integrate FireGen in your client app. Note the efficient monitoring pattern—this is a key takeaway for RTDB performance:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">getDatabase</span><span class="p">,</span> <span class="nx">ref</span><span class="p">,</span> <span class="nx">push</span><span class="p">,</span> <span class="nx">onValue</span><span class="p">,</span> <span class="kd">get</span><span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">firebase/database</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">db</span> <span class="o">=</span> <span class="nf">getDatabase</span><span class="p">();</span>
+
+<span class="c1">// 1. Create the Job (AI-Assisted Mode)</span>
+<span class="kd">const</span> <span class="nx">jobRef</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">push</span><span class="p">(</span><span class="nf">ref</span><span class="p">(</span><span class="nx">db</span><span class="p">,</span> <span class="dl">'</span><span class="s1">firegen-jobs</span><span class="dl">'</span><span class="p">),</span> 
+  <span class="dl">"</span><span class="s2">Generate a photorealistic image of a scientist in a lab</span><span class="dl">"</span>
+<span class="p">);</span>
+
+<span class="c1">// 2. Monitor the Job (Efficiently!)</span>
+<span class="c1">// CRITICAL TIP: Watch the 'status' field only, not the entire job node. </span>
+<span class="c1">// This prevents unnecessary re-renders during polling (which happens frequently for video jobs!).</span>
+<span class="kd">const</span> <span class="nx">statusRef</span> <span class="o">=</span> <span class="nf">ref</span><span class="p">(</span><span class="nx">db</span><span class="p">,</span> <span class="s2">`firegen-jobs/</span><span class="p">${</span><span class="nx">jobRef</span><span class="p">.</span><span class="nx">key</span><span class="p">}</span><span class="s2">/status`</span><span class="p">);</span>
+
+<span class="nf">onValue</span><span class="p">(</span><span class="nx">statusRef</span><span class="p">,</span> <span class="k">async </span><span class="p">(</span><span class="nx">snapshot</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">status</span> <span class="o">=</span> <span class="nx">snapshot</span><span class="p">.</span><span class="nf">val</span><span class="p">();</span>
+
+  <span class="k">if </span><span class="p">(</span><span class="nx">status</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">succeeded</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 3. Get the Results</span>
+    <span class="c1">// Fetch the full job data only once success is confirmed</span>
+    <span class="kd">const</span> <span class="nx">jobData</span> <span class="o">=</span> <span class="p">(</span><span class="k">await</span> <span class="nf">get</span><span class="p">(</span><span class="nf">ref</span><span class="p">(</span><span class="nx">db</span><span class="p">,</span> <span class="s2">`firegen-jobs/</span><span class="p">${</span><span class="nx">jobRef</span><span class="p">.</span><span class="nx">key</span><span class="p">}</span><span class="s2">`</span><span class="p">))).</span><span class="nf">val</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="nx">imageUrl</span> <span class="o">=</span> <span class="nx">jobData</span><span class="p">.</span><span class="nx">files</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">https</span><span class="p">;</span> 
+    
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Generated Image URL:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">imageUrl</span><span class="p">);</span>
+    <span class="c1">// ⚠️ Download immediately! URL expires in 24h.</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">status</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">failed</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Job failed.</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="the-story-behind-firegen">The Story Behind FireGen</h2>
+
+<p>This project was born out of frustration. I was helping a friend integrate Veo (video generation) into her Firebase app. (She’s a solo founder and not deeply familiar with Google Cloud intricacies., read her blog post at <a href="https://preangel.ai/2025/10/24/company-of-one-rebuilt-video-ai-platform/">How a Non-Technical CEO Rebuilt a Video AI Platform in 30 Days
+</a>.)</p>
+
+<p>I spent three days troubleshooting broken libraries, missing docs, and the complexities of LRO polling and GCS file handling. Even after solving it, I realized any new developer would hit the same wall. This is exactly the type of undifferentiated heavy lifting that a Firebase Extension should solve.</p>
+
+<p>FireGen is the tool I wish we had.</p>
+
+<h2 id="built-with">Built With</h2>
+
+<p>FireGen is open-source (MIT Licensed) and built with a modern, robust stack:</p>
+
+<ul>
+  <li><strong>Platform:</strong> Firebase (Cloud Functions v2, RTDB, Task Queue)</li>
+  <li><strong>AI Models:</strong> Vertex AI (Veo 3.1, Gemini 2.5 Flash for Image, TTS, and the AI Analyzer)</li>
+  <li><strong>Language:</strong> TypeScript (Node.js 22)</li>
+  <li><strong>Validation:</strong> Zod (for strict schema validation)</li>
+  <li><strong>Integration:</strong> Pure Vertex AI REST API (we ditched the bloated SDKs for direct control and stability)</li>
+</ul>
+
+<h2 id="conclusion-focus-on-product-not-plumbing">Conclusion: Focus on Product, Not Plumbing</h2>
+
+<p>FireGen lets solo founders and AI-native developers focus on what matters: validating product ideas and shipping features, not debugging infrastructure.</p>
+
+<p>Write a string to RTDB, get AI-generated media back. It’s that simple.</p>
+
+<p>We’re excited to see what you build with it.</p>
+
+<h3 id="call-to-action">Call to Action</h3>
+
+<p>🚀 <strong>Try FireGen today and let us know what you think!</strong></p>
+
+<p><a href="https://github.com/ShipFail/firegen">⭐ Star us on GitHub</a></p>
+
+<p><a href="https://github.com/ShipFail/firegen/blob/main/README.md">📄 Read the Docs</a></p>
+
+<p><a href="https://raw.githubusercontent.com/ShipFail/firegen/refs/heads/main/LLMS.md">🤖 API Guide for AI Agents (LLMS.md)</a></p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#google-cloud">google-cloud</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#firebase">firebase</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#vertex-ai">vertex-ai</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#developer-experience">developer-experience</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Author @ Wechaty, Architect @ Chatie, LLM Code Generation Enthusiast, Serial Entrepreneur, Burner🔥
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2025/11/08/rethinking-iam-human-centered-cli/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2025/11-rethinking-iam-human-centered-cli/rethinking-iam-human-centered-cli.webp">  Rethinking IAM: Designing a Human-Centered Command Line for Cloud Identity</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2025/11/17/confident-cluster-decoding/"> Confident-Cluster Decoding: A New Way to Make LLMs Less Random and More Trustworthy  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2025/11-confident-cluster-decoding/ccd-greedy.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

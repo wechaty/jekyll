@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Rethinking IAM: Designing a Human-Centered Command Line for Cloud Identity | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Rethinking IAM: Designing a Human-Centered Command Line for Cloud Identity | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Rethinking IAM: Designing a Human-Centered Command Line for Cloud Identity" />
+<meta name="author" content="huan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A deep redesign of Google Cloud IAM’s language and CLI—simplified from first principles to minimize cognitive load and make identity management readable and intuitive." />
+<meta property="og:description" content="A deep redesign of Google Cloud IAM’s language and CLI—simplified from first principles to minimize cognitive load and make identity management readable and intuitive." />
+<link rel="canonical" href="https://wechaty.js.org/2025/11/08/rethinking-iam-human-centered-cli/" />
+<meta property="og:url" content="https://wechaty.js.org/2025/11/08/rethinking-iam-human-centered-cli/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2025/11-rethinking-iam-human-centered-cli/rethinking-iam-human-centered-cli.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-11-08T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2025/11-rethinking-iam-human-centered-cli/rethinking-iam-human-centered-cli.webp" />
+<meta property="twitter:title" content="Rethinking IAM: Designing a Human-Centered Command Line for Cloud Identity" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"huan"},"dateModified":"2025-11-08T00:00:00+00:00","datePublished":"2025-11-08T00:00:00+00:00","description":"A deep redesign of Google Cloud IAM’s language and CLI—simplified from first principles to minimize cognitive load and make identity management readable and intuitive.","headline":"Rethinking IAM: Designing a Human-Centered Command Line for Cloud Identity","image":"https://wechaty.js.org/assets/2025/11-rethinking-iam-human-centered-cli/rethinking-iam-human-centered-cli.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2025/11/08/rethinking-iam-human-centered-cli/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"huan"},"url":"https://wechaty.js.org/2025/11/08/rethinking-iam-human-centered-cli/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#ideas">ideas</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Rethinking IAM: Designing a Human-Centered Command Line for Cloud Identity</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Nov 08, 2025 · <span class="reading-time">
+  
+  
+    7 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2025/11-rethinking-iam-human-centered-cli/rethinking-iam-human-centered-cli.webp" alt="Rethinking IAM: Designing a Human-Centered Command Line for Cloud Identity">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<blockquote>
+  <p>Modern cloud IAM systems—like Google Cloud IAM—are marvels of power, precision, and policy granularity. Yet, they also carry a legacy of complexity.</p>
+</blockquote>
+
+<h2 id="how-we-rediscovered-simplicity-in-a-sea-of-complexity">How We Rediscovered Simplicity in a Sea of Complexity</h2>
+
+<p>Concepts like <em>principals</em>, <em>principalSets</em>, <em>workload identity pools</em>, and <em>attribute mappings</em> are internally consistent—but mentally exhausting for the average developer.</p>
+
+<p>This is the story of how we stepped back, re-examined IAM from first principles, and reimagined the experience to be as clear as plain English.</p>
+
+<p>Our goal? <strong>To make authentication and authorization readable, learnable, and lovable.</strong></p>
+
+<hr />
+
+<h2 id="the-cognitive-load-problem">The Cognitive Load Problem</h2>
+
+<p>Every cloud developer has seen (and feared) commands like this:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gcloud iam service-accounts add-iam-policy-binding <span class="s2">"</span><span class="nv">$SA_EMAIL</span><span class="s2">"</span> <span class="se">\</span>
+  <span class="nt">--project</span> <span class="s2">"</span><span class="nv">$PROJECT_ID</span><span class="s2">"</span> <span class="se">\</span>
+  <span class="nt">--role</span> <span class="s2">"roles/iam.workloadIdentityUser"</span> <span class="se">\</span>
+  <span class="nt">--member</span> <span class="s2">"principalSet://iam.googleapis.com/projects/</span><span class="k">${</span><span class="nv">PROJECT_NUMBER</span><span class="k">}</span><span class="s2">/locations/global/workloadIdentityPools/github/attribute.repository/shipfail/firegen"</span> <span class="se">\</span>
+  <span class="nt">--condition</span><span class="o">=</span><span class="s2">"expression=attribute.ref=='refs/heads/main'"</span>
+</code></pre></div></div>
+
+<h3 id="-whats-wrong-here">😵 What’s wrong here?</h3>
+
+<ul>
+  <li>Too many nested layers (<code class="language-plaintext highlighter-rouge">projects/.../pools/.../attributes/...</code>)</li>
+  <li>Unclear nouns (<em>principalSet</em>? <em>ref</em>?)</li>
+  <li>Inconsistent mix of command words and variable data</li>
+</ul>
+
+<h4 id="-cognitive-load-diagram">🧠 Cognitive Load Diagram</h4>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>User goal → Add IAM policy binding
+           ↳ Needs to know 8+ sub-concepts
+             ↳ PrincipalSet → Pool → Provider → Attribute → Ref → Repo → Expression
+</code></pre></div></div>
+
+<p>We realized that the complexity wasn’t in the concept—it was in the <strong>language</strong>.</p>
+
+<hr />
+
+<h2 id="thinking-from-first-principles">Thinking from First Principles</h2>
+
+<p>Before naming anything, we asked one question:</p>
+
+<blockquote>
+  <p>What are the absolute primitives of an identity system?</p>
+</blockquote>
+
+<p>We concluded there are only a few:</p>
+
+<pre><code class="language-mermaid">graph TD;
+    A[Identity] --&gt; B[Group];
+    A --&gt; C[Selector];
+    B --&gt; D[Role];
+    D --&gt; E[Policy Binding];
+    E --&gt; F[Trust Domain];
+    F --&gt; G[Provider];
+    G --&gt; H[Claim Mapping];
+    H --&gt; I[Condition];
+</code></pre>
+
+<p>Each concept builds on the previous one, forming a simple, human-readable hierarchy.</p>
+
+<hr />
+
+<h2 id="why-principal-was-the-wrong-abstraction">Why “Principal” Was the Wrong Abstraction</h2>
+
+<p>Google’s IAM defines a <strong>principal</strong> as <em>“an entity whose identity can be authenticated and authorized.”</em></p>
+
+<p>Technically correct—but conceptually distant.</p>
+
+<p>Developers already understand the idea of a <strong>user</strong>, <strong>service account</strong>, and <strong>group</strong>. The word <em>principal</em> adds no clarity; it adds translation overhead.</p>
+
+<p>Worse, Google’s <em>principalSet</em> is a mathematical way of saying “a set of identities that match certain attributes.”</p>
+
+<p>We don’t think in sets. We think in selectors.</p>
+
+<hr />
+
+<h2 id="enter-the-plain-english-model">Enter the Plain-English Model</h2>
+
+<p>Here’s our redesigned naming system:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Google Cloud IAM Term</th>
+      <th>Plain-English Redesign</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Principal</td>
+      <td><strong>Identity</strong></td>
+      <td>A human or service that can authenticate</td>
+    </tr>
+    <tr>
+      <td>principalSet</td>
+      <td><strong>Selector</strong></td>
+      <td>A rule-based group of identities</td>
+    </tr>
+    <tr>
+      <td>Workload Identity Pool</td>
+      <td><strong>Trust Domain</strong></td>
+      <td>The source of external identities</td>
+    </tr>
+    <tr>
+      <td>OIDC/SAML Provider</td>
+      <td><strong>Provider</strong></td>
+      <td>The validation mechanism for a domain</td>
+    </tr>
+    <tr>
+      <td>Attribute Mapping</td>
+      <td><strong>Claim Mapping</strong></td>
+      <td>Maps token claims → IAM attributes</td>
+    </tr>
+    <tr>
+      <td>Condition</td>
+      <td><strong>Condition</strong></td>
+      <td>Boolean rule for context (unchanged)</td>
+    </tr>
+    <tr>
+      <td>Role Binding</td>
+      <td><strong>Policy Binding</strong></td>
+      <td>The relationship between role &amp; identity</td>
+    </tr>
+    <tr>
+      <td>roles/iam.workloadIdentityUser</td>
+      <td><strong>roles/iam.federatedImpersonator</strong></td>
+      <td>Grants external identity impersonation rights</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Readable, intuitive, universal.</p>
+
+<hr />
+
+<h2 id="designing-a-cli-for-humans">Designing a CLI for Humans</h2>
+
+<h3 id="the-core-rule-separate-syntax-from-semantics">The Core Rule: <strong>Separate Syntax from Semantics</strong></h3>
+
+<p>In Google’s <code class="language-plaintext highlighter-rouge">gcloud</code>, user-supplied variables mix with fixed command syntax. That’s cognitively expensive.</p>
+
+<p>We designed a rule called <strong>Visual Semantic Separation</strong>:</p>
+
+<blockquote>
+  <p>Every user-provided value must appear as a named <code class="language-plaintext highlighter-rouge">--param</code> flag. No hidden positionals, no guessing.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="-old-vs-new-comparison">🧩 Old vs. New Comparison</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Action</th>
+      <th>Google Cloud (Today)</th>
+      <th>New IAM (Redesigned)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Add IAM Binding</td>
+      <td><code class="language-plaintext highlighter-rouge">gcloud iam service-accounts add-iam-policy-binding "$SA_EMAIL" --role "roles/iam.workloadIdentityUser" --member "principalSet://.../attribute.repository/shipfail/firegen"</code></td>
+      <td><code class="language-plaintext highlighter-rouge">iam identity grant --account "$SA_EMAIL" --role roles/iam.federatedImpersonator --to selector://repo=shipfail/firegen,branch=main</code></td>
+    </tr>
+    <tr>
+      <td>Create Pool</td>
+      <td><code class="language-plaintext highlighter-rouge">gcloud iam workload-identity-pools create github</code></td>
+      <td><code class="language-plaintext highlighter-rouge">iam trust-domain create --name github --display-name "GitHub Actions"</code></td>
+    </tr>
+    <tr>
+      <td>Add Provider</td>
+      <td><code class="language-plaintext highlighter-rouge">gcloud iam workload-identity-pools providers create-oidc github</code></td>
+      <td><code class="language-plaintext highlighter-rouge">iam provider add --domain github --name actions --issuer https://token.actions.githubusercontent.com --claim-mapping repo=assertion.repository,ref=assertion.ref,actor=assertion.actor</code></td>
+    </tr>
+    <tr>
+      <td>Create Selector</td>
+      <td><code class="language-plaintext highlighter-rouge">gcloud iam workload-identity-pools attributes create</code></td>
+      <td><code class="language-plaintext highlighter-rouge">iam selector create --name repo-shipfail-firegen-main --expr "repo == 'shipfail/firegen' &amp;&amp; ref == 'refs/heads/main'"</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="visual-flow-of-the-new-model">Visual Flow of the New Model</h3>
+
+<pre><code class="language-mermaid">graph LR;
+    A[Trust Domain] --&gt; B[Provider];
+    B --&gt; C[Claim Mapping];
+    C --&gt; D[Selector];
+    D --&gt; E[Identity];
+    E --&gt; F[Policy Binding];
+</code></pre>
+
+<p>This reads like natural English:</p>
+
+<blockquote>
+  <p>Trust domain defines where identities come from → Provider validates tokens → Selector filters them → Identities receive roles.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="the-new-command-line-philosophy">The New Command-Line Philosophy</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Principle</th>
+      <th>Rule</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>No positionals</strong></td>
+      <td>Every value is explicitly named</td>
+      <td><code class="language-plaintext highlighter-rouge">--project</code>, <code class="language-plaintext highlighter-rouge">--role</code>, <code class="language-plaintext highlighter-rouge">--account</code></td>
+    </tr>
+    <tr>
+      <td><strong>Clear rhythm</strong></td>
+      <td>Commands are <code class="language-plaintext highlighter-rouge">noun verb --param value</code></td>
+      <td><code class="language-plaintext highlighter-rouge">iam identity grant --role viewer</code></td>
+    </tr>
+    <tr>
+      <td><strong>Uniform join syntax</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">=</code> for literals, space for variables</td>
+      <td><code class="language-plaintext highlighter-rouge">--role=viewer</code>, <code class="language-plaintext highlighter-rouge">--account "$ACCOUNT"</code></td>
+    </tr>
+    <tr>
+      <td><strong>No nested paths</strong></td>
+      <td>Replace URIs with semantic selectors</td>
+      <td><code class="language-plaintext highlighter-rouge">selector://repo=shipfail/firegen</code></td>
+    </tr>
+    <tr>
+      <td><strong>Consistent nouns</strong></td>
+      <td>Commands start with an entity name</td>
+      <td><code class="language-plaintext highlighter-rouge">iam identity create</code>, <code class="language-plaintext highlighter-rouge">iam selector define</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="our-design-principles-the-philosophy-of-human-centered-iam">Our Design Principles: The Philosophy of Human-Centered IAM</h2>
+
+<ol>
+  <li><strong>Plain Language First</strong> — Use natural words that describe intent (trust-domain, selector, identity).</li>
+  <li><strong>Visual Consistency</strong> — Every flag/value pair looks the same; user inputs always have <code class="language-plaintext highlighter-rouge">--</code> prefixes.</li>
+  <li><strong>Predictable Grammar</strong> — Commands read like English sentences: <code class="language-plaintext highlighter-rouge">iam identity grant --role admin</code>.</li>
+  <li><strong>Composable by Design</strong> — Trust domains, providers, and selectors fit like Lego blocks.</li>
+  <li><strong>No Hidden Context</strong> — Every action is explicit; no positional magic.</li>
+  <li><strong>Readable by Humans, Executable by Machines</strong> — The command should teach by itself.</li>
+  <li><strong>Reduce Cognitive Jumps</strong> — From intent to syntax, one thought equals one command.</li>
+</ol>
+
+<hr />
+
+<h2 id="example-workflow">Example Workflow</h2>
+
+<h3 id="1️⃣-create-a-trust-domain-for-github">1️⃣ Create a trust domain for GitHub</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>iam trust-domain create <span class="nt">--name</span> github <span class="nt">--display-name</span> <span class="s2">"GitHub Actions"</span>
+</code></pre></div></div>
+
+<h3 id="2️⃣-add-a-provider">2️⃣ Add a provider</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>iam provider add <span class="nt">--domain</span> github <span class="nt">--name</span> actions <span class="se">\</span>
+  <span class="nt">--issuer</span> https://token.actions.githubusercontent.com <span class="se">\</span>
+  <span class="nt">--claim-mapping</span> <span class="nv">repo</span><span class="o">=</span>assertion.repository,ref<span class="o">=</span>assertion.ref,actor<span class="o">=</span>assertion.actor
+</code></pre></div></div>
+
+<h3 id="3️⃣-define-a-selector-for-one-repo--branch">3️⃣ Define a selector for one repo + branch</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>iam selector create <span class="nt">--name</span> repo-shipfail-firegen-main <span class="se">\</span>
+  <span class="nt">--expr</span> <span class="s2">"repo == 'shipfail/firegen' &amp;&amp; ref == 'refs/heads/main'"</span>
+</code></pre></div></div>
+
+<h3 id="4️⃣-grant-impersonation">4️⃣ Grant impersonation</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>iam identity grant <span class="se">\</span>
+  <span class="nt">--account</span> gha-vertex@cineai.iam.gserviceaccount.com <span class="se">\</span>
+  <span class="nt">--role</span> roles/iam.federatedImpersonator <span class="se">\</span>
+  <span class="nt">--to</span> selector://repo-shipfail-firegen-main
+</code></pre></div></div>
+
+<h4 id="visual-summary">Visual Summary</h4>
+
+<pre><code class="language-mermaid">graph TD;
+  A[GitHub Token] --&gt;|OIDC| B[Provider];
+  B --&gt;|Maps claims| C[Trust Domain];
+  C --&gt;|Matches rule| D[Selector];
+  D --&gt;|Authorized| E[Service Account];
+  E --&gt;|Gets Role| F[Vertex AI Access];
+</code></pre>
+
+<p>Readable. Predictable. Teachable.</p>
+
+<hr />
+
+<h2 id="mapping-old-to-new">Mapping Old to New</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Old GCP Concept</th>
+      <th>New Concept</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">principalSet://.../attribute.repository/OWNER/REPO</code></td>
+      <td><code class="language-plaintext highlighter-rouge">selector://repo=OWNER/REPO</code></td>
+      <td>Easier and declarative</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">attribute.ref=='refs/heads/main'</code></td>
+      <td><code class="language-plaintext highlighter-rouge">branch=main</code></td>
+      <td>Plain, natural</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">workloadIdentityPools.create</code></td>
+      <td><code class="language-plaintext highlighter-rouge">trust-domain create</code></td>
+      <td>Self-descriptive</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">providers.create-oidc</code></td>
+      <td><code class="language-plaintext highlighter-rouge">provider add</code></td>
+      <td>Simpler verbs</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">roles/iam.workloadIdentityUser</code></td>
+      <td><code class="language-plaintext highlighter-rouge">roles/iam.federatedImpersonator</code></td>
+      <td>Semantic clarity</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="why-this-matters">Why This Matters</h2>
+
+<h3 id="for-developers">For developers</h3>
+
+<ul>
+  <li>Clear mental model → faster learning curve</li>
+  <li>Commands read like instructions, not incantations</li>
+  <li>Consistent syntax across all IAM actions</li>
+</ul>
+
+<h3 id="for-architects">For architects</h3>
+
+<ul>
+  <li>Easier to reason about trust boundaries</li>
+  <li>Policy design is composable and auditable</li>
+  <li>Reduced risk of misconfiguration</li>
+</ul>
+
+<h3 id="for-platform-teams">For platform teams</h3>
+
+<ul>
+  <li>Lower onboarding friction</li>
+  <li>Uniform automation interfaces</li>
+  <li>Documentation that actually teaches</li>
+</ul>
+
+<hr />
+
+<h2 id="closing-thoughts-when-language-shapes-thinking">Closing Thoughts: When Language Shapes Thinking</h2>
+
+<p>Every tool is also a language.<br />
+And every language shapes how we think.</p>
+
+<p>The current Google Cloud IAM syntax reflects an era of <strong>machine-first precision</strong>.<br />
+Our redesign aims for <strong>human-first clarity</strong>—without sacrificing correctness.</p>
+
+<p>When the concepts match intuition, the mental load drops, the speed rises, and the joy returns.</p>
+
+<blockquote>
+  <p>The cloud should not demand fluency in bureaucracy.<br />
+It should speak in plain, powerful English.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="-call-to-action-join-the-rethink">🚀 Call to Action: Join the Rethink</h2>
+
+<p>If this vision resonates with you—whether you’re a developer, architect, or product designer—join us in the conversation.<br />
+Share your feedback, your pain points, and your ideas for making developer tools as elegant as their underlying systems.</p>
+
+<p>👉 <strong>Tag your reflections with</strong> <a href="https://www.linkedin.com/posts/huan42_cloudcomputing-developerexperience-iam-activity-7393134290273943553-cbPc?utm_source=social_share_send&amp;utm_medium=member_desktop_web&amp;rcm=ACoAAABJtEEBYS2BLpPbA3dSW85b09JUIKBcSeY">LinkedIn</a> <strong>or</strong> <a href="https://x.com/huan2024/status/1987368121246843327">Twitter</a>, and let’s build a new language of clarity together.</p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#google-cloud">google-cloud</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#iam">iam</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#hackathon">hackathon</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#cli-design">cli-design</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#developer-experience">developer-experience</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Author @ Wechaty, Architect @ Chatie, LLM Code Generation Enthusiast, Serial Entrepreneur, Burner🔥
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2025/11/04/rethinking-azure-billing/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2025/11-rethinking-azure-billing/rethinking-azure-billing.webp">  Rethinking Azure Billing: The Simple Design Microsoft Should Have Built</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2025/11/13/firegen-firebase-rtdb-genai-api/"> Announcing FireGen: Turn Firebase RTDB into Your Universal Generative AI API  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2025/11-firegen-firebase-rtdb-genai-api/firegen-prompt.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" crossorigin="anonymous"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      if (!window.mermaid) {
+        return;
+      }
+
+      const codeBlocks = document.querySelectorAll('pre code.language-mermaid, code.language-mermaid');
+      codeBlocks.forEach(function (codeEl) {
+        const container = document.createElement('div');
+        container.className = 'mermaid';
+        container.textContent = codeEl.textContent;
+
+        const parent = codeEl.parentElement;
+        if (parent && parent.tagName.toLowerCase() === 'pre') {
+          parent.parentElement.replaceChild(container, parent);
+        } else if (parent) {
+          parent.replaceChild(container, codeEl);
+        } else {
+          codeEl.replaceWith(container);
+        }
+      });
+
+      window.mermaid.initialize({ startOnLoad: true, securityLevel: 'loose' });
+    });
+  </script>
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

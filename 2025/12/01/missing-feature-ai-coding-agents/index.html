@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      The Missing Feature in AI Coding Agents — And Why Only Claude Code Delivers It | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>The Missing Feature in AI Coding Agents — And Why Only Claude Code Delivers It | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="The Missing Feature in AI Coding Agents — And Why Only Claude Code Delivers It" />
+<meta name="author" content="huan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A Deep Dive into Branching Conversations, Editable Prompts, and the Future of Terminal AI" />
+<meta property="og:description" content="A Deep Dive into Branching Conversations, Editable Prompts, and the Future of Terminal AI" />
+<link rel="canonical" href="https://wechaty.js.org/2025/12/01/missing-feature-ai-coding-agents/" />
+<meta property="og:url" content="https://wechaty.js.org/2025/12/01/missing-feature-ai-coding-agents/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2025/12-missing-feature-ai-coding-agents/post-teaser-image.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-12-01T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2025/12-missing-feature-ai-coding-agents/post-teaser-image.webp" />
+<meta property="twitter:title" content="The Missing Feature in AI Coding Agents — And Why Only Claude Code Delivers It" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"huan"},"dateModified":"2025-12-01T00:00:00+00:00","datePublished":"2025-12-01T00:00:00+00:00","description":"A Deep Dive into Branching Conversations, Editable Prompts, and the Future of Terminal AI","headline":"The Missing Feature in AI Coding Agents — And Why Only Claude Code Delivers It","image":"https://wechaty.js.org/assets/2025/12-missing-feature-ai-coding-agents/post-teaser-image.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2025/12/01/missing-feature-ai-coding-agents/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"huan"},"url":"https://wechaty.js.org/2025/12/01/missing-feature-ai-coding-agents/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#article">article</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">The Missing Feature in AI Coding Agents — And Why Only Claude Code Delivers It</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Dec 01, 2025 · <span class="reading-time">
+  
+  
+    8 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2025/12-missing-feature-ai-coding-agents/post-teaser-image.webp" alt="The Missing Feature in AI Coding Agents — And Why Only Claude Code Delivers It">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<blockquote>
+  <p>A Deep Dive into Branching Conversations, Editable Prompts, and the Future of Terminal AI</p>
+</blockquote>
+
+<hr />
+
+<h2 id="-1-a-surprising-truth-about-terminal-ai-in-2025--a-surprising-truth-in-2025">🧨 <strong>1. A Surprising Truth About Terminal AI in 2025</strong> — A Surprising Truth in 2025</h2>
+
+<p>Here’s the part almost nobody realizes — and even fewer talk about:</p>
+
+<h3 id="every-major-ai-coding-tool-can-write-code-refactor-test-debug-and-explain"><strong>Every major AI coding tool can write code, refactor, test, debug, and explain…</strong></h3>
+
+<h3 id="but-only-one-tool-on-earth-lets-you-fix-a-previous-prompt-and-restart-the-conversation-from-that-point"><strong>…but only <em>one</em> tool on Earth lets you fix a previous prompt and restart the conversation from that point.</strong></h3>
+
+<p>Not Gemini CLI.
+Not Codex CLI.
+Not Copilot CLI.
+Not even the local LLM community.</p>
+
+<h3 id="-only-claude-code-supports-true-conversation-editing--branching-in-the-terminal">❗ Only <strong>Claude Code</strong> supports true <strong>conversation editing + branching</strong> in the terminal</h3>
+
+<p>This is wild. We’re in 2025. We have:</p>
+
+<ul>
+  <li>GPT‑5.1 Codex Max writing entire services</li>
+  <li>Gemini 3 Pro V generation flowing from laptop to cloud</li>
+  <li>Llama 3.2 running fully offline</li>
+  <li>Cursor and VSCode agents rewriting codebases</li>
+</ul>
+
+<p>Yet <strong>the terminal</strong> — where real builders live, automate, and ship — still behaves like it’s 1994.</p>
+
+<p>Except one tool.</p>
+
+<p>This post explains the real reason why <strong>branching conversations</strong> are the missing superpower in CLI AI… and how we bring this future into existence.</p>
+
+<p>And yes — I’m writing this from the lens of a <strong>solo founder building with AI as my co‑founder</strong>, inside my PreAngel + Ship.Fail system. Because terminal agents are becoming our creative partners, execution engines, and reasoning amplifiers — not autocomplete boxes.</p>
+
+<p>Let’s dive in — and map out the future.</p>
+
+<hr />
+
+<h2 id="-2-the-real-problem-terminal-agents-are-still-linear">🚧 <strong>2. The Real Problem: Terminal Agents Are Still Linear</strong></h2>
+
+<p>Imagine this:</p>
+
+<p>You’re deep in a coding session.
+Claude/Gemini/Codex rewrote half your project.
+But then you realize — wow — your <strong>third prompt was wrong</strong>.</p>
+
+<p>Now everything downstream is compromised — polluted context, broken edits, and tangled reasoning.</p>
+
+<p>You want to go back, fix prompt #3, and regenerate the entire flow.</p>
+
+<p><img src="/assets/2025/12-missing-feature-ai-coding-agents/dead-end.webp" alt="Dead End Road Sign" /></p>
+
+<h3 id="in-every-cli-except-claude-code">In every CLI except Claude Code</h3>
+
+<ul>
+  <li>you cannot edit prompt #3</li>
+  <li>you cannot restart from that point</li>
+  <li>you cannot drop later conversation nodes</li>
+  <li>you cannot rollback the filesystem changes</li>
+  <li>you cannot branch your session</li>
+</ul>
+
+<p>In every CLI today, your only option is:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/reset
+</code></pre></div></div>
+
+<p>…and lose everything.</p>
+
+<p>You feel this pain because real engineering workflows are <strong>iterative</strong>, not linear.
+Coding is not chat. Coding — especially with an AI co-founder — is:</p>
+
+<ul>
+  <li>refine → test → revert → branch → repeat</li>
+</ul>
+
+<p>But CLIs treat coding like SMS texting.</p>
+
+<hr />
+
+<h2 id="-3-the-reality-check--full-market-scan-2025-updated">🔍 <strong>3. The Reality Check — Full Market Scan (2025 Updated)</strong></h2>
+
+<p>Below is the <em>latest and factual</em> state of every major CLI coding agent.</p>
+
+<h3 id="-claude-code-20-nov-2025">🟢 <strong>Claude Code 2.0</strong> (Nov 2025)</h3>
+
+<p><strong>The only CLI with:</strong></p>
+
+<ul>
+  <li>ESC ESC history navigator</li>
+  <li>editable previous prompts</li>
+  <li>conversation tree branching</li>
+  <li>workspace-aware context</li>
+  <li>session persistence</li>
+  <li>rollback-safe file operations</li>
+</ul>
+
+<p>Claude Code behaves like a tiny IDE inside the terminal.</p>
+
+<p>It is the <em>only</em> agent treating the terminal as a first‑class environment.</p>
+
+<hr />
+
+<h3 id="-gemini-cli-gemnet-v1x-2025">🟡 <strong>Gemini CLI (GemNet) v1.x (2025)</strong></h3>
+
+<p>Powerful model. Great performance. But:</p>
+
+<p><strong>Missing:</strong></p>
+
+<ul>
+  <li>no editing previous prompts</li>
+  <li>no checkpoint/restore</li>
+  <li>no rewind</li>
+  <li>no tree navigation</li>
+  <li>no branching</li>
+</ul>
+
+<p>Developers complain loudly:</p>
+
+<blockquote>
+  <p><em>“Once a prompt is wrong, everything after is ruined.”</em>
+– <a href="https://github.com/google-gemini/gemini-cli/issues/10530">GitHub Issue #10530</a></p>
+</blockquote>
+
+<p>Another plea:</p>
+
+<blockquote>
+  <p><em>“We need conversational checkpoints.”</em>
+– <a href="https://github.com/google-gemini/gemini-cli/issues/14105">Issue #14105</a></p>
+</blockquote>
+
+<hr />
+
+<h3 id="-openai-codex-cli-gpt51-codex-max">🔵 <strong>OpenAI Codex CLI (GPT‑5.1 Codex Max)</strong></h3>
+
+<p>Incredible model. Handles huge repos. But the CLI:</p>
+
+<ul>
+  <li>is stateless</li>
+  <li>no branching</li>
+  <li>no editing</li>
+  <li>no history UI</li>
+  <li>built mainly for automation + cloud workspaces</li>
+</ul>
+
+<p>As one dev said:</p>
+
+<blockquote>
+  <p><em>“Codex is smart, but the CLI feels like ChatGPT 2022.”</em></p>
+</blockquote>
+
+<hr />
+
+<h3 id="-github-copilot-cli">🟣 <strong>GitHub Copilot CLI</strong></h3>
+
+<p>Designed for terminal commands, not full conversations.</p>
+
+<p>Missing:</p>
+
+<ul>
+  <li>branching</li>
+  <li>editing</li>
+  <li>undo</li>
+  <li>timeline view</li>
+</ul>
+
+<p>Great for <code class="language-plaintext highlighter-rouge">git</code> and shell automation. Not for deep code sessions.</p>
+
+<hr />
+
+<h3 id="-local-llm-clis-ollama-llamacpp">⚫ <strong>Local LLM CLIs (Ollama, llama.cpp)</strong></h3>
+
+<p>Fantastic for offline coding.
+But:</p>
+
+<ul>
+  <li>no branching</li>
+  <li>no history editing</li>
+  <li>no structured state</li>
+</ul>
+
+<p>Every REPL is still 1-dimensional.</p>
+
+<hr />
+
+<h2 id="-4-developer-voices--the-community-already-knows">📣 <strong>4. Developer Voices — The Community Already Knows</strong></h2>
+
+<p>This isn’t just my opinion.
+Developers across the internet are shouting the same thing.</p>
+
+<p>Here are real, public conversations:</p>
+
+<h3 id="️-hacker-news">🗣️ Hacker News</h3>
+
+<blockquote>
+  <p><em>“Gemini CLI makes the models look dumb. Claude Code floors me every time.”</em>
+<a href="https://news.ycombinator.com/item?id=44376919">https://news.ycombinator.com/item?id=44376919</a></p>
+</blockquote>
+
+<h3 id="️-reddit-gemini">🗣️ Reddit (Gemini)</h3>
+
+<blockquote>
+  <p><em>“Why can’t we edit older messages? It makes Gemini unusable for debugging.”</em>
+<a href="https://www.reddit.com/r/GoogleGeminiAI/comments/1jmheul/why_cant_we_edit_previous_messages_frustrating">https://www.reddit.com/r/GoogleGeminiAI/comments/1jmheul/why_cant_we_edit_previous_messages_frustrating</a></p>
+</blockquote>
+
+<h3 id="️-gemini-cli-feature-requests">🗣️ Gemini CLI Feature Requests</h3>
+
+<blockquote>
+  <p><em>“We <strong>need</strong> to edit old prompts and revert all subsequent steps.”</em>
+<a href="https://github.com/google-gemini/gemini-cli/issues/10530">https://github.com/google-gemini/gemini-cli/issues/10530</a></p>
+
+  <p><em>“Please implement /checkpoint and /restore.”</em>
+<a href="https://github.com/google-gemini/gemini-cli/issues/14105">https://github.com/google-gemini/gemini-cli/issues/14105</a></p>
+</blockquote>
+
+<h3 id="️-developer-blog">🗣️ Developer Blog</h3>
+
+<blockquote>
+  <p><em>“Claude Code is usable. Gemini CLI is powerful but linear. Codex CLI is intelligent but not interactive.”</em>
+<a href="https://blog.metamirror.io/claude-code-v-gemini-cli-e144feafbcf2">https://blog.metamirror.io/claude-code-v-gemini-cli-e144feafbcf2</a></p>
+</blockquote>
+
+<h3 id="️-medium-benchmark">🗣️ Medium Benchmark</h3>
+
+<blockquote>
+  <p><em>“I tested 5 CLI agents — only Claude Code feels complete.”</em>
+<a href="https://medium.com/lets-code-future/i-tested-5-cli-coding-agents-heres-what-actually-surprised-me-c0d2fbd421ec">https://medium.com/lets-code-future/i-tested-5-cli-coding-agents-heres-what-actually-surprised-me-c0d2fbd421ec</a></p>
+</blockquote>
+
+<h3 id="️-linkedin-dev-opinion">🗣️ LinkedIn Dev Opinion</h3>
+
+<blockquote>
+  <p><em>“Claude Code lets me fix and re-run. Others force a full reset.”</em>
+<a href="https://www.linkedin.com/posts/matt-koppenheffer_quick-thoughts-on-cli-coding-agents-since-activity-7372353748645363713-wfQ1">https://www.linkedin.com/posts/matt-koppenheffer_quick-thoughts-on-cli-coding-agents-since-activity-7372353748645363713-wfQ1</a></p>
+</blockquote>
+
+<p>The industry is already speaking. Loudly.</p>
+
+<hr />
+
+<h2 id="-5-why-only-claude-code-supports-branching">🧠 <strong>5. Why Only Claude Code Supports Branching</strong></h2>
+
+<p>This is the pivotal section — the part that explains the industry gap everyone feels but nobody articulates.</p>
+
+<p><img src="/assets/2025/12-missing-feature-ai-coding-agents/branching.webp" alt="Branching" /></p>
+
+<p>Here’s the real reason:</p>
+
+<h3 id="51-strategic-reason"><strong>5.1 Strategic Reason</strong></h3>
+
+<p>Anthropic’s philosophy: help developers <strong>iterate</strong>, not just generate.</p>
+
+<p>Everyone else:</p>
+
+<ul>
+  <li>Google → scripting &amp; automation</li>
+  <li>OpenAI → cloud agents + IDE</li>
+  <li>GitHub → command assistants</li>
+  <li>Local LLMs → inference layers</li>
+</ul>
+
+<p>Only Claude Code targets <strong>terminal-native iterative programming</strong>.</p>
+
+<hr />
+
+<h3 id="52-technical-reason"><strong>5.2 Technical Reason</strong></h3>
+
+<p>Implementing branching requires:</p>
+
+<ul>
+  <li>timeline tracking</li>
+  <li>TUI navigation interface</li>
+  <li>workspace versioning</li>
+  <li>undo/redo semantics</li>
+  <li>conversation state manager</li>
+  <li>replay engine</li>
+  <li>side-effect rollback</li>
+</ul>
+
+<p>This is basically: <strong>Git + Jupyter + LLM</strong>, inside a CLI.</p>
+
+<p>Nobody else built this layer.</p>
+
+<hr />
+
+<h3 id="53-ux-reason"><strong>5.3 UX Reason</strong></h3>
+
+<p>Terminal UX is hard.</p>
+
+<p>Claude Code’s ESC‑ESC interface is effectively a <strong>UI framework</strong> embedded in a terminal.</p>
+
+<p>Others treat terminal like raw stdin/stdout.</p>
+
+<hr />
+
+<h3 id="54-product-reason"><strong>5.4 Product Reason</strong></h3>
+
+<p>Every company made tradeoffs.</p>
+
+<p>Claude Code: build a</p>
+
+<h3 id="first-class-ai-ide-inside-the-terminal"><strong>first-class AI IDE inside the terminal.</strong></h3>
+
+<p>Competitors, meanwhile, made different tradeoffs:</p>
+
+<ul>
+  <li>Copilot CLI → shell shortcuts</li>
+  <li>Gemini CLI → thin model wrapper</li>
+  <li>Codex CLI → cloud service front-end</li>
+  <li>Local CLIs → minimal REPLs</li>
+</ul>
+
+<p>Different priorities → different capabilities.</p>
+
+<hr />
+
+<h2 id="-6-design-proposal--what-a-real-2026-terminal-ai-should-deliver">🚀 <strong>6. Design Proposal — What a Real 2026+ Terminal AI Should Deliver</strong></h2>
+
+<p><img src="/assets/2025/12-missing-feature-ai-coding-agents/undo-reply.webp" alt="Tree Branching" /></p>
+
+<p>If we were to design the <strong>next-generation terminal agent</strong>, it must include:</p>
+
+<h3 id="-1-conversation-tree-view">✔ <strong>1. Conversation Tree View</strong></h3>
+
+<p>Side-branching like Git.
+Editable nodes.
+Time-travel debug.</p>
+
+<h3 id="-2-prompt-editing">✔ <strong>2. Prompt Editing</strong></h3>
+
+<p>Fix prompt #3 and regenerate everything after.</p>
+
+<h3 id="-3-checkpoint--restore">✔ <strong>3. Checkpoint / Restore</strong></h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/checkpoint v1.2
+/restore v1.2
+</code></pre></div></div>
+
+<h3 id="-4-full-workspace-diffing">✔ <strong>4. Full Workspace Diffing</strong></h3>
+
+<p>Before applying massive changes, show diffs.</p>
+
+<h3 id="-5-undoredo-for-file-operations">✔ <strong>5. Undo/Redo for File Operations</strong></h3>
+
+<p>LLM‑safe filesystem.</p>
+
+<h3 id="-6-replay-mode">✔ <strong>6. Replay Mode</strong></h3>
+
+<p>Let the agent re-simulate prior decisions.</p>
+
+<h3 id="-7-agent-reasoning-mode">✔ <strong>7. Agent Reasoning Mode</strong></h3>
+
+<p>Watch the agent reason step-by-step.</p>
+
+<h3 id="-8-offline--cloud-sync">✔ <strong>8. Offline + Cloud Sync</strong></h3>
+
+<p>Local speed, cloud intelligence.</p>
+
+<p>This isn’t sci-fi — this is the logical next step in AI-native engineering.
+This is the standard I want <strong>as a solo founder building with AI co-founders</strong> — and the standard our ecosystem deserves.</p>
+
+<hr />
+
+<h2 id="-7-the-forecast--where-cli-agents-are-headed-20262027">🔮 <strong>7. The Forecast — Where CLI Agents Are Headed (2026–2027)</strong></h2>
+
+<p>Here’s where the industry will go.</p>
+
+<h3 id="prediction-1--google-will-adopt-branching-first"><strong>Prediction 1 — Google will adopt branching first.</strong></h3>
+
+<p>The demand is too loud.</p>
+
+<h3 id="prediction-2--openai-will-build-a-codex-ide-mode-inside-the-cli"><strong>Prediction 2 — OpenAI will build a “Codex IDE mode” inside the CLI.</strong></h3>
+
+<p>Codex Max is too powerful to stay linear.</p>
+
+<h3 id="prediction-3--copilot-cli-will-remain-automation-first-not-conversation-first"><strong>Prediction 3 — Copilot CLI will remain automation-first, not conversation-first.</strong></h3>
+
+<p>GitHub’s strength is workflow, not dialog engines.</p>
+
+<h3 id="prediction-4--developers-will-demand-a-cli-notebook-experience"><strong>Prediction 4 — Developers will demand a “CLI Notebook Experience.”</strong></h3>
+
+<p>Notebook → IDE → Terminal Notebook Agent.</p>
+
+<h3 id="prediction-5--local-llms-will-eventually-adopt-a-minimal-branching-ui"><strong>Prediction 5 — Local LLMs will eventually adopt a minimal branching UI.</strong></h3>
+
+<p>Open-source devs are hungry.</p>
+
+<p>And when this shift happens, Claude Code will be seen as the tool that started it.</p>
+
+<hr />
+
+<h2 id="-8-developer-experience-manifesto--a-new-standard-for-terminal-ai">💡 <strong>8. Developer Experience Manifesto — A New Standard for Terminal AI</strong></h2>
+
+<p>Here’s my proposal for the industry.</p>
+
+<blockquote>
+  <p><strong>A terminal AI agent must be iterative, rewindable, branchable, debuggable, and stateful.</strong></p>
+
+  <p><strong>Linear REPLs are no longer acceptable for real engineering.</strong></p>
+
+  <p><strong>Conversation editing is not a luxury — it is a foundational requirement.</strong></p>
+
+  <p><strong>Every CLI agent needs branching, checkpoints, undo/redo, and file-safe execution.</strong></p>
+</blockquote>
+
+<p>This is the future I want — for myself, for PreAngel founders, and for every builder creating AI-native companies.</p>
+
+<hr />
+
+<h2 id="-9-conclusion--the-future-of-terminal-ai-depends-on-this-one-feature">🔚 <strong>9. Conclusion — The Future of Terminal AI Depends on This One Feature</strong></h2>
+
+<p>The models are powerful.
+The ideas are endless.
+The future of building with AI will happen <strong>in the terminal</strong>.</p>
+
+<p>But unless our CLI tools support:</p>
+
+<ul>
+  <li>conversation editing</li>
+  <li>branching</li>
+  <li>rewind</li>
+  <li>replay</li>
+  <li>undo</li>
+</ul>
+
+<p>…we are stuck in linear workflows that break as soon as one prompt goes wrong.</p>
+
+<p>Claude Code shows what’s possible.
+It sets the bar.</p>
+
+<p>Now it’s time for the industry to catch up.</p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ai">ai</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#coding">coding</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#agents">agents</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Author @ Wechaty, Architect @ Chatie, LLM Code Generation Enthusiast, Serial Entrepreneur, Burner🔥
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2025/11/29/vibe-coding-cloud-protocol/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2025/11-vibe-coding-cloud-protocol/teaser.webp">  The Vibe Coding Cloud Protocol: One Tree to Rule Your Infrastructure</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2025/12/03/when-english-hits-ring-0/"> When English Hits Ring 0: A Field Guide to PromptWare  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2025/12-when-english-hits-ring-0/english-hits-ring-0.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>
