@@ -52,7 +52,8 @@ Ten tabs later I realized two things:
 1. The legal substrate of our world is still mostly old-school FOSS.
 2. None of the existing licenses really speak PromptWare yet.
 
-Which is how I ended up sketching a Prompt Public License (PPL) and then zooming out into the bigger question:
+Which is how I ended up sketching a Prompt Public License (PPL, see my other blog post [From GPL to Prompts: Rethinking Open Source Licenses for the AI-Native Era
+](https://preangel.ai/2025/12/02/from-gpl-to-prompts/)) and then zooming out into the bigger question:
 
 > If prompts are the new programs, what era of software are we actually in?
 
