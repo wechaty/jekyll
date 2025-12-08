@@ -9,54 +9,68 @@ tags:
   - prompt-engineering
   - markdown
   - libraries
-image: /assets/2025/12-promptware-os-one-line-boot-ai-native-library/promptware-os-teaser.svg
+image: /assets/2025/12-promptware-os-one-line-boot-ai-native-library/teaser.webp
 ---
 
-*Why I'm treating prompts like an operating system, not a pile of sticky notes.*
-
----
-
-## 1. The feeling that something is... off
-
-If you work with AI agents today, you probably recognize this feeling:
-
-* Every project has its own `agents.md` or system prompt file.
-* Every app has slightly different rules, styles, and instructions.
-* Every new agent feels like starting from zero.
-
-Over time, you end up with **dozens of half-related prompts** scattered across Notion, Google Docs, GitHub gists, screenshots, and chat history. You cannot remember which one is the good version. You copy-paste the same core ideas into new projects. You fix a mistake in one place, but forget to update it everywhere else.
-
-It is like trying to run a company where every team writes its own version of the company values in a private doc.
-
-That is where Promptware OS starts.
+> Why I'm treating prompts like an operating system, not a pile of sticky notes.
 
 ---
 
-## 2. A simple question: where do your agents go to learn?
+## 1. Where this really comes from
+
+Promptware OS didn’t start as a “product idea”. It started as a very simple pain:
+
+Under the **ShipFail** umbrella, I’m running multiple AI agents and projects. Under **PreAngel**, I’m thinking in decades: long‑lived companies, long‑lived capital, and now, long‑lived AI co‑founders.
+
+But the way we usually work with prompts today is the opposite of long‑lived:
+
+* Every project has its own `agents.md` or “system prompt” file.
+* Every repo has slightly different rules and styles.
+* Every new agent is setup from scratch, even if it’s solving a familiar kind of problem.
+
+After a while, this starts to feel wrong — not just inconvenient, but **structurally wrong**.
+
+We would never run a serious software company on a stack of private, conflicting Google Docs. But that’s exactly how most of us are running our prompts.
+
+Promptware OS is my attempt to fix that, using the same kind of first‑principles thinking that shaped Unix and the early Internet — but for the AI era.
+
+---
+
+## 2. A simple reframing: agents need a library, not a monologue
 
 When humans want to learn, we go to **libraries**:
 
 * There is a shared place where knowledge lives.
 * Books are organized into categories and shelves.
-* Teachers do not rewrite the book; they give you a **reading list**.
+* Teachers don’t rewrite the book; they give you a **reading list**.
 
-But if you look at how we use AI agents today, most of them are not reading from a library. They are reading from a **single giant sticky note** you glued onto their forehead:
+Most AI agents, on the other hand, are given a single giant monologue:
 
-> "Here are your rules, here is your style, here is everything. Please remember all of this forever."
+> “Here are your rules, your style, your philosophy, your tools, all in one prompt. Good luck.”
 
-It kind of works... until it does not.
+It works to a point. But as soon as you:
 
-What if, instead of stuffing everything into one prompt, we simply said to the agent:
+* Run more than one project,
+* Have more than one agent,
+* Or want to improve your prompts over time,
 
-> **"Here is who you are. When you need more context, go to this library and read."**
+…you discover you’re copying the same ideas into 5, 10, 20 different places.
 
-That is the core idea of Promptware OS.
+From a first‑principles perspective, this doesn’t make sense.
+
+If AI agents are going to behave like co‑founders, they shouldn’t be reading from sticky notes. They should be reading from a **shared library**.
+
+So the core question behind Promptware OS is very simple:
+
+> **Where do your agents go to learn?**
+
+If the answer is “a random selection of chat logs and documents”, we can do better.
 
 ---
 
-## 3. The one-line bootloader
+## 3. The one‑line bootloader
 
-At the heart of Promptware OS is a very small, very boring sentence you put into your agent's system prompt or `agents.md` file.
+All of Promptware OS can be summarized in one tiny piece of text you put into your agent’s system prompt or `agents.md` file.
 
 It looks like this (simplified):
 
@@ -66,239 +80,275 @@ https://raw.githubusercontent.com/ShipFail/promptware/main/library/agents/press0
 When you need more context, fetch and read that URL.
 ```
 
-That is it.
+That’s it.
 
-This one line is the **bootloader** for Promptware OS. It tells the agent:
+This one line is the **bootloader** for Promptware OS.
 
-* Where to go (a URL).
-* When to go there (whenever it needs more context).
+It tells the agent:
 
-Everything else -- the persona, the skills, the tools -- lives in that library, not in the prompt itself.
+* *Where* it can find the truth about itself and its skills.
+* *When* to go there (whenever it needs more context).
 
-You can change the library without changing the one-liner. You can onboard new agents to the same library with just that one sentence. You can add new skills or refine old ones without touching every project.
+Everything else — who the agent is, which skills it has, how it should think — lives in a library of Markdown files in a single GitHub repo: `ShipFail/promptware`.
+
+From the point of view of PreAngel, this matters because:
+
+* It gives us **one durable knowledge base** for how our AI co‑founders should behave.
+* We can reuse that base across many ShipFail and PreAngel projects, without copy‑paste.
+* We can improve the library once, and let every future agent read from the updated version.
+
+As long as an agent can read that one URL, Promptware OS can evolve without rewriting prompts everywhere.
 
 ---
 
-## 4. Persona vs. bookshelf
+## 4. Persona vs. bookshelf: identity is not the same as knowledge
 
-There is one design choice in Promptware OS that I believe will age well:
+There is one design choice in Promptware OS that I expect to last for years:
 
 > **We separate who the agent is from what the agent reads.**
 
-In Promptware OS, each AI co-founder has **two pages** in the library:
+In Promptware OS, each AI co‑founder has **two pages** in the library:
 
-1. A **persona page** -- minimal and stable.
-2. A **mini-library index** -- a curated shelf of favorite books (skills).
+1. A **persona page** – minimal, stable, and cheap to load.
+2. A **mini‑library index** – a curated shelf of favorite “books” (skills).
 
 ### 4.1 Persona: the kernel
 
-The persona page answers questions like:
+The persona page is where we answer:
 
-* What product or domain do I belong to?
-* What is my responsibility?
-* How should I generally behave?
+* What product or domain does this agent belong to?
+* What is its role and responsibility?
+* What are its high‑level values and style?
 
-It is deliberately short.
+This page is deliberately short.
 
-You could load the personas of ten different agents into one multi-agent system without spending many tokens. It is like the **kernel** of an operating system: small, focused, and not changing every day.
+You could load personas for ten different agents at once — a whole team of AI co‑founders — without spending many tokens. That’s important if you think in terms of multi‑agent systems.
 
-### 4.2 Mini-library: the bookshelf
+You can think of the persona as the **kernel** of the agent: the minimal code that defines how it boots.
 
-The mini-library page is a simple index:
+### 4.2 Mini‑library: the bookshelf
 
-* "These are your core skills."
-* "Here are some optional shelves you can browse when needed."
+The mini‑library page is an index for that specific agent. It says:
 
-Each entry links to a skill document in the library.
+* “These are your core skills.”
+* “Here are the shelves you can explore when you need more capabilities.”
 
-The key is: **the agent only loads this when it actually needs it**.
+Each item points to a skill document in the shared library.
 
-If the task is simple and does not require deep knowledge, the agent does not need to open books at all. If the task is complex -- say, designing a print book layout or refactoring a codebase -- the agent walks over to the shelf, pulls the relevant book, reads it, and then acts.
+The key behavior is this:
 
-From a first-principles perspective:
+* The agent only loads the mini‑library when it actually needs more knowledge.
+* It only opens individual skills when they are relevant to the current task.
 
-* Personas should be **cheap to load and easy to combine**.
-* Knowledge should be **pulled on demand**, not pushed into every prompt.
+From a first‑principles perspective, this gives us:
+
+* **Cheap identity** – personas are tiny and easy to combine.
+* **On‑demand knowledge** – skills are pulled when needed, not stuffed into every prompt.
+
+This is exactly the kind of separation you see in operating systems and in good API design. We’re just applying it to prompts.
 
 ---
+
+![Promptware Architect]({{ 'assets/2025/12-promptware-os-one-line-boot-ai-native-library/architecture.webp' | relative_url }})
 
 ## 5. Markdown as the universal interface
 
-Another non-negotiable decision in Promptware OS is the format:
+Another decision that I expect to survive multiple generations of tools is the file format:
 
-> **Everything is Markdown.**
+> **Everything in Promptware OS is Markdown.**
 
-Why?
+Not a proprietary format. Not a custom binary. Just:
 
-Because Markdown is:
+* Plain text,
+* Light structure,
+* Easy for humans to read,
+* Easy for LLMs to parse.
 
-* Easy for humans to read.
-* Easy for LLMs to read.
-* Plain text. It does not require a fancy editor.
+Each skill is a Markdown document that describes:
 
-Each skill in Promptware OS is just a Markdown file that says:
+* What the skill is for.
+* What behavior it expects from the agent.
+* Optionally, which external tools it can use.
 
-* What this skill is for.
-* What expectations or rules it carries.
-* Optionally, which external tools it can call.
+If you’re a non‑technical builder, you can open these files and understand them. You don’t need to know how to code to review and edit the “mindset” of your AI co‑founders.
 
-You can think of these skill files as **manpages for your agents**:
+If you’re technical, you get something even more valuable: a **text‑first, version‑controlled history** of how your agents are supposed to behave.
 
-* Not meant to be memorized.
-* Meant to be opened, read, and applied when needed.
-
-By choosing Markdown, we also avoid over-optimizing for any particular vendor. Whether you are using Claude, OpenAI, Gemini, or something new in five years, they can all read Markdown over HTTP.
+Markdown feels boring. That’s why I trust it.
 
 ---
 
-## 6. URLs as syscalls
+## 6. URLs as syscalls, Deno as the runtime
 
-In a traditional operating system, the kernel exposes **system calls** -- small, well-defined operations that programs can use to talk to hardware and the outside world.
+In Unix, the kernel exposes **system calls** – simple, well‑defined operations that programs use to interact with the outside world.
 
-In Promptware OS, the equivalent is surprisingly simple:
+In Promptware OS, the equivalent is surprisingly small:
 
-> **The URL is the syscall.**
+> **The URL is the syscall. Deno is one of the runtimes.**
 
 If an agent knows how to:
 
-1. Fetch a URL and read the Markdown.
-2. (Optionally) ask you to run a command like `deno run <url> --help`.
+1. Fetch a URL and read the Markdown, and
+2. Ask you (or a tool layer) to execute a command like:
 
-... then it can navigate the entire OS:
+   ```bash
+   deno run --allow-all &lt;url&gt; --help
+   ```
 
-* Persona -> URL.
-* Mini-library -> URL.
-* Skills -> URLs.
-* Tools -> URLs.
+…then it can navigate the entire OS.
 
-Notice that none of this depends on a specific UI, framework, or product. It is just **text and links**. That is the kind of design that tends to survive multiple generations of tooling.
+This is where **Deno** becomes important.
 
-For non-technical builders, the takeaway is simple:
+Deno has one powerful property that fits Promptware OS perfectly:
 
-* You do not have to learn a new programming language to understand Promptware OS.
-* If you can understand "click this link to read more", you already get the mental model.
+> It can run source code **directly from a URL**.
 
-For technical people, the takeaway is deeper:
+That means we can treat tools as:
 
-* We are treating the **network of prompts** as a real system: with structure, indirection, and stable addressing.
-
----
-
-## 7. Tools: scripts, not magic
-
-When people hear "tools" in an AI context, they often imagine something mysterious: proprietary plugins, black-box APIs, hidden capabilities.
-
-Promptware OS has a simpler stance:
-
-> **A tool is just a script that explains itself with `--help`.**
+* Just another kind of “file” in the Promptware library,
+* Addressable by URL,
+* Discoverable at runtime.
 
 A skill document might say:
 
-* "For this job, there is a tool at this URL."
+> “For this kind of task, there is a tool at this URL.”
 
-That is it.
+The agent does not need to know the full interface upfront. It can:
 
-If the agent wants to use the tool, the first step is always the same:
+1. Ask to run the tool with `--help`.
+2. Read the help output.
+3. Decide how to use it.
 
-```text
-Ask to run:
-  deno run --allow-all <tool-url> --help
-Read the help text.
-Then decide what to do.
-```
+This keeps the core of Promptware OS very simple:
 
-All the detailed parameters, flags, and usage examples live in that help text, not in the global prompt.
+* **Markdown + URLs** for knowledge.
+* **Deno + URLs** for execution.
 
-This gives us a few properties I care about:
+If you strip away all the details, Promptware OS is just:
 
-* **Transparency** -- you can run the same command yourself and see exactly what the agent sees.
-* **Composability** -- tools behave like classic command-line utilities.
-* **Longevity** -- as long as the script is reachable and `--help` works, the interface is discoverable.
+> “Text you can read, and code you can run, both addressed by URLs.”
 
-Again, this is about first principles, not about a particular stack. In five years, maybe it is not Deno, maybe it is something else. The important part is the idea: tools should be **small, inspectable programs**, not hidden spells.
+The exact stack might evolve over time, but the pattern — reading and executing from URLs — is likely to stay.
 
 ---
 
-## 8. For non-technical builders: why this matters to you
+## 7. Tools: small scripts, not big magic
 
-You might be thinking:
+When we say “tools” in AI, people often imagine something mysterious — plugins, hidden APIs, magic integrations.
 
-> "This sounds nice, but I do not write code all day. What does Promptware OS give me?"
+In Promptware OS, a tool is intentionally humble:
 
-Here is the simple version:
+> **A tool is a small script with a clear `--help`, living at a URL.**
 
-* You get a **single place** to define how you want your AI co-founders to think.
-* You can **reuse** those definitions across many projects, without copying.
-* You can **collaborate** with technical teammates on the same source of truth.
+The rule is always the same:
 
-Instead of asking, "Which prompt did we use last time?", you can say:
+1. Find the tool’s URL in the relevant skill document.
+2. Run it with `--help`.
+3. Read the help text.
+4. Only then decide which concrete command to use.
 
-> "This agent uses the Promptware persona for X, and the skills for Y and Z."
+This leads to a few long‑term advantages:
 
-You can review those skills like you would review a brand guide, a product spec, or a playbook.
+* **Transparency** – Anyone (human or agent) can see exactly how the tool describes itself.
+* **Composability** – Tools behave like classic command‑line utilities, not monolithic black boxes.
+* **Replaceability** – You can swap out a tool implementation as long as `--help` still tells the truth.
 
-And you do not need to memorize the internal wiring. You just need to remember the one principle:
+For non‑technical builders, the important thing is: tools are inspectable. They are not spells.
 
-> "We treat our prompts like a shared library, not a pile of chat logs."
-
----
-
-## 9. For technical people: why this is not just another prompt file
-
-If you are more technical, you might ask:
-
-> "Isn't this just a repo with some Markdown files?"
-
-Yes. And that is the point.
-
-Promptware OS is intentionally boring at the implementation level:
-
-* No custom binary format.
-* No heavy schema.
-* No magic sync daemon.
-
-The interesting part is the **contract**:
-
-1. **One line in `agents.md` is the bootloader.**
-2. **Personas and mini-libraries separate identity from knowledge.**
-3. **Skills are small, composable docs, not monolithic essays.**
-4. **Tools are plain scripts with `--help`, not hidden black boxes.**
-5. **Everything is accessed by URL, like an OS for text.**
-
-This is the kind of structure that can sit underneath any future UI -- command line, chat based, agent orchestration frameworks, even things we have not invented yet.
-
-If we ever get to a real "Promptware OS", with conventions, standards, and distributions, it will most likely be built on top of something as simple as this.
+For technical people, the important thing is: tools are **just code**, versioned and reviewable like everything else in your stack.
 
 ---
 
-## 10. Where this goes from here
+## 8. What this means for ShipFail and PreAngel
 
-Right now, Promptware OS is at the **Minix stage**:
+Under **ShipFail**, I imagine a constellation of small, sharp products — each with its own AI co‑founder, each living in its own repo, but all sharing a common "culture".
 
-* It is small.
-* It is experimental.
-* It is meant to be read and hacked on.
+Under **PreAngel**, I’m not just thinking about one product cycle. I’m thinking about what happens when we have:
 
-The bet is that as we:
+* Years of accumulated AI behavior patterns,
+* A network of agents that must cooperate,
+* A cap table where AI co‑founders are as real as human ones.
 
-* Add more personas.
-* Grow more skills.
-* Collect more small, honest tools.
+Promptware OS is the layer that lets all of that stay **coherent**:
 
-... a shape will emerge.
+* It gives ShipFail products a shared brain, not just shared branding.
+* It gives PreAngel a way to preserve and evolve its philosophy of how AI should act, across time and across companies.
 
-Maybe in a few years we will talk about Promptware the way we talk about Unix:
+If you’re building your own portfolio of projects, you don’t need to use the name “Promptware OS”. But the idea is reusable:
 
-* Not as a product, but as a **philosophy and a filesystem** that everything else quietly relies on.
+> Treat your prompts as a shared operating system for your agents, not as disposable notes.
 
 ---
 
-## 11. The only thing you really need to remember
+## 9. If you don’t care about the technical details, remember this
 
-If you forget all the details and diagrams, you can remember this:
+You might not care about Unix, Deno, or system calls. That’s fine.
 
-> **Promptware OS is a way of treating your prompts like a shared OS for your agents, instead of private sticky notes.**
+If you’re a non‑technical builder, there are only three things you really need to remember about Promptware OS:
 
-One line boots it.
+1. **There is one library** where your AI co‑founders learn who they are and how to behave.
+2. **Every agent has a persona and a bookshelf** — identity is separate from knowledge.
+3. **One line in the prompt tells the agent where that library is.**
 
-The rest is just reading, writing, and linking good books in the library.
+Everything else can be delegated to technical collaborators, or to the agents themselves.
+
+---
+
+## 10. If you are technical, what should you pay attention to?
+
+If you’re technical, the interesting part is not the specific Git layout. It’s the set of contracts:
+
+* One‑line bootloader → persona URL.
+* Persona → mini‑library index.
+* Index → skills.
+* Skills → tool URLs.
+* Tool URLs → scripts that explain themselves with `--help`.
+
+You can implement this in many different ways. The version I’m building under ShipFail/PreAngel happens to use:
+
+* GitHub as the library,
+* Markdown as the document format,
+* Deno as a first‑class runtime for tools.
+
+But the deeper pattern is independent of any vendor:
+
+> Structured text + stable URLs + small executable tools.
+
+That pattern feels like something that will still make sense ten years from now, even if everything else changes.
+
+---
+
+![Promptware OS Bootloader]({{ 'assets/2025/12-promptware-os-one-line-boot-ai-native-library/bootloader.webp' | relative_url }})
+
+## 11. The long view: Promptware as an OS
+
+Right now, Promptware OS is in its **Minix phase**:
+
+* It’s a small repo.
+* It’s hackable.
+* It’s more philosophy than product.
+
+But the direction is clear:
+
+* More personas → a richer roster of AI co‑founders.
+* More skills → deeper, reusable expertise.
+* More tools → a more capable userland.
+
+At some point, if enough people take this approach, “Promptware” stops being just a repo and starts feeling like an operating system:
+
+* A set of conventions everyone quietly relies on.
+* A library of behaviors and tools that new agents inherit by default.
+
+Whether you call it Promptware OS or something else, the first‑principles idea remains:
+
+> **Your AI stack deserves an OS for its prompts.**
+
+And it might be simpler than you think: a library of Markdown files, some URLs, a runtime like Deno, and one line in `agents.md` that boots the whole thing.
+
+---
+
+## 12. The only sentence that matters
+
+If you forget everything else from this essay, remember this one sentence:
+
+> **Promptware OS is a way of treating your prompts like a shared operating system for your agents, instead of private sticky notes. One line boots it; everything else is just reading and running from a library.**
