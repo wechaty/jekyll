@@ -27,5 +27,5 @@
     "forwardPorts": [
         4000
     ],
-    "postCreateCommand": "npm install && cd jekyll && bundle install"
+    "postCreateCommand": "git config pull.rebase true && npm install && cd jekyll && bundle install"
 }
