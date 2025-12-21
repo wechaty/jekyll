@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Wechaty-As-A-Service Why and How | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Wechaty-As-A-Service Why and How | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Wechaty-As-A-Service Why and How" />
+<meta name="author" content="qhduan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="代码" />
+<meta property="og:description" content="代码" />
+<link rel="canonical" href="https://wechaty.js.org/2019/06/13/wechaty-as-a-service-why-and-how/" />
+<meta property="og:url" content="https://wechaty.js.org/2019/06/13/wechaty-as-a-service-why-and-how/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-06-13T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Wechaty-As-A-Service Why and How" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"qhduan"},"dateModified":"2019-06-13T00:00:00+00:00","datePublished":"2019-06-13T00:00:00+00:00","description":"代码","headline":"Wechaty-As-A-Service Why and How","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2019/06/13/wechaty-as-a-service-why-and-how/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"qhduan"},"url":"https://wechaty.js.org/2019/06/13/wechaty-as-a-service-why-and-how/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-center ">
+				<div class=" col-md-8  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Wechaty-As-A-Service Why and How</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/qhduan">
+                            <img class="rounded-circle" src="/assets/contributors/qhduan/avatar.webp" alt="段清华" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/qhduan">段清华</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jun 13, 2019 · <span class="reading-time">
+  
+  
+    9 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p><a href="https://github.com/deepdialog/Wechaty-as-a-service">代码</a></p>
+
+<p>这里作者分享一下为什么要做这个Wechaty-As-A-Service的东东，它如何将Wechaty服务化，在什么场景下应用的。</p>
+
+<h2 id="为什么需要wechaty">为什么需要Wechaty</h2>
+
+<p>Wechaty是对接微信的工具，这个工具在今天已经很成熟，也有充足的社区的支持。</p>
+
+<p>作者的想法是希望使用一个能方便支持桌面端、移动端的机器人入口平台。
+目的是开发机器人，接入一个API入口，这个入口如果是放在全球角度有很多合适的方法，但是因为某原因很多服务不能用，国内很少有这样的开放平台，大部分IM的平台都保守且很难接入。</p>
+
+<p>在使用Wechaty之前，作者使用的是接入slack，但是经常在不同网络下延迟很大。</p>
+
+<h2 id="为什么需要wechaty-as-a-servicewaas">为什么需要Wechaty-As-A-Service（waas）</h2>
+
+<p>首先一个原因是作者的bot是Python的，而Wechaty是基于JavaScript的。那么当然也有另一种选择，就是作者把bot变成一个服务，而用Wechaty作为客户端接入，之所以没有这样做是因为：</p>
+
+<ol>
+  <li>Wechaty应该持续服务。它如果能保持稳定运行，那么无论后端如何改变，也不需要重启Wechaty或者重登录了。</li>
+  <li>Wechaty作为服务之后，作为客户端的机器人就可以任意发挥，使用任何语言或者方法都没问题。</li>
+</ol>
+
+<h2 id="如何实现">如何实现</h2>
+
+<p>按照 @huan 的说法，Wechaty之后会有基于gRPC的服务接口，很可惜现在没有。</p>
+
+<p>这里作者选择了用一个简单的Web Server实现Wechaty的服务化。</p>
+
+<ul>
+  <li>优点：简单</li>
+  <li>缺点：用轮询方法，损耗一定资源</li>
+</ul>
+
+<hr />
+
+<p>首先我们选择了<code class="language-plaintext highlighter-rouge">koa</code>作为web服务框架。遇到的第一个问题就是<code class="language-plaintext highlighter-rouge">koa</code>是需要持续服务的，<code class="language-plaintext highlighter-rouge">Wechaty</code>也需要，也就是说它们相当于各自默认都会阻塞一个线程，而JavaScript默认是单线程的，这样显然不行。</p>
+
+<p>解决方法是Wechaty单独在一个worker线程运行，这里使用NodeJS 10及之后版本支持的<code class="language-plaintext highlighter-rouge">worker_threads</code>方法，这个方法要在10版本的NodeJS使用需要增加参数<code class="language-plaintext highlighter-rouge">-experimental-worker</code></p>
+
+<p>首先<code class="language-plaintext highlighter-rouge">bot-worker.js</code>的实现代码类似这样：</p>
+
+<pre><code class="language-JavaScript">import process  from 'process'
+import { Wechaty }  from 'Wechaty'
+import { parentPort }  from 'worker_threads';
+
+// bot实例
+const bot = Wechaty.instance({profile: 'Wechaty-bot'}) // Global Instance
+
+// 这里几个函数是分别将Wechaty的几个类序列化（这里并不完全，只取了作者需要的信息）
+// 序列化Message类（消息）
+async function serializeMessage(message) {
+    if (!message) {
+        return null
+    }
+    let obj = {}
+    obj.id = message.id
+    obj.from = await serializeContact(message.from())
+    obj.to = await serializeContact(message.to())
+    obj.room = await serializeRoom(message.room())
+    obj.text = message.text()
+    obj.date = await message.date()
+    return obj
+}
+
+// 序列化Contact类（联系人）
+async function serializeContact(contact) {
+    if (!contact) {
+        return null
+    }
+    let obj = {}
+    obj.id = contact.id
+    obj.name = contact.name()
+    obj.alias = await contact.alias()
+    obj.isFriend = contact.friend()
+    obj.gender = contact.gender()
+    obj.province = contact.province()
+    obj.city = contact.city()
+    obj.isSelf = contact.self()
+    return obj
+}
+
+// 序列化Room类（群）
+async function serializeRoom(room) {
+    if (!room) {
+        return null
+    }
+    let obj = {}
+    obj.id = room.id
+    obj.topic = await room.topic()
+    obj.announce = await room.announce()
+    return obj
+}
+
+// 这里接收来自主线程（koa）的控制信号
+parentPort.on('message', async message =&gt; {
+    const {event, data} = message
+    if (event === 'message') { // 只有一个，就是发送信息，暂时没实现别的
+        const {topic, name, text} = data
+        if (!text) {
+            return
+        }
+        let contact = null
+        let room = null
+        if (name) {
+            contact = await bot.Contact.find({name})
+        }
+        if (topic) {
+            room = await bot.Room.find({topic})
+        }
+        if (room &amp;&amp; contact &amp;&amp; await room.has(contact)) {
+            room.say(`@${contact.name()} ${text}`)
+        } else if (room) {
+            room.say(text)
+        } else if (contact) {
+            contact.say(text)
+        }
+    }
+})
+
+bot
+.on('scan', (qrcode, status) =&gt; {
+    qrurl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(qrcode)}`
+    console.log(`Scan QR Code to login: ${status}\n${qrurl}`)
+    // 当需要扫码时，发一个消息给主线程，这样client也能从koa中获取到这个二维码链接
+    parentPort.postMessage({
+        event: 'scan',
+        data: qrurl
+    })
+})
+.on('login', user =&gt; {
+    console.log(`User ${user} logined`)
+    // 当登录成功时告诉主线程，这样client也能知道登录成功了
+    parentPort.postMessage({
+        event: 'login',
+        data: user
+    })
+})
+.on('logout', (user) =&gt; {
+    // Logout Event will emit when bot detected log out.
+    console.log(`user ${user} logout`)
+    // 告诉主线程清除登录信息
+    parentPort.postMessage({
+        event: 'logout',
+        data: user
+    })
+})
+.on('message', async (message) =&gt; {
+    if (message.age() &gt; 60 * 1000) {
+        console.log('Message discarded because its TOO OLD(than 1 minute)')
+        console.log(message)
+        return
+    }
+    if (message.self()) {
+        console.log('Message discarded because its mysel')
+        return
+    }
+    console.log(`Message: ${message}`)
+    // 把消息发送给主线程，client就可以通过不断轮询来获取
+    parentPort.postMessage({
+        event: 'message',
+        data: await serializeMessage(message)
+    })
+})
+.start()
+</code></pre>
+
+<p>主线程代码</p>
+
+<pre><code class="language-JavaScript">import process  from 'process'
+import Koa  from 'koa'
+import Router  from 'koa-trie-router'
+import bodyParser  from 'koa-bodyparser'
+import { Worker }  from 'worker_threads'
+import lodash  from 'lodash'
+
+// 保存bot状态，以便被client轮询
+const botStatus = {
+    qrurl: null,
+    login: null,
+    messages: []
+}
+// 启动Wechaty线程
+const worker = new Worker('./bot-worker.js')
+worker.on('message', message =&gt; {
+    const {event, data} = message
+    // 收到不同的Wechaty信息的时候，改变不同的bot状态，这样客户端也可以读取到状态的变化了
+    switch(event) {
+        case 'scan':
+            botStatus.qrurl = data
+            break
+        case 'login':
+            botStatus.login = data
+            break
+        case 'logout':
+            botStatus.login = null
+            botStatus.qrurl = null
+            botStatus.messages = []
+        case 'message':
+            botStatus.messages.push(data)
+            break
+        case 'error':
+            process.exit(1)
+            break
+    }
+})
+
+// 这里再往下主要是koa的接口了，也就似乎跟client对接的
+let app = new Koa()
+let router = new Router()
+app.use(bodyParser());
+router
+.get('/', async ctx =&gt; {
+    ctx.body = 'Why you here?'
+})
+.get('/api/scan', async ctx =&gt; {
+    /**
+     * 获取二维码接口
+     * curl localhost:3010/api/scan | jq .
+     */
+    if (botStatus.qrurl) {
+        ctx.body = {
+            ok: true,
+            qrurl: botStatus.qrurl,
+        }
+    } else {
+        ctx.body = {
+            ok: false,
+            error: 'Not initialized',
+        }
+    }
+})
+.get('/api/status', async ctx =&gt; {
+    /**
+     * 状态查询接口
+     * curl localhost:3010/api/status | jq .
+     */
+    if (botStatus.login) {
+        ctx.body = {
+            ok: true,
+            login: botStatus.login
+        }
+    } else {
+        ctx.body = {
+            ok: false,
+            error: 'Not login',
+        }
+    }
+})
+.get('/api/message', async ctx =&gt; {
+    /**
+     * 获取消息接口
+     * curl localhost:3010/api/message | jq .
+     */
+    if (botStatus.login) {
+        ctx.body = {
+            ok: true,
+            // 每次只发送最后的5条不超过5分钟的信息
+            messages: botStatus.messages.slice(
+                Math.max(botStatus.messages.length - 5, 0)
+            ).filter(msg =&gt; {
+                const now = new Date()
+                if (now - msg.date &gt; 5 * 60 * 1000) {
+                    return false
+                }
+                return true
+            })
+        }
+    } else {
+        ctx.body = {
+            ok: false,
+            error: 'Not login',
+        }
+    }
+})
+.post('/api/message', async ctx =&gt; {
+    /**
+     * 发送消息接口
+     * curl -H 'Content-Type: application/json' -XPOST localhost:3010/api/message -d '{"name": "superman", "text": "hello"}' | jq .
+     */
+    if (!ctx.request.body) {
+        ctx.body = {
+            ok: false,
+            error: 'Invalid post body, not a JSON'
+        }
+        return
+    }
+    if (!lodash.isString(ctx.request.body.name) &amp;&amp; !lodash.isString(ctx.request.body.topic)) {
+        ctx.body = {
+            ok: false,
+            error: 'Invalid name or topic, must have one of them'
+        }
+        return
+    }
+    if (!lodash.isString(ctx.request.body.text)) {
+        ctx.body = {
+            ok: false,
+            error: 'Invalid text'
+        }
+        return
+    }
+    worker.postMessage({
+        event: 'message',
+        data: ctx.request.body,
+    })
+    ctx.body = {
+        ok: true,
+    }
+})
+
+app.use(router.middleware())
+app.listen(3010, '0.0.0.0', () =&gt; {
+    console.log('SERVER GREEN')
+})
+</code></pre>
+
+<h2 id="如何使用">如何使用</h2>
+
+<p>客户端的实现代码</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">time</span>
+<span class="kn">import</span> <span class="n">json</span>
+<span class="kn">import</span> <span class="n">requests</span>
+
+<span class="n">BOT_API</span> <span class="o">=</span> <span class="sh">'</span><span class="s">http://localhost:3010/api/</span><span class="sh">'</span>
+
+<span class="k">class</span> <span class="nc">WAAS</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="c1"># 初始化bot，保存机器人服务api的地址
+</span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">api</span><span class="o">=</span><span class="n">BOT_API</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">api</span><span class="p">.</span><span class="nf">endswith</span><span class="p">(</span><span class="sh">'</span><span class="s">/</span><span class="sh">'</span><span class="p">):</span>
+            <span class="n">api</span> <span class="o">=</span> <span class="n">api</span> <span class="o">+</span> <span class="sh">'</span><span class="s">/</span><span class="sh">'</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">api</span> <span class="o">=</span> <span class="n">api</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">qrurl</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">'</span><span class="s">Running on api </span><span class="si">{</span><span class="n">api</span><span class="si">}</span><span class="sh">'</span><span class="p">)</span>
+
+    <span class="c1"># 获取状态，如果登录之后会返回True，否则是False
+</span>    <span class="k">def</span> <span class="nf">status</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">api</span> <span class="o">+</span> <span class="sh">'</span><span class="s">status</span><span class="sh">'</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="nf">loads</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">r</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">ok</span><span class="sh">'</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="bp">False</span>
+
+    <span class="c1"># 当需要扫码时，打印二维码地址，让用户可以点击-扫码-登录
+</span>    <span class="c1"># 如果服务端还没获取到二维码会不断的停在这重复测试
+</span>    <span class="k">def</span> <span class="nf">scan</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">api</span> <span class="o">+</span> <span class="sh">'</span><span class="s">scan</span><span class="sh">'</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="nf">loads</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">r</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">ok</span><span class="sh">'</span><span class="p">):</span>
+                <span class="n">self</span><span class="p">.</span><span class="n">qrurl</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">qrurl</span><span class="sh">'</span><span class="p">)</span>
+                <span class="k">return</span>
+            <span class="nf">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">error</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Unknown error</span><span class="sh">'</span><span class="p">))</span>
+            <span class="n">time</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="c1"># 不断测试登录状态，成功后返回
+</span>    <span class="k">def</span> <span class="nf">login</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">api</span> <span class="o">+</span> <span class="sh">'</span><span class="s">status</span><span class="sh">'</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="nf">loads</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">r</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">ok</span><span class="sh">'</span><span class="p">):</span>
+                <span class="k">return</span>
+            <span class="nf">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">error</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Unknown error</span><span class="sh">'</span><span class="p">))</span>
+            <span class="n">time</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="c1"># 获取消息
+</span>    <span class="c1"># 注意这个函数是一个generate函数，因为返回的是yield
+</span>    <span class="k">def</span> <span class="nf">message</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="n">exists_messages</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">api</span> <span class="o">+</span> <span class="sh">'</span><span class="s">message</span><span class="sh">'</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="nf">loads</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">r</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">ok</span><span class="sh">'</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">r</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">messages</span><span class="sh">'</span><span class="p">,</span> <span class="p">[]):</span>
+                    <span class="c1"># 判断id是否重复
+</span>                    <span class="k">if</span> <span class="n">msg</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">id</span><span class="sh">'</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">exists_messages</span><span class="p">:</span>
+                        <span class="n">exists_messages</span><span class="p">[</span><span class="n">msg</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">id</span><span class="sh">'</span><span class="p">)]</span> <span class="o">=</span> <span class="n">msg</span>
+                        <span class="k">yield</span> <span class="n">msg</span>
+            <span class="n">time</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+
+    <span class="c1"># 给远程koa发送消息
+</span>    <span class="c1"># koa会再给Wechaty发送消息
+</span>    <span class="c1"># 最终发送给用户
+</span>    <span class="k">def</span> <span class="nf">send_message</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">topic</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">body</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="sh">'</span><span class="s">name</span><span class="sh">'</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
+            <span class="sh">'</span><span class="s">topic</span><span class="sh">'</span><span class="p">:</span> <span class="n">topic</span><span class="p">,</span>
+            <span class="sh">'</span><span class="s">text</span><span class="sh">'</span><span class="p">:</span> <span class="n">text</span>
+        <span class="p">}</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">api</span> <span class="o">+</span> <span class="sh">'</span><span class="s">message</span><span class="sh">'</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">body</span><span class="p">)</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="nf">loads</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">r</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">ok</span><span class="sh">'</span><span class="p">):</span>
+            <span class="nf">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">error</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Unknown error</span><span class="sh">'</span><span class="p">))</span>
+
+    <span class="c1"># 这个是一个启动流程，相当与Wechaty的start、flask的run，nodejs的listen
+</span>    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">on_message</span><span class="p">):</span>
+        <span class="c1"># 如果是未登录状态就去寻求获取二维码
+</span>        <span class="c1"># 保证如果waas一直运行并且在登录，bot客户端任意重启也不会导致重复登录
+</span>        <span class="k">if</span> <span class="ow">not</span> <span class="n">self</span><span class="p">.</span><span class="nf">status</span><span class="p">():</span>
+            <span class="n">self</span><span class="p">.</span><span class="nf">scan</span><span class="p">()</span>  <span class="c1"># wait qrurl generate
+</span>            <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">'</span><span class="s">Please scan </span><span class="si">{</span><span class="n">self</span><span class="p">.</span><span class="n">qrurl</span><span class="si">}</span><span class="sh">'</span><span class="p">)</span>
+            <span class="n">self</span><span class="p">.</span><span class="nf">login</span><span class="p">()</span>  <span class="c1"># wait login
+</span>        <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">logined</span><span class="sh">'</span><span class="p">)</span>
+        <span class="c1"># 不断的轮询信息，如果有新信息会交给 on_message的回调函数
+</span>        <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">self</span><span class="p">.</span><span class="nf">message</span><span class="p">():</span>
+            <span class="nf">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="nf">on_message</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>实际使用bot的代码：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">waas_client</span> <span class="kn">import</span> <span class="n">WAAS</span>
+
+<span class="c1"># 消息回调函数
+</span><span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="n">bot</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">text</span><span class="sh">'</span><span class="p">)</span>  <span class="c1"># 文本消息
+</span>    <span class="c1"># 发来的用户，可能是空的，例如是群消息
+</span>    <span class="n">from_name</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">from</span><span class="sh">'</span><span class="p">,</span> <span class="p">{}).</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">name</span><span class="sh">'</span><span class="p">)</span>
+    <span class="c1"># 发来的群，如果是私信就是空的
+</span>    <span class="n">room_topic</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">room</span><span class="sh">'</span><span class="p">,</span> <span class="p">{}).</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">topic</span><span class="sh">'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">text</span><span class="p">:</span>
+        <span class="c1"># 发送信息
+</span>        <span class="n">bot</span><span class="p">.</span><span class="nf">send_message</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">from_name</span><span class="p">,</span> <span class="n">topic</span><span class="o">=</span><span class="n">room_topic</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">'</span><span class="s">__main__</span><span class="sh">'</span><span class="p">:</span>
+    <span class="sh">"""</span><span class="s">
+        这里构造一个WAAS实力并把回调函数给到bot.start，就可以一直在监守了
+        当然这里也可以自己调用类似bot.start里面的类似方法，手动运行，例如：
+        if not bot.status():
+            bot.scan()  # wait qrurl generate
+            print(f</span><span class="sh">'</span><span class="s">Please scan {bot.qrurl}</span><span class="sh">'</span><span class="s">)
+            bot.login()  # wait login
+        print(</span><span class="sh">'</span><span class="s">logined</span><span class="sh">'</span><span class="s">)
+        # 不断的轮询信息，如果有新信息会交给 on_message的回调函数
+        for msg in bot.message():
+            print(msg)
+            on_message(bot, msg)
+    </span><span class="sh">"""</span>
+    <span class="n">bot</span> <span class="o">=</span> <span class="nc">WAAS</span><span class="p">(</span><span class="sh">'</span><span class="s">http://localhost:3010/api/</span><span class="sh">'</span><span class="p">)</span>
+    <span class="n">bot</span><span class="p">.</span><span class="nf">start</span><span class="p">(</span><span class="n">on_message</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="缺陷与未来">缺陷与未来</h2>
+
+<p>缺陷：</p>
+
+<ul>
+  <li>轮询效率低</li>
+  <li>没有安全性</li>
+  <li>没有做容错</li>
+  <li>实现功能少</li>
+  <li>很多Wechaty的功能都需要一个一个实现</li>
+</ul>
+
+<p>这些主要是因为基本功能已经足够满足作者需求，所以暂时开发到这里。
+这些功能理论上都可以通过其他方法修改，例如把轮询换成一个长链接协议，例如websocket，例如gRPC。
+容错需要考虑错误的传播路径，好做但是比较繁琐。</p>
+
+<p>未来还是期待Wechaty推出gRPC功能，真正实现Wechaty-As-A-Service</p>
+
+<blockquote>
+  <p>Author: <a href="https://github.com/qhduan/">qhduan</a>, A Deamer.</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#code">code</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#saas">saas</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#utility">utility</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/qhduan">
+                            <img class="rounded-circle" src="/assets/contributors/qhduan/avatar.webp" alt="段清华" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/qhduan">段清华</a> </h5>
+						人工智障工程师
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2019/06/12/chatie-devops-toolset/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2019/chatie-devops-toolset.webp">  New DevOps Toolset for @Chatie Organization</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2019/06/21/three-step-get-girlfriend-en/"> Build a WeChat Sweet-Talk Bot in Three Steps with Node.js - Beginner Friendly  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2019/everyday-header.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

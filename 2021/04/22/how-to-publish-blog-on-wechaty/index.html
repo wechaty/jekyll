@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      入门：小白如何在wechaty社区发布自己的第一篇博客（一） | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>入门：小白如何在wechaty社区发布自己的第一篇博客（一） | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="入门：小白如何在wechaty社区发布自己的第一篇博客（一）" />
+<meta name="author" content="atorber" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="很高兴能执笔这篇博客，第一次使用github向wechaty社区提交博客时Q到了@huan（提交了十几次才最终通过），因此也被印象深刻了。今天和大家分享一下零基础或有那么一丢丢基础的小白如何从0到1的在wechaty发布博客（成为一个贡献者）。" />
+<meta property="og:description" content="很高兴能执笔这篇博客，第一次使用github向wechaty社区提交博客时Q到了@huan（提交了十几次才最终通过），因此也被印象深刻了。今天和大家分享一下零基础或有那么一丢丢基础的小白如何从0到1的在wechaty发布博客（成为一个贡献者）。" />
+<link rel="canonical" href="https://wechaty.js.org/2021/04/22/how-to-publish-blog-on-wechaty/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/04/22/how-to-publish-blog-on-wechaty/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/04-how-to-publish-blog-on-wechaty/rare-book.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-04-22T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/04-how-to-publish-blog-on-wechaty/rare-book.webp" />
+<meta property="twitter:title" content="入门：小白如何在wechaty社区发布自己的第一篇博客（一）" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"atorber"},"dateModified":"2021-04-22T00:00:00+00:00","datePublished":"2021-04-22T00:00:00+00:00","description":"很高兴能执笔这篇博客，第一次使用github向wechaty社区提交博客时Q到了@huan（提交了十几次才最终通过），因此也被印象深刻了。今天和大家分享一下零基础或有那么一丢丢基础的小白如何从0到1的在wechaty发布博客（成为一个贡献者）。","headline":"入门：小白如何在wechaty社区发布自己的第一篇博客（一）","image":"https://wechaty.js.org/assets/2021/04-how-to-publish-blog-on-wechaty/rare-book.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/04/22/how-to-publish-blog-on-wechaty/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"atorber"},"url":"https://wechaty.js.org/2021/04/22/how-to-publish-blog-on-wechaty/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#article">article</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">入门：小白如何在wechaty社区发布自己的第一篇博客（一）</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/atorber">
+                            <img class="rounded-circle" src="/assets/contributors/atorber/avatar.webp" alt="atorber" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/atorber">atorber</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Apr 22, 2021 · <span class="reading-time">
+  
+  
+    2 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/04-how-to-publish-blog-on-wechaty/rare-book.webp" alt="入门：小白如何在wechaty社区发布自己的第一篇博客（一）">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>很高兴能执笔这篇博客，第一次使用github向wechaty社区提交博客时Q到了@huan（提交了十几次才最终通过），因此也被印象深刻了。今天和大家分享一下零基础或有那么一丢丢基础的小白如何从0到1的在wechaty发布博客（成为一个贡献者）。</p>
+
+<p>作为系列博客的第一篇，今天首先和大家分享一下两个内容：</p>
+
+<ul>
+  <li>
+    <p>在wechaty发布博客的工作原理</p>
+  </li>
+  <li>
+    <p>来自官方的——How to post a blog</p>
+  </li>
+</ul>
+
+<blockquote>
+  <p>后续还有连载，请先读完这篇</p>
+</blockquote>
+
+<h2 id="在wechaty发布博客的工作原理">在wechaty发布博客的工作原理</h2>
+
+<p>之所以用”工作原理”来形容，是因为初学者在有了向wechaty发布博客的想法之后，很快会发现它在用一种「很技术的方式」而非传统的博客方式进行发布。
+技术到什么程度呢？你可能需要知道并了解以下几个工具：</p>
+
+<ul>
+  <li>markdown</li>
+  <li>git</li>
+  <li>github</li>
+  <li>jekyll（这个可以暂时没有）</li>
+</ul>
+
+<p>说原理：</p>
+
+<p>我们把整个wechaty的博客当成一本电子书，每个人都可以在这本书中书写自己的文章并发布。</p>
+
+<ol>
+  <li>先复制一本到自己的书架（fork it）</li>
+  <li>下载这本书到电脑上（git clone）</li>
+  <li>按<strong>规定的格式</strong>要求添加自己的文章，并上传到自己的书架（git commit并git push）</li>
+  <li>把书架上添加了自己内容的书发送给正本书的管理员审核（create pull requests）</li>
+  <li>系统自动校验文章格式是否符合要求以及签署一个贡献协议（auto check）</li>
+  <li>校验通过，等待管理员最终将内容更新到电子书的最新版本中</li>
+</ol>
+
+<p>继续，我们结合官方的指导文档说一下注意事项</p>
+
+<h2 id="来自官方的how-to-post-a-blog">来自官方的——How to post a blog</h2>
+
+<p>来自官方的指导文档，对于有基础的同学直接移步参考原文<a href="https://github.com/wechaty/wechaty.js.org">https://github.com/wechaty/wechaty.js.org</a>——无论如何即使是零基础也希望大家先去阅读一下原文</p>
+
+<p>对于一个英语困难者，wechaty的文档无疑是一个灾难，so，让我们来百度翻译并注释一下：</p>
+
+<h3 id="总共13步比大象装冰箱多了10步">总共13步，比大象装冰箱多了10步</h3>
+
+<ol>
+  <li>
+    <p><strong>复刻（fork）wehaty代码</strong></p>
+
+    <p>不知道什么是fork？总之很复杂，网上说的也不是很明白，简单点理解就是copy一份，到wechaty的github项目页面<a href="https://github.com/wechaty/wechaty.js.org">https://github.com/wechaty/wechaty.js.org</a>，然后看图操作</p>
+
+    <p><img src="/assets/2021/04-how-to-publish-blog-on-wechaty/04.webp" alt="fork" /></p>
+  </li>
+  <li>
+    <p><strong>同步你的分支</strong></p>
+
+    <p>不知道如何同步？后边说</p>
+  </li>
+  <li>
+    <p><strong>在本地（自己的电脑上）创建你的博客分支</strong></p>
+
+    <p>使用git把github上的代码下载下来，看图操作复制地址，然后在你要存放文件的目录运行<code class="language-plaintext highlighter-rouge">git clone https://github.com/wechaty/wechaty.js.org.git</code></p>
+
+    <p><img src="/assets/2021/04-how-to-publish-blog-on-wechaty/05.webp" alt="clone" /></p>
+  </li>
+  <li>
+    <p><strong>使用markdown书写你的博客</strong></p>
+
+    <p>不知道什么是markdown？后边说</p>
+  </li>
+  <li>
+    <p><strong>添加你的博客文件到<code class="language-plaintext highlighter-rouge">jekyll/_post</code>文件夹</strong></p>
+
+    <p>打开下载下来的代码，整个博客的书写仅需要在jekyll这个目录下操作，不要动也不要管其他目录，正文放在jekyll/_post`下，其他文件下边会说，一下以当前这篇博客为例讲解，个人认为学习此类知识最好的方式就是Copy and Modify（如同小学生写作为一样临摹，复制、粘贴、重命名、改内容，四部曲）。</p>
+
+    <p>例如本文正文,是在<code class="language-plaintext highlighter-rouge">jekyll/_post</code>目录下创建名为<code class="language-plaintext highlighter-rouge">2021-04-22-how-to-publish-blog-on-wechaty.md</code>的文件并在里边写正文内容。</p>
+
+    <p><img src="/assets/2021/04-how-to-publish-blog-on-wechaty/01.webp" alt="根目录" /></p>
+
+    <p><img src="/assets/2021/04-how-to-publish-blog-on-wechaty/02.webp" alt="jekyll目录" /></p>
+
+    <p><img src="/assets/2021/04-how-to-publish-blog-on-wechaty/03.webp" alt="2021-04-22-how-to-publish-blog-on-wechaty.md" /></p>
+
+    <p>正文内容书写规范：</p>
+
+    <blockquote>
+      <p>添加博客头</p>
+    </blockquote>
+
+    <p>所有的博客都必须有标题、作者、背景图片,写在正文打最开始:</p>
+
+    <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="s">---</span>
+ <span class="s">title</span><span class="err">:</span> <span class="s2">"</span><span class="s">入门：小白如何在wechaty社区发布自己的第一篇博客"</span>
+ <span class="na">author</span><span class="pi">:</span> <span class="s">atorber</span>
+ <span class="na">categories</span><span class="pi">:</span> <span class="s">article</span>
+ <span class="na">tags</span><span class="pi">:</span>
+   <span class="pi">-</span> <span class="s">blog</span>
+   <span class="pi">-</span> <span class="s">wechaty</span>
+   <span class="pi">-</span> <span class="s">study</span>
+   <span class="pi">-</span> <span class="s">introduction</span>
+ <span class="na">image</span><span class="pi">:</span> <span class="s">/assets/2021/04-how-to-publish-blog-on-wechaty/rare_book.webp</span>
+ <span class="s">---</span>
+
+ <span class="na">&gt; 作者</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">atorber</span><span class="pi">]</span><span class="s">(https://github.com/atorber/)，不务正业的产品经理</span>
+</code></pre></div>    </div>
+
+    <blockquote>
+      <p>写作风格</p>
+    </blockquote>
+
+    <ul>
+      <li>
+        <p>所有的文件名和url地址使用小写字母, 并且使用<code class="language-plaintext highlighter-rouge">-</code> 连接，不允许中文字符。例如本文正文文件名：<code class="language-plaintext highlighter-rouge">2021-04-22-how-to-publish-blog-on-wechaty.md</code></p>
+      </li>
+      <li>
+        <p>选择合适的图片可以使博客看起来更漂亮。例如本文背景图：</p>
+      </li>
+    </ul>
+
+    <p><img src="/assets/2021/04-how-to-publish-blog-on-wechaty/rare-book.webp" alt="rare-book.jpeg" /></p>
+  </li>
+  <li>
+    <p><strong>添加文档中的插图到 <code class="language-plaintext highlighter-rouge">jekyll/assets</code> 文件夹，在文件夹下当前年份下建立一个以”月份+博客文件名”为名称的文件夹来存放相关图片</strong></p>
+
+    <p>在发布之前插入图片和视频，需要将所有图片、视频文件保存在博客专属的文件夹中，文件夹的位置和命名方式 <code class="language-plaintext highlighter-rouge">/jekyll/assets/文章标标题/</code>。例如本文图片存放文件夹：<code class="language-plaintext highlighter-rouge">jekyll/assets/2021/04-how-to-publish-blog-on-wechaty</code>，本文背景图的完整路径<code class="language-plaintext highlighter-rouge">jekyll/assets/2021/04-how-to-publish-blog-on-wechaty/rare_book.webp</code></p>
+  </li>
+  <li>
+    <p><strong>添加你的个人信息到<code class="language-plaintext highlighter-rouge">jekyll/_contributors/your_github_id.md</code></strong></p>
+
+    <p>新建一个文件your_github_id.md，把your_github_id换成你的github账号。例如本文个人信息文件<code class="language-plaintext highlighter-rouge">jekyll/_contributors/atorber.md</code></p>
+
+    <blockquote>
+      <p>个人信息内容</p>
+    </blockquote>
+
+    <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="s">---</span>
+ <span class="s">name</span><span class="err">:</span> <span class="s">atorber</span>
+ <span class="s">site</span><span class="err">:</span> <span class="s">&lt;https://github.com/atorber&gt;</span>
+ <span class="s">bio</span><span class="err">:</span> <span class="s">一个不误正业的产品经理</span>
+ <span class="s">avatar</span><span class="err">:</span> <span class="s">/assets/contributors/atorber/avatar.png</span>
+ <span class="s">email</span><span class="err">:</span> <span class="s">tyutluyc@qq.com</span>
+ <span class="s">---</span>
+</code></pre></div>    </div>
+
+    <blockquote>
+      <p>个人头像</p>
+    </blockquote>
+
+    <p>在<code class="language-plaintext highlighter-rouge">jekyll/assets/contributors</code>目录下新建一个your_github_id命名的文件夹，并把个人头像以avatar.png命名存放起来。
+ 本文个人头像完整路径<code class="language-plaintext highlighter-rouge">jekyll/assets/contributors/atorber/avatar.png</code></p>
+  </li>
+  <li>
+    <p>提交更改，使用博客标题作为备注信息</p>
+
+    <p>以文章标题为备注信息提交。本文示例提交命令</p>
+
+    <p><code class="language-plaintext highlighter-rouge">git commit -m "入门：小白如何在wechaty社区发布自己的第一篇博客"</code></p>
+  </li>
+  <li>
+    <p>推送到分支</p>
+
+    <p>推送分支到自己的github</p>
+
+    <p><code class="language-plaintext highlighter-rouge">git push origin master</code></p>
+  </li>
+  <li>
+    <p>创建一个新的Pull请求</p>
+
+    <p>这一步在github界面操作（也可能可以直接推送到wechaty，超哥没有get到方法）</p>
+
+    <p><img src="/assets/2021/04-how-to-publish-blog-on-wechaty/06.webp" alt="pull request" /></p>
+  </li>
+  <li>
+    <p>签署CLA</p>
+
+    <p>什么CLA？后边说，到自动检查的步骤会提示，首次签署时留意页面提示，超哥因为之前已经签署过了，暂时没办法操作截图，后边补上</p>
+  </li>
+  <li>
+    <p>等待传递GitHub操作CI，或者修复任何东西以确保CI变为绿色</p>
+
+    <p>Wait for pass the GitHub Action CI, or fix whatever to make sure CI turns green，百度直译，超哥也没搞太清楚，后边说</p>
+  </li>
+  <li>
+    <p>等待@wechaty的管理员审核</p>
+  </li>
+</ol>
+
+<p>就这些!就这些？就这些…</p>
+
+<h3 id="贡献准则">贡献准则</h3>
+
+<p>需要特别注意的几个点：</p>
+
+<h4 id="1-markdown格式规范化校验">1. markdown格式规范化校验</h4>
+
+<p>在文件命名正确、文件存放位置正确的情况下，大部分自动校验不通过的原因是正文markwown格式存在错误，原因是系统对格式进行了严格校验，尤其是对之前会使用markdown但对使用不规范的同学来说，需要认真学习一下了，可参考文档 <a href="https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md">https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md</a></p>
+
+<h4 id="2-只提交相关的文件">2. 只提交相关的文件</h4>
+
+<p>请勿提交博客不相关的文件</p>
+
+<h4 id="3-添加视频或pdf">3. 添加视频或pdf</h4>
+
+<p>示例：</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  
+
+
+
+
+
+
+
+
+<span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;iframe</span>
+    <span class="na">src=</span><span class="s">'https://www.youtube.com/embed/3eq8wJfCAWs'</span>
+    <span class="na">allowfullscreen</span>
+    <span class="na">webkitallowfullscreen</span>
+    <span class="na">frameborder=</span><span class="s">"0"</span>
+    <span class="na">style=</span><span class="s">"
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    "</span>
+  <span class="nt">&gt;</span>
+<span class="nt">&lt;/iframe&gt;</span>
+
+<span class="nt">&lt;/div&gt;</span>
+
+</code></pre></div></div>
+
+<p>或者</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  
+
+
+
+
+
+
+
+
+<span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;iframe</span>
+    <span class="na">src=</span><span class="s">'/assets/js/viewer-js/#/assets/2020/qijibot/final.pdf'</span>
+    <span class="na">allowfullscreen</span>
+    <span class="na">webkitallowfullscreen</span>
+    <span class="na">frameborder=</span><span class="s">"0"</span>
+    <span class="na">style=</span><span class="s">"
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    "</span>
+  <span class="nt">&gt;</span>
+<span class="nt">&lt;/iframe&gt;</span>
+
+<span class="nt">&lt;/div&gt;</span>
+
+</code></pre></div></div>
+
+<p>更多： <a href="https://wechaty.js.org/2020/08/24/add-video-to-wechaty-blog/">将iframe添加到wechaty博客</a></p>
+
+<h3 id="测试进阶内容可以了解下在本地npm完整的jekyll">测试（进阶内容，可以了解下，在本地npm完整的jekyll）</h3>
+
+<p>为了确保一切（文件名、文件大小等）都正常，可以在“git push”之前运行以下命令检查它们。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install
+</span>npm run <span class="nb">test</span>
+</code></pre></div></div>
+
+<h3 id="预览">预览</h3>
+
+<p>在本地运行Jekyll来预览博客。</p>
+
+<p>——什么是Jekyll，自行百度</p>
+
+<h4 id="0-依赖">0. 依赖</h4>
+
+<p>按照官方指示在本地安装jekyll <a href="https://jekyllrb.com/docs/">jekyll quickstart</a></p>
+
+<h4 id="1-手动安装jekyll">1. 手动安装Jekyll</h4>
+
+<p>在本地运行Jekyll进行博客预览(对于熟悉Ruby语言的同学更容易一些。）</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  make <span class="nb">install
+  cd </span>jekyll
+  make serve
+</code></pre></div></div>
+
+<h4 id="2-预览博客">2. 预览博客</h4>
+
+<p>访问 <a href="http://127.0.0.1:4000/blog/">http://127.0.0.1:4000/blog/</a> 可以预览博客!</p>
+
+<h4 id="3-总结">3. 总结</h4>
+
+<p>安装Jekyll的过程有些小复杂了，略过吧</p>
+
+<h2 id="最后">最后</h2>
+
+<p>真正在写这篇博客时才发现，试图通过几篇博客教会0基础读者和0基础读者希望通过几篇博客成功发布自己的内容一样困难，无论如何，希望这些内容能给大家带来一些帮助。</p>
+
+<p>TODO:</p>
+
+<p>结合以上内容发布一个视频教程，或许是更好的选择，期待后续有时间或其他贡献者一起制作</p>
+
+<h2 id="常见问题">常见问题</h2>
+
+<ol>
+  <li>
+    <p>macOS下报错<code class="language-plaintext highlighter-rouge">jekyll/assets/.DS_Store does not match /\/[0-9\-a-z_]+\./!？</code></p>
+
+    <p>mac下烦人的<code class="language-plaintext highlighter-rouge">.DS_Store</code>文件，运行<code class="language-plaintext highlighter-rouge">sudo find / -name ".DS_Store" -depth -exec rm {} \;</code>，然后，等几分钟和碰运气…</p>
+  </li>
+</ol>
+
+<p>更多问题后续会根据反馈继续补充</p>
+
+<blockquote>
+  <p>历史文章</p>
+</blockquote>
+
+<ul>
+  <li><a href="https://wechaty.js.org/2021/03/17/node-wechaty-and-wechaty-puppet-padlocal/">Wechaty+微信小程序实现群内活动报名</a></li>
+</ul>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#blog">blog</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#study">study</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#introduction">introduction</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/atorber">
+                            <img class="rounded-circle" src="/assets/contributors/atorber/avatar.webp" alt="atorber" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/atorber">atorber</a> </h5>
+						一个酷爱编码的产品经理
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/04/17/python-wechaty-use-web/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/04-python-wechaty-use-web-en/wechaty-love-wechaty-desktop.webp">  手把手教你用python-wechaty和web协议开发机器人</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/04/22/wechaty-with-paddlepaddle-en/"> AI ChatBot Creation Camp Kicks Off!  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/04-wechaty-with-paddlepaddle-en/wechaty-cpu.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

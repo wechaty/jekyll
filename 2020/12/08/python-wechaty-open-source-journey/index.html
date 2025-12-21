@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Python-Wechaty 南京开源峰会之旅 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Python-Wechaty 南京开源峰会之旅 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Python-Wechaty 南京开源峰会之旅" />
+<meta name="author" content="wj-mcat" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="开源应该是每一个优秀程序员的必经之路" />
+<meta property="og:description" content="开源应该是每一个优秀程序员的必经之路" />
+<link rel="canonical" href="https://wechaty.js.org/2020/12/08/python-wechaty-open-source-journey/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/12/08/python-wechaty-open-source-journey/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/12-python-wechaty-open-source-journey-en/wechaty-nanjing-picture.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-12-08T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/12-python-wechaty-open-source-journey-en/wechaty-nanjing-picture.webp" />
+<meta property="twitter:title" content="Python-Wechaty 南京开源峰会之旅" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"wj-mcat"},"dateModified":"2020-12-08T00:00:00+00:00","datePublished":"2020-12-08T00:00:00+00:00","description":"开源应该是每一个优秀程序员的必经之路","headline":"Python-Wechaty 南京开源峰会之旅","image":"https://wechaty.js.org/assets/2020/12-python-wechaty-open-source-journey-en/wechaty-nanjing-picture.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/12/08/python-wechaty-open-source-journey/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"wj-mcat"},"url":"https://wechaty.js.org/2020/12/08/python-wechaty-open-source-journey/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#story">story</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Python-Wechaty 南京开源峰会之旅</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/wj-mcat">
+                            <img class="rounded-circle" src="/assets/contributors/wj-mcat/avatar.webp" alt="吴京京" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/wj-mcat">吴京京</a> <span><a target="_blank" href="https://weibo.com/u/3877178684" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Dec 08, 2020 · <span class="reading-time">
+  
+  
+    1 min read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/12-python-wechaty-open-source-journey-en/wechaty-nanjing-picture.webp" alt="Python-Wechaty 南京开源峰会之旅">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>开源应该是每一个优秀程序员的必经之路</p>
+
+<h2 id="python-wechaty之开源软件2020峰会">python-wechaty之开源软件2020峰会</h2>
+
+<p>非常有幸能够参加此次是开源软件供应链2020峰会，本次峰会由中国科学院软件研究所、<a href="https://openeuler.org/zh/">openEuler</a>社区主办，中科院软件研究所南京软件技术研究院承办，峰会主题为“共献·开源”，包括1个主论坛、7个分论坛以及1场学生专题报告，而我代表<code class="language-plaintext highlighter-rouge">wechaty</code>社区导师之一参加此“开源&amp;教育”分论坛的分享活动，会上有来自全国各地的开源软件从业者、企业技术专家、高校及科研机构代表、开源社区代表、学生等300余人现场参会、2.3万余人同步线上参会。</p>
+
+<h2 id="我是如何开始python-wechaty开源项目的">我是如何开始python-wechaty开源项目的</h2>
+
+<p>其实一切都要从一场活动开始…</p>
+
+<blockquote>
+  <p>各位同学以及已经工作了的同事，都可以尝试着参加一些开放性的沙龙和技术峰会，在会上你能够和其他人交流想法，探讨问题，结识志同道合的人，收获你意想不到的体验。</p>
+</blockquote>
+
+<p>在分享会上我了解到<code class="language-plaintext highlighter-rouge">wechaty</code>项目，特别是被佳芮的live coding环节吸引到了，通过简单的几行代码就可以开发一个非常好玩的聊天机器人，接下来通过一段时间的学习和探索掌握了<code class="language-plaintext highlighter-rouge">wechaty</code>的基本使用。</p>
+
+<p>然而，最初的<code class="language-plaintext highlighter-rouge">wechaty</code>版本只有<code class="language-plaintext highlighter-rouge">TypeScript</code>版本，并没有目前的多语言版本，而我自己又是一个<code class="language-plaintext highlighter-rouge">python</code>的忠实粉丝，觉得这么好用的一个开源框架怎么可能没有一个<code class="language-plaintext highlighter-rouge">python</code>开发版本呢？这个疑问一直围绕在我的心头。</p>
+
+<p>终于，在今年二月份疫情期间，大家都被困在家里，预期说被困，不如说是解放。因为我们拥有大把的时间坐在房间，和网友讨论各种问题，而<code class="language-plaintext highlighter-rouge">wechaty</code>社区尤为活跃，当是我已能够帮助大家解决一部分问题。</p>
+
+<p>突然，其中就有人开始问我心目中的那个问题了：为什么<code class="language-plaintext highlighter-rouge">wechaty</code>没有一个<code class="language-plaintext highlighter-rouge">python</code>版本的开发框架呢？作者（李卓桓）便开始鼓励我们上手开发，而我当时第一个报名（也不知道当时有什么勇气，现在看来非常感谢当初的那份无畏勇气），经过了两个月的折腾之后，便有了<a href="https://github.com/wechaty/python-wechaty">python-wechaty</a>的第一个ding-dong版本。</p>
+
+<h2 id="开源项目并没有你想的那么难">开源项目并没有你想的那么难</h2>
+
+<p>其实在这两个月期间我过的还是挺痛苦的，因为作者（李卓桓）给<code class="language-plaintext highlighter-rouge">python-wechaty</code>制定的代码质量要求还挺高的（高是一个相对性词），需要经过各种代码审查才能够通过，而这些代码审查的工具我是从来都没有用过，在实际开发的过程中遇到了各种坑儿。让我印象最深刻的就是需要解决python中最经典的问题：包的循环引用的问题。虽然解决方案有很多，可是需要寻找一种能够通过严格代码审查的解决方案对应当时我的而言还是非常有难度。</p>
+
+<p>在开发的过程中，每个函数的命名，注释以及代码风格当时都做了很多的<a href="https://github.com/wechaty/python-wechaty/wiki/Coding-Style">讨论</a>，让我印象最深刻的就是关于数组类型的命名的讨论：比如好友ID列表变量命名，有<code class="language-plaintext highlighter-rouge">room_ids</code> 和 <code class="language-plaintext highlighter-rouge">room_id_list</code> 两种风格的讨论。通过这些非常细致的技术讨论，让我对编程有了一个全新的认识：写代码并不只是完成了一个功能就行了，而是需要在阅读性，代码风格，代码鲁棒性等各个层面作出权衡。</p>
+
+<p>虽然以上都是一些小细节的问题，可是正是细节处才能够体现出能力，而只需要付出足够的时间，就能够被解决，你就能够拥有这些能力。</p>
+
+<p>所以开源项目并没有你想象的那么难，<strong>只需要你付出足够的努力就可以获得对应的硬实力</strong>。</p>
+
+<h2 id="开源项目并没有你想的那么简单">开源项目并没有你想的那么简单</h2>
+
+<p>自从开源项目逐步稳定，参与的人也越来越多，于是你作为项目的主要推动人，需要组织和管理项目的<code class="language-plaintext highlighter-rouge">issue</code>和<code class="language-plaintext highlighter-rouge">pull request</code>，需要协调参与项目的每个人，而大家都是来自于开源社区，处于一个松散合作，并非使用强制性约束来做项目，所以此时的项目管理就变得非常难以推动。</p>
+
+<p>于是我请教了<code class="language-plaintext highlighter-rouge">wechaty</code>开源社区多个不同的作者，他们不吝赐教，给予我非常多有价值的建议以及未来的一些规划的看法，于是我开始进行一些调整，和团队的人积极沟通每一个细节问题，并能够顺利的基于github中的issue和pr来管理所有的事情。</p>
+
+<p>开源项目其实是一种以开源的思想来和世界上任何一个人合作开发，并没有一种强制性的约束，更多的是开放性思维来协作，这些东西都是需要深度学习的，</p>
+
+<p>所以开源项目并没有你想象的那么简单，<strong>只需要你付出足够的坚持就可以获得对应的软实力</strong></p>
+
+<h2 id="一定要积极参加开源项目">一定要积极参加开源项目</h2>
+
+<p>其实很多开源项目都非常欢迎新鲜的血液，也愿意去指导那些愿意学习的同学，所以如果你有一颗想要开源的心，就勇敢的尝试参与开源项目把，在里面你将收获非常多的提升和帮助，也会帮你认识很多优秀的人。</p>
+
+<h2 id="talk-multi-wechaty-sdk-for-chatbot">Talk: Multi-Wechaty SDK for Chatbot</h2>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/ncSWIRtHyAo" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<blockquote>
+  <p>YouTube: <a href="https://youtu.be/ncSWIRtHyAo">https://youtu.be/ncSWIRtHyAo</a></p>
+</blockquote>
+
+<h2 id="vlog-wechaty社区南京开源峰会之旅">Vlog： Wechaty社区南京开源峰会之旅</h2>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/0ARx1cCf5p0" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<blockquote>
+  <p>YouTube: <a href="https://youtu.be/0ARx1cCf5p0">https://youtu.be/0ARx1cCf5p0</a></p>
+</blockquote>
+
+<hr />
+
+<blockquote>
+  <p>This post is also available in <a href="/2020/12/08/python-wechaty-open-source-journey-en/">English</a>.</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#python">python</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/wj-mcat">
+                            <img class="rounded-circle" src="/assets/contributors/wj-mcat/avatar.webp" alt="吴京京" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/wj-mcat">吴京京</a> <span><a target="_blank" href="https://weibo.com/u/3877178684" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Committer of Python-Wechaty. NLP & Chatbot Researcher, a graduate student at Beijing University of Posts and Telecommunications.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/12/08/python-wechaty-open-source-journey-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/12-python-wechaty-open-source-journey-en/wechaty-nanjing-picture.webp">   "Python-Wechaty Journey at Nanjing Open Source Summit"</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/12/08/wechaty-bot-hostie/"> 基于Wechaty开发的群聊小助手  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/wechaty-bot-hostie/img-func.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

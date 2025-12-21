@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      微信群打卡统计机器人 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>微信群打卡统计机器人 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="微信群打卡统计机器人" />
+<meta name="author" content="secreter" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="一个可以OCR 打卡并生成统计方块图的机器人。" />
+<meta property="og:description" content="一个可以OCR 打卡并生成统计方块图的机器人。" />
+<link rel="canonical" href="https://wechaty.js.org/2020/07/03/a-room-punch-bot/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/07/03/a-room-punch-bot/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/tiny-bot/teaser.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-07-03T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/tiny-bot/teaser.webp" />
+<meta property="twitter:title" content="微信群打卡统计机器人" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"secreter"},"dateModified":"2020-07-03T00:00:00+00:00","datePublished":"2020-07-03T00:00:00+00:00","description":"一个可以OCR 打卡并生成统计方块图的机器人。","headline":"微信群打卡统计机器人","image":"https://wechaty.js.org/assets/2020/tiny-bot/teaser.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/07/03/a-room-punch-bot/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"secreter"},"url":"https://wechaty.js.org/2020/07/03/a-room-punch-bot/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#tutorial">tutorial</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">微信群打卡统计机器人</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/secreter">
+                            <img class="rounded-circle" src="/assets/contributors/secreter/avatar.webp" alt="secreter" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/secreter">secreter</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jul 03, 2020 · <span class="reading-time">
+  
+  
+    2 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/tiny-bot/teaser.webp" alt="微信群打卡统计机器人">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>一个可以OCR 打卡并生成统计方块图的机器人。</p>
+
+<p><img src="/assets/2020/tiny-bot/teaser.webp" alt="打卡图片" /></p>
+
+<h2 id="项目背景">项目背景</h2>
+
+<p>由于疫情的影响，大家都减少了不必要的外出，互联网行业也有很多公司在家办公。带来的一个问题就是，大家外出和运动的时间减少了，几乎都宅在家里，很多人体重开始飙升。于是朋友建了一个健身打卡群，每天大家在家运动健身，然后在群里进行打卡。非常好的一件事情，唯一的缺点就是，打卡行为只能靠自觉约束，并且不能很好的记录到底打卡多少天了？是否连续打卡？也不能准确的知道打卡最积极的人并给予一些奖励。</p>
+
+<p>这个时候想到微信机器人，其实很多年前我就搞过微信机器人，后来由于web  版本的掉线太频繁，就放弃了一段时间。这次借此契机，又上github 搜索了一下wechaty,看到ipad 协议的机器人支持度很好，于是决定重操旧业，开发一个打开机器人。</p>
+
+<h2 id="项目需求">项目需求</h2>
+
+<ol>
+  <li>支持关键字打卡，例如：发送“打卡”即可打卡成功</li>
+  <li>记录打卡人的详细信息，包括昵称、备注、头像、打卡时间等</li>
+  <li>打卡成功后，生成精美的图片卡片，并包含打卡日期统计图</li>
+  <li>针对分享在群里的图片（keep截图等），进行ocr识别，提前关键字自动打卡</li>
+  <li>支持机器人聊天，活跃群气氛</li>
+</ol>
+
+<h2 id="项目实现">项目实现</h2>
+
+<p>感谢wechaty提供的框架，项目目前以上功能均已实现，并且还增加了一些外的小功能。在此分享几个实现过程中的功能点。</p>
+
+<h3 id="开发框架">开发框架</h3>
+
+<p>首先，我们在代码编码之前，应该设计一些代码的目录结构和基本框架，好的框架能让开发得心应手，提高效率。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">|-</span><span class="nx">tiny</span><span class="o">-</span><span class="nx">bot</span>
+  <span class="o">|-</span><span class="nx">Dockerfile</span>
+  <span class="o">|-</span><span class="nx">README</span><span class="p">.</span><span class="nx">md</span>
+  <span class="o">|-</span><span class="kr">package</span><span class="p">.</span><span class="nx">json</span>
+  <span class="o">|-</span><span class="nx">src</span>
+  <span class="o">|</span>  <span class="o">|-</span><span class="nx">api</span>
+  <span class="o">|</span>  <span class="o">|</span>  <span class="o">|-</span><span class="nx">constellation</span><span class="p">.</span><span class="nx">js</span>
+  <span class="o">|</span>  <span class="o">|</span>  <span class="o">|-</span><span class="nx">turing</span><span class="p">.</span><span class="nx">js</span>
+  <span class="o">|</span>  <span class="o">|</span>  <span class="o">|-</span><span class="nx">unsplash</span><span class="p">.</span><span class="nx">js</span>
+  <span class="o">|</span>  <span class="o">|-</span><span class="nx">config</span><span class="p">.</span><span class="nx">js</span>
+  <span class="o">|</span>  <span class="o">|-</span><span class="nx">lib</span>
+  <span class="o">|</span>  <span class="o">|</span>  <span class="o">|-</span><span class="nx">adDetect</span><span class="p">.</span><span class="nx">js</span>
+  <span class="o">|</span>  <span class="o">|</span>  <span class="o">|-</span><span class="nx">admin</span><span class="p">.</span><span class="nx">js</span>
+  <span class="o">|</span>  <span class="o">|</span>  <span class="o">|-</span><span class="nx">common</span><span class="p">.</span><span class="nx">js</span>
+  <span class="o">|</span>  <span class="o">|</span>  <span class="o">|-</span><span class="nx">file</span><span class="p">.</span><span class="nx">js</span>
+  <span class="o">|</span>  <span class="o">|</span>  <span class="o">|-</span><span class="nx">forward</span><span class="p">.</span><span class="nx">js</span>
+  <span class="o">|</span>  <span class="o">|</span>  <span class="o">|-</span><span class="nx">logger</span><span class="p">.</span><span class="nx">js</span>
+  <span class="o">|</span>  <span class="o">|</span>  <span class="o">|-</span><span class="nx">room</span><span class="p">.</span><span class="nx">js</span>
+  <span class="o">|</span>  <span class="o">|</span>  <span class="o">|-</span><span class="nx">utils</span><span class="p">.</span><span class="nx">js</span>
+  <span class="o">|</span>  <span class="o">|-</span><span class="nx">listeners</span>
+  <span class="o">|</span>  <span class="o">|</span>  <span class="o">|-</span><span class="nx">on</span><span class="o">-</span><span class="nx">filehelper</span><span class="o">-</span><span class="nx">message</span><span class="p">.</span><span class="nx">js</span>
+  <span class="o">|</span>  <span class="o">|</span>  <span class="o">|-</span><span class="nx">on</span><span class="o">-</span><span class="nx">friend</span><span class="o">-</span><span class="nx">message</span><span class="p">.</span><span class="nx">js</span>
+  <span class="o">|</span>  <span class="o">|</span>  <span class="o">|-</span><span class="nx">on</span><span class="o">-</span><span class="nx">friend</span><span class="p">.</span><span class="nx">js</span>
+  <span class="o">|</span>  <span class="o">|</span>  <span class="o">|-</span><span class="nx">on</span><span class="o">-</span><span class="nx">login</span><span class="p">.</span><span class="nx">js</span>
+  <span class="o">|</span>  <span class="o">|</span>  <span class="o">|-</span><span class="nx">on</span><span class="o">-</span><span class="nx">logout</span><span class="p">.</span><span class="nx">js</span>
+  <span class="o">|</span>  <span class="o">|</span>  <span class="o">|-</span><span class="nx">on</span><span class="o">-</span><span class="nx">message</span><span class="p">.</span><span class="nx">js</span>
+  <span class="o">|</span>  <span class="o">|</span>  <span class="o">|-</span><span class="nx">on</span><span class="o">-</span><span class="nx">room</span><span class="o">-</span><span class="nx">admin</span><span class="o">-</span><span class="nx">message</span><span class="p">.</span><span class="nx">js</span>
+  <span class="o">|</span>  <span class="o">|</span>  <span class="o">|-</span><span class="nx">on</span><span class="o">-</span><span class="nx">room</span><span class="o">-</span><span class="nx">invite</span><span class="p">.</span><span class="nx">js</span>
+  <span class="o">|</span>  <span class="o">|</span>  <span class="o">|-</span><span class="nx">on</span><span class="o">-</span><span class="nx">room</span><span class="o">-</span><span class="nx">join</span><span class="p">.</span><span class="nx">js</span>
+  <span class="o">|</span>  <span class="o">|</span>  <span class="o">|-</span><span class="nx">on</span><span class="o">-</span><span class="nx">room</span><span class="o">-</span><span class="nx">leave</span><span class="p">.</span><span class="nx">js</span>
+  <span class="o">|</span>  <span class="o">|</span>  <span class="o">|-</span><span class="nx">on</span><span class="o">-</span><span class="nx">room</span><span class="o">-</span><span class="nx">mention</span><span class="p">.</span><span class="nx">js</span>
+  <span class="o">|</span>  <span class="o">|</span>  <span class="o">|-</span><span class="nx">on</span><span class="o">-</span><span class="nx">room</span><span class="o">-</span><span class="nx">message</span><span class="p">.</span><span class="nx">js</span>
+  <span class="o">|</span>  <span class="o">|</span>  <span class="o">|-</span><span class="nx">on</span><span class="o">-</span><span class="nx">room</span><span class="o">-</span><span class="nx">topic</span><span class="p">.</span><span class="nx">js</span>
+  <span class="o">|</span>  <span class="o">|</span>  <span class="o">|-</span><span class="nx">on</span><span class="o">-</span><span class="nx">scan</span><span class="p">.</span><span class="nx">js</span>
+  <span class="o">|</span>  <span class="o">|</span>  <span class="o">|-</span><span class="nx">on</span><span class="o">-</span><span class="nx">superadmin</span><span class="o">-</span><span class="nx">message</span><span class="p">.</span><span class="nx">js</span>
+  <span class="o">|</span>  <span class="o">|-</span><span class="nx">robot</span><span class="p">.</span><span class="nx">js</span>
+  <span class="o">|</span>  <span class="o">|-</span><span class="nx">tpl</span>
+  <span class="o">|</span>  <span class="o">|</span>  <span class="o">|-</span><span class="nx">punch</span><span class="p">.</span><span class="nx">html</span>
+  <span class="o">|</span>  <span class="o">|-</span><span class="nx">util</span>
+  <span class="o">|</span>  <span class="o">|</span>  <span class="o">|-</span><span class="nx">callerFileName</span><span class="p">.</span><span class="nx">js</span>
+
+</code></pre></div></div>
+
+<p>其中listeners 目录对消息类型进行了分类，这样，需要添加特定消息的业务逻辑时，就可以很清晰的添加。config.js 中提供了项目中的所有动态配置项，tpl/ 目录里，存放了代码的打卡模板，可以<a href="http://images.redream.cn/upic/2019/20200629184711-punch.html?data=[{&quot;count&quot;:1,&quot;timestamp&quot;:1593097495015},{&quot;count&quot;:1,&quot;timestamp&quot;:1593270295015},{&quot;count&quot;:1,&quot;timestamp&quot;:1593339046223},{&quot;count&quot;:1,&quot;timestamp&quot;:1593427696584},{&quot;count&quot;:1,&quot;timestamp&quot;:1593521084178},{&quot;count&quot;:1,&quot;timestamp&quot;:1593574357851},{&quot;count&quot;:1,&quot;timestamp&quot;:1593688908645},{&quot;count&quot;:1,&quot;timestamp&quot;:1593705938358}]&amp;avatar=https://github.com/wechaty/wechaty.github.io/raw/master/assets/2020/tiny-bot/qr.webp&amp;name=@2020&amp;&amp;h=450&amp;w=375&amp;x=0&amp;y=0">点击查看效果</a>（手机版）</p>
+
+<h3 id="打卡模板实现">打卡模板实现</h3>
+
+<p>打卡模板，是一个纯html 文件，逻辑非常简单，就是从url 上读取用户昵称、头像、数据，进行页面渲染，其中打卡方块图的绘制，用到了可视化库<a href="https://f2.antv.vision/zh/docs/tutorial/getting-started">F2</a>。</p>
+
+<h3 id="图片生成">图片生成</h3>
+
+<p>图片生成是在服务端实现的，主要是用到了无头浏览器<a href="https://try-puppeteer.appspot.com/">puppeteer</a>的截图功能。相当于浏览器访问tpl.html地址，将生成的页面进行截图，再通过File-box 返回给用户，即实现了打卡生成图片的功能。</p>
+
+<p><img src="/assets/2020/tiny-bot/teaser.webp" alt="打卡图片" /></p>
+
+<h3 id="ocr打卡">OCR打卡</h3>
+
+<p>手动输入打卡关键字打卡，对于有的比较懒的同学，还是比较麻烦的。OCR 技术能实现无感知打卡，当用户将keep 运动的截图发送到群聊的时候，就可以通过OCR 技术识别关键字，进行打卡。这里主要调用的接口是<a href="https://ai.qq.com/">腾讯的AI 开放平台</a>的通用识图技术。</p>
+
+<p><img src="/assets/2020/tiny-bot/ocr.webp" alt="打卡图片" /></p>
+
+<p><img src="/assets/2020/tiny-bot/menu.webp" alt="打卡图片" /></p>
+
+<h2 id="功能增强">功能增强</h2>
+
+<p>至此，你已经能实现一个很好的打卡机器人了。但其实我们还能做更多，这些我也正在开发中，敬请期待，例如：</p>
+
+<ol>
+  <li>OCR 识别运动时长，生成更细的打卡记录</li>
+  <li>采用定时任务，对长期未打卡人进行主动@提醒</li>
+  <li>智能转发优质运动公众号文章到群聊</li>
+  <li>支持keep 小程序打卡</li>
+  <li>…</li>
+</ol>
+
+<h2 id="体验">体验</h2>
+
+<p>目前代码开源，大家可以clone 下来体验一下，项目地址：<a href="https://github.com/secreter/tiny-bot">https://github.com/secreter/tiny-bot</a>，博客地址：<a href="https://www.redream.cn/">https://www.redream.cn/</a></p>
+
+<p>也欢迎大家添加我的机器人张三进行体验。</p>
+
+<p><img src="/assets/2020/tiny-bot/qr.webp" alt="机器人二维码" /></p>
+
+<blockquote>
+  <p>Author: <a href="https://github.com/secreter">@secreter</a> 公众号redream
+Code: <a href="https://github.com/secreter/tiny-bot">@tiny-bot</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#assistant">assistant</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/secreter">
+                            <img class="rounded-circle" src="/assets/contributors/secreter/avatar.webp" alt="secreter" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/secreter">secreter</a> </h5>
+						A nodejs developer
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/07/03/910taobot-for-better-life/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/910taobot/panda.webp">  910taoBot-为了美好的生活</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/07/05/multilanguage-meeting-notes/"> Multi-language Wechaty Meeting: Mocking & Code Quality  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/meeting-notes/07-05-head-picture.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

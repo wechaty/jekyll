@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Abhishek Jaiswal :Project Proposal for GSoD'21 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Abhishek Jaiswal :Project Proposal for GSoD’21 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Abhishek Jaiswal :Project Proposal for GSoD’21" />
+<meta name="author" content="abhishek" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Introduction" />
+<meta property="og:description" content="Introduction" />
+<link rel="canonical" href="https://wechaty.js.org/2021/05/03/project-proposal-wechaty/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/05/03/project-proposal-wechaty/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/05-project-proposal-wechaty/gsod-2021.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-03T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/05-project-proposal-wechaty/gsod-2021.webp" />
+<meta property="twitter:title" content="Abhishek Jaiswal :Project Proposal for GSoD’21" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"abhishek"},"dateModified":"2021-05-03T00:00:00+00:00","datePublished":"2021-05-03T00:00:00+00:00","description":"Introduction","headline":"Abhishek Jaiswal :Project Proposal for GSoD’21","image":"https://wechaty.js.org/assets/2021/05-project-proposal-wechaty/gsod-2021.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/05/03/project-proposal-wechaty/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"abhishek"},"url":"https://wechaty.js.org/2021/05/03/project-proposal-wechaty/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#gsod">gsod</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Abhishek Jaiswal :Project Proposal for GSoD'21</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/abhishek">
+                            <img class="rounded-circle" src="/assets/contributors/abhishek/avatar.webp" alt="Abhishek Jaiswal" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/abhishek">Abhishek Jaiswal</a> <span><a target="_blank" href="https://twitter.com/abhishek__iiit" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">May 03, 2021 · <span class="reading-time">
+  
+  
+    9 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/05-project-proposal-wechaty/gsod-2021.webp" alt="Abhishek Jaiswal :Project Proposal for GSoD'21">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<h2 id="introduction">Introduction</h2>
+
+<p>Hello, ChatBot Developers!</p>
+
+<p>Myself Abhishek Jaiswal,CSE sophomore from IIIT Bhubaneswar,India and a <a href="https://studentambassadors.microsoft.com/en-US/profile/93837">MSFT student ambassador</a> interested in improving the tutorials of Wechaty.</p>
+
+<p>My past Technical Writing Experience</p>
+
+<p>Technical Writer - AnalyticsVidya@medium &amp; Devtutorials@medium
+Technical Writer - Hashnode
+Video Production Manager - Qualki</p>
+
+<h2 id="project-proposal">Project Proposal</h2>
+
+<h3 id="abstract">Abstract</h3>
+
+<p>A easy-to-learn tutorials are designed to assist end users to get familiar with the product or service. Good tutorials are very important because it provides an avenue for users to learn how to use a software, its features, tips, tricks. It also reduces support cost and is part of the corporate identity of the product: a good tutorials as well as user documentation is a sign of healthiness of the product, the developer team. Without good tutorials, a user may not know how to do the above things effectively and efficiently. Also User Documentations can play a pivotal role in ensuring a product’s success because great communication is and will always be at the heart of any business or product and a great documentation just takes that communication and puts it in a manageable framework that everyone can access for success. At the time of this writing, the Wechaty now has more than 9900 Stargazers over time and the having no downtime after 12th Nov,2020 for the API and FridayBot, this shows that a lot of people all over the world use the Wechaty and may want to read its tutorials for guidance on how to use the the chatbot maker. However, the Wechaty tutorial is currently outdated and incomplete and the Wehchaty community wants to use this project to improve its tutorials and user documentation to enable end users to have a seamless experience when using the Wechaty.</p>
+
+<h3 id="current-state">Current State</h3>
+
+<p>Currently, the tutorials are available on its official website. It is obsolete, incomplete,hard to navigate or find information, does not cover code about some programming language of the chatbot maker and some posts and tutorials are written in Chineselanguage which causes a major setback for people who can’t read the Language.</p>
+
+<h3 id="why-is-your-proposed-user-documentation-an-improvement-over-the-current-one">Why is your proposed user documentation an improvement over the current one?</h3>
+
+<p>The proposed user tutorials will be structured to improve and ensure efficiency,consistency, and peace of mind for any end user. It will contain written guides and its associated images, include instructions and explanations on how to use each feature of the Wechaty, up to date, allow the user to learn by doing, understandable and translatable in English languages as well all the blogs,posts,video subtitles as
+well.</p>
+
+<h3 id="analysis">Analysis</h3>
+
+<p>Huan and I had a conversation about the new changes that are to be made with the current tutorials and he shared two links that showed a project’s scope file written with Docusaurus documentation system v2 and a tutorials docs given on wechaty and said they expect to enhance the contents under the tutorial sub menu. The links he shared with me can be found here and here. I researched a lot about these tools to get a better understanding of how it works.</p>
+
+<p>Docusaurus documentation system v2</p>
+
+<p>Docusaurus makes it easy to maintain Open Source documentation websites. Docusaurus currently provides support to help the website use translations, search, and versioning, along with some other special documentation markdown features.Some of its features are :</p>
+
+<ul>
+  <li>Powered by Markdown</li>
+  <li>Built Using React</li>
+  <li>Ready for Translations</li>
+  <li>Document Versioning</li>
+  <li>Document Search</li>
+</ul>
+
+<p>It makes design and documentation changes by using the included live server. Also, it publishes the site to GitHub pages or other static file hosts manually, using a script.</p>
+
+<h3 id="project-goals">Project Goals</h3>
+
+<ul>
+  <li>Allow the user to learn by doing</li>
+  <li>Get the user started</li>
+  <li>Make sure that the tutorial works all the time</li>
+  <li>Ensure the user sees results immediately</li>
+  <li>Make the tutorial repeatable</li>
+  <li>Focus on concrete steps, not abstract concepts</li>
+  <li>Provide the minimum necessary explanation</li>
+  <li>Focus only on the steps the user needs to take</li>
+  <li>Work with the contributor team to update the documentation on the Wechaty site</li>
+</ul>
+
+<h3 id="my-previous-contribution">My Previous Contribution</h3>
+
+<ul>
+  <li><a href="https://github.com/wechaty/wechaty.js.org/pull/798">https://github.com/wechaty/wechaty.js.org/pull/798</a></li>
+  <li><a href="https://github.com/wechaty/wechaty.js.org/pull/789">https://github.com/wechaty/wechaty.js.org/pull/789</a></li>
+  <li><a href="https://github.com/wechaty/wechaty.js.org/pull/784">https://github.com/wechaty/wechaty.js.org/pull/784</a></li>
+  <li><a href="https://github.com/wechaty/wechaty.js.org/pull/782">https://github.com/wechaty/wechaty.js.org/pull/782</a></li>
+  <li><a href="https://github.com/wechaty/wechaty.js.org/pull/775">https://github.com/wechaty/wechaty.js.org/pull/775</a></li>
+  <li><a href="https://github.com/wechaty/wechaty.js.org/pull/761">https://github.com/wechaty/wechaty.js.org/pull/761</a></li>
+  <li><a href="https://github.com/wechaty/wechaty.js.org/pull/758">https://github.com/wechaty/wechaty.js.org/pull/758</a></li>
+</ul>
+
+<h2 id="timeline">Timeline</h2>
+
+<p>Doc development(Before 30 April)</p>
+
+<ul>
+  <li>Continue making contributions to the organisation.</li>
+  <li>Become more familiar with the current tutorials and make a blueprint of the changes to be done.</li>
+  <li>Learn new technologies and technical writing skills which will be helpful while implementing the project.</li>
+  <li>Learn more about the community and product.</li>
+  <li>Discussing the proposed documentation structure with the mentor and other members of the organisation.</li>
+  <li>Finalised the proposed feature and other modifications that need to be made with existing tutorials.</li>
+</ul>
+
+<h3 id="week-1-1nd-may---8th-may">Week 1 (1nd May - 8th May)</h3>
+
+<p>This week I will focus on setting up the GitHub repository which I will use to push and pull all the changes I have made.</p>
+
+<ul>
+  <li>If a Github repository for the documentation has already been created by the Wechaty community before the beginning of the documentation period, I will fork the repository so that I can be making changes to my branch directly before creating a pull request to the main repository to be reviewed and merged by the mentor. If not, I will create a repository for the documentation on GitHub (of course after taking permission from the mentor).</li>
+  <li>Add a README file to GitHub to help future contributors understand how to contribute to Wechaty documentations and tutorials.</li>
+  <li>I will write documentation on two subheadings in the Getting Started section of the documentation.</li>
+  <li>Why Wechaty: A brief introduction and some little history of the Wechaty community and Chatbot Maker.</li>
+  <li>List of Examples: To excite people to use this chatbot maker.</li>
+  <li>Commit the newly made changes to my branch and create a pull request for review.</li>
+</ul>
+
+<h3 id="week-29th-may---15th-may">Week 2(9th May - 15th May)</h3>
+
+<ul>
+  <li>Help &amp; Contact :To mention all the necessary links and references with details.</li>
+  <li>Quick Start Setup : A quick easy to understand setup tutorial with necessary images and easy-to-understand words.</li>
+  <li>Installation : Straightforward installation with images for each step in installation.</li>
+</ul>
+
+<h3 id="week-316th-may---22nd-may">Week 3(16th May - 22nd May)</h3>
+
+<ul>
+  <li>Showcase : To translate language as well as rearrange the topics in block form for better User Interface.</li>
+  <li>Hands-on tutorial’s Homepage :To translate page and retransform page for better experience.4</li>
+  <li>Basic tutorials for beginners : To add a well explained introduction and some wechaty images to make interests for the users.</li>
+</ul>
+
+<h3 id="week-423rd-may---29th-may">Week 4(23rd May - 29th May)</h3>
+
+<ul>
+  <li>Video Tutorial (Money Bot) : To translate the entire page and to add english subtitles to the video.</li>
+  <li>Create a bot : To reorganise the page, add items to left fields and conversion of codes to 5 different programming languages.</li>
+  <li>Listen to events : To reorganise the page, add items to left fields and conversion of codes to 5 different programming languages.</li>
+</ul>
+
+<h3 id="week-530th-may---5th-june">Week 5(30th May - 5th June)</h3>
+
+<ul>
+  <li>Video Tutorial (Assistant Bot) : To translate the entire page and to add english subtitles to the video.</li>
+  <li>Deal with message : To reorganise the page, add items to left fields and conversion of codes to 5 different programming languages.</li>
+  <li>Manage rooms : To reorganise the page, add items to left fields and conversion of codes to 5 different programming languages.</li>
+</ul>
+
+<h3 id="week-66th-june---12th-june">Week 6(6th June - 12th June)</h3>
+
+<ul>
+  <li>Video Tutorial (Coaxer Bot) : To translate the entire page and to add english subtitles to the video.</li>
+  <li>Make friends : To reorganise the page, add items to left fields and conversion of codes to 5 different programming languages.</li>
+  <li>Process files : To reorganise the page, add items to left fields and conversion of codes to 5 different programming languages.</li>
+</ul>
+
+<h3 id="week-713th-june---19th-june">Week 7(13th June - 19th June)</h3>
+
+<ul>
+  <li>Manage contacts : To reorganise the page, add items to left fields and conversion of codes to 5 different programming languages.</li>
+  <li>Write tests : To reorganise the page, add items to left fields and conversion of codes to 5 different programming languages.</li>
+  <li>Construct page for Heroku usage : To add content along with some visuals for better experience.</li>
+</ul>
+
+<h3 id="week-820th-june---26th-june">Week 8(20th June - 26th June)</h3>
+
+<ul>
+  <li>Construct page for Heroku usage : To add content along with some visuals for better experience.</li>
+  <li>Construct page for Heroku usage : To add content along with some visuals for better experience.</li>
+  <li>Reorganise Pugin with wechaty page : To reorganise all the content and add some photos for making it interesting.</li>
+</ul>
+
+<h3 id="week-927th-june---3rd-july">Week 9(27th June - 3rd July)</h3>
+
+<ul>
+  <li>Reorganise Pugin with wechaty page : To reorganise all the content and add some photos for making it interesting.</li>
+  <li>Reorganise Pugin with wechaty page : To reorganise all the content and all photos for making it interesting.5</li>
+  <li>Examples and cheatsheet : Add some new examples and make new cheatsheet for the project.</li>
+</ul>
+
+<h3 id="week-104th-july---10th-july">Week 10(4th July - 10th July)</h3>
+
+<p>Conversion of Blogs to english language with possible images as well :</p>
+
+<ul>
+  <li>How do I use Chatbot to reconstruct the sales system in Qiji Innovation Forum,@rickyyin</li>
+  <li>Chatbot’s application in customized travel industry,@likai</li>
+  <li>Microsoft Tech Summit-Quickly build a chatbot,@lijiarui</li>
+</ul>
+
+<h3 id="week-1111th-july---17th-july">Week 11(11th July - 17th July)</h3>
+
+<p>Conversion of Blogs to english language with possible images as well :</p>
+
+<ul>
+  <li>Use wechaty to realize news and information broadcasting robot,@judaschrist</li>
+  <li>Party entertainment robot,@osindex</li>
+  <li>Wechaty-Let there be no difficult business online, @coderwhocode</li>
+</ul>
+
+<p>Additional Work</p>
+
+<h3 id="week-1218th-july---24th-july">Week 12(18th July - 24th July)</h3>
+
+<ul>
+  <li>To reverify the reference doc,if we have any docs incomplete ,and translate it to english language as well ,and try to complete it within a week:</li>
+  <li>API references</li>
+  <li>Polyglot</li>
+  <li>Puppet providers</li>
+  <li>Puppet Services</li>
+  <li>Specifications</li>
+</ul>
+
+<h3 id="week-1325th-july---31st-july">Week 13(25th July - 31st July)</h3>
+
+<ul>
+  <li>To go through Explanations docs ,and translate it to english language as well for easy understanding and well formatted documents.</li>
+  <li>Overview</li>
+  <li>Conversational</li>
+  <li>RPA</li>
+  <li>Motivation</li>
+  <li>Concepts</li>
+  <li>Architecture</li>
+  <li>Life Cycle</li>
+  <li>Alternatives</li>
+  <li>Glossary</li>
+  <li>FAQ</li>
+  <li>Troubleshooting</li>
+  <li>Docusaurus6</li>
+</ul>
+
+<h3 id="week-141st-august---7th-august">Week 14(1st August - 7th August)</h3>
+
+<ul>
+  <li>This week I will put all my attention on proofreading the documentation for typos and errors.</li>
+  <li>Submit a project report and evaluation of my mentors</li>
+  <li>Write and submit a report of my experience as a participant in Season of Docs.</li>
+</ul>
+
+<h2 id="personal-information">Personal Information</h2>
+
+<p><a href="https://github.com/abhishek-iiit"><img src="https://user-images.githubusercontent.com/69477761/111753834-4ef7ef00-88bd-11eb-856c-afe7d58115d5.png" width="150px" height="150px" /></a></p>
+
+<ul>
+  <li>Name: Abhishek Jaiswal</li>
+  <li>Github: <a href="https://github.com/abhishek-iiit">https://github.com/abhishek-iiit</a></li>
+  <li>Blog: <a href="https://abhishek-iiit.hashnode.dev/">https://abhishek-iiit.hashnode.dev/</a> &amp; <a href="https://abhishek-iiit.medium.com/">https://abhishek-iiit.medium.com/</a></li>
+  <li>Gitter handle: Abhishek Jaiswal</li>
+  <li>Location: Uttar Pradesh, India</li>
+  <li>Time Zone: (UTC + 05:30) India</li>
+  <li>Typical working hours: 4PM - 10 PM (UTC + 05:30) India</li>
+</ul>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#introduction">introduction</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#google">google</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#gsod">gsod</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#2021">2021</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#docs">docs</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#project">project</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#proposal">proposal</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/abhishek">
+                            <img class="rounded-circle" src="/assets/contributors/abhishek/avatar.webp" alt="Abhishek Jaiswal" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/abhishek">Abhishek Jaiswal</a> <span><a target="_blank" href="https://twitter.com/abhishek__iiit" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Love to contribute to open source projects
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/05/03/joseph-mawa-google-season-of-docs-project-technical-proposal/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/05-joseph-mawa-google-season-of-docs-project-technical-proposal/lemur.webp">  Joseph Mawa: 2021 Google Season of Docs Technical Proposal</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/05/03/sajen-sarvajith-blog-post/"> Sajen Sarvajith K: Blog Post for interactive tutorial (Google Season of Docs 2021 Proposal)  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/05-sajen-sarvajith-blog-post/profile-pic.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      小白入门：如何用科技拯救你的记忆力 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>小白入门：如何用科技拯救你的记忆力 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="小白入门：如何用科技拯救你的记忆力" />
+<meta name="author" content="stefan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="过去的一周接触到了 wechaty ，非常兴奋，首先对于这个神奇的东西感到惊奇，其次我是一个比较喜欢解决问题的人，可以用它解决很多实际问题，于是便开始了我的 wechaty 之路，下面和大家简单说一下我做的一个小demo，本文介绍使用的技术都是基本中的基本，几乎是对前端技术稍有了解的人就可以轻易完成，此举旨在帮助刚接触 wechaty 的同学（包括我）建立信心，不至于被挫败感吓跑。" />
+<meta property="og:description" content="过去的一周接触到了 wechaty ，非常兴奋，首先对于这个神奇的东西感到惊奇，其次我是一个比较喜欢解决问题的人，可以用它解决很多实际问题，于是便开始了我的 wechaty 之路，下面和大家简单说一下我做的一个小demo，本文介绍使用的技术都是基本中的基本，几乎是对前端技术稍有了解的人就可以轻易完成，此举旨在帮助刚接触 wechaty 的同学（包括我）建立信心，不至于被挫败感吓跑。" />
+<link rel="canonical" href="https://wechaty.js.org/2021/10/09/how-to-save-your-memory-with-technology/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/10/09/how-to-save-your-memory-with-technology/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/10-how-to-save-your-memory-with-technology/bgc.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-10-09T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/10-how-to-save-your-memory-with-technology/bgc.webp" />
+<meta property="twitter:title" content="小白入门：如何用科技拯救你的记忆力" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"stefan"},"dateModified":"2021-10-09T00:00:00+00:00","datePublished":"2021-10-09T00:00:00+00:00","description":"过去的一周接触到了 wechaty ，非常兴奋，首先对于这个神奇的东西感到惊奇，其次我是一个比较喜欢解决问题的人，可以用它解决很多实际问题，于是便开始了我的 wechaty 之路，下面和大家简单说一下我做的一个小demo，本文介绍使用的技术都是基本中的基本，几乎是对前端技术稍有了解的人就可以轻易完成，此举旨在帮助刚接触 wechaty 的同学（包括我）建立信心，不至于被挫败感吓跑。","headline":"小白入门：如何用科技拯救你的记忆力","image":"https://wechaty.js.org/assets/2021/10-how-to-save-your-memory-with-technology/bgc.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/10/09/how-to-save-your-memory-with-technology/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"stefan"},"url":"https://wechaty.js.org/2021/10/09/how-to-save-your-memory-with-technology/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#article">article</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">小白入门：如何用科技拯救你的记忆力</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/stefan">
+                            <img class="rounded-circle" src="/assets/contributors/stefan/avatar.webp" alt="Stefan(苑帅)" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/stefan">Stefan(苑帅)</a> <span><a target="_blank" href="https://twitter.com/stefan_ysh" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Oct 09, 2021 · <span class="reading-time">
+  
+  
+    11 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/10-how-to-save-your-memory-with-technology/bgc.webp" alt="小白入门：如何用科技拯救你的记忆力">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>过去的一周接触到了 wechaty ，非常兴奋，首先对于这个神奇的东西感到惊奇，其次我是一个比较喜欢解决问题的人，可以用它解决很多实际问题，于是便开始了我的 wechaty 之路，下面和大家简单说一下我做的一个小demo，本文介绍使用的技术都是基本中的基本，几乎是对前端技术稍有了解的人就可以轻易完成，此举旨在帮助刚接触 wechaty 的同学（包括我）建立信心，不至于被挫败感吓跑。</p>
+
+<h2 id="开发需求">开发需求</h2>
+
+<p>这个小功能的需求来源于我老婆，作为一个科研工作者，她在工作当中需要记录的东西很多，但有些情况又不能及时记录，所以常常会把一些需要记得东西发给我（如图），然后我一脸懵的还以为要我做什么，但是慢慢也就习惯人肉备忘录的设定，歪个楼，我老婆就是我的产品经理，碰到问题就找我，我的很多技术也是这样学会的：</p>
+
+<p><img src="/assets/2021/10-how-to-save-your-memory-with-technology/before.webp" alt="bofore" /></p>
+
+<p>但是这种方法的弊端很多，微信毕竟是聊天软件，聊天记录掺杂过多，检索起来费时费力等缺点，于是我就尝试着寻找解决方法，此时恰巧碰到 wechaty，简单了解后，它完全解决了我当前的痛点，简就是直万事俱备，只欠coding了，话不多说，说干就干。</p>
+
+<h2 id="项目目录">项目目录</h2>
+
+<p>本次主要介绍的是onMessage.js 中的内容</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  memory-assistant
+    |── src
+    |    |── index.js         <span class="c"># 入口文件</span>
+    |    |── config.js  <span class="c"># 配置文件</span>
+    |    |── onScan.js  <span class="c"># 机器人需要扫描二维码时监听回调</span>
+    |    |── onLogin.js  <span class="c"># 监听登录</span>
+    |    |── onMessage.js      <span class="c"># 消息监听回调</span>
+    |    └── storage-room.json  <span class="c"># 存储信息保存文件</span>
+    └── package.json            <span class="c"># 项目初始化文件</span>
+</code></pre></div></div>
+
+<h2 id="准备工作">准备工作</h2>
+
+<h3 id="技术需求">技术需求</h3>
+
+<p>由于本人刚接触，所以尽量以最少的代码量及技术栈来实现功能</p>
+
+<ol>
+  <li>
+    <p><strong>wechaty</strong></p>
+
+    <p>wechaty：用来接收微信发来的消息以及根据对应指令进行处理及响应</p>
+  </li>
+  <li>
+    <p><strong>nodeJs 基本操作</strong></p>
+
+    <p>fs 文件操作模块：用来操作读写功能，实现数据保存</p>
+
+    <p>path 系统路径模块：用来获取存储文件位置等操作</p>
+  </li>
+  <li>
+    <p><strong>javascript 相关技术</strong></p>
+
+    <p>本文默认读者已熟悉 js 基本知识，如数组遍历、字符串拼接等相关操作</p>
+  </li>
+</ol>
+
+<h2 id="开发过程">开发过程</h2>
+
+<h3 id="项目构建">项目构建</h3>
+
+<ol>
+  <li>
+    <p><strong>wechaty 引入及协议配置</strong></p>
+
+    <p>初始化项目文件夹，并安装以下依赖</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">// 链接转化二维码控制台输出</span>
+ <span class="nx">cnpm</span> <span class="nx">i</span> <span class="nx">qrcode</span><span class="o">-</span><span class="nx">terminal</span> <span class="o">-</span><span class="nx">D</span>
+   
+ <span class="c1">// wechaty核心包</span>
+ <span class="nx">cnpm</span> <span class="nx">i</span> <span class="nx">wechaty</span> <span class="o">-</span><span class="nx">D</span>
+   
+ <span class="c1">// ipad协议包 按个人不同的token切换不同协议</span>
+ <span class="nx">cnpm</span> <span class="nx">i</span> <span class="nx">wechaty</span><span class="o">-</span><span class="nx">puppet</span><span class="o">-</span><span class="nx">padlocal</span> <span class="o">-</span><span class="nx">D</span>
+</code></pre></div>    </div>
+
+    <p><a href="http://wechaty.js.org/">wechaty官网</a></p>
+
+    <p><a href="http://pad-local.com/">token申请</a></p>
+
+    <p>如果没有 pad 协议 token 的可参考<a href="http://wechaty.js.org/2021/04/13/wechaty-uos-web/">web协议</a>，感谢作者<a href="https://github.com/leochen-g">@Leo chen</a>分享，需要注意的是web协议获取不到固定的id值以及部分接口无法使用，但是如果只针对一个人的话是可行的。</p>
+  </li>
+  <li>
+    <p><strong>入口文件 <code class="language-plaintext highlighter-rouge">index.js</code> 编写</strong></p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">const</span> <span class="p">{</span> <span class="nx">Wechaty</span> <span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">wechaty</span><span class="dl">"</span><span class="p">);</span>
+ <span class="kd">const</span> <span class="p">{</span> <span class="nx">PuppetPadlocal</span> <span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">wechaty-puppet-padlocal</span><span class="dl">"</span><span class="p">);</span>
+ <span class="kd">const</span>  <span class="nx">QrcodeTerminal</span>  <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">qrcode-terminal</span><span class="dl">"</span><span class="p">);</span>
+ <span class="kd">const</span> <span class="nx">onMessage</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./onMessage.js</span><span class="dl">'</span><span class="p">)</span>
+ <span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Wechaty</span><span class="p">({</span>
+   <span class="na">puppet</span><span class="p">:</span> <span class="k">new</span> <span class="nc">PuppetPadlocal</span><span class="p">({</span>
+     <span class="na">token</span><span class="p">:</span> <span class="dl">"</span><span class="s2">puppet_padlocal_token</span><span class="dl">"</span><span class="p">,</span>  <span class="c1">// 填写自己的token，一般长这样puppet_padlocal_asd4a564d56ad456s4d6a4256515</span>
+   <span class="p">}),</span>
+ <span class="p">});</span>
+    
+ <span class="nx">bot</span>
+   <span class="c1">// 扫码登录</span>
+   <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">scan</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">qrcode</span><span class="p">,</span> <span class="nx">status</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+     <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Scan QR Code to login: </span><span class="p">${</span><span class="nx">status</span><span class="p">}</span><span class="s2">\nhttps://api.qrserver.com/v1/create-qr-code/?data=</span><span class="p">${</span><span class="nf">encodeURIComponent</span><span class="p">(</span><span class="nx">qrcode</span><span class="p">)}</span><span class="s2">`</span><span class="p">);</span>
+     <span class="nx">QrcodeTerminal</span><span class="p">.</span><span class="nf">generate</span><span class="p">(</span><span class="nx">qrcode</span><span class="p">);</span>
+   <span class="p">})</span>
+   <span class="c1">// 登录监听</span>
+   <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">login</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+     <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span> <span class="dl">"</span><span class="s2">logined</span><span class="dl">"</span><span class="p">);</span>
+   <span class="p">})</span>
+   <span class="c1">// 消息监听</span>
+   <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">message</span><span class="dl">"</span><span class="p">,</span> <span class="nx">onMessage</span><span class="p">)</span>
+   <span class="p">.</span><span class="nf">start</span><span class="p">();</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>消息处理文件 <code class="language-plaintext highlighter-rouge">onMessage.js</code> 文件之存东西</strong></p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">// 发消息人</span>
+ <span class="kd">const</span> <span class="nx">contact</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">talker</span><span class="p">();</span> 
+ <span class="c1">// 消息内容</span>
+ <span class="kd">const</span> <span class="nx">content</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">text</span><span class="p">().</span><span class="nf">trim</span><span class="p">();</span> 
+ <span class="c1">// 是否是群消息</span>
+ <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">room</span><span class="p">();</span> 
+ <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+   <span class="c1">// 当前只处理非群消息，如果需要处理群消息可以利用 mention 相关接口</span>
+   <span class="k">if </span><span class="p">(</span>
+     <span class="nx">content</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">存东西</span><span class="dl">"</span> <span class="o">||</span>
+     <span class="nx">content</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">怎么存东西</span><span class="dl">"</span> <span class="o">||</span>
+     <span class="nx">content</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">咋存东西</span><span class="dl">"</span> <span class="o">||</span>
+     <span class="nx">content</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">如何存东西</span><span class="dl">"</span>
+   <span class="p">)</span> <span class="p">{</span>
+     <span class="nx">contact</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span>
+       <span class="dl">"</span><span class="s2">你可以发送：存东西 钥匙 笔筒里 ，这样我就会帮你把钥匙存到笔筒里哦</span><span class="dl">"</span>
+     <span class="p">);</span>
+   <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">content</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">"</span><span class="s2">存东西</span><span class="dl">"</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+     <span class="c1">//文件路径，__dirname为当前运行js文件的目录</span>
+     <span class="kd">var</span> <span class="nx">file</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">"</span><span class="s2">./storage_room.json</span><span class="dl">"</span><span class="p">);</span> 
+     <span class="kd">let</span> <span class="nx">storageInfo</span> <span class="o">=</span> <span class="nx">content</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="dl">"</span><span class="s2">存东西 </span><span class="dl">"</span><span class="p">,</span> <span class="dl">""</span><span class="p">).</span><span class="nf">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">);</span> <span class="c1">// ['钥匙', '鞋柜上']</span>
+     <span class="c1">//读取json文件</span>
+     <span class="nx">fs</span><span class="p">.</span><span class="nf">readFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="dl">"</span><span class="s2">utf-8</span><span class="dl">"</span><span class="p">,</span> <span class="nf">function </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+       <span class="k">if </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+         <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">文件读取失败</span><span class="dl">"</span><span class="p">);</span>
+       <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+         <span class="c1">// json 文件的数据</span>
+         <span class="kd">let</span> <span class="nx">storage</span> <span class="o">=</span> <span class="nf">eval</span><span class="p">(</span><span class="dl">"</span><span class="s2">(</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">data</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">)</span><span class="dl">"</span><span class="p">);</span>
+         <span class="c1">// 检查当前用户是否储存过</span>
+         <span class="kd">let</span> <span class="nx">currentUser</span> <span class="o">=</span> <span class="nx">storage</span><span class="p">.</span><span class="nf">find</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+           <span class="k">return</span> <span class="nx">item</span><span class="p">.</span><span class="nx">id</span> <span class="o">==</span> <span class="nx">contact</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+         <span class="p">});</span>
+         <span class="c1">// 数据库没有该用户，需要新建用户</span>
+         <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">currentUser</span><span class="p">)</span> <span class="p">{</span>
+           <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">当前用户没存储过，开始存储</span><span class="dl">"</span><span class="p">);</span>
+           <span class="c1">// 没存过 ==&gt; 新增</span>
+           <span class="kd">let</span> <span class="nx">tempVal</span> <span class="o">=</span> <span class="p">{</span>
+             <span class="na">id</span><span class="p">:</span> <span class="nx">contact</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+             <span class="na">data</span><span class="p">:</span> <span class="p">[</span>
+               <span class="p">{</span>
+                 <span class="na">name</span><span class="p">:</span> <span class="nx">storageInfo</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                 <span class="na">place</span><span class="p">:</span> <span class="nx">storageInfo</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                 <span class="na">date</span><span class="p">:</span> <span class="k">new</span> <span class="nc">Date</span><span class="p">(),</span>
+               <span class="p">},</span>
+             <span class="p">],</span>
+           <span class="p">};</span>
+           <span class="nx">storage</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">tempVal</span><span class="p">);</span>
+           <span class="nx">fs</span><span class="p">.</span><span class="nf">writeFile</span><span class="p">(</span>
+             <span class="dl">"</span><span class="s2">./storage_room.json</span><span class="dl">"</span><span class="p">,</span>
+             <span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">storage</span><span class="p">),</span>
+             <span class="nf">function </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+               <span class="k">if </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+                 <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+               <span class="p">}</span>
+               <span class="nx">contact</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="s2">`已经把</span><span class="p">${</span><span class="nx">storageInfo</span><span class="p">[</span><span class="mi">0</span><span class="p">]}</span><span class="s2">放在</span><span class="p">${</span><span class="nx">storageInfo</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span><span class="s2">了 [OK]`</span><span class="p">);</span>
+             <span class="p">}</span>
+           <span class="p">);</span>
+         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+           <span class="c1">// 数据库存在当前用户</span>
+           <span class="kd">let</span> <span class="nx">oldPlace</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+           <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">当前用户存储过，添加物品或更改位置</span><span class="dl">"</span><span class="p">);</span>
+           <span class="c1">// 存过 ==&gt; 更新位置</span>
+           <span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="nx">currentUser</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nf">find</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+             <span class="k">return</span> <span class="nx">item</span><span class="p">.</span><span class="nx">name</span> <span class="o">==</span> <span class="nx">storageInfo</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+           <span class="p">});</span>
+           <span class="c1">// 如果当前物品储存过，就需要更改位置</span>
+           <span class="k">if </span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+             <span class="c1">// 更改位置</span>
+             <span class="nx">oldPlace</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">place</span><span class="p">;</span>
+             <span class="nx">obj</span><span class="p">.</span><span class="nx">place</span> <span class="o">=</span> <span class="nx">storageInfo</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+             <span class="nx">obj</span><span class="p">.</span><span class="nx">date</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Date</span><span class="p">();</span>
+           <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+             <span class="c1">// 如果当前物品没储存过，需要将当前物品push到储存列表中</span>
+             <span class="kd">let</span> <span class="nx">newStorage</span> <span class="o">=</span> <span class="p">{</span>
+               <span class="na">name</span><span class="p">:</span> <span class="nx">storageInfo</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+               <span class="na">place</span><span class="p">:</span> <span class="nx">storageInfo</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+               <span class="na">date</span><span class="p">:</span> <span class="k">new</span> <span class="nc">Date</span><span class="p">(),</span>
+             <span class="p">};</span>
+             <span class="nx">currentUser</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">newStorage</span><span class="p">);</span>
+           <span class="p">}</span>
+           <span class="c1">// 写入文件添加物品</span>
+           <span class="nx">fs</span><span class="p">.</span><span class="nf">writeFile</span><span class="p">(</span>
+             <span class="dl">"</span><span class="s2">./storage_room.json</span><span class="dl">"</span><span class="p">,</span>
+             <span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">storage</span><span class="p">),</span>
+             <span class="nf">function </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+               <span class="k">if </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+                 <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+               <span class="p">}</span>
+               <span class="k">if </span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+                 <span class="c1">// 更改位置文案提示</span>
+                 <span class="nx">contact</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span>
+                   <span class="s2">`已经把</span><span class="p">${</span><span class="nx">storageInfo</span><span class="p">[</span><span class="mi">0</span><span class="p">]}</span><span class="s2">从</span><span class="p">${</span><span class="nx">oldPlace</span><span class="p">}</span><span class="s2">挪到了</span><span class="p">${</span><span class="nx">storageInfo</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span><span class="s2">了 [OK]`</span>
+                 <span class="p">);</span>
+               <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                 <span class="c1">// 新建位置文案提示</span>
+                 <span class="nx">contact</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="s2">`已经把</span><span class="p">${</span><span class="nx">storageInfo</span><span class="p">[</span><span class="mi">0</span><span class="p">]}</span><span class="s2">放到</span><span class="p">${</span><span class="nx">storageInfo</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span><span class="s2">了 [OK]`</span><span class="p">);</span>
+               <span class="p">}</span>
+             <span class="p">}</span>
+           <span class="p">);</span>
+         <span class="p">}</span>
+       <span class="p">}</span>
+     <span class="p">});</span>
+   <span class="p">}</span> 
+ <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>消息处理文件 <code class="language-plaintext highlighter-rouge">onMessage.js</code> 文件之找东西</strong></p>
+
+    <p>主要逻辑是读取仓库文件，遍历仓库当前存储的用户中有没有当前发起请求的用户，没有的话就开始新建，如果该用户已经存储过，则查看当前用户请求存储的物品有没有在仓库中存储过，如果之前存储过该物品，则进行位置更新，如果之前没存储过该物品，则进行新建。</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="c1">// 因与 step3 在同一个文件内，相关变量来源课参考 step3 </span>
+   <span class="k">if </span><span class="p">(</span><span class="nx">content</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">"</span><span class="s2">在哪</span><span class="dl">"</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+     <span class="c1">//文件路径，__dirname为当前运行js文件的目录</span>
+     <span class="kd">var</span> <span class="nx">file</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">"</span><span class="s2">./storage_room.json</span><span class="dl">"</span><span class="p">);</span> 
+     <span class="c1">//读取json文件</span>
+     <span class="nx">fs</span><span class="p">.</span><span class="nf">readFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="dl">"</span><span class="s2">utf-8</span><span class="dl">"</span><span class="p">,</span> <span class="nf">function </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+       <span class="k">if </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+         <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">文件读取失败</span><span class="dl">"</span><span class="p">);</span>
+       <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+         <span class="kd">let</span> <span class="nx">storage</span> <span class="o">=</span> <span class="nf">eval</span><span class="p">(</span><span class="dl">"</span><span class="s2">(</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">data</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">)</span><span class="dl">"</span><span class="p">);</span>
+         <span class="kd">let</span> <span class="nx">currentUser</span> <span class="o">=</span> <span class="nx">storage</span><span class="p">.</span><span class="nf">find</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+           <span class="k">return</span> <span class="nx">item</span><span class="p">.</span><span class="nx">id</span> <span class="o">==</span> <span class="nx">contact</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+         <span class="p">});</span>
+         <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">currentUser</span><span class="p">)</span> <span class="p">{</span>
+           <span class="k">return</span> <span class="nx">contact</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span>
+             <span class="dl">"</span><span class="s2">你还没有东西存在我这里哦，可以发送：存东西 钥匙 鞋柜上，这样我就能帮你把钥匙存到鞋柜上啦</span><span class="dl">"</span>
+           <span class="p">);</span>
+         <span class="p">}</span>
+         <span class="kd">let</span> <span class="nx">findThing</span> <span class="o">=</span> <span class="nx">currentUser</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nf">find</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+           <span class="k">return</span> <span class="nx">item</span><span class="p">.</span><span class="nx">name</span> <span class="o">==</span> <span class="nx">content</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="dl">"</span><span class="s2">在哪</span><span class="dl">"</span><span class="p">,</span> <span class="dl">""</span><span class="p">);</span>
+         <span class="p">});</span>
+         <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">findThing</span><span class="p">)</span> <span class="p">{</span>
+           <span class="k">return</span> <span class="nx">contact</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span>
+             <span class="s2">`仓库里还没有 </span><span class="p">${</span><span class="nx">content</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span>
+               <span class="dl">"</span><span class="s2">在哪</span><span class="dl">"</span><span class="p">,</span>
+               <span class="dl">""</span>
+             <span class="p">)}</span><span class="s2"> 哦，可以发送 找东西 来查看仓库列表~`</span>
+           <span class="p">);</span>
+         <span class="p">}</span>
+         <span class="nx">contact</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span>
+           <span class="s2">`你忘了吗，你把 </span><span class="p">${</span><span class="nx">findThing</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2"> 放在了 </span><span class="p">${</span><span class="nx">findThing</span><span class="p">.</span><span class="nx">place</span><span class="p">}</span><span class="s2"> ，找到了别忘了来感谢我哦~ `</span>
+         <span class="p">);</span>
+       <span class="p">}</span>
+     <span class="p">});</span>
+   <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">content</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">"</span><span class="s2">找东西</span><span class="dl">"</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+     <span class="c1">//文件路径，__dirname为当前运行js文件的目录</span>
+     <span class="kd">var</span> <span class="nx">file</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">"</span><span class="s2">./storage_room.json</span><span class="dl">"</span><span class="p">);</span> 
+     <span class="c1">//读取json文件</span>
+     <span class="nx">fs</span><span class="p">.</span><span class="nf">readFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="dl">"</span><span class="s2">utf-8</span><span class="dl">"</span><span class="p">,</span> <span class="nf">function </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+       <span class="k">if </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+         <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">文件读取失败</span><span class="dl">"</span><span class="p">);</span>
+       <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+         <span class="kd">let</span> <span class="nx">storage</span> <span class="o">=</span> <span class="nf">eval</span><span class="p">(</span><span class="dl">"</span><span class="s2">(</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">data</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">)</span><span class="dl">"</span><span class="p">);</span>
+         <span class="kd">let</span> <span class="nx">currentUser</span> <span class="o">=</span> <span class="nx">storage</span><span class="p">.</span><span class="nf">find</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+           <span class="k">return</span> <span class="nx">item</span><span class="p">.</span><span class="nx">id</span> <span class="o">==</span> <span class="nx">contact</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+         <span class="p">});</span>
+         <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">currentUser</span><span class="p">)</span> <span class="p">{</span>
+           <span class="k">return</span> <span class="nx">contact</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span>
+             <span class="dl">"</span><span class="s2">你还没有东西存在我这里哦，可以发送：存东西 钥匙 鞋柜上，这样我就能帮你把钥匙存啦！</span><span class="dl">"</span>
+           <span class="p">);</span>
+         <span class="p">}</span>
+         <span class="kd">let</span> <span class="nx">list</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">储物清单</span><span class="se">\n\n</span><span class="dl">"</span><span class="p">;</span>
+         <span class="nx">currentUser</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">item</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+           <span class="nx">list</span> <span class="o">+=</span> <span class="nx">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">. </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">item</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">在</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">item</span><span class="p">.</span><span class="nx">place</span> <span class="o">+</span> <span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">;</span>
+         <span class="p">});</span>
+         <span class="c1">// 返回清单</span>
+         <span class="nx">contact</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">list</span><span class="p">);</span>
+       <span class="p">}</span>
+     <span class="p">});</span>
+   <span class="p">}</span> 
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>仓库存储文件<code class="language-plaintext highlighter-rouge">storage-room.json</code> 内容</strong></p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">tester</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">data</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">靴子</span><span class="dl">"</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">place</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">鞋柜里</span><span class="dl">"</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">date</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Sun Oct 10 2021 14:31:06GMT+0800</span><span class="dl">"</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">电脑</span><span class="dl">"</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">place</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">书房桌子上</span><span class="dl">"</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">date</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Sun Oct 08 2021 18:21:06GMT+0800</span><span class="dl">"</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">钱包</span><span class="dl">"</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">place</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">床头柜里</span><span class="dl">"</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">date</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Sun Oct 04 2021 09:14:06GMT+0800</span><span class="dl">"</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">保鲜膜</span><span class="dl">"</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">place</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">厨柜里</span><span class="dl">"</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">date</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Sun Oct 09 2021 18:51:06GMT+0800</span><span class="dl">"</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">钥匙</span><span class="dl">"</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">place</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">笔筒里</span><span class="dl">"</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">date</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Sun Oct 08 2021 08:16:06GMT+0800</span><span class="dl">"</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">乒乓球</span><span class="dl">"</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">place</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">阳台储物柜</span><span class="dl">"</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">date</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Sun Oct 06 2021 15:17:06GMT+0800</span><span class="dl">"</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>消息处理流程示意图</strong></p>
+
+    <pre><code class="language-mermaid">   graph TD
+   A[Start] --&gt; B(接收到存储请求)
+       B --&gt; C(读取数据库json文件)
+       C --&gt; D(是否存在该用户)
+       D --&gt; |Y| E(是否存在该物品)
+       E --&gt; |Y| I(更新物品位置)
+       I --&gt; |T| K(返回成功信息)
+       I --&gt; |F| L(返回失败信息)
+       K --&gt; | | Z[End]
+       L --&gt; | | Z
+       E --&gt; |N| J(创建物品位置)
+       J --&gt; |T| M(返回成功信息)
+       J --&gt; |F| N(返回失败信息)
+       M --&gt; | | Z
+       N --&gt; | | Z
+       D --&gt; |N| F(创建该用户以及物品位置)
+       F --&gt; |T| G(返回成功信息)
+       F --&gt; |F| H(返回失败信息)
+       G --&gt; | | Z
+       H --&gt; | | Z
+</code></pre>
+  </li>
+  <li>
+    <p><strong>效果</strong></p>
+  </li>
+</ol>
+
+<p><img src="/assets/2021/10-how-to-save-your-memory-with-technology/now.webp" alt="now" /></p>
+
+<blockquote>
+  <p>作者: <a href="https://github.com/stefan-ysh/">stefan</a>，流水线 coder，曾获得学习委员和尊师标兵荣誉称号。</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#blog">blog</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#study">study</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#introduction">introduction</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/stefan">
+                            <img class="rounded-circle" src="/assets/contributors/stefan/avatar.webp" alt="Stefan(苑帅)" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/stefan">Stefan(苑帅)</a> <span><a target="_blank" href="https://twitter.com/stefan_ysh" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						吉林电子信息职业技术学院专科毕业，毕业后做了三年流水线工人，后自学前端以及自考本科，现在广州思创做前端开发，热爱解决问题，喜欢游泳、羽毛球、骑行等。
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/10/09/gsod-document-quality-final-report/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/10-gsod-document-quality-final-report/background.webp">  Google Season of Docs 2021 Volunteer Report: Document Quality</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/10/09/summer-2021-wechaty-soc-final-demo-day-en/"> Wechaty OSPP (Summer of Open Source) Final Demo Day  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/10-summer-2021-wechaty-soc-final-demo-day-en/final-demo-day.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" crossorigin="anonymous"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      if (!window.mermaid) {
+        return;
+      }
+
+      const codeBlocks = document.querySelectorAll('pre code.language-mermaid, code.language-mermaid');
+      codeBlocks.forEach(function (codeEl) {
+        const container = document.createElement('div');
+        container.className = 'mermaid';
+        container.textContent = codeEl.textContent;
+
+        const parent = codeEl.parentElement;
+        if (parent && parent.tagName.toLowerCase() === 'pre') {
+          parent.parentElement.replaceChild(container, parent);
+        } else if (parent) {
+          parent.replaceChild(container, codeEl);
+        } else {
+          codeEl.replaceWith(container);
+        }
+      });
+
+      window.mermaid.initialize({ startOnLoad: true, securityLevel: 'loose' });
+    });
+  </script>
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

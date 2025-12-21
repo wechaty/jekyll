@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Hello Wechaty GSoD’21 Technical Writers! | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Hello Wechaty GSoD’21 Technical Writers! | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Hello Wechaty GSoD’21 Technical Writers!" />
+<meta name="author" content="huan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="It’s a great honor for Wechaty to participate in Google Season of Docs 2021 as one of the great top 30 open-source sponsored projects all over the world！" />
+<meta property="og:description" content="It’s a great honor for Wechaty to participate in Google Season of Docs 2021 as one of the great top 30 open-source sponsored projects all over the world！" />
+<link rel="canonical" href="https://wechaty.js.org/2021/05/08/gsod-2021-selected-technical-writers/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/05/08/gsod-2021-selected-technical-writers/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/05-gsod-2021-selected-technical-writers/gsod-meeting-teasor.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-08T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/05-gsod-2021-selected-technical-writers/gsod-meeting-teasor.webp" />
+<meta property="twitter:title" content="Hello Wechaty GSoD’21 Technical Writers!" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"huan"},"dateModified":"2021-05-08T00:00:00+00:00","datePublished":"2021-05-08T00:00:00+00:00","description":"It’s a great honor for Wechaty to participate in Google Season of Docs 2021 as one of the great top 30 open-source sponsored projects all over the world！","headline":"Hello Wechaty GSoD’21 Technical Writers!","image":"https://wechaty.js.org/assets/2021/05-gsod-2021-selected-technical-writers/gsod-meeting-teasor.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/05/08/gsod-2021-selected-technical-writers/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"huan"},"url":"https://wechaty.js.org/2021/05/08/gsod-2021-selected-technical-writers/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#gsod">gsod</a><span class="sep">, </span>
+            
+              <a class="sscroll text-danger" href="/categories.html#announcement">announcement</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Hello Wechaty GSoD’21 Technical Writers!</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">May 08, 2021 · <span class="reading-time">
+  
+  
+    13 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/05-gsod-2021-selected-technical-writers/gsod-meeting-teasor.webp" alt="Hello Wechaty GSoD’21 Technical Writers!">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>It’s a great honor for Wechaty to participate in Google Season of Docs 2021
+as one of the great top 30 open-source sponsored projects all over the world！</p>
+
+<p>The most important thing is,
+the GSoD program helps Wechaty organization to start collaborating
+with many great technical writers all over the world
+for improving the documentation of Wechaty project.</p>
+
+<p><img src="/assets/2021/05-gsod-2021-selected-technical-writers/gsod-banner.webp" alt="Google Season of Docs 2021" /></p>
+
+<p>If you have read our blog post
+<a href="https://wechaty.js.org/2021/04/30/google-season-of-docs/">Google Season of Docs ❤️ Wechaty, @huan, Apr 30, 2021</a>,
+then you must known that we have 15 technical writers have sent proposals before our deadline May 1st.
+After that, before we have the kickoff zoom meeting on May 8,
+we have been contacted by total 24 technical writers,
+which is the most powerful writers team I have ever seen before!</p>
+
+<h2 id="technical-writer-selection">Technical writer selection</h2>
+
+<p>According to the <a href="https://developers.google.com/season-of-docs/docs/timeline">timeline from GSoD’21</a>,
+we need to hire the technical writers for our organization
+before May 17, 2021 at 18:00 UTC.</p>
+
+<p>In order to select the most suitable writers for the Wechaty organization,
+we have lots of conversations between the mentors and the candidates
+in our <a href="https://gitter.im/wechaty/wechaty">Gitter channel</a>
+and <a href="https://groups.google.com/g/wechaty">Mailing list</a>.</p>
+
+<p>After reviewing the proposal and having conversation with all the participants,
+we decided to splict the GSoD’21 to one primary project and five secondary projects
+for the Wechaty GSoD’21 program:</p>
+
+<ol>
+  <li>Create easy to learn tutorials for beginner users of Wechaty (the primary project)</li>
+  <li>Improve the How-to guides section</li>
+  <li>Improve the References section</li>
+  <li>Improve the Explanations (and Introduction) sections</li>
+  <li>Reconstruct Wechaty homepage(landing page) with value proposition</li>
+  <li>Improve the gRPC and OpenAPI ecosystem</li>
+</ol>
+
+<p>As well as we will have two volunteer for helping mentors
+to manage the project and make sure everything is on track.</p>
+
+<p><img src="/assets/2021/05-gsod-2021-selected-technical-writers/group-photo.webp" alt="Google Season of Docs 2021: Wechaty GSoD'21 Group Photo" /></p>
+
+<h3 id="attendees">Attendees</h3>
+
+<p>There are total 20 attendees on our meeting. They are:</p>
+
+<ol>
+  <li>Huan, Creator of Wechaty, UTC+8</li>
+  <li>Rui, Co-creator of Wechaty, UTC+8</li>
+  <li>Rohitesh, GSoD’20 participant &amp; interested in Volunteering for GSoD’21, UTC +5:30</li>
+  <li>Jaya Gupta</li>
+  <li>Vasvi Sood</li>
+  <li>Ahmed Essam, GSoD’21 participant, GMT+2</li>
+  <li>Sajen Sarvajith K, GSoD’21 participant,, UTC+05:30</li>
+  <li>Soumi Bardhan, GSoD’21 participant, UTC+5:50</li>
+  <li>Abhishek Jaiswal,GSoD’21 participant, UTC+05:30</li>
+  <li>Simin Liao, GSoD’21 participant and volunteer, UTC+8</li>
+  <li>Shwetal Soni, GSOD’21 participant, UTC+05:30</li>
+  <li>Mukosa Joseph Mawa, GSOD’21 participant, UTC +03:00</li>
+  <li>Rufai Mustapha, GSOD’21 participant, UTC +01:00</li>
+  <li>Souvik Biswas, GSoD’21 participant, UTC +05:30</li>
+  <li>Shraddha Prasad , GSoD’21 participant, UTC +05:30</li>
+  <li>Anirudh T.P.V.S, GSoD’21 participant, UTC+8</li>
+  <li>Chris Estepa, GSoD’21 participant, UTC +8</li>
+  <li>David Atanda, GSoD’21 participant, UTC +1</li>
+  <li>Arnab Saha,GSod’21 participant(landing pages)</li>
+  <li>Rajiv Ranjan Singh, GSoD 2021 participant, (UTC+05:30)</li>
+</ol>
+
+<h2 id="the-zoom-meeting">The Zoom Meeting</h2>
+
+<p>We have great conversations with our GSoD’21 participants,
+and after the deadline of receiving proposals April 30,
+we organized a zoom meeting with all our technical writers.</p>
+
+<p>In this meeting,
+all the GSoD’21 participants introduceed theirselves
+and presented their proposals
+for the projects that they applied.
+<a href="https://wechaty.js.org/contributors/huan/">Huan</a>
+and <a href="https://wechaty.js.org/contributors/rui">Rui</a>
+introduced the Wechaty project and community to the writer team.</p>
+
+<p>The following YouTube video is the 3 hours recording
+of our great kick-off meeting of Wechaty GSoD’21 program:</p>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/hTkM_XPpFfU" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h3 id="agendas">Agendas</h3>
+
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=hTkM_XPpFfU&amp;t=101s">0:01:41</a> 1. Introducing the Meeting Agenda</li>
+  <li><a href="https://www.youtube.com/watch?v=hTkM_XPpFfU&amp;t=188s">0:03:08</a> 2. Self-introduction: Huan</li>
+  <li><a href="https://www.youtube.com/watch?v=hTkM_XPpFfU&amp;t=375s">0:06:15</a> 3. Self-introduction: Rui</li>
+  <li><a href="https://www.youtube.com/watch?v=hTkM_XPpFfU&amp;t=555s">0:09:15</a> 4. Self-introducing: Technical Writers</li>
+  <li><a href="https://www.youtube.com/watch?v=hTkM_XPpFfU&amp;t=1493s">0:24:53</a> 5. Introducing Wechaty</li>
+  <li><a href="https://www.youtube.com/watch?v=hTkM_XPpFfU&amp;t=1777s">0:29:37</a> 6. Introducing GSoD Project List</li>
+  <li><a href="https://www.youtube.com/watch?v=hTkM_XPpFfU&amp;t=2506s">0:41:46</a> 7. Introducing Received Proposals</li>
+  <li><a href="https://www.youtube.com/watch?v=hTkM_XPpFfU&amp;t=2681s">0:44:41</a> 8. Primary Project: Tutorial</li>
+  <li><a href="https://www.youtube.com/watch?v=hTkM_XPpFfU&amp;t=2733s">0:45:33</a> 8.1 Tutorial Proposal from Souvik Biswas</li>
+  <li><a href="https://www.youtube.com/watch?v=hTkM_XPpFfU&amp;t=2964s">0:49:24</a> 8.2 Tutorial Proposal from Shwetal Soni</li>
+  <li><a href="https://www.youtube.com/watch?v=hTkM_XPpFfU&amp;t=3619s">1:00:19</a> 9. Landing Page Proposal from Sajen Sarvajith K</li>
+  <li><a href="https://www.youtube.com/watch?v=hTkM_XPpFfU&amp;t=4320s">1:12:00</a> 10. Introduction &amp; Explanation Proposal from Mukosa Joseph Mawa</li>
+  <li><a href="https://www.youtube.com/watch?v=hTkM_XPpFfU&amp;t=5024s">1:23:44</a> 11.1. How-to Guides Proposal from Vasvi Sood</li>
+  <li><a href="https://www.youtube.com/watch?v=hTkM_XPpFfU&amp;t=5258s">1:27:38</a> 11.2. How-to Guides Proposal from Abhishek Jaiswal</li>
+  <li><a href="https://www.youtube.com/watch?v=hTkM_XPpFfU&amp;t=5585s">1:33:05</a> 12. References Proposal from Shraddha Vasant Prasad</li>
+  <li><a href="https://www.youtube.com/watch?v=hTkM_XPpFfU&amp;t=6060s">1:41:00</a> 13. Volunteer Project</li>
+  <li><a href="https://www.youtube.com/watch?v=hTkM_XPpFfU&amp;t=6060s">1:43:00</a> 13.1 Volunteer Proposal from Rohitesh Jain</li>
+  <li><a href="https://www.youtube.com/watch?v=hTkM_XPpFfU&amp;t=6342s">1:45:42</a> 13.2 Volunteer Proposal from Vicky Liao</li>
+  <li><a href="https://www.youtube.com/watch?v=hTkM_XPpFfU&amp;t=7069s">1:57:49</a> 14. Budget Plan for Stipends</li>
+  <li><a href="https://www.youtube.com/watch?v=hTkM_XPpFfU&amp;t=7528s">2:05:28</a> 15. Webmaster Tools</li>
+  <li><a href="https://www.youtube.com/watch?v=hTkM_XPpFfU&amp;t=7593s">2:06:33</a> 16. Q&amp;A</li>
+</ul>
+
+<p>You can learn more from our <a href="https://docs.google.com/document/d/13V0sUUwQrJbE-pyKEwdi3JnaqY-oZRhbLW8VcaQIdiE/edit#heading=h.edr3nzd8l43b">meeting notes</a>.</p>
+
+<hr />
+
+<h3 id="documentation-style-guide">Documentation style guide</h3>
+
+<p>We should always follow the
+<a href="https://developers.google.com/style">Google developer documentation style guide</a>,
+which provides for anyone writing developer documentation.</p>
+
+<p>Learn more from <a href="https://developers.google.com/tech-writing/resources">Google technical writing resources</a></p>
+
+<h3 id="documentation-system">Documentation system</h3>
+
+<p>Wechaty documentation has been <a href="https://wechaty.js.org/2021/03/25/google-season-of-docs-documentation-system/">adapted to the documentation system</a> by @huan on Mar 25, 2021.</p>
+
+<p>We should always follow the documentation system by strictly aligning our docs to the following chart:</p>
+
+<p><img src="/assets/2021/05-gsod-2021-selected-technical-writers/doc-sys-overview.webp" alt="Documentation System: Tutorials, How-to Guides, Reference, Explanation" /></p>
+
+<p>Learn more from:</p>
+
+<ol>
+  <li><a href="https://documentation.divio.com/">Documentation System Official Website</a></li>
+  <li><a href="https://youtu.be/t4vKPhjcMZg">YouTube: What nobody tells you about documentation, Daniele Procida, 2017, PyCon AU</a></li>
+</ol>
+
+<h3 id="gsod21-projects-brief">GSoD’21 projects brief</h3>
+
+<p>The project 1-4 is strictly defined by the documentation system, and they must follow the <strong>do not go out of scope</strong> rule:</p>
+
+<p><img src="/assets/2021/05-gsod-2021-selected-technical-writers/do-not-go-out-of-scope.webp" alt="Documentation system: do not go out of scope" /></p>
+
+<blockquote>
+  <p>Credit: <a href="https://documentation.divio.com/introduction/">Documentation system: Introduction</a></p>
+</blockquote>
+
+<h4 id="project-1-tutorials">Project 1: Tutorials</h4>
+
+<p>Tutorials are <em>lessons</em> that take the reader by the hand
+through a series of steps to complete a project of some kind.
+They are what your project needs in order to show a beginner that
+they can achieve something with it.</p>
+
+<p>They are wholly <strong>learning-oriented</strong>, and specifically,
+they are oriented towards <em>learning how</em> rather than <em>learning that</em>.</p>
+
+<p><strong>You are the teacher</strong>,
+and you are <strong>responsible</strong> for what the student will do.
+Under <strong>your</strong> instruction,
+the student will execute a series of actions to achieve some <strong>end</strong>.</p>
+
+<p>The end and the actions are up to you,
+but deciding what they should be can be hard work.
+The end has to be <em>meaningful</em>,
+but also <em>achievable</em> for a complete beginner.</p>
+
+<p>Learn more from <a href="https://documentation.divio.com/tutorials/">Documentation system: tutorials</a></p>
+
+<h4 id="project-2-how-to-guides">Project 2: How-to guides</h4>
+
+<p>How-to guides take the reader through the steps required to solve a real-world problem.</p>
+
+<p>They are recipes, directions to achieve a specific end.</p>
+
+<p>For examples:</p>
+
+<ol>
+  <li><em>how to create a web form</em>;</li>
+  <li><em>how to plot a three-dimensional data-set</em>;</li>
+  <li><em>how to enable LDAP authentication</em>.</li>
+</ol>
+
+<p>They are wholly <strong>goal-oriented</strong>.</p>
+
+<p><strong>How-to guides are wholly distinct from tutorials</strong> and must not be confused with them:</p>
+
+<ul>
+  <li>A tutorial is what you decide a beginner needs to know.</li>
+  <li>A how-to guide is an answer to a question that only a user with some experience could even formulate.</li>
+</ul>
+
+<p>Learn more from <a href="https://documentation.divio.com/how-to-guides/">Documentation system: how-to guides</a></p>
+
+<h4 id="project-3-reference">Project 3: Reference</h4>
+
+<p>Reference guides are <em>technical descriptions of the machinery</em> and how to operate it.</p>
+
+<p>Reference guides have one job only: to describe.
+They are code-determined,
+because ultimately that’s what they describe:</p>
+
+<ol>
+  <li>key classes</li>
+  <li>functions</li>
+  <li>APIs</li>
+</ol>
+
+<p>and so they should list things like:</p>
+
+<ol>
+  <li>functions</li>
+  <li>fields</li>
+  <li>attributes</li>
+  <li>methods</li>
+</ol>
+
+<p>and set out how to use them.</p>
+
+<p>Reference material is <strong>information-oriented</strong>.</p>
+
+<p>By all means technical reference can contain examples to illustrate usage,
+but it should not attempt to explain basic concepts,
+or how to achieve common tasks.</p>
+
+<p>Reference material should be <strong>austere and to the point</strong>.</p>
+
+<p>Learn more from <a href="https://documentation.divio.com/reference/">Documentation system: reference</a></p>
+
+<h4 id="project-4-explanation">Project 4: Explanation</h4>
+
+<p>Explanation, or discussions, <em>clarify and illuminate a particular topic</em>.
+They broaden the documentation’s coverage of a topic.</p>
+
+<p>They are <strong>understanding-oriented</strong>.</p>
+
+<p>Explanations can equally well be described as <em>discussions</em>;
+they are discursive in nature.
+They are a chance for the documentation to relax and step back from the software,
+taking a wider view,
+illuminating it from a higher level or even from different perspectives.
+You might imagine a discussion document being read at leisure,
+rather than over the code.</p>
+
+<p>Learn more from <a href="https://documentation.divio.com/explanation/">Documentation system: explanation</a></p>
+
+<h4 id="project-5-landing-page-with-value-proposation">Project 5: Landing page with value proposation</h4>
+
+<p>We has been planning to <a href="https://wechaty.js.org/2021/05/01/landing-page-value-proposition/">reconstruct Wechaty landing page with value propositions</a> for a long time.</p>
+
+<p>The <em>Value Proposition</em> is a statement that answers the ‘why’ someone should do business with you.</p>
+
+<p>It should convince a potential customer
+why your service or product will be of more value to them
+than similar offerings from your competition.</p>
+
+<p>You know why your company is great,
+but do your potential customers know what sets your brand apart?</p>
+
+<p>It must tell your audience:</p>
+
+<ol>
+  <li>How your product or service solves/improves problems</li>
+  <li>What benefits customers can expect</li>
+  <li>Why customers should buy from you over your competitors</li>
+</ol>
+
+<p>It introduces you to prospective buyers and helps you
+make a strong first impression.
+That’s why it is so important to have a powerful one.</p>
+
+<p>Learn more about the value proposition from this great article:
+<a href="https://www.impactbnd.com/blog/value-proposition-examples">The 31 Best Value Proposition Examples You Wish You Had</a></p>
+
+<h4 id="project-6-grpc-and-openapi-ecosystem">Project 6: gRPC and OpenAPI ecosystem</h4>
+
+<p>Wechaty has two subsystems for providing the gRPC support: one is <a href="https://github.com/wechaty/grpc">wechaty/wechaty-grpc</a>, the other is <a href="https://github.com/wechaty/openapi">wechaty/openapi</a>. The related docs page mainly is at <a href="http://wechaty.js.org/docs/polyglot/openapi/">Polyglot/OpenAPI</a> as well as other pages that have some OpenAPI related docs.</p>
+
+<p>What we are planning to do is:</p>
+
+<ol>
+  <li>Improve all OpenAPI related documentation
+from our docs website <a href="https://wechaty.js.org/docs/">https://wechaty.js.org/docs/</a>,
+especially <a href="http://wechaty.js.org/docs/polyglot/openapi/">Polyglot/OpenAPI</a>.</li>
+  <li>Improve READMEs from both
+<a href="https://github.com/wechaty/grpc">wechaty/wechaty-grpc</a>
+and <a href="https://github.com/wechaty/openapi">wechaty/openapi</a></li>
+  <li>Improve the code when necessary for improving the docs in the repository <a href="https://github.com/wechaty/grpc">wechaty/wechaty-grpc</a> and <a href="https://github.com/wechaty/openapi">wechaty/openapi</a></li>
+</ol>
+
+<h4 id="project-7-volunteering">Project 7: Volunteering</h4>
+
+<p>Volunteers are in charge of helping the organization mentors to manage the GSoD’21 program, which means that the volunteer team has been authorized to mentor the technical writers on behalf of the mentors as long as the decisions are made by the volunteer team, to improve our GSoD’21 outcome for our community.</p>
+
+<p>The most important roles for the volunteers are:</p>
+
+<ol>
+  <li>Make sure we are following the <a href="https://developers.google.com/style">Google Developer Documentation Style Guide</a></li>
+  <li>Make sure we are following the <a href="https://documentation.divio.com">Documentation System</a></li>
+  <li>Make sure we are following the <a href="https://developers.google.com/season-of-docs/docs/admin-guide">Organization administrator guide</a> and performing <a href="https://developers.google.com/season-of-docs/docs/admin-responsibilities">Organization administrator responsibilities</a></li>
+  <li>Organize team activities as usual (review/approve/meetings/blogs/evaluations/reports)</li>
+  <li>Make decisions on behalf of mentors when necessary for good</li>
+</ol>
+
+<h2 id="grants">Grants</h2>
+
+<p>The grants from Google will be split as following:</p>
+
+<ol>
+  <li>Tutorials: $5k</li>
+  <li>How-to guides: $1k</li>
+  <li>References: $1k</li>
+  <li>Explanations: $1k</li>
+  <li>Landing page with value proposition: $1k</li>
+  <li>gRPC and OpenAPI ecosystem: $1k</li>
+</ol>
+
+<p>The volunteers will get stipends $500 for each.</p>
+
+<h3 id="1-base-grant">1. Base grant</h3>
+
+<p>The base grants will be the 80% of the each grant.</p>
+
+<h3 id="2-performance-grant">2. Performance grant</h3>
+
+<p>The performance grants will be the 20% of the each grant.</p>
+
+<p>It will be voted by the writer themselves (who is in the same team)
+with the volunteers after the project has been finished.
+The rule is that everyone has 10 points
+which can be used to vote for the performance grant.</p>
+
+<h3 id="3-example-performance-grant-voting">3. Example: performance grant voting</h3>
+
+<p>Two writers A and B are working together share a $1k project.</p>
+
+<p>The base grants will be $1,000 * 80% = $800,
+A and B will share $800 equally,
+which means that A will get $400 and B will get $400 as well
+for their base grants.</p>
+
+<p>The performance grants will be $1,000 * 20% = $200.
+According to the performance grants caculating formula,
+if we assuming the following vote result,
+then we will get the following distributing result:</p>
+
+<ol>
+  <li>Vote from A: A:4 B:6</li>
+  <li>Vote from B: A:7 B:3</li>
+  <li>Final percentage result:
+    <ol>
+      <li>A: (4+7)/20 * 100% = 55%</li>
+      <li>B: (6+3)/20 * 100% = 45%</li>
+    </ol>
+  </li>
+  <li>Final distributing result:
+    <ol>
+      <li>A: 55% * $200 = $110</li>
+      <li>B: 45% * $200 = $90</li>
+    </ol>
+  </li>
+</ol>
+
+<p>In our practice we need to add C and D which is our volunteers, that’s it!</p>
+
+<h3 id="4-thank-you-bonus">4. Thank-you bonus</h3>
+
+<p>The “Thank-you bonus” is for those GSoD’21 technical writers
+who has not been selected in the year 2021
+and meet the following requirements:</p>
+
+<ol>
+  <li>has submitted qualified proposal before the deadline (May 1st)</li>
+  <li>has submitted PR for improving the Wechaty docs and has been merged.</li>
+</ol>
+
+<p>For those technical writers, we have prepared $20
+for thank you for the interest in participating in Wechaty GSoD’21,
+and we hope you will join us in the coming GSoD’22.</p>
+
+<p>The Thank-you bonus will be distributed
+after we have submited the final report to Google
+and received the second grants from GSoD’21.</p>
+
+<p>We will prepare a Google Form for collecting the payment information,
+so please stay tuned and remember to come back to us then!</p>
+
+<h3 id="6-performance-bonus">6. Performance bonus</h3>
+
+<p>The performance bonus is an additional $1,000.00 bonus
+which is for everyone from our technical writer team!</p>
+
+<p>The rule is simple:</p>
+
+<ol>
+  <li>Wechaty organization will make a budget of $1,000.00
+for this performance bonus</li>
+  <li>Everyone in our team will have 10 points
+to vote other teams (skip their own team)</li>
+  <li>Volunteers and mentors will vote with the same rule</li>
+  <li>All team share $1,000.00 by the points they get</li>
+</ol>
+
+<p>For example, we have two team A and B:</p>
+
+<ol>
+  <li>Vote from A: A:4 B:6</li>
+  <li>Vote from B: A:7 B:3</li>
+  <li>Vote from Volunteer 1: A:4 B:6</li>
+  <li>Vote from Volunteer 2: A:7 B:3</li>
+  <li>Vote from Mentor 1: A:4 B:6</li>
+  <li>Vote from Mentor 2: A:7 B:3</li>
+  <li>Final percentage result:
+    <ol>
+      <li>A: (4+7+4+7+4+7)/60 * 100% = 55%</li>
+      <li>B: (6+3+6+3+6+3)/60 * 100% = 45%</li>
+    </ol>
+  </li>
+  <li>Final distributing result:
+    <ol>
+      <li>A: 55% * $1,000 = $550</li>
+      <li>B: 45% * $1,000 = $450</li>
+    </ol>
+  </li>
+</ol>
+
+<p>In our practice we need to add C, D, and E
+which are all of our projects
+(volunteers team will be included as well).</p>
+
+<p>That’s it!</p>
+
+<h2 id="wechaty-gsod21-selected-technical-writers">Wechaty GSoD’21 selected technical writers</h2>
+
+<p>Here we’d like to announce that the Wechaty GSoD’21 selected technical writers, they are:</p>
+
+<ol>
+  <li><a href="https://wechaty.js.org/contributors/sbis04/">Souvik Biswas</a> and <a href="https://wechaty.js.org/contributors/shwetalsoni/">Shwetal Soni</a> for <a href="https://wechaty.js.org/2021/05/11/gsod-2021-team-proposal-tutorials/">Create easy to learn tutorials for beginner users of Wechaty</a> (<a href="https://docs.google.com/document/d/16MDUHguYxlHXxXH830I1OskEFml8_tdUzhThXYUqbn8/edit#heading=h.ja5jroiki3r3">team proposal</a>)</li>
+  <li><a href="https://wechaty.js.org/contributors/vasvi/">Vasvi Sood</a> and <a href="https://wechaty.js.org/contributors/abhishek/">Abhishek Jaiswal</a> for <a href="https://wechaty.js.org/2021/05/12/gsod-2021-how-to-guide-team-proposal/">Improve the How-to guides section</a> (<a href="https://docs.google.com/document/d/1x4FnMkvdAaeDn7iNvNlzJ9ykjaBMouJibOznyTYchRY/edit">team proposal</a>)</li>
+  <li><a href="https://wechaty.js.org/contributors/shraddhavp/">Shraddha Vasant Prasad</a> and <a href="https://wechaty.js.org/contributors/soumi7/">Soumi Bardhan</a> for <a href="https://wechaty.js.org/2021/05/11/shraddhavp-soumi-combined-reference-proposal/">Improve the References section</a> (<a href="https://docs.google.com/document/d/1ACh3weTzbuPeXG6Qr9Jq7ffRnA9Floz-qt-8nQ3bqLI/">team proposal</a>)</li>
+  <li><a href="https://wechaty.js.org/contributors/nibble0101/">Mukosa Joseph Mawa</a> and Chris Estepa for <a href="https://wechaty.js.org/2021/05/13/gsod-2021-improve-introduction-and-explanation-project-joint-proposal/">Improve the Explanations (and Introduction) sections</a> (<a href="https://docs.google.com/document/d/1VxIByga8Lui6raoyrosfvjQ8zelpwk-1ci7uk8mZ57M/edit#">team proposal</a>)</li>
+  <li><a href="https://wechaty.js.org/contributors/sajenjeshan1222/">Sajen Sarvajith k</a> and Arnab Saha for <a href="https://wechaty.js.org/2021/05/12/gsod-2021-reconstruct-landing-page-team-proposal/">Reconstruct Wechaty homepage(landing page) with value proposition</a> (<a href="https://docs.google.com/document/d/1Ri8MpSC5fJQCZN7txai_imLe16Qh4BcPF24ZNugxDuk/edit#">team proposal</a>)</li>
+  <li><a href="https://wechaty.js.org/contributors/iamrajiv/">Rajiv Ranjan Singh</a> to Improve the gRPC and OpenAPI ecosystem (<a href="https://github.com/iamrajiv/GSoD-2021/blob/main/GSoD_2021_Project_Proposal.md">proposal</a>)</li>
+  <li><a href="https://wechaty.js.org/contributors/rohitesh-kumar-jain/">Rohitesh Kumar Jain</a> and <a href="https://wechaty.js.org/contributors/proudofsimin/">Simin Liao (廖思閔)</a> for <a href="https://wechaty.js.org/2021/05/12/gsod-2021-volunteering-proposal/">Volunteering</a> (<a href="https://docs.google.com/document/d/1Twl2sMIcpaRLC38Hndbn73U-IzWt2pEdLgdnYjsoVF8/">team proposal</a>)</li>
+</ol>
+
+<p>Welcome the above 13 technical writers onboarding, it’s so great to have you all in our Wechaty organization community, cheers!</p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#google">google</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#gsod">gsod</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#gsod-2021">gsod-2021</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#event">event</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#2021">2021</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#zoom">zoom</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#featured">featured</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#docs">docs</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Author @ Wechaty, Architect @ Chatie, LLM Code Generation Enthusiast, Serial Entrepreneur, Burner🔥
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/05/06/vasvi-applicant-for-technical-writer-gsod/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/05-vasvi-applicant-for-technical-writer-gsod/vasvi.webp">  Vasvi Sood: 2021 Google Season of Docs Application</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/05/11/gsod-2021-team-proposal-tutorials/"> Google Season of Docs 2021 Team Proposal - Tutorials  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/05-gsod-2021-team-proposal-tutorials/wechaty-tutorials-proposal.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

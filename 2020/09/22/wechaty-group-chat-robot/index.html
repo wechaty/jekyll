@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      基于Wechaty打造智能聊天机器人(一) | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>基于Wechaty打造智能聊天机器人(一) | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="基于Wechaty打造智能聊天机器人(一)" />
+<meta name="author" content="evilbt" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="由于在去年我粉上了杨超越，广州演唱会期间加入了深圳站粉丝群，群主为了活跃气氛，在小群里拉了一个闲聊机器人，当时就想着自己也是一个技术开发，好早之前也有注册过图灵机器人，看着这个机器人的玩法感觉跟图灵机器人好像，就想着要不要自己去开发一个，但是当时这个念头也只是一闪而过，当时工作比较忙，也没放在心上。 今年遇上了疫情，大家都只能在家里了，在群里闲聊的时候变多了，就想着能不能自己整个村狗机器人出来聊天，我们那个群跟机器人玩的大多是以下几个需求：" />
+<meta property="og:description" content="由于在去年我粉上了杨超越，广州演唱会期间加入了深圳站粉丝群，群主为了活跃气氛，在小群里拉了一个闲聊机器人，当时就想着自己也是一个技术开发，好早之前也有注册过图灵机器人，看着这个机器人的玩法感觉跟图灵机器人好像，就想着要不要自己去开发一个，但是当时这个念头也只是一闪而过，当时工作比较忙，也没放在心上。 今年遇上了疫情，大家都只能在家里了，在群里闲聊的时候变多了，就想着能不能自己整个村狗机器人出来聊天，我们那个群跟机器人玩的大多是以下几个需求：" />
+<link rel="canonical" href="https://wechaty.js.org/2020/09/22/wechaty-group-chat-robot/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/09/22/wechaty-group-chat-robot/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/wechaty-group-chat-robot/demo.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-09-22T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/wechaty-group-chat-robot/demo.webp" />
+<meta property="twitter:title" content="基于Wechaty打造智能聊天机器人(一)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"evilbt"},"dateModified":"2020-09-22T00:00:00+00:00","datePublished":"2020-09-22T00:00:00+00:00","description":"由于在去年我粉上了杨超越，广州演唱会期间加入了深圳站粉丝群，群主为了活跃气氛，在小群里拉了一个闲聊机器人，当时就想着自己也是一个技术开发，好早之前也有注册过图灵机器人，看着这个机器人的玩法感觉跟图灵机器人好像，就想着要不要自己去开发一个，但是当时这个念头也只是一闪而过，当时工作比较忙，也没放在心上。 今年遇上了疫情，大家都只能在家里了，在群里闲聊的时候变多了，就想着能不能自己整个村狗机器人出来聊天，我们那个群跟机器人玩的大多是以下几个需求：","headline":"基于Wechaty打造智能聊天机器人(一)","image":"https://wechaty.js.org/assets/2020/wechaty-group-chat-robot/demo.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/09/22/wechaty-group-chat-robot/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"evilbt"},"url":"https://wechaty.js.org/2020/09/22/wechaty-group-chat-robot/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">基于Wechaty打造智能聊天机器人(一)</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/evilbt">
+                            <img class="rounded-circle" src="/assets/contributors/evilbt/avatar.webp" alt="陈志鹏" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/evilbt">陈志鹏</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Sep 22, 2020 · <span class="reading-time">
+  
+  
+    3 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/wechaty-group-chat-robot/demo.webp" alt="基于Wechaty打造智能聊天机器人(一)">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>由于在去年我粉上了杨超越，广州演唱会期间加入了深圳站粉丝群，群主为了活跃气氛，在小群里拉了一个闲聊机器人，当时就想着自己也是一个技术开发，好早之前也有注册过图灵机器人，看着这个机器人的玩法感觉跟图灵机器人好像，就想着要不要自己去开发一个，但是当时这个念头也只是一闪而过，当时工作比较忙，也没放在心上。
+今年遇上了疫情，大家都只能在家里了，在群里闲聊的时候变多了，就想着能不能自己整个村狗机器人出来聊天，我们那个群跟机器人玩的大多是以下几个需求：</p>
+
+<ol>
+  <li>星座运势，包括每日、每月、年度运势等等。</li>
+  <li>点歌（网易云、QQ音乐等）。</li>
+  <li>成语接龙。</li>
+  <li>猜谜语。</li>
+  <li>猜图片。</li>
+  <li>猜歌。</li>
+</ol>
+
+<p>主要玩法是这些，一个月前我在网上机缘巧合之下找到了这个<a href="https://github.com/wechaty/wechaty">Weachaty</a>,发现实现最基本的微信机器人，只需要短短十几行代码，不需要你再执行太多业务逻辑外的繁琐事情。</p>
+
+<h2 id="2-wechaty框架介绍">2. Wechaty框架介绍</h2>
+
+<p><a href="https://github.com/wechaty/wechaty">Weachaty</a> 是一个开源的的对话机器人 SDK，支持个人微信号。它是一个使用Typescript 构建的Node.js 应用。支持多种微信接入方案，包括网页，ipad，ios，windows， android 等。同时支持Linux, Windows, Darwin(OSX/Mac) 和 Docker 多个平台。
+在GitHub上可以找到很多支持微信个人号接入的第三方类库，其中大多都是基于Web Wechat的API来实现的，如基于Python的WeixinBot，基于Node.js的Wechaty等。少数支持非Web协议的库，大多是商业私有闭源的，Wechaty是少有的开源项目支持非Web协议的类库。且目前来讲，Wechaty已经开始陆续支持多种编程语言了（Go、Python、Java等等）。官方说只需要6行代码，就可以做到自动管理微信消息了。</p>
+
+<pre><code class="language-JavaScript">import { Wechaty } from 'wechaty'
+
+Wechaty.instance()
+.on('scan',         qrcode      =&gt; console.log('扫码登录'))
+.on('login',        user        =&gt; console.log('登录成功：' + user))
+.on('message',      message     =&gt; console.log('收到消息：' + message))
+.on('friendship',   friendship  =&gt; console.log('收到好友请求：' + friendship))
+.on('room-invite',  invitation  =&gt; console.log('收到入群邀请：' + invitation))
+.start()
+</code></pre>
+
+<p>可以看到，Wechaty能做到的事情很多，可以收消息、发消息、好友管理、群管理，更多功能可以参考官方文档<a href="https://wechaty.js.org/v/zh/">中文版</a>、<a href="https://wechaty.js.org/docs/introduction/README">英文版</a>英文版的文档更新更全更新。</p>
+
+<h2 id="3-安装wechaty">3. 安装Wechaty</h2>
+
+<p>原本一开始我是想着用Java版本的<a href="https://github.com/wechaty/java-wechaty-getting-started">Wechaty</a>的，但是目前来讲Java版的还不够，入门阶段选择更加成熟的nodejs版的会更好，我选择了Docker的方式来使用开发Wechaty，系统方面选择了WSL2，配合VSCode就可以在Windows10下无缝开发，关于Windows10子系统WSL2的安装教程可以参考这篇<a href="https://segmentfault.com/a/1190000022865557">文章</a>，从零开始到安装Docker成功。</p>
+
+<h3 id="安装nodejs和npm">安装nodejs和npm</h3>
+
+<p>我的WSL2选择的系统是Ubuntu-18.04,我们先安装nodejs、npm</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>nodejs
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>npm
+</code></pre></div></div>
+
+<p>安装完毕后查看nodejs、npm版本</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node <span class="nt">-v</span>
+npm <span class="nt">-v</span>
+</code></pre></div></div>
+
+<p>当前是分别是v8.10.0、3.5.2.目前开发环境已经搭建完毕。</p>
+
+<h3 id="如何使用wechaty">如何使用Wechaty</h3>
+
+<p>我们用VSCode的Remote-WSL连接上我们的WSL系统，在当前用户文件夹下创建dog文件夹，选择它做为我们的工作区，在dog文件夹打开终端，用npm初始化项目：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm init <span class="nt">-y</span>
+</code></pre></div></div>
+
+<p>采用默认的生成package.json文件：</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dog"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"index.js"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"echo </span><span class="se">\"</span><span class="s2">Error: no test specified</span><span class="se">\"</span><span class="s2"> &amp;&amp; exit 1"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ISC"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>由于我采用 Typescript 进行开发的，在Dog文件夹创建dog.ts，对json文件手动修改一下：</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dog"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dog.ts"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ts-node dog.ts"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"echo </span><span class="se">\"</span><span class="s2">Error: no test specified</span><span class="se">\"</span><span class="s2"> &amp;&amp; exit 1"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ISC"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>官方给我的是临时的puppetPadPlus协议，所以我需要安装的puppet是PadPlus版的，另外为了让二维码显示终端上，我们还需要另外一个开源库<em>QRCodeTerminal</em>,不过我这里引入的是wechaty-plugin-contrib，它包含了很多常用的库，这里我们用到的是<em>QRCodeTerminal</em>和<em>EventLog</em>
+我们安装<em>wechaty</em>、<em>wechaty-puppet-padplus</em>、<em>wechaty-plugin-contrib</em>.</p>
+
+<pre><code class="language-base">npm i --save wechaty
+npm i --save wechaty-puppet-padplus
+npm i --save wechaty-plugin-contrib
+</code></pre>
+
+<p>安装完package.json也变成这样了：</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dog"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dog.ts"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ts-node dog.ts"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"echo </span><span class="se">\"</span><span class="s2">Error: no test specified</span><span class="se">\"</span><span class="s2"> &amp;&amp; exit 1"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ISC"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"wechaty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^0.48.10"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"wechaty-plugin-contrib"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^0.14.15"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"wechaty-puppet-padplus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^0.6.6"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div></div>
+
+<p>修改dog.ts源代码如下：</p>
+
+<pre><code class="language-Typescript">import { Wechaty, Message, log } from 'wechaty'
+import { PuppetPadplus } from 'wechaty-puppet-padplus'
+import { EventLogger, QRCodeTerminal } from 'wechaty-plugin-contrib'
+
+// 创建puppet为PadPlus版
+const puppet = new PuppetPadplus({
+    token: 'puppet_padplus_xxxxxxxxxxxxx' // 此Token自己向官方申请的
+})
+
+// 创建机器人实例
+const bot = new Wechaty({
+    name: 'Sherlock',
+    puppet
+})
+
+// 注册Log日志
+bot.use(EventLogger())
+// 注册二维码打印显示
+bot.use(QRCodeTerminal( { small: false}))
+
+// 监听消息事件
+bot.on('message', async (message: Message) =&gt; {
+    log.info('发来的消息呀'+message.text())
+})
+
+// 开启机器人
+bot.start()
+</code></pre>
+
+<p>接下来我们在Docker上运行该项目：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-ti</span> <span class="nt">--rm</span> <span class="nt">--volume</span><span class="o">=</span><span class="s2">"</span><span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span><span class="s2">"</span>:/bot wechaty/wechaty run start
+</code></pre></div></div>
+
+<p>第一次运行时wechaty镜像还没安装，docker会自动帮我们安装wechaty镜像，稍等片刻，一切正常的情况下，我们能看到终端打印出来的登录二维码，用你的微信扫码登录即可。目前运行的时候会发生以下这个错误：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error: Failed to load gRPC binary module because it was not installed <span class="k">for </span>the current system
+Expected directory: node-v72-linux-x64-glibc
+Found: <span class="o">[</span>node-v57-linux-x64-glibc]
+This problem can often be fixed by running <span class="s2">"npm rebuild"</span> on the current system
+</code></pre></div></div>
+
+<p>我们先执行rebuild再重新执行上面的代码。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-ti</span> <span class="nt">--rm</span> <span class="nt">--volume</span><span class="o">=</span><span class="s2">"</span><span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span><span class="s2">"</span>:/bot wechaty/wechaty npm rebuild
+</code></pre></div></div>
+
+<p>重新运行后，扫码登录之后后台就打印出已确认的日志：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">=================================================</span>
+    QRCODE_SCAN MSG : 已扫码，请在手机端确认登陆...
+<span class="o">=================================================</span>
+<span class="o">=================================================</span>
+            QRCODE_SCAN MSG : 已确认
+<span class="o">=================================================</span>
+</code></pre></div></div>
+
+<p>目前来讲我们已经成功运行Wechaty项目了，想要实现上面的需求只需要实现具体的业务代码即可，从社区上可以了解到，微信对话开放平台对接进来是比较适合我的需求的，而且看了官方文档，需求那里对于QQ音乐或者网易云音乐这类消息类型，Wechaty暂时是不支持的，这后续也得看看怎么替代，这篇先写到这里，下一篇要写一下接入微信对话开放平台，让它接管消息的收发。</p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#padplus">padplus</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#project">project</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#nodejs">nodejs</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#entertainment">entertainment</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/evilbt">
+                            <img class="rounded-circle" src="/assets/contributors/evilbt/avatar.webp" alt="陈志鹏" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/evilbt">陈志鹏</a> </h5>
+						杨超越的程序猿
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/09/16/speaker-mention-manager/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/wechaty-speaker-mention/speaker-mention.webp">  微信群过于频繁提醒功能</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/09/26/chassist-bot-final-en/"> Summer 2020: Final Presentation of Python-Wechaty Group Chat Assistant Bot  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/09-chassist-bot-final-en/logo.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

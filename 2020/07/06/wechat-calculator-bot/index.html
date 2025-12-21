@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      微信计算器机器人（wechat robot calculator） | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>微信计算器机器人（wechat robot calculator） | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="微信计算器机器人（wechat robot calculator）" />
+<meta name="author" content="ray" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="使用 Wechaty 构建一个简单的微信计算器机器人，可通过聊天消息执行基本算术运算" />
+<meta property="og:description" content="使用 Wechaty 构建一个简单的微信计算器机器人，可通过聊天消息执行基本算术运算" />
+<link rel="canonical" href="https://wechaty.js.org/2020/07/06/wechat-calculator-bot/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/07/06/wechat-calculator-bot/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/07-wechat-calculator-bot-en/header.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-07-06T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/07-wechat-calculator-bot-en/header.webp" />
+<meta property="twitter:title" content="微信计算器机器人（wechat robot calculator）" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"ray"},"dateModified":"2020-07-06T00:00:00+00:00","datePublished":"2020-07-06T00:00:00+00:00","description":"使用 Wechaty 构建一个简单的微信计算器机器人，可通过聊天消息执行基本算术运算","headline":"微信计算器机器人（wechat robot calculator）","image":"https://wechaty.js.org/assets/2020/07-wechat-calculator-bot-en/header.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/07/06/wechat-calculator-bot/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"ray"},"url":"https://wechaty.js.org/2020/07/06/wechat-calculator-bot/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">微信计算器机器人（wechat robot calculator）</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/ray">
+                            <img class="rounded-circle" src="/assets/contributors/ray/avatar.webp" alt="Ray" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/ray">Ray</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jul 06, 2020 · <span class="reading-time">
+  
+  
+    2 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/07-wechat-calculator-bot-en/header.webp" alt="微信计算器机器人（wechat robot calculator）">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p><a href="https://github.com/wechaty/wechaty"><img src="https://img.shields.io/badge/Powered%20By-Wechaty-green.svg#align=left&amp;display=inline&amp;height=20&amp;margin=%5Bobject%20Object%5D&amp;originHeight=20&amp;originWidth=132&amp;status=done&amp;style=none&amp;width=132" alt="Wechaty Badge" /></a>
+<a href="https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty"><img src="https://img.shields.io/badge/Wechaty-%E5%BC%80%E6%BA%90%E6%BF%80%E5%8A%B1%E8%AE%A1%E5%88%92-green.svg#align=left&amp;display=inline&amp;height=20&amp;margin=%5Bobject%20Object%5D&amp;originHeight=20&amp;originWidth=134&amp;status=done&amp;style=none&amp;width=134" alt="Everything about Wechaty" /></a></p>
+
+<h2 id="背景">背景</h2>
+
+<p>很早开始就在关注微信机器人，自己是做前端开发的，对nodejs有不错的了解。想自己做一个微信机器人的计算器，因为每次需要用计算器就很不方便，手机里的app我都放在很深的目录，不好找，放在首页又太浪费了。所以就想到用wechaty来实现个人号微信计算器机器人，实现常规的加减乘除功能；</p>
+
+<h2 id="功能">功能</h2>
+
+<p>加、减、乘、除</p>
+
+<h2 id="实现逻辑">实现逻辑</h2>
+
+<p>逻辑可以说是很简单；利用wechaty接收用户消息，对消息过滤，用户输入：1+1，然后直接eval 计算结果返回给用户；</p>
+
+<h2 id="依赖">依赖</h2>
+
+<ul>
+  <li>wechaty：wechaty核心库</li>
+  <li>wechaty-puppet-padplus：wechaty的ipad协议实现</li>
+</ul>
+
+<h2 id="实现过程">实现过程</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">function</span> <span class="nf">calculator</span><span class="p">(</span><span class="nx">intxt</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nc">Promise</span><span class="p">(</span><span class="nf">function </span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">intxt</span><span class="p">;</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="nx">intxt</span> <span class="o">=</span> <span class="nx">intxt</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="sr">/=|等|等于|</span><span class="se">\?</span><span class="sr">/</span><span class="p">,</span> <span class="dl">''</span><span class="p">);</span>
+      <span class="nx">intxt</span> <span class="o">=</span> <span class="nx">intxt</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="sr">/加/g</span><span class="p">,</span> <span class="dl">'</span><span class="s1">+</span><span class="dl">'</span><span class="p">).</span><span class="nf">replace</span><span class="p">(</span><span class="sr">/减/g</span><span class="p">,</span> <span class="dl">'</span><span class="s1">-</span><span class="dl">'</span><span class="p">).</span><span class="nf">replace</span><span class="p">(</span><span class="sr">/乘/g</span><span class="p">,</span> <span class="dl">'</span><span class="s1">*</span><span class="dl">'</span><span class="p">).</span><span class="nf">replace</span><span class="p">(</span><span class="sr">/除/g</span><span class="p">,</span> <span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">);</span>
+      <span class="nx">a</span> <span class="o">=</span> <span class="nf">eval</span><span class="p">(</span><span class="nx">intxt</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+      <span class="c1">// console.log('========error', e);</span>
+    <span class="p">}</span>
+      <span class="nf">resolve</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">onMessage</span> <span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">contact</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="k">from</span><span class="p">()</span>
+  <span class="kd">let</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">text</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">room</span><span class="p">();</span>
+
+  <span class="k">if </span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nf">self</span><span class="p">()){</span> <span class="c1">// 自己发消息</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">text</span> <span class="o">=</span> <span class="nx">text</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">[</span><span class="sr">。，、,.</span><span class="se">]</span><span class="sr">$/gi</span><span class="p">,</span> <span class="dl">''</span><span class="p">).</span><span class="nf">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">\s</span><span class="sr">*/gi</span><span class="p">,</span> <span class="dl">""</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nf">type</span><span class="p">()</span> <span class="o">===</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Message</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">Text</span> <span class="o">&amp;&amp;</span> <span class="sr">/^</span><span class="se">\d</span><span class="sr">+.</span><span class="se">{1}\d</span><span class="sr">+/gi</span><span class="p">.</span><span class="nf">test</span><span class="p">(</span><span class="nx">text</span><span class="p">))</span> <span class="p">{</span> <span class="c1">// 文本消息</span>
+    <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">CalcFunc</span><span class="p">.</span><span class="nf">calculator</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+    <span class="k">await</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">result</span><span class="o">+</span><span class="dl">''</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<h2 id="本地运行">本地运行</h2>
+
+<ol>
+  <li>克隆项目</li>
+</ol>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone g https://github.com/leiroc/wechat-calculator.git
+<span class="nb">cd </span>wechat-calculator
+</code></pre></div></div>
+
+<ol>
+  <li>安装依赖</li>
+</ol>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span>
+</code></pre></div></div>
+
+<ol>
+  <li>启动项目</li>
+</ol>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node app.js
+</code></pre></div></div>
+
+<h2 id="效果图">效果图</h2>
+
+<p><img src="/assets/2020/07-wechat-calculator-bot-en/demo.webp" alt="效果图" /></p>
+
+<h2 id="致谢">致谢</h2>
+
+<p>感谢<a href="https://wechaty.github.io/">Wechaty</a>团队提供微信机器人SDK，让开发者可以专注于业务代码。<br />
+感谢<a href="https://www.juzibot.com">句子互动</a>提供的pad协议版token，看到很多基于dll的实现，太费时就没有研究了</p>
+
+<blockquote>
+  <p>作者: <a href="https://github.com/leiroc/">Ray</a>
+Code: <a href="https://github.com/leiroc/wechat-calculator">Github</a></p>
+</blockquote>
+
+<hr />
+
+<blockquote>
+  <p>English version: <a href="/2020/07/06/wechat-calculator-bot-en/">WeChat Calculator Bot</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#padplus">padplus</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#productivity">productivity</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/ray">
+                            <img class="rounded-circle" src="/assets/contributors/ray/avatar.webp" alt="Ray" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/ray">Ray</a> </h5>
+						I am a full-stack Software Engineer in Chengdu.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/07/06/wechat-calculator-bot-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/07-wechat-calculator-bot-en/header.webp">  WeChat Calculator Bot</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/07/07/wechat-poem-robot-en/"> Implementing a WeChat Poetry Search Robot with Wechaty (wechat poem robot)  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/wechat-poem-robot/chat.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

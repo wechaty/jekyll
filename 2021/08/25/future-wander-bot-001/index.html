@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Wander[001] - 未来流浪者：微信中的科幻机器人 V2.1 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Wander[001] - 未来流浪者：微信中的科幻机器人 V2.1 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Wander[001] - 未来流浪者：微信中的科幻机器人 V2.1" />
+<meta name="author" content="sunyuqian1997" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="作者: 起司，扣扣" />
+<meta property="og:description" content="作者: 起司，扣扣" />
+<link rel="canonical" href="https://wechaty.js.org/2021/08/25/future-wander-bot-001/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/08/25/future-wander-bot-001/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/08-future-wander-bot-001/conv1.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-08-25T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/08-future-wander-bot-001/conv1.webp" />
+<meta property="twitter:title" content="Wander[001] - 未来流浪者：微信中的科幻机器人 V2.1" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sunyuqian1997"},"dateModified":"2021-08-25T00:00:00+00:00","datePublished":"2021-08-25T00:00:00+00:00","description":"作者: 起司，扣扣","headline":"Wander[001] - 未来流浪者：微信中的科幻机器人 V2.1","image":"https://wechaty.js.org/assets/2021/08-future-wander-bot-001/conv1.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/08/25/future-wander-bot-001/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"sunyuqian1997"},"url":"https://wechaty.js.org/2021/08/25/future-wander-bot-001/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#article">article</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Wander[001] - 未来流浪者：微信中的科幻机器人 V2.1</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/sunyuqian1997">
+                            <img class="rounded-circle" src="/assets/contributors/sunyuqian1997/cheese.webp" alt="sunyuqian1997" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/sunyuqian1997">sunyuqian1997</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Aug 25, 2021 · <span class="reading-time">
+  
+  
+    2 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/08-future-wander-bot-001/conv1.webp" alt="Wander[001] - 未来流浪者：微信中的科幻机器人 V2.1">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<blockquote>
+  <p>作者: <a href="https://github.com/sunyuqian1997">起司</a>，<a href="https://github.com/chelys-cheng">扣扣</a></p>
+</blockquote>
+
+<h2 id="项目简介">项目简介</h2>
+
+<p><img src="/assets/2021/08-future-wander-bot-001/cover.webp" alt="cover" /></p>
+
+<p>Wander [ 001 ]是一个以AI chatbot为主体的跨媒体互联网艺术项目，包括可交互的微信端机器人、CG影像、以及实时更新的地图网站。</p>
+
+<p>参与者可以通过微信向Wander发送现实中的地点，Wander会从随机的“未来时间点”前往当地，返回科幻游记与街景图。参与者可以用行动指令，让Wander探索未知的地点，甚至与遇到的角色互动交流。</p>
+
+<p>每一次的旅行的时间点是不确定的，而旅行的结果会实时记录于地图网站上。在人类的参与中，未来的地图会被不断完善，形成一个由公众与AI共同构建的科幻未来。艺术家基于Wander传送的游记与图像进行进一步CG创作，通过人机配合延展对未来的构想。</p>
+
+<p>本项目展出于2021 Wave Summit,2021保利春季拍卖NFT展区与2021北京时代美术馆-亚洲数字艺术展。</p>
+
+<p>截至2021年8月，已有超过1000名参与者带领Wander旅行。我们希望Wander能让人们重新审视熟悉的环境，从我们最熟悉的通讯软件里给人带去惊喜。</p>
+
+<p><a href="https://aistudio.baidu.com/aistudio/projectdetail/2274223?forkThirdPart=1">AI Studio地址</a>
+<a href="https://github.com/sunyuqian1997/Wander001-V2.1">代码详见Github</a></p>
+
+<p><img src="/assets/2021/08-future-wander-bot-001/conv2.webp" alt="conv2" /></p>
+
+<p><img src="/assets/2021/08-future-wander-bot-001/tutorial.webp" alt="tutorial" /></p>
+
+<p><img src="/assets/2021/08-future-wander-bot-001/show.webp" alt="show" /></p>
+
+<h2 id="互动方式">互动方式</h2>
+
+<p><img src="/assets/2021/08-future-wander-bot-001/qrbode.webp" alt="qrbode" /></p>
+
+<p>扫码或微信搜索：WanderingBot，添加好友后即可互动。</p>
+
+<p>发送 <strong>我想去：xxxx</strong>（任意中国大陆内地点）即可驱动Wander前去旅行。</p>
+
+<p>降落后两分钟内发送 <strong>行动：xxxx</strong>（如：进入面前的建筑物，向身边的机器人打招呼）即可让Wander继续探索这个地点。</p>
+
+<p>每次旅行可以发起两次行动，指令间隔需要在两分钟内。</p>
+
+<p><img src="/assets/2021/08-future-wander-bot-001/conv1.webp" alt="conv1" /></p>
+
+<h2 id="实现流程">实现流程</h2>
+
+<ul>
+  <li>识别指令</li>
+</ul>
+
+<p>  指令系统<code class="language-plaintext highlighter-rouge">system/Command.py</code>将识别指令，并根据指令完成相应行为</p>
+
+<ul>
+  <li>旅行指令-[我想去：北京大门东门]</li>
+</ul>
+
+<p>  获取地理信息，如 [北京大学东门]</p>
+
+<ul>
+  <li><strong>定位系统<code class="language-plaintext highlighter-rouge">system/Position.py</code>获取目标地点GPS坐标</strong></li>
+</ul>
+
+<p>  =》调用百度地图api地图检索功能，根据地点搜索获取gps坐标</p>
+
+<p>   <a href="http://lbsyun.baidu.com/index.php?title=webapi/guide/webservice-placeapi">http://lbsyun.baidu.com/index.php?title=webapi/guide/webservice-placeapi</a></p>
+
+<ul>
+  <li><strong>图像系统<code class="language-plaintext highlighter-rouge">system/RobotImage.py</code>获取过去景象</strong></li>
+</ul>
+
+<p>  =》调用百度地图api全景静态图功能，获取该坐标对应的街景图</p>
+
+<p>   <a href="http://lbsyun.baidu.com/index.php?title=viewstatic">http://lbsyun.baidu.com/index.php?title=viewstatic</a></p>
+
+<ul>
+  <li><strong>图像系统<code class="language-plaintext highlighter-rouge">system/RobotImage.py</code>拍摄未来照片</strong></li>
+</ul>
+
+<p>  =》调用PaddleHub风格迁移模型，迁移成未来风格</p>
+
+<p>   <a href="https://aistudio.baidu.com/aistudio/projectdetail/439779?channelType=0&amp;channel=0">https://aistudio.baidu.com/aistudio/projectdetail/439779?channelType=0&amp;channel=0</a></p>
+
+<ul>
+  <li><strong>思维系统<code class="language-plaintext highlighter-rouge">system/Thinking.py</code>形成旅行日志</strong></li>
+</ul>
+
+<p>  =》调用彩云小梦api，生成游记</p>
+
+<p>   <a href="https://open.caiyunapp.com/%E5%BD%A9%E4%BA%91%E5%B0%8F%E6%A2%A6API">https://open.caiyunapp.com/%E5%BD%A9%E4%BA%91%E5%B0%8F%E6%A2%A6API</a></p>
+
+<ul>
+  <li>
+    <p><strong>存储系统<code class="language-plaintext highlighter-rouge">system/Storage.py</code>保存旅行日志</strong></p>
+  </li>
+  <li>
+    <p><strong>通讯信息回复用户</strong></p>
+  </li>
+</ul>
+
+<p>  =》通过WeChaty返回消息给用户</p>
+
+<p>   <a href="https://wechaty.js.org/">https://wechaty.js.org/</a></p>
+
+<ul>
+  <li>行动指令-[行动：扒开废墟碎片找到通道]</li>
+</ul>
+
+<p>  =》获取行动内容，如[扒开废墟碎片找到通道]，结合前文内容</p>
+
+<ul>
+  <li><strong>思维系统<code class="language-plaintext highlighter-rouge">system/Thinking.py</code>形成行动日志</strong></li>
+</ul>
+
+<p>  =》调用彩云小梦api，生成游记</p>
+
+<p>   <a href="https://open.caiyunapp.com/%E5%BD%A9%E4%BA%91%E5%B0%8F%E6%A2%A6API">https://open.caiyunapp.com/%E5%BD%A9%E4%BA%91%E5%B0%8F%E6%A2%A6API</a></p>
+
+<ul>
+  <li>
+    <p><strong>存储系统<code class="language-plaintext highlighter-rouge">system/Storage.py</code>保存行动日志</strong></p>
+  </li>
+  <li>
+    <p><strong>通讯信息回复用户</strong></p>
+  </li>
+</ul>
+
+<p>  =》通过WeChaty返回消息给用户</p>
+
+<h2 id="准备工作">准备工作</h2>
+
+<ul>
+  <li>WeChaty Token申请地址：</li>
+</ul>
+
+<p> <a href="http://pad-local.com">http://pad-local.com</a></p>
+
+<ul>
+  <li>百度地图的api Token(ak)可通过在官网控制台创建应用获得，需付费</li>
+</ul>
+
+<p> <a href="http://lbsyun.baidu.com/index.php?title=%E9%A6%96%E9%A1%B5">http://lbsyun.baidu.com/index.php?title=%E9%A6%96%E9%A1%B5</a></p>
+
+<ul>
+  <li>彩云小梦的api Token需要通过邮件申请</li>
+</ul>
+
+<p> <a href="https://open.caiyunapp.com/%E5%BD%A9%E4%BA%91%E5%B0%8F%E6%A2%A6API">https://open.caiyunapp.com/%E5%BD%A9%E4%BA%91%E5%B0%8F%E6%A2%A6API</a></p>
+
+<h2 id="部署步骤">部署步骤</h2>
+
+<h3 id="安装docker">安装docker</h3>
+
+<ul>
+  <li>可以在<a href="https://docs.docker.com/engine/install">官方教程</a>上找到不同系统上安装docker的方法，如<a href="https://docs.docker.com/engine/install/ubuntu/">Ubuntu安装Docker指南</a></li>
+  <li>安装完毕后，可通过<code class="language-plaintext highlighter-rouge">docker version</code>查看是否安装成功</li>
+</ul>
+
+<h3 id="启动wechaty-puppet服务网关容器">启动wechaty puppet服务网关容器</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">d</span> \
+    <span class="o">--</span><span class="n">restart</span><span class="o">=</span><span class="n">always</span> \
+    <span class="o">--</span><span class="n">name</span> <span class="n">wechaty_puppet_service_token_gateway</span> \
+    <span class="o">-</span><span class="n">e</span> <span class="n">WECHATY_LOG</span><span class="o">=</span><span class="n">verbose</span> \
+        <span class="o">-</span><span class="n">e</span> <span class="n">WECHATY_PUPPET</span><span class="o">=</span><span class="n">wechaty</span><span class="o">-</span><span class="n">puppet</span><span class="o">-</span><span class="n">padlocal</span> \
+        <span class="o">-</span><span class="n">e</span> <span class="n">WECHATY_TOKEN</span><span class="o">=</span><span class="mi">1</span><span class="n">c468a07</span><span class="o">-</span><span class="mi">9</span><span class="n">d85</span><span class="o">-</span><span class="mi">4</span><span class="n">af4</span><span class="o">-</span><span class="mi">945</span><span class="n">a</span><span class="o">-</span><span class="n">db7238b53189</span> \
+        <span class="o">-</span><span class="n">e</span> <span class="n">WECHATY_PUPPET_PADLOCAL_TOKEN</span><span class="o">=</span><span class="n">puppet_padlocal_xxxxx</span> \
+        <span class="o">-</span><span class="n">e</span> <span class="n">WECHATY_PUPPET_SERVER_PORT</span><span class="o">=</span><span class="mi">8081</span> \
+        <span class="o">-</span><span class="n">p</span> <span class="sh">"</span><span class="s">8081:8081</span><span class="sh">"</span> \
+    <span class="n">wechaty</span><span class="o">/</span><span class="n">wechaty</span><span class="p">:</span><span class="n">latest</span>
+</code></pre></div></div>
+
+<p>注：</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">WECHATY_TOKEN</code>表示自定义的一个唯一令牌，需要唯一，本文设置使用的是生成的UUID，可以参考，如果提示错误可替换，后续检测网关有效性有用到</li>
+  <li><code class="language-plaintext highlighter-rouge">WECHATY_PUPPET_PADLOCAL_TOKEN</code>即从wechaty获取的有效token，格式为<code class="language-plaintext highlighter-rouge">puppet_padlocal_xxxxx</code>，可自行替换成自己的token</li>
+  <li><code class="language-plaintext highlighter-rouge">WECHATY_PUPPET_SERVER_PORT</code>表示与官方服务器通信的端口，后续检测网关有效性有用到</li>
+</ul>
+
+<p>部署正常的话，docker容器内部的log应该会出现以下内容：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">============================================================</span>
+ <span class="n">Welcome</span> <span class="n">to</span> <span class="n">Wechaty</span> <span class="n">PadLocal</span> <span class="n">puppet</span><span class="err">!</span>
+ <span class="o">-</span> <span class="n">wechaty</span><span class="o">-</span><span class="n">puppet</span><span class="o">-</span><span class="n">padlocal</span> <span class="n">version</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">.</span><span class="mi">1</span>
+ <span class="o">-</span> <span class="n">padlocal</span><span class="o">-</span><span class="n">ts</span><span class="o">-</span><span class="n">client</span> <span class="n">version</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">.</span><span class="mi">0</span>
+<span class="o">============================================================</span>
+</code></pre></div></div>
+
+<p>而Wechaty官方给出检测有效性的方式为访问网址：</p>
+
+<pre><code class="language-url">https://api.chatie.io/v0/hosties/1c468a07-9d85-4af4-945a-db7238b53189
+</code></pre>
+
+<p><code class="language-plaintext highlighter-rouge">https://api.chatie.io/v0/hosties/</code>后面的字符串即为上文提到的<code class="language-plaintext highlighter-rouge">WECHATY_TOKEN</code>的值。</p>
+
+<p>当结果为以下内容：</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="nl">"host"</span><span class="p">:</span><span class="s2">"xxx.xxx.xxx.xxx"</span><span class="p">,</span><span class="nl">"ip"</span><span class="p">:</span><span class="s2">"xxx.xxx.xxx.xxx"</span><span class="p">,</span><span class="nl">"port"</span><span class="p">:</span><span class="mi">8081</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">host</code>和<code class="language-plaintext highlighter-rouge">ip</code>分别为你网关部署服务器的Host和IP地址，<code class="language-plaintext highlighter-rouge">port</code>即为前文提到的<code class="language-plaintext highlighter-rouge">WECHATY_PUPPET_SERVER_PORT</code>参数对应的值。</p>
+
+<p>如果<code class="language-plaintext highlighter-rouge">host</code>和<code class="language-plaintext highlighter-rouge">ip</code>为实际的值，而不是0.0.0.0，则表示网关部署成功啦。</p>
+
+<h3 id="启动mysql数据库容器">启动mysql数据库容器</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">d</span> \
+    <span class="o">--</span><span class="n">name</span> <span class="n">wander_storage</span> \
+    <span class="o">-</span><span class="n">e</span> <span class="n">MYSQL_ROOT_PASSWORD</span><span class="o">=</span><span class="mi">123456</span> \
+    <span class="o">-</span><span class="n">e</span> <span class="n">MYSQL_DATABASE</span><span class="o">=</span><span class="n">wander_storage</span> \
+    <span class="o">-</span><span class="n">e</span> <span class="n">MYSQL_USER</span><span class="o">=</span><span class="n">wander</span> \
+    <span class="o">-</span><span class="n">e</span> <span class="n">MYSQL_PASSWORD</span><span class="o">=</span><span class="n">wander</span> \
+    <span class="o">-</span><span class="n">p</span> <span class="sh">"</span><span class="s">3306:3306</span><span class="sh">"</span> \
+    <span class="n">mysql</span><span class="p">:</span><span class="mf">5.7</span>
+</code></pre></div></div>
+
+<h3 id="启动redis数据库容器">启动redis数据库容器</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">d</span> \
+    <span class="o">--</span><span class="n">restart</span><span class="o">=</span><span class="n">always</span> \
+    <span class="o">--</span><span class="n">name</span> <span class="n">cache_redis</span> \
+        <span class="o">-</span><span class="n">p</span> <span class="sh">"</span><span class="s">6379:6379</span><span class="sh">"</span> \
+    <span class="n">redis</span><span class="p">:</span><span class="n">latest</span>
+</code></pre></div></div>
+
+<h3 id="pip安装运行环境所需模块">pip安装运行环境所需模块</h3>
+
+<p><code class="language-plaintext highlighter-rouge">pip install -r ./work/requestments.txt</code></p>
+
+<h3 id="运行wander">运行Wander</h3>
+
+<p><code class="language-plaintext highlighter-rouge">python ./work/robot-start.py</code></p>
+
+<h2 id="总结">总结</h2>
+
+<p>本项目是<a href="https://aistudio.baidu.com/aistudio/projectdetail/1896705">在未来流浪：基于WeChaty, PaddleHub与彩云小梦的科幻机器人</a>的升级版本。基于上个版本，进行了全面的代码重构并新增“行动”功能，新增后端网站记录，完善图片迁移。本项目仅包含微信机器人部分。</p>
+
+<p>本项目由速冻乱码搅拌机开发。</p>
+
+<p>设计/ <a href="https://github.com/sunyuqian1997">me</a></p>
+
+<p>Chatbot开发/ <a href="https://github.com/chelys-cheng">扣扣</a> , <a href="https://github.com/sunyuqian1997">me</a></p>
+
+<p>后端/<a href="https://github.com/chelys-cheng">扣扣</a></p>
+
+<p>前端/<a href="https://github.com/shing19">Shing</a>，<a href="https://github.com/Ray-lei-blog">Ray</a></p>
+
+<p>协助/<a href="https://github.com/Fairywang9">草莓</a>，<a href="https://github.com/YingXu-Koi">koi</a></p>
+
+<p>文本续写AI/彩云科技</p>
+
+<p><img src="/assets/2021/08-future-wander-bot-001/logo.webp" alt="logo" /></p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#blog">blog</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#study">study</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#introduction">introduction</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/sunyuqian1997">
+                            <img class="rounded-circle" src="/assets/contributors/sunyuqian1997/cheese.webp" alt="sunyuqian1997" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/sunyuqian1997">sunyuqian1997</a> </h5>
+						Generating
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/08/21/super-interstellar-terminal/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/08-super-interstellar-terminal/title.webp">  <x 世纪星际终端>基于 wechaty 的 AR+LBS 漂流瓶轻社交游戏</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/08/26/gdg-community-talk-google-season-of-docs-en/"> Wechaty Docs Collaboration Practice in Google Season of Docs  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/08-gdg-community-talk-google-season-of-docs-en/gdg-community-talk-gsod-wechaty.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

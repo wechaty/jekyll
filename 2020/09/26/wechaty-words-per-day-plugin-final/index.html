@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      暑期2020 [编写一个“每日一句”插件] 结项报告 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>暑期2020 [编写一个“每日一句”插件] 结项报告 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="暑期2020 [编写一个“每日一句”插件] 结项报告" />
+<meta name="author" content="univerone" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="项目名称：编写一个“每日一句”插件 方案描述： 制作可以被 wechaty 调用的插件，能够使用内置的语料接口 插件能够构造 POST 和 GET 请求，设置请求参数，并根据指定的解析规则解析返回的 json 格式或者 html 格式的内容 插件可以根据请求结构中的图片地址下载图片，并根据每日一句内容以及微信群的相关信息添加水印 插件能够设置定时发送的时间、群名、发送的内容 时间规划： 开发插件的基本框架 7/1 - 7/21 插件的输入参数有：使用的内置 API 接口名称、应用的群聊名称以及发布每日一句内容的时间，完成基本代码构建。插件能够设置定时发送的时间、群名、发送的内容，也可以根据请求结构中的图片地址下载图片，并根据每日一句内容以及微信群的相关信息添加水印。 发布 NPM 包，引入 CI/CD 7/22 - 8/14 进一步优化代码以及注释，引入 CI/CD 来进行代码质量控制以及包的版本管理 丰富语料库 8/15 - 9/07 首先确定使用的 API 接口或者爬取的网址，根据不同的网址进行不同的解析，返回指定的结果。构造请求并解析内容，返回需要的字符串（每日一句的内容或者图片的 URL）。如有余力的话，能够支持用户自主设定语料的来源。 进行测试完善项目文档 9/07 - 10/01 完善项目文档，撰写整个项目过程的总结文章;增加单元测试等;计划延迟的缓冲时间" />
+<meta property="og:description" content="项目名称：编写一个“每日一句”插件 方案描述： 制作可以被 wechaty 调用的插件，能够使用内置的语料接口 插件能够构造 POST 和 GET 请求，设置请求参数，并根据指定的解析规则解析返回的 json 格式或者 html 格式的内容 插件可以根据请求结构中的图片地址下载图片，并根据每日一句内容以及微信群的相关信息添加水印 插件能够设置定时发送的时间、群名、发送的内容 时间规划： 开发插件的基本框架 7/1 - 7/21 插件的输入参数有：使用的内置 API 接口名称、应用的群聊名称以及发布每日一句内容的时间，完成基本代码构建。插件能够设置定时发送的时间、群名、发送的内容，也可以根据请求结构中的图片地址下载图片，并根据每日一句内容以及微信群的相关信息添加水印。 发布 NPM 包，引入 CI/CD 7/22 - 8/14 进一步优化代码以及注释，引入 CI/CD 来进行代码质量控制以及包的版本管理 丰富语料库 8/15 - 9/07 首先确定使用的 API 接口或者爬取的网址，根据不同的网址进行不同的解析，返回指定的结果。构造请求并解析内容，返回需要的字符串（每日一句的内容或者图片的 URL）。如有余力的话，能够支持用户自主设定语料的来源。 进行测试完善项目文档 9/07 - 10/01 完善项目文档，撰写整个项目过程的总结文章;增加单元测试等;计划延迟的缓冲时间" />
+<link rel="canonical" href="https://wechaty.js.org/2020/09/26/wechaty-words-per-day-plugin-final/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/09/26/wechaty-words-per-day-plugin-final/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/09-wechaty-words-per-day-plugin-final-en/logo.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-09-26T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/09-wechaty-words-per-day-plugin-final-en/logo.webp" />
+<meta property="twitter:title" content="暑期2020 [编写一个“每日一句”插件] 结项报告" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"univerone"},"dateModified":"2020-09-26T00:00:00+00:00","datePublished":"2020-09-26T00:00:00+00:00","description":"项目名称：编写一个“每日一句”插件 方案描述： 制作可以被 wechaty 调用的插件，能够使用内置的语料接口 插件能够构造 POST 和 GET 请求，设置请求参数，并根据指定的解析规则解析返回的 json 格式或者 html 格式的内容 插件可以根据请求结构中的图片地址下载图片，并根据每日一句内容以及微信群的相关信息添加水印 插件能够设置定时发送的时间、群名、发送的内容 时间规划： 开发插件的基本框架 7/1 - 7/21 插件的输入参数有：使用的内置 API 接口名称、应用的群聊名称以及发布每日一句内容的时间，完成基本代码构建。插件能够设置定时发送的时间、群名、发送的内容，也可以根据请求结构中的图片地址下载图片，并根据每日一句内容以及微信群的相关信息添加水印。 发布 NPM 包，引入 CI/CD 7/22 - 8/14 进一步优化代码以及注释，引入 CI/CD 来进行代码质量控制以及包的版本管理 丰富语料库 8/15 - 9/07 首先确定使用的 API 接口或者爬取的网址，根据不同的网址进行不同的解析，返回指定的结果。构造请求并解析内容，返回需要的字符串（每日一句的内容或者图片的 URL）。如有余力的话，能够支持用户自主设定语料的来源。 进行测试完善项目文档 9/07 - 10/01 完善项目文档，撰写整个项目过程的总结文章;增加单元测试等;计划延迟的缓冲时间","headline":"暑期2020 [编写一个“每日一句”插件] 结项报告","image":"https://wechaty.js.org/assets/2020/09-wechaty-words-per-day-plugin-final-en/logo.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/09/26/wechaty-words-per-day-plugin-final/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"univerone"},"url":"https://wechaty.js.org/2020/09/26/wechaty-words-per-day-plugin-final/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">暑期2020 [编写一个“每日一句”插件] 结项报告</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/univerone">
+                            <img class="rounded-circle" src="/assets/contributors/univerone/avatar.webp" alt="univerone" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/univerone">univerone</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Sep 26, 2020 · <span class="reading-time">
+  
+  
+    1 min read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/09-wechaty-words-per-day-plugin-final-en/logo.webp" alt="暑期2020 [编写一个“每日一句”插件] 结项报告">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<ul>
+  <li>项目名称：编写一个“每日一句”插件</li>
+  <li>方案描述：
+    <ul>
+      <li>制作可以被 wechaty 调用的插件，能够使用内置的语料接口</li>
+      <li>插件能够构造 POST 和 GET 请求，设置请求参数，并根据指定的解析规则解析返回的 json 格式或者 html 格式的内容</li>
+      <li>插件可以根据请求结构中的图片地址下载图片，并根据每日一句内容以及微信群的相关信息添加水印</li>
+      <li>插件能够设置定时发送的时间、群名、发送的内容</li>
+    </ul>
+  </li>
+  <li>时间规划：
+    <ul>
+      <li>开发插件的基本框架
+        <ul>
+          <li>7/1 - 7/21</li>
+          <li>插件的输入参数有：使用的内置 API 接口名称、应用的群聊名称以及发布每日一句内容的时间，完成基本代码构建。插件能够设置定时发送的时间、群名、发送的内容，也可以根据请求结构中的图片地址下载图片，并根据每日一句内容以及微信群的相关信息添加水印。</li>
+        </ul>
+      </li>
+      <li>发布 NPM 包，引入 CI/CD
+        <ul>
+          <li>7/22 - 8/14</li>
+          <li>进一步优化代码以及注释，引入 CI/CD 来进行代码质量控制以及包的版本管理</li>
+        </ul>
+      </li>
+      <li>丰富语料库
+        <ul>
+          <li>8/15 - 9/07</li>
+          <li>首先确定使用的 API 接口或者爬取的网址，根据不同的网址进行不同的解析，返回指定的结果。构造请求并解析内容，返回需要的字符串（每日一句的内容或者图片的 URL）。如有余力的话，能够支持用户自主设定语料的来源。</li>
+        </ul>
+      </li>
+      <li>进行测试完善项目文档
+        <ul>
+          <li>9/07 - 10/01</li>
+          <li>完善项目文档，撰写整个项目过程的总结文章;增加单元测试等;计划延迟的缓冲时间</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="项目总结">项目总结</h2>
+
+<ul>
+  <li>项目成果：
+    <ul>
+      <li>项目仓库位于: <a href="https://github.com/univerone/words-per-day">https://github.com/univerone/words-per-day</a></li>
+      <li>相应的npm package地址为: <a href="https://www.npmjs.com/package/words-per-day">https://www.npmjs.com/package/words-per-day</a></li>
+      <li>live coding视频:</li>
+    </ul>
+  </li>
+</ul>
+
+<div style="
+    position: relative;
+    padding-bottom: 70%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://player.bilibili.com/player.html?bvid=BV1ih411d75h&amp;high_quality=1" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<ul>
+  <li>PPT展示视频:</li>
+</ul>
+
+<div style="
+    position: relative;
+    padding-bottom: 70%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://player.bilibili.com/player.html?bvid=BV1pf4y1D71F&amp;high_quality=1" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<ul>
+  <li>PPT:</li>
+</ul>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="/assets/js/viewer-js/#/assets/2020/09-wechaty-words-per-day-plugin-final-en/presentation.pdf" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<ul>
+  <li>遇到的问题及解决方案：
+    <ul>
+      <li><strong>编程语言的不熟悉</strong>. 由于之前没有接触过typescript语言,在项目前期, 我对于整个项目的具体实现包括项目文件的组成结构都没有经验, 所以刚开始比较难着手, 解决方法是多参考社区内其它以typescript为主要编程语言的项目, 结合官方文档和教程, 总结出使用wechaty社区的规范从0发布一个npm package的流程, 据此来组织我的代码. 在具体的编程实现上, 我也参考了很多javascript的语法(尤其是MDN Web文档). 此外看到很多项目都有vscode配置文件夹,在项目一开始我就学习使用vscode进行开发, 到后面觉得十分趁手,也算是”真香”了.</li>
+      <li><strong>回调函数的问题</strong>. 在编写这个插件的过程中，有很多需要等待一定时间来完成的步骤，比如图片的下载保存等，如果不进行设置的话一些过程是异步执行的，如果想在这个过程结束后进行下一个过程，可以使用回调函数, 然后使用回调函数使得代码的可读性变差, 在查阅相关资料之后, 我选择使用Promise来替代回调函数,  由于Promise/await的语法和逻辑有一点复杂, 可以边看文档边整理重要的概念, 之后回顾的时候也方便理解.</li>
+      <li><strong>调试代码的问题</strong>. 在开发过程中经常需要查看代码效果, 首先是针对函数的测试, 刚开始我将调用的代码写在对应的ts文件下面, 然后直接运行生成的js文件.后面将多个函数测试的代码单独写在一个ts文件中,  再之后查看插件在微信机器人上运行效果的时候, 我选择在dist目录里面写一个javascript文件, 启动机器人,在 typescript文件对应的行处设置断点进行调试, 这是在发布包之前进行的调试. 在包发布完成之后, 还要在单独的linux服务器上, 创建nodejs项目引入最新的插件查看效果.</li>
+      <li><strong>图像处理的问题</strong>. 在刚开始每日一句项目的目标就包括生成图片, 而在生成图片工具的选择上我花费了较大时间, 根据参考的项目我使用nodejs包gm来进行图像处理,其基本原理是使用调用系统中安装好的GraphicsMagick或者ImageMagick, 由于文档中说明文件较少, 因此使用这个包来实现预期的显示效果花费了最长的时间. 在项目后期参考其他项目, 是用puppeteer生成截图, 基本原理就是写一个html文档放置预设的样式, 根据传入的参数, 对文档进行编辑, 使用puppeteer生成这个html文档的截图, 相对来说这个方法更加容易入手并且高效, 缺点就是生成图片的速度相对较慢且puppeteer包较大.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="导师审核">导师审核</h2>
+
+<h3 id="评审对象">评审对象</h3>
+
+<ul>
+  <li>评审内容：<em>结项报告</em></li>
+  <li>提交人：<em>江姗姗</em></li>
+</ul>
+
+<h3 id="评审结果">评审结果</h3>
+
+<ul>
+  <li>项目完成度：<em>完成不错</em></li>
+  <li>学生参与度：<em>积极参与，独立自主</em></li>
+  <li>代码贡献量：<em>100%</em></li>
+  <li>综合评价及建议：<em>表现远超预期</em></li>
+  <li>最终评审结果：“通过”</li>
+</ul>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#plugins">plugins</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#summer-of-wechaty">summer-of-wechaty</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#summer-2020">summer-2020</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#entertainment">entertainment</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/univerone">
+                            <img class="rounded-circle" src="/assets/contributors/univerone/avatar.webp" alt="univerone" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/univerone">univerone</a> </h5>
+						I am new to computer science,and I want to be a professional researcher.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/09/26/wechaty-words-per-day-plugin-final-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/09-wechaty-words-per-day-plugin-final-en/logo.webp">  Summer 2020: Words‑per‑Day Plugin — Final Report</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/09/27/go-wechaty-gh-actions-optimization-final-poc-en/"> Summer 2020 [Go-wechaty Github Action optimization] Final POC  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/09-go-wechaty-gh-actions-optimization-final-poc-en/header.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

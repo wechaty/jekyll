@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      关于对微信PC版Hook的一点研究分享 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>关于对微信PC版Hook的一点研究分享 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="关于对微信PC版Hook的一点研究分享" />
+<meta name="author" content="h4dex" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Conversational RPA SDK for Chatbot Makers" />
+<meta property="og:description" content="Conversational RPA SDK for Chatbot Makers" />
+<link rel="canonical" href="https://wechaty.js.org/2017/10/06/wechat-pc-impactor/" />
+<meta property="og:url" content="https://wechaty.js.org/2017/10/06/wechat-pc-impactor/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2017/h4dex-inject.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-10-06T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2017/h4dex-inject.webp" />
+<meta property="twitter:title" content="关于对微信PC版Hook的一点研究分享" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"h4dex"},"dateModified":"2017-10-06T00:00:00+00:00","datePublished":"2017-10-06T00:00:00+00:00","description":"Conversational RPA SDK for Chatbot Makers","headline":"关于对微信PC版Hook的一点研究分享","image":"https://wechaty.js.org/assets/2017/h4dex-inject.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2017/10/06/wechat-pc-impactor/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"h4dex"},"url":"https://wechaty.js.org/2017/10/06/wechat-pc-impactor/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#hacking">hacking</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">关于对微信PC版Hook的一点研究分享</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/h4dex">
+                            <img class="rounded-circle" src="/assets/contributors/h4dex/avatar.webp" alt="h4dex" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/h4dex">h4dex</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Oct 06, 2017 · <span class="reading-time">
+  
+  
+    9 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2017/h4dex-inject.webp" alt="关于对微信PC版Hook的一点研究分享">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p><img src="/assets/2017/h4dex-inject.webp" alt="Wechat Windows Impactor" /></p>
+
+<p>因为易语言代码有的朋友们可能看起来怪怪的 如果没有接触过它，并不是那么通俗易懂。所以改成了cpp代码供审阅.  由于书写仓促 错误的部分希望大家指正，小弟在此多谢！</p>
+
+<p>感谢 易语言精易论坛坛友(xdssoft,恨不能遗忘,gh0st少主)分享的开源代码参考！</p>
+
+<blockquote>
+  <p>准备工作：</p>
+</blockquote>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PEid、Ollydbg、IDA pro、CheatEngine、DLL自动注入工具、微信电脑版2.4.1.37/79
+</code></pre></div></div>
+
+<h2 id="关于对微信pc版hook的一点研究分享">关于对微信PC版Hook的一点研究分享</h2>
+
+<h3 id="hook-注入类--hookinjecth">HOOK 注入类  hookinject.h</h3>
+
+<blockquote>
+  <p>这里的例子是用Version.dll</p>
+</blockquote>
+
+<p>因为version.dll优于WeChatWin.dll先加载</p>
+
+<p>version.dll是Windows NT系统以上版本检测应用程序接口相关文件。这里就用这个用途不是很必要的DLL模拟注入。</p>
+
+<p>首先需要载入真正的 Version.dll</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">///</span>
+<span class="c1">/// TODO:安装我们伪造的 Version.Dll</span>
+<span class="c1">///</span>
+
+<span class="k">class</span> <span class="nc">hookInject</span> <span class="p">{</span>
+
+    <span class="nl">public:</span>
+
+    <span class="k">const</span> <span class="n">DLL_PROCESS_DETACH</span> <span class="o">=</span> <span class="mi">0</span>    <span class="c1">//进程卸载 系统查看当前映射到进程空间中的所有DLL文件映像</span>
+    <span class="k">const</span> <span class="n">DLL_PROCESS_ATTACH</span> <span class="o">=</span> <span class="mi">1</span>    <span class="c1">//进程映射 系统查看当前映射到进程空间中的所有DLL文件映像</span>
+    <span class="k">const</span> <span class="n">DLL_THREAD_ATTACH</span> <span class="o">=</span> <span class="mi">2</span>     <span class="c1">//线程映射</span>
+    <span class="k">const</span> <span class="n">DLL_THREAD_DETACH</span> <span class="o">=</span> <span class="mi">3</span>     <span class="c1">//线程卸载</span>
+    <span class="k">const</span> <span class="n">DLL_PROCESS_VERIFIER</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1">//进程更改 系统查看当前映射到进程空间中的所有DLL文件映像</span>
+    <span class="k">const</span> <span class="n">WM_COPYDATA</span> <span class="o">=</span><span class="mh">0x4A</span>         <span class="c1">//</span>
+
+    <span class="kt">int</span> <span class="n">lib</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">GetFileVersionInfoA</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">GetFileVersionInfoByHandle</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">GetFileVersionInfoExW</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">GetFileVersionInfoSizeA</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">GetFileVersionInfoSizeExW</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">GetFileVersionInfoSizeW</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">GetFileVersionInfoW</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">VerFindFileA</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">VerFindFileW</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">VerInstallFileA</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">VerInstallFileW</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">VerLanguageNameA</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">VerLanguageNameW</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">VerQueryValueA</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">VerQueryValueW</span><span class="p">;</span>
+
+    <span class="n">BOOL</span> <span class="n">inst_VersionLib</span><span class="p">(){</span>
+
+    <span class="n">lib</span> <span class="o">=</span> <span class="n">LoadLibraryA</span> <span class="p">(</span><span class="s">"C:\windows\system32\Version.dll"</span><span class="p">);</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">lib</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+        <span class="c1">//载入不成功则返回0 则返回注入失败！</span>
+        <span class="k">return</span> <span class="n">FALSE</span><span class="p">;</span>
+    <span class="p">}</span>
+
+        <span class="n">GetFileVersionInfoA</span> <span class="o">=</span> <span class="n">GetProcAddress</span><span class="p">(</span><span class="n">lib</span><span class="p">,</span><span class="s">"GeFileVersionInfoA"</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">GetFileVersionInfoA</span> <span class="o">=</span> <span class="mi">0</span><span class="p">){</span>
+            <span class="o">::</span><span class="n">FreeLibrary</span><span class="p">(</span><span class="n">lib</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">FALSE</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">//*</span>
+        <span class="err">其他的函数也一样需要写</span><span class="p">..</span><span class="err">检测真正</span><span class="n">Version</span><span class="err">动态库</span>
+        <span class="err">调用时</span> <span class="err">每个函数所在内存的地址</span><span class="p">.</span>  <span class="err">否则可能会造成</span> <span class="n">crash</span> <span class="o">!!</span>
+        <span class="n">FARPROC</span> <span class="nf">GetProcAddress</span><span class="p">(</span>
+            <span class="n">HMODULE</span> <span class="n">hModule</span><span class="p">,</span> <span class="c1">// DLL模块句柄</span>
+            <span class="n">LPCSTR</span> <span class="n">lpProcName</span> <span class="c1">// 函数名</span>
+        <span class="p">);</span>
+
+        <span class="err">*/</span><span class="o">/</span>
+
+        <span class="n">VerQueryValueW</span> <span class="o">=</span> <span class="n">GetProcAddress</span> <span class="p">(</span><span class="n">lib</span><span class="p">,</span><span class="s">"VerQueryValueW"</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">VerQueryValueW</span> <span class="o">=</span> <span class="mi">0</span><span class="p">){</span>
+            <span class="o">::</span><span class="n">FreeLibrary</span> <span class="p">(</span><span class="n">lib</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">FALSE</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">TRUE</span><span class="p">;</span>     <span class="c1">//如果所有</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 接下来呢是伪造所有的函数调用</span>
+
+    <span class="kt">int</span> <span class="nf">GetFileVersionInfoA</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span><span class="kt">int</span> <span class="n">j</span><span class="p">,</span><span class="kt">int</span> <span class="n">k</span><span class="p">,</span><span class="kt">int</span> <span class="n">q</span><span class="p">){</span>
+        <span class="k">return</span> <span class="n">Jmp</span><span class="p">(</span><span class="n">GetFileVersionInfoA</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">q</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">/// ... 其他 同理</span>
+
+    <span class="kt">int</span> <span class="nf">Jmp</span><span class="p">(</span><span class="kt">int</span> <span class="n">addr</span> <span class="p">,</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">,</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">,</span><span class="kt">int</span> <span class="n">q</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">,</span><span class="kt">int</span> <span class="n">w</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">,</span><span class="kt">int</span> <span class="n">e</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">,</span><span class="kt">int</span> <span class="n">r</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">,</span><span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">,</span><span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">,</span><span class="kt">int</span> <span class="n">u</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">,</span><span class="kt">int</span> <span class="n">o</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">,</span><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">,</span><span class="kt">int</span> <span class="n">s</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">,</span><span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">){</span>
+        <span class="k">return</span> <span class="n">_Jmp</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">e</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">o</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">d</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="nf">_Jmp</span><span class="p">(</span><span class="o">*</span><span class="n">p</span> <span class="p">,</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span><span class="kt">int</span> <span class="n">j</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">,</span><span class="kt">int</span> <span class="n">q</span><span class="p">,</span><span class="kt">int</span> <span class="n">w</span><span class="p">,</span><span class="kt">int</span> <span class="n">e</span><span class="p">,</span><span class="kt">int</span> <span class="n">r</span><span class="p">,</span><span class="kt">int</span> <span class="n">t</span><span class="p">,</span><span class="kt">int</span> <span class="n">y</span><span class="p">,</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span><span class="kt">int</span> <span class="n">o</span><span class="p">,</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span><span class="kt">int</span> <span class="n">s</span><span class="p">,</span><span class="kt">int</span> <span class="n">d</span><span class="p">){</span>
+        <span class="kr">__asm</span><span class="p">{</span>
+            <span class="n">LEAVE</span><span class="p">;</span>              <span class="c1">//清空堆栈</span>
+            <span class="n">POP</span> <span class="n">EAX</span><span class="p">;</span>            <span class="c1">//把EAX重新压入栈</span>
+            <span class="n">XCHG</span> <span class="p">[</span><span class="n">ESP</span><span class="p">],</span><span class="n">EAX</span><span class="p">;</span>     <span class="c1">//数据交换</span>
+            <span class="n">JMP</span> <span class="n">EAX</span><span class="p">;</span>            <span class="c1">//再跳到eax寄存器</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<h3 id="应用注入类----------impactorh">应用注入类          Impactor.h</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Impactor</span><span class="p">{</span>
+    <span class="nl">public:</span>
+
+    <span class="k">static</span> <span class="kt">int</span> <span class="n">baseAddr</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//初始化 0 就是木有！</span>
+
+    <span class="kt">void</span> <span class="n">GetBaseAddress</span><span class="p">(){</span>
+
+        <span class="n">HANDLE</span> <span class="n">hSnapShot</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">last</span><span class="p">;</span>
+        <span class="n">string</span> <span class="n">m_Module</span><span class="p">;</span>
+        <span class="n">stringstream</span> <span class="n">ss</span><span class="p">;</span>
+        <span class="n">MODULEENTRY32</span> <span class="n">buffer</span><span class="p">;</span> <span class="c1">//struct</span>
+
+        <span class="k">while</span><span class="p">(</span><span class="n">baseAddr</span> <span class="o">=</span> <span class="mi">0</span><span class="p">){</span>
+            <span class="n">hSnapShot</span> <span class="o">=</span> <span class="o">::</span><span class="n">CreateToolhelp32Snapshot</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="n">GetCurrentProcessId</span><span class="p">());</span>              <span class="c1">//创建系统快照</span>
+            <span class="n">buffer</span><span class="p">.</span><span class="n">dwSize</span> <span class="o">=</span> <span class="mh">0x224</span><span class="p">;</span> <span class="c1">// 初始化buffer大小  548</span>
+            <span class="c1">//buffer.dwSize = sizeof(buffer); 检测大小</span>
+
+            <span class="n">last</span> <span class="o">=</span> <span class="o">::</span><span class="n">Module32First</span><span class="p">(</span><span class="n">hSnapShot</span><span class="p">,</span><span class="o">&amp;</span><span class="n">buffer</span><span class="p">);</span>
+
+            <span class="k">while</span><span class="p">(</span><span class="n">last</span> <span class="o">!=</span><span class="mi">0</span><span class="p">){</span>
+
+                <span class="c1">// m_last = boost::lexical_cast&lt;string&gt;(buffer.szModule) //ANSI -&gt; string</span>
+                <span class="n">ss</span><span class="o">&lt;&lt;</span><span class="n">buffer</span><span class="p">.</span><span class="n">szModule</span><span class="p">;</span>
+                <span class="n">ss</span><span class="o">&gt;&gt;</span><span class="n">m_Module</span><span class="p">;</span>
+
+                <span class="k">if</span><span class="p">(</span><span class="n">m_Module</span> <span class="o">==</span><span class="s">"WeChatWin.dll"</span><span class="p">){</span>
+                    <span class="n">baseAddr</span> <span class="o">=</span> <span class="n">buffer</span><span class="p">.</span><span class="n">modBaseAddr</span>
+                    <span class="k">break</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="n">last</span> <span class="o">=</span> <span class="o">::</span><span class="n">Module32Next</span><span class="p">(</span><span class="n">hSnapShot</span><span class="p">,</span><span class="n">buffer</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="n">CloseHandle</span><span class="p">(</span><span class="n">hSnapShot</span><span class="p">);</span>
+            <span class="n">sleep</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">///</span>
+    <span class="c1">///  获取收发类型和内容 相当于 WxSync</span>
+    <span class="c1">///</span>
+    <span class="c1">///param  之所以用整形 因为 他们都是指针形式~</span>
+    <span class="c1">///</span>
+    <span class="c1">///</span>
+    <span class="kt">void</span> <span class="nf">GetSyncType</span> <span class="p">(</span><span class="kt">int</span> <span class="n">msg</span><span class="p">,</span><span class="kt">int</span> <span class="n">wxid</span><span class="p">,</span><span class="kt">int</span> <span class="n">type</span><span class="p">){</span>
+
+        <span class="cm">/*
+        string str;
+        int len=str.size();
+        const char *pstr = str.c_str();
+        for (int i=0;i&lt;len;i++){
+            (short)*pstr++;
+        }
+        */</span>
+
+        <span class="c1">//const unsigned char *buf;</span>
+
+        <span class="cm">/* 这里有错误~~~看原版吧
+        取出传址内存指针 3000字节 长度的的字符数组(串)
+        传递给全局变量 SyncType
+        */</span>
+
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<h3 id="自己信息获取--------getprofileh">自己信息获取        GetProfile.h</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">class</span> <span class="nc">GetProfile</span><span class="p">{</span>
+    <span class="n">CALLBACK</span> <span class="n">wxAlias</span><span class="p">;</span>
+    <span class="n">CALLBACK</span> <span class="n">wxNickName</span><span class="p">;</span>
+    <span class="n">CALLBACK</span> <span class="n">wxId</span><span class="p">;</span>
+
+    <span class="kt">void</span> <span class="n">GetProfile</span><span class="p">(){</span>
+
+        <span class="c1">//callback方式 取 下列</span>
+        <span class="c1">//看易语言版本的代码吧</span>
+
+        <span class="c1">//三个指针地址分别为</span>
+        <span class="c1">//0x169fc9</span>
+        <span class="c1">//0x2db500</span>
+        <span class="c1">//0x2db695</span>
+
+        <span class="cm">/*
+        ;//取微信号和昵称的 CALL
+        PUSHAD
+        CALL 00000006
+        POPAD
+
+        ;//取WXID的CALL
+        PUSHAD
+        PUSH DWORD PTR [ESP+20]
+        CALL 0000000A
+        POPAD
+        */</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="nf">GetNickName</span><span class="p">(){</span>
+        <span class="kr">__asm</span><span class="p">{</span>
+            <span class="n">MOV</span> <span class="p">[</span><span class="n">EBP</span><span class="o">-</span><span class="mi">4</span><span class="p">],</span><span class="n">ECX</span>
+        <span class="p">}</span>
+        <span class="c1">//取 100字节大小数据地址 就是微信号 需要转换 Unicode</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="nf">GetWxAlias</span><span class="p">(){</span>
+        <span class="kr">__asm</span><span class="p">{</span>
+            <span class="n">MOV</span> <span class="p">[</span><span class="n">EBP</span><span class="o">-</span><span class="mi">4</span><span class="p">],</span><span class="n">EAX</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="c1">//取 100字节大小数据地址 就是微信号</span>
+        <span class="c1">//手机号 也可以同时取出. 预留30个字节的内存空间</span>
+
+        <span class="n">ReadProcessMemory</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">baseAddr</span><span class="o">+</span><span class="mh">0xE2EE20</span><span class="p">,</span><span class="err">手机号</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="nf">GetWxId</span><span class="p">(</span><span class="kt">int</span> <span class="n">wxid</span><span class="p">){</span>
+        <span class="c1">//根据WXID指针传递取 100字节大小数据地址 就是wxid</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="好友读取-列表类---getcontacth">好友读取 (列表)类   GetContact.h</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">GetContact</span><span class="p">{</span>
+    <span class="kt">void</span> <span class="n">GetContactList</span><span class="p">(){</span>
+
+        <span class="c1">//方法和上面类似</span>
+        <span class="c1">//0x30c820   WXID</span>
+        <span class="c1">//0x30c839   微信号</span>
+        <span class="c1">//0x30c8a2   备注</span>
+        <span class="c1">//0x30c8b8   昵称</span>
+
+        <span class="cm">/*
+        ;CALL
+        PUSHAD
+        CALL 00000006
+        POPAD
+        */</span>
+
+    <span class="p">}</span>
+
+    <span class="c1">//获取微信号</span>
+    <span class="kt">void</span> <span class="nf">GetAlias</span><span class="p">(){</span>
+        <span class="cm">/*
+        MOV [EBP-4],EAX
+        */</span>
+    <span class="p">}</span>
+
+    <span class="c1">//获取头像</span>
+    <span class="kt">void</span> <span class="nf">GetAvatar</span><span class="p">(){</span>
+        <span class="cm">/*
+        MOV [EBP-4],EAX
+        */</span>
+
+    <span class="p">}</span>
+
+    <span class="c1">//获取昵称</span>
+    <span class="kt">void</span> <span class="nf">GetNickName</span><span class="p">(){</span>
+        <span class="cm">/*
+        MOV [EBP-4],EAX
+        */</span>
+    <span class="p">}</span>
+
+    <span class="c1">//获取备注</span>
+    <span class="kt">void</span> <span class="nf">GetRemarkName</span><span class="p">(){</span>
+        <span class="cm">/*
+        MOV [EBP-4],EAX
+        */</span>
+    <span class="p">}</span>
+
+    <span class="c1">//获取WXID</span>
+    <span class="kt">void</span> <span class="nf">GetWxid</span><span class="p">(){</span>
+        <span class="cm">/*
+        MOV [EBP-4],EAX
+        */</span>
+        <span class="c1">//需要1000字节地址大小</span>
+        <span class="c1">//遍历</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="注入执行类--wechatwatchdogcpp">注入执行类  WechatWatchDog.cpp</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">"stdafx.h"</span><span class="c1">  </span><span class="cp">
+#include</span> <span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="c1">  </span><span class="cp">
+#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;vector&gt;</span><span class="c1">  </span><span class="cp">
+#include</span> <span class="cpf">&lt;Windows.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">"impactor.h"</span><span class="cp">
+#include</span> <span class="cpf">"hookinject.h"</span><span class="cp">
+#include</span> <span class="cpf">"GetProfile.h"</span><span class="cp">
+#include</span> <span class="cpf">"GetContact.h"</span><span class="cp">
+</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">_tmain</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">_TCHAR</span><span class="o">*</span> <span class="n">argv</span><span class="p">[]){</span>
+    <span class="n">hookInject</span><span class="o">::</span><span class="n">inst_VersionLib</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">hook_install</span><span class="p">(){</span>
+
+    <span class="n">CALLBACK</span> <span class="n">Hook_Get_Type_CallBack</span><span class="p">;</span>
+    <span class="n">CALLBACK</span> <span class="n">Sync_CallBack</span><span class="p">;</span>         <span class="c1">//User Msg</span>
+    <span class="n">CALLBACK</span> <span class="n">Collect_CallBack</span><span class="p">;</span>      <span class="c1">//Image</span>
+
+    <span class="n">Impactor</span><span class="o">::</span><span class="n">GetBaseAddress</span><span class="p">();</span>
+    <span class="n">GetProfile</span><span class="o">::</span><span class="n">GetProfile</span><span class="p">();</span>
+    <span class="n">GetContact</span><span class="o">::</span><span class="n">GetContactList</span><span class="p">();</span>
+
+    <span class="c1">//根据基址增加偏移0x237A78</span>
+    <span class="c1">//(微信基址+偏移,修改内存数据的方式,执行方法指针,偏移)</span>
+    <span class="n">Hook_Get_Type_CallBack</span><span class="p">.</span><span class="n">Install</span><span class="p">(</span><span class="n">baseAddr</span> <span class="o">+</span> <span class="mh">0x237A78</span> <span class="p">,</span><span class="o">&amp;</span><span class="n">_asmGetTypeCall</span><span class="p">,</span><span class="o">&amp;</span><span class="n">Impactor</span><span class="o">::</span><span class="n">GetSyncType</span><span class="p">,</span> <span class="o">*</span><span class="n">GetSyncType</span><span class="p">,</span><span class="mh">0x11</span><span class="p">);</span>
+
+    <span class="cm">/*
+    PUSHAD
+    PUSH EAX
+    PUSH DWORD PTR [ESP+548]
+    PUSH DWORD PTR [ESP+4AC]
+    CALL 00000015
+    POPAD
+    */</span>
+
+    <span class="c1">//根据基址增加偏移0x1412D7</span>
+    <span class="n">Sync_CallBack</span><span class="p">.</span><span class="n">Install</span><span class="p">(</span><span class="n">baseAddr</span> <span class="o">+</span> <span class="mh">0x1412D7</span><span class="p">,</span><span class="o">&amp;</span><span class="n">_asmGetSyncCall</span><span class="p">,</span> <span class="o">*</span><span class="n">GetSync</span><span class="p">,</span><span class="mh">0x7</span><span class="p">);</span>
+
+    <span class="cm">/*
+    PUSHAD
+    PUSH EAX
+    MOV EAX,[EDI+4C]
+    PUSH EAX
+    CALL 0000000B
+    POPAD
+    */</span>
+
+    <span class="kt">void</span> <span class="n">_asmGetTypeCall</span><span class="p">(){</span>
+        <span class="kr">__asm</span><span class="p">{</span>
+            <span class="n">PUSHAD</span>
+            <span class="n">PUSH</span> <span class="n">EAX</span>
+            <span class="n">PUSH</span> <span class="n">DWORD</span> <span class="n">PTR</span> <span class="p">[</span><span class="n">ESP</span><span class="o">+</span><span class="mi">548</span><span class="p">]</span>
+            <span class="n">PUSH</span> <span class="n">DWORD</span> <span class="n">PTR</span> <span class="p">[</span><span class="n">ESP</span><span class="o">+</span><span class="mi">4</span><span class="n">AC</span><span class="p">]</span>
+            <span class="n">CALL</span> <span class="mo">00000015</span>
+            <span class="n">POPAD</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="nf">_asmGetSyncCall</span><span class="p">(){</span>
+        <span class="kr">__asm</span><span class="p">{</span>
+            <span class="n">PUSHAD</span>
+            <span class="n">PUSH</span> <span class="n">EAX</span>
+            <span class="n">MOV</span> <span class="n">EAX</span><span class="p">,[</span><span class="n">EDI</span><span class="o">+</span><span class="mi">4</span><span class="n">C</span><span class="p">]</span>
+            <span class="n">PUSH</span> <span class="n">EAX</span>
+            <span class="n">CALL</span> <span class="mo">0000000</span><span class="n">B</span>
+            <span class="n">POPAD</span>
+
+        <span class="p">}</span>
+
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="nf">SendCollectImg</span><span class="p">(</span><span class="o">*</span><span class="n">SendCollectImg</span><span class="p">){</span>
+
+        <span class="c1">//监听收藏的图片发送</span>
+        <span class="c1">//也可以把机器图片放入内存再根据地址发送~</span>
+
+        <span class="c1">//释放CALL</span>
+
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="nf">SendUserAndMsg</span><span class="p">(</span><span class="kt">int</span> <span class="n">Msg</span><span class="p">,</span><span class="kt">int</span> <span class="n">User</span><span class="p">){</span>
+        <span class="c1">//相当于 SYNC 消息监听！</span>
+
+        <span class="cm">/*死循环判断  10000字节地址是否有内容，转换Ansi
+        判断内容报头 是否为 列表数组成员 ，如果带有 @chatroom就是 群组
+
+        输出打印    或者通过socket方式传递给外部程序~~
+        */</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="dllmaincpp">DLLMain.cpp</h3>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>略
+</code></pre></div></div>
+
+<h3 id="后记">后记</h3>
+
+<p>里面有一套源码的DLL动态自动注入 非常不错~</p>
+
+<p>附件：
+微信PC Hook易语言源码 （共3套）
+附带 etcp.dll  源码  VS2013 编译通过</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CALLBACK 类 因为在原代码中没有公开，是调用其他人开发的 ecom (相当于可集成的 Com组件/Lib)
+
+所以这里我也不太清楚这个如何实现..
+
+因本人能力有限，欢迎大家共同研究参与补充 ~
+
+谢谢！
+
+</code></pre></div></div>
+
+<p>下载：<a href="/assets/2017/wechat-windows-impactor-src.zip">Download Src</a></p>
+
+<p>完整下载地址：附带微信<code class="language-plaintext highlighter-rouge">2.4.5.73</code>安装包 没有微信<code class="language-plaintext highlighter-rouge">2.4.1.79</code></p>
+
+<p>链接：<a href="http://pan.baidu.com/s/1hsEeDoC">download full package</a>   密码：wttk</p>
+
+<p>感谢@huan 的邀请。</p>
+
+<blockquote>
+  <p>h4dex  2017年10月6日</p>
+</blockquote>
+
+<hr />
+
+<blockquote>
+  <p>This post is also available in <a href="/2017/10/06/wechat-pc-impactor-en/">English version</a>.</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#code">code</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#hook">hook</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/h4dex">
+                            <img class="rounded-circle" src="/assets/contributors/h4dex/avatar.webp" alt="h4dex" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/h4dex">h4dex</a> </h5>
+						会使用各种计算机语言写出 Hello World 的设计师（http://icefox.org/）
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2017/10/06/wechat-pc-impactor-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2017/h4dex-inject.webp">  Research and Sharing on WeChat PC Version Hook</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2017/10/28/ten-minutes-to-build-a-daily-paper-bot/"> Ten minutes to build a daily paper bot  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2017/leinue-bot.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

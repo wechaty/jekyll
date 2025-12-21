@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Refactoring Friday BOT with NestJS, Domain-driven Design (DDD), and CQRS | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Refactoring Friday BOT with NestJS, Domain-driven Design (DDD), and CQRS | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Refactoring Friday BOT with NestJS, Domain-driven Design (DDD), and CQRS" />
+<meta name="author" content="huan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Friday BOT has been refactored to using NestJS framework, by following the Domain-driven Design (DDD) and the Command Query Responsibility Segregation (CQRS) this week, by merging this HUGE(307 files changed) Pull Request:" />
+<meta property="og:description" content="Friday BOT has been refactored to using NestJS framework, by following the Domain-driven Design (DDD) and the Command Query Responsibility Segregation (CQRS) this week, by merging this HUGE(307 files changed) Pull Request:" />
+<link rel="canonical" href="https://wechaty.js.org/2022/02/27/refactoring-friday-bot-with-nestjs-ddd-cqrs/" />
+<meta property="og:url" content="https://wechaty.js.org/2022/02/27/refactoring-friday-bot-with-nestjs-ddd-cqrs/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2022/02-refactoring-friday-bot-with-nestjs-ddd-cqrs/event-storming-people.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-02-27T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2022/02-refactoring-friday-bot-with-nestjs-ddd-cqrs/event-storming-people.webp" />
+<meta property="twitter:title" content="Refactoring Friday BOT with NestJS, Domain-driven Design (DDD), and CQRS" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"huan"},"dateModified":"2022-02-27T00:00:00+00:00","datePublished":"2022-02-27T00:00:00+00:00","description":"Friday BOT has been refactored to using NestJS framework, by following the Domain-driven Design (DDD) and the Command Query Responsibility Segregation (CQRS) this week, by merging this HUGE(307 files changed) Pull Request:","headline":"Refactoring Friday BOT with NestJS, Domain-driven Design (DDD), and CQRS","image":"https://wechaty.js.org/assets/2022/02-refactoring-friday-bot-with-nestjs-ddd-cqrs/event-storming-people.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2022/02/27/refactoring-friday-bot-with-nestjs-ddd-cqrs/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"huan"},"url":"https://wechaty.js.org/2022/02/27/refactoring-friday-bot-with-nestjs-ddd-cqrs/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#announcement">announcement</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Refactoring Friday BOT with NestJS, Domain-driven Design (DDD), and CQRS</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Feb 27, 2022 · <span class="reading-time">
+  
+  
+    7 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2022/02-refactoring-friday-bot-with-nestjs-ddd-cqrs/event-storming-people.webp" alt="Refactoring Friday BOT with NestJS, Domain-driven Design (DDD), and CQRS">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>Friday BOT has been refactored to using <a href="https://nestjs.com/">NestJS</a> framework, by following the <a href="https://medium.com/raa-labs/part-1-domain-driven-design-like-a-pro-f9e78d081f10">Domain-driven Design</a> (DDD) and the <a href="https://www.sderosiaux.com/articles/2019/08/29/cqrs-why-and-all-the-things-to-consider/">Command Query Responsibility Segregation</a> (CQRS) this week, by merging this HUGE(307 files changed) <a href="https://github.com/wechaty/friday/pull/112">Pull Request</a>:</p>
+
+<p><a href="https://github.com/wechaty/friday/pull/112"><img src="/assets/2022/02-refactoring-friday-bot-with-nestjs-ddd-cqrs/friday-pr-112.webp" alt="Friday BOT PR 112" /></a></p>
+
+<h2 id="background">Background</h2>
+
+<p>For a long time, I’m planning to build Wechaty bot with an Event-Driven Architecture (EDA). The first EDA cloud service for Wechaty I have designed is the Wechaty token discovery service 5 years ago, it helps Wechaty instances to discover each other by their token, and make remote calls to each other by JSON-RPC payload, via a center WebSocket server provided by the community.</p>
+
+<p>The most beautiful part of the EDA is that it can decouple the sub-systems, and make the system more flexible and scalable. In the past 5 years, I’ve built a lot of EDA services, like <a href="https://github.com/Chatie/io">@chatie/io server</a> and <a href="https://github.com/wechaty/wechaty/blob/main/src/io.ts">wechaty/io-client</a>, I’ve learned a lot of things from them.</p>
+
+<p>Besides the EDA, we are doing our best to make the Wechaty API to be concise and easy to be understand and use, by using the most intuitive names for all the APIs. We built a plugin layer based on the basic APIs, and the plugin layer successfully helps the Wechaty to be more flexible and scalable.</p>
+
+<h2 id="the-friday-bot">The Friday BOT</h2>
+
+<p><a href="https://github.com/wechaty/friday">Friday BOT</a> is a Wechaty bot, which is in charge of help us to manage the community. It has lots of features, for example, the most basic features are automatically accept new friend requests, sending them a welcome message, and sending them a invitation to join the community chat room.</p>
+
+<p>Some of more advanced features are:</p>
+
+<ol>
+  <li>Forward messages across the 20+ different chat rooms on multiple Instant Messaging (IM) platforms, current includes 10+ WeChat groups, one <a href="https://gitter.im/wechaty/wechaty">Gitter channel</a>, one QQ group, one WhatsApp group, with 3600+ developers.</li>
+  <li>Recognize the message with different languages like English and Chinese, and forward the message to the right chat room.</li>
+  <li>Help the <a href="https://bot5.ml">BOT5 Club</a> to organize the seminar and meetup, in the WeChat room, with the power of the <a href="https://github.com/wechaty/bot5-assistant">bot5-assistant</a> plugin.</li>
+  <li>Answer the FAQ in the chat room, with the power of the Azure Congnitive Service <a href="https://github.com/wechaty/plugin-qnamaker">QnAMaker plugin</a>.</li>
+  <li>Update the <a href="https://chatie.statuspage.io/">chatie statuspage</a> to record the the community status.</li>
+  <li>Provide a <a href="https://github.com/wechaty/vorpal-contrib#4-mathmaster">Math Master Game</a> powered by the <a href="https://github.com/wechaty/vorpal">Wechaty Vorpal pugin</a></li>
+  <li>Connect the Freshdesk &amp; Intercom tickets to the Wechaty, with the power of the <a href="https://github.com/wechaty/plugin-freshdesk">Freshdesk plugin</a> and <a href="https://github.com/wechaty/plugin-intercom">Intercom plugin</a>.</li>
+  <li>Provide a <a href="https://github.com/gcaufy/wechaty-voteout">Voting to Kickout plugin</a> to kickout the bad guys in the community, by counting the thumb-down votes from the community.</li>
+  <li>and more …</li>
+</ol>
+
+<p>With Friday BOT get more and more features, the code base is growing, and the community is growing.</p>
+
+<h2 id="domain-driven-design-ddd">Domain-driven Design (DDD)</h2>
+
+<p><img src="/assets/2022/02-refactoring-friday-bot-with-nestjs-ddd-cqrs/domain-driven-design-easily-explained.webp" alt="Domain-driven Design easily explained" /></p>
+
+<blockquote>
+  <p>Image source: <a href="https://www.knowis.com/blog/domain-driven-design-structured-modeling-of-complex-software-systems-in-banking">DOMAIN-DRIVEN DESIGN: STRUCTURED MODELING OF COMPLEX SOFTWARE SYSTEMS IN BANKING</a></p>
+</blockquote>
+
+<p>Domain Driven Design (DDD) is about mapping business domain concepts into software artifacts.</p>
+
+<blockquote>
+  <p>— <a href="https://www.infoq.com/articles/ddd-in-practice/">InfoQ</a></p>
+</blockquote>
+
+<p>In my understanding, the soul of DDD is a bridge to connect the business people with the software engineers, and make sure they are in the same page and talking about the same things, efficiently.</p>
+
+<p>Some useful resources:</p>
+
+<ul>
+  <li><a href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/ddd-oriented-microservice">Design a DDD-oriented microservice</a></li>
+  <li><a href="https://github.com/ddd-crew/ddd-starter-modelling-process">Domain-Driven Design Starter Modelling Process</a></li>
+  <li><a href="https://khalilstemmler.com/articles/enterprise-typescript-nodejs/application-layer-use-cases/">Better Software Design with Application Layer Use Cases</a></li>
+  <li><a href="http://galudisu.info/2018/12/21/pattern/ddd/event-sourcing-feedback/">关于Akka在事件溯源的若干思考</a></li>
+</ul>
+
+<h2 id="event-storming">Event Storming</h2>
+
+<p><img src="/assets/2022/02-refactoring-friday-bot-with-nestjs-ddd-cqrs/event-storming.webp" alt="Event-storming" /></p>
+
+<blockquote>
+  <p>Source: <a href="https://virtualddd.com/learning-ddd/ddd-crew-eventstorming-glossary-cheat-sheet">EventStorming Glossary &amp; Cheat sheet</a></p>
+</blockquote>
+
+<p><a href="https://en.wikipedia.org/wiki/Event_storming">Event Storming</a> is a sprint workshop for a group of both business and engineer people who, together, to analyze the business domain by drawning events flows.</p>
+
+<h2 id="command-query-responsibility-segregation-cqrs">Command Query Responsibility Segregation (CQRS)</h2>
+
+<p><img src="/assets/2022/02-refactoring-friday-bot-with-nestjs-ddd-cqrs/cqrs.webp" alt="CQRS" /></p>
+
+<blockquote>
+  <p>Source: <a href="https://smartlabsblog.wordpress.com/2015/09/06/introduction-to-cqrs-and-event-sourcing-part-1/">Introduction to CQRS and Event Sourcing</a></p>
+</blockquote>
+
+<p><a href="https://martinfowler.com/bliki/CQRS.html">Command Query Responsibility Segregation (CQRS)</a> is a software architecture pattern that separates the command(write) and query(read) layers.</p>
+
+<h2 id="nestjs">NestJS</h2>
+
+<p><img src="/assets/2022/02-refactoring-friday-bot-with-nestjs-ddd-cqrs/nestjs.webp" alt="NestJS" /></p>
+
+<blockquote>
+  <p>Nest (<a href="https://nestjs.com/">NestJS</a>) is a framework for building efficient, scalable Node.js server-side applications. It uses progressive TypeScript and combines elements of OOP (Object Oriented Programming), FP (Functional Programming), and FRP (Functional Reactive Programming).</p>
+
+  <p>Nest provides an out-of-the-box application architecture which allows developers and teams to create highly testable, scalable, loosely coupled, and easily maintainable applications. The architecture is heavily inspired by Angular.</p>
+</blockquote>
+
+<p>It has <a href="https://docs.nestjs.com/controllers">Controlers</a> to handle the HTTP requests, <a href="https://docs.nestjs.com/providers">Providers</a> to be injected as dependency (Inversify of Control, IOC), and <a href="https://docs.nestjs.com/recipes/cqrs">CQRS</a> which works out-of-the-box.</p>
+
+<h2 id="the-new-architecture-of-friday-bot">The New Architecture of Friday BOT</h2>
+
+<p>With Friday BOT version 1.13+ and the new architecture, we have modulized the system into a few modules, and we have a lot of features to support the new architecture.</p>
+
+<h3 id="ddd-perspective">DDD Perspective</h3>
+
+<ol>
+  <li>Repository: provide the <code class="language-plaintext highlighter-rouge">WeChat</code>, <code class="language-plaintext highlighter-rouge">WhatsApp</code>, <code class="language-plaintext highlighter-rouge">QQ</code>, <code class="language-plaintext highlighter-rouge">Gitter</code>, <code class="language-plaintext highlighter-rouge">OfficialAccount</code>, and <code class="language-plaintext highlighter-rouge">WXWork</code> Wechaty instances.</li>
+  <li>Model/AggregateRoot: each Wechaty instance is treated as a model/aggregate root.</li>
+  <li>Commands &amp; Queries &amp; Events: they are defined to support the business logic, and they are the core of the system.</li>
+</ol>
+
+<h4 id="domain-saga-event-to-command">Domain Saga: Event to Command</h4>
+
+<pre><code class="language-mermaid">graph LR
+  classDef event fill:DarkGoldenRod
+  classDef command fill:blue
+  classDef query fill:green
+
+  ME(PuppetMessageReceivedEvent):::event
+  GTE[fab:fa-gitter GitterCommunityMessageReceivedEvent]:::event
+  WCE[fab:fa-weixin WeChatCommunityMessageReceivedEvent]:::event
+  WAE[fab:fa-whatsapp WhatsAppCommunityMessageReceivedEvent]:::event
+  QQE[fab:fa-qq QQCommunityMessageReceivedEvent]:::event
+
+  WAC[fab:fa-whatsapp WhatsAppCommunitySendMessageCommand]:::command
+  QQC[fab:fa-qq QQCommunitySendMessageCommand]:::command
+  WCC[fab:fa-weixin WeChatCommunitySendMessageCommand]:::command
+  GTC[fab:fa-gitter GitterCommunitySendMessageCommand]:::command
+
+  S{Saga}
+  GTS{fab:fa-gitter}
+  WCS{fab:fa-weixin}
+  WAS{fab:fa-whatsapp}
+  QQS{fab:fa-qq}
+
+  ME==&gt;S
+
+  subgraph Events Saga
+    S--&gt;GTE
+    S--&gt;WCE
+    S--&gt;QQE
+    S--&gt;WAE
+  end
+
+  subgraph Commands Saga
+    GTE--&gt;GTS
+    GTS--&gt;WAC
+    GTS--&gt;QQC
+    GTS--&gt;WCC
+    
+    WCE--&gt;WCS
+    WCS--&gt;WAC
+    WCS--&gt;QQC
+    WCS--&gt;GTC
+    
+    WAE--&gt;WAS
+    WAS--&gt;GTC
+    WAS--&gt;QQC
+    WAS--&gt;WCC
+
+    QQE--&gt;QQS
+    QQS--&gt;WAC
+    QQS--&gt;GTC
+    QQS--&gt;WCC
+  end
+</code></pre>
+
+<h4 id="text-message">Text Message</h4>
+
+<pre><code class="language-mermaid">graph LR
+  subgraph Community Send Message Command Saga
+    classDef event fill:DarkGoldenRod
+    classDef command fill:blue
+    classDef query fill:green
+
+    CSC[CommunitySendTextMessageCommand]:::command
+    SMC_S[fa:fa-signature SendMessageCommand Signature + Text]:::command
+    
+    TNQ[GetTalkerNameQuery]:::query
+    CNQ[GetChannelNameQuery]:::query
+
+    CSC--&gt;CNQ &amp; TNQ
+    CNQ &amp; TNQ --&gt; SMC_S
+  end
+</code></pre>
+
+<h4 id="non-text-message">Non-text Message</h4>
+
+<pre><code class="language-mermaid">graph LR
+  subgraph Community Send Message Command Saga
+    classDef event fill:DarkGoldenRod
+    classDef command fill:blue
+    classDef query fill:green
+
+    CSC[CommunitySendMessageCommand]:::command
+    SMC_S[fa:fa-signature SendMessageCommand Signature]:::command
+    SMC_N[fa:fa-photo-film SendMessageCommand Non-text]:::command
+    
+    TNQ[GetTalkerNameQuery]:::query
+    CNQ[GetChannelNameQuery]:::query
+
+    CSC--&gt;CNQ &amp; TNQ
+    CNQ &amp; TNQ --&gt; SMC_S
+    CSC--&gt;SMC_N
+  end
+</code></pre>
+
+<h4 id="application--domain">Application &amp; Domain</h4>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    participant User
+    participant Application
+    participant Domain
+    User-&gt;&gt;Application: original message
+    Application-&gt;&gt;Domain: PuppetMessageReceivedEvent
+    Domain-&gt;&gt;Domain: XXXCommunityMessageReceivedEvent
+    Domain-&gt;&gt;Domain: XXXCommunitySendMessageCommand
+    Domain-&gt;&gt;Application: XXXQuery
+    Application-&gt;&gt;Domain: 
+    Domain-&gt;&gt;Application: PuppetSendMessageCommand
+    Application-&gt;&gt;User: forwarded message
+</code></pre>
+
+<h3 id="lays--dependencies-in-ddd">Lays &amp; Dependencies in DDD</h3>
+
+<blockquote>
+  <p>Most enterprise applications with significant business and technical complexity are defined by multiple layers. The layers are a logical artifact, and are not related to the deployment of the service. They exist to help developers manage the complexity in the code. Different layers (like the domain model layer versus the presentation layer, etc.) might have different types, which mandate translations between those types.</p>
+</blockquote>
+
+<p><img src="/assets/2022/02-refactoring-friday-bot-with-nestjs-ddd-cqrs/domain-driven-design-microservice.webp" alt="DDD Layers" /></p>
+
+<ol>
+  <li>Domain Layer: Responsible for representing concepts of the business, information about the business situation, and business rules. S</li>
+  <li>Application Layer: Defines the jobs the software is supposed to do and directs the expressive domain objects to work out problems.</li>
+  <li>Infrastructure Layer: How the data that is initially held in domain entities (in memory) is persisted in databases or another persistent store.</li>
+</ol>
+
+<p>Dependencies:</p>
+
+<p><img src="/assets/2022/02-refactoring-friday-bot-with-nestjs-ddd-cqrs/ddd-service-layer-dependencies.webp" alt="Dependencies between Layers in DDD" /></p>
+
+<blockquote>
+  <p>Source: <a href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/ddd-oriented-microservice">Design a DDD-oriented microservice, Microsoft Docs</a></p>
+</blockquote>
+
+<h3 id="nestjs-perspective">NestJS Perspective</h3>
+
+<p><img src="/assets/2022/02-refactoring-friday-bot-with-nestjs-ddd-cqrs/ioc.webp" alt="Dependency Injection" /></p>
+
+<blockquote>
+  <p><a href="https://devopedia.org/dependency-injection">Devopedia. 2022. “Dependency Injection.” Version 5, February 15. Accessed 2022-02-15.</a></p>
+</blockquote>
+
+<ol>
+  <li>Controller: The controller is the entry point of the HTTP sub-system.</li>
+  <li>Application: 3rd party APIs.</li>
+  <li>Core: business logics, such as <code class="language-plaintext highlighter-rouge">statuspage</code> and <code class="language-plaintext highlighter-rouge">sync-community-rooms</code></li>
+  <li>Infrastructure: low-level supporting services, such as <code class="language-plaintext highlighter-rouge">EnvVar</code>, <code class="language-plaintext highlighter-rouge">finis</code>, etc.</li>
+  <li>WechatyEvents: the Event-driven architecture of Wechaty, such as <code class="language-plaintext highlighter-rouge">PuppetMessageReceivedEvent</code>, <code class="language-plaintext highlighter-rouge">PuppetMessageSentEvent</code>, etc.</li>
+  <li>WechatyRepository: provide the Wechaty instances.</li>
+  <li>WechatySettings: provide the settings from pre-defined properties and environment variables.</li>
+  <li>FridayModule: main module of Friday BOT, where the whole system is assembled.</li>
+  <li>Sagas: using RxJS to convert <code class="language-plaintext highlighter-rouge">Event</code> to <code class="language-plaintext highlighter-rouge">Command</code>s</li>
+  <li>Unit test: using <code class="language-plaintext highlighter-rouge">marble</code> to test the event streaming system</li>
+</ol>
+
+<p>All the above modules are in the <code class="language-plaintext highlighter-rouge">src/</code> folder, they are working under the Inverse of Control (IOC) pattern powered by NestJS.</p>
+
+<h2 id="to-do-list">To-do List</h2>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Design the <a href="https://github.com/wechaty/cqrs">CQRS system for Wechaty</a>, and publish it as <a href="https://npmjs.com/package/wechaty-cqrs">wechaty-cqrs</a> NPM module.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Finish the Event-Driven Architecture (EDA) module for Wechaty, and publish it as <code class="language-plaintext highlighter-rouge">wechaty-actor</code> NPM module.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Publish a NestJS module <code class="language-plaintext highlighter-rouge">wechaty-nest</code> for easily integrating the <code class="language-plaintext highlighter-rouge">wechaty-actor</code> NPM module to NestJS</li>
+</ul>
+
+<h2 id="source-code">Source Code</h2>
+
+<p>The source code of Friday BOT is available on <a href="https://github.com/wechaty/friday">GitHub</a></p>
+
+<p>You can <a href="https://gitter.im/wechaty/wechaty">join our Gitter</a> network if you aren’t already a member.</p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ddd">ddd</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#cqrs">cqrs</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#friday">friday</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#nestjs">nestjs</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Author @ Wechaty, Architect @ Chatie, LLM Code Generation Enthusiast, Serial Entrepreneur, Burner🔥
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2022/02/22/padlocal-office-hour/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2022/02-padlocal-office-hour/icon.webp">  Wechaty community meetup: PadLocal Office Hour, @padlocal, Feb 5th, 2022</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2022/03/03/opensource-win-github-ranking-huan-007-en/"> China Open Source Power Ranking Released | Wechaty Founder Ranked TOP 7  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2022/03-opensource-win-github-ranking-huan-007-en/opensource-super-mario.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" crossorigin="anonymous"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      if (!window.mermaid) {
+        return;
+      }
+
+      const codeBlocks = document.querySelectorAll('pre code.language-mermaid, code.language-mermaid');
+      codeBlocks.forEach(function (codeEl) {
+        const container = document.createElement('div');
+        container.className = 'mermaid';
+        container.textContent = codeEl.textContent;
+
+        const parent = codeEl.parentElement;
+        if (parent && parent.tagName.toLowerCase() === 'pre') {
+          parent.parentElement.replaceChild(container, parent);
+        } else if (parent) {
+          parent.replaceChild(container, codeEl);
+        } else {
+          codeEl.replaceWith(container);
+        }
+      });
+
+      window.mermaid.initialize({ startOnLoad: true, securityLevel: 'loose' });
+    });
+  </script>
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Building an Assistant with Wechaty and WeChat Open AI Platform | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Building an Assistant with Wechaty and WeChat Open AI Platform | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Building an Assistant with Wechaty and WeChat Open AI Platform" />
+<meta name="author" content="windmemory" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Invited by WWC (Women Who Code), I shared online how to build an assistant using Wechaty and WeChat Open AI Platform to help answer common questions." />
+<meta property="og:description" content="Invited by WWC (Women Who Code), I shared online how to build an assistant using Wechaty and WeChat Open AI Platform to help answer common questions." />
+<link rel="canonical" href="https://wechaty.js.org/2020/07/20/wechaty-openai-agent-en/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/07/20/wechaty-openai-agent-en/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/wechaty-weixin-openai/teaser-image.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-07-20T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/wechaty-weixin-openai/teaser-image.webp" />
+<meta property="twitter:title" content="Building an Assistant with Wechaty and WeChat Open AI Platform" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"windmemory"},"dateModified":"2020-07-20T00:00:00+00:00","datePublished":"2020-07-20T00:00:00+00:00","description":"Invited by WWC (Women Who Code), I shared online how to build an assistant using Wechaty and WeChat Open AI Platform to help answer common questions.","headline":"Building an Assistant with Wechaty and WeChat Open AI Platform","image":"https://wechaty.js.org/assets/2020/wechaty-weixin-openai/teaser-image.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/07/20/wechaty-openai-agent-en/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"windmemory"},"url":"https://wechaty.js.org/2020/07/20/wechaty-openai-agent-en/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#tutorial">tutorial</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Building an Assistant with Wechaty and WeChat Open AI Platform</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/windmemory">
+                            <img class="rounded-circle" src="/assets/contributors/windmemory/avatar.webp" alt="Yuan GAO (高原)" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/windmemory">Yuan GAO (高原)</a> <span><a target="_blank" href="https://www.weibo.com/u/2166731327" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jul 20, 2020 · <span class="reading-time">
+  
+  
+    15 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/wechaty-weixin-openai/teaser-image.webp" alt="Building an Assistant with Wechaty and WeChat Open AI Platform">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>Invited by <a href="#women-who-code">WWC (Women Who Code)</a>, I shared online how to build an assistant using Wechaty and WeChat Open AI Platform to help answer common questions.</p>
+
+<p>Event introduction: <a href="https://mp.weixin.qq.com/s/6HyEZlwWbuRGY9T_KotXEw">WWC Online Sharing: How to Create Your Personal Assistant with Wechaty and WeChat Open AI Platform</a></p>
+
+<p><img src="/assets/2020/wechaty-weixin-openai/teaser-image.webp" alt="wechaty-weixin-openai" /></p>
+
+<p>As the pace of society continues to accelerate, I have more and more WeChat messages to reply to every day, including many repetitive questions. As a programmer, I don’t want to waste my precious time on repetitive work. This time, I’ll share how to create your personal assistant using Wechaty and OpenAI to help handle those repetitive questions and free up your time.</p>
+
+<h2 id="what-are-we-going-to-build">What Are We Going to Build?</h2>
+
+<p>A WeChat assistant bot with the following features:</p>
+
+<ul>
+  <li>When I @ it and ask a question, it automatically sends out prepared materials</li>
+  <li>When others ask it questions, it can automatically match common questions and answer them</li>
+  <li>When no answer is matched, transfer to me
+    <ul>
+      <li>Message in a group and I’m in the group: @me to let me answer</li>
+      <li>Private chat or I’m not in the group: Send my contact card and guide them to add me as a friend</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="we-need-to-control-wechat-through-code">We Need to Control WeChat Through Code</h2>
+
+<p>This is where <code class="language-plaintext highlighter-rouge">Wechaty</code> shines. Here’s the integration code:</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Wechaty</span><span class="p">,</span> <span class="nx">Message</span><span class="p">,</span> <span class="nx">UrlLink</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">PuppetPadplus</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty-puppet-padplus</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">EventLogger</span><span class="p">,</span> <span class="nx">QRCodeTerminal</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty-plugin-contrib</span><span class="dl">'</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">padplusToken</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./const</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">puppet</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PuppetPadplus</span><span class="p">({</span>
+  <span class="na">token</span><span class="p">:</span> <span class="nx">padplusToken</span><span class="p">,</span>
+<span class="p">})</span>
+
+<span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Wechaty</span><span class="p">({</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">wwc-agent</span><span class="dl">'</span><span class="p">,</span>
+  <span class="nx">puppet</span><span class="p">,</span>
+<span class="p">})</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="nc">EventLogger</span><span class="p">())</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="nc">QRCodeTerminal</span><span class="p">({</span> <span class="na">small</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}))</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>The code is simple: create a <code class="language-plaintext highlighter-rouge">puppet</code> instance, pass it as a parameter to the <code class="language-plaintext highlighter-rouge">Wechaty</code> constructor to create a new <code class="language-plaintext highlighter-rouge">Wechaty</code> instance, then start the <code class="language-plaintext highlighter-rouge">Wechaty</code> instance.</p>
+
+<p>Two plugins are used here: <code class="language-plaintext highlighter-rouge">EventLogger</code> prints all <code class="language-plaintext highlighter-rouge">Wechaty</code> events to the console, and <code class="language-plaintext highlighter-rouge">QRCodeTerminal</code> prints the QR code from the scan event directly to the console for easy login.</p>
+
+<p>Run the code above and you’ll see the QR code printed in the command line. After scanning, you can see the account login. The effect is as follows:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>19:27:44 INFO WeixinOpenAI constructor<span class="o">(</span>your-, your-opena<span class="o">)</span>
+19:27:44 INFO PuppetPadplus start<span class="o">()</span>
+19:27:47 INFO WechatyPluginContrib EventLogger heartbeat:
+19:27:48 INFO WechatyPluginContrib EventLogger scan: http://weixin.qq.com/x/QfsfuToGOs-EVGgaa-gn,2,
+
+19:27:48 INFO WechatyPluginContrib QRCodeTerminal Login QR Code Status: Waiting<span class="o">(</span>2<span class="o">)</span>
+QR Code Image URL: https://wechaty.js.org/qrcode/http%3A%2F%2Fweixin.qq.com%2Fx%2FQfsfuToGOs-EVGgaa-gn
+19:27:55 INFO PadplusManager
+            <span class="o">=================================================</span>
+            QRCODE_SCAN MSG : 已扫码，请在手机端确认登陆...
+            <span class="o">=================================================</span>
+
+19:27:55 INFO WechatyPluginContrib EventLogger scan: ,3,
+19:27:55 INFO WechatyPluginContrib QRCodeTerminal onScan: Scanned<span class="o">(</span>3<span class="o">)</span>
+19:27:57 INFO PadplusManager
+            <span class="o">=================================================</span>
+            QRCODE_SCAN MSG : 已确认
+            <span class="o">=================================================</span>
+
+19:27:57 INFO WechatyPluginContrib EventLogger scan: ,4,
+19:27:57 INFO WechatyPluginContrib QRCodeTerminal onScan: Confirmed<span class="o">(</span>4<span class="o">)</span>
+19:28:03 INFO WechatyPluginContrib EventLogger heartbeat:
+19:28:03 INFO WechatyPluginContrib EventLogger login: Contact&lt;小助手&gt;
+</code></pre></div></div>
+
+<h2 id="implementing-material-sharing">Implementing Material Sharing</h2>
+
+<p>This step is relatively easy, simple code logic implementation:</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="k">async </span><span class="p">(</span><span class="nx">message</span><span class="p">:</span> <span class="nx">Message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">room</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="k">from</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="k">from</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">mentionSelf</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">message</span><span class="p">.</span><span class="nf">mentionSelf</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">text</span><span class="p">()</span>
+
+  <span class="k">if </span><span class="p">(</span><span class="nx">room</span> <span class="o">!==</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="k">from</span><span class="p">.</span><span class="nx">id</span> <span class="o">===</span> <span class="nx">bossId</span> <span class="o">&amp;&amp;</span> <span class="nx">mentionSelf</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="sr">/句子互动/</span><span class="p">.</span><span class="nf">test</span><span class="p">(</span><span class="nx">text</span><span class="p">))</span> <span class="p">{</span>
+      <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">juzibotIntro</span><span class="p">)</span>
+      <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="k">new</span> <span class="nc">UrlLink</span><span class="p">(</span><span class="nx">juzibotIntroUrl</span><span class="p">))</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="sr">/高原/</span><span class="p">.</span><span class="nf">test</span><span class="p">(</span><span class="nx">text</span><span class="p">))</span> <span class="p">{</span>
+      <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="k">new</span> <span class="nc">UrlLink</span><span class="p">(</span><span class="nx">yuanIntroUrl</span><span class="p">))</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}).</span><span class="nf">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>This way, when I @ the bot in a group to introduce <code class="language-plaintext highlighter-rouge">Juzibot</code> or myself, the bot will automatically send some introductory messages, and I don’t need to</p>
+
+<p><img src="/assets/2020/wechaty-weixin-openai/mobile-screenshot-1.webp" alt="mobile-screenshot-1" /></p>
+
+<h2 id="implementing-qa">Implementing Q&amp;A</h2>
+
+<p>To have the bot help me answer common questions, the first thought is to reply directly through keyword matching. Done in three lines~</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if </span><span class="p">(</span><span class="sr">/句子互动/</span><span class="p">.</span><span class="nf">test</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nf">text</span><span class="p">()))</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nx">message</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">juzibotIntro</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>But when I want to support another question at the same time, it becomes a bit problematic</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if </span><span class="p">(</span><span class="sr">/句子互动/</span><span class="p">.</span><span class="nf">test</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nf">text</span><span class="p">()))</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nx">message</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">juzibotIntro</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="sr">/技术栈/</span><span class="p">.</span><span class="nf">test</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nf">text</span><span class="p">()))</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nx">message</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">techStackAnswer</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>If the question is <code class="language-plaintext highlighter-rouge">What is Juzibot's tech stack?</code>, the code above won’t answer correctly. Of course, I can solve this by adjusting the order of the two <code class="language-plaintext highlighter-rouge">if</code> judgments, but if I have 20 common questions, this <code class="language-plaintext highlighter-rouge">if-else</code> approach will definitely have problems. Besides, each question may have many different ways of asking. For example, when asking about our company introduction, they might also say:</p>
+
+<ul>
+  <li>What does your company do?</li>
+  <li>Introduce your situation?</li>
+  <li>What business do you do?</li>
+  <li>And so on…</li>
+</ul>
+
+<p>So simply writing <code class="language-plaintext highlighter-rouge">if-else</code> in code cannot solve this problem well.</p>
+
+<p>So, it’s time to show the real technology: <a href="#wechat-open-ai-platform"><code class="language-plaintext highlighter-rouge">WeChat Open AI Platform</code></a></p>
+
+<p>According to my personal understanding, <code class="language-plaintext highlighter-rouge">WeChat Open AI Platform</code> is a <strong>cloud service</strong> that helps you <strong>quickly create chatbots</strong></p>
+
+<h3 id="configuring-wechat-open-ai-platform">Configuring WeChat Open AI Platform</h3>
+
+<p>Next, we need to register a <code class="language-plaintext highlighter-rouge">WeChat Open AI Platform</code> account: <a href="https://openai.weixin.qq.com">https://openai.weixin.qq.com</a></p>
+
+<p>Then create a bot on the platform, I call it <code class="language-plaintext highlighter-rouge">My Assistant</code>, and add a custom general skill <code class="language-plaintext highlighter-rouge">Assistant Skill</code></p>
+
+<p><img src="/assets/2020/wechaty-weixin-openai/openai-screenshot.webp" alt="openai-screenshot" /></p>
+
+<p>Next, add custom Q&amp;A to the skill. I created several, as shown below:</p>
+
+<p><img src="/assets/2020/wechaty-weixin-openai/openai-qna.webp" alt="openai-qna" /></p>
+
+<p>Here I encountered a tricky problem. I configured Q&amp;A about <code class="language-plaintext highlighter-rouge">Juzibot</code> and <code class="language-plaintext highlighter-rouge">Tech Stack</code>, but I found that when I asked <code class="language-plaintext highlighter-rouge">Juzibot's tech stack</code>, it matched <code class="language-plaintext highlighter-rouge">Juzibot</code> instead of <code class="language-plaintext highlighter-rouge">Tech Stack</code>. So as shown above, I created a <strong>counter-example</strong> in <code class="language-plaintext highlighter-rouge">Juzibot</code>. It means that when a question matches this similar question, it indicates that the question does not belong to the current Q&amp;A, which perfectly solves the problem of <code class="language-plaintext highlighter-rouge">Juzibot's tech stack</code> matching incorrectly.</p>
+
+<h3 id="integrating-wechat-open-ai-platform-into-wechaty">Integrating WeChat Open AI Platform into Wechaty</h3>
+
+<p>For easy integration, I wrote a <code class="language-plaintext highlighter-rouge">Wechaty</code> plugin <a href="https://github.com/wechaty/wechaty-weixin-openai">wechaty-weixin-openai</a> for quick integration with <code class="language-plaintext highlighter-rouge">WeChat Open AI Platform</code></p>
+
+<p>First, I encapsulated the material reply code we wrote earlier into a function for easy invocation when using the plugin later. I also added a <code class="language-plaintext highlighter-rouge">boolean</code> return value to tell the calling function whether I handled the message reply in the current function, so the calling function knows I’ve already processed this message and can avoid processing it again.</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">processCommonMaterial</span> <span class="o">=</span> <span class="k">async </span><span class="p">(</span><span class="nx">message</span><span class="p">:</span> <span class="nx">Message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">room</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="k">from</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="k">from</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">mentionSelf</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">message</span><span class="p">.</span><span class="nf">mentionSelf</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">text</span><span class="p">()</span>
+
+  <span class="k">if </span><span class="p">(</span><span class="nx">room</span> <span class="o">!==</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="k">from</span><span class="p">.</span><span class="nx">id</span> <span class="o">===</span> <span class="nx">bossId</span> <span class="o">&amp;&amp;</span> <span class="nx">mentionSelf</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="sr">/句子互动/</span><span class="p">.</span><span class="nf">test</span><span class="p">(</span><span class="nx">text</span><span class="p">))</span> <span class="p">{</span>
+      <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">juzibotIntro</span><span class="p">)</span>
+      <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="k">new</span> <span class="nc">UrlLink</span><span class="p">(</span><span class="nx">juzibotIntroUrl</span><span class="p">))</span>
+      <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="sr">/高原/</span><span class="p">.</span><span class="nf">test</span><span class="p">(</span><span class="nx">text</span><span class="p">))</span> <span class="p">{</span>
+      <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="k">new</span> <span class="nc">UrlLink</span><span class="p">(</span><span class="nx">yuanIntroUrl</span><span class="p">))</span>
+      <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="kc">false</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Then, import and configure the plugin in <code class="language-plaintext highlighter-rouge">Wechaty</code></p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">openAIToken</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">openai-token</span><span class="dl">'</span>
+<span class="kd">const</span> <span class="nx">openAIEncodingAESKey</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">openai-encoding-aes-key</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">preAnswerHook</span> <span class="o">=</span> <span class="k">async </span><span class="p">(</span><span class="nx">message</span><span class="p">:</span> <span class="nx">Message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">isCommonMaterial</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">processCommonMaterial</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">isCommonMaterial</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kc">false</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/**
+ * Use wechaty-weixin-openai plugin here with given config
+ */</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="nc">WechatyWeixinOpenAI</span><span class="p">({</span>
+  <span class="na">token</span><span class="p">:</span> <span class="nx">openAIToken</span><span class="p">,</span>
+  <span class="na">encodingAESKey</span><span class="p">:</span> <span class="nx">openAIEncodingAESKey</span><span class="p">,</span>
+  <span class="nx">preAnswerHook</span><span class="p">,</span>
+<span class="p">}))</span>
+</code></pre></div></div>
+
+<p>Using the plugin is actually very simple. Just pass in the <code class="language-plaintext highlighter-rouge">TOKEN</code> and <code class="language-plaintext highlighter-rouge">EncodingAESKey</code> from the <code class="language-plaintext highlighter-rouge">WeChat Open AI Platform</code> open service access to connect to <code class="language-plaintext highlighter-rouge">WeChat Open AI Platform</code></p>
+
+<p><img src="/assets/2020/wechaty-weixin-openai/openai-config.webp" alt="openai-config" /></p>
+
+<p>Also, as you can see, the plugin configuration has a function called <code class="language-plaintext highlighter-rouge">preAnswerHook</code>. As its name suggests, this function is called before the <code class="language-plaintext highlighter-rouge">wechaty-weixin-openai</code> plugin replies with the result from <code class="language-plaintext highlighter-rouge">WeChat Open AI Platform</code>, allowing us to do some custom logic before replying.</p>
+
+<p>For example, what we did above is when the bot detects that the message is in a group, sent by me, and matches a previously defined material, it replies with that material and stops subsequent logic (including not replying with the answer returned by <code class="language-plaintext highlighter-rouge">WeChat Open AI Platform</code>)</p>
+
+<p>This way, when using <code class="language-plaintext highlighter-rouge">WeChat Open AI Platform</code>, we have some flexibility to combine our own custom logic.</p>
+
+<h2 id="implementing-transfer-functionality">Implementing Transfer Functionality</h2>
+
+<p>Transfer is also relatively easy to implement. Here’s the code directly:</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Function to get boss contact
+ */</span>
+<span class="kd">const</span> <span class="nx">getBoss</span> <span class="o">=</span> <span class="k">async </span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">contact</span> <span class="o">=</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Contact</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="nx">bossId</span><span class="p">)</span>
+  <span class="k">await</span> <span class="nx">contact</span><span class="p">.</span><span class="nf">sync</span><span class="p">()</span>
+  <span class="k">return</span> <span class="nx">contact</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">noAnswerHook</span> <span class="o">=</span> <span class="k">async </span><span class="p">(</span><span class="nx">message</span><span class="p">:</span> <span class="nx">Message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">room</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="k">from</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="k">from</span><span class="p">()</span>
+  <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">boss</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">getBoss</span><span class="p">()</span>
+    <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">say</span><span class="s2">`</span><span class="p">${</span><span class="k">from</span><span class="p">}</span><span class="s2">，你的问题我不会回答，你可以联系我的老板`</span>
+    <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">boss</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kd">const</span> <span class="nx">members</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">memberAll</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">bossInRoom</span> <span class="o">=</span> <span class="nx">members</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="nx">m</span> <span class="o">=&gt;</span> <span class="nx">m</span><span class="p">.</span><span class="nx">id</span> <span class="o">===</span> <span class="nx">bossId</span><span class="p">)</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">bossInRoom</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">say</span><span class="s2">`</span><span class="p">${</span><span class="nx">bossInRoom</span><span class="p">}</span><span class="s2">，</span><span class="p">${</span><span class="k">from</span><span class="p">}</span><span class="s2">问的问题我不知道，你帮我回答一下吧。`</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">boss</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">getBoss</span><span class="p">()</span>
+    <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">say</span><span class="s2">`</span><span class="p">${</span><span class="k">from</span><span class="p">}</span><span class="s2">，你的问题我不会回答，你可以联系我的老板`</span>
+    <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">boss</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/**
+ * Use wechaty-weixin-openai plugin here with given config
+ */</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="nc">WechatyWeixinOpenAI</span><span class="p">({</span>
+  <span class="na">token</span><span class="p">:</span> <span class="nx">openAIToken</span><span class="p">,</span>
+  <span class="na">encodingAESKey</span><span class="p">:</span> <span class="nx">openAIEncodingAESKey</span><span class="p">,</span>
+  <span class="nx">noAnswerHook</span><span class="p">,</span>
+  <span class="nx">preAnswerHook</span><span class="p">,</span>
+<span class="p">}))</span>
+</code></pre></div></div>
+
+<p>Here we introduce another function from <code class="language-plaintext highlighter-rouge">wechaty-weixin-openai</code>: <code class="language-plaintext highlighter-rouge">noAnswerHook</code>. Similarly, translating this name literally explains the function’s purpose. When <code class="language-plaintext highlighter-rouge">WeChat Open AI Platform</code> doesn’t find a suitable answer, this function is called, allowing us to handle situations where we don’t know what the user is asking. For example, this time we want to transfer the conversation to me when unable to answer.</p>
+
+<p>In this callback function, we distinguish whether the current conversation is in a group chat or private chat. If it’s a private chat, we directly send my contact card to guide adding friends. If it’s in a group chat, we first get the group members and check if I’m in the group. If I am, @ me to reply. If not, similarly send a contact card. The code is simple.</p>
+
+<p>Up to this point, we’ve basically completed the features we initially envisioned, but can we play with something more interesting based on the AI capabilities of <code class="language-plaintext highlighter-rouge">WeChat Open AI Platform</code>?</p>
+
+<h2 id="one-more-thing">One More Thing</h2>
+
+<p>Finally, let’s implement another fun feature together: <strong>When the bot recognizes that a user has negative emotions, create a group with me and that user, then let me communicate with the user</strong></p>
+
+<p>Let’s get started. Here’s the code:</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">preAnswerHook</span> <span class="o">=</span> <span class="k">async </span><span class="p">(</span><span class="nx">message</span><span class="p">:</span> <span class="nx">Message</span><span class="p">,</span> <span class="nx">_</span><span class="p">:</span> <span class="kr">any</span><span class="p">,</span> <span class="nx">sentiment</span><span class="p">:</span> <span class="nx">SentimentData</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">isCommonMaterial</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">processCommonMaterial</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">isCommonMaterial</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kc">false</span>
+  <span class="p">}</span>
+
+  <span class="kd">const</span> <span class="nx">hate</span> <span class="o">=</span> <span class="nx">sentiment</span><span class="p">.</span><span class="nx">hate</span>
+  <span class="kd">const</span> <span class="nx">angry</span> <span class="o">=</span> <span class="nx">sentiment</span><span class="p">.</span><span class="nx">angry</span>
+  <span class="kd">const</span> <span class="nx">score</span> <span class="o">=</span> <span class="p">(</span><span class="nx">hate</span> <span class="o">||</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="nx">angry</span> <span class="o">||</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">score</span> <span class="o">&gt;</span> <span class="mf">0.9</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">boss</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">getBoss</span><span class="p">()</span>
+    <span class="kd">const</span> <span class="k">from</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="k">from</span><span class="p">()</span>
+    <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Room</span><span class="p">.</span><span class="nf">create</span><span class="p">([</span><span class="nx">boss</span><span class="p">,</span> <span class="k">from</span><span class="p">])</span>
+    <span class="k">await</span> <span class="k">new</span> <span class="nc">Promise</span><span class="p">(</span><span class="nx">r</span> <span class="o">=&gt;</span> <span class="nf">setTimeout</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span> <span class="mi">3000</span><span class="p">))</span>
+    <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nx">say</span><span class="s2">`</span><span class="p">${</span><span class="nx">boss</span><span class="p">}</span><span class="s2">，你帮帮我吧，</span><span class="p">${</span><span class="k">from</span><span class="p">}</span><span class="s2">和我聊天已经聊得不耐烦了`</span>
+    <span class="k">return</span> <span class="kc">false</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="nc">WechatyWeixinOpenAI</span><span class="p">({</span>
+  <span class="na">token</span><span class="p">:</span> <span class="nx">openAIToken</span><span class="p">,</span>
+  <span class="na">encodingAESKey</span><span class="p">:</span> <span class="nx">openAIEncodingAESKey</span><span class="p">,</span>
+  <span class="na">includeSentiment</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">noAnswerHook</span><span class="p">,</span>
+  <span class="nx">preAnswerHook</span><span class="p">,</span>
+<span class="p">}))</span>
+</code></pre></div></div>
+
+<p>Here we use a new plugin parameter <code class="language-plaintext highlighter-rouge">includeSentiment</code>. This parameter determines whether to pass the sentiment value parameter for the current message found in <code class="language-plaintext highlighter-rouge">WeChat Open AI Platform</code> in the <code class="language-plaintext highlighter-rouge">preAnswerHook</code> function. We set it to <code class="language-plaintext highlighter-rouge">true</code> here, so sentiment data will be included in the <code class="language-plaintext highlighter-rouge">preAnswerHook</code> function.</p>
+
+<p>Then, based on this sentiment data, we judge whether the current user is in a state with heavy negative emotions. If so, we create a group and ask for my help.</p>
+
+<p>PS: During the live demonstration, we tested many types of negative emotion messages, but some message parsing was not as expected, so we finally chose to use the sum of <code class="language-plaintext highlighter-rouge">hate</code> and <code class="language-plaintext highlighter-rouge">angry</code> to represent negative emotions.</p>
+
+<h2 id="final-result">Final Result</h2>
+
+<p><img src="/assets/2020/wechaty-weixin-openai/final-screenshot.webp" alt="final-screenshot" /></p>
+
+<p>Complete code: <a href="https://github.com/windmemory/wwc-wechaty">https://github.com/windmemory/wwc-wechaty</a></p>
+
+<h2 id="live-coding">Live Coding</h2>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/PYFg8wYZbvI" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<blockquote>
+  <p>Bilibili: <a href="https://www.bilibili.com/video/BV1LV411r756/">https://www.bilibili.com/video/BV1LV411r756/</a></p>
+</blockquote>
+
+<h2 id="wechat-open-ai-platform">WeChat Open AI Platform</h2>
+
+<p><a href="https://openai.weixin.qq.com/">WeChat Open AI Platform</a> is <strong>centered on conversational interaction</strong>, providing intelligent business services and user management capabilities for individuals, enterprises, and organizations with customer service needs through a <strong>skill configuration platform</strong>. Skill developers can use the tools provided by the platform to build customer service robots.</p>
+
+<p><img src="/assets/2020/wechaty-weixin-openai/openai-banner.webp" alt="openai-banner" /></p>
+
+<h2 id="women-who-code">Women Who Code</h2>
+
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzIyMzc0NDgzMg==&amp;mid=100000001&amp;idx=1&amp;sn=2cb2c65673dd989cebac1e69abad5ccd&amp;chksm=6818c72e5f6f4e386470525349192f23c8407a77e0a628cec7dbee3e75d9704223a2ef7f2d95">Women Who Code Beijing</a> was founded in Beijing in October 2015, hoping to help and encourage female engineers living and working in this city to advance smoothly in their career development. We believe the IT industry will also become more productive and creative with more women joining.</p>
+
+<blockquote>
+  <p>Author: <a href="https://github.com/windmemory">@windmemory</a> Wechaty contributor, author of <a href="https://github.com/wechaty/wechaty-puppet-padchat">wechaty-puppet-padchat</a>, <a href="https://github.com/wechaty/wechaty-puppet-padpro">wechaty-puppet-padpro</a>, <a href="https://github.com/wechaty/wechaty-puppet-padplus">wechaty-puppet-padplus</a>. CTO of <a href="https://pre-angel.com/portfolios/juzibot/">Juzi.Bot</a></p>
+
+  <p>Code: <a href="https://github.com/windmemory/wwc-wechaty">wwc-wechaty</a></p>
+</blockquote>
+
+<hr />
+
+<blockquote>
+  <p>本文也有<a href="/2020/07/20/wechaty-openai-agent/">中文版本</a>。</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#openai">openai</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#talk">talk</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#featured">featured</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ecosystem">ecosystem</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/windmemory">
+                            <img class="rounded-circle" src="/assets/contributors/windmemory/avatar.webp" alt="Yuan GAO (高原)" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/windmemory">Yuan GAO (高原)</a> <span><a target="_blank" href="https://www.weibo.com/u/2166731327" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Committer of Wechaty. Author of several wechaty-puppets. Co-founder & CTO of JuziBot
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/07/20/wechat-purchasing-robot/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/wechat-purchasing-robot/header.webp">  微信代购机器人（WeChat Purchasing Robot）</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/07/20/wechaty-openai-agent/"> 用「Wechaty」和「微信对话开放平台」做个助理  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/wechaty-weixin-openai/teaser-image.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

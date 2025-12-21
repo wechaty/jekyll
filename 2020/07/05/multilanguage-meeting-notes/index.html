@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Multi-language Wechaty Meeting: Mocking & Code Quality | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Multi-language Wechaty Meeting: Mocking &amp; Code Quality | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Multi-language Wechaty Meeting: Mocking &amp; Code Quality" />
+<meta name="author" content="wj-mcat" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="漫长的会议" />
+<meta property="og:description" content="漫长的会议" />
+<link rel="canonical" href="https://wechaty.js.org/2020/07/05/multilanguage-meeting-notes/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/07/05/multilanguage-meeting-notes/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/meeting-notes/07-05-head-picture.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-07-05T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/meeting-notes/07-05-head-picture.webp" />
+<meta property="twitter:title" content="Multi-language Wechaty Meeting: Mocking &amp; Code Quality" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"wj-mcat"},"dateModified":"2020-07-05T00:00:00+00:00","datePublished":"2020-07-05T00:00:00+00:00","description":"漫长的会议","headline":"Multi-language Wechaty Meeting: Mocking &amp; Code Quality","image":"https://wechaty.js.org/assets/2020/meeting-notes/07-05-head-picture.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/07/05/multilanguage-meeting-notes/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"wj-mcat"},"url":"https://wechaty.js.org/2020/07/05/multilanguage-meeting-notes/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#event">event</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Multi-language Wechaty Meeting: Mocking & Code Quality</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/wj-mcat">
+                            <img class="rounded-circle" src="/assets/contributors/wj-mcat/avatar.webp" alt="吴京京" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/wj-mcat">吴京京</a> <span><a target="_blank" href="https://weibo.com/u/3877178684" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jul 05, 2020 · <span class="reading-time">
+  
+  
+    1 min read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/meeting-notes/07-05-head-picture.webp" alt="Multi-language Wechaty Meeting: Mocking & Code Quality">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<h2 id="漫长的会议">漫长的会议</h2>
+
+<p>昨晚（7.5）的会议开了接近三个小时，即使如此，大家热情依然饱满，几乎忘却了时间，全身心投入到技术主题讨论中。满载而归的我必须要发一篇博客来分享一下昨晚的成果。</p>
+
+<p>昨晚会议围绕 Mock &amp; Test &amp; Restful Api 这三个主题展开，并进行了深入的讨论，详细的会议议程大家可转到<a href="https://docs.google.com/document/d/1fVCk8qRYc4RKGMf2UY5HOe07hEhPUOpGC34v88GEFJg/edit#heading=h.85djedyd54di">google doc</a>上面查看。</p>
+
+<p>接下来我将一一介绍各位参与者分享的内容，如果想要观看整个会议的过程，可转移到<a href="https://www.youtube.com/watch?v=qWkv0F_pluQ">油管</a>观看。</p>
+
+<h2 id="mock-is-required-for-wechaty">Mock Is required for wechaty</h2>
+
+<p>分享者：<a href="https://www.github.com/wj-Mcat/">wj-Mcat 吴京京</a></p>
+
+<p><img src="/assets/2020/meeting-notes/07-05-mock-is-required.webp" alt="mock-is-required-for-wechaty" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">Mocker</code>在多语言<code class="language-plaintext highlighter-rouge">wechaty</code>中占据着非常重要的地位，是<code class="language-plaintext highlighter-rouge">Wechaty</code>和单元测试的桥梁，能够创建一个测试虚拟环境，动态创建用户，房间，模拟登录注销等事件，并同时将一系列的数据流传抛至<code class="language-plaintext highlighter-rouge">wechaty</code>，能够在一定程度上实现自动化测试的工作。</p>
+
+<p><img src="/assets/2020/meeting-notes/07-05-mock-server-can-test-more.webp" alt="mock-is-required-for-wechaty" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">mock-server</code>是一个<code class="language-plaintext highlighter-rouge">*-wechaty-puppet-service</code>连接的对象，可以看作是<code class="language-plaintext highlighter-rouge">puppet-server</code>，我们可以在不改变任何代码的情况下完成测试的流程，并且这整个流程是非常完整的：<code class="language-plaintext highlighter-rouge">language-wechaty</code> + <code class="language-plaintext highlighter-rouge">language-wechaty-puppet-service</code>。也就是每次测试是同时测试了<code class="language-plaintext highlighter-rouge">language-wechaty</code>和<code class="language-plaintext highlighter-rouge">language-wechaty-puppet-service</code> 这两个模块。</p>
+
+<p><img src="/assets/2020/meeting-notes/07-05-hook-restful-api.webp" alt="api" /></p>
+
+<ul>
+  <li>将<code class="language-plaintext highlighter-rouge">wechaty</code>中所有的事件和消息发送和获取都转化成api</li>
+  <li>根据restful api，可创建web-bot</li>
+  <li>web-bot依然可使用指定插件</li>
+  <li>还可存在插件商店这个概念</li>
+</ul>
+
+<h2 id="introducing-the-wechaty-puppet-mock--the-new-mocker">Introducing the wechaty-puppet-mock &amp; the new Mocker</h2>
+
+<p>分享者：<a href="https://github.com/huan">Huan 李卓桓</a></p>
+
+<p><img src="/assets/2020/meeting-notes/07-05-mocker.webp" alt="mocker" /></p>
+
+<ul>
+  <li>能够模拟登录注销等微信操作事件</li>
+  <li>模拟指定登录用户</li>
+  <li>随机创建用户和群组</li>
+  <li>模拟消息发送</li>
+</ul>
+
+<p><img src="/assets/2020/meeting-notes/07-05-puppet-mock-template.webp" alt="template" /></p>
+
+<ul>
+  <li>可以用来测试<code class="language-plaintext highlighter-rouge">wechaty</code>框架，同时大面积覆盖功能函数</li>
+  <li>可以作为一个新的<code class="language-plaintext highlighter-rouge">puppet</code>实现类的模板</li>
+</ul>
+
+<h2 id="python-wechaty-web">Python Wechaty Web</h2>
+
+<p>分享者：<a href="https://github.com/fish-ball">fish-ball 黄文超</a></p>
+
+<p><img src="/assets/2020/meeting-notes/07-05-python-wechaty-web-functions.webp" alt="function" /></p>
+
+<p><a href="https://github.com/fish-ball">文超</a>分享了关于<code class="language-plaintext highlighter-rouge">web-bot</code>的概念和设计，通过将<code class="language-plaintext highlighter-rouge">wechaty</code>中不同的操作转化成<code class="language-plaintext highlighter-rouge">restful api</code>从而创建<code class="language-plaintext highlighter-rouge">web-bot</code>。</p>
+
+<p><img src="/assets/2020/meeting-notes/07-05-python-wechaty-web-asyncio.webp" alt="asyncio" /></p>
+
+<p>以上就是创建示例一个<code class="language-plaintext highlighter-rouge">python-wechaty</code> + <code class="language-plaintext highlighter-rouge">restful api</code>最小可行性代码。</p>
+
+<p><img src="/assets/2020/meeting-notes/07-05-python-wechaty-web-bot.webp" alt="python" /></p>
+
+<p><img src="/assets/2020/meeting-notes/07-05-python-wechaty-restful-api.webp" alt="python" /></p>
+
+<p><img src="/assets/2020/meeting-notes/07-05-python-wechaty-plugin-page.webp" alt="python" /></p>
+
+<h2 id="how-to-use-ts-wechaty-plugin-in-multi-language-wechaty">How to use ts-wechaty plugin in multi-language-wechaty</h2>
+
+<p>分享者：<a href="https://github.com/huan">Huan 李卓桓</a></p>
+
+<p><img src="/assets/2020/meeting-notes/07-05-wechaty-plugin-in-server.webp" alt="plugin" /></p>
+
+<p>为了让多语言<code class="language-plaintext highlighter-rouge">wechaty</code>使用<code class="language-plaintext highlighter-rouge">typescript-wechaty</code>里面的插件，可以将<code class="language-plaintext highlighter-rouge">Plugin</code>移至<code class="language-plaintext highlighter-rouge">puppet-server</code>端，那这样<code class="language-plaintext highlighter-rouge">Language-wechaty</code>只需要添加指定的配置参数即可调用插件。</p>
+
+<h2 id="how-to-improve-stability-of-puppet-implementation">How to improve stability of puppet implementation</h2>
+
+<p>分享者：<a href="https://github.com/windmemory">Gao Yuan 高原</a></p>
+
+<p>句子互动的CTO，给我们分享了很多有价值的实践经验，多方面多角度讲述了如何提升<code class="language-plaintext highlighter-rouge">wechaty</code>稳定性方面的方法。</p>
+
+<p><img src="/assets/2020/meeting-notes/07-05-gao-yuan-agenda.webp" alt="gaoyuan" /></p>
+
+<p>以上为此次分享的大纲。</p>
+
+<p><img src="/assets/2020/meeting-notes/07-05-why-puppet-is-not-stable.webp" alt="gaoyuan" /></p>
+
+<p><img src="/assets/2020/meeting-notes/07-05-gao-yuan-how-to-define-stable.webp" alt="gaoyuan" /></p>
+
+<p><img src="/assets/2020/meeting-notes/07-05-how-to-make-it-stable.webp" alt="gaoyuan" /></p>
+
+<p><img src="/assets/2020/meeting-notes/07-05-the-target-of-test.webp" alt="gaoyuan" /></p>
+
+<p><img src="/assets/2020/meeting-notes/07-05-user-test.webp" alt="gaoyuan" /></p>
+
+<h2 id="some-think-about-the-plugin">Some think about the plugin</h2>
+
+<p>分享者：<a href="https://github.com/dingdayu">dingdayu 丁大雨</a></p>
+
+<p><img src="/assets/2020/meeting-notes/07-05-xiaoyu-some-experience.webp" alt="dingdayu" />
+<img src="/assets/2020/meeting-notes/07-05-xiaoyu-some-think.webp" alt="dingdayu" />
+<img src="/assets/2020/meeting-notes/07-05-xiaoyu-some-thinking.webp" alt="dingdayu" />
+<img src="/assets/2020/meeting-notes/07-05-xiaoyu-some-thinking-01.webp" alt="dingdayu" />
+<img src="/assets/2020/meeting-notes/07-05-xiaoyu-some-thinking-02.webp" alt="dingdayu" /></p>
+
+<h2 id="合照">合照</h2>
+
+<p><img src="/assets/2020/meeting-notes/07-05-final-smile-picture.webp" alt="pic" /></p>
+
+<p>这次会议讨论的主题虽然不多，可针对于具体的解决方案有非常深入的讨论，也让加深了对<code class="language-plaintext highlighter-rouge">wechaty</code>生态的理解。</p>
+
+<p>欢迎大家参与<code class="language-plaintext highlighter-rouge">wechaty</code>社区相关的活动以及成为<code class="language-plaintext highlighter-rouge">Contributor</code>，感谢大家的参与，我们下次再见。</p>
+
+<blockquote>
+  <p>作者: <a href="https://github.com/wj-Mcat/">wj-Mcat</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#meeting">meeting</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#talk">talk</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#featured">featured</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/wj-mcat">
+                            <img class="rounded-circle" src="/assets/contributors/wj-mcat/avatar.webp" alt="吴京京" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/wj-mcat">吴京京</a> <span><a target="_blank" href="https://weibo.com/u/3877178684" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Committer of Python-Wechaty. NLP & Chatbot Researcher, a graduate student at Beijing University of Posts and Telecommunications.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/07/03/a-room-punch-bot/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/tiny-bot/teaser.webp">  微信群打卡统计机器人</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/07/06/wechat-calculator-bot-en/"> WeChat Calculator Bot  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/07-wechat-calculator-bot-en/header.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

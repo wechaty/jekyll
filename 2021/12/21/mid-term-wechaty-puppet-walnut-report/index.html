@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      2021-期中报告-基于5G平台开发puppet模块接入wechaty | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>2021-期中报告-基于5G平台开发puppet模块接入wechaty | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="2021-期中报告-基于5G平台开发puppet模块接入wechaty" />
+<meta name="author" content="fabian" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="基于 5G 平台开发 puppet 模块接入 wechaty" />
+<meta property="og:description" content="基于 5G 平台开发 puppet 模块接入 wechaty" />
+<link rel="canonical" href="https://wechaty.js.org/2021/12/21/mid-term-wechaty-puppet-walnut-report/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/12/21/mid-term-wechaty-puppet-walnut-report/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/12-mid-term-wechaty-puppet-walnut-report/puppet-walnut.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-12-21T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/12-mid-term-wechaty-puppet-walnut-report/puppet-walnut.webp" />
+<meta property="twitter:title" content="2021-期中报告-基于5G平台开发puppet模块接入wechaty" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"fabian"},"dateModified":"2021-12-21T00:00:00+00:00","datePublished":"2021-12-21T00:00:00+00:00","description":"基于 5G 平台开发 puppet 模块接入 wechaty","headline":"2021-期中报告-基于5G平台开发puppet模块接入wechaty","image":"https://wechaty.js.org/assets/2021/12-mid-term-wechaty-puppet-walnut-report/puppet-walnut.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/12/21/mid-term-wechaty-puppet-walnut-report/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"fabian"},"url":"https://wechaty.js.org/2021/12/21/mid-term-wechaty-puppet-walnut-report/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">2021-期中报告-基于5G平台开发puppet模块接入wechaty</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/fabian">
+                            <img class="rounded-circle" src="/assets/contributors/fabian/avatar.webp" alt="fabian" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/fabian">fabian</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Dec 21, 2021 · <span class="reading-time">
+  
+  
+    4 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/12-mid-term-wechaty-puppet-walnut-report/puppet-walnut.webp" alt="2021-期中报告-基于5G平台开发puppet模块接入wechaty">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<h2 id="基于-5g-平台开发-puppet-模块接入-wechaty">基于 5G 平台开发 puppet 模块接入 wechaty</h2>
+
+<ul>
+  <li>项目名称：基于5G消息的 Wechaty Puppet 模块的设计与实现</li>
+  <li>学生：鲍耀龙</li>
+  <li>导师：苏畅</li>
+  <li>项目介绍：<a href="https://github.com/juzibot/intern/issues/1">https://github.com/juzibot/intern/issues/1</a></li>
+  <li>代码地址：<a href="https://github.com/wechaty/puppet-walnut">https://github.com/wechaty/puppet-walnut</a></li>
+</ul>
+
+<h3 id="背景介绍">背景介绍</h3>
+
+<ul>
+  <li>Wechaty 社区目前已经支持微信、Whatsapp、企业微信、飞书等常见流行即时通讯工具，并且能够通过多语言 SDK （比如 Python Wechaty） 进行调用。</li>
+  <li><a href="https://wechaty.js.org/2021/03/27/rcs-messaging-chatbot/">5G Chatbot (RCS)</a> 是近期中国电信运营商基于 5G 的消息战略落地平台，未来的 5G 手机将会内置 RCS 消息的处理能力。</li>
+  <li><a href="https://www.5g-msg.com/#/">硬核桃社区</a> 的 <a href="https://wechaty.js.org/2021/03/27/rcs-messaging-chatbot/">电信运营商商5G Chatbot</a> 平台。</li>
+</ul>
+
+<h3 id="目标计划">目标计划</h3>
+
+<ul>
+  <li>基于 5G 平台的开放 api 进行封装，实现简单的<code class="language-plaintext highlighter-rouge">ding-dong-bot</code>。</li>
+  <li>丰富 5G 的消息模式，实现支持富文本、文件、css等多样消息格式的 puppet。</li>
+</ul>
+
+<h3 id="项目进展">项目进展</h3>
+
+<ul>
+  <li>已经实现的puppet的封装，支持简单消息、位置消息等多样信息格式。</li>
+  <li>完善了联系人的模块，实现联系人的数据结构整合方便wechaty的调用。</li>
+  <li>引入了本地缓存，将消息和联系人模块都接入缓存，实现快速的加载和存储。</li>
+</ul>
+
+<h3 id="构建细节">构建细节</h3>
+
+<h4 id="1-wechaty与puppet的交互">1. <code class="language-plaintext highlighter-rouge">Wechaty</code>与<code class="language-plaintext highlighter-rouge">Puppet</code>的交互</h4>
+
+<p><img src="/assets/2021/12-mid-term-wechaty-puppet-walnut-report/wechatypuppetwalnut.webp" alt="WechatyPuppetWalnut" /></p>
+
+<ul>
+  <li>开发者通过<code class="language-plaintext highlighter-rouge">Wechaty</code>提供的 Api 来进行具体的交互操作。</li>
+  <li><code class="language-plaintext highlighter-rouge">Wechaty</code>只需要具体调用<strong>开发者指定的<code class="language-plaintext highlighter-rouge">Puppet</code></strong>即此处的<code class="language-plaintext highlighter-rouge">Walnut</code>来实现开发者需要的逻辑。</li>
+  <li>我们的<code class="language-plaintext highlighter-rouge">Walnut</code>继承于抽象的<code class="language-plaintext highlighter-rouge">Puppet</code>父类，实现其预定义的抽象方法来实现具体的能力。</li>
+  <li>具体的<code class="language-plaintext highlighter-rouge">Walnut</code>会和<code class="language-plaintext highlighter-rouge">5G</code>平台进行数据交互从而实现真正的 ChatBot。</li>
+</ul>
+
+<h4 id="2-待实现的抽象方法">2. 待实现的抽象方法</h4>
+
+<p>关于需要我们去实现的抽象方法都被定义在<a href="https://github.com/wechaty/puppet/tree/main/src/mixins">Wechaty Puppet的mixins目录下</a>。</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 比如这里 MessageMixin 中定义的一些与消息模块中待实现的方法，来实现我们消息的多种格式发送。</span>
+
+    <span class="cm">/**
+    *
+    * Message
+    *
+    */</span>
+    <span class="kd">abstract</span> <span class="nf">messageContact      </span><span class="p">(</span><span class="nx">messageId</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span>                       <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span>
+    <span class="kd">abstract</span> <span class="nf">messageFile         </span><span class="p">(</span><span class="nx">messageId</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span>                       <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">FileBoxInterface</span><span class="o">&gt;</span>
+    <span class="kd">abstract</span> <span class="nf">messageImage        </span><span class="p">(</span><span class="nx">messageId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">imageType</span><span class="p">:</span> <span class="nx">ImageType</span><span class="p">)</span> <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">FileBoxInterface</span><span class="o">&gt;</span>
+    <span class="kd">abstract</span> <span class="nf">messageMiniProgram  </span><span class="p">(</span><span class="nx">messageId</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span>                       <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">MiniProgramPayload</span><span class="o">&gt;</span>
+    <span class="kd">abstract</span> <span class="nf">messageUrl          </span><span class="p">(</span><span class="nx">messageId</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span>                       <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">UrlLinkPayload</span><span class="o">&gt;</span>
+    <span class="kd">abstract</span> <span class="nf">messageLocation     </span><span class="p">(</span><span class="nx">messageId</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span>                       <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">LocationPayload</span><span class="o">&gt;</span>
+
+    <span class="kd">abstract</span> <span class="nf">messageForward         </span><span class="p">(</span><span class="nx">conversationId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">messageId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,)</span>                     <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span> <span class="o">|</span> <span class="kr">string</span><span class="o">&gt;</span>
+    <span class="kd">abstract</span> <span class="nf">messageSendContact     </span><span class="p">(</span><span class="nx">conversationId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">contactId</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span>                      <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span> <span class="o">|</span> <span class="kr">string</span><span class="o">&gt;</span>
+    <span class="c1">// 发送文件</span>
+    <span class="kd">abstract</span> <span class="nf">messageSendFile        </span><span class="p">(</span><span class="nx">conversationId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">file</span><span class="p">:</span> <span class="nx">FileBoxInterface</span><span class="p">)</span>                 <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span> <span class="o">|</span> <span class="kr">string</span><span class="o">&gt;</span>
+    <span class="kd">abstract</span> <span class="nf">messageSendMiniProgram </span><span class="p">(</span><span class="nx">conversationId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">miniProgramPayload</span><span class="p">:</span> <span class="nx">MiniProgramPayload</span><span class="p">)</span> <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span> <span class="o">|</span> <span class="kr">string</span><span class="o">&gt;</span>
+    <span class="c1">// 发送文本信息</span>
+    <span class="kd">abstract</span> <span class="nf">messageSendText        </span><span class="p">(</span><span class="nx">conversationId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">text</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">mentionIdList</span><span class="p">?:</span> <span class="kr">string</span><span class="p">[])</span> <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span> <span class="o">|</span> <span class="kr">string</span><span class="o">&gt;</span>
+    <span class="kd">abstract</span> <span class="nf">messageSendUrl         </span><span class="p">(</span><span class="nx">conversationId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">urlLinkPayload</span><span class="p">:</span> <span class="nx">UrlLinkPayload</span><span class="p">)</span>         <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span> <span class="o">|</span> <span class="kr">string</span><span class="o">&gt;</span>
+    <span class="c1">// 发送位置信息</span>
+    <span class="kd">abstract</span> <span class="nf">messageSendLocation    </span><span class="p">(</span><span class="nx">conversationId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">locationPayload</span><span class="p">:</span> <span class="nx">LocationPayload</span><span class="p">)</span>       <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span> <span class="o">|</span> <span class="kr">string</span><span class="o">&gt;</span>
+
+    <span class="kd">abstract</span> <span class="nf">messageRecall </span><span class="p">(</span><span class="nx">messageId</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">boolean</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<h4 id="3-消息接收">3. 消息接收</h4>
+
+<p>由于<code class="language-plaintext highlighter-rouge">Wechaty</code>和<code class="language-plaintext highlighter-rouge">Puppet</code>的约定原因，我们需要去实现消息的缓存模式，来真正的让<code class="language-plaintext highlighter-rouge">Wechaty</code>可以获得到<code class="language-plaintext highlighter-rouge">Puppet</code>所接收到的消息内容。</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 1. 当我们的 sever 监听到有用户发送消息，此时我们就需要去对消息的具体内容做一个缓存。</span>
+    <span class="c1">// 这里我们需要自己实现一个缓存模块，将 message 的具体内容存储进去，并且返回 id。</span>
+    <span class="c1">// 推荐李卓桓老师开发的缓存组件：flash-store。 https://github.com/huan/flash-store</span>
+
+<span class="c1">// 2. 然后我们用 Puppet 触发一个 message 事件，把我们本地缓存的 id 传出去。</span>
+<span class="k">this</span><span class="p">.</span><span class="nf">emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">messageId</span><span class="p">:</span> <span class="nx">messageId</span> <span class="p">})</span>
+
+<span class="c1">// 3. 这时候 Wechaty 已经拿到我们消息的 id ，这个时候会根据一个需要我们实现的查询方法来获取本地缓存。</span>
+<span class="nx">override</span> <span class="k">async</span> <span class="nf">messageRawPayload </span><span class="p">(</span><span class="nx">messageId</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">WalnutMessagePayload</span> <span class="o">|</span> <span class="kc">undefined</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="nx">log</span><span class="p">.</span><span class="nf">verbose</span><span class="p">(</span><span class="dl">'</span><span class="s1">PuppetWalnut</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">messageRawPayload(%s)</span><span class="dl">'</span><span class="p">,</span> <span class="nx">messageId</span><span class="p">)</span>
+  <span class="c1">// 这里根据 id 去缓存中查出来刚刚存入的消息</span>
+<span class="p">}</span>
+
+<span class="c1">// 4. 当查出具体的消息内容后，其实和我们 Wechaty 中预定义的消息结构可能不太一致，需要我们进行一个转换。</span>
+<span class="nx">override</span> <span class="k">async</span> <span class="nf">messageRawPayloadParser </span><span class="p">(</span><span class="nx">rawPayload</span><span class="p">:</span> <span class="nx">WalnutMessagePayload</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">PUPPET</span><span class="p">.</span><span class="nx">payloads</span><span class="p">.</span><span class="nx">Message</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="c1">// 这里实现转换规则：WalnutMessagePayload ===&gt; PUPPET.payloads.Message</span>
+<span class="p">}</span>
+
+<span class="c1">// 不过这里要注意，在每次进行收发消息的时候 Wechaty 都会去加载一遍我们的联系人缓存。所以对应的联系人缓存的模块也需要实现：</span>
+<span class="c1">// contactRawPayload</span>
+<span class="c1">// contactRawPayloadParser</span>
+</code></pre></div></div>
+
+<h3 id="关于-5g">关于 5G</h3>
+
+<ol>
+  <li>
+    <p>联系人模块</p>
+
+    <p>5G 方面，联系人的概念可能与我们平常其他 IM 中的不同。依托于运营商的缘故，我们只需要一个手机号码就可以去直接发送消息，免去了加好友之类繁琐的操作。<strong>所以对应 Walnut 我们会对所有的发送过消息的联系人存入缓存，这样可以快速有效的积累我们的联系人。</strong></p>
+  </li>
+  <li>
+    <p>多媒体消息</p>
+
+    <p>依据 <a href="https://github.com/wechaty/puppet-walnut/blob/main/docs/api-documentation-for-5G-platform.md#18">接口文档</a> 给出的信息，5G 这边支持多样的消息格式：</p>
+
+    <ul>
+      <li>带菜单按钮的消息</li>
+      <li>文件等多媒体消息</li>
+      <li>地理位置回落信息</li>
+      <li>带CSS样式的富文本消息</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="视频展示">视频展示</h3>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/i5UohqZ9uTs" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h3 id="答辩报告">答辩报告</h3>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="/assets/js/viewer-js/#/assets/2021/12-mid-term-wechaty-puppet-walnut-report/mid-term-wechaty-puppet-walnut-report.pdf" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h3 id="计划安排">计划安排</h3>
+
+<ul>
+  <li>完善 Walnut 的周边文档，包括 README、getting-started等。</li>
+  <li>落实富文本等多种信息格式的具体实现。</li>
+  <li>优化项目结构，进行项目部署和稳定性测试。</li>
+</ul>
+
+<blockquote>
+  <p>Author: <a href="https://github.com/fabian4">@fabian</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#5g">5g</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#puppet-walnut">puppet-walnut</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#chatbot">chatbot</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ecosystem">ecosystem</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#plan">plan</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/fabian">
+                            <img class="rounded-circle" src="/assets/contributors/fabian/avatar.webp" alt="fabian" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/fabian">fabian</a> </h5>
+						a passionate learner
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/12/16/try-to-build-a-wechaty-tiktok-puppet/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/12-try-to-build-a-wechaty-tiktok-puppet/wechaty-tiktok-puppet.webp">  Design and implementation of wechaty puppet module based on Tiktok</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2022/01/04/wechaty-with-node-server/"> wechaty 基于 nodejs 原生 http 包的服务  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2022/01-wechaty-with-node-server/img.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      使用jekyll include在wechaty博客中快速插入视频 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>使用jekyll include在wechaty博客中快速插入视频 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="使用jekyll include在wechaty博客中快速插入视频" />
+<meta name="author" content="univerone" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="撰写暑期2020中期POC博客的时候，遇到了在博文中插入视频、PPT等iframe的需求，可以在markdown文档中直接使用bilibili等视频网站提供的视频嵌入代码，然而这样视频的样式不够美观，iframe没有铺满整个宽度并保持一定宽高比。" />
+<meta property="og:description" content="撰写暑期2020中期POC博客的时候，遇到了在博文中插入视频、PPT等iframe的需求，可以在markdown文档中直接使用bilibili等视频网站提供的视频嵌入代码，然而这样视频的样式不够美观，iframe没有铺满整个宽度并保持一定宽高比。" />
+<link rel="canonical" href="https://wechaty.js.org/2020/08/24/add-video-to-wechaty-blog/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/08/24/add-video-to-wechaty-blog/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/add-video-to-wechaty-blog/header.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-08-24T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/add-video-to-wechaty-blog/header.webp" />
+<meta property="twitter:title" content="使用jekyll include在wechaty博客中快速插入视频" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"univerone"},"dateModified":"2020-08-24T00:00:00+00:00","datePublished":"2020-08-24T00:00:00+00:00","description":"撰写暑期2020中期POC博客的时候，遇到了在博文中插入视频、PPT等iframe的需求，可以在markdown文档中直接使用bilibili等视频网站提供的视频嵌入代码，然而这样视频的样式不够美观，iframe没有铺满整个宽度并保持一定宽高比。","headline":"使用jekyll include在wechaty博客中快速插入视频","image":"https://wechaty.js.org/assets/2020/add-video-to-wechaty-blog/header.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/08/24/add-video-to-wechaty-blog/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"univerone"},"url":"https://wechaty.js.org/2020/08/24/add-video-to-wechaty-blog/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#tutorial">tutorial</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">使用jekyll include在wechaty博客中快速插入视频</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/univerone">
+                            <img class="rounded-circle" src="/assets/contributors/univerone/avatar.webp" alt="univerone" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/univerone">univerone</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Aug 24, 2020 · <span class="reading-time">
+  
+  
+    4 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/add-video-to-wechaty-blog/header.webp" alt="使用jekyll include在wechaty博客中快速插入视频">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>撰写暑期2020中期POC博客的时候，遇到了在博文中插入视频、PPT等iframe的需求，可以在markdown文档中直接使用bilibili等视频网站提供的视频嵌入代码，然而这样视频的样式不够美观，iframe没有铺满整个宽度并保持一定宽高比。</p>
+
+<h2 id="1-背景">1. 背景</h2>
+
+<p>在<a href="https://wechaty.js.org/contributors/lijiarui/">lijiarui</a>和<a href="https://wechaty.js.org/contributors/huan/">Huan</a>的建议下，参考<a href="https://wechaty.js.org/2020/05/19/qnamaker-juzi-bot-for-investors-rui/">之前的博客</a>,应用如下样式插入iframe能够达到较为满意的效果（宽高比为16:9）。</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"video-container"</span> <span class="na">style=</span><span class="s">"
+    position: relative;
+    padding-bottom:56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;iframe</span>
+  <span class="na">src=</span><span class="s">"https://www.youtube.com/embed/ZYjYAT2g-1Q"</span>
+  <span class="na">width=</span><span class="s">"560"</span>
+  <span class="na">height=</span><span class="s">"315"</span>
+  <span class="na">frameborder=</span><span class="s">"0"</span>
+  <span class="na">allowfullscreen=</span><span class="s">""</span>
+  <span class="na">style=</span><span class="s">"
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/iframe&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>但是每次需要插入iframe的时候都插入这么一段代码未免太过复杂，之前我使用hugo写博客的时候经常使用shortcodes并传入一定的参数，
+博客生成的时候会使用对应的HTML模板替换这段shortcodes。
+经查询发现jekyll也有类似的特性，可以使用<code class="language-plaintext highlighter-rouge">include</code>标签来引入位于_includes文件夹里面的html片段，并且可以在<code class="language-plaintext highlighter-rouge">include</code>标签传入变量，在html模板中进行处理生成html片段，具体可以参考<a href="https://jekyllrb.com/docs/includes/">jekyll文档</a>。</p>
+
+<h2 id="2-使用include插入iframe">2. 使用include插入iframe</h2>
+
+<p>基本思想很简单，传入一个参数：iframe的地址或者视频的播放地址，利用上面带样式的iframe代码写成模板文件即可。</p>
+
+<p>在<a href="https://wechaty.js.org/contributors/huan/">Huan</a>的建议下，在模板文件中使用<a href="https://shopify.github.io/liquid/">liquid</a>语法进行一些简单的逻辑判断，针对不同类型的iframe进行不同的处理，比如：</p>
+
+<ul>
+  <li>bilibili视频的iframe有一个最上面的推荐栏，会导致iframe变高，使用16：9的比例不能使视频铺满，因此修改其宽高比为10:7,更具体得说，将<code class="language-plaintext highlighter-rouge">.video-container</code>这个div的<code class="language-plaintext highlighter-rouge">padding-bottom</code>改为70%。</li>
+  <li>插入pdf文件需要使用viewer.js进行渲染，需要在本地的pdf文件路径前加上<code class="language-plaintext highlighter-rouge">/assets/js/viewer-js/#</code>作为完整的iframe地址。</li>
+  <li>对于支持的视频网站，将视频的播放地址转化为视频的iframe地址</li>
+</ul>
+
+<p>模板文件为_includes文件夹内部的iframe.html,具体内容如下</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">include</span><span class="p">.</span><span class="nv">src</span><span class="w"> </span><span class="cp">%}</span>
+<span class="cp">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">ratio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'56.25%'</span><span class="w"> </span><span class="cp">%}</span>
+<span class="cp">{%</span><span class="w"> </span><span class="nt">if</span><span class="w"> </span><span class="nv">src</span><span class="w"> </span><span class="ow">contains</span><span class="w"> </span><span class="s1">'.pdf'</span><span class="w"> </span><span class="cp">%}</span>
+  <span class="cp">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'pdf'</span><span class="w"> </span><span class="cp">%}</span>
+<span class="cp">{%</span><span class="w"> </span><span class="nt">else</span><span class="w"> </span><span class="cp">%}</span>
+  <span class="cp">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">src</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">split</span><span class="p">:</span><span class="w"> </span><span class="s1">'//'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">last</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">split</span><span class="p">:</span><span class="w"> </span><span class="s1">'/'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">first</span><span class="w"> </span><span class="cp">%}</span>
+<span class="cp">{%</span><span class="w"> </span><span class="nt">endif</span><span class="w"> </span><span class="cp">%}</span>
+<span class="cp">{%</span><span class="w"> </span><span class="nt">case</span><span class="w"> </span><span class="nv">type</span><span class="w"> </span><span class="cp">%}</span>
+  <span class="cp">{%</span><span class="w"> </span><span class="nt">when</span><span class="w"> </span><span class="s2">"pdf"</span><span class="w"> </span><span class="cp">%}</span>
+    <span class="cp">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'/assets/js/viewer-js/#'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">append</span><span class="p">:</span><span class="w"> </span><span class="nv">src</span><span class="w"> </span><span class="cp">%}</span>
+  <span class="cp">{%</span><span class="w"> </span><span class="nt">when</span><span class="w"> </span><span class="s1">'www.bilibili.com'</span><span class="w"> </span><span class="nv">or</span><span class="w"> </span><span class="s1">'player.bilibili.com'</span><span class="w"> </span><span class="cp">%}</span>
+    <span class="cp">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">ratio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'70%'</span><span class="w"> </span><span class="cp">%}</span>
+    <span class="cp">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">src</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">replace</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.bilibili.com/video/"</span><span class="p">,</span><span class="w"> </span><span class="s2">"player.bilibili.com/player.html?bvid="</span><span class="w"> </span><span class="cp">%}</span>
+  <span class="cp">{%</span><span class="w"> </span><span class="nt">when</span><span class="w"> </span><span class="s1">'youtu.be'</span><span class="w"> </span><span class="nv">or</span><span class="w"> </span><span class="s1">'www.youtube.com'</span><span class="w"> </span><span class="cp">%}</span>
+    <span class="cp">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">src</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">replace</span><span class="p">:</span><span class="w"> </span><span class="s2">"watch?v="</span><span class="p">,</span><span class="w"> </span><span class="s2">"embed/"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">replace</span><span class="p">:</span><span class="w"> </span><span class="s2">"youtu.be"</span><span class="p">,</span><span class="w"> </span><span class="s2">"www.youtube.com/embed"</span><span class="w">  </span><span class="cp">%}</span>
+  <span class="cp">{%</span><span class="w"> </span><span class="nt">when</span><span class="w"> </span><span class="s1">'v.qq.com'</span><span class="w"> </span><span class="cp">%}</span>
+    <span class="cp">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">ratio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'60%'</span><span class="w"> </span><span class="cp">%}</span>
+    <span class="cp">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">src</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">replace</span><span class="p">:</span><span class="w"> </span><span class="s2">".html"</span><span class="p">,</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">replace</span><span class="p">:</span><span class="w"> </span><span class="s2">"x/page/"</span><span class="p">,</span><span class="w"> </span><span class="s2">"txp/iframe/player.html?vid="</span><span class="w">  </span><span class="cp">%}</span>
+  <span class="cp">{%</span><span class="w"> </span><span class="nt">when</span><span class="w"> </span><span class="s1">'v.youku.com'</span><span class="w"> </span><span class="cp">%}</span>
+    <span class="cp">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">src</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">replace</span><span class="p">:</span><span class="w"> </span><span class="s2">".html"</span><span class="p">,</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">replace</span><span class="p">:</span><span class="w"> </span><span class="s2">"v.youku.com/v_show/id_"</span><span class="p">,</span><span class="w"> </span><span class="s2">"player.youku.com/embed/"</span><span class="w">  </span><span class="cp">%}</span>
+<span class="cp">{%</span><span class="w"> </span><span class="nt">endcase</span><span class="w"> </span><span class="cp">%}</span>
+
+&lt;div style="
+    position: relative;
+    padding-bottom: <span class="cp">{{</span><span class="w"> </span><span class="nv">ratio</span><span class="w"> </span><span class="cp">}}</span>;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+"&gt;
+  &lt;iframe
+    src='<span class="cp">{{</span><span class="w"> </span><span class="nv">src</span><span class="w"> </span><span class="cp">}}</span>'
+    allowfullscreen
+    webkitallowfullscreen
+    frameborder="0"
+    style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    "
+  &gt;
+&lt;/iframe&gt;
+
+&lt;/div&gt;
+</code></pre></div></div>
+
+<h2 id="3-使用示例">3. 使用示例</h2>
+
+<h3 id="pdf文件">pdf文件</h3>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>iframe.html<span class="w"> </span><span class="na">src</span><span class="o">=</span><span class="s2">"/assets/2020/qijibot/final.pdf"</span><span class="w"> </span><span class="cp">%}</span>
+</code></pre></div></div>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="/assets/js/viewer-js/#/assets/2020/qijibot/final.pdf" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<p>插入视频时，支持如下网站直接使用视频的播放地址，作为<code class="language-plaintext highlighter-rouge">include</code>标签的src参数</p>
+
+<h3 id="youtube">youtube</h3>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>iframe.html<span class="w"> </span><span class="na">src</span><span class="o">=</span><span class="s2">"https://www.youtube.com/watch?v=fbTedVcEEEI"</span><span class="w"> </span><span class="cp">%}</span>
+</code></pre></div></div>
+
+<p>或者短网址</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>iframe.html<span class="w"> </span><span class="na">src</span><span class="o">=</span><span class="s2">"https://youtu.be/fbTedVcEEEI"</span><span class="w"> </span><span class="cp">%}</span>
+</code></pre></div></div>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/fbTedVcEEEI" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h3 id="bilibili">bilibili</h3>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>iframe.html<span class="w"> </span><span class="na">src</span><span class="o">=</span><span class="s2">"https://www.bilibili.com/video/BV1LV411r756"</span><span class="w"> </span><span class="cp">%}</span>
+</code></pre></div></div>
+
+<div style="
+    position: relative;
+    padding-bottom: 70%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://player.bilibili.com/player.html?bvid=BV1LV411r756&amp;high_quality=1" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h3 id="优酷">优酷</h3>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>iframe.html<span class="w"> </span><span class="na">src</span><span class="o">=</span><span class="s2">"https://v.youku.com/v_show/id_XMzcyODcwMzQzNg==.html"</span><span class="w"> </span><span class="cp">%}</span>
+</code></pre></div></div>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://player.youku.com/embed/XMzcyODcwMzQzNg==" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h3 id="腾讯视频">腾讯视频</h3>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>iframe.html<span class="w"> </span><span class="na">src</span><span class="o">=</span><span class="s2">"https://v.qq.com/x/page/v0952wieqwl.html"</span><span class="w"> </span><span class="cp">%}</span>
+</code></pre></div></div>
+
+<div style="
+    position: relative;
+    padding-bottom: 60%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://v.qq.com/txp/iframe/player.html?vid=v0952wieqwl" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#jekyll">jekyll</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#plugin">plugin</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/univerone">
+                            <img class="rounded-circle" src="/assets/contributors/univerone/avatar.webp" alt="univerone" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/univerone">univerone</a> </h5>
+						I am new to computer science,and I want to be a professional researcher.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/08/23/wechaty-puppet-gitter/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/08-gitter/wechaty-gitter.webp">  Gitter.im is supported by Wechaty now!</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/08/28/command-line-filter/"> 简易命令行控制的「微信机器人」及群聊信息过滤实现  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/commandline-filter/logo.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

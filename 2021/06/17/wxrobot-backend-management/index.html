@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      基于Nodejs+Wechaty开发微信机器人管理平台 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>基于Nodejs+Wechaty开发微信机器人管理平台 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="基于Nodejs+Wechaty开发微信机器人管理平台" />
+<meta name="author" content="zwl" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="微信机器人开源库调研，GitHub 找到以下 3 个开源作品：" />
+<meta property="og:description" content="微信机器人开源库调研，GitHub 找到以下 3 个开源作品：" />
+<link rel="canonical" href="https://wechaty.js.org/2021/06/17/wxrobot-backend-management/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/06/17/wxrobot-backend-management/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/06-wxrobot-backend-management/admin.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-06-17T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/06-wxrobot-backend-management/admin.webp" />
+<meta property="twitter:title" content="基于Nodejs+Wechaty开发微信机器人管理平台" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zwl"},"dateModified":"2021-06-17T00:00:00+00:00","datePublished":"2021-06-17T00:00:00+00:00","description":"微信机器人开源库调研，GitHub 找到以下 3 个开源作品：","headline":"基于Nodejs+Wechaty开发微信机器人管理平台","image":"https://wechaty.js.org/assets/2021/06-wxrobot-backend-management/admin.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/06/17/wxrobot-backend-management/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"zwl"},"url":"https://wechaty.js.org/2021/06/17/wxrobot-backend-management/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">基于Nodejs+Wechaty开发微信机器人管理平台</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/zwl">
+                            <img class="rounded-circle" src="/assets/contributors/zwl/avatar.webp" alt="ZhangWeilun" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/zwl">ZhangWeilun</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jun 17, 2021 · <span class="reading-time">
+  
+  
+    5 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/06-wxrobot-backend-management/admin.webp" alt="基于Nodejs+Wechaty开发微信机器人管理平台">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>微信机器人开源库调研，<a href="https://github.com/">GitHub</a> 找到以下 3 个开源作品：</p>
+
+<ul>
+  <li><a href="https://github.com/littlecodersh/ItChat">itchat</a>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">itchat</code> 是一个开源的微信个人号接口，使用 <code class="language-plaintext highlighter-rouge">python</code> 调用微信</li>
+      <li>使用不到 <code class="language-plaintext highlighter-rouge">30</code> 行的代码，你就可以完成一个能够处理所有信息的微信机器人</li>
+    </ul>
+  </li>
+  <li><a href="https://github.com/wechaty/wechaty">wechaty</a>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">wechaty</code> 是适用于微信个人的 <code class="language-plaintext highlighter-rouge">Bot SDK</code> ，可以使用 <code class="language-plaintext highlighter-rouge">6</code> 行 <code class="language-plaintext highlighter-rouge">js</code> 创建一个机器人</li>
+      <li>具有包括 <code class="language-plaintext highlighter-rouge">linux</code>，<code class="language-plaintext highlighter-rouge">Windows</code>，<code class="language-plaintext highlighter-rouge">MacOS</code> 和 <code class="language-plaintext highlighter-rouge">Docker</code> 在内的跨平台支持，基于 <code class="language-plaintext highlighter-rouge">Node.js</code></li>
+    </ul>
+  </li>
+  <li><a href="https://github.com/Hanson/vbot">vbot</a>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">vbot</code> 是基于微信 <code class="language-plaintext highlighter-rouge">web</code> 版的接口，使用 <code class="language-plaintext highlighter-rouge">http 协议</code> 以及轮询方式实现</li>
+      <li>亮点在于通过匿名函数，能够实现多种有趣的玩法</li>
+      <li>通过 <code class="language-plaintext highlighter-rouge">API</code>，更方便的打造属于自己的网页版微信，基于 <code class="language-plaintext highlighter-rouge">PHP</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="初识-wechaty">初识 wechaty</h2>
+
+<p><code class="language-plaintext highlighter-rouge">Wechaty</code> 是一个开源的的对话机器人 <code class="language-plaintext highlighter-rouge">SDK</code>，支持 <code class="language-plaintext highlighter-rouge">个人号</code> 微信。它是一个使用 <code class="language-plaintext highlighter-rouge">Typescript</code> 构建的 <code class="language-plaintext highlighter-rouge">Node.js</code> 应用。支持多种微信接入方案，包括网页，<code class="language-plaintext highlighter-rouge">ipad</code>，<code class="language-plaintext highlighter-rouge">ios</code>，<code class="language-plaintext highlighter-rouge">windows</code>，<code class="language-plaintext highlighter-rouge">android</code> 等。同时支持 <code class="language-plaintext highlighter-rouge">Linux</code>, <code class="language-plaintext highlighter-rouge">Windows</code>, <code class="language-plaintext highlighter-rouge">Darwin(OSX/Mac)</code> 和 <code class="language-plaintext highlighter-rouge">Docker</code> 多个平台。</p>
+
+<p>先看一下官方文档：</p>
+
+<ul>
+  <li><a href="https://github.com/wechaty/wechaty">wechaty-github</a></li>
+  <li><a href="https://wechaty.js.org/v/zh/">wechaty中文文档</a></li>
+</ul>
+
+<p>只需要 6 行代码，你就可以 通过个人号 搭建一个 微信机器人功能 ，用来自动管理微信消息。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Wechaty</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span>
+
+<span class="nx">Wechaty</span><span class="p">.</span><span class="nf">instance</span><span class="p">()</span>
+<span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">,</span>        <span class="nx">qrcode</span>  <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">扫码登录：</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">qrcode</span><span class="p">))</span>
+<span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span>       <span class="nx">user</span>    <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">登录成功：</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">user</span><span class="p">))</span>
+<span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span>     <span class="nx">message</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">收到消息：</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">message</span><span class="p">))</span>
+<span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">friendship</span><span class="dl">'</span><span class="p">,</span>  <span class="nx">friendship</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">收到好友请求：</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">friendship</span><span class="p">))</span>
+<span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">room-invite</span><span class="dl">'</span><span class="p">,</span> <span class="nx">invitation</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">收到入群邀请：</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">invitation</span><span class="p">))</span>
+<span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>更多功能包括：</p>
+
+<ul>
+  <li>消息处理：关键词回复</li>
+  <li>群管理：自动入群，拉人，踢人</li>
+  <li>自动处理好友请求</li>
+  <li>智能对话：通过简单配置，即可加入智能对话系统，完成指定任务</li>
+  <li>… 请自行开脑洞</li>
+</ul>
+
+<p>好了，文档齐全 &amp; api 丰富，完全满足我的需求，就选这个库了。</p>
+
+<p>首先跑一个示例看看  <a href="https://github.com/wechaty/wechaty-getting-started">wechaty-getting-started</a>。下载完之后先 <code class="language-plaintext highlighter-rouge">npm install &amp; npm start</code> 一顿操作，然后运行就有了登录二维码，拿出手机扫码，然后 GG。</p>
+
+<h2 id="wechaty-puppet">wechaty-puppet</h2>
+
+<p><del>使用 <a href="https://github.com/wechaty/wechaty-puppet-padplus">wechaty-puppet-padplus</a> 一套基于 ipad 协议的包。</del></p>
+
+<p>目前 <del>wechaty-puppet-padplus</del> 已弃用，后续使用 <a href="https://github.com/wechaty/wechaty-puppet-service">wechaty-puppet-service</a>。</p>
+
+<p>不过天下没有免费的午餐，需要申请 <code class="language-plaintext highlighter-rouge">token</code>，见 <a href="https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty">Wechaty Token 申请及使用文档和常见问题</a>。</p>
+
+<h2 id="聊天机器人-api">聊天机器人 API</h2>
+
+<p>目前网络上有许多非常好的智能聊天机器人，这里找了6个目前使用很广泛的：</p>
+
+<ul>
+  <li><a href="http://docs.ruyi.ai/416309">海知智能</a> 功能很强大，不仅仅用于聊天。需申请 key，免费</li>
+  <li><a href="https://www.ownthink.com/">思知对话机器人</a> 注册很简单，调用也很简单，而且完全免费</li>
+  <li><a href="http://www.turingapi.com/">图灵机器人</a> 需要注册账号，可以申请 5 个机器人，未认证账户每个机器人只能回 3 条/天，认证账户每个机器人能用 100 条/天</li>
+  <li><a href="http://api.qingyunke.com/">青云客智能机器人</a> 无须申请，无数量限制，但有点智障，分手神器，慎用</li>
+  <li><a href="https://ai.qq.com/console/capability/detail/8">腾讯闲聊</a> 需要注册和申请，还需要加密处理</li>
+  <li><a href="https://www.tianapi.com/apiview/47">天行机器人</a> 白嫖用户绑定微信后有 10000 次永久额度，之后 1 元 10000 次</li>
+</ul>
+
+<h2 id="搭建微信机器人平台">搭建微信机器人平台</h2>
+
+<p>项目初始参考 <a href="https://github.com/beclass/wxbot"><code class="language-plaintext highlighter-rouge">wxbot</code></a> 搭建机器人后台管理。</p>
+
+<h3 id="项目介绍">项目介绍</h3>
+
+<ul>
+  <li>控制台
+    <ul>
+      <li>绑定机器人</li>
+      <li>登录</li>
+      <li>自动通过好友验证关键词设置，当有人添加机器人时，关键词匹配后直接通过</li>
+      <li>好友验证通过自动回复</li>
+      <li>退出</li>
+    </ul>
+  </li>
+  <li>自动回复
+    <ul>
+      <li>普通消息
+        <ul>
+          <li>针对好友/某个群聊/所有群聊 设置关键词自动回复</li>
+        </ul>
+      </li>
+      <li>加群邀请
+        <ul>
+          <li>机器人回复群聊列表，好友可以选择性进群</li>
+        </ul>
+      </li>
+      <li>踢人指令
+        <ul>
+          <li>机器人识别指令，自动把成员移出群聊</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>我的好友
+    <ul>
+      <li>单独对某个好友送消息</li>
+    </ul>
+  </li>
+  <li>我的群聊
+    <ul>
+      <li>群聊列表，管理所有群聊</li>
+      <li>设置群聊名称，发布公告，发送群消息</li>
+      <li>设置群聊基本信息，入群欢迎语，成员违规次数上限，是否受机器人控制</li>
+    </ul>
+  </li>
+  <li>定时任务
+    <ul>
+      <li>针对好友/某个群聊/所有群聊设置定时任务，机器人在指定时间会触发消息推送</li>
+    </ul>
+  </li>
+  <li>智能聊天
+    <ul>
+      <li>低智商对话</li>
+      <li>成语接龙，查天气，查酒店，歇后语…</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="/assets/2021/06-wxrobot-backend-management/admin.webp" alt="admin" /></p>
+
+<h3 id="技术构成">技术构成</h3>
+
+<ul>
+  <li>服务端 <a href="https://nodejs.org/">Node.js</a></li>
+  <li>SSR框架 <a href="https://nuxtjs.org/">NuxtJS</a></li>
+  <li>前端框架 <a href="https://vuejs.org/">Vue</a></li>
+  <li>UI组件 <a href="https://www.antdv.com/docs/vue/introduce-cn/">Ant Design of Vue</a></li>
+  <li>持久化 <a href="https://www.mongodb.org/">MongoDB</a></li>
+  <li>协议 <a href="https://github.com/wechaty/wechaty-puppet-service">wechaty-puppet-service</a></li>
+</ul>
+
+<p>这里就直接介绍下机器人模块</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">|--</span> <span class="nx">server</span><span class="o">/</span>
+<span class="o">|</span><span class="err">———</span><span class="o">-</span> <span class="sr">/li</span><span class="err">b
+</span><span class="o">|------</span> <span class="nx">FriendShip</span><span class="p">.</span><span class="nx">js</span>   <span class="err">#</span> <span class="nx">友谊关系</span><span class="err">，</span><span class="nx">好友添加监听</span>
+<span class="o">|------</span> <span class="nx">Login</span><span class="p">.</span><span class="nx">js</span>        <span class="err">#</span> <span class="nx">机器人登录退出</span>
+<span class="o">|------</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">js</span>      <span class="err">#</span> <span class="nx">消息监听处理</span>
+<span class="o">|------</span> <span class="nx">Room</span><span class="p">.</span><span class="nx">js</span>         <span class="err">#</span> <span class="nx">加群</span><span class="err">，</span><span class="nx">退出群聊</span>
+<span class="o">|------</span> <span class="nx">Task</span>            <span class="err">#</span> <span class="nx">机器人定时任务</span>
+<span class="o">|</span><span class="err">———</span><span class="o">-</span> <span class="nx">index</span><span class="p">.</span><span class="nx">js</span>          <span class="err">#</span> <span class="nx">入口文件</span>
+</code></pre></div></div>
+
+<h3 id="快速开始">快速开始</h3>
+
+<h4 id="准备条件">准备条件</h4>
+
+<ul>
+  <li>安装 <a href="https://nodejs.org/en/download/">Node.js</a> (v10 以上版本)、<a href="https://www.mongodb.org/downloads/">MongoDB</a>。</li>
+  <li>推荐安装 <a href="https://cnpmjs.org/">cnpm</a></li>
+</ul>
+
+<h4 id="安装依赖">安装依赖</h4>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cnpm i
+</code></pre></div></div>
+
+<h4 id="启动服务">启动服务</h4>
+
+<ul>
+  <li>开发模式</li>
+</ul>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run dev
+</code></pre></div></div>
+
+<ul>
+  <li>生产模式</li>
+</ul>
+
+<p>先编译项目</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run build
+</code></pre></div></div>
+
+<p>再启动服务</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm start
+</code></pre></div></div>
+
+<p>打开浏览器，访问 <a href="http://localhost:3000">http://localhost:3000/</a></p>
+
+<h4 id="系统配置">系统配置</h4>
+
+<p>根据实际情况修改 <code class="language-plaintext highlighter-rouge">config.js</code> 配置文件，修改后需要重启服务才能生效。<br />
+参数说明：</p>
+
+<h5 id="host">host</h5>
+
+<p><code class="language-plaintext highlighter-rouge">String</code> 类型，主机名，配置为 <code class="language-plaintext highlighter-rouge">0.0.0.0</code> 表示监听任意主机。</p>
+
+<h5 id="port">port</h5>
+
+<p><code class="language-plaintext highlighter-rouge">Number</code> 类型，端口号。</p>
+
+<h5 id="mongourl">mongoUrl</h5>
+
+<p><code class="language-plaintext highlighter-rouge">String</code> 类型，MongoDB 链接。</p>
+
+<h5 id="secret">secret</h5>
+
+<p><code class="language-plaintext highlighter-rouge">String</code> 类型，<a href="https://github.com/auth0/node-jsonwebtoken">JWT</a> 秘钥。</p>
+
+<h5 id="tianapikey">tianApiKey</h5>
+
+<p><code class="language-plaintext highlighter-rouge">String</code> 类型，<a href="https://www.tianapi.com/console/">天行数据秘钥</a></p>
+
+<h3 id="线上部署">线上部署</h3>
+
+<h4 id="使用pm2">使用PM2</h4>
+
+<p>推荐使用 <a href="https://pm2.keymetrics.io/">pm2</a> 进行 <code class="language-plaintext highlighter-rouge">Node.js</code> 的进程管理和持久运行。</p>
+
+<h5 id="安装">安装</h5>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cnpm i <span class="nt">-g</span> pm2
+</code></pre></div></div>
+
+<h5 id="启动">启动</h5>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pm2 start pm2.config.js <span class="nt">--env</span> production
+</code></pre></div></div>
+
+<h3 id="踩坑">踩坑</h3>
+
+<p>1.<code class="language-plaintext highlighter-rouge">Wechaty Token</code> 申请及使用文档和常见问题</p>
+
+<ul>
+  <li><a href="https://juzibot.wjx.cn/jq/80103105.aspx">Wechaty 开源激励计划2.0 申请表</a></li>
+  <li><a href="https://github.com/juzibot/Welcome/wiki/Support-Developers">填写项目信息</a></li>
+  <li><a href="https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty">Wechaty Token 申请及使用文档和常见问题</a></li>
+</ul>
+
+<p>2.<code class="language-plaintext highlighter-rouge">tianApiKey</code> 申请及天行机器人配置</p>
+
+<ul>
+  <li>首先，去 <a href="https://www.tianapi.com/console/">天行数据</a> 注册账号，申请 <code class="language-plaintext highlighter-rouge">APIKEY</code></li>
+  <li>其次，申请 <a href="https://www.tianapi.com/apiview/47">天行机器人</a> 接口，用于机器人自动回复</li>
+  <li>最后，别忘记配置 <a href="https://www.tianapi.com/console/">机器人身份设置</a>，否则在机器人回复中会有奇怪的代码串，如 <code class="language-plaintext highlighter-rouge">{robotname}</code></li>
+</ul>
+
+<p>3.部署中执行 <code class="language-plaintext highlighter-rouge">sudo pm2</code> 报错 <code class="language-plaintext highlighter-rouge">command not found</code> 问题</p>
+
+<ul>
+  <li>原因是没有将 <code class="language-plaintext highlighter-rouge">pm2</code> 加至环境变量中，先找到 <code class="language-plaintext highlighter-rouge">node</code> 的目录 可以用 <code class="language-plaintext highlighter-rouge">whereis node</code> 来查找，然后查找 <code class="language-plaintext highlighter-rouge">whereis pm2</code>，再使用 <code class="language-plaintext highlighter-rouge">ln</code> 建立软连接</li>
+  <li>参考文章 <a href="https://blog.csdn.net/d597180714/article/details/82619735">Linux下使用pm2部署node以及安装后command not found解决</a></li>
+</ul>
+
+<p>4.部署中执行 <code class="language-plaintext highlighter-rouge">sudo pm2</code> 报错 <code class="language-plaintext highlighter-rouge">permission denied</code> 问题</p>
+
+<ul>
+  <li>原因是项目会动态生成中 <code class="language-plaintext highlighter-rouge">logs</code> 目录中的文件，报错权限不足，即 <code class="language-plaintext highlighter-rouge">permission denied</code></li>
+  <li>参考文章 <a href="https://blog.csdn.net/geol200709/article/details/81744477">解决 pm2 中的 permission denied 问题</a></li>
+</ul>
+
+<p>4.Ubuntu MaxReports 报错问题</p>
+
+<ul>
+  <li>安装报错依赖关系问题</li>
+  <li>参考文章 <a href="https://blog.csdn.net/lanhaixuanvv/article/details/78387545?locationNum=1&amp;fps=1">Ubuntu16.04 由于已经达到 MaxReports 限制，没有写入 apport 报告</a></li>
+</ul>
+
+<p>5.<code class="language-plaintext highlighter-rouge">Ubuntu</code> 安装 <code class="language-plaintext highlighter-rouge">node-canvas</code> 以及中文乱码/自定义字体的问题</p>
+
+<ul>
+  <li>首先 sudo apt-get install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev 安装完成后 npm install canvas</li>
+  <li>中文乱码/自定义字体的问题解决方案：①安装 sudo apt-get install ttf-wqy-microhei #文泉驿-微米黑 ②注册 registerFont(‘/usr/share/fonts/truetype/wqy/wqy-microhei.ttc’, { family: ‘WQY’ }) ③使用 ctx.font = ‘bold 22px “WYQ”’</li>
+  <li>参考文章 <a href="https://github.com/Automattic/node-canvas">node-canvas</a></li>
+</ul>
+
+<p>6.<code class="language-plaintext highlighter-rouge">CentOS</code> 安装 <code class="language-plaintext highlighter-rouge">better-sqlite3</code> 报错的问题</p>
+
+<ul>
+  <li>首先执行 <code class="language-plaintext highlighter-rouge">sudo yum install centos-release-scl-rh，sudo yum install devtoolset-8-build</code> 这两个方法</li>
+  <li>安装相应的gdb，<code class="language-plaintext highlighter-rouge">sudo yum install devtoolset-8-gdb</code></li>
+  <li>同样，也可以安装相应版本的 gcc 和 g++，<code class="language-plaintext highlighter-rouge">sudo yum install devtoolset-8-gcc devtoolset-8-gcc-c++</code></li>
+  <li>yum安装完后，原来的gcc不覆盖，所以需要执行enable脚本更新环境变量，<code class="language-plaintext highlighter-rouge">sudo source /opt/rh/devtoolset-8/enable</code></li>
+  <li>可以通过加入到profile里面开机自动<code class="language-plaintext highlighter-rouge">source, vim /etc/profile</code>, 跳到最后一行加入以下内容，<code class="language-plaintext highlighter-rouge">source /opt/rh/devtoolset-8/enable</code></li>
+  <li>参考文章 <a href="https://www.cnblogs.com/clwsec/p/12493653.html">better-sqlite3</a></li>
+</ul>
+
+<h2 id="感谢">感谢</h2>
+
+<p><a href="https://github.com/wechaty/wechaty"><img src="https://img.shields.io/badge/Powered%20By-Wechaty-green.svg" alt="Powered by Wechaty" /></a>
+<a href="https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty"><img src="https://img.shields.io/badge/Wechaty-开源激励计划-green.svg" alt="Wechaty开源激励计划" /></a></p>
+
+<ul>
+  <li>感谢 <a href="https://github.com/beclass">beclass</a> 的开源项目 <a href="https://github.com/beclass/wxbot"><code class="language-plaintext highlighter-rouge">wxbot</code></a>，这是一套优秀的微信机器人平台。</li>
+  <li>感谢 <a href="https://wechaty.js.org">Wechaty</a> 团队提供微信机器人 <code class="language-plaintext highlighter-rouge">SDK</code>，让开发者可以专注于业务代码。</li>
+  <li>感谢 <a href="https://www.juzibot.com">句子互动</a> 提供的 <code class="language-plaintext highlighter-rouge">pad</code> 协议版 <code class="language-plaintext highlighter-rouge">token</code>。</li>
+</ul>
+
+<blockquote>
+  <p>作者: <a href="https://github.com/zhang704">zwl</a>
+Code: <a href="https://github.com/zhang704/wxrobot">Github</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#nodejs">nodejs</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#vue">vue</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#padplus">padplus</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#project">project</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#nuxt">nuxt</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#feature">feature</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#utility">utility</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/zwl">
+                            <img class="rounded-circle" src="/assets/contributors/zwl/avatar.webp" alt="ZhangWeilun" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/zwl">ZhangWeilun</a> </h5>
+						I'm is ZhangWeilun, i love coding, I now work in Hangzhou.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/06/17/puppet-simplepad-hello/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/06-puppet-simplepad-hello-en/logo.webp">  New Wechaty Puppet Service: SimplePad</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/06/22/gsod-2021-first-month-evaluation/"> GSoD'21 First Month Evaluation  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/06-gsod-2021-first-month-evaluation/gsod-2021.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

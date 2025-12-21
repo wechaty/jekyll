@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      基于wechaty开发网课答案查询机器人 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>基于wechaty开发网课答案查询机器人 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="基于wechaty开发网课答案查询机器人" />
+<meta name="author" content="hurely" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="自己有运营一个网课答案查询的微信公众号，无奈服务器压力有时候会大，会出现回复不及时的问题，所以突发冥想开发一个个人号作为备用。" />
+<meta property="og:description" content="自己有运营一个网课答案查询的微信公众号，无奈服务器压力有时候会大，会出现回复不及时的问题，所以突发冥想开发一个个人号作为备用。" />
+<link rel="canonical" href="https://wechaty.js.org/2020/10/15/wechaty-wangke-bot/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/10/15/wechaty-wangke-bot/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/wanke-bot/banner.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-10-15T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/wanke-bot/banner.webp" />
+<meta property="twitter:title" content="基于wechaty开发网课答案查询机器人" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"hurely"},"dateModified":"2020-10-15T00:00:00+00:00","datePublished":"2020-10-15T00:00:00+00:00","description":"自己有运营一个网课答案查询的微信公众号，无奈服务器压力有时候会大，会出现回复不及时的问题，所以突发冥想开发一个个人号作为备用。","headline":"基于wechaty开发网课答案查询机器人","image":"https://wechaty.js.org/assets/2020/wanke-bot/banner.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/10/15/wechaty-wangke-bot/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"hurely"},"url":"https://wechaty.js.org/2020/10/15/wechaty-wangke-bot/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">基于wechaty开发网课答案查询机器人</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/hurely">
+                            <img class="rounded-circle" src="/assets/contributors/hurely/avatar.webp" alt="hurely" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/hurely">hurely</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Oct 15, 2020 · <span class="reading-time">
+  
+  
+    7 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/wanke-bot/banner.webp" alt="基于wechaty开发网课答案查询机器人">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>自己有运营一个网课答案查询的微信公众号，无奈服务器压力有时候会大，会出现回复不及时的问题，所以突发冥想开发一个个人号作为备用。</p>
+
+<h2 id="项目地址">项目地址</h2>
+
+<p>github：<a href="https://github.com/hurely/wechaty-wangke">https://github.com/hurely/wechaty-wangke</a></p>
+
+<h2 id="技术栈">技术栈</h2>
+
+<ul>
+  <li>wechaty –适用于微信个人的 Bot SDK ，可以使用 6 行 js 创建一个机器人</li>
+  <li>wechaty-puppet-padplus –同是 wechaty 团队开发，不同于网上基于微信 web 端的库，它是基于 iPad 协议</li>
+  <li>axios –node 请求库</li>
+  <li>qrcode-terminal –终端显示二维码</li>
+  <li>nodemon –node 文件热部署</li>
+  <li>xml-js –xml 和 json 解析（非必须）</li>
+</ul>
+
+<h2 id="功能">功能</h2>
+
+<ul>
+  <li>根据关键字和用户 id 自动回复网课答案</li>
+  <li>接收小程序后发送小程序小程序 appId 和路径</li>
+  <li>后续其他功能</li>
+</ul>
+
+<h2 id="项目展示">项目展示</h2>
+
+<ul>
+  <li>
+    <p>自动回复网课答案
+<img src="/assets/2020/wanke-bot/20201015105732.webp" alt="回复网课答案" /></p>
+  </li>
+  <li>
+    <p>接收小程序
+<img src="/assets/2020/wanke-bot/20201015112724.webp" alt="接收小程序" /></p>
+  </li>
+</ul>
+
+<h2 id="核心代码">核心代码</h2>
+
+<p>1.src/index.js –wechaty 启动的入口文件</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">config</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">../config/config</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="p">{</span>
+  <span class="nx">Wechaty</span><span class="p">,</span>
+  <span class="nx">ScanStatus</span><span class="p">,</span>
+  <span class="nx">log</span><span class="p">,</span>
+<span class="p">}</span>   <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">PuppetPadplus</span> <span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty-puppet-padplus</span><span class="dl">'</span>
+
+<span class="k">import</span> <span class="nx">replyToAMessage</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">./utils/reply</span><span class="dl">'</span>
+
+<span class="kd">function</span> <span class="nf">onScan</span> <span class="p">(</span><span class="nx">qrcode</span><span class="p">,</span> <span class="nx">status</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">status</span> <span class="o">===</span> <span class="nx">ScanStatus</span><span class="p">.</span><span class="nx">Waiting</span> <span class="o">||</span> <span class="nx">status</span> <span class="o">===</span> <span class="nx">ScanStatus</span><span class="p">.</span><span class="nx">Timeout</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">qrcode-terminal</span><span class="dl">'</span><span class="p">).</span><span class="nf">generate</span><span class="p">(</span><span class="nx">qrcode</span><span class="p">,</span> <span class="p">{</span> <span class="na">small</span><span class="p">:</span> <span class="kc">true</span> <span class="p">})</span>  <span class="c1">// show qrcode on console</span>
+
+      <span class="kd">const</span> <span class="nx">qrcodeImageUrl</span> <span class="o">=</span> <span class="p">[</span>
+      <span class="dl">'</span><span class="s1">https://wechaty.js.org/qrcode/</span><span class="dl">'</span><span class="p">,</span>
+      <span class="nf">encodeURIComponent</span><span class="p">(</span><span class="nx">qrcode</span><span class="p">),</span>
+      <span class="p">].</span><span class="nf">join</span><span class="p">(</span><span class="dl">''</span><span class="p">)</span>
+
+      <span class="nx">log</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="dl">'</span><span class="s1">StarterBot</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">onScan: %s(%s) - %s</span><span class="dl">'</span><span class="p">,</span> <span class="nx">ScanStatus</span><span class="p">[</span><span class="nx">status</span><span class="p">],</span> <span class="nx">status</span><span class="p">,</span> <span class="nx">qrcodeImageUrl</span><span class="p">)</span>
+
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">log</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="dl">'</span><span class="s1">StarterBot</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">onScan: %s(%s)</span><span class="dl">'</span><span class="p">,</span> <span class="nx">ScanStatus</span><span class="p">[</span><span class="nx">status</span><span class="p">],</span> <span class="nx">status</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nf">onLogin</span> <span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">log</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="dl">'</span><span class="s1">StarterBot</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">%s login</span><span class="dl">'</span><span class="p">,</span> <span class="nx">user</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nf">onLogout</span> <span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">log</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="dl">'</span><span class="s1">StarterBot</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">%s logout</span><span class="dl">'</span><span class="p">,</span> <span class="nx">user</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">onMessage</span> <span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">log</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="dl">'</span><span class="s1">StarterBot</span><span class="dl">'</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span>
+  <span class="kd">var</span> <span class="nx">reply</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">replyToAMessage</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span>
+  <span class="k">await</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">reply</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nf">onMini</span><span class="p">(</span><span class="nx">msg</span><span class="p">){</span>
+  <span class="nx">log</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="dl">'</span><span class="s1">onMini</span><span class="dl">'</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Wechaty</span><span class="p">({</span>
+  <span class="na">name</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+  <span class="na">puppet</span><span class="p">:</span> <span class="k">new</span> <span class="nc">PuppetPadplus</span><span class="p">({</span>
+      <span class="na">token</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">token</span>
+  <span class="p">})</span>
+<span class="p">})</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">,</span>    <span class="nx">onScan</span><span class="p">)</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span>   <span class="nx">onLogin</span><span class="p">)</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">logout</span><span class="dl">'</span><span class="p">,</span>  <span class="nx">onLogout</span><span class="p">)</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="nx">onMessage</span><span class="p">)</span>
+<span class="c1">// bot.on('mini',onMini)</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+<span class="p">.</span><span class="nf">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">log</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="dl">'</span><span class="s1">StarterBot</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Starter Bot Started.</span><span class="dl">'</span><span class="p">))</span>
+<span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span> <span class="o">=&gt;</span> <span class="nx">log</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">StarterBot</span><span class="dl">'</span><span class="p">,</span> <span class="nx">e</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>2.config/config.js 基础的配置文件</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">// 设定协议的token，本项目基于wechaty-puppet-padplus</span>
+    <span class="na">token</span><span class="p">:</span> <span class="dl">"</span><span class="s2">puppet_XXXXXXXX</span><span class="dl">"</span><span class="p">,</span>
+    <span class="c1">// 机器人名字</span>
+    <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">XXXXXXXX</span><span class="dl">"</span><span class="p">,</span>
+    <span class="c1">//题库地址 申请链接为 http://api.51aidian.com/index.php?id=kunggggyoyoyo</span>
+    <span class="na">tikuApi</span><span class="p">:</span><span class="dl">""</span><span class="p">,</span>
+    <span class="c1">//bmob数据库配置 后续自行配置题库可以用到</span>
+    <span class="na">bombApplicationId</span><span class="p">:</span><span class="dl">''</span><span class="p">,</span>
+    <span class="na">bombRestApiKey</span><span class="p">:</span><span class="dl">''</span><span class="p">,</span>
+    <span class="na">bombSecretKey</span><span class="p">:</span><span class="dl">''</span><span class="p">,</span>
+    <span class="na">bombMasterKey</span><span class="p">:</span><span class="dl">''</span><span class="p">,</span>
+    <span class="na">bombSafeCode</span><span class="p">:</span><span class="dl">''</span><span class="p">,</span><span class="c1">//API安全码</span>
+    <span class="na">bmobHost</span><span class="p">:</span><span class="dl">'</span><span class="s1">https://api.bmobcloud.com/1/classes/</span><span class="dl">'</span><span class="p">,</span><span class="c1">//数据库对应</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>3.src/utils/reply.js 根据关键字，回复内容</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">axios</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="p">{</span>
+  <span class="nx">FileBox</span>
+<span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">file-box</span><span class="dl">"</span><span class="p">)</span> <span class="kd">const</span> <span class="p">{</span>
+  <span class="nx">log</span>
+<span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span><span class="p">)</span> <span class="k">import</span> <span class="nx">config</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">../../config/config</span><span class="dl">'</span> <span class="kd">const</span> <span class="p">{</span>
+  <span class="nx">pareMiniProgramMsg</span><span class="p">,</span>
+  <span class="nx">pareseXmlToJson</span>
+<span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">../utils/utils</span><span class="dl">"</span><span class="p">)</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">(</span><span class="nx">msg</span><span class="p">,</span> <span class="nx">length</span><span class="p">)</span> <span class="o">=</span> <span class="o">&gt;</span><span class="p">{</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nc">Promise</span><span class="p">(</span><span class="k">async</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=</span> <span class="o">&gt;</span><span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="mi">9</span> <span class="o">&amp;&amp;</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">fromId</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">mishi19900806</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">text</span> <span class="nx">text</span> <span class="o">=</span> <span class="nf">pareMiniProgramMsg</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="nx">result</span> <span class="o">=</span> <span class="nf">pareseXmlToJson</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="kd">var</span> <span class="nx">response</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">小程序appId：</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">msg</span><span class="p">.</span><span class="nx">appmsg</span><span class="p">.</span><span class="nx">weappinfo</span><span class="p">.</span><span class="nx">appid</span><span class="p">.</span><span class="nx">_cdata</span> <span class="nx">response</span> <span class="o">+=</span> <span class="dl">'</span><span class="se">\n\n</span><span class="s1">小程序路径为：</span><span class="dl">'</span> <span class="o">+</span> <span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">msg</span><span class="p">.</span><span class="nx">appmsg</span><span class="p">.</span><span class="nx">weappinfo</span><span class="p">.</span><span class="nx">pagepath</span><span class="p">.</span><span class="nx">_cdata</span><span class="p">).</span><span class="nf">replace</span><span class="p">(</span><span class="dl">'</span><span class="s1">.html</span><span class="dl">'</span><span class="p">,</span> <span class="dl">''</span><span class="p">)</span> <span class="nf">resolve</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nf">text</span><span class="p">().</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">答案</span><span class="dl">'</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">fromId</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">mishi19900806</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">requestUrl</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+      <span class="nx">requestUrl</span> <span class="o">=</span> <span class="nx">config</span><span class="p">.</span><span class="nx">tikuApi</span> <span class="o">+</span> <span class="nf">encodeURI</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nf">text</span><span class="p">())</span> <span class="nx">axios</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nx">requestUrl</span><span class="p">).</span><span class="nf">then</span><span class="p">(</span><span class="k">async</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="o">=</span> <span class="o">&gt;</span><span class="p">{</span>
+        <span class="nx">log</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="dl">'</span><span class="s1">接口回调正常----</span><span class="dl">'</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">❓问题：</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">question</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> </span><span class="dl">"</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">💡答案：</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">answer</span> <span class="nf">resolve</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+      <span class="p">}).</span>
+      <span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="dl">'</span><span class="s1">接口回调错误----</span><span class="dl">'</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span> <span class="nf">resolve</span><span class="p">(</span><span class="dl">"</span><span class="s2">嗯~~~,这个问题人家还不会呢~</span><span class="dl">"</span><span class="p">)</span>
+      <span class="p">})</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nf">resolve</span><span class="p">(</span><span class="dl">''</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>为了开发方便，做了判断，只允许我另外一个微信号发送消息回复内容</p>
+
+<p>4.src/utils/utils.js 工具类</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">convert</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">xml-js</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="kd">function</span> <span class="nf">pareseXmlToJson</span><span class="p">(</span><span class="nx">xml</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">convert</span><span class="p">.</span><span class="nf">xml2json</span><span class="p">(</span><span class="nx">xml</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">compact</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">spaces</span><span class="p">:</span> <span class="mi">4</span>
+  <span class="p">})</span> <span class="k">return</span> <span class="nx">json</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nf">pareseJsonToXml</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">compact</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">ignoreComment</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">spaces</span><span class="p">:</span> <span class="mi">4</span>
+  <span class="p">}</span>
+  <span class="kd">var</span> <span class="nx">xml</span> <span class="o">=</span> <span class="nx">convert</span><span class="p">.</span><span class="nf">json2xml</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span>
+  <span class="k">return</span> <span class="nx">xml</span>
+<span class="p">}</span>
+
+<span class="cm">/*
+* 解析发送微信小程序的内容 具体接收内容查看msg.xml文件
+**/</span>
+<span class="kd">function</span> <span class="nf">pareMiniProgramMsg</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="sr">/'</span><span class="se">\n</span><span class="sr">'/g</span><span class="p">,</span> <span class="dl">''</span><span class="p">).</span><span class="nf">replace</span><span class="p">(</span><span class="sr">/'</span><span class="se">\t</span><span class="sr">'/g</span><span class="p">,</span> <span class="dl">''</span><span class="p">).</span><span class="nf">replace</span><span class="p">(</span><span class="sr">/'</span><span class="se">\'</span><span class="sr">/g</span><span class="p">,</span> <span class="dl">''</span><span class="p">)</span>
+  <span class="k">return</span> <span class="nx">str</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">pareseXmlToJson</span><span class="p">,</span>
+  <span class="nx">pareseJsonToXml</span><span class="p">,</span>
+  <span class="nx">pareMiniProgramMsg</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<h2 id="wechaty-的-token-申请方法">Wechaty 的 Token 申请方法</h2>
+
+<p><a href="https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty">官方文档介绍</a></p>
+
+<h2 id="网课答案接口用法">网课答案接口用法</h2>
+
+<p><img src="/assets/2020/wanke-bot/20201015141509.webp" alt="网课答案接口" /></p>
+
+<p>1.访问<a href="http://api.51aidian.com/index.php?id=kunggggyoyoyo">http://api.51aidian.com/index.php?id=kunggggyoyoyo</a></p>
+
+<p>2.按照页面要求自定义一个 id，如<code class="language-plaintext highlighter-rouge">wangkebot</code>，记下此时的 token<code class="language-plaintext highlighter-rouge">73eF71417eC4652C561D4F30893a7F51</code>点击授权</p>
+
+<p>3.将申请的 id 和 token 拼接成<code class="language-plaintext highlighter-rouge">http://api.51aidian.com/api/adct.php?uid=wangkebot&amp;token=73eF71417eC4652C561D4F30893a7F51&amp;q=</code>(注意接口是付费的)</p>
+
+<p>完成以上步骤后，一个简易的网课答案查询的微信机器人就做好了。</p>
+
+<h2 id="总结">总结</h2>
+
+<p>以上代码实现非常简单。通过 wechaty 方便了很多。可以把公众号粉丝引流到个人号，便于后期进行私域运营。</p>
+
+<h2 id="遇到的坑点">遇到的坑点</h2>
+
+<ul>
+  <li>避免微信号被封锁，建议开发的时候用微信小号进行开发，并根据特定的情况回复内容；</li>
+  <li>wechaty-puppet 版本问题，参见 <a href="https://github.com/wechaty/wechaty/issues/1930">wechaty 文档</a></li>
+</ul>
+
+<h2 id="运行">运行</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">npm</span> <span class="nx">install</span>
+<span class="nx">npm</span> <span class="nx">start</span>
+</code></pre></div></div>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#puppet">puppet</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#padlocal">padlocal</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#wangke">wangke</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#education">education</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/hurely">
+                            <img class="rounded-circle" src="/assets/contributors/hurely/avatar.webp" alt="hurely" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/hurely">hurely</a> </h5>
+						前端开发，喜欢折腾新技术
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/10/13/wechaty-puppet-kuaishou-final-term/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/wechaty-puppet-kuaishou-mid-term/wechaty-puppet-kuaishou-mid-term.webp">  基于RPA封装的Wechaty接口下的快手聊天机器人结项报告</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/10/22/wechat-fanli-robot/"> 基于wechaty实现的微信机器人，根据淘口令生成高佣转链接，并创建新的淘口令。  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/wechat-fanli-robot/weixin.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

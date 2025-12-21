@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      实现微信产品问题反馈群实时监控与问题自动录入 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>实现微信产品问题反馈群实时监控与问题自动录入 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="实现微信产品问题反馈群实时监控与问题自动录入" />
+<meta name="author" content="tomallv" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="因为我们的用户都喜欢通过微信群讨论的方式进行产品问题反馈，这无疑给日常的线上问题处理的效率带来极大的影响。曾经尝试对用户习惯进行线上填写方式的引导，但最终以失败告终。无奈下看看弄一个微信群监控机器人是否可行。" />
+<meta property="og:description" content="因为我们的用户都喜欢通过微信群讨论的方式进行产品问题反馈，这无疑给日常的线上问题处理的效率带来极大的影响。曾经尝试对用户习惯进行线上填写方式的引导，但最终以失败告终。无奈下看看弄一个微信群监控机器人是否可行。" />
+<link rel="canonical" href="https://wechaty.js.org/2020/09/04/issue-feedback-room-monitor/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/09/04/issue-feedback-room-monitor/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/issue-feedback-room-monitor/way.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-09-04T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/issue-feedback-room-monitor/way.webp" />
+<meta property="twitter:title" content="实现微信产品问题反馈群实时监控与问题自动录入" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"tomallv"},"dateModified":"2020-09-04T00:00:00+00:00","datePublished":"2020-09-04T00:00:00+00:00","description":"因为我们的用户都喜欢通过微信群讨论的方式进行产品问题反馈，这无疑给日常的线上问题处理的效率带来极大的影响。曾经尝试对用户习惯进行线上填写方式的引导，但最终以失败告终。无奈下看看弄一个微信群监控机器人是否可行。","headline":"实现微信产品问题反馈群实时监控与问题自动录入","image":"https://wechaty.js.org/assets/2020/issue-feedback-room-monitor/way.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/09/04/issue-feedback-room-monitor/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"tomallv"},"url":"https://wechaty.js.org/2020/09/04/issue-feedback-room-monitor/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#tutorial">tutorial</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">实现微信产品问题反馈群实时监控与问题自动录入</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/tomallv">
+                            <img class="rounded-circle" src="/assets/contributors/tomallv/header.webp" alt="tomallv" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/tomallv">tomallv</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Sep 04, 2020 · <span class="reading-time">
+  
+  
+    11 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/issue-feedback-room-monitor/way.webp" alt="实现微信产品问题反馈群实时监控与问题自动录入">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>因为我们的用户都喜欢通过微信群讨论的方式进行产品问题反馈，这无疑给日常的线上问题处理的效率带来极大的影响。曾经尝试对用户习惯进行线上填写方式的引导，但最终以失败告终。无奈下看看弄一个微信群监控机器人是否可行。</p>
+
+<p>在之前公司我曾经用python通过itchat弄过一个群播报BI数据的机器人，但因为itcaht采用的是微信web协议，微信监控特别严，很多号都不能使用，即使登录上去了还会经常莫名掉线，极不稳定。因此这回肯定不能再通过web协议的方式来弄了。于是带着一点点期盼发现了Wechaty这个支持微信ipad协议的SDK。</p>
+
+<h2 id="wechaty官方定义">Wechaty官方定义</h2>
+
+<blockquote>
+  <p>Wechaty是一个开源的的个人号微信机器人接口，使用Typescript构建的Node.js应用。支持多种微信接入方案，包括网页，ipad，ios，windows，android 等。同时支持 Linux, Windows, Darwin(OSX/Mac) 和 Docker 多个平台。</p>
+</blockquote>
+
+<p>这里必须要重点提一下，Token 是 Wechaty 开放源代码项目中所设计和支持的一种认证技术，是句子互动公司基于 Wechaty 的 Puppet 实现插件对云服务 API 的授权账号。这也就意味着你在使用Wechaty开发基于ipad协议的机器人之前必须要先拿到可用的token。你可以从Wechaty社区申请到一个15天有效的试用Token，过了试用期后可以选择付费购买（200RMB/月）或者按照如下介绍尝试获取长期免费的Token：<a href="https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty">Wechaty Token 申请及使用文档和常见问题</a></p>
+
+<p>Wechaty目前已经支持了<code class="language-plaintext highlighter-rouge">Java</code>、<code class="language-plaintext highlighter-rouge">Python</code>、<code class="language-plaintext highlighter-rouge">Go</code>、<code class="language-plaintext highlighter-rouge">PHP</code>等多种语言，但是该SDK原生是用<code class="language-plaintext highlighter-rouge">TypeScript</code>编写的，并且github上大量的demo和开源项目都是用<code class="language-plaintext highlighter-rouge">node.js</code>写的，再加上Wechaty宣称可以通过6行代码就可以实现一个机器人，于是最终决定用之前一点稚嫩的<code class="language-plaintext highlighter-rouge">JavaScript</code>前端开发经验拥抱<code class="language-plaintext highlighter-rouge">node.js</code>吧！</p>
+
+<h3 id="参考资料">参考资料</h3>
+
+<ul>
+  <li>
+    <p><strong>官方</strong> <a href="https://wechaty.js.org/docs/">API文档</a></p>
+  </li>
+  <li>
+    <p><strong>官方demo：</strong><a href="https://github.com/wechaty/wechaty-getting-started">wechaty-getting-started</a></p>
+  </li>
+  <li>
+    <p><strong>wechaty-puppet-padplus</strong> <a href="https://github.com/wechaty/wechaty-puppet-padplus">示例</a> 。</p>
+  </li>
+  <li>
+    <p><strong>Wechaty社区</strong> <a href="https://wechaty.js.org/blog/">开源项目</a></p>
+  </li>
+</ul>
+
+<p>通过短时间的学习和尝试后，发现基本微信机器人常用的功能实现几乎都能从这些开源的项目中直接拿到，然后再结合自己的需求再进行改装就可以了，确实开发起来挺方便的。</p>
+
+<h3 id="开发之前首先要明确一下此次的功能需求">开发之前，首先要明确一下此次的功能需求</h3>
+
+<ul>
+  <li>
+    <p><strong>自动聊天</strong>：群聊中通过 <code class="language-plaintext highlighter-rouge">@[机器人]xxx</code>,  机器人回复问题反馈模版信息  （已完成）</p>
+  </li>
+  <li>
+    <p><strong>加入群聊自动欢迎</strong>：当新的小伙伴加入群聊后自动 <code class="language-plaintext highlighter-rouge">@[新的小伙伴]</code> 发一个文字欢迎  （已完成）</p>
+  </li>
+  <li>
+    <p><strong>推送机器人登陆二维码到企业微信</strong>：机器人掉线后，自动将二维码信息推送给指定企业微信群（已完成）</p>
+  </li>
+  <li>
+    <p><strong>监控群聊信息</strong>：实时将聊天记录入库  （已完成）</p>
+  </li>
+  <li>
+    <p><strong>自动识别问题反馈信息</strong>：自动识别判断群聊中问题反馈类信息，并收纳入问题库  （开发中）</p>
+  </li>
+  <li>
+    <p><strong>群播报功</strong>：每天下班前播报问题收纳和未关闭问题情况  （未开始）</p>
+  </li>
+</ul>
+
+<p>项目github地址：  <a href="https://github.com/tomallv/wechat-group-chat-monitoring-robot">https://github.com/tomallv/wechat-group-chat-monitoring-robot</a></p>
+
+<h3 id="一项目结构">一、项目结构</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|-- src/  
+|---- index.js                   <span class="c"># 入口文件  </span>
+|---- config.js                  <span class="c"># 配置文件  </span>
+|---- onScan.js                  <span class="c"># 机器人需要扫描二维码时监听回调  </span>
+|---- onRoomJoin.js              <span class="c"># 进入房间监听回调  </span>
+|---- onMessage.js               <span class="c"># 消息监听回调  </span>
+|---- onFriendShip.js            <span class="c"># 好友添加监听回调  </span>
+|---- onDatabaseOperation.js     <span class="c"># MySQL数据库操作回调  </span>
+|---- onEnterpriseWechatBot.js   <span class="c"># 企业微信群消息发送回调  </span>
+|---- onFileIO.js                <span class="c"># 文件读取回调  </span>
+|-- package.json
+</code></pre></div></div>
+
+<h3 id="二核心包">二、核心包</h3>
+
+<ul>
+  <li>
+    <p><strong>Wechaty核心包</strong>：  <code class="language-plaintext highlighter-rouge">npm install --save wechaty</code></p>
+  </li>
+  <li>
+    <p><strong>padplus协议包</strong>：  <code class="language-plaintext highlighter-rouge">npm install --save wechaty-puppet-padplus</code></p>
+  </li>
+  <li>
+    <p><strong>生成二维码</strong>：  <code class="language-plaintext highlighter-rouge">npm install --save qrcode-terminal</code></p>
+  </li>
+</ul>
+
+<h3 id="三接下来介绍几个核心代码文件">三、接下来介绍几个核心代码文件</h3>
+
+<p><strong>1、配置文件</strong>（ <code class="language-plaintext highlighter-rouge">src/config.js</code>）：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+<span class="c1">// puppet_padplus Token</span>
+<span class="na">token</span><span class="p">:</span> <span class="dl">"</span><span class="s2">xxxxxxxxxx</span><span class="dl">"</span><span class="p">,</span>
+
+<span class="c1">// 机器人名字</span>
+<span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">xxxxxxxxxx</span><span class="dl">"</span><span class="p">,</span>
+
+<span class="c1">// 房间/群聊</span>
+<span class="na">room</span><span class="p">:</span> <span class="p">{</span>
+     <span class="c1">// 加入房间回复</span>
+     <span class="na">roomJoinReply</span><span class="p">:</span> <span class="s2">`\n您好，欢迎您的加入，请自觉遵守群规则，文明交流！ 😊\n\n如您需要反馈问题，请按照如下模版进行拷贝填写，谢谢：\n问题反馈\n[1-问题描述]:\n[2-截图信息]:\n[3-账号信息]: \n[4-操作系统]:\n[5-浏览器]:\n[6-屏幕分辨率]:\n[7-移动设备型号(APP、小程序相关问题)]:\n[8-App、小程序版本信息(APP、小程序相关问题)]:\n[9-模块信息]: A-官网前台、B-小程序、C-APP、D-句芒后台、D-学习中心、F-CRM、G-H5网页、H-老后台、I-其他`</span>
+<span class="p">},</span>
+
+<span class="c1">// 私人</span>
+<span class="na">personal</span><span class="p">:</span> <span class="p">{</span>
+     <span class="c1">// 好友验证自动通过关键字</span>
+     <span class="na">addFriendKeywords</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">xxxxxx</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">xxxxxxx</span><span class="dl">"</span><span class="p">],</span>
+
+     <span class="c1">// 是否开启加群</span>
+     <span class="na">addRoom</span><span class="p">:</span> <span class="kc">false</span>
+<span class="p">},</span>
+
+<span class="c1">// mysql数据库配置信息</span>
+<span class="na">mysql_db</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">host</span><span class="p">:</span> <span class="dl">'</span><span class="s1">xxx.xxx.xxx.xxxx</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">port</span><span class="p">:</span> <span class="dl">'</span><span class="s1">3306</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">user</span><span class="p">:</span> <span class="dl">'</span><span class="s1">xxxxxxxxxx</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">password</span><span class="p">:</span> <span class="dl">'</span><span class="s1">xxxxxxx</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">database</span><span class="p">:</span> <span class="dl">'</span><span class="s1">xxxxxxx</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">charset</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">xxxxxxx</span><span class="dl">'</span>
+<span class="p">},</span>
+
+<span class="c1">// 要推送机器人二维码登陆信息的切页微信群webhook_key</span>
+<span class="na">webhook_key</span><span class="p">:</span> <span class="dl">"</span><span class="s2">xxxxxxxxxxxxxxxxxxxxxxxxxxx</span><span class="dl">"</span><span class="p">,</span>
+
+<span class="c1">// 机器人登陆二维码图片文件名称</span>
+<span class="na">qrcode_png</span><span class="p">:</span> <span class="dl">"</span><span class="s2">xxxxxxx.png</span><span class="dl">"</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p><strong>2、入口文件（ <code class="language-plaintext highlighter-rouge">src/index.js</code>）：</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Wechaty</span> <span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span> <span class="c1">// Wechaty核心包  </span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">PuppetPadplus</span> <span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty-puppet-padplus</span><span class="dl">'</span> <span class="c1">// padplus协议包  </span>
+<span class="k">import</span> <span class="nx">config</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">./config</span><span class="dl">'</span> <span class="c1">// 配置文件</span>
+
+<span class="c1">//初始化bot</span>
+<span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Wechaty</span><span class="p">({</span>  
+ <span class="na">puppet</span><span class="p">:</span> <span class="k">new</span> <span class="nc">PuppetPadplus</span><span class="p">({</span>  
+ <span class="na">token</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">token</span>  
+ <span class="p">}),</span>  
+ <span class="na">name</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">name</span>  
+<span class="p">})</span>
+
+<span class="c1">//调用，监听，启动</span>
+<span class="k">import</span> <span class="nx">onScan</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">./onScan</span><span class="dl">'</span>  
+<span class="k">import</span> <span class="nx">onRoomJoin</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">./onRoomJoin</span><span class="dl">'</span>  
+<span class="k">import</span> <span class="nx">onMessage</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">./onMessage</span><span class="dl">'</span>  
+<span class="k">import</span> <span class="nx">onFriendShip</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">./onFriendShip</span><span class="dl">'</span>  
+<span class="nx">bot</span>  
+ <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">scan</span><span class="dl">"</span><span class="p">,</span> <span class="nx">onScan</span><span class="p">)</span> <span class="c1">// 机器人需要扫描二维码时监听  </span>
+ <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">room-join</span><span class="dl">"</span><span class="p">,</span> <span class="nx">onRoomJoin</span><span class="p">)</span> <span class="c1">// 加入房间监听  </span>
+ <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">message</span><span class="dl">"</span><span class="p">,</span> <span class="nf">onMessage</span><span class="p">(</span><span class="nx">bot</span><span class="p">))</span> <span class="c1">// 消息监听  </span>
+ <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">friendship</span><span class="dl">"</span><span class="p">,</span> <span class="nx">onFriendShip</span><span class="p">)</span> <span class="c1">// 好友添加监听  </span>
+ <span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><strong>3、机器人掉线监听回调（<code class="language-plaintext highlighter-rouge">src/onScan.js</code>）</strong></p>
+
+<p>当机器人掉线的时候，很多开源项目都是将二维码生成到程序log中，供扫描使用。但是一般情况当机器人放到服务器的时候，扫描二维码就会变得非常不方便，因此这里结合企业微信群机器人API实现了一旦掉线就把登陆二维码推送到企业微信群中，这样随时随地都可以进行扫描登陆操作了。同时也考虑基本上机器人都是后半夜会发生掉线情况，因此这里设置了有效推送时间段，以防止干扰正常休息。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">Qrterminal</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">qrcode-terminal</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">qrimage</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">qr-image</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">fs</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">wechat_bot</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">./onEnterpriseWechatBot</span><span class="dl">'</span> <span class="c1">// 企业微信机器人群发</span>
+<span class="k">import</span> <span class="nx">config</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">./config</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">path</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">defpath</span><span class="o">=</span><span class="nx">path</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="dl">'</span><span class="s1">../</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">qrcode_png_path</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="nx">defpath</span><span class="p">,</span><span class="nx">config</span><span class="p">.</span><span class="nx">qrcode_png</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">weboot_key</span> <span class="o">=</span> <span class="nx">config</span><span class="p">.</span><span class="nx">webhook_key</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="nf">onScan</span><span class="p">(</span><span class="nx">qrcode</span><span class="p">,</span> <span class="nx">status</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">Qrterminal</span><span class="p">.</span><span class="nf">generate</span><span class="p">(</span><span class="nx">qrcode</span><span class="p">,</span> <span class="p">{</span> <span class="na">small</span><span class="p">:</span> <span class="kc">true</span> <span class="p">})</span>
+    <span class="kd">const</span> <span class="nx">myDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Date</span><span class="p">()</span>
+    <span class="kd">const</span> <span class="nx">current_hour</span> <span class="o">=</span> <span class="nx">myDate</span><span class="p">.</span><span class="nf">getHours</span><span class="p">();</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">当前小时数： </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">current_hour</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">状态码： </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">status</span><span class="p">);</span>
+
+    <span class="c1">// 设置早上8点到晚上24点之间才推送掉线二维码</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">current_hour</span> <span class="o">&gt;=</span> <span class="mi">8</span> <span class="o">&amp;&amp;</span> <span class="nx">current_hour</span> <span class="o">&lt;=</span><span class="mi">23</span><span class="p">)</span> <span class="p">{</span>
+          <span class="kd">let</span> <span class="nx">link</span> <span class="o">=</span> <span class="dl">""</span>
+          <span class="k">if </span><span class="p">(</span><span class="nx">status</span> <span class="o">==</span> <span class="mi">2</span><span class="p">){</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">机器人已经下线，请重新扫描二维码登陆: </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">qrcode</span><span class="p">);</span>
+                <span class="kd">const</span> <span class="nx">temp_qrcode</span> <span class="o">=</span> <span class="nx">qrimage</span><span class="p">.</span><span class="nf">image</span><span class="p">(</span><span class="nx">qrcode</span><span class="p">,</span> <span class="p">{</span><span class="na">size</span> <span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="na">margin</span><span class="p">:</span> <span class="mi">4</span><span class="p">})</span> <span class="c1">// 生成机器人登陆二维码图片</span>
+                <span class="nx">temp_qrcode</span><span class="p">.</span><span class="nf">pipe</span><span class="p">(</span><span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">).</span><span class="nf">createWriteStream</span><span class="p">(</span><span class="nx">qrcode_png_path</span><span class="p">).</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">finish</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">write finished</span><span class="dl">'</span><span class="p">)}))</span>
+                <span class="nx">link</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">机器人掉线了，请点击如下链接查看登陆二维码:</span><span class="se">\n</span><span class="s1"> https://wechaty.js.org/qrcode/</span><span class="dl">'</span><span class="o">+</span> <span class="nx">qrcode</span>
+          <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">status</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">link</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">已扫码，请在手机端确认登陆...</span><span class="dl">"</span>
+          <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">status</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">link</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">已确认,登陆成功！</span><span class="dl">"</span>
+          <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">status</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">link</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">二维码已过期！</span><span class="dl">"</span>
+          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+               <span class="nx">link</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">机器人掉线了，请点击如下链接查看登陆二维码:</span><span class="se">\n</span><span class="s1"> https://wechaty.js.org/qrcode/</span><span class="dl">'</span><span class="o">+</span> <span class="nx">qrcode</span>
+          <span class="p">}</span>
+          <span class="nx">wechat_bot</span><span class="p">.</span><span class="nf">send_text</span><span class="p">(</span><span class="nx">link</span><span class="p">,</span><span class="nx">weboot_key</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>功能实现截图：</p>
+
+<p><img src="/assets/2020/issue-feedback-room-monitor/qrcode-push.webp" alt="1" /></p>
+
+<p><strong>4、消息监听回调（<code class="language-plaintext highlighter-rouge">src/onMessage.js</code>）</strong></p>
+
+<p>主要实现对群消息进行监听，将监听到聊天消息写入mysql中。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Message</span> <span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">config</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">./config</span><span class="dl">'</span> <span class="c1">// 配置文件</span>
+<span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">config</span><span class="p">.</span><span class="nx">name</span> <span class="c1">// 机器人名字</span>
+<span class="k">import</span> <span class="nx">mysqldb</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">./onDatabaseOperation</span><span class="dl">'</span> <span class="c1">// 连接MySQL数据库</span>
+
+<span class="c1">// 消息监听回调</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">bot</span> <span class="o">=&gt;</span> <span class="p">{</span>
+         <span class="k">return</span> <span class="k">async</span> <span class="kd">function</span> <span class="nf">onMessage</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+             <span class="c1">// 判断消息来自自己，直接return</span>
+             <span class="k">if </span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nf">self</span><span class="p">())</span> <span class="k">return</span>
+             <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">=============================</span><span class="dl">"</span><span class="p">)</span>
+             <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`msg : </span><span class="p">${</span><span class="nx">msg</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+             <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`from: </span><span class="p">${</span><span class="nx">msg</span><span class="p">.</span><span class="k">from</span><span class="p">()</span> <span class="p">?</span> <span class="nx">msg</span><span class="p">.</span><span class="k">from</span><span class="p">().</span><span class="nf">name</span><span class="p">()</span> <span class="p">:</span> <span class="kc">null</span><span class="p">}</span><span class="s2">: </span><span class="p">${</span><span class="nx">msg</span><span class="p">.</span><span class="k">from</span><span class="p">()</span> <span class="p">?</span> <span class="nx">msg</span><span class="p">.</span><span class="k">from</span><span class="p">().</span><span class="nx">id</span> <span class="p">:</span> <span class="kc">null</span><span class="p">}</span><span class="s2"> `</span><span class="p">)</span>
+             <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`to: </span><span class="p">${</span><span class="nx">msg</span><span class="p">.</span><span class="nf">to</span><span class="p">()}</span><span class="s2">`</span><span class="p">)</span>
+             <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`send_time: </span><span class="p">${</span><span class="nx">msg</span><span class="p">.</span><span class="nf">date</span><span class="p">()}</span><span class="s2">`</span><span class="p">)</span>
+             <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`text: </span><span class="p">${</span><span class="nx">msg</span><span class="p">.</span><span class="nf">text</span><span class="p">()}</span><span class="s2"> `</span><span class="p">)</span>
+             <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`isRoom: </span><span class="p">${</span><span class="nx">msg</span><span class="p">.</span><span class="nf">room</span><span class="p">()}</span><span class="s2"> : </span><span class="p">${</span><span class="nx">msg</span><span class="p">.</span><span class="nf">room</span><span class="p">()</span> <span class="p">?</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">room</span><span class="p">().</span><span class="nx">id</span> <span class="p">:</span> <span class="kc">null</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+             <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">=============================</span><span class="dl">"</span><span class="p">)</span>
+
+             <span class="c1">// 判断此消息类型是否为群消息</span>
+             <span class="k">if </span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nf">room</span><span class="p">())</span> <span class="p">{</span>
+                  <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">room</span><span class="p">()</span> <span class="c1">// 获取群聊</span>
+                  <span class="kd">const</span> <span class="nx">room_name</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">room</span><span class="p">}</span><span class="s2"> `</span> <span class="c1">// 获取群名称</span>
+                  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`群名称：`</span> <span class="o">+</span> <span class="nx">room_name</span><span class="p">.</span><span class="nf">substring</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="nx">room_name</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span>
+                  <span class="kd">const</span> <span class="nx">room_id</span> <span class="o">=</span> <span class="nx">room</span><span class="p">.</span><span class="nx">id</span> <span class="c1">// 获取群ID</span>
+                  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`群id ：`</span> <span class="o">+</span> <span class="nx">room_id</span><span class="p">)</span>
+                  <span class="kd">let</span> <span class="nx">sender_alias</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">alias</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="k">from</span><span class="p">())</span> <span class="c1">//获取发信人群昵称</span>
+                  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`发信人的群昵称：`</span> <span class="o">+</span> <span class="nx">sender_alias</span><span class="p">)</span>
+             <span class="k">if </span><span class="p">(</span><span class="nx">sender_alias</span> <span class="o">==</span> <span class="kc">null</span><span class="p">){</span>
+                  <span class="nx">sender_alias</span> <span class="o">=</span> <span class="dl">""</span>
+             <span class="p">}</span>
+             <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`发信人的群昵称：`</span> <span class="o">+</span> <span class="nx">sender_alias</span><span class="p">)</span>
+             <span class="kd">const</span> <span class="nx">sender_name</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="k">from</span><span class="p">().</span><span class="nf">name</span><span class="p">()</span> <span class="c1">//获取发信人微信名称</span>
+             <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`发信人的微信名称：`</span> <span class="o">+</span> <span class="nx">sender_name</span><span class="p">)</span>
+             <span class="kd">const</span> <span class="nx">msg_date</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">date</span><span class="p">()</span> <span class="c1">// 获取消息发送时间</span>
+             <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`消息发送时间: </span><span class="p">${</span><span class="nx">msg</span><span class="p">.</span><span class="nf">date</span><span class="p">()}</span><span class="s2">`</span><span class="p">)</span>
+             <span class="kd">const</span> <span class="nx">msg_type</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">type</span><span class="p">()</span> <span class="c1">// 获取消息类型</span>
+             <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`消息类型：`</span> <span class="o">+</span> <span class="nx">msg_type</span><span class="p">)</span>
+             <span class="kd">var</span> <span class="nx">msg_content</span> <span class="o">=</span> <span class="dl">""</span> <span class="c1">// 获取消息内容</span>
+
+             <span class="k">if </span><span class="p">(</span><span class="nx">msg_type</span> <span class="o">==</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">Text</span> <span class="o">||</span> <span class="nx">msg_type</span> <span class="o">==</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">Url</span><span class="p">){</span>
+                  <span class="nx">msg_content</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">text</span><span class="p">()</span>
+             <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">msg_type</span> <span class="o">==</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">Attachment</span><span class="p">){</span>
+                  <span class="nx">msg_content</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">消息内容类型为附件</span><span class="dl">"</span>
+             <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">msg_type</span> <span class="o">==</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">Audio</span><span class="p">){</span>
+                  <span class="nx">msg_content</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">消息内容类型为音频</span><span class="dl">"</span>
+             <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">msg_type</span> <span class="o">==</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">Contact</span><span class="p">){</span>
+                  <span class="nx">msg_content</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">消息内容类型为联系人</span><span class="dl">"</span>
+             <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">msg_type</span> <span class="o">==</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">Emoticon</span><span class="p">){</span>
+                  <span class="nx">msg_content</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">消息内容类型为表情包</span><span class="dl">"</span>
+             <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">msg_type</span> <span class="o">==</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">Image</span><span class="p">){</span>
+                  <span class="nx">msg_content</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">消息内容类型为图片</span><span class="dl">"</span>
+             <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">msg_type</span> <span class="o">==</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">Video</span><span class="p">){</span>
+                  <span class="nx">msg_content</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">消息内容类型为视频</span><span class="dl">"</span>
+             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                  <span class="nx">msg_content</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">消息内容类型为未知</span><span class="dl">"</span>
+             <span class="p">}</span>
+             <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`消息内容：`</span> <span class="o">+</span> <span class="nx">msg_content</span><span class="p">)</span>
+
+             <span class="c1">// 消息入库sql</span>
+             <span class="kd">var</span> <span class="nx">sql</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">insert into wechat_room_chat_record(id,room_name,room_id,sender_name,sender_alias,msg_content,msg_type,issue_flag,msg_date) values(?,?,?,?,?,?,?,?,?)</span><span class="dl">"</span>
+
+             <span class="c1">// 入库sql消息变量</span>
+             <span class="kd">var</span> <span class="nx">sqlParams</span> <span class="o">=</span> <span class="p">[</span><span class="nx">process</span><span class="p">.</span><span class="nx">hrtime</span><span class="p">.</span><span class="nf">bigint</span><span class="p">(),</span><span class="nx">room_name</span><span class="p">.</span><span class="nf">substring</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="nx">room_name</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">2</span><span class="p">),</span><span class="nx">room_id</span><span class="p">,</span><span class="nx">sender_name</span><span class="p">,</span><span class="nx">sender_alias</span><span class="p">,</span><span class="nx">msg_content</span><span class="p">,</span><span class="nx">msg_type</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nx">msg_date</span><span class="p">]</span>
+             <span class="nx">mysqldb</span><span class="p">.</span><span class="nc">InsertData</span><span class="p">(</span><span class="nx">sql</span><span class="p">,</span><span class="nx">sqlParams</span><span class="p">)</span>
+             <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`入库时间戳：`</span> <span class="o">+</span> <span class="nx">process</span><span class="p">.</span><span class="nx">hrtime</span><span class="p">.</span><span class="nf">bigint</span><span class="p">())</span>
+
+             <span class="c1">// 收到消息，提到自己</span>
+             <span class="k">if </span><span class="p">(</span><span class="k">await</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">mentionSelf</span><span class="p">())</span> <span class="p">{</span>
+                   <span class="c1">// 获取提到自己的名字</span>
+                   <span class="kd">let</span> <span class="nb">self</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">to</span><span class="p">()</span>
+                   <span class="nx">self_format</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">@</span><span class="dl">"</span> <span class="o">+</span> <span class="nb">self</span><span class="p">.</span><span class="nf">name</span><span class="p">()</span>
+                   <span class="kd">const</span> <span class="nx">self_name</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="nf">name</span><span class="p">()</span> <span class="c1">//获取机器人自己的微信名称</span>
+                   <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">自己的微信名称：</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">self_name</span><span class="p">)</span>
+                   <span class="kd">const</span> <span class="nx">self_alias</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">alias</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nf">to</span><span class="p">())</span> <span class="c1">//获取机器人自己的群昵称</span>
+                   <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">自己的群昵称：</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">self_alias</span><span class="p">)</span>
+                   <span class="c1">// 获取消息内容，拿到整个消息文本，去掉 @+名字</span>
+                   <span class="kd">let</span> <span class="nx">sendText</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">text</span><span class="p">().</span><span class="nf">replace</span><span class="p">(</span><span class="nx">self_format</span><span class="p">,</span> <span class="dl">""</span><span class="p">).</span><span class="nf">substring</span><span class="p">(</span><span class="mi">1</span><span class="p">,)</span>
+                   <span class="c1">// 规定回复问题反馈模版</span>
+                   <span class="kd">var</span> <span class="nx">report_template</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">如您需要反馈问题，请按照如下模版进行拷贝填写，谢谢：</span><span class="se">\n</span><span class="s2">问题反馈</span><span class="se">\n</span><span class="s2">[1-问题描述]:</span><span class="se">\n</span><span class="s2">[2-截图信息]:</span><span class="se">\n</span><span class="s2">[3-账号信息]: </span><span class="se">\n</span><span class="s2">[4-操作系统]:</span><span class="se">\n</span><span class="s2">[5-浏览器]:</span><span class="se">\n</span><span class="s2">[6-屏幕分辨率]:</span><span class="se">\n</span><span class="s2">[7-移动设备型号(APP、小程序相关问题)]:</span><span class="se">\n</span><span class="s2">[8-App、小程序版本信息(APP、小程序相关问题)]:</span><span class="se">\n</span><span class="s2">[9-模块信息]: A-官网前台、B-小程序、C-APP、D-句芒后台、D-学习中心、F-CRM、G-H5网页、H-老后台、I-其他</span><span class="dl">"</span>
+                   <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">自动回复内容：</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">report_template</span><span class="p">)</span>
+
+                   <span class="c1">// 返回消息，并@来自人</span>
+                   <span class="kd">var</span> <span class="nx">Datetemp1</span><span class="o">=</span> <span class="k">new</span> <span class="nc">Date</span><span class="p">();</span>
+                   <span class="nx">room</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">report_template</span><span class="p">,</span> <span class="nx">msg</span><span class="p">.</span><span class="k">from</span><span class="p">())</span>
+                   <span class="kd">const</span> <span class="nx">sql</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">insert into wechat_room_chat_record(id,room_name,room_id,sender_name,sender_alias,msg_content,msg_type,issue_flag,msg_date) values(?,?,?,?,?,?,?,?,?)</span><span class="dl">"</span>
+                   <span class="kd">const</span> <span class="nx">sqlParams</span> <span class="o">=</span> <span class="p">[</span><span class="nx">process</span><span class="p">.</span><span class="nx">hrtime</span><span class="p">.</span><span class="nf">bigint</span><span class="p">(),</span><span class="nx">room_name</span><span class="p">.</span><span class="nf">substring</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="nx">room_name</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">2</span><span class="p">),</span> <span class="nx">room_id</span><span class="p">,</span><span class="nx">self_name</span><span class="p">,</span><span class="nx">self_alias</span><span class="p">,</span><span class="nx">report_template</span><span class="p">,</span><span class="nx">Message</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">Text</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nx">Datetemp1</span><span class="p">]</span>
+                   <span class="nx">mysqldb</span><span class="p">.</span><span class="nc">InsertData</span><span class="p">(</span><span class="nx">sql</span><span class="p">,</span><span class="nx">sqlParams</span><span class="p">)</span>
+                   <span class="k">return</span>
+             <span class="p">}</span>
+         <span class="p">}</span> <span class="k">else</span><span class="p">{</span>
+         <span class="c1">// 非群聊不做任何处理</span>
+        <span class="k">return</span>
+<span class="p">}}}</span>
+
+</code></pre></div></div>
+
+<p>当在群里@机器人的时候，机器人会自动回复问题反馈的模版信息：</p>
+
+<p><img src="/assets/2020/issue-feedback-room-monitor/feedback-template.webp" alt="2" /></p>
+
+<p>这里由于时间问题，做的相对简单。如果时间充分完全可以做一个微服务，支撑机器人更好在群里与他人互动。</p>
+
+<p>消息入库示例：</p>
+
+<p><img src="/assets/2020/issue-feedback-room-monitor/chat-insert-into-db.webp" alt="3" /></p>
+
+<p>这块目前只是实现了消息入库，但是对聊天中的图片、视频和音频文件的保存的功能部分还没有整合进去，相关部分还处于本地调试过程中。后续会在github上更新此部分代码。</p>
+
+<p>对于自动识别判断聊天信息是否为问题反馈点的功能部分。目前使用Python利用Jieba的分词方案结合人工后期统计的热词字典，已经达到识别正确率&gt;90%，误识别率&lt;10%的效果。这块也正处于本地测试中，稍后会把这块功能移植到node.js，并集成到该项目中。</p>
+
+<p>至于最后两个环节，一个是将问题反馈的录入问题系统以及每天机器人群内播报当天问题情况的功能，也会在稍后进行开发。并集成到该项目中。</p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#issue">issue</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#padplus">padplus</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/tomallv">
+                            <img class="rounded-circle" src="/assets/contributors/tomallv/header.webp" alt="tomallv" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/tomallv">tomallv</a> </h5>
+						A veteran who stand fast and remain at testing for more than 10 years
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/08/31/wechaty-english-learning-assistant/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/wechaty-english-learning-assistant/header.webp">  基于wechaty的英语学习群助手</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/09/12/post-ts-to-python/"> Wechaty 将 TS 转发到 Python 的探索实践  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/post-ts-to-python/screenshot.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      OSPP 2021-期中报告-基于 Itchat 为 Python Wechaty 实现社区首个 Python 语言的本地 Puppet | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>OSPP 2021-期中报告-基于 Itchat 为 Python Wechaty 实现社区首个 Python 语言的本地 Puppet | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="OSPP 2021-期中报告-基于 Itchat 为 Python Wechaty 实现社区首个 Python 语言的本地 Puppet" />
+<meta name="author" content="lyleshaw" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="“开源软件供应链点亮计划-暑期2021”（以下简称 暑期2021）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。 旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。 根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2021”活动奖金和奖杯。 官网：https://summer.iscas.ac.cn/" />
+<meta property="og:description" content="“开源软件供应链点亮计划-暑期2021”（以下简称 暑期2021）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。 旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。 根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2021”活动奖金和奖杯。 官网：https://summer.iscas.ac.cn/" />
+<link rel="canonical" href="https://wechaty.js.org/2021/08/29/ospp-mid-term-wechaty-itchat-puppet/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/08/29/ospp-mid-term-wechaty-itchat-puppet/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/08-ospp-mid-term-wechaty-itchat-puppet/python-wechaty-puppet-itchat.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-08-29T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/08-ospp-mid-term-wechaty-itchat-puppet/python-wechaty-puppet-itchat.webp" />
+<meta property="twitter:title" content="OSPP 2021-期中报告-基于 Itchat 为 Python Wechaty 实现社区首个 Python 语言的本地 Puppet" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"lyleshaw"},"dateModified":"2021-08-29T00:00:00+00:00","datePublished":"2021-08-29T00:00:00+00:00","description":"“开源软件供应链点亮计划-暑期2021”（以下简称 暑期2021）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。 旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。 根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2021”活动奖金和奖杯。 官网：https://summer.iscas.ac.cn/","headline":"OSPP 2021-期中报告-基于 Itchat 为 Python Wechaty 实现社区首个 Python 语言的本地 Puppet","image":"https://wechaty.js.org/assets/2021/08-ospp-mid-term-wechaty-itchat-puppet/python-wechaty-puppet-itchat.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/08/29/ospp-mid-term-wechaty-itchat-puppet/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"lyleshaw"},"url":"https://wechaty.js.org/2021/08/29/ospp-mid-term-wechaty-itchat-puppet/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+              <a class="sscroll text-danger" href="/categories.html#ospp">ospp</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">OSPP 2021-期中报告-基于 Itchat 为 Python Wechaty 实现社区首个 Python 语言的本地 Puppet</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/lyleshaw">
+                            <img class="rounded-circle" src="/assets/contributors/lyleshaw/avatar.webp" alt="Lyle Shaw" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/lyleshaw">Lyle Shaw</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Aug 29, 2021 · <span class="reading-time">
+  
+  
+    2 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/08-ospp-mid-term-wechaty-itchat-puppet/python-wechaty-puppet-itchat.webp" alt="OSPP 2021-期中报告-基于 Itchat 为 Python Wechaty 实现社区首个 Python 语言的本地 Puppet">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>“开源软件供应链点亮计划-暑期2021”（以下简称 暑期2021）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。
+旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。
+根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2021”活动奖金和奖杯。
+官网：<a href="https://summer.iscas.ac.cn/">https://summer.iscas.ac.cn/</a></p>
+
+<p>本项目 [基于 Itchat 为 Python Wechaty 实现社区首个 Python 语言的本地 Puppet] 系 暑期2021 支持的开源项目。</p>
+
+<h2 id="基于-itchat-为-python-wechaty-实现社区首个-python-语言的本地-puppet信息">基于 Itchat 为 Python Wechaty 实现社区首个 Python 语言的本地 Puppet信息</h2>
+
+<ul>
+  <li>导师：吴京京、李卓桓</li>
+  <li>学生：肖良玉</li>
+  <li>
+    <p>项目介绍：<a href="https://github.com/wechaty/summer/issues/75">https://github.com/wechaty/summer/issues/75</a></p>
+  </li>
+  <li>项目名称：基于 Itchat 为 Python Wechaty 实现社区首个 Python 语言的本地 Puppet</li>
+  <li>方案描述：
+    <ul>
+      <li>L0阶段：
+        <ul>
+          <li>预期效果：熟悉 Itchat 的各项 API ；熟悉 Wechaty Puppet 的开发流程；创建 python-wechaty-puppet-itchat 的 repository 。</li>
+          <li>实施方案：阅读 Itchat 文档，了解 Wechaty Puppet。</li>
+        </ul>
+      </li>
+      <li>L1阶段：
+        <ul>
+          <li>预期效果：完成 python-wechaty-puppet-itchat 的登录与初始化部分的实现；完成  ding-dong-bot 的实现。</li>
+          <li>实施方案：了解 python-wechaty-puppet-service 是如何通过 gRPC 与远程服务器通讯的，并结合 Itchat 的设计模式，对比二者异同，思考如何将 Itchat 的函数封装进 wechaty-puppet ，思考 wechaty-puppet 的哪些代码对于该项目而言是不必要的，并完成对 Itchat 中 auto_login 函数的封装。 在此基础上深入了解 Itchat msg_register 函数的实现方法，并在此基础上封装进 wechaty-puppet ，同时完成发送消息函数的封装。同时参考其他 wechaty-puppet 完成 ding-dong-bot.py 并使其能正常运行。</li>
+        </ul>
+      </li>
+      <li>L2阶段：
+        <ul>
+          <li>预期效果：配置 GitHub Action 实现 python-wechaty-puppet-itchat 自动发布到  Pypi 并完成自动化测试。</li>
+          <li>实施方案：了解 Pypi 的发布流程，并在参考已有 GitHub Action 配置文件的基础上完成自动发布的流程，同时完成自动化测试。</li>
+        </ul>
+      </li>
+      <li>L3阶段：
+        <ul>
+          <li>预期效果：使用 Itchat 的 API 为 python-wechaty-puppet-itchat 实现 User 和  Room 部分的功能。</li>
+          <li>实施方案：在该阶段，我计划深入了解 Itchat 关于 User 部分的 get_contact 等函数的实现，封装为 Wechaty 的 User 相关模块的功能。同时将 Itchat create_chatroom 等函数封装为 Wechaty Room 模块的功能。</li>
+        </ul>
+      </li>
+      <li>L4阶段：
+        <ul>
+          <li>预期效果：为 python-wechaty-puppet-itchat 实现 Itchat 的其他功能。</li>
+          <li>实施方案：在该阶段，我计划将 Itchat 剩余的接口根据 Wechaty 的代码风格封装进 python-wechaty-puppet-itchat 。</li>
+        </ul>
+      </li>
+      <li>*L5阶段：
+        <ul>
+          <li>预期效果：完善 python-wechaty 文档。</li>
+          <li>实施方案：在了解 python-wechaty 的基础上，我计划在 python-wechaty 原有文档的基础上进行完善和补充。</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>时间规划：
+    <ul>
+      <li>第一阶段（7月-8月）
+        <ul>
+          <li>L0阶段开发 5天</li>
+          <li>L1阶段开发 10天</li>
+          <li>L2阶段开发 20天</li>
+          <li>中期验收</li>
+        </ul>
+      </li>
+      <li>第二阶段（8月-10月）
+        <ul>
+          <li>L3阶段开发 10天</li>
+          <li>L4阶段开发 15天</li>
+          <li>L5阶段开发 15天</li>
+          <li>结项验收</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="项目进度">项目进度</h2>
+
+<ul>
+  <li>已完成工作：
+    <ul>
+      <li>L0阶段：已完成（PR：<a href="https://github.com/wechaty/python-wechaty-puppet-itchat/pull/1">init code by python wechaty puppet service #1</a>）；</li>
+      <li>L1阶段：已完成对收发消息接口的封装，可以正常发出文字或图片消息， Puppet 已经可以收到消息，但 Wechaty 层由于部分原因，在事件触发上还存在问题（PR：<a href="https://github.com/wechaty/python-wechaty-puppet-itchat/pull/4">添加scan/login事件 #4</a> 和 <a href="https://github.com/wechaty/python-wechaty-puppet-itchat/pull/6">Debug emit problem #6</a>）；</li>
+      <li>L2阶段：已完成 CI/CD 配置（PR：<a href="https://github.com/wechaty/python-wechaty-puppet-itchat/pull/7">Add CI/CD #7</a>）和 PyPi 打包发布：<a href="https://pypi.org/project/wechaty-puppet-itchat/">https://pypi.org/project/wechaty-puppet-itchat/</a>；</li>
+      <li>L3阶段：已完成对获取联系人列表和获取群列表接口的封装，剩余接口的封装工作待二期完成（PR：<a href="https://github.com/wechaty/python-wechaty-puppet-itchat/pull/6">Debug emit problem #6</a>）；</li>
+    </ul>
+  </li>
+  <li>遇到的问题及解决方案：
+    <ul>
+      <li>困难1：对 CI/CD 中的各项工具不熟悉，推代码时遇到困难。</li>
+      <li>解决方案：根据导师推荐的资料，学习 GitHub Action 、 MakeFiles 、 pre-commit 等工具的用法，并配置 GPG key 等。</li>
+      <li>困难2：在 Wechaty Puppet 中无法正常使用 Itchat 的函数。</li>
+      <li>解决方案：根据导师的建议，深入了解了 Python 协程，将 Itchat 函数全部改为异步函数后得以解决。</li>
+    </ul>
+  </li>
+  <li>后续工作安排：
+    <ul>
+      <li>0815-0820：解决当前关于 AsyncIOEventEmitter 与 Itchat 事件顺序混乱的问题；</li>
+      <li>0821-0831：完成 Itchat 中 create_chatroom 、 set_chatroom_name 等关于 User 和 Room 部分接口的封装；</li>
+      <li>0901-0915：完成单元测试和代码优化；</li>
+      <li>0916-0930：考虑实现 Wechaty 接口中存在，但 Itchat 中没有的几个接口；</li>
+      <li>1001-1025：时间精力充足的情况下，完成对 Itchat 的重构工作，并在重构代码上修改  python-wechaty-puppet-itchat 的代码</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="项目成果">项目成果</h2>
+
+<p>项目仓库: <a href="https://github.com/wechaty/python-wechaty-puppet-itchat">https://github.com/wechaty/python-wechaty-puppet-itchat</a></p>
+
+<h3 id="live-coding视频">live coding视频</h3>
+
+<blockquote>
+  <p>国内链接：<a href="https://www.bilibili.com/video/BV15P4y1p7JN/">https://www.bilibili.com/video/BV15P4y1p7JN/</a></p>
+</blockquote>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/hce3c4WZylo" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h3 id="ppt展示视频">PPT展示视频</h3>
+
+<blockquote>
+  <p>国内链接：<a href="https://www.bilibili.com/video/BV1Ef4y1G7hE">https://www.bilibili.com/video/BV1Ef4y1G7hE</a></p>
+</blockquote>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/gjg1EW30pOw" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h3 id="项目ppt">项目PPT</h3>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="/assets/js/viewer-js/#/assets/2021/08-ospp-mid-term-wechaty-itchat-puppet/itchat.pdf" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h2 id="联系我们">联系我们</h2>
+
+<ul>
+  <li>项目链接：<a href="https://github.com/wechaty/summer/issues/75">https://github.com/wechaty/summer/issues/75</a></li>
+  <li>联系方式：<a href="mailto:lyle@hdu.edu.cn">lyle@hdu.edu.cn</a></li>
+</ul>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#itchat">itchat</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#puppet">puppet</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#summer-of-wechaty">summer-of-wechaty</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#summer-2021">summer-2021</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ecosystem">ecosystem</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ospp">ospp</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ospp-2021">ospp-2021</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#mid-term">mid-term</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/lyleshaw">
+                            <img class="rounded-circle" src="/assets/contributors/lyleshaw/avatar.webp" alt="Lyle Shaw" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/lyleshaw">Lyle Shaw</a> </h5>
+						Just a student.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/08/29/ospp-mid-term-club-managment/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/08-ospp-mid-term-club-managment-en/wechaty.webp">  OSPP 2021-期中报告-开发基于微信实现微俱乐部会员&活动管理的微信小程序</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/08/29/wechaty-story-generation/"> 对话故事生成，创造自己的无限世界  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/08-wechaty-story-generation/title.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

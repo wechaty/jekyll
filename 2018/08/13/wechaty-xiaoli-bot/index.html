@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      用wechaty实现新闻资讯播报机器人 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>用wechaty实现新闻资讯播报机器人 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="用wechaty实现新闻资讯播报机器人" />
+<meta name="author" content="judaschrist" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Conversational RPA SDK for Chatbot Makers" />
+<meta property="og:description" content="Conversational RPA SDK for Chatbot Makers" />
+<link rel="canonical" href="https://wechaty.js.org/2018/08/13/wechaty-xiaoli-bot/" />
+<meta property="og:url" content="https://wechaty.js.org/2018/08/13/wechaty-xiaoli-bot/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2018/wechaty-xiaoli.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-08-13T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2018/wechaty-xiaoli.webp" />
+<meta property="twitter:title" content="用wechaty实现新闻资讯播报机器人" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"judaschrist"},"dateModified":"2018-08-13T00:00:00+00:00","datePublished":"2018-08-13T00:00:00+00:00","description":"Conversational RPA SDK for Chatbot Makers","headline":"用wechaty实现新闻资讯播报机器人","image":"https://wechaty.js.org/assets/2018/wechaty-xiaoli.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2018/08/13/wechaty-xiaoli-bot/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"judaschrist"},"url":"https://wechaty.js.org/2018/08/13/wechaty-xiaoli-bot/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">用wechaty实现新闻资讯播报机器人</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/judaschrist">
+                            <img class="rounded-circle" src="/assets/contributors/judaschrist/avatar.webp" alt="Lingxiao Zhang" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/judaschrist">Lingxiao Zhang</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Aug 13, 2018 · <span class="reading-time">
+  
+  
+    8 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2018/wechaty-xiaoli.webp" alt="用wechaty实现新闻资讯播报机器人">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p><img src="/assets/2018/wechaty-xiaoli.webp" alt="用wechaty实现智能内容机器人" /></p>
+
+<p>感谢 @lijiarui 邀请我分享我们的智能内容服务，以及在wechaty上的应用场景。</p>
+
+<p>我们在小理智能开发了一套智能内容服务系统，能够为各个领域提供智能资讯接口，包括新闻搜索、主题订阅、日报订阅等，帮助开发者将内容服务整合到自己的系统和产品中（关于小理内容接口的详细介绍看<a href="#append">这里</a>）。</p>
+
+<p>在小理内部，我们用这些接口进行社群自动化运营，比如给群里定时推送某一个主题的新闻资讯，自动维护群的活跃度，并且带来额外流量。
+以下给出两个典型的应用场景：<strong>智能资讯问答</strong>以及<strong>日报定时推送</strong>。</p>
+
+<h2 id="智能资讯问答">智能资讯问答</h2>
+
+<p>新闻资讯的查询、播报是很多智能对话机器人技能中很重要的一环，一个经典的场景就是用户就自己感兴趣的关键词提问，机器人返回和该关键词相关的最新新闻资讯，如下图：</p>
+
+<p><img src="/assets/2018/xiaoli-1.webp" alt="news-query-snapshot" /></p>
+
+<p>以上场景中我们询问了机器人关于<code class="language-plaintext highlighter-rouge">微信机器人</code>的最新消息，并且查看了其中一条新闻的详细内容。
+利用wechaty和小理的内容接口，我们可以很方便的实现以上功能。直接上代码：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Wechaty</span><span class="p">({</span>
+    <span class="na">profile</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="k">default</span><span class="p">.</span><span class="nx">DEFAULT_PROFILE</span><span class="p">,</span>
+<span class="p">})</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="nx">onMessage</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">onMessage</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">msgText</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">text</span><span class="p">()</span>
+
+    <span class="c1">// A super naive implementation of intent detection for news query</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">msgText</span><span class="p">.</span><span class="nf">endsWith</span><span class="p">(</span><span class="dl">"</span><span class="s2">最新消息</span><span class="dl">"</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">msgText</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">respText</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">searchNews</span><span class="p">(</span><span class="nx">msgText</span><span class="p">.</span><span class="nf">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">msgText</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">4</span><span class="p">))</span> <span class="c1">// call xiaoli's news API</span>
+        <span class="k">await</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">respText</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>我们监听消息发送事件，并且对收到的消息进行意图识别。这里我们做最简单的实现：只要收到<code class="language-plaintext highlighter-rouge">XXX最新消息</code>这种模式的信息，就提取前面的<code class="language-plaintext highlighter-rouge">XXX</code>部分作为关键词，来进行新闻查询。目前一些开源或商业的解决方案，如科大讯飞等，可以实现更加准确的意图识别供开发者使用，这里不赘述。</p>
+
+<p>接下来实现searchNews方法的业务逻辑。我们只要传入消息中的关键词，调用小理的新闻搜索API，对结果进行处理后返回即可：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">fetch</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">node-fetch</span><span class="dl">'</span>
+<span class="cm">/**
+ * query xiaoli's api for news related to the keyword
+ * @param keyword: search keyword
+ */</span>
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">searchNews</span><span class="p">(</span><span class="nx">keyword</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">searchURL</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://api.xiaoli.ai/v1/api/search/basic</span><span class="dl">'</span>
+    <span class="kd">let</span> <span class="nx">postBody</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">keywords</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="nx">keyword</span><span class="p">],</span>
+        <span class="dl">"</span><span class="s2">token</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">45d898b459b4a739474175657556249a</span><span class="dl">"</span>
+    <span class="p">}</span>
+    <span class="kd">let</span> <span class="nx">okCallback</span> <span class="o">=</span> <span class="nx">makeSearchResponseText</span>
+    <span class="kd">let</span> <span class="nx">resText</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">fetchXiaoliAPI</span><span class="p">(</span><span class="nx">searchURL</span><span class="p">,</span> <span class="nx">postBody</span><span class="p">,</span> <span class="nx">okCallback</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">resText</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>以上代码中，<code class="language-plaintext highlighter-rouge">postBody</code>中的<a href="#token">token</a>用于验证用户身份；<code class="language-plaintext highlighter-rouge">fetchXiaoliAPI</code>是一个异步方法，使用了<a href="https://www.npmjs.com/package/node-fetch">node-fetch</a>这个第三方库进行网络调用，将小理API返回的JSON数据解析后返回具体的数据，或者错误信息：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Fetch response from xiaoli API
+ * @param URL
+ * @param postBody
+ * @param okCallback: covert json to msg text when fetch succeeds
+ */</span>
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">fetchXiaoliAPI</span><span class="p">(</span><span class="nx">URL</span><span class="p">,</span> <span class="nx">postBody</span><span class="p">,</span> <span class="nx">okCallback</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">resText</span> <span class="o">=</span> <span class="kc">null</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">resp</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">fetch</span><span class="p">(</span>
+            <span class="nx">URL</span><span class="p">,</span>
+            <span class="p">{</span>
+                <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+                <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">postBody</span><span class="p">),</span> <span class="c1">// put keywords and token in the body</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+        <span class="kd">let</span> <span class="nx">resp_json</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">resp</span><span class="p">.</span><span class="nf">json</span><span class="p">()</span>
+        <span class="k">if </span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// status code = 200, we got it!</span>
+            <span class="nx">resText</span> <span class="o">=</span> <span class="nf">okCallback</span><span class="p">(</span><span class="nx">resp_json</span><span class="p">[</span><span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span class="p">])</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// status code = 4XX/5XX, sth wrong with API</span>
+            <span class="nx">resText</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">API ERROR: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">resp_json</span><span class="p">[</span><span class="dl">'</span><span class="s1">msg</span><span class="dl">'</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">resText</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">NETWORK ERROR: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">err</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">resText</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>成功获取数据的回调方法<code class="language-plaintext highlighter-rouge">makeSearchResponseText</code>提取返回数据中的的新闻标题（title字段），拼成一段字符串回复给用户。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * parse the returned json for a list of news titles
+ */</span>
+<span class="kd">function</span> <span class="nf">makeSearchResponseText</span><span class="p">(</span><span class="nx">json_obj</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">preNewsList</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="kd">let</span> <span class="nx">newsList</span> <span class="o">=</span> <span class="nx">json_obj</span><span class="p">.</span><span class="nx">contents</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">newsList</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="dl">"</span><span class="s2">暂无相关新闻</span><span class="dl">"</span>
+    <span class="p">}</span>
+    <span class="kd">let</span> <span class="nx">newsText</span> <span class="o">=</span> <span class="dl">''</span>
+    <span class="k">for </span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">newsList</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">newsText</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">. </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">newsList</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">title</span> <span class="o">+</span> <span class="dl">'</span><span class="se">\n</span><span class="dl">'</span>
+        <span class="nx">preNewsList</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">newsList</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">news_abstract</span><span class="p">)</span> <span class="c1">// Save the news details for later queries</span>
+    <span class="p">}</span>
+    <span class="nx">newsText</span> <span class="o">+=</span> <span class="dl">"</span><span class="se">\n</span><span class="s2">回复</span><span class="se">\"</span><span class="s2">#+数字</span><span class="se">\"</span><span class="s2">(例如</span><span class="se">\"</span><span class="s2">#1</span><span class="se">\"</span><span class="s2">)看详情</span><span class="dl">"</span>
+    <span class="k">return</span> <span class="nx">newsText</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>以上我们实现了最简单的新闻查询功能。</p>
+
+<p>接下来，我们希望用户能够回复数字看某条新闻的详情，这也能够通过小理的接口实现。小理对每篇新闻自动提取了摘要，我们可以将新闻的摘要存在临时变量里面，当用户输入数字的时候返回对应的结果。</p>
+
+<p>首先定义临时变量:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">preNewsList</span> <span class="o">=</span> <span class="p">[]</span>
+</code></pre></div></div>
+
+<p>查询新闻时暂存这些新闻的摘要（news_abstract字段）:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">makeSearchResponseText</span><span class="p">(</span><span class="nx">json_obj</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//...</span>
+    <span class="k">for </span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">newsList</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//...</span>
+        <span class="nx">preNewsList</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">newsList</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">news_abstract</span><span class="p">)</span> <span class="c1">// Save the news details for later queries</span>
+    <span class="p">}</span>
+    <span class="c1">//...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>监听到数字模式，返回对应结果：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="kd">function</span> <span class="nf">onMessage</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">msgText</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">text</span><span class="p">()</span>
+
+    <span class="c1">// query for news details</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">msgText</span><span class="p">.</span><span class="nf">startsWith</span><span class="p">(</span><span class="dl">'</span><span class="s1">#</span><span class="dl">'</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">newsNum</span> <span class="o">=</span> <span class="nf">parseInt</span><span class="p">((</span><span class="nx">msgText</span><span class="p">.</span><span class="nf">substring</span><span class="p">(</span><span class="mi">1</span><span class="p">)),</span> <span class="mi">10</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">if </span><span class="p">(</span><span class="nx">newsNum</span> <span class="o">&lt;</span> <span class="nx">preNewsList</span><span class="p">.</span><span class="nx">length</span> <span class="o">&amp;&amp;</span> <span class="nx">newsNum</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">await</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">preNewsList</span><span class="p">[</span><span class="nx">newsNum</span><span class="p">])</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>到此，一个简单的新闻查询机器人就大功告成啦。除了这个例子中用到的新闻标题和摘要字段，接口还提供了时间、图片、url等基本信息；我们还支持包含复杂条件组合的多关键词搜索。开发者可以用这些接口完成更加复杂的功能。</p>
+
+<h2 id="日报定时发送">日报定时发送</h2>
+
+<p>微信群是目前进行兴趣交流、社群运营的一个重要工具。为了保持微信群的活跃度，群主往往需要定期在群里推送和群主题相关的聚合内容。例如，在一个人工智能交流群里，群主会定期整理人工智能相关资讯，在群里推送。</p>
+
+<p>利用wechaty和小理的日报接口，我们就能把这项任务完全自动化！先看效果图：</p>
+
+<p><img src="/assets/2018/xiaoli-2.webp" alt="daily-snapshot" /></p>
+
+<p>小理会针对一些行业自动整理每天的相关新闻，生成一份日报，其中包含了多个主题版面，还能够通过智能分析算法自动生成新闻头条。接下来，我们就给机器人增加这个功能，让它每天定时在群里推送这样一份人工智能日报。
+首先实现<code class="language-plaintext highlighter-rouge">sendDaily</code>方法：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="kd">function</span> <span class="nf">sendDaily</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Room</span><span class="p">.</span><span class="nf">find</span><span class="p">({</span><span class="na">topic</span><span class="p">:</span> <span class="dl">'</span><span class="s1">小桔和小理</span><span class="dl">'</span><span class="p">})</span> <span class="c1">//get the room by topic</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Sending daily to room </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">room</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+    <span class="kd">let</span> <span class="nx">dailyText</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">getDaily</span><span class="p">()</span>
+    <span class="nx">room</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">dailyText</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>我们找到需要推送的群，往里面发送文本形式的日报。<code class="language-plaintext highlighter-rouge">getDaily</code>方法通过小理接口拿到日报数据：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * query xiaoli's api for a daily news brief
+ */</span>
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">getDaily</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">dailyUuid</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">e02e6f14-3212-4d44-9f3d-1d79538c38f6</span><span class="dl">'</span>
+    <span class="kd">let</span> <span class="nx">dailyURL</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://api.xiaoli.ai/v1/api/briefing/</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">dailyUuid</span>
+    <span class="kd">let</span> <span class="nx">postBody</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">token</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">45d898b459b4a739474175657556249a</span><span class="dl">"</span>
+    <span class="p">}</span>
+    <span class="kd">let</span> <span class="nx">okCallback</span> <span class="o">=</span> <span class="nx">makeDailyResponseText</span>
+    <span class="kd">let</span> <span class="nx">resText</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">fetchXiaoliAPI</span><span class="p">(</span><span class="nx">dailyURL</span><span class="p">,</span> <span class="nx">postBody</span><span class="p">,</span> <span class="nx">okCallback</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">resText</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nf">makeDailyResponseText</span><span class="p">(</span><span class="nx">json_obj</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">secList</span> <span class="o">=</span> <span class="nx">json_obj</span><span class="p">.</span><span class="nx">sections</span>
+    <span class="kd">let</span> <span class="nx">newsText</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">今日</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">json_obj</span><span class="p">.</span><span class="nx">title</span> <span class="o">+</span> <span class="dl">'</span><span class="se">\n\n</span><span class="dl">'</span>
+    <span class="k">for </span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">min</span><span class="p">(</span><span class="nx">secList</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">newsText</span> <span class="o">+=</span> <span class="nx">secList</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">title</span> <span class="o">+</span> <span class="dl">'</span><span class="se">\n</span><span class="dl">'</span>
+        <span class="kd">let</span> <span class="nx">newsList</span> <span class="o">=</span> <span class="nx">secList</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">contents</span>
+        <span class="k">for </span><span class="p">(</span><span class="kd">let</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">min</span><span class="p">(</span><span class="nx">newsList</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span> <span class="nx">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">newsText</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">. </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">newsList</span><span class="p">[</span><span class="nx">j</span><span class="p">].</span><span class="nx">title</span> <span class="o">+</span> <span class="dl">'</span><span class="se">\n</span><span class="dl">'</span>
+        <span class="p">}</span>
+        <span class="nx">newsText</span> <span class="o">+=</span> <span class="dl">'</span><span class="se">\n</span><span class="dl">'</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">newsText</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>其中，<code class="language-plaintext highlighter-rouge">getDaily</code>方法中的<code class="language-plaintext highlighter-rouge">dailyUuid</code>变量是人工智能日报的唯一标识（更多日报主题看<a href="#daily">这里</a>）。
+日报由多个section（版面）组成，每个section包含一个当日相关新闻的列表。
+回调函数<code class="language-plaintext highlighter-rouge">makeDailyResponseText</code>中，我们取日报中前5个section，每个section取前三个新闻，拼成字符串。</p>
+
+<p>接下来我们让机器人登录后定时调用<code class="language-plaintext highlighter-rouge">sendDaily</code>函数即可。这里我们用第三方模块<a href="https://www.npmjs.com/package/node-schedule">node-schedule</a>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">schedule</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">node-schedule</span><span class="dl">'</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span> <span class="nx">onLogin</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">onLogin</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">schedule</span><span class="p">.</span><span class="nf">scheduleJob</span><span class="p">(</span><span class="dl">'</span><span class="s1">0 0 9 * * 1-5</span><span class="dl">'</span><span class="p">,</span> <span class="nx">sendDaily</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>以上代码表示机器人会在周一到周五每天9:00am准时给群里发送一份人工智能日报。</p>
+
+<p>到这里，这个又能查新闻，又能发日报的wechaty机器人就完成啦（完整代码看<a href="https://github.com/wechaty/wechaty-getting-started/tree/1305ada4278e7d19932a2c824e5d7eae5eb41f0f/examples/third-party/xiaoli">这里</a>）。</p>
+
+<h2 id="附如何使用小理的内容接口">附：如何使用小理的内容接口</h2>
+
+<p>以基本的资讯接口为例：用户可以指定任意关键词，小理的接口能够返回和关键词相关的最新新闻。</p>
+
+<p>例如，如果想要查询和”人工智能”相关的最新新闻，可以向小理的搜索接口地址<code class="language-plaintext highlighter-rouge">https://api.xiaoli.ai/v1/api/search/basic</code>发送包含如下数据的post请求：</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"人工智能"</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45d898b459b4a739474175657556249a"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>以上代码中的<a href="#token">token</a>用于验证用户身份。通过解析返回的JSON串，可以获得包含标题、URL、摘要等信息的最新相关新闻列表：</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"contents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"img_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"news_abstract"</span><span class="p">:</span><span class="w"> </span><span class="s2">"...在韩国，政府在2018年提出将在未来5年内投资2.2万亿韩元(约合130亿元人民币)用于开发核心人工智能技术，并且计划在2022年前成为该领域的全球巨头。因此，全球人工智能已经进入加速发展期，主要国家争先在人工智能领域进行布局。未来，人工智能的发展将形成国家竞争的新分水岭，将成为世界主要国家产业博弈的核心阵地。新时代我国必须树立实体经济发展的新理念，深化人工智能技术在实体经济中的广泛应用，实现实体经济与人工智能的深度融合。"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"pub_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-13T08:36:57.950927"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"seed_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"中国网"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"推动实体经济与人工智能深度融合"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://base.xiaoli.ai/item/7b8803dc-1bab-43ba-a824-7db94c7a8cb2?app_uuid=516e44a5-06d0-403b-ab31-4a193c564cb4"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"img_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"news_abstract"</span><span class="p">:</span><span class="w"> </span><span class="s2">"...那么，什么才是人工智能企业的核心竞争力？对于初创企业来说，如何才能站稳脚跟而不被市场淘汰？直面隐忧，中国人工智能企业的机会何在？... 隐忧一：发展结构“头重脚轻”... 重点突破基础领域，建立自己的生态体系... 早在2015年，谷歌开放其内部使用的机器学习软件TensorFlow源代码，脸书、亚马逊和微软也纷纷发布其工程师用于机器学习的开源软件。似乎AI进入了“免费原材料”时代，人人都可以顺手取材。但是，“国外的开源布局对于我国AI行业发展而言，埋藏着巨大隐患。”远望智库人工智能事业部部长、图灵机器人首席战略官谭茗洲指出。"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"pub_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-13T08:24:15.201051"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"seed_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"人民网"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"直面隐忧 中国人工智能企业机会何在"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://base.xiaoli.ai/item/0ae5b7d2-a52f-4fef-9fc3-7296aec45ad0?app_uuid=516e44a5-06d0-403b-ab31-4a193c564cb4"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>更多功能请开发者们参考小理的<a href="http://docs.xiaoli.ai">接口文档</a>。</p>
+
+<h3 id="测试token">测试Token</h3>
+
+<p>我们的系统目前属于内测阶段，尚未开放注册。调用接口需要使用验证token，为了方便大家测试，这里为大家准备了3个测试用的token：</p>
+
+<pre><code class="language-log">45d898b459b4a739474175657556249a
+6d3b08ef9188c4d5c22739fb2f073b20
+ecefeb8778165cbdfb2bfaa66be42bfb
+</code></pre>
+
+<p>以上token供大家测试功能使用，会有一定的频率和次数限制。</p>
+
+<h3 id="日报">日报</h3>
+
+<p>小理每天为近100个行业主题自动生成日报，并且支持用户自定义任意主题的日报。这里为大家准备了一些日报的dailyUuid：</p>
+
+<pre><code class="language-log">互联网医疗日报: '60108efa-2a78-41d1-994d-cb53e0b66d2e'
+互联网社交娱乐日报: '07c3f2a1-9f2d-4e58-b324-54cd944adb17'
+互联网大数据日报: '6e442691-43b6-4e14-ae06-25089e53b9f6'
+云计算日报: 'bc30500e-3032-415d-9d40-c64e1f76b8e3'
+互联网金融日报: '639b5a58-1f86-463d-9358-d4369831711f'
+人工智能日报: 'e02e6f14-3212-4d44-9f3d-1d79538c38f6'
+</code></pre>
+
+<p>如果有进一步的需求，欢迎大家通过微信(judaschrist)或者邮件(zhanglx@induta.com)和我们联系。</p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#code">code</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#media">media</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/judaschrist">
+                            <img class="rounded-circle" src="/assets/contributors/judaschrist/avatar.webp" alt="Lingxiao Zhang" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/judaschrist">Lingxiao Zhang</a> </h5>
+						Co-founder of 小理智能, Musical lover, Movie addict.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2018/08/09/heroku-deploy-button-for-wechaty-starter-template/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2018/08-heroku-deploy-button-for-wechaty-starter-template/heroku-wechaty.webp">  Deploying Wechaty Bot from GitHub to Heroku as Easy as Clicking a Button</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2018/08/14/docker-wechaty-getting-started/"> Docker Wechaty Getting Started </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

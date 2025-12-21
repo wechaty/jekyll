@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Open Source Leaders Talk - Wechaty's Open Source Journey | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Open Source Leaders Talk - Wechaty’s Open Source Journey | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Open Source Leaders Talk - Wechaty’s Open Source Journey" />
+<meta name="author" content="windmemory" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Yuan Gao (高原), Juzibot CTO and Wechaty committer, shares Wechaty’s open source journey from 2016 to 2021, covering what Wechaty is, how to use it, the evolution of the Puppet architecture, and outstanding community projects." />
+<meta property="og:description" content="Yuan Gao (高原), Juzibot CTO and Wechaty committer, shares Wechaty’s open source journey from 2016 to 2021, covering what Wechaty is, how to use it, the evolution of the Puppet architecture, and outstanding community projects." />
+<link rel="canonical" href="https://wechaty.js.org/2021/06/05/summer-2021-open-source-en/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/06/05/summer-2021-open-source-en/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/06-summer-2021-open-source-en/001.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-06-05T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/06-summer-2021-open-source-en/001.webp" />
+<meta property="twitter:title" content="Open Source Leaders Talk - Wechaty’s Open Source Journey" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"windmemory"},"dateModified":"2021-06-05T00:00:00+00:00","datePublished":"2021-06-05T00:00:00+00:00","description":"Yuan Gao (高原), Juzibot CTO and Wechaty committer, shares Wechaty’s open source journey from 2016 to 2021, covering what Wechaty is, how to use it, the evolution of the Puppet architecture, and outstanding community projects.","headline":"Open Source Leaders Talk - Wechaty’s Open Source Journey","image":"https://wechaty.js.org/assets/2021/06-summer-2021-open-source-en/001.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/06/05/summer-2021-open-source-en/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"windmemory"},"url":"https://wechaty.js.org/2021/06/05/summer-2021-open-source-en/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#announcement">announcement</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Open Source Leaders Talk - Wechaty's Open Source Journey</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/windmemory">
+                            <img class="rounded-circle" src="/assets/contributors/windmemory/avatar.webp" alt="Yuan GAO (高原)" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/windmemory">Yuan GAO (高原)</a> <span><a target="_blank" href="https://www.weibo.com/u/2166731327" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jun 05, 2021 · <span class="reading-time">
+  
+  
+    7 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/06-summer-2021-open-source-en/001.webp" alt="Open Source Leaders Talk - Wechaty's Open Source Journey">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<h2 id="self-introduction">Self-Introduction</h2>
+
+<p>Yuan Gao (高原): Co-founder &amp; CTO of Juzibot, Wechaty committer, former engineer at Amazon and Expedia, co-founder of Bot Friday.</p>
+
+<p><img src="/assets/2021/06-summer-2021-open-source-en/002.webp" alt="intro" /></p>
+
+<h2 id="wechaty-open-source-journey-live-recording">Wechaty Open Source Journey Live Recording</h2>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/0UMLAA1Pa-s" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h3 id="agendas">Agendas</h3>
+
+<ul>
+  <li><a href="https://youtu.be/0UMLAA1Pa-s?t=293">0:04:52</a> Self-Introduction</li>
+  <li><a href="https://youtu.be/0UMLAA1Pa-s?t=353">0:05:55</a> What is Wechaty</li>
+  <li><a href="https://youtu.be/0UMLAA1Pa-s?t=778">0:12:58</a> How to Use Wechaty</li>
+  <li><a href="https://youtu.be/0UMLAA1Pa-s?t=1338">0:22:18</a> Wechaty’s Open Source Journey</li>
+  <li><a href="https://youtu.be/0UMLAA1Pa-s?t=2379">0:39:39</a> Open Source Projects Based on Wechaty</li>
+</ul>
+
+<h2 id="1-what-is-wechaty">1. What is Wechaty</h2>
+
+<ul>
+  <li>
+    <p>Official Introduction:
+A Conversational RPA SDK for WeChat which can help you create a bot in 6 lines of JavaScript, with cross-platform support including Linux, Windows, Darwin (OSX/Mac) and Docker.
+In other words, it’s a framework that helps chatbot developers quickly build chatbots and supports multiple system platforms.</p>
+  </li>
+  <li>
+    <p>Wechaty’s Mission:
+To provide chatbot developers with the best open source SDK, continuously optimize the SDK, and give developers the best experience. Help developers focus more on business logic rather than the underlying integration with platforms - they only need to write upper-layer application code.</p>
+  </li>
+  <li>
+    <p>Developers’ Reviews:
+A Tencent software engineer and famous mini-program VP framework author used Wechaty for community management and commented: “Wechaty is a great solution, I believe there would be much more users recognize it.”</p>
+  </li>
+</ul>
+
+<p>A Google engineer and Haoshiyou project founder created a platform to help international students find housing. All interactions occur in WeChat groups, built on Wechaty, serving around 5,000 active users. He commented: “So easy to use, it made me want to cry.”</p>
+
+<ul>
+  <li>Wechaty is becoming increasingly popular. From 330 stars in 2016 to over 10,000 stars now is remarkable, as there aren’t many projects on GitHub with more than 10,000 stars. Developers come from all over the world and from different internet companies: Microsoft, Tencent, Google, Alibaba, Baidu, etc. Contributors from various major companies have contributed code while using Wechaty. Wechaty has been referenced by 854 open source projects, and we know many non-open source projects also use Wechaty - the actual number of users is enormous.</li>
+</ul>
+
+<h2 id="2-how-to-use-wechaty">2. How to Use Wechaty</h2>
+
+<ul>
+  <li>Example in TypeScript:</li>
+</ul>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="s">import{Wechaty} from 'wechaty';</span>
+<span class="s">import QRCodeTerminal from 'qrcode-terminal';</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Import Wechaty and QR code packages</li>
+</ul>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="s">const bot = new Wechaty({ name</span><span class="err">:</span> <span class="s1">'</span><span class="s">my-bot'</span> <span class="err">}</span><span class="s">)</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Create a new bot and name it, add: login event, scan event (using the QR code package), message event (when the bot receives a message)</li>
+</ul>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="s">bot</span>
+<span class="s">on('login',user =&gt; console.log(`Login</span><span class="err">:</span> <span class="s">${user}`))</span>
+<span class="s">on('scan',qrcode =&gt; QRCodeTerminal.generate(qrcode, { small</span><span class="err">:</span> <span class="kc">true</span><span class="s"> }))</span>
+<span class="s">on('message', message =&gt; console.log(`Message</span><span class="err">:</span> <span class="s">${message}`))</span>
+<span class="s">start()</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Implement a chatbot in six lines of code</li>
+</ul>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="s">const bot = new Wechaty({ name</span><span class="err">:</span> <span class="s1">'</span><span class="s">my-bot'</span> <span class="err">}</span><span class="s">);</span>
+<span class="s">bot</span>
+<span class="s">on('login',user =&gt; console.log(`Login</span><span class="err">:</span> <span class="s">${user}`))</span>
+<span class="s">on('scan',qrcode =&gt; QRCodeTerminal.generate(qrcode, { small</span><span class="err">:</span> <span class="kc">true</span><span class="s"> }))</span>
+<span class="s">on('message', message =&gt; console.log(`Message</span><span class="err">:</span> <span class="s">${message}`))</span>
+<span class="s">start()</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<ul>
+  <li>A simple ding-dong bot: when someone says “ding”, the bot will say “dong”</li>
+</ul>
+
+<p>You can implement any logic you want, perform different operations, and execute different commands after receiving messages to implement your desired logic. If interested, you can download it and play around with it.</p>
+
+<h2 id="3-wechatys-open-source-journey">3. Wechaty’s Open Source Journey</h2>
+
+<p>Now that you know how to use it, let’s talk about what we’ve experienced on the open source journey.</p>
+
+<p>Wechaty began with chatbot enthusiast Huan Li (李卓桓). He’s a lazy yet smart person. In 2016, before WeChat had the 500-person limit, he had 12,859 contacts in WeChat, hundreds of 100-person groups, and 1,000+ unread messages. Since he can program and contribute to open source, he hoped to automate processing WeChat messages, filter unnecessary messages, extract and filter important information for processing.</p>
+
+<ul>
+  <li>Wechaty in 2016: Supported WeChat Web access, only had 300 stars at the time.</li>
+</ul>
+
+<p>By 2018, WeChat Web version restricted login, and a large number of users couldn’t use it. Non-web-based access solutions emerged in the community. To enable developers to seamlessly switch solutions, ensure stable operation, and improve efficiency, a new strategy was implemented. With different implementation methods and code, Wechaty underwent a major refactoring, introducing the Puppet concept. Puppet is an automated testing framework, essentially acting as an adapter.</p>
+
+<p><img src="/assets/2021/06-summer-2021-open-source-en/009.webp" alt="intro" /></p>
+
+<ul>
+  <li>
+    <p>Green section: The upper layer that developers directly interact with, consisting of different classes like those used in the examples, which developers frequently call when writing business logic.</p>
+  </li>
+  <li>
+    <p>Red section (Puppet): An abstract concept that defines the abstract interface for connecting with Wechaty. The underlying implementation needs to follow the requirements. As long as the underlying implementation meets the standard, it will seamlessly integrate with Wechaty. The underlying implementation connects to different platforms for data interaction and then submits to the upper Wechaty layer.</p>
+  </li>
+  <li>
+    <p>Huge Benefits of Puppet: Switch underlying implementations by changing environment variables without modifying any business logic code; developers don’t need to worry about underlying access implementation, only focus on their business logic; different underlying implementations in the community can be seamlessly delivered to developers’ hands, laying a solid foundation for more IM implementations in the future; more developers are willing to do underlying access, better cooperating with upper-layer developers.</p>
+  </li>
+  <li>
+    <p>In 2019, interesting Wechaty projects began appearing in large numbers.</p>
+  </li>
+</ul>
+
+<p>Discussions on WeChat cannot be archived in mailing lists or accessed via permanent addresses. Discussion content is mostly in Chinese, which is not friendly to international developers, hindering cross-border understanding and interaction. To solve these problems, OSS.CHAT was created. OSS.CHAT’s functions include: when users post issues or comment on issues on GitHub, the corresponding WeChat group receives messages; group admins guide users to reply and discuss important information in GitHub issues while normal chat content is discussed in the group; Chinese issues posted are automatically translated into English.</p>
+
+<p>If interested, here’s how to join:</p>
+
+<p><a href="https://youtu.be/HNksCmm_pvY">Getting Started Tutorial (video)</a></p>
+
+<p><a href="https://github.com/kaiyuanshe/osschat">GitHub Repo</a></p>
+
+<p><a href="https://shimo.im/docs/wGHydDxvWGjWKgDK">Community Meeting Notes</a></p>
+
+<p>In 2020, Wechaty joined the 2020 Open Source Software Supply Chain Lighting Program, greatly expanding the number of IM integrations supported by Wechaty, multi-language versions of Wechaty, and more non-JavaScript language developers joined the community. Wechaty supports a Plugin system - write code once and run it on 7 different mainstream platforms by just switching environment variables.</p>
+
+<p>In 2021, Wechaty participated in Google Season of Docs, joined the 2021 Open Source Software Supply Chain Lighting Program, the main Wechaty project’s star count exceeded 10,000, the Web version returned to Wechaty integration, and more interesting new IM integrations are in progress. We have many technical writers from around the world helping optimize our documentation, currently about 10 writers are working on it.</p>
+
+<p>Endpoint and Goals:
+We have achieved our mission to a certain extent. Now developers can largely focus only on business implementation without worrying about underlying implementation. Wechaty may not dare claim to be the best, but from developer feedback, we’re already a very successful project.</p>
+
+<h2 id="4-open-source-projects-based-on-wechaty">4. Open Source Projects Based on Wechaty</h2>
+
+<h3 id="divination-bot-httpswechatyjsorg20200628build-divination-yibot">Divination Bot <a href="https://wechaty.js.org/2020/06/28/build-divination-yibot/">https://wechaty.js.org/2020/06/28/build-divination-yibot/</a></h3>
+
+<p><img src="/assets/2021/06-summer-2021-open-source-en/010.webp" alt="intro" /></p>
+
+<h3 id="poetry-search-bot-httpswechatyjsorg20200707wechat-poem-robot">Poetry Search Bot <a href="https://wechaty.js.org/2020/07/07/wechat-poem-robot/">https://wechaty.js.org/2020/07/07/wechat-poem-robot/</a></h3>
+
+<p><img src="/assets/2021/06-summer-2021-open-source-en/011.webp" alt="intro" /></p>
+
+<h3 id="party-entertainment-bot-httpswechatyjsorg20200606wechaty-game-bot">Party Entertainment Bot <a href="https://wechaty.js.org/2020/06/06/wechaty-game-bot/">https://wechaty.js.org/2020/06/06/wechaty-game-bot/</a></h3>
+
+<p><img src="/assets/2021/06-summer-2021-open-source-en/012.webp" alt="intro" /></p>
+
+<h3 id="food-delivery-bot-httpswechatyjsorg20191223wechaty-north-america-ricepo">Food Delivery Bot <a href="https://wechaty.js.org/2019/12/23/wechaty-north-america-ricepo/">https://wechaty.js.org/2019/12/23/wechaty-north-america-ricepo/</a></h3>
+
+<p><img src="/assets/2021/06-summer-2021-open-source-en/013.webp" alt="intro" /></p>
+
+<h3 id="chinese-learning-assistant-httpswechatyjsorg20200619archyshuo-anki-assistant">Chinese Learning Assistant <a href="https://wechaty.js.org/2020/06/19/archyshuo-anki-assistant/">https://wechaty.js.org/2020/06/19/archyshuo-anki-assistant/</a></h3>
+
+<p><img src="/assets/2021/06-summer-2021-open-source-en/014.webp" alt="intro" /></p>
+
+<h3 id="miracleplus-bot-httpswechatyjsorg20200808qijibot-sales-automation">Miracleplus Bot <a href="https://wechaty.js.org/2020/08/08/qijibot-sales-automation/">https://wechaty.js.org/2020/08/08/qijibot-sales-automation/</a></h3>
+
+<p><img src="/assets/2021/06-summer-2021-open-source-en/015.webp" alt="intro" /></p>
+
+<h3 id="daily-work-report-bot-httpswechatyjsorg20200711wechaty-daily-report">Daily Work Report Bot <a href="https://wechaty.js.org/2020/07/11/wechaty-daily-report/">https://wechaty.js.org/2020/07/11/wechaty-daily-report/</a></h3>
+
+<p><img src="/assets/2021/06-summer-2021-open-source-en/016.webp" alt="intro" /></p>
+
+<p>If interested, there’s more: <a href="https://wechaty.js.org/blog/">https://wechaty.js.org/blog/</a></p>
+
+<p>Finally, welcome everyone to join the Wechaty community. Project, documentation, and blog addresses:</p>
+
+<p>Project: <a href="https://github.com/wechaty/wechaty">https://github.com/wechaty/wechaty</a></p>
+
+<p>Documentation: <a href="https://wechaty.js.org/v/zh/">https://wechaty.js.org/v/zh/</a></p>
+
+<p>Blog: <a href="https://wechaty.github.io/">https://wechaty.github.io/</a></p>
+
+<h2 id="welcome-your-participation">Welcome Your Participation</h2>
+
+<p>If anyone is interested in joining us to improve the efficiency of marketing processes on enterprise-level SCRM software, please contact me and let’s discuss whether we can collaborate.</p>
+
+<p><img src="/assets/2021/06-summer-2021-open-source-en/008.webp" alt="intro" /></p>
+
+<blockquote>
+  <p>Author: <a href="https://github.com/windmemory">windmemory</a></p>
+</blockquote>
+
+<hr />
+
+<blockquote>
+  <p>本文也有<a href="/2021/06/05/summer-2021-open-source/">中文版本</a>。</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#summer-of-wechaty">summer-of-wechaty</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#summer-2021">summer-2021</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#talk">talk</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#meetup">meetup</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#featured">featured</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ospp">ospp</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ospp-admin">ospp-admin</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ecosystem">ecosystem</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/windmemory">
+                            <img class="rounded-circle" src="/assets/contributors/windmemory/avatar.webp" alt="Yuan GAO (高原)" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/windmemory">Yuan GAO (高原)</a> <span><a target="_blank" href="https://www.weibo.com/u/2166731327" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Committer of Wechaty. Author of several wechaty-puppets. Co-founder & CTO of JuziBot
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/05/30/wechaty-local-forums-and-past-events/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/05-wechaty-local-forums-and-past-events/community-events.webp">  Wechaty local forums and past events</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/06/05/summer-2021-open-source/"> Open Source 大咖说开源--wechaty的开源之路  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/06-summer-2021-open-source-en/001.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

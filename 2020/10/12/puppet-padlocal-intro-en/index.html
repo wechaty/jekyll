@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+       "New Wechaty Puppet Service: PadLocal" | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>“New Wechaty Puppet Service: PadLocal” | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="“New Wechaty Puppet Service: PadLocal”" />
+<meta name="author" content="padlocal" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Introducing PadLocal, a new Wechaty puppet service with a unique stateless architecture. All traffic is proxied through the local puppet client, ensuring better IP isolation, data security, and system scalability." />
+<meta property="og:description" content="Introducing PadLocal, a new Wechaty puppet service with a unique stateless architecture. All traffic is proxied through the local puppet client, ensuring better IP isolation, data security, and system scalability." />
+<link rel="canonical" href="https://wechaty.js.org/2020/10/12/puppet-padlocal-intro-en/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/10/12/puppet-padlocal-intro-en/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/10-puppet-padlocal-intro-en/logo.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-10-12T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/10-puppet-padlocal-intro-en/logo.webp" />
+<meta property="twitter:title" content="“New Wechaty Puppet Service: PadLocal”" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"padlocal"},"dateModified":"2020-10-12T00:00:00+00:00","datePublished":"2020-10-12T00:00:00+00:00","description":"Introducing PadLocal, a new Wechaty puppet service with a unique stateless architecture. All traffic is proxied through the local puppet client, ensuring better IP isolation, data security, and system scalability.","headline":"“New Wechaty Puppet Service: PadLocal”","image":"https://wechaty.js.org/assets/2020/10-puppet-padlocal-intro-en/logo.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/10/12/puppet-padlocal-intro-en/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"padlocal"},"url":"https://wechaty.js.org/2020/10/12/puppet-padlocal-intro-en/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#announcement">announcement</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline"> "New Wechaty Puppet Service: PadLocal"</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/padlocal">
+                            <img class="rounded-circle" src="/assets/contributors/padlocal/avatar.webp" alt="padlocal" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/padlocal">padlocal</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Oct 12, 2020 · <span class="reading-time">
+  
+  
+    9 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/10-puppet-padlocal-intro-en/logo.webp" alt=" "New Wechaty Puppet Service: PadLocal"">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<blockquote>
+  <p>This is a translated version of the original Chinese post. You can find the original post <a href="/2020/10/12/puppet-padlocal-intro/">here</a>.</p>
+</blockquote>
+
+<p>Hello everyone, I’m the developer of PadLocal, and everyone calls me “Haoda”. In the past year or two, our team has been working on community-related products, and naturally, we’ve been using Wechaty. Gradually, we’ve come to appreciate and trust Wechaty and the entire community more and more.</p>
+
+<p>A few years ago, while working on a web scraping system, I first encountered Wechaty. That project required regularly pushing scraper status updates and actively querying scraped content. At the time, there was a popular phrase: “Conversation as a Service”, so I wondered if we could implement these features through WeChat. With the help of Wechaty, we quickly implemented all the functionality, and the final results were excellent.</p>
+
+<h2 id="padlocal-wechaty-puppet-service-provider">PadLocal: Wechaty puppet service provider</h2>
+
+<p>However, at that time, the puppets in the community were not particularly perfect, and there were some pain points during usage. Moreover, puppet lifecycles were not very stable - after using one for a while, it might no longer be maintained. We were concerned that this uncertainty would affect our business, so we decided to develop our own puppet. Additionally, as one of the early iOS developers in China, I was confident in my deep understanding of iOS and had also dabbled in reverse engineering, so this idea didn’t seem impossible.</p>
+
+<p>Thus began the long journey of reverse engineering, starting from decrypting the App and decompiling WeChat with IDA. Before doing this, we anticipated that the process would be difficult and we’d encounter various hard nuts to crack, but we never expected it to be so arduous. Although I had played with reverse engineering before, it was just for fun - modifying small App features, grabbing red envelopes, etc., fairly elementary stuff. The initial stage was quite pleasant because you could easily see your growth with each step, feeling like you leveled up with each monster defeated. But as we went deeper, we encountered truly difficult challenges, and after various tricks, research, and consultations all failed, we sighed and felt like the “donkey from Guizhou” (a Chinese idiom about exhausting one’s tricks). We had thoughts of giving up, but we were always unwilling to quit and persevered by gritting our teeth. Here I’d like to share a few such “embarrassing” moments:</p>
+
+<ol>
+  <li>
+    <p><strong>Handling Code Obfuscation</strong></p>
+
+    <p>WeChat obfuscates sensitive code. For code obfuscation, I recommend checking out <a href="https://github.com/obfuscator-llvm/obfuscator/wiki">ollvm</a>. Generally speaking, code obfuscation has several techniques: 1. <strong>Control Flow Flattening</strong>, 2. <strong>Bogus Control Flow</strong>, 3. <strong>Instruction Substitution</strong>. Quarkslab’s article <a href="https://blog.quarkslab.com/deobfuscation-recovering-an-ollvm-protected-program.html">“Deobfuscation: recovering an OLLVM-protected program”</a> also introduces some deobfuscation methods, but the examples mentioned in the article are child’s play compared to what we encountered in WeChat. For instance, one of WeChat’s functions after obfuscation had over 70,000 lines, and decompiling it with IDA could take an entire day. By slowly analyzing this code every day, we summarized many patterns. So I wrote a small tool for deobfuscation, and through continuous trial and correction, we finally successfully deobfuscated the code.</p>
+  </li>
+  <li>
+    <p><strong>0305 Algorithm</strong></p>
+
+    <p>WeChat itself performs strict verification on the client, including device environment and device fingerprint information. This means that using tools found online to modify WeChat features (like grabbing red envelopes) can easily be detected by WeChat, and getting banned is probably just a matter of time. This requires encryption/decryption and signature verification mechanisms, and the 0305 algorithm is one of the more difficult ones. First, the code itself is obfuscated, and secondly, even after deobfuscation, it’s very difficult to understand its logic, such as what specific algorithm is used and the encryption/decryption and signature verification process. So we could only slowly explore, continuously observing the data changes at each step, figuring out some possible patterns. Finally, after many attempts, we hit upon the correct algorithm and process.</p>
+  </li>
+</ol>
+
+<p>After experiencing and successfully solving these difficulties, we actually felt much more confident. When we encountered more challenges afterward (and there were still many), there were still moments of frustration, but more often we believed we could complete the challenge. Overall, this journey has been one pitfall after another. After solving one problem and happily raising our heads again, thinking “the sky has cleared, the rain has stopped, and I think I can do it again”, WeChat would soon teach us a lesson, so we’ve always maintained a sense of awe towards WeChat.</p>
+
+<p>Finally, we created a fully implemented puppet called PadLocal. As for why it’s called “PadLocal”? This relates to our puppet’s overall design and how it differs from other puppets. PadLocal’s biggest features are:</p>
+
+<ul>
+  <li>Account state hosting method</li>
+  <li>Communication method with WeChatServer</li>
+</ul>
+
+<p>When designing the puppet, we first investigated other puppets in the community and studied their implementation principles. We found that most other puppets are designed like this: the puppet server manages and maintains the state of hosted accounts. All requests are completed through the chain <code class="language-plaintext highlighter-rouge">puppet -&gt; puppet server -&gt; WeChatServer</code>. For message pushing, a long connection is established between puppet and puppet server, and a corresponding long connection is also established between puppet server and WeChatServer. When new messages are pushed, they reach the puppet end through the chain <code class="language-plaintext highlighter-rouge">WeChatServer -&gt; puppet server -&gt; puppet</code>. In this design, the puppet server acts as a stateful proxy, with all traffic being forwarded by the server. In our view, this design may have several potential disadvantages:</p>
+
+<ol>
+  <li>Because ultimately all communication with WeChatServer is done by the puppet server. If a puppet server hosts multiple accounts and doesn’t configure corresponding proxy strategies for each account, these accounts will share the puppet server’s IP. From a risk control perspective, this easily creates risks. Moreover, once some accounts have a relatively high risk level, it’s easy to contaminate other accounts in the same IP pool, harming the innocent.</li>
+  <li>All traffic is forwarded through the puppet server, creating considerable pressure on its bandwidth, especially when hosted accounts generate large amounts of multimedia resources such as images and videos.</li>
+  <li>Since the puppet server maintains the state of hosted accounts, the puppet server is stateful. From a system architecture perspective, stateful servers face significant challenges in system stability, availability, and capacity planning. If some servers in the cluster go down and the backup switchover mechanism is not well designed, some accounts can easily become unavailable.</li>
+  <li>To ensure better availability and experience for the puppet, puppet servers usually cache (not necessarily permanently store) certain data (such as chat data). This means that the server inevitably needs to touch the business data of hosted accounts. This requires puppet providers to maintain extremely high industry self-discipline and ensure customer data security through adequate mechanisms.</li>
+</ol>
+
+<p>Based on our thinking about these issues, we put all traffic forwarding work on the puppet side, <strong>which is the origin of “Local” in PadLocal</strong>. We utilized GRPC’s bidirectional communication mechanism to make the puppet a proxy, forwarding all traffic to WeChatServer through the puppet. At the same time, the puppet maintains the long connection with WeChatServer. The advantages of this are obvious:</p>
+
+<ol>
+  <li>The IP used for communication between hosted accounts and WeChatServer is the IP of the puppet side, so different accounts naturally don’t have the risk of sharing IPs.</li>
+  <li>Traffic for downloading images, videos, and other multimedia resources doesn’t need to go through the PadLocal server. Moreover, not going through the server is more efficient.</li>
+  <li>Account state maintenance is completed on the puppet side, so the PadLocal server can be designed as stateless, making it naturally much simpler to deal with issues like scaling - simple is beautiful.</li>
+  <li>The PadLocal server doesn’t save any business data, eliminating data security risks.</li>
+</ol>
+
+<p>The topology diagram of the overall architecture is as follows:</p>
+
+<p><img src="/assets/2020/10-puppet-padlocal-intro-en/topological-graph.webp" alt="Topological Graph" /></p>
+
+<p>Looking back, by implementing a puppet, we ourselves have gained a lot. First, we have a deeper understanding of Wechaty and can better appreciate the designer’s original intentions and the trade-offs involved. Wechaty’s ease of use is the result of careful design. This has been a wonderful journey. Secondly, implementing a Wechaty puppet is a very challenging task, and completing such a task is of course very fulfilling. Furthermore, from an internal perspective, we can gain a deeper and more comprehensive understanding of WeChat’s operational mechanisms and design philosophy. As a national-level communication software, WeChat’s design is excellent, and various mechanisms and design concepts can completely serve as industry standards - it’s truly the absolute king in this field.</p>
+
+<p>Now we’ve decided to publicly release the PadLocal puppet. Our goal is to help everyone realize various creative ideas in the WeChat ecosystem, and also help the WeChat ecosystem develop in a richer and healthier way. Our existence is not for malicious purposes, but to help build a better society. For future plans, we will continue to actively maintain this puppet as WeChat versions iterate.</p>
+
+<p>PadLocal is currently still in the beta testing stage, and there are still some minor issues that need to be resolved. We hope that more developers will participate and work together to bring this puppet to the next, more mature stage. We have a reward mechanism to thank partners who contribute to PadLocal, and specific rules are still being discussed. Currently, Tokens are gradually being opened to everyone through an “application + review” process. If you’re interested, please contact the <a href="mailto:oxddoxdd@gmail.com">administrator</a> and explain what kind of creative ideas you want to implement with PadLocal. We are also preparing more detailed documentation and guidance, so stay tuned.</p>
+
+<p>Finally, Rome wasn’t built in a day, and we were only able to complete this work by standing on the shoulders of giants. Thank you to all the friends who helped PadLocal come into being - much love.</p>
+
+<blockquote>
+  <p>Chinese version of this post: <a href="/2020/10/12/puppet-padlocal-intro/">puppet padlocal intro</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#puppet">puppet</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#padlocal">padlocal</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#puppet-provider">puppet-provider</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#puppet-service">puppet-service</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/padlocal">
+                            <img class="rounded-circle" src="/assets/contributors/padlocal/avatar.webp" alt="padlocal" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/padlocal">padlocal</a> </h5>
+						Everything is ok.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/09/30/wechaty-puppet-lark-final-blog/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/09-wechaty-puppet-lark-final-blog-en/wechaty-lark-final.webp">  基于开放 API 封装 Wechaty 接口下的飞书聊天机器人：期末</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/10/12/puppet-padlocal-intro/"> New Wechaty Puppet Service: PadLocal  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/10-puppet-padlocal-intro-en/logo.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

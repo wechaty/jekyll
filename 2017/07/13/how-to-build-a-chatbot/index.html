@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      如何编写聊天机器人 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>如何编写聊天机器人 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="如何编写聊天机器人" />
+<meta name="author" content="lijiarui" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Chatbot，聊天机器人，用于和人类用户聊天的电脑程序。它是场交互革命，也是一个多技术融合的平台。桔子互动创始人根据自己的经验告诉大家，该如何来编写微信聊天机器人。" />
+<meta property="og:description" content="Chatbot，聊天机器人，用于和人类用户聊天的电脑程序。它是场交互革命，也是一个多技术融合的平台。桔子互动创始人根据自己的经验告诉大家，该如何来编写微信聊天机器人。" />
+<link rel="canonical" href="https://wechaty.js.org/2017/07/13/how-to-build-a-chatbot/" />
+<meta property="og:url" content="https://wechaty.js.org/2017/07/13/how-to-build-a-chatbot/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2017/07-how-to-build-a-chatbot-en/itdakashuo-how-to-build-a-chatbot-7.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-07-13T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2017/07-how-to-build-a-chatbot-en/itdakashuo-how-to-build-a-chatbot-7.webp" />
+<meta property="twitter:title" content="如何编写聊天机器人" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"lijiarui"},"dateModified":"2017-07-13T00:00:00+00:00","datePublished":"2017-07-13T00:00:00+00:00","description":"Chatbot，聊天机器人，用于和人类用户聊天的电脑程序。它是场交互革命，也是一个多技术融合的平台。桔子互动创始人根据自己的经验告诉大家，该如何来编写微信聊天机器人。","headline":"如何编写聊天机器人","image":"https://wechaty.js.org/assets/2017/07-how-to-build-a-chatbot-en/itdakashuo-how-to-build-a-chatbot-7.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2017/07/13/how-to-build-a-chatbot/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"lijiarui"},"url":"https://wechaty.js.org/2017/07/13/how-to-build-a-chatbot/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#tutorial">tutorial</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">如何编写聊天机器人</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/lijiarui">
+                            <img class="rounded-circle" src="/assets/contributors/lijiarui/avatar-new.webp" alt="Jiarui LI (李佳芮)" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/lijiarui">Jiarui LI (李佳芮)</a> <span><a target="_blank" href="https://weibo.com/u/2175505900" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jul 13, 2017 · <span class="reading-time">
+  
+  
+    1 min read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2017/07-how-to-build-a-chatbot-en/itdakashuo-how-to-build-a-chatbot-7.webp" alt="如何编写聊天机器人">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<blockquote>
+  <p>Chatbot，聊天机器人，用于和人类用户聊天的电脑程序。它是场交互革命，也是一个多技术融合的平台。桔子互动创始人根据自己的经验告诉大家，该如何来编写微信聊天机器人。</p>
+</blockquote>
+
+<h2 id="what-are-chatbots-and-why-the-hype">What are chatbots and why the hype</h2>
+
+<p><img src="/assets/2017/07-how-to-build-a-chatbot-en/itdakashuo-how-to-build-a-chatbot-1.webp" alt="wechaty" /></p>
+
+<p>早在80年代，大家普遍使用PC上网，所有网上交互都是通过PC客户端去实现的。随着网速变得越来越快，浏览器开始普及。</p>
+
+<p>智能手机出现以后，人们使用电脑的时间越来越少，手机里安装的APP则越来越多。</p>
+
+<p>而现在就到了聊天机器人的时代。所有bots都搭载在message的平台上，去实现所有APP上的服务。</p>
+
+<p>我觉得公众号、直达号和H5这些在最开始的时候都是很像chatbot的雏形。APP实在是让用户太焦虑了，大家都希望有一个可以简单迅速找到服务的程序。</p>
+
+<p>因为数据、计算能力和网速都在迅速发展，在message这种消息的APP上会出现很多有意思的应用和服务，就像PC到Web，APP到chatbot这个过程的转换一样。</p>
+
+<p>我认为chatbot是未来，接下来的所有服务可能都是通过chatbot去实现的。</p>
+
+<p><img src="/assets/2017/07-how-to-build-a-chatbot-en/itdakashuo-how-to-build-a-chatbot-2.webp" alt="wechaty" /></p>
+
+<p>Chatbot Magazine创始人Matt Schlicht对chatbot的定义是：“A chatbot is a service,powered by rules and sometimes artificial intelligence,that you interact with via a chat interface.”</p>
+
+<p>聊天机器人是一种由规则和一部分人工智能驱动的服务，通过聊天接口进行交互。</p>
+
+<p>现在的交互方式已经发生了新的改变，我们可以通过说话去实现所有的功能。在Web和APP的时代，人要像计算机一样思考，而chatbot则是让计算机像人一样思考，做到“no UI”。</p>
+
+<p>当今用户不喜欢使用APP，因为不仅用户下载的成本高，APP的开发和升级成本也非常高，而且只有极少数的APP还处于活跃状态。</p>
+
+<p>而bots搭建在message平台上，无需安装，甚至在网速不佳的情况下也能进入它的服务。Chatbot处于“no UI”状态。如果只是关注逻辑层面去解决一些场景上的问题，开发的成本不会很高。</p>
+
+<h2 id="overview-of-the-bot-ecosystem">Overview of the bot ecosystem</h2>
+
+<p><img src="/assets/2017/07-how-to-build-a-chatbot-en/itdakashuo-how-to-build-a-chatbot-3.webp" alt="wechaty" />
+Facebook Message已经向开发者开放了，Apple ios Message APPS也在开放，Slack、Kik、Telegram和Skype都支持相关的接口。</p>
+
+<p>Facebook收购了Wit.ai，google收购了Api.ai，微软推出了luis.ai。我认为这三个都是实现一样的功能，就是实行意图识别。</p>
+
+<p>微软还有一个Bot Framework去做整个chat中控的系统，以及IBM推出了Watson Conversation API。</p>
+
+<p>Facebook Message上面有超过10万个bots，大概有10万个开发者在Facebook Message上进行这些bots的开发。</p>
+
+<p>有超过200万的用户每天在和chatbot进行交互。</p>
+
+<p>在其它平台如Skype、Telegram上也有上千的bot。</p>
+
+<p><img src="/assets/2017/07-how-to-build-a-chatbot-en/itdakashuo-how-to-build-a-chatbot-4.webp" alt="wechaty" /></p>
+
+<p>消费者能够真正接触到的chatbots大概分为三类：</p>
+
+<p>第一类是个人助理，帮助用户实现各种服务。</p>
+
+<p>第二类是虚拟客服，根据用户的问题给相应回答。</p>
+
+<p>第三类是提高生产力的工具，可以做一些信息的收集、分发消息等工作。</p>
+
+<p>Chatbot是一个很大的产业，它不是只有AI和deep learning，不一定要high tech去做，也不只有算法。而是要真正去解决一些实际问题。未来它就会像APP一样在我们身边，为我们提供非常一些简洁的服务。</p>
+
+<p><img src="/assets/2017/07-how-to-build-a-chatbot-en/itdakashuo-how-to-build-a-chatbot-5.webp" alt="wechaty" /></p>
+
+<p>Requirement和正常软件开发相似，然后写一些需求的文档和需求说明。</p>
+
+<p>做软件开发或APP的时候会做一些线框图或流程图。Chatbot是一个“no UI”的体验，所以要写script，了解如何收集用户的信息、怎样理解用户，并把这些用户的话术整理出来。它就是一个和用户交流的线框图的概念。</p>
+
+<p>接下来要做架构开发，它同样分为前端和后端。前端就是script，更完整地收集用户信息。收集好了做成一个action给到后端，和其它的Web service做整合。</p>
+
+<p>在做chatbot开发的时候，往往会陷入编码和测试反复的循环之中，因为交互还不是结构化的数据，所以会有点复杂。</p>
+
+<p>Chatbot里做的测试和一般的APP测试不一样。在APP里可以简单暴力地做测试，但在chatbot里，不同的message有不同的需求或限制。做测试的时候要摸清不同message平台的区别。</p>
+
+<p>要部署到一个可托管的环境并时刻去监控它，然后做推广。</p>
+
+<p>最后还要做chatbot的分析，需要知道每一个会话时长是怎样的、用户对什么最感兴趣。拿到这些数据后再去调研用户的需求，形成一个循环。
+<img src="/assets/2017/07-how-to-build-a-chatbot-en/itdakashuo-how-to-build-a-chatbot-6.webp" alt="wechaty" />
+Chatbot主要是从场景入手，更关注的是解决一些问题和创新的点，而不是底层的开发。我认为接下来各种开发者也会从APP开发者转换成chatbot开发者，只是时间问题。</p>
+
+<h2 id="itdakashuo-how-to-build-a-chatbot">itdakashuo-how-to-build-a-chatbot</h2>
+
+<p><img src="/assets/2017/07-how-to-build-a-chatbot-en/itdakashuo-how-to-build-a-chatbot-7.webp" alt="wechaty" /></p>
+
+<p>Wechaty是一个可以让微信变成机器人的接口，利用这个框架可以把个人微信号变成机器人，能自动回复和提供一些服务。</p>
+
+<p>Wechaty的实现原理主要是监听网页上的信息，把信息封装然后给开发者调用，开发者发送信息的时候让浏览器去实现这些功能。</p>
+
+<p>Side project通过代码追踪的方式应对微信网页变化。</p>
+
+<p>Wechaty的七个基本事件分别是error、scan、login、logout、message、friend和join。</p>
+
+<p><img src="/assets/2017/07-how-to-build-a-chatbot-en/itdakashuo-how-to-build-a-chatbot-8.webp" alt="wechaty" /></p>
+
+<h2 id="related-scene">Related Scene</h2>
+
+<p>我们已经实现了微信群的CRM管理、通过各种方式邀请好友进群以及做一些多群的直播。</p>
+
+<p>还有一些有意思的东西想和大家分享。</p>
+
+<p>挑选一个最吸引人的头像到微信上。通过用户点赞数分析出哪些头像在男性和女性中分别最受欢迎，帮助用户挑选微信头像。</p>
+
+<p>存储文件。把微信和云盘打通，可以直接把微信上收到的文件转给机器人，让机器人存进云盘里。</p>
+
+<p>把歌词生成一张好看的图片。订机票、车票、酒店等。Github的通知。把用户关注的动态实时发送到微信群里，让微信群和各种平台的信息做对接，也可以收集群里的消息做分析和训练。</p>
+
+<p>Chatbot确实是一个可以帮我们解决生活中很多问题的工具，只要是开发者都能去实现它。</p>
+
+<hr />
+
+<blockquote>
+  <p>English version of this post: <a href="/2017/07/13/how-to-build-a-chatbot-en/">How to Build a Chatbot</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#talk">talk</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#featured">featured</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/lijiarui">
+                            <img class="rounded-circle" src="/assets/contributors/lijiarui/avatar-new.webp" alt="Jiarui LI (李佳芮)" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/lijiarui">Jiarui LI (李佳芮)</a> <span><a target="_blank" href="https://weibo.com/u/2175505900" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Co-Creator of Wechaty; 句子互动创始人 & CEO，微软人工智能最具价值专家 (AI MVP)
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2017/07/13/how-to-build-a-chatbot-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2017/07-how-to-build-a-chatbot-en/itdakashuo-how-to-build-a-chatbot-7.webp">  How to Build a Chatbot</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2017/07/17/run-your-telegram-bot-with-wechaty/"> Run Your Telegram Bot with Wechaty  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2017/hczhcz-run-your-telegram-bot-with-wechaty-1.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

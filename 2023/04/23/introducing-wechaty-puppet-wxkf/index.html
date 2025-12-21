@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Wechaty Puppet WXKF 发布公告 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Wechaty Puppet WXKF 发布公告 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Wechaty Puppet WXKF 发布公告" />
+<meta name="author" content="wang-nan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Wechaty 社区的朋友们，我们,句子互动,这次带来了全新的 puppet, wechaty-puppet-wxkf ，基于微信客服官方接口。这个 puppet 是一个本地运行的 puppet ，不依赖服务，同时完全开源。" />
+<meta property="og:description" content="Wechaty 社区的朋友们，我们,句子互动,这次带来了全新的 puppet, wechaty-puppet-wxkf ，基于微信客服官方接口。这个 puppet 是一个本地运行的 puppet ，不依赖服务，同时完全开源。" />
+<link rel="canonical" href="https://wechaty.js.org/2023/04/23/introducing-wechaty-puppet-wxkf/" />
+<meta property="og:url" content="https://wechaty.js.org/2023/04/23/introducing-wechaty-puppet-wxkf/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2023/04-introducing-wechaty-puppet-wxkf/logo.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-04-23T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2023/04-introducing-wechaty-puppet-wxkf/logo.webp" />
+<meta property="twitter:title" content="Wechaty Puppet WXKF 发布公告" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"wang-nan"},"dateModified":"2023-04-23T00:00:00+00:00","datePublished":"2023-04-23T00:00:00+00:00","description":"Wechaty 社区的朋友们，我们,句子互动,这次带来了全新的 puppet, wechaty-puppet-wxkf ，基于微信客服官方接口。这个 puppet 是一个本地运行的 puppet ，不依赖服务，同时完全开源。","headline":"Wechaty Puppet WXKF 发布公告","image":"https://wechaty.js.org/assets/2023/04-introducing-wechaty-puppet-wxkf/logo.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2023/04/23/introducing-wechaty-puppet-wxkf/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"wang-nan"},"url":"https://wechaty.js.org/2023/04/23/introducing-wechaty-puppet-wxkf/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#announcement">announcement</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Wechaty Puppet WXKF 发布公告</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/wang-nan">
+                            <img class="rounded-circle" src="/assets/contributors/wang-nan/avatar.webp" alt="Wang-Nan" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/wang-nan">Wang-Nan</a> <span><a target="_blank" href="https://twitter.com/brotherstyx" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Apr 23, 2023 · <span class="reading-time">
+  
+  
+    5 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2023/04-introducing-wechaty-puppet-wxkf/logo.webp" alt="Wechaty Puppet WXKF 发布公告">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>Wechaty 社区的朋友们，我们,<a href="https://www.juzibot.com">句子互动</a>,这次带来了全新的 puppet, <a href="https://github.com/juzibot/wechaty-puppet-wxkf">wechaty-puppet-wxkf</a> ，基于微信客服官方接口。这个 puppet 是一个本地运行的 puppet ，不依赖服务，同时完全开源。</p>
+
+<p>微信客服由腾讯微信团队为企业打造，用于满足企业的客服需求，帮助企业做好客户服务。企业可以在微信内、外各个场景中接入微信客服，用户可以发起咨询，企业可通过API来收发消息。</p>
+
+<p>微信客服在企微后台配置后，可以通过自建应用、第三方应用和服务商代开发三种方式管理，目前 wechaty-puppet-wxkf 支持自建应用和服务商代开发两种方式。</p>
+
+<p>微信客服的消息接受通过企微后台应用接收回调后再拉取新消息完成，因此在理想情况下应该有一个回调中心分配各种回调到应用，然后应用再分配到不同的 puppet 实例上。我们也为此推出了微信客服的回调管理服务， WXKF-manager 。 wechaty-puppet-wxkf 同时支持单独使用和配合 manager 共同使用。</p>
+
+<h2 id="单独使用-wechaty-puppet-wxkf">单独使用 wechaty-puppet-wxkf</h2>
+
+<p><img src="/assets/2023/04-introducing-wechaty-puppet-wxkf/structure-1.webp" alt="structure-1.webp" /></p>
+
+<h3 id="安装依赖">安装依赖</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install </span>wechaty
+npm <span class="nb">install </span>wechaty-puppet-wxkf
+</code></pre></div></div>
+
+<p>需要注意的是， wechaty-puppet-wxkf 需要 wechaty 1.0 以上版本以运行。</p>
+
+<h3 id="配置环境变量">配置环境变量</h3>
+
+<p>与大多数传统的 puppet 不同， wechaty-puppet-wxkf 无法通过扫描二维码登录，你需要通过环境变量或者在新建 puppet 实例的时候传入一些配置来登录成功。如果相同的变量在环境变量和配置都有设置，则优先使用配置项的。</p>
+
+<p>这会在后续章节中进一步讨论。</p>
+
+<h3 id="启动-ding-dong-bot">启动 ding-dong bot</h3>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">WechatyBuilder</span>  <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">wechaty</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">PuppetWxkf</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">wechaty-puppet-wxkf</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="nx">WechatyBuilder</span><span class="p">.</span><span class="nf">build</span><span class="p">({</span>
+  <span class="na">puppet</span><span class="p">:</span> <span class="k">new</span> <span class="nc">PuppetWxkf</span><span class="p">()</span>
+<span class="p">})</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">message</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">text</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">ding</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nx">message</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="dl">'</span><span class="s1">dong</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="身份认证">身份认证</h3>
+
+<h4 id="如何获取身份信息">如何获取身份信息</h4>
+
+<p>如前文所说，以及 ding-dong bot 所示， wechaty-puppet-wxkf 中不会产生 scan 事件，因此也无法通过扫码来登录，这并非是弄错了。微信客服的登录是利用企微的“微信客服”应用。你可以在你的企业后台管理微信客服应用。</p>
+
+<p><img src="/assets/2023/04-introducing-wechaty-puppet-wxkf/app-1.webp" alt="app-1.webp" /></p>
+
+<p>将滚动条拉到页面最下方，你可以看到微信客服目前可以以3种方式被 API 管理，分别是自建应用、第三方应用和服务商代开发。目前 wechaty-puppet-wxkf 支持自建应用和服务商代开发方式。</p>
+
+<p><img src="/assets/2023/04-introducing-wechaty-puppet-wxkf/app-2.webp" alt="app-2.webp" /></p>
+
+<p>如果你需要管理一个微信客服账号，步骤如下</p>
+
+<ul>
+  <li>
+    <p>在微信客服应用管理页面创建一个新的微信客服账号，给他一个名字（<code class="language-plaintext highlighter-rouge">name</code>）和头像。</p>
+
+    <p>注： 你可以通过<code class="language-plaintext highlighter-rouge">name</code>或者<code class="language-plaintext highlighter-rouge">kfId</code>来区分账号，<code class="language-plaintext highlighter-rouge">kfId</code>比较优先。如果是想通过<code class="language-plaintext highlighter-rouge">kfId</code>来区分账号，请记得给他们唯一的名字。</p>
+  </li>
+  <li>
+    <p>将微信客服分配给你正在开发的企业应用。你可以在页面最下方点击自建应用或者服务商代开发来进行操作。</p>
+  </li>
+  <li>
+    <p>获取<code class="language-plaintext highlighter-rouge">token</code>和<code class="language-plaintext highlighter-rouge">encodingAesKey</code>。这两个值将被用来解析企微回调。</p>
+
+    <p>如果你是在开发自建应用，你可以在企微客服应用页面上找到他，点击 “API” 再点击“设置”。</p>
+
+    <p><img src="/assets/2023/04-introducing-wechaty-puppet-wxkf/app-3.webp" alt="app-3.webp" /></p>
+
+    <p>如果你是服务商代开发，你应该能在你的服务商管理后台找到对应的值。</p>
+  </li>
+  <li>
+    <p>配置回调地址。你可以单独部署此 puppet ，但更好的方式是通过一个服务来接受和分发所有微信客服相关的回调。你可以使用我们的 WXKF-Manager 项目，也可以自行设计这一服务。</p>
+  </li>
+  <li>
+    <p>获取<code class="language-plaintext highlighter-rouge">secret</code>和<code class="language-plaintext highlighter-rouge">corpId</code>。这些值会被用来获取<code class="language-plaintext highlighter-rouge">accessToken</code>，然后用于调用企微提供的接口。</p>
+
+    <p>如果你是自建应用开发者，你可以点击上图中的“查看”，然后<code class="language-plaintext highlighter-rouge">secret</code>会发送到你的手机上。你的<code class="language-plaintext highlighter-rouge">corpId</code>，可以在企微管理后台的“我的企业”标签上找到。</p>
+
+    <p>如果你是服务商代开发应用开发者，这些信息会被发送到你的应用配置的回调地址上。请参考<a href="https://developer.work.weixin.qq.com/document/path/97163">腾讯官方 API 文档</a>的相关章节来获取进一步的信息。</p>
+  </li>
+  <li>
+    <p>你还需要设定一个<code class="language-plaintext highlighter-rouge">port</code>， puppet 将会创建一个 web 服务并在指定的端口接收回调。</p>
+  </li>
+</ul>
+
+<h4 id="如何配置身份信息">如何配置身份信息</h4>
+
+<ul>
+  <li>
+    <p>通过传入 Puppet 实例</p>
+
+    <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="nx">WechatyBuilder</span><span class="p">.</span><span class="nf">build</span><span class="p">({</span>
+  <span class="na">puppet</span><span class="p">:</span> <span class="k">new</span> <span class="nc">PuppetWxkf</span><span class="p">({</span>
+    <span class="na">callbackPort</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">port</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
+    <span class="na">wxkfAuth</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">token</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">token</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
+      <span class="na">encodingAESKey</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">encodingAESKey</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
+      <span class="na">corpId</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">corpId</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
+      <span class="na">corpSecret</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">secret</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
+      <span class="na">kfOpenId</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">kfId</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="c1">// either of these two keys</span>
+      <span class="na">kfName</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">kfName</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="c1">// is good enough</span>
+    <span class="p">},</span>
+  <span class="p">})</span>
+<span class="p">})</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>通过环境变量</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nb">export </span><span class="nv">PUPPET_WXKF_WECOM_APP_TOKEN</span><span class="o">=</span><span class="k">${</span><span class="nv">token</span><span class="k">}</span>
+  <span class="nb">export </span><span class="nv">PUPPET_WXKF_WECOM_APP_AES_KEY</span><span class="o">=</span><span class="k">${</span><span class="nv">encodingAESKey</span><span class="k">}</span>
+  <span class="nb">export </span><span class="nv">PUPPET_WXKF_WECOM_CORP_ID</span><span class="o">=</span><span class="k">${</span><span class="nv">corpId</span><span class="k">}</span>
+  <span class="nb">export </span><span class="nv">PUPPET_WXKF_WECOM_CORP_SECRET</span><span class="o">=</span><span class="k">${</span><span class="nv">secret</span><span class="k">}</span>
+
+  <span class="nb">export </span><span class="nv">PUPPET_WXKF_WECOM_KF_NAME</span><span class="o">=</span><span class="k">${</span><span class="nv">name</span><span class="k">}</span>
+  <span class="nb">export </span><span class="nv">PUPPET_WXKF_WECOM_KF_OPEN_ID</span><span class="o">=</span><span class="k">${</span><span class="nv">kfId</span><span class="k">}</span>
+  <span class="nb">export </span><span class="nv">PUPPET_WXKF_CALLBACK_PORT</span><span class="o">=</span>8080
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="配置对象存储服务-oss">配置对象存储服务 OSS</h4>
+
+<p>对象存储服务并非是必须的，对于 wechaty-puppet-wxkf 来说，不配置也能使用大部分的功能。但关键问题是，小程序的封面图将无法传输。原因如下。</p>
+
+<p>小程序在 wecahty 中的 payload 定义如下：</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kr">interface</span> <span class="nx">MiniProgramPayload</span> <span class="p">{</span>
+    <span class="nl">appid</span><span class="p">?</span>       <span class="p">:</span> <span class="kr">string</span><span class="p">,</span>   <span class="c1">// optional, appid, get from wechat (mp.weixin.qq.com)</span>
+    <span class="nx">description</span><span class="p">?</span> <span class="p">:</span> <span class="kr">string</span><span class="p">,</span>   <span class="c1">// optional, mini program title</span>
+    <span class="nx">pagePath</span><span class="p">?</span>    <span class="p">:</span> <span class="kr">string</span><span class="p">,</span>   <span class="c1">// optional, mini program page path</span>
+    <span class="nx">iconUrl</span><span class="p">?</span>     <span class="p">:</span> <span class="kr">string</span><span class="p">,</span>   <span class="c1">// optional, mini program icon url</span>
+    <span class="nx">shareId</span><span class="p">?</span>     <span class="p">:</span> <span class="kr">string</span><span class="p">,</span>   <span class="c1">// optional, the unique userId for who share this mini program</span>
+    <span class="nx">thumbUrl</span><span class="p">?</span>    <span class="p">:</span> <span class="kr">string</span><span class="p">,</span>   <span class="c1">// optional, default picture, convert to thumbnail</span>
+    <span class="nx">title</span><span class="p">?</span>       <span class="p">:</span> <span class="kr">string</span><span class="p">,</span>   <span class="c1">// optional, mini program title</span>
+    <span class="nx">username</span><span class="p">?</span>    <span class="p">:</span> <span class="kr">string</span><span class="p">,</span>   <span class="c1">// original ID, get from wechat (mp.weixin.qq.com)</span>
+    <span class="nx">thumbKey</span><span class="p">?</span>    <span class="p">:</span> <span class="kr">string</span><span class="p">,</span>   <span class="c1">// original, thumbnailurl and thumbkey will make the headphoto of mini-program better</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>请注意，图标和封面图的形式都是 url ，而不是后来较新的 payload 使用的 filebox json 字符串。这就导致了这两个图片必须成为一个可访问的 url 地址才能传递。网址链接的封面也是类似的情况，但幸运的是，企微客服会直接传可访问的明文 url 作为网址链接的封面图，因此只有小程序受影响。</p>
+
+<p>我们目前支持的 OSS 类型包括 S3, Ali, Minio, Tos 和 Cos 。可以参考<code class="language-plaintext highlighter-rouge">src/util/env.ts</code>来查看如何配置。</p>
+
+<h2 id="与-wxkf-manager-配合使用">与 WXKF-Manager 配合使用</h2>
+
+<h3 id="为什么需要一个-manager-">为什么需要一个 Manager ？</h3>
+
+<p>无论是自建应用还是服务商代开发应用，一个企微的应用可能承担着诸多职责，微信客服只是其中之一，例如组织架构变化、标签变化等等。而一个应用在一个企业中只能配置一个回调地址，因此需要有一个服务来根据事件类型分发回调。</p>
+
+<p>如果要使用 WXKF-Manager ，在 puppet 中需要添加两个环境变量，<code class="language-plaintext highlighter-rouge">PUPPET_WXKF_MANAGER_CENTER_ENDPOINT</code>和<code class="language-plaintext highlighter-rouge">PUPPET_WXKF_SELF_ENDPOINT</code>。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">PUPPET_WXKF_MANAGER_ENDPOINT</span><span class="o">=</span>http://127.0.0.1:7777
+<span class="nb">export </span><span class="nv">PUPPET_WXKF_SELF_ENDPOINT</span><span class="o">=</span>http://127.0.0.1:8080
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">PUPPET_WXKF_MANAGER_ENDPOINT</code>是 WXKF-Manager 的地址， puppet 会主动去用 kfId 注册。 <code class="language-plaintext highlighter-rouge">PUPPET_WXKF_SELF_ENDPOINT</code>是 puppet 自身回调服务的地址，当 WXKF-Manager 收到回调后，会根据回调内容寻找对应的 puppet ，并调用 puppet 回调服务。</p>
+
+<h3 id="架构图">架构图</h3>
+
+<p><img src="/assets/2023/04-introducing-wechaty-puppet-wxkf/structure-3.webp" alt="structure-3.webp" /></p>
+
+<h3 id="如何使用">如何使用</h3>
+
+<ul>
+  <li>依赖一个 mongo 来存储注册的 puppet 信息</li>
+  <li>典型的部署方式是将这一项目打包成 Docker 镜像部署在容器中。</li>
+</ul>
+
+<h3 id="环境变量配置">环境变量配置</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">MONGO_URI</span><span class="o">=</span>mongodb://127.0.0.1:27017/wxkf-manager
+<span class="nb">export </span><span class="nv">PORT</span><span class="o">=</span>7777
+<span class="c"># export ACCESS_TOKEN_URL=https://127.0.0.1:8888/api/corp/accessToken</span>
+</code></pre></div></div>
+
+<p>MONGO_URI: mongo 的地址
+PORT: WXKF-Manager 服务监听的端口
+ACCESS_TOKEN_URL: 这是一个可选变量。因为直接从企业微信获取 accessToken 的接口是有调用频率限制的，因此理想的方式是通过一个其他服务来调用、刷新和缓存 accessToken 。这一接口的实现方式应该与企业微信文档中一致。</p>
+
+<p>注意：当解密企业微信的回调的时候，我们会需要前文所说的<code class="language-plaintext highlighter-rouge">aesEncodingKey</code>和<code class="language-plaintext highlighter-rouge">token</code>，而这两个值在 WXKF-Manager 中不是来自配置，而是来自注册的 puppet 。因此如果需要 WXKF-Manager 直接接收回调，需要有一个对应的 puppet 注册过之后才能配置成功。</p>
+
+<h3 id="最佳实践">最佳实践</h3>
+
+<p>尽管上图所示的架构可以正常工作，但并非是最佳实践。如前文所说，一个企业微信的应用可能承担许多职责，而微信客服只是其中之一，因此最好有一个专门的回调服务来接受和分发所有的企微回调。同时，接从企业微信获取 accessToken 的接口是有调用频率限制的，因此理想的方式是通过一个其他服务来调用、刷新和缓存 accessToken 。这一接口的实现方式应该与企业微信文档中一致。因此，最理想的架构图如下所示。</p>
+
+<p><img src="/assets/2023/04-introducing-wechaty-puppet-wxkf/structure-2.webp" alt="structure-2.webp" /></p>
+
+<p>在这一架构中， WXKF-Manager 不再直接接收企微回调，而是通过一个 Gateway 服务来接受和分发。企微的回调地址可以配置为 <code class="language-plaintext highlighter-rouge">http://www.example.com/callback/{corpId}</code>。他的数据库中存有对应企业的<code class="language-plaintext highlighter-rouge">aesEncodingKey</code>和<code class="language-plaintext highlighter-rouge">token</code>，因此他可以解密回调信息。</p>
+
+<p>当收到一个类型为 <code class="language-plaintext highlighter-rouge">kf_msg_or_event</code> 的回调时，他应该调用 WXKF-Manager 的接口，让 WXKF-Manager 把这一回调分配给具体的 puppet。</p>
+
+<p>这一回调过程既可以通过明文的 JSON 形式完成，也可以用密文，即直接把来自企微的信息转发回来。例如：</p>
+
+<p>明文：</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">PUPPET_WXKF_MANAGER_ENDPOINT</span><span class="p">}</span><span class="s2">/callback/decrypted/</span><span class="p">${</span><span class="nx">corpId</span><span class="p">}</span><span class="s2">`</span>
+
+<span class="nx">axios</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">xxx</span><span class="dl">'</span><span class="p">,</span> <span class="c1">// this token is not the token of wecom corp app, it is the token for sync messages. see https://kf.weixin.qq.com/api/doc/path/94745</span>
+  <span class="na">openKfId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">xxx</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>密文：</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">PUPPET_WXKF_MANAGER_ENDPOINT</span><span class="p">}</span><span class="s2">/callback/</span><span class="p">${</span><span class="nx">corpId</span><span class="p">}</span><span class="s2">`</span>
+
+<span class="nx">axios</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">xmlString</span><span class="p">,</span> <span class="p">{</span> <span class="c1">// xmlString is the raw crypted message directly from wecom callback body`</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">'</span><span class="s1">Content-type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text/xml</span><span class="dl">'</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h2 id="反馈和意见">反馈和意见</h2>
+
+<p>针对 wechaty-puppet-wxkf 的反馈请移步 <a href="https://github.com/juzibot/wechaty-puppet-wxkf/issues">issues</a> 提出意见</p>
+
+<p>针对 WXKF-Manager 的反馈请移步 <a href="https://github.com/juzibot/wxkf-manager/issues">issues</a> 提出意见</p>
+
+<h2 id="写在最后">写在最后</h2>
+
+<p>一个社区的繁荣离不开大家的贡献。感谢 Wechaty 社区的成员们。是你们的热情和支持，让我们能够不断走出舒适区，开发新的产品。你们的反馈和建议也让我们对 puppet 的开发有更多的心得与经验，做出更好的产品。</p>
+
+<p>我们<a href="https://www.juzibot.com">句子互动</a>将一如既往的支持 Wechaty 社区，为开源社区的繁荣做出我们的一份贡献。期待下次再见。</p>
+
+<blockquote>
+  <p>This post is also available in <a href="/2023/04/23/introducing-wechaty-puppet-wxkf-en/">English</a>.</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#puppet">puppet</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#wxkf">wxkf</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#juzi">juzi</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/wang-nan">
+                            <img class="rounded-circle" src="/assets/contributors/wang-nan/avatar.webp" alt="Wang-Nan" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/wang-nan">Wang-Nan</a> <span><a target="_blank" href="https://twitter.com/brotherstyx" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Just another coder.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2023/04/23/introducing-wechaty-puppet-wxkf-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2023/04-introducing-wechaty-puppet-wxkf-en/logo.webp">  Announcing Wechaty Puppet WXKF</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2023/05/09/preview-on-wechaty-2.0-en/"> Plans and Preview for Wechaty 2.0  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2023/05-preview-on-wechaty-2.0-en/logo.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

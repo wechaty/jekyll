@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      使用wechaty自助算卦 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>使用wechaty自助算卦 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="使用wechaty自助算卦" />
+<meta name="author" content="willcup" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="写这个小东西，本就是想玩耍一下，发现很有意思！ 面临人生重大抉择犹豫不定，头脑乱成浆糊的时候，鄙人会问卦，根据卦象客观分析当前的局势。但是从来不问命，只是借用卦象来让自己以一种不含感情的分析方式重新认识当前面临的形势。朋友中有一两个有类似爱好的，对易经有些兴趣，我们几个谈论的时候，其他人就会要求我们给他们解卦。" />
+<meta property="og:description" content="写这个小东西，本就是想玩耍一下，发现很有意思！ 面临人生重大抉择犹豫不定，头脑乱成浆糊的时候，鄙人会问卦，根据卦象客观分析当前的局势。但是从来不问命，只是借用卦象来让自己以一种不含感情的分析方式重新认识当前面临的形势。朋友中有一两个有类似爱好的，对易经有些兴趣，我们几个谈论的时候，其他人就会要求我们给他们解卦。" />
+<link rel="canonical" href="https://wechaty.js.org/2020/06/28/build-divination-yibot/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/06/28/build-divination-yibot/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/yibot/1.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-06-28T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/yibot/1.webp" />
+<meta property="twitter:title" content="使用wechaty自助算卦" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"willcup"},"dateModified":"2020-06-28T00:00:00+00:00","datePublished":"2020-06-28T00:00:00+00:00","description":"写这个小东西，本就是想玩耍一下，发现很有意思！ 面临人生重大抉择犹豫不定，头脑乱成浆糊的时候，鄙人会问卦，根据卦象客观分析当前的局势。但是从来不问命，只是借用卦象来让自己以一种不含感情的分析方式重新认识当前面临的形势。朋友中有一两个有类似爱好的，对易经有些兴趣，我们几个谈论的时候，其他人就会要求我们给他们解卦。","headline":"使用wechaty自助算卦","image":"https://wechaty.js.org/assets/2020/yibot/1.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/06/28/build-divination-yibot/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"willcup"},"url":"https://wechaty.js.org/2020/06/28/build-divination-yibot/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">使用wechaty自助算卦</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/willcup">
+                            <img class="rounded-circle" src="/assets/contributors/willcup/avatar.webp" alt="willcup" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/willcup">willcup</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jun 28, 2020 · <span class="reading-time">
+  
+  
+    2 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/yibot/1.webp" alt="使用wechaty自助算卦">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>写这个小东西，本就是想玩耍一下，发现很有意思！ 面临人生重大抉择犹豫不定，头脑乱成浆糊的时候，鄙人会问卦，根据卦象客观分析当前的局势。但是从来不问命，只是借用卦象来让自己以一种不含感情的分析方式重新认识当前面临的形势。朋友中有一两个有类似爱好的，对易经有些兴趣，我们几个谈论的时候，其他人就会要求我们给他们解卦。</p>
+
+<p>易经本来就是一个工具书，只需要理解并会正当使用就行了，并不难。我就想写个机器人，可以让他们自己去操作，然后也慢慢学会掌握这种东西。</p>
+
+<p><strong>注意</strong>：非常不推荐占卜！ 个人目前只推崇易理！</p>
+
+<h2 id="wechaty实现">wechaty实现</h2>
+
+<p>实现其实很简单了。就是使用0、1分别表示阴、阳两种爻。 然后用户输入自己求得的六爻，获得对应的卦象词条。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">// 简单列一下示意</span>
+<span class="kd">var</span> <span class="nx">ddict</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="dl">"</span><span class="s2">坤为地000000=0</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">山地剥000001=1</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">水地比000010=2</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">风地观000011=3</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">雷地豫000100=4</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">火地晋000101=5</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">泽地萃000110=6</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">天地否000111=7</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">地山谦001000=8</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">艮为山001001=9</span><span class="dl">"</span><span class="p">,</span>
+  <span class="p">]</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">onMessage</span> <span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// log.info('StarterBot', msg.toString())</span>
+  <span class="nx">room</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">room</span><span class="p">()</span>
+  <span class="kd">let</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">text</span><span class="p">()</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">text</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">求卦</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">GUA_HELP</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">text</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">"</span><span class="s2">求卦-</span><span class="dl">"</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">code</span> <span class="o">=</span> <span class="nx">text</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">求卦-</span><span class="dl">"</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+      <span class="k">try</span> <span class="p">{</span>
+        <span class="nx">ddict</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">item</span><span class="p">,</span><span class="nx">index</span><span class="p">,</span><span class="nx">array</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+          <span class="k">if </span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="nx">code</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span> <span class="p">)</span> <span class="p">{</span>
+            <span class="kd">let</span> <span class="nx">o_name</span> <span class="o">=</span> <span class="nx">item</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="nx">code</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="kd">let</span> <span class="nx">names</span> <span class="o">=</span> <span class="nx">o_name</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">为</span><span class="dl">"</span><span class="p">)</span>
+            <span class="k">if </span><span class="p">(</span><span class="nx">names</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+              <span class="nx">o_name</span> <span class="o">=</span> <span class="nx">names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="p">}</span>
+            <span class="k">if </span><span class="p">(</span><span class="nx">o_name</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+              <span class="nx">o_name</span> <span class="o">=</span> <span class="nx">o_name</span><span class="p">.</span><span class="nf">slice</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="nx">o_name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">卦</span><span class="dl">"</span><span class="p">)</span>
+          <span class="p">}</span>
+        <span class="p">})</span>
+      <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="dl">"</span><span class="s2">找到了</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">)</span>
+        <span class="kd">let</span> <span class="nx">resp</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://baike.baidu.com/item/</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">error</span><span class="p">.</span><span class="nx">message</span>
+        <span class="kd">const</span> <span class="nx">linkPayload</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">UrlLink</span><span class="p">({</span> <span class="na">description</span> <span class="p">:</span> <span class="p">(</span><span class="dl">"</span><span class="s2"> === 友情提示</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">msg</span><span class="p">.</span><span class="k">from</span><span class="p">().</span><span class="nf">name</span><span class="p">()</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> === </span><span class="se">\n</span><span class="s2">看易理，命运自己掌握，我们只需要看清时局！</span><span class="dl">"</span><span class="p">),</span>
+              <span class="na">thumbnailUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3740483648,506813176&amp;fm=26&amp;gp=0.jpg</span><span class="dl">'</span><span class="p">,</span>
+              <span class="na">title</span> <span class="p">:</span> <span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">,</span>
+              <span class="na">url</span> <span class="p">:</span> <span class="nx">resp</span><span class="p">})</span>
+
+        <span class="nx">log</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="nx">resp</span><span class="p">)</span>
+        <span class="k">await</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">linkPayload</span><span class="p">)</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="截图">截图</h2>
+
+<p><img src="/assets/2020/yibot/1.webp" alt="效果图 @4x" /></p>
+
+<h2 id="其他">其他</h2>
+
+<p>过程中看了wechaty的其他的很多博客，发现大家贡献了很多有意思且实用的工具。比我弄得这个实用多了。计划后面选择性地丰富一下功能，添加一些生活元素，丢到群里，给朋友们玩耍。</p>
+
+<p>最后再提示一下：善易者不卜！ 我是不善的，但是也不占卜。 虽然是传说，但是我觉得很多时候浑沌一些挺好的，有助于个人思考，也算是个人活过，真实的体验。什么都靠占卜，命系于天不由自己无说，不知道会不会遭天谴~~ 哈哈</p>
+
+<p>思之~ 慎之~</p>
+
+<h2 id="token的问题">token的问题</h2>
+
+<p>本人是Java程序员出身，工作一直在大数据领域，对python、scala都比较熟悉。但是对前端js的知识就有些贫瘠了。</p>
+
+<p>Wechaty社区对技术人员是蛮开放与支持的。社区当前也正在对多语言做支持。但是当前人们拿到的大多是padplus版本的。</p>
+
+<p>文档中对于token的介绍个人觉得不太详细，因为很多人都在群内提到了相同的问题：为啥我拿到我的token在java/python中运行不了？</p>
+
+<p>同学，如果你的padplus版本的token，<strong>只能使用js/ts进行编码测试</strong>。不要一看是一种新的语言，以前没玩儿过就直接放弃了。写好很难，但是逐渐玩儿起来并不难。加油！</p>
+
+<h2 id="致谢">致谢</h2>
+
+<p>感谢Wechaty团队。</p>
+
+<blockquote>
+  <p>Author: <a href="https://github.com/runningdata">@runningdata</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#typescript">typescript</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#entertainment">entertainment</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#case-study">case-study</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/willcup">
+                            <img class="rounded-circle" src="/assets/contributors/willcup/avatar.webp" alt="willcup" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/willcup">willcup</a> </h5>
+						斜杠工程师
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/06/23/hitchhiker-info-subtotal/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/info-subtotal/head.webp">  北京周边跨城顺风车消息汇总</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/06/28/tom-chat-fun/"> TomChat-为生活增趣味  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/tom-chat/zelda.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

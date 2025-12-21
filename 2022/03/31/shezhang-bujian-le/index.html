@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Shezhang Bujian Le | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Shezhang Bujian Le | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Shezhang Bujian Le" />
+<meta name="author" content="huan" />
+<meta property="og:locale" content="zh" />
+<meta name="description" content="借助世界上最大的单体中文NLP大模型和Wechaty，我们做出了一个可以跟人类玩“剧本杀”的AI" />
+<meta property="og:description" content="借助世界上最大的单体中文NLP大模型和Wechaty，我们做出了一个可以跟人类玩“剧本杀”的AI" />
+<link rel="canonical" href="https://wechaty.js.org/2022/03/31/shezhang-bujian-le/" />
+<meta property="og:url" content="https://wechaty.js.org/2022/03/31/shezhang-bujian-le/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2022/03-shezhang-bujian-le-en/aoc7k-iob2u.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-03-31T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2022/03-shezhang-bujian-le-en/aoc7k-iob2u.webp" />
+<meta property="twitter:title" content="Shezhang Bujian Le" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"huan"},"dateModified":"2022-03-31T00:00:00+00:00","datePublished":"2022-03-31T00:00:00+00:00","description":"借助世界上最大的单体中文NLP大模型和Wechaty，我们做出了一个可以跟人类玩“剧本杀”的AI","headline":"Shezhang Bujian Le","image":"https://wechaty.js.org/assets/2022/03-shezhang-bujian-le-en/aoc7k-iob2u.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2022/03/31/shezhang-bujian-le/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"huan"},"url":"https://wechaty.js.org/2022/03/31/shezhang-bujian-le/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#fun">fun</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Shezhang Bujian Le</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Mar 31, 2022 · <span class="reading-time">
+  
+  
+    1 min read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2022/03-shezhang-bujian-le-en/aoc7k-iob2u.webp" alt="Shezhang Bujian Le">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<h2 id="借助世界上最大的单体中文nlp大模型和wechaty我们做出了一个可以跟人类玩剧本杀的ai">借助世界上最大的单体中文NLP大模型和Wechaty，我们做出了一个可以跟人类玩“剧本杀”的AI</h2>
+
+<p><strong>项目地址，欢迎围观</strong>：<a href="https://github.com/bigbrother666sh/shezhangbujianle">https://github.com/bigbrother666sh/shezhangbujianle</a></p>
+
+<h2 id="核心创意与演示">核心创意与演示</h2>
+
+<p>我们为本项目特别改编了一个微型线上剧本杀剧本，本子有五个角色，分别由五名玩家扮演，但我们每场只会召集四个玩家，并在他们不知情的情况下，派出AI扮演剩下的那个角色。</p>
+
+<p>玩家无需下载客户端或者打开网页，直接使用微信就能玩（感谢神器<strong>Wechaty</strong>）。</p>
+
+<p>本着细节拉满的原则，我们也为AI准备了一个微信账号，并精心为她设定了昵称和头像，甚至每场游戏前我们还会紧扣时事的为她准备近三天的朋友圈内容，而游戏后还会继续连发三天朋友圈内容提供延展剧情（非常类似”规则怪谈”）。</p>
+
+<p><img src="/assets/2022/03-shezhang-bujian-le-en/1.webp" alt="img" />  <img src="/assets/2022/03-shezhang-bujian-le-en/2.webp" alt="img" /></p>
+
+<p>整体剧情并不复杂，讲的是某高校社团中五个骨干成员因为一件事情牵涉到各自利益而产生的种种勾心斗角。玩家要做的也非常简单，就是想方设法、拉帮结派的说服其他人接受自己的主张……不过我们这次对原作做了比较大的改动，剧作中AI所扮演的角色（蔡晓）受控于某邪恶的科技巨头（“北极鹅”公司），
+她要帮助“北极鹅”实行一个庞大的阴谋，而这个阴谋其实笼罩了所有人……坦率的说，从游戏角度，这个角色的难度还挺高，承担着推动剧情的作用，并且游戏机制设定最后所有的疑点矛头都会指向她，
+如果在现实的剧本杀游戏中，这个角色也应该是由DM扮演，而非普通玩家，当然这也就大大增加了对AI的考验。</p>
+
+<p>下面让我们来看看AI的实际表现吧！（演示视频正在制作中，大家现在可以移步github项目主页看录屏gif）。</p>
+
+<h3 id="谭明vs蔡晓ai">谭明VS蔡晓（AI)</h3>
+
+<p>剧情中谭明为了实现自己的目的，不择手段的策划了一个诡计，并计划私下与蔡晓达成联盟，然而他不知道的是蔡晓其实在下一盘更大的棋，正想借他的诡计实现自己的阴谋……所以AI对谭明的策略就是可劲儿的忽悠他并想方设法利用他。
+实际表现中，AI很好的贯彻了这个思路，甚至发挥想象力的使用了色诱绝技……坦率的讲，这招也极大的超出了我们的预料……</p>
+
+<h3 id="孔墨vs蔡晓ai">孔墨VS蔡晓（AI)</h3>
+
+<p>剧情中孔墨的任务是调查真相，这个角色的玩家需要主动出击找其他玩家尽可能多了解情况，但有的时候会碰到比较内向的玩家。这种情况下我们会利用”导演机制”先主动发起一轮对话，
+可以看到AI在这种情况下能够很好的在后续轮次中进行线索”暗示”，起到推动剧情的作用。</p>
+
+<h3 id="李超vs蔡晓ai">李超VS蔡晓（AI)</h3>
+
+<p>剧情中的李超跟AI所扮演的蔡晓持有完全相反的立场，所以蔡晓需要说服李超，同时在一些事情上对其进行隐瞒……</p>
+
+<h3 id="孙若vs蔡晓ai">孙若VS蔡晓（AI)</h3>
+
+<p>剧情中孙若是一个比较复杂的角色，他（她，这个角色不限定性别）其实也跟蔡晓一样被改造为了”AI人”，但是他（她）自己却并不知道，并且延伸剧情的谜底也在这个人物身上。所以AI与孙若之间的对话需要体现一定的”深度”，不能不说，但也不能全说。
+最终效果如何，大家自己看吧~</p>
+
+<h3 id="蔡晓ai在公聊房间">蔡晓（AI）在公聊（房间)</h3>
+
+<p>最后放一段编导组与AI的毕业群聊画面，大家再整体感受下。:smile:</p>
+
+<p>从剧情角度，AI对孙若的最后一句话充满了深意……当然，从技术角度，我更相信这只是巧合，然而这恰是本作好玩的地方之一——AI的不确定性会极大丰富原有剧情。</p>
+
+<p><em>【以上演示录屏请大家移步 <a href="https://github.com/bigbrother666sh/shezhangbujianle">项目github主页</a> 观看。】</em></p>
+
+<h2 id="项目挑战">项目挑战</h2>
+
+<p>所谓100个人就有100种微信使用风格，直接使用微信作为用户交互界面虽然极大降低了开发工作量和用户使用成本，但是也带来很多挑战。</p>
+
+<p>很大的一个挑战就是用户输入文本的预处理。比如，有些用户喜欢输入大段的空格或者频繁换行代替逗号或者句号，这就很容易造成simnet_bow报错（simbet_bow是百度飞桨paddlehub提供的一个预训练
+模型，我们在本项目中用于判断用户提问），所以我们需要先用re把这些都替换为逗号；另外，上面说到的有些用户习惯先把问题提出再另外发一条只@人的消息，按我们最初的处理方案，
+使用正则把@+昵称全部删除，就会产生”空文本”，simnet_bow还会报错，最后我们的方案是只去掉@，当然这可能会造成一句话中人名重复，但好在本次使用的生成模型源1.0貌似对此的抗干扰能力还不错……</p>
+
+<p>另外，我们这次使用的是完全免费的puppet-xp方案，但是它目前的功能实在有限，仅能实现文本信息的收发，这导致了很多限制，甚至留下了一些硬伤，这一点下文会详细介绍。</p>
+
+<p>类似的例子还有很多，比如puppet-xp无法识别除微信自带的第一页以外的emoji等等，考虑到出现频率不高，我们也就忽略了，所以稍微懂点技术的朋友，恳请你们测试的时候 <strong>千万不要抱着”极限测试”的思想</strong> ，关注AI生成本身就好:smile:</p>
+
+<h2 id="导演机制">导演机制</h2>
+
+<p>因为种种限制，我们还必须为AI设定一个辅助机制，在本项目中就是所谓的”<strong>导演</strong>“。他的作用是在出现AI不适用的情况下对AI进行”手动引导”，这些情况有一些是游戏机制本身，有一些是因为目前我们采用的wechaty puppet-xp协议限制（有关wechaty和puppet协议的关系可以查看wechaty主页（<a href="https://github.com/wechaty">https://github.com/wechaty</a>）。</p>
+
+<p>具体而言这些情况包括：</p>
+
+<h3 id="用户注册问题">用户注册问题</h3>
+
+<p>首先由于目前puppet-xp拿不到用户的群昵称，所以程序无从得知哪个用户对应哪个角色，我们为此设定了一个游戏规则，即用户需要先添加其他用户好友，然后发一句”这是xxx”（角色名），我们会要求用户对所有其他玩家都这样做，这样就不会暴露AI，并且这也确实有必要，因为真人也不能每次都翻看群昵称
+来确定发消息的玩家到底扮演的是谁。
+但是我们不能保证每个用户都会遵守，所以就需要导演来手动帮助AI完成这个识别。</p>
+
+<h3 id="主动消息发送">主动消息发送</h3>
+
+<p>项目测试中，我们也发现会出现冷场问题，比如一时间大家都不说话，或者某两个用户聊的火热，而忽略了其他玩家……从玩家角度来说，这是蛮主观的问题，可能我就是不知道该说什么，按程序”一问一答”的设计，这个时候AI也只能等。所以我们设定了主动消息或者说<strong>闲聊</strong>机制，具体来说就是预设一些问题，导演账号向AI账号发送特定指令就会触发。</p>
+
+<h3 id="应急消息发送">应急消息发送</h3>
+
+<p>目前puppet-xp仅能识别文本消息（当然浪潮源1.0目前也只支持text in text out，然而其实多模态的方案目前也不少），我们为此规定玩家必须发文本，这其实已经很限制了。结果测试中我们发现puppet-xp还不支持引用消息，而这在项目实际场景中出现的频率还不低！为此我们不得不针对一些常见问题
+预设了回答文本， 当出现无法识别消息的情况，就由导演发送指令指挥AI发送……
+有同学可能会问，你们不能直接用AI登录的微信客户端发送么？答案是——其实也可以，只是这样显得比较”不智能”，当然从玩家体验角度，可能这样也不错。只是这里面有一个小细节，你必须通过AI所登录的Windows客户端发送，而不通过同时登录的移动端发送，因为puppet-xp会错误的把多终端同步的信息
+当成是对方发来的信息，这样的话，就会引发AI”回复自己的消息”。</p>
+
+<p>话说，我们在预设消息中把AI设定为”神经比较大条”的性格，会不经意间”说漏嘴”一些剧情，所以实际应用下来，应急消息往往会产生比较戏剧性的效果。从作品本身而言，这个机制可能会是一个很好玩的东西，所以对于应急消息我们没有写在程序中，而是通过外部jason文件进行维护，大家可以随时增加。</p>
+
+<h3 id="流程引导">流程引导</h3>
+
+<p>在用户视角中导演更像是”主持人”的角色，他负责拉群、分配角色等等，而对于AI也是这样，游戏什么时候开始、什么时候结束，这些也是导演通过指令告知程序的。而我们也设计了AI角色在游戏开始和结束时特殊的剧情。</p>
+
+<p>说到这，其实我还是很希望puppet-xp能够再完善一些，可以支持群操作（拉群、解散群、加群）以及朋友圈操作（发送朋友圈、朋友圈留言等），这些都会更加丰富我们的玩法，比如AI可以在游戏中突然给玩家的最近一条朋友圈留言，而留言包含了一些线索，这一定很带劲！</p>
+
+<h2 id="回到作品本身先有创意还是先有技术">回到作品本身，先有创意还是先有技术</h2>
+
+<p>本项目的初衷是结合NLP大模型和wechaty做一个好玩的东西，这是一个模糊的定义，但我作为项目发起人从一开始就清楚，这至少是一个创意和技术各占50%的事儿……</p>
+
+<p>然而实践中，到底是先有技术还是先有创意却很纠结，如果我们先去做创意的话，那么很可能设计很多不可实现的东西，后期就得改创意；反过来如果从技术出发来考虑，那么做出来的东西一定不好玩，好的技术必然是”对用户不可见的”。最终对于这个问题，<strong>我的答案是唯有一起考虑</strong>！而这就要求项目主创
+必然是懂技术的，所以各位能够在本项目中看到一个有趣的现象——写剧本的人跟写代码的人是同一个！我担心的是，可能随着AI的深化普及，可能python会成为每一个创作者的必备技能，好比现在没有作家不会用word，没有自媒体人不会用视频剪辑软件一样。</p>
+
+<p>而引入AI后，带来的另一个有趣的问题是，本作还是一个”剧本杀”么？</p>
+
+<p>不得不承认，本作最后的呈现与之前我们设想的不一样，或者说很不一样。NLP大模型的生成能力，使得AI可以和用户共同”演绎”出很多新的剧情， 比如下面这段，”谭明”找AI复盘，结果AI告诉他其实他和张家怡（游戏情节人物）是gay！</p>
+
+<p><img src="/assets/2022/03-shezhang-bujian-le-en/3.webp" alt="img" /></p>
+
+<p>针对这种情况，我们索性也直接在游戏规则中加入了一条：”如果其他人提到了你所不知道的剧情，请相信那只是没有出现在你的剧本中，而非不存在”，并且我们也不提供复盘文本，而是鼓励他们互相（自然也包括AI）对信息进行复盘。
+在这个复盘过程中，玩家也早晚会发现某个玩家其实是AI（剧情中AI所扮演的角色是一个被植入了AI程序的女大学生，但大部分玩家都会认为这个角色是我们的工作人员假扮的，而他们最后会发现这个账号真的只是一个AI！），
+为此，我们准备了相应的延展剧情，在”剧本杀”游戏后1~3天以朋友圈的形式进行发送，这非常类似于 <strong>“规则怪谈”</strong>，而互相私聊复盘的机制以及”共同恐惧”的剧情效果也让本作兼具 <strong>陌生人社交</strong>的属性……可以说本作最好玩的部分恰恰是在”剧本杀”游戏结束后才刚开始。</p>
+
+<p>这一切都让本作成为一部 <strong>“活着的故事”</strong>，是一部由玩家和AI在不知不觉中共同创造的故事，我将之称为 <strong>“交互式叙事”</strong>。（其实这就是我一开始最想实现的形式，但我不知道怎么实现，最后选择了剧本杀模式，但没想到最后我得到的还是我最初所设想的。）</p>
+
+<p>而这种叙事有时也会产生非常感人的随机剧情。</p>
+
+<p><img src="/assets/2022/03-shezhang-bujian-le-en/4.webp" alt="img" /></p>
+
+<p>本项目中作为每次生成example的语料文件可以说直接决定了AI的表现，因此我们也一并将语料文件进行开源，因为在这种“开发范式”下，这些语料本质上就是代码的一部分。</p>
+
+<p>而本项目中的人类编辑跟AI的关系也更像是”教练员与运动员”的关系，编导组会在每轮测试后根据AI当场表现针对性更新语料，从而提高AI后续的表现。这种人类教练员与AI运动员之间的”迭代合作”模式也是值得探讨的。（相对而言，目前虚拟人普遍的“中之人”做法相当于人类和提线木偶的关系。）</p>
+
+<p>总之，本项目所积累的种种工程方案或可作为一种全新的“目的性对话”解决方案，不仅仅可以应用于娱乐创作，还可以泛化于教育、客服、销售、政务、心理咨询、情感陪护等各领域。</p>
+
+<h2 id="致敬">致敬</h2>
+
+<p>本项目综合使用了浪潮源1.0大模型和百度飞桨的paddlehub预训练模型外，以及——<strong>wechaty</strong>。
+如果没有它，我们将只能让用户通过某个网页或者APP与AI进行交流，这不仅极大的增加了开发工作量，也大大削弱了实际体验，甚至无法实现我们的关键创意：让AI角色悄无声息的潜入玩家中，
+并不知不觉的把所有人笼罩在“细思极恐”中。</p>
+
+<p>所以在这里，我要向 <strong>@Wechaty</strong> 社区致敬！”好用到哭“——你们对得起这个评价！ 也向爱写诗的<strong>laozhang</strong>（puppet-xp作者）致敬！感谢你把这么好的东西无私的奉献了出来！</p>
+
+<h2 id="写在最后的话">写在最后的话</h2>
+
+<p>蔡晓和”北极鹅”的故事并未完结，让我们在这里最后上一张蔡晓的”北极鹅”工卡吧！</p>
+
+<p><img src="/assets/2022/03-shezhang-bujian-le-en/5.webp" alt="img" /></p>
+
+<p>（作为一个喜欢将细节拉满的团队，这张工卡里面其实隐藏着两个彩蛋，你能找到么？）</p>
+
+<p><strong>【有关本作更加详细的AI prompt配置细节、源代码以及人物剧本、效果演示录屏等请移步 <a href="https://github.com/bigbrother666sh/shezhangbujianle">项目github主页</a> 】</strong></p>
+
+<hr />
+
+<blockquote>
+  <p>This post is also available in <a href="/2022/03/31/shezhang-bujian-le-en/">English</a>.</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#script-murder">script-murder</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ai">ai</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Author @ Wechaty, Architect @ Chatie, LLM Code Generation Enthusiast, Serial Entrepreneur, Burner🔥
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2022/03/31/shezhang-bujian-le-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2022/03-shezhang-bujian-le-en/aoc7k-iob2u.webp">  With the World's Largest Monolithic Chinese NLP Model and Wechaty, We Built an AI That Can Play Script Murder Games with Humans!</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2022/04/07/microsoft-rd-summit-talk-wechaty-huan/"> Wechaty introduction at Microsoft Regional Director Summit  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2022/04-microsoft-rd-summit-talk-wechaty-huan/splash-rd-talk.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

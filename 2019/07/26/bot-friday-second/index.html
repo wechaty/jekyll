@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Bot Friday 第二弹 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Bot Friday 第二弹 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Bot Friday 第二弹" />
+<meta name="author" content="lijiarui" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="« 本次活动通知: 腾讯+句子互动第二弹，Chatbot Friday «" />
+<meta property="og:description" content="« 本次活动通知: 腾讯+句子互动第二弹，Chatbot Friday «" />
+<link rel="canonical" href="https://wechaty.js.org/2019/07/26/bot-friday-second/" />
+<meta property="og:url" content="https://wechaty.js.org/2019/07/26/bot-friday-second/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2019/07-bot-friday-second-en/group-photo.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-07-26T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2019/07-bot-friday-second-en/group-photo.webp" />
+<meta property="twitter:title" content="Bot Friday 第二弹" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"lijiarui"},"dateModified":"2019-07-26T00:00:00+00:00","datePublished":"2019-07-26T00:00:00+00:00","description":"« 本次活动通知: 腾讯+句子互动第二弹，Chatbot Friday «","headline":"Bot Friday 第二弹","image":"https://wechaty.js.org/assets/2019/07-bot-friday-second-en/group-photo.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2019/07/26/bot-friday-second/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"lijiarui"},"url":"https://wechaty.js.org/2019/07/26/bot-friday-second/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#event">event</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Bot Friday 第二弹</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/lijiarui">
+                            <img class="rounded-circle" src="/assets/contributors/lijiarui/avatar-new.webp" alt="Jiarui LI (李佳芮)" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/lijiarui">Jiarui LI (李佳芮)</a> <span><a target="_blank" href="https://weibo.com/u/2175505900" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jul 26, 2019 · <span class="reading-time">
+  
+  
+    2 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2019/07-bot-friday-second-en/group-photo.webp" alt="Bot Friday 第二弹">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>« 本次活动通知: <a href="https://mp.weixin.qq.com/s/fbY9BVLIqhy6Uwls0g4fRQ">腾讯+句子互动第二弹，Chatbot Friday</a> «</p>
+
+<h2 id="bot-friday-second---沙龙第二弹">Bot Friday Second - 沙龙第二弹</h2>
+
+<ul>
+  <li>时间：2019年7月26日（周五）18:30 - 22:30（4小时）</li>
+  <li>地点：腾讯公司北京办公室，理想国际大厦17层</li>
+  <li>赞助方：腾讯公司</li>
+</ul>
+
+<h2 id="第二期沙龙参与成员">第二期沙龙参与成员</h2>
+
+<ul>
+  <li>分享嘉宾
+    <ul>
+      <li>
+        <p>李明，毛豆网创始人CEO，清华大学计算机硕士。曾于2003年创立嵌入式操作系统培训公司亚嵌科技。毛豆网致力于为内容创业者提供技术支持服务，关注Chatbot和微信小程序的结合与互动，并在微信群中基于NLP技术为用户提供流畅体验。已获清华XLab/DNA基金数百万天使投资。</p>
+      </li>
+      <li>
+        <p>邝伟鹏，积致科技创始人CEO，巴黎笛卡尔大学硕士。全栈工程师，曾任智能客服Udesk交互架构师，并独立完成类Google doc的实时文档编辑应用以及可视化拖拽开发App应用平台开发宝。积致科技致力于基于微信社交生态，以 Chatbot 的交互方式为用户提供人脸识别应用（FindMyFace及脸盲助手）。已获PreAngel种子投资。</p>
+      </li>
+    </ul>
+  </li>
+  <li>腾讯公司
+    <ul>
+      <li>宋俊，腾讯智能对话平台研发工程师</li>
+      <li>刘晓倩，腾讯智能对话平台产品经理</li>
+    </ul>
+  </li>
+  <li>Chatbot行业
+    <ul>
+      <li>段清华，金证优智技术总监。曾任文因互联研发工程师，完成项目包括金融搜索，公告摘要抽取项目，银行问答机器人。拥有多年金融NLP经验，带领团队完成问答机器人、投研系统、监管舆情、知识图谱等项目。对金融文档解析、抽取、搜索、量化分析、知识图谱建设、对话系统等领域有深入研究。</li>
+      <li>雷飏，北京安络技术有限公司，董事长，公司业务主要是AI安防，会涉及到楼宇可视对讲门禁的通讯、交互。</li>
+      <li>李云军，圈动无界创始人CEO。资深互联网从业者，历任方正、金山安全产品总监、高级技术总监。拥有2个智能排版算法专利。公司曾获英诺天使千万级投资。公司主打团队协作产品Teamin，结合自然语言处理及人工智能，为新型社交协作人群提供更智能的助理服务。</li>
+      <li>李佳芮，句子互动创始人。句子互动创建了覆盖全球的微信聊天机器人开发者社区，公司围绕微信生态为客户提供智能对话服务。客户覆盖教育、保险等多个领域。曾入选百度AI加速器，并由PreAngel、Plug and Play和Y Combination孵化支持，已获TSVC/Alpha公社联合千万RMB级别天使投资；</li>
+      <li>高原，句子互动CTO，先后在 Expedia, Amazon 做研发工程师，后回国创立句子互动。</li>
+      <li>赵俊良，毛豆网客服总监，北京交通大学硕士，曾任北京联合大学信息学院讲师，拥有十余年嵌入式系统研发经历和智能仪器测控领域的创业经历；</li>
+      <li>李卓桓，Github 6000 Star 的微信个人号SDK开源项目 Wechaty 作者，Conversational AI 布道者。曾任水木清华BBS站长，优酷网首席科学家。清华本科，中欧EMBA，北邮博士在读。</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="主题分享">主题分享</h2>
+
+<h3 id="1-talk-1---the-bad-part-of-my-chatbot-experience">1. Talk 1 - The Bad Part of My Chatbot Experience</h3>
+
+<h4 id="11-分享嘉宾">1.1 分享嘉宾</h4>
+
+<p>李明 <a href="https://github.com/limingth">@limingth</a> 毛豆网创始人CEO，清华大学计算机硕士。曾与2003年创立嵌入式操作系统培训公司亚嵌科技。毛豆网致力于为内容创业者提供技术支持服务，关注Chatbot和微信小程序的结合与互动，并在微信群中基于NLP技术为用户提供流畅体验。已获清华XLab/DNA基金数百万天使投资；</p>
+
+<h4 id="12-内容大纲">1.2 内容大纲</h4>
+
+<p>NLP技术到底哪家强？</p>
+
+<ul>
+  <li>需求背景
+    <ul>
+      <li>时间，主题，地点识别问题</li>
+    </ul>
+  </li>
+  <li>AI开放平台调研
+    <ul>
+      <li>讯飞</li>
+      <li>百度</li>
+      <li>腾讯</li>
+      <li>阿里</li>
+    </ul>
+  </li>
+  <li>实际使用的库和效果
+    <ul>
+      <li>@microsoft/recognizers</li>
+      <li>BosonNLP NER</li>
+      <li>chi-time-nlp</li>
+    </ul>
+  </li>
+  <li>开放问题讨论
+    <ul>
+      <li>有没有NER一站式解决方案？</li>
+      <li>Wechaty面临的挑战和机会</li>
+      <li>BotHub之畅想</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="13-slides">1.3 Slides</h4>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="/assets/js/viewer-js/#/assets/2019/07-bot-friday-second-en/chatbot-experience-limingth.pdf" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h3 id="2-talk2---脸盲助手-基于微信社交的chatbot人脸识别应用探索">2. Talk2 - 脸盲助手-基于微信社交的Chatbot人脸识别应用探索</h3>
+
+<h4 id="21-分享嘉宾">2.1 分享嘉宾</h4>
+
+<p>邝伟鹏 <a href="https://github.com/creatorkuang">@creatorkuang</a> 积致科技创始人CEO，巴黎笛卡尔大学硕士。全栈工程师，曾任智能客服Udesk交互架构师，并独立完成类Google doc的实时文档编辑应用以及可视化拖拽开发App应用平台开发宝。积致科技致力于基于微信社交生态，以 Chatbot 的交互方式为用户提供人脸识别应用（FindMyFace及脸盲助手）。已获PreAngel种子投资。</p>
+
+<h4 id="22-内容大纲">2.2 内容大纲</h4>
+
+<ul>
+  <li>用户场景</li>
+  <li>Chatbot解决方案</li>
+  <li>未来可能性探索</li>
+  <li>产品Demo</li>
+</ul>
+
+<h4 id="23-slides">2.3 Slides</h4>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="/assets/js/viewer-js/#/assets/2019/07-bot-friday-second-en/find-my-face-creatorkuang.pdf" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h3 id="3-分享视频回顾">3. 分享视频回顾</h3>
+
+<div class="zoom-container" style="
+    position: relative;
+    padding-bottom:56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <video controls="" width="560" height="315" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+    <source src="https://av.cdn.maodou.io/5d3a9c0ee6ac367ef8cb5b34/0_1564144294" type="video/mp4" />Your browser does not support the video tag.
+  </video>
+</div>
+
+<blockquote>
+  <p>感谢<a href="https://maodou.io">毛豆网</a>提供<a href="https://maodou.io/pricing">价值4000元</a>的本次活动<a href="https://live.maodou.io/course/yCt9NCNBdBe52uiT5">视频直播</a>赞助！</p>
+</blockquote>
+
+<h2 id="吐槽大会">吐槽大会</h2>
+
+<ol>
+  <li>李卓桓
+    <ol>
+      <li>活动应该守时，时间一到，不等任何人立即开始，优先满足活动现场人的用户体验。</li>
+    </ol>
+  </li>
+  <li>李明
+    <ol>
+      <li>借助直播扩散影响力，能产出高质量对话。</li>
+    </ol>
+  </li>
+  <li>邝伟鹏
+    <ol>
+      <li>每次活动主题应该更加明确。</li>
+    </ol>
+  </li>
+  <li>李云军
+    <ol>
+      <li>协会应该制定系列内容，聚焦主题。</li>
+    </ol>
+  </li>
+  <li>段清华
+    <ol>
+      <li>应该让算法的人接触更多的实际需求。</li>
+    </ol>
+  </li>
+  <li>雷飚
+    <ol>
+      <li>分享应该带有成功案例，而不是探索性的分享。</li>
+    </ol>
+  </li>
+  <li>李佳芮
+    <ol>
+      <li>制定未来的至少4次分享的主题内容。</li>
+    </ol>
+  </li>
+  <li>高原
+    <ol>
+      <li>未来活动更多后，为活动打标签做区分。</li>
+    </ol>
+  </li>
+  <li>刘晓倩
+    <ol>
+      <li>倾向于圆桌会议形式举办活动。</li>
+    </ol>
+  </li>
+  <li>俊良
+    <ol>
+      <li>脑洞了一个“吐槽机器人”。</li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="bot-friday-决议">Bot Friday 决议</h2>
+
+<ol>
+  <li>平台主席<br />
+ Bot Friday 推选了首位平台主席为会员提供巨头 Chatbot 平台的行业指导，平台主席为期1年，恭喜Bot Friday的首位平台主席: 刘晓倩。</li>
+  <li>俱乐部名称<br />
+ 在活动现场，11个人中10个人赞成每周五举办Chatbot活动，因此俱乐部名称暂定为：Bot Friday Club，简称 BFC。</li>
+  <li>轮值主席制度
+    <ol>
+      <li>每次活动后按照先自愿 + 主席指定原则，选出下次活动的轮值副主席。</li>
+      <li>本次活动的轮值副主席自动成为下次活动的轮值主席。</li>
+    </ol>
+  </li>
+  <li>会员制度<br />
+ Bot Friday 会员制度：只有在沙龙上分享过的人才能成为会员。参加沙龙活动的每一个人，原则上都必须发言。</li>
+</ol>
+
+<h2 id="下次活动信息">下次活动信息</h2>
+
+<ol>
+  <li>下次活动时间：8月2日（周五） 18:30 - 20:30
+    <ol>
+      <li>18:30 - 19:00 (30 MIN): Registration &amp; Social &amp; Pizza</li>
+      <li>19:00 - 19:10 (10 MIN): Warm Up</li>
+      <li>19:10 - 19:40 (30 MIN): Talk 1</li>
+      <li>19:40 - 19:50 (10 MIN): Tea Break</li>
+      <li>19:50 - 20:20 (30 MIN): Talk 2</li>
+      <li>20:20 - 20:30 (10 MIN): Reflection &amp; Group Photo</li>
+    </ol>
+  </li>
+  <li>下次活动轮值主席：李卓桓</li>
+  <li>下次活动轮值副主席：李明</li>
+  <li>下次活动分享
+    <ol>
+      <li>王天 《Tencent Bot Platform Product Talk》</li>
+      <li>李云军《Chatbot在团队任务管理中的应用》</li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="未来分享议题">未来分享议题</h2>
+
+<p>欢迎大家踊跃报名！</p>
+
+<ol>
+  <li>李明/俊良/Simon：Wechaty Mini Program Support</li>
+  <li>李明/俊良/Simon/云军：What will happen after Chatbot empowered by Mini Program?</li>
+  <li>俊良：如何用if else 和正则表达式写一个聊天机器人。</li>
+  <li>邝伟鹏：Chatbot 场景分享：秒印，家校沟通的工具。</li>
+  <li>李卓桓：Bot Market Place — 可重用能力平台。</li>
+  <li>肖立鹏：udesk 场景分享 （待定）</li>
+  <li>刘晓倩：Chatbot 行业应用，智能对话连接数据与商业</li>
+  <li>高原：企业微信开发实战分享</li>
+  <li>李佳芮：如何用Chatbot做售前导流</li>
+  <li>雷飚：AI + AR + Chatbot = ？</li>
+  <li>段清华：打造一个超越 rasa 的chatbot平台 —— deepdialog.ai</li>
+</ol>
+
+<h2 id="集体合影">集体合影</h2>
+
+<p><img src="/assets/2019/07-bot-friday-second-en/group-photo.webp" alt="合照" /></p>
+
+<p><img src="/assets/2019/07-bot-friday-second-en/people.webp" alt="所有人" /></p>
+
+<h2 id="after-party-">After Party 🍻</h2>
+
+<p><img src="/assets/2019/07-bot-friday-second-en/after-party.webp" alt="After Party" /></p>
+
+<p>主场活动结束后，六个人前往上次After Party的管氏串吧继续补充能量，大家讨论了创业，社区，技术，招聘等一系列问题，并成功的消灭了3炮鲜啤！</p>
+
+<p>另外，After Party 上我们从Lua数组下标从1开始，聊到了本次活动的第一场是0还是1，最终投票了第一次活动应该叫做First！</p>
+
+<h2 id="特别鸣谢">特别鸣谢</h2>
+
+<ol>
+  <li>场地赞助方：腾讯公司</li>
+  <li>晚餐赞助方：Tencent Bot Platform产品团队</li>
+  <li>直播赞助方：毛豆教育公司</li>
+  <li>活动主办方：句子互动公司</li>
+</ol>
+
+<h2 id="rsvp">RSVP</h2>
+
+<ol>
+  <li>如果对活动纪要有修订或补充意见，请回复对本次活动纪要留言；</li>
+  <li>如果参加下次沙龙活动，请回复下次自己愿意分享的主题；</li>
+  <li>如果计划邀请新朋友参加下次沙龙活动，请让新朋友回复一句话的自我介绍；</li>
+</ol>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#bot5">bot5</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#talk">talk</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#meetup">meetup</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/lijiarui">
+                            <img class="rounded-circle" src="/assets/contributors/lijiarui/avatar-new.webp" alt="Jiarui LI (李佳芮)" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/lijiarui">Jiarui LI (李佳芮)</a> <span><a target="_blank" href="https://weibo.com/u/2175505900" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Co-Creator of Wechaty; 句子互动创始人 & CEO，微软人工智能最具价值专家 (AI MVP)
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2019/07/26/bot-friday-second-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2019/07-bot-friday-second-en/group-photo.webp">  Bot Friday - Second Edition</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2019/08/12/dotnet-club-use-wechaty-to-collect-valuable-wechat-threads-en/"> dotnet club uses Wechaty to collect valuable WeChat threads </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

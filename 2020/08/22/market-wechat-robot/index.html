@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      行情播报微信机器人 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>行情播报微信机器人 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="行情播报微信机器人" />
+<meta name="author" content="exctech" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="使用Wechaty开发的行情播报微信机器人，为微信群组用户提供实时行情信息播报服务。用户可以通过添加管理员微信，然后自动加入播报群组。 机器人将采用行情早晚报和事件播报的形式在群组中进行行情播报。" />
+<meta property="og:description" content="使用Wechaty开发的行情播报微信机器人，为微信群组用户提供实时行情信息播报服务。用户可以通过添加管理员微信，然后自动加入播报群组。 机器人将采用行情早晚报和事件播报的形式在群组中进行行情播报。" />
+<link rel="canonical" href="https://wechaty.js.org/2020/08/22/market-wechat-robot/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/08/22/market-wechat-robot/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/market-wechat-robot/teaser.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-08-22T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/market-wechat-robot/teaser.webp" />
+<meta property="twitter:title" content="行情播报微信机器人" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"exctech"},"dateModified":"2020-08-22T00:00:00+00:00","datePublished":"2020-08-22T00:00:00+00:00","description":"使用Wechaty开发的行情播报微信机器人，为微信群组用户提供实时行情信息播报服务。用户可以通过添加管理员微信，然后自动加入播报群组。 机器人将采用行情早晚报和事件播报的形式在群组中进行行情播报。","headline":"行情播报微信机器人","image":"https://wechaty.js.org/assets/2020/market-wechat-robot/teaser.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/08/22/market-wechat-robot/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"exctech"},"url":"https://wechaty.js.org/2020/08/22/market-wechat-robot/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">行情播报微信机器人</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/exctech">
+                            <img class="rounded-circle" src="/assets/contributors/exctech/avatar.webp" alt="exctech" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/exctech">exctech</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Aug 22, 2020 · <span class="reading-time">
+  
+  
+    1 min read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/market-wechat-robot/teaser.webp" alt="行情播报微信机器人">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>使用Wechaty开发的行情播报微信机器人，为微信群组用户提供实时行情信息播报服务。用户可以通过添加管理员微信，然后自动加入播报群组。
+机器人将采用行情早晚报和事件播报的形式在群组中进行行情播报。</p>
+
+<h2 id="播报内容">播报内容</h2>
+
+<h3 id="行情早晚报">行情早晚报</h3>
+
+<p>截止北京时间早或晚8点：NQ小型纳指当月连续点数报11562.93，日内涨跌幅1.29%；YM小型道指当月连续点数报27857.0，日内涨跌幅1.10%；ES小型标普当月连续点数报3391.98，日内涨跌幅1.00%；COMEX黄金点数报1947.4，日内涨跌幅1.17%；NYMEX原油点数报42.25，日内涨跌幅0.09%；USDCNH美元离岸人民币点数报6.9213，日内涨跌幅0.02%；UDI美元指数点数报93.2，日内涨跌幅-0.19%；VIX恐慌指数点数报22.54，日内涨跌幅-7.47%；CME比特币期货CFD点数报11600.0，日内涨跌幅-0.92%。</p>
+
+<p>现货撮合数据现报11455.98USDT。
+截止午夜12点，现货撮合数据日内加权平均价格为11801.96USDT，日内收益为-133.37USDT，收益率为-1.12%。 日内高点为11882.79USDT，低点为11625.39USDT，振幅为257.40USDT，2.17%，相对历史水平为14.0434。 收益/振幅为-51.81%，属于日内（震荡）。 日内交易总量为127232.09BTC，相对历史水平为-。 其中买入量为59677.61BTC，卖出量为67554.48BTC，买卖量差为-7876.87BTC，买卖量比为0.4690。 目前现货平均真实振幅为423.15USDT，历史水平为56.1487。 波动率水平位1.05%，乖离率为-199.78%，cci为-67.44。</p>
+
+<h3 id="事件播报">事件播报</h3>
+
+<p>BTC现报11421.60USDT，日内累计涨幅-302.41，达-2.58%，15分钟内现货成交量达3369.55BTC，其中买入量为1457.26BTC，卖出量为1912.29BTC，买卖量差为-455.03BTC，买卖量比为0.4325。</p>
+
+<p>盘口单一价格挂单超过100BTC，平台：coinbase，价格：11500.00USDT，数量：124.82BTC</p>
+
+<h2 id="运行wechaty-hostie服务">运行Wechaty Hostie服务</h2>
+
+<h3 id="准备工作">准备工作</h3>
+
+<p>准备一台服务器，具备以下条件：</p>
+
+<ol>
+  <li>公开IP：可通过互联网访问；</li>
+  <li>公开端口：可通过互联网访问；</li>
+  <li>Docker。</li>
+</ol>
+
+<h3 id="运行步骤">运行步骤</h3>
+
+<h4 id="1-安装wechaty的docker镜像">1. 安装Wechaty的Docker镜像</h4>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull wechaty/wechaty
+</code></pre></div></div>
+
+<h4 id="2-设置wechaty-puppet-service">2. 设置<code class="language-plaintext highlighter-rouge">wechaty-puppet-service</code></h4>
+
+<p>可使用自定义的随机字符串，为防止与其他用户冲突，建议采用UUIDv4，可用在线生成工具来生成，<a href="https://uuidonline.com/">网址</a>。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">WECHATY_TOKEN</span><span class="o">=</span>puppet_hostie_your_token
+</code></pre></div></div>
+
+<h4 id="3-开启wechaty-puppet服务">3. 开启Wechaty Puppet服务</h4>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">WECHATY_HOSTIE_PORT</span><span class="o">=</span>8888
+<span class="nb">export </span><span class="nv">WECHATY_PUPPET</span><span class="o">=</span>wechaty-puppet-padplus
+<span class="nb">export </span><span class="nv">WECHATY_PUPPET_PADPLUS_TOKEN</span><span class="o">=</span>puppet_padplus_token
+<span class="nb">export </span><span class="nv">WECHATY_LOG</span><span class="o">=</span>verbose
+
+docker run <span class="se">\</span>
+  <span class="nt">--rm</span> <span class="se">\</span>
+  <span class="nt">-ti</span> <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">WECHATY_LOG</span><span class="o">=</span><span class="s2">"</span><span class="nv">$WECHATY_LOG</span><span class="s2">"</span> <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">WECHATY_PUPPET</span><span class="o">=</span><span class="s2">"</span><span class="nv">$WECHATY_PUPPET</span><span class="s2">"</span> <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">WECHATY_HOSTIE_PORT</span><span class="o">=</span><span class="s2">"</span><span class="nv">$WECHATY_HOSTIE_PORT</span><span class="s2">"</span> <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">WECHATY_TOKEN</span><span class="o">=</span><span class="s2">"</span><span class="nv">$WECHATY_TOKEN</span><span class="s2">"</span> <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">WECHATY_PUPPET_PADPLUS_TOKEN</span><span class="o">=</span><span class="s2">"</span><span class="nv">$WECHATY_PUPPET_PADPLUS_TOKEN</span><span class="s2">"</span> <span class="se">\</span>
+  <span class="nt">-p</span> <span class="s2">"</span><span class="nv">$WECHATY_HOSTIE_PORT</span><span class="s2">:</span><span class="nv">$WECHATY_HOSTIE_PORT</span><span class="s2">"</span> <span class="se">\</span>
+  wechaty/wechaty
+</code></pre></div></div>
+
+<h4 id="4-检查wechaty-puppet服务是否正常开启">4. 检查Wechaty Puppet服务是否正常开启</h4>
+
+<p>访问<code class="language-plaintext highlighter-rouge">https://api.chatie.io/v0/hosties/TOKEN</code>，其中<code class="language-plaintext highlighter-rouge">TOKEN</code>为前面设置的<code class="language-plaintext highlighter-rouge">WECHATY_TOKEN</code>。如果返回结果中包含前面设置的IP和端口，则服务正常开启。如果返回结果为：</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span><span class="s2">"host"</span>:<span class="s2">"0.0.0.0"</span>,<span class="s2">"port"</span>:0<span class="o">}</span>
+</code></pre></div></div>
+
+<p>则服务没有正常开启，需要按照上面的步骤重新检查。</p>
+
+<h2 id="运行行情播报微信机器人">运行行情播报微信机器人</h2>
+
+<h3 id="下载源码">下载源码</h3>
+
+<p>从github代码库中克隆源代码</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/exctech/market-wechat-robot.git
+</code></pre></div></div>
+
+<h3 id="运行机器人">运行机器人</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python market-robot.py
+</code></pre></div></div>
+
+<blockquote>
+  <p>Author: <a href="https://github.com/exctech">@exctech</a>
+Code: <a href="https://github.com/exctech/market-wechat-robot">@exctech/</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#market">market</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#oracle">oracle</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#python">python</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#finance">finance</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/exctech">
+                            <img class="rounded-circle" src="/assets/contributors/exctech/avatar.webp" alt="exctech" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/exctech">exctech</a> </h5>
+						
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/08/21/wechaty-xiaowang-learning-tool/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/wechaty-xiaowang-learning-tool/teaser.webp">  基于Wechaty的群学习内容推送工具</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/08/22/summer-2020-wechaty-soc-midterm-demo-day/"> 暑期2020中期路演日（Mid-Term Demo Day）  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/08-wechaty-soc-midterm-demo-day/midterm-demo-day.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

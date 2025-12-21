@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      给机器人添加发送图片视频功能 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>给机器人添加发送图片视频功能 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="给机器人添加发送图片视频功能" />
+<meta name="author" content="mukaiu" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="公司活动，需要对入群用户进行管理和自动回复。前期在Node Party Beijing上接触到 @huan 的分享，Wechaty刚好能支持该活动，支持Docker部署，是一个很棒的Bot Framework。" />
+<meta property="og:description" content="公司活动，需要对入群用户进行管理和自动回复。前期在Node Party Beijing上接触到 @huan 的分享，Wechaty刚好能支持该活动，支持Docker部署，是一个很棒的Bot Framework。" />
+<link rel="canonical" href="https://wechaty.js.org/2017/04/13/support-message-type-of-image-and-video/" />
+<meta property="og:url" content="https://wechaty.js.org/2017/04/13/support-message-type-of-image-and-video/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2017/04-support-message-type-of-image-and-video-en/mukaiu-ding-code.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-04-13T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2017/04-support-message-type-of-image-and-video-en/mukaiu-ding-code.webp" />
+<meta property="twitter:title" content="给机器人添加发送图片视频功能" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"mukaiu"},"dateModified":"2017-04-13T00:00:00+00:00","datePublished":"2017-04-13T00:00:00+00:00","description":"公司活动，需要对入群用户进行管理和自动回复。前期在Node Party Beijing上接触到 @huan 的分享，Wechaty刚好能支持该活动，支持Docker部署，是一个很棒的Bot Framework。","headline":"给机器人添加发送图片视频功能","image":"https://wechaty.js.org/assets/2017/04-support-message-type-of-image-and-video-en/mukaiu-ding-code.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2017/04/13/support-message-type-of-image-and-video/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"mukaiu"},"url":"https://wechaty.js.org/2017/04/13/support-message-type-of-image-and-video/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#feature">feature</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">给机器人添加发送图片视频功能</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/mukaiu">
+                            <img class="rounded-circle" src="/assets/contributors/mukaiu/avatar.webp" alt="mukaiu" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/mukaiu">mukaiu</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Apr 13, 2017 · <span class="reading-time">
+  
+  
+    4 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2017/04-support-message-type-of-image-and-video-en/mukaiu-ding-code.webp" alt="给机器人添加发送图片视频功能">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>公司活动，需要对入群用户进行管理和自动回复。前期在Node Party Beijing上接触到 @huan 的分享，Wechaty刚好能支持该活动，支持Docker部署，是一个很棒的Bot Framework。</p>
+
+<p>开发过程中发现，<a href="https://github.com/wechaty/wechaty/issues/4">#4 Support Message Type of Image/Video</a>此功能还未实现，决定完成该项特征。</p>
+
+<h2 id="1-问题分析">1. 问题分析</h2>
+
+<p>为解Web微信是如何发送图片的，进行了数据抓包，并分析微信Web源码</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">if </span><span class="p">(</span><span class="mi">0</span> <span class="o">==</span> <span class="nx">e</span><span class="p">.</span><span class="nx">BaseResponse</span><span class="p">.</span><span class="nx">Ret</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">MMSendMsg</span><span class="p">;</span>
+        <span class="nx">o</span><span class="p">.</span><span class="nx">MediaId</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">MediaId</span><span class="p">,</span>
+        <span class="nx">s</span><span class="p">.</span><span class="nf">sendMessage</span><span class="p">(</span><span class="nx">o</span><span class="p">),</span>
+        <span class="nx">t</span><span class="p">.</span><span class="nf">$apply</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
+            <span class="nx">o</span><span class="p">.</span><span class="nx">MMFileStatus</span> <span class="o">=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">MM_SEND_FILE_STATUS_SUCCESS</span>
+        <span class="p">})</span>
+   <span class="p">}</span> <span class="k">else</span>
+        <span class="k">this</span><span class="p">.</span><span class="nf">onError</span><span class="p">(</span><span class="dl">"</span><span class="s2">Ret: </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">BaseResponse</span><span class="p">.</span><span class="nx">Ret</span><span class="p">)</span>
+<span class="p">},</span>
+</code></pre></div></div>
+
+<p>Web中Message是通过此函数创建的，图片消息会被添加MediaId属性，因此如果我们能取得需要上传文件的MediaId，就可以直接调用sendMessage发送图片了。</p>
+
+<h2 id="2-上传图片">2. 上传图片</h2>
+
+<p>通过抓包，发现图片被POST请求发送到</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://file.wx.qq.com/cgi-bin/mmwebwx-bin/webwxuploadmedia?f<span class="o">=</span>json
+</code></pre></div></div>
+
+<p>搜索源码，找到</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">API_webwxdownloadmedia</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">o</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">/cgi-bin/mmwebwx-bin/webwxgetmedia</span><span class="dl">"</span><span class="p">,</span>
+<span class="nx">API_webwxuploadmedia</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">o</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">/cgi-bin/mmwebwx-bin/webwxuploadmedia</span><span class="dl">"</span><span class="p">,</span>
+<span class="nx">API_webwxpreview</span><span class="p">:</span> <span class="dl">"</span><span class="s2">/cgi-bin/mmwebwx-bin/webwxpreview</span><span class="dl">"</span><span class="p">,</span>
+</code></pre></div></div>
+
+<p>API_webwxuploadmedia就是图片上传地址，全局搜索这个变量是不是就可以找到上传文件的方法呢？
+经过搜索</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">window</span><span class="p">.</span><span class="nx">WebUploader</span> <span class="o">=</span> <span class="nx">e</span><span class="p">;</span>
+<span class="nx">Y</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nf">create</span><span class="p">({</span>
+       <span class="na">auto</span><span class="p">:</span> <span class="o">!</span><span class="mi">0</span><span class="p">,</span>
+       <span class="na">dnd</span><span class="p">:</span> <span class="dl">"</span><span class="s2">#chatArea</span><span class="dl">"</span><span class="p">,</span>
+       <span class="na">paste</span><span class="p">:</span> <span class="nx">f</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">webkit</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">#chatArea</span><span class="dl">"</span> <span class="p">:</span> <span class="k">void</span> <span class="mi">0</span><span class="p">,</span>
+       <span class="na">swf</span><span class="p">:</span> <span class="nx">c</span><span class="p">.</span><span class="nx">RES_PATH</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">third_party/webuploader-0.1.5/Uploader.swf</span><span class="dl">"</span><span class="p">,</span>
+       <span class="na">server</span><span class="p">:</span> <span class="nx">c</span><span class="p">.</span><span class="nx">API_webwxuploadmedia</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">?f=json</span><span class="dl">"</span><span class="p">,</span>
+       <span class="na">fileVal</span><span class="p">:</span> <span class="dl">"</span><span class="s2">filename</span><span class="dl">"</span><span class="p">,</span>
+       <span class="na">pick</span><span class="p">:</span> <span class="dl">"</span><span class="s2">.js_fileupload</span><span class="dl">"</span><span class="p">,</span>
+       <span class="na">compress</span><span class="p">:</span> <span class="o">!</span><span class="mi">1</span><span class="p">,</span>
+       <span class="na">duplicate</span><span class="p">:</span> <span class="o">!</span><span class="mi">0</span><span class="p">,</span>
+       <span class="na">threads</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+       <span class="na">chunked</span><span class="p">:</span> <span class="o">!</span><span class="mi">0</span><span class="p">,</span>
+       <span class="na">chunkSize</span><span class="p">:</span> <span class="mi">524288</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>e就是webuploader，处理文件上传，单独打包在一个chunk里。由于控制游览器读取本地文件没有什么好的处理办法，所以决定通过使用直接post数据到此地址的方式进行文件上传，该请求并没有上传cookie信息，因此省去了很多麻烦。各个参数都可以直接调用Web信息获取到</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">uploadMediaRequest</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">BaseRequest</span><span class="p">:</span> <span class="nx">baseRequest</span><span class="p">,</span>
+      <span class="na">FileMd5</span><span class="p">:</span> <span class="nx">md5</span><span class="p">,</span>
+      <span class="na">FromUserName</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nf">self</span><span class="p">().</span><span class="nx">id</span><span class="p">,</span>
+      <span class="na">ToUserName</span><span class="p">:</span> <span class="nx">toUserName</span><span class="p">,</span>
+      <span class="na">UploadType</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="na">ClientMediaId</span><span class="p">:</span> <span class="o">+</span><span class="k">new</span> <span class="nb">Date</span><span class="p">,</span>
+      <span class="na">MediaType</span><span class="p">:</span> <span class="nx">UploadMediaType</span><span class="p">.</span><span class="nx">ATTACHMENT</span><span class="p">,</span>
+      <span class="na">StartPos</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="na">DataLen</span><span class="p">:</span> <span class="nx">size</span><span class="p">,</span>
+      <span class="na">TotalLen</span><span class="p">:</span> <span class="nx">size</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">formData</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">WU_FILE_1</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">name</span><span class="p">:</span> <span class="nx">filename</span><span class="p">,</span>
+      <span class="na">type</span><span class="p">:</span> <span class="nx">contentType</span><span class="p">,</span>
+      <span class="na">lastModifiedDate</span><span class="p">:</span> <span class="nc">Date</span><span class="p">().</span><span class="nf">toString</span><span class="p">(),</span>
+      <span class="na">size</span><span class="p">:</span> <span class="nx">size</span><span class="p">,</span>
+      <span class="nx">mediatype</span><span class="p">,</span>
+      <span class="na">uploadmediarequest</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">uploadMediaRequest</span><span class="p">),</span>
+      <span class="na">webwx_data_ticket</span><span class="p">:</span> <span class="nx">webwxDataTicket</span><span class="p">,</span>
+      <span class="na">pass_ticket</span><span class="p">:</span> <span class="nx">passTicket</span> <span class="o">||</span> <span class="dl">''</span><span class="p">,</span>
+      <span class="na">filename</span><span class="p">:</span> <span class="dl">'</span><span class="s1">文件数据</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>返回结果为</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+</span><span class="nl">"BaseResponse"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="nl">"Ret"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="nl">"ErrMsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">,</span><span class="w">
+</span><span class="nl">"MediaId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@crypt_cd2308ca_e13f71eeb3879a52f58935743a1008b609f391eaa6bfcce5de32d9c523f934224a5327a37ad85ce2ad76f055d0205d17a6c1a7afe7200a1051a7eed41dd6d8696b43a3e61d8836759b30df3c9fb7abf9d89be37cb1ce787e22d1e947e4227beeb323937471d5c0548b976dcd22e3361694ac3ea53389b6185714a7cbf4ee40430c01925415804d758411ddf73ee6679c1ddea340455ed7eb803733f28c4b4e14b0218f84c5d938a01983b60e71a55131cb2d77f52ba3938089c7606d86078d1a7a097788ea7ed411d2f34889590ff49b2100a5942919d4256b9cb1f2032593268997957928350338ec1a3c50d2a64cd811c0227c4c4789ced408f64ac99f2ee64d4a59d415857205ea30bd74bb425d49ae0dfb6524d67d5d71e2dbea635db99be32dd8ca13f7b5fe14df96fbd0fd19b59fe5431451861a31e7d3754039f6f52e"</span><span class="p">,</span><span class="w">
+</span><span class="nl">"StartPos"</span><span class="p">:</span><span class="w"> </span><span class="mi">19482</span><span class="p">,</span><span class="w">
+</span><span class="nl">"CDNThumbImgHeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+</span><span class="nl">"CDNThumbImgWidth"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>MediaId就是我们需要的，直接调用createMessage,sendMessage即可发送图片了。</p>
+
+<h2 id="3整合wechaty">3.整合Wechaty</h2>
+
+<p>为快速验证可行性，直接添加了Wechaty.sendMedia。后和@huan @lijiarui讨论，决定使用say(MediaMessage(filename))的形式发送媒体文件。
+重载</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Wchaty</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="nx">message</span><span class="p">:</span> <span class="nx">MediaMessage</span><span class="p">)</span>
+<span class="nx">Contact</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">mediaMessage</span><span class="p">:</span> <span class="nx">MediaMessage</span><span class="p">)</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">mediaMessage</span><span class="p">:</span> <span class="nx">MediaMessage</span><span class="p">)</span>
+
+<span class="c1">//准备后续添加</span>
+<span class="nx">Room</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">mediaMessage</span><span class="p">:</span> <span class="nx">MediaMessage</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="4坑">4.坑</h2>
+
+<ol>
+  <li>
+    <p>测试期间发现，发送图片有时候会失败，原因是无法获取mediaId，第一感觉是，难道还有细节没有发现?对比post数据，完全一致，没有问题，那问题出在哪呢？</p>
+
+    <p>后来看源码才发现</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">var</span> <span class="nx">e</span> <span class="o">=</span> <span class="nx">location</span><span class="p">.</span><span class="nx">host</span>
+ <span class="p">,</span> <span class="nx">t</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">weixin.qq.com</span><span class="dl">"</span>
+ <span class="p">,</span> <span class="nx">o</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">file.wx.qq.com</span><span class="dl">"</span>
+ <span class="p">,</span> <span class="nx">n</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">webpush.weixin.qq.com</span><span class="dl">"</span><span class="p">;</span>
+ <span class="nx">e</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">"</span><span class="s2">wx2.qq.com</span><span class="dl">"</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span> <span class="p">?</span> <span class="p">(</span><span class="nx">t</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">weixin.qq.com</span><span class="dl">"</span><span class="p">,</span>
+ <span class="nx">o</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">file2.wx.qq.com</span><span class="dl">"</span><span class="p">,</span>
+</code></pre></div>    </div>
+
+    <p>原来还有个地址是wx2.qq.com。对应的文件上传地址是file2.wx.qq.com。不仔细啊</p>
+  </li>
+  <li>另一个坑是微信Web对视频大小有20M限制，这个也是开始没有注意的，发送大视频会失败</li>
+  <li>循环依赖
+ 由于MediaMessage继承Message，Message.say(MediaMessage)又需要引用MediaMessage.OMG,循环引用,TS报错了不支持这么玩～
+ 所以我把MediaMessage移入了message.ts,删除了media-message.ts,无中生有了186行变更😊</li>
+</ol>
+
+<h2 id="5end">5.End</h2>
+
+<p>现在Wechaty支持发送图片(bmp,jpg,png)视频(mp4)和其他文件。
+图片和视频是可以在聊天窗口直接查看的
+可以通过在ding-dong-bot里回复code来收到一张图片二维码。</p>
+
+<p><img src="/assets/2017/04-support-message-type-of-image-and-video-en/mukaiu-ding-code.webp" alt="ding-code" /></p>
+
+<p>作者：@<a href="https://github.com/mukaiu">mukaiu</a>, <a href="https://github.com/orgs/Chatie/teams/contributor">Wechaty Contributor</a></p>
+
+<p><img src="https://avatars2.githubusercontent.com/u/7746790?v=3&amp;s=88" alt="avatars2" /></p>
+
+<hr />
+
+<blockquote>
+  <p>English version of this post: <a href="/2017/04/13/support-message-type-of-image-and-video-en/">Adding Image and Video Sending Function to Bots</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#code">code</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/mukaiu">
+                            <img class="rounded-circle" src="/assets/contributors/mukaiu/avatar.webp" alt="mukaiu" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/mukaiu">mukaiu</a> </h5>
+						CTO of Chatopera
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2017/04/13/support-message-type-of-image-and-video-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2017/04-support-message-type-of-image-and-video-en/mukaiu-ding-code.webp">  Adding Image and Video Sending Function to Bots</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2017/04/16/how-chatie-is-used-in-haoshiyou-project-en/"> Using Chatie to Implement WeChat Bot Business Logic for [Haoshiyou] Group Management </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

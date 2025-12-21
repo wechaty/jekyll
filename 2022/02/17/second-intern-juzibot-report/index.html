@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      2022寒假-王天睿-JuziBot项目开发-期中报告-智能信息助理 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>2022寒假-王天睿-JuziBot项目开发-期中报告-智能信息助理 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="2022寒假-王天睿-JuziBot项目开发-期中报告-智能信息助理" />
+<meta name="author" content="tianrking" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="期中报告" />
+<meta property="og:description" content="期中报告" />
+<link rel="canonical" href="https://wechaty.js.org/2022/02/17/second-intern-juzibot-report/" />
+<meta property="og:url" content="https://wechaty.js.org/2022/02/17/second-intern-juzibot-report/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2022/02-second-intern-juzibot-report/cover.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-02-17T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2022/02-second-intern-juzibot-report/cover.webp" />
+<meta property="twitter:title" content="2022寒假-王天睿-JuziBot项目开发-期中报告-智能信息助理" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"tianrking"},"dateModified":"2022-02-17T00:00:00+00:00","datePublished":"2022-02-17T00:00:00+00:00","description":"期中报告","headline":"2022寒假-王天睿-JuziBot项目开发-期中报告-智能信息助理","image":"https://wechaty.js.org/assets/2022/02-second-intern-juzibot-report/cover.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2022/02/17/second-intern-juzibot-report/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"tianrking"},"url":"https://wechaty.js.org/2022/02/17/second-intern-juzibot-report/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#article">article</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">2022寒假-王天睿-JuziBot项目开发-期中报告-智能信息助理</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/tianrking">
+                            <img class="rounded-circle" src="/assets/contributors/tianrking/avatar.webp" alt="tianrking" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/tianrking">tianrking</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Feb 17, 2022 · <span class="reading-time">
+  
+  
+    10 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2022/02-second-intern-juzibot-report/cover.webp" alt="2022寒假-王天睿-JuziBot项目开发-期中报告-智能信息助理">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<h2 id="期中报告">期中报告</h2>
+
+<h3 id="项目参与人">项目参与人</h3>
+
+<ul>
+  <li>导师：段清华</li>
+  <li>学生：王天睿</li>
+</ul>
+
+<h3 id="项目计划">项目计划</h3>
+
+<ol>
+  <li>01/13-01/17 : 成功运行dingdong bot，运行juzibot 初步了解juzibot 模块 并学习nodejs</li>
+  <li>01/18-01/25 : 开始根据现有功能书写测试用例，同时深入了解juzibot对应模块功能</li>
+  <li>01/26-02/11 : 现有功能的完善与测试用例的持续编写</li>
+  <li>02/12-02/22 : 抓取的微信问答信息，并完成数据清洗</li>
+  <li>02/23-02/27 : 开发句子秒回对应问答机器人,完成微信问答的api接入句子秒回</li>
+</ol>
+
+<h3 id="项目进度">项目进度</h3>
+
+<ul>
+  <li>测试模块编写
+    <ul>
+      <li>文字向量服务 ✅</li>
+      <li>语音转文字服务 ✅</li>
+      <li>标签功能测试 ✅</li>
+      <li>意图测试  ✅</li>
+      <li>删除测试  ✅</li>
+      <li>文件测试  ✅</li>
+      <li>文件删除测试  ✅</li>
+      <li>关键字测试 ✅</li>
+      <li>我的文件测试 ✅</li>
+      <li>重启测试 ✅</li>
+    </ul>
+  </li>
+  <li>小橘子🍊接口编写
+    <ul>
+      <li>利用 SentenceTransformers 编写 句子-&gt;向量 API 替换 CPM ✅</li>
+      <li>测试框架 并完成编写 语音-&gt;文字 服务 API ✅</li>
+      <li>编写上述 API 测试代码并完成 docker 封装 ✅</li>
+    </ul>
+  </li>
+  <li>数据爬取
+    <ul>
+      <li>微信广告帮助中心 ✅</li>
+      <li>腾讯广告帮助中心 ✅</li>
+      <li>企业微信帮助中心 ✅</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="相关链接">相关链接</h4>
+
+<ul>
+  <li><a href="https://github.com/deepdialog/easy_asr">自动语音识别</a></li>
+  <li><a href="https://github.com/deepdialog/easy_sts">句子转向量</a></li>
+  <li><a href="https://github.com/tianrking/dont_ban_me/tree/master/app/1%E5%BE%AE%E4%BF%A1%E5%B9%BF%E5%91%8A%E5%B8%AE%E5%8A%A9%E4%B8%AD%E5%BF%83/awesome_version">微信广告数据</a></li>
+  <li><a href="https://github.com/tianrking/dont_ban_me/tree/master/app/2%E8%85%BE%E8%AE%AF%E5%B9%BF%E5%91%8A%E5%B8%AE%E5%8A%A9%E4%B8%AD%E5%BF%83">腾讯广告数据</a></li>
+  <li><a href="https://github.com/tianrking/dont_ban_me/tree/master/app/3%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E5%B8%AE%E5%8A%A9%E4%B8%AD%E5%BF%83/awesome_way">企业微信数据</a></li>
+</ul>
+
+<h3 id="遇到的问题及解决方案">遇到的问题及解决方案</h3>
+
+<h4 id="使用不熟悉的nodejs语言完成任务">使用不熟悉的nodejs语言完成任务</h4>
+
+<ul>
+  <li>遇到问题首先去积极的查阅资料，再进行多种尝试，然后询问老师，同时在解决问题后记录问题， 在此过程中学会并实现了相关编写，也提高了规范代码的意识，感谢老师的耐心帮助。</li>
+</ul>
+
+<h4 id="xiaojuzi-与-fastapi-交互">xiaojuzi 与 fastapi 交互</h4>
+
+<ul>
+  <li>
+    <p>怎样将 wechaty 接收到的 文字/图片/语音 与 fastapi 进行交互 ， 确保它的传输高效，可以恢复。我去尝试构建请求，又没有较好的接受工具用以确定是否发送了理想的数据。所以我不得不先从 fastapi 端编写开始, 通过多次尝试编写如下</p>
+
+    <p>python3</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">class</span> <span class="nc">Item_audio</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+      <span class="n">lol</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
+      <span class="n">audio_name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
+      <span class="n">audio_data</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
+    
+  <span class="nd">@app.post</span><span class="p">(</span><span class="sh">"</span><span class="s">/api/audio/</span><span class="sh">"</span><span class="p">)</span>
+  <span class="k">async</span> <span class="k">def</span> <span class="nf">create_item</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="n">Item_audio</span><span class="p">):</span>
+   
+  <span class="n">gg</span><span class="o">=</span><span class="n">item</span><span class="p">.</span><span class="n">audio_data</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="sh">"</span><span class="s">data:audio/silk;base64,</span><span class="sh">"</span><span class="p">,</span><span class="sh">""</span><span class="p">)</span>
+  <span class="n">audio_data</span> <span class="o">=</span> <span class="n">base64</span><span class="p">.</span><span class="nf">b64decode</span><span class="p">(</span><span class="nf">str</span><span class="p">(</span><span class="n">gg</span><span class="p">))</span>
+    
+</code></pre></div>    </div>
+
+    <p>nodejs</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">const</span> <span class="nx">audioFileBox</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">toFileBox</span><span class="p">()</span>
+      <span class="kd">const</span> <span class="nx">audio_dir</span> <span class="o">=</span> <span class="nx">audioFileBox</span><span class="p">.</span><span class="nx">name</span>
+      <span class="k">await</span> <span class="nx">audioFileBox</span><span class="p">.</span><span class="nf">toFile</span><span class="p">(</span><span class="nx">audioFileBox</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+      <span class="kd">const</span> <span class="nx">body</span> <span class="o">=</span> <span class="p">{</span>
+          <span class="na">audio_name</span><span class="p">:</span> <span class="nx">audioFileBox</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+          <span class="na">audio_data</span><span class="p">:</span> <span class="dl">"</span><span class="s2">data:audio/silk;base64,</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">fs</span><span class="p">.</span><span class="nf">readFileSync</span><span class="p">(</span><span class="nx">audio_dir</span><span class="p">,</span> <span class="dl">'</span><span class="s1">base64</span><span class="dl">'</span><span class="p">)</span>
+      <span class="p">};</span>
+      <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">fetch</span><span class="p">(</span><span class="nx">url</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">/api/audio/</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+          <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">body</span><span class="p">),</span>
+          <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">post</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span> <span class="p">}</span>
+      <span class="p">});</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="编写一个透明的dockerfile-的小技巧">编写一个”透明”的Dockerfile 的小技巧</h4>
+
+<ul>
+  <li>
+    <p>编写 sts和asr api时候因为程序运行初次需要下载模型, 难以做到开箱即用，使用 COPY命令在dockerhub上显示一个不明文件移入 不够透明 容易给其他人使用造成困惑， 最后利用shell内的方式来实现</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  RUN <span class="o">(</span><span class="nb">echo</span> <span class="s2">"py code“） | python3 
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="编写爬虫的过程">编写爬虫的过程</h4>
+
+<ul>
+  <li>
+    <p>在编写xiaojuzi的语音转文字模块时候，学会了 nodejs 下 fetch的使用， 也对 post/get 请求有了一定认识， 编写爬虫的时候 因为界面是由javascript渲染得到的无法之间request网址，也就无法完成解析。</p>
+  </li>
+  <li>
+    <p>起初我想用webscrapy插件抓取  但是效率很低 也不方便在没有GUI的vps上操作 还需要人点击显然不是理想的解决方案</p>
+  </li>
+  <li>
+    <p>查阅资料后我决定选用 selenium 框架来渲染网页 然后使用 beautifulsoup lxml 进行爬取和解析 虽然可以通过 “–headless” 方式 在vps上 运行 但是为了确保 selenium 可以完整加载完一个界面 我需要每次都加上进五秒等待时间 这样就会导致爬取时间过长 而且本身我并不知道需要具体的抓取那些url</p>
+
+    <p>selenium 配置</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">from</span> <span class="n">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+  <span class="kn">from</span> <span class="n">selenium.webdriver.chrome.options</span> <span class="kn">import</span> <span class="n">Options</span>
+
+  <span class="n">options</span> <span class="o">=</span> <span class="nc">Options</span><span class="p">()</span>
+  <span class="n">options</span><span class="p">.</span><span class="n">headless</span> <span class="o">=</span> <span class="bp">True</span>
+  <span class="n">options</span><span class="p">.</span><span class="nf">add_argument</span><span class="p">(</span><span class="sh">"</span><span class="s">--window-size=1920x1080</span><span class="sh">"</span><span class="p">)</span>
+  <span class="c1"># options.add_argument("window-size=1920x3000");
+</span>  <span class="n">options</span><span class="p">.</span><span class="nf">add_argument</span><span class="p">(</span><span class="sh">"</span><span class="s">--disable-notifications</span><span class="sh">"</span><span class="p">)</span>
+
+  <span class="n">options</span><span class="p">.</span><span class="nf">add_argument</span><span class="p">(</span><span class="sh">'</span><span class="s">--headless</span><span class="sh">'</span><span class="p">)</span>
+  <span class="n">options</span><span class="p">.</span><span class="nf">add_argument</span><span class="p">(</span><span class="sh">'</span><span class="s">--disable-gpu</span><span class="sh">'</span><span class="p">)</span><span class="c1">#谷歌文档提到需要加上这个属性避免使用gpu产生bug
+</span>    
+  <span class="n">options</span><span class="p">.</span><span class="nf">add_argument</span><span class="p">(</span><span class="sh">'</span><span class="s">disable-infobars</span><span class="sh">'</span><span class="p">)</span><span class="c1">#隐藏"Chrome正在受到自动软件的控制"
+</span>  <span class="n">options</span><span class="p">.</span><span class="nf">add_argument</span><span class="p">(</span><span class="sh">'</span><span class="s">lang=zh_CN.UTF-8</span><span class="sh">'</span><span class="p">)</span>      <span class="c1"># 设置中文
+</span>  <span class="n">options</span><span class="p">.</span><span class="nf">add_argument</span><span class="p">(</span><span class="sh">'</span><span class="s">window-size=1920x3000</span><span class="sh">'</span><span class="p">)</span> <span class="c1"># 指定浏览器分辨率
+</span>  <span class="n">options</span><span class="p">.</span><span class="nf">add_argument</span><span class="p">(</span><span class="sh">'</span><span class="s">--hide-scrollbars</span><span class="sh">'</span><span class="p">)</span>     <span class="c1"># 隐藏滚动条, 应对一些特殊页面
+</span>
+  <span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="p">.</span><span class="nc">Chrome</span><span class="p">(</span><span class="sh">"</span><span class="s">/Users/mac/Desktop/chromedriver</span><span class="sh">"</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <p>抓取 并 初步提取数据</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">driver</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+  <span class="n">time</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+  <span class="nf">print</span><span class="p">(</span><span class="n">driver</span><span class="p">.</span><span class="n">title</span><span class="p">)</span>
+  <span class="n">soup</span> <span class="o">=</span> <span class="nc">BeautifulSoup</span><span class="p">(</span><span class="n">driver</span><span class="p">.</span><span class="n">page_source</span><span class="p">,</span> <span class="sh">'</span><span class="s">lxml</span><span class="sh">'</span><span class="p">)</span>
+  <span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">soup</span><span class="p">.</span><span class="nf">find_all</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="sh">'</span><span class="s">class</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">guide__title</span><span class="sh">'</span><span class="p">})):</span>            
+      <span class="n">f</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="nf">str</span><span class="p">(</span><span class="n">soup</span><span class="p">.</span><span class="nf">find_all</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="sh">'</span><span class="s">class</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">guide__title</span><span class="sh">'</span><span class="p">})))</span>
+      <span class="n">f</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="sh">"</span><span class="s">,</span><span class="sh">"</span><span class="p">)</span>
+      <span class="n">f</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+      <span class="n">f</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="sh">'</span><span class="se">\n</span><span class="sh">'</span><span class="p">)</span>
+  <span class="n">f</span><span class="p">.</span><span class="nf">close</span><span class="p">()</span>
+</code></pre></div>    </div>
+
+    <p>过程中可能会出现问题,这时候就可以打印 selenium 抓取时候的网页截图</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">driver</span><span class="p">.</span><span class="nf">get_screenshot_as_file</span><span class="p">(</span><span class="sh">'</span><span class="s">1.png</span><span class="sh">'</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <p>不稳定 ， 而且低效</p>
+  </li>
+  <li>
+    <p>爬虫的目的是抓取数据 既然难以渲染得到渲染界面 不如直接从数据请求分析的角度来寻找解决思路 ， 于是就决定尝试抓包寻找解决方案. 首先通过 抓包的到 post 到数据 构造 curl请求 测试是否可以的到正确的响应。</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+  curl <span class="s1">'https://open.work.weixin.qq.com/help2/getQusList?lang=zh_CN&amp;ajax=1&amp;f=json&amp;random=310321'</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s1">'authority: open.work.weixin.qq.com'</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s1">'sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="98", "Microsoft Edge";v="98"'</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s1">'accept: application/json, text/plain, */*'</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s1">'sec-ch-ua-mobile: ?0'</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s1">'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.82 Safari/537.36 Edg/98.0.1108.51'</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s1">'sec-ch-ua-platform: "macOS"'</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s1">'origin: https://open.work.weixin.qq.com'</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s1">'sec-fetch-site: same-origin'</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s1">'sec-fetch-mode: cors'</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s1">'sec-fetch-dest: empty'</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s1">'referer: https://open.work.weixin.qq.com/help2/pc/15405?person_id=1'</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s1">'accept-language: zh-TW,zh-CN;q=0.9,zh;q=0.8,en;q=0.7,en-GB;q=0.6,en-US;q=0.5,zh-HK;q=0.4'</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s1">'cookie: pgv_pvid=3686684000; pac_uid=0_3cbd911c9ce83; pgv_info=ssid=s2798911544; pgv_pvi=4654092288; pgv_si=s6420471808; wwrtx.ref=direct; wwrtx.c_gdpr=0; wwrtx.refid=413075501944711; __utma=114362329.896737070.1644833346.1644833346.1644833346.1; __utmc=114362329; __utmz=114362329.1644833346.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); Hm_lvt_f2ba645ba13636ba52b0234381f51cbc=1644833347; Hm_lpvt_f2ba645ba13636ba52b0234381f51cbc=1644833970; uin=o0508195902; skey=@sEUq3VJWl; RK=hA9xBYtEcN; ptcz=f4917937db9babf5c19203049471a3e4d45ea1fe7b770ef9ea93e47e33c0c0f5; wwrtx.i18n_lan=cht'</span> <span class="se">\</span>
+      <span class="nt">--data-raw</span> <span class="s1">'{"person_id":1,"doc_id":15405}'</span> <span class="se">\</span>
+      <span class="nt">--compressed</span>
+</code></pre></div>    </div>
+
+    <p>这是比较杂乱复杂的，我尝试给它简化 删去对于获取数据而言不必要的部分，的到下面的方法</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c">#https://open.work.weixin.qq.com/help2/getQusList?lang=zh_CN&amp;ajax=1&amp;f=json&amp;random=569866 这个是浏览器访问的网址 下面是实际的请求</span>
+  curl <span class="s1">'https://open.work.weixin.qq.com/help2/getQusList?lang=zh_CN&amp;ajax=1&amp;f=json&amp;random=310321'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.82 Safari/537.36 Edg/98.0.1108.51'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'referer: https://open.work.weixin.qq.com/help2/pc/15405?person_id=1'</span> <span class="se">\</span>
+  <span class="nt">--data-raw</span> <span class="s1">'{"person_id":1,"doc_id":15405}'</span> 
+</code></pre></div>    </div>
+
+    <p>为了确保可靠性， curl复制粘贴非常方便， 在另一台vps上也进行了测试，的确可以的到正确的数据返回，下面就是把它转换成 requests 的请求 融入到代码里。</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  headers <span class="o">=</span> <span class="o">{</span>
+  <span class="s1">'user-agent'</span>: <span class="s1">'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.82 Safari/537.36 Edg/98.0.1108.51'</span>,
+  <span class="s1">'referer'</span>: <span class="s1">'https://open.work.weixin.qq.com/help2/pc/15405?person_id=1'</span>,
+  <span class="o">}</span>
+
+  params <span class="o">=</span> <span class="o">(</span>
+      <span class="o">(</span><span class="s1">'lang'</span>, <span class="s1">'zh_CN'</span><span class="o">)</span>,
+      <span class="o">(</span><span class="s1">'ajax'</span>, <span class="s1">'1'</span><span class="o">)</span>,
+      <span class="o">(</span><span class="s1">'f'</span>, <span class="s1">'json'</span><span class="o">)</span>,
+      <span class="o">(</span><span class="s1">'random'</span>, <span class="s1">'310321'</span><span class="o">)</span>,
+  <span class="o">)</span>
+
+  data <span class="o">=</span> <span class="s1">'{"person_id":1,"doc_id":15405}'</span>
+</code></pre></div>    </div>
+
+    <p>此时就可以很清晰的看到请求的结构，大概率可以猜到 要么这个 random 是个假的 random 实际上是做文件索引的， 要么它是个真的random 做防止爬虫检测用，而我们要的对应文档存储就为 doc_id 。 通过脚本测试一下，很快就确定了 doc_id 对应的真的是doc 而random也是真的随机 😂😂😂😂😂 于是 我们可以在最简的基础上再反加回之前的参数 作用是伪装的更真实 防止被ban 得到下边最终构造代码</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">import</span> <span class="n">requests</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="sh">'</span><span class="s">authority</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">open.work.weixin.qq.com</span><span class="sh">'</span><span class="p">,</span>
+      <span class="sh">'</span><span class="s">sec-ch-ua</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'"</span><span class="s"> Not A;Brand</span><span class="sh">"</span><span class="s">;v=</span><span class="sh">"</span><span class="s">99</span><span class="sh">"</span><span class="s">, </span><span class="sh">"</span><span class="s">Chromium</span><span class="sh">"</span><span class="s">;v=</span><span class="sh">"</span><span class="s">98</span><span class="sh">"</span><span class="s">, </span><span class="sh">"</span><span class="s">Microsoft Edge</span><span class="sh">"</span><span class="s">;v=</span><span class="sh">"</span><span class="s">98</span><span class="sh">"'</span><span class="p">,</span>
+      <span class="sh">'</span><span class="s">accept</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">application/json, text/plain, */*</span><span class="sh">'</span><span class="p">,</span>
+      <span class="sh">'</span><span class="s">content-type</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">application/json</span><span class="sh">'</span><span class="p">,</span>
+      <span class="sh">'</span><span class="s">sec-ch-ua-mobile</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">?0</span><span class="sh">'</span><span class="p">,</span>
+      <span class="sh">'</span><span class="s">user-agent</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.82 Safari/537.36 Edg/98.0.1108.51</span><span class="sh">'</span><span class="p">,</span>
+      <span class="sh">'</span><span class="s">sec-ch-ua-platform</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'"</span><span class="s">macOS</span><span class="sh">"'</span><span class="p">,</span>
+      <span class="sh">'</span><span class="s">origin</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">https://open.work.weixin.qq.com</span><span class="sh">'</span><span class="p">,</span>
+      <span class="sh">'</span><span class="s">sec-fetch-site</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">same-origin</span><span class="sh">'</span><span class="p">,</span>
+      <span class="sh">'</span><span class="s">sec-fetch-mode</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">cors</span><span class="sh">'</span><span class="p">,</span>
+      <span class="sh">'</span><span class="s">sec-fetch-dest</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">empty</span><span class="sh">'</span><span class="p">,</span>
+      <span class="sh">'</span><span class="s">referer</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">https://open.work.weixin.qq.com/help2/pc/15405?person_id=1</span><span class="sh">'</span><span class="p">,</span>
+      <span class="sh">'</span><span class="s">accept-language</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">zh-TW,zh-CN;q=0.9,zh;q=0.8,en;q=0.7,en-GB;q=0.6,en-US;q=0.5,zh-HK;q=0.4</span><span class="sh">'</span><span class="p">,</span>
+      <span class="sh">'</span><span class="s">cookie</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">pgv_pvid=3686684000; pac_uid=0_3cbd911c9ce83; pgv_info=ssid=s2798911544; pgv_pvi=4654092288; pgv_si=s6420471808; wwrtx.ref=direct; wwrtx.c_gdpr=0; wwrtx.refid=413075501944711; __utma=114362329.896737070.1644833346.1644833346.1644833346.1; __utmc=114362329; __utmz=114362329.1644833346.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); Hm_lvt_f2ba645ba13636ba52b0234381f51cbc=1644833347; Hm_lpvt_f2ba645ba13636ba52b0234381f51cbc=1644833970; uin=o0508195902; skey=@sEUq3VJWl; RK=hA9xBYtEcN; ptcz=f4917937db9babf5c19203049471a3e4d45ea1fe7b770ef9ea93e47e33c0c0f5; wwrtx.i18n_lan=cht</span><span class="sh">'</span><span class="p">,</span>
+  <span class="p">}</span>
+
+  <span class="n">params</span> <span class="o">=</span> <span class="p">(</span>
+      <span class="p">(</span><span class="sh">'</span><span class="s">lang</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">zh_CN</span><span class="sh">'</span><span class="p">),</span>
+      <span class="p">(</span><span class="sh">'</span><span class="s">ajax</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">1</span><span class="sh">'</span><span class="p">),</span>
+      <span class="p">(</span><span class="sh">'</span><span class="s">f</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">json</span><span class="sh">'</span><span class="p">),</span>
+      <span class="p">(</span><span class="sh">'</span><span class="s">random</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">22340</span><span class="sh">'</span><span class="p">),</span>
+  <span class="p">)</span>
+
+  <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">begin</span><span class="p">,</span><span class="n">end</span><span class="p">):</span>
+      <span class="c1">## num 编号为主文档对应序号
+</span>      <span class="n">data</span> <span class="o">=</span> <span class="sh">'</span><span class="s">{</span><span class="sh">"</span><span class="s">person_id</span><span class="sh">"</span><span class="s">:1,</span><span class="sh">"</span><span class="s">doc_id</span><span class="sh">"</span><span class="s">:%s}</span><span class="sh">'</span> <span class="o">%</span> <span class="nf">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+
+      <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="sh">'</span><span class="s">https://open.work.weixin.qq.com/help2/getQusList</span><span class="sh">'</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
+</code></pre></div>    </div>
+
+    <p>这样就可以很方便的遍历了，但是 我们不知道到底哪些URL才有我们想要的信息，于是就需要进行暴力遍历， 这时候 python 的异常处理模块变得非常适用 ，我们可以判断 是否返回值正常 若异常直接请求下一个即可， 然后将正确的数据利用pandas直接整理成csv</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      <span class="k">try</span><span class="p">:</span>
+          <span class="n">Q</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="sh">'</span><span class="s">data</span><span class="sh">'</span><span class="p">][</span><span class="sh">'</span><span class="s">helpdocument</span><span class="sh">'</span><span class="p">][</span><span class="sh">'</span><span class="s">qusList</span><span class="sh">'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="sh">'</span><span class="s">title</span><span class="sh">'</span><span class="p">]</span>
+          <span class="n">A_md</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="sh">'</span><span class="s">data</span><span class="sh">'</span><span class="p">][</span><span class="sh">'</span><span class="s">helpdocument</span><span class="sh">'</span><span class="p">][</span><span class="sh">'</span><span class="s">qusList</span><span class="sh">'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="sh">'</span><span class="s">content_md</span><span class="sh">'</span><span class="p">]</span>
+          <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span>
+                  <span class="p">[</span><span class="n">Q</span><span class="p">,</span><span class="n">A_md</span><span class="p">]],</span>
+                  <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sh">'</span><span class="s">Q</span><span class="sh">'</span><span class="p">,</span><span class="sh">'</span><span class="s">A</span><span class="sh">'</span><span class="p">],</span>
+                  <span class="p">)</span>
+          <span class="n">df</span><span class="p">.</span><span class="nf">to_csv</span><span class="p">(</span><span class="sh">'</span><span class="s">data_all_in_one/QA_7k.csv</span><span class="sh">'</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="sh">'</span><span class="s">a</span><span class="sh">'</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+            
+      <span class="k">except</span><span class="p">:</span>
+          <span class="k">continue</span>
+</code></pre></div>    </div>
+
+    <p>此时 基本的部分已经完成， 但是逐个遍历速度还是太慢 于是融入了多线程</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">def</span> <span class="nf">request_api</span><span class="p">(</span><span class="n">T_name</span><span class="p">,</span><span class="n">begin</span><span class="p">,</span><span class="n">end</span><span class="p">):</span>
+      <span class="n">xxx</span>
+  <span class="k">try</span><span class="p">:</span>
+      <span class="n">begin</span> <span class="o">=</span> <span class="mi">13000</span>
+      <span class="c1"># 15000-16000 1k  # 16000-17000 2k # 17000-18000 3k # 18000-19000 4k
+</span>      <span class="c1"># 19000-20000 5k # 14000-15000 6k $ 13000-14000 7k
+</span>      <span class="n">end</span> <span class="o">=</span> <span class="mi">14000</span>
+      <span class="nb">sum</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">begin</span>
+      <span class="n">step</span> <span class="o">=</span> <span class="mi">4</span>
+      <span class="n">time</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nb">sum</span> <span class="o">/</span> <span class="n">step</span><span class="p">)</span>
+
+      <span class="c1">## 这里可以循环 但是没必要 
+</span>      <span class="n">_thread</span><span class="p">.</span><span class="nf">start_new_thread</span><span class="p">(</span><span class="n">request_api</span><span class="p">,</span> <span class="p">(</span><span class="sh">"</span><span class="s">Thread-1</span><span class="sh">"</span><span class="p">,</span> <span class="mi">0</span><span class="o">+</span><span class="n">begin</span> <span class="p">,</span> <span class="n">begin</span><span class="o">+</span><span class="n">time</span><span class="p">)</span> <span class="p">)</span>
+      <span class="n">_thread</span><span class="p">.</span><span class="nf">start_new_thread</span><span class="p">(</span><span class="n">request_api</span><span class="p">,</span> <span class="p">(</span><span class="sh">"</span><span class="s">Thread-2</span><span class="sh">"</span><span class="p">,</span> <span class="n">begin</span> <span class="o">+</span> <span class="n">time</span> <span class="p">,</span> <span class="n">begin</span> <span class="o">+</span> <span class="n">time</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span>
+      <span class="n">_thread</span><span class="p">.</span><span class="nf">start_new_thread</span><span class="p">(</span><span class="n">request_api</span><span class="p">,</span> <span class="p">(</span><span class="sh">"</span><span class="s">Thread-3</span><span class="sh">"</span><span class="p">,</span> <span class="n">begin</span> <span class="o">+</span> <span class="n">time</span><span class="o">*</span><span class="mi">2</span> <span class="p">,</span> <span class="n">begin</span> <span class="o">+</span> <span class="n">time</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span> <span class="p">)</span> 
+      <span class="n">_thread</span><span class="p">.</span><span class="nf">start_new_thread</span><span class="p">(</span><span class="n">request_api</span><span class="p">,</span> <span class="p">(</span><span class="sh">"</span><span class="s">Thread-4</span><span class="sh">"</span><span class="p">,</span> <span class="n">begin</span> <span class="o">+</span> <span class="n">time</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span>  <span class="n">begin</span> <span class="o">+</span> <span class="n">time</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span> <span class="p">)</span>
+  <span class="k">except</span><span class="p">:</span>
+      <span class="nf">print </span><span class="p">(</span><span class="sh">"</span><span class="s">Error: 无法启动线程</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div>    </div>
+
+    <p>此时一个多线程的爬虫就实现了 ， 相比 selenium 方法 速度快了数十倍 ，数据干净的多， 而且代码非常简洁 使用时候修改 begin end 就可以啦。 长时间爬取容易被封，所以就没有给它做成全自动的。 爬去完数据 最好检测一下 csv。</p>
+
+    <p>分段爬取并整理成csv后 可以简单的用pandas再次清洗并合并的到最总数据</p>
+
+    <p>另外两个网站爬去的思路也是类似的，不同的是数据初步清洗的过程不一样，有趣的是，微信广告帮助中心 请求后直接下载包含所有信息的json 在浏览器里面访问时候转圈 显示出来后点击抓包 是无法抓取的 因为根本就没有 请求数据的请求 只有统计点击的请求 所有的数据都在加载时候下载完啦 所以只需要</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  url <span class="o">=</span> <span class="s1">'https://ad.weixin.qq.com/openapi/acms_files/get?filename=data'</span>
+  rec <span class="o">=</span> requests.get<span class="o">(</span>url<span class="o">)</span>
+  f <span class="o">=</span> open<span class="o">(</span><span class="s1">'data_all.txt'</span>,<span class="s1">'w'</span><span class="o">)</span>
+  f.write<span class="o">(</span>rec.text<span class="o">)</span>
+  f.close<span class="o">()</span>
+</code></pre></div>    </div>
+
+    <p>再用 json 提取 和 pandas 清洗就ok了</p>
+  </li>
+</ul>
+
+<h3 id="视频展示">视频展示</h3>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/TdCtdefyNm4" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h3 id="答辩报告">答辩报告</h3>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="/assets/js/viewer-js/#/assets/2022/02-second-intern-juzibot-report/w0x7ce_gg.pdf" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h3 id="项目链接">项目链接</h3>
+
+<ul>
+  <li>
+    <p>项目链接：<a href="https://github.com/deepdialog/xiaojuzi">https://github.com/deepdialog/xiaojuzi</a></p>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>联系方式：Telegram: @qozob</td>
+          <td>Email: me@w0x7ce.eu</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Author: <a href="https://github.com/tianrking">@tianrking</a>
+Code: <a href="https://github.com/tianrking/xiaojuzi">@tianrking/juzibot</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#juzibot">juzibot</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/tianrking">
+                            <img class="rounded-circle" src="/assets/contributors/tianrking/avatar.webp" alt="tianrking" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/tianrking">tianrking</a> </h5>
+						Although I may be ignorant, I am willing to learn
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2022/02/12/gsod21-performance-stipend-disbursement/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2022/02-gsod21-performance-stipend-disbursement/wechaty-gsod-2021.webp">  GSoD'21 Performance Stipend Disbursement</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2022/02/17/wechaty-puppet-walnut-final-report/"> 2022-基于5G平台开发puppet模块接入wechaty  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2022/02-wechaty-puppet-walnut-final-report/puppet-walnut.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

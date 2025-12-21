@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Wechaty 0.56 Released! | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Wechaty 0.56 Released! | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Wechaty 0.56 Released!" />
+<meta name="author" content="huan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="V0.56 is the latest stable version of Wechaty, it is recommended to be upgraded for all developers." />
+<meta property="og:description" content="V0.56 is the latest stable version of Wechaty, it is recommended to be upgraded for all developers." />
+<link rel="canonical" href="https://wechaty.js.org/2021/01/25/wechaty-0.56-released/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/01/25/wechaty-0.56-released/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/01-wechaty-0.56-released/wechaty-flyer-2020.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-25T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/01-wechaty-0.56-released/wechaty-flyer-2020.webp" />
+<meta property="twitter:title" content="Wechaty 0.56 Released!" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"huan"},"dateModified":"2021-01-25T00:00:00+00:00","datePublished":"2021-01-25T00:00:00+00:00","description":"V0.56 is the latest stable version of Wechaty, it is recommended to be upgraded for all developers.","headline":"Wechaty 0.56 Released!","image":"https://wechaty.js.org/assets/2021/01-wechaty-0.56-released/wechaty-flyer-2020.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/01/25/wechaty-0.56-released/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"huan"},"url":"https://wechaty.js.org/2021/01/25/wechaty-0.56-released/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#announcement">announcement</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Wechaty 0.56 Released!</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jan 25, 2021 · <span class="reading-time">
+  
+  
+    3 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/01-wechaty-0.56-released/wechaty-flyer-2020.webp" alt="Wechaty 0.56 Released!">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>V0.56 is the latest stable version of Wechaty, it is recommended to be upgraded for all developers.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install </span>wechaty@0.56
+</code></pre></div></div>
+
+<h2 id="v056-2021-01-25"><a href="https://github.com/wechaty/wechaty/tree/v0.56">v0.56</a> (2021-01-25)</h2>
+
+<p><a href="https://github.com/wechaty/wechaty/compare/v0.38...v0.56">Full Changelog</a></p>
+
+<h2 id="highlights-for-v056">Highlights for v0.56</h2>
+
+<h3 id="1-new-wechaty-puppet-services">1. New Wechaty Puppet Services</h3>
+
+<ol>
+  <li>Published <a href="https://wechaty.js.org/2021/01/14/wechaty-puppet-service/">Wechaty Puppet Service</a></li>
+  <li>Published <a href="https://wechaty.js.org/2020/10/12/puppet-padlocal-intro/">Wechaty Puppet Service: PadLocal</a></li>
+  <li>Published <a href="https://wechaty.js.org/2020/12/07/puppet-wxwork-beta-release/">Wechaty Puppet Service: WxWork</a></li>
+  <li>Published <a href="https://wechaty.js.org/docs/puppet-services/paimon">Wechaty Puppet Service: Paimon</a></li>
+  <li>Published <a href="https://wechaty.js.org/docs/puppet-services/donut">Wechaty Puppet Service: Donut</a></li>
+</ol>
+
+<h3 id="2-new-wechaty-puppets">2. New Wechaty Puppets</h3>
+
+<ol>
+  <li>Published <a href="https://wechaty.js.org/2020/11/01/wechaty-puppet-oa-released/">Puppet: Official-Account</a></li>
+  <li>Published <a href="https://wechaty.js.org/2020/08/23/wechaty-puppet-gitter/">Puppet: Gitter.im</a></li>
+  <li>Published <a href="https://wechaty.js.org/2020/09/30/wechaty-puppet-lark-final-blog/">Puppet: Lark</a></li>
+  <li>Published <a href="https://github.com/wechaty/wechaty-puppet-whatsapp">Puppet: Whatsapp</a></li>
+</ol>
+
+<h3 id="3-new-wechaty-languages">3. New Wechaty Languages</h3>
+
+<ol>
+  <li>Published <a href="https://wechaty.js.org/2020/06/17/python-wechaty-beta-released/">Python Wechaty</a></li>
+  <li>Published <a href="https://wechaty.js.org/2020/06/29/go-wechaty-beta-released/">Go Wechaty</a></li>
+  <li>Published <a href="https://wechaty.js.org/2020/06/15/java-wechaty-beta-release/">Java Wechaty</a></li>
+  <li>Published <a href="https://wechaty.js.org/2020/12/31/dotnet-wechaty-getting-start/">.NET Wechaty</a></li>
+  <li>Published <a href="https://github.com/wechaty/php-wechaty">PHP Wechaty</a></li>
+  <li>Published <a href="https://github.com/wechaty/scala-wechaty">Scala Wechaty</a></li>
+</ol>
+
+<p><strong>Implemented enhancements:</strong></p>
+
+<ul>
+  <li>Switch from <code class="language-plaintext highlighter-rouge">wechaty-puppet-hostie</code> to <code class="language-plaintext highlighter-rouge">wechaty-puppet-service</code> <a href="https://github.com/wechaty/wechaty/issues/2122">#2122</a></li>
+  <li>Add wechaty-puppet-padlocal to our puppet config <a href="https://github.com/wechaty/wechaty/issues/2102">#2102</a></li>
+  <li>Use <code class="language-plaintext highlighter-rouge">message.talker\(\)</code> to replace <code class="language-plaintext highlighter-rouge">message.from\(\)</code> <a href="https://github.com/wechaty/wechaty/issues/2094">#2094</a></li>
+  <li>Create a <code class="language-plaintext highlighter-rouge">looseInstanceOfClass</code> to check <code class="language-plaintext highlighter-rouge">FileBox</code> and <code class="language-plaintext highlighter-rouge">Puppet</code> instances <a href="https://github.com/wechaty/wechaty/issues/2090">#2090</a></li>
+  <li>Issue with batch operation on room loading process <a href="https://github.com/wechaty/wechaty/issues/2068">#2068</a></li>
+  <li>Support more properties on contact <a href="https://github.com/wechaty/wechaty/issues/2036">#2036</a></li>
+  <li>Refactoring Multi-instance Wechaty Design: Try to remove the Accessory class and related codes <a href="https://github.com/wechaty/wechaty/issues/2027">#2027</a></li>
+  <li>Use Typed-Emitter in Wechaty <a href="https://github.com/wechaty/wechaty/issues/2014">#2014</a></li>
+  <li>Support WECHATY_HOSTIE_PORT environment variable <a href="https://github.com/wechaty/wechaty/issues/1984">#1984</a></li>
+  <li>Wechaty v0.23 PadPro Testing, an enhanced pad puppet implementation!  <a href="https://github.com/wechaty/wechaty/issues/1668">#1668</a></li>
+  <li>Using wechaty to start a wechatOA account <a href="https://github.com/wechaty/wechaty/issues/1016">#1016</a></li>
+</ul>
+
+<p><strong>Fixed bugs:</strong></p>
+
+<ul>
+  <li>FileBox instance type checking problem <a href="https://github.com/wechaty/wechaty/issues/2035">#2035</a></li>
+  <li>Wechaty.off() not work: can not remove listeners. <a href="https://github.com/wechaty/wechaty/issues/2019">#2019</a></li>
+  <li>friendship.contact() will load Contact only, contact.ready() is wanted. <a href="https://github.com/wechaty/wechaty/issues/1954">#1954</a></li>
+</ul>
+
+<p><strong>Closed issues:</strong></p>
+
+<ul>
+  <li>不能登录，也没显示二维码就直接退出 <a href="https://github.com/wechaty/wechaty/issues/2099">#2099</a></li>
+  <li>Can’t login after scan the qrcode <a href="https://github.com/wechaty/wechaty/issues/2092">#2092</a></li>
+  <li>网络不好程序自动重启后推送异常 <a href="https://github.com/wechaty/wechaty/issues/2088">#2088</a></li>
+  <li>Message.forward() does not support returning a message <a href="https://github.com/wechaty/wechaty/issues/2073">#2073</a></li>
+  <li>bot.Friendship.add() 总是报错 <a href="https://github.com/wechaty/wechaty/issues/2060">#2060</a></li>
+  <li>在使用FileBox 发送视频时候出现问题 <a href="https://github.com/wechaty/wechaty/issues/2059">#2059</a></li>
+  <li>The AWS Access Key Id you provided does not exist in our records. <a href="https://github.com/wechaty/wechaty/issues/2058">#2058</a></li>
+  <li>When setting up hostie token gateway,  Account was locked after 5 getContactInfo call within a second. <a href="https://github.com/wechaty/wechaty/issues/2040">#2040</a></li>
+  <li>Support phone related operations <a href="https://github.com/wechaty/wechaty/issues/2037">#2037</a></li>
+  <li>BREAKING CHANGES: remove hotImport support from wechaty <a href="https://github.com/wechaty/wechaty/issues/1997">#1997</a></li>
+  <li>ERR GRPC_GATEWAY GRPC SERVER ERROR <a href="https://github.com/wechaty/wechaty/issues/1996">#1996</a></li>
+  <li>微信安装 <a href="https://github.com/wechaty/wechaty/issues/1990">#1990</a></li>
+  <li>Cannot read property ‘QQ’ of undefined <a href="https://github.com/wechaty/wechaty/issues/1982">#1982</a></li>
+  <li>Need upgrade wechaty-puppet@0.25.7 version for wechaty <a href="https://github.com/wechaty/wechaty/issues/1980">#1980</a></li>
+  <li>The qrcode all the time timeout <a href="https://github.com/wechaty/wechaty/issues/1977">#1977</a></li>
+  <li>Upgrade wechaty-puppet-hostie@0.7.10 for fix the bug of friendship.accpet() <a href="https://github.com/wechaty/wechaty/issues/1966">#1966</a></li>
+  <li>23:42:53 SILL GrpcGateway callback type:【invalid-token】 <a href="https://github.com/wechaty/wechaty/issues/1959">#1959</a></li>
+  <li>准备支持企业微信群吗 <a href="https://github.com/wechaty/wechaty/issues/1958">#1958</a></li>
+  <li>node-pre-gyp WARN  <a href="https://github.com/wechaty/wechaty/issues/1953">#1953</a></li>
+  <li>How to filter official account numbers <a href="https://github.com/wechaty/wechaty/issues/1951">#1951</a></li>
+  <li>Update wechaty-puppet-hostie version for wechaty <a href="https://github.com/wechaty/wechaty/issues/1948">#1948</a></li>
+  <li>Is that you? <a href="https://github.com/wechaty/wechaty/issues/1942">#1942</a></li>
+  <li>ipad WeChat login will automatically log out, The returned QR code is invalid, you cannot log in again, you must restart <a href="https://github.com/wechaty/wechaty/issues/1940">#1940</a></li>
+  <li>New version release notes for wechaty 0.38 <a href="https://github.com/wechaty/wechaty/issues/1937">#1937</a></li>
+  <li>Can the receive the recall “ room-leave”. <a href="https://github.com/wechaty/wechaty/issues/1745">#1745</a></li>
+  <li>Refactor message.ts file to fit the requirement in CodeClimate <a href="https://github.com/wechaty/wechaty/issues/1663">#1663</a></li>
+  <li>Want to get information about sent-out message <a href="https://github.com/wechaty/wechaty/issues/1501">#1501</a></li>
+</ul>
+
+<p><strong>Merged pull requests:</strong></p>
+
+<ul>
+  <li>rename wechaty-puppet-hostie -&gt; wechaty-puppet-service <a href="https://github.com/wechaty/wechaty/pull/2124">#2124</a> (<a href="https://github.com/huan">huan</a>)</li>
+  <li>Update README.md <a href="https://github.com/wechaty/wechaty/pull/2118">#2118</a> (<a href="https://github.com/lijiarui">lijiarui</a>)</li>
+  <li>Update room-invitation.ts <a href="https://github.com/wechaty/wechaty/pull/2104">#2104</a> (<a href="https://github.com/profthecopyright">profthecopyright</a>)</li>
+  <li>Update contact.ts <a href="https://github.com/wechaty/wechaty/pull/2095">#2095</a> (<a href="https://github.com/su-chang">su-chang</a>)</li>
+  <li>create looseInstanceOfClass (#2090) <a href="https://github.com/wechaty/wechaty/pull/2091">#2091</a> (<a href="https://github.com/huan">huan</a>)</li>
+  <li>Update Dockerfile <a href="https://github.com/wechaty/wechaty/pull/2079">#2079</a> (<a href="https://github.com/yesxin">yesxin</a>)</li>
+  <li>Bump minor 49 <a href="https://github.com/wechaty/wechaty/pull/2078">#2078</a> (<a href="https://github.com/windmemory">windmemory</a>)</li>
+  <li>fix #2073 <a href="https://github.com/wechaty/wechaty/pull/2074">#2074</a> (<a href="https://github.com/windmemory">windmemory</a>)</li>
+  <li>Split to trunks when making requests of room.findAll() and room.ready() <a href="https://github.com/wechaty/wechaty/pull/2067">#2067</a> (<a href="https://github.com/windmemory">windmemory</a>)</li>
+  <li>bump hostie version to be the stable one <a href="https://github.com/wechaty/wechaty/pull/2051">#2051</a> (<a href="https://github.com/windmemory">windmemory</a>)</li>
+  <li>0.48.0 <a href="https://github.com/wechaty/wechaty/pull/2050">#2050</a> (<a href="https://github.com/windmemory">windmemory</a>)</li>
+  <li>feat: add more methods into contact class <a href="https://github.com/wechaty/wechaty/pull/2048">#2048</a> (<a href="https://github.com/windmemory">windmemory</a>)</li>
+  <li>feat: add scoped wxwork puppet into puppet config <a href="https://github.com/wechaty/wechaty/pull/2043">#2043</a> (<a href="https://github.com/windmemory">windmemory</a>)</li>
+  <li>add phone method in contact class <a href="https://github.com/wechaty/wechaty/pull/2039">#2039</a> (<a href="https://github.com/windmemory">windmemory</a>)</li>
+  <li>remove Accessories by wechatify user classes <a href="https://github.com/wechaty/wechaty/pull/2028">#2028</a> (<a href="https://github.com/huan">huan</a>)</li>
+</ul>
+
+<h2 id="join-us">Join us</h2>
+
+<ol>
+  <li>Join our community discussion on Gitter: <a href="https://gitter.im/wechaty/wechaty">https://gitter.im/wechaty/wechaty</a></li>
+  <li>Read our blog posts: <a href="https://wechaty.js.org/blog">https://wechaty.js.org/blog</a></li>
+  <li>Getting started with Wechaty now: <a href="https://github.com/wechaty/wechaty-getting-started">https://github.com/wechaty/wechaty-getting-started</a></li>
+  <li>Interested in working with us? <a href="https://chatie.breezy.hr/">Join our team</a>!</li>
+</ol>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#release">release</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Author @ Wechaty, Architect @ Chatie, LLM Code Generation Enthusiast, Serial Entrepreneur, Burner🔥
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/01/20/chatbot-conversational-user-interface/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/01-chatbot-conversational-user-interface/chatbot.webp">  Huan: Introducing Chatbot and Conversational User Interface (CUI)</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/01/26/wechaty-charbot-lite/"> 基于Wechaty实现运维自动化交互及微信消息通知  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/01-wechaty-charbot-lite/1.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

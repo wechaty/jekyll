@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      AI ChatBot Creation Camp Kicks Off! | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>AI ChatBot Creation Camp Kicks Off! | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="AI ChatBot Creation Camp Kicks Off!" />
+<meta name="author" content="wj-mcat" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="What capabilities does a ChatBot need in the age of artificial intelligence? Is it an intelligent housekeeper that helps you organize all the materials that “if you code it, you have seen it”? Is it a master of fighting pictures, helping you to p-good friends’ ghost animal expression packs in minutes? Is it a ruthless compliment machine that can automatically generate new rainbow farts every day?" />
+<meta property="og:description" content="What capabilities does a ChatBot need in the age of artificial intelligence? Is it an intelligent housekeeper that helps you organize all the materials that “if you code it, you have seen it”? Is it a master of fighting pictures, helping you to p-good friends’ ghost animal expression packs in minutes? Is it a ruthless compliment machine that can automatically generate new rainbow farts every day?" />
+<link rel="canonical" href="https://wechaty.js.org/2021/04/22/wechaty-with-paddlepaddle-en/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/04/22/wechaty-with-paddlepaddle-en/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/04-wechaty-with-paddlepaddle-en/wechaty-cpu.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-04-22T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/04-wechaty-with-paddlepaddle-en/wechaty-cpu.webp" />
+<meta property="twitter:title" content="AI ChatBot Creation Camp Kicks Off!" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"wj-mcat"},"dateModified":"2021-04-22T00:00:00+00:00","datePublished":"2021-04-22T00:00:00+00:00","description":"What capabilities does a ChatBot need in the age of artificial intelligence? Is it an intelligent housekeeper that helps you organize all the materials that “if you code it, you have seen it”? Is it a master of fighting pictures, helping you to p-good friends’ ghost animal expression packs in minutes? Is it a ruthless compliment machine that can automatically generate new rainbow farts every day?","headline":"AI ChatBot Creation Camp Kicks Off!","image":"https://wechaty.js.org/assets/2021/04-wechaty-with-paddlepaddle-en/wechaty-cpu.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/04/22/wechaty-with-paddlepaddle-en/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"wj-mcat"},"url":"https://wechaty.js.org/2021/04/22/wechaty-with-paddlepaddle-en/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#article">article</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">AI ChatBot Creation Camp Kicks Off!</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/wj-mcat">
+                            <img class="rounded-circle" src="/assets/contributors/wj-mcat/avatar.webp" alt="吴京京" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/wj-mcat">吴京京</a> <span><a target="_blank" href="https://weibo.com/u/3877178684" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Apr 22, 2021 · <span class="reading-time">
+  
+  
+    12 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/04-wechaty-with-paddlepaddle-en/wechaty-cpu.webp" alt="AI ChatBot Creation Camp Kicks Off!">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>What capabilities does a ChatBot need in the age of artificial intelligence? Is it an intelligent housekeeper that helps you organize all the materials that “if you code it, you have seen it”? Is it a master of fighting pictures, helping you to p-good friends’ ghost animal expression packs in minutes? Is it a ruthless compliment machine that can automatically generate new rainbow farts every day?</p>
+
+<p><img src="/assets/2021/04-wechaty-with-paddlepaddle-en/header.webp" alt="logs" /></p>
+
+<p>✨ Practical, interesting, and quirky… I wonder what the heroes think? Come and join us to realize it! What kind of inspiration can PaddlePaddle and Wechaty spark together? We welcome all creative projects related to ChatBot! As long as your project is excellent enough, the official will help you debut!</p>
+
+<ul>
+  <li>Competition registration link: <a href="https://aistudio.baidu.com/aistudio/competition/detail/79">AI ChatBot Creation Camp</a></li>
+  <li>Competition time: 2021/04/12 - 2021/05/31</li>
+</ul>
+
+<p><img src="/assets/2021/04-wechaty-with-paddlepaddle-en/eliza.webp" alt="eliza" /></p>
+
+<p>In 1950, Alan Turing opened the door to artificial intelligence with a groundbreaking article. At the same time, could machines cause a large number of human errors? What</p>
+
+<p>Soon, the birth of ELIZA in 1966 made the Turing test feel the power of AI. This chatbot (ChatBot) developed by MIT has the ability comparable to a psychologist. It is trained with a large number of psychological sentences as data. When communicating with patients, it can guide the conversation to a more focused direction through keyword logic, and then dig out the real needs and motivations of the interlocutor. These abilities also made many people at that time mistakenly believe that ELIZA was a real person.</p>
+
+<p>“As much intelligence as there is, there is as much labor.” The success of ELIZA is the injection of a large amount of labor costs. While the training cost in the early stage increases, it is also easier for the tested person to believe that what he is facing is a “psychologist” with flesh and blood. However, the problem also exists. In addition to the high training cost, the NLP technology in 1966 was too immature. ELIZA could not really understand words, nor could it learn and evolve by itself.</p>
+
+<p>Time and technology have pushed the wheel of fate together, and the development of AI is no longer the same as it used to be. Nowadays, ELIZA’s descendants are active in various fields, such as smart assistants on mobile phones, smart customer service for e-commerce, smart butlers for family life, and expression packs for communication… The training sentences of ChatBot are shortening, but the scene usage time is extending; the development cost of ChatBot is decreasing, but the space for development is increasing; the threshold of ChatBot is lowering, but the humanistic temperature is rising. All these changes are telling this era: <strong>the new era of ChatBot has arrived</strong>.</p>
+
+<p>In this era, the competition of ChatBot is no longer limited to technology, and creativity is also particularly important. Therefore, in order to discover more excellent ChatBot development projects and cultivate more high-quality talents, PaddleHub and the open source chatbot framework Wechaty have brought the “AI ChatBot Creation Camp”. If you have ideas and abilities in ChatBot development, you are welcome to sign up for this competition to design a more novel, reliable and practical ChatBot for the future. And if your ChatBot creative project is excellent enough and enters the final final, then PaddlePaddle official will help you to be on the stage of WAVE SUMMIT 2021!</p>
+
+<h2 id="competition-introduction">Competition Introduction</h2>
+
+<p>This competition requires all contestants to use PaddleHub and Wechaty, two open source products, to create their own creative AI ChatBot. The official competition provides contestants with not only a new AI capability platform, but also a stage to compete with various masters. So what are the capabilities of these two open source products?</p>
+
+<h3 id="paddlehub">PaddleHub</h3>
+
+<p>PaddleHub is a pre-trained model application management tool under the PaddlePaddle deep learning platform. It aims to provide developers with rich, high-quality, and directly available pre-trained models. No deep learning background, no data and training process, you can quickly use AI models. The pre-trained models cover the four major categories of CV, NLP, Audio, and Video, and support one-click prediction, one-click service deployment, and rapid transfer learning. All models are open source and available for download, and can be run offline.</p>
+
+<p>Of course, PaddleHub can not only be used to develop ChatBot. In previous activities, developers have also used this platform to develop many high-quality projects, such as the reproduction of the traditional art of shadow puppetry; some people have made AI talk about earthy love stories, which are both awkward and flirtatious; some people have realized one-click replacement of the sky, so that everyone can become Spielberg; or use AI to help draw, easily breaking the dimensional wall. And these Demos are all open source on GitHub.</p>
+
+<p>To view the wonderful Demo, please go to: <a href="https://github.com/PaddlePaddle/PaddleHub#visualization-demo">github.com/PaddlePaddle/PaddleHub</a></p>
+
+<h3 id="wechaty">Wechaty</h3>
+
+<p>Wechaty is an open source chatbot framework SDK with multi-platform, multi-language and multi-plugin features. It supports multiple languages such as Python, Go, Java, Scala, .NET, PHP, Rust, etc. You can create a chatbot with just a few lines of code. After more than 5 years of development, the Wechaty open source community now has dozens of Committers, more than 100 Contributors, and has been starred by 10,000 Github developers. At present, Wechaty’s developers are located in many countries and regions around the world, covering tens of thousands of people, and it is the most active Conversational AI Chatbot developer community in China.</p>
+
+<p>The advantage of Wechaty lies in the management of code quality. Developers can use the DevOps tool of Github Actions to complete the CI/CD workflow, from automated unit testing to automated packaging integration testing, from automatically publishing NPM packages to automatically building and publishing Docker Images of corresponding versions, realizing a fully automated community code release, which greatly improves the collaboration efficiency of the community.</p>
+
+<p>At present, there are more than a thousand open source projects on Github that have built chatbots based on Wechaty. In addition, Wechaty has unified the dialogue interface of instant messaging software platforms. Only one set of code is needed to run on multiple platforms. At present, it has maturely and efficiently promoted the landing of different practical scenarios in multiple fields including community management, data operation and maintenance, office, information, advertising, marketing, etc. For example, OSS.Chat can connect the Github developer community and let the open source community get real-time dynamics; YanBot assists in managing multiple WeChat discussion groups of The R-fMRI Journal Club, and bridges the user’s discussion of literature in the field and related brain imaging technology issues; and the python-Wechaty fighting picture robot can have fun with contacts.</p>
+
+<p><img src="/assets/2021/04-wechaty-with-paddlepaddle-en/wechaty-structure.webp" alt="wechaty-structure" /></p>
+
+<h3 id="a-few-lines-of-code-to-integrate-wechaty-and-paddlehub">A few lines of code to integrate Wechaty and PaddleHub</h3>
+
+<p>Build and run the Python version of Wechaty locally through Wechaty’s official tutorial, and combine the pre-trained text generation model of Paddlehub with Wechaty’s automatic reply message to realize the function of returning love words by inputting text through WeChat.</p>
+
+<p><img src="/assets/2021/04-wechaty-with-paddlepaddle-en/wechaty-paddlehub.webp" alt="wechaty-paddlehub" /></p>
+
+<blockquote>
+  <p>Python 3.8 / Pip 20.1.1 / PaddleHub 2.0.4 / PaddlePaddle 2.0.2</p>
+</blockquote>
+
+<h2 id="competition-support">Competition Support</h2>
+
+<p>In this competition, Wechaty provides free tokens for contestants. At the same time, Baidu Brain AI Studio will also provide contestants with 100 hours of GPU Tesla V100 computing power cards for free. Contestants can get the application address on the data download page after signing up.</p>
+
+<p>Not only that, on April 14th at 8:10 pm, engineers from PaddleHub and Wechaty will bring product explanations and Demo demonstrations, and teach you how to use these two sharp tools to create your own AI Chatbot!</p>
+
+<div style="
+    position: relative;
+    padding-bottom: 70%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="//player.bilibili.com/player.html?aid=672615010&amp;bvid=BV16U4y1h7dc&amp;cid=324632441&amp;page=1&amp;high_quality=1" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h2 id="competition-prizes">Competition Prizes</h2>
+
+<p>The prizes for this competition are still divided into two parts. For outstanding contestants, PaddlePaddle will provide them with official channel exposure and opportunities to get in touch with experts.</p>
+
+<ol>
+  <li>WAVE SUMMIT official debut position: Excellent project authors will have the opportunity to get the official debut opportunity of WAVE SUMMIT</li>
+  <li>Selected projects will get more exposure: During the competition, contestants can submit their projects on AI Studio. Once they pass the review of selected projects, they can get more exposure opportunities.</li>
+  <li>Paddle/Wechaty engineer 1-on-1 project guidance: Excellent project authors will have the opportunity to receive 1-on-1 technical guidance from senior Baidu engineers and senior Wechaty community engineers.</li>
+  <li>PPDE/Wechaty Community Contributor green channel: Excellent project authors will get the green channel for applying for PaddlePaddle PPDE technical experts and Wechaty Community Contributor.</li>
+</ol>
+
+<p>Of course, as a developer competition, generous bonuses and prizes are also essential. Baidu PaddlePaddle provides the following rewards for contestants:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>Reward</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>First Prize</td>
+      <td>1</td>
+      <td>10,000 RMB</td>
+    </tr>
+    <tr>
+      <td>Second Prize</td>
+      <td>1</td>
+      <td>Apple iPad Air 256G (worth 2598 yuan)</td>
+    </tr>
+    <tr>
+      <td>Third Prize</td>
+      <td>1</td>
+      <td>Switch game console (worth 2200 yuan)</td>
+    </tr>
+    <tr>
+      <td>Early Bird Award</td>
+      <td>10</td>
+      <td>Wechaty creators Li Jiarui &amp; Li Zhuohuan “Chatbot from 0 to 1” 1 copy</td>
+    </tr>
+    <tr>
+      <td>Submission Award</td>
+      <td>Unlimited</td>
+      <td>Competition customized community souvenirs</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<p>It should be noted that all contestants who have submitted their entries can get an exclusive souvenir provided by Baidu PaddlePaddle! And the final final of this event will be a part of Baidu’s mid-year developer event WAVE SUMMIT. If your work is good enough and enters the final stage, then the most beautiful boy in the WAVE SUMMIT may be you!</p>
+
+<h2 id="competition-schedule">Competition Schedule</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Schedule</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2021/4/12</td>
+      <td>Official launch of registration</td>
+    </tr>
+    <tr>
+      <td>2021/4/14</td>
+      <td>Online competition presentation</td>
+    </tr>
+    <tr>
+      <td>2021/4/20</td>
+      <td>Project repo submission entrance opens</td>
+    </tr>
+    <tr>
+      <td>2021/5/10</td>
+      <td>Project submission deadline</td>
+    </tr>
+    <tr>
+      <td>Mid-to-late May 2021</td>
+      <td>Final</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Contestant objects and requirements</p>
+
+<blockquote>
+  <ul>
+    <li>Contestant objects: This competition is open to the whole society, regardless of age, identity, or nationality. Individuals, colleges and universities, scientific research institutions, enterprises, and start-up teams in related fields can all sign up.</li>
+    <li>Contestant requirements:</li>
+    <li>This competition can be participated by individuals or teams, and the maximum number of team members is 5.</li>
+    <li>Participation methods and rules</li>
+  </ul>
+</blockquote>
+
+<p>(1) All contestants must register on the Baidu Brain AI Studio platform;
+(2) Contestants must produce projects based on the PaddlePaddle deep learning platform within the specified time, and are not allowed to use other related platforms, frameworks, and any learning methods not included in PaddlePaddle to participate in the competition;
+(3) Contestants must ensure that the information submitted during registration is accurate and valid. All competition qualifications and prize payments are based on the submitted information. The prizes and prizes for team participation will be sent to the team leader, and the team will decide on the distribution of prizes and prizes internally;
+(4) The setting of contestant names and team names shall not violate Chinese laws and regulations or social public order and good customs, and the team name shall not contain words such as “Baidu official”, “PaddlePaddle official”, “paddle official”, “official baseline”. If the team with a non-compliant name still does not modify the team name after receiving a warning from the competition organizer, the competition organizer has the right to disband the team;
+(5) Event communication group: Scan the QR code on WeChat to add the PaddlePaddle brother, and reply “Creation Camp” to join the group.</p>
+
+<p><img src="/assets/2021/04-wechaty-with-paddlepaddle-en/qrcode.webp" alt="qrcode" /></p>
+
+<h3 id="supplementary-rules-for-participants">Supplementary Rules for Participants</h3>
+
+<ul>
+  <li>Fair play: Participants are prohibited from plagiarizing others’ works in the competition. Once discovered, the competition results will be cancelled and dealt with seriously;</li>
+  <li>Organization statement: The organizing committee reserves the right to adjust and modify the competition rules and event arrangements, the right to determine and dispose of cheating behaviors in the competition, and the right to withdraw or refuse to grant awards to participating teams that affect the organization and fairness;</li>
+  <li>Work property rights: The intellectual property rights of the entries (including but not limited to algorithms, models, etc.) belong to the contestants. The organizing committee has the right to use the entries, works-related, and participating team information for promotional materials, related publications, designated and authorized media releases, official website browsing and downloading, exhibitions (including touring exhibitions) and other activities. The competition organizer has the priority of cooperation.</li>
+  <li>Anti-cheating instructions</li>
+</ul>
+
+<ol>
+  <li>Participants are prohibited from registering multiple accounts to sign up. Once discovered, the results will be cancelled and dealt with seriously.</li>
+  <li>Participants are prohibited from using rule loopholes or technical loopholes and other improper ways to improve their scores and rankings outside the scope of technical ability assessment, and are prohibited from uploading other project links for points. Once discovered, the results will be cancelled and dealt with seriously.</li>
+  <li>The submitted works of personnel who have access to the competition-related data will not be included in the leaderboard and awards.</li>
+  <li>AI Studio will collect contestant information, code, models, and system reports for score evaluation, competition notification, and other related competition matters.</li>
+</ol>
+
+<hr />
+<blockquote>
+  <p>Chinese version of this post: <a href="/2021/04/22/wechaty-with-paddlepaddle/">wechaty with paddlepaddle</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#baidu">baidu</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ai">ai</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#featured">featured</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#chatbot">chatbot</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#competition">competition</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/wj-mcat">
+                            <img class="rounded-circle" src="/assets/contributors/wj-mcat/avatar.webp" alt="吴京京" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/wj-mcat">吴京京</a> <span><a target="_blank" href="https://weibo.com/u/3877178684" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Committer of Python-Wechaty. NLP & Chatbot Researcher, a graduate student at Beijing University of Posts and Telecommunications.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/04/22/how-to-publish-blog-on-wechaty/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/04-how-to-publish-blog-on-wechaty/rare-book.webp">  入门：小白如何在wechaty社区发布自己的第一篇博客（一）</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/04/22/wechaty-with-paddlepaddle/"> AI ChatBot Creation Camp创意赛重磅来袭！  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/04-wechaty-with-paddlepaddle-en/wechaty-cpu.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

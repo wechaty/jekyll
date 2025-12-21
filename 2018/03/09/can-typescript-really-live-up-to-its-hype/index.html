@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Can Typescript really live up to its hype? | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Can Typescript really live up to its hype? | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Can Typescript really live up to its hype?" />
+<meta name="author" content="suntong" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Conversational RPA SDK for Chatbot Makers" />
+<meta property="og:description" content="Conversational RPA SDK for Chatbot Makers" />
+<link rel="canonical" href="https://wechaty.js.org/2018/03/09/can-typescript-really-live-up-to-its-hype/" />
+<meta property="og:url" content="https://wechaty.js.org/2018/03/09/can-typescript-really-live-up-to-its-hype/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2018/typescript-logo.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-03-09T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2018/typescript-logo.webp" />
+<meta property="twitter:title" content="Can Typescript really live up to its hype?" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"suntong"},"dateModified":"2018-03-09T00:00:00+00:00","datePublished":"2018-03-09T00:00:00+00:00","description":"Conversational RPA SDK for Chatbot Makers","headline":"Can Typescript really live up to its hype?","image":"https://wechaty.js.org/assets/2018/typescript-logo.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2018/03/09/can-typescript-really-live-up-to-its-hype/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"suntong"},"url":"https://wechaty.js.org/2018/03/09/can-typescript-really-live-up-to-its-hype/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#article">article</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Can Typescript really live up to its hype?</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/suntong">
+                            <img class="rounded-circle" src="/assets/contributors/suntong/avatar.webp" alt="suntong" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/suntong">suntong</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Mar 09, 2018 · <span class="reading-time">
+  
+  
+    6 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2018/typescript-logo.webp" alt="Can Typescript really live up to its hype?">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p><img src="/assets/2018/typescript-logo.webp" alt="TypeScript" /></p>
+
+<p>Big companies or organizations push forward adopting of Typescript for a reason, mostly to prevent some dummies to shoot their own feet really easily – The (almost only) advantage of Typescript is to point out, at the compile time, that the following usage is wrong:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">A</span><span class="dl">'</span><span class="p">;</span>
+<span class="nx">x</span> <span class="o">=</span> <span class="nx">x</span> <span class="o">+</span> <span class="mi">5</span>
+</code></pre></div></div>
+
+<p>But is it really? If you are a seasoned programmer and you are coding for yourself only, are you willing to get your hands tied up by MS Typescript, and suffer all its drawbacks in the mean time?</p>
+
+<h2 id="about-pure-es6-instead-of-typescript">About Pure ES6 instead of Typescript</h2>
+
+<p>When I code customization code for <a href="https://github.com/wechaty/wechaty/">wechaty</a>, I write everything in pure ES6 instead of Typescript, and there are strong reasons for that.</p>
+
+<h3 id="typescript-is-not-necessary">Typescript is not necessary</h3>
+
+<ul>
+  <li>Looking at the <a href="http://node.green/">ES6 support in Node.js</a>, I can see really really few ES6 features are unsupported now. I.e., only very few <em>extreme</em> end-cases are left.</li>
+  <li>Furthermore, I don’t know how well the transpiling is, e.g., for the advanced ES6 features like <code class="language-plaintext highlighter-rouge">map</code>, <code class="language-plaintext highlighter-rouge">filter</code> and <code class="language-plaintext highlighter-rouge">reduce</code>, I don’t know how efficient the transpiled code is.</li>
+  <li>Starting with version 8.5.0, Node.js even supports ES modules natively, so we can do <code class="language-plaintext highlighter-rouge">import {add} from './lib.mjs';</code> directly in ES6 now.</li>
+  <li>I.e., the ES6 is ready for prime time use, writing in TypeScript then have it transpiled into ES6 code seems like a redundant step now. (I’m not saying that TypeScript is not helpful, it is still good in big projects that you have some dummies really easily to shoot their own feet)</li>
+  <li>Moreover, most of wechaty examples are in fact plain ES6, not TypeScript (because of missing type declaration for every variable, which is the # 1 feature that TypeScript boasts with), so making such extra transpiling step seems even more unnecessary to me.</li>
+</ul>
+
+<h3 id="es6-is-the-future-not-typescript">ES6 is the future, not Typescript</h3>
+
+<p>Here is some good reading that I want to share with you,</p>
+
+<p><strong>When are you better off without Typescript?</strong> –
+<a href="https://medium.freecodecamp.org/when-should-i-use-typescript-311cb5fe801b"><em>When you can’t afford an extra transpilation tax</em></a></p>
+
+<blockquote>
+  <p>There are no plans to support TypeScript natively in the browsers. Chrome did some experiment, but later cancelled support. I suspect this has something to do with unnecessary runtime overhead.
+If someone wants training wheels, they can install them. But bikes shouldn’t come with permanent training wheels. This means that you will always have to transpile your TypeScript code before running them.
+For standard ES6, it’s a whole different story. When ES6 is supported by most browsers, the current ES6 to ES5 transpilation will become unnecessary.
+ES6 is the biggest change to the JavaScript language, and I believe most programmers will just settle with it. But those brave few who want to try the next version of JavaScript’s experimental features, or the features not yet implemented on all browsers — they will need to transpile anyway.</p>
+</blockquote>
+
+<h3 id="typescript-has-an-evil-source-and-evil-goal">Typescript has an evil source and evil goal</h3>
+
+<p>Typescript is from Microsoft, which is the source of all evil.</p>
+
+<p>From above article,</p>
+
+<blockquote>
+  <p>The old Microsoft used to take standard tools — Java for example — and add proprietary non-standard features to them — in this case resulting in J++. <strong>Then they would try to force developers to choose between the two</strong>.
+TypeScript is exactly the same approach — this time for JavaScript. By the way, <strong>this isn’t Microsoft’s first fork of JavaScript. In 1996, they forked JavaScript to create JScript</strong>.</p>
+</blockquote>
+
+<p>JavaScript has no types, this has it advantages and disadvantages. However, IMHO, its disadvantages has been over-proportionally emphasized and exaggerated, and its advantages has been down-played greatly. If using Typescript, then such advantages will be completely lost, and you’ll get completely restrained, that’s what MS does best. Here is a little example, out of the very limited hours I’ve been using JavaScript – to write a wechaty simulation driving code, it’d be impossible to <a href="https://github.com/wechaty/wechaty/issues/1095#issuecomment-366595388">write such simulation in such simple way</a>, had I been writing my code in TypeScript.</p>
+
+<h3 id="typescript-is-using-the-out-dated-technology">Typescript is using the out-dated technology</h3>
+
+<p>But someone may say, <em>“if Typescript is not allowing you do that, then you must be doing something wrong”</em>. Well, truth is,</p>
+
+<p>The modern programming paradigm has advanced way over the OO era, and “<strong>interface</strong>” has become the new way of thinking. The loosely coupled interface has much more benefit than the tightly coupled <a href="https://en.wikipedia.org/wiki/Object-oriented_programming#Polymorphism">OO polymorphism</a>, which means that MS using type checking to tie peoples hands up is so 19-century in this 21-century world, and will be left in the dust by most knowledgeable programmers. Interface compatibility is much more tolerant than <a href="https://en.wikipedia.org/wiki/Object-oriented_programming#Polymorphism">OO polymorphism</a>, that if both the two types satisfy the minimum interface requirement of the accepting parameter, than either of the two <strong>unrelated</strong> types can be used as the argument. And JavaScript, not Typescript, allows that. This is the reason why I can <a href="https://github.com/wechaty/wechaty/issues/1095#issuecomment-366595388">write such simulation in such simple way</a> using JavaScript, but not Typescript.</p>
+
+<p>So, thank but no thanks to MS’ JScript, or TypeScript, without the type restriction, the rest of the TypeScript hypes are actually come from ES6, which is what I’ll stick to instead.</p>
+
+<h3 id="typescript-will-be-abandoned">Typescript will be abandoned</h3>
+
+<p>Who still remember MS’ JScript? Typescript will be left in the dust by most programmers, and it will be abandoned by Microsoft, eventually. Mark my words for it.</p>
+
+<p>The philosophy that I resist anything that MS proposes has a long history of me, as a programmer, who was forced onto the MS band wagon for their shinny new toys, then get thrown under the bus when MS abandon them. Not many programmers start the love-hate affair with MS since DOS2.0, through DOS3.0 all they way to DOS5.0. Not many programmers have ever heard of OLE, DDE, DAO, ADO, ADO2, and the stories behind their rise and fall, yet I was the one who bite the bullet and gone through them all. Even today, I’m still living through the consequences of MS abandoning silverlight, for all these past several years.</p>
+
+<h3 id="in-summary">In summary</h3>
+
+<p>I know TypeScript does has its place, and the first part of the above article did list many of them. But still I’ll never buy it. Quoting a sentence I like from the above article,</p>
+
+<blockquote>
+  <p>TypeScript haters are gonna hate, either because of fear of change or because they know somebody who knows somebody who is afraid of it. Life goes on and TypeScript introduces new features to its community anyway.</p>
+</blockquote>
+
+<p>All in all, I’ll stick to ES6 and never use TypeScript. It might be my personal choice, but I’m glad I’m not along – check this out</p>
+
+<p><a href="http://vancelucas.com/blog/dont-transpile-javascript-for-node-js/"><strong>Don’t Transpile JavaScript for Node.js</strong></a></p>
+
+<h3 id="postlude">Postlude</h3>
+
+<p>PS, if I do have to write something that has to be transpiled first before running, it is got to be the <a href="https://en.wikipedia.org/wiki/Dart_(programming_language)">Dart programming language</a>, because of the new Google’s mobile UI framework, <a href="https://flutter.io/?utm_source=google&amp;utm_medium=blog&amp;utm_campaign=beta_announcement">Flutter</a>, introduce on February 27, 2018, at Mobile World Congress 2018.</p>
+
+<p>Don’t get me started on this, but check out the following yourself:</p>
+
+<p><strong>Google announced the first beta of Flutter</strong><br />
+<a href="https://flutter.io/?utm_source=google&amp;utm_medium=blog&amp;utm_campaign=beta_announcement">https://flutter.io/?utm_source=google&amp;utm_medium=blog&amp;utm_campaign=beta_announcement</a></p>
+
+<p><strong>Flutter Will Take Off in 2018</strong><br />
+<a href="https://codeburst.io/why-flutter-will-take-off-in-2018-bbd75f8741b0">https://codeburst.io/why-flutter-will-take-off-in-2018-bbd75f8741b0</a></p>
+
+<p><strong>What’s Revolutionary about Flutter</strong><br />
+<a href="https://hackernoon.com/whats-revolutionary-about-flutter-946915b09514">https://hackernoon.com/whats-revolutionary-about-flutter-946915b09514</a></p>
+
+<p><strong>Why we chose Flutter and how it’s changed our company for the better</strong><br />
+<a href="https://medium.com/@matthew.smith_66715/why-we-chose-flutter-and-how-its-changed-our-company-for-the-better-271ddd25da60">https://medium.com/@matthew.smith_66715/why-we-chose-flutter-and-how-its-changed-our-company-for-the-better-271ddd25da60</a></p>
+
+<p><strong>Google跨平台UI框架 Flutter beta 重磅发布</strong><br />
+<a href="https://juejin.im/post/5a964adf5188257a690f9a85">https://juejin.im/post/5a964adf5188257a690f9a85</a></p>
+
+<p><strong>Why I moved from JavaScript to Dart</strong><br />
+<a href="https://hackernoon.com/why-i-moved-from-javascript-to-dart-9ff55a108ff4#.ezyej7cdr">https://hackernoon.com/why-i-moved-from-javascript-to-dart-9ff55a108ff4#.ezyej7cdr</a></p>
+
+<p><strong>Why I moved from Java to Dart</strong><br />
+<a href="https://hackernoon.com/why-i-moved-from-java-to-dart-8f3802b1d652">https://hackernoon.com/why-i-moved-from-java-to-dart-8f3802b1d652</a></p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#typescript">typescript</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/suntong">
+                            <img class="rounded-circle" src="/assets/contributors/suntong/avatar.webp" alt="suntong" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/suntong">suntong</a> </h5>
+						Provided the [monster] demo as a one-stop wechaty demo that includes everything useful for people to get an easier start; Started to use padplus recently and helped promoting it with an ready-to-use starter code too.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2018/02/06/techie-festival-faq/"> 女生科技体验节，Wechaty杂货铺</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2018/03/10/wechat-protocol-reference-guide-en/"> WeChat App Communication Protocol Case Study Reference Guide  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2018/h4dex-wechatprotocol.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

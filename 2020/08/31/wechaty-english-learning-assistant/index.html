@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      基于wechaty的英语学习群助手 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>基于wechaty的英语学习群助手 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="基于wechaty的英语学习群助手" />
+<meta name="author" content="alienfist" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="针对英语学习社群，为提高群的活跃度，通过关键词触发，实现英文每日一句、中英文互译、励志话语推送，彩虹屁功能。" />
+<meta property="og:description" content="针对英语学习社群，为提高群的活跃度，通过关键词触发，实现英文每日一句、中英文互译、励志话语推送，彩虹屁功能。" />
+<link rel="canonical" href="https://wechaty.js.org/2020/08/31/wechaty-english-learning-assistant/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/08/31/wechaty-english-learning-assistant/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/wechaty-english-learning-assistant/header.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-08-31T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/wechaty-english-learning-assistant/header.webp" />
+<meta property="twitter:title" content="基于wechaty的英语学习群助手" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"alienfist"},"dateModified":"2020-08-31T00:00:00+00:00","datePublished":"2020-08-31T00:00:00+00:00","description":"针对英语学习社群，为提高群的活跃度，通过关键词触发，实现英文每日一句、中英文互译、励志话语推送，彩虹屁功能。","headline":"基于wechaty的英语学习群助手","image":"https://wechaty.js.org/assets/2020/wechaty-english-learning-assistant/header.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/08/31/wechaty-english-learning-assistant/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"alienfist"},"url":"https://wechaty.js.org/2020/08/31/wechaty-english-learning-assistant/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">基于wechaty的英语学习群助手</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/alienfist">
+                            <img class="rounded-circle" src="/assets/contributors/alienfist/avatar.webp" alt="alienfist" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/alienfist">alienfist</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Aug 31, 2020 · <span class="reading-time">
+  
+  
+    1 min read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/wechaty-english-learning-assistant/header.webp" alt="基于wechaty的英语学习群助手">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>针对英语学习社群，为提高群的活跃度，通过关键词触发，实现英文每日一句、中英文互译、励志话语推送，彩虹屁功能。</p>
+
+<h2 id="功能">功能</h2>
+
+<ul>
+  <li>每日一句，从互联网搜集整理中英文名人名言，励志名言，鸡汤共6137条数据</li>
+  <li>励志话语&amp;彩虹屁，从互联网搜集整理共2783条数据</li>
+  <li>中英文互译，采用百度翻译api实现</li>
+  <li>tts文本转语音（开发中，因padplus不支持语音）</li>
+  <li><img src="/assets/2020/wechaty-english-learning-assistant/pic01.webp" alt="功能截图" /></li>
+  <li><img src="/assets/2020/wechaty-english-learning-assistant/pic02.webp" alt="功能截图" /></li>
+  <li><img src="/assets/2020/wechaty-english-learning-assistant/pic03.webp" alt="功能截图" /></li>
+  <li><img src="/assets/2020/wechaty-english-learning-assistant/pic04.webp" alt="功能截图" /></li>
+</ul>
+
+<h2 id="配置">配置</h2>
+
+<ul>
+  <li>因调用百度翻译api，需要前往百度翻译开放平台申请 <a href="https://api.fanyi.baidu.com/">https://api.fanyi.baidu.com/</a></li>
+  <li>申请完成后在config.js中修改配置</li>
+  <li>在config.js中，对触发关键词修改</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">"</span><span class="s2">baidu_appid</span><span class="dl">"</span><span class="p">:</span> <span class="dl">'</span><span class="s1">8888888888888888</span><span class="dl">'</span><span class="p">,</span>                 <span class="c1">//百度翻译api的appid</span>
+  <span class="dl">"</span><span class="s2">baidu_secretKey</span><span class="dl">"</span><span class="p">:</span> <span class="dl">'</span><span class="s1">aaaaaaaaaaaaaaaaaaa</span><span class="dl">'</span><span class="p">,</span>          <span class="c1">//百度翻译api的key</span>
+  <span class="dl">"</span><span class="s2">room_list</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">群名称1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">群名称2</span><span class="dl">"</span><span class="p">],</span>                 <span class="c1">//需要支持的群名称列表（记得把机器人拉入该群）</span>
+
+  <span class="dl">"</span><span class="s2">db_file</span><span class="dl">"</span><span class="p">:</span> <span class="dl">'</span><span class="s1">data.db</span><span class="dl">'</span><span class="p">,</span>                              <span class="c1">//sqlite3数据库文件路径</span>
+  <span class="dl">"</span><span class="s2">baidu_salt</span><span class="dl">"</span><span class="p">:</span> <span class="mi">666</span><span class="p">,</span>                                 <span class="c1">//百度翻译salt，这个值随便设置</span>
+  <span class="dl">"</span><span class="s2">keyword_baidu</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">??</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">？？</span><span class="dl">"</span><span class="p">],</span>                     <span class="c1">// 激发百度翻译功能的句首关键词,仅支持两个字符</span>
+  <span class="dl">"</span><span class="s2">keyword_caihong</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">夸我</span><span class="dl">"</span><span class="p">,</span>                          <span class="c1">// 彩虹屁关键词设定</span>
+  <span class="dl">"</span><span class="s2">keyword_lizhi</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">加油</span><span class="dl">"</span><span class="p">,</span>                            <span class="c1">// 中文励志关键词设定</span>
+  <span class="dl">"</span><span class="s2">keyword_sentence</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">每日一句</span><span class="dl">"</span><span class="p">,</span>                      <span class="c1">// 英文名言关键词设定</span>
+  <span class="c1">// 加群欢迎语设定</span>
+  <span class="dl">"</span><span class="s2">welcome</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">欢迎加入本群</span><span class="se">\n\</span><span class="s2">
+  本群具备以下功能:</span><span class="se">\n\</span><span class="s2">
+  1.文本翻译,请发送“??内容”</span><span class="se">\n\</span><span class="s2">
+  2.每日英语,请发送“每日一句”</span><span class="se">\n\</span><span class="s2">
+  3.鼓励自己,请发送“加油”</span><span class="se">\n\</span><span class="s2">
+  4.想听夸赞,请发送“夸我”</span><span class="se">\n\</span><span class="s2">
+  请不要在群内发广告，谢谢</span><span class="dl">"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="依赖">依赖</h2>
+
+<ul>
+  <li>wechaty：wechaty核心库</li>
+  <li>wechaty-puppet-padplus：wechaty iPad协议</li>
+  <li>sqlite3：数据库</li>
+</ul>
+
+<h2 id="运行">运行</h2>
+
+<p>克隆项目</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com:alienfist/wechaty-english-learning-assistant.git
+
+<span class="nb">cd </span>wechaty-english-learning-assistant
+</code></pre></div></div>
+
+<p>安装依赖</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span>
+</code></pre></div></div>
+
+<p>设置环境变量</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">WECHATY_PUPPET</span><span class="o">=</span>wechaty-puppet-padplus
+<span class="nb">export </span><span class="nv">WECHATY_PUPPET_PADPLUS_TOKEN</span><span class="o">=</span><span class="s1">'your wechaty token'</span>
+</code></pre></div></div>
+
+<p>启动项目</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node index.js
+</code></pre></div></div>
+
+<p>或者使用pm2进程管理项目</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">-g</span> pm2
+pm2 start index.js
+</code></pre></div></div>
+
+<h2 id="致谢">致谢</h2>
+
+<p>🙏感谢<a href="https://github.com/wechaty/wechaty">wechaty</a>团队提供微信机器人SDK<br />
+🙏感谢<a href="https://www.juzibot.com/">句子互动</a>提供的iPad协议版token</p>
+
+<blockquote>
+  <p>Author: <a href="https://github.com/alienfist">alienfist</a>
+Code: <a href="https://github.com/alienfist/wechaty-english-learning-assistant">wechaty-english-learning-assistant</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#padplus">padplus</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#project">project</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#sqlite3">sqlite3</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#education">education</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/alienfist">
+                            <img class="rounded-circle" src="/assets/contributors/alienfist/avatar.webp" alt="alienfist" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/alienfist">alienfist</a> </h5>
+						everything can be ctrl+c ctrl+v
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/08/29/wx-group-assistant-bot/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/08-wx-group-assistant-bot-en/wx-bot.webp">  微信营销群机器人客服</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/09/04/issue-feedback-room-monitor/"> 实现微信产品问题反馈群实时监控与问题自动录入  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/issue-feedback-room-monitor/way.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

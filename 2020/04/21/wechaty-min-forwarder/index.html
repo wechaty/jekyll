@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Wechaty 服务器的最小化实现 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Wechaty 服务器的最小化实现 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Wechaty 服务器的最小化实现" />
+<meta name="author" content="hzzzzzz" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="需求" />
+<meta property="og:description" content="需求" />
+<link rel="canonical" href="https://wechaty.js.org/2020/04/21/wechaty-min-forwarder/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/04/21/wechaty-min-forwarder/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-04-21T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Wechaty 服务器的最小化实现" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"hzzzzzz"},"dateModified":"2020-04-21T00:00:00+00:00","datePublished":"2020-04-21T00:00:00+00:00","description":"需求","headline":"Wechaty 服务器的最小化实现","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/04/21/wechaty-min-forwarder/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"hzzzzzz"},"url":"https://wechaty.js.org/2020/04/21/wechaty-min-forwarder/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-center ">
+				<div class=" col-md-8  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Wechaty 服务器的最小化实现</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/hzzzzzz">
+                            <img class="rounded-circle" src="/assets/contributors/hzzzzzz/avatar.webp" alt="hzzzzzz" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/hzzzzzz">hzzzzzz</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Apr 21, 2020 · <span class="reading-time">
+  
+  
+    1 min read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<h2 id="需求">需求</h2>
+
+<p>我们每天需要向数百个微信群批量转发信息，目前使用手动操作，需要耗费大量时间和精力，且很容易遗漏、出错。如果有一可自动化、程序化群发消息的工具，则可大大减轻负担，提高效率。</p>
+
+<h2 id="wechaty-和-puppet">Wechaty 和 Puppet</h2>
+
+<p><a href="https://github.com/wechaty/wechaty"><code class="language-plaintext highlighter-rouge">Wechaty</code></a> 提供了群组管理、收发消息等接口，能够方便地满足计划需求。</p>
+
+<p>由于 <code class="language-plaintext highlighter-rouge">Wechaty</code> 本身只是一个控制器，因此其对微信功能的执行需要依赖于微信客户端协议与服务器进行通信。<code class="language-plaintext highlighter-rouge">puppet</code> 就是这些协议的具体承载者，现在有基于 Web / iPad / Mac 等协议的多种实现。经过测试，首先排除了 Web 协议：由于腾讯的限制，近年新注册的微信账号都无法使用网页协议，而老账号又实在过于珍贵；接着，在调试使用 iPad 协议的 <code class="language-plaintext highlighter-rouge">PuppetPadplus</code> 时发现直接调用接口发送小程序会引起错误，需要深入源代码调查修改。由于时间有限，最后决定选择使用 <code class="language-plaintext highlighter-rouge">puppet-macpro</code>。</p>
+
+<h2 id="架构">架构</h2>
+
+<ul>
+  <li>目标：用最简单的方式实现向特定的若干微信群转发消息</li>
+  <li>功能：
+    <ol>
+      <li>账号登录</li>
+      <li>消息查看</li>
+      <li>群列表查看</li>
+      <li>将消息转发至微信群</li>
+    </ol>
+  </li>
+  <li>方案：
+    <ol>
+      <li>使用 <code class="language-plaintext highlighter-rouge">Node.js</code> 开发；</li>
+      <li>在没有大量交互需求的情况下暂时可以接受 <code class="language-plaintext highlighter-rouge">Node.js</code> 单主线程的局限性。若将来有需要，也可以使用多 worker / 进程合作解决问题；</li>
+      <li>由于微信的特性，群、消息等数据无法随时全量拉取，因此必须有一长期运行在线的 bot 将这些数据持久化。选择可以无缝接入的 <code class="language-plaintext highlighter-rouge">MongoDB</code> 进行数据存储；</li>
+      <li><code class="language-plaintext highlighter-rouge">Wechaty</code> / <code class="language-plaintext highlighter-rouge">Express.js</code> 作为服务端，负责消息收发；客户端通过 http(s) API 与服务端通信进行简单交互控制。</li>
+      <li>消息采用队列发送，有可调整的间隔。</li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="实现">实现</h2>
+
+<ol>
+  <li>登录
+ 客户端发送启动请求，服务端调用 <code class="language-plaintext highlighter-rouge">wechaty.start()</code>。如果需要扫描二维码登录，<code class="language-plaintext highlighter-rouge">Wechaty</code> 会触发 ‘scan’ 事件并提供一个链接，服务端将其传给客户端生成二维码让用户识别。</li>
+  <li>接收消息
+ 若发送者、发送者所在群不在数据库中，则需要将这些信息保存下来。由于 <code class="language-plaintext highlighter-rouge">Wechaty</code> 提供了 <code class="language-plaintext highlighter-rouge">Room.load()</code>、<code class="language-plaintext highlighter-rouge">Contact.load()</code> 等接口，实际上只要将它们的唯一 ID 保存下来已经能满足大部分需求了。</li>
+  <li>发送消息
+ 普通文本消息可以直接调用 <code class="language-plaintext highlighter-rouge">say()</code> 方法，其余消息需要作一些处理。</li>
+</ol>
+
+<h2 id="遇到的问题">遇到的问题</h2>
+
+<ol>
+  <li>第一次运行 <code class="language-plaintext highlighter-rouge">Wechaty</code> 时 ‘scan’ 事件给出了空的 <code class="language-plaintext highlighter-rouge">code</code>，手机微信也没有登录确认提示。使用这个空 code 生成了二维码，傻傻地扫了无数次登录未果。。。 隔了一段时间后忽然恢复正常，原因不明，可能是微信或 macpro 服务器的短暂不稳定；</li>
+  <li><code class="language-plaintext highlighter-rouge">Wechaty</code> 文档中对于小程序卡片的参数说明已经过时，按文档参数生成的卡片是损坏的无法打开；</li>
+  <li>由于上一个问题的影响，小程序卡片无法直接转发；</li>
+  <li>还是文档问题。<code class="language-plaintext highlighter-rouge">Room.findAll()</code> 接口的功能按文档是 ‘Find all contacts in a room’, 实际效果则应为 ‘列出加入的所有微信群’；</li>
+  <li><code class="language-plaintext highlighter-rouge">load()</code> 函数并不总能成功，对新群、新联系人调用时容易失败；</li>
+  <li>底层有时会抛出大量连接方面的错误，需要深入 debug。</li>
+</ol>
+
+<h2 id="致谢">致谢</h2>
+
+<p>感谢 <code class="language-plaintext highlighter-rouge">Wechaty</code> 开源项目及 <code class="language-plaintext highlighter-rouge">JuziBot</code> 公司提供的 token，为开发者带来极大便利！</p>
+
+<blockquote>
+  <p>作者: <a href="https://github.com/hzzzzzz">hzzzzzz</a> Node.js developer
+Code: <a href="https://github.com/hzzzzzz/wechaty-forwarder">Github</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#project">project</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#macpro">macpro</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#social">social</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#productivity">productivity</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/hzzzzzz">
+                            <img class="rounded-circle" src="/assets/contributors/hzzzzzz/avatar.webp" alt="hzzzzzz" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/hzzzzzz">hzzzzzz</a> </h5>
+						Node.js developer
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/04/21/wechaty-min-forwarder-en/"> Minimalist Implementation of Wechaty Server</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/04/23/cps-of-wechat-bot-with-wechaty/"> Cps demo of wechat bot with wechaty  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/cps-bot/qrcode.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Data Stream about Room-Join Event from Wechat to Wechaty | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Data Stream about Room-Join Event from Wechat to Wechaty | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Data Stream about Room-Join Event from Wechat to Wechaty" />
+<meta name="author" content="su-chang" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="介绍wechaty中的room-join事件的产生，及其数据流的变化" />
+<meta property="og:description" content="介绍wechaty中的room-join事件的产生，及其数据流的变化" />
+<link rel="canonical" href="https://wechaty.js.org/2019/07/08/data-stream-about-room-join-from-wechat-to-wechaty/" />
+<meta property="og:url" content="https://wechaty.js.org/2019/07/08/data-stream-about-room-join-from-wechat-to-wechaty/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-07-08T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Data Stream about Room-Join Event from Wechat to Wechaty" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"su-chang"},"dateModified":"2019-07-08T00:00:00+00:00","datePublished":"2019-07-08T00:00:00+00:00","description":"介绍wechaty中的room-join事件的产生，及其数据流的变化","headline":"Data Stream about Room-Join Event from Wechat to Wechaty","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2019/07/08/data-stream-about-room-join-from-wechat-to-wechaty/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"su-chang"},"url":"https://wechaty.js.org/2019/07/08/data-stream-about-room-join-from-wechat-to-wechaty/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-center ">
+				<div class=" col-md-8  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#tutorial">tutorial</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Data Stream about Room-Join Event from Wechat to Wechaty</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/su-chang">
+                            <img class="rounded-circle" src="/assets/contributors/su-chang/avatar.webp" alt="SuperChang" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/su-chang">SuperChang</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jul 08, 2019 · <span class="reading-time">
+  
+  
+    10 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>介绍wechaty中的room-join事件的产生，及其数据流的变化</p>
+
+<h2 id="问题">问题</h2>
+
+<p>当 Bot 在群组中邀请 Contact<桔小秘> 进入群组时，从微信获取到的数据是如何转换为 room-join 事件的？</桔小秘></p>
+
+<h3 id="step-1-从微信接入数据msg">Step-1 从微信接入数据（msg）</h3>
+
+<p>在用户登录时，padpro-manager 中的 onLogin() 方法会调用<code class="language-plaintext highlighter-rouge">initData()</code>方法来获取近期的微信消息（此消息不仅指微信聊天所发送的消息，还包括好友请求、群组操作、通知消息等，甚至当前所打开的聊天对话也会被当做微信消息传递过来），initData中以每500ms的频次，持续获取微信消息，存放在延时队列中并对得到的消息进行处理。</p>
+
+<p><code class="language-plaintext highlighter-rouge">syncMessage()</code>方法也会获取微信信息。这两个方法之所以能够接入微信消息，是由于分别依赖 <code class="language-plaintext highlighter-rouge">GrpcNewInit()</code> 和 <code class="language-plaintext highlighter-rouge">GrpcSyncMessage()</code>这两个方法想微信端发起消息请求。</p>
+
+<p>请求到的消息 <code class="language-plaintext highlighter-rouge">msg</code> 具体格式如下，并对其进行简单解释。</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+    <span class="nl">MsgId</span><span class="p">:</span> <span class="mi">1601421499</span><span class="p">,</span> <span class="c1">// 此条消息的唯一ID</span>
+    <span class="nx">FromUserName</span><span class="p">:</span> <span class="dl">'</span><span class="s1">22949941039@chatroom</span><span class="dl">'</span><span class="p">,</span> <span class="c1">// 消息的来源，即邀人进群来自22949941039@chatroom群组</span>
+    <span class="nx">ToUserName</span><span class="p">:</span> <span class="dl">'</span><span class="s1">wxid_x01jgln69ath22</span><span class="dl">'</span><span class="p">,</span> <span class="c1">// 发起此操作的用户ID</span>
+    <span class="nx">MsgType</span><span class="p">:</span> <span class="mi">10002</span><span class="p">,</span> <span class="c1">// 消息类型</span>
+    <span class="c1">// 此条消息的具体内容（xml格式）从消息中的汉字可以看出是一条邀请入群的通知信息</span>
+    <span class="nx">Content</span><span class="p">:</span>
+    <span class="dl">'</span><span class="s1">22949941039@chatroom:</span><span class="se">\n</span><span class="s1">&lt;sysmsg type="delchatroommember"&gt;</span><span class="se">\n\t</span><span class="s1">&lt;delchatroommember&gt;</span><span class="se">\n\t\t</span><span class="s1">&lt;plain&gt;&lt;![CDATA[你邀请"桔小秘"加入了群聊  ]]&gt;&lt;/plain&gt;</span><span class="se">\n\t\t</span><span class="s1">&lt;text&gt;&lt;![CDATA[你邀请"桔小秘"加入了群聊  ]]&gt;&lt;/text&gt;</span><span class="se">\n\t\t</span><span class="s1">&lt;link&gt;</span><span class="se">\n\t\t\t</span><span class="s1">&lt;scene&gt;invite&lt;/scene&gt;</span><span class="se">\n\t\t\t</span><span class="s1">&lt;text&gt;&lt;![CDATA[  撤销]]&gt;&lt;/text&gt;</span><span class="se">\n\t\t\t</span><span class="s1">&lt;memberlist&gt;</span><span class="se">\n\t\t\t\t</span><span class="s1">&lt;username&gt;&lt;![CDATA[wxid_3xl8j2suau8b22]]&gt;&lt;/username&gt;</span><span class="se">\n\t\t\t</span><span class="s1">&lt;/memberlist&gt;</span><span class="se">\n\t\t</span><span class="s1">&lt;/link&gt;</span><span class="se">\n\t</span><span class="s1">&lt;/delchatroommember&gt;</span><span class="se">\n</span><span class="s1">&lt;/sysmsg&gt;</span><span class="se">\n</span><span class="dl">'</span><span class="p">,</span>
+    <span class="nx">Status</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="nx">ImgStatus</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">ImgBuf</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="nx">CreateTime</span><span class="p">:</span> <span class="mi">1561637217</span><span class="p">,</span> <span class="c1">// 当前消息发生的时间</span>
+    <span class="nx">MsgSource</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+    <span class="nx">PushContent</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+    <span class="nx">NewMsgId</span><span class="p">:</span> <span class="mi">5899126111507662000</span> <span class="c1">// ？</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">msg</code> 是从微信接入的信息，为了提取该信息中的内容为 padpro 服务，还需要进一步进行处理。即调用<code class="language-plaintext highlighter-rouge">processMessages()</code> 方法对 <code class="language-plaintext highlighter-rouge">msg</code> 消息进行加工。</p>
+
+<h3 id="step-2-转化数据msg--rawpayload">Step-2 转化数据(msg =&gt; rawPayload)</h3>
+
+<p>在 <code class="language-plaintext highlighter-rouge">processMessages()</code> 方法中的根据 <code class="language-plaintext highlighter-rouge">msg</code> 中的消息类型进行处理，由于此条消息的类型为 <code class="language-plaintext highlighter-rouge">10002</code> 根据类型判断后，仅需要执行<code class="language-plaintext highlighter-rouge">convertMessage()</code> 方法，完成 <code class="language-plaintext highlighter-rouge">msg</code> 到 <code class="language-plaintext highlighter-rouge">rawPayload</code> 的转换。</p>
+
+<p>当用户离线、未登录，或者掉线，此时 this.userId 不存在，会将此时到来的消息存放到 messageBuffer 中，当机器人上线之后，把之前存放到 messageBuffer 的消息再emit出来。</p>
+
+<p><code class="language-plaintext highlighter-rouge">convertMessage()</code>方法具体如下。</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">convertMessage</span> <span class="o">=</span> <span class="p">(</span><span class="nx">input</span><span class="p">:</span> <span class="nx">GrpcMessagePayload</span><span class="p">):</span> <span class="nx">PadproMessagePayload</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">convertedMessage</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">content</span>      <span class="p">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">Content</span><span class="p">,</span>
+      <span class="na">data</span>         <span class="p">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">ImgBuf</span><span class="p">,</span>
+      <span class="na">fromUser</span>     <span class="p">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">FromUserName</span><span class="p">,</span>
+      <span class="na">messageId</span>    <span class="p">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">MsgId</span><span class="p">.</span><span class="nf">toString</span><span class="p">(),</span>
+      <span class="na">messageSource</span><span class="p">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">MsgSource</span><span class="p">,</span>
+      <span class="na">messageType</span>  <span class="p">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">MsgType</span><span class="p">,</span>
+      <span class="na">status</span>       <span class="p">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">Status</span><span class="p">,</span>
+      <span class="na">timestamp</span>    <span class="p">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">CreateTime</span><span class="p">,</span>
+      <span class="na">toUser</span>       <span class="p">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">ToUserName</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">convertedMessage</span>
+  <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="nx">PRE</span><span class="p">,</span> <span class="s2">`Converting message failed, failed message: </span><span class="p">${</span><span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">input</span><span class="p">)}</span><span class="s2">`</span><span class="p">)</span>
+    <span class="k">throw</span> <span class="nx">e</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>该方法将 <code class="language-plaintext highlighter-rouge">msg</code> 中对 padpro 有价值的信息进行提取，转换得到的 <code class="language-plaintext highlighter-rouge">rawPayload</code> 如下所示。</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+    <span class="nl">content</span><span class="p">:</span> <span class="c1">// 消息的具体内容，和 msg 中的一样</span>
+    <span class="dl">'</span><span class="s1">22949941039@chatroom:</span><span class="se">\n</span><span class="s1">&lt;sysmsg type="delchatroommember"&gt;</span><span class="se">\n\t</span><span class="s1">&lt;delchatroommember&gt;</span><span class="se">\n\t\t</span><span class="s1">&lt;plain&gt;&lt;![CDATA[你邀请"桔小秘"加入了群聊  ]]&gt;&lt;/plain&gt;</span><span class="se">\n\t\t</span><span class="s1">&lt;text&gt;&lt;![CDATA[你邀请"桔小秘"加入了群聊  ]]&gt;&lt;/text&gt;</span><span class="se">\n\t\t</span><span class="s1">&lt;link&gt;</span><span class="se">\n\t\t\t</span><span class="s1">&lt;scene&gt;invite&lt;/scene&gt;</span><span class="se">\n\t\t\t</span><span class="s1">&lt;text&gt;&lt;![CDATA[  撤销]]&gt;&lt;/text&gt;</span><span class="se">\n\t\t\t</span><span class="s1">&lt;memberlist&gt;</span><span class="se">\n\t\t\t\t</span><span class="s1">&lt;username&gt;&lt;![CDATA[wxid_3xl8j2suau8b22]]&gt;&lt;/username&gt;</span><span class="se">\n\t\t\t</span><span class="s1">&lt;/memberlist&gt;</span><span class="se">\n\t\t</span><span class="s1">&lt;/link&gt;</span><span class="se">\n\t</span><span class="s1">&lt;/delchatroommember&gt;</span><span class="se">\n</span><span class="s1">&lt;/sysmsg&gt;</span><span class="se">\n</span><span class="dl">'</span><span class="p">,</span>
+    <span class="nx">data</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="nx">fromUser</span><span class="p">:</span> <span class="dl">'</span><span class="s1">22949941039@chatroom</span><span class="dl">'</span><span class="p">,</span> <span class="c1">// 消息的来源，即 `msg` 中的 FromUserName</span>
+    <span class="nx">messageId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1601421499</span><span class="dl">'</span><span class="p">,</span> <span class="c1">// 消息ID，即`msg` 中的 MsgId</span>
+    <span class="nx">messageSource</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+    <span class="nx">messageType</span><span class="p">:</span> <span class="mi">10002</span><span class="p">,</span> <span class="c1">// 消息类型，即 `msg` 中的 MsgType</span>
+    <span class="nx">status</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="c1">// 消息状态，即 `msg` 中的 Status</span>
+    <span class="nx">timestamp</span><span class="p">:</span> <span class="mi">1561637217</span><span class="p">,</span> <span class="c1">// 消息发生时的时间戳，即 `msg` 中的 CreateTime</span>
+    <span class="nx">toUser</span><span class="p">:</span> <span class="dl">'</span><span class="s1">wxid_x01jgln69ath22</span><span class="dl">'</span> <span class="c1">// 发起此操作的用户ID，即 `msg` 中的 ToUserName</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="step-3-发送转换后的数据">Step-3 发送转换后的数据</h3>
+
+<p>当数据转换完毕，发送 message 事件，padpro中监听到该事件后，调用onPadproMessage()方法</p>
+
+<p>根据消息类型 <code class="language-plaintext highlighter-rouge">10002</code> 判断为 <code class="language-plaintext highlighter-rouge">PadproMessageType.Recalled</code> 具体执行以下两件事</p>
+
+<ol>
+  <li>处理加入群组事件 <code class="language-plaintext highlighter-rouge">onPadproMessageRoomEventJoin</code></li>
+  <li>处理消息撤回事件 <code class="language-plaintext highlighter-rouge">onPadproMessageRecalled</code></li>
+</ol>
+
+<p>处理代码如下:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">switch </span><span class="p">(</span><span class="nx">messageType</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+  <span class="k">case</span> <span class="nx">PadproMessageType</span><span class="p">.</span><span class="nx">Recalled</span><span class="p">:</span>
+
+    <span class="k">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nf">all</span><span class="p">([</span>
+      <span class="k">this</span><span class="p">.</span><span class="nf">onPadproMessageRoomEventJoin</span><span class="p">(</span><span class="nx">rawPayload</span><span class="p">),</span>
+      <span class="k">this</span><span class="p">.</span><span class="nf">onPadproMessageRecalled</span><span class="p">(</span><span class="nx">rawPayload</span><span class="p">),</span>
+    <span class="p">])</span>
+    <span class="k">break</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>根据消息类型 <code class="language-plaintext highlighter-rouge">10000</code> 判断为 <code class="language-plaintext highlighter-rouge">PadproMessageType.Sys</code> 具体执行以下方法：</p>
+
+<ol>
+  <li>处理好友请求事件 <code class="language-plaintext highlighter-rouge">onPadproMessageFriendshipEvent</code></li>
+  <li>处理加入群组事件 <code class="language-plaintext highlighter-rouge">onPadproMessageRoomEventJoin</code></li>
+  <li>处理离开群组事件 <code class="language-plaintext highlighter-rouge">onPadproMessageRoomEventLeave</code></li>
+  <li>处理变更群组名称事件 <code class="language-plaintext highlighter-rouge">onPadproMessageRoomEventTopic</code></li>
+</ol>
+
+<p>处理代码如下:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">switch </span><span class="p">(</span><span class="nx">messageType</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+  <span class="k">case</span> <span class="nx">PadproMessageType</span><span class="p">.</span><span class="nx">Sys</span><span class="p">:</span>
+
+    <span class="k">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nf">all</span><span class="p">([</span>
+      <span class="k">this</span><span class="p">.</span><span class="nf">onPadproMessageFriendshipEvent</span><span class="p">(</span><span class="nx">rawPayload</span><span class="p">),</span>
+      <span class="k">this</span><span class="p">.</span><span class="nf">onPadproMessageRoomEventJoin</span><span class="p">(</span><span class="nx">rawPayload</span><span class="p">),</span>
+      <span class="k">this</span><span class="p">.</span><span class="nf">onPadproMessageRoomEventLeave</span><span class="p">(</span><span class="nx">rawPayload</span><span class="p">),</span>
+      <span class="k">this</span><span class="p">.</span><span class="nf">onPadproMessageRoomEventTopic</span><span class="p">(</span><span class="nx">rawPayload</span><span class="p">),</span>
+    <span class="p">])</span>
+    <span class="k">break</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>以上两种消息类型都会执行 <code class="language-plaintext highlighter-rouge">onPadproMessageRoomEventJoin</code> 方法，由于本文讨论 room-join 事件，根据接入微信消息的类型10002，所以下面暂时只介绍此条路线的逻辑。</p>
+
+<blockquote>
+  <p>结论：room-join判断的依据是通过消息内容，做正则表达式匹配之后判断的。因为入群消息只可能通过两种消息类型推送，所以对这两种类型做了处理。</p>
+</blockquote>
+
+<h3 id="step-4-构造加入群组事件">Step-4 构造加入群组事件</h3>
+
+<p>由Step-3可知，根据类型判断，我们能将该消息判断为加入群组事件。这里我们主要讨论一下如何从处理后的消息中提取出加入群组所需的信息。先简单介绍一下构造room-join事件的流程。</p>
+
+<ol>
+  <li>解析 <code class="language-plaintext highlighter-rouge">rawPayload</code> 提取 roomJoinEvent 事件</li>
+  <li>从 roomJoinEvent 中获取 inviteeNameList，inviterName，roomId信息</li>
+  <li>提取出 inviteeIdList 和 inviterId</li>
+  <li>发布room-join事件 <code class="language-plaintext highlighter-rouge">--&gt;wechaty</code></li>
+</ol>
+
+<p>对于从 <code class="language-plaintext highlighter-rouge">rawPayload</code> 中提取 roomJoinEvent 事件，具体代码如下：</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nf">isPayload</span><span class="p">(</span><span class="nx">rawPayload</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kc">null</span>
+  <span class="p">}</span>
+
+  <span class="kd">const</span> <span class="nx">roomId</span> <span class="o">=</span> <span class="nx">rawPayload</span><span class="p">.</span><span class="nx">fromUser</span>
+  <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nf">isRoomId</span><span class="p">(</span><span class="nx">roomId</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kc">null</span>
+  <span class="p">}</span>
+
+  <span class="kd">let</span> <span class="nx">content</span> <span class="o">=</span> <span class="nx">rawPayload</span><span class="p">.</span><span class="nx">content</span>
+
+  <span class="cm">/**
+   * when the message is a Recalled type, bot can undo the invitation
+   */</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">rawPayload</span><span class="p">.</span><span class="nx">messageType</span> <span class="o">===</span> <span class="nx">PadproMessageType</span><span class="p">.</span><span class="nx">Recalled</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/**
+     * content:
+     * ```
+     * 3453262102@chatroom:
+     * &lt;sysmsg type="delchatroommember"&gt;
+     *   ...
+     * &lt;/sysmsg&gt;
+     * ```
+     */</span>
+    <span class="kd">const</span> <span class="nx">tryXmlText</span> <span class="o">=</span> <span class="nx">content</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="sr">/^</span><span class="se">[^\n]</span><span class="sr">+</span><span class="se">\n</span><span class="sr">/</span><span class="p">,</span> <span class="dl">''</span><span class="p">)</span>
+    <span class="c1">// 定义 XML 解析格式</span>
+    <span class="kr">interface</span> <span class="nx">XmlSchema</span> <span class="p">{</span>
+      <span class="nl">sysmsg</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">$</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">revokemsg</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">delchatroommember</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">multivoip</span><span class="dl">'</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="nx">delchatroommember</span><span class="p">?:</span> <span class="p">{</span>
+          <span class="na">plain</span> <span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+          <span class="na">text</span>  <span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="nx">revokemsg</span><span class="p">?:</span> <span class="p">{</span>
+          <span class="na">replacemsg</span> <span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+          <span class="na">msgid</span>      <span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+          <span class="na">newmsgid</span>   <span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+          <span class="na">session</span>    <span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="p">},</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="c1">// 解析 content 中的 XML 数据，提取有用信息</span>
+    <span class="kd">const</span> <span class="nx">jsonPayload</span><span class="p">:</span> <span class="nx">XmlSchema</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">xmlToJson</span><span class="p">(</span><span class="nx">tryXmlText</span><span class="p">)</span> <span class="c1">// toJson(tryXmlText, { object: true }) as XmlSchema</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="c1">// 根据解析得到的类型，判断应提取的信息</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">jsonPayload</span><span class="p">.</span><span class="nx">sysmsg</span><span class="p">.</span><span class="nx">$</span><span class="p">.</span><span class="kd">type</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">delchatroommember</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 本案例所执行的分支</span>
+        <span class="nx">content</span> <span class="o">=</span> <span class="nx">jsonPayload</span><span class="p">.</span><span class="nx">sysmsg</span><span class="p">.</span><span class="nx">delchatroommember</span><span class="o">!</span><span class="p">.</span><span class="nx">plain</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">jsonPayload</span><span class="p">.</span><span class="nx">sysmsg</span><span class="p">.</span><span class="nx">$</span><span class="p">.</span><span class="kd">type</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">revokemsg</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">content</span> <span class="o">=</span> <span class="nx">jsonPayload</span><span class="p">.</span><span class="nx">sysmsg</span><span class="p">.</span><span class="nx">revokemsg</span><span class="o">!</span><span class="p">.</span><span class="nx">replacemsg</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">jsonPayload</span><span class="p">.</span><span class="nx">sysmsg</span><span class="p">.</span><span class="nx">$</span><span class="p">.</span><span class="kd">type</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">multivoip</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">null</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">unknown jsonPayload sysmsg type: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">jsonPayload</span><span class="p">.</span><span class="nx">sysmsg</span><span class="p">.</span><span class="nx">$</span><span class="p">.</span><span class="kd">type</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">jsonPayload:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">jsonPayload</span><span class="p">)</span>
+      <span class="k">throw</span> <span class="nx">e</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>经过此代码块的处理，构造出 content 后，再根据中英文话术进行正则匹配，匹配成功后根据不同的邀请情况，提取所需信息。</p>
+
+<p>加入群组的情景：</p>
+
+<ul>
+  <li>Bot Invite Other</li>
+  <li>Other Invite Bot</li>
+  <li>Other Invite Other</li>
+  <li>Other Invite Other Qrcode</li>
+</ul>
+
+<p>正则匹配：目前根据以上四种场景，提供中文（ZH）和英文（EN）两种语言的话术匹配。</p>
+
+<blockquote>
+  <p>注意：若微信联系人入群的话术发生变化，或者所使用的系统语言非中文或者英文，则不会匹配成功，也就是不能发布 room-join 事件。</p>
+</blockquote>
+
+<p>对于场景 Bot Invite Other：</p>
+
+<ol>
+  <li>根据系统当前的语言来分割被邀请人，构成 inviteeNameList</li>
+  <li>由于是 Bot 发起的邀请，因此 inviterName 设定为 YOU</li>
+  <li>根据前面已知的 roomId 和以上两个信息构建 <code class="language-plaintext highlighter-rouge">PuppetRoomJoinEvent</code>事件</li>
+</ol>
+
+<p>构造出的<code class="language-plaintext highlighter-rouge">PuppetRoomJoinEvent</code>事件方法如下：</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c1">// 构造 room-join 事件</span>
+    <span class="kd">const</span> <span class="nx">other</span> <span class="o">=</span> <span class="nx">matches</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="kd">let</span> <span class="nx">inviteeNameList</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">languageEn</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">inviteeNameList</span> <span class="o">=</span> <span class="nf">splitEnglishNameList</span><span class="p">(</span><span class="nx">other</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">languageZh</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">inviteeNameList</span> <span class="o">=</span> <span class="nf">splitChineseNameList</span><span class="p">(</span><span class="nx">other</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">make typescript happy</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">const</span> <span class="nx">inviterName</span><span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="nx">YOU</span> <span class="o">=</span> <span class="nx">YOU</span>
+    <span class="kd">const</span> <span class="nx">joinEvent</span><span class="p">:</span> <span class="nx">PuppetRoomJoinEvent</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">inviteeNameList</span><span class="p">,</span>
+      <span class="nx">inviterName</span><span class="p">,</span>
+      <span class="nx">roomId</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">joinEvent</span>
+</code></pre></div></div>
+
+<p>构造出的<code class="language-plaintext highlighter-rouge">PuppetRoomJoinEvent</code>事件数据如下：</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+    <span class="nl">inviteeNameList</span> <span class="p">:</span> <span class="nx">桔小秘</span>
+    <span class="nx">inviterName</span> <span class="p">:</span> <span class="nc">Symbol</span><span class="p">(</span><span class="nx">You</span><span class="p">)</span>
+    <span class="nx">roomId</span> <span class="p">:</span> <span class="mi">22949941039</span><span class="p">@</span><span class="nd">chatroom</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>room-join 事件要发送给 wechaty，还需提取 wechaty 监听该事件所需的信息。具体数据如下，即将邀请人和被邀请人的id提取出来，也就是从Name到ID的转化。</p>
+
+<p>此处对于被邀请人列表的处理需要注意，要将 inviteeName 转化为 inviteeID，需要执行操作 <code class="language-plaintext highlighter-rouge">this.roomMemberSearch(roomId, inviteeName)</code></p>
+
+<ul>
+  <li>关于roomMemberSearch：</li>
+</ul>
+
+<p>由于查找的 inviteeName 存在三种可能roomAlias，name，contactAlias。因此，需要对每种情况进行查询，并将结果汇总到一个数组中，进行去重操作。此处我们得到的  inviteeName 为一个数组。且数组中只有一个元素。</p>
+
+<p>每个 inviteeName 的查询操作互不影响，可以使用Promise.all()方法进行并行处理。由于 roomMemberSearch 方法返回的是一个数组，因此需要将该结果进行 flatten 处理，从而返回一个 inviteeIDList。</p>
+
+<p>若获取 inviteeIDList 出错，则会清除当前群组成员的缓存数据，并抛出异常。</p>
+
+<p>这里引入 <code class="language-plaintext highlighter-rouge">promise-retry</code> 模块执行重试操作。retry中定义了重试的次数，最大最小超时时间，以及 factor 来控制速率的增长。</p>
+
+<ul>
+  <li>factor: 3</li>
+  <li>minTimeout: 10</li>
+  <li>maxTimeout: 20 * 1000</li>
+  <li>retries: 9</li>
+</ul>
+
+<p>增加retry的动机：当入群发生的时候，群成员的数量是发生了变化的，这个变化的同步需要一点时间，有可能在查询进群的人，和邀请的人的时候，群成员数据并没有同步过来，如果没有同步完整，那么就查找不到这个群成员。找不到群成员之后，会把本地这个群的缓存数据删掉，然后重新查找，第二次查找的时候就会因为没有缓存数据而从微信的接口去获取，这样就能更新群数据，从而最后找到这个群成员的信息。</p>
+
+<p>经过以上过程处理，得到的数据如下：</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+    <span class="nl">roomId</span> <span class="p">:</span> <span class="mi">22949941039</span><span class="p">@</span><span class="nd">chatroom</span>
+    <span class="nx">inviteeIdList</span><span class="p">:</span> <span class="nx">wxid_3xl8j2suau8b22</span>
+    <span class="nx">inviterId</span><span class="p">:</span> <span class="nx">wxid_x01jgln69ath22</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>在提取以上数据的同时，由于对群组新增了成员，因此需要在缓存中清除该群组的数据（包括群组和群组成员）。</p>
+
+<p>处理好这些之后，就可以向 wechaty 发送 room-join 事件了。以上完成了onPadproMessageRoomEventJoin()方法的调用。</p>
+
+<p>由于room-join事件是可以撤回的，因此，该方法主要通过正则匹配，从 <code class="language-plaintext highlighter-rouge">rawPayload</code> 信息中的 content 判断该条消息是否为撤回消息。<code class="language-plaintext highlighter-rouge">TODO</code></p>
+
+<h3 id="step-5-wechaty中监听room-join事件">Step-5 wechaty中监听room-join事件</h3>
+
+<p>在 wechaty 初始化时，对puppet监听了 room-join 事件，加载并将其转发给wechaty。先简单介绍下所执行的流程：</p>
+
+<ol>
+  <li>获取room</li>
+  <li>获取inviteeList，并同步每个联系人的数据</li>
+  <li>获取inviter</li>
+  <li>发布事件
+    <ul>
+      <li>发布 room-join 事件<code class="language-plaintext highlighter-rouge">--&gt;wechaty</code></li>
+      <li>发布 join 事件 <code class="language-plaintext highlighter-rouge">--&gt;room</code></li>
+    </ul>
+  </li>
+</ol>
+
+<p>具体代码如下：</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">puppet</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">room-join</span><span class="dl">'</span><span class="p">,</span> <span class="k">async </span><span class="p">(</span><span class="nx">roomId</span><span class="p">,</span> <span class="nx">inviteeIdList</span><span class="p">,</span> <span class="nx">inviterId</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">Room</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="nx">roomId</span><span class="p">)</span>
+    <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">sync</span><span class="p">()</span>
+
+    <span class="kd">const</span> <span class="nx">inviteeList</span> <span class="o">=</span> <span class="nx">inviteeIdList</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="nx">id</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">Contact</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="nx">id</span><span class="p">))</span>
+    <span class="k">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nf">all</span><span class="p">(</span><span class="nx">inviteeList</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="nx">c</span> <span class="o">=&gt;</span> <span class="nx">c</span><span class="p">.</span><span class="nf">ready</span><span class="p">()))</span>
+
+    <span class="kd">const</span> <span class="nx">inviter</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">Contact</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="nx">inviterId</span><span class="p">)</span>
+    <span class="k">await</span> <span class="nx">inviter</span><span class="p">.</span><span class="nf">ready</span><span class="p">()</span>
+    <span class="k">this</span><span class="p">.</span><span class="nf">emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">room-join</span><span class="dl">'</span><span class="p">,</span> <span class="nx">room</span><span class="p">,</span> <span class="nx">inviteeList</span><span class="p">,</span> <span class="nx">inviter</span><span class="p">)</span>
+    <span class="nx">room</span><span class="p">.</span><span class="nf">emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">join</span><span class="dl">'</span><span class="p">,</span> <span class="nx">inviteeList</span><span class="p">,</span> <span class="nx">inviter</span><span class="p">)</span>
+<span class="p">})</span>
+<span class="k">break</span>
+</code></pre></div></div>
+
+<p>此时得到的数据如下所示：</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+    <span class="nl">inviteeList</span><span class="p">:</span> <span class="nx">Contact</span><span class="o">&lt;</span><span class="nx">桔小秘</span><span class="o">&gt;</span>
+    <span class="nx">inviter</span><span class="p">:</span> <span class="nx">Contact</span><span class="o">&lt;</span><span class="nx">a壁虎阿八</span><span class="o">&gt;</span>
+    <span class="nx">room</span><span class="p">:</span> <span class="nx">Room</span><span class="o">&lt;</span><span class="nx">Room</span><span class="o">-</span><span class="nx">Join</span><span class="o">-</span><span class="nx">Test</span><span class="o">&gt;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="step-6-监听-room-join-事件">Step-6 监听 room-join 事件</h3>
+
+<h4 id="step-61-wechaty-中监听-room-join-事件">Step-6.1 wechaty 中监听 room-join 事件</h4>
+
+<p>wechaty中的监听方法及声明：</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="nf">on </span><span class="p">(</span><span class="nx">event</span><span class="p">:</span> <span class="dl">'</span><span class="s1">room-join</span><span class="dl">'</span><span class="p">,</span> <span class="nx">listener</span><span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="p">((</span><span class="k">this</span><span class="p">:</span> <span class="nx">Wechaty</span><span class="p">,</span> <span class="nx">room</span><span class="p">:</span> <span class="nx">Room</span><span class="p">,</span> <span class="nx">inviteeList</span><span class="p">:</span> <span class="nx">Contact</span><span class="p">[],</span> <span class="nx">inviter</span><span class="p">:</span> <span class="nx">Contact</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">))</span> <span class="p">:</span> <span class="k">this</span>
+
+<span class="k">public</span> <span class="nf">on </span><span class="p">(</span><span class="nx">event</span><span class="p">:</span> <span class="nx">WechatyEventName</span><span class="p">,</span> <span class="nx">listener</span><span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="p">((...</span><span class="nx">args</span><span class="p">:</span> <span class="kr">any</span><span class="p">[])</span> <span class="o">=&gt;</span> <span class="kr">any</span><span class="p">)):</span> <span class="k">this</span>
+</code></pre></div></div>
+
+<p>关键代码片段：</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if </span><span class="p">(</span><span class="k">typeof</span> <span class="nx">listener</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">function</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nf">addListenerFunction</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">listener</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nf">addListenerModuleFile</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">listener</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="step-62-room-中监听-join-事件">Step-6.2 room 中监听 join 事件</h4>
+
+<p>room中的监听方法及声明</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public on <span class="o">(</span>event: <span class="s1">'join'</span>, listener: <span class="o">(</span>this: Room, inviteeList: Contact[], inviter: Contact<span class="o">)</span> <span class="o">=&gt;</span> void<span class="o">)</span> : this
+
+public on <span class="o">(</span>event: RoomEventName, listener: <span class="o">(</span>...args: any[]<span class="o">)</span> <span class="o">=&gt;</span> any<span class="o">)</span>: this
+</code></pre></div></div>
+
+<blockquote>
+  <p>作者: <a href="https://github.com/su-chang">Su Chang</a>，Node.js全栈工程师</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#code">code</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/su-chang">
+                            <img class="rounded-circle" src="/assets/contributors/su-chang/avatar.webp" alt="SuperChang" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/su-chang">SuperChang</a> </h5>
+						Node.js Full Stack Engineer
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2019/06/21/three-step-get-girlfriend/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2019/everyday-header.webp">  三步教你用Node做一个微信脱单神器，小白可上手</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2019/07/08/summary-of-learning-wechaty-and-padpro/"> Summary of Learning Wechaty and Padpro </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

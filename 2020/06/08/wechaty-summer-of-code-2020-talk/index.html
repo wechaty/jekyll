@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Wechaty Summer of Code 2020 Talk | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Wechaty Summer of Code 2020 Talk | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Wechaty Summer of Code 2020 Talk" />
+<meta name="author" content="juzibot" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="作者: juzibot" />
+<meta property="og:description" content="作者: juzibot" />
+<link rel="canonical" href="https://wechaty.js.org/2020/06/08/wechaty-summer-of-code-2020-talk/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/06/08/wechaty-summer-of-code-2020-talk/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/06-wechaty-summer-of-code-2020-talk/homepage.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-06-08T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/06-wechaty-summer-of-code-2020-talk/homepage.webp" />
+<meta property="twitter:title" content="Wechaty Summer of Code 2020 Talk" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"juzibot"},"dateModified":"2020-06-08T00:00:00+00:00","datePublished":"2020-06-08T00:00:00+00:00","description":"作者: juzibot","headline":"Wechaty Summer of Code 2020 Talk","image":"https://wechaty.js.org/assets/2020/06-wechaty-summer-of-code-2020-talk/homepage.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/06/08/wechaty-summer-of-code-2020-talk/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"juzibot"},"url":"https://wechaty.js.org/2020/06/08/wechaty-summer-of-code-2020-talk/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#announcement">announcement</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Wechaty Summer of Code 2020 Talk</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/juzibot">
+                            <img class="rounded-circle" src="/assets/contributors/juzibot/avatar.webp" alt="juzibot" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/juzibot">juzibot</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jun 08, 2020 · <span class="reading-time">
+  
+  
+    1 min read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/06-wechaty-summer-of-code-2020-talk/homepage.webp" alt="Wechaty Summer of Code 2020 Talk">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<blockquote>
+  <p>作者: <a href="https://github.com/juzibot/">juzibot</a></p>
+</blockquote>
+
+<h2 id="关于暑期2020">关于暑期2020</h2>
+
+<p>“开源软件供应链点亮计划-暑期2020”（简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。
+旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。
+根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。</p>
+
+<p>官网：<a href="https://isrc.iscas.ac.cn/summer2020">https://isrc.iscas.ac.cn/summer2020</a></p>
+
+<p>官方新闻：<a href="http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html">http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html</a></p>
+
+<h2 id="wechaty-与暑期2020">Wechaty 与暑期2020</h2>
+
+<p><img src="/assets/2020/06-wechaty-summer-of-code-2020-talk/group-photo.webp" alt="Wechaty SoC破冰会现场合影" /></p>
+
+<p>Wechaty 作为中国最大的聊天机器人开源项目，与其他数十个中国顶级开源项目一起参与“暑期2020”。
+Wechaty合计发布了11个项目，共收到来自清华大学、北京大学、中国科学院大学、南开大学、四川大学等高校的数十份申请，并由Wechaty社区的资深Contributor作为导师，选出了11位同学进行项目开发。
+此次 Wechaty 发布的11个项目涉及多语言、多平台、多功能三个核心主题，来自Wechaty社区的导师将和来自高校的学生开发者们一起，在三个月的时间里完成对应的开源项目。</p>
+
+<h2 id="wechaty-暑期2020宣讲会">Wechaty 暑期2020宣讲会</h2>
+
+<div class="video-container" style="
+    position: relative;
+    padding-bottom:56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fMFzCexnDsY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+
+<p>你可以在Bilibili上查看<a href="//player.bilibili.com/player.html?aid=625978692&amp;bvid=BV1et4y1y7a2&amp;cid=199810616&amp;page=13">暑期2020宣讲会视频</a></p>
+
+<p>你也可以在Google Docs上查看<a href="https://docs.google.com/presentation/d/1ZLH37rQyRgChGqFCUDjA5rbVgBuRkVM4Tys-_ls0gs0/edit#slide=id.g88410f616d_1_20">暑期2020宣讲会Slide</a></p>
+
+<h2 id="开源的微信聊天机器人框架sdk">开源的微信聊天机器人框架SDK</h2>
+
+<p>我们的链接是&lt;www.github.com/wechaty/wechaty&gt;，我们目前所有的repo加起来也有8000star，我们想要做的事情就是，用最简单的方式用代码模拟微信的登陆，然后用机器去控制微信的收发消息和群管理等功能</p>
+
+<p><img src="/assets/2020/06-wechaty-summer-of-code-2020-talk/02.webp" alt="02" /></p>
+
+<ul>
+  <li>
+    <p>我们怎样实现这样的功能？很简单，当我们的微信去自由接入的时候，可以自由选择接入哪一个puppet,不同的puppet对应不同的底层代码，底层代码完全不会暴露在大家面前，只用关心怎么调用应用层的代码，去实现智能对话的能力就可以，对用户来说，用户是无感知的，对他来说就是一个微信上的真人在跟他聊天，不知道这个机器人接入的哪一种底层，不管是模拟登陆mac，ipad，还是windows，对用户来说就是在跟真人对话，wechaty是做这件事做的最好的，</p>
+  </li>
+  <li>
+    <p>我们可以想这样一个问题，是不是本质上，微信的接入来说，首先要接入底层协议，基于协议写一些应用层代码，然后直接去跟用户交互，
+既然能够把微信这件事情做好，那么我们来思考问题：是不是可以让更多的IM接入，只要切换环境变量，就可以切换到不同的IM系统，实现同一套代码应用于不同的平台</p>
+  </li>
+</ul>
+
+<p><img src="/assets/2020/06-wechaty-summer-of-code-2020-talk/03.webp" alt="03" /></p>
+
+<ul>
+  <li>
+    <p>所以我们想要做的是下面4件事情：让所有的IM平台都封装同一套IM代码，但是底层代码不同，只需要切换环境变量，就可以把原来在微信上的聊天机器人切换到飞书上，
+还可以在不同语言，不同插件，不同行业都应用到，去解决很多问题</p>
+  </li>
+  <li>
+    <p>我们认为wechaty期待同为智能的基础设施，所有行业，所有语言的开发者，都可以使用这个框架去接入微信以及更多的IM通讯平台，我们希望做三大件事情：</p>
+  </li>
+</ul>
+
+<p><img src="/assets/2020/06-wechaty-summer-of-code-2020-talk/04.webp" alt="04" /></p>
+
+<ul>
+  <li>首先介绍一下我们团队的导师：wechaty团队实际上是站在技术和商业的十字路口，选择了一个现代的场景，通过聊天机器人，让技术为商业更好的服务，我们很欢迎大家可以和我们一起去共建智能对话的基础设施，从六行代码接入微信开始，能够快速的实现机器人的接入。</li>
+</ul>
+
+<p><img src="/assets/2020/06-wechaty-summer-of-code-2020-talk/035.webp" alt="035" /></p>
+
+<ul>
+  <li>我们想要做的事情，11个任务，对应不同的场景</li>
+</ul>
+
+<p><img src="/assets/2020/06-wechaty-summer-of-code-2020-talk/05.webp" alt="05" /></p>
+
+<h2 id="多平台">多平台</h2>
+
+<ul>
+  <li>首先说说多平台，我们认为做智能对话这件事，最核心的就是要接入，如果说不能让代码很快的接入微信，很快的去操作，后面就成了空谈，wechaty花了4年时间做好了这件事，我们希望用同一套应用层代码去接入剩下的5个平台，飞书叮叮企业微信快手抖音，只要把这些事情都做好了，开发者只要用一套应用层代码和不多余10行的代码就可以去完成不同平台的建立。</li>
+  <li>我们着重介绍一下企业微信，企业微信会是未来一个非常大的机会，实际上和微信不同，企业微信提供了大量的开放接口，基于开放接口去封装成wechaty对应的应用层代码，会实现一个安全符合规定的机器人，创造出极大的商业价值，非常期待大家在这样的框架上和我们一起努力。
+<img src="/assets/2020/06-wechaty-summer-of-code-2020-talk/07.webp" alt="07" /></li>
+</ul>
+
+<h3 id="多平台基于开放-api-封装-wechaty-接口下的企业微信聊天机器人-httpsgithubcomwechatysummer-of-codeissues2">多平台：基于开放 API 封装 Wechaty 接口下的企业微信聊天机器人 <a href="https://github.com/wechaty/summer-of-code/issues/2">https://github.com/wechaty/summer-of-code/issues/2</a></h3>
+
+<ul>
+  <li>导师：高原，句子互动CTO、前亚马逊工程师（gaoyuan@juzi.bot）；李佳芮，句子互动CEO、专注微信生态近10年（rui@juzi.bot）</li>
+  <li>学生开发者：谢昱清，清华大学本科生（1205402283@qq.com）</li>
+</ul>
+
+<p><img src="/assets/2020/06-wechaty-summer-of-code-2020-talk/08.webp" alt="08" /></p>
+
+<h3 id="多平台基于开放-api-封装-wechaty-接口下的钉钉聊天机器人-httpsgithubcomwechatysummer-of-codeissues11">多平台：基于开放 API 封装 Wechaty 接口下的钉钉聊天机器人 <a href="https://github.com/wechaty/summer-of-code/issues/11">https://github.com/wechaty/summer-of-code/issues/11</a></h3>
+
+<ul>
+  <li>导师：高原，句子互动CTO、前亚马逊工程师（gaoyuan@juzi.bot）；李佳芮，句子互动CEO、专注微信生态近10年（rui@juzi.bot）</li>
+  <li>学生开发者：杨明哲，福州大学本科生（yutinice@foxmail.com）</li>
+</ul>
+
+<p><img src="/assets/2020/06-wechaty-summer-of-code-2020-talk/09.webp" alt="09" /></p>
+
+<h3 id="多平台基于开放-api-封装-wechaty-接口下的飞书聊天机器人-httpsgithubcomwechatysummer-of-codeissues12">多平台：基于开放 API 封装 Wechaty 接口下的飞书聊天机器人 <a href="https://github.com/wechaty/summer-of-code/issues/12">https://github.com/wechaty/summer-of-code/issues/12</a></h3>
+
+<ul>
+  <li>导师：高原，句子互动CTO、前亚马逊工程师（gaoyuan@juzi.bot）；李佳芮，句子互动CEO、专注微信生态近10年（rui@juzi.bot）</li>
+  <li>学生开发者：范蕊，南开大学本科生（953299708@qq.com）</li>
+</ul>
+
+<p><img src="/assets/2020/06-wechaty-summer-of-code-2020-talk/10.webp" alt="10" /></p>
+
+<h3 id="多平台基于-rpa-封装-wechaty-接口下的抖音聊天机器人-httpsgithubcomwechatysummer-of-codeissues13">多平台：基于 RPA 封装 Wechaty 接口下的抖音聊天机器人 <a href="https://github.com/wechaty/summer-of-code/issues/13">https://github.com/wechaty/summer-of-code/issues/13</a></h3>
+
+<ul>
+  <li>导师：尹伯昊，连续创业者，句子互动CMO（yinbohao@juzi.bot）</li>
+  <li>学生开发者：王俊伟，长春工业大学本科生（863445607@qq.com）</li>
+</ul>
+
+<p><img src="/assets/2020/06-wechaty-summer-of-code-2020-talk/11.webp" alt="11" /></p>
+
+<h3 id="多平台基于-rpa-封装-wechaty-接口下的快手聊天机器人-httpsgithubcomwechatysummer-of-codeissues14">多平台：基于 RPA 封装 Wechaty 接口下的快手聊天机器人 <a href="https://github.com/wechaty/summer-of-code/issues/14">https://github.com/wechaty/summer-of-code/issues/14</a></h3>
+
+<ul>
+  <li>导师：尹伯昊，连续创业者，句子互动CMO（yinbohao@juzi.bot）</li>
+  <li>学生开发者：毕凯乔，长春工业大学本科生（358461417@qq.com）</li>
+</ul>
+
+<p><img src="/assets/2020/06-wechaty-summer-of-code-2020-talk/12.webp" alt="12" /></p>
+
+<h2 id="多语言">多语言</h2>
+
+<h3 id="多语言wechaty-java-移植组件开发-httpsgithubcomwechatysummer-of-codeissues4">多语言：Wechaty Java 移植组件开发 <a href="https://github.com/wechaty/summer-of-code/issues/4">https://github.com/wechaty/summer-of-code/issues/4</a></h3>
+
+<ul>
+  <li>导师：刁政欣 阿里开发工程师 Author of Java-wechaty （diaozxin@gmail.com）</li>
+  <li>学生开发者：陈炀，福州大学本科生（1184016190@qq.com）</li>
+</ul>
+
+<p><img src="/assets/2020/06-wechaty-summer-of-code-2020-talk/14.webp" alt="14" /></p>
+
+<h3 id="多语言go-wechaty-github-action-optimization-httpsgithubcomwechatysummer-of-codeissues8">多语言：Go-wechaty Github Action optimization <a href="https://github.com/wechaty/summer-of-code/issues/8">https://github.com/wechaty/summer-of-code/issues/8</a></h3>
+
+<ul>
+  <li>导师：丁小雨（ 614422099@qq.com），丁超飞（dchaofei@163.com），李博杰（silkage@silkage.net）</li>
+  <li>学生开发者：唐光彬，华南农业大学本科生（Tang.Packet@outlook.com）</li>
+</ul>
+
+<p><img src="/assets/2020/06-wechaty-summer-of-code-2020-talk/15.webp" alt="15" /></p>
+
+<h3 id="多语言为-go-wechaty-设计实现-插件体系-httpsgithubcomwechatysummer-of-codeissues9">多语言：为 go-wechaty 设计实现 插件体系 <a href="https://github.com/wechaty/summer-of-code/issues/9">https://github.com/wechaty/summer-of-code/issues/9</a></h3>
+
+<ul>
+  <li>导师：丁小雨（ 614422099@qq.com），丁超飞（dchaofei@163.com），李博杰（silkage@silkage.net）</li>
+  <li>学生开发者：林昊翰，西安电子科技大学本科生（finctive@foxmail.com）</li>
+</ul>
+
+<p><img src="/assets/2020/06-wechaty-summer-of-code-2020-talk/16.webp" alt="16" /></p>
+
+<h2 id="多功能">多功能</h2>
+
+<p>多功能想做的事情，原来写一个功能可能需要大家一起来写，可能每个功能需要几十行或者是几百行代码，</p>
+
+<h3 id="基于python-wechaty的群聊助手机器人-httpsgithubcomwechatysummer-of-codeissues6">基于python-wechaty的群聊助手机器人 <a href="https://github.com/wechaty/summer-of-code/issues/6">https://github.com/wechaty/summer-of-code/issues/6</a></h3>
+
+<ul>
+  <li>导师：吴京京：Wechaty Committer，Python Wechaty Author<a href="mailto:1435130236@qq.com">1435130236@qq.com</a></li>
+  <li>学生开发者：孔祥哲，清华大学本科生<a href="mailto:15068701650@163.com">15068701650@163.com</a></li>
+</ul>
+
+<p><img src="/assets/2020/06-wechaty-summer-of-code-2020-talk/18.webp" alt="18" /></p>
+
+<h3 id="编写一个每日一句插件-httpsgithubcomwechatysummer-of-codeissues10">编写一个“每日一句”插件 <a href="https://github.com/wechaty/summer-of-code/issues/10">https://github.com/wechaty/summer-of-code/issues/10</a></h3>
+
+<ul>
+  <li>导师：Gcaufy，20000+Star小程序框架Wepy作者、Wechaty Plugin系统设计师,<a href="mailto:gcaufy@gmail.com">gcaufy@gmail.com</a></li>
+  <li>学生开发者：江姗姗，北京大学二学位本科生<a href="mailto:univerone@outlook.com">univerone@outlook.com</a></li>
+</ul>
+
+<p><img src="/assets/2020/06-wechaty-summer-of-code-2020-talk/19.webp" alt="19" /></p>
+
+<h3 id="基于python-wechaty建立一个斗图机器人-httpsgithubcomwechatysummer-of-codeissues7">基于Python-wechaty建立一个斗图机器人 <a href="https://github.com/wechaty/summer-of-code/issues/7">https://github.com/wechaty/summer-of-code/issues/7</a></h3>
+
+<ul>
+  <li>导师：黄纯洪，python-wechaty contributor<a href="mailto:huangaszaq@gmail.com">huangaszaq@gmail.com</a></li>
+  <li>学生开发者：肖子霖，四川大学本科生<a href="mailto:me@mrxiao.net">me@mrxiao.net</a></li>
+</ul>
+
+<p><img src="/assets/2020/06-wechaty-summer-of-code-2020-talk/20.webp" alt="20" /></p>
+
+<h2 id="欢迎正在阅读的你参与其中">欢迎正在阅读的你参与其中</h2>
+
+<ul>
+  <li>社区官网链接：<a href="https://wechaty.js.org">https://wechaty.js.org</a></li>
+  <li>社区运营微信： FridayBot</li>
+</ul>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#summer-of-wechaty">summer-of-wechaty</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#summer-2020">summer-2020</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#talk">talk</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#meetup">meetup</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#featured">featured</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/juzibot">
+                            <img class="rounded-circle" src="/assets/contributors/juzibot/avatar.webp" alt="juzibot" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/juzibot">juzibot</a> </h5>
+						句子互动是一家人工智能技术与服务提供商,主营业务是基于微信生态,为客户提供集销售、市场和售后于一体的微信智能客服系统。
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/06/06/wechaty-game-bot/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/im-game-robot/qrcat.webp">  聚会娱乐机器人</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/06/13/cps-chat-bot/"> CPS chat bot  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/cps-chat-bot/goodsmsg.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

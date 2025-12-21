@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Good News: Login with Windows WeChat Desktop Protocol, Free Wechaty Protocol Coming Soon | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Good News: Login with Windows WeChat Desktop Protocol, Free Wechaty Protocol Coming Soon | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Good News: Login with Windows WeChat Desktop Protocol, Free Wechaty Protocol Coming Soon" />
+<meta name="author" content="atorber" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="After the free web protocol revival, Wechaty’s free Windows protocol is coming soon, solving issues with accurately obtaining wxid and roomid that plagued the web protocol." />
+<meta property="og:description" content="After the free web protocol revival, Wechaty’s free Windows protocol is coming soon, solving issues with accurately obtaining wxid and roomid that plagued the web protocol." />
+<link rel="canonical" href="https://wechaty.js.org/2021/07/05/puppet-laozhang-wechat-bot-en/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/07/05/puppet-laozhang-wechat-bot-en/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/07-puppet-laozhang-wechat-bot-en/wechat_bot.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-07-05T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/07-puppet-laozhang-wechat-bot-en/wechat_bot.webp" />
+<meta property="twitter:title" content="Good News: Login with Windows WeChat Desktop Protocol, Free Wechaty Protocol Coming Soon" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"atorber"},"dateModified":"2021-07-05T00:00:00+00:00","datePublished":"2021-07-05T00:00:00+00:00","description":"After the free web protocol revival, Wechaty’s free Windows protocol is coming soon, solving issues with accurately obtaining wxid and roomid that plagued the web protocol.","headline":"Good News: Login with Windows WeChat Desktop Protocol, Free Wechaty Protocol Coming Soon","image":"https://wechaty.js.org/assets/2021/07-puppet-laozhang-wechat-bot-en/wechat_bot.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/07/05/puppet-laozhang-wechat-bot-en/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"atorber"},"url":"https://wechaty.js.org/2021/07/05/puppet-laozhang-wechat-bot-en/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#article">article</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Good News: Login with Windows WeChat Desktop Protocol, Free Wechaty Protocol Coming Soon</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/atorber">
+                            <img class="rounded-circle" src="/assets/contributors/atorber/avatar.webp" alt="atorber" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/atorber">atorber</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jul 05, 2021 · <span class="reading-time">
+  
+  
+    3 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/07-puppet-laozhang-wechat-bot-en/wechat_bot.webp" alt="Good News: Login with Windows WeChat Desktop Protocol, Free Wechaty Protocol Coming Soon">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>Following “wechaty free web protocol’s glorious return,” we’re pleased to announce that Wechaty’s free Windows protocol will soon meet everyone. If you’ve been struggling with the web protocol’s inability to accurately obtain wxid, roomid, and other issues, this update will solve your troubles.</p>
+
+<p>The Wechaty community will soon welcome a brand new puppet—wechaty-puppet-laozhang (Lao Zhang puppet, perhaps we’ll update to a less catchy name later), which will support login using the Windows WeChat desktop protocol.</p>
+
+<h2 id="about-wechaty-puppet-laozhang">About wechaty-puppet-laozhang</h2>
+
+<p>This puppet originates from another open source chatbot project <a href="https://github.com/cixingguangming55555/wechat-bot">wechat-bot</a>, crafted by the low-key individual developer Lao Zhang (老张). Like Wechaty’s original intention, the chatbot provides developers with open source and free chatbot tools, and has accumulated 600+ stars and 190+ forks.</p>
+
+<p>wechat-bot enables developers to log into WeChat using the official WeChat client on Windows machines, then uses DLL injection to obtain client HOOKs, and thus opens websocket and HTTP interfaces for external business program calls, receiving and sending WeChat messages locally.</p>
+
+<h3 id="wechat-bots-commonly-available-function-interfaces">wechat-bot’s Commonly Available Function Interfaces</h3>
+
+<h4 id="sending-websocket--http">Sending (websocket &amp; http)</h4>
+
+<ol>
+  <li>Client sends text messages to friends (supports websocket and HTTP)</li>
+  <li>Client gets contact list friend wxid and names (supports websocket and HTTP)</li>
+  <li>Client sends images to friends (supports websocket and HTTP)</li>
+  <li>Send AT messages (supports websocket and HTTP)</li>
+  <li>Send attachments (only supports HTTP, websocket)</li>
+  <li>Get chatroom member list (wxid) and nicknames (supports websocket and HTTP)</li>
+</ol>
+
+<h4 id="receiving-websocket">Receiving (websocket)</h4>
+
+<ol>
+  <li>Text receiving</li>
+  <li>Image receiving (no decryption, no saving, XOR decryption available)</li>
+  <li>Quote message receiving</li>
+  <li>Official account message receiving</li>
+  <li>Friend request message receiving</li>
+</ol>
+
+<h4 id="client-support">Client Support</h4>
+
+<p>Java, Python, Node.js, C#, Easy Language—10 clients in 5 languages available</p>
+
+<ol>
+  <li>UoUoio contributed Java client</li>
+  <li>MickeyMi contributed Java client</li>
+  <li>ToBin shared Java client</li>
+  <li>Nuoyang (诺阳) contributed C# client</li>
+  <li>Kunming-C#-SakuraYuki contributed C# client</li>
+  <li>Yangself666 contributed Java client</li>
+  <li>tsingly contributed Python client</li>
+  <li>qq64161848 contributed Easy Language client</li>
+  <li>ttc contributed Python client</li>
+  <li>Lao Zhang personally contributed Node.js client</li>
+</ol>
+
+<h3 id="complementary-advantages-of-wechat-bot-and-wechaty">Complementary Advantages of wechat-bot and Wechaty</h3>
+
+<p>Wechaty provides a standard set of chatbot interface specifications and tools—implement a WeChat bot with 6 lines of code, easy and standard. However, the Wechaty project itself doesn’t provide Puppet Services but requires Puppet Providers. The first step in using Wechaty—”how to obtain a token”—is a frequently asked question from developers, which to a large extent prevents developers from quickly experiencing it.</p>
+
+<p>The currently only free web protocol wechaty-puppet-wechat, due to protocol limitations, has natural defects in obtaining wxid and roomid.</p>
+
+<p>Now the combination of the two will solve the above problems nicely. Similar to wechaty-puppet-wechat, wechaty-puppet-laozhang provides a token-free locally running puppet. Any Windows user can run the puppet locally to get the same free experience as the web protocol, while obtaining interface capabilities equivalent to other Puppet Services.</p>
+
+<h2 id="when-will-it-be-available">When Will It Be Available</h2>
+
+<p>Phase 1: Q3 will provide localized wechaty-puppet-laozhang. The wechat-bot project’s already opened function interfaces will be fully adapted and integrated into Wechaty. Developers can experience almost the same interfaces as paid Puppet Services using the Windows protocol locally.</p>
+
+<p>Phase 2: Q4 will enrich wechaty-puppet-laozhang’s function interfaces, while preparing to provide a commercial Windows protocol Puppet Service.</p>
+
+<p>Before that, developers can still experience the currently best and free localized chatbot at the <a href="https://github.com/cixingguangming55555/wechat-bot">wechat-bot</a> project.</p>
+
+<h2 id="about-lao-zhang">About Lao Zhang</h2>
+
+<p>Finally, we’d like to introduce the author of the wechat-bot project—Lao Zhang (老张), WeChat nickname “Lao Zhang Learns Technology” (老张学技术), with a WeChat official account of the same name. A low-key, rigorous poet and amateur programming enthusiast.</p>
+
+<h3 id="getting-to-know-lao-zhang">Getting to Know Lao Zhang</h3>
+
+<ul>
+  <li><a href="https://github.com/cixingguangming55555/wechat-bot">Lao Zhang’s wechat-bot open source project</a></li>
+</ul>
+
+<blockquote>
+  <p>Historical Articles</p>
+</blockquote>
+
+<ul>
+  <li><a href="https://wechaty.js.org/2021/03/17/node-wechaty-and-wechaty-puppet-padlocal/">Wechaty + WeChat Mini Program to Implement Group Activity Registration</a></li>
+  <li><a href="https://wechaty.js.org/2021/04/22/how-to-publish-blog-on-wechaty/">Getting Started: How Beginners Can Publish Their First Blog in the Wechaty Community (Part 1)</a></li>
+</ul>
+
+<hr />
+
+<blockquote>
+  <p>本文也有<a href="/2021/07/05/puppet-laozhang-wechat-bot/">中文版本</a>。</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#blog">blog</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#study">study</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#introduction">introduction</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ecosystem">ecosystem</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/atorber">
+                            <img class="rounded-circle" src="/assets/contributors/atorber/avatar.webp" alt="atorber" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/atorber">atorber</a> </h5>
+						一个酷爱编码的产品经理
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/07/05/code-like-poetry-bot-like-song/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/07-code-like-poetry-bot-like-song-en/cover.webp">  code如诗，bot如歌，由Wechaty引发的一个小白冒险之旅</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/07/05/puppet-laozhang-wechat-bot/"> 喜讯：使用Windows微信桌面版协议登录，wechaty免费版协议即将登场  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/07-puppet-laozhang-wechat-bot-en/wechat_bot.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

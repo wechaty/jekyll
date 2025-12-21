@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Wechaty Puppet Service WorkPro 迁移指南 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Wechaty Puppet Service WorkPro 迁移指南 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Wechaty Puppet Service WorkPro 迁移指南" />
+<meta name="author" content="wang-nan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="前言" />
+<meta property="og:description" content="前言" />
+<link rel="canonical" href="https://wechaty.js.org/2023/01/18/workpro-immigration-guide/" />
+<meta property="og:url" content="https://wechaty.js.org/2023/01/18/workpro-immigration-guide/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2023/01-workpro-immigration-guide-en/workpro.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-01-18T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2023/01-workpro-immigration-guide-en/workpro.webp" />
+<meta property="twitter:title" content="Wechaty Puppet Service WorkPro 迁移指南" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"wang-nan"},"dateModified":"2023-01-18T00:00:00+00:00","datePublished":"2023-01-18T00:00:00+00:00","description":"前言","headline":"Wechaty Puppet Service WorkPro 迁移指南","image":"https://wechaty.js.org/assets/2023/01-workpro-immigration-guide-en/workpro.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2023/01/18/workpro-immigration-guide/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"wang-nan"},"url":"https://wechaty.js.org/2023/01/18/workpro-immigration-guide/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#tutorial">tutorial</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Wechaty Puppet Service WorkPro 迁移指南</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/wang-nan">
+                            <img class="rounded-circle" src="/assets/contributors/wang-nan/avatar.webp" alt="Wang-Nan" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/wang-nan">Wang-Nan</a> <span><a target="_blank" href="https://twitter.com/brotherstyx" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jan 18, 2023 · <span class="reading-time">
+  
+  
+    2 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2023/01-workpro-immigration-guide-en/workpro.webp" alt="Wechaty Puppet Service WorkPro 迁移指南">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<h2 id="前言">前言</h2>
+
+<p>这一迁移指南主要针对 Node Wechaty 用户。对于其他版本的 Wechaty 使用中出现的问题，请首先将对应的 Wechaty 包版本升级到最新，然后再尝试。如果有报错信息，可以提供给我们看看能否兼容（但无法保证），或是在对应包的 repo 中提 issue。</p>
+
+<h2 id="迁移之前">迁移之前</h2>
+
+<p>先通过 <code class="language-plaintext highlighter-rouge">npm ls wechaty</code> <code class="language-plaintext highlighter-rouge">npm ls wechaty-wechaty-puppet</code> 和 <code class="language-plaintext highlighter-rouge">npm ls wechaty-puppet-service</code> 来查看所使用的核心包的版本。如果使用版本是 0.x ，请升级到最新版。尤其需要注意的是，<code class="language-plaintext highlighter-rouge">wechaty-puppet-service</code> 的版本需要高于 1.19.9 ，否则会在触发标签、群公告等事件时造成卡死。具体请参考这个 <a href="https://github.com/wechaty/puppet-service/issues/216">issue</a> 。</p>
+
+<h2 id="迁移代码">迁移代码</h2>
+
+<p>在升级到 wechaty 1.x 包的过程中，代码需要进行一定的修改。参考：<a href="https://juzihudong.feishu.cn/docx/PCL2dg0yjoDBkOxNlC9cb1H7nkg">Wechaty 1.0 迁移</a>。</p>
+
+<h2 id="获取-token">获取 token</h2>
+
+<p>根据已有的 token 联系售后客服，可以获取到一个新旧 token 的映射表（一般为 csv 格式），登录账号、到期时间等各种信息都可以继承。正常情况下会在新的 token 上自动登录上原账号，但由于登录环境发生了变化，也有一定概率会掉线需要扫码（概率很低）。</p>
+
+<h2 id="使用新-token-的注意事项">使用新 token 的注意事项</h2>
+
+<ul>
+  <li>禁用 tls 连接，原因请参考这个 <a href="https://github.com/wechaty/puppet-service/issues/160">issue</a>。可以在代码中禁用，也可以通过环境变量。
+    <ul>
+      <li>代码：在 <code class="language-plaintext highlighter-rouge">puppetOptions中加入tls: { disable: true }</code></li>
+      <li>环境变量：<code class="language-plaintext highlighter-rouge">WECHATY_PUPPET_SERVICE_NO_TLS_INSECURE_CLIENT=true</code></li>
+    </ul>
+  </li>
+  <li>注意与 token 断开后重连。目前 WorkPro 处于新上线阶段，各种升级和修复情况较多。我们一般会在晚上12点左右进行服务更新。目前会较为频繁，稳定后预计一周一次，但总归是无法避免的。更新时账号会离线1分钟左右。由于目前社区版的 wechaty 重连功能不很稳定，建议在外部使用一些额外的代码进行在线状态检查，并尝试重连或重启。</li>
+</ul>
+
+<h2 id="体验版与社区版的功能差异">体验版与社区版的功能差异</h2>
+
+<p>在 <a href="https://wechaty.js.org/2022/12/23/introducing-workpro-puppet/">WorkPro 发布博客</a> 中可以看到，有一些功能被标注为依赖体验版 Wechaty 。所谓体验版 Wechaty，指的是 @juzi scope下的 Wechaty 相关包，里面包含了一些尚未在社区版上线的新功能。</p>
+
+<p>需要注意的是，尽管我们会尽力推动体验版的功能向社区版合并，并且也会尽量保证兼容性，但无法保证百分之百的功能都能合并入社区版，并且与体验版的参数、回调、返回值等各方面一致。
+体验版独有的功能包括（如果有需求，可以再写文档）：</p>
+
+<ul>
+  <li>新的 Wechaty 层事件</li>
+</ul>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">update</span>               <span class="p">:</span> <span class="dl">'</span><span class="s1">Will be emitted when some info has been changed.</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">contact-tag-add</span><span class="dl">'</span>    <span class="p">:</span> <span class="dl">'</span><span class="s1">Will be emitted when contact has new tags.</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">contact-tag-remove</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">Will be emitted when contact has some tags removed.</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">contact-name</span><span class="dl">'</span>       <span class="p">:</span> <span class="dl">'</span><span class="s1">Will be emitted when contact name has been changed.</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">contact-alias</span><span class="dl">'</span>      <span class="p">:</span> <span class="dl">'</span><span class="s1">Will be emitted when contact alias has been changed.</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">contact-phone</span><span class="dl">'</span>      <span class="p">:</span> <span class="dl">'</span><span class="s1">Will be emitted when contact phone has been changed.</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">contact-description</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Will be emitted when contact description has been changed.</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">contact-corporation</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Will be emitted when contact corporation has been changed.</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">room-owner</span><span class="dl">'</span>         <span class="p">:</span> <span class="dl">'</span><span class="s1">Will be emitted when room owner has been changed.</span><span class="dl">'</span><span class="p">,</span>
+</code></pre></div></div>
+
+<ul>
+  <li>新的 Puppet 层事件</li>
+</ul>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="dl">'</span><span class="s1">room-announce</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">new room announcement received</span><span class="dl">'</span><span class="p">,</span>
+  <span class="nx">tag</span>            <span class="p">:</span> <span class="dl">'</span><span class="s1">tag created, deleted or changed</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">tag-group</span><span class="dl">'</span>    <span class="p">:</span> <span class="dl">'</span><span class="s1">tag group created, deleted or changed</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">post-comment</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">a post receives a new comment</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">post-tap</span><span class="dl">'</span>     <span class="p">:</span> <span class="dl">'</span><span class="s1">a post receives a new tap</span><span class="dl">'</span><span class="p">,</span>
+</code></pre></div></div>
+
+<ul>
+  <li>朋友圈功能（发布、点赞、回复）</li>
+  <li>标签功能（列表、打标签）</li>
+  <li>改进了重连机制（需要在 errorListener 中监听’no grpc manager’关键字并重启 bot ）</li>
+  <li>会话已读功能</li>
+  <li>发送接收视频号消息、位置消息功能</li>
+  <li>系统消息</li>
+</ul>
+
+<hr />
+
+<blockquote>
+  <p>This post is also available in <a href="/2023/01/18/workpro-immigration-guide-en/">English</a>.</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#puppet-service">puppet-service</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#puppet-provider">puppet-provider</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#workpro">workpro</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#wxwork">wxwork</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/wang-nan">
+                            <img class="rounded-circle" src="/assets/contributors/wang-nan/avatar.webp" alt="Wang-Nan" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/wang-nan">Wang-Nan</a> <span><a target="_blank" href="https://twitter.com/brotherstyx" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Just another coder.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2023/01/18/workpro-immigration-guide-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2023/01-workpro-immigration-guide-en/workpro.webp">  Wechaty Puppet Service WorkPro Migration Guide</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2023/02/18/wechaty-flask-service-en/"> Building a Message Notification Service with Wechaty and Flask  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2023/02-wechaty-flask-service-en/wechaty.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

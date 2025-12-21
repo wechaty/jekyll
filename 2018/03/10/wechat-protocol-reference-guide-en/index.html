@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      WeChat App Communication Protocol Case Study Reference Guide | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>WeChat App Communication Protocol Case Study Reference Guide | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="WeChat App Communication Protocol Case Study Reference Guide" />
+<meta name="author" content="h4dex" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An in-depth technical analysis of WeChat’s Android client communication protocol, including network architecture, message formats, synchronization mechanisms, and a reference implementation called MicroChat based on Mars framework." />
+<meta property="og:description" content="An in-depth technical analysis of WeChat’s Android client communication protocol, including network architecture, message formats, synchronization mechanisms, and a reference implementation called MicroChat based on Mars framework." />
+<link rel="canonical" href="https://wechaty.js.org/2018/03/10/wechat-protocol-reference-guide-en/" />
+<meta property="og:url" content="https://wechaty.js.org/2018/03/10/wechat-protocol-reference-guide-en/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2018/h4dex-wechatprotocol.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-03-10T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2018/h4dex-wechatprotocol.webp" />
+<meta property="twitter:title" content="WeChat App Communication Protocol Case Study Reference Guide" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"h4dex"},"dateModified":"2018-03-10T00:00:00+00:00","datePublished":"2018-03-10T00:00:00+00:00","description":"An in-depth technical analysis of WeChat’s Android client communication protocol, including network architecture, message formats, synchronization mechanisms, and a reference implementation called MicroChat based on Mars framework.","headline":"WeChat App Communication Protocol Case Study Reference Guide","image":"https://wechaty.js.org/assets/2018/h4dex-wechatprotocol.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2018/03/10/wechat-protocol-reference-guide-en/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"h4dex"},"url":"https://wechaty.js.org/2018/03/10/wechat-protocol-reference-guide-en/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#hacking">hacking</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">WeChat App Communication Protocol Case Study Reference Guide</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/h4dex">
+                            <img class="rounded-circle" src="/assets/contributors/h4dex/avatar.webp" alt="h4dex" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/h4dex">h4dex</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Mar 10, 2018 · <span class="reading-time">
+  
+  
+    9 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2018/h4dex-wechatprotocol.webp" alt="WeChat App Communication Protocol Case Study Reference Guide">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>In early January, I accidentally discovered in a WeChat enthusiast study group a discussion about <strong>MicroChat</strong> (based on Mars) - code utilizing the WeChat Android APP client communication protocol! Shocked and in awe of the author, I downloaded it excitedly and made some modifications and application tests to the original version based on reference articles. Later, I tested and added some functional implementations, as well as ideas for extending simulated arbitrary device login verification and specific function handling. My abilities are limited and my technical skills are weak, but with a passion for technology and to share my experiences with more learners, I’ve compiled this article to give everyone a first look. I’ve also expanded on some basic MicroChat functions. If there are any errors, please feel free to criticize and correct!</p>
+
+<p><img src="/assets/2018/h4dex-wechatprotocol.webp" alt="Wechat Protocol" /></p>
+
+<h2 id="preparation">Preparation</h2>
+
+<blockquote>
+  <p>Development Environment:</p>
+</blockquote>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Development Tools: Visual Studio 2015 or above (marsWin32SDK requires vc140+)
+Packet capture and analysis tools: Wireshark / Fiddler / Charles, TCPDump
+Compilation dependencies: Boost, ATL
+</code></pre></div></div>
+
+<blockquote>
+  <p>Include Directories</p>
+</blockquote>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>If your machine lacks referenced directories, please add them manually
+</code></pre></div></div>
+
+<blockquote>
+  <p>Other Reminders</p>
+</blockquote>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Compilation order: Mars dependencies / SQLite3 -&gt; MicrochatSDK (based on Mars Win32 Example) -&gt; MicroChat (user layer)
+</code></pre></div></div>
+
+<h2 id="how-does-wechat-communicate">How Does WeChat Communicate?</h2>
+
+<blockquote>
+  <p>Ports</p>
+</blockquote>
+
+<p>After scanning WeChat’s common domains, remote ports discovered include: 80 443 8080 5222 5223 5228, etc.</p>
+
+<blockquote>
+  <p>Domains</p>
+</blockquote>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dns.weixin.qq.com
+support.weixin.qq.com    80/8080
+short.weixin.qq.com      443/8080 (sz)
+long.weixin.qq.com       80/443 (sz)
+wx.qlogo.cn              80
+timg.cn, etc.
+</code></pre></div></div>
+
+<blockquote>
+  <p>Basic Execution Process Overview</p>
+</blockquote>
+
+<ol>
+  <li>After program startup, it first attempts DNS resolution of specific domains (the above domains, which return all nodes);</li>
+</ol>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dns query
+dns.weixin.qq.com
+Returns a group of IP addresses long.weixin.qq.com
+Returns a group of IP addresses. In this communication, WeChat used the last IP as the connection address for the TCP long connection.
+http://dns.weixin.qq.com/cgi-bin/micromsg-bin/newgetdns?uin=0&amp;clientversion=620888113&amp;scene=0&amp;net=1
+Used to request the server to obtain the optimal IP path. The server returns an xml defining domain:IP correspondence list through settlement.
+Reading carefully, you can see WeChat has begun internationalization: Hong Kong, Canada, South Korea, etc.
+For specific text, refer to: https://gist.github.com/yongboy/9341884
+After obtaining the optimal IP for long.weixin.qq.com, establish a TCP long connection to 101.227.131.105
+</code></pre></div></div>
+
+<ol>
+  <li>If DNS query is unavailable, the program switches to using hardcoded IP to connect to services;</li>
+  <li>If DNS is available, the returned IP is the result of ISP intelligent resolution, and the program uses the returned IP to connect to services;</li>
+  <li>The program uses HTTPS links during registration, verification, unblocking, mini-programs, and other built-in content requests, with encryption protocol being Tencent’s mmtls;</li>
+  <li>The client uses TCP 80/8080 to connect to remote servers. Both 80/8080 ports can provide services simultaneously or individually;</li>
+  <li>Port 80 is for short connections, 8080 for long connections. The program will prioritize port 8080;</li>
+</ol>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Request confirmation after connection to retrieve data.
+Submitted request includes: account, password, login method (can simulate any device~), device info, network info, network device info, geolocation, etc.
+
+POST http://short.weixin.qq.com/cgi-bin/micromsg-bin/getprofile HTTP/1.1 (application/octet-stream)
+Returns an attachment named "micromsgresp.dat", personal information
+
+POST http://short.weixin.qq.com/cgi-bin/micromsg-bin/whatsnews HTTP/1.1 (application/octet-stream)
+Still returns an attachment named "micromsgresp.dat"
+Probably WeChat new version introduction and verification, news, subscription updates, etc...
+
+POST http://short.weixin.qq.com/cgi-bin/micromsg-bin/downloadpackage HTTP/1.1 (application/octet-stream)
+Output is micromsgresp.dat file
+Then there will be another micromsgresp.dat creation, probably unread messages and contact list
+(Testing shows approximately 1-3 times total)
+
+GET http://support.weixin.qq.com/cgi-bin/mmsupport-bin/reportdevice?channel=34&amp;deviceid=A952001f7a840c2a&amp;clientversion=620888113&amp;platform=0&amp;lang=zh_CN&amp;installtype=0 HTTP/1.1
+Client self and device information verification feedback
+POST http://short.weixin.qq.com/cgi-bin/micromsg-bin/reportstrategy HTTP/1.1 (application/octet-stream)
+Returns chunked data
+GET http://wx.qlogo.cn/mmhead/Q3auHgzwzM7NR4TYFcoNjbxZpfO9aiaE7RU5lXGUw13SMicL6iacWIf2A/96
+Images and other static resources are assigned to the wx.qlogo.cn domain, downloaded and cached locally asynchronously based on loading or manual access.
+</code></pre></div></div>
+
+<ol>
+  <li>When 2 consecutive heartbeat sends fail, the client will prompt “Current network conditions are poor, submit feedback data?” After confirmation, the client attempts to submit feedback data via web;</li>
+</ol>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Heartbeat frequency is approximately 5 minutes
+
+After login, a long HTTP connection to long.weixin.qq.com is established, port 8080
+
+Examining the long connection initial data communication, no data containing "HTTP" was found, initially thought to be WeChat's custom TCP/HTTP communication format. Based on analysis, likely used for data retrieval, heartbeat message exchange, etc.
+
+Initial message transmission
+Personal data, offline unread message portions, etc. are obtained separately through POST HTTP short connections, as above...
+</code></pre></div></div>
+
+<blockquote>
+  <p>Protocol Text Analysis</p>
+</blockquote>
+
+<p>WeChat protocol messages may be as follows:</p>
+
+<p>One message packet = message header + message body
+Message header fixed 16 bytes length, message packet length defined in first 4 bytes of message header.</p>
+
+<p>Taking only line 0000 as example, 16-byte header:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>00 00 00 10 00 10 00 01 00 00 00 06 00 00 00 0f
+</code></pre></div></div>
+
+<p>Hexadecimal representation, every two adjacent digits represent one byte.</p>
+
+<p>WeChat message packet format:</p>
+
+<ol>
+  <li>First 4 bytes indicate data packet length, variable. Value of 16 means a complete data packet containing only the header (may represent predefined business meaning), possibly followed by other message packets</li>
+  <li>2 bytes indicate header length, fixed value, 0x10 = 16</li>
+  <li>2 bytes indicate protocol version, fixed value, 0x01 = 1</li>
+  <li>4 bytes operation code indicating number, variable</li>
+  <li>Sequence number, variable</li>
+  <li>After the header comes the message body, non-plaintext, encrypted form</li>
+  <li>One message packet, minimum 16 bytes</li>
+</ol>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>If you're not familiar with message formats, you can learn by referencing other low-level communication protocols like ModbusTCP
+</code></pre></div></div>
+
+<blockquote>
+  <p>Protocol Summary</p>
+</blockquote>
+
+<ol>
+  <li>Published messages correspond to an ID (only needs to be unique in one direction, server may judge duplicate reception based on ID), message retransmission mechanism ensures limited retries, failed retries give user prompts, successful sends get feedback confirmation, client only knows sending succeeded upon receiving confirmation. Sending messages may not generate new SyncKey.</li>
+  <li>State message synchronization mechanism based on version number (SyncKey), incremental, ordered transmission needs met naturally. Long connection notification/short connection retrieval, confirmation, etc., simple interaction ensures reliable and accurate message delivery.</li>
+  <li>Both client/server store message ID processing records, avoiding repeated consumption. Client gets latest messages but doesn’t confirm, server won’t consider message consumed. Next time client will re-retrieve, will check if current message was processed. Based on some phenomena and speculation.</li>
+  <li>Overall, WeChat protocol is cross-platform (can be presented via TCP or HTTP, processing can be unified), synchronizes through “handshake,” very reliable, any platform can support it well</li>
+  <li>WeChat protocol minimum cost is 16 bytes, most times several message packets are batched together for transmission. Can’t say the most concise or most traffic-saving, but very successful.</li>
+  <li>If server detects uncertain factors, may cause WeChat to enable SSL protocol for regular TCP long connection transmission. Short connections have no changes.</li>
+</ol>
+
+<h2 id="microchat-usage-guide">MicroChat Usage Guide</h2>
+
+<blockquote>
+  <p>Request Addresses</p>
+</blockquote>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define CGI_NEWSYNC "/cgi-bin/micromsg-bin/newsync" //Sync latest server messages
+#define CGI_MANUALAUTH "/cgi-bin/micromsg-bin/manualauth" //Login
+#define CGI_NEWSENDMSG "/cgi-bin/micromsg-bin/newsendmsg" //Send text message
+#define CGI_NEWINIT "/cgi-bin/micromsg-bin/newinit" //First login, initialize database
+#define CGI_GETPROFILE "/cgi-bin/micromsg-bin/getprofile" //Get personal info
+#define CGI_SEARCHCONTACT "/cgi-bin/micromsg-bin/searchcontact" //Search new friends
+#define CGI_GETCONTACT "/cgi-bin/micromsg-bin/getcontact" //Find new friends
+#define CGI_VERIFYUSER "/cgi-bin/micromsg-bin/verifyuser" //Add friends
+#define CGI_BIND "/cgi-bin/micromsg-bin/bindopmobileforreg" //First login SMS authorization
+</span></code></pre></div></div>
+
+<p>For other functions, add request addresses yourself, such as FindNearBy for nearby people, etc.~</p>
+
+<blockquote>
+  <p>Multi-Device Online Extension</p>
+</blockquote>
+
+<ol>
+  <li>QR code scan login (Method to get QR code cannot be obtained from Android version, need to packet capture from iPad version)</li>
+  <li>Packet capture different device login requests, customize login request parameters to simulate.</li>
+  <li>Only login verification. SYNC part not implemented, slightly different on some platforms…</li>
+</ol>
+
+<blockquote>
+  <p>UI Implementation</p>
+</blockquote>
+
+<p>The code uses Duilib interface. Since WeChat message functionality is complex, handling data in one Notify in Duilib can be troublesome. It’s recommended to consider Qt / MFC / WebUI for the View layer. Or use WinForm or WPF for simpler implementation.</p>
+
+<blockquote>
+  <p>Utilize Open Source Libraries to Complete Other Functions</p>
+</blockquote>
+
+<ol>
+  <li>FFmpeg - Video and audio file transcoding and playback</li>
+  <li>Avcodec - Audio file transcoding and playback</li>
+  <li>CEF3 - Provides simulated WeChat built-in browser access function (mini-programs not supported)</li>
+  <li>Screenshot tool</li>
+  <li>proxy</li>
+  <li>SQLite3</li>
+</ol>
+
+<h2 id="appendix">Appendix</h2>
+
+<p>Microsoft Exchange Active Sync protocol, abbreviated as EAS, divided into foldersync (synchronize folder directory, i.e., which folders are in the mailbox) and sync (which documents are in each folder).</p>
+
+<p>A netizen’s summary of protocol conversation example:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">Client:</span> <span class="n">synckey</span><span class="o">=</span><span class="mi">0</span> <span class="c1">//First time key is 0</span>
+<span class="n">Server</span><span class="o">:</span> <span class="n">newsynckey</span><span class="o">=</span><span class="mi">1235434</span> <span class="c1">//First time returns new key</span>
+<span class="n">Client</span><span class="o">:</span> <span class="n">synckey</span><span class="o">=</span><span class="mi">1235434</span> <span class="c1">//Use new key to query</span>
+<span class="n">Server</span><span class="o">:</span> <span class="n">newsynckey</span><span class="o">=</span><span class="mi">1647645</span><span class="p">,</span><span class="n">data</span><span class="o">=*****</span> <span class="c1">//First query, get new key and data</span>
+<span class="n">Client</span><span class="o">:</span> <span class="n">synckey</span><span class="o">=</span><span class="mi">1647645</span>
+<span class="n">Server</span><span class="o">:</span> <span class="n">newsynckey</span><span class="o">=</span><span class="mi">5637535</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">null</span> <span class="c1">//Second query, no new messages</span>
+<span class="n">Client</span><span class="o">:</span> <span class="n">synckey</span><span class="o">=</span><span class="mi">5637535</span>
+<span class="n">Server</span><span class="o">:</span> <span class="n">newsynckey</span><span class="o">=</span><span class="mi">8654542</span><span class="p">,</span> <span class="n">data</span><span class="o">=****</span> <span class="c1">//Third query, incremental sync</span>
+<span class="n">Adjacent</span> <span class="n">requests</span> <span class="n">in</span> <span class="n">the</span> <span class="n">above</span> <span class="n">page</span> <span class="n">are</span> <span class="n">all</span> <span class="n">at</span> <span class="n">fixed</span> <span class="n">time</span> <span class="n">intervals</span><span class="p">,</span> <span class="n">such</span> <span class="n">as</span> <span class="n">two</span> <span class="n">minutes</span>
+<span class="n">Client</span> <span class="n">uses</span> <span class="n">old</span> <span class="n">key</span> <span class="n">to</span> <span class="n">mark</span> <span class="n">its</span> <span class="n">state</span> <span class="n">each</span> <span class="n">time</span><span class="p">,</span> <span class="n">server</span> <span class="n">returns</span> <span class="n">new</span> <span class="n">key</span> <span class="n">and</span> <span class="n">incremental</span> <span class="n">data</span> <span class="n">together</span> <span class="n">each</span> <span class="n">time</span><span class="p">.</span>
+<span class="n">Key</span> <span class="n">is</span> <span class="n">incremental</span> <span class="n">but</span> <span class="n">not</span> <span class="n">required</span> <span class="n">to</span> <span class="n">be</span> <span class="n">continuous</span>
+<span class="n">A</span> <span class="n">certain</span> <span class="n">parameter</span> <span class="n">in</span> <span class="n">the</span> <span class="n">request</span> <span class="n">determines</span> <span class="n">whether</span> <span class="n">server</span> <span class="n">returns</span> <span class="n">immediately</span>
+</code></pre></div></div>
+
+<h2 id="portal">Portal</h2>
+
+<p>Original Github Portal (DNS error 301 issue fixed):</p>
+<blockquote>
+  <p><a href="https://github.com/InfiniteTsukuyomi/MicroChat/">https://github.com/InfiniteTsukuyomi/MicroChat/</a></p>
+</blockquote>
+
+<p>Python Version</p>
+<blockquote>
+  <p><a href="https://github.com/InfiniteTsukuyomi/MicroChat/tree/master/test">https://github.com/InfiniteTsukuyomi/MicroChat/tree/master/test</a></p>
+</blockquote>
+
+<h2 id="acknowledgments">Acknowledgments</h2>
+
+<p>Special thanks to authors of WeChat protocol analysis articles on CSDN and Cnblogs. Your reference articles guided me in learning and verification, providing great inspiration and help.</p>
+
+<p>Code publicly released by @InfiniteTsukuyomi.</p>
+
+<p>Thanks to Tencent WXG’s open source spirit and dedication, providing a large amount of open source references and article explanations.</p>
+
+<p>Reference links:</p>
+
+<p><a href="http://www.blogjava.net/yongboy/archive/2014/03/05/410636.html">http://www.blogjava.net/yongboy/archive/2014/03/05/410636.html</a></p>
+
+<h2 id="serious-disclaimer">Serious Disclaimer</h2>
+
+<blockquote>
+  <p>Do not distribute for any commercial purposes, violators are responsible for consequences!
+Blog: <a href="https://www.icefox.org">https://www.icefox.org</a></p>
+</blockquote>
+
+<hr />
+
+<blockquote>
+  <p>本文也有<a href="/2018/03/10/wechat-protocol-reference-guide/">中文版本</a>。</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#hook">hook</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#featured">featured</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ecosystem">ecosystem</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/h4dex">
+                            <img class="rounded-circle" src="/assets/contributors/h4dex/avatar.webp" alt="h4dex" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/h4dex">h4dex</a> </h5>
+						会使用各种计算机语言写出 Hello World 的设计师（http://icefox.org/）
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2018/03/09/can-typescript-really-live-up-to-its-hype/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2018/typescript-logo.webp">  Can Typescript really live up to its hype?</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2018/03/10/wechat-protocol-reference-guide/"> 微信App通信协议案例学习参考指南  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2018/h4dex-wechatprotocol.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

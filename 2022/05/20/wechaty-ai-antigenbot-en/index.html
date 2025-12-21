@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      United Effort, Fighting the Pandemic with AI! | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>United Effort, Fighting the Pandemic with AI! | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="United Effort, Fighting the Pandemic with AI!" />
+<meta name="author" content="bigbrother666sh" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="During Shanghai’s 2022 COVID lockdown, volunteers developed an AI antigen bot using Wechaty and PaddlePaddle to help community residents manage group purchases, forward messages, and analyze antigen test results, significantly improving community pandemic response efficiency." />
+<meta property="og:description" content="During Shanghai’s 2022 COVID lockdown, volunteers developed an AI antigen bot using Wechaty and PaddlePaddle to help community residents manage group purchases, forward messages, and analyze antigen test results, significantly improving community pandemic response efficiency." />
+<link rel="canonical" href="https://wechaty.js.org/2022/05/20/wechaty-ai-antigenbot-en/" />
+<meta property="og:url" content="https://wechaty.js.org/2022/05/20/wechaty-ai-antigenbot-en/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2022/05-wechaty-ai-antigenbot-en/a1fup-y7cpd.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-05-20T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2022/05-wechaty-ai-antigenbot-en/a1fup-y7cpd.webp" />
+<meta property="twitter:title" content="United Effort, Fighting the Pandemic with AI!" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"bigbrother666sh"},"dateModified":"2022-05-20T00:00:00+00:00","datePublished":"2022-05-20T00:00:00+00:00","description":"During Shanghai’s 2022 COVID lockdown, volunteers developed an AI antigen bot using Wechaty and PaddlePaddle to help community residents manage group purchases, forward messages, and analyze antigen test results, significantly improving community pandemic response efficiency.","headline":"United Effort, Fighting the Pandemic with AI!","image":"https://wechaty.js.org/assets/2022/05-wechaty-ai-antigenbot-en/a1fup-y7cpd.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2022/05/20/wechaty-ai-antigenbot-en/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"bigbrother666sh"},"url":"https://wechaty.js.org/2022/05/20/wechaty-ai-antigenbot-en/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#article">article</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">United Effort, Fighting the Pandemic with AI!</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/bigbrother666sh">
+                            <img class="rounded-circle" src="/assets/contributors/bigbrother666sh/avatar.webp" alt="bigbrother666" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/bigbrother666sh">bigbrother666</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">May 20, 2022 · <span class="reading-time">
+  
+  
+    9 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2022/05-wechaty-ai-antigenbot-en/a1fup-y7cpd.webp" alt="United Effort, Fighting the Pandemic with AI!">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>On May 9, 2022, the Minhang District Government of Shanghai, after thorough deliberation on prevention and control mechanisms, measures, and effectiveness of “COVID-free community” applications, announced the first batch of “COVID-free communities,” with “Jiayi Waterfront Smart Residences” prominently listed. The anti-pandemic achievements of Jiayi Waterfront Smart Residences community are remarkable.
+Analyzing the reasons for its phased victory, it is inseparable from the residential area party branch and neighborhood committee standing firm without relaxation; inseparable from building self-governance, ensuring the “last hundred meters” in corridors; inseparable from the group purchase reporting system and transparency of epidemic-related information, and more benefited from the invisible AI “hardcore” technology support - the tireless <strong>“AI Anti-Pandemic Bot”</strong>.</p>
+
+<h2 id="early-buds-just-showing">Early Buds Just Showing</h2>
+
+<p>In the early stage of the pandemic, the entire community lacked experience in static pandemic management, leading to chaotic and disorderly resident group purchases. After supplies arrived, transportation capacity was tight, volunteer delivery routes couldn’t be traced, and work pressure on the neighborhood committee and volunteers sharply increased. There were frequent issues with supplies being incorrectly delivered, missed, or sent to the wrong positive buildings. Due to the inherent attributes of manual scheduling that could reduce community governance efficiency, in early April, Jiayi Waterfront community volunteers engaged in intense discussion and debate in WeChat groups, proposing building self-governance solutions. However, there was still no consensus on efficiency improvement and error elimination.</p>
+
+<p><img src="/assets/2022/05-wechaty-ai-antigenbot-en/augyv-hwwkr.webp" alt="img" /></p>
+
+<p>(Volunteers sorting supplies outside the community)</p>
+
+<p>Living up to youth, running hard on the track of youth. To solve these difficulties, young community volunteers Wu Guangzheng, Ling Sikai, and Li Siying, as members of the community, determined to leverage their expertise and solve the community’s difficulties from a technical perspective. Three young volunteers in the IT field stayed up late after heavy work at night discussing system design architecture, attempting to build a supplies scheduling and delivery system that frees up manpower in the fastest and most effective way. In just 2 nights, the supplies delivery system was successfully built. This system played an active role in helping the neighborhood committee automatically process group purchase information and quickly create customized forms.</p>
+
+<p><img src="/assets/2022/05-wechaty-ai-antigenbot-en/avzr0-npy78.webp" alt="img" /></p>
+
+<p>(Volunteers distributing with processed supply delivery forms)</p>
+
+<h2 id="with-an-exquisite-heart-proceeding-calmly">With an Exquisite Heart, Proceeding Calmly</h2>
+
+<p>After the system successfully served the community, programmer volunteers wanted to do more. They tried to seek a solution to free the neighborhood committee and volunteers from complicated and repetitive tasks with extremely low learning costs, giving them time to think about more important things and eliminate future crises.
+United in the same boat, with one heart, holding firmly to green mountains. The joining of Wechaty community contributors Wu Jingjing (wj-Mcat) and Zhao Zeming (bigbrother) made the vision of Jiayi Waterfront community volunteers possible. The AI anti-pandemic bot project AntigenBot developed based on python-wechaty was born! This system not only integrated the initially developed supplies delivery system into the bot system but also developed a multi-functional message forwarding plugin to help Jiayi Waterfront neighborhood committee staff and community residents fight the pandemic side by side.
+The pace of racing against the virus never stops. The Wechaty community joined forces with PaddlePaddle community volunteers and open-source community volunteers to race against the virus in system plugin development. Antigen image detection function and health code recognition function for various regions developed based on PaddleDetection and PaddleOCR were also recently deployed online, which can be said to be very practical.
+Currently, the AI anti-pandemic bot has been running stably in Jiayi Waterfront community for one month, receiving unanimous praise from the neighborhood committee and residents.</p>
+
+<p><img src="/assets/2022/05-wechaty-ai-antigenbot-en/ay0xw-gh4nt.webp" alt="img" /></p>
+
+<p>(Neighborhood committee staff distributing supplies together with volunteers)</p>
+
+<p><img src="/assets/2022/05-wechaty-ai-antigenbot-en/an3j3-lw6f4.webp" alt="img" /></p>
+
+<p>(Secretary Jiang discussing anti-pandemic work with volunteers)</p>
+
+<p>Secretary Jiang of Jiayi Waterfront community neighborhood committee said: “The entire system took just a few days from development, debugging, running-in to official operation, enabling the neighborhood committee to make a qualitative leap in livelihood security work, greatly reducing the neighborhood committee’s manpower and time costs, giving us more time and energy to do pandemic prevention and control work well.”</p>
+
+<h2 id="ai-anti-pandemic-bot-function-module-description">AI Anti-Pandemic Bot Function Module Description</h2>
+
+<h3 id="group-purchase-delivery-module">Group Purchase Delivery Module</h3>
+
+<p><strong>Application Scenario:</strong> The neighborhood committee receives a certain number of group purchase lists from multiple channels. After supplies arrive, they need to be delivered to owners according to building numbers and door numbers on the list.</p>
+
+<p><strong>Function Description:</strong> The neighborhood committee administrator only needs to send the group purchase list file to the bot, which will automatically parse the address format and generate the corresponding delivery file in one second, achieving precise delivery.</p>
+
+<p><strong>Development Volunteers:</strong> Wu Guangzheng, Liu Tong</p>
+
+<h3 id="multi-functional-message-forwarding-module">Multi-functional Message Forwarding Module</h3>
+
+<p><strong>Application Scenario:</strong> The neighborhood committee regularly/irregularly publishes government notices, group purchase information, and important messages to the community building groups they manage.</p>
+
+<p><strong>Function Description:</strong> The neighborhood committee administrator only needs to send message content (text/images/mini-programs, etc.) to the bot, which will forward the message to all specified building groups within a certain time period, supporting timed forwarding, delayed forwarding, and authorized forwarding.</p>
+
+<p><strong>Development Volunteers:</strong> Wu Jingjing, Zhao Zeming (from Wechaty community)</p>
+
+<p><img src="/assets/2022/05-wechaty-ai-antigenbot-en/a1ett-6rr3x.webp" alt="img" /></p>
+
+<p><a href="https://github.com/ShanghaiITVolunteer/AntigenWechatBot">Module Details</a></p>
+
+<h3 id="antigen-image-analysis-module">Antigen Image Analysis Module</h3>
+
+<p><strong>Application Scenario:</strong> AI antigen recognition based on deep learning, helping communities achieve efficient self-examination of risks.</p>
+
+<p><strong>Function Description:</strong> The bot reminds owners to conduct antigen testing and analyzes whether there are missed, duplicate, or other issues. Finally, all data is organized into Excel data and image compressed package data, automatically uploaded to the designated platform.</p>
+
+<p><strong>Development Volunteers:</strong> Liu Jianjian, Ma He, Han Pengyuan (from PaddlePaddle community)</p>
+
+<p><img src="/assets/2022/05-wechaty-ai-antigenbot-en/a3vh5-c3zmu.webp" alt="img" /></p>
+
+<p><a href="https://github.com/ShanghaiITVolunteer/AntigenWechatBot/issues/44">Module Details</a></p>
+
+<p>During the project development process, young volunteers hoped to protect citizens’ data privacy. They specially invited the Legal Advisory Committee of KAIYUANSHE, lawyer Chen Yuanxi from Haihua Yongtai Law Firm as legal guidance for the project, Wechaty open-source project author Teacher Li Zhuohuan, and KAIYUANSHE board member Teacher Zhuang Biaowei as project technical advisors to provide advice and suggestions.
+The AI Anti-Pandemic Bot AntigenBot project, based on the Jiayi Waterfront community anti-pandemic workflow, simplifies methods through first principles, improves efficiency, and avoids risks. After a series of optimizations and improvements, community management personnel responsible for the bot can achieve “out-of-the-box” and “understand at a glance” usage methods.</p>
+
+<p><img src="/assets/2022/05-wechaty-ai-antigenbot-en/aa0nw-g84t1.webp" alt="img" /></p>
+
+<p>(Project UI interface prototype)</p>
+
+<p>Finally, borrowing the words of Wu Guangzheng, one of the project initiators: “The purpose of this bot is not to replace the connection between grassroots workers and people with cold machines. On the contrary, we aim to free grassroots workers from repetitive, complicated, and trivial work, giving them more motivation to deeply understand people’s higher-level needs, establish warmer and friendlier connections, and better serve the people, establishing fish-water relations. I believe that only by strengthening this connection can we in Shanghai work together and overcome this pandemic that is as fierce as floods and wild beasts!”</p>
+
+<p>(Screen full of thanks)</p>
+
+<p><img src="/assets/2022/05-wechaty-ai-antigenbot-en/arjkv-k9fni.webp" alt="img" /></p>
+
+<p><img src="/assets/2022/05-wechaty-ai-antigenbot-en/a2izi-ehkxh.webp" alt="img" /></p>
+
+<p>(Jiayi Waterfront community neighborhood committee and residents fighting side by side)</p>
+
+<h2 id="within-our-capability-an-unshirkable-duty">Within Our Capability, An Unshirkable Duty</h2>
+
+<p>In fact, this project also has a branch project waiting to be put into use, which is the WeChat QA question-and-answer bot led by Wechaty community contributor luyuchao (Brother Chao) - specifically for community workers, group purchase leaders, and business group operation managers, helping them solve repetitive question-and-answer problems (<a href="https://github.com/choogoo/wechat-openai-qa-bot">project portal</a>). It can be said that the development of AI bot plugins is unlimited, usage scenarios are extensible, and the significance of this project is obvious.
+We also believe that although WeChat is a closed system, developing some tool-based applications based on WeChat as a convenient tool for contact between grassroots organizations and the masses is an inevitable move under the current pandemic situation. Even in the late stage of the pandemic and after it ends, our AI Anti-Pandemic Bot project can continue to play its role, transforming into an AI Community Assistant Bot, using scientific management tools to help grassroots workers handle informatization-related affairs.
+On the other hand, for the AI industry, although our country has made significant progress in scientific research in recent years, with academic papers and laboratory results already at the forefront of the world, in terms of specific industrial implementation, the overall penetration rate is still less than 5%… Under the heavy pressure of this round of pandemic, grassroots communities as the “peripheral nerves” of government governance have exposed many problems. These problems will be areas that need strengthened investment and improvement in the future. At the same time, for the AI industry, this will also be a valuable implementation scenario, as Galileo’s famous saying goes - “The sole purpose of science is to alleviate the suffering of human existence.”</p>
+
+<h2 id="acknowledgments">Acknowledgments</h2>
+
+<p><strong>Jiayi Waterfront Volunteer Team:</strong> Wu Guangzheng, Liu Tong, Li Siying, Ling Sikai</p>
+
+<p><strong>Wechaty Community Team:</strong> Li Zhuohuan, Wu Jingjing, Zhao Zeming, luyuchao, Padlocal Haoda</p>
+
+<p><strong>KAIYUANSHE:</strong> Chen Yuanxi, Zhuang Biaowei, Li Siying</p>
+
+<p><strong>PaddlePaddle Community Team:</strong> PaddlePaddle Operations Feifei, Liu Jianjian, Ma He, Han Pengyuan</p>
+
+<h2 id="community-introduction">Community Introduction</h2>
+
+<h3 id="wechaty-community">Wechaty Community</h3>
+
+<p><img src="/assets/2022/05-wechaty-ai-antigenbot-en/logo.webp" alt="img" /></p>
+
+<p>Wechaty is a Conversational RPA SDK for chatbot makers. With only 6 lines of code, you can create a bot on the most popular IMs like WeChat, Whatsapp, WeCom, Gitter, etc.</p>
+
+<h3 id="kaiyuanshe">KAIYUANSHE</h3>
+
+<p><img src="/assets/2022/05-wechaty-ai-antigenbot-en/aa8zj-zyze7.webp" alt="img" /></p>
+
+<p>KAIYUANSHE was founded in 2014 and is composed of individual members who voluntarily contribute to the open-source cause, following the principles of “contribution, consensus, and co-governance.” It always maintains vendor neutrality, public welfare, and non-profit characteristics. It is the earliest open-source community alliance with the mission of “open-source governance, international alignment, community development, and open-source projects.” KAIYUANSHE actively cooperates closely with communities, enterprises, and relevant government units that support open source. With the vision of “based in China, contributing globally,” it aims to co-create a healthy and sustainable open-source ecosystem and promote Chinese open-source communities to become active participants and contributors to the global open-source system.</p>
+
+<h3 id="paddlepaddle-community">PaddlePaddle Community</h3>
+
+<p><img src="/assets/2022/05-wechaty-ai-antigenbot-en/adt2z-wdcvt.webp" alt="img" /></p>
+
+<p>As China’s first independently developed, feature-rich, open-source industrial-grade deep learning platform, Baidu PaddlePaddle was officially open-sourced in 2016. Currently, the PaddlePaddle platform has gathered more than 4 million developers, helping AI developers from enterprise units, universities, and research institutions improve model development efficiency and experience, and promoting the actual implementation and application of AI technology in various industries. AI Studio is an artificial intelligence learning and training community based on Baidu’s deep learning platform PaddlePaddle, providing online programming environment, free GPU computing power, massive training projects, and open data to help developers quickly create and deploy models.</p>
+
+<p>bigbrother on behalf of the <a href="https://github.com/ShanghaiITVolunteer">ShanghaiITVolunteer</a></p>
+
+<blockquote>
+  <p>This is a translated version of the original Chinese post. You can find the original post <a href="/2022/05/20/wechaty-ai-antigenbot/">here</a>.</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ai">ai</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#antigen">antigen</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/bigbrother666sh">
+                            <img class="rounded-circle" src="/assets/contributors/bigbrother666sh/avatar.webp" alt="bigbrother666" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/bigbrother666sh">bigbrother666</a> </h5>
+						
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2022/05/05/wechaty-huggingface-proposal/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2022/05-wechaty-huggingface-proposal/huggingface_title.webp">  2022-关于开发wechaty-huggingface-pipeline的提议</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2022/05/20/wechaty-ai-antigenbot/"> 同心助力，战役有AI!  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2022/05-wechaty-ai-antigenbot-en/a1fup-y7cpd.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

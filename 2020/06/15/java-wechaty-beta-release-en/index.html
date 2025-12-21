@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Java Wechaty Beta Released: Finally a WeChat Bot in Java | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Java Wechaty Beta Released: Finally a WeChat Bot in Java | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Java Wechaty Beta Released: Finally a WeChat Bot in Java" />
+<meta name="author" content="diaozxin007" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Java Wechaty Beta has been released, bringing the power of Wechaty chatbot development to the Java ecosystem with full TS version feature parity and plugin support." />
+<meta property="og:description" content="Java Wechaty Beta has been released, bringing the power of Wechaty chatbot development to the Java ecosystem with full TS version feature parity and plugin support." />
+<link rel="canonical" href="https://wechaty.js.org/2020/06/15/java-wechaty-beta-release-en/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/06/15/java-wechaty-beta-release-en/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/java-wechaty/2020-06-15-java-wechaty.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-06-15T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/java-wechaty/2020-06-15-java-wechaty.webp" />
+<meta property="twitter:title" content="Java Wechaty Beta Released: Finally a WeChat Bot in Java" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"diaozxin007"},"dateModified":"2020-06-15T00:00:00+00:00","datePublished":"2020-06-15T00:00:00+00:00","description":"Java Wechaty Beta has been released, bringing the power of Wechaty chatbot development to the Java ecosystem with full TS version feature parity and plugin support.","headline":"Java Wechaty Beta Released: Finally a WeChat Bot in Java","image":"https://wechaty.js.org/assets/2020/java-wechaty/2020-06-15-java-wechaty.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/06/15/java-wechaty-beta-release-en/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"diaozxin007"},"url":"https://wechaty.js.org/2020/06/15/java-wechaty-beta-release-en/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#announcement">announcement</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Java Wechaty Beta Released: Finally a WeChat Bot in Java</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/diaozxin007">
+                            <img class="rounded-circle" src="/assets/contributors/diaozxin007/avatar.webp" alt="犀利豆" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/diaozxin007">犀利豆</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jun 15, 2020 · <span class="reading-time">
+  
+  
+    7 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/java-wechaty/2020-06-15-java-wechaty.webp" alt="Java Wechaty Beta Released: Finally a WeChat Bot in Java">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>Finally, there’s a Java version of the WeChat bot.</p>
+
+<p>The WeChat public account hasn’t been updated for a long time. There are two main reasons: first, after changing jobs, I need to spend more time understanding and learning the new business. Second, I’ve spent almost all my spare time recently writing this Java version of the WeChat bot.</p>
+
+<p><img src="/assets/2020/java-wechaty/2020-06-15-java-wechaty.webp" alt="java-wechaty" /></p>
+
+<h2 id="what-is-wechaty">What is Wechaty</h2>
+
+<p>The official description is:</p>
+
+<ul>
+  <li>A Conversational AI RPA SDK for Chatbot</li>
+</ul>
+
+<p>It’s actually an open source SDK that can quickly build chat bots. In the beginning, Wechaty was just a WeChat utility library, but now it has gradually developed to interface with mainstream chat software on the market including but not limited to: WeChat, Enterprise WeChat, DingTalk, Line, etc.</p>
+
+<p>The programming languages have also developed from a single language (TypeScript) to multi-language implementations including Java, Scala, Python, Go, and more. Meanwhile, the community ecosystem continues to grow.</p>
+
+<p>GitHub address: <a href="https://github.com/wechaty/wechaty">https://github.com/wechaty/wechaty</a> currently has 7.9k stars.</p>
+
+<h2 id="my-connection-with-wechaty">My Connection with Wechaty</h2>
+
+<p>At my previous job, the boss had a requirement: send an email report after work each day briefly describing the day’s work progress. If you forgot to send the report, the next day you’d be responsible for compiling everyone’s reports. As a forgetful person, forgetting to send the report was practically a daily occurrence.</p>
+
+<p>So I considered needing a mechanism:</p>
+
+<ul>
+  <li>Remind me to send the report every day</li>
+  <li>Actions should be as simple and automated as possible.</li>
+</ul>
+
+<p>I wondered if I could have a bot on WeChat that would remind me to send the report on time every day, and just by replying to this bot, it could take my reply message, generate a report according to a fixed template, and send it to my boss. This way I wouldn’t forget, and could simply and automatically complete this task.</p>
+
+<p>After some Googling, I actually found the Wechaty tool. I tried writing a daily report bot that met my needs. Then I went further and wrote a tool to remind my girlfriend to eat, but because I wasn’t familiar with TypeScript, the bot I wrote couldn’t be stopped and became a message bomber, almost got blocked. <a href="https://mp.weixin.qq.com/s?__biz=MzU2NTQ1NTAxNQ==&amp;mid=2247483767&amp;idx=1&amp;sn=ca72401e514dded0c84b1220f887cdf4&amp;chksm=fcba30bfcbcdb9a98e8c455357b38fda66f7af203ce09101597f23ae6a5d1eb133c48c7f63d3&amp;token=656593281&amp;lang=zh_CN#rd">How can someone forget to eat? Write a WeChat bot to remind them</a></p>
+
+<p>Because of this article, I got to know Wechaty’s author Li Jiarui. Now her company is valued at many zeros.</p>
+
+<p>Since my main work language is Java and I still don’t know much about TypeScript, I temporarily put it aside.</p>
+
+<h2 id="java-version-of-wechaty">Java Version of Wechaty</h2>
+
+<p>After a certain version of Wechaty, it started supporting GRPC as a transport protocol. At this time, I felt the environment for multi-language development was relatively mature. So I started trying to write a Java version of Wechaty.</p>
+
+<h3 id="java-vs-kotlin">Java vs Kotlin</h3>
+
+<p>Wechaty is developed using TypeScript. During the porting process, I found that to implement the corresponding functionality of the TS version, Java required too much boilerplate code, making development inefficient. So I considered whether I could use Kotlin to build the Java-Wechaty SDK.</p>
+
+<p>Kotlin has the following characteristics that I felt were suitable for Wechaty development:</p>
+
+<ul>
+  <li>Java and Kotlin can interoperate seamlessly</li>
+  <li>In Kotlin, functions are first-class citizens and can exist independently of classes, which was quite advantageous when porting TS code.</li>
+  <li>Null safety - I had enough of checking step by step when writing Java before. Kotlin solves the null pointer safety problem at the language level. Writing with it effectively reduces mental burden.</li>
+  <li>Kotlin is pragmatic and more expressive. The syntax is closer to TS and GO, more concise compared to Java.</li>
+</ul>
+
+<h3 id="event-driven">Event-Driven</h3>
+
+<p>The TS version of Wechaty is developed based on Node.js, a typical event-driven architecture. In the early development stage, I naturally thought of using the <code class="language-plaintext highlighter-rouge">Vertx</code> framework to develop. But after developing for a while, I found that <code class="language-plaintext highlighter-rouge">Vertx</code> is actually an event-driven network framework. It mainly solves network-related problems and was too heavy for Java-Wechaty.</p>
+
+<p>So I removed the Vertx framework from the code and implemented a Kotlin version of the event-driven component by referencing the EventEmitter in Node.js.</p>
+
+<h3 id="overall-architecture">Overall Architecture</h3>
+
+<pre><code class="language-ascii">  +--------------------------+ +--------------------------+
+  |                          | |                          |
+  |   Wechaty (TypeScript)   | |     Wechaty (Java)       |
+  |                          | |                          |
+  +--------------------------+ +--------------------------+
+
+  +-------------------------------------------------------+
+  |                 Wechaty Puppet Service               |
+  |                                                       |
+  |                (wechaty-puppet-service)               |
+  +-------------------------------------------------------+
+
++---------------------  @chatie/grpc  ----------------------+
+
+  +-------------------------------------------------------+
+  |                Wechaty Puppet Abstract                |
+  |                                                       |
+  |                   (wechaty-puppet)                    |
+  +-------------------------------------------------------+
+
+  +--------------------------+ +--------------------------+
+  |      Pad Protocol        | |      Web Protocol        |
+  |                          | |                          |
+  | wechaty-puppet-padplus   | |(wechaty-puppet-puppeteer)|
+  +--------------------------+ +--------------------------+
+  +--------------------------+ +--------------------------+
+  |    Windows Protocol      | |       Mac Protocol       |
+  |                          | |                          |
+  | (wechaty-puppet-windows) | | (wechaty-puppet-macpro)  |
+  +--------------------------+ +--------------------------+
+</code></pre>
+
+<p>Through this diagram, you can see that Wechaty’s structural design is quite clear. Using the Puppet architecture, the actual communication protocol is isolated from the specific IM software. Based on this, different languages can be developed in multiple languages based on the Puppet protocol.</p>
+
+<h3 id="is-it-easy-to-use">Is It Easy to Use?</h3>
+
+<p>Thanks to Wechaty’s good early API design, you can develop your own chatbot with just a few lines of code:</p>
+
+<p>Demo 1:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Bot</span><span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="n">args</span><span class="o">[]){</span>
+    <span class="nc">Wechaty</span> <span class="n">bot</span> <span class="o">=</span> <span class="nc">Wechaty</span><span class="o">.</span><span class="na">instance</span><span class="o">()</span>
+      <span class="o">.</span><span class="na">onScan</span><span class="o">((</span><span class="n">qrcode</span><span class="o">,</span> <span class="n">statusScanStatus</span><span class="o">,</span> <span class="n">data</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">QrcodeUtils</span><span class="o">.</span><span class="na">getQr</span><span class="o">(</span><span class="n">qrcode</span><span class="o">)))</span>
+      <span class="o">.</span><span class="na">onLogin</span><span class="o">(</span><span class="n">user</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"User logined :"</span> <span class="o">+</span> <span class="n">user</span><span class="o">))</span>
+      <span class="o">.</span><span class="na">onMessage</span><span class="o">(</span><span class="n">message</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Message:"</span> <span class="o">+</span> <span class="n">message</span><span class="o">))</span>
+      <span class="o">.</span><span class="na">start</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>This Demo with 6 lines of code implements the bot’s scan login and message receiving functions. At the same time, Java-Wechaty now supports pluggable plugins. Using plugins, you can build bots more simply.</p>
+
+<p>Demo 2:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Bot</span><span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="n">args</span><span class="o">[]){</span>
+    <span class="nc">Wechaty</span> <span class="n">bot</span> <span class="o">=</span> <span class="nc">Wechaty</span><span class="o">.</span><span class="na">instance</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">use</span><span class="o">(</span>
+                <span class="nc">WechatyPlugins</span><span class="o">.</span><span class="na">ScanPlugin</span><span class="o">(),</span>
+                <span class="nc">WechatyPlugins</span><span class="o">.</span><span class="na">DingDongPlugin</span><span class="o">(</span><span class="kc">null</span><span class="o">)</span>
+            <span class="o">)</span>
+            <span class="o">.</span><span class="na">start</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>As plugins become more and more abundant, in the future, users may only need to combine various plugins to achieve their needs, striving for low-code development as much as possible.</p>
+
+<h3 id="what-stage-is-it-at-now">What Stage Is It at Now?</h3>
+
+<p>Currently, Java-Wechaty has completed the migration of TS version functionality.</p>
+
+<p>Basic chat, friend management, and group management functions have been implemented. The next development will focus on API polishing and stability improvement. We also look forward to your joining us to contribute code to Java-Wechaty.</p>
+
+<h3 id="what-can-you-gain-from-java-wechaty">What Can You Gain from Java-Wechaty?</h3>
+
+<ol>
+  <li>Truly participate in open source code contributions.</li>
+  <li>Publish your own Jar package in the Maven central repository.</li>
+  <li>Meet various partners, including angel investor @Huan who has been programming for 25 years.</li>
+  <li>While writing Java-Wechaty, constantly refer to partners’ TypeScript, Go, and Python code, examining the characteristics of various programming languages from a practical perspective. Explore the original intentions behind the design of various language features.</li>
+</ol>
+
+<h2 id="looking-forward-to-your-participation">Looking Forward to Your Participation</h2>
+
+<p>The Wechaty community has joined the “Open Source Software Supply Chain Lighting Plan - Summer 2020,” a summer activity for college students jointly organized by the <strong>Institute of Software Chinese Academy of Sciences</strong> and <strong>openEuler Community</strong>.</p>
+
+<p>Details: <a href="https://github.com/wechaty/summer-of-code">https://github.com/wechaty/summer-of-code</a></p>
+
+<p>Wechaty provides students with many interesting topics, such as:</p>
+
+<ol>
+  <li>Using AI technology to develop an AI meme battle bot</li>
+  <li>Using Wechaty’s plugin technology to develop a “daily sentence” plugin, a “flirting” bot that cares for your girl</li>
+  <li>There are also engineering-oriented code migration tasks that allow students to truly participate in open source projects</li>
+</ol>
+
+<p>Development languages include TypeScript, Go, Java, Kotlin, Python, and even Scala - there’s always one suitable for you.</p>
+
+<p>I hope that if you’ve read this far, you can forward this article to students studying computer science or interested in programming, looking forward to them joining.</p>
+
+<h2 id="epilogue">Epilogue</h2>
+
+<p>Java-Wechaty <a href="https://github.com/wechaty/java-wechaty">project address</a>. Join us and you can also write a WeChat bot with six lines of code.</p>
+
+<blockquote>
+  <p>Author: <a href="https://github.com/diaozxin007">@diaozxin007</a> The author of Java-wechaty
+Code: <a href="https://github.com/wechaty/java-wechaty">@Java-wechaty</a></p>
+</blockquote>
+
+<hr />
+
+<blockquote>
+  <p>本文也有<a href="/2020/06/15/java-wechaty-beta-release/">中文版本</a>。</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#java">java</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#featured">featured</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ecosystem">ecosystem</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/diaozxin007">
+                            <img class="rounded-circle" src="/assets/contributors/diaozxin007/avatar.webp" alt="犀利豆" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/diaozxin007">犀利豆</a> </h5>
+						北邮本科，University of Leicester EE 研究生，Java后端开发，目前就职阿里
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/06/15/daily-push-bot/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/daily-push-wechat-robot/fake-robot.webp">  资讯自动推送机器人（Daily push wechat robot）</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/06/15/java-wechaty-beta-release/"> Java Wechaty Beta Released: 终于有了 Java 可以用的微信机器人  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/java-wechaty/2020-06-15-java-wechaty.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

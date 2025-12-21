@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      基于wechaty的拼车小程序（1） | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>基于wechaty的拼车小程序（1） | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="基于wechaty的拼车小程序（1）" />
+<meta name="author" content="jellyzhang" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="产品构想" />
+<meta property="og:description" content="产品构想" />
+<link rel="canonical" href="https://wechaty.js.org/2021/01/15/carpool-bot-with-wechaty-1/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/01/15/carpool-bot-with-wechaty-1/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/01-carpool-bot-with-wechaty-1/4.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-15T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/01-carpool-bot-with-wechaty-1/4.webp" />
+<meta property="twitter:title" content="基于wechaty的拼车小程序（1）" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"jellyzhang"},"dateModified":"2021-01-15T00:00:00+00:00","datePublished":"2021-01-15T00:00:00+00:00","description":"产品构想","headline":"基于wechaty的拼车小程序（1）","image":"https://wechaty.js.org/assets/2021/01-carpool-bot-with-wechaty-1/4.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/01/15/carpool-bot-with-wechaty-1/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"jellyzhang"},"url":"https://wechaty.js.org/2021/01/15/carpool-bot-with-wechaty-1/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">基于wechaty的拼车小程序（1）</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/jellyzhang">
+                            <img class="rounded-circle" src="/assets/contributors/jellyzhang/avatar.webp" alt="JellyZhang" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/jellyzhang">JellyZhang</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jan 15, 2021 · <span class="reading-time">
+  
+  
+    4 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/01-carpool-bot-with-wechaty-1/4.webp" alt="基于wechaty的拼车小程序（1）">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<h2 id="产品构想">产品构想</h2>
+
+<p>我的初步想法是：</p>
+
+<ul>
+  <li>微信小程序为前端，用户可以在小程序上浏览其他用户发布的拼车信息（出发地、到达地、时间等等）</li>
+  <li>在用户通过小程序发起「加入拼车」的请求后，我们需要做的事情概括起来就是：将「发起者」与「参与者」联系到一起</li>
+  <li>实现「发起者」与「参与者」联系到一起有许多方式：
+    <ul>
+      <li>将发起拼车的用户的WechatId发送给新用户</li>
+      <li>将两个用户拉到一个群聊里</li>
+      <li>做一个留言系统或者IM系统让两个用户进行对话</li>
+    </ul>
+  </li>
+  <li>综合考虑来看，将多个用户拉到一个群聊里将是最简洁的方案
+    <ul>
+      <li>群聊即用即删，用户可以随时退出群聊，避免骚扰。</li>
+    </ul>
+  </li>
+  <li>而微信小程序因为微信本身的政策原因，是不允许「发布二维码」、「拉入群聊」等操作的，因此需要WechatBot来助一臂之力。
+    <ul>
+      <li>PS：目前市面现有的拼车小程序基于公众号来实现，需要用户关注指定公众号并发送暗号获得入群链接，同时他们以此盈利。</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="如何使用wechaty来构造bot">如何使用wechaty来构造bot</h3>
+
+<ul>
+  <li>
+    <p>对需求进行拆解，初步阶段的需求大概如下：</p>
+
+    <ul>
+      <li>当「发起人」发起一个拼车时，Bot能与「发起人」创建一个群聊，并将「拼车信息」与「群聊ID」进行持久化存储。</li>
+      <li>当「参与人」参与拼车时，Bot能将「参与人」根据「群聊ID」拉入同一个群聊。</li>
+    </ul>
+  </li>
+  <li>
+    <p>大致使用到的wechaty API如下：</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">contact.find</code>通过wechatId查找用户</li>
+      <li><code class="language-plaintext highlighter-rouge">room.create</code>创建群聊</li>
+      <li><code class="language-plaintext highlighter-rouge">room.invite</code>拉人进群</li>
+    </ul>
+  </li>
+  <li>
+    <p>Bot部分代码如下：</p>
+
+    <div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">public</span> <span class="k">async</span> <span class="nc">CreateRoomById</span><span class="p">(</span><span class="nx">id</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">topic</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Room</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">contact</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">bot</span><span class="p">.</span><span class="nx">Contact</span><span class="p">.</span><span class="nf">find</span><span class="p">({</span> <span class="na">id</span><span class="p">:</span> <span class="nx">id</span> <span class="p">});</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">contact</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="s2">`cant find user by id, id=</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nx">id</span> <span class="o">=</span> <span class="nx">helper_id</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">helper</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">bot</span><span class="p">.</span><span class="nx">Contact</span><span class="p">.</span><span class="nf">find</span><span class="p">({</span> <span class="na">id</span><span class="p">:</span> <span class="nx">id</span> <span class="p">});</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">helper</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="s2">`cant find user by id, id=</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kd">const</span> <span class="nx">contactList</span> <span class="o">=</span> <span class="p">[</span><span class="nx">contact</span><span class="p">,</span> <span class="nx">helper</span><span class="p">];</span>
+    <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">bot</span><span class="p">.</span><span class="nx">Room</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="nx">contactList</span><span class="p">,</span> <span class="nx">topic</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">createDingRoom() new ding room created: </span><span class="dl">"</span><span class="p">,</span> <span class="nx">room</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">room</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">public</span> <span class="k">async</span> <span class="nc">InviteToRoom</span><span class="p">(</span><span class="nx">userId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">roomId</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">contact</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">bot</span><span class="p">.</span><span class="nx">Contact</span><span class="p">.</span><span class="nf">find</span><span class="p">({</span> <span class="na">id</span><span class="p">:</span> <span class="nx">userId</span> <span class="p">});</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">contact</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="s2">`cant find user by id, id=</span><span class="p">${</span><span class="nx">userId</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">bot</span><span class="p">.</span><span class="nx">Room</span><span class="p">.</span><span class="nf">find</span><span class="p">({</span> <span class="na">id</span><span class="p">:</span> <span class="nx">roomId</span> <span class="p">});</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">room</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="s2">`cant find room by id, id=</span><span class="p">${</span><span class="nx">roomId</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="nx">contact</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>使用express框架来搭建简易web服务器，对外提供借口</p>
+
+    <div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">app</span><span class="p">:</span> <span class="nx">express</span><span class="p">.</span><span class="nx">Application</span> <span class="o">=</span> <span class="nf">express</span><span class="p">();</span>
+
+<span class="c1">// create room by userId</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">/room/create</span><span class="dl">"</span><span class="p">,</span> <span class="k">async </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="na">id</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">id</span> <span class="kd">as </span><span class="kr">string</span><span class="p">;</span>
+  <span class="kd">let</span> <span class="na">topic</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">topic</span> <span class="kd">as </span><span class="kr">string</span><span class="p">;</span>
+  <span class="kd">let</span> <span class="na">resp</span><span class="p">:</span> <span class="kr">any</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nc">CreateRoomById</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">topic</span><span class="p">);</span>
+    <span class="nx">resp</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">room</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Error</span><span class="dl">"</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="k">new</span> <span class="nc">Resp</span><span class="p">(</span><span class="nx">ERROR_CODE</span><span class="p">.</span><span class="nx">Success</span><span class="p">,</span> <span class="nx">ERROR_MSG</span><span class="p">.</span><span class="nx">Success</span><span class="p">,</span> <span class="nx">resp</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="c1">// invite someone to a room</span>
+<span class="nx">app</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">/room/invite</span><span class="dl">"</span><span class="p">,</span> <span class="k">async </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="na">userId</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">userId</span> <span class="kd">as </span><span class="kr">string</span><span class="p">;</span>
+  <span class="kd">let</span> <span class="na">roomId</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">roomId</span> <span class="kd">as </span><span class="kr">string</span><span class="p">;</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nc">InviteToRoom</span><span class="p">(</span><span class="nx">userId</span><span class="p">,</span> <span class="nx">roomId</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Error</span><span class="dl">"</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="k">new</span> <span class="nc">Resp</span><span class="p">(</span><span class="nx">ERROR_CODE</span><span class="p">.</span><span class="nx">Success</span><span class="p">,</span> <span class="nx">ERROR_MSG</span><span class="p">.</span><span class="nx">Success</span><span class="p">,</span> <span class="kc">null</span><span class="p">));</span>
+<span class="p">});</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="后端服务">后端服务</h3>
+
+<p>另外需要一个后端服务，主要支持以下功能：</p>
+
+<ol>
+  <li>接受前端（小程序端）发送的用户请求。</li>
+  <li>将Bot处理好的「拼车信息」、「群聊ID」绑定在一起，存储到数据库里。</li>
+  <li>向前端（小程序端）返回全部的拼车信息，供用户选择。</li>
+  <li>将用户填写的wechatId与小程序的openId进行绑定，存储到数据库，使用户不必每次都填写。</li>
+</ol>
+
+<h3 id="开发截图">开发截图</h3>
+
+<ul>
+  <li>
+    <p>小程序前端开发尚未完成，比较粗糙。</p>
+  </li>
+  <li>
+    <p>用户填写WechatId的界面。（因小程序不提供用户wechatId，需要用户手动填写）</p>
+
+    <p><img src="/assets/2021/01-carpool-bot-with-wechaty-1/2.webp" alt="Pic-1" /></p>
+  </li>
+  <li>
+    <p>用户发布拼车与加入拼车的界面：</p>
+
+    <p><img src="/assets/2021/01-carpool-bot-with-wechaty-1/1.webp" alt="Pic-1" /></p>
+  </li>
+  <li>
+    <p>用户进行「加入群聊」后，Bot将用户拉入群聊（bot视角）：</p>
+
+    <p><img src="/assets/2021/01-carpool-bot-with-wechaty-1/3.webp" alt="Pic-1" /></p>
+  </li>
+</ul>
+
+<h3 id="项目相关">项目相关</h3>
+
+<ul>
+  <li>
+    <p>项目代码文件放在：<a href="https://github.com/JellyZhang/rw-helper-back/tree/master/wechat-bot">github</a></p>
+  </li>
+  <li>
+    <p>后续的TODO：</p>
+
+    <ul>
+      <li>
+        <p>完善小程序前端。</p>
+
+        <ul>
+          <li>支持进度条显示「当前时间」距离「结束拼车时间」的长短</li>
+        </ul>
+      </li>
+      <li>
+        <p>拼车信息支持显示「人数」与「总人数」</p>
+      </li>
+      <li>
+        <p>添加Bot在群内可供用户进行交互的操作</p>
+
+        <ul>
+          <li>/close  结束拼车</li>
+          <li>/update  刷新群聊人数</li>
+          <li>……etc</li>
+        </ul>
+      </li>
+      <li>
+        <p>支持当用户发起「加入」时却未添加Bot未好友时，Bot能主动发起「好友请求」</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>作者: <a href="https://github.com/jellyZhang">Jelly</a>
+Code: <a href="https://github.com/JellyZhang/rw-helper-back">Github</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#nodejs">nodejs</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#code">code</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#travel">travel</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/jellyzhang">
+                            <img class="rounded-circle" src="/assets/contributors/jellyzhang/avatar.webp" alt="JellyZhang" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/jellyzhang">JellyZhang</a> </h5>
+						无聊写写代码
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/01/14/wechaty-puppet-service/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/01-wechaty-puppet-service/5-puppets.webp">  Introducing Wechaty Puppet Service (Providers)</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/01/19/wechaty-api-restful/"> Wechaty restful api  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/01-wechaty-api-restful/luyomo.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Google Season of Docs 2021 Team Proposal: How-to Guides | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Google Season of Docs 2021 Team Proposal: How-to Guides | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Google Season of Docs 2021 Team Proposal: How-to Guides" />
+<meta name="author" content="abhishek" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This is the project proposal for Wechaty How-to-guide documentation on which we will be working as a part of Google Season of Docs 2021. We have proposed our timeline so as to complete this work during a span of 09 weeks." />
+<meta property="og:description" content="This is the project proposal for Wechaty How-to-guide documentation on which we will be working as a part of Google Season of Docs 2021. We have proposed our timeline so as to complete this work during a span of 09 weeks." />
+<link rel="canonical" href="https://wechaty.js.org/2021/05/12/gsod-2021-how-to-guide-team-proposal/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/05/12/gsod-2021-how-to-guide-team-proposal/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/05-gsod-2021-how-to-guide-team-proposal/gsod.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-12T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/05-gsod-2021-how-to-guide-team-proposal/gsod.webp" />
+<meta property="twitter:title" content="Google Season of Docs 2021 Team Proposal: How-to Guides" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"abhishek"},"dateModified":"2021-05-12T00:00:00+00:00","datePublished":"2021-05-12T00:00:00+00:00","description":"This is the project proposal for Wechaty How-to-guide documentation on which we will be working as a part of Google Season of Docs 2021. We have proposed our timeline so as to complete this work during a span of 09 weeks.","headline":"Google Season of Docs 2021 Team Proposal: How-to Guides","image":"https://wechaty.js.org/assets/2021/05-gsod-2021-how-to-guide-team-proposal/gsod.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/05/12/gsod-2021-how-to-guide-team-proposal/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"abhishek"},"url":"https://wechaty.js.org/2021/05/12/gsod-2021-how-to-guide-team-proposal/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#gsod">gsod</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Google Season of Docs 2021 Team Proposal: How-to Guides</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/abhishek">
+                            <img class="rounded-circle" src="/assets/contributors/abhishek/avatar.webp" alt="Abhishek Jaiswal" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/abhishek">Abhishek Jaiswal</a> <span><a target="_blank" href="https://twitter.com/abhishek__iiit" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">May 12, 2021 · <span class="reading-time">
+  
+  
+    8 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/05-gsod-2021-how-to-guide-team-proposal/gsod.webp" alt="Google Season of Docs 2021 Team Proposal: How-to Guides">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>This is the project proposal for <strong>Wechaty How-to-guide</strong> documentation on which we will be working as a part of Google Season of Docs 2021. We have proposed our timeline so as to complete this work during a span of <strong>09 weeks</strong>.</p>
+
+<h2 id="team-members">Team members</h2>
+
+<h3 id="vasvi-sood-email-contactvasvisoodgmailcom">Vasvi Sood (email: <code class="language-plaintext highlighter-rouge">contactvasvisood@gmail.com</code>)</h3>
+
+<p>I am a sophomore at NIT, Hamirpur. I am a Tech enthusiast and a story writer. For me combining technology with my writing skills  is a natural match. I am passionate about blockchain technology. I am also into competitive programming these days.</p>
+
+<p>Github Handle: <a href="https://github.com/vasvi-sood">https://github.com/vasvi-sood</a>&lt;/br&gt;
+Medium: <a href="https://vasvisood1.medium.com/">https://vasvisood1.medium.com/</a></p>
+
+<h3 id="abhishek-jaiswal-email-abhishekiiitbbsrgmailcom">Abhishek Jaiswal (email: <code class="language-plaintext highlighter-rouge">abhishek.iiitbbsr@gmail.com</code>)</h3>
+
+<p>Myself Abhishek Jaiswal,a CSE sophomore UG student currently pursuing my B.Tech from IIIT Bhubaneswar.It’s now been more than 8 month, I started writing technical blogs,tutorials,documentation and reviews.I have published many technical with medium and Analytics Vidhya, Devtutorials and Hashnode. I want to learn, build, grow my network, and want to transform open innovation projects into powerful real-world services.</p>
+
+<p>Github Handle: <a href="https://github.com/abhishek-iiit">https://github.com/abhishek-iiit</a>&lt;/br&gt;
+Medium: <a href="https://abhishek-iiit.medium.com/">https://abhishek-iiit.medium.com/</a>&lt;/br&gt;
+Hashnode: <a href="https://abhishek-iiit.hashnode.dev/">https://abhishek-iiit.hashnode.dev/</a></p>
+
+<h2 id="proposal-video-presentation">Proposal Video Presentation</h2>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/tlOc-ZllV3c" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h2 id="abstract">Abstract</h2>
+
+<p>How to Guide is important because it guides us through the steps involved in addressing key problems and use-cases. They are more advanced than tutorials and assume knowledge of how the product works. On an average 45 - 50% of developers refer to How to guide. It contains  instructions on how to use the program, its features and other inbuilt applications as well.</p>
+
+<h2 id="current-state">Current State</h2>
+
+<p>Currently, the introduction page is available on its <a href="https://wechaty.js.org/docs/howto/">official website</a>. It is obsolete, incomplete and misses information, and does not cover the example images of the steps involved that one needs to get when landing on the How to Guide section.</p>
+
+<h2 id="analysis">Analysis</h2>
+
+<p>Huan and we(Vasvi and Abhishek) had a conversation about the changes that are to be made with the current How-to-Guide section.He said that the community expects to improve and have a new overall structure of this section. The links he shared with us can be found <a href="https://wechaty.js.org/docs/howto/">here</a>.</p>
+
+<h2 id="why-is-your-proposed-user-documentation-an-improvement-over-the-current-one">Why is your proposed user documentation an improvement over the current one?</h2>
+
+<p>The proposed How to Guide page will be structured to improve and ensure efficiency, consistency, and peace of mind for any end user. It will contain all the information about how to use the bot and its associated images, including its details and some little explanations on how to use each feature of the Wechaty. It will be kept up to date and have notes to follow inorder to learn by doing.</p>
+
+<h2 id="proposed-changes">Proposed Changes</h2>
+
+<ul>
+  <li><strong>No overview section</strong>: It is theoretical and can get boring for the users to go through an entire page just containing an Overview.</li>
+  <li><strong>Add events to your bot</strong>: Explaining what an event is, emphasising how it can add more value to the bot functionality (adding various use cases as well)</li>
+  <li><strong>Add more functionality to your bot</strong> (All the  work that can be automated with the bot):</li>
+</ul>
+
+<ol>
+  <li><strong>Dealing with messages</strong>: Step by step guide on writing code for dealing with messages giving a short but clear example.</li>
+  <li><strong>Manage Contacts</strong>: Step by step guide on writing code for managing contacts giving a short but clear example.</li>
+  <li><strong>Manage Rooms</strong>: Define a room. Step by step guide on writing code for managing rooms giving a short but clear example.</li>
+  <li><strong>Send and Accept Friend Requests</strong>: Step by step guide on writing code for sending and accepting friend requests giving a short but clear example.</li>
+  <li><strong>Sending and Receiving files</strong>: Step by step guide on writing code for sending and receiving files(data) giving a short but clear example.</li>
+</ol>
+
+<ul>
+  <li><strong>Testing your bot</strong>: Step by step guide on writing code for testing the bot giving a short but clear example.Puppet Mocker &amp; Starter Template are included in this section.</li>
+  <li><strong>Deploying</strong>: A short introduction to Wechaty puppet. This should include a step by step guide to deploy the bot on various instant message systems:</li>
+</ul>
+
+<ol>
+  <li>Wechat</li>
+  <li>Whatsapp</li>
+  <li>TikTok</li>
+</ol>
+
+<ul>
+  <li>Deploy with Docker</li>
+  <li>Deploy with Heroku</li>
+  <li><strong>FAQ</strong>: Answer to all those questions that might hinder users from using its functionalities</li>
+</ul>
+
+<h2 id="project-goals">Project Goals</h2>
+
+<ul>
+  <li>Get the user familiar with Wechaty by this Guide</li>
+  <li>Build a step by step how-to guide, without emphasizing on abstract concepts</li>
+  <li>Include various use cases</li>
+  <li>Add numerous examples and images</li>
+  <li>Translate to English and add code snippets wherever necessary</li>
+  <li>Make sure that the how to guide page works all the time</li>
+  <li>Ensure the user sees results immediately by integrating it with webapp</li>
+  <li>Focus on concrete steps, not abstract concepts</li>
+</ul>
+
+<h2 id="timeline">Timeline</h2>
+
+<h3 id="week-1">Week 1</h3>
+
+<ul>
+  <li>This week we will concentrate on community  bonding and get familiar with the project with the help of mentors.</li>
+  <li>We will chalk out a blueprint for carrying out the complete project.</li>
+  <li>Add a README file to GitHub to help future contributors understand how to contribute to the How-to-guide page.</li>
+</ul>
+
+<h3 id="week-2">Week 2</h3>
+
+<ul>
+  <li>Install Wechaty: It will link to Wechaty’s starter github template and will have a step by step guide on cloning and running instructions.</li>
+  <li>Add the missing parts (TBW) to different programming languages.</li>
+  <li>Add Related Image to each section to make it more interactive and more engaging.</li>
+  <li>Verify working of the code in each programming language.</li>
+</ul>
+
+<h3 id="week-3">Week 3</h3>
+
+<ul>
+  <li>Add Events to your bot: Define what an event is. Provide code snippets along with a brief paragraph about when to use an event. Include code snippets and examples.</li>
+  <li>Add Related Image to the section to make it more interactive and more engaging.</li>
+  <li>Add the missing parts (TBW) to different programming languages.</li>
+  <li>Verify working of the code in each programming language.</li>
+</ul>
+
+<h3 id="week-4">Week 4</h3>
+
+<ul>
+  <li>Add more functionality to your bot:</li>
+</ul>
+
+<ol>
+  <li>Dealing with messages: Step by step guide on writing code for dealing with messages giving a short but clear example.</li>
+  <li>Manage Contacts: Step by step guide on writing code for managing contacts giving a short but clear example.</li>
+</ol>
+
+<ul>
+  <li>Add Related Image to each subsection to make it more interactive and more engaging.</li>
+  <li>Add the missing parts (TBW) to different programming languages.</li>
+  <li>Verify working of the code in each programming language</li>
+</ul>
+
+<h3 id="week-5">Week 5</h3>
+
+<ul>
+  <li>Add more functionality to your bot:</li>
+</ul>
+
+<ol>
+  <li>Manage Rooms: Define a room. Step by step guide on writing code for managing rooms giving a short but clear example.</li>
+  <li>Send and Accept Friend Requests: Step by step guide on writing code for sending and accepting friend requests giving a short but clear example.</li>
+</ol>
+
+<ul>
+  <li>Add Related Image to each subsection to make it more interactive and more engaging.</li>
+  <li>Add the missing parts (TBW) to different programming languages.</li>
+  <li>Verify working of the code in each programming language.</li>
+</ul>
+
+<h3 id="week-6">Week 6</h3>
+
+<ul>
+  <li>Add more functionality to your bot:</li>
+</ul>
+
+<ol>
+  <li>Sending and Receiving files : Step by step guide on writing code for sending and receiving files(data) giving a short but clear example.</li>
+  <li>Testing your bot: Step by step guide on writing code for testing the bot giving a short but clear example.Puppet Mocker &amp; Starter Template are included in this section.</li>
+</ol>
+
+<ul>
+  <li>Add Related Image to each subsection to make it more interactive and more engaging.</li>
+  <li>Add the missing parts (TBW) to different programming languages.</li>
+  <li>Verify working of the code in each programming language.</li>
+</ul>
+
+<h3 id="week-7">Week 7</h3>
+
+<ul>
+  <li>Deploying : A short introduction to Wechaty puppet. This should include a step by step guide to deploy the bot on various instant message systems:</li>
+</ul>
+
+<ol>
+  <li>Wechat</li>
+  <li>Whatsapp</li>
+  <li>TikTok</li>
+</ol>
+
+<ul>
+  <li>Deploy with Docker</li>
+  <li>Deploy with Heroku</li>
+  <li>Add Related Image to each subsection to make it more interactive and more engaging.</li>
+  <li>Add the missing parts (TBW) to different programming language</li>
+  <li>Verify working of the code to each programming language</li>
+</ul>
+
+<p>(Code for other IM systems also to be included if required)</p>
+
+<h3 id="week-8">Week 8</h3>
+
+<ul>
+  <li>FAQ : Answer to all those questions that might hinder users from using its functionalities.</li>
+  <li>Proofreading the existing tutorials.</li>
+  <li>Fixing typos and making minor changes to the documentation, if required.</li>
+  <li>Work on improving the existing topics if required.</li>
+</ul>
+
+<h3 id="week-9">Week 9</h3>
+
+<ul>
+  <li>Adding various images and screenshots,wherever possible.</li>
+  <li>Request the mentor feedback</li>
+  <li>Work on improvements suggested by the mentor.</li>
+  <li>Submit a project report for evaluation to the mentors</li>
+  <li>Write and submit a report of our experience as  participants’ in Season of Docs</li>
+</ul>
+
+<h2 id="team-goals">Team Goals</h2>
+
+<ul>
+  <li>Have a weekly open discussion about the project.</li>
+  <li>Make strategories/plan for the upcoming week together.</li>
+  <li>Examine each other’s work and help out each other.</li>
+</ul>
+
+<h2 id="proposed-budget">Proposed Budget</h2>
+
+<p>For the How-to-guide section, we have an overall budget of 1000 USD which we intend to divide equally.</p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#tutorials">tutorials</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#project">project</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#proposal">proposal</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#team-proposal">team-proposal</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#google">google</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#gsod">gsod</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#2021">2021</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#docs">docs</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/abhishek">
+                            <img class="rounded-circle" src="/assets/contributors/abhishek/avatar.webp" alt="Abhishek Jaiswal" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/abhishek">Abhishek Jaiswal</a> <span><a target="_blank" href="https://twitter.com/abhishek__iiit" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Love to contribute to open source projects
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/05/11/shraddhavp-soumi-combined-reference-proposal/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/05-shraddhavp-soumi-combined-reference-proposal/gsod_s.webp">  Google Season of Docs 2021 Team Proposal - References</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/05/12/gsod-2021-reconstruct-landing-page-team-proposal/"> Google Season of Docs 2021 Team Proposal: Reconstruct Wechaty landing page with value propositions  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/05-gsod-2021-reconstruct-landing-page-team-proposal/gsod-reconstruct-lp.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

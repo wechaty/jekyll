@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      如何从0到1搭建微信聊天机器人 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>如何从0到1搭建微信聊天机器人 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="如何从0到1搭建微信聊天机器人" />
+<meta name="author" content="lijiarui" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="作者: lijiarui" />
+<meta property="og:description" content="作者: lijiarui" />
+<link rel="canonical" href="https://wechaty.js.org/2020/04/09/how-to-build-a-chatbot-from-zero-to-one-on-wechaty/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/04/09/how-to-build-a-chatbot-from-zero-to-one-on-wechaty/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/04-how-to-build-a-chatbot-from-zero-to-one-on-wechaty-en/homepage.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-04-09T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/04-how-to-build-a-chatbot-from-zero-to-one-on-wechaty-en/homepage.webp" />
+<meta property="twitter:title" content="如何从0到1搭建微信聊天机器人" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"lijiarui"},"dateModified":"2020-04-09T00:00:00+00:00","datePublished":"2020-04-09T00:00:00+00:00","description":"作者: lijiarui","headline":"如何从0到1搭建微信聊天机器人","image":"https://wechaty.js.org/assets/2020/04-how-to-build-a-chatbot-from-zero-to-one-on-wechaty-en/homepage.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/04/09/how-to-build-a-chatbot-from-zero-to-one-on-wechaty/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"lijiarui"},"url":"https://wechaty.js.org/2020/04/09/how-to-build-a-chatbot-from-zero-to-one-on-wechaty/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#announcement">announcement</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">如何从0到1搭建微信聊天机器人</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/lijiarui">
+                            <img class="rounded-circle" src="/assets/contributors/lijiarui/avatar-new.webp" alt="Jiarui LI (李佳芮)" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/lijiarui">Jiarui LI (李佳芮)</a> <span><a target="_blank" href="https://weibo.com/u/2175505900" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Apr 09, 2020 · <span class="reading-time">
+  
+  
+    1 min read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/04-how-to-build-a-chatbot-from-zero-to-one-on-wechaty-en/homepage.webp" alt="如何从0到1搭建微信聊天机器人">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<blockquote>
+  <p>作者: <a href="https://github.com/lijiarui/">lijiarui</a></p>
+</blockquote>
+
+<h2 id="李佳芮">李佳芮</h2>
+
+<p>句子互动的创始人，微软的 AI MVP，GitHub开源项目的联合作者，搭建了一个覆盖全球的微信平台开发者社区 Wechaty ，在 github 上面有超过1万 star；出版书<a href="https://item.jd.com/12630213.html">《Chatbot从0到1》</a>,正在京东上架，欢迎大家阅读，本次分享里面会简单介绍书中的内容，如何从0到1搭建一个聊天机器人。</p>
+
+<h2 id="how-to-build-a-chatbot-from-zero-to-one-on-wechat---李佳芮jiarui-li">How to build a chatbot from zero to one on WeChat - 李佳芮(Jiarui Li)</h2>
+
+<ul>
+  <li><a href="https://youtu.be/Uqtx6UViEro?list=PL8hd9KDTdarDXf_Rxtr8meKhxtgcXMInh">0:00:00</a> 介绍会议议程</li>
+  <li><a href="https://youtu.be/Uqtx6UViEro?list=PL8hd9KDTdarDXf_Rxtr8meKhxtgcXMInh&amp;t=103">0:01:43</a> 李佳芮开始介绍如何从零到一搭建微信机器人</li>
+  <li><a href="https://youtu.be/Uqtx6UViEro?list=PL8hd9KDTdarDXf_Rxtr8meKhxtgcXMInh&amp;t=204">0:03:24</a> 对话系统趋势</li>
+  <li><a href="https://youtu.be/Uqtx6UViEro?list=PL8hd9KDTdarDXf_Rxtr8meKhxtgcXMInh&amp;t=597">0:09:57</a> 怎样从0到1搭建一个聊天机器人</li>
+  <li><a href="https://youtu.be/Uqtx6UViEro?list=PL8hd9KDTdarDXf_Rxtr8meKhxtgcXMInh&amp;t=2354">0:30:31</a> 如何实操搭建一个聊天机器人</li>
+</ul>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/Uqtx6UViEro?list=PL8hd9KDTdarDXf_Rxtr8meKhxtgcXMInh" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h3 id="对话系统的趋势">对话系统的趋势</h3>
+
+<p>人类一直在寻找更加便捷的人机交互方式，在80年代出现最简单的人机交互方式，如果要完成一个交互需要下载一个应用；后来出现了浏览器、网站等，发展到已经不需要在电脑上下载一个应用了；后来出现了手机，整个交互方式变成了以移动触摸为主的交互，大大提高了效率和便捷性；未来会有更多的交互方式，会变成我说一句话或者一个手势，机器就可以立即把这个任务完成。
+能够发现，我们要的需求一直没变，但是交互方式一直在发生变化，从最早以鼠标键盘为主的电脑，陆续变成移动触摸为主的手机等移动终端，再到未来以自然语言为主的chatbot聊天机器人，交互方式会变得越来越便捷，机器变得像人一样聪明是未来交互的趋势。
+<img src="/assets/2020/04-how-to-build-a-chatbot-from-zero-to-one-on-wechaty-en/changes.webp" alt="changes" />
+我们可以看到，原来的机型是超级计算机，体型巨大无比只有专家才能用到，而现在就算是三五岁的小孩子或是年迈老年人，不是很懂机器也可以使用。交互从没有智能到有智能，从无界面到有界面的变化。我们来对对话系统来做个类比，在过去的手机因为有了操作系统，变成了智能手机
+<img src="/assets/2020/04-how-to-build-a-chatbot-from-zero-to-one-on-wechaty-en/dialoguesystem.webp" alt="dialoguesystem" />
+到今天我们可以看到，所有的家居机器人客服，是因为有了对话系统，变成了智能家居、智能机器人、智能客服，对话系统将是人工智能时代的必要组件和产品，依赖对话系统为之赋予智能的能力，有了对话，他变成了智能的产品，
+<img src="/assets/2020/04-how-to-build-a-chatbot-from-zero-to-one-on-wechaty-en/robot.webp" alt="robot" />
+对话交互是一种新的UI，在过去网站会强制用户像机器人一样去思考问题，网站和APP的交互方式是完全按照产品经理或者是UI设计师的做法去做的，对话系统则是让机器像人一样去思考问题，拿app和人的对比，过去的app是需要下载的，并且app的会客成本和开发成本很高，每次迭代升级时要重新上架，都需要成本，bots的不一样，在IM里面时是不需要安装的，不需要非常高的网络带宽，每次执行只需要告诉我当前的任务，是零UI的，并且开发和设计的成本也不是很高，当然算法除外，下面会详细的介绍。
+<img src="/assets/2020/04-how-to-build-a-chatbot-from-zero-to-one-on-wechaty-en/classification.webp" alt="classification" />
+对话系统共分为三类:</p>
+
+<ul>
+  <li>
+    <p>任务型更多是明确的任务目标，并且需要做一个参数化，主要是为了完成一个任务而做的对话系统，为了完成一个需求，比如订票订餐等等任务。</p>
+  </li>
+  <li>
+    <p>问答型，同样也有任务目标，但是没有明确的参数化的请求，通常是一问一答，上下文匹配，用户提出一个问题，机器会在库里找一个相似的问题，把对应的答案推给用户，更多的时候是一个单人对话，而任务型更多的是一个多人对话，较复杂。</p>
+  </li>
+  <li>
+    <p>闲聊型，通常最早就是以微软的小冰、图灵机器人等等为代表，当用户不停和他聊天，聊天时间越长，说明这个机器人越好，与任务型相比对话型机器人是聊的越短说明这个机器人越好，越快解决问题越好，而闲聊型是聊的越久，说明对这个机器人越依赖，越喜欢他。</p>
+  </li>
+</ul>
+
+<h3 id="怎样从0到1搭建一个聊天机器人">怎样从0到1搭建一个聊天机器人</h3>
+
+<ul>
+  <li>在过去，我们公司一直在为企业做chatbot，也和很多企业聊过，他们以为搭建chatbot的方式一定是机器学习做的，这个需要掌握非常强的数学能力，概率论能力，也需要了解所有的相关算法，要有很强的软件能力，很强的工程能力，还要去读大量的论文，了解什么是神经元，最后从入门到放弃。
+这是很多人对chatbot的传统印象，认为chatbot就等于算法，等于黑科技，但其实不是这样的，我们完全可以站在巨头的肩膀上去做更多上层应用层的事情，其实有很多模型都是经过上百上千种算法工程师的建设，他们甚至已经做好了很多预设的模型，我们完全可以在他们的模型基础上做自己的应用。
+所以下面来讲解一下搭建chatbot的正确姿势。
+例如，我们可以用微软的Microsoft Bot Framework,它有非常多的组件可以直接来用，例如语音识别、语音转文字、文字转语音或者是在中间搭建对话系统等等。
+<img src="/assets/2020/04-how-to-build-a-chatbot-from-zero-to-one-on-wechaty-en/botframework.webp" alt="botframework" /></li>
+  <li>
+    <p>下面主要围绕微软的luis来讲怎样去搭建一个多轮的对话系统，我刚刚给大家介绍的chatbot从0到1，理论也是非常相似的，把搭建chatbot拆分成了8大生命周期，其实搭建一个chatbot和过去我们搭建一个网站或者app有很多相似的地方，但也有一些不一样的地方，某些东西我们是可以拿来借鉴直接使用的，有些东西也是chatbot独有的，如今我们不会再去说搭建一个应用技术，其实还有许多其他的产品设计，交互设计，以及后面的运营推广，这些都是属于网站或者app里面的，对于chatbot也是一样的，8大生命周期其中数据处理是指数据的收集以及对数据的标注，对话脚本撰写是指以对话的方式把整个任务脚本写出来，基于这些脚本进行后面的系统搭建；系统测评是为了证明这个bot已经符合上线的标准，包括对他的准确率，当各种数据标准达到了一定指标之后，就可以把它嵌入到不同的平台里面，比如像微信等即使工具里面，运营反馈是根据数据和上线的结果进行持续的迭代。
+<img src="/assets/2020/04-how-to-build-a-chatbot-from-zero-to-one-on-wechaty-en/lifecycles.webp" alt="lifecycles" /></p>
+  </li>
+  <li>
+    <p>需求分析
+需求分析就是过去去做网站的需求分析的方法，多了一些需要确定chatbot的边界，形象，搭建之前要告诉用户能做什么，如果你抬高了预期的话，bot不能满足用户的预期，他会觉得这个bot非常不智能，非常傻，所以在需求分析阶段，要分清bot哪些能做，哪些不能做。</p>
+  </li>
+  <li>
+    <p>流程设计
+在流程设计阶段，要明确哪些是能保证chatbot成功的，哪些是能影响chatbot成功的因素，并且把整个chatbot业务要素进行梳理，抽取些对话流程，绘制相关流程图，并把业务线的部分进行合并。</p>
+  </li>
+  <li>
+    <p>数据处理
+收集后如果想要系统更好的进行预处理，需要做一些数据的扩充，比如数据的处理和标注。</p>
+  </li>
+  <li>
+    <p>对话脚本撰写
+这一点是比较重要的，与以前搭建app不一样，因为是零UI，对话脚本很重要，怎么去引导用户去完成对话，有十条设计原则：简洁明了、对话语句要自然、区别新老用户、使用问候语和结束语、确认策略、随机策略、使用对话式标识、设计延迟话术、主动学习、持续跟踪上下文。简单介绍10条的是原则，控制对话流：首次互动要说清楚，能做哪些事，不能做哪些事，应该怎样做命令，都可以在首次互动时说清楚，持续的跟用户说一些内容，引导用户到正确的轨道上，包括一些中断，虽然做bot是零UI，但实际上它是有一个隐形的UI在的，在过去搭建app和网站的时候，我们有相关的设计导航，有相关的目录，其实在对话脚本的撰写里面也有隐形的存在，但是要设计好，在不同的时候召回出来，当用户要求进行步骤转换，其实都是需要脚本去进行的。</p>
+  </li>
+  <li>
+    <p>对话系统搭建
+用户说一句话之后，进入到理解模块，语音识别和语言理解，简单来说就是把人说的话翻译成机器能听懂的话，就把自然语言翻译成一些机器语言，到了对话管理模块，有两个小的模块，一个是对话状态追踪，一个是对话策略优化，主要可以理解为机器人的大脑，当它听到说的话，要决策下一步要做什么事，比如在数据库里查询，还是继续问问题直到收集到有用的信息，然后再去查询等，这个就是对话管理模块，可以理解为bot的大脑引导执行bot去做下一步的操作。产生模块，包括了自然语言生成和语音合成，就是把文本再翻译成语音再传出去，产生模块可以理解成机器人的嘴，当要说话的时候，要把机器的话翻译成人能理解的话，再传出去，完成整个的交互。整个过程概括下来就是机器说一句话，翻译成人能听懂的话，送到机器的大脑，机器的大脑再说一句话，翻译成人能懂的，完成一次交互，就是对话系统的搭建。</p>
+  </li>
+  <li>
+    <p>对话任务测评
+不同的bot有不同的测评方式，简单来说，任务型和问答型说得越短，轮次越少越好，而闲聊型则是轮次越多越好，代表越来越智能。</p>
+  </li>
+  <li>
+    <p>平台渠道集成
+<img src="/assets/2020/04-how-to-build-a-chatbot-from-zero-to-one-on-wechaty-en/integrate.webp" alt="integrate" />
+把bot集成到不同的IM里面，例如微信等。</p>
+  </li>
+  <li>运营反馈
+怎样把 chatbot 和微信做一个结合，最后的模块是运营反馈。与产品运营比较相关，对于对话异常的分析，可以举个例子，可以通过判断机器人说“我不知道这个问题”的回答的次数，选择在什么时候调用，大概率是这里面出错了，就需要把对话系统再次优化，就是整个的运营反馈。</li>
+</ul>
+
+<h3 id="如何实操搭建一个聊天机器人">如何实操搭建一个聊天机器人</h3>
+
+<p>首先介绍一下开源项目，wechaty
+<img src="/assets/2020/04-how-to-build-a-chatbot-from-zero-to-one-on-wechaty-en/wechaty.webp" alt="wechaty" />
+在GitHub上面已经有8k的star，是一个基于微信个人号的WeChat RPA框架，能够帮助你去搭建你的微信机器人，开发者遍布全球，美国欧洲澳洲，
+<img src="/assets/2020/04-how-to-build-a-chatbot-from-zero-to-one-on-wechaty-en/global.webp" alt="global" />
+最后一个模块，luis搭建实操搭建chatbot
+<a href="https://www.luis.ai">LUIS</a>是微软发布的面向开发者的自然语言语义理解模块开发服务。LUIS的使命是让非NLP专业的开发者能够轻松地创建和维护高质量的自然语言理解模型，并无缝对接到相关的智能应用当中。
+LUIS的开发流程更像是一个教学过程：开发者是老师，LUIS App是学生。老师通过不停地告知学生正确的语义解析结果来完成教学。一个好的教学过程是一个“训练+实践”的闭环：标注一定量的起始数据；训练得到语义理解模型；对模型进行必要的测试；发布模型并应用到真实用户场景；甄选应用日志中的语句；继续标注并更新模型。这个过程周而复始，通过不停地迭代开发，不停地改善理解模型，使其越来越接近人类的理解能力。
+<img src="/assets/2020/04-how-to-build-a-chatbot-from-zero-to-one-on-wechaty-en/luis.webp" alt="luis" />
+大厂开发出来的服务，我们使用的过程更像一个教学的过程，开发者是老师，luis是学生，老师不停告诉学生正确的结果，并不停教他来完成整个训练，老师会教他，什么是实体和意图，然后去模型训练，最后发布，持续的学习，系统会越来越智能，走到正向的反馈循环中去。</p>
+
+<h2 id="实操介绍">实操介绍</h2>
+
+<ul>
+  <li>任务1：发布LUIS版本</li>
+</ul>
+
+<p>点击LUIS的Publish获取APPID和KEY
+<img src="/assets/2020/04-how-to-build-a-chatbot-from-zero-to-one-on-wechaty-en/step1.webp" alt="step1" />
+发布成功后，可以看到绿色的成功提示，点击Refer to the list of endpoints切换到管理页面：
+<img src="/assets/2020/04-how-to-build-a-chatbot-from-zero-to-one-on-wechaty-en/step2.webp" alt="step2" />
+获取Authoring Key
+<img src="/assets/2020/04-how-to-build-a-chatbot-from-zero-to-one-on-wechaty-en/step3.webp" alt="step3" />
+点击 Application Information, 获取APP ID
+<img src="/assets/2020/04-how-to-build-a-chatbot-from-zero-to-one-on-wechaty-en/step4.webp" alt="step4" /></p>
+
+<ul>
+  <li>
+    <p>任务2 - 将LUIS RESTFUL API 接入wechaty
+安装官方的’luis-sdk’,并将获取的key 和 Application ID 填入：
+<img src="/assets/2020/04-how-to-build-a-chatbot-from-zero-to-one-on-wechaty-en/step01.webp" alt="step01" />
+根据已有的LUIS 配置写示例代码
+<img src="/assets/2020/04-how-to-build-a-chatbot-from-zero-to-one-on-wechaty-en/step02.webp" alt="step02" /></p>
+  </li>
+  <li>
+    <p>任务3：运行代码</p>
+  </li>
+</ul>
+
+<p>输入命令<a href="https://github.com/lijiarui/chatbot-zero-to-one">git clone</a>
+<img src="/assets/2020/04-how-to-build-a-chatbot-from-zero-to-one-on-wechaty-en/gitclone.webp" alt="gitclone" /></p>
+
+<ul>
+  <li>任务4：运行代码</li>
+</ul>
+
+<p>运行 npm run start
+<img src="/assets/2020/04-how-to-build-a-chatbot-from-zero-to-one-on-wechaty-en/run.webp" alt="run" />
+用户发送，即可得到测试回复
+<img src="/assets/2020/04-how-to-build-a-chatbot-from-zero-to-one-on-wechaty-en/sand.webp" alt="sand" /></p>
+
+<h3 id="welcome">Welcome</h3>
+
+<p>Bot Friday Club 报名方法
+<img src="/assets/2020/04-how-to-build-a-chatbot-from-zero-to-one-on-wechaty-en/welcome.webp" alt="welcome" />
+<img src="/assets/2020/04-how-to-build-a-chatbot-from-zero-to-one-on-wechaty-en/photo.webp" alt="photo" /></p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#chatbot">chatbot</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#globalai">globalai</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#talk">talk</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#meetup">meetup</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#featured">featured</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/lijiarui">
+                            <img class="rounded-circle" src="/assets/contributors/lijiarui/avatar-new.webp" alt="Jiarui LI (李佳芮)" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/lijiarui">Jiarui LI (李佳芮)</a> <span><a target="_blank" href="https://weibo.com/u/2175505900" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Co-Creator of Wechaty; 句子互动创始人 & CEO，微软人工智能最具价值专家 (AI MVP)
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/04/09/how-to-build-a-chatbot-from-zero-to-one-on-wechaty-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/04-how-to-build-a-chatbot-from-zero-to-one-on-wechaty-en/homepage.webp">  How to Build a WeChat Chatbot from 0 to 1</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/04/10/chatbot-on-uniqueway-en/"> Application of Chatbot in the Customized Tourism Industry  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/04-chatbot-on-uniqueway-en/teaser.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

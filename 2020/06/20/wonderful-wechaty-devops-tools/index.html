@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Wonderful Wechaty devops toolset | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Wonderful Wechaty devops toolset | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Wonderful Wechaty devops toolset" />
+<meta name="author" content="windmemory" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Wechaty 的代码质量，是大家公认的比较高的水准。而在整个项目的搭建和发展的过程中，DevOps 工具是 Wechaty 代码质量的重要保证，这里，就和大家一起聊聊关于 Wechaty DevOps Toolset。" />
+<meta property="og:description" content="Wechaty 的代码质量，是大家公认的比较高的水准。而在整个项目的搭建和发展的过程中，DevOps 工具是 Wechaty 代码质量的重要保证，这里，就和大家一起聊聊关于 Wechaty DevOps Toolset。" />
+<link rel="canonical" href="https://wechaty.js.org/2020/06/20/wonderful-wechaty-devops-tools/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/06/20/wonderful-wechaty-devops-tools/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/wonderful-wechaty-devops-tools/teaser-image.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-06-20T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/wonderful-wechaty-devops-tools/teaser-image.webp" />
+<meta property="twitter:title" content="Wonderful Wechaty devops toolset" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"windmemory"},"dateModified":"2020-06-20T00:00:00+00:00","datePublished":"2020-06-20T00:00:00+00:00","description":"Wechaty 的代码质量，是大家公认的比较高的水准。而在整个项目的搭建和发展的过程中，DevOps 工具是 Wechaty 代码质量的重要保证，这里，就和大家一起聊聊关于 Wechaty DevOps Toolset。","headline":"Wonderful Wechaty devops toolset","image":"https://wechaty.js.org/assets/2020/wonderful-wechaty-devops-tools/teaser-image.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/06/20/wonderful-wechaty-devops-tools/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"windmemory"},"url":"https://wechaty.js.org/2020/06/20/wonderful-wechaty-devops-tools/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#announcement">announcement</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Wonderful Wechaty devops toolset</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/windmemory">
+                            <img class="rounded-circle" src="/assets/contributors/windmemory/avatar.webp" alt="Yuan GAO (高原)" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/windmemory">Yuan GAO (高原)</a> <span><a target="_blank" href="https://www.weibo.com/u/2166731327" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jun 20, 2020 · <span class="reading-time">
+  
+  
+    3 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/wonderful-wechaty-devops-tools/teaser-image.webp" alt="Wonderful Wechaty devops toolset">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>Wechaty 的代码质量，是大家公认的比较高的水准。而在整个项目的搭建和发展的过程中，DevOps 工具是 Wechaty 代码质量的重要保证，这里，就和大家一起聊聊关于 Wechaty DevOps Toolset。</p>
+
+<h2 id="wechaty-devops-family">Wechaty DevOps family</h2>
+
+<p>这里主要给大家介绍以下几个重要的 Wechaty DevOps 工具：</p>
+
+<ul>
+  <li><a href="#@chatiesemver">@chatie/semver</a> NPM 版本检查工具</li>
+  <li><a href="#@chatiegit-scripts">@chatie/git-scripts</a> Git 脚本合集</li>
+  <li><a href="#@chatietsconfig">@chatie/tsconfig</a> 中心化 tsconfig 配置</li>
+  <li><a href="#@chatieeslint-config">@chatie/eslint-config</a> 中心化 eslint 配置</li>
+</ul>
+
+<h2 id="chatiesemver">@chatie/semver</h2>
+
+<p><code class="language-plaintext highlighter-rouge">@chatie/semver</code> 是一个很简单的 NPM 包，主要负责帮助检查当前包的版本是属于开发版，还是稳定版，并且提供了 typescript 和 shell CLI 两种使用方式。这个包通常是作为辅助包，供其他的脚本来调用的。</p>
+
+<p><img src="/assets/2020/wonderful-wechaty-devops-tools/version-intro.webp" alt="VersionIntro" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">Wechaty</code> 的版本控制遵循了 <code class="language-plaintext highlighter-rouge">Linux Kernel Version Numbering</code>，如上图所示，<code class="language-plaintext highlighter-rouge">Wechaty</code> 使用 minor version 的奇偶来区分当前版本是开发版还是稳定版。</p>
+
+<ul>
+  <li>奇数版 -&gt; 开发版 -&gt; @next</li>
+  <li>偶数版 -&gt; 稳定版 -&gt; @latest</li>
+</ul>
+
+<h3 id="example">Example</h3>
+
+<p><code class="language-plaintext highlighter-rouge">package-publish-config-tag.sh</code> in <code class="language-plaintext highlighter-rouge">@chatie/git-scripts</code></p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/usr/bin/env bash</span>
+<span class="nb">set</span> <span class="nt">-e</span>
+
+<span class="nv">VERSION</span><span class="o">=</span><span class="si">$(</span>npx pkg-jq <span class="nt">-r</span> .version<span class="si">)</span>
+
+<span class="k">if </span>npx <span class="nt">--package</span> @chatie/semver semver-is-prod <span class="s2">"</span><span class="nv">$VERSION</span><span class="s2">"</span><span class="p">;</span> <span class="k">then
+  </span>npx pkg-jq <span class="nt">-i</span> <span class="s1">'.publishConfig.tag="latest"'</span>
+  <span class="nb">echo</span> <span class="s2">"production release: publicConfig.tag set to latest."</span>
+<span class="k">else
+  </span>npx pkg-jq <span class="nt">-i</span> <span class="s1">'.publishConfig.tag="next"'</span>
+  <span class="nb">echo</span> <span class="s1">'development release: publicConfig.tag set to next.'</span>
+<span class="k">fi</span>
+</code></pre></div></div>
+
+<p>可以看到，上面的 shell 脚本通过调用 <code class="language-plaintext highlighter-rouge">@chatie/semver</code> 来判断当前的版本，然后根据返回结果给开发版打上 <code class="language-plaintext highlighter-rouge">@next</code> 的 tag，给稳定版打上 <code class="language-plaintext highlighter-rouge">@latest</code> 的 tag。</p>
+
+<p>更多请参考 <a href="https://github.com/chatie/semver">@chatie/semver repo</a></p>
+
+<h2 id="chatiegit-scripts">@chatie/git-scripts</h2>
+
+<p><code class="language-plaintext highlighter-rouge">@chatie/git-scripts</code> 是一些 <code class="language-plaintext highlighter-rouge">git</code> 脚本的集合，里面主要包括下面几个非常常用的脚本：</p>
+
+<ul>
+  <li><a href="#npm-pack-testingsh">npm-pack-testing.sh</a> NPM 打包测试脚本</li>
+  <li><a href="#package-publish-config-tagsh">package-publish-config-tag.sh</a> NPM 自动 tag 脚本</li>
+  <li><a href="#pre-pushsh">pre-push.sh</a> Git push 自动检查/升版脚本</li>
+</ul>
+
+<h3 id="npm-pack-testingsh">npm-pack-testing.sh</h3>
+
+<p>这个脚本主要做了以下几件事情：</p>
+
+<blockquote>
+  <ol>
+    <li>将代码打包成npm包格式</li>
+    <li>创建临时文件夹</li>
+    <li>以npm install的方式安装刚才的包</li>
+    <li>执行smoke-test来验证打包正确性</li>
+  </ol>
+</blockquote>
+
+<p>通过这样四步，可以完整的模拟一个 NPM 包在打包后，依次经历安装，引用，运行的过程，并且在 NPM 发包前保证这个包被发出去了之后，不会出现无法安装，安装后无法运行的情况，而且通过自动化的脚本，也省去了开发过程中对打包情况的测试，大大提升了开发效率，还保证了 NPM 包的健壮性。</p>
+
+<h3 id="package-publish-config-tagsh">package-publish-config-tag.sh</h3>
+
+<p>这个包就是上面已经给出的例子，主要通过执行脚本，调用 <code class="language-plaintext highlighter-rouge">@chatie/semver</code> 来针对开发版和稳定版打上不同的 tag，在此不赘述。</p>
+
+<h3 id="pre-pushsh">pre-push.sh</h3>
+
+<p>这个包主要做了以下三件事情：</p>
+
+<blockquote>
+  <ol>
+    <li>执行 npm lint 检查代码格式</li>
+    <li>如果格式无误，则升级npm版本</li>
+    <li>执行push</li>
+  </ol>
+</blockquote>
+
+<p>但是接触过这个脚本的同学，可能曾经看到过类似这样的画面：</p>
+
+<p><img src="/assets/2020/wonderful-wechaty-devops-tools/git-push-error.webp" alt="GitPushError" /></p>
+
+<p>这个情况看起来就非常诡异</p>
+
+<p><img src="/assets/2020/wonderful-wechaty-devops-tools/question-face.webp" alt="QuestionFace" /></p>
+
+<p>上面是一个大大的 Success Push，但是下面却有一行 error？</p>
+
+<p>为了研究明白为什么会发生这个事情，我研究了一下这个脚本主要用到的功能 <code class="language-plaintext highlighter-rouge">Git Hooks</code> 到底是怎么回事。</p>
+
+<h3 id="git-hooks">Git Hooks</h3>
+
+<p><code class="language-plaintext highlighter-rouge">Git Hooks</code> 的主要作用是，在 <code class="language-plaintext highlighter-rouge">push</code> 操作前，给用户一个 hook，可以自由执行自己觉得有用的检查，来保证 <code class="language-plaintext highlighter-rouge">push</code> 的代码是好的。所以 <code class="language-plaintext highlighter-rouge">Git Hooks</code> 会根据用户指定的那个脚本的返回值来判断用户是否希望 <code class="language-plaintext highlighter-rouge">git</code> 把这个代码 <code class="language-plaintext highlighter-rouge">push</code> 上去。如果返回的结果是 0，则说明验证通过，如果是非 0 的返回，则会被认为是脚本执行失败了，然后 <code class="language-plaintext highlighter-rouge">git</code> 会终止后面的 <code class="language-plaintext highlighter-rouge">push</code> 操作。</p>
+
+<p>另外，<code class="language-plaintext highlighter-rouge">Git Hooks</code> 在设计之初，应该是为了防止用户在做代码检查的时候，修改一些 <code class="language-plaintext highlighter-rouge">git</code> 相关的内容，比如 <code class="language-plaintext highlighter-rouge">commit</code> 信息，具体 <code class="language-plaintext highlighter-rouge">push</code> 的代码等等，所以 <code class="language-plaintext highlighter-rouge">Git Hooks</code> 会在执行用户指定的脚本前，锁定当前需要被 <code class="language-plaintext highlighter-rouge">push</code> 的所有内容，等待用户的检查结束后，直接将之前锁定的内容推到远程，这样可以保证用户无论做什么检查，都不影响 <code class="language-plaintext highlighter-rouge">push</code> 的正确执行。也正是这个原因，导致了我们上面看到的那个奇怪的现象，具体如下图：</p>
+
+<p><img src="/assets/2020/wonderful-wechaty-devops-tools/git-hooks-explain.webp" alt="GitHooksExplain" /></p>
+
+<p>可以看到，在当前的 <code class="language-plaintext highlighter-rouge">pre-push.sh</code> 脚本中会升级当前包的版本，版本被升级到了 <code class="language-plaintext highlighter-rouge">v1.0.1</code>，但是这个变化其实对于 <code class="language-plaintext highlighter-rouge">git</code> 来说，是不可见的。所以如果想要保留这个版本的变更，就只能在运行的脚本内直接执行 <code class="language-plaintext highlighter-rouge">git push</code> 来把当前的新版本推到远端。那如果这样做了之后，就不能再以 code 0 作为脚本的退出了，否则 <code class="language-plaintext highlighter-rouge">git</code> 会自动再次执行之前一直在等待着的 <code class="language-plaintext highlighter-rouge">git push</code> 并且尝试把 <code class="language-plaintext highlighter-rouge">v1.0.0</code> 推到远端，然后得到一个 conflict 的报错。所以在这里，<code class="language-plaintext highlighter-rouge">pre-push.sh</code> 脚本就以 code <code class="language-plaintext highlighter-rouge">127</code> 退出，终止后续 <code class="language-plaintext highlighter-rouge">git</code> 自带的 <code class="language-plaintext highlighter-rouge">push</code> 操作。</p>
+
+<h3 id="禁用">禁用</h3>
+
+<p>有时候，可能我们就需要推一些无法通过 linting 的代码到远端分支，比如说我们写了一半的代码，想换一台电脑来调试，需要通过 Github 作为代码中转，把代码搞到另外的环境里。那么其实 <code class="language-plaintext highlighter-rouge">pre-push.sh</code> 脚本是提供了一个方式来禁用它的，如下：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">NO_HOOK</span><span class="o">=</span>1 git push
+</code></pre></div></div>
+
+<p>以这样的方式执行就可以跳过 <code class="language-plaintext highlighter-rouge">pre-push.sh</code> 脚本里面的所有检查，直接执行 <code class="language-plaintext highlighter-rouge">git push</code> 操作。</p>
+
+<h3 id="限制">限制</h3>
+
+<p>也正是因为上面所述的原因，使用这个 <code class="language-plaintext highlighter-rouge">pre-push.sh</code> 脚本是有一些限制的，最明显的一个限制就是无法使用稍微复杂的 <code class="language-plaintext highlighter-rouge">git push</code> 指令，例如：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push <span class="nt">-u</span> origin very-sexy-code-change
+</code></pre></div></div>
+
+<p>所以，如果需要执行类似的复杂指令，只能采取一些 workaround。比如说用上面提到的 <code class="language-plaintext highlighter-rouge">NO_HOOK=1</code> 的方式先推送一次，把远程的分支创建出来，然后后续再使用 <code class="language-plaintext highlighter-rouge">git push</code> 来推代码。</p>
+
+<h2 id="chatietsconfig">@chatie/tsconfig</h2>
+
+<p>这个包是为了集中管理所有 <code class="language-plaintext highlighter-rouge">Wechaty</code> 项目的 <code class="language-plaintext highlighter-rouge">tsconfig.json</code> 文件而创建的。这个包会提供一个基础的 <code class="language-plaintext highlighter-rouge">tsconfig</code> 配置，方便引入。并且，这个包还包含了一个安装程序，如果安装这个包的时候，项目目录里面还没有 <code class="language-plaintext highlighter-rouge">tsconfig.json</code> 文件，<code class="language-plaintext highlighter-rouge">@chatie/tsconfig</code> 会自动创建一个 <code class="language-plaintext highlighter-rouge">tsconfig.json</code> 文件在根目录下，并且自动引用 <code class="language-plaintext highlighter-rouge">@chatie/tsconfig</code> 的配置。</p>
+
+<h2 id="chatieeslint-config">@chatie/eslint-config</h2>
+
+<p>这个包是负责管理所有 <code class="language-plaintext highlighter-rouge">Wechaty</code> 项目的 <code class="language-plaintext highlighter-rouge">eslintrc.js</code> 文件。因为 <code class="language-plaintext highlighter-rouge">tslint</code> 项目已经 <a href="https://github.com/palantir/tslint/issues/4534">deprecated</a>，所以 <code class="language-plaintext highlighter-rouge">Wechaty</code> 所有项目都使用 <code class="language-plaintext highlighter-rouge">eslint</code> 管理。</p>
+
+<p>这个包主要提供了一个统一的 <code class="language-plaintext highlighter-rouge">eslint</code> 配置，并且以良好的 <code class="language-plaintext highlighter-rouge">TDD</code> 思想来搭建项目。</p>
+
+<h2 id="总结">总结</h2>
+
+<p><code class="language-plaintext highlighter-rouge">Wechaty</code> 的 devops 工具是由很多小的组件组成，每个组件都只负责一小部分功能，但是每个小组件都经过了反复的迭代更新，为 <code class="language-plaintext highlighter-rouge">Wechaty</code> 的所有项目的代码质量保驾护航。希望大家能通过这篇博客了解到以上几项工具的作用和使用。</p>
+
+<p><code class="language-plaintext highlighter-rouge">Wechaty</code> 的 devops 还有另外的一个重要组成部分，那就是 <code class="language-plaintext highlighter-rouge">Github Actions</code>，这篇博客由于时间原因，没有时间准备完整的内容，后续会持续更新更多关于 <code class="language-plaintext highlighter-rouge">Wechaty DevOps</code> 相关的内容，也欢迎大家一起来了解学习 <code class="language-plaintext highlighter-rouge">Wechaty DevOps</code>。</p>
+
+<blockquote>
+  <p>Author: <a href="https://github.com/windmemory">@windmemory</a> Wechaty contributor, author of <a href="https://github.com/wechaty/wechaty-puppet-padchat">wechaty-puppet-padchat</a>, <a href="https://github.com/wechaty/wechaty-puppet-padpro">wechaty-puppet-padpro</a>, <a href="https://github.com/wechaty/wechaty-puppet-padplus">wechaty-puppet-padplus</a>. CTO of <a href="https://pre-angel.com/portfolios/juzibot/">Juzi.Bot</a>
+Code: <a href="https://github.com/chatie/semver">@chatie/semver</a>, <a href="https://github.com/chatie/git-scripts">@chatie/git-scripts</a>, <a href="https://github.com/chatie/tsconfig">@chatie/tsconfig</a>, <a href="https://github.com/chatie/eslint-config">@chatie/eslint-config</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#devops">devops</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#tool">tool</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#talk">talk</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#featured">featured</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/windmemory">
+                            <img class="rounded-circle" src="/assets/contributors/windmemory/avatar.webp" alt="Yuan GAO (高原)" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/windmemory">Yuan GAO (高原)</a> <span><a target="_blank" href="https://www.weibo.com/u/2166731327" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Committer of Wechaty. Author of several wechaty-puppets. Co-founder & CTO of JuziBot
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/06/19/python-wechaty-cps-bot/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/python-wechaty-cps-bot/jdyangli.webp">  基于python-wechaty的CPS BOT</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/06/23/hitchhiker-info-subtotal/"> 北京周边跨城顺风车消息汇总  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/info-subtotal/head.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

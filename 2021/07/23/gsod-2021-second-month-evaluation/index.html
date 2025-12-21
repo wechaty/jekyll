@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      GSoD'21 Second Month Evaluation | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>GSoD’21 Second Month Evaluation | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="GSoD’21 Second Month Evaluation" />
+<meta name="author" content="rohitesh-kumar-jain" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Google Season of Docs’21 second month evaluation" />
+<meta property="og:description" content="Google Season of Docs’21 second month evaluation" />
+<link rel="canonical" href="https://wechaty.js.org/2021/07/23/gsod-2021-second-month-evaluation/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/07/23/gsod-2021-second-month-evaluation/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/07-gsod-2021-second-month-evaluation/gsod-2021.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-07-23T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/07-gsod-2021-second-month-evaluation/gsod-2021.webp" />
+<meta property="twitter:title" content="GSoD’21 Second Month Evaluation" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"rohitesh-kumar-jain"},"dateModified":"2021-07-23T00:00:00+00:00","datePublished":"2021-07-23T00:00:00+00:00","description":"Google Season of Docs’21 second month evaluation","headline":"GSoD’21 Second Month Evaluation","image":"https://wechaty.js.org/assets/2021/07-gsod-2021-second-month-evaluation/gsod-2021.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/07/23/gsod-2021-second-month-evaluation/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"rohitesh-kumar-jain"},"url":"https://wechaty.js.org/2021/07/23/gsod-2021-second-month-evaluation/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#gsod">gsod</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">GSoD'21 Second Month Evaluation</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/rohitesh-kumar-jain">
+                            <img class="rounded-circle" src="/assets/contributors/rohitesh-kumar-jain/rohitesh.webp" alt="Rohitesh Kumar Jain" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/rohitesh-kumar-jain">Rohitesh Kumar Jain</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jul 23, 2021 · <span class="reading-time">
+  
+  
+    4 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/07-gsod-2021-second-month-evaluation/gsod-2021.webp" alt="GSoD'21 Second Month Evaluation">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<h2 id="google-season-of-docs21-second-month-evaluation">Google Season of Docs’21 second month evaluation</h2>
+
+<h3 id="post-summary">Post Summary</h3>
+
+<p>In phase two of the Google Season of Docs’21 program, technical writers have carried the great work they were doing. Few projects are coming towards completion,
+and each project has made more than 50% progress, which is excellent and up to the mark.</p>
+
+<p>Also, we had 3 meetings in this phase to discuss aspects related to the GSoD’21 project.</p>
+
+<ul>
+  <li><a href="https://wechaty.js.org/2021/06/22/gsod-2021-fourth-meeting/">Wechaty GSoD’21 fourth meeting</a></li>
+  <li><a href="https://wechaty.js.org/2021/07/06/gsod-2021-fifth-meeting/">Wechaty GSoD’21 fifth meeting</a></li>
+  <li><a href="https://wechaty.js.org/2021/07/18/gsod-2021-sixth-meeting/">Wechaty GSoD’21 sixth meeting</a></li>
+</ul>
+
+<p>You can learn more from our <a href="https://docs.google.com/document/d/1fVCk8qRYc4RKGMf2UY5HOe07hEhPUOpGC34v88GEFJg/edit#heading=h.edr3nzd8l43b">meeting notes</a>.</p>
+
+<p>This post gives an overview of the performance of tech writers in the second phase</p>
+
+<h3 id="tutorials-for-users-of-wechaty-team">Tutorials for users of Wechaty team</h3>
+
+<p>Shwetal Soni is more or less up with her timeline and has completed tasks as per her proposal on time. She also knows how to report
+errors to the mentors in the from issues which is great. She also diligently maintains the follow-up sheet and her Github issue.</p>
+
+<p>Souviks’ quality of docs has exponentially improved in the second phase, and his few PRs towards the end of the second phase have been very
+fluent and exceptional. Like his teammate, he has also completed most of the tasks as per the timeline. Also, he has been consistent like her
+teammate in the program, attending every meeting, and committing at a regular frequency. He also fixed a few technical errors.</p>
+
+<p>Overall the tutorials team is very dedicated to the project. Both of them did exceptional on their PRs, and also walked the extra mile to make the
+documents more friendly to the users, like adding code sandbox. Besides, we also made some modifications to the structure. A new document about
+the “starter bot” is added. For the sake of the new document, though some of the documents were finished earlier, they still spent time modifying
+the old documents which are not on their proposal.</p>
+
+<p>They have complete about 55% of their GSoD work.</p>
+
+<p><a href="https://docs.google.com/spreadsheets/d/1QglSl5JuZuVom84Or8yGhHb3_YbRMDBPgccxoMmnBa0/edit#gid=2093144258">Tutorial follow-ups</a></p>
+
+<h3 id="introduction-and-explanation-team">Introduction and Explanation team</h3>
+
+<p>Their project should have ended by now, but they have submitted almost everything on time. Mainly they polished and revised their PRs in this phase.
+We are expecting their final project report in the next phase. Iterations in their PRs are still going on, thanks to Rui for actively reviewing them.</p>
+
+<p>They have completed 90% of the work</p>
+
+<p><a href="https://docs.google.com/spreadsheets/d/1QglSl5JuZuVom84Or8yGhHb3_YbRMDBPgccxoMmnBa0/edit#gid=414745245">Introduction and Explanation follow-ups</a></p>
+
+<h3 id="reference-section-team">Reference Section team</h3>
+
+<p>Shraddha has been very consistent and has been regularly committing PRs. She also implements all the suggestions in her PRs.
+She takes a lot of effort in reviewing other PRs and also helping the community by placing relevant labels.</p>
+
+<p>Soumi was out for quite a long period, so she needs some time to catch up on how to do documentation. Her contribution is fine now, but currently,
+her document style is a bit different from the rest of the team. She is also very hard working now so we expect this would not be a question.</p>
+
+<p>Collectively they have completed around half of their work, and Shraddha has completed about 55% of her work.</p>
+
+<p><a href="https://docs.google.com/spreadsheets/d/1QglSl5JuZuVom84Or8yGhHb3_YbRMDBPgccxoMmnBa0/edit#gid=1248267387">Reference Section follow-ups</a></p>
+
+<h3 id="reconstruct-landing-page-with-value-propositions-team">Reconstruct Landing Page with Value Propositions team</h3>
+
+<p>Sajen is always enthusiastic about his work, and he works with utmost seriousness about his project.</p>
+
+<p>They are working on both the new landing page and the introduction project video. They are yet to raise the PR for their work but
+seeing his draft landing page volunteers guess that their project has progressed about 70%</p>
+
+<p>We would like to hear more from Arnab in the coming days, and I would like to urge him to be more responsive to emails, most of the
+replies come from Sajen, maybe they have divided work like that, but we are looking forward to hearing from his as well. Also, he forgot
+to fill the 2nd survey form despite being given a reminder.</p>
+
+<p><a href="https://docs.google.com/spreadsheets/d/1QglSl5JuZuVom84Or8yGhHb3_YbRMDBPgccxoMmnBa0/edit#gid=2106682325">Landing Page follow-ups</a></p>
+
+<h3 id="improve-the-grpc-and-openapi-ecosystem-team">Improve the gRPC and OpenAPI ecosystem team</h3>
+
+<p>He <a href="https://github.com/wechaty/openapi/pull/13">added Swagger UI to Express Route by default</a>, which we believe is a subproject in itself!</p>
+
+<p>Although not much docs as we expected in GSoD to be, but he has added enough value to his project by adding code. Another thing we
+have seen is a bunch of refactoring PRs from him, we are not sure that we should be that much concerned about pretty printing the code</p>
+
+<p>He has diligently maintained the follow-ups this phase. His few PRs can be reviewed by the code contributors only we believe, his PRs
+involving docs and pretty-printing the code have been reviewed by the volunteers.</p>
+
+<p>Volunteers believe his work to be 90 % complete</p>
+
+<p><a href="https://github.com/wechaty/wechaty.js.org/issues/1012">follow-ups</a></p>
+
+<h3 id="how-to-guides-team">How-to Guides team</h3>
+
+<p>Their PRs have been easy to review, and they have been comfortable with Git this phase. There is great coordination between the team, and they are very organized.</p>
+
+<p>The how-to guide’s team is very hardworking, and their improvement is very significant.</p>
+
+<p>Their work is about 85% completed</p>
+
+<p><a href="https://docs.google.com/spreadsheets/d/1QglSl5JuZuVom84Or8yGhHb3_YbRMDBPgccxoMmnBa0/edit#gid=1163289790">follow-ups</a></p>
+
+<h3 id="suggestions-for-the-upcoming-months">Suggestions for the upcoming months</h3>
+
+<p>Tech Writers want faster PR reviews and merging, so that is an area for us to improve, and we have improved a lot as compared to the previous phase.</p>
+
+<p>Special thanks to Simin for adding her evaluations in this post and maintaining the Wechaty follow-ups sheet for tracking timelines of tech writers.</p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#google">google</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#gsod">gsod</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#evaluation">evaluation</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#2021">2021</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#docs">docs</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/rohitesh-kumar-jain">
+                            <img class="rounded-circle" src="/assets/contributors/rohitesh-kumar-jain/rohitesh.webp" alt="Rohitesh Kumar Jain" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/rohitesh-kumar-jain">Rohitesh Kumar Jain</a> </h5>
+						Programmer, fitness freak, open-source software development contributor, adaptable, swift learner, smart, get things done at the end of the day, and definitely not a quitter.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/07/22/gdg-shanghai-wechaty/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/07-gdg-shanghai-wechaty-en/community-wechaty.webp">  Wechaty: 6 行代码构建基于 Whatsapp 和个人微信的对话式人机交互界面应用</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/07/24/newbie-how-to-build-python-wechaty-with-padlocal/"> 零基础小白HOWTO系列 -- 搭建第一个基于PadLocal的Python-Wechaty应用  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/07-newbie-how-to-build-python-wechaty-with-padlocal/rare-book.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Gitter.im is supported by Wechaty now! | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Gitter.im is supported by Wechaty now! | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Gitter.im is supported by Wechaty now!" />
+<meta name="author" content="huan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Wechaty is a RPA SDK for Chatbot Makers. It mainly works with WeChat accounts (both individual and official), and now we have published Gitter support for wechaty, which can make us easy to build a chatbot on Gitter.im, and sync the room between the Gitter.im and WeChat!" />
+<meta property="og:description" content="Wechaty is a RPA SDK for Chatbot Makers. It mainly works with WeChat accounts (both individual and official), and now we have published Gitter support for wechaty, which can make us easy to build a chatbot on Gitter.im, and sync the room between the Gitter.im and WeChat!" />
+<link rel="canonical" href="https://wechaty.js.org/2020/08/23/wechaty-puppet-gitter/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/08/23/wechaty-puppet-gitter/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/08-gitter/wechaty-gitter.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-08-23T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/08-gitter/wechaty-gitter.webp" />
+<meta property="twitter:title" content="Gitter.im is supported by Wechaty now!" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"huan"},"dateModified":"2020-08-23T00:00:00+00:00","datePublished":"2020-08-23T00:00:00+00:00","description":"Wechaty is a RPA SDK for Chatbot Makers. It mainly works with WeChat accounts (both individual and official), and now we have published Gitter support for wechaty, which can make us easy to build a chatbot on Gitter.im, and sync the room between the Gitter.im and WeChat!","headline":"Gitter.im is supported by Wechaty now!","image":"https://wechaty.js.org/assets/2020/08-gitter/wechaty-gitter.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/08/23/wechaty-puppet-gitter/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"huan"},"url":"https://wechaty.js.org/2020/08/23/wechaty-puppet-gitter/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#announcement">announcement</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Gitter.im is supported by Wechaty now!</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Aug 23, 2020 · <span class="reading-time">
+  
+  
+    5 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/08-gitter/wechaty-gitter.webp" alt="Gitter.im is supported by Wechaty now!">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>Wechaty is a RPA SDK for Chatbot Makers. It mainly works with WeChat accounts (both <a href="https://github.com/wechaty/wechaty-puppet-puppeteer">individual</a> and <a href="https://github.com/wechaty/wechaty-puppet-official-account">official</a>), and now we have published Gitter support for wechaty, which can make us easy to build a chatbot on Gitter.im, and sync the room between the Gitter.im and WeChat!</p>
+
+<p><img src="/assets/2020/08-gitter/gitter.webp" alt="Gitter + Wechaty" /></p>
+
+<h2 id="wechaty--gitterim">Wechaty + Gitter.im</h2>
+
+<p>For a long time, I want to connect my Gitter room to WeChat room and sync messages between them. Now it’s possible with Wechaty + Gitter Puppet!</p>
+
+<p>To support Gitter.im, the core component is the NPM module <a href="https://github.com/wechaty/wechaty-puppet-gitter">wechaty-puppet-gitter</a>, which brings the power of Gitter.im to Wechaty.</p>
+
+<h2 id="show-me-the-code">Show Me The Code</h2>
+
+<p>Here’s the example code that shows out how to use Wechaty with Gitter room: it will print all room names and you can send text messages to rooms.</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Of course you need `npm install wechaty wechaty-puppet-gitter` before run this little code snip!</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Wechaty</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">PuppetGitter</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty-puppet-gitter</span><span class="dl">'</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">main</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">puppet</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PuppetGitter</span><span class="p">(</span><span class="dl">'</span><span class="s1">your_gitter_token</span><span class="dl">'</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Wechaty</span><span class="p">({</span> <span class="nx">puppet</span> <span class="p">})</span>
+  <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+
+  <span class="kd">const</span> <span class="nx">roomList</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Room</span><span class="p">.</span><span class="nf">findAll</span><span class="p">()</span>
+  <span class="k">for </span><span class="p">(</span><span class="kd">const</span> <span class="nx">room</span> <span class="k">of</span> <span class="nx">roomList</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="dl">'</span><span class="s1">room found:</span><span class="dl">'</span><span class="p">,</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">topic</span><span class="p">())</span>
+    <span class="c1">// await room.say('Hello from Wechaty!')</span>
+  <span class="p">}</span>
+
+  <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nf">stop</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="nf">main</span><span class="p">().</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>That’s easy to use. To learn more about how to use Wechaty API, you can visit our docs website at <a href="https://wechaty.js.org/docs">https://wechaty.js.org/docs</a></p>
+
+<h2 id="use-case">Use Case</h2>
+
+<p>I have a Gitter room <a href="https://gitter.im/wechaty/wechaty">wechaty/wechaty</a>, with a SideCar on our website <a href="https://wechaty.js.org/">wechaty.js.org</a>. At the same time, most of our developers are based on WeChat, so I want to sync the messages between them.</p>
+
+<p>After we have the <code class="language-plaintext highlighter-rouge">wechaty-puppet-gitter</code>, I finally make my dream true today:</p>
+
+<ol>
+  <li>The gitter room <code class="language-plaintext highlighter-rouge">wechaty/wechaty</code> will receive all messages that developers send to WeChat room (actually, we have 10+ WeChat rooms, because WeChat do not permit more than 500 users in one room and we have thousands of developers already), forwarded by our Gitter bot: Mike.BO</li>
+  <li>The rooms on WeChat will receive all the messages that developers send to the Gitter room too, forwarded by our WeChat bot: Friday.BOT.</li>
+</ol>
+
+<p>In order to sync two rooms, we need to create two Wechaty instances, one is using Gitter Puppet and the other is using Donut Puppet(PC Windows Protocol for WeChat).</p>
+
+<p>To get to know the details about how it works, please feel free to read the source code of our chatbot, it has been open-sourced at <a href="https://github.com/wechaty/friday/">https://github.com/wechaty/friday/</a>, and here are some entries that good to start with:</p>
+
+<ol>
+  <li><a href="https://github.com/wechaty/friday/blob/c73f0647f7a03c5e10ee5745fc4bc2d818456e85/src/bots/gitter/bot.ts#L14-L21">Create a Wechaty instance with Gitter Puppet</a></li>
+  <li><a href="https://github.com/wechaty/friday/blob/c73f0647f7a03c5e10ee5745fc4bc2d818456e85/src/friday/bot.ts#L23-L26">Create a Wechaty instance with Donut Puppet</a></li>
+  <li><a href="https://github.com/wechaty/friday/blob/c73f0647f7a03c5e10ee5745fc4bc2d818456e85/src/cross-puppet.ts#L38-L81">Sync Gitter Room and WeChat Room Messages</a></li>
+</ol>
+
+<h2 id="upload-image-with-gitter-api">Upload Image with Gitter API</h2>
+
+<p>How to send an image to the gitter.im room via API?</p>
+
+<p>I ran into this question two days ago. With great help from <a href="https://github.com/MadLittleMods">@MadLittleMods</a> finally, I made it!</p>
+
+<h3 id="1-background">1. Background</h3>
+
+<p>When I was learning for how to upload to Gitter room, I file an issue to request an image upload API for gitter at <a href="https://gitlab.com/gitlab-org/gitter/webapp/-/issues/2571#note_402273181">here</a>, then I learned that I can read the source code from web app of Gitter.</p>
+
+<p>After hours of studying and testing, finally I encapsulate the send image feature into my code base, and I’d like to share it with the community in case you are interested in it.</p>
+
+<h3 id="2-raw-api-call">2. Raw API Call</h3>
+
+<p>To send an image message to our Gitter room, we need to do three API calls:</p>
+
+<ol>
+  <li>Generate signature: call api.gitter.im and get a key to use with transloadit service</li>
+  <li>Get transloadit server: call api2.transloadit.com with the key from step 1, then get a host domain name for using with step 3</li>
+  <li>Upload file: call the server domain name from step 2, and send the image file to it</li>
+</ol>
+
+<p>To learn the details about the above 3 steps, you can read the source code for Node.js(TypeScript) at <a href="https://github.com/wechaty/wechaty-puppet-gitter/blob/93af7eba2412564f32138c9b95b335e45a95e885/src/puppet-gitter.ts#L511-L545">here</a></p>
+
+<h3 id="3-use-wechaty-with-gitter-image-message">3. Use Wechaty with Gitter Image Message</h3>
+
+<p>As I’m writing all of those codes for my <a href="https://github.com/wechaty/wechaty-puppet-gitter">wechaty-puppet-gitter</a>, which is the plugin for our <a href="https://github.com/wechaty/wechaty">Wechaty</a>, so I’d like to share the Wechaty way to do this.</p>
+
+<p>Here’s the demo source code for sending an image message to a Gitter room with Wechaty:</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">Wechaty</span><span class="p">,</span> <span class="nx">FileBox</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">wechaty</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Wechaty</span><span class="p">({</span>
+  <span class="na">puppet</span><span class="p">:</span> <span class="dl">'</span><span class="s1">wechaty-puppet-gitter</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">puppetOptions</span><span class="p">:</span> <span class="p">{</span> <span class="na">token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">your_gitter_token</span><span class="dl">'</span> <span class="p">},</span>
+<span class="p">})</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">main</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nx">wechaty</span><span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="nx">wechaty</span><span class="p">.</span><span class="nx">Room</span><span class="p">.</span><span class="nf">find</span><span class="p">({</span> <span class="na">topic</span><span class="p">:</span> <span class="dl">'</span><span class="s1">gitter/developers</span><span class="dl">'</span> <span class="p">})</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">image</span> <span class="o">=</span> <span class="nx">FileBox</span><span class="p">.</span><span class="nf">fromUrl</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://raw.githubusercontent.com/wechaty/wechaty-puppet-gitter/master/docs/images/wechaty-puppet-gitter.png</span><span class="dl">'</span><span class="p">)</span>
+    <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">image</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nf">main</span><span class="p">().</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>That’s it!</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>I’m so happy and like to share what we have created for Wechaty with the Gitter developer community, and I hope you will like it.</p>
+
+<p>Thank you for your time to read my post!</p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#puppet">puppet</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#gitter">gitter</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#puppet-provider">puppet-provider</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Author @ Wechaty, Architect @ Chatie, LLM Code Generation Enthusiast, Serial Entrepreneur, Burner🔥
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/08/22/summer-2020-wechaty-soc-midterm-demo-day/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/08-wechaty-soc-midterm-demo-day/midterm-demo-day.webp">  暑期2020中期路演日（Mid-Term Demo Day）</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/08/24/add-video-to-wechaty-blog/"> 使用jekyll include在wechaty博客中快速插入视频  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/add-video-to-wechaty-blog/header.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Running Wechaty WeChat Bot Framework with Docker | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Running Wechaty WeChat Bot Framework with Docker | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Running Wechaty WeChat Bot Framework with Docker" />
+<meta name="author" content="shevyan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Learn how to use Docker to run Wechaty WeChat bot framework, from basic setup to deployment with GhostCloud EcOS" />
+<meta property="og:description" content="Learn how to use Docker to run Wechaty WeChat bot framework, from basic setup to deployment with GhostCloud EcOS" />
+<link rel="canonical" href="https://wechaty.js.org/2016/12/05/ghostcloud-wechaty-docker-en/" />
+<meta property="og:url" content="https://wechaty.js.org/2016/12/05/ghostcloud-wechaty-docker-en/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2016/12-ghostcloud-wechaty-docker-en/ghostcloud-banner.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-12-05T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2016/12-ghostcloud-wechaty-docker-en/ghostcloud-banner.webp" />
+<meta property="twitter:title" content="Running Wechaty WeChat Bot Framework with Docker" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"shevyan"},"dateModified":"2016-12-05T00:00:00+00:00","datePublished":"2016-12-05T00:00:00+00:00","description":"Learn how to use Docker to run Wechaty WeChat bot framework, from basic setup to deployment with GhostCloud EcOS","headline":"Running Wechaty WeChat Bot Framework with Docker","image":"https://wechaty.js.org/assets/2016/12-ghostcloud-wechaty-docker-en/ghostcloud-banner.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2016/12/05/ghostcloud-wechaty-docker-en/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"shevyan"},"url":"https://wechaty.js.org/2016/12/05/ghostcloud-wechaty-docker-en/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#tutorial">tutorial</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Running Wechaty WeChat Bot Framework with Docker</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/shevyan">
+                            <img class="rounded-circle" src="/assets/contributors/shevyan/avatar.webp" alt="shevyan" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/shevyan">shevyan</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Dec 05, 2016 · <span class="reading-time">
+  
+  
+    4 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2016/12-ghostcloud-wechaty-docker-en/ghostcloud-banner.webp" alt="Running Wechaty WeChat Bot Framework with Docker">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>Wechaty (<a href="https://github.com/wechaty/wechaty">https://github.com/wechaty/wechaty</a>) is an open-source WeChat SDK. Based on WeChat’s public APIs, it wraps interfaces in a series of encapsulations, providing a series of simple interfaces for developers to build WeChat bots. After communicating with the author and testing it, I found many application scenarios, such as:</p>
+
+<ol>
+  <li>If you have many friends, how to manage and maintain friend groups;</li>
+  <li>How to quickly and orderly process massive chat information and distinguish importance;</li>
+  <li>How to handle massive chat groups, especially since WeChat allows creating groups at will, resulting in many chat groups over time;</li>
+  <li>Whether automatic intelligent chat replies are possible;</li>
+  <li>And more…</li>
+</ol>
+
+<ul>
+  <li>Author: @<a href="https://github.com/shevyan">shevyan</a> Yan Dong (晏东), Founder &amp; CEO of <a href="https://www.ghostcloud.cn/">GhostCloud</a></li>
+  <li>Original article: <a href="http://mp.weixin.qq.com/s/o-4VMcAMz0K8yJVdNaUXow">http://mp.weixin.qq.com/s/o-4VMcAMz0K8yJVdNaUXow</a></li>
+</ul>
+
+<p><img src="/assets/2016/12-ghostcloud-wechaty-docker-en/ghostcloud-banner.webp" alt="GhostCloud Banner" /></p>
+
+<h2 id="1-quick-start">1 Quick Start</h2>
+
+<p>Wechaty is written in Node.js, so it supports almost all platforms. Wechaty’s hello-world only requires 6 lines of code to implement dynamic chat record collection. For convenience, the author has also provided Docker packaging, making Docker an excellent choice.</p>
+
+<p>Step 1: Create a new mybot.js file with the following content:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Wechaty</span> <span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span>
+
+<span class="nx">Wechaty</span><span class="p">.</span><span class="nf">instance</span><span class="p">()</span> <span class="c1">// Singleton</span>
+<span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">code</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Scan QR Code to login: </span><span class="p">${</span><span class="nx">code</span><span class="p">}</span><span class="s2">\n</span><span class="p">${</span><span class="nx">url</span><span class="p">}</span><span class="s2">`</span><span class="p">))</span>
+<span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span>       <span class="nx">user</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`User </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2"> logined`</span><span class="p">))</span>
+<span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span>  <span class="nx">message</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Message: </span><span class="p">${</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">))</span>
+<span class="p">.</span><span class="nf">init</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Step 2: Run the command on the host machine</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-ti</span> <span class="nt">--rm</span> <span class="nt">--volume</span><span class="s2">"</span><span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span><span class="s2">"</span>:/bot zixia/wechaty mybot.js
+</code></pre></div></div>
+
+<p>Step 3: Copy the QR code to your browser</p>
+
+<p><img src="/assets/2016/12-ghostcloud-wechaty-docker-en/ghostcloud-qrcode.webp" alt="QR Code" /></p>
+
+<p>Step 4: All chat records will be printed to the screen</p>
+
+<p><img src="/assets/2016/12-ghostcloud-wechaty-docker-en/ghostcloud-message.webp" alt="Message" /></p>
+
+<h2 id="2-containerization-analysis">2 Containerization Analysis</h2>
+
+<p>Wechaty is a good example of Docker implementation. The Dockerfile in the project root directory describes in detail how to build the image, including what environment is needed. From the Dockerfile, we can see it uses the Node.js image mhart/alpine-node:7 based on Alpine as the base image.</p>
+
+<p>Alpine is generally recommended for daily use - the smallest version is only about 4MB. This is followed by installation of some common packages, which you can see in detail in the Dockerfile. At runtime, mybot.js is mapped to the container interior, effectively isolating the runtime environment from the specific application.</p>
+
+<h2 id="3-other-examples">3 Other Examples</h2>
+
+<p>Hello-world is usually just the simplest example. The real power of this framework lies in other use cases included at <a href="https://github.com/wechaty/wechaty/tree/master/example">https://github.com/wechaty/wechaty/tree/master/example</a></p>
+
+<p>These include:</p>
+
+<ol>
+  <li>api-ai-bot.ts: Calls api.ai for artificial intelligence recognition</li>
+  <li>contact-bot.ts: Lists friends’ WeChat IDs and names</li>
+  <li>ding-dong-bot.ts: An auto-reply example - if a friend inputs ‘ding’, automatically replies ‘dong’</li>
+  <li>friend-bot.ts: Examples of adding friends, approving additions, and message verification</li>
+  <li>media-file-bot.ts: Examples of various message types, saving media files locally</li>
+  <li>room-bot.ts: A series of chat group examples, including finding, adding, deleting, changing topics, monitoring group events, etc.</li>
+  <li>speech-to-text-bot.ts: When receiving voice messages, calls third-party interfaces to convert to text. Users can choose different speech recognition APIs based on needs</li>
+  <li>tuling123-bot.ts: An example of domestic robot integration</li>
+</ol>
+
+<p>Careful friends might ask: can this framework support dynamic red packet grabbing? This is left for interested friends to research. We will also share introductions to other open-source projects in the future.</p>
+
+<h2 id="4-deploying-wechaty-through-ghostcloud-ecos">4 Deploying Wechaty through GhostCloud EcOS</h2>
+
+<p>EcOS (Enterprise container Operation System) is a Docker container cloud platform independently developed by GhostCloud, providing enterprises with a complete solution and management platform for R&amp;D, operations, and new business deployment. Through EcOS, users can quickly install Docker in private cloud and hybrid cloud environments. Official website: www.ghostcloud.cn</p>
+
+<p>GhostCloud EcOS installation steps:</p>
+
+<ol>
+  <li>Access <a href="http://ecospkg.ghostcloud.cn/EcOS/stable/">http://ecospkg.ghostcloud.cn/EcOS/stable/</a> in your browser, download the latest installation file (EcOS-install*) and service image file (srvimgs.tgz) to the root directory of the server to be installed</li>
+  <li>Extract the installation file and execute the installation script: tar -zxf Ecos-install* &amp;&amp; bash install.sh IPADDR (where IPADDR is the IP address of the server where EcOS is installed)</li>
+  <li>Extract the service image file and execute push image operation: tar -zxvf srvimgs.tag &amp;&amp; ./srvimgs/pushimgs.sh</li>
+  <li>For detailed installation steps, please go to: <a href="http://ecospkg.ghostcloud.cn/EcOS/video/EcOS_Install.mp4">http://ecospkg.ghostcloud.cn/EcOS/video/EcOS_Install.mp4</a></li>
+</ol>
+
+<p>Deployment</p>
+
+<p>1) Create Wechaty Service</p>
+
+<p>Create a Wechaty container through the EcOS platform (see <a href="http://ecospkg.ghostcloud.cn/EcOS/video/EcOS_Contianer.mp4">http://ecospkg.ghostcloud.cn/EcOS/video/EcOS_Contianer.mp4</a> for specific container operations)
+Select image wechaty:latest, set startup creation to yes, and appropriately increase memory capacity (memory allowed for container use)</p>
+
+<p>1) Monitor Wechaty Container Logs</p>
+
+<p>Use putty or other SSH client tools to log into the host machine where the Wechaty container was created, and execute:
+docker logs -f wechaty</p>
+
+<p><img src="/assets/2016/12-ghostcloud-wechaty-docker-en/ghostcloud-log.webp" alt="Log" /></p>
+
+<p>Scan the QR code in the logs or copy the URL address to your browser to scan, then use WeChat normally. You can see related information in the terminal.</p>
+
+<blockquote>
+  <p>Author: <a href="https://github.com/shevyan">Yan Dong (晏东)</a>, Founder &amp; CEO of GhostCloud</p>
+</blockquote>
+
+<hr />
+
+<blockquote>
+  <p>中文版: <a href="/2016/12/05/ghostcloud-wechaty-docker/">Docker玩转微信机器人框架Wechaty</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#code">code</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#docker">docker</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/shevyan">
+                            <img class="rounded-circle" src="/assets/contributors/shevyan/avatar.webp" alt="shevyan" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/shevyan">shevyan</a> </h5>
+						Dong YAN，Founder&CEO of GhostCloud
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2016/12/04/gitchat-lijiarui-interview/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2016/12-gitchat-lijiarui-interview-en/gitchat-lijiarui-interview.webp">  Chat实录｜李佳芮：向前一步的程序媛</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2016/12/05/ghostcloud-wechaty-docker/"> Docker玩转微信机器人框架Wechaty  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2016/12-ghostcloud-wechaty-docker-en/ghostcloud-banner.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

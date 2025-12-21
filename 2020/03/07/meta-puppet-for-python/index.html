@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      MetaPuppetForPython - 用Python写Wechaty程序 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>MetaPuppetForPython - 用Python写Wechaty程序 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="MetaPuppetForPython - 用Python写Wechaty程序" />
+<meta name="author" content="quantumflame" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="一个支持Wechaty调用的Python框架" />
+<meta property="og:description" content="一个支持Wechaty调用的Python框架" />
+<link rel="canonical" href="https://wechaty.js.org/2020/03/07/meta-puppet-for-python/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/03/07/meta-puppet-for-python/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/meta-puppet-for-python/2020-03-meta-puppet-for-python.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-03-07T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/meta-puppet-for-python/2020-03-meta-puppet-for-python.webp" />
+<meta property="twitter:title" content="MetaPuppetForPython - 用Python写Wechaty程序" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"quantumflame"},"dateModified":"2020-03-07T00:00:00+00:00","datePublished":"2020-03-07T00:00:00+00:00","description":"一个支持Wechaty调用的Python框架","headline":"MetaPuppetForPython - 用Python写Wechaty程序","image":"https://wechaty.js.org/assets/2020/meta-puppet-for-python/2020-03-meta-puppet-for-python.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/03/07/meta-puppet-for-python/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"quantumflame"},"url":"https://wechaty.js.org/2020/03/07/meta-puppet-for-python/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#tutorial">tutorial</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">MetaPuppetForPython - 用Python写Wechaty程序</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/quantumflame">
+                            <img class="rounded-circle" src="/assets/contributors/quantumflame/avatar.webp" alt="Tom" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/quantumflame">Tom</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Mar 07, 2020 · <span class="reading-time">
+  
+  
+    17 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/meta-puppet-for-python/2020-03-meta-puppet-for-python.webp" alt="MetaPuppetForPython - 用Python写Wechaty程序">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>一个支持Wechaty调用的Python框架</p>
+
+<p><a href="https://github.com/quantumFlame/MetaPuppetForPython"><img src="/assets/2020/meta-puppet-for-python/2020-03-meta-puppet-for-python.webp" alt="MetaPuppetForPython" /></a></p>
+
+<p>特征：</p>
+
+<ul>
+  <li>你可以只会python</li>
+  <li>支持Wechaty全部协议，全部接口</li>
+  <li>兼容同步/异步编程</li>
+  <li>可拓展至其他app/社交平台</li>
+</ul>
+
+<p>声明：作者是更加支持native的<a href="https://github.com/wechaty/python-wechaty">python-wechaty</a>的哈，看好<a href="https://github.com/huan">@Huan</a>和<a href="https://github.com/wj-Mcat">@wj-Mcat</a>的工作！
+不过貌似开发还需要一段时间，有需要的童鞋可以暂时用MetaPuppetForPython。</p>
+
+<h2 id="talk-is-cheap-show-me-the-code">Talk is cheap, show me the code</h2>
+
+<h3 id="初级hello-human">初级：Hello Human</h3>
+
+<blockquote>
+  <p>目标：更改微信签名
+要点：你可以调用类似<code class="language-plaintext highlighter-rouge">a_server.change_self_signature()</code>的函数来主动调用Wechaty的各种接口，从而主动查找联系人，发信息等。
+你可以在<code class="language-plaintext highlighter-rouge">SocketServerCore</code>和<code class="language-plaintext highlighter-rouge">SweetSocketServer</code>中找到更多类似的函数。
+但他们其实都是只语法糖（下文会介绍原理），你也可以继承<code class="language-plaintext highlighter-rouge">SweetSocketServer</code>，然后根据自己的需要设计自己的函数。</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># -*- coding: utf-8 -*-
+</span><span class="kn">import</span> <span class="n">time</span>
+
+<span class="kn">from</span> <span class="n">MetaPuppet.core.SweetSocketServer</span> <span class="kn">import</span> <span class="n">SweetSocketServer</span>
+<span class="kn">from</span> <span class="n">MetaPuppet.core.TestBot</span> <span class="kn">import</span> <span class="n">TestBot</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">'</span><span class="s">__main__</span><span class="sh">'</span><span class="p">:</span>
+    <span class="c1"># init
+</span>    <span class="n">a_bot</span> <span class="o">=</span> <span class="nc">TestBot</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sh">'</span><span class="s">test</span><span class="sh">'</span><span class="p">)</span>
+    <span class="n">a_server</span> <span class="o">=</span> <span class="nc">SweetSocketServer</span><span class="p">(</span>
+        <span class="n">robot</span><span class="o">=</span><span class="n">a_bot</span><span class="p">,</span>
+        <span class="n">num_async_threads</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">debug_mode</span><span class="o">=</span><span class="bp">True</span>
+    <span class="p">)</span>
+    <span class="n">a_server</span><span class="p">.</span><span class="nf">run</span><span class="p">()</span>
+
+    <span class="nf">print</span><span class="p">(</span>
+        <span class="sh">'</span><span class="s">Please make sure the client is connected </span><span class="sh">'</span>
+        <span class="sh">'</span><span class="s">before run the following codes</span><span class="sh">'</span>
+    <span class="p">)</span>
+    <span class="n">time</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+
+    <span class="c1">#  -------------edit following code for simple tasks-----------------------
+</span>    <span class="n">a_server</span><span class="p">.</span><span class="nf">change_self_signature</span><span class="p">(</span><span class="sh">'</span><span class="s">Hello Human!</span><span class="sh">'</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h3 id="初级a-simple-bot">初级：a simple bot</h3>
+
+<blockquote>
+  <p>目标：一个简易机器人。自动接受加人邀请，并问好<code class="language-plaintext highlighter-rouge">Hello Human!</code>。自动回复，内容为接收到信息的反序。
+要点：你可以继承<code class="language-plaintext highlighter-rouge">RobotBase</code>然后override <code class="language-plaintext highlighter-rouge">_process_message()</code> 和<code class="language-plaintext highlighter-rouge">_process_friend_invitation()</code>函数。
+这些函数在收到相关微信信息后会被自动调用，你可以把机器人自动回复的逻辑放在这个类中。
+通过这种方式，你可以处理所有的被动请求。结合<code class="language-plaintext highlighter-rouge">Hello Human!</code>的例子，你可以主动发出请求。
+到此，你已经可以实现全部的业务逻辑。</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># -*- coding: utf-8 -*-
+</span><span class="kn">import</span> <span class="n">time</span>
+
+<span class="kn">from</span> <span class="n">MetaPuppet.core.SweetSocketServer</span> <span class="kn">import</span> <span class="n">SweetSocketServer</span>
+<span class="kn">from</span> <span class="n">MetaPuppet.core.RobotBase</span> <span class="kn">import</span> <span class="n">RobotBase</span>
+
+<span class="k">class</span> <span class="nc">MyBot</span><span class="p">(</span><span class="n">RobotBase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nf">super</span><span class="p">().</span><span class="nf">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_process_message</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="c1">#  -------------edit following code for simple tasks-----------------------
+</span>        <span class="n">return_msg</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">if</span> <span class="sh">'</span><span class="s">payload</span><span class="sh">'</span> <span class="ow">in</span> <span class="n">message</span> <span class="ow">and</span> <span class="sh">'</span><span class="s">text</span><span class="sh">'</span> <span class="ow">in</span> <span class="n">message</span><span class="p">[</span><span class="sh">'</span><span class="s">payload</span><span class="sh">'</span><span class="p">]:</span>
+            <span class="n">return_msg</span> <span class="o">=</span> <span class="n">message</span><span class="p">[</span><span class="sh">'</span><span class="s">payload</span><span class="sh">'</span><span class="p">][</span><span class="sh">'</span><span class="s">text</span><span class="sh">'</span><span class="p">][::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">return_msg</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_process_friend_invitation</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="n">return_msg</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="sh">'</span><span class="s">wx_msg_type</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">TEXT</span><span class="sh">'</span><span class="p">,</span>
+            <span class="sh">'</span><span class="s">path</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">Hello Human!</span><span class="sh">'</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">return_msg</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">'</span><span class="s">__main__</span><span class="sh">'</span><span class="p">:</span>
+    <span class="c1"># init
+</span>    <span class="n">a_bot</span> <span class="o">=</span> <span class="nc">MyBot</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sh">'</span><span class="s">test</span><span class="sh">'</span><span class="p">)</span>
+    <span class="n">a_server</span> <span class="o">=</span> <span class="nc">SweetSocketServer</span><span class="p">(</span>
+        <span class="n">robot</span><span class="o">=</span><span class="n">a_bot</span><span class="p">,</span>
+        <span class="n">num_async_threads</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">debug_mode</span><span class="o">=</span><span class="bp">True</span>
+    <span class="p">)</span>
+    <span class="n">a_server</span><span class="p">.</span><span class="nf">run</span><span class="p">()</span>
+
+    <span class="nf">print</span><span class="p">(</span>
+        <span class="sh">'</span><span class="s">Please make sure the client is connected </span><span class="sh">'</span>
+        <span class="sh">'</span><span class="s">before run the following codes</span><span class="sh">'</span>
+    <span class="p">)</span>
+    <span class="n">time</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+
+    <span class="c1">#  -------------edit following code for simple tasks-----------------------
+</span>    <span class="c1"># nothing needed here in this example
+</span>    <span class="c1"># however, you can put your other backend code here
+</span>
+</code></pre></div></div>
+
+<h3 id="中级语法糖">中级：语法糖</h3>
+
+<blockquote>
+  <p>目标：自定义函数：发送文本给特定联系人/群聊
+要点：MetaPuppetForPython实际上是用python将ts的代码片段转发给node并编译运行(详见原理部分)，所以若已有的语法糖不能满足需求，你需要定义自己的函数。
+由于ts的代码和python其实比较相似，并且往往只需要写很少的ts的代码，主要业务代码还是python，所以自定义函数的难度应该不大。
+你可以继承<code class="language-plaintext highlighter-rouge">SweetSocketServer</code>，然后在自定义函数中调用<code class="language-plaintext highlighter-rouge">exec_wx_function()</code>或<code class="language-plaintext highlighter-rouge">exec_one_wx_function()</code>执行文本格式的ts代码。
+如果你需要使用第三方的ts库，可以在<code class="language-plaintext highlighter-rouge">socket_client/src</code>的相关代码中声明。</p>
+</blockquote>
+
+<p>同步代码的语法糖：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">MetaPuppet.core.SweetSocketServer</span> <span class="kn">import</span> <span class="n">SweetSocketServer</span>
+
+<span class="k">class</span> <span class="nc">ExtendedSocketServer</span><span class="p">(</span><span class="n">SweetSocketServer</span><span class="p">):</span>
+
+    <span class="c1"># definition for other functions/variables
+</span>    <span class="bp">...</span>
+
+    <span class="k">def</span> <span class="nf">send_wx_msg_text</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">chat_type</span><span class="p">):</span>
+        <span class="n">ts_code</span> <span class="o">=</span> <span class="sh">'''</span><span class="s">
+            let say_content = `{}`
+            const a_contact = bot.{}.load(</span><span class="sh">'</span><span class="s">{}</span><span class="sh">'</span><span class="s">)
+            await a_contact.say(say_content)
+        </span><span class="sh">'''</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">all_chat_type</span><span class="p">[</span><span class="n">chat_type</span><span class="p">.</span><span class="nf">lower</span><span class="p">()],</span> <span class="n">username</span><span class="p">)</span>
+        <span class="n">self</span><span class="p">.</span><span class="nf">exec_wx_function</span><span class="p">(</span>
+            <span class="n">ts_code</span><span class="o">=</span><span class="n">ts_code</span><span class="p">,</span>
+            <span class="n">need_return</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+        <span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>异步代码的语法糖(只需要在函数的定义前加上async，在调用异步函数前面加上await)：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">MetaPuppet.core.SweetSocketServer</span> <span class="kn">import</span> <span class="n">SweetSocketServer</span>
+
+<span class="k">class</span> <span class="nc">ExtendedSocketServer</span><span class="p">(</span><span class="n">SweetSocketServer</span><span class="p">):</span>
+
+    <span class="c1"># definition for other functions/variables
+</span>    <span class="bp">...</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">async_send_wx_msg_text</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">chat_type</span><span class="p">):</span>
+        <span class="n">ts_code</span> <span class="o">=</span> <span class="sh">'''</span><span class="s">
+            let say_content = `{}`
+            const a_contact = bot.{}.load(</span><span class="sh">'</span><span class="s">{}</span><span class="sh">'</span><span class="s">)
+            await a_contact.say(say_content)
+        </span><span class="sh">'''</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">all_chat_type</span><span class="p">[</span><span class="n">chat_type</span><span class="p">.</span><span class="nf">lower</span><span class="p">()],</span> <span class="n">username</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">self</span><span class="p">.</span><span class="nf">async_exec_wx_function</span><span class="p">(</span>
+            <span class="n">ts_code</span><span class="o">=</span><span class="n">ts_code</span><span class="p">,</span>
+            <span class="n">need_return</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+        <span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="中级同步异步">中级：同步/异步</h3>
+
+<blockquote>
+  <p>目标：通过使用异步编程加速代码
+要点：同步和异步的区别是在等待响应时前者是真的等待，后者是会缓存当前程序，执行其他异步程序，收到响应时恢复当前程序继续执行。
+需要等待的情况有：网络通信等待回复，等待其他某个进程结束，人为使用等待/睡眠等函数。
+所以，对于大多数看到这篇帖子的人而言，异步代码加速的主要是网络通信的部分。
+如果同步代码本身很慢，将其改为异步并不能减少其执行时间。
+基于MetaPuppetForPython的原理，对于频繁调用Wechaty的函数，建议使用异步编程，如默认的<code class="language-plaintext highlighter-rouge">_process_message()</code>就是异步函数。
+在<code class="language-plaintext highlighter-rouge">_process_message()</code>中，若需要经常调用Wechaty函数，建议使用异步版本的语法糖；若仅是偶尔调用，使用同步版本亦可。
+当然，为避免所有函数都需要异步定义，建议在设计层面将Wechaty的相关调用放在比较上层的位置，甚至与核心的同步代码相互独立。
+对于大部分业务代码，只是偶尔调用Wechaty函数，可以直接使用同步风格的语法糖，并不影响效率。</p>
+</blockquote>
+
+<p>异步：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># -*- coding: utf-8 -*-
+</span><span class="kn">import</span> <span class="n">threading</span>
+<span class="kn">import</span> <span class="n">time</span>
+
+<span class="kn">from</span> <span class="n">MetaPuppet.core.SweetSocketServer</span> <span class="kn">import</span> <span class="n">SweetSocketServer</span>
+<span class="kn">from</span> <span class="n">MetaPuppet.core.RobotBase</span> <span class="kn">import</span> <span class="n">RobotBase</span>
+<span class="kn">from</span> <span class="n">MetaPuppet.core.time_classes</span> <span class="kn">import</span> <span class="n">Time</span>
+<span class="kn">from</span> <span class="n">MetaPuppet.core.utils</span> <span class="kn">import</span> <span class="n">run_coroutine_in_new_thread</span>
+
+<span class="k">class</span> <span class="nc">MyBot</span><span class="p">(</span><span class="n">RobotBase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nf">super</span><span class="p">().</span><span class="nf">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_process_message</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="c1">#  -------------edit following code for simple tasks-----------------------
+</span>        <span class="n">return_msg</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">if</span> <span class="sh">'</span><span class="s">payload</span><span class="sh">'</span> <span class="ow">in</span> <span class="n">message</span> <span class="ow">and</span> <span class="sh">'</span><span class="s">text</span><span class="sh">'</span> <span class="ow">in</span> <span class="n">message</span><span class="p">[</span><span class="sh">'</span><span class="s">payload</span><span class="sh">'</span><span class="p">]:</span>
+            <span class="n">return_msg</span> <span class="o">=</span> <span class="n">message</span><span class="p">[</span><span class="sh">'</span><span class="s">payload</span><span class="sh">'</span><span class="p">][</span><span class="sh">'</span><span class="s">text</span><span class="sh">'</span><span class="p">][::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">return_msg</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_process_friend_invitation</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="n">return_msg</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="sh">'</span><span class="s">wx_msg_type</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">TEXT</span><span class="sh">'</span><span class="p">,</span>
+            <span class="sh">'</span><span class="s">path</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">Hello Human!</span><span class="sh">'</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">return_msg</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">async_foo</span><span class="p">(</span><span class="n">server</span><span class="p">):</span>
+    <span class="c1">#  -------------edit following code for simple tasks-----------------------
+</span>    <span class="n">rooms</span> <span class="o">=</span> <span class="k">await</span> <span class="n">server</span><span class="p">.</span><span class="nf">async_exec_one_wx_function</span><span class="p">(</span>
+        <span class="n">func_name</span><span class="o">=</span><span class="sh">'</span><span class="s">bot.Room.findAll</span><span class="sh">'</span><span class="p">,</span>
+        <span class="n">func_paras</span><span class="o">=</span><span class="p">[],</span>
+        <span class="n">need_return</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">Time:</span><span class="sh">'</span><span class="p">,</span> <span class="nc">Time</span><span class="p">())</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">async_foo</span><span class="sh">'</span><span class="p">,</span> <span class="n">threading</span><span class="p">.</span><span class="nf">currentThread</span><span class="p">().</span><span class="nf">getName</span><span class="p">())</span>
+    <span class="k">if</span> <span class="n">rooms</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">async: len(rooms)</span><span class="sh">'</span><span class="p">,</span> <span class="nf">len</span><span class="p">(</span><span class="n">rooms</span><span class="p">))</span>
+        <span class="nf">print</span><span class="p">(</span><span class="n">rooms</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">async: rooms not found</span><span class="sh">'</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">'</span><span class="s">__main__</span><span class="sh">'</span><span class="p">:</span>
+    <span class="c1"># init
+</span>    <span class="n">a_bot</span> <span class="o">=</span> <span class="nc">MyBot</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sh">'</span><span class="s">test</span><span class="sh">'</span><span class="p">)</span>
+    <span class="n">a_server</span> <span class="o">=</span> <span class="nc">SweetSocketServer</span><span class="p">(</span>
+        <span class="n">robot</span><span class="o">=</span><span class="n">a_bot</span><span class="p">,</span>
+        <span class="n">num_async_threads</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">debug_mode</span><span class="o">=</span><span class="bp">True</span>
+    <span class="p">)</span>
+    <span class="n">a_server</span><span class="p">.</span><span class="nf">run</span><span class="p">()</span>
+
+    <span class="nf">print</span><span class="p">(</span>
+        <span class="sh">'</span><span class="s">Please make sure the client is connected </span><span class="sh">'</span>
+        <span class="sh">'</span><span class="s">before run the following codes</span><span class="sh">'</span>
+    <span class="p">)</span>
+    <span class="n">time</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+
+    <span class="c1">#  -------------edit following code for simple tasks-----------------------
+</span>    <span class="c1"># async version
+</span>    <span class="c1"># better to use async version because sync version might block io
+</span>    <span class="nf">run_coroutine_in_new_thread</span><span class="p">(</span>
+        <span class="nf">async_foo</span><span class="p">(</span><span class="n">a_server</span><span class="p">)</span>
+    <span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>同步：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="bp">...</span>
+
+<span class="k">def</span> <span class="nf">bar</span><span class="p">(</span><span class="n">server</span><span class="p">):</span>
+    <span class="n">contacts</span> <span class="o">=</span> <span class="n">server</span><span class="p">.</span><span class="nf">exec_one_wx_function</span><span class="p">(</span>
+        <span class="n">func_name</span><span class="o">=</span><span class="sh">'</span><span class="s">bot.Contact.findAll</span><span class="sh">'</span><span class="p">,</span>
+        <span class="n">func_paras</span><span class="o">=</span><span class="p">[],</span>
+        <span class="n">need_return</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">Time:</span><span class="sh">'</span><span class="p">,</span> <span class="nc">Time</span><span class="p">())</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">bar</span><span class="sh">'</span><span class="p">,</span> <span class="n">threading</span><span class="p">.</span><span class="nf">currentThread</span><span class="p">().</span><span class="nf">getName</span><span class="p">())</span>
+    <span class="k">if</span> <span class="n">contacts</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">sync: len(contacts)</span><span class="sh">'</span><span class="p">,</span> <span class="nf">len</span><span class="p">(</span><span class="n">contacts</span><span class="p">))</span>
+        <span class="nf">print</span><span class="p">(</span><span class="n">contacts</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">sync: contacts not found</span><span class="sh">'</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">'</span><span class="s">__main__</span><span class="sh">'</span><span class="p">:</span>
+    <span class="bp">...</span>
+
+    <span class="c1">#  -------------edit following code for simple tasks-----------------------
+</span>    <span class="c1"># sync version
+</span>    <span class="c1"># sync code is simpler, though not recommended for heavy load
+</span>    <span class="c1"># you can use it if you don't need to use many async functions
+</span>    <span class="c1"># (e.g. async_exec_one_wx_function) at the same time and also
+</span>    <span class="c1"># (1) the task here is short-term and light-load
+</span>    <span class="c1"># or (2) you have a powerful computer
+</span>    <span class="nf">bar</span><span class="p">(</span><span class="n">a_server</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h3 id="中级线程">中级：线程</h3>
+
+<blockquote>
+  <p>目标：通过使用多线程加速代码
+要点：上文中提到，异步主要是提升io方面的效率。
+对于需要较长计算时间的代码本身，异步帮助不大。
+此时可以使用多线程来避免堵塞其他任务。
+<code class="language-plaintext highlighter-rouge">SweetSocketServer</code>会默认开放一个线程进行消息的自动回复，需要的情况下可以设置初始化参数<code class="language-plaintext highlighter-rouge">num_async_threads</code>增加线程数。</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="bp">...</span>
+
+<span class="k">def</span> <span class="nf">bar</span><span class="p">(</span><span class="n">server</span><span class="p">):</span>
+    <span class="n">contacts</span> <span class="o">=</span> <span class="n">server</span><span class="p">.</span><span class="nf">exec_one_wx_function</span><span class="p">(</span>
+        <span class="n">func_name</span><span class="o">=</span><span class="sh">'</span><span class="s">bot.Contact.findAll</span><span class="sh">'</span><span class="p">,</span>
+        <span class="n">func_paras</span><span class="o">=</span><span class="p">[],</span>
+        <span class="n">need_return</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">Time:</span><span class="sh">'</span><span class="p">,</span> <span class="nc">Time</span><span class="p">())</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">bar</span><span class="sh">'</span><span class="p">,</span> <span class="n">threading</span><span class="p">.</span><span class="nf">currentThread</span><span class="p">().</span><span class="nf">getName</span><span class="p">())</span>
+    <span class="k">if</span> <span class="n">contacts</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">sync: len(contacts)</span><span class="sh">'</span><span class="p">,</span> <span class="nf">len</span><span class="p">(</span><span class="n">contacts</span><span class="p">))</span>
+        <span class="nf">print</span><span class="p">(</span><span class="n">contacts</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">sync: contacts not found</span><span class="sh">'</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">'</span><span class="s">__main__</span><span class="sh">'</span><span class="p">:</span>
+    <span class="bp">...</span>
+
+    <span class="c1">#  -------------edit following code for simple tasks-----------------------
+</span>    <span class="c1"># sync version
+</span>    <span class="c1"># sync code is simpler, though not recommended for heavy load
+</span>    <span class="c1"># you can use it if you don't need to use many async functions
+</span>    <span class="c1"># (e.g. async_exec_one_wx_function) at the same time and also
+</span>    <span class="c1"># (1) the task here is short-term and light-load
+</span>    <span class="c1"># or (2) you have a powerful computer
+</span>    <span class="c1"># however, pay attention that you should run the task here in a new thread
+</span>    <span class="c1"># it is not good to run it in the main thread
+</span>    <span class="n">threading</span><span class="p">.</span><span class="nc">Thread</span><span class="p">(</span>
+        <span class="n">target</span><span class="o">=</span><span class="n">bar</span><span class="p">,</span>
+        <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">a_server</span><span class="p">,)</span>
+    <span class="p">).</span><span class="nf">start</span><span class="p">()</span>
+
+</code></pre></div></div>
+
+<h3 id="高级拓展至其他app社交平台">高级：拓展至其他app/社交平台</h3>
+
+<blockquote>
+  <p>目标：使用MetaPuppetForPython框架与web app通信
+要点：MetaPuppetForPython将机器人本身作为服务器，将Wechaty作为客户，但其实可以有多个客户同时与机器人进行交互，可以是微博，QQ，或者网页应用等。
+你可以继承<code class="language-plaintext highlighter-rouge">SweetSocketServer</code>并override <code class="language-plaintext highlighter-rouge">process_socket_message()</code>和<code class="language-plaintext highlighter-rouge">process_custom_message()</code>以处理来自其他app的信息。</p>
+</blockquote>
+
+<p>服务器：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># -*- coding: utf-8 -*-
+</span><span class="kn">import</span> <span class="n">time</span>
+<span class="kn">from</span> <span class="n">MetaPuppet.core.SweetSocketServer</span> <span class="kn">import</span> <span class="n">SweetSocketServer</span>
+<span class="kn">from</span> <span class="n">MetaPuppet.core.RobotBase</span> <span class="kn">import</span> <span class="n">RobotBase</span>
+
+<span class="k">class</span> <span class="nc">ExtendedSocketServer</span><span class="p">(</span><span class="n">SweetSocketServer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nf">super</span><span class="p">().</span><span class="nf">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">webgui_room</span> <span class="o">=</span> <span class="sh">'</span><span class="s">webgui</span><span class="sh">'</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">process_socket_message</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">sid</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="n">sender</span> <span class="o">=</span> <span class="n">message</span><span class="p">[</span><span class="sh">'</span><span class="s">sender</span><span class="sh">'</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">sender</span><span class="p">.</span><span class="nf">startswith</span><span class="p">(</span><span class="sh">'</span><span class="s">wx_</span><span class="sh">'</span><span class="p">):</span>
+            <span class="n">room_name</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">wx_room</span>
+        <span class="k">elif</span> <span class="n">sender</span><span class="p">.</span><span class="nf">startswith</span><span class="p">(</span><span class="sh">'</span><span class="s">webgui_</span><span class="sh">'</span><span class="p">):</span>
+            <span class="n">room_name</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">webgui_room</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">room_name</span> <span class="o">=</span> <span class="n">sender</span>
+
+        <span class="n">text</span> <span class="o">=</span> <span class="n">message</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">text</span><span class="sh">'</span><span class="p">,</span> <span class="sh">''</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">text</span> <span class="o">==</span> <span class="sh">'</span><span class="s">CONNECTED</span><span class="sh">'</span><span class="p">:</span>
+            <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">{}: sender, sid, room_name</span><span class="sh">'</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">text</span><span class="p">),</span> <span class="n">sender</span><span class="p">,</span> <span class="n">sid</span><span class="p">,</span> <span class="n">room_name</span><span class="p">)</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">sio</span><span class="p">.</span><span class="nf">enter_room</span><span class="p">(</span><span class="n">sid</span><span class="p">,</span> <span class="n">room_name</span><span class="p">)</span>
+            <span class="n">self</span><span class="p">.</span><span class="nf">add_room</span><span class="p">(</span>
+                <span class="n">sender</span><span class="o">=</span><span class="n">sender</span><span class="p">,</span>
+                <span class="n">room_name</span><span class="o">=</span><span class="n">room_name</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">process_custom_message</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">sid</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="n">sender</span> <span class="o">=</span> <span class="n">message</span><span class="p">[</span><span class="sh">'</span><span class="s">sender</span><span class="sh">'</span><span class="p">]</span>
+        <span class="n">msg_type</span> <span class="o">=</span> <span class="n">message</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">type</span><span class="sh">'</span><span class="p">,</span> <span class="sh">''</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">sender</span><span class="p">.</span><span class="nf">startswith</span><span class="p">(</span><span class="sh">'</span><span class="s">webgui_</span><span class="sh">'</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">msg_type</span> <span class="o">==</span> <span class="sh">'</span><span class="s">CHAT_INFO</span><span class="sh">'</span><span class="p">:</span>
+                <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">webgui info received</span><span class="sh">'</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+                <span class="k">await</span> <span class="n">self</span><span class="p">.</span><span class="n">robot</span><span class="p">.</span><span class="nf">process_webgui_chat_message</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+                <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">MyBot</span><span class="p">(</span><span class="n">RobotBase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nf">super</span><span class="p">().</span><span class="nf">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_process_message</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="c1">#  -------------edit following code for simple tasks-----------------------
+</span>        <span class="n">return_msg</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">if</span> <span class="sh">'</span><span class="s">payload</span><span class="sh">'</span> <span class="ow">in</span> <span class="n">message</span> <span class="ow">and</span> <span class="sh">'</span><span class="s">text</span><span class="sh">'</span> <span class="ow">in</span> <span class="n">message</span><span class="p">[</span><span class="sh">'</span><span class="s">payload</span><span class="sh">'</span><span class="p">]:</span>
+            <span class="n">return_msg</span> <span class="o">=</span> <span class="n">message</span><span class="p">[</span><span class="sh">'</span><span class="s">payload</span><span class="sh">'</span><span class="p">][</span><span class="sh">'</span><span class="s">text</span><span class="sh">'</span><span class="p">][::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">return_msg</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_process_friend_invitation</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="n">return_msg</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="sh">'</span><span class="s">wx_msg_type</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">TEXT</span><span class="sh">'</span><span class="p">,</span>
+            <span class="sh">'</span><span class="s">path</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">Hello Human!</span><span class="sh">'</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">return_msg</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">process_webgui_chat_message</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="n">return_msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">self</span><span class="p">.</span><span class="nf">_process_webgui_chat_message</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">return_msg</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_process_webgui_chat_message</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">message</span><span class="sh">'</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">None</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">'</span><span class="s">__main__</span><span class="sh">'</span><span class="p">:</span>
+    <span class="c1"># init
+</span>    <span class="n">a_bot</span> <span class="o">=</span> <span class="nc">MyBot</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sh">'</span><span class="s">test</span><span class="sh">'</span><span class="p">)</span>
+    <span class="n">a_server</span> <span class="o">=</span> <span class="nc">ExtendedSocketServer</span><span class="p">(</span>
+        <span class="n">robot</span><span class="o">=</span><span class="n">a_bot</span><span class="p">,</span>
+        <span class="n">num_async_threads</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">debug_mode</span><span class="o">=</span><span class="bp">True</span>
+    <span class="p">)</span>
+    <span class="n">a_server</span><span class="p">.</span><span class="nf">run</span><span class="p">()</span>
+
+    <span class="nf">print</span><span class="p">(</span>
+        <span class="sh">'</span><span class="s">Please make sure the client is connected </span><span class="sh">'</span>
+        <span class="sh">'</span><span class="s">before run the following codes</span><span class="sh">'</span>
+    <span class="p">)</span>
+    <span class="n">time</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+
+     <span class="c1"># -------------edit following code for simple tasks-----------------------
+</span></code></pre></div></div>
+
+<p>Web app作为客户端(示例中的任务不需要性能，可以直接用同步代码)：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">socketio</span>
+<span class="kn">import</span> <span class="n">json</span>
+<span class="kn">import</span> <span class="n">os</span>
+
+<span class="k">class</span> <span class="nc">WebClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span>
+                 <span class="n">config_path</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">config_path</span> <span class="o">=</span> <span class="n">config_path</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">read_config</span><span class="p">(</span><span class="n">config_path</span><span class="o">=</span><span class="n">self</span><span class="p">.</span><span class="n">config_path</span><span class="p">)</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">sio</span> <span class="o">=</span> <span class="n">socketio</span><span class="p">.</span><span class="nc">Client</span><span class="p">()</span>
+        <span class="n">self</span><span class="p">.</span><span class="nf">create_response_functions</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">read_config</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">config_path</span><span class="p">):</span>
+        <span class="c1"># get config
+</span>        <span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="n">config_path</span><span class="p">,</span> <span class="sh">'</span><span class="s">r</span><span class="sh">'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fr</span><span class="p">:</span>
+            <span class="n">config</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="n">fr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">config</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">sio</span><span class="p">.</span><span class="nf">connect</span><span class="p">(</span><span class="sh">'</span><span class="s">http://{}:{}</span><span class="sh">'</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span>
+                <span class="n">self</span><span class="p">.</span><span class="n">config</span><span class="p">[</span><span class="sh">'</span><span class="s">server</span><span class="sh">'</span><span class="p">][</span><span class="sh">'</span><span class="s">host</span><span class="sh">'</span><span class="p">],</span>
+                <span class="n">self</span><span class="p">.</span><span class="n">config</span><span class="p">[</span><span class="sh">'</span><span class="s">server</span><span class="sh">'</span><span class="p">][</span><span class="sh">'</span><span class="s">port</span><span class="sh">'</span><span class="p">],</span>
+            <span class="p">))</span>
+        <span class="c1"># use sio.wait if no other process keeping the program living
+</span>        <span class="c1"># self.sio.wait()
+</span>        <span class="bp">...</span>
+
+    <span class="k">def</span> <span class="nf">create_response_functions</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="nd">@self.sio.on</span><span class="p">(</span><span class="sh">'</span><span class="s">message</span><span class="sh">'</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">process_msg_from_server</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+            <span class="bp">...</span>
+
+        <span class="nd">@self.sio.on</span><span class="p">(</span><span class="sh">'</span><span class="s">connect</span><span class="sh">'</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">on_connect</span><span class="p">():</span>
+            <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">CONNECTED</span><span class="sh">'</span><span class="p">)</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="sh">'</span><span class="s">type</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">SOCKET_INFO</span><span class="sh">'</span><span class="p">,</span>
+                <span class="sh">'</span><span class="s">text</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">CONNECTED</span><span class="sh">'</span><span class="p">,</span>
+            <span class="p">}</span>
+            <span class="n">self</span><span class="p">.</span><span class="nf">send_msg_to_server</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+        <span class="nd">@self.sio.on</span><span class="p">(</span><span class="sh">'</span><span class="s">disconnect</span><span class="sh">'</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">on_disconnect</span><span class="p">():</span>
+            <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">DISCONNECTED</span><span class="sh">'</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">send_msg_to_server</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+        <span class="n">msg_to_send</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="sh">'</span><span class="s">sender</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">webgui_client</span><span class="sh">'</span><span class="p">,</span>
+            <span class="sh">'</span><span class="s">status</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">NORMAL</span><span class="sh">'</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="nf">isinstance</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">msg_to_send</span><span class="p">[</span><span class="sh">'</span><span class="s">text</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">msg</span>
+        <span class="k">elif</span> <span class="nf">isinstance</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="n">msg_to_send</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">msg_to_send</span><span class="p">[</span><span class="sh">'</span><span class="s">status</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="sh">'</span><span class="s">ERROR</span><span class="sh">'</span>
+
+        <span class="n">self</span><span class="p">.</span><span class="n">sio</span><span class="p">.</span><span class="nf">emit</span><span class="p">(</span>
+            <span class="sh">'</span><span class="s">message</span><span class="sh">'</span><span class="p">,</span>
+            <span class="n">msg_to_send</span><span class="p">,</span>
+        <span class="p">)</span>
+
+<span class="n">a_webgui</span> <span class="o">=</span> <span class="nc">WebClient</span><span class="p">(</span>
+    <span class="n">config_path</span><span class="o">=</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">),</span> <span class="sh">'</span><span class="s">../config.json</span><span class="sh">'</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="c1"># run is a dead loop if sio.wait() called, so we should call lastly
+</span><span class="n">a_webgui</span><span class="p">.</span><span class="nf">run</span><span class="p">()</span>
+
+</code></pre></div></div>
+
+<h2 id="原理">原理</h2>
+
+<p><a href="https://github.com/quantumFlame/MetaPuppetForPython"><img src="/assets/2020/meta-puppet-for-python/2020-03-meta-puppet-for-python.webp" alt="MetaPuppetForPython" /></a><br />
+<code class="language-plaintext highlighter-rouge">MetaPuppetForPython</code>的核心是通过socket双向通信，实现业务逻辑(server)与第三方业务(client)的交互，包括信息的收发以及接口的调用等。
+所以，在这个框架下，与<code class="language-plaintext highlighter-rouge">Wechaty</code>的架构类比，server是<code class="language-plaintext highlighter-rouge">Wechaty</code>的TS代码，client是<code class="language-plaintext highlighter-rouge">Wechaty</code>调用的各个puppet。
+<code class="language-plaintext highlighter-rouge">MetaPuppetForPython</code>默认包括完全的server和运行<code class="language-plaintext highlighter-rouge">Wechaty</code>的client代码，针对其他app(weibo, qq, web, etc.)的client需要自定义。
+对于想要一个python版本的<code class="language-plaintext highlighter-rouge">Wechaty</code>的童鞋来说，默认的代码已经够用。</p>
+
+<p>针对<code class="language-plaintext highlighter-rouge">Wechaty</code>而言，server使用<code class="language-plaintext highlighter-rouge">python-socketio</code>，client使用<code class="language-plaintext highlighter-rouge">socket.io-client</code>，从而建立起双向异步通信。
+主要的业务逻辑在server端，使用Python控制。
+在需要调用<code class="language-plaintext highlighter-rouge">Wechaty</code>时，使用Python将文本形式的小段ts代码发送给client，client将其编译运行。
+client端包含少量的ts代码，用于编译来自server的代码，和响应微信的请求(新消息，好友请求等)，一般不需要更改。</p>
+
+<p>基于此原理，可以使用Python调用<code class="language-plaintext highlighter-rouge">Wechaty</code>的任意原生代码，所以理论上可以兼容<code class="language-plaintext highlighter-rouge">Wechaty</code>的所有协议和接口函数。
+已实现<code class="language-plaintext highlighter-rouge">async_exec_wx_function()</code>用于运行代码块，和<code class="language-plaintext highlighter-rouge">async_exec_one_wx_function()</code>用于运行单个函数。</p>
+
+<h2 id="安装">安装</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/quantumFlame/MetaPuppetForPython.git
+<span class="nb">cd </span>MetaPuppetForPython
+pip <span class="nb">install</span> <span class="nb">.</span>
+
+<span class="nb">cd </span>socket_client
+<span class="c"># install node.js</span>
+<span class="c"># https://github.com/nodesource/distributions/blob/master/README.md</span>
+<span class="c"># Using Ubuntu</span>
+curl <span class="nt">-sL</span> https://deb.nodesource.com/setup_13.x | <span class="nb">sudo</span> <span class="nt">-E</span> bash -
+<span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> nodejs
+npm <span class="nb">install</span> <span class="nt">-g</span> ts-node
+npm <span class="nb">install</span> <span class="nt">-g</span> typescript  
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>autoconf
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>libtool
+
+npm <span class="nb">install</span>
+<span class="c"># or</span>
+<span class="c"># rm -rf node_modules package-lock.json</span>
+<span class="c"># npm install wechaty@latest</span>
+<span class="c"># npm install wechaty-puppet-padplus@next</span>
+<span class="c"># npm install qrcode-terminal</span>
+<span class="c"># npm install socket.io-client</span>
+<span class="c"># npm install @types/socket.io-client</span>
+<span class="c"># npm install @types/node</span>
+<span class="c"># npm install other packages if needed...</span>
+
+</code></pre></div></div>
+
+<h2 id="运行">运行</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># start client in one terminal</span>
+<span class="nb">cd </span>socket_client
+<span class="c"># (before you run, you need a wechaty token and</span>
+<span class="c"># create the config.json file following</span>
+<span class="c"># the example config.example.json)</span>
+ts-node src/wechaty_actions.ts
+
+<span class="c"># start server in another terminal</span>
+python example/hello_word.py
+
+</code></pre></div></div>
+
+<h2 id="keys-to-remember">Keys to remember</h2>
+
+<ul>
+  <li>
+    <p>Extend <code class="language-plaintext highlighter-rouge">RobotBase</code> and modify <code class="language-plaintext highlighter-rouge">_process_message()</code> to reply to various wechat messages.</p>
+  </li>
+  <li>
+    <p>Compile your management tasks as <code class="language-plaintext highlighter-rouge">async_foo()</code> and call with <code class="language-plaintext highlighter-rouge">run_coroutine_in_new_thread()</code>.</p>
+  </li>
+  <li>
+    <p>If you don’t like async, you can also run the sync version functions in new thread (see more details in <code class="language-plaintext highlighter-rouge">example/hello_world.py</code>).</p>
+  </li>
+</ul>
+
+<blockquote>
+  <p>作者: <a href="https://github.com/quantumFlame">Tom</a>
+代码: <a href="https://github.com/quantumFlame/MetaPuppetForPython">MetaPuppetForPython</a>
+首发于博客: <a href="https://wechaty.github.io/meta-puppet-for-python/">用Python写Wechaty程序</a>
+文本协议: CC BY-NC-SA 3.0 CN</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#python">python</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#socket">socket</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#puppet">puppet</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/quantumflame">
+                            <img class="rounded-circle" src="/assets/contributors/quantumflame/avatar.webp" alt="Tom" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/quantumflame">Tom</a> </h5>
+						A student curious about and interested in many things I don't know.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/03/02/wechaty-north-america-umiuni/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/umiuni/icon.webp">  wechaty 在UMIUNI北美校友圈中的应用</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/03/17/sqlite-wechat-assistant/"> 使用 SQLite 和 pullword 实现简易的业务助手  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/sqlite-wechat/2020-03-sqlite-wechat-assistant.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

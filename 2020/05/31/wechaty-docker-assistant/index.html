@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      wechaty Web Panel的构思与实现 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>wechaty Web Panel的构思与实现 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="wechaty Web Panel的构思与实现" />
+<meta name="author" content="leochen-g" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="平台构思" />
+<meta property="og:description" content="平台构思" />
+<link rel="canonical" href="https://wechaty.js.org/2020/05/31/wechaty-docker-assistant/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/05/31/wechaty-docker-assistant/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/web-panel/web-head.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-05-31T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/web-panel/web-head.webp" />
+<meta property="twitter:title" content="wechaty Web Panel的构思与实现" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"leochen-g"},"dateModified":"2020-05-31T00:00:00+00:00","datePublished":"2020-05-31T00:00:00+00:00","description":"平台构思","headline":"wechaty Web Panel的构思与实现","image":"https://wechaty.js.org/assets/2020/web-panel/web-head.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/05/31/wechaty-docker-assistant/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"leochen-g"},"url":"https://wechaty.js.org/2020/05/31/wechaty-docker-assistant/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">wechaty Web Panel的构思与实现</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/leochen-g">
+                            <img class="rounded-circle" src="/assets/contributors/leochen-g/avatar.webp" alt="Leo chen" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/leochen-g">Leo chen</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">May 31, 2020 · <span class="reading-time">
+  
+  
+    6 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/web-panel/web-head.webp" alt="wechaty Web Panel的构思与实现">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<h2 id="平台构思">平台构思</h2>
+
+<ul>
+  <li>独立账号登录管理</li>
+  <li>所有配置工作都转移到前端可视化页面</li>
+  <li>远程重启项目</li>
+  <li>实时显示登陆状态</li>
+  <li>拥有一个素材库</li>
+  <li>无缝对接智能对话平台</li>
+  <li>平台端以创建应用的模式对接客户端</li>
+  <li>客户端无需关心代码逻辑，只需填入APIKEY和APISECRET即可</li>
+  <li>客户端不关心用户使用的平台（docker化部署）</li>
+  <li>平台后续可以扩展更多功能</li>
+</ul>
+
+<p>平台地址：<a href="https://wechat.aibotk.com/">《智能微秘书》</a></p>
+
+<h2 id="功能">功能</h2>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />微信每日说,定时给女朋友发送每日天气提醒，以及每日一句</li>
+</ul>
+
+<h3 id="定时提醒">定时提醒</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />当天定时提醒  例：”提醒 我 18:00 下班了，记得带好随身物品”</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />每天定时提醒  例：”提醒 我 每天 18:00 下班了，记得带好随身物品”</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />指定日期提醒  例：”提醒 我 2019-05-10 8:00 还有7天是女朋友生日了，准备一下”</li>
+</ul>
+
+<h3 id="智能机器人">智能机器人</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />天行机器人</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />图灵机器人</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />更多</li>
+</ul>
+
+<h3 id="群定时任务">群定时任务</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />群新闻定时发送</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />群消息定时发送</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />更多功能等你来pr</li>
+</ul>
+
+<h3 id="关键词">关键词</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />关键词加好友</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />关键词加群</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />关键词回复</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />关键词事件
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />天气查询 例：”上海天气”</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />垃圾分类 例：”?香蕉皮”</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />名人名言 例： “名人名言”</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />老黄历查询 例： “黄历2019-6-13”</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />姓氏起源 例： “姓陈”</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />星座运势 例： “*双子座”</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />神回复 例： “神回复”</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />获取表情包 例： “表情包你好坏”</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />获取美女图 例： “美女图”</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />更多待你发现</li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />进群自动欢迎</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />加好友自动回复</li>
+</ul>
+
+<h3 id="好友及群管理">好友及群管理</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />好友列表</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />群列表</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />聊天记录</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />数据分析</li>
+</ul>
+
+<h3 id="自动更新配置文件无需重启">自动更新配置文件，无需重启</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />默认给机器人发送 ‘更新’ 触发拉取新配置文件操作，可在面板<code class="language-plaintext highlighter-rouge">小助手配置-&gt;关键词回复-&gt;关键词事件</code>进行修改关键词</li>
+</ul>
+
+<h2 id="技术选择">技术选择</h2>
+
+<h3 id="后端">后端</h3>
+
+<p>为了达到想要的效果，一个完整的后端平台是必不可少的，由于自己是前端开发，所以能想到的熟悉语言就是<code class="language-plaintext highlighter-rouge">js</code>了，而<code class="language-plaintext highlighter-rouge">js</code>可以拿来写后端的就是<code class="language-plaintext highlighter-rouge">nodejs</code>了，那是选择自己从0搭建一套完整的解决方案还是选择一个现成的框架去做，我也纠结了很久，最后还是确定下来使用<code class="language-plaintext highlighter-rouge">egg</code>来实现自己的后端功能。不得不说<code class="language-plaintext highlighter-rouge">egg</code>是真的很强大，它的插件和中间件功能让人眼前一亮，而且集成的很多功能可以让我专注于业务逻辑开发，而不需要考虑过多的配置。</p>
+
+<h3 id="前端">前端</h3>
+
+<p>前端首先选的就是vue和element的搭配了，毕竟日常工作用的最多，开发起来上手也快。</p>
+
+<h3 id="客户端">客户端</h3>
+
+<p>客户端当然还是<a href="https://docs.chatie.io/">wechaty</a>作为核心，由于这次是做一个可视化配置平台，所以在客户端需要很多的重构，因此就把以前<a href="https://juejin.im/post/5ca1dd846fb9a05e6c77b72f">《微信小秘书》</a>的项目重新推翻重做，重新梳理了事件过滤器与消息过滤器的功能，同时增加群咨询定时任务和群定时任务功能，必不可少的微信每日说功能当然也不能少。</p>
+
+<p>项目地址：<a href="https://github.com/gengchen528/wechat-assistant-pro">https://github.com/gengchen528/wechat-assistant-pro</a>（如果觉得还可以，请随手来个star，你的star将会是我不断迭代的动力）</p>
+
+<h2 id="具体实现">具体实现</h2>
+
+<h3 id="独立账号实现">独立账号实现</h3>
+
+<p>这个比较简单，起初考虑注册一个账号可以配置多个应用，但是考虑到尽快出一版体验，所以暂时就只支持一个注册账号适配一个客户端的配置，后续可能会支持一个账号支持多个客户端的配置。目前仅支持邮箱注册，后期会增加第三方登录功能</p>
+
+<h3 id="配置可视化">配置可视化</h3>
+
+<p>这一块实现起来也很容易，所有的配置信息都写入到数据库中，每次客户端启动的时候去服务器拉取一下最新的配置信息即可，对于每次改动，需要用户使用另一个微信发送重启命令来拉取最新的配置文件。包含基础信息配置，每日说定时任务配置，群咨询，群消息定时任务，以及关键词自动回复，关键字事件等配置</p>
+
+<p><img src="/assets/2020/web-panel/panel-1.webp" alt="1" /></p>
+
+<p><img src="/assets/2020/web-panel/panel-2.webp" alt="2" /></p>
+
+<p><img src="/assets/2020/web-panel/panel-3.webp" alt="3" /></p>
+
+<p><img src="/assets/2020/web-panel/panel-4.webp" alt="4" /></p>
+
+<h3 id="远程重启项目">远程重启项目</h3>
+
+<p>这一块起初是使用了node的<code class="language-plaintext highlighter-rouge">auto-reload</code>库来加载最新的配置信息，但是定时任务是在每次启动的时候设置的，所以这个库只能满足我一部分的需求。最后使用了<code class="language-plaintext highlighter-rouge">pm2</code>的文件监控功能，每次发送重启命令的时候，修改监控文件的内容来实现远程重启功能。</p>
+
+<p>pm2配置</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"apps"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wechaty-pro"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cwd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"script"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./index.js"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"log_date_format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YYYY-MM-DD HH:mm Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"error_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./logs/app-err.log"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"out_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./logs/app-out.log"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"pid_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./logs/node.pid"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"autorestart"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"instances"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"min_uptime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60s"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"max_restarts"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"watch"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"reload"</span><span class="p">],</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">监控此文件来达到自动重启目的</span><span class="w">
+      </span><span class="nl">"watch_delay"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ignore_watch"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"node_modules"</span><span class="p">,</span><span class="w"> </span><span class="s2">"logs"</span><span class="p">,</span><span class="w"> </span><span class="s2">"wechat.config.js"</span><span class="p">],</span><span class="w">
+      </span><span class="nl">"watch_options"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"followSymlinks"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="登录状态实时更新">登录状态实时更新</h3>
+
+<p><code class="language-plaintext highlighter-rouge">wechaty</code>有一个<code class="language-plaintext highlighter-rouge">heartbeat</code>事件，可以推送当前客户端登录的状态，所以实现起来也是很方便的</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">sendHeartBeat</span><span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">../proxy/aibotk</span><span class="dl">'</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">onHeartBeat</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">str</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">sendHeartBeat</span><span class="p">(</span><span class="dl">'</span><span class="s1">dead</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">str</span><span class="p">.</span><span class="kd">type</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">sendHeartBeat</span><span class="p">(</span><span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">onHeartBeat</span>
+</code></pre></div></div>
+
+<p><img src="/assets/2020/web-panel/panel-5.webp" alt="5" /></p>
+
+<h3 id="平台与客户端的对接">平台与客户端的对接</h3>
+
+<p>这里参考了开放api接口平台的模式，使用<code class="language-plaintext highlighter-rouge">apikey</code>和<code class="language-plaintext highlighter-rouge">apisecret</code>来确保通信的安全（把所有的请求参数排序后和apisecretkey做hash生成一个签名sign参数，服务器后台只需要按照规则做一次签名计算，然后和请求的签名做比较，如果相等验证通过，不相等就不通过）key与secret在注册的时候自动生成，在个人中心查看</p>
+
+<p><img src="/assets/2020/web-panel/panel-6.webp" alt="6" /></p>
+
+<h3 id="素材库">素材库</h3>
+
+<p>素材库的作用是统一管理所有的文字与文件，方便不同场景下的复用。文件支持常用的图片，office等。目前是直接上传到七牛云之中</p>
+
+<p><img src="/assets/2020/web-panel/panel-7.webp" alt="7" /></p>
+
+<h3 id="客户端多平台通用docker">客户端多平台通用(docker)</h3>
+
+<p>由于前期微信每日说和微信小秘书项目中，很多开发者反应每次在不同平台中下载puppet存在各种问题，而且经常出现下载不了的情况，所以这次客户端建议采用docker化部署。只要有docker环境，就可以使用。</p>
+
+<p>刚开始是准备使用官方提供的docker来进行构建，但是后来发现，官方提供的docker部署方式并不能达到我想要的效果，我的想法是用户直接拉取我生成的docker镜像后，直接简单配置后就可以直接对接《智能微秘书》平台。因此就开始自己编写属于自己项目的<code class="language-plaintext highlighter-rouge">Dockerfile</code>,不写不知道，一写吓一跳，遇到的问题还是蛮多的，首先采用的是<code class="language-plaintext highlighter-rouge">node:alpine</code>版本，因为这个版本构建体积最小，但是无奈这个环境无法正常安装<code class="language-plaintext highlighter-rouge">puppet</code>所需要的字体依赖等文件，没办法还是直接采用了<code class="language-plaintext highlighter-rouge">node:10</code>这个镜像。但是并没有结束，不能每次<code class="language-plaintext highlighter-rouge">build</code>镜像都重新下载依赖，所以参考了<a href="https://github.com/nodejs/docker-node/blob/master/docs/BestPractices.md">《Node.js 基于 Docker 使用的最佳经验》</a>这篇文章的建议对<code class="language-plaintext highlighter-rouge">Dockerfile</code>文件进行了优化。最终配置文件如下：</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FROM node:10
+LABEL <span class="nv">maintainer</span><span class="o">=</span><span class="s2">"Leo_chen &lt;chengeng@aibotk.com&gt;"</span>
+WORKDIR /home/app
+COPY package.json ./
+RUN npm config <span class="nb">set </span>registry https://registry.npm.taobao.org <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> npm config <span class="nb">set </span>disturl https://npm.taobao.org/dist <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> npm config <span class="nb">set </span>puppeteer_download_host https://npm.taobao.org/mirrors
+RUN  npm <span class="nb">install</span> <span class="se">\</span>
+     <span class="o">&amp;&amp;</span> npm run puppet-install
+
+FROM node:10
+ENV <span class="nv">APT_SOURCE_HOST</span><span class="o">=</span><span class="s2">"mirrors.aliyun.com"</span>
+<span class="c">## 清华镜像源（备选）</span>
+<span class="c"># ENV APT_SOURCE_HOST=mirrors.tuna.tsinghua.edu.cn</span>
+<span class="c">## 中科大源（备选）</span>
+<span class="c"># ENV APT_SOURCE_HOST=mirrors.ustc.edu.cn</span>
+RUN <span class="nb">echo</span> <span class="s2">"0. 设置 apt 使用镜像源，然后 update"</span> <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> <span class="nb">sed</span> <span class="nt">-i</span> <span class="s2">"s@</span><span class="se">\(</span><span class="s2">deb</span><span class="se">\|</span><span class="s2">security</span><span class="se">\)</span><span class="s2">.debian.org@</span><span class="k">${</span><span class="nv">APT_SOURCE_HOST</span><span class="k">}</span><span class="s2">@g"</span> /etc/apt/sources.list <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> <span class="nb">cat</span> /etc/apt/sources.list <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> apt-get update <span class="nt">--fix-missing</span> <span class="se">\</span>
+    <span class="c"># 安装 https 协议需要的依赖</span>
+    <span class="o">&amp;&amp;</span> apt-get <span class="nb">install</span> <span class="nt">-y</span> <span class="nt">--no-install-recommends</span> <span class="se">\</span>
+       ca-certificates apt-transport-https <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> <span class="nb">sed</span> <span class="nt">-i</span> <span class="s2">"s@http://@https://@g"</span> /etc/apt/sources.list <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">"1. 安装需要的依赖"</span> <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> apt-get <span class="nb">install</span> <span class="nt">-yq</span> gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 <span class="se">\</span>
+    libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 <span class="se">\</span>
+    libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 <span class="se">\</span>
+    libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 <span class="se">\</span>
+    ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
+WORKDIR /home/app
+COPY <span class="nt">--from</span><span class="o">=</span>0 /home/app <span class="nb">.</span>
+COPY <span class="nb">.</span> <span class="nb">.</span>
+CMD <span class="o">[</span> <span class="s2">"node"</span>, <span class="s2">"index.js"</span> <span class="o">]</span>
+LABEL <span class="se">\</span>
+  org.label-schema.license<span class="o">=</span><span class="s2">"MIT License"</span> <span class="se">\</span>
+  org.label-schema.build-date<span class="o">=</span><span class="s2">"</span><span class="si">$(</span><span class="nb">date</span> <span class="nt">-u</span> +<span class="s1">'%Y-%m-%dT%H:%M:%SZ'</span><span class="si">)</span><span class="s2">"</span> <span class="se">\</span>
+  org.label-schema.version<span class="o">=</span><span class="s2">"</span><span class="nv">$DOCKER_TAG</span><span class="s2">"</span> <span class="se">\</span>
+  org.label-schema.name<span class="o">=</span><span class="s2">"wechatAssistant"</span> <span class="se">\</span>
+  org.label-schema.description<span class="o">=</span><span class="s2">"wechatAssistant: 智能微秘书"</span> <span class="se">\</span>
+  org.label-schema.url<span class="o">=</span><span class="s2">"https://www.xkboke.com/web-inn/secretary/client.html"</span> <span class="se">\</span>
+  org.label-schema.vcs-url<span class="o">=</span><span class="s2">"https://github.com/gengchen528/wechat-assistant-pro"</span>
+</code></pre></div></div>
+
+<p>如果你的wechaty项目也想运行在docker环境中，那么这个配置文件也是适合你的。现在这个Docker镜像已经发布在<a href="https://hub.docker.com/r/aibotk/wechat-assistant">Docker hub</a>平台，如果想体验，直接<code class="language-plaintext highlighter-rouge">docker pull aibotk/wechat-assistant</code>即可。</p>
+
+<h2 id="部署体验">部署体验</h2>
+
+<p>首先需要注册一个账号： <a href="https://wechat.aibotk.com/">https://wechat.aibotk.com/</a></p>
+
+<h3 id="本地部署">本地部署</h3>
+
+<p>克隆本项目，并进入项目根目录</p>
+
+<p>第一步 <code class="language-plaintext highlighter-rouge">env.js</code> 文件中填入《智能微秘书》的apiKey 和 apiSecret</p>
+
+<p>第二步 <code class="language-plaintext highlighter-rouge">npm install</code></p>
+
+<p>第三步 <code class="language-plaintext highlighter-rouge">npm run pm2</code>(如果报错pm2找不到，请执行<code class="language-plaintext highlighter-rouge">npm install pm2 -g</code> 后重新执行此步骤)</p>
+
+<p>第四部 登录《智能微秘书》平台扫码登录即可</p>
+
+<h3 id="高级功能无法登录微信网页端朋友的福音">高级功能(无法登录微信网页端朋友的福音)</h3>
+
+<p>如果你拥有了<a href="https://github.com/wechaty/wechaty">wechaty</a>发放的ipad token，那么也可以直接使用本项目 （<a href="https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty">ipad token 申请地址</a>）</p>
+
+<h4 id="提前安装依赖">提前安装依赖</h4>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm i <span class="nt">-g</span> node-gyp
+</code></pre></div></div>
+
+<p>如果是win平台，还需进行</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm i <span class="nt">-g</span> windows-build-tools
+</code></pre></div></div>
+
+<h4 id="配置ipad-token">配置ipad token</h4>
+
+<p>在<code class="language-plaintext highlighter-rouge">env.js</code>里填入你的ipadtoken即可</p>
+
+<h3 id="docekr部署推荐">docekr部署（推荐）</h3>
+
+<p>镜像地址：<a href="https://hub.docker.com/repository/docker/aibotk/wechat-assistant">https://hub.docker.com/repository/docker/aibotk/wechat-assistant</a></p>
+
+<p>一、创建一个<code class="language-plaintext highlighter-rouge">env.js</code>，并在<code class="language-plaintext highlighter-rouge">env.js</code>中填入相关的配置参数如下</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">apiKey</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span> <span class="c1">//智能微秘书平台APIKEY （必填）</span>
+    <span class="na">apiSecret</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span><span class="c1">//智能微秘书平台APISECRET （必填）</span>
+    <span class="na">ipadToken</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span> <span class="c1">// 如果有wechaty的ipad token可以填到此处，没有的话就不用填写 （非必填）</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>二、拉取镜像</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull aibotk/wechat-assistant
+</code></pre></div></div>
+
+<p>三、运行镜像</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-v</span> 绝对路径/env.js:/home/app/env.js <span class="nt">-d</span>  aibotk/wechat-assistant
+</code></pre></div></div>
+
+<p>四、登录智能微助手平台扫码登录即可</p>
+
+<p>登录地址：<a href="https://wechat.aibotk.com/">https://wechat.aibotk.com/</a></p>
+
+<h2 id="体验">体验</h2>
+
+<p>添加我的小助手来体验智能化的小秘书服务</p>
+
+<p><img src="/assets/2020/web-panel/qr.webp" alt="8" /></p>
+
+<blockquote>
+  <p>作者: <a href="https://github.com/leochen-g/">Leo_chen</a>，高级前端工程师，喜欢使用node做各种项目</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#code">code</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#web-panel">web-panel</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#feature">feature</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ecosystem">ecosystem</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/leochen-g">
+                            <img class="rounded-circle" src="/assets/contributors/leochen-g/avatar.webp" alt="Leo chen" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/leochen-g">Leo chen</a> </h5>
+						高级前端工程师一枚，喜欢用node做各种项目，生命不止，折腾不息！
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/05/30/wechaty-plugin-system-launch/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/05-30-wechaty-plugin-system-launch/001.webp">  Wechaty Plugin 插件系统发布会：5月30日等你来</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/05/31/wechaty-web-panel-plugin/"> wechaty Web Panel的plugin诞生  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/web-panel-plugin/web-head.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

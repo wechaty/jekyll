@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      2022-基于5G平台开发puppet模块接入wechaty | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>2022-基于5G平台开发puppet模块接入wechaty | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="2022-基于5G平台开发puppet模块接入wechaty" />
+<meta name="author" content="fabian" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="基于 5G 平台开发 puppet 模块接入 wechaty" />
+<meta property="og:description" content="基于 5G 平台开发 puppet 模块接入 wechaty" />
+<link rel="canonical" href="https://wechaty.js.org/2022/02/17/wechaty-puppet-walnut-final-report/" />
+<meta property="og:url" content="https://wechaty.js.org/2022/02/17/wechaty-puppet-walnut-final-report/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2022/02-wechaty-puppet-walnut-final-report/puppet-walnut.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-02-17T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2022/02-wechaty-puppet-walnut-final-report/puppet-walnut.webp" />
+<meta property="twitter:title" content="2022-基于5G平台开发puppet模块接入wechaty" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"fabian"},"dateModified":"2022-02-17T00:00:00+00:00","datePublished":"2022-02-17T00:00:00+00:00","description":"基于 5G 平台开发 puppet 模块接入 wechaty","headline":"2022-基于5G平台开发puppet模块接入wechaty","image":"https://wechaty.js.org/assets/2022/02-wechaty-puppet-walnut-final-report/puppet-walnut.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2022/02/17/wechaty-puppet-walnut-final-report/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"fabian"},"url":"https://wechaty.js.org/2022/02/17/wechaty-puppet-walnut-final-report/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">2022-基于5G平台开发puppet模块接入wechaty</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/fabian">
+                            <img class="rounded-circle" src="/assets/contributors/fabian/avatar.webp" alt="fabian" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/fabian">fabian</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Feb 17, 2022 · <span class="reading-time">
+  
+  
+    8 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2022/02-wechaty-puppet-walnut-final-report/puppet-walnut.webp" alt="2022-基于5G平台开发puppet模块接入wechaty">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<h2 id="基于-5g-平台开发-puppet-模块接入-wechaty">基于 5G 平台开发 puppet 模块接入 wechaty</h2>
+
+<ul>
+  <li>项目名称：基于5G消息的 Wechaty Puppet 模块的设计与实现</li>
+  <li>学生：鲍耀龙</li>
+  <li>导师：苏畅</li>
+  <li>项目介绍：<a href="https://github.com/juzibot/intern/issues/1">https://github.com/juzibot/intern/issues/1</a></li>
+  <li>代码地址：<a href="https://github.com/wechaty/puppet-walnut">https://github.com/wechaty/puppet-walnut</a></li>
+</ul>
+
+<h3 id="背景介绍">背景介绍</h3>
+
+<ul>
+  <li>Wechaty 社区目前已经支持微信、Whatsapp、企业微信、飞书等常见流行即时通讯工具，并且能够通过多语言 SDK （比如 Python Wechaty） 进行调用。</li>
+  <li><a href="https://wechaty.js.org/2021/03/27/rcs-messaging-chatbot/">5G Chatbot (RCS)</a> 是近期中国电信运营商基于 5G 的消息战略落地平台，未来的 5G 手机将会内置 RCS 消息的处理能力。</li>
+  <li><a href="https://www.5g-msg.com/#/">硬核桃社区</a> 的 <a href="https://wechaty.js.org/2021/03/27/rcs-messaging-chatbot/">电信运营商商5G Chatbot</a> 平台。</li>
+</ul>
+
+<h3 id="目标计划">目标计划</h3>
+
+<ul>
+  <li>基于 5G 平台的开放 api 进行封装，实现可以收发消息的机器人 bot。</li>
+  <li>丰富机器人的扩展性功能，完善对于 Wechaty 的 api 适配。</li>
+</ul>
+
+<h3 id="项目进展">项目进展</h3>
+
+<ul>
+  <li>基于 5G 平台的开放 api 进行封装，实现简单的<code class="language-plaintext highlighter-rouge">ding-dong-bot</code>。</li>
+  <li>丰富 5G 的消息模式，实现支持富文本、文件、css等多样消息格式的 puppet。</li>
+</ul>
+
+<h3 id="需求分析与设计">需求分析与设计</h3>
+
+<h4 id="1-wechaty与puppet的交互">1. <code class="language-plaintext highlighter-rouge">Wechaty</code>与<code class="language-plaintext highlighter-rouge">Puppet</code>的交互</h4>
+
+<p><img src="/assets/2022/02-wechaty-puppet-walnut-final-report/wechatypuppetwalnut.webp" alt="WechatyPuppetWalnut" /></p>
+
+<ul>
+  <li>开发者通过<code class="language-plaintext highlighter-rouge">Wechaty</code>提供的 Api 来进行具体的交互操作。</li>
+  <li><code class="language-plaintext highlighter-rouge">Wechaty</code>只需要具体调用<strong>开发者指定的<code class="language-plaintext highlighter-rouge">Puppet</code></strong>即此处的<code class="language-plaintext highlighter-rouge">Walnut</code>来实现开发者需要的逻辑。</li>
+  <li>我们的<code class="language-plaintext highlighter-rouge">Walnut</code>继承于抽象的<code class="language-plaintext highlighter-rouge">Puppet</code>父类，实现其预定义的抽象方法来实现具体的能力。</li>
+  <li>具体的<code class="language-plaintext highlighter-rouge">Walnut</code>会和<code class="language-plaintext highlighter-rouge">5G</code>平台进行数据交互从而实现真正的 ChatBot。</li>
+</ul>
+
+<h4 id="2-抽象方法的实现">2. 抽象方法的实现</h4>
+
+<p>在继承了抽象父类之后，我们就可以按照自己需要去实现具体的方法。</p>
+
+<ol>
+  <li>
+    <p>messageMixin: 消息相关的抽象方法</p>
+
+    <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">abstract</span> <span class="nf">messageContact      </span><span class="p">(</span><span class="nx">messageId</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span>                       <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span>
+<span class="kd">abstract</span> <span class="nf">messageFile         </span><span class="p">(</span><span class="nx">messageId</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span>                       <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">FileBoxInterface</span><span class="o">&gt;</span>
+<span class="kd">abstract</span> <span class="nf">messageImage        </span><span class="p">(</span><span class="nx">messageId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">imageType</span><span class="p">:</span> <span class="nx">ImageType</span><span class="p">)</span> <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">FileBoxInterface</span><span class="o">&gt;</span>
+<span class="kd">abstract</span> <span class="nf">messageMiniProgram  </span><span class="p">(</span><span class="nx">messageId</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span>                       <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">MiniProgramPayload</span><span class="o">&gt;</span>
+<span class="kd">abstract</span> <span class="nf">messageUrl          </span><span class="p">(</span><span class="nx">messageId</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span>                       <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">UrlLinkPayload</span><span class="o">&gt;</span>
+<span class="kd">abstract</span> <span class="nf">messageLocation     </span><span class="p">(</span><span class="nx">messageId</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span>                       <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">LocationPayload</span><span class="o">&gt;</span>
+   
+<span class="kd">abstract</span> <span class="nf">messageForward         </span><span class="p">(</span><span class="nx">conversationId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">messageId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,)</span>                     <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span> <span class="o">|</span> <span class="kr">string</span><span class="o">&gt;</span>
+<span class="kd">abstract</span> <span class="nf">messageSendContact     </span><span class="p">(</span><span class="nx">conversationId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">contactId</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span>                      <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span> <span class="o">|</span> <span class="kr">string</span><span class="o">&gt;</span>
+<span class="kd">abstract</span> <span class="nf">messageSendFile        </span><span class="p">(</span><span class="nx">conversationId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">file</span><span class="p">:</span> <span class="nx">FileBoxInterface</span><span class="p">)</span>                 <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span> <span class="o">|</span> <span class="kr">string</span><span class="o">&gt;</span>
+<span class="kd">abstract</span> <span class="nf">messageSendMiniProgram </span><span class="p">(</span><span class="nx">conversationId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">miniProgramPayload</span><span class="p">:</span> <span class="nx">MiniProgramPayload</span><span class="p">)</span> <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span> <span class="o">|</span> <span class="kr">string</span><span class="o">&gt;</span>
+<span class="kd">abstract</span> <span class="nf">messageSendText        </span><span class="p">(</span><span class="nx">conversationId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">text</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">mentionIdList</span><span class="p">?:</span> <span class="kr">string</span><span class="p">[])</span> <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span> <span class="o">|</span> <span class="kr">string</span><span class="o">&gt;</span>
+<span class="kd">abstract</span> <span class="nf">messageSendUrl         </span><span class="p">(</span><span class="nx">conversationId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">urlLinkPayload</span><span class="p">:</span> <span class="nx">UrlLinkPayload</span><span class="p">)</span>         <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span> <span class="o">|</span> <span class="kr">string</span><span class="o">&gt;</span>
+<span class="kd">abstract</span> <span class="nf">messageSendLocation    </span><span class="p">(</span><span class="nx">conversationId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">locationPayload</span><span class="p">:</span> <span class="nx">LocationPayload</span><span class="p">)</span>       <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span> <span class="o">|</span> <span class="kr">string</span><span class="o">&gt;</span>
+   
+<span class="kd">abstract</span> <span class="nf">messageRecall </span><span class="p">(</span><span class="nx">messageId</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">boolean</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>contactMixin: 联系人相关的抽象方法</p>
+
+    <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">abstract</span> <span class="nf">contactSelfName </span><span class="p">(</span><span class="nx">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span>           <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span>
+<span class="kd">abstract</span> <span class="nf">contactSelfQRCode </span><span class="p">()</span>                     <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="kr">string</span> <span class="cm">/* QR Code Value */</span><span class="o">&gt;</span>
+<span class="kd">abstract</span> <span class="nf">contactSelfSignature </span><span class="p">(</span><span class="nx">signature</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span>
+<span class="kd">abstract</span> <span class="nf">contactAlias </span><span class="p">(</span><span class="nx">contactId</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span>                       <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span>
+<span class="kd">abstract</span> <span class="nf">contactAlias </span><span class="p">(</span><span class="nx">contactId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">alias</span><span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="kc">null</span><span class="p">)</span> <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span>
+<span class="kd">abstract</span> <span class="nf">contactAvatar </span><span class="p">(</span><span class="nx">contactId</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span>                <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">FileBoxInterface</span><span class="o">&gt;</span>
+<span class="kd">abstract</span> <span class="nf">contactAvatar </span><span class="p">(</span><span class="nx">contactId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">file</span><span class="p">:</span> <span class="nx">FileBoxInterface</span><span class="p">)</span> <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span>
+<span class="kd">abstract</span> <span class="nf">contactPhone </span><span class="p">(</span><span class="nx">contactId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">phoneList</span><span class="p">:</span> <span class="kr">string</span><span class="p">[])</span> <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span>
+<span class="kd">abstract</span> <span class="nf">contactCorporationRemark </span><span class="p">(</span><span class="nx">contactId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">corporationRemark</span><span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="kc">null</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span>
+<span class="kd">abstract</span> <span class="nf">contactDescription </span><span class="p">(</span><span class="nx">contactId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">description</span><span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="kc">null</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span>
+<span class="kd">abstract</span> <span class="nf">contactList </span><span class="p">():</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">[]</span><span class="o">&gt;</span>
+<span class="kd">abstract</span> <span class="nf">contactRawPayload </span><span class="p">(</span><span class="nx">contactId</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="kr">any</span><span class="o">&gt;</span>
+<span class="kd">abstract</span> <span class="nf">contactRawPayloadParser </span><span class="p">(</span><span class="nx">rawPayload</span><span class="p">:</span> <span class="kr">any</span><span class="p">)</span> <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">ContactPayload</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h4 id="3-缓存模块">3. 缓存模块</h4>
+
+<ol>
+  <li>
+    <p>当我们的 sever 监听到有用户发送消息，此时我们就需要去对消息的具体内容做一个缓存。</p>
+
+    <p>这里我们需要自己实现一个缓存模块，将 message 的具体内容存储进去，并且返回 id。</p>
+
+    <blockquote>
+      <p>推荐李卓桓老师开发的缓存组件：<strong>flash-store</strong>。 <a href="https://github.com/huan/flash-store">https://github.com/huan/flash-store</a></p>
+    </blockquote>
+  </li>
+  <li>
+    <p>然后我们用 Puppet 触发一个 message 事件，把我们本地缓存的 id 传出去。</p>
+
+    <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nf">emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">messageId</span><span class="p">:</span> <span class="nx">messageId</span> <span class="p">})</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>这时候 Wechaty 已经拿到我们消息的 id ，这个时候会根据一个需要我们实现的查询方法来获取本地缓存。</p>
+
+    <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">override</span> <span class="k">async</span> <span class="nf">messageRawPayload </span><span class="p">(</span><span class="nx">messageId</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">WalnutMessagePayload</span> <span class="o">|</span> <span class="kc">undefined</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="nx">log</span><span class="p">.</span><span class="nf">verbose</span><span class="p">(</span><span class="dl">'</span><span class="s1">PuppetWalnut</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">messageRawPayload(%s)</span><span class="dl">'</span><span class="p">,</span> <span class="nx">messageId</span><span class="p">)</span>
+  <span class="c1">// 这里根据 id 去缓存中查出来刚刚存入的消息</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>当查出具体的消息内容后，其实和我们 Wechaty 中预定义的消息结构可能不太一致，需要我们进行一个转换。</p>
+
+    <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">override</span> <span class="k">async</span> <span class="nf">messageRawPayloadParser </span><span class="p">(</span><span class="nx">rawPayload</span><span class="p">:</span> <span class="nx">WalnutMessagePayload</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">PUPPET</span><span class="p">.</span><span class="nx">payloads</span><span class="p">.</span><span class="nx">Message</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="c1">// 这里实现转换规则：WalnutMessagePayload ===&gt; PUPPET.payloads.Message</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>不过这里要注意，在每次进行收发消息的时候 Wechaty 都会去加载一遍我们的联系人缓存。
+所以对应的联系人缓存的模块也需要实现：</p>
+
+    <ul>
+      <li>contactRawPayloa</li>
+      <li>contactRawPayloadParser</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="项目成果">项目成果</h3>
+
+<h4 id="1-contact-api-支持">1. Contact Api 支持</h4>
+
+<ul>
+  <li>
+    <h4 id="properties"><a href="https://wechaty.js.org/docs/api/contact#properties">Properties</a></h4>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Support</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>id</td>
+          <td><code class="language-plaintext highlighter-rouge">string</code></td>
+          <td>Get Contact id. This function is depending on the Puppet Implementation, see <a href="https://github.com/wechaty/wechaty/wiki/Puppet#3-puppet-compatible-table">puppet-compatible-table</a></td>
+          <td>✅</td>
+          <td>Phone number</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <h4 id="instance-methods"><a href="https://wechaty.js.org/docs/api/contact#instance-methods">Instance Methods</a></h4>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Instance Methods</th>
+          <th>Return type</th>
+          <th>Support</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>say(text Or Contact Or File)</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise</code></td>
+          <td>✅</td>
+          <td>⚠Contact not Support</td>
+        </tr>
+        <tr>
+          <td>name()</td>
+          <td><code class="language-plaintext highlighter-rouge">String</code></td>
+          <td>✅</td>
+          <td>Phone number</td>
+        </tr>
+        <tr>
+          <td>alias(newAlias)</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>friend()</td>
+          <td><code class="language-plaintext highlighter-rouge">Boolean or null</code></td>
+          <td>✅</td>
+          <td>True</td>
+        </tr>
+        <tr>
+          <td>type()</td>
+          <td><code class="language-plaintext highlighter-rouge">ContactType.Unknown or ContactType.Personal or ContactType.Official</code></td>
+          <td>✅</td>
+          <td>ContactType.Personal</td>
+        </tr>
+        <tr>
+          <td>gender()</td>
+          <td><code class="language-plaintext highlighter-rouge">ContactGender.Unknown or ContactGender.Male or ContactGender.Female</code></td>
+          <td>✅</td>
+          <td>ContactGender.Unknown</td>
+        </tr>
+        <tr>
+          <td>province()</td>
+          <td><code class="language-plaintext highlighter-rouge">String or null</code></td>
+          <td>❌</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>city()</td>
+          <td><code class="language-plaintext highlighter-rouge">String or null</code></td>
+          <td>❌</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>avatar()</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise</code></td>
+          <td>✅</td>
+          <td>Default avatar</td>
+        </tr>
+        <tr>
+          <td>sync()</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>self()</td>
+          <td><code class="language-plaintext highlighter-rouge">Boolean</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <blockquote>
+      <p>Default avatar 👉 <a href="https://raw.githubusercontent.com/wechaty/puppet-walnut/main/docs/images/avatar.webp">https://raw.githubusercontent.com/wechaty/puppet-walnut/main/docs/images/avatar.webp</a></p>
+    </blockquote>
+  </li>
+  <li>
+    <h4 id="static-methods"><a href="https://wechaty.js.org/docs/api/contact#static-methods">Static Methods</a></h4>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Static Methods</th>
+          <th>Return Type</th>
+          <th>Support</th>
+          <th>Detail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>find(query)</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise &lt;Contact | null&gt;</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>findAll(Query Arguements)</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise &lt;Contact []&gt;</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h4 id="2-message-api-支持">2. Message Api 支持</h4>
+
+<ul>
+  <li>
+    <h4 id="instance-methods-1"><a href="https://wechaty.js.org/docs/api/message#instance-methods">Instance Methods</a></h4>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Instance methods</th>
+          <th>Return type</th>
+          <th>Support</th>
+          <th>Detail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>from()</td>
+          <td><code class="language-plaintext highlighter-rouge">Contact</code> or <code class="language-plaintext highlighter-rouge">null</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>to()</td>
+          <td><code class="language-plaintext highlighter-rouge">Contact</code> or <code class="language-plaintext highlighter-rouge">null</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>room()</td>
+          <td><code class="language-plaintext highlighter-rouge">Room</code> or <code class="language-plaintext highlighter-rouge">null</code></td>
+          <td>✅</td>
+          <td>null</td>
+        </tr>
+        <tr>
+          <td>text()</td>
+          <td><code class="language-plaintext highlighter-rouge">string</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>say(text Or Contact Or File)</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise</code></td>
+          <td>✅</td>
+          <td>⚠Contact not Support</td>
+        </tr>
+        <tr>
+          <td>type()</td>
+          <td><code class="language-plaintext highlighter-rouge">MessageType</code></td>
+          <td>✅</td>
+          <td>Message.Text</td>
+        </tr>
+        <tr>
+          <td>self()</td>
+          <td><code class="language-plaintext highlighter-rouge">boolean</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>mention()</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise</code></td>
+          <td>❌</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>mentionSelf()</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise</code></td>
+          <td>❌</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>forward(to)</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>date()</td>
+          <td><code class="language-plaintext highlighter-rouge">Date</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>age()</td>
+          <td><code class="language-plaintext highlighter-rouge">Number</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>toFileBox()</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>toContact()</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>toUrlLink()</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <h4 id="static-method"><a href="https://wechaty.js.org/docs/api/message#static-method">Static Method</a></h4>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Static Methods</th>
+          <th>Return type</th>
+          <th>Support</th>
+          <th>Detail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>find()</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>findAll()</td>
+          <td><code class="language-plaintext highlighter-rouge">Promise</code></td>
+          <td>✅</td>
+          <td> </td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h4 id="3-消息格式支持">3. 消息格式支持</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>消息类型</th>
+      <th>从属(根据接口返回)</th>
+      <th>获取方式</th>
+      <th>接收</th>
+      <th>发送</th>
+      <th>群聊</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>文本</td>
+      <td><code class="language-plaintext highlighter-rouge">text</code></td>
+      <td><code class="language-plaintext highlighter-rouge">message.text</code></td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>图片</td>
+      <td><code class="language-plaintext highlighter-rouge">image</code></td>
+      <td><code class="language-plaintext highlighter-rouge">message.toImage()</code></td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>视频</td>
+      <td><code class="language-plaintext highlighter-rouge">video</code></td>
+      <td><code class="language-plaintext highlighter-rouge">message.toFilebox()</code></td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>音频</td>
+      <td><code class="language-plaintext highlighter-rouge">audio</code></td>
+      <td><code class="language-plaintext highlighter-rouge">message.toFilebox()</code></td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>位置</td>
+      <td><code class="language-plaintext highlighter-rouge">location</code></td>
+      <td><code class="language-plaintext highlighter-rouge">message.toLocation()</code></td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>文件</td>
+      <td><code class="language-plaintext highlighter-rouge">other</code></td>
+      <td><code class="language-plaintext highlighter-rouge">message.toFilebox()</code></td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>联系人</td>
+      <td><code class="language-plaintext highlighter-rouge">other</code></td>
+      <td><code class="language-plaintext highlighter-rouge">message.toContact()</code></td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="视频展示">视频展示</h3>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/gqR2Mbouc4E" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h3 id="答辩报告">答辩报告</h3>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="/assets/2022/02-wechaty-puppet-walnut-final-report/wechaty-puppet-walnut-final-report" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h3 id="未来与展望">未来与展望</h3>
+
+<ul>
+  <li>对 walnut 进行细节的补充和完善。</li>
+  <li>尽可能增加对其他功能的支持、并且持序维护。</li>
+</ul>
+
+<blockquote>
+  <p>Author: <a href="https://github.com/fabian4">@fabian</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#5g">5g</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#puppet-walnut">puppet-walnut</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#chatbot">chatbot</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ecosystem">ecosystem</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#plan">plan</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/fabian">
+                            <img class="rounded-circle" src="/assets/contributors/fabian/avatar.webp" alt="fabian" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/fabian">fabian</a> </h5>
+						a passionate learner
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2022/02/17/second-intern-juzibot-report/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2022/02-second-intern-juzibot-report/cover.webp">  2022寒假-王天睿-JuziBot项目开发-期中报告-智能信息助理</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2022/02/22/padlocal-office-hour/"> Wechaty community meetup: PadLocal Office Hour, @padlocal, Feb 5th, 2022  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2022/02-padlocal-office-hour/icon.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

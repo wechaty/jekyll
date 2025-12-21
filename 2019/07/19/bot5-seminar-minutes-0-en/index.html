@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Bot Friday Zero — Seminar Minutes | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Bot Friday Zero — Seminar Minutes | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Bot Friday Zero — Seminar Minutes" />
+<meta name="author" content="huan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Kickoff minutes for Bot Friday (Zero) at Tencent Beijing on Jul 19, 2019 — Rasa-to-production talk by Qinghua Duan, founding members, roundtable insights, next-meetup plan, with slides and full video." />
+<meta property="og:description" content="Kickoff minutes for Bot Friday (Zero) at Tencent Beijing on Jul 19, 2019 — Rasa-to-production talk by Qinghua Duan, founding members, roundtable insights, next-meetup plan, with slides and full video." />
+<link rel="canonical" href="https://wechaty.js.org/2019/07/19/bot5-seminar-minutes-0-en/" />
+<meta property="og:url" content="https://wechaty.js.org/2019/07/19/bot5-seminar-minutes-0-en/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2019/07-bot5-seminar-minutes-0-en/group-photo.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-07-19T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2019/07-bot5-seminar-minutes-0-en/group-photo.webp" />
+<meta property="twitter:title" content="Bot Friday Zero — Seminar Minutes" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"huan"},"dateModified":"2019-07-19T00:00:00+00:00","datePublished":"2019-07-19T00:00:00+00:00","description":"Kickoff minutes for Bot Friday (Zero) at Tencent Beijing on Jul 19, 2019 — Rasa-to-production talk by Qinghua Duan, founding members, roundtable insights, next-meetup plan, with slides and full video.","headline":"Bot Friday Zero — Seminar Minutes","image":"https://wechaty.js.org/assets/2019/07-bot5-seminar-minutes-0-en/group-photo.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2019/07/19/bot5-seminar-minutes-0-en/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"huan"},"url":"https://wechaty.js.org/2019/07/19/bot5-seminar-minutes-0-en/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#event">event</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Bot Friday Zero — Seminar Minutes</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jul 19, 2019 · <span class="reading-time">
+  
+  
+    7 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2019/07-bot5-seminar-minutes-0-en/group-photo.webp" alt="Bot Friday Zero — Seminar Minutes">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<h2 id="bot-friday-zero--kickoff">Bot Friday Zero — Kickoff</h2>
+
+<ul>
+  <li>Date: Friday, July 19, 2019 · 18:30–22:30 (4 hours)</li>
+  <li>Venue: Tencent Beijing Office, 3rd Pole Tower, Room 1113</li>
+  <li>Sponsor: Tencent</li>
+</ul>
+
+<p>Event announcement (Chinese): <a href="https://mp.weixin.qq.com/s?__biz=MzU3OTk2MzA1Nw==&amp;mid=2247485197&amp;idx=1&amp;sn=404c319ad11b9e12515d127dfabf7efd">腾讯+句子互动=碰撞思想，点燃科技</a></p>
+
+<h2 id="founding-members-first-session">Founding Members (First Session)</h2>
+
+<ul>
+  <li>Speakers
+    <ul>
+      <li>Qinghua Duan (段清华) — Technical Director at Kingzent AI (金证优智). Former early R&amp;D engineer at Wenyin Internet; projects include financial search, announcement summary extraction, and banking QA bots. Years of NLP-in-finance experience leading projects across QA, research platforms, regulatory public-opinion analysis, knowledge graphs, and dialogue systems.</li>
+    </ul>
+  </li>
+  <li>Tencent Team
+    <ul>
+      <li>Tian Wang (王天) — PM, Tencent Intelligent Dialogue Platform</li>
+      <li>Dai Xu (徐岱) — Engineer, Tencent Intelligent Dialogue Platform</li>
+      <li>Xiaoqian Liu (刘晓倩) — PM, Tencent Intelligent Dialogue Platform</li>
+      <li>Yao Qiu (邱耀) — WeChat Pattern Recognition Center, multi-turn reading comprehension</li>
+      <li>Rui Cheng (程睿) — WeChat Pattern Recognition Center, task-oriented chatbot algorithms</li>
+      <li>Jinchao Zhang (张金超) — WeChat Pattern Recognition Center, functional products and dialogue algorithms</li>
+      <li>Yeshuang Zhu (朱叶霜) — WeChat Pattern Recognition Center, dialogue systems, NLU, entity extraction</li>
+      <li>Jiawei Zhou (周家伟) — WeChat Pattern Recognition Center, dialogue systems, semantic understanding, task algorithms</li>
+    </ul>
+  </li>
+  <li>Chatbot Industry
+    <ul>
+      <li>Ming Li (李明) — Founder &amp; CEO of Maodou (maodou.io), Tsinghua CS MS. Focused on combining chatbots with WeChat Mini Programs and delivering smooth NLP-driven experiences in WeChat groups. Angel funding from Tsinghua XLab/DNA.</li>
+      <li>Meng Li (李萌) — Founder &amp; CEO of Xiaoli AI, Peking University CS PhD. Builds proactive AI/NLP assistants that unlock value from information. Angel funding from Hongdao Capital.</li>
+      <li>Yanping Tu (涂艳平) — Partner at JuziBot (句子互动). Built a global WeChat chatbot developer community; provides intelligent dialogue services around the WeChat ecosystem across education, insurance, and more. Backed by TSVC/Alpha and incubated by PreAngel, Plug and Play, and Y Combinator (community programs).</li>
+      <li>Haoran Liang (梁皓然) — Founder of Xanthous Tech; former Amazon full‑stack engineer. Since 2016, delivers chatbot consulting globally; uses Rasa for dialogue and deeply integrates chatbots with WeChat Mini Programs.</li>
+      <li>Junliang Zhao (赵俊良) — Head of Customer Service at Maodou; BJTU MS; former lecturer at Beijing Union University with 10+ years of embedded systems R&amp;D and smart instrumentation entrepreneurship.</li>
+      <li>Ji Lü (吕纪) — R&amp;D Manager and Architect at State Grid; explores applying NLP and conversational systems to intelligent call centers.</li>
+      <li>Huan Li (李卓桓) — Author of Wechaty (6k+ GitHub stars at the time), Conversational AI evangelist; former SMTH BBS admin and Youku Chief Scientist; Tsinghua undergrad, CEIBS EMBA, BUPT PhD (in progress at the time).</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="agenda">Agenda</h2>
+
+<h3 id="1-featured-talk-from-rasa-to-production-chatbots">1. Featured Talk: From Rasa to Production Chatbots</h3>
+
+<p>Qinghua Duan (<a href="https://github.com/qhduan">@qhduan</a>) previously served as an early R&amp;D engineer at Wenyin Internet, delivering projects including financial search, announcement summarization, and banking QA bots. He now leads quant analysis and asset allocation platforms at a fund management company. He has deep experience across document parsing, information extraction, search, quantitative analysis, knowledge graphs, and dialogue systems.</p>
+
+<p>In 2018, at the SMP-2018 Chinese Human-Computer Dialogue Evaluation in Harbin, the team led by Qinghua and JuziBot earned top recognition from the judges, winning 1st place in “response naturalness” and 4th in the online evaluation. <a href="https://zhuanlan.zhihu.com/p/43419905">Details (Chinese)</a>.</p>
+
+<h4 id="slides">Slides</h4>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="/assets/js/viewer-js/#/assets/2019/07-bot5-seminar-minutes-0-en/rasa-core-qhduan.pdf" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h4 id="video">Video</h4>
+
+<div class="zoom-container" style="
+    position: relative;
+    padding-bottom:56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <video controls="" width="560" height="315" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+    <source src="https://av.cdn.maodou.io/5d319db4c307357ef9ee3c2d/0_1563543906" type="video/mp4" />Your browser does not support the video tag.
+  </video>
+  
+</div>
+
+<blockquote>
+  <p>Thanks to <a href="https://maodou.io">Maodou</a> for sponsoring the <a href="https://live.maodou.io/course/yCt9NCNBdBe52uiT5">live stream</a> (valued at <a href="https://maodou.io/pricing">¥4,000</a>).</p>
+</blockquote>
+
+<h3 id="2-closed-door-discussion">2. Closed-Door Discussion</h3>
+
+<p>Framing question: how might we shape this event into the “GWC of the Chatbot era”?</p>
+
+<blockquote>
+  <p>GWC (Great Wall Club) was born at the dawn of China’s mobile internet and witnessed its rise. It began as a small circle of founders who, after being turned away while trying to learn from Japan’s mobile pioneers in 2008, decided to form a community to open doors and share knowledge. Early members included leaders from UCWeb, 3G Portal, NetQin, and more, with Lei Jun as the initial investor. Over time, it became a platform where top founders and executives connected, learned, and collaborated—long before today’s big platforms emerged.</p>
+
+  <p><cite>36Kr, <a href="https://36kr.com/p/5123039">Behind GWC, the gathering of internet giants</a></cite></p>
+</blockquote>
+
+<p>Our vision: become the hottest Friday-night destination for chatbots—top developers, founders, and PMs—and you can’t beat a BOT chippy on the way back to the Holylands!</p>
+
+<h3 id="3-roundtable-brainstorm--feedback">3. Roundtable Brainstorm &amp; Feedback</h3>
+
+<ol>
+  <li>Tian Wang (王天, Tencent)
+    <ol>
+      <li>Bring in more participants and listen to developer voices.</li>
+    </ol>
+  </li>
+  <li>Xiaoqian Liu (刘晓倩, Tencent)
+    <ol>
+      <li>Add a dedicated segment: “What chatbots can do in scenario X.”</li>
+    </ol>
+  </li>
+  <li>Jinchao Zhang (张金超, Tencent)
+    <ol>
+      <li>Balance academia + engineering + product; we want demos; collect mobile needs and pre-event interactions.</li>
+    </ol>
+  </li>
+  <li>Qinghua Duan (段清华)
+    <ol>
+      <li>Use countdown timers for each section; timebox strictly.</li>
+    </ol>
+  </li>
+  <li>Dai Xu (徐岱, Tencent)
+    <ol>
+      <li>Provide sufficient snacks and drinks.</li>
+      <li>Consider a bi-weekly cadence.</li>
+    </ol>
+  </li>
+  <li>Meng Li (李萌)
+    <ol>
+      <li>Survey attendee needs; share accordingly.</li>
+      <li>Invite real users to share needs so we don’t treat everything as a nail when holding a hammer.</li>
+      <li>From a business angle, pure tech alone has limited value without iteration and outcomes.</li>
+    </ol>
+  </li>
+  <li>Haoran Liang (梁皓然)
+    <ol>
+      <li>Start with real cases; do case studies; share works. (Skip topics without clear pain points.)</li>
+      <li>Everyone writes 3 bullet points—find the strongest common customer needs.</li>
+    </ol>
+  </li>
+  <li>Ming Li (李明)
+    <ol>
+      <li>Speed up the pacing.</li>
+      <li>Focus on real scenarios and measurable outcomes.</li>
+    </ol>
+  </li>
+  <li>Other Tencent colleagues
+    <ol>
+      <li>More demos (no demo, no talk); stronger academic depth; shorter, crisper pacing.</li>
+      <li>Add metrics to quantify results.</li>
+      <li>Strengthen academic content.</li>
+    </ol>
+  </li>
+  <li>Huan Li (李卓桓)
+    <ol>
+      <li>Everyone shares; come with questions; ask more; converse more.</li>
+      <li>Get more people to join the after party!</li>
+    </ol>
+  </li>
+</ol>
+
+<h3 id="4-decisions">4. Decisions</h3>
+
+<ol>
+  <li>Next meetup: Friday, July 26 · 18:30–20:30
+    <ol>
+      <li>18:30–19:00 (30 min): Registration, networking, pizza</li>
+      <li>19:00–19:10 (10 min): Warm up</li>
+      <li>19:10–19:40 (30 min): Talk 1</li>
+      <li>19:40–19:50 (10 min): Tea break</li>
+      <li>19:50–20:20 (30 min): Talk 2</li>
+      <li>20:20–20:30 (10 min): Reflection &amp; group photo</li>
+    </ol>
+  </li>
+  <li>Next rotating chair: Jiarui Li (李佳芮)</li>
+  <li>Next talks
+    <ol>
+      <li>Ming Li (李明): The Bad Part of My Chatbot Experience</li>
+      <li>TBD: TBD</li>
+    </ol>
+  </li>
+  <li>Coming‑up talks
+    <ol>
+      <li>Tian Wang (王天): Tencent Bot Platform product talk</li>
+      <li>Meng Li (李萌): TBD</li>
+    </ol>
+  </li>
+  <li>Optional topics (open for proposals)
+    <ol>
+      <li>Ming Li (李明) / Junliang (俊良) / Simon: Wechaty Mini Program support</li>
+      <li>Ming Li (李明) / Junliang (俊良) / Simon / Yunjun (云军): What happens when chatbots meet Mini Programs?</li>
+      <li>Yunjun (云军): Chatbots for team task management—gaps in AI infra and practical hacks</li>
+      <li>Kuang Weipeng (邝伟鹏): FindMyFace — run face apps in WeChat and provide offline event photo services</li>
+    </ol>
+  </li>
+</ol>
+
+<h3 id="5-group-photo">5. Group Photo</h3>
+
+<p><img src="/assets/2019/07-bot5-seminar-minutes-0-en/group-photo.webp" alt="Group Photo" /></p>
+
+<h2 id="after-party-">After Party 🍻</h2>
+
+<p><img src="/assets/2019/07-bot5-seminar-minutes-0-en/after-party.webp" alt="After Party" /></p>
+
+<p>After the main session, three of us continued across the street to Guan’s Skewer Bar for refueling, brainstorming attendees, sustainability, topics, and a name for the series—while finishing a glorious 4 liters of fresh beer.</p>
+
+<p>Brainstormed names included:</p>
+
+<ol>
+  <li>Bot Friday</li>
+  <li>Bot Friday Club</li>
+  <li>Bot Five Club</li>
+  <li>Bot5</li>
+  <li>Bot5 Club</li>
+  <li>bot5.club</li>
+  <li>Bot Lab</li>
+  <li>Bot Revolution</li>
+  <li>Bot Evolution</li>
+</ol>
+
+<p>We’ll keep iterating. :D</p>
+
+<h2 id="acknowledgments">Acknowledgments</h2>
+
+<ol>
+  <li>Venue sponsor: Tencent</li>
+  <li>Dinner sponsor: Tencent Bot Platform team</li>
+  <li>Live stream sponsor: Maodou Education</li>
+  <li>Organizer: JuziBot</li>
+</ol>
+
+<h2 id="rsvp">RSVP</h2>
+
+<ol>
+  <li>Have corrections or additions to these minutes? Please comment below.</li>
+  <li>Want to speak at the next session? Reply with your proposed topic.</li>
+  <li>Want to invite a friend? Ask them to reply with a one‑sentence self‑intro.</li>
+</ol>
+
+<blockquote>
+  <p>Chinese version: <a href="/2019/07/19/bot5-seminar-minutes-0/">Chatbot Friday - 碰撞思想，点燃科技</a></p>
+</blockquote>
+
+<hr />
+
+<blockquote>
+  <p>Chinese version of this post: <a href="/2019/07/19/bot5-seminar-minutes-0/">bot5 seminar minutes 0</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#bot5">bot5</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#minutes">minutes</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#seminar">seminar</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#meetup">meetup</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#talk">talk</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#rasa">rasa</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#tencent">tencent</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#video">video</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#nlp">nlp</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Author @ Wechaty, Architect @ Chatie, LLM Code Generation Enthusiast, Serial Entrepreneur, Burner🔥
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2019/07/18/send-miniprogram-using-padpro/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2019/maodou-ketang-demo.webp">  如何用PadPro实现发送微信小程序</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2019/07/19/bot5-seminar-minutes-0/"> Chatbot Friday - 碰撞思想，点燃科技  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2019/07-bot5-seminar-minutes-0-en/group-photo.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

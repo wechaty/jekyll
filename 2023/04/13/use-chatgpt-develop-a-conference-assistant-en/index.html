@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Developing a Conference Assistant with ChatGPT & Wechaty in 10 Minutes | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Developing a Conference Assistant with ChatGPT &amp; Wechaty in 10 Minutes | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Developing a Conference Assistant with ChatGPT &amp; Wechaty in 10 Minutes" />
+<meta name="author" content="atorber" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This post is also available in Chinese" />
+<meta property="og:description" content="This post is also available in Chinese" />
+<link rel="canonical" href="https://wechaty.js.org/2023/04/13/use-chatgpt-develop-a-conference-assistant-en/" />
+<meta property="og:url" content="https://wechaty.js.org/2023/04/13/use-chatgpt-develop-a-conference-assistant-en/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2023/04-use-chatgpt-develop-a-conference-assistant-en/rare-book.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-04-13T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2023/04-use-chatgpt-develop-a-conference-assistant-en/rare-book.webp" />
+<meta property="twitter:title" content="Developing a Conference Assistant with ChatGPT &amp; Wechaty in 10 Minutes" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"atorber"},"dateModified":"2023-04-13T00:00:00+00:00","datePublished":"2023-04-13T00:00:00+00:00","description":"This post is also available in Chinese","headline":"Developing a Conference Assistant with ChatGPT &amp; Wechaty in 10 Minutes","image":"https://wechaty.js.org/assets/2023/04-use-chatgpt-develop-a-conference-assistant-en/rare-book.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2023/04/13/use-chatgpt-develop-a-conference-assistant-en/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"atorber"},"url":"https://wechaty.js.org/2023/04/13/use-chatgpt-develop-a-conference-assistant-en/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#article">article</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Developing a Conference Assistant with ChatGPT & Wechaty in 10 Minutes</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/atorber">
+                            <img class="rounded-circle" src="/assets/contributors/atorber/avatar.webp" alt="atorber" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/atorber">atorber</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Apr 13, 2023 · <span class="reading-time">
+  
+  
+    9 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2023/04-use-chatgpt-develop-a-conference-assistant-en/rare-book.webp" alt="Developing a Conference Assistant with ChatGPT & Wechaty in 10 Minutes">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<blockquote>
+  <p>This post is also available in <a href="/2023/04/13/use-chatgpt-develop-a-conference-assistant/">Chinese</a></p>
+</blockquote>
+
+<h2 id="background">Background</h2>
+
+<p>With ChatGPT’s explosive popularity, various applications have been explored by developers from all walks of life. Using ChatGPT to help us implement programs is undoubtedly one of the most imaginative directions, with some developers even claiming that programmers will be out of work~</p>
+
+<p>While not that exaggerated, there’s no doubt that ChatGPT will bring huge changes to application developers. This article will share how an amateur developer uses ChatGPT to develop a Wechaty chatbot application.</p>
+
+<h2 id="requirements-gathering">Requirements Gathering</h2>
+
+<p>First, I’ve always had an idea I wanted to implement in WeChat groups, so I simply organized the requirements:</p>
+
+<p>Develop a chatbot using the latest version of Wechaty to record meeting chat information and export documents based on commands:</p>
+
+<ol>
+  <li>When we say #开会 (start meeting) in the group, start recording chat information</li>
+  <li>When #结束 (end) is said in the group, stop recording</li>
+  <li>When #会议纪要 (meeting minutes) is said in the group, export the chat records during the meeting to a Word document and send it to the group</li>
+</ol>
+
+<h2 id="starting-to-ask-questions">Starting to Ask Questions</h2>
+
+<p>I directly gave the requirements to ChatGPT:</p>
+
+<p>Chaoge:</p>
+
+<p>Use the latest version of Wechaty to develop a chatbot that records meeting chat information and exports documents based on commands: 1. When we say #开会 in the group, start recording chat information 2. When #结束 is said in the group, stop recording 3. When #会议纪要 is said in the group, export the chat records during the meeting to a Word document and send it to the group</p>
+
+<p>ChatGPT:</p>
+
+<p>I’m sorry, as an AI language model, I cannot directly execute code on your computer. However, I can provide some ideas and suggestions to help you start building this chatbot.</p>
+
+<p>First, you need to use the latest version of WeChaty and Node.js to write code. WeChaty is an open-source SDK for WeChat personal account bots that allows you to create and manage WeChat bots using Node.js.</p>
+
+<p>Here’s a general implementation process:</p>
+
+<p>Use WeChaty to log in to a WeChat account and listen to group chat messages.
+In the listener function, determine if the received message is #开会, #结束, or #会议纪要.
+If it’s #开会, start recording chat information and store it in a data structure (e.g., array).
+If it’s #结束, stop recording chat information.
+If it’s #会议纪要, export the stored chat information to a Word document and send the document to the group.
+To implement these features, you’ll need to use some additional Node.js modules, such as:</p>
+
+<p>docx: for creating and exporting Word documents.
+fs: for reading and writing files.
+moment: for handling dates and times.
+lodash: for data processing and operations.
+Here’s sample code you can reference and modify according to your needs:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">Wechaty</span> <span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">Document</span><span class="p">,</span> <span class="nx">Packer</span><span class="p">,</span> <span class="nx">Paragraph</span><span class="p">,</span> <span class="nx">TextRun</span> <span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">docx</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">moment</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">moment</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">_</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">lodash</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">CHAT_RECORD</span> <span class="o">=</span> <span class="p">[];</span> <span class="c1">// Array to store chat records</span>
+<span class="kd">let</span> <span class="nx">RECORDING</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">// Flag indicating whether chat is being recorded</span>
+
+<span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Wechaty</span><span class="p">();</span>
+
+<span class="c1">// Listen to group chat messages</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">message</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">text</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">room</span><span class="p">();</span>
+
+  <span class="c1">// Check if it's a group chat message</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Check if it's #开会 message</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">text</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">#开会</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">RECORDING</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+      <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="dl">'</span><span class="s1">Started recording chat information.</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Check if it's #结束 message</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">text</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">#结束</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">RECORDING</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+      <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="dl">'</span><span class="s1">Stopped recording chat information.</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Check if it's #会议纪要 message</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">text</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">#会议纪要</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// Create document</span>
+      <span class="kd">const</span> <span class="nx">doc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Document</span><span class="p">();</span>
+      <span class="kd">const</span> <span class="nx">now</span> <span class="o">=</span> <span class="nf">moment</span><span class="p">().</span><span class="nf">format</span><span class="p">(</span><span class="dl">'</span><span class="s1">YYYY-MM-DD_HH-mm-ss</span><span class="dl">'</span><span class="p">);</span>
+      <span class="kd">const</span> <span class="nx">filename</span> <span class="o">=</span> <span class="s2">`Meeting_Minutes_</span><span class="p">${</span><span class="nx">now</span><span class="p">}</span><span class="s2">.docx`</span><span class="p">;</span>
+
+      <span class="c1">// Add title</span>
+      <span class="kd">const</span> <span class="nx">title</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Paragraph</span><span class="p">();</span>
+      <span class="nx">title</span><span class="p">.</span><span class="nf">addRun</span><span class="p">(</span><span class="k">new</span> <span class="nc">TextRun</span><span class="p">(</span><span class="dl">'</span><span class="s1">Meeting Minutes</span><span class="dl">'</span><span class="p">));</span>
+      <span class="nx">title</span><span class="p">.</span><span class="nf">heading1</span><span class="p">();</span>
+      <span class="nx">doc</span><span class="p">.</span><span class="nf">addParagraph</span><span class="p">(</span><span class="nx">title</span><span class="p">);</span>
+
+      <span class="c1">// Add content</span>
+      <span class="kd">const</span> <span class="nx">content</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Paragraph</span><span class="p">();</span>
+      <span class="kd">const</span> <span class="nx">chatLog</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="nx">CHAT_RECORD</span><span class="p">,</span> <span class="nx">item</span> <span class="o">=&gt;</span> <span class="s2">`</span><span class="p">${</span><span class="nx">item</span><span class="p">.</span><span class="k">from</span><span class="p">}</span><span class="s2">:</span><span class="p">${</span><span class="nx">item</span><span class="p">.</span><span class="nx">text</span><span class="p">}</span><span class="s2">`</span><span class="p">).</span><span class="nf">join</span><span class="p">(</span><span class="dl">'</span><span class="se">\n</span><span class="dl">'</span><span class="p">);</span>
+      <span class="nx">content</span><span class="p">.</span><span class="nf">addRun</span><span class="p">(</span><span class="k">new</span> <span class="nc">TextRun</span><span class="p">(</span><span class="nx">chatLog</span><span class="p">));</span>
+      <span class="nx">doc</span><span class="p">.</span><span class="nf">addParagraph</span><span class="p">(</span><span class="nx">content</span><span class="p">);</span>
+
+      <span class="c1">// Export document</span>
+      <span class="kd">const</span> <span class="nx">buffer</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Packer</span><span class="p">.</span><span class="nf">toBuffer</span><span class="p">(</span><span class="nx">doc</span><span class="p">);</span>
+      <span class="nx">fs</span><span class="p">.</span><span class="nf">writeFileSync</span><span class="p">(</span><span class="nx">filename</span><span class="p">,</span> <span class="nx">buffer</span><span class="p">);</span>
+
+      <span class="c1">// Send document to group</span>
+      <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">say</span><span class="p">({</span>
+        <span class="na">file</span><span class="p">:</span> <span class="nx">fs</span><span class="p">.</span><span class="nf">readFileSync</span><span class="p">(</span><span class="nx">filename</span><span class="p">),</span>
+        <span class="na">filename</span><span class="p">:</span> <span class="nx">filename</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="c1">// If currently recording chat, add message to record array</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">RECORDING</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">CHAT_RECORD</span><span class="p">.</span><span class="nf">push</span><span class="p">({</span>
+        <span class="na">from</span><span class="p">:</span> <span class="nx">message</span><span class="p">.</span><span class="k">from</span><span class="p">().</span><span class="nf">name</span><span class="p">(),</span>
+        <span class="na">text</span><span class="p">:</span> <span class="nx">text</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>This is a simple example code that you need to modify and optimize according to your needs. For example, you may need to add exception handling, logging, permission control, etc.</p>
+
+<p>It’s worth noting that WeChat officially does not allow using bots for automated operations, so using bots for meeting records may carry certain risks. Please use with caution and comply with relevant regulations and laws.</p>
+
+<blockquote>
+  <p>Wow, looks pretty good! It provided ideas, code, and friendly risk warnings. However, it doesn’t seem to be based on the latest Wechaty 1.x implementation, and it’s not TypeScript which I prefer. Time to improve it by telling it about the ding-dong-bot example code…</p>
+</blockquote>
+
+<p>[The article continues with the iterative conversation between the author and ChatGPT/New Bing, gradually refining the code to use the latest Wechaty syntax and TypeScript]</p>
+
+<h2 id="final-code">Final Code</h2>
+
+<p>Tested and working, details can be further explored and optimized:</p>
+
+<pre><code class="language-TypeScript">// Import Wechaty modules
+import {
+    Contact,
+    Message,
+    ScanStatus,
+    WechatyBuilder,
+    log,
+  }                  from 'wechaty'
+  
+import qrcodeTerminal from 'qrcode-terminal'
+
+// Import html-to-docx module
+import htmlToDocx from 'html-to-docx'
+import { FileBox } from 'file-box'
+
+// Create a Wechaty instance
+const bot = WechatyBuilder.build({
+    name: 'ding-dong-bot',})
+
+// Variable to store meeting chat information
+let meetingLog = ''
+
+// Variable to mark whether meeting is being recorded
+let isRecording = false
+
+// Listen to scan login event
+function onScan (qrcode: string, status: ScanStatus) {
+    if (status === ScanStatus.Waiting || status === ScanStatus.Timeout) {
+      const qrcodeImageUrl = [
+        'https://wechaty.js.org/qrcode/',
+        encodeURIComponent(qrcode),
+      ].join('')
+      log.info('StarterBot', 'onScan: %s(%s) - %s', ScanStatus[status], status, qrcodeImageUrl)
+  
+      qrcodeTerminal.generate(qrcode, { small: true })  // show qrcode on console
+  
+    } else {
+      log.info('StarterBot', 'onScan: %s(%s)', ScanStatus[status], status)
+    }
+  }
+bot.on('scan', onScan)
+
+// Listen to successful login event
+bot.on('login', user =&gt; console.log(`User ${user} logged in`))
+
+// Listen to received message event
+bot.on('message', async message =&gt; {
+  // Get message text content
+  const text = message.text()
+
+  // Get the group chat where the message is located, returns null if not a group chat
+  const room = message.room()
+
+  // If message is a group chat message
+  if (room) {
+    // If message content is #开会, start recording meeting chat info and reply "Started recording"
+    if (text === '#开会') {
+      isRecording = true
+      meetingLog = ''
+      await message.say('Started recording')
+    }
+    // If message content is #结束, stop recording meeting chat info and reply "Stopped recording"
+    else if (text === '#结束') {
+      isRecording = false
+      await message.say('Stopped recording')
+    }
+    // If message content is #会议纪要, export chat records during meeting to Word document and send to group
+    else if (text === '#会议纪要') {
+      // Use html-to-docx library to convert meeting chat info to Word document buffer object
+      const buffer = await htmlToDocx(`&lt;p&gt;Meeting Minutes:&lt;/p&gt;&lt;p&gt;${meetingLog}&lt;/p&gt;`)
+
+      // Convert buffer object to FileBox object for sending files
+      const fileBox = FileBox.fromBuffer(buffer, 'meeting.docx')
+
+      // Send file to group
+      await room.say(fileBox)
+    }
+    // If currently recording and message is not from self, append message to meeting chat info
+    else if (isRecording &amp;&amp; !message.self()) {
+      meetingLog += `${await room.topic()}: ${message}&lt;br&gt;`
+    }
+  }
+})
+
+// Start bot
+bot.start()
+</code></pre>
+
+<h2 id="effect-demonstration">Effect Demonstration</h2>
+
+<ol>
+  <li>Send #开会, bot immediately returns “Started recording”</li>
+  <li>Start speaking “Test meeting content”</li>
+  <li>Send #结束, bot immediately replies “Stopped recording”</li>
+  <li>Send #会议纪要, bot immediately replies with a “meeting.docx” file to the group</li>
+</ol>
+
+<p>Complete code can be viewed at <a href="https://github.com/choogoo/wechat-openai-qa-bot/blob/main/src/plugins/meet-mate.ts">WeChat Group Meeting Assistant</a>, which also adds support for exporting to Yuque documents, also from New Bing.</p>
+
+<h2 id="summary">Summary</h2>
+
+<ol>
+  <li>The entire development and debugging process took about ten minutes. If you’re not familiar with Wechaty, you can actually continue asking by sending error messages to NB. ChatGPT’s capabilities are truly amazing—quickly building the program framework with AI plus manual fine-tuning. For non-professional programmers, the threshold for application development has undoubtedly been lowered further, provided we’re familiar with the most basic usage of a language.</li>
+  <li>As ChatGPT continues to evolve and update its data, I believe in the not-too-distant future, building a Wechaty bot entirely using natural language will become a reality.</li>
+</ol>
+
+<blockquote>
+  <p>Historical Articles</p>
+</blockquote>
+
+<ul>
+  <li><a href="https://wechaty.js.org/2021/03/17/node-wechaty-and-wechaty-puppet-padlocal/">Wechaty + WeChat Mini Program for Group Activity Registration</a></li>
+</ul>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#blog">blog</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#study">study</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#introduction">introduction</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ecosystem">ecosystem</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/atorber">
+                            <img class="rounded-circle" src="/assets/contributors/atorber/avatar.webp" alt="atorber" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/atorber">atorber</a> </h5>
+						一个酷爱编码的产品经理
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2023/03/29/a-free-wechat-openai-qa-bot-by-xp/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2023/03-a-free-wechat-openai-qa-bot-by-xp/rare-book.webp">  a free wechat openai qa-bot by wechaty-puppet-xp</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2023/04/13/use-chatgpt-develop-a-conference-assistant/"> 10分钟使用ChatGPT&Wechaty开发一个群会议助手  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2023/04-use-chatgpt-develop-a-conference-assistant-en/rare-book.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

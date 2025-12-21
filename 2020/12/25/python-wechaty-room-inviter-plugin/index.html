@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Python-Wechaty之自动回复&关键字入群插件 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Python-Wechaty之自动回复&amp;关键字入群插件 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Python-Wechaty之自动回复&amp;关键字入群插件" />
+<meta name="author" content="wj-mcat" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="经不可靠统计，大部分聊天机器人的初学者都是以：自动回复和关键字入群这两个基础功能上手，然后才会逐步开发更多更复杂的功能，在此我将介绍如何使用python-wechaty快速实现这两个功能。" />
+<meta property="og:description" content="经不可靠统计，大部分聊天机器人的初学者都是以：自动回复和关键字入群这两个基础功能上手，然后才会逐步开发更多更复杂的功能，在此我将介绍如何使用python-wechaty快速实现这两个功能。" />
+<link rel="canonical" href="https://wechaty.js.org/2020/12/25/python-wechaty-room-inviter-plugin/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/12/25/python-wechaty-room-inviter-plugin/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/12-python-wechaty-open-source-journey-en/python-wechaty-logo.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-12-25T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/12-python-wechaty-open-source-journey-en/python-wechaty-logo.webp" />
+<meta property="twitter:title" content="Python-Wechaty之自动回复&amp;关键字入群插件" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"wj-mcat"},"dateModified":"2020-12-25T00:00:00+00:00","datePublished":"2020-12-25T00:00:00+00:00","description":"经不可靠统计，大部分聊天机器人的初学者都是以：自动回复和关键字入群这两个基础功能上手，然后才会逐步开发更多更复杂的功能，在此我将介绍如何使用python-wechaty快速实现这两个功能。","headline":"Python-Wechaty之自动回复&amp;关键字入群插件","image":"https://wechaty.js.org/assets/2020/12-python-wechaty-open-source-journey-en/python-wechaty-logo.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/12/25/python-wechaty-room-inviter-plugin/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"wj-mcat"},"url":"https://wechaty.js.org/2020/12/25/python-wechaty-room-inviter-plugin/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#tutorial">tutorial</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Python-Wechaty之自动回复&关键字入群插件</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/wj-mcat">
+                            <img class="rounded-circle" src="/assets/contributors/wj-mcat/avatar.webp" alt="吴京京" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/wj-mcat">吴京京</a> <span><a target="_blank" href="https://weibo.com/u/3877178684" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Dec 25, 2020 · <span class="reading-time">
+  
+  
+    3 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/12-python-wechaty-open-source-journey-en/python-wechaty-logo.webp" alt="Python-Wechaty之自动回复&关键字入群插件">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>经不可靠统计，大部分聊天机器人的初学者都是以：自动回复和关键字入群这两个基础功能上手，然后才会逐步开发更多更复杂的功能，在此我将介绍如何使用python-wechaty快速实现这两个功能。</p>
+
+<blockquote>
+  <p>python-wechaty：一个面向所有IM平台的聊天机器人框架。</p>
+</blockquote>
+
+<h2 id="一背景介绍">一、背景介绍</h2>
+
+<h3 id="11-自动回复">1.1 自动回复</h3>
+
+<p>有接触到微信公众号的同学都知道，它有一个自动回复的功能：你给它发送一个关键字，它就给你回复指定的内容，可以是纯文字，图片，视频等。</p>
+
+<blockquote>
+  <p>微信公众号的自动回复数量只有200个，虽然能够满足大部分的需求，可是如果扩充的话，便可以选择自定义开发。</p>
+</blockquote>
+
+<p>而在微信中回复的内容又可以是什么呢？可以是：纯文字、带艾特消息@的文字、图片、动图（表情包）、视频，语音、视频、小程序以及好友名片等，这些消息内容在python-wechaty都能够使用简单的配置即可完成此功能。</p>
+
+<h3 id="12-关键字入群">1.2 关键字入群</h3>
+
+<p>目前有很多社区运营者都会面临着一些问题：</p>
+
+<ul>
+  <li>群人数一多，就只能够一个一个拉人入群。</li>
+  <li>有好几个用户/开发者群，某些群人数满了，无法动态拉到其他群。</li>
+  <li>一个人管理的活动太多，每次都需要根据用户的意图将其拉到指定的群，大大增加运营同学的工作量。</li>
+  <li>每天就光拉人入群就花了半天的时间，还有半天是在偷着休息，因为太累了。</li>
+  <li>……</li>
+</ul>
+
+<p>以上问题都是我根据身边部分同学和朋友的吐槽中总结而来，为了帮助他们快速完成KPI，提升业绩，我做了以下AutoReplyPlugin和RoomInviterPlugin两个插件。</p>
+
+<p>接下来我将介绍如何上手这两个插件，快速解决你们身边的一些问题。</p>
+
+<h2 id="二安装--配置">二、安装 &amp; 配置</h2>
+
+<p>编程环境要求python3.7+版本，以及一个token两个依赖包。</p>
+
+<h3 id="11-配置token">1.1 配置Token</h3>
+
+<p>什么是Token？为什么要配置Token？如何获取Token？</p>
+
+<p>这么粗暴的灵魂三问在我们官网上早已有相关的<a href="https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty">文档</a>，也欢迎各位去挖掘我们潜在的文档链接，说不定你就能找到属于你的One Piece，所以在此章节我就只介绍如何在python-wechaty中配置Token。</p>
+
+<p>Token的配置可以有多种方式：</p>
+
+<ul>
+  <li>
+    <p>方法一：通过环境变量来配置</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nb">export </span><span class="nv">WECHATY_PUPPET_SERVICE_TOKEN</span><span class="o">=</span><span class="s1">'your-token'</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>方法二：通过python代码来配置</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">import</span> <span class="n">os</span>
+  <span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="p">[</span><span class="sh">'</span><span class="s">WECHATY_PUPPET_SERVICE_TOKEN</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="sh">'</span><span class="s">your-token</span><span class="sh">'</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>那如何获取长期Token呢？详细请看：<a href="https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty">Everything-about-Wechaty</a></p>
+
+<h3 id="12-安装依赖包">1.2 安装依赖包</h3>
+
+<p>整个依赖包分为两个：<code class="language-plaintext highlighter-rouge">wechaty</code>以及<code class="language-plaintext highlighter-rouge">wechaty-plugin-contrib</code>，安装脚本如下所示：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 安装python-wechaty包</span>
+pip <span class="nb">install </span>wechaty
+<span class="c"># 安装插件库</span>
+pip <span class="nb">install </span>wechaty-plugin-contrib
+</code></pre></div></div>
+
+<p>前者为使用python-wechaty开发聊天机器人的基础依赖包，里面包含开发过程中的对象，甚至是自定义插件；后者为官方维护的插件库，在里面有很多常见的基础插件，让你快速解决日常学习工作中的自动化问题。同时也欢迎各位来提交PR，贡献属于自己的插件。</p>
+
+<p>Wechaty社区欢迎各位优秀开发者共建Chatbot领域基础设施</p>
+
+<h2 id="三关键字入群">三、关键字入群</h2>
+
+<p>关键字入群是很多社区运营同学的日常工作，也是最消耗体力的活儿，并没有很很复杂的脑力活儿。现在都0202年了，居然有同学还没有使用到自动化工具来提升工作效率，更有趣的事儿，他们大部分都有一个程序猿同事/同学/老公/老婆。为了让他们更好的帮助自己身边的人解决问题，关键字入群这个插件你们必须得安利一波儿～</p>
+
+<h3 id="31-功能介绍">3.1 功能介绍</h3>
+
+<p>当用户私聊你，发送一个关键字，然后聊天机器人会根据关键字寻找到对应的群，比如你给Wechaty官方机器人发送一个“wechaty”的关键字，它会将你拉到Wechaty的开发者群内，并发送欢迎语。</p>
+
+<p>功能实际上很简单，如果从零开发的话，会让你无从下说。可是如果你使用python-wechaty的话，只需要几行简单的配置代码即可开发此功能。</p>
+
+<p><code class="language-plaintext highlighter-rouge">RoomInviterPlugin</code>  Is All You Need.</p>
+
+<h3 id="32-示例代码">3.2 示例代码</h3>
+
+<p>最好的代码永远是最简单的代码</p>
+
+<p>以下代码接近于人类语言，即使是新手，相信看完也知道如何开发专属聊天机器人：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">asyncio</span>
+<span class="kn">from</span> <span class="n">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
+<span class="kn">from</span> <span class="n">wechaty</span> <span class="kn">import</span> <span class="n">Wechaty</span>
+<span class="kn">from</span> <span class="n">wechaty_plugin_contrib.contrib</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">RoomInviterOptions</span><span class="p">,</span>
+    <span class="n">RoomInviterPlugin</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="n">wechaty_plugin_contrib.matchers</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">MessageMatcher</span><span class="p">,</span>
+    <span class="n">RoomMatcher</span>
+<span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+    <span class="sh">"""</span><span class="s">async run method</span><span class="sh">"""</span>
+    <span class="n">rules</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">MessageMatcher</span><span class="p">,</span> <span class="n">RoomMatcher</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nc">MessageMatcher</span><span class="p">(</span><span class="sh">'</span><span class="s">wechaty</span><span class="sh">'</span><span class="p">):</span> <span class="nc">RoomMatcher</span><span class="p">(</span><span class="sh">'</span><span class="s">Wechaty开发者群（1）</span><span class="sh">'</span><span class="p">),</span>
+        <span class="nc">MessageMatcher</span><span class="p">(</span><span class="sh">'</span><span class="s">python-wechaty</span><span class="sh">'</span><span class="p">):</span> <span class="nc">RoomMatcher</span><span class="p">(</span><span class="sh">'</span><span class="s">Python-Wechaty开发者群（2）</span><span class="sh">'</span><span class="p">),</span>
+    <span class="p">}</span>
+    <span class="n">plugin</span> <span class="o">=</span> <span class="nc">RoomInviterPlugin</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="nc">RoomInviterOptions</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="sh">'</span><span class="s">python-wechaty关键字入群插件</span><span class="sh">'</span><span class="p">,</span>
+        <span class="n">rules</span><span class="o">=</span><span class="n">rules</span><span class="p">,</span>
+        <span class="n">welcome</span><span class="o">=</span><span class="sh">'</span><span class="s">欢迎入群 ～</span><span class="sh">'</span>
+    <span class="p">))</span>
+    <span class="n">bot</span> <span class="o">=</span> <span class="nc">Wechaty</span><span class="p">().</span><span class="nf">use</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">bot</span><span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+
+<span class="n">asyncio</span><span class="p">.</span><span class="nf">run</span><span class="p">(</span><span class="nf">run</span><span class="p">())</span>
+</code></pre></div></div>
+
+<p>在以上代码中，主要是分为三步：导入对象，注入规则，启动机器人。</p>
+
+<ul>
+  <li>
+    <p><strong>导入对象</strong></p>
+
+    <p>在<code class="language-plaintext highlighter-rouge">wechaty-plugin-contrib</code>的插件库中，所有的插件都会存在于<code class="language-plaintext highlighter-rouge">wechaty_plugin_contrib.contrib</code>下。大家一方面可以从源代码中查看的到最新的插件列表，也可以从README中查看到对应的插件列表。</p>
+
+    <blockquote>
+      <p>相信大家能够在这里找到灵感来源，或者一怒之下提交自己的定制插件。</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>注入<strong>规则</strong></p>
+
+    <p>在上述代码中，<code class="language-plaintext highlighter-rouge">rules</code>是一个规则字典，表示匹配到指定消息后就将消息发送者邀请到指定的群内；<code class="language-plaintext highlighter-rouge">plugin</code>就是封装核心逻辑组件，处理所有的自动化操作逻辑，开发者不需要关心这部分。</p>
+  </li>
+  <li>
+    <p>启动机器人</p>
+
+    <p>启动机器人只需要调用一下start这个函数。</p>
+  </li>
+</ul>
+
+<h2 id="三自动回复">三、自动回复</h2>
+
+<p>自动回复也是我们日常生活工作中的一些高频使用场景，而回复内容不仅限于文字，还可以是图片，文件，链接以及小程序等等。比如你给机器人发“网易”，它会给你发送一个网易云音乐的小程序；你给它发一个”身份证“，它会给你发送身份证的正反面照片；…… 等等。</p>
+
+<p>以上应用场景很常见，而且还有更多的实际应用案例可根据自己的需求来调整。</p>
+
+<p>示例代码如下所示：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">asyncio</span>
+<span class="kn">from</span> <span class="n">wechaty</span> <span class="kn">import</span> <span class="n">Wechaty</span><span class="p">,</span> <span class="n">MiniProgram</span>  <span class="c1"># type: ignore
+</span><span class="kn">from</span> <span class="n">wechaty_puppet</span> <span class="kn">import</span> <span class="p">(</span>    <span class="c1"># type: ignore
+</span>    <span class="n">FileBox</span>
+<span class="p">)</span>
+
+<span class="kn">from</span> <span class="n">wechaty_plugin_contrib</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">AutoReplyRule</span><span class="p">,</span>
+    <span class="n">AutoReplyPlugin</span><span class="p">,</span>
+    <span class="n">AutoReplyOptions</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="kn">from</span> <span class="n">wechaty_plugin_contrib.matchers</span> <span class="kn">import</span> <span class="n">ContactMatcher</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+    <span class="sh">"""</span><span class="s">async run method</span><span class="sh">"""</span>
+    <span class="n">img_url</span> <span class="o">=</span> <span class="sh">'</span><span class="s">https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy</span><span class="sh">'</span> \
+              <span class="sh">'</span><span class="s">/it/u=1257042014,3164688936&amp;fm=26&amp;gp=0.jpg</span><span class="sh">'</span>
+    <span class="n">plugin</span> <span class="o">=</span> <span class="nc">AutoReplyPlugin</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="nc">AutoReplyOptions</span><span class="p">(</span>
+        <span class="n">rules</span><span class="o">=</span><span class="p">[</span>
+            <span class="nc">AutoReplyRule</span><span class="p">(</span><span class="n">keyword</span><span class="o">=</span><span class="sh">'</span><span class="s">ding</span><span class="sh">'</span><span class="p">,</span> <span class="n">reply_content</span><span class="o">=</span><span class="sh">'</span><span class="s">dong</span><span class="sh">'</span><span class="p">),</span>
+            <span class="nc">AutoReplyRule</span><span class="p">(</span><span class="n">keyword</span><span class="o">=</span><span class="sh">'</span><span class="s">七龙珠</span><span class="sh">'</span><span class="p">,</span> <span class="n">reply_content</span><span class="o">=</span><span class="sh">'</span><span class="s">七龙珠</span><span class="sh">'</span><span class="p">),</span>
+            <span class="nc">AutoReplyRule</span><span class="p">(</span>
+                <span class="n">keyword</span><span class="o">=</span><span class="sh">'</span><span class="s">七龙珠</span><span class="sh">'</span><span class="p">,</span>
+                <span class="n">reply_content</span><span class="o">=</span><span class="n">FileBox</span><span class="p">.</span><span class="nf">from_url</span><span class="p">(</span><span class="n">img_url</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="sh">'</span><span class="s">python.png</span><span class="sh">'</span><span class="p">)</span>
+            <span class="p">),</span>
+            <span class="nc">AutoReplyRule</span><span class="p">(</span>
+                <span class="n">keyword</span><span class="o">=</span><span class="sh">'</span><span class="s">网易-李白</span><span class="sh">'</span><span class="p">,</span>
+                <span class="n">reply_content</span><span class="o">=</span><span class="n">MiniProgram</span><span class="p">.</span><span class="nf">create_from_json</span><span class="p">({...})</span>
+            <span class="p">)</span>
+        <span class="p">],</span>
+        <span class="n">matchers</span><span class="o">=</span><span class="p">[</span>
+            <span class="nc">ContactMatcher</span><span class="p">(</span><span class="sh">'</span><span class="s">秋客</span><span class="sh">'</span><span class="p">),</span>
+        <span class="p">]</span>
+    <span class="p">))</span>
+    <span class="n">bot</span> <span class="o">=</span> <span class="nc">Wechaty</span><span class="p">().</span><span class="nf">use</span><span class="p">(</span><span class="n">plugin</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">bot</span><span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+
+<span class="n">asyncio</span><span class="p">.</span><span class="nf">run</span><span class="p">(</span><span class="nf">run</span><span class="p">())</span>
+</code></pre></div></div>
+
+<p>代码非常简单（API设计的很人性化），相信大家一眼就能够看懂，在此我就不做过多解释。</p>
+
+<h2 id="四总结">四、总结</h2>
+
+<p>python-wechaty有非常人性化的API，同时内置了很多高频功能插件库，提供给开发者能够快速上手开发出自己的小应用。</p>
+
+<p>整个wechaty的目标是面向所有IM平台，打造一款通用聊天机器人框架，也欢迎各位关注并使用<a href="https://github.com/wechaty/python-wechaty">python-wechaty</a>框架。</p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#python">python</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#plugin">plugin</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/wj-mcat">
+                            <img class="rounded-circle" src="/assets/contributors/wj-mcat/avatar.webp" alt="吴京京" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/wj-mcat">吴京京</a> <span><a target="_blank" href="https://weibo.com/u/3877178684" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Committer of Python-Wechaty. NLP & Chatbot Researcher, a graduate student at Beijing University of Posts and Telecommunications.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/12/23/wxwork-and-donut/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/12-07-wxwork/wecom.webp">  基于Wechaty开发的企业级机器人助手</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/12/28/auto-push-news/"> java-wechaty auto get news  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/harrisonqi/2020-12-28-auto-push-news-banner.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

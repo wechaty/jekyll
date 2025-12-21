@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Adding Hot Reload Function for WeChat Bots | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Adding Hot Reload Function for WeChat Bots | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Adding Hot Reload Function for WeChat Bots" />
+<meta name="author" content="gcaufy" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Conversational RPA SDK for Chatbot Makers" />
+<meta property="og:description" content="Conversational RPA SDK for Chatbot Makers" />
+<link rel="canonical" href="https://wechaty.js.org/2017/03/20/added-hot-reload-for-bots-en/" />
+<meta property="og:url" content="https://wechaty.js.org/2017/03/20/added-hot-reload-for-bots-en/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2017/03-added-hot-reload-for-bots-en/gcaufy-hot-reload-screencast.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-03-20T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2017/03-added-hot-reload-for-bots-en/gcaufy-hot-reload-screencast.webp" />
+<meta property="twitter:title" content="Adding Hot Reload Function for WeChat Bots" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"gcaufy"},"dateModified":"2017-03-20T00:00:00+00:00","datePublished":"2017-03-20T00:00:00+00:00","description":"Conversational RPA SDK for Chatbot Makers","headline":"Adding Hot Reload Function for WeChat Bots","image":"https://wechaty.js.org/assets/2017/03-added-hot-reload-for-bots-en/gcaufy-hot-reload-screencast.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2017/03/20/added-hot-reload-for-bots-en/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"gcaufy"},"url":"https://wechaty.js.org/2017/03/20/added-hot-reload-for-bots-en/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#feature">feature</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Adding Hot Reload Function for WeChat Bots</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/gcaufy">
+                            <img class="rounded-circle" src="/assets/contributors/gcaufy/avatar.webp" alt="gcaufy" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/gcaufy">gcaufy</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Mar 20, 2017 · <span class="reading-time">
+  
+  
+    9 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2017/03-added-hot-reload-for-bots-en/gcaufy-hot-reload-screencast.webp" alt="Adding Hot Reload Function for WeChat Bots">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p><img src="https://avatars3.githubusercontent.com/u/2182004?v=3&amp;s=88" alt="avatars" /></p>
+
+<p>Wechaty has solved many pain points I encountered during WeChat operations, which I won’t elaborate on here. At the same time, Wechaty’s elegant and simple API design and convenient deployment are another attractive aspects.</p>
+
+<p>After getting started quickly, during development and debugging, I needed to frequently restart the Wechaty program when modifying code. I believe most people have similar issues, so let’s discuss how to avoid such problems.</p>
+
+<h2 id="1-problem-analysis">1. Problem Analysis</h2>
+
+<p>During development and debugging, the Wechaty program must be restarted after modifying code. Each restart takes about 30s-60s. Developers also need to frequently scan QR codes to log in, which is quite costly for programs in the debugging stage. Therefore, I considered optimizing this startup time.</p>
+
+<p>For the QR code login issue, I found the <a href="https://github.com/wechaty/wechaty/wiki/API#wechaty-class">answer</a> in the Wiki:</p>
+
+<blockquote>
+  <p><strong>Wechaty.instance(profile:string): Wechaty</strong></p>
+
+  <p>profile(OPTIONAL): profile name. if a profile name is provided, wechaty will save login status to it, and automatically restored on next time of wechaty start(restart).</p>
+
+  <ul>
+    <li>can be set by environment variable: WECHATY_PROFILE</li>
+  </ul>
+</blockquote>
+
+<p>This means setting a profile can remember the login status, avoiding repeated QR code scanning actions during restarts.
+The QR code issue can be solved, but can the 30-60s startup time be further optimized? We need to understand what the program is doing during these 30 seconds.</p>
+
+<p>By examining the source code <a href="https://github.com/wechaty/wechaty/blob/main/src/puppet-web/browser-driver.ts">browser-driver.ts</a>, I found that during init execution, the program starts a driver, which can be thought of as opening a browser, then obtaining the browser session, retrying three times until failure. This is the foundation of Wechaty’s operation, and we can’t avoid this 30s time overhead here. We can only think from other aspects.</p>
+
+<h2 id="2-nodejs-hot-reload">2. Node.js Hot Reload</h2>
+
+<p>This is actually a Node.js feature itself, not closely related to Wechaty. We can dynamically load module content by listening for file changes. First, we need to understand Node.js’s module caching mechanism. Refer to the key code in <a href="https://github.com/nodejs/node/blob/master/lib/module.js">module.js</a>:</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Check the cache for the requested file.</span>
+<span class="c1">// 1. If a module already exists in the cache: return its exports object.</span>
+<span class="c1">// 2. If the module is native: call `NativeModule.require()` with the</span>
+<span class="c1">//    filename and return the result.</span>
+<span class="c1">// 3. Otherwise, create a new module for the file and save it to the cache.</span>
+<span class="c1">//    Then have it load  the file contents before returning its exports</span>
+<span class="c1">//    object.</span>
+<span class="nx">Module</span><span class="p">.</span><span class="nx">_load</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">parent</span><span class="p">,</span> <span class="nx">isMain</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">parent</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">debug</span><span class="p">(</span><span class="dl">'</span><span class="s1">Module._load REQUEST %s parent: %s</span><span class="dl">'</span><span class="p">,</span> <span class="nx">request</span><span class="p">,</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kd">var</span> <span class="nx">filename</span> <span class="o">=</span> <span class="nx">Module</span><span class="p">.</span><span class="nf">_resolveFilename</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">parent</span><span class="p">,</span> <span class="nx">isMain</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">cachedModule</span> <span class="o">=</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">_cache</span><span class="p">[</span><span class="nx">filename</span><span class="p">];</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">cachedModule</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">cachedModule</span><span class="p">.</span><span class="nx">exports</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">NativeModule</span><span class="p">.</span><span class="nf">nonInternalExists</span><span class="p">(</span><span class="nx">filename</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nf">debug</span><span class="p">(</span><span class="dl">'</span><span class="s1">load native module %s</span><span class="dl">'</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">NativeModule</span><span class="p">.</span><span class="nf">require</span><span class="p">(</span><span class="nx">filename</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kd">var</span> <span class="kr">module</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Module</span><span class="p">(</span><span class="nx">filename</span><span class="p">,</span> <span class="nx">parent</span><span class="p">);</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">isMain</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">process</span><span class="p">.</span><span class="nx">mainModule</span> <span class="o">=</span> <span class="kr">module</span><span class="p">;</span>
+        <span class="kr">module</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">.</span><span class="dl">'</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">Module</span><span class="p">.</span><span class="nx">_cache</span><span class="p">[</span><span class="nx">filename</span><span class="p">]</span> <span class="o">=</span> <span class="kr">module</span><span class="p">;</span>
+    <span class="nf">tryModuleLoad</span><span class="p">(</span><span class="kr">module</span><span class="p">,</span> <span class="nx">filename</span><span class="p">);</span>
+    <span class="k">return</span> <span class="kr">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">require</span><span class="p">.</span><span class="nx">cache</span> <span class="o">=</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">_cache</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>After Node.js requires a module, when the module is updated and required again, it actually reads the cached original module in memory. Unless you manually clear the <code class="language-plaintext highlighter-rouge">require.cache</code> content, the updated module content can be reloaded. Therefore, following the Node.js source code, I wrote a require cache clearing method:</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// purge require cache</span>
+<span class="kd">const</span> <span class="nx">purgeCache</span> <span class="o">=</span> <span class="p">(</span><span class="nx">moduleName</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">mod</span> <span class="o">=</span> <span class="nx">require</span><span class="p">.</span><span class="nf">resolve</span><span class="p">(</span><span class="nx">moduleName</span><span class="p">);</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">mod</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="nx">mod</span> <span class="o">=</span> <span class="nx">require</span><span class="p">.</span><span class="nx">cache</span><span class="p">[</span><span class="nx">mod</span><span class="p">])</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">))</span> <span class="p">{</span>
+        <span class="p">(</span><span class="kd">function</span> <span class="nf">traverse</span><span class="p">(</span><span class="nx">mod</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">mod</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nf">forEach</span><span class="p">(</span><span class="nf">function </span><span class="p">(</span><span class="nx">child</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nf">traverse</span><span class="p">(</span><span class="nx">child</span><span class="p">);</span>
+            <span class="p">});</span>
+            <span class="k">delete</span> <span class="nx">require</span><span class="p">.</span><span class="nx">cache</span><span class="p">[</span><span class="nx">mod</span><span class="p">.</span><span class="nx">id</span><span class="p">];</span>
+        <span class="p">}(</span><span class="nx">mod</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="nb">Object</span><span class="p">.</span><span class="nf">keys</span><span class="p">(</span><span class="kr">module</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">_pathCache</span><span class="p">).</span><span class="nf">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">cacheKey</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if </span><span class="p">(</span><span class="nx">cacheKey</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="nx">moduleName</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">delete</span> <span class="kr">module</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">_pathCache</span><span class="p">[</span><span class="nx">cacheKey</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>Then use <code class="language-plaintext highlighter-rouge">fs.watch</code> or libraries like <code class="language-plaintext highlighter-rouge">chokidar</code> to complete file monitoring functionality, implementing module reloading after file changes:</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">fs</span><span class="p">.</span><span class="nf">watch</span><span class="p">(</span><span class="dl">'</span><span class="s1">./somedir</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">filename</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+     <span class="nf">purgeCache</span><span class="p">(</span><span class="s2">`./somedir/</span><span class="p">${</span><span class="nx">filename</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+     <span class="nf">require</span><span class="p">(</span><span class="s2">`./somedir/</span><span class="p">${</span><span class="nx">filename</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="3-logic-separation">3. Logic Separation</h2>
+
+<p>When using Wechaty, developers are more concerned with event responses, such as responding to scan events, friend request events, message sending events, etc. Therefore, these response events can be separated individually. If I need to handle friend request events, I add a <code class="language-plaintext highlighter-rouge">friend.js</code> to handle them. If I need to handle message events, I add a <code class="language-plaintext highlighter-rouge">message.js</code> to handle them. Conversely, if I don’t need them, I delete the js file. Each file is an event handler. The code is as follows:</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">EVENT_LIST</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">logout</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">friend</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">room-join</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">room-leave</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">room-topic</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">heartbeat</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">];</span>
+
+<span class="kd">let</span> <span class="nx">eventHandler</span> <span class="o">=</span> <span class="p">{};</span>
+
+<span class="c1">// Load lisenter</span>
+<span class="kd">const</span> <span class="nx">loadListener</span> <span class="o">=</span> <span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">fn</span><span class="p">;</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="nx">fn</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="s2">`./listener/</span><span class="p">${</span><span class="nx">evt</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`binded listener: </span><span class="p">${</span><span class="nx">evt</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">fn</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">void</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">if </span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nf">toString</span><span class="p">().</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">Cannot find module</span><span class="dl">'</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nf">warn</span><span class="p">(</span><span class="s2">`listener </span><span class="p">${</span><span class="nx">evt</span><span class="p">}</span><span class="s2"> is not defined.`</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">fn</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Bind events</span>
+<span class="nx">EVENT_LIST</span><span class="p">.</span><span class="nf">forEach</span><span class="p">(</span><span class="nx">evt</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">eventHandler</span><span class="p">[</span><span class="nx">evt</span><span class="p">]</span> <span class="o">=</span> <span class="nf">loadListener</span><span class="p">(</span><span class="nx">evt</span><span class="p">);</span>
+    <span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="nx">evt</span><span class="p">,</span> <span class="nx">eventHandler</span><span class="p">[</span><span class="nx">evt</span><span class="p">]);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="4-integration">4. Integration</h2>
+
+<p>Next is integrating the logic code with the hot reload functionality, making each event handler have hot reload capability.</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">fs</span><span class="p">.</span><span class="nf">watch</span><span class="p">(</span><span class="dl">'</span><span class="s1">./listener</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">filename</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">evt</span> <span class="o">=</span> <span class="nx">filename</span><span class="p">.</span><span class="nf">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">filename</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">3</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">e</span><span class="p">}</span><span class="s2">: </span><span class="p">${</span><span class="nx">filename</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+
+    <span class="k">if </span><span class="p">(</span><span class="nx">EVENT_LIST</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if </span><span class="p">(</span><span class="nx">e</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">change</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">evt</span><span class="p">}</span><span class="s2"> listener reloaded.`</span><span class="p">);</span>
+            <span class="nf">purgeCache</span><span class="p">(</span><span class="s2">`./listener/</span><span class="p">${</span><span class="nx">evt</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+            <span class="c1">// It may read an empty file, if not use setTimeout</span>
+            <span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">bot</span><span class="p">.</span><span class="nf">removeListener</span><span class="p">(</span><span class="nx">evt</span><span class="p">,</span> <span class="nx">eventHandler</span><span class="p">[</span><span class="nx">evt</span><span class="p">]);</span>
+                <span class="c1">//console.log('filecontent: ' + fs.readFileSync(`./listener/${evt}.js`));</span>
+                <span class="nx">eventHandler</span><span class="p">[</span><span class="nx">evt</span><span class="p">]</span> <span class="o">=</span> <span class="nf">loadListener</span><span class="p">(</span><span class="nx">evt</span><span class="p">);</span>
+                <span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="nx">evt</span><span class="p">,</span> <span class="nx">eventHandler</span><span class="p">[</span><span class="nx">evt</span><span class="p">]);</span>
+            <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">e</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">rename</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">evt</span><span class="p">}</span><span class="s2"> listener removed.`</span><span class="p">);</span>
+            <span class="nx">bot</span><span class="p">.</span><span class="nf">removeListener</span><span class="p">(</span><span class="nx">evt</span><span class="p">,</span> <span class="nx">eventHandler</span><span class="p">[</span><span class="nx">evt</span><span class="p">]);</span>
+            <span class="nx">eventHandler</span><span class="p">[</span><span class="nx">evt</span><span class="p">]</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">void</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="nx">evt</span><span class="p">,</span> <span class="nx">eventHandler</span><span class="p">[</span><span class="nx">evt</span><span class="p">]);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>After detecting file changes in the <code class="language-plaintext highlighter-rouge">./listener</code> directory, it automatically removes the original event listener and updates it, perfectly implementing Wechaty development debugging without restarts.</p>
+
+<p>Finally, an environment variable is needed to distinguish development mode from production mode, where hot reload functionality is not needed in production mode.</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">isProd</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">production</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="k">if </span><span class="p">(</span><span class="nx">isProd</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">fs</span><span class="p">.</span><span class="nf">watch</span><span class="p">(</span><span class="dl">'</span><span class="s1">./listener</span><span class="dl">'</span><span class="p">,</span> <span class="p">....);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This way, you can enter development mode or production mode with the following commands.</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// development</span>
+<span class="nx">docker</span> <span class="nx">run</span> <span class="o">-</span><span class="nx">ti</span> <span class="o">--</span><span class="nx">rm</span> <span class="o">--</span><span class="nx">volume</span><span class="o">=</span><span class="dl">"</span><span class="s2">$(pwd)</span><span class="dl">"</span><span class="p">:</span><span class="o">/</span><span class="nx">bot</span> <span class="nx">zixia</span><span class="o">/</span><span class="nx">wechaty</span> <span class="nx">index</span><span class="p">.</span><span class="nx">js</span>
+
+<span class="c1">// production</span>
+<span class="nx">docker</span> <span class="nx">run</span> <span class="o">-</span><span class="nx">ti</span> <span class="o">-</span><span class="nx">e</span> <span class="nx">NODE_ENV</span><span class="o">=</span><span class="nx">production</span> <span class="o">--</span><span class="nx">rm</span> <span class="o">--</span><span class="nx">volume</span><span class="o">=</span><span class="dl">"</span><span class="s2">$(pwd)</span><span class="dl">"</span><span class="p">:</span><span class="o">/</span><span class="nx">bot</span> <span class="nx">zixia</span><span class="o">/</span><span class="nx">wechaty</span> <span class="nx">index</span><span class="p">.</span><span class="nx">js</span>
+</code></pre></div></div>
+
+<p>Hot reload bot effect image:</p>
+
+<p><img src="/assets/2017/03-added-hot-reload-for-bots-en/gcaufy-hot-reload-screencast.webp" alt="hot-reload" /></p>
+
+<p>This basically covers all the content of this article. You can use the <a href="https://github.com/wechaty/wechaty/tree/master/example/hot-reload-bot">example code</a> to experience it.</p>
+
+<p>Author: @<a href="https://github.com/gcaufy">Gcaufy</a>, Tencent, <a href="https://github.com/orgs/Chatie/teams/contributor">Wechaty Contributor</a></p>
+
+<hr />
+
+<blockquote>
+  <p>Chinese version of this post: <a href="/2017/03/20/added-hot-reload-for-bots/">给微信机器人添加热重启功能</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#code">code</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/gcaufy">
+                            <img class="rounded-circle" src="/assets/contributors/gcaufy/avatar.webp" alt="gcaufy" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/gcaufy">gcaufy</a> </h5>
+						Author of WePY, a mini program fframework for Wechat. Tencent Engineer
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2017/02/22/the-secret-lives-of-wechat-chatbots/"> The secret lives of WeChat’s chatbots</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2017/03/20/added-hot-reload-for-bots/"> 给微信机器人添加热重启功能  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2017/03-added-hot-reload-for-bots-en/gcaufy-hot-reload-screencast.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

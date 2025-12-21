@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      如何将业务代码从Puppeteer 迁移到Padchat | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>如何将业务代码从Puppeteer 迁移到Padchat | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="如何将业务代码从Puppeteer 迁移到Padchat" />
+<meta name="author" content="lijiarui" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Wechaty 近期有了很大的升级，从0.14版本之后，开始陆续支持各类非Web 版本的解决方案。我的业务逻辑代码重度依赖于wechaty，所以自从wechaty release 了0.15 版本以后，我开始将我们的业务逻辑代码陆续从Web版本迁移到了非Web版本上来。" />
+<meta property="og:description" content="Wechaty 近期有了很大的升级，从0.14版本之后，开始陆续支持各类非Web 版本的解决方案。我的业务逻辑代码重度依赖于wechaty，所以自从wechaty release 了0.15 版本以后，我开始将我们的业务逻辑代码陆续从Web版本迁移到了非Web版本上来。" />
+<link rel="canonical" href="https://wechaty.js.org/2018/06/24/migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-zh/" />
+<meta property="og:url" content="https://wechaty.js.org/2018/06/24/migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-zh/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2018/06-24-migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-zh/code-migration-zh.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-06-24T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2018/06-24-migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-zh/code-migration-zh.webp" />
+<meta property="twitter:title" content="如何将业务代码从Puppeteer 迁移到Padchat" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"lijiarui"},"dateModified":"2018-06-24T00:00:00+00:00","datePublished":"2018-06-24T00:00:00+00:00","description":"Wechaty 近期有了很大的升级，从0.14版本之后，开始陆续支持各类非Web 版本的解决方案。我的业务逻辑代码重度依赖于wechaty，所以自从wechaty release 了0.15 版本以后，我开始将我们的业务逻辑代码陆续从Web版本迁移到了非Web版本上来。","headline":"如何将业务代码从Puppeteer 迁移到Padchat","image":"https://wechaty.js.org/assets/2018/06-24-migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-zh/code-migration-zh.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2018/06/24/migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-zh/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"lijiarui"},"url":"https://wechaty.js.org/2018/06/24/migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-zh/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#migration">migration</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">如何将业务代码从Puppeteer 迁移到Padchat</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/lijiarui">
+                            <img class="rounded-circle" src="/assets/contributors/lijiarui/avatar-new.webp" alt="Jiarui LI (李佳芮)" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/lijiarui">Jiarui LI (李佳芮)</a> <span><a target="_blank" href="https://weibo.com/u/2175505900" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jun 24, 2018 · <span class="reading-time">
+  
+  
+    9 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2018/06-24-migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-zh/code-migration-zh.webp" alt="如何将业务代码从Puppeteer 迁移到Padchat">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>Wechaty 近期有了很大的升级，从0.14版本之后，开始陆续支持各类非Web 版本的解决方案。我的业务逻辑代码重度依赖于wechaty，所以自从wechaty release 了0.15 版本以后，我开始将我们的业务逻辑代码陆续从Web版本迁移到了非Web版本上来。</p>
+
+<p>本篇博客主要介绍了我是如何将业务逻辑代码，从Puppeteer 迁移到 Padchat上的。</p>
+
+<p><img src="/assets/2018/06-24-migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-zh/code-migration-zh.webp" alt="code" /></p>
+
+<h2 id="1-puppeteer-vs-padchat">1. Puppeteer VS Padchat</h2>
+
+<p>首先进行一下名词解释，在说这两个名词之前，先介绍一下Puppet</p>
+
+<p><strong>Puppet 系统</strong>是一个用来连接Wechaty API 和其他的微信实现方式的连接器。简单的来说，通过微信API进行微信自动化操作会有很多种不同的是实现方式，比如基于网页微信的实现，基于ipad协议的实现，基于ios hook 的实现，基于windows hook 的实现，基于Android xposed的实现等等。不同的实现方法代码是完全不一样的。如果没有puppet 帮助桥接不同的实现方法，开发者就会有不同的接入API，这对上层业务逻辑的开发非常不方便，因此这是Puppet 系统设计的初衷。</p>
+
+<p>现在再来介绍Puppeteer 和 Padchat 就会比较清楚了:</p>
+
+<p><img src="/assets/2018/abstract-info.webp" alt="image" /></p>
+
+<ul>
+  <li>Puppeteer: 基于网页微信的实现，通过puppet连接到Wechaty API。</li>
+  <li>Padchat: 基于ipad 协议的实现，通过puppet 连接到Wechaty API。</li>
+</ul>
+
+<p>具体的Puppet 和各个实现方法，可以参考下图和这篇博客：<a href="https://wechaty.github.io/wechaty-new-release-version-0.16/">Wechaty New Version 0.16(BETA, with super power) Released</a></p>
+
+<h2 id="2-如何无缝切换">2. 如何无缝切换</h2>
+
+<p>默认情况下，启动wechaty 是使用puppeteer的，切换成padchat 需要再运行的时候设置环境变量。</p>
+
+<p>更多信息详细见wiki<a href="https://github.com/wechaty/wechaty/wiki/Puppet#2-run">How to run a new wecahty-puppet-padchat</a></p>
+
+<h3 id="git-源码的方式">Git 源码的方式</h3>
+
+<h4 id="1-拉下github最新的代码">1. 拉下github最新的代码</h4>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git pull
+<span class="nb">rm</span> <span class="nt">-rf</span> package-lock.json
+<span class="nb">rm</span> <span class="nt">-rf</span> node_modules/
+npm <span class="nb">install</span>
+</code></pre></div></div>
+
+<h4 id="2-获取token并设置环境变量">2. 获取token并设置环境变量</h4>
+
+<p>在<a href="https://github.com/wechaty/wechaty/issues/1296">Wechaty v0.17 Padchat Testing: Win32/iPad/Android/iOS/API Puppets Support are comming!</a> 中进行alpha test 版本的内测报名，并获取到token： <code class="language-plaintext highlighter-rouge">WECHATY_PUPPET_PADCHAT_TOKEN</code></p>
+
+<h4 id="3-设置环境变量并运行">3. 设置环境变量并运行</h4>
+
+<p>记得要设置<code class="language-plaintext highlighter-rouge">WECHATY_PUPPET=padchat</code> 来切换puppet版本。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">WECHATY_PUPPET_PADCHAT_TOKEN</span><span class="o">=</span>your padchat token <span class="nv">WECHATY_PUPPET</span><span class="o">=</span>padchat  node examples/ding-dong-bot.js
+</code></pre></div></div>
+
+<h3 id="npm">NPM</h3>
+
+<h4 id="1-安装到最新版本的npm">1. 安装到最新版本的npm</h4>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install </span>wechaty@next
+</code></pre></div></div>
+
+<h4 id="2-npm下获取token并设置环境变量">2. NPM下获取token并设置环境变量</h4>
+
+<p>在<a href="https://github.com/wechaty/wechaty/issues/1296">#1296</a> 中进行alpha test 版本的内测报名，并获取到token： <code class="language-plaintext highlighter-rouge">WECHATY_PUPPET_PADCHAT_TOKEN</code></p>
+
+<h4 id="3-npm下设置环境变量并运行">3. NPM下设置环境变量并运行</h4>
+
+<p>记得要设置<code class="language-plaintext highlighter-rouge">WECHATY_PUPPET=padchat</code> 来切换puppet版本。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">WECHATY_PUPPET_PADCHAT_TOKEN</span><span class="o">=</span>your padchat token <span class="nv">WECHATY_PUPPET</span><span class="o">=</span>padchat   node examples/ding-dong-bot.js
+
+</code></pre></div></div>
+
+<h3 id="docker">Docker</h3>
+
+<h4 id="1-拉下最新版本的docker-镜像">1. 拉下最新版本的docker 镜像</h4>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull zixia/wechaty:latest
+</code></pre></div></div>
+
+<h4 id="2-获取token">2. 获取token</h4>
+
+<p>在<a href="https://github.com/wechaty/wechaty/issues/1296">#1296</a> 中进行alpha test 版本的内测报名，并获取到token： <code class="language-plaintext highlighter-rouge">WECHATY_PUPPET_PADCHAT_TOKEN</code></p>
+
+<h4 id="3-docker-下设置环境变量并运行">3. Docker 下设置环境变量并运行</h4>
+
+<ul>
+  <li>记得要设置<code class="language-plaintext highlighter-rouge">WECHATY_PUPPET=padchat</code> 来切换puppet版本。</li>
+  <li>记得docker 版本不要重复安装wechaty 的npm 包，检查方法： 查看node_module 是否有wechaty，如果有就删掉它</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-t</span> <span class="nt">-i</span>  <span class="nt">-e</span> <span class="nv">WECHATY_PUPPET</span><span class="o">=</span><span class="s2">"padchat"</span> <span class="nt">-e</span> <span class="nv">WECHATY_PUPPET_PADCHAT_TOKEN</span><span class="o">=</span><span class="s2">"your token"</span>  <span class="nt">--volume</span><span class="o">=</span><span class="s2">"</span><span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span><span class="s2">"</span>:/bot <span class="nt">--name</span><span class="o">=</span>wechaty zixia/wechaty:latest examples/ding-dong-bot.ts
+</code></pre></div></div>
+
+<h2 id="3-代码检查">3. 代码检查</h2>
+
+<p>wechaty 是使用typescript 写的，都是强类型的，我之前的代码没有统一typings，由于切换到padchat 以后，很多函数由同步变成了异步，所以索性我的代码也统一用了typings，并进行了类型检查。</p>
+
+<p>人是一定会出错的，所以我们需要通过代码检查工具来发现代码错误、统一代码风格。我使用 <strong>TSLint</strong> 进行 TypeScript 的代码检查，编辑器用的是VSCODE。<strong>TSLint</strong> 支持自定义的代码检测规则。</p>
+
+<h3 id="为什么需要代码检查">为什么需要代码检查</h3>
+
+<p>有人会觉得，JavaScript 非常灵活，所以需要代码检查。而 TypeScript 已经能够在编译阶段检查出很多问题了，为什么还需要代码检查呢？</p>
+
+<p>因为 TypeScript 关注的重心是类型的匹配，而不是代码风格。当团队的人员越来越多时，同样的逻辑不同的人写出来可能会有很大的区别：</p>
+
+<ul>
+  <li>缩进应该是四个空格还是两个空格？</li>
+  <li>是否应该禁用 var？</li>
+  <li>接口名是否应该以 I 开头？</li>
+  <li>是否应该强制使用 === 而不是 ==？</li>
+  <li>是否需要分号？</li>
+</ul>
+
+<p>这些问题 TypeScript 不会关注，但是却影响到多人协作开发时的效率、代码的可理解性以及可维护性。</p>
+
+<p><a href="https://ts.xcatliu.com/engineering/lint.html">这篇文章</a> 给了很好的例子和相关说明，有兴趣的同学可以移步去看看</p>
+
+<p>简单的说，虽然发现代码错误比统一的代码风格更重要，但是当一个项目越来越庞大，开发人员也越来越多的时候，代码风格的约束还是必不可少的。</p>
+
+<h3 id="使用tslint-工具代码检查">使用tslint 工具代码检查</h3>
+
+<h4 id="1-安装">1. 安装</h4>
+
+<p>TSLint 的使用比较简单，参考<a href="https://palantir.github.io/tslint/">官网</a>的步骤安装到本地即可：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">--save-dev</span> tslint
+npm <span class="nb">install </span>tslint-config-standard
+</code></pre></div></div>
+
+<h4 id="2-创建配置文件">2. 创建配置文件</h4>
+
+<p>创建配置文件 <code class="language-plaintext highlighter-rouge">tslint.json</code></p>
+
+<p>tslint 和tsconfig 建议参考wechaty 的配置：</p>
+
+<ul>
+  <li><a href="https://github.com/wechaty/wechaty/blob/main/tslint.json">tslint 配置文件</a></li>
+  <li><a href="https://github.com/wechaty/wechaty/blob/main/tsconfig.json">tsconfig 配置文件</a></li>
+</ul>
+
+<p>这里针对wechaty 的一些配置进行说明</p>
+
+<ul>
+  <li>“strict” : true
+  启用所有严格类型检查选项。 启用 –strict相当于启用 –noImplicitAny, –noImplicitThis, –alwaysStrict,–strictNullChecks和 –strictFunctionTypes和–strictPropertyInitialization。</li>
+  <li>“noEmitOnError”              : true
+  报错时不生成输出文件。</li>
+  <li>“noUnusedLocals”             : true
+  若有未使用的局部变量则抛错。</li>
+  <li>“noImplicitReturns”          : true
+  不是函数的所有返回路径都有返回值时报错。</li>
+  <li>“noFallthroughCasesInSwitch” : true
+  报告switch语句的fallthrough错误。（即，不允许switch的case语句贯穿）</li>
+  <li>“strictNullChecks”           : true
+  在严格的 null检查模式下， null和 undefined值不包含在任何类型里，只允许用它们自己和 any来赋值（有个例外， undefined可以赋值到 void）</li>
+  <li>“noImplicitAny”              : true
+  在表达式和声明上有隐含的 any类型时报错。 相关issue: <a href="https://github.com/wechaty/wechaty/issues/1383">ts-node 7.0 breaking change: Skip <code class="language-plaintext highlighter-rouge">files</code> by default</a></li>
+  <li>“no-floating-promises”: true
+  如果有async 方法，要求必须使用await。相关issue: <a href="https://github.com/wechaty/wechaty/issues/1346">Prevent the Floating Promise in the Async/Await Code</a></li>
+  <li>“noUnusedParameters”         : true
+  若有未使用的参数则抛错。</li>
+  <li>“noImplicitThis”             : true
+  当 this表达式的值为 any类型的时候，生成一个错误。</li>
+</ul>
+
+<p>更多参考<a href="https://tslang.cn/docs/handbook/compiler-options.html">typescript 文档</a></p>
+
+<h4 id="3-为-packagejson-添加-tslint-脚本">3. 为 package.json 添加 tslint 脚本</h4>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"lint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tslint --project . src/**/*.ts src/**/*.tsx"</span><span class="p">,</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>其中 –project . 会要求 tslint 使用当前目录的 tsconfig.json 配置来获取类型信息，很多规则需要类型信息才能生效。</p>
+
+<p>此时执行 <code class="language-plaintext highlighter-rouge">npm run lint</code> 即可检查整个项目</p>
+
+<h4 id="4-在-vscode-中集成-tslint-检查">4. 在 VSCode 中集成 TSLint 检查</h4>
+
+<p>在 VSCode 中安装 <code class="language-plaintext highlighter-rouge">tslint</code> 插件即可，安装好之后，默认是开启的状态。</p>
+
+<h4 id="5-彩蛋">5. 彩蛋</h4>
+
+<p>唔。。。这里再赠送一个VSCode 插件彩蛋：editorconfig : 让使用不同编辑器的开发者在共同开发一个项目时“无痛”地遵循编码规范。更多说明见<a href="https://editorconfig.org/">editorconfig官网</a></p>
+
+<p>wechaty 的配置见 <a href="https://github.com/wechaty/wechaty/blob/main/.editorconfig">.editorconfig</a></p>
+
+<h2 id="4-breaking-changes">4. BREAKING CHANGES</h2>
+
+<p>wechaty 升级版本后(参考<a href="https://wechaty.github.io/wechaty-new-release-version-0.16/">博客</a>)，虽然尽可能的减少接口变动，但是为了适配padchat， 还是会有一些接口有了不同程度的变化。因此在进行代码迁移的时候，我们也需要修改原来的部分代码，我把相关内容列在下面了，更多内容，建议仔细阅读<a href="https://github.com/wechaty/wechaty/blob/main/CHANGELOG.md">CHANGE LOG</a></p>
+
+<h3 id="botinit-变成了-botstart">bot.init() 变成了 bot.start()</h3>
+
+<h3 id="botquit-变成了-botstop">bot.quit() 变成了 bot.stop()</h3>
+
+<h3 id="friendrequest-改成了-friendship">FriendRequest 改成了 Friendship</h3>
+
+<p><code class="language-plaintext highlighter-rouge">FriendRequest</code> class refactored.</p>
+
+<h4 id="之前-v014-或者更低">之前 (v0.14 或者更低)</h4>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">wechaty</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">friend</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">contact</span><span class="p">,</span> <span class="nx">request</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// this is a friend request confirmation event</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// this is a friend request</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+
+</code></pre></div></div>
+
+<h4 id="之后-v016-或者更高">之后 (v0.16 或者更高)</h4>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">wechaty</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">friendship</span><span class="dl">'</span><span class="p">,</span> <span class="nx">request</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">switch </span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nf">type</span><span class="p">())</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nx">FriendRequest</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="na">RECEIVE</span><span class="p">:</span>
+      <span class="c1">// this is a friend request request</span>
+      <span class="k">break</span>
+    <span class="k">case</span> <span class="nx">FriendRequest</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="na">CONFIRM</span><span class="p">:</span>
+      <span class="c1">// this is a friend request confirmation</span>
+      <span class="k">break</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>建议仔细看代码<a href="https://github.com/wechaty/wechaty/blob/main/examples/friend-bot.ts">friend-bot.ts</a></p>
+
+<p>相关issue:</p>
+
+<ul>
+  <li><a href="https://github.com/wechaty/wechaty/issues/1196">BREAKING CHANGE: v0.16 on(‘friend`) arguments changed!</a></li>
+  <li><a href="https://github.com/wechaty/wechaty/issues/1312">BREAKING CHANGES v0.16: FriendRequest class will be replaced with Friendship</a></li>
+</ul>
+
+<h3 id="messagecontent-改成了-messagetext">Message.content() 改成了 Message.text()</h3>
+
+<p>从 v0.16, Message.content() 依然是可被兼容的状态.
+从 v0.18, Message.content() 会彻底弃用.</p>
+
+<p>相关issue:</p>
+
+<ul>
+  <li><a href="https://github.com/wechaty/wechaty/issues/1163">BREAKING CHANGE: v0.16 will replace <code class="language-plaintext highlighter-rouge">Message.content()</code> with <code class="language-plaintext highlighter-rouge">Message.text()</code></a></li>
+</ul>
+
+<h3 id="mediamessage-将会被弃用">MediaMessage 将会被弃用</h3>
+
+<p>从 0.16, MediaMessage 依然是可被兼容的状态.
+从 v0.18, MediaMessage 会彻底弃用.</p>
+
+<p>未来统一使用 Message</p>
+
+<p>代码变化</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">- bot.say(new MediaMessage('/image.png')
+</span><span class="gi">+ bot.say(new Message('/image.png')
+</span></code></pre></div></div>
+
+<p>相关issue:</p>
+
+<ul>
+  <li><a href="https://github.com/wechaty/wechaty/issues/1164">BREAKING CHANGE: v0.16 will remove <code class="language-plaintext highlighter-rouge">MediaMessage</code> class</a></li>
+</ul>
+
+<h4 id="介绍一个好用的发送图片的功能">介绍一个好用的发送图片的功能</h4>
+
+<p>介绍一个非常好用的包: <a href="https://www.npmjs.com/package/file-box">FileBox 官网</a>, 一个将文件数据打包方便读取的npm 包，可以轻松地在具有最少有效负载的服务器之间进行传输，而不会比其位置（本地路径，远程URL或云存储）。详细使用方法见官网。</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">fileBox</span> <span class="o">=</span> <span class="nx">FileBox</span><span class="p">.</span><span class="nf">fromStream</span><span class="p">(</span>
+<span class="nx">fs</span><span class="p">.</span><span class="nf">createReadStream</span><span class="p">(</span><span class="nx">BOT_QR_CODE_IMAGE_FILE</span><span class="p">),</span>
+<span class="nx">BOT_QR_CODE_IMAGE_FILE</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="wechatyself-改成了-wechatyuserself">Wechaty.self() 改成了 Wechaty.userSelf()</h3>
+
+<p>相关issue:</p>
+
+<ul>
+  <li><a href="https://github.com/wechaty/wechaty/issues/1369">BREAKING CHANGE v0.16 Wechaty.self() eprecated, use Wechaty.userSelf() instead</a></li>
+</ul>
+
+<h3 id="contactpersonal-和-contactofficial-改成了-contacttype">Contact.personal() 和 Contact.official() 改成了 Contact.type()</h3>
+
+<h4 id="之前">之前</h4>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">isPersonal</span> <span class="o">=</span> <span class="nx">contact</span><span class="p">.</span><span class="nf">personal</span><span class="p">()</span>
+<span class="kd">const</span> <span class="nx">isOfficial</span> <span class="o">=</span> <span class="nx">contact</span><span class="p">.</span><span class="nf">official</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="现在">现在</h4>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="cm">/**
+   * Return the type of the Contact
+   *
+   * @returns ContactType - Contact.Type.PERSONAL for personal account, Contact.Type.OFFICIAL for official account
+   * @example
+   * const isOfficial = contact.type() === Contact.Type.OFFICIAL
+   */</span>
+  <span class="kd">const</span> <span class="kd">type</span> <span class="o">=</span> <span class="nx">Contact</span><span class="p">.</span><span class="nf">type</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>相关issue:</p>
+
+<ul>
+  <li><a href="https://github.com/wechaty/wechaty/issues/1366">BREAKING CHANGE v0.16 Contact.personal() and Contact.official() deprecated, use Contact.type() instead</a></li>
+</ul>
+
+<h3 id="roomadd-返回值从-promiseboolean-变成了-promisevoid">Room.add() 返回值从 <code class="language-plaintext highlighter-rouge">Promise&lt;boolean&gt;</code> 变成了 <code class="language-plaintext highlighter-rouge">Promise&lt;void&gt;</code></h3>
+
+<p>相关issue:</p>
+
+<ul>
+  <li><a href="https://github.com/wechaty/wechaty/issues/1362">BREAKING CHANGE v0.16 room.add return <code class="language-plaintext highlighter-rouge">Promise&lt;void&gt;</code> instead of return <code class="language-plaintext highlighter-rouge">Promise&lt;boolean&gt;</code></a></li>
+</ul>
+
+<h3 id="roomtopic-从sync-变成了-async">Room.topic() 从Sync 变成了 Async</h3>
+
+<h4 id="roomtopic-之前">Room.topic() 之前</h4>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">topic</span> <span class="o">=</span> <span class="nx">room</span><span class="p">.</span><span class="nf">topic</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="roomtopic-现在">Room.topic() 现在</h4>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">topic</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">topic</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>相关issue:</p>
+
+<ul>
+  <li><a href="https://github.com/wechaty/wechaty/issues/1295">BREAKING CHANGE: v0.16 <code class="language-plaintext highlighter-rouge">Room.topic()</code> change from Sycn to Async</a></li>
+</ul>
+
+<h3 id="roomaliascontact-从sync-变成了-async">Room.alias(contact) 从Sync 变成了 Async</h3>
+
+<h4 id="roomaliascontact-之前">Room.alias(contact) 之前</h4>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">alias</span> <span class="o">=</span> <span class="nx">room</span><span class="p">.</span><span class="nf">alias</span><span class="p">(</span><span class="nx">contact</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="roomaliascontact-现在">Room.alias(contact) 现在</h4>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">alias</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">alias</span><span class="p">(</span><span class="nx">contact</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>相关issue:</p>
+
+<ul>
+  <li><a href="https://github.com/wechaty/wechaty/issues/1293">BREAKING CHANGE: v0.16 <code class="language-plaintext highlighter-rouge">Room.alias(contact)</code> change from Sycn to Async</a></li>
+</ul>
+
+<h3 id="roommemberlist-从sync-变成了-async">Room.memberList() 从Sync 变成了 Async</h3>
+
+<h4 id="roommemberlist-之前">Room.memberList() 之前</h4>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">memberList</span> <span class="o">=</span> <span class="nx">room</span><span class="p">.</span><span class="nf">memberList</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="roommemberlist-现在">Room.memberList() 现在</h4>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">memberList</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">memberList</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>相关issue:</p>
+
+<ul>
+  <li><a href="https://github.com/wechaty/wechaty/issues/1290">BREAKING CHANGE: v0.16 <code class="language-plaintext highlighter-rouge">Room.memberList()</code> change from Sycn to Async</a></li>
+</ul>
+
+<h3 id="roommember-从sync-变成了-async">Room.member() 从Sync 变成了 Async</h3>
+
+<h4 id="roommember-之前">Room.member() 之前</h4>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">contact</span> <span class="o">=</span> <span class="nx">room</span><span class="p">.</span><span class="nf">member</span><span class="p">(</span><span class="dl">'</span><span class="s1">Huan</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="roommember-现在">Room.member() 现在</h4>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">- const contact = room.member('Huan')
+</span><span class="gi">+ const contact = await room.member('Huan')
+</span></code></pre></div></div>
+
+<p>相关issue:</p>
+
+<ul>
+  <li><a href="https://github.com/wechaty/wechaty/issues/1258">BREAKING CHANGES: v0.16 <code class="language-plaintext highlighter-rouge">Room.member()</code> from <code class="language-plaintext highlighter-rouge">sync</code> to <code class="language-plaintext highlighter-rouge">async</code></a></li>
+</ul>
+
+<h3 id="roomhascontact-从sync-变成了-async">Room.has(contact) 从Sync 变成了 Async</h3>
+
+<h4 id="roomhascontact-之前">Room.has(contact) 之前</h4>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">exist</span> <span class="o">=</span> <span class="nx">room</span><span class="p">.</span><span class="nf">has</span><span class="p">(</span><span class="nx">contact</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="roomhascontact-现在">Room.has(contact) 现在</h4>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">exist</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">has</span><span class="p">(</span><span class="nx">contact</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>相关issue:</p>
+
+<ul>
+  <li><a href="https://github.com/wechaty/wechaty/issues/1289">BREAKING CHANGE: v0.16 <code class="language-plaintext highlighter-rouge">Room.has(contact)</code> change from Sycn to Async</a></li>
+</ul>
+
+<h3 id="messagemention-从sync-变成了-async">Message.mention() 从Sync 变成了 Async</h3>
+
+<h4 id="messagemention-之前">Message.mention() 之前</h4>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">mentionList</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">mention</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="messagemention-之后">Message.mention() 之后</h4>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">- const mentionList = message.mention()
+</span><span class="gi">+ const mentionList = await message.mention()
+</span></code></pre></div></div>
+
+<p>相关issue:</p>
+
+<ul>
+  <li><a href="https://github.com/wechaty/wechaty/issues/1259">BREAKING CHANGE: v0.16 <code class="language-plaintext highlighter-rouge">Message.mention()</code> change from <code class="language-plaintext highlighter-rouge">sync</code> to <code class="language-plaintext highlighter-rouge">async</code></a></li>
+</ul>
+
+<h3 id="scan-事件参数发生了变化"><code class="language-plaintext highlighter-rouge">scan</code> 事件参数发生了变化</h3>
+
+<p>对老代码是兼容的</p>
+
+<h4 id="scan-事件之前"><code class="language-plaintext highlighter-rouge">scan</code> 事件之前</h4>
+
+<p><a href="https://github.com/wechaty/wechaty/blob/860e85ec776ac20e92751ec4b67e0d539ef40a16/examples/ding-dong-bot.ts#L74-L77">https://github.com/wechaty/wechaty/blob/860e85ec776ac20e92751ec4b67e0d539ef40a16/examples/ding-dong-bot.ts#L74-L77</a></p>
+
+<h4 id="scan-事件之后"><code class="language-plaintext highlighter-rouge">scan</code> 事件之后</h4>
+
+<p><a href="https://github.com/wechaty/wechaty/blob/07008dff17ccc46b347ba28b85af167984573ea0/examples/ding-dong-bot.ts#L74-L76">https://github.com/wechaty/wechaty/blob/07008dff17ccc46b347ba28b85af167984573ea0/examples/ding-dong-bot.ts#L74-L76</a></p>
+
+<p>请注意我们删除了 <del><code class="language-plaintext highlighter-rouge">const loginUrl = url.replace(/\/qrcode\//, '/l/')</code></del></p>
+
+<p>相关issue:</p>
+
+<ul>
+  <li><a href="https://github.com/wechaty/wechaty/issues/1262">BREAKING CHANGE: v0.16 <code class="language-plaintext highlighter-rouge">scan</code> event args will be different!</a></li>
+</ul>
+
+<h3 id="roomcontactmessagefriendrequest在不能直接实例化"><code class="language-plaintext highlighter-rouge">Room</code>,<code class="language-plaintext highlighter-rouge">Contact</code>,<code class="language-plaintext highlighter-rouge">Message</code>,<code class="language-plaintext highlighter-rouge">FriendRequest</code>在不能直接实例化</h3>
+
+<h4 id="相关错误信息">相关错误信息</h4>
+
+<ol>
+  <li>Error: class can not be instanciated directly!</li>
+  <li>Error: must not use the global Message/Contact/Room. use a cloned child via cloneClass instead</li>
+</ol>
+
+<p>由于 <code class="language-plaintext highlighter-rouge">Contact</code>, <code class="language-plaintext highlighter-rouge">FriendRequest</code>, <code class="language-plaintext highlighter-rouge">Message</code>, 和 <code class="language-plaintext highlighter-rouge">Room</code> 这些类要和 <code class="language-plaintext highlighter-rouge">Puppet</code> 绑定，所以这些类不能直接实例化</p>
+
+<p>他们需要先有一个 <code class="language-plaintext highlighter-rouge">cloneClass()</code>, 然后才能和<code class="language-plaintext highlighter-rouge">Puppet</code> 绑定, 之后才能像下面一样使用:</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">wechaty.Contact</code>, or</li>
+  <li><code class="language-plaintext highlighter-rouge">puppet.Contact</code>, etc.</li>
+</ol>
+
+<h4 id="错误的做法">~<del>错误的做法</del>~</h4>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Room</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span>
+<span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Room</span><span class="p">.</span><span class="nf">create</span><span class="p">(...)</span>
+</code></pre></div></div>
+
+<p>上面的代码出出错</p>
+
+<h4 id="正确的做法">正确的做法</h4>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">- import { Room } from 'wechaty'
+</span><span class="gi">+ import { Wechaty } from 'wechaty'
+</span><span class="err">
+</span><span class="gd">- const room = await Room.create(...)
+</span><span class="gi">+ const wechaty = new Wechaty()
++ const room = await wechaty.Room.create(...)
+</span></code></pre></div></div>
+
+<p>Contact, FriendRequest, and Message这些也一样</p>
+
+<p>Related Link</p>
+
+<ul>
+  <li><a href="https://github.com/wechaty/wechaty/issues/1217">Error: class can not be instanciated directly!</a></li>
+  <li><a href="https://github.com/wechaty/wechaty/issues/1364">BREAKING CHANGE v0.16 Contact, FriendRequest, Message, and Room classes will not be able to instantiate directly</a></li>
+  <li><a href="https://github.com/wechaty/wechaty/issues/1161">Error: static puppet not found</a></li>
+  <li><a href="https://github.com/wechaty/wechaty/issues/518">Wechaty Multi-Instance Suport</a></li>
+  <li>NPM <a href="https://www.npmjs.com/package/clone-class">clone-class</a></li>
+  <li><a href="https://github.com/huan/node-clone-class/issues/5">https://github.com/huan/node-clone-class/issues/5</a></li>
+</ul>
+
+<h3 id="messageext-返回-ext-而不是-ext">Message.ext() 返回 <code class="language-plaintext highlighter-rouge">.ext</code> 而不是 <code class="language-plaintext highlighter-rouge">ext</code></h3>
+
+<p>根据<code class="language-plaintext highlighter-rouge">ext()</code> 在 Node/Python/C# 中的实现，我们的 <code class="language-plaintext highlighter-rouge">ext()</code> 也返回包括<code class="language-plaintext highlighter-rouge">.</code>的文件扩展名。 所以更新如下：</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">ext</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">ext</span><span class="p">()</span>
+<span class="c1">// assume the filename is `test.txt`</span>
+</code></pre></div></div>
+
+<h4 id="之前-v014-或更早">之前 (v0.14 或更早)</h4>
+
+<p><code class="language-plaintext highlighter-rouge">assert(ext === 'txt')</code></p>
+
+<h4 id="现在-v016-或之后">现在 (v0.16 或之后)</h4>
+
+<p><code class="language-plaintext highlighter-rouge">assert(ext === '.txt')</code></p>
+
+<p>相关链接</p>
+
+<ul>
+  <li><a href="https://github.com/wechaty/wechaty/issues/1168">BREAKING CHANGE: v0.16 Message.ext() return ‘.ext’ instead of ‘ext’ before</a></li>
+</ul>
+
+<p>嗯，这大概就是所有的迁移记录了，谢谢！希望大家使用顺利！</p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#code">code</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/lijiarui">
+                            <img class="rounded-circle" src="/assets/contributors/lijiarui/avatar-new.webp" alt="Jiarui LI (李佳芮)" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/lijiarui">Jiarui LI (李佳芮)</a> <span><a target="_blank" href="https://weibo.com/u/2175505900" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Co-Creator of Wechaty; 句子互动创始人 & CEO，微软人工智能最具价值专家 (AI MVP)
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2018/06/24/migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2018/06-24-migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-en/code-migration.webp">  Migrating Wechaty v0.14 to v0.18 Guide - From Puppeteer To Padchat</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2018/07/12/wechaty-new-release-version-0.18/"> Wechaty New Release Version v0.18: SLOC from 27,630 to 7,817  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2018/huan-reduce-weight.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

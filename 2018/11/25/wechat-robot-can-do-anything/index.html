@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      微信机器人能够做些什么事？ | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>微信机器人能够做些什么事？ | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="微信机器人能够做些什么事？" />
+<meta name="author" content="zhuangbiaowei" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="作为一个会写代码的产品经理，我最近自己在玩一个微信机器人的开源框架：wechaty，因为上手特别简单，通过修改hello world，我也写出了自己的微信机器人，所以引发了很多的联想，打算和朋友们聊聊这些想法。" />
+<meta property="og:description" content="作为一个会写代码的产品经理，我最近自己在玩一个微信机器人的开源框架：wechaty，因为上手特别简单，通过修改hello world，我也写出了自己的微信机器人，所以引发了很多的联想，打算和朋友们聊聊这些想法。" />
+<link rel="canonical" href="https://wechaty.js.org/2018/11/25/wechat-robot-can-do-anything/" />
+<meta property="og:url" content="https://wechaty.js.org/2018/11/25/wechat-robot-can-do-anything/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-11-25T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="微信机器人能够做些什么事？" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zhuangbiaowei"},"dateModified":"2018-11-25T00:00:00+00:00","datePublished":"2018-11-25T00:00:00+00:00","description":"作为一个会写代码的产品经理，我最近自己在玩一个微信机器人的开源框架：wechaty，因为上手特别简单，通过修改hello world，我也写出了自己的微信机器人，所以引发了很多的联想，打算和朋友们聊聊这些想法。","headline":"微信机器人能够做些什么事？","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2018/11/25/wechat-robot-can-do-anything/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"zhuangbiaowei"},"url":"https://wechaty.js.org/2018/11/25/wechat-robot-can-do-anything/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-center ">
+				<div class=" col-md-8  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#article">article</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">微信机器人能够做些什么事？</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/zhuangbiaowei">
+                            <img class="rounded-circle" src="/assets/contributors/zhuangbiaowei/avatar.webp" alt="庄表伟" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/zhuangbiaowei">庄表伟</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Nov 25, 2018 · <span class="reading-time">
+  
+  
+    1 min read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>作为一个会写代码的产品经理，我最近自己在玩一个微信机器人的开源框架：<a href="https://github.com/wechaty/wechaty">wechaty</a>，因为上手特别简单，通过修改hello world，我也写出了自己的微信机器人，所以引发了很多的联想，打算和朋友们聊聊这些想法。</p>
+
+<p>只要是用微信客户端，人类可以完成的事情，<strong>微信机器人</strong>理论上可以做任何事。当然，以下一些限制，还是存在的？</p>
+
+<ul>
+  <li>没有朋友圈相关的API，这个没办法。很多基于朋友圈可以做的玩法，现在还不行。</li>
+  <li>接受“关键字”命令会很擅长，如果要实现自然语言操作（对话），就很困难。</li>
+</ul>
+
+<p>其他的，就没啥了。下面开始海阔天空：</p>
+
+<h2 id="记录聊天的历史">记录聊天的历史</h2>
+
+<p>这是我最先尝试的工作，将微信群里聊天的记录，同步到<a href="https://gitter.im">gitter.im</a>去，只要做两个机器人，分别加入微信群和gitter群，然后将微信里收到的消息，实时转发过去就行。稍微困难一点的，是解析各种消息类型，然后正常的转发过去。</p>
+
+<p>这样做的好处只有一个：因为微信无法为后来者，展示群里的过去的聊天记录，而gitter可以做到这一点，这样新人要回看过去的聊天记录，就非常方便了。</p>
+
+<h2 id="社区招新">社区招新</h2>
+
+<p>现在我们已经可以实现，任何人都可以自动加这个机器人为好友。然后和这个机器人聊天。如果输入“#join 申请加入的理由”，这个人就会被拉到一个微信群中，并且这个微信群里，有一些“面试官”，他们会与这个新人聊天，并确定是否可以接受他的加入申请。</p>
+
+<p>还可以有更进一步的操作，通过#join <em>topic</em>，选择加入不同的微信群。对于一个大的社区，这样应该会很有帮助。</p>
+
+<h2 id="多群直播转发">多群直播转发</h2>
+
+<p>这个应该是很容易的工作了，假设一个特别厉害的大牛，在线直播（图文、音频多条记录，再加上答疑）。这就可以先创建1群、2群到n群，然后大牛不必加入任何一个群，只需要对着微信机器人发言就好。机器人就可以把他的授课内容，同步的转发到多个微信群里。</p>
+
+<p>更进一步的，如果有人提问，机器人也可以转发这些问题给讲师（或者再加上一个提问人工审核的中间步骤）。讲师的回答，也可以同步的转发到所有的群里。</p>
+
+<p>于是，微信群的500人上限，就不再是问题了。</p>
+
+<h2 id="按规定改名">按规定改名</h2>
+
+<p>很多的微信群，都会有改名的规范，比如“庄表伟@上海#开源社”代表我的姓名，所在城市与单位。</p>
+
+<p>如果使用微信机器人，完全可以在新人加入群的时候提示一遍。24小时内不改名的，自动踢人。</p>
+
+<h2 id="识别小广告">识别小广告</h2>
+
+<p>参考某种垃圾邮件的过滤算法，只要识别出群里有人发的内容是小广告的，直接踢走。</p>
+
+<h2 id="清理潜水者">清理潜水者</h2>
+
+<p>既然可以记录所有的群内聊天记录。那么，长期潜水的群友，在清理之前再刷屏，就已经没啥用了。</p>
+
+<p>一个简单的算法，平均每天发言不少于3条，连续不发言时间小于3天。就可以将潜水者筛选出来，想清理的，就可以直接动手了。</p>
+
+<h2 id="会员等级制度">会员等级制度</h2>
+
+<p>一个更加复杂的贡献点制度，也是有可能的。</p>
+
+<ul>
+  <li>新加入群的朋友，等级为0。</li>
+  <li>连续2周活跃，等级为1。</li>
+  <li>等级为1以上的朋友，可以发言“@某某 谢谢”，或其他关键字</li>
+  <li>获得感谢超过N的朋友，等级可以升一级</li>
+  <li>发红包的，直接踢走（不能通过发红包，来买感谢）</li>
+</ul>
+
+<h2 id="作为管理员的工具">作为管理员的工具</h2>
+
+<p>在一对一聊天的时候，机器人可以接受更多的命令。比如：</p>
+
+<ul>
+  <li>find :name=”张三”</li>
+  <li>kick :name=”张三”, :room=:all</li>
+  <li>ban :name=”张三”</li>
+  <li>broadcast :msg=””, :room=/开源社/g</li>
+  <li>manager add :name=”张三”</li>
+  <li>manager delete :name=”张三”</li>
+  <li>还可以有很多很多……</li>
+</ul>
+
+<h2 id="老用户促活">老用户促活</h2>
+
+<p>曾经活跃的用户，最近一段时间不活跃了。发个消息“撩一下”。如果能够做到更加智能：“某某群里，最近在聊前端的Vue框架，你不打算参与讨论一下吗？”</p>
+
+<p>相信能够拉回来很多人。</p>
+
+<h2 id="工作群对接工作事项">工作群——对接工作事项</h2>
+
+<p>工作群可以做的事情就太多了。这里只能先随意的扯几句。</p>
+
+<ul>
+  <li>经理：今天的XXX，分析出原因了吗？</li>
+  <li>小张：是的，发现了一个问题，我们明天解决</li>
+  <li>经理：是你去解决吗？</li>
+  <li>小张：@李四 明天这个问题解决一下。 @机器人 #newtask 修改XXXX导致的bug</li>
+  <li>机器人： 已经创建任务单，单号 #13048，责任人：@李四</li>
+  <li>李四： 收到</li>
+</ul>
+
+<h2 id="工作群chatops">工作群——ChatOps</h2>
+
+<p>讲微信群的聊天消息，转发到某个支持ChatOps的IM，比如Slack或者BearyChat，那就更加是海阔天空了。</p>
+
+<p>先聊到这里，后续的想法，也欢迎大家一起来讨论。二维码是“开源社-bot”，欢迎添加。功能还很弱，大家轻拍 :)</p>
+
+<p><img src="/assets/2018/11-25-wechat-robot-can-do-anything-en/kaiyuanshe.webp" alt="开源社" /></p>
+
+<blockquote>
+  <p>作者: <a href="https://github.com/zhuangbiaowei/">庄表伟</a>，<a href="http://www.kaiyuanshe.cn/">开源社</a>理事/执行长。首发于简书: <a href="https://www.jianshu.com/p/9698395511e0">微信机器人能够做些什么事？</a></p>
+</blockquote>
+
+<hr />
+
+<blockquote>
+  <p>This post is also available in <a href="/2018/11/25/wechat-robot-can-do-anything-en/">English</a>.</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/zhuangbiaowei">
+                            <img class="rounded-circle" src="/assets/contributors/zhuangbiaowei/avatar.webp" alt="庄表伟" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/zhuangbiaowei">庄表伟</a> </h5>
+						
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2018/11/25/wechat-robot-can-do-anything-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2018/11-25-wechat-robot-can-do-anything-en/kaiyuanshe.webp">  What Can a WeChat Bot Do?</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2019/04/02/koa-wechaty-assistant/"> 使用koa2+wechaty打造个人微信小秘书  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2019/koa-wechaty.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

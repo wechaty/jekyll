@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Shraddha Vasant Prasad: 2021 Google Season of Docs Technical Proposal | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Shraddha Vasant Prasad: 2021 Google Season of Docs Technical Proposal | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Shraddha Vasant Prasad: 2021 Google Season of Docs Technical Proposal" />
+<meta name="author" content="shraddhavp" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="I am Shraddha Vasant Prasad, 2020 graduate and currntly working as a Software Engineer At American Express, I describe myself as “Developer in the making and a Blogger by passion”" />
+<meta property="og:description" content="I am Shraddha Vasant Prasad, 2020 graduate and currntly working as a Software Engineer At American Express, I describe myself as “Developer in the making and a Blogger by passion”" />
+<link rel="canonical" href="https://wechaty.js.org/2021/05/05/shraddhavp-interactive-wechaty-tutorial/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/05/05/shraddhavp-interactive-wechaty-tutorial/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/05-shraddhavp-interactive-wechaty-tutorial/shraddhapic.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-05T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/05-shraddhavp-interactive-wechaty-tutorial/shraddhapic.webp" />
+<meta property="twitter:title" content="Shraddha Vasant Prasad: 2021 Google Season of Docs Technical Proposal" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"shraddhavp"},"dateModified":"2021-05-05T00:00:00+00:00","datePublished":"2021-05-05T00:00:00+00:00","description":"I am Shraddha Vasant Prasad, 2020 graduate and currntly working as a Software Engineer At American Express, I describe myself as “Developer in the making and a Blogger by passion”","headline":"Shraddha Vasant Prasad: 2021 Google Season of Docs Technical Proposal","image":"https://wechaty.js.org/assets/2021/05-shraddhavp-interactive-wechaty-tutorial/shraddhapic.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/05/05/shraddhavp-interactive-wechaty-tutorial/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"shraddhavp"},"url":"https://wechaty.js.org/2021/05/05/shraddhavp-interactive-wechaty-tutorial/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#gsod">gsod</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Shraddha Vasant Prasad: 2021 Google Season of Docs Technical Proposal</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/shraddhavp">
+                            <img class="rounded-circle" src="/assets/contributors/shraddhavp/avatar.webp" alt="Shraddha Vasant Prasad" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/shraddhavp">Shraddha Vasant Prasad</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">May 05, 2021 · <span class="reading-time">
+  
+  
+    3 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/05-shraddhavp-interactive-wechaty-tutorial/shraddhapic.webp" alt="Shraddha Vasant Prasad: 2021 Google Season of Docs Technical Proposal">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>I am Shraddha Vasant Prasad, 2020 graduate and currntly working as a Software Engineer At American Express, I describe myself as “Developer in the making and a Blogger by passion”</p>
+
+<h2 id="technical-writer-details">Technical writer Details</h2>
+
+<ul>
+  <li>Name: Shraddha Vasant Prasad</li>
+  <li>Github: <a href="https://github.com/shraddhavp">https://github.com/shraddhavp</a></li>
+  <li>Linkedin: <a href="https://www.linkedin.com/in/shraddha-v-prasad/">https://www.linkedin.com/in/shraddha-v-prasad/</a></li>
+  <li>Blog: <a href="https://medium.com/@anitha.shraddha">https://medium.com/@anitha.shraddha</a></li>
+  <li>Location: Bangalore,Karnatak,India</li>
+  <li>Time Zone: (UTC + 05:30)</li>
+</ul>
+
+<h2 id="project-name">Project name</h2>
+
+<p>Create easy to use tutorial for Wechaty</p>
+
+<h2 id="project-length">Project length</h2>
+
+<p>Standard length (3 months)</p>
+
+<h2 id="project-proposal-gsod-2021">PROJECT PROPOSAL GSOD 2021</h2>
+
+<p>User Doc is the most important integral part of any software be it paid or open source. The user docs site is designed to assist end-users to use a product or service. The good user docs site is very important because it provides an avenue for users to learn how to use the software, its features, tips, tricks and also resolve common problems encountered when using the software. It also reduces support cost and is part of the corporate identity of the product. The good user docs site is a sign of healthiness of the product, the developer team. Without good user docs site, a user may not know how to do the above things effectively and efficiently.
+My personal ideas to the product would be that I will definitely create a new tutorial page which gives a detailed and structured introduction to the software from installation to the end-user usage.
+the below are my personal ideas on the project:</p>
+
+<ul>
+  <li>Markdown: - So that technical writers don’t have to worry about installation. They can write simply in the .md file. Anyone can click on edit button shown on the website (new feature) and contribute making it better. This will engage users to add new content or edit content to improve it.</li>
+  <li>Documentation Search: - User should be having a search box so that they can easily and quickly find out relevant contents.</li>
+  <li>Comments Section: - User may have the option to comment and share their views on posts and tutorials. They can able to read other people views on project documentation.</li>
+  <li>New Release Notes and Blogs: - The website should be updated with new blog posts and news about current development and roadmap.</li>
+</ul>
+
+<p>Let me now, give a detailed description of the new website look</p>
+
+<h2 id="wechaty-user-guide-page">Wechaty User Guide Page</h2>
+
+<ul>
+  <li>Installation guide.</li>
+  <li>Quick start with Wechaty.</li>
+  <li>Wechay Developer Guide Page:-
+Development Guide, Contribution guide, Git setup, Code of Conduct, Documentation setup</li>
+  <li>About Wechaty Page:-
+List of all the contributors should be present in team sections Quick links and release notes, latest blogs will be added to engage the user to make them read about the latest Wechaty versions or so. Also read the uses of Wechaty</li>
+  <li>Blogs, Release Notes and Tutorials Page:-
+The tutorial page will contain some popular talks and articles that clarify Wechay concepts. Contributors can add their tutorial links in the tutorial page.</li>
+</ul>
+
+<h2 id="why-am-i-the-right-person-for-this-project">WHY AM I THE RIGHT PERSON FOR THIS PROJECT</h2>
+
+<p>I am the right person for the project because</p>
+
+<ul>
+  <li>I have past experience of using Github and also been contributing to open source for more than an year now</li>
+  <li>I have been top open-source contributor in many open-source contributions like Hackincodes and Girlscript Summer of Code.</li>
+  <li>I have also been technical writer in GlobalCert Singapore and Girlscript summer of code for 2 months each</li>
+  <li>I am also Medium blog writer and also at LoginRadius(My blockchain blog became rally famous)</li>
+  <li>I am really interested in this project as it creates value for people and new bees who want to use Wechaty and also for the dedication with which I work in my current company my leaders are really happy and appreciate the dedicated work I do.</li>
+  <li>I am also interested in working for Introduction ,Landing Page or References Page with a team member</li>
+</ul>
+
+<h2 id="links-to-some-of-my-technical-writing-works">Links to some of my Technical Writing works</h2>
+
+<ul>
+  <li><a href="https://www.loginradius.com/blog/async/Blockchain-the-new-technology-of-security-trust/">https://www.loginradius.com/blog/async/Blockchain-the-new-technology-of-security-trust/</a></li>
+  <li><a href="https://drive.google.com/drive/folders/1_g8lDR-Q0RXHTSj0vc3d4vvTXkrX2Ei0">https://drive.google.com/drive/folders/1_g8lDR-Q0RXHTSj0vc3d4vvTXkrX2Ei0</a></li>
+</ul>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#documentation">documentation</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#gsod">gsod</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#2021">2021</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#project">project</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#proposal">proposal</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/shraddhavp">
+                            <img class="rounded-circle" src="/assets/contributors/shraddhavp/avatar.webp" alt="Shraddha Vasant Prasad" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/shraddhavp">Shraddha Vasant Prasad</a> </h5>
+						I am a Software engineer at American Express
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/05/04/rohitesh-applicant-for-volunteering-gsod/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/05-rohitesh-applicant-for-volunteering-gsod/rohitesh.webp">  Hi I'm Rohitesh interested in volunteering</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/05/06/vasvi-applicant-for-technical-writer-gsod/"> Vasvi Sood: 2021 Google Season of Docs Application  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/05-vasvi-applicant-for-technical-writer-gsod/vasvi.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

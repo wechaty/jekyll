@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Wechaty 实现 Milvus 社区群消息同步 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Wechaty 实现 Milvus 社区群消息同步 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Wechaty 实现 Milvus 社区群消息同步" />
+<meta name="author" content="shiyu22" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="作者: shiyu22， 程序媛" />
+<meta property="og:description" content="作者: shiyu22， 程序媛" />
+<link rel="canonical" href="https://wechaty.js.org/2021/07/20/milvus-sync-bot/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/07/20/milvus-sync-bot/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/07-milvus-sync-bot/background.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-07-20T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/07-milvus-sync-bot/background.webp" />
+<meta property="twitter:title" content="Wechaty 实现 Milvus 社区群消息同步" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"shiyu22"},"dateModified":"2021-07-20T00:00:00+00:00","datePublished":"2021-07-20T00:00:00+00:00","description":"作者: shiyu22， 程序媛","headline":"Wechaty 实现 Milvus 社区群消息同步","image":"https://wechaty.js.org/assets/2021/07-milvus-sync-bot/background.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/07/20/milvus-sync-bot/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"shiyu22"},"url":"https://wechaty.js.org/2021/07/20/milvus-sync-bot/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#article">article</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Wechaty 实现 Milvus 社区群消息同步</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/shiyu22">
+                            <img class="rounded-circle" src="/assets/contributors/shiyu22/avatar.webp" alt="shiyu22" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/shiyu22">shiyu22</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jul 20, 2021 · <span class="reading-time">
+  
+  
+    2 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/07-milvus-sync-bot/background.webp" alt="Wechaty 实现 Milvus 社区群消息同步">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<blockquote>
+  <p>作者: <a href="https://github.com/shiyu22">shiyu22</a>， 程序媛</p>
+</blockquote>
+
+<h2 id="wechaty-实现-milvus-社区群消息同步">Wechaty 实现 Milvus 社区群消息同步</h2>
+
+<h2 id="背景">背景</h2>
+
+<p>首先介绍下开发背景，<a href="https://milvus.io/">Milvus</a> 是一个开源的特征向量数据库，本着开源互助的精神，社区一直致力于帮助用户解疑答惑。企业微信聊天群是社区的交流地之一，基于群聊自动扩群功能下，每个群聊的人数上限是 200 人，所以 Milvus 开源一年半以来，累计了十个用户交流群。用户分散在多个群会发生一些交流或管理方面的问题：</p>
+
+<ul>
+  <li>旧群交流少：十个交流群中之前的群中交流不多，因为该踩的坑都踩完了，老用户提问的频率不高。</li>
+  <li>多个群问相似的技术问题：不同的用户在不同的群里问类似的问题，社区人员需要多次重复回答。</li>
+  <li>社区重复发布新闻等消息：当产品发布新版本时，社区会发布新闻，这时需要在十个群里手动转发。</li>
+  <li>技术交流覆盖不广泛：当一个群里交流技术难题，其他群的小伙伴无法参与或查看。
+基于以上的这些问题，社区考虑做一个企业微信群间消息同步的机器人，开发群内的消息同步功能，方便群里用户的沟通与交流。</li>
+</ul>
+
+<h2 id="效果展示">效果展示</h2>
+
+<p>针对前面提到的问题，社区计划实现一个可以同步群消息的机器人，之前了解到 <a href="https://github.com/wechaty/wechaty">Wechaty</a> 可以实现这个功能，并且 Wechaty 的社区也部署了同步群消息的机器人。Wechaty 是一个开源的的对话机器人 SDK，它是一个使用 Typescript 构建的Node.js 应用。支持多种微信接入方案，包括网页，ipad，ios，windows， android 等。
+基于 Wechaty 部署的机器人可以同步十个群的消息，效果展示如下面的截图，机器人负责转发其他群的消息，保证每个群可以同步，用户交流群的人就可以跨群交流了。接下来将介绍如何用 Wechaty 部署消息同步的机器人。
+<img src="/assets/2021/07-milvus-sync-bot/syncbot1.webp" alt="效果展示" /></p>
+
+<h2 id="wechaty-的具体实现">Wechaty 的具体实现</h2>
+
+<ul>
+  <li>获取 Milvus 用户交流群的列表
+为了同步多个群的消息，首先获取需要同步消息的群列表，这时主要通过群名来判断，如判断群的前缀是否为 ” Milvus 用户交流群“，此时 Wechaty 会返回一个 Room 列表。</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="k">def</span> <span class="nf">on_login</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">contact</span><span class="p">:</span> <span class="n">Contact</span><span class="p">):</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">ROOM_LIST</span> <span class="o">=</span> <span class="p">[</span><span class="sh">'</span><span class="s">Milvus用户交流群</span><span class="sh">'</span><span class="p">]</span>
+    <span class="n">roomlist</span> <span class="o">=</span> <span class="k">await</span> <span class="n">self</span><span class="p">.</span><span class="n">Room</span><span class="p">.</span><span class="nf">find_all</span><span class="p">()</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">community_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">roomlist</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="k">await</span> <span class="n">r</span><span class="p">.</span><span class="nf">topic</span><span class="p">()</span>
+        <span class="c1"># the group name like 'Milvus用户交流群101'
+</span>        <span class="k">if</span> <span class="n">name</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="ow">in</span> <span class="n">self</span><span class="p">.</span><span class="n">ROOM_LIST</span><span class="p">:</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">community_list</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>收到消息时转发到指定群
+接下来就判断接受到的消息是否来自 Room 列表，如果是的话就将其转发到剩余的的几个 Room。</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="n">Message</span><span class="p">):</span>
+    <span class="n">room</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="nf">room</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">room</span><span class="p">:</span>
+        <span class="n">contact</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="nf">talker</span><span class="p">().</span><span class="n">name</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="nf">text</span><span class="p">()</span>
+        <span class="n">group</span> <span class="o">=</span> <span class="k">await</span> <span class="n">room</span><span class="p">.</span><span class="nf">topic</span><span class="p">()</span>
+    
+        <span class="c1"># cheeck if the msg is from ROOM_LIST
+</span>        <span class="k">if</span> <span class="n">group</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="ow">in</span> <span class="n">self</span><span class="p">.</span><span class="n">ROOM_LIST</span><span class="p">:</span>
+            <span class="c1"># send the msg to other rooms and make sure not duplicated.
+</span>            <span class="k">for</span> <span class="n">community</span> <span class="ow">in</span> <span class="n">self</span><span class="p">.</span><span class="n">community_list</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">room</span> <span class="ow">is</span> <span class="n">community</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="n">community</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>多种类型的信息转发
+需要注意的是，群里会接收到多种类型的消息，如“文本”，“图片”，“公众号文章”和“小程序”等，那么可以在 Wechaty 中判断信息类型并发出消息。</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">msg_type</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="nf">type</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">msg_type</span><span class="o">==</span><span class="n">MessageType</span><span class="p">.</span><span class="n">MESSAGE_TYPE_IMAGE</span><span class="p">:</span>
+    <span class="n">image</span><span class="p">:</span> <span class="n">Image</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="nf">to_image</span><span class="p">()</span>
+    <span class="n">hd_file_box</span><span class="p">:</span> <span class="n">FileBox</span> <span class="o">=</span> <span class="k">await</span> <span class="n">image</span><span class="p">.</span><span class="nf">hd</span><span class="p">()</span>
+    <span class="k">await</span> <span class="n">hd_file_box</span><span class="p">.</span><span class="nf">to_file</span><span class="p">(</span><span class="n">file_path</span><span class="o">=</span><span class="sh">'</span><span class="s">./hd-image.jpg</span><span class="sh">'</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">image_filebox</span> <span class="o">=</span> <span class="n">FileBox</span><span class="p">.</span><span class="nf">from_file</span><span class="p">(</span><span class="sh">'</span><span class="s">./hd-image.jpg</span><span class="sh">'</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">community</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="n">image_filebox</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">msg_type</span><span class="o">==</span><span class="n">MessageType</span><span class="p">.</span><span class="n">MESSAGE_TYPE_URL</span><span class="p">:</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="k">await</span> <span class="n">msg</span><span class="p">.</span><span class="nf">to_url_link</span><span class="p">()</span>
+    <span class="k">await</span> <span class="n">community</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">msg_type</span> <span class="o">==</span> <span class="n">MessageType</span><span class="p">.</span><span class="n">MESSAGE_TYPE_MINI_PROGRAM</span><span class="p">:</span>
+    <span class="n">mini_program</span> <span class="o">=</span> <span class="k">await</span> <span class="n">msg</span><span class="p">.</span><span class="nf">to_mini_program</span><span class="p">()</span>
+     <span class="k">if</span> <span class="n">mini_program</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">community</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="n">mini_program</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">text</span><span class="p">:</span>
+        <span class="n">send_text</span> <span class="o">=</span> <span class="sh">'</span><span class="s">[{}@{}]:  {}</span><span class="sh">'</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">contact</span><span class="p">,</span> <span class="n">group</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:],</span> <span class="n">text</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">community</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="n">send_text</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="总结">总结</h2>
+
+<p>最后，十分感谢 Wechaty 开源的 Python SDK 以及开源激励计划，可以十分方便的使用 Token 进行开发。而 Milvus 特征向量数据库同为开源项目，计划在下一版本中利用 Milvus 智能判断广告消息，预防非技术交流人员在群里发布广告等消息，期待下一版本的更新！</p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#blog">blog</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#milvus">milvus</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#syncbot">syncbot</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/shiyu22">
+                            <img class="rounded-circle" src="/assets/contributors/shiyu22/avatar.webp" alt="shiyu22" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/shiyu22">shiyu22</a> </h5>
+						程序媛
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/07/18/gsod-2021-sixth-meeting/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/07-gsod-2021-sixth-meeting/gsod-sixth-meeting.webp">  GSoD'21 Sixth Meeting</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/07/22/gdg-shanghai-wechaty-en/"> Wechaty: Build a Conversational UI App for WhatsApp and WeChat with 6 Lines of Code  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/07-gdg-shanghai-wechaty-en/community-wechaty.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

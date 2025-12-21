@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Interact Wechaty with Ruby on Rails from scratch | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Interact Wechaty with Ruby on Rails from scratch | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Interact Wechaty with Ruby on Rails from scratch" />
+<meta name="author" content="imwildcat" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Conversational RPA SDK for Chatbot Makers" />
+<meta property="og:description" content="Conversational RPA SDK for Chatbot Makers" />
+<link rel="canonical" href="https://wechaty.js.org/2017/04/21/interact-wechaty-with-ruby-on-rails-from-scratch/" />
+<meta property="og:url" content="https://wechaty.js.org/2017/04/21/interact-wechaty-with-ruby-on-rails-from-scratch/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2017/wildcat-rails-db-initial-structure.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-04-21T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2017/wildcat-rails-db-initial-structure.webp" />
+<meta property="twitter:title" content="Interact Wechaty with Ruby on Rails from scratch" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"imwildcat"},"dateModified":"2017-04-21T00:00:00+00:00","datePublished":"2017-04-21T00:00:00+00:00","description":"Conversational RPA SDK for Chatbot Makers","headline":"Interact Wechaty with Ruby on Rails from scratch","image":"https://wechaty.js.org/assets/2017/wildcat-rails-db-initial-structure.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2017/04/21/interact-wechaty-with-ruby-on-rails-from-scratch/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"imwildcat"},"url":"https://wechaty.js.org/2017/04/21/interact-wechaty-with-ruby-on-rails-from-scratch/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#tutorial">tutorial</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Interact Wechaty with Ruby on Rails from scratch</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/imwildcat">
+                            <img class="rounded-circle" src="/assets/contributors/imwildcat/avatar.webp" alt="imWildCat" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/imwildcat">imWildCat</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Apr 21, 2017 · <span class="reading-time">
+  
+  
+    14 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2017/wildcat-rails-db-initial-structure.webp" alt="Interact Wechaty with Ruby on Rails from scratch">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p><img src="/assets/2017/wildcat-rails-architecture-2.webp" alt="architecture2" /></p>
+
+<blockquote>
+  <p><a href="http://rubyonrails.org">Ruby on Rails</a> is a extremely powerful web framework with a long history, which can simplify our development process, making it more enjoyable. As it known to all, many well-known sites are built on this framework, such as <a href="https://github.com">GitHub</a>, <a href="https://unsplash.com">Unsplash</a>, <a href="http://airbnb.com">Airbnb</a>, <a href="https://dribbble.com">Dribbble</a> and <a href="https://www.producthunt.com">Product Hunt</a><sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup>. For most developers without so much experience about Rails, setting up a development environment for this stack is not a easy task. This blog would introduce how to interact Wechaty with Rails with an example of a group message logger, trying to <em>Keep it simple, stupid</em> (the <a href="https://en.wikipedia.org/wiki/KISS_principle">KISS principle</a>).
+Note: This blog will mainly illustrate the tutorial on macOS. The situations can be very different on other platforms such as Windows and Linux. Due to the limitations of this author’s time, these topics cannot be covered. Moreover, the final version of code has been published on GitHub: <a href="https://github.com/imWildCat/blog-post-interact-wechaty-with-rails-from-scratch">https://github.com/imWildCat/blog-post-interact-wechaty-with-rails-from-scratch</a></p>
+</blockquote>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<h3 id="ruby-and-rails">Ruby and Rails</h3>
+
+<p>It is better to manage Ruby versions with <strong>rbenv</strong>. On macOS,</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Install brew (https://brew.sh):</span>
+➜ /usr/bin/ruby <span class="nt">-e</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/master/install<span class="si">)</span><span class="s2">"</span>
+<span class="c"># Install rbenv (a Ruby version manager, https://github.com/rbenv/rbenv):</span>
+➜ brew <span class="nb">install </span>rbenv ruby-build
+<span class="c"># Install Ruby (2.4.1)</span>
+➜ rbenv <span class="nb">install </span>2.4.1
+➜ gem <span class="nb">install </span>rails <span class="nt">--pre</span> <span class="nt">--no-ri</span> <span class="nt">--no-rdoc</span>
+</code></pre></div></div>
+
+<p>Check your Ruby runtime:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜ ruby <span class="nt">-v</span>
+ruby 2.4.1p111 <span class="o">(</span>2017-03-22 revision 58053<span class="o">)</span> <span class="o">[</span>x86_64-darwin16]
+<span class="c"># Or something like that</span>
+</code></pre></div></div>
+
+<h3 id="nodejs">Node.js</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Install node.js with nvm (if you have installed node.js, skip this step):</span>
+➜ brew <span class="nb">install </span>nvm <span class="o">&amp;&amp;</span> nvm <span class="nb">install </span>v7.9.0
+</code></pre></div></div>
+
+<p>Check your node.js runtime:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜ node <span class="nt">-v</span>
+v7.9.0
+<span class="c"># Any node.js version above 6.0 is fine :)</span>
+</code></pre></div></div>
+
+<h3 id="postgresql-optional">PostgreSQL (Optional)</h3>
+
+<p>PostgeSQL is a database, usually used for Rails apps. On macOS, it is recommended to use <a href="https://postgresapp.com">Postgres.app</a>. It can also be installed by <code class="language-plaintext highlighter-rouge">brew</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜ brew cask <span class="nb">install </span>postgres
+</code></pre></div></div>
+
+<p>However, it doesn’t matter if you use MySQL or even SQLite. This tutorial offers this flexibility to use any database supported by <em>ActiveRecord</em> (the ORM framework of Rails).</p>
+
+<h2 id="get-started-for-wechaty">Get started for Wechaty</h2>
+
+<p>First of all, we prefer to create a directory for our project:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>chatieme
+<span class="nb">cd </span>chatieme
+</code></pre></div></div>
+
+<p>In this directory, firstly, create a directory for Wechaty, naming it <code class="language-plaintext highlighter-rouge">chatieme-worker</code> and setting up the project:</p>
+
+<pre><code class="language-Bash">mkdir chatieme-worker
+cd chatieme-worker
+npm init -y
+</code></pre>
+
+<p>Add dependencies for wechaty:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm i <span class="nt">--save</span> wechaty chromedriver request
+</code></pre></div></div>
+
+<p>Then create a new file named <code class="language-plaintext highlighter-rouge">bot.js</code> with this code base:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Wechaty</span> <span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nf">startBot</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="nx">Wechaty</span><span class="p">.</span><span class="nf">instance</span><span class="p">({</span> <span class="na">profile</span><span class="p">:</span> <span class="dl">'</span><span class="s1">chatieme</span><span class="dl">'</span> <span class="p">});</span>
+    <span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">code</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Scan QrCode to login: </span><span class="p">${</span><span class="nx">code</span><span class="p">}</span><span class="s2">\n</span><span class="p">${</span><span class="nx">url</span><span class="p">}</span><span class="s2">`</span><span class="p">))</span>
+        <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span> <span class="nx">user</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`User </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2"> logined`</span><span class="p">))</span>
+        <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="nx">message</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Message: </span><span class="p">${</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">))</span>
+        <span class="p">.</span><span class="nf">init</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="nf">startBot</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>Since we’d like to send the message to Rails app, we have to build a JSON object:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Wechaty</span> <span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nf">startBot</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="nx">Wechaty</span><span class="p">.</span><span class="nf">instance</span><span class="p">({</span> <span class="na">profile</span><span class="p">:</span> <span class="dl">'</span><span class="s1">chatieme</span><span class="dl">'</span> <span class="p">});</span>
+    <span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">code</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Scan QrCode to login: </span><span class="p">${</span><span class="nx">code</span><span class="p">}</span><span class="s2">\n</span><span class="p">${</span><span class="nx">url</span><span class="p">}</span><span class="s2">`</span><span class="p">))</span>
+        <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span> <span class="nx">user</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`User </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2"> logined`</span><span class="p">))</span>
+        <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="nx">onMessage</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">init</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nf">onMessage</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">room</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="nx">sender</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="k">from</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="nx">receiver</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">to</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="nx">content</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">content</span><span class="p">();</span>
+
+    <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">room</span> <span class="o">||</span> <span class="o">!</span><span class="nx">receiver</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// onPersonalMessage(message);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">const</span> <span class="nx">topic</span> <span class="o">=</span> <span class="nx">room</span><span class="p">.</span><span class="nf">topic</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="nx">from_name</span> <span class="o">=</span> <span class="nx">sender</span><span class="p">.</span><span class="nf">name</span><span class="p">();</span>
+
+    <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span><span class="nx">topic</span><span class="p">,</span> <span class="nx">from_name</span><span class="p">,</span> <span class="nx">content</span><span class="p">};</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nf">startBot</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>Run the bot <code class="language-plaintext highlighter-rouge">node bot.js</code>, logging in with your WeChat account. The output can be like:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span> topic: <span class="s1">'wechaty'</span>,
+  from_name: <span class="s1">'WildCat'</span>,
+  content: <span class="s1">'Hello, World!'</span> <span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="get-started-for-rails">Get started for Rails</h2>
+
+<p>Go back to the parent directory, create a rails project with rails command line, then enter this directory:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ..
+rails new chatieme-worker
+<span class="nb">cd </span>chatieme-worker
+</code></pre></div></div>
+
+<p>Then you could create the database, regardless what database you use:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜ rails db:create
+Created database <span class="s1">'db/development.sqlite3'</span>
+Created database <span class="s1">'db/test.sqlite3'</span>
+</code></pre></div></div>
+
+<p>First of all, a model for message should be created. Rails offers command line tool to accelerate the process of creating code base (i.e. ‘rails –help’)<sup id="fnref:2"><a href="#fn:2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜ rails generate model Message topic:string from_name:string content:text
+Running via Spring preloader <span class="k">in </span>process 38447
+      invoke  active_record
+      create    db/migrate/20170421120013_create_messages.rb
+      create    app/models/message.rb
+      invoke    test_unit
+      create      <span class="nb">test</span>/models/message_test.rb
+      create      <span class="nb">test</span>/fixtures/messages.yml
+</code></pre></div></div>
+
+<p>In fact, the model file <code class="language-plaintext highlighter-rouge">app/models/message.rb</code> doen’t contain any code about the structrure of the database. The migration file <code class="language-plaintext highlighter-rouge">db/migrate/20170421115650_create_messages.rb</code> (in your case, the file name should be different in relation to your date &amp; time) contains the structure:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CreateMessages</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mf">5.1</span><span class="p">]</span>
+  <span class="k">def</span> <span class="nf">change</span>
+    <span class="n">create_table</span> <span class="ss">:messages</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:topic</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:from_name</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">text</span> <span class="ss">:content</span>
+
+      <span class="n">t</span><span class="p">.</span><span class="nf">timestamps</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Ruby is a ‘natural’ programming. You can easily understand these codes with a little bit experience of other programming language.</p>
+</blockquote>
+
+<p>Then migrate the database to latest version:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails db:migrate
+</code></pre></div></div>
+
+<p>You could see the structure of the sqlite database file <code class="language-plaintext highlighter-rouge">db/development.sqlite3</code>:</p>
+
+<p><img src="/assets/2017/wildcat-rails-db-initial-structure.webp" alt="database_initial_structure" /></p>
+
+<p>While using <code class="language-plaintext highlighter-rouge">rails console</code> to open a REPL<sup id="fnref:3"><a href="#fn:3" class="footnote" rel="footnote" role="doc-noteref">3</a></sup> for your Rails project, we can create a data record easily by <code class="language-plaintext highlighter-rouge">Message.create! topic: 'My Group Name', from_name: 'HailCat', content: 'Hiya, World!'</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜ rails console
+Running via Spring preloader <span class="k">in </span>process 39120
+Loading development environment <span class="o">(</span>Rails 5.1.0.rc2<span class="o">)</span>
+irb<span class="o">(</span>main<span class="o">)</span>:001:0&gt; Message.create! topic: <span class="s1">'My Group Name'</span>, from_name: <span class="s1">'HailCat'</span>, content: <span class="s1">'Hiya, World!'</span>
+   <span class="o">(</span>0.1ms<span class="o">)</span>  begin transaction
+  SQL <span class="o">(</span>0.8ms<span class="o">)</span>  INSERT INTO <span class="s2">"messages"</span> <span class="o">(</span><span class="s2">"topic"</span>, <span class="s2">"from_name"</span>, <span class="s2">"content"</span>, <span class="s2">"created_at"</span>, <span class="s2">"updated_at"</span><span class="o">)</span> VALUES <span class="o">(</span>?, ?, ?, ?, ?<span class="o">)</span>  <span class="o">[[</span><span class="s2">"topic"</span>, <span class="s2">"My Group Name"</span><span class="o">]</span>, <span class="o">[</span><span class="s2">"from_name"</span>, <span class="s2">"HailCat"</span><span class="o">]</span>, <span class="o">[</span><span class="s2">"content"</span>, <span class="s2">"Hiya, World!"</span><span class="o">]</span>, <span class="o">[</span><span class="s2">"created_at"</span>, <span class="s2">"2017-04-21 12:09:49.440133"</span><span class="o">]</span>, <span class="o">[</span><span class="s2">"updated_at"</span>, <span class="s2">"2017-04-21 12:09:49.440133"</span><span class="o">]]</span>
+   <span class="o">(</span>0.6ms<span class="o">)</span>  commit transaction
+<span class="o">=&gt;</span> <span class="c">#&lt;Message id: 1, topic: "My Group Name", from_name: "HailCat", content: "Hiya, World!", created_at: "2017-04-21 12:09:49", updated_at: "2017-04-21 12:09:49"&gt;</span>
+</code></pre></div></div>
+
+<p>At present, the code base has been set up and the directories would look like:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜ <span class="nb">cd</span> ..
+➜ tree <span class="nt">-L</span> 2
+<span class="nb">.</span>
+├── chatieme-server
+│   ├── Gemfile
+│   ├── Gemfile.lock
+│   ├── README.md
+│   ├── Rakefile
+│   ├── app
+│   ├── bin
+│   ├── config
+│   ├── config.ru
+│   ├── db
+│   ├── lib
+│   ├── log
+│   ├── package.json
+│   ├── public
+│   ├── <span class="nb">test</span>
+│   ├── tmp
+│   └── vendor
+└── chatieme-worker
+    ├── bot.js
+    ├── chatieme.wechaty.json
+    ├── node_modules
+    └── package.json
+13 directories, 9 files
+</code></pre></div></div>
+
+<h2 id="let-wechaty-communicate-with-rails">Let Wechaty communicate with Rails</h2>
+
+<p>Basicially, Rails is a web framework so that the most usual way for the <em>communication</em> is by HTTP (web). We hope there can be an <em>architecture</em> like this:</p>
+
+<p><img src="/assets/2017/wildcat-rails-architecture-1.webp" alt="architecture1" /></p>
+
+<p>Both <em>Rails</em> and <em>Wechaty</em> can be regarded as micro services, which can also be dockerized<sup id="fnref:4"><a href="#fn:4" class="footnote" rel="footnote" role="doc-noteref">4</a></sup> in the coming blogs. The most consierable advantage of this kind of <em>architecture</em> is that more than one Wechaty instances can share a single Rails app:</p>
+
+<p><img src="/assets/2017/wildcat-rails-architecture-2.webp" alt="architecture2" /></p>
+
+<p>So, let’s do it.</p>
+
+<h3 id="set-up-api-of-rails">Set up API of Rails</h3>
+
+<p>We need to create a controller to handle the HTTP requests about creating new <em>Message</em> record:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜ rails generate controller Messages
+Running via Spring preloader <span class="k">in </span>process 41917
+      create  app/controllers/messages_controller.rb
+      invoke  erb
+      create    app/views/messages
+      invoke  test_unit
+      create    <span class="nb">test</span>/controllers/messages_controller_test.rb
+      invoke  helper
+      create    app/helpers/messages_helper.rb
+      invoke    test_unit
+      invoke  assets
+      invoke    coffee
+      create      app/assets/javascripts/messages.coffee
+      invoke    scss
+      create      app/assets/stylesheets/messages.scss
+</code></pre></div></div>
+
+<p>Edit <code class="language-plaintext highlighter-rouge">app/controllers/messages_controller.rb</code>:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MessagesController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+
+    <span class="n">skip_before_action</span> <span class="ss">:verify_authenticity_token</span><span class="p">,</span> <span class="ss">:only</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="ss">:create</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">create</span>
+        <span class="n">message_params</span> <span class="o">=</span> <span class="n">params</span><span class="p">.</span><span class="nf">permit</span><span class="p">(</span><span class="ss">:topic</span><span class="p">,</span> <span class="ss">:from_name</span><span class="p">,</span> <span class="ss">:content</span><span class="p">)</span>
+        <span class="n">new_message</span> <span class="o">=</span> <span class="no">Message</span><span class="p">.</span><span class="nf">new</span> <span class="n">message_params</span>
+        <span class="k">if</span> <span class="n">new_message</span><span class="p">.</span><span class="nf">save</span>
+            <span class="n">render</span> <span class="ss">json: </span><span class="p">{</span><span class="ss">error: </span><span class="kp">nil</span><span class="p">}</span>
+        <span class="k">else</span>
+            <span class="n">render</span> <span class="ss">json: </span><span class="p">{</span><span class="ss">error: </span><span class="kp">true</span><span class="p">,</span> <span class="ss">error_message: </span><span class="n">new_message</span><span class="p">.</span><span class="nf">errors</span><span class="p">.</span><span class="nf">full_message</span><span class="p">}</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Then edit <code class="language-plaintext highlighter-rouge">config/routes.rb</code>:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">routes</span><span class="p">.</span><span class="nf">draw</span> <span class="k">do</span>
+  <span class="c1"># For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html</span>
+  <span class="n">post</span> <span class="s1">'messages'</span><span class="p">,</span> <span class="ss">to: </span><span class="s1">'messages#create'</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Note: I would not explain detailed Rails app development because it is off the main topic.</p>
+</blockquote>
+
+<p>Run the development server of Rails:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜ rails server
+<span class="o">=&gt;</span> Booting Puma
+<span class="o">=&gt;</span> Rails 5.1.0.rc2 application starting <span class="k">in </span>development on http://localhost:3000
+<span class="o">=&gt;</span> Run <span class="sb">`</span>rails server <span class="nt">-h</span><span class="sb">`</span> <span class="k">for </span>more startup options
+Puma starting <span class="k">in </span>single mode...
+<span class="k">*</span> Version 3.8.2 <span class="o">(</span>ruby 2.4.1-p111<span class="o">)</span>, codename: Sassy Salamander
+<span class="k">*</span> Min threads: 5, max threads: 5
+<span class="k">*</span> Environment: development
+<span class="k">*</span> Listening on tcp://0.0.0.0:3000
+Use Ctrl-C to stop
+</code></pre></div></div>
+
+<p>We can test the API provided by Rails app using <code class="language-plaintext highlighter-rouge">curl</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜ curl <span class="nt">-X</span> POST <span class="nt">-F</span> <span class="s1">'topic=This is topic'</span> <span class="nt">-F</span> <span class="s1">'from_name=HailCat'</span> <span class="nt">-F</span> <span class="s1">'content=This is content'</span> http://localhost:3000/messages
+<span class="o">{</span><span class="s2">"error"</span>:null<span class="o">}</span>%
+</code></pre></div></div>
+
+<h3 id="post-the-data-from-wechaty-to-rails">POST the data from Wechaty to Rails</h3>
+
+<p>We could take advantages of the library <a href="https://github.com/request/request">request</a>, posting the data to Rails:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Wechaty</span> <span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">request</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">request</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nf">startBot</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="nx">Wechaty</span><span class="p">.</span><span class="nf">instance</span><span class="p">({</span> <span class="na">profile</span><span class="p">:</span> <span class="dl">'</span><span class="s1">chatieme</span><span class="dl">'</span> <span class="p">});</span>
+    <span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">code</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Scan QrCode to login: </span><span class="p">${</span><span class="nx">code</span><span class="p">}</span><span class="s2">\n</span><span class="p">${</span><span class="nx">url</span><span class="p">}</span><span class="s2">`</span><span class="p">))</span>
+        <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span> <span class="nx">user</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`User </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2"> logined`</span><span class="p">))</span>
+        <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="nx">onMessage</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">init</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nf">onMessage</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">room</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="nx">sender</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="k">from</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="nx">receiver</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">to</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="nx">content</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">content</span><span class="p">();</span>
+
+    <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">room</span> <span class="o">||</span> <span class="o">!</span><span class="nx">receiver</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// onPersonalMessage(message);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">const</span> <span class="nx">topic</span> <span class="o">=</span> <span class="nx">room</span><span class="p">.</span><span class="nf">topic</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="nx">from_name</span> <span class="o">=</span> <span class="nx">sender</span><span class="p">.</span><span class="nf">name</span><span class="p">();</span>
+
+    <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">topic</span><span class="p">,</span> <span class="nx">from_name</span><span class="p">,</span> <span class="nx">content</span> <span class="p">};</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+
+    <span class="c1">// New code starts</span>
+    <span class="nx">request</span><span class="p">.</span><span class="nf">post</span><span class="p">({</span>
+        <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">http://localhost:3000/messages</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">form</span><span class="p">:</span> <span class="nx">data</span>
+    <span class="p">},</span>
+        <span class="nf">function </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">httpResponse</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+           <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="c1">// New code ends</span>
+<span class="p">}</span>
+
+<span class="nf">startBot</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>Restart Wechaty <code class="language-plaintext highlighter-rouge">node bot.js</code>. Wechaty can post any group messages to Rails. A simple logger has been finished.</p>
+
+<h3 id="add-admin-panel-for-rails">Add admin panel for Rails</h3>
+
+<p>Recording messages in database is far from enough, initially, we need a admin panel helping us manage the data. RailsAdmin is a choice to build a simple control panel with a few lines of code. To get started, add <code class="language-plaintext highlighter-rouge">gem 'rails_admin'</code> into your <code class="language-plaintext highlighter-rouge">Gemfile</code> of Rails project:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Gemfile</span>
+<span class="c1"># ... A lot of other codes above</span>
+<span class="n">gem</span> <span class="s1">'rails_admin'</span>
+<span class="n">gem</span> <span class="s1">'erubis'</span>
+</code></pre></div></div>
+
+<p>Stop Rails development server and run <code class="language-plaintext highlighter-rouge">bundle install</code> to install the dependency:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜ bundle <span class="nb">install</span>
+... a lot of lines above ...
+Using rails 5.1.0.rc2
+Using sass-rails 5.0.6
+Installing rails_admin 1.1.1
+Bundle <span class="nb">complete</span><span class="o">!</span> 17 Gemfile dependencies, 79 gems now installed.
+Use <span class="sb">`</span>bundle show <span class="o">[</span>gemname]<span class="sb">`</span> to see where a bundled gem is installed.
+</code></pre></div></div>
+
+<p>Run <code class="language-plaintext highlighter-rouge">rails g rails_admin:install</code>. Then run <code class="language-plaintext highlighter-rouge">rails server</code> to start Rails development server.</p>
+
+<p>Visit <code class="language-plaintext highlighter-rouge">http://localhost:3000/admin</code>, you can see an awesome admin pannel of this logger:</p>
+
+<p><img src="/assets/2017/wildcat-rails-admin-panel.webp" alt="admin panel" /></p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>This blog should be a very specific tutorial for developers who want to build a message logger for WeChat. Rails is a fullstack web framework so that it can be very complex. Explaining the comcepts of Rails is not the main purpose of this blog. However, if you would like to build a powerful logger, it is worthy doing that. Powered by Rails, you can build the system with less time consumption and more joy.</p>
+
+<p>Thanks for your reading. Feel free to drop any questions.</p>
+
+<h2 id="references">References</h2>
+
+<p>Author: <a href="https://github.com/imWildCat">@imWildCat</a>, University of Portsmouth</p>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Rails, StackShare: <a href="https://stackshare.io/rails">https://stackshare.io/rails</a> <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>The Rails Command Line — Ruby on Rails Guides: <a href="http://guides.rubyonrails.org/command_line.html">http://guides.rubyonrails.org/command_line.html</a> <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>Read–eval–print loop - Wikipedia: <a href="https://en.wikipedia.org/wiki/Read–eval–print_loop">https://en.wikipedia.org/wiki/Read–eval–print_loop</a> <a href="#fnref:3" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>Docker (software) - Wikipedia: <a href="https://en.wikipedia.org/wiki/Docker_(software)">https://en.wikipedia.org/wiki/Docker_(software)</a> <a href="#fnref:4" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#code">code</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#featured">featured</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/imwildcat">
+                            <img class="rounded-circle" src="/assets/contributors/imwildcat/avatar.webp" alt="imWildCat" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/imwildcat">imWildCat</a> </h5>
+						A designer and developer, currently a postgraduate student at University of Birmingham (Computer Science), and founded his own company in China with a startup business plan
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2017/04/16/how-chatie-is-used-in-haoshiyou-project/"> 用Chatie实现微信机器人商业逻辑之【好室友】群管理篇</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2017/04/21/wechaty-meeting-dinner-en/"> Wechaty Contributor Dinner  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2017/04-wechaty-meeting-dinner-en/wechat-meeting.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      CPS chat bot | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>CPS chat bot | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="CPS chat bot" />
+<meta name="author" content="wss793062366" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="tips: 使用微信群，推广电商商品及优惠券，机器人使用 wechaty-puppet-padplus." />
+<meta property="og:description" content="tips: 使用微信群，推广电商商品及优惠券，机器人使用 wechaty-puppet-padplus." />
+<link rel="canonical" href="https://wechaty.js.org/2020/06/13/cps-chat-bot/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/06/13/cps-chat-bot/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/cps-chat-bot/goodsmsg.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-06-13T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/cps-chat-bot/goodsmsg.webp" />
+<meta property="twitter:title" content="CPS chat bot" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"wss793062366"},"dateModified":"2020-06-13T00:00:00+00:00","datePublished":"2020-06-13T00:00:00+00:00","description":"tips: 使用微信群，推广电商商品及优惠券，机器人使用 wechaty-puppet-padplus.","headline":"CPS chat bot","image":"https://wechaty.js.org/assets/2020/cps-chat-bot/goodsmsg.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/06/13/cps-chat-bot/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"wss793062366"},"url":"https://wechaty.js.org/2020/06/13/cps-chat-bot/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">CPS chat bot</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/wss793062366">
+                            <img class="rounded-circle" src="/assets/contributors/wss793062366/avatar.webp" alt="wss793062366" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/wss793062366">wss793062366</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jun 13, 2020 · <span class="reading-time">
+  
+  
+    8 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/cps-chat-bot/goodsmsg.webp" alt="CPS chat bot">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>tips: 使用微信群，推广电商商品及优惠券，机器人使用 wechaty-puppet-padplus.</p>
+
+<h2 id="简介">简介</h2>
+
+<p>推广营销机器人是一个微信助手，可以帮助推广者在自己的微信群，查询优惠商品及优惠券并转发到自己所在的微信群</p>
+
+<h2 id="需求描述">需求描述</h2>
+
+<p>1.推广者启动机器人，查询商品</p>
+
+<ul>
+  <li>当推广者，发送指令查询商品类目后， 微信助手通过接口查询到商品列表。</li>
+</ul>
+
+<p>2.查询到的商品信息，发送到微信群</p>
+
+<ul>
+  <li>例如, 发送</li>
+</ul>
+
+<pre><code class="language-log">【京东】君乐宝 涨芝士啦酸奶芝芝多莓口味 180g*12袋
+京东价：¥ 59.9
+
+-------------------
+商品入口 https://union-click.jd.com/jdc?e=&amp;p=AyIGZRhYFQARAlYeWxMyFQVcGF8dAxoCUx9rUV1KWQorAlBHU0VeBUVNR0ZbSkAOClBMW0scWRwBFg9UE14TBg1eEEcGJQdmAg9dP2tScQdSHjJIR1lmM3s9cUQeC2UeWhQDEgFdHVMXMhIGVBhSFgMSBlUraxUHIkY7HVIXBBIAZRlaFAEXD1MbXhUyEgNdG1IUAhMFUx1dFDISD1ErAEBsZ3UOTRpXVkdCPkgPJTIiBGUraxUyETcLdVpGAUFTABwLe1hBDwwSBkwEfAVWGF0cBSIFVBpZFw%3D%3D
+
+</code></pre>
+
+<h2 id="quick-start">Quick Start</h2>
+
+<h3 id="新建项目">新建项目</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>bot &amp; <span class="nb">cd</span> ./bot
+npm init <span class="nt">-y</span>
+</code></pre></div></div>
+
+<p>安装项目依赖</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">--save</span> wechaty
+npm <span class="nb">install</span> <span class="nt">--save</span> wechaty-puppet-padplus
+npm <span class="nb">install</span> <span class="nt">--save</span> qrcode-terminal
+
+</code></pre></div></div>
+
+<h3 id="开始编码">开始编码</h3>
+
+<p>项目目录如下</p>
+
+<pre><code class="language-log">- src
+  - my-chat-bot.js
+- config
+  - config.ts
+</code></pre>
+
+<h4 id="configjs">config.js</h4>
+
+<p>配置信息</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">// puppet_padplus Token</span>
+  <span class="na">token</span><span class="p">:</span> <span class="dl">"</span><span class="s2">puppet_padplus_...</span><span class="dl">"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="my-chat-botjs">my-chat-bot.js</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * wechaty-puppet-padplus index
+ */</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Wechaty</span> <span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">PuppetPadplus</span> <span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty-puppet-padplus</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">config</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">../config/config</span><span class="dl">'</span>
+
+<span class="c1">// init</span>
+<span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Wechaty</span><span class="p">({</span>
+  <span class="na">puppet</span><span class="p">:</span> <span class="k">new</span> <span class="nc">PuppetPadplus</span><span class="p">({</span>
+    <span class="na">token</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">token</span>
+  <span class="p">}),</span>
+  <span class="na">name</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">name</span>
+<span class="p">})</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">,</span>    <span class="nx">onScan</span><span class="p">)</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span>   <span class="nx">onLogin</span><span class="p">)</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">logout</span><span class="dl">'</span><span class="p">,</span>  <span class="nx">onLogout</span><span class="p">)</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="nx">onMessage</span><span class="p">)</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+  <span class="p">.</span><span class="nf">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">log</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="dl">'</span><span class="s1">StarterBot</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Starter Bot Started.</span><span class="dl">'</span><span class="p">))</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span> <span class="o">=&gt;</span> <span class="nx">log</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">StarterBot</span><span class="dl">'</span><span class="p">,</span> <span class="nx">e</span><span class="p">))</span>
+
+</code></pre></div></div>
+
+<h4 id="收商品指令">收商品指令</h4>
+
+<p>收到查询商品指令</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * onMessage
+ */</span>
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">onMessage</span> <span class="p">(</span><span class="nx">msg</span><span class="p">:</span> <span class="nx">Message</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// log.info('StarterBot', msg.toString())</span>
+
+  <span class="k">if </span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nf">type</span><span class="p">()</span> <span class="o">===</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Message</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">Text</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nf">text</span><span class="p">().</span><span class="nf">includes</span><span class="p">(</span><span class="dl">'</span><span class="s1">#查询商品：</span><span class="dl">'</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nf">queryJingFenGoodsAndSendMsg</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nf">text</span><span class="p">().</span><span class="nf">includes</span><span class="p">(</span><span class="dl">'</span><span class="s1">ready stop</span><span class="dl">'</span><span class="p">))</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">ready stop</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<h4 id="查询商品">查询商品</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">eliteIds</span><span class="p">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="nb">Number</span><span class="o">&gt;</span> <span class="o">=</span>
+<span class="p">[</span>
+  <span class="mi">1</span><span class="p">,</span> <span class="c1">//好券商品,</span>
+  <span class="mi">22</span><span class="p">,</span> <span class="c1">//热销爆品,</span>
+  <span class="mi">2</span><span class="p">,</span> <span class="c1">//超级大卖场,</span>
+  <span class="mi">10</span><span class="p">,</span> <span class="c1">//9.9专区,</span>
+  <span class="mi">23</span><span class="p">,</span> <span class="c1">//为你推荐</span>
+<span class="p">];</span>
+<span class="kd">var</span> <span class="nx">eliteIdIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="cm">/**
+ * QueryJFGoodsAndSendMsg
+ */</span>
+<span class="kd">function</span> <span class="nf">queryJingFenGoodsAndSendMsg</span><span class="p">(</span><span class="nx">msg</span><span class="p">:</span> <span class="nx">Message</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">eliteId</span><span class="p">:</span> <span class="nb">Number</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="c1">// 查询商品</span>
+  <span class="nf">queryJingFenGoods</span><span class="p">(</span><span class="nx">eliteId</span><span class="p">).</span><span class="nf">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">eliteIdsIndex</span> <span class="o">&lt;</span> <span class="nx">eliteIds</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">eliteId</span> <span class="o">=</span> <span class="nx">eliteIds</span><span class="p">[</span><span class="nx">eliteIdsIndex</span><span class="p">];</span>
+      <span class="nx">eliteIdsIndex</span> <span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">eliteIdsIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if </span><span class="p">(</span><span class="nx">index</span> <span class="o">&lt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="na">goods</span><span class="p">:</span> <span class="nx">JFGoodsInfo</span> <span class="o">=</span> <span class="nx">res</span><span class="p">[</span><span class="nx">index</span><span class="p">];</span>
+    <span class="nx">index</span> <span class="o">++</span><span class="p">;</span>
+    <span class="c1">// 领链</span>
+    <span class="nf">getCpsUrl</span><span class="p">(</span><span class="nx">goods</span><span class="p">).</span><span class="nf">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="na">cpsInfo</span><span class="p">:</span> <span class="nx">CpsInfo</span> <span class="o">=</span> <span class="nx">res</span><span class="p">;</span>
+        <span class="c1">// 发消息</span>
+        <span class="nf">sendPromotionMsg</span><span class="p">(</span><span class="nx">msg</span><span class="p">,</span> <span class="nx">goods</span><span class="p">,</span> <span class="nx">cpsInfo</span><span class="p">)</span>
+    <span class="p">});</span>
+    <span class="p">}</span>
+
+  <span class="p">},</span> <span class="nx">rej</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">rej = </span><span class="dl">'</span><span class="p">,</span> <span class="nx">rej</span><span class="p">);</span>
+  <span class="p">});</span>
+
+<span class="cm">/**
+ * 根据类目查询商品
+ */</span>
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">queryJingFenGoods</span><span class="p">(</span><span class="nx">eliteId</span><span class="p">:</span> <span class="nb">Number</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nc">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">:</span> <span class="p">(</span><span class="nx">value</span><span class="p">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="nx">JFGoodsInfo</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">uParam</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">goodsReq</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">pageIndex</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="na">pageSize</span><span class="p">:</span> <span class="nx">pageSize</span><span class="p">,</span>
+        <span class="na">eliteId</span><span class="p">:</span> <span class="nx">eliteId</span>
+      <span class="p">},</span>
+    <span class="p">};</span>
+
+    <span class="nf">requestAPI</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://router.jd.com/api</span><span class="dl">'</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">uParam</span><span class="p">))</span>
+    <span class="p">.</span><span class="nf">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">code</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">0</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+          <span class="kd">var</span> <span class="nx">dataArr</span> <span class="o">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+          <span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="p">[];</span>
+          <span class="k">for </span><span class="p">(</span><span class="kd">let</span> <span class="nx">d</span> <span class="k">of</span> <span class="nx">dataArr</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">goods</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JFGoodsInfo</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span>
+            <span class="nx">list</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">goods</span><span class="p">);</span>
+          <span class="p">}</span>
+
+          <span class="nf">resolve</span><span class="p">(</span><span class="nx">list</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">},</span> <span class="nx">rej</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nf">reject</span><span class="p">(</span><span class="dl">'</span><span class="s1">Server error</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="cm">/**
+ * 领链
+ */</span>
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">getCpsUrl</span><span class="p">(</span><span class="nx">goodsInfo</span><span class="p">:</span> <span class="nx">JFGoodsInfo</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nc">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">:</span> <span class="p">(</span><span class="nx">value</span><span class="p">:</span> <span class="nx">CpsInfo</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="na">materialId</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="nx">goodsInfo</span><span class="p">.</span><span class="nx">materialUrl</span><span class="p">;</span>
+    <span class="c1">// console.log('indexof http = ', materialId.indexOf('http'))</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">materialId</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">http</span><span class="dl">'</span><span class="p">)</span> <span class="o">!==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">materialId</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">materialId</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kd">const</span> <span class="nx">appId</span> <span class="o">=</span> <span class="mi">000000</span><span class="p">;</span> <span class="c1">// your app id</span>
+
+    <span class="kd">var</span> <span class="nx">promotionCodeReq</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">materialId</span><span class="p">:</span> <span class="nx">materialId</span><span class="p">,</span>
+      <span class="na">siteId</span><span class="p">:</span> <span class="nx">appId</span><span class="p">,</span>
+      <span class="na">positionId</span><span class="p">:</span> <span class="mi">000000</span><span class="p">,</span> <span class="c1">// your positionId</span>
+      <span class="na">couponUrl</span><span class="p">:</span> <span class="dl">''</span>
+    <span class="p">}</span>
+
+    <span class="kd">var</span> <span class="nx">coupon</span> <span class="o">=</span> <span class="nx">goodsInfo</span><span class="p">.</span><span class="nx">coupon</span><span class="p">;</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">coupon</span> <span class="o">&amp;&amp;</span> <span class="nx">coupon</span><span class="p">.</span><span class="nx">link</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">promotionCodeReq</span><span class="p">.</span><span class="nx">couponUrl</span> <span class="o">=</span> <span class="nf">encodeURIComponent</span><span class="p">(</span><span class="nx">coupon</span><span class="p">.</span><span class="nx">link</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kd">var</span> <span class="nx">uParam</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">promotionCodeReq</span>
+    <span class="p">}</span>
+
+    <span class="nf">requestAPI</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://router.jd.com/api</span><span class="dl">'</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">uParam</span><span class="p">))</span>
+    <span class="p">.</span><span class="nf">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">code</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">0</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="na">cpsInfo</span><span class="p">:</span> <span class="nx">CpsInfo</span> <span class="o">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+        <span class="c1">// 发品</span>
+        <span class="nf">resolve</span><span class="p">(</span><span class="nx">cpsInfo</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="cm">/**
+ *
+ */</span>
+<span class="kd">function</span> <span class="nf">sendPromotionMsg</span><span class="p">(</span><span class="nx">msg</span><span class="p">:</span> <span class="nx">Message</span><span class="p">,</span> <span class="nx">goods</span><span class="p">:</span><span class="nx">JFGoodsInfo</span><span class="p">,</span> <span class="nx">cpsInfo</span><span class="p">:</span> <span class="nx">CpsInfo</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">(</span><span class="k">async </span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// 发商品图</span>
+    <span class="kd">var</span> <span class="na">urlInfo</span><span class="p">:</span> <span class="nx">UrlInfo</span> <span class="o">=</span> <span class="nx">goods</span><span class="p">.</span><span class="nx">imageInfo</span><span class="p">.</span><span class="nx">imageList</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">urlInfo</span><span class="p">.</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">fileBox</span> <span class="o">=</span> <span class="nx">FileBox</span><span class="p">.</span><span class="nf">fromUrl</span><span class="p">(</span><span class="nx">urlInfo</span><span class="p">.</span><span class="nx">url</span><span class="p">)</span>
+      <span class="k">await</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">fileBox</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 发送商品信息</span>
+    <span class="kd">var</span> <span class="nx">jd</span><span class="p">;</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">goods</span><span class="p">.</span><span class="nx">owner</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">g</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">jd</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">京东自营</span><span class="dl">'</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">jd</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">京东</span><span class="dl">'</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">【</span><span class="dl">'</span><span class="o">+</span> <span class="nx">jd</span> <span class="o">+</span><span class="dl">'</span><span class="s1">】</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">goods</span><span class="p">.</span><span class="nx">skuName</span> <span class="o">+</span> <span class="dl">'</span><span class="se">\n\r</span><span class="dl">'</span>
+    <span class="o">+</span> <span class="dl">'</span><span class="s1">----------------</span><span class="dl">'</span> <span class="o">+</span> <span class="dl">'</span><span class="se">\n</span><span class="dl">'</span>
+    <span class="o">+</span> <span class="dl">'</span><span class="s1">京东价：¥ </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">goods</span><span class="p">.</span><span class="nx">priceInfo</span><span class="p">.</span><span class="nx">price</span> <span class="o">+</span> <span class="dl">'</span><span class="se">\n</span><span class="dl">'</span>
+    <span class="o">+</span> <span class="dl">'</span><span class="s1">券后价：¥ </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">goods</span><span class="p">.</span><span class="nx">priceInfo</span><span class="p">.</span><span class="nx">lowestCouponPrice</span> <span class="o">+</span> <span class="dl">'</span><span class="se">\n\r</span><span class="dl">'</span>
+    <span class="o">+</span> <span class="dl">'</span><span class="s1">商品入口：</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">cpsInfo</span><span class="p">.</span><span class="nx">clickURL</span>
+
+    <span class="k">await</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+  <span class="p">})();</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<h3 id="试运行">试运行</h3>
+
+<p>启动脚本 ‘package.json’</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+
+  </span><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cross-env WECHATY_LOG=verbose nodemon  my-chat-bot.ts"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div></div>
+
+<p>运行</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run start
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="效果图">效果图</h3>
+
+<p><img src="/assets/2020/cps-chat-bot/goodsmsg.webp" alt="效果图" /></p>
+
+<h3 id="致谢">致谢</h3>
+
+<ul>
+  <li>感谢<a href="https://wechaty.github.io">Wechaty</a>团队。</li>
+  <li>感谢<a href="https://www.juzibot.com">句子互动</a>提供的api-token</li>
+</ul>
+
+<p>项目链接</p>
+
+<p><a href="https://github.com/wss793062366/my-padplus-bot">https://github.com/wss793062366/my-padplus-bot</a></p>
+
+<blockquote>
+  <p>Author: <a href="https://github.com/wss793062366">@wss793062366</a> your one-line bio at here
+Code: <a href="https://github.com/wss793062366/my-padplus-bot">@my-padplus-bot</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ecommerce">ecommerce</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/wss793062366">
+                            <img class="rounded-circle" src="/assets/contributors/wss793062366/avatar.webp" alt="wss793062366" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/wss793062366">wss793062366</a> </h5>
+						A iOS developer
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/06/08/wechaty-summer-of-code-2020-talk/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/06-wechaty-summer-of-code-2020-talk/homepage.webp">  Wechaty Summer of Code 2020 Talk</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/06/15/b-bot-for-fun/"> 发段子 舔狗 毒鸡汤 美图bot  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/paipiange-bot/1.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

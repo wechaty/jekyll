@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Build a WeChat Sweet-Talk Bot in Three Steps with Node.js - Beginner Friendly | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Build a WeChat Sweet-Talk Bot in Three Steps with Node.js - Beginner Friendly | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Build a WeChat Sweet-Talk Bot in Three Steps with Node.js - Beginner Friendly" />
+<meta name="author" content="leochen-g" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A beginner-friendly Node.js tutorial for building a WeChat bot that sends daily weather updates, sweet messages, and relationship reminders to your significant other, with optional AI chatbot integration." />
+<meta property="og:description" content="A beginner-friendly Node.js tutorial for building a WeChat bot that sends daily weather updates, sweet messages, and relationship reminders to your significant other, with optional AI chatbot integration." />
+<link rel="canonical" href="https://wechaty.js.org/2019/06/21/three-step-get-girlfriend-en/" />
+<meta property="og:url" content="https://wechaty.js.org/2019/06/21/three-step-get-girlfriend-en/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2019/everyday-header.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-06-21T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2019/everyday-header.webp" />
+<meta property="twitter:title" content="Build a WeChat Sweet-Talk Bot in Three Steps with Node.js - Beginner Friendly" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"leochen-g"},"dateModified":"2019-06-21T00:00:00+00:00","datePublished":"2019-06-21T00:00:00+00:00","description":"A beginner-friendly Node.js tutorial for building a WeChat bot that sends daily weather updates, sweet messages, and relationship reminders to your significant other, with optional AI chatbot integration.","headline":"Build a WeChat Sweet-Talk Bot in Three Steps with Node.js - Beginner Friendly","image":"https://wechaty.js.org/assets/2019/everyday-header.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2019/06/21/three-step-get-girlfriend-en/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"leochen-g"},"url":"https://wechaty.js.org/2019/06/21/three-step-get-girlfriend-en/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Build a WeChat Sweet-Talk Bot in Three Steps with Node.js - Beginner Friendly</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/leochen-g">
+                            <img class="rounded-circle" src="/assets/contributors/leochen-g/avatar.webp" alt="Leo chen" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/leochen-g">Leo chen</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jun 21, 2019 · <span class="reading-time">
+  
+  
+    9 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2019/everyday-header.webp" alt="Build a WeChat Sweet-Talk Bot in Three Steps with Node.js - Beginner Friendly">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>Build a WeChat sweet-talk bot in three steps with Node.js - beginner friendly! Can also be used to sweet-talk your girlfriend/boyfriend - we programmers are serious about romance!</p>
+
+<h2 id="foreword">Foreword</h2>
+
+<p>Have you noticed the Python version of “WeChat Daily Say” trending recently? It dominated GitHub’s Python trending list for nearly two weeks. Are frontend developers feeling a bit envious? Since it’s in the less familiar Python language, learning and using it might not be as comfortable. Wouldn’t it be great to use our familiar JavaScript to build our own girlfriend-sweetening tool! 😆</p>
+
+<p>We frontend developers are also serious about sweet-talking! We can also build an automatic sweet-talk tool!</p>
+
+<h2 id="project-introduction">Project Introduction</h2>
+
+<p>Actually, the “WeChat Daily Say” project was completed back in March. I published an article at that time: <a href="https://juejin.im/post/5c77c6bef265da2de6611cff">“Using Node+Wechaty to Write a Crawler Script that Sends Daily Sweet Messages to Your Girlfriend/Boyfriend”</a>. Those who have seen it should remember. Since that article was more technical and a friend said it might not be suitable for beginners, at his suggestion, I reorganized the code and created video tutorials to make it accessible to anyone.</p>
+
+<p>I’m also maintaining two projects: one is this project <a href="https://github.com/gengchen528/wechatBot">“WeChat Daily Say”</a> suitable for beginners - simple operation, convenient configuration, easy to get started. The other is <a href="https://github.com/gengchen528/wechat-assistant">“WeChat Personal Secretary”</a>, with more features including auto-join groups, auto-add friends, auto-reply, scheduled reminders, etc. Since it involves database operations, it’s mainly for those with programming experience. Interested friends can refer to <a href="https://juejin.im/post/5ca1dd846fb9a05e6c77b72f">“Building a Personal WeChat Secretary with koa2+wechaty”</a>.</p>
+
+<p>This project uses Node and the Wechaty WeChat web interface to develop a tool that can send daily weather conditions, weather reminders, and a daily quote to your girlfriend. After configuring the bot API, it can also achieve WeChat bot auto-chat with your girlfriend.</p>
+
+<h2 id="project-repository">Project Repository</h2>
+
+<p>GitHub: <a href="https://github.com/gengchen528/wechatBot">https://github.com/gengchen528/wechatBot</a></p>
+
+<p>Let’s see if frontend developers can send this project to trending! Haha</p>
+
+<h2 id="effect-preview">Effect Preview</h2>
+
+<p>Before the three-step tutorial, let’s look at the effect</p>
+
+<p><img src="/assets/2019/everyday-1.webp" alt="image" /></p>
+
+<p><img src="/assets/2019/everyday-2.webp" alt="image" /></p>
+
+<p>You can see messages sent at specified times, including weather information, weather reminders, and how many days you’ve been together. When the bot is enabled, your girlfriend can chat with the assistant. However, current open-source bot APIs aren’t very intelligent, and semantic matching may not be very accurate. So remember not to enable the bot when your girlfriend is angry, or incorrect responses might get you in trouble! 😨</p>
+
+<p>This project initially used Turing Bot, but Turing Bot recently imposed restrictions - unverified users can’t call the API, and verified users only get 100 calls per day. This is quite limited - you can’t finish sweet-talking before being restricted, which is terrible (manual smirk)! So I switched to Tianxing Bot API, which has fewer restrictions and provides enough free API calls. I’ve made it available in the project, but I still recommend everyone apply for their own account, as you can customize the bot name and set your own reply content.</p>
+
+<h2 id="video-tutorial">Video Tutorial</h2>
+
+<div style="
+    position: relative;
+    padding-bottom: 70%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="//player.bilibili.com/player.html?aid=56077628&amp;high_quality=1" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h2 id="three-step-tutorial">Three-Step Tutorial</h2>
+
+<h3 id="step-1-install-node">Step 1: Install Node</h3>
+
+<p>Node official website: <a href="https://nodejs.org/zh-cn/">https://nodejs.org/zh-cn/</a></p>
+
+<p>Download and install the Node version for your system. For Windows, <code class="language-plaintext highlighter-rouge">.msi</code> package is recommended - just keep clicking next. Same for other systems.</p>
+<blockquote>
+  <p>Windows Node installation guide: <a href="https://www.cnblogs.com/liuqiyun/p/8133904.html">https://www.cnblogs.com/liuqiyun/p/8133904.html</a>
+Mac Node installation guide: <a href="https://blog.csdn.net/qq_32407233/article/details/83758899">https://blog.csdn.net/qq_32407233/article/details/83758899</a>
+Linux Node installation guide: <a href="https://www.cnblogs.com/liuqi/p/6483317.html">https://www.cnblogs.com/liuqi/p/6483317.html</a></p>
+</blockquote>
+
+<p><img src="/assets/2019/everyday-3.webp" alt="image" /></p>
+
+<p>After installation, hold <code class="language-plaintext highlighter-rouge">Shift+Right Click</code> and select “Open command window here”. Execute <code class="language-plaintext highlighter-rouge">node -v</code> in the command line - if a version number appears, installation succeeded.</p>
+
+<p><img src="/assets/2019/everyday-4.webp" alt="image" /></p>
+
+<h3 id="step-2-download-code-and-configure">Step 2: Download Code and Configure</h3>
+
+<p>Code repository: <a href="https://github.com/gengchen528/wechatBot">https://github.com/gengchen528/wechatBot</a></p>
+
+<ul>
+  <li>Visit this address and directly download the zip package to your desktop, then extract it</li>
+</ul>
+
+<p><img src="/assets/2019/everyday-5.webp" alt="image" /></p>
+
+<ul>
+  <li>Enter the directory and find the <code class="language-plaintext highlighter-rouge">index.js</code> file in the <code class="language-plaintext highlighter-rouge">config</code> directory</li>
+</ul>
+
+<p><img src="/assets/2019/everyday-6.webp" alt="image" /></p>
+
+<p><img src="/assets/2019/everyday-7.webp" alt="image" /></p>
+
+<ul>
+  <li>Right-click the <code class="language-plaintext highlighter-rouge">index.js</code> file and select “Open with”. If you don’t have a code editor, use Notepad. If you have a code editor, use that directly. Non-developers can download <code class="language-plaintext highlighter-rouge">notepad++</code>, download link: <a href="https://pan.baidu.com/s/1mWdEOaTQ1D6kihQveN1JHw">https://pan.baidu.com/s/1mWdEOaTQ1D6kihQveN1JHw</a> Password: fn9g. Developers can use their preferred editor.</li>
+</ul>
+
+<p><img src="/assets/2019/everyday-8.webp" alt="image" /></p>
+
+<ul>
+  <li>Configuration items to modify: Your girlfriend’s WeChat remark name <code class="language-plaintext highlighter-rouge">NAME</code> must be changed, or you’ll be sending messages to me 😂. WeChat nickname <code class="language-plaintext highlighter-rouge">NICKNAME</code> should also be filled in. Your anniversary <code class="language-plaintext highlighter-rouge">MEMORIAL_DAY</code> needless to say, must be changed.</li>
+  <li>If sending weather info, your girlfriend’s city <code class="language-plaintext highlighter-rouge">CITY</code> must be modified. For the <code class="language-plaintext highlighter-rouge">LOCATION</code> spelling, I suggest checking Moji Weather’s official website <a href="https://tianqi.moji.com/weather/china/">https://tianqi.moji.com/weather/china/</a></li>
+</ul>
+
+<p><img src="/assets/2019/everyday-9.webp" alt="image" /></p>
+
+<ul>
+  <li>After finding the corresponding area’s weather on Moji Weather, check the webpage URL. Fill the green-marked pinyin into <code class="language-plaintext highlighter-rouge">CITY</code> and the red-marked pinyin into <code class="language-plaintext highlighter-rouge">LOCATION</code></li>
+</ul>
+
+<p><img src="/assets/2019/everyday-10.webp" alt="image" /></p>
+
+<ul>
+  <li>Daily send time <code class="language-plaintext highlighter-rouge">SENDDATE</code> - the rules can be found in the <code class="language-plaintext highlighter-rouge">index.js</code> file in the <code class="language-plaintext highlighter-rouge">schedule</code> directory. <code class="language-plaintext highlighter-rouge">0 06 8 * * *</code> means every day at 8:06:00 AM. Usually, we only need to configure the first three fields.</li>
+  <li>To enable bot chat, set <code class="language-plaintext highlighter-rouge">AUTOREPLY</code> to <code class="language-plaintext highlighter-rouge">true</code>. I’ve abandoned Turing Bot for reasons mentioned above and switched to Tianxing Bot, but don’t expect too much - it’s not that intelligent 😂. Currently, since my API calls are still abundant, I’ve made it available in the project code. Just modify <code class="language-plaintext highlighter-rouge">AUTOREPLY</code> to enable auto-reply.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Configuration file</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">// Basic scheduled send function config (required)</span>
+    <span class="na">NAME</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Leo_chen</span><span class="dl">'</span><span class="p">,</span> <span class="c1">//Girlfriend's remark name</span>
+    <span class="na">NICKNAME</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Leo_chen</span><span class="dl">'</span><span class="p">,</span> <span class="c1">//Girlfriend's nickname</span>
+    <span class="na">MEMORIAL_DAY</span><span class="p">:</span> <span class="dl">'</span><span class="s1">2015/04/18</span><span class="dl">'</span><span class="p">,</span> <span class="c1">//Your anniversary</span>
+    <span class="na">CITY</span><span class="p">:</span> <span class="dl">'</span><span class="s1">shanghai</span><span class="dl">'</span><span class="p">,</span> <span class="c1">//Girlfriend's city</span>
+    <span class="na">LOCATION</span><span class="p">:</span> <span class="dl">"</span><span class="s2">pudong-new-district</span><span class="dl">"</span><span class="p">,</span> <span class="c1">//Girlfriend's district (check Moji Weather website for English spelling)</span>
+    <span class="na">SENDDATE</span><span class="p">:</span> <span class="dl">'</span><span class="s1">0 06 8 * * *</span><span class="dl">'</span><span class="p">,</span> <span class="c1">//Scheduled send time - 8:06:00 AM daily, see /schedule/index.js for rules</span>
+    <span class="na">ONE</span><span class="p">:</span> <span class="dl">'</span><span class="s1">http://wufazhuce.com/</span><span class="dl">'</span><span class="p">,</span> <span class="c1">//ONE web version website</span>
+    <span class="na">MOJI_HOST</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://tianqi.moji.com/weather/china/</span><span class="dl">'</span><span class="p">,</span> <span class="c1">//China Moji Weather url</span>
+
+    <span class="c1">//Advanced features (optional)</span>
+    <span class="na">AUTOREPLY</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">//Auto-chat feature - disabled by default</span>
+    <span class="na">AIBOTAPI</span><span class="p">:</span> <span class="dl">'</span><span class="s1">http://api.tianapi.com/txapi/robot/</span><span class="dl">'</span><span class="p">,</span> <span class="c1">//Tianxing Bot API - register at https://www.tianapi.com/signup.html?source=474284281</span>
+    <span class="na">APIKEY</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Tianxing Bot apikey</span><span class="dl">'</span><span class="p">,</span> <span class="c1">//Tianxing Bot apikey</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="step-3-run-the-program">Step 3: Run the Program</h3>
+
+<p>After configuring and saving the file, return to the project’s main directory. For Windows, hold <code class="language-plaintext highlighter-rouge">Shift+Right Click</code> and select “Open command window here”.</p>
+
+<p><img src="/assets/2019/everyday-11.webp" alt="image" /></p>
+
+<ul>
+  <li>Then enter <code class="language-plaintext highlighter-rouge">npm install</code>.</li>
+</ul>
+
+<p><img src="/assets/2019/everyday-12.webp" alt="image" /></p>
+
+<ul>
+  <li>After installation completes, enter <code class="language-plaintext highlighter-rouge">npm run start</code>. A file will download (it’s quite large, so wait a bit). When the QR code appears, scan it with your WeChat app to log in. Then enjoy the chat! 😆</li>
+</ul>
+
+<p><img src="/assets/2019/everyday-13.webp" alt="image" /></p>
+
+<p><img src="/assets/2019/everyday-14.webp" alt="image" /></p>
+
+<ul>
+  <li>If <code class="language-plaintext highlighter-rouge">npm run start</code> fails, first execute <code class="language-plaintext highlighter-rouge">npm install wechaty-puppet-puppeteer@^0.17.14 --no-save</code> then execute <code class="language-plaintext highlighter-rouge">npm run start</code></li>
+</ul>
+
+<h2 id="common-issues">Common Issues</h2>
+
+<ul>
+  <li>Check if Node version is greater than 10</li>
+  <li>Delete package-lock.json file if it exists</li>
+  <li>Delete <code class="language-plaintext highlighter-rouge">node_modules</code> and re-execute <code class="language-plaintext highlighter-rouge">npm install</code></li>
+  <li>You can also add the assistant’s WeChat and send ‘join group’ to enter the WeChat Daily Say technical exchange group</li>
+</ul>
+
+<ol>
+  <li>My WeChat account cannot log in
+    <ol>
+      <li>Starting from late June 2017, using solutions based on web WeChat has a high probability of being restricted from logging in. Main symptom: Unable to log into Web WeChat, but doesn’t affect mobile and other platforms. Verify if you’re restricted: Try scanning the QR code at <a href="https://wx.qq.com">https://wx.qq.com</a> to see if you can log in. If not, you may not be able to use this tool. More details:</li>
+      <li><a href="https://github.com/wechaty/wechaty/issues/603">Can not login with error message: 当前登录环境异常。为了你的帐号安全，暂时不能登录web微信。</a></li>
+      <li><a href="https://github.com/wechaty/wechaty/issues/990">[Rumor] WeChat will close the web version</a></li>
+      <li><a href="https://github.com/wechaty/wechaty/issues/872">Newly registered WeChat accounts cannot log in</a></li>
+    </ol>
+  </li>
+  <li>Cannot install puppet-puppeteer &amp;&amp; Chromium when executing npm run start</li>
+  <li>
+    <p>Deployment issues on Centos7
+ <img src="/assets/2019/everyday-15.webp" alt="image" />
+ Problem cause: <a href="https://segmentfault.com/a/1190000011382062">https://segmentfault.com/a/1190000011382062</a>
+ Solution:</p>
+
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c">#Dependencies</span>
+ yum <span class="nb">install </span>pango.x86_64 libXcomposite.x86_64 libXcursor.x86_64 libXdamage.x86_64 libXext.x86_64 libXi.x86_64 libXtst.x86_64 cups-libs.x86_64 libXScrnSaver.x86_64 libXrandr.x86_64 GConf2.x86_64 alsa-lib.x86_64 atk.x86_64 gtk3.x86_64 <span class="nt">-y</span>
+
+ <span class="c">#Fonts</span>
+ yum <span class="nb">install </span>ipa-gothic-fonts xorg-x11-fonts-100dpi xorg-x11-fonts-75dpi xorg-x11-utils xorg-x11-fonts-cyrillic xorg-x11-fonts-Type1 xorg-x11-fonts-misc <span class="nt">-y</span>
+</code></pre></div>    </div>
+  </li>
+  <li>On Windows, puppeteer download fails
+ Execute <code class="language-plaintext highlighter-rouge">npm install wechaty-puppet-puppeteer@^0.17.14 --no-save</code></li>
+</ol>
+
+<h2 id="notice">Notice</h2>
+
+<p>This project is developed out of personal interest. It’s open-sourced for technical exchange. Please do not use this project for anything that violates WeChat rules or other illegal activities. Commercial use is not recommended. It’s suggested to test with a secondary account as there’s a risk of web login ban (client unaffected). Please ensure voluntary use. The author is not responsible for web login bans caused by improper personal use. Thank you for understanding.</p>
+
+<h2 id="finally">Finally</h2>
+
+<p>If your WeChat account cannot log in or you have technical questions to discuss, add my WeChat assistant and send ‘join group’ - it will automatically send the exchange group QR code. This secondary account also has more advanced features waiting for you to discover. (Note: Friend requests are automatically approved within 20s)</p>
+
+<p><img src="/assets/2019/everyday-16.webp" alt="image" /></p>
+
+<p>Try it yourself and I’m sure you’ll discover more fun features!</p>
+
+<p>Also, my public account has integrated Microsoft Xiaoice. After following, send voice messages and a young lady’s voice will chat with you. You can also text chat with her. Feel free to try if interested - singles welcome!</p>
+
+<p><img src="/assets/2019/everyday-17.webp" alt="image" /></p>
+
+<blockquote>
+  <p>Author: <a href="https://github.com/leochen-g/">Leo_chen</a>, frontend engineer, enjoys using Node for various small projects, working at a big data company. This article was first published on Juejin: <a href="https://juejin.im/post/5d09fa9f51882508bd2065f4">Build a WeChat Sweet-Talk Bot in Three Steps with Node.js</a></p>
+</blockquote>
+
+<hr />
+
+<blockquote>
+  <p>本文也有<a href="/2019/06/21/three-step-get-girlfriend/">中文版本</a>。</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#code">code</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#featured">featured</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#entertainment">entertainment</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ecosystem">ecosystem</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/leochen-g">
+                            <img class="rounded-circle" src="/assets/contributors/leochen-g/avatar.webp" alt="Leo chen" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/leochen-g">Leo chen</a> </h5>
+						高级前端工程师一枚，喜欢用node做各种项目，生命不止，折腾不息！
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2019/06/13/wechaty-as-a-service-why-and-how/"> Wechaty-As-A-Service Why and How</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2019/06/21/three-step-get-girlfriend/"> 三步教你用Node做一个微信脱单神器，小白可上手  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2019/everyday-header.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

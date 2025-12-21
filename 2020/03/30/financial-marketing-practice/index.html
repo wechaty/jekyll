@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      使用Wechaty助力金融营销实践 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>使用Wechaty助力金融营销实践 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="使用Wechaty助力金融营销实践" />
+<meta name="author" content="crossly" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="首先，先为我拙劣的代码道个歉。临时野生程序员JS为现学，各种不规范请见谅。" />
+<meta property="og:description" content="首先，先为我拙劣的代码道个歉。临时野生程序员JS为现学，各种不规范请见谅。" />
+<link rel="canonical" href="https://wechaty.js.org/2020/03/30/financial-marketing-practice/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/03/30/financial-marketing-practice/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/financial-marketing/2020-03-30-wechaty-bond-bot.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-03-30T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/financial-marketing/2020-03-30-wechaty-bond-bot.webp" />
+<meta property="twitter:title" content="使用Wechaty助力金融营销实践" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"crossly"},"dateModified":"2020-03-30T00:00:00+00:00","datePublished":"2020-03-30T00:00:00+00:00","description":"首先，先为我拙劣的代码道个歉。临时野生程序员JS为现学，各种不规范请见谅。","headline":"使用Wechaty助力金融营销实践","image":"https://wechaty.js.org/assets/2020/financial-marketing/2020-03-30-wechaty-bond-bot.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/03/30/financial-marketing-practice/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"crossly"},"url":"https://wechaty.js.org/2020/03/30/financial-marketing-practice/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#tutorial">tutorial</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">使用Wechaty助力金融营销实践</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/crossly">
+                            <img class="rounded-circle" src="/assets/contributors/crossly/avatar.webp" alt="lemonsx" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/crossly">lemonsx</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Mar 30, 2020 · <span class="reading-time">
+  
+  
+    8 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/financial-marketing/2020-03-30-wechaty-bond-bot.webp" alt="使用Wechaty助力金融营销实践">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>首先，先为我拙劣的代码道个歉。临时野生程序员JS为现学，各种不规范请见谅。</p>
+
+<p>作为一个从互联网行业转型的证券从业者营销人员，在传统的行业中作业时，会有一些需求过于人工化。那么我今天将我使用Wechaty助力金融经纪业务的实践记录并分享给大家。</p>
+
+<h2 id="我在做一件自动化营销的事情">我在做一件自动化营销的事情</h2>
+
+<p>在做经纪业务营销过程中，有一项最基本的工作内容：开户。也就是互联网中常说的获取新用户。我在工作的过程中，考虑过很多拉新的思路，其中有一个叫可转债套利拉新。
+简而言之就是通过可转债这项金融工具进行套利，得到实打实的利益。有利益可循，客户才有开户的动力。在可转债套利这件事情中，我需要做这么一些事情：</p>
+
+<ul>
+  <li>找到有意向的客户，添加好友</li>
+  <li>与客户介绍可转债套利的玩法</li>
+  <li>营销开户，核心为开户二维码和开户注意点</li>
+  <li>可转债打新信息的推送</li>
+  <li>可转债中签的缴款通知</li>
+  <li>可转债可卖出的通知</li>
+</ul>
+
+<p>每天都要花费不少的时间做这一系列事情，如果能用机器实现自动化，那么我可以节省非常多的时间，并且我可以把营销的主被动关系尽可能转换掉。加上现有的绝大部分客户都落地在微信号中，那么第一个思路就是：如何做一个微信个人号的机器人。经过多方搜索，终于找到了Wechaty这个个人号框架。</p>
+<blockquote>
+  <p>为什么用微信个人号呢？用户沉淀，二次营销的发展。</p>
+</blockquote>
+
+<h2 id="工作事项和自动化的业务调整">工作事项和自动化的业务调整</h2>
+
+<p>我计划营造一个新的营销环境和场景去驱动这件事，期望将自动化营销的各个节点串联起来，形成小生态。那么与需求对应的事情一件件来：</p>
+
+<ol>
+  <li>将寻找客户添加好友转变为被加好友</li>
+  <li>套利玩法形成清晰的文章和图</li>
+  <li>适当的推送开户二维码或者开户链接</li>
+  <li>汇聚有意向的客户到交流群</li>
+  <li>可转债的打新、缴款、上市卖出以及明日打新统一整合进行播报</li>
+</ol>
+
+<p>期望业务链：
+种子客户-&gt;交流群播报可转债信息-&gt;适当营销文字-&gt;添加bot为好友-&gt;应答添加及对话-&gt;拉群、开户等服务-&gt;群播报</p>
+
+<h2 id="机器人计划实现的功能">机器人计划实现的功能</h2>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />好友添加自动应答</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />加群自动应答</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />拉群自动应答</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />消息响应
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />被动可转债播报</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />被动开户应答</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />被动大宗预留</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />被动联系我</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />点对点数据推送订阅</li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />主动推送
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />可转债播报</li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />群数据储存</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />系统配置</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />消息触发的白名单</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />群管理</li>
+</ul>
+
+<h2 id="代码实现的思路">代码实现的思路</h2>
+
+<p>首先根据example中的样例，我讲bot的事件监听分发到了不同的监听器中。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// mybot.js</span>
+
+<span class="nx">bot</span>
+    <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">./listeners/on-scan</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">./listeners/on-message</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">onLogin</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">./listeners/on-login</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">friendship</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">./listeners/on-friendship</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">room-join</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">./listeners/on-room-join</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">room-topic</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">./listeners/on-room-topic</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">room-invite</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">./listeners/on-room-invite</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">room-leave</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">./listeners/on-room-leave</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">ready</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">./listeners/on-ready</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>其中值得说明的是ready这个事件，借助这个事件，我们可以构造定时任务。那么先看看定时任务是怎么做的。
+这里借助了cron这个库实现了定时任务。其中推送的目的地有一个json维护者，我可以手动添加。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ./listeners/on-ready</span>
+
+<span class="cm">/*
+BOT启动时，加载定时任务。每天早上主动往管理的群推送打新内容。
+ */</span>
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">onReady</span><span class="p">(){</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="k">import</span> <span class="nx">CronJob</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">cron</span><span class="dl">'</span><span class="p">.</span><span class="nx">CronJob</span><span class="p">;</span>
+        <span class="k">import</span> <span class="nx">isHoliday</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">../functions/holiday</span><span class="dl">'</span>
+        <span class="k">import</span> <span class="nx">moment</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">moment</span><span class="dl">'</span><span class="p">;</span>
+        <span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">this</span>
+        <span class="kd">const</span> <span class="nx">job</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CronJob</span><span class="p">(</span><span class="dl">'</span><span class="s1">15 9 * * *</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// const job = new CronJob('*/1 * * * *', async function() {</span>
+          <span class="c1">//  if (isHoliday(moment().format("YYYY-MM-DD"))){</span>
+            <span class="c1">//    return</span>
+           <span class="c1">// }</span>
+            <span class="k">import</span> <span class="nx">config</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">../config</span><span class="dl">'</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="k">new</span> <span class="nc">Date</span><span class="p">().</span><span class="nf">toLocaleDateString</span><span class="p">()</span><span class="o">+</span><span class="dl">'</span><span class="s1">Tick Tick Tick</span><span class="dl">'</span><span class="p">);</span>
+            <span class="k">for </span><span class="p">(</span><span class="nx">x</span> <span class="k">in</span> <span class="nx">config</span><span class="p">.</span><span class="nx">PushGroups</span><span class="p">){</span>
+                <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Room</span><span class="p">.</span><span class="nf">find</span><span class="p">({</span><span class="na">topic</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">PushGroups</span><span class="p">[</span><span class="nx">x</span><span class="p">]})</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">room name is </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">config</span><span class="p">.</span><span class="nx">DebtGroups</span><span class="p">[</span><span class="nx">x</span><span class="p">]</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">, raw data is </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">room</span><span class="p">)</span>
+                <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="k">await</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">../functions/stocks-debt</span><span class="dl">'</span><span class="p">).</span><span class="nf">debts</span><span class="p">())</span> <span class="c1">//推送打新资讯</span>
+                <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">Message</span><span class="p">.</span><span class="nx">Tick</span><span class="p">)</span><span class="c1">//推送打新提醒</span>
+            <span class="p">}</span>
+        <span class="p">},</span> <span class="kc">null</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Asia/Shanghai</span><span class="dl">'</span><span class="p">);</span>
+        <span class="k">await</span> <span class="nx">job</span><span class="p">.</span><span class="nf">start</span><span class="p">();</span>
+    <span class="p">}</span><span class="k">catch </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">onReady</span>
+</code></pre></div></div>
+
+<p>Wechaty的事件监听分离的非常清晰，通过message事件的监听，可以对接收到的消息进行处理，实现我想要实现的被动消息触发。
+为了尽可能不复杂的做好数据存储，我选择了lowdb这款json适配器，相对容易的存储数据到本地json文件中。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
+   <span class="k">if </span><span class="p">(</span><span class="nx">room</span><span class="p">){</span>
+        <span class="k">if </span><span class="p">(</span><span class="k">await</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">mentionSelf</span><span class="p">())</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="dl">'</span><span class="s1">this message were mentioned me! [You were mentioned] tip ([有人@我]的提示)</span><span class="dl">'</span><span class="p">)</span>
+            <span class="kd">const</span> <span class="nx">topic</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">topic</span><span class="p">()</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s2">`Room: </span><span class="p">${</span><span class="nx">topic</span><span class="p">}</span><span class="s2"> Contact: </span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nf">name</span><span class="p">()}</span><span class="s2"> Text: </span><span class="p">${</span><span class="nx">text</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+            <span class="k">switch </span><span class="p">(</span><span class="nx">text</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="sr">/</span><span class="se">\s</span><span class="sr">+/</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
+                <span class="k">case</span> <span class="dl">'</span><span class="s1">可转债</span><span class="dl">'</span><span class="p">:</span>
+                <span class="k">case</span> <span class="dl">'</span><span class="s1">打新</span><span class="dl">'</span><span class="p">:</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nf">debug</span><span class="p">(</span><span class="dl">"</span><span class="s2">Request from : </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">contact</span><span class="p">.</span><span class="nf">name</span><span class="p">()</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">; Check Mod Permission result：</span><span class="dl">"</span><span class="o">+</span><span class="nx">config</span><span class="p">.</span><span class="nx">Mod</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="nx">contact</span><span class="p">.</span><span class="nf">name</span><span class="p">())</span><span class="o">+</span><span class="dl">"</span><span class="s2">； Check Admin Permission result: </span><span class="dl">"</span><span class="o">+</span> <span class="nx">config</span><span class="p">.</span><span class="nx">Admin</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="nx">contact</span><span class="p">.</span><span class="nf">name</span><span class="p">()))</span>
+                    <span class="k">if </span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">Mod</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="nx">contact</span><span class="p">.</span><span class="nf">name</span><span class="p">())</span> <span class="o">||</span> <span class="nx">config</span><span class="p">.</span><span class="nx">Admin</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="nx">contact</span><span class="p">.</span><span class="nf">name</span><span class="p">())){</span>
+                        <span class="c1">// console.debug(await stockDebt.debts())</span>
+                        <span class="cm">/*
+                            await room.say("今日休息，不开盘。")
+                            return
+                        }*/</span>
+                        <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="k">await</span> <span class="nx">stockDebt</span><span class="p">.</span><span class="nf">debts</span><span class="p">())</span>
+                    <span class="p">}</span>
+                    <span class="k">break</span>
+                <span class="k">case</span> <span class="dl">'</span><span class="s1">开户</span><span class="dl">'</span><span class="p">:</span>
+                    <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="dl">"</span><span class="s2">请长按识别以下二维码开户</span><span class="dl">"</span><span class="p">,</span> <span class="nx">contact</span><span class="p">)</span>
+                    <span class="kd">const</span> <span class="nx">fileBox</span> <span class="o">=</span> <span class="nx">FileBox</span><span class="p">.</span><span class="nf">fromUrl</span><span class="p">(</span><span class="dl">'</span><span class="s1">URL EXAMPLE</span><span class="dl">'</span><span class="p">)</span>
+                    <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">fileBox</span><span class="p">)</span>
+                    <span class="k">break</span>
+                <span class="k">default</span><span class="p">:</span>
+                    <span class="k">break</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">...</span>
+</code></pre></div></div>
+
+<p>为了能对将要管理的几个人的人数进行监听，我选择在room-join事件中做用户信息的同步和存储。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//on-room-join.js</span>
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">onRoomJoin</span><span class="p">(</span><span class="nx">room</span><span class="p">,</span> <span class="nx">inviteeList</span><span class="p">,</span> <span class="nx">inviter</span><span class="p">){</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">nameList</span> <span class="o">=</span> <span class="nx">inviteeList</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="nx">c</span> <span class="o">=&gt;</span> <span class="nx">c</span><span class="p">.</span><span class="nf">name</span><span class="p">()).</span><span class="nf">join</span><span class="p">(</span><span class="dl">'</span><span class="s1">,</span><span class="dl">'</span><span class="p">)</span>
+        <span class="kd">const</span> <span class="nx">topic</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">topic</span><span class="p">()</span>
+        <span class="kd">const</span> <span class="nx">memberList</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">memberAll</span><span class="p">()</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Room </span><span class="p">${</span><span class="nx">topic</span><span class="p">}</span><span class="s2"> got new member </span><span class="p">${</span><span class="nx">nameList</span><span class="p">}</span><span class="s2">, invited by </span><span class="p">${</span><span class="nx">inviter</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+        <span class="c1">// room.say("T:欢迎小伙伴 "+nameList+ " 加入我们！")</span>
+        <span class="k">await</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">../functions/db-operation</span><span class="dl">'</span><span class="p">).</span><span class="nf">syncGroupMembers</span><span class="p">(</span><span class="nx">topic</span><span class="p">,</span> <span class="nx">memberList</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">onRoomJoin</span>
+
+<span class="c1">//db-operations.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">syncGroupMembers</span><span class="p">:</span> <span class="k">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">topic</span><span class="p">,</span> <span class="nx">members</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="k">import</span> <span class="nx">low</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">lowdb</span><span class="dl">'</span>
+            <span class="k">import</span> <span class="nx">FileSync</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">lowdb/adapters/FileSync</span><span class="dl">'</span>
+            <span class="kd">const</span> <span class="nx">adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileSync</span><span class="p">(</span><span class="dl">'</span><span class="s1">./db/db.json</span><span class="dl">'</span><span class="p">)</span>
+            <span class="kd">const</span> <span class="nx">db</span> <span class="o">=</span> <span class="nf">low</span><span class="p">(</span><span class="nx">adapter</span><span class="p">)</span>
+            <span class="k">if </span><span class="p">(</span><span class="nx">db</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">groups</span><span class="dl">'</span><span class="p">)</span>
+                <span class="p">.</span><span class="nf">find</span><span class="p">({</span> <span class="na">name</span><span class="p">:</span> <span class="nx">topic</span> <span class="p">})</span>
+                <span class="p">.</span><span class="nf">value</span><span class="p">()){</span>
+                <span class="nx">db</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">servers</span><span class="dl">'</span><span class="p">)</span>
+                    <span class="p">.</span><span class="nf">find</span><span class="p">({</span> <span class="na">name</span><span class="p">:</span> <span class="nx">topic</span> <span class="p">})</span>
+                    <span class="p">.</span><span class="nf">assign</span><span class="p">({</span> <span class="na">members</span><span class="p">:</span> <span class="nx">members</span><span class="p">})</span>
+                    <span class="p">.</span><span class="nf">write</span><span class="p">()</span>
+            <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+                <span class="nx">db</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">groups</span><span class="dl">'</span><span class="p">)</span>
+                    <span class="p">.</span><span class="nf">push</span><span class="p">({</span> <span class="na">name</span><span class="p">:</span> <span class="nx">topic</span><span class="p">,</span> <span class="na">members</span><span class="p">:</span> <span class="nx">members</span><span class="p">})</span>
+                    <span class="p">.</span><span class="nf">write</span><span class="p">()</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">groups</span><span class="dl">'</span><span class="p">)</span>
+                <span class="p">.</span><span class="nf">find</span><span class="p">({</span> <span class="na">name</span><span class="p">:</span> <span class="nx">topic</span> <span class="p">})</span>
+                <span class="p">.</span><span class="nf">value</span><span class="p">()</span>
+        <span class="p">}</span><span class="k">catch </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="na">getGroupMember</span><span class="p">:</span> <span class="k">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">topic</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="k">import</span> <span class="nx">low</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">lowdb</span><span class="dl">'</span>
+            <span class="k">import</span> <span class="nx">FileSync</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">lowdb/adapters/FileSync</span><span class="dl">'</span>
+            <span class="kd">const</span> <span class="nx">adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileSync</span><span class="p">(</span><span class="dl">'</span><span class="s1">./db/db.json</span><span class="dl">'</span><span class="p">)</span>
+            <span class="kd">const</span> <span class="nx">db</span> <span class="o">=</span> <span class="nf">low</span><span class="p">(</span><span class="nx">adapter</span><span class="p">)</span>
+            <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span>  <span class="nx">db</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">groups</span><span class="dl">'</span><span class="p">)</span>
+                <span class="p">.</span><span class="nf">find</span><span class="p">({</span> <span class="na">name</span><span class="p">:</span> <span class="nx">topic</span> <span class="p">})</span>
+                <span class="p">.</span><span class="nf">value</span><span class="p">()</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nf">debug</span><span class="p">(</span><span class="dl">"</span><span class="s2">Member list as follow : </span><span class="dl">"</span><span class="o">+</span><span class="nx">data</span><span class="o">+</span><span class="dl">"</span><span class="s2">, Member numbers is : </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">members</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
+            <span class="k">if </span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">members</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;=</span><span class="mi">500</span><span class="p">){</span>
+                <span class="k">return</span> <span class="kc">true</span>
+            <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+                <span class="k">return</span> <span class="kc">false</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">catch </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>通过这几个核心模块的完成，第一版要搭建的核心骨架和功能就完成了，我们来测试看看。</p>
+
+<h2 id="运行效果">运行效果</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">我</th>
+      <th style="text-align: left">机器人</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">hi</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">您好，我尚在学习中，可做的事情有限。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">那么，还是请跟随我来吧。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">- 发送[可转债]了解转债信息。- 发送[可转债群]加入转债交流群- 发送[开户]一键开户，高效。- 发送[大宗交易]勾兑业务。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">可转债</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">🍁可转债小助手给您带来的信息如下： \n 2020-03-30日申购清单如下：  \n 无 \n 2020-03-30日中签公布清单如下，请及时检查并缴款：  \n 同德转债 128103 \n 计划发行量：1.44亿 \n 申购代码：072360 \n 配售代码：082360 \n 股票名称：同德化工 \n 股票代码：002360 \n 中签公布日：2020-03-30 \n 转股价格：5.330 \n 上市日期：未定 \n 2020-03-30日可以卖掉这些债啦，请遵守交易原则进行卖出：  \n 无 \n 明日申购清单如下：  \n 华体转债 113574 \n 计划发行量：2.09亿 \n 申购代码：754679 \n 配售代码：753679 \n 股票名称：华体科技 \n 股票代码：603679 \n 中签公布日：2020-04-02 \n 转股价格：47.720 \n 上市日期：未定 \n</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="后续计划和致谢">后续计划和致谢</h2>
+
+<p>首先，感谢开源项目<a href="https://github.com/wechaty/wechaty">Wechaty</a>团队以及其提供的开发者计划，让我有机会能实现自己的想法。其次需要感谢同花顺和东方财富，你们提供的金融数据至关重要。<a href="https://github.com/lemonsX/maple-financial-assistant">项目代码在这儿</a></p>
+
+<p>目前的机器人还只能做一些简单的事情，后续会根据业务的需求增加更多的功能上去。目标是让机器人为我打工，以及在传统金融里面实现微创新。</p>
+
+<p>对了，如果您想要体验我的机器人，或者对可转债套利有兴趣。您都可以扫描我的机器人进行体验。</p>
+
+<p><img src="/assets/2020/financial-marketing/2020-03-30-wechat-bot-demo.webp" alt="Maple's financial bot" /></p>
+
+<blockquote>
+  <p>作者: lemonsx(柠檬x)，证券从业者，前平台产品经理</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#financial">financial</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/crossly">
+                            <img class="rounded-circle" src="/assets/contributors/crossly/avatar.webp" alt="lemonsx" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/crossly">lemonsx</a> </h5>
+						
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/03/27/kaiyuanshe-interview-huan-slash-youth/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/03-kaiyuanshe-interview-huan-slash-youth-en/slash-huan.webp">  开源社：走进 “ SLASH（斜杠)青年 ” 李卓桓</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/04/05/wechaty-check-in-robot-en/"> WeChat Check-in Robot  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/04-wechaty-check-in-robot-en/notice.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

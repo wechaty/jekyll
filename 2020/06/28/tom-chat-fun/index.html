@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      TomChat-为生活增趣味 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>TomChat-为生活增趣味 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="TomChat-为生活增趣味" />
+<meta name="author" content="zophyr" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A chatbot by wechaty.You can learn about today in history, current weather and chat with Tom." />
+<meta property="og:description" content="A chatbot by wechaty.You can learn about today in history, current weather and chat with Tom." />
+<link rel="canonical" href="https://wechaty.js.org/2020/06/28/tom-chat-fun/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/06/28/tom-chat-fun/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/tom-chat/zelda.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-06-28T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/tom-chat/zelda.webp" />
+<meta property="twitter:title" content="TomChat-为生活增趣味" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zophyr"},"dateModified":"2020-06-28T00:00:00+00:00","datePublished":"2020-06-28T00:00:00+00:00","description":"A chatbot by wechaty.You can learn about today in history, current weather and chat with Tom.","headline":"TomChat-为生活增趣味","image":"https://wechaty.js.org/assets/2020/tom-chat/zelda.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/06/28/tom-chat-fun/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"zophyr"},"url":"https://wechaty.js.org/2020/06/28/tom-chat-fun/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">TomChat-为生活增趣味</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/zophyr">
+                            <img class="rounded-circle" src="/assets/contributors/zophyr/avatar.webp" alt="园长" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/zophyr">园长</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jun 28, 2020 · <span class="reading-time">
+  
+  
+    1 min read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/tom-chat/zelda.webp" alt="TomChat-为生活增趣味">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>在规律平凡的生活中，希望可以有一个小管家来帮自己完成日常的任务，比如天气汇报、消息记录、随叫随到的聊天打发时间，因此 TomChat 应运而生。它可以为你提供天气查询，给予穿衣意见、运动建议；也可以为你述说历史上的今天，可做今日与同事好友的聊天话题；也可以在不愿打扰别人的时候，和它聊天，博君一笑。</p>
+
+<h2 id="项目结构">项目结构</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">.</span>
+├── LICENSE
+├── README.md
+├── config
+│   └── config.template.js
+├── img
+│   └── xxx.jpeg
+├── package.json
+└── src
+    ├── bot.js
+    ├── handler
+    │   ├── onMessage.js
+    │   └── onScan.js
+    └── tool
+        ├── autoChat.js
+        ├── historyToday.js
+        ├── log.js
+        ├── nasa.js
+        ├── tomato.js
+        └── weather.js
+</code></pre></div></div>
+
+<h3 id="src">src</h3>
+
+<ul>
+  <li>项目核心代码放在 src 中，其中 bot.js 为入口文件，作为程序的启动与入口。</li>
+  <li>handler 文件夹中存放处理 wechaty 相应事件的函数。</li>
+  <li>tool 文件夹中存放单个功能点，可供随时调用。</li>
+</ul>
+
+<h3 id="img">img</h3>
+
+<p>该文件夹用于存储项目所使用到的图片与其他相应资源。</p>
+
+<h3 id="config">config</h3>
+
+<p>该文件夹中存放相应的配置文件，用于统一管理。</p>
+
+<h2 id="代码介绍">代码介绍</h2>
+
+<h3 id="入口文件">入口文件</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 初始化</span>
+<span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Wechaty</span><span class="p">({</span>
+  <span class="na">puppet</span><span class="p">:</span> <span class="k">new</span> <span class="nc">PuppetPadplus</span><span class="p">({</span>
+    <span class="na">token</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">token</span><span class="p">,</span>
+  <span class="p">}),</span>
+  <span class="na">name</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="nx">bot</span>
+  <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">scan</span><span class="dl">"</span><span class="p">,</span> <span class="nx">onScan</span><span class="p">)</span> <span class="c1">// 机器人需要扫描二维码时监听</span>
+  <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">login</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`User </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2"> logined`</span><span class="p">))</span>
+  <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">message</span><span class="dl">"</span><span class="p">,</span> <span class="nf">onMessage</span><span class="p">(</span><span class="nx">bot</span><span class="p">))</span> <span class="c1">// 消息监听</span>
+  <span class="p">.</span><span class="nf">start</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>该段代码作为启动文件，我们先建立了使用 padplus 的 wechaty；并在后续监听三个事件，并每个事件有对应的处理函数。</p>
+
+<h3 id="onmessage">onMessage</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="kd">function</span> <span class="nf">onMessage</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// 判断消息来自自己或三分钟前的消息，直接return</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nf">self</span><span class="p">()</span> <span class="o">||</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">age</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">180</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+
+  <span class="nf">logMSG</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+
+  <span class="c1">// 对 msg 的处理</span>
+  <span class="c1">///</span>
+  <span class="c1">////</span>
+  <span class="c1">/////</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>对于消息的处理，有时候要预防自己和自己对话导致的死循环，与消息时间过期的问题。</p>
+
+<h2 id="运行项目">运行项目</h2>
+
+<h3 id="前期准备工作">前期准备工作</h3>
+
+<ol>
+  <li>申请 Wechaty Puppet Token，本项目使用的是 padplus，详情可参考 <a href="https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty">Everything about Wechaty</a></li>
+  <li>申请<a href="https://dev.heweather.com/">和风天气</a>天气 api 权限</li>
+  <li>申请<a href="https://www.ownthink.com/">小思机器人</a>对话机器人权限</li>
+  <li>申请<a href="https://www.avatardata.cn/">阿凡达数据提供商</a>中的历史上的今天接口权限</li>
+</ol>
+
+<p>上述申请完毕后，请将对应的 Token 填写到 config/config.template.js 文件中，并将 config.template.js 修改为 config.js 文件</p>
+
+<h3 id="运行">运行</h3>
+
+<ol>
+  <li>npm install</li>
+  <li>npm run</li>
+  <li>扫码登陆微信</li>
+  <li>enjoy！</li>
+</ol>
+
+<blockquote>
+  <p>作者: <a href="https://github.com/Zophyr">Zophyr</a>
+源码: <a href="https://github.com/Zophyr/TomChat">Github</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#assistant">assistant</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#productivity">productivity</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#entertainment">entertainment</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/zophyr">
+                            <img class="rounded-circle" src="/assets/contributors/zophyr/avatar.webp" alt="园长" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/zophyr">园长</a> </h5>
+						I am a person who likes to ask why. 🎯
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/06/28/build-divination-yibot/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/yibot/1.webp">  使用wechaty自助算卦</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/06/29/go-wechaty-beta-released/"> Go Wechaty Beta Released!  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/09-go-wechaty-plugin-en/2020-06-29-go-wechaty.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

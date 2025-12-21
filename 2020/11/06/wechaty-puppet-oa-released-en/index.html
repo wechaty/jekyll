@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Official-Account Puppet Released | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Official-Account Puppet Released | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Official-Account Puppet Released" />
+<meta name="author" content="wj-mcat" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Developing a customized WeChat official account is a complex process, which requires reading a lot of documents. Especially, developing a robot with a custom reply function based on WeChat official account, and wechaty is good at solving such problems, so we have this puppet." />
+<meta property="og:description" content="Developing a customized WeChat official account is a complex process, which requires reading a lot of documents. Especially, developing a robot with a custom reply function based on WeChat official account, and wechaty is good at solving such problems, so we have this puppet." />
+<link rel="canonical" href="https://wechaty.js.org/2020/11/06/wechaty-puppet-oa-released-en/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/11/06/wechaty-puppet-oa-released-en/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/official-account/wechaty-puppet-official-account.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-11-06T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/official-account/wechaty-puppet-official-account.webp" />
+<meta property="twitter:title" content="Official-Account Puppet Released" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"wj-mcat"},"dateModified":"2020-11-06T00:00:00+00:00","datePublished":"2020-11-06T00:00:00+00:00","description":"Developing a customized WeChat official account is a complex process, which requires reading a lot of documents. Especially, developing a robot with a custom reply function based on WeChat official account, and wechaty is good at solving such problems, so we have this puppet.","headline":"Official-Account Puppet Released","image":"https://wechaty.js.org/assets/2020/official-account/wechaty-puppet-official-account.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/11/06/wechaty-puppet-oa-released-en/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"wj-mcat"},"url":"https://wechaty.js.org/2020/11/06/wechaty-puppet-oa-released-en/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#announcement">announcement</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Official-Account Puppet Released</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/wj-mcat">
+                            <img class="rounded-circle" src="/assets/contributors/wj-mcat/avatar.webp" alt="吴京京" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/wj-mcat">吴京京</a> <span><a target="_blank" href="https://weibo.com/u/3877178684" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Nov 06, 2020 · <span class="reading-time">
+  
+  
+    6 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/official-account/wechaty-puppet-official-account.webp" alt="Official-Account Puppet Released">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>Developing a customized WeChat official account is a complex process, which requires reading a lot of documents. Especially, developing a robot with a custom reply function based on WeChat official account, and wechaty is good at solving such problems, so we have this puppet.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Wechaty-pure-official-account</code> does not encapsulate all the functions in WeChat public account, but extract the custom customer service dialogue module and encapsulate it as the underlying puppet. In this way, we can use wechaty to develop the customer service dialogue management based on Wechaty easily.</p>
+
+<blockquote>
+  <p>Wechaty lets you focus on the processing of dialogue logic</p>
+</blockquote>
+
+<p>If you have developed other IM platforms using wechaty, you can develop the WeChat official account platform without changing the logic code, which has a very high platform migration capability.</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Using wechaty to develop different platform chatbot is almost no difference at the code level, the underlying <code class="language-plaintext highlighter-rouge">puppet</code> has encapsulated all the logic, ‘wechaty’ provides a unified upper interface, so you only need to know how to use wechaty, you can develop powerful multi-platform chatbot.</p>
+
+<p>The development of WeChat Official Account is compared with other platforms, the only difference is that you need to provide WeChat Official Account configuration information, such as’ appId ‘, ‘appSecret’, ‘token’ and so on.</p>
+
+<h2 id="quick-start">Quick Start</h2>
+
+<p>Using wechaty to develop a dialogue chatbot on any platform can be roughly divided into three steps</p>
+
+<ul>
+  <li>Initialize dialogue platform puppet</li>
+  <li>Configure puppet to wechaty</li>
+  <li>Using wechaty upper interface to develop chatbot</li>
+</ul>
+
+<p>In the first step, because the different details of the underlying packages are different, initialization operations are different, such as WeChat official account platform, which requires <code class="language-plaintext highlighter-rouge">appId</code>, <code class="language-plaintext highlighter-rouge">appSecret</code> and other information separately.</p>
+
+<p>In the second step, when initializing the wechaty instance, it is necessary to configure the puppet as a parameter, so that when wechaty performs dialog operation, it actually calls the underlying logic of the puppet.</p>
+
+<p>In the third step, we use the upper layer interface of wechaty to develop the chatbot. The operation mode is the same for all platforms, so the developer’s attention will be focused on this. The above two steps only need simple configuration.</p>
+
+<p>There are some details about the development of WeChat official account using wechaty. I will show you how to quickly get the official account chatbot with a few code.</p>
+
+<h3 id="1-configure-internet-address">1. Configure Internet address</h3>
+
+<p>The official account of WeChat requires the address of the service provider to be external network address, supporting HTTP and HTTPS, and the ports supported respectively are: 80, 443. Therefore, it is very important to have an external IP address in the development phase. Here, we recommend several intranet penetration tools:</p>
+
+<ul>
+  <li>1.1 <a href="https://localtunnel.github.io/www/">localtunel</a></li>
+</ul>
+
+<p>Temporary Internet address can be created, which will be invalid after a certain period of time, but this is in line with the requirements of <strong>development stage</strong>. The steps are also very simple:</p>
+
+<p>```shell script
+npm install -g localtunnel
+lt –port 80</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+- 1.2 [ngrok](https://www.npmjs.com/package/ngrok)
+
+It can create permanent external network addresses, free address numbers and limited bandwidth, but this is enough for WeChat's official account development with very small dialogue. The use of the tutorial is also very simple, I will not describe the specific here, the detailed content can be viewed on the official website.
+
+### 2. Initialization of WeChat official account chatbot
+
+Using wechaty to develop corresponding platform's chatbot, we need to use the corresponding platform puppet, and the WeChat official account corresponds to puppet: `wechaty-puppet-official-account`. The installation tutorial is as follows:
+
+```shell script
+npm install wechaty-puppet-official-account
+</code></pre></div></div>
+
+<p>Next is initialization, and WeChat official account requires configuration information such as <code class="language-plaintext highlighter-rouge">appId</code>, <code class="language-plaintext highlighter-rouge">appSecret</code>, <code class="language-plaintext highlighter-rouge">token</code>, etc. the sample code is as follows:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">PuppetOA</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty-puppet-official-account</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">puppet</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PuppetOA</span><span class="p">({</span>
+  <span class="na">appId</span><span class="p">:</span> <span class="dl">"</span><span class="s2">wxbd801c28fbe1bbbd</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">appSecret</span><span class="p">:</span> <span class="dl">"</span><span class="s2">6959408a3ba1c82db1a11d941df65764</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">token</span><span class="p">:</span> <span class="dl">"</span><span class="s2">token</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">port</span><span class="p">:</span> <span class="mi">8080</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>Next, you need to configure it to wechaty. The example code is as follows:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Wechaty</span><span class="p">({</span>
+  <span class="na">puppet</span><span class="p">:</span> <span class="nx">puppet</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>In this regard, the initialization of wechaty has been completed, isn’t it very simple? So the next step is to develop the dialogue logic code of wechaty core.</p>
+
+<h3 id="3-chatbot-core-logic">3. Chatbot Core Logic</h3>
+
+<p>In this part, I only show you the simple message reply function, which is enough to show developers how to develop customized chat robots.</p>
+
+<p>To learn more about the development of wechaty chatbot, you need to go to <a href="http://wechaty.js.org/docs/introduction/">official website</a> Check the documentation. The following is the overall sample code:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span>
+  <span class="nx">Contact</span><span class="p">,</span>
+  <span class="nx">Message</span><span class="p">,</span>
+  <span class="nx">Wechaty</span><span class="p">,</span>
+  <span class="nx">log</span><span class="p">,</span>
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">MessageType</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty-puppet</span><span class="dl">'</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">onMessage</span><span class="p">(</span><span class="nx">msg</span><span class="p">:</span> <span class="nx">Message</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">log</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="dl">'</span><span class="s1">StarterBot</span><span class="dl">'</span><span class="p">,</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">toString</span><span class="p">())</span>
+
+  <span class="k">if </span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nf">text</span><span class="p">()</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">ding</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="s2">`Welcome to wechaty Official Account\n refer to  ： http://www.wechaty.js.org 😄😄😄`</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nf">type</span><span class="p">()</span> <span class="o">==</span> <span class="nx">MessageType</span><span class="p">.</span><span class="nx">Image</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">fileBox</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">toFileBox</span><span class="p">()</span>
+    <span class="c1">// send message to talker</span>
+    <span class="k">await</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">fileBox</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// I am a repeater ~_~~</span>
+    <span class="k">await</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nf">text</span><span class="p">())</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Wechaty</span><span class="p">({</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ding-dong-bot</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">puppet</span><span class="p">:</span> <span class="k">new</span> <span class="nc">PuppetOA</span><span class="p">({</span>
+    <span class="na">appId</span><span class="p">:</span> <span class="dl">"</span><span class="s2">wxbd801c28fbe1bbbd</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">appSecret</span><span class="p">:</span> <span class="dl">"</span><span class="s2">6959408a3ba1c82db1a11d941df65764</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">token</span><span class="p">:</span> <span class="dl">"</span><span class="s2">token</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">port</span><span class="p">:</span> <span class="mi">80</span>
+  <span class="p">})</span>
+<span class="p">})</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="nx">onMessage</span><span class="p">).</span><span class="nf">start</span><span class="p">()</span>
+  <span class="p">.</span><span class="nf">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">log</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="dl">'</span><span class="s1">StarterBot</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Starter Bot Started.</span><span class="dl">'</span><span class="p">))</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span> <span class="o">=&gt;</span> <span class="nx">log</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">StarterBot</span><span class="dl">'</span><span class="p">,</span> <span class="nx">e</span><span class="p">))</span>
+</code></pre></div></div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Using wechaty to develop WeChat official account chatbot is very simple. It is very friendly to new developer. If you want to see the detailed usage, you can go to <a href="https://github.com/wechaty/wechaty-puppet-official-account">github</a> Check the latest documents, and you are welcome to mention issues and PR.</p>
+
+<p>未来，我们也将逐步接入钉钉、飞书等平台，最新动态内容请看<a href="http://wechaty.js.org/">wechaty.js.org</a>，感谢大家的关注。</p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#puppet-provider">puppet-provider</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#official-account">official-account</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/wj-mcat">
+                            <img class="rounded-circle" src="/assets/contributors/wj-mcat/avatar.webp" alt="吴京京" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/wj-mcat">吴京京</a> <span><a target="_blank" href="https://weibo.com/u/3877178684" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Committer of Python-Wechaty. NLP & Chatbot Researcher, a graduate student at Beijing University of Posts and Telecommunications.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/11/06/chatie-status-page-published/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/11-chatie-status-page/hostie-concurrency.webp">  Chatie status page has been published!</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/11/10/product-spider-for-sharing/"> 基于Wechaty打造实时爬取产品信息并分享给用户群 </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

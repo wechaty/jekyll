@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      基于python-Wechaty的微信群虚拟币报价机器人 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>基于python-Wechaty的微信群虚拟币报价机器人 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="基于python-Wechaty的微信群虚拟币报价机器人" />
+<meta name="author" content="atom-zh" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="本项目基于python-wechaty库，通过几行代码就能实现微信机器人的基础功能。 项目地址:coins_market_push" />
+<meta property="og:description" content="本项目基于python-wechaty库，通过几行代码就能实现微信机器人的基础功能。 项目地址:coins_market_push" />
+<link rel="canonical" href="https://wechaty.js.org/2021/08/26/wechaty-bot-of-coins/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/08/26/wechaty-bot-of-coins/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/08-wechaty-bot-of-coins/demo.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-08-26T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/08-wechaty-bot-of-coins/demo.webp" />
+<meta property="twitter:title" content="基于python-Wechaty的微信群虚拟币报价机器人" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"atom-zh"},"dateModified":"2021-08-26T00:00:00+00:00","datePublished":"2021-08-26T00:00:00+00:00","description":"本项目基于python-wechaty库，通过几行代码就能实现微信机器人的基础功能。 项目地址:coins_market_push","headline":"基于python-Wechaty的微信群虚拟币报价机器人","image":"https://wechaty.js.org/assets/2021/08-wechaty-bot-of-coins/demo.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/08/26/wechaty-bot-of-coins/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"atom-zh"},"url":"https://wechaty.js.org/2021/08/26/wechaty-bot-of-coins/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">基于python-Wechaty的微信群虚拟币报价机器人</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/atom-zh">
+                            <img class="rounded-circle" src="/assets/contributors/atom-zh/avatar.webp" alt="atom-zh" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/atom-zh">atom-zh</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Aug 26, 2021 · <span class="reading-time">
+  
+  
+    3 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/08-wechaty-bot-of-coins/demo.webp" alt="基于python-Wechaty的微信群虚拟币报价机器人">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>本项目基于<a href="https://github.com/wechaty/python-wechaty">python-wechaty</a>库，通过几行代码就能实现微信机器人的基础功能。<br />
+项目地址:<a href="https://github.com/atom-zh/coins_market_push">coins_market_push</a></p>
+
+<h2 id="实现功能">实现功能</h2>
+
+<p>群聊中加密货币的报价</p>
+
+<ul>
+  <li>检索群聊中的加密货币币种关键词</li>
+  <li>币种匹配成功，从网络获取加密货币行情，目前支持三种平台</li>
+  <li>在群聊中发送加密货币行情信息，并@发送者</li>
+</ul>
+
+<h2 id="效果展示">效果展示</h2>
+
+<p><img src="/assets/2021/08-wechaty-bot-of-coins/demo.webp" alt="效果展示" /></p>
+
+<h2 id="使用步骤">使用步骤</h2>
+
+<h3 id="1项目配置">1、项目配置</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Notice</span><span class="p">:</span>
+    <span class="n">EVENT_NAME</span> <span class="o">=</span> <span class="sh">'</span><span class="s">notice_python</span><span class="sh">'</span>
+    <span class="n">TOKEN</span> <span class="o">=</span> <span class="sh">'</span><span class="s">{your IFTTT TOKEN}</span><span class="sh">'</span>
+    <span class="n">KEY</span> <span class="o">=</span> <span class="sh">'</span><span class="s">{your notice key}</span><span class="sh">'</span>
+
+<span class="k">class</span> <span class="nc">Zengr</span><span class="p">:</span>
+    <span class="n">APP_CODE</span> <span class="o">=</span> <span class="sh">'</span><span class="s">{your app code}}</span><span class="sh">'</span>
+
+<span class="k">class</span> <span class="nc">PATH</span><span class="p">:</span> <span class="c1"># fxh币种列表
+</span>    <span class="n">PATH_JSON</span> <span class="o">=</span> <span class="n">path_root</span> <span class="o">+</span> <span class="sh">'</span><span class="s">/coin_list.json</span><span class="sh">'</span>
+
+<span class="k">class</span> <span class="nc">WECHAT</span><span class="p">:</span> <span class="c1"># wechaty token的配置
+</span>    <span class="n">TOKEN</span> <span class="o">=</span> <span class="sh">'</span><span class="s">{your wechaty token}</span><span class="sh">'</span>
+
+<span class="k">class</span> <span class="nc">CoinGK</span><span class="p">:</span> <span class="c1"># CoinGeCko的币种列表
+</span>    <span class="n">PATH_JSON</span> <span class="o">=</span> <span class="n">path_root</span> <span class="o">+</span> <span class="sh">'</span><span class="s">/conin_list_cgk.json</span><span class="sh">'</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Notice: 通过IFTTT发送通知到手机(仅测试了iphone)，这里可以配置IFTTT的token</li>
+  <li>Zengr：加密货币行情提供商，新用户有免费次数，目前收集的币种不多，不推荐</li>
+  <li>CoinGK：提供免费API可以获取行情，但免费版功能受限，能满足基本要求</li>
+</ul>
+
+<p><em>本项目默认使用非小号网站数据，不需要token，注意使用时要自律</em>
+<em>目前我们使用的wechaty token是官方的免费版，仅7天试用期。如果要使用长期版本的话，您可以成为wechaty的贡献者，或者花钱购买。</em>
+<em>毕竟钱能解决的事情，都不算事情。</em>
+<em>还有一种方式，就是使用UOS的web协议登陆，参考<a href="https://python-wechaty.readthedocs.io/zh_CN/latest/introduction/use-web-protocol/">使用免费Web协议</a></em></p>
+
+<h3 id="2主要代码">2、主要代码</h3>
+
+<blockquote>
+  <p>talk is cheep, show you the code</p>
+</blockquote>
+
+<p>wechety.py</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="n">msg</span><span class="p">:</span> <span class="n">Message</span><span class="p">):</span>
+    <span class="n">text</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="nf">text</span><span class="p">()</span>
+    <span class="n">room</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Room</span><span class="p">]</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="nf">room</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">text</span><span class="p">.</span><span class="nf">startswith</span><span class="p">(</span><span class="sh">'</span><span class="s">@Robot</span><span class="sh">'</span><span class="p">):</span>
+        <span class="n">rev_str</span> <span class="o">=</span> <span class="n">text</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="sh">'</span><span class="s"> </span><span class="sh">'</span><span class="p">,</span> <span class="sh">''</span><span class="p">)</span>
+        <span class="n">symbol</span> <span class="o">=</span> <span class="n">rev_str</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="sh">'</span><span class="s"> </span><span class="sh">'</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">symbol</span> <span class="o">=</span> <span class="n">text</span>
+    <span class="n">talker</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="nf">talker</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nf">get_conin_seq</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">room</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nf">get_price</span><span class="p">(</span><span class="n">symbol</span><span class="p">),</span> <span class="n">mention_ids</span><span class="o">=</span><span class="p">[</span><span class="n">talker</span><span class="p">.</span><span class="n">contact_id</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>这里是消息处理入口，get_price(symbol): symbol为币种，get_price()函数返回币种行情。get_conin_seq函数用于检查是否支持symbol币种。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">get_price</span><span class="p">(</span><span class="n">symbol</span><span class="p">):</span>
+    <span class="n">symbol</span> <span class="o">=</span> <span class="n">symbol</span><span class="p">.</span><span class="nf">upper</span><span class="p">()</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="nf">get_conin_seq</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="nf">get_coin</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+    <span class="n">ret</span> <span class="o">=</span>   <span class="sh">'</span><span class="se">\n</span><span class="sh">'</span> \
+            <span class="sh">'</span><span class="s">【名称】 </span><span class="sh">'</span> <span class="o">+</span> <span class="n">result</span><span class="p">[</span><span class="sh">'</span><span class="s">data</span><span class="sh">'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="sh">'</span><span class="s">fullname</span><span class="sh">'</span><span class="p">]</span> <span class="o">+</span> <span class="sh">'</span><span class="s">-</span><span class="sh">'</span> <span class="o">+</span> <span class="n">result</span><span class="p">[</span><span class="sh">'</span><span class="s">data</span><span class="sh">'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="sh">'</span><span class="s">name</span><span class="sh">'</span><span class="p">]</span> <span class="o">+</span> <span class="sh">'</span><span class="se">\n</span><span class="sh">'</span> \
+            <span class="sh">'</span><span class="s">【USD价格】 </span><span class="sh">'</span> <span class="o">+</span><span class="sh">'</span><span class="s">$</span><span class="sh">'</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="sh">'</span><span class="s">data</span><span class="sh">'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="sh">'</span><span class="s">current_price_usd</span><span class="sh">'</span><span class="p">])</span> <span class="o">+</span> <span class="sh">'</span><span class="se">\n</span><span class="sh">'</span> \
+            <span class="sh">'</span><span class="s">【CNY价格】 </span><span class="sh">'</span> <span class="o">+</span><span class="sh">'</span><span class="s">¥</span><span class="sh">'</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="sh">'</span><span class="s">data</span><span class="sh">'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="sh">'</span><span class="s">current_price</span><span class="sh">'</span><span class="p">])</span> <span class="o">+</span> <span class="sh">'</span><span class="se">\n</span><span class="sh">'</span> \
+            <span class="sh">'</span><span class="s">【全球市值】 </span><span class="sh">'</span> <span class="o">+</span> <span class="sh">'</span><span class="s">$</span><span class="sh">'</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="sh">'</span><span class="s">%.2f</span><span class="sh">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="sh">'</span><span class="s">data</span><span class="sh">'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="sh">'</span><span class="s">marketcap</span><span class="sh">'</span><span class="p">]</span><span class="o">/</span><span class="mi">100000000</span><span class="p">))</span> <span class="o">+</span> <span class="sh">'</span><span class="s">亿</span><span class="se">\n</span><span class="sh">'</span> \
+            <span class="sh">'</span><span class="s">【24H涨幅】 </span><span class="sh">'</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="sh">'</span><span class="s">data</span><span class="sh">'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="sh">'</span><span class="s">change_percent</span><span class="sh">'</span><span class="p">])</span> <span class="o">+</span> <span class="sh">'</span><span class="s">%</span><span class="se">\n</span><span class="sh">'</span> \
+            <span class="sh">'</span><span class="s">【24H换手】 </span><span class="sh">'</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="sh">'</span><span class="s">data</span><span class="sh">'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="sh">'</span><span class="s">turnoverrate</span><span class="sh">'</span><span class="p">])</span> <span class="o">+</span> <span class="sh">'</span><span class="s">%</span><span class="se">\n\n</span><span class="sh">'</span> \
+            <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">time</span><span class="p">.</span><span class="nf">strftime</span><span class="p">(</span><span class="sh">"</span><span class="s">%Y-%m-%d %H:%M:%S</span><span class="sh">"</span><span class="p">,</span> <span class="n">time</span><span class="p">.</span><span class="nf">localtime</span><span class="p">())</span> <span class="p">)</span> <span class="o">+</span> <span class="sh">'</span><span class="se">\n</span><span class="sh">'</span> \
+            <span class="sh">'</span><span class="s">数据来源：非小号</span><span class="sh">'</span>
+    <span class="k">return</span> <span class="n">ret</span>
+</code></pre></div></div>
+
+<p>这里是get_price的具体实现，目前支持非小号前500个币种。</p>
+
+<h3 id="3运行">3、运行</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python wechat/wechaty.py
+</code></pre></div></div>
+
+<p>扫码登录后，其他用户在添加了机器人的群中直接发送币种（symbol），例如（btc、eth等），稍后机器人便会发送此币种行情到微信群中，并@发送者查收。</p>
+
+<h2 id="注意">注意</h2>
+
+<p>要注意一下，对于个人账户来说，币价查询访问不要太频繁，容易被服务器检测。</p>
+
+<blockquote>
+  <p>作者: <a href="https://github.com/atom-zh">刘小龙</a>，默默无闻的嵌入式工程师</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#finance">finance</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#wechaty-bot">wechaty-bot</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#python">python</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#coins">coins</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/atom-zh">
+                            <img class="rounded-circle" src="/assets/contributors/atom-zh/avatar.webp" alt="atom-zh" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/atom-zh">atom-zh</a> </h5>
+						talk is cheep, show you the code
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/08/26/ospp-mid-term-wechaty-puppet-oa/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/08-ospp-mid-term-wechaty-puppet-oa/wechaty-puppet-official-account.webp">  OSPP 2021-期中报告-基于 Wechaty Puppet Official Account 项目的用户与消息等基础功能的完善</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/08/29/ospp-mid-term-club-managment-en/"> OSPP 2021 Mid‑term: WeChat‑based Micro‑Club Membership & Event Management Mini Program  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/08-ospp-mid-term-club-managment-en/wechaty.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

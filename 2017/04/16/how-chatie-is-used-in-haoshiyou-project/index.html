@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      用Chatie实现微信机器人商业逻辑之【好室友】群管理篇 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>用Chatie实现微信机器人商业逻辑之【好室友】群管理篇 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="用Chatie实现微信机器人商业逻辑之【好室友】群管理篇" />
+<meta name="author" content="xinbenlv" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="为了帮助新来硅谷的朋友找室友和租房，我们在所在地区组建了若干微信群。 我们对这个项目的基本理念是简单专注，用完即走。" />
+<meta property="og:description" content="为了帮助新来硅谷的朋友找室友和租房，我们在所在地区组建了若干微信群。 我们对这个项目的基本理念是简单专注，用完即走。" />
+<link rel="canonical" href="https://wechaty.js.org/2017/04/16/how-chatie-is-used-in-haoshiyou-project/" />
+<meta property="og:url" content="https://wechaty.js.org/2017/04/16/how-chatie-is-used-in-haoshiyou-project/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-04-16T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="用Chatie实现微信机器人商业逻辑之【好室友】群管理篇" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"xinbenlv"},"dateModified":"2017-04-16T00:00:00+00:00","datePublished":"2017-04-16T00:00:00+00:00","description":"为了帮助新来硅谷的朋友找室友和租房，我们在所在地区组建了若干微信群。 我们对这个项目的基本理念是简单专注，用完即走。","headline":"用Chatie实现微信机器人商业逻辑之【好室友】群管理篇","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2017/04/16/how-chatie-is-used-in-haoshiyou-project/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"xinbenlv"},"url":"https://wechaty.js.org/2017/04/16/how-chatie-is-used-in-haoshiyou-project/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-center ">
+				<div class=" col-md-8  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">用Chatie实现微信机器人商业逻辑之【好室友】群管理篇</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/xinbenlv">
+                            <img class="rounded-circle" src="/assets/contributors/xinbenlv/avatar.webp" alt="xinbenlv" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/xinbenlv">xinbenlv</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Apr 16, 2017 · <span class="reading-time">
+  
+  
+    8 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>为了帮助新来硅谷的朋友找室友和租房，我们在所在地区组建了若干微信群。
+我们对这个项目的基本理念是简单专注，用完即走。</p>
+
+<p>我们的应用场景是这样的：我们一共有数个微信群，按照硅谷旧金山湾区的几个租房区域进行分群，
+每个微信群常年满上限500人。我们要求入群的朋友修改群昵称，
+我们每周要按照一定的规则将不按照要求修改群昵称的群友和最早入群的人踢出，以实现群员的流动，
+确保群里都是最近有租房需求的朋友而不是许多租房群常见的僵尸群情况。</p>
+
+<p>另外，我们不允许发布任何与租房无关的信息：广告、二手交易、机票信息等常见扩散信息都被视为禁止类型。
+在群管理员志愿者们的共同努力下，我们群在湾区朋友中间以简洁活跃赢得了相当不错的口碑，
+被常常被湾区的群友介绍给自己新来湾区的朋友。也是因为我们群初具规模，
+吸引了各种希望混入大群散发广告的各种运营号、广告号和宣传号。
+经常有人进入我们的微信群发布广告消息和无关消息，
+我们对于这种情况会予以警告直至踢出群并加入黑名单。</p>
+
+<p>在使用机器人之前，我们的管理员志愿者们，每天需要手动登录手机，接受好友请求，
+然后根据相应的规则对群进行管理。由于加群请求巨大，群多而复杂，
+因此还经常要首先回答用户的问题再根据用户的意向分配进入相应的群。
+删除群好友的事儿也需要花费比较长的时间。</p>
+
+<p>在得知Chatie之后，我们立即使用Chatie的接口开发了机器人来进行群的管理工作，
+大大简化了管理员志愿者们的工作流程和负担。我们这里介绍一下我们的业务逻辑模块。</p>
+
+<h2 id="逻辑模块">逻辑模块</h2>
+
+<h3 id="1-自动接受好友请求">1. 自动接受好友请求</h3>
+
+<p>我们会自动接受所有用户加好友的请求，并发送问候消息，我们会在问候消息中解释我们群的
+群规和分区规划，以及如何回复意向进行加群。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">exports</span> <span class="o">=</span> <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span> <span class="nf">onFriend</span><span class="p">(</span><span class="nx">contact</span><span class="p">,</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">request</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// 1. request to be friend from new contact</span>
+    <span class="k">await</span> <span class="nx">request</span><span class="p">.</span><span class="nf">accept</span><span class="p">();</span>
+    <span class="k">await</span> <span class="nx">contact</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">greetingsMsg</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="2关键字确认用户的加群意向">2.关键字确认用户的加群意向</h3>
+
+<p>我们利用关键字来确认用户的加群意向，在确认了用户想加哪个群之后，会先确认群是不是满了，
+如果满了会先进行清理，然后在加群。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">maybeAddToHsyGroups</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">m</span><span class="p">:</span><span class="nx">Message</span><span class="p">):</span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nb">Boolean</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">contact</span> <span class="o">=</span> <span class="nx">m</span><span class="p">.</span><span class="k">from</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="nx">content</span> <span class="o">=</span> <span class="nx">m</span><span class="p">.</span><span class="nf">content</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="nx">m</span><span class="p">.</span><span class="nf">room</span><span class="p">();</span>
+  <span class="kd">let</span> <span class="na">groupType</span><span class="p">:</span><span class="nx">HsyGroupEnum</span><span class="p">;</span>
+  <span class="c1">// only to me or entry group</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">WechatyApiX</span><span class="p">.</span><span class="nf">isTalkingToMePrivately</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span> <span class="o">||</span> <span class="sr">/好室友.*入口群/</span><span class="p">.</span><span class="nf">test</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nf">room</span><span class="p">().</span><span class="nf">topic</span><span class="p">()))</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="na">groupToAdd</span><span class="p">:</span><span class="nx">HsyGroupEnum</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">if </span><span class="p">(</span><span class="sr">/加群/</span><span class="p">.</span><span class="nf">test</span><span class="p">(</span><span class="nx">content</span><span class="p">))</span> <span class="p">{</span>
+      <span class="k">await</span> <span class="nx">m</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">greetingsMsg</span><span class="p">);</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">groupToAdd</span> <span class="o">=</span> <span class="nx">HsyUtil</span><span class="p">.</span><span class="nf">getAddGroupIndentFromMessage</span><span class="p">(</span><span class="nx">content</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">groupToAdd</span> <span class="o">!=</span> <span class="nx">HsyGroupEnum</span><span class="p">.</span><span class="nx">None</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// found no valid group</span>
+      <span class="c1">// ...</span>
+      <span class="kd">let</span> <span class="nx">keyRoom</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">HsyUtil</span><span class="p">.</span><span class="nf">findHsyRoomByEnum</span><span class="p">(</span><span class="nx">groupToAdd</span><span class="p">);</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">keyRoom</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">await</span> <span class="nf">maybeDownsizeKeyRoom</span><span class="p">(</span><span class="nx">keyRoom</span><span class="p">,</span> <span class="nx">contact</span><span class="p">);</span>
+        <span class="k">await</span> <span class="nx">keyRoom</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="nx">contact</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// inside of HsyUtil</span>
+<span class="kr">public</span> <span class="kd">static</span> <span class="nx">getAddGroupIndentFromMessage</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span>
+    <span class="nx">content</span><span class="p">:</span><span class="nx">string</span><span class="p">):</span><span class="nx">HsyGroupEnum</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="sr">/南湾西|Mountain View|mtv|sv|Sunnyvale|Palo Alto|Stanford|Facebook|Google|Menlo Park/</span><span class="p">.</span><span class="nf">test</span><span class="p">(</span><span class="nx">content</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">HsyGroupEnum</span><span class="p">.</span><span class="nx">SouthBayEast</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="sr">/南湾东|Milpitas|San Jose|Santa Clara|SJ|Campbell|Los Gatos/</span><span class="p">.</span><span class="nf">test</span><span class="p">(</span><span class="nx">content</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">HsyGroupEnum</span><span class="p">.</span><span class="nx">SouthBayWest</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="sr">/东湾|奥克兰|伯克利|Berkeley|Fremont|Hayward|Newark/</span><span class="p">.</span><span class="nf">test</span><span class="p">(</span><span class="nx">content</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">HsyGroupEnum</span><span class="p">.</span><span class="nx">EastBay</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(...)</span> <span class="p">{</span>
+    <span class="p">...</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">return</span> <span class="nx">HsyGroupEnum</span><span class="p">.</span><span class="nx">None</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="3-基于群昵称和入群顺序进行群满自动踢人">3. 基于群昵称和入群顺序进行群满自动踢人</h3>
+
+<p>我们会检查每个管理的群，如果用户人数超过一个阈值（例如450人），就会触发削减群人数的函数。
+首先我们会寻找没有按照要求修改群昵称的群友，跳过管理员和群主以及机器人自己，
+从中间找出若干人（例如20个人），然后在从最早入群的用户中选择若干人（例如10人），作为
+踢出列表。我们会在群里宣布我们即将踢出人，以及踢人的原因（未修改区昵称和最早入群），
+然后私下告诉每个被踢的人具体被踢的原因，之后执行踢人。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">maybeDownsizeKeyRoom</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">keyRoom</span><span class="p">:</span> <span class="nx">Room</span><span class="p">,</span> <span class="nx">c</span><span class="p">:</span><span class="nx">Contact</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="sr">/老友/</span><span class="p">.</span><span class="nf">test</span><span class="p">(</span><span class="nx">keyRoom</span><span class="p">.</span><span class="nf">topic</span><span class="p">()))</span> <span class="k">return</span><span class="p">;</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">keyRoom</span><span class="p">.</span><span class="nf">memberList</span><span class="p">().</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="nx">groupDownSizeTriggerThreshold</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// triggering</span>
+    <span class="k">await</span> <span class="nx">keyRoom</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">hsyGroupClearMsg</span><span class="p">);</span>
+    <span class="k">for </span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">keyRoom</span><span class="p">.</span><span class="nf">memberList</span><span class="p">().</span><span class="nx">length</span> <span class="o">-</span> <span class="nx">newComerSize</span><span class="cm">/* never newComer */</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">c</span><span class="p">:</span><span class="nx">Contact</span> <span class="o">=</span> <span class="nx">cList</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nf">self</span><span class="p">())</span> <span class="k">continue</span><span class="p">;</span> <span class="c1">// never does anything with haoshiyou-admin itself.</span>
+      <span class="kd">let</span> <span class="nx">groupNickName</span> <span class="o">=</span> <span class="nx">WechatyApiX</span><span class="p">.</span><span class="nf">getGroupNickNameFromContact</span><span class="p">(</span><span class="nx">c</span><span class="p">);</span>
+      <span class="k">if </span><span class="p">(</span><span class="sr">/^</span><span class="se">(</span><span class="sr">管|介|群主</span><span class="se">)</span><span class="sr">-/</span><span class="p">.</span><span class="nf">test</span><span class="p">(</span><span class="nx">groupNickName</span><span class="p">)</span> <span class="o">||</span> <span class="sr">/管理员/</span><span class="p">.</span><span class="nf">test</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nf">alias</span><span class="p">()))</span> <span class="p">{</span>
+        <span class="c1">// pass, never remove</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="sr">/^</span><span class="se">(</span><span class="sr">招|求</span><span class="se">)</span><span class="sr">租/</span><span class="p">.</span><span class="nf">test</span><span class="p">(</span><span class="nx">groupNickName</span><span class="p">))</span> <span class="p">{</span>
+        <span class="c1">// good format, but need to rotate</span>
+        <span class="nx">potentialRotationList</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">c</span><span class="p">);</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">noGroupNickNames</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">c</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">noGroupNickNames</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="nx">shouldRemoveSize</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">shouldRemoveList</span> <span class="o">=</span> <span class="nx">noGroupNickNames</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">noGroupNickNames</span><span class="p">.</span><span class="nx">length</span> <span class="o">+</span> <span class="nx">potentialRotationList</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="nx">shouldRemoveSize</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">shouldRemoveList</span> <span class="o">=</span> <span class="nx">noGroupNickNames</span>
+            <span class="p">.</span><span class="nf">concat</span><span class="p">(</span><span class="nx">potentialRotationList</span><span class="p">.</span><span class="nf">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>
+                <span class="nx">shouldRemoveSize</span> <span class="o">-</span> <span class="nx">noGroupNickNames</span><span class="p">.</span><span class="nx">length</span><span class="p">));</span>
+        <span class="k">break</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">shouldRemoveList</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">await</span> <span class="nx">c</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="s2">`群里有点儿满，我先清一下人哦`</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nf">all</span><span class="p">(</span><span class="nx">shouldRemoveList</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="k">async </span><span class="p">(</span><span class="nx">c</span><span class="p">:</span><span class="nx">Contact</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s2">`亲，我们要清人了哦`</span><span class="p">);</span>
+      <span class="k">await</span> <span class="nx">c</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+      <span class="k">await</span> <span class="nx">keyRoom</span><span class="p">.</span><span class="nf">del</span><span class="p">(</span><span class="nx">c</span><span class="p">);</span>
+    <span class="p">}));</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h3 id="4按照管理员的发言来加黑名单">4.按照管理员的发言来加黑名单</h3>
+
+<p>我们目前在微信里面加黑名单的流程是，首席先如果用户在群里发了什么无关信息或者长期没有修改群昵称，
+我们挂管理员可以在群里发消息说“@某用户，请不要发无关消息”，或者“@某用户，请修改群昵称”
+这样的口令将首先被机器人重复一遍“感谢管理员张三，@某用户请不要发无关消息”，以增加管理员在
+群里发言的威信，同时机器人会私信管理员询问是否要把该用户加入黑名单并提出，如果管理员
+回复确认，就会启动加黑名单和踢人逻辑。目前，我们管理黑名单的方式是在机器人的微信里把某位
+好友的备注加上<code class="language-plaintext highlighter-rouge">#黑名单</code>。</p>
+
+<p>逻辑如下</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">maybeBlacklistUser</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">m</span><span class="p">:</span> <span class="nx">Message</span><span class="p">):</span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nb">Boolean</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="o">!</span> <span class="k">await</span> <span class="nx">HsyUtil</span><span class="p">.</span><span class="nf">isHsyAdmin</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="k">from</span><span class="p">()))</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">// Not an admin</span>
+  <span class="p">}</span>
+  <span class="kd">let</span> <span class="nx">admin</span> <span class="o">=</span> <span class="nx">m</span><span class="p">.</span><span class="k">from</span><span class="p">();</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">WechatyApiX</span><span class="p">.</span><span class="nf">isTalkingToMePrivately</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span>
+      <span class="o">&amp;&amp;</span> <span class="sr">/加黑名单/</span><span class="p">.</span><span class="nf">test</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nf">content</span><span class="p">()))</span> <span class="p">{</span>
+    <span class="c1">// find the last one being marked blacklist by this admin</span>
+    <span class="kd">let</span> <span class="nx">blackListObj</span> <span class="o">=</span> <span class="nx">GLOBAL_blackListCandidates</span><span class="p">[</span><span class="nx">admin</span><span class="p">.</span><span class="nf">alias</span><span class="p">()];</span>
+
+    <span class="c1">// not able to find a blacklist candidate.</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">blackListObj</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="o">||</span> <span class="nx">blackListObj</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">blackListObj</span> <span class="o">!==</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="nx">blackListObj</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">indexOfCandidate</span> <span class="o">=</span> <span class="nx">m</span><span class="p">.</span><span class="nf">content</span><span class="p">().</span><span class="nf">slice</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span> <span class="c1">//"加黑名单1"取编号</span>
+        <span class="kd">let</span> <span class="na">contactToBlacklist</span><span class="p">:</span><span class="nx">Contact</span> <span class="o">=</span> <span class="nx">blackListObj</span><span class="p">.</span><span class="nx">candidates</span><span class="p">[</span><span class="nx">indexOfCandidate</span><span class="p">];</span>
+        <span class="k">await</span> <span class="nx">HsyUtil</span><span class="p">.</span><span class="nf">addToBlacklist</span><span class="p">(</span><span class="nx">contactToBlacklist</span><span class="p">);</span>
+        <span class="kd">let</span> <span class="nx">teamRoom</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">HsyUtil</span><span class="p">.</span><span class="nf">findHsyBigTeamRoom</span><span class="p">();</span>
+        <span class="k">await</span> <span class="nx">HsyUtil</span><span class="p">.</span><span class="nf">kickFromAllHsyGroups</span><span class="p">(</span><span class="nx">contactToBlacklist</span><span class="p">);</span>
+        <span class="k">await</span> <span class="nx">admin</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="s2">`搞定!`</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nf">room</span><span class="p">()</span> <span class="o">!==</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span>
+      <span class="sr">/好室友/</span><span class="p">.</span><span class="nf">test</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nf">room</span><span class="p">().</span><span class="nf">topic</span><span class="p">())</span> <span class="o">&amp;&amp;</span>
+      <span class="sr">/无关|修改群昵称/</span><span class="p">.</span><span class="nf">test</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nf">content</span><span class="p">())</span> <span class="o">&amp;&amp;</span>
+      <span class="sr">/^@/</span><span class="p">.</span><span class="nf">test</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nf">content</span><span class="p">()))</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">mentionName</span> <span class="o">=</span> <span class="nx">m</span><span class="p">.</span><span class="nf">content</span><span class="p">().</span><span class="nf">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="cm">/*ignoring@*/</span>
+        <span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="cm">/*Space Char in Chinese*/</span><span class="p">,</span> <span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">).</span><span class="nf">split</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="kd">let</span> <span class="nx">foundUsers</span> <span class="o">=</span> <span class="nf">findMemberFromGroup</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nf">room</span><span class="p">(),</span> <span class="k">new</span> <span class="nc">RegExp</span><span class="p">(</span><span class="nx">mentionName</span><span class="p">));</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">foundUsers</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// Repeat the warning from the admin</span>
+      <span class="k">await</span> <span class="nx">m</span><span class="p">.</span><span class="nf">room</span><span class="p">().</span><span class="nf">say</span><span class="p">(</span><span class="s2">`感谢管理员@</span><span class="p">${</span><span class="nx">m</span><span class="p">.</span><span class="k">from</span><span class="p">().</span><span class="nf">name</span><span class="p">()}</span><span class="s2">\n\n</span><span class="p">${</span><span class="nx">m</span><span class="p">.</span><span class="nf">content</span><span class="p">()}</span><span class="s2">`</span><span class="p">);</span>
+      <span class="kd">let</span> <span class="nx">buffer</span> <span class="o">=</span> <span class="s2">`管理员 </span><span class="p">${</span><span class="nx">m</span><span class="p">.</span><span class="k">from</span><span class="p">().</span><span class="nf">name</span><span class="p">()}</span><span class="s2">，你好，你刚才在</span><span class="p">${</span><span class="nx">m</span><span class="p">.</span><span class="nf">room</span><span class="p">().</span><span class="nf">topic</span><span class="p">()}</span><span class="s2">这个群`</span> <span class="o">+</span> <span class="s2">`里警告了用户@</span><span class="p">${</span><span class="nx">mentionName</span><span class="p">}</span><span class="s2">，符合这个名称的群内的用户有：\n`</span><span class="p">;</span>
+      <span class="k">for </span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">foundUsers</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">candidate</span> <span class="o">=</span> <span class="nx">foundUsers</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+        <span class="nx">buffer</span> <span class="o">+=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">i</span><span class="p">}</span><span class="s2">. 昵称:</span><span class="p">${</span><span class="nx">candidate</span><span class="p">.</span><span class="nf">name</span><span class="p">()}</span><span class="s2">, 备注:</span><span class="p">${</span><span class="nx">candidate</span><span class="p">.</span><span class="nf">alias</span><span class="p">()}</span><span class="s2">, `</span> <span class="o">+</span>
+            <span class="s2">`群昵称: </span><span class="p">${</span><span class="nx">WechatyApiX</span><span class="p">.</span><span class="nf">getGroupNickNameFromContact</span><span class="p">(</span><span class="nx">candidate</span><span class="p">)}</span><span class="s2"> \n`</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="nx">buffer</span> <span class="o">+=</span> <span class="s2">`请问要不要把这个用户加黑名单？五分钟内回复 "加黑名单[数字编号]"\n`</span><span class="p">;</span>
+      <span class="nx">buffer</span> <span class="o">+=</span> <span class="s2">`例如 "加黑名单0"，将会把</span><span class="p">${</span><span class="nx">foundUsers</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span><span class="s2"> `</span> <span class="o">+</span>
+          <span class="s2">`加入黑名单:</span><span class="p">${</span><span class="nx">WechatyApiX</span><span class="p">.</span><span class="nf">contactToStringLong</span><span class="p">(</span><span class="nx">foundUsers</span><span class="p">[</span><span class="mi">0</span><span class="p">])}</span><span class="s2">`</span><span class="p">;</span>
+      <span class="k">await</span> <span class="nx">m</span><span class="p">.</span><span class="k">from</span><span class="p">().</span><span class="nf">say</span><span class="p">(</span><span class="nx">buffer</span><span class="p">);</span>
+      <span class="nx">GLOBAL_blackListCandidates</span><span class="p">[</span><span class="nx">m</span><span class="p">.</span><span class="k">from</span><span class="p">().</span><span class="nf">alias</span><span class="p">()]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">time</span><span class="p">:</span> <span class="nb">Date</span><span class="p">.</span><span class="nf">now</span><span class="p">(),</span>
+        <span class="na">candidates</span><span class="p">:</span> <span class="nx">foundUsers</span>
+      <span class="p">};</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">await</span> <span class="nx">admin</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="s2">`管理员您好，您刚才在"</span><span class="p">${</span><span class="nx">m</span><span class="p">.</span><span class="nf">room</span><span class="p">().</span><span class="nf">topic</span><span class="p">()}</span><span class="s2">"群里要求踢出的用户"</span><span class="p">${</span><span class="nx">mentionName</span><span class="p">}</span><span class="s2">" `</span><span class="o">+</span>
+          <span class="s2">`我们没有找到，请在确认该用户仍然在该群里，并且请在同一个群尝试at他的昵称而不是群昵称。`</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h2 id="后记">后记</h2>
+
+<p>在本篇里我们介绍了我们如何应用Chatie实现【好室友】系列租房群的一系列日常管理任务，大大
+简化了管理员的工作量，也提高和改善了用户在群里的体验。
+我们将在未来的文章中介绍我们如何利用Chatie的可编程接口来实现
+微信和我们开发的网站和APP实现数据和信息互通。</p>
+
+<p>At the time of writing this article, the haoshiyou-bot code described in this article is located
+<a href="https://github.com/xinbenlv/haoshiyou-bot/tree/5f4dc109fafb5bf22996e53560e5a2ee51b4da89">here</a></p>
+
+<hr />
+
+<blockquote>
+  <p>English version of this post: <a href="/2017/04/16/how-chatie-is-used-in-haoshiyou-project-en/">Using Chatie to Implement WeChat Bot Business Logic for [Haoshiyou] Group Management</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#code">code</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#startup">startup</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#featured">featured</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#real-estate">real-estate</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/xinbenlv">
+                            <img class="rounded-circle" src="/assets/contributors/xinbenlv/avatar.webp" alt="xinbenlv" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/xinbenlv">xinbenlv</a> </h5>
+						Google Engineer, Founder of HaoShiYou. HaoShiYou has many 500 people Wechat groups, which is a massive work for human.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2017/04/16/how-chatie-is-used-in-haoshiyou-project-en/"> Using Chatie to Implement WeChat Bot Business Logic for [Haoshiyou] Group Management</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2017/04/21/interact-wechaty-with-ruby-on-rails-from-scratch/"> Interact Wechaty with Ruby on Rails from scratch  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2017/wildcat-rails-db-initial-structure.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

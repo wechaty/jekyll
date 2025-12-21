@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      The secret lives of WeChat’s chatbots | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>The secret lives of WeChat’s chatbots | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="The secret lives of WeChat’s chatbots" />
+<meta name="author" content="lijiarui" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Chatbots rocketed into the limelight last year, bolstered by the enthusiasm of Facebook and Microsoft, though the technology wasn’t mature yet." />
+<meta property="og:description" content="Chatbots rocketed into the limelight last year, bolstered by the enthusiasm of Facebook and Microsoft, though the technology wasn’t mature yet." />
+<link rel="canonical" href="https://wechaty.js.org/2017/02/22/the-secret-lives-of-wechat-chatbots/" />
+<meta property="og:url" content="https://wechaty.js.org/2017/02/22/the-secret-lives-of-wechat-chatbots/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-02-22T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="The secret lives of WeChat’s chatbots" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"lijiarui"},"dateModified":"2017-02-22T00:00:00+00:00","datePublished":"2017-02-22T00:00:00+00:00","description":"Chatbots rocketed into the limelight last year, bolstered by the enthusiasm of Facebook and Microsoft, though the technology wasn’t mature yet.","headline":"The secret lives of WeChat’s chatbots","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2017/02/22/the-secret-lives-of-wechat-chatbots/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"lijiarui"},"url":"https://wechaty.js.org/2017/02/22/the-secret-lives-of-wechat-chatbots/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-center ">
+				<div class=" col-md-8  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#story">story</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">The secret lives of WeChat’s chatbots</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/lijiarui">
+                            <img class="rounded-circle" src="/assets/contributors/lijiarui/avatar-new.webp" alt="Jiarui LI (李佳芮)" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/lijiarui">Jiarui LI (李佳芮)</a> <span><a target="_blank" href="https://weibo.com/u/2175505900" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Feb 22, 2017 · <span class="reading-time">
+  
+  
+    5 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>Chatbots rocketed into the limelight last year, bolstered by the enthusiasm of Facebook and Microsoft, though the technology wasn’t mature yet.</p>
+
+<p>In China, however, the response was more muted. While Facebook was busy pushing its new Messenger app – boasting when it hit 11,000 bots – Tencent, the maker of WeChat, quietly let millions of accounts develop AI-powered bots of their own, keeping a wary eye out for abuse. Accounts like Cara, for example, are shut down, as Tencent wants to confine bots to customer service-related functions within brand accounts.</p>
+
+<p>But unsanctioned bots run amok on the social network, often tactlessly spamming groups or artificially inflating a brand’s likes and follows. The Chinese tech firm clamped down last year on thousands of accounts, denouncing the use of external software to alter WeChat. Tencent did not reply to queries about its policies on bots.</p>
+
+<p>Unlike WeChat’s “official” accounts, designed for commerce and media, these rogue bots hijack personal accounts. They can be purchased on Taobao, the country’s most popular online marketplace, for a couple of dollars or less. Some accounts are even “farmed” before they’re sold, which means they already have friends and have logged a certain amount of human-like activity, such as posting on Moments, WeChat’s newsfeed-like feature.</p>
+
+<p>“If I grow a WeChat account to 3,000 to 5,000 friends, one ad on my Moments could be worth between [US$14 to US$140],” explains Li Jiarui, a Javascript and WeChat bot developer based in Beijing. “It depends on the quality of your account.”</p>
+
+<p>More bots mean more WeChat accounts. This is another example of WeChat hacking: multiple apps installed on one device. Photo credit: Tencent.</p>
+
+<p>Jiarui doesn’t farm WeChat accounts, but she’s familiar with the industry. Account farming is driven by the needs of marketing and advertising agencies, as well as weishang, or “micro shops” run through personal WeChat accounts. Unlike brand accounts, personal accounts are easier to register and can participate in group chats. These shopkeepers often use their Moments to advertise all kinds of products, from imported baby powder to fake luxury handbags.</p>
+
+<p>“Because they often get shut down, we can learn a lot from their experience,” says Jiarui.</p>
+
+<p>Jiarui began developing WeChat bots about half a year ago to automate group management for her dance community on the messaging app. Her bot can automatically pull friends into groups and welcome new members, as well as hold basic conversations thanks to a Chinese natural language processing framework called Turing Robot.</p>
+
+<p>In fact, her chatbot is so popular that Tencent once chose it as a beta tester for WeChat.</p>
+
+<p>“They thought I was a serious WeChat addict,” she laughs. “They probably thought that I was on WeChat almost 24 hours a day, not doing much else. Because of my activity, they assumed I was a high-quality user.”</p>
+
+<p>Jiarui says her bot, which has about 3,000 friends, receives more than 10,000 messages a day.</p>
+
+<p>Other chatbots, like “Micro Friend Assistant”, are also designed to tackle WeChat’s clunky group management system. Micro Friend Assistant lets group administrators set responses to keywords, automatically upload shared files to cloud storage, or even track and analyze group activity. But, like Cara, it too was shut down.</p>
+
+<p>“This Chinese New Year, I tested out a hongbao bot and then I was banned for like a week or so,” says an employee at a chatbot company, who requested anonymity. He forgot to program the bot to not be the first one to grab the red envelopes – a total bot giveaway. Adding too many friends in a short amount of time can also raise a red flag.</p>
+
+<p>Tencent is understandably opaque about its rules for catching bots to keep developers on their toes. But Jiarui has learned a few tricks from the app’s shopkeepers, such as using mobile data instead of wifi to send messages, and tying a bank card to the bot’s account.</p>
+
+<p>“Do your best to mimic a real account,” she advises. Chatbots should follow brand accounts, have a profile picture, post on Moments, and both proactively and passively make friends on the app. “Ideally have your friends add you first. And try to have these friends comment on the content in your Moments,” she says.</p>
+
+<p>At the moment, many WeChat bot developers rely on hacking the app’s web version. A quick search for “wechat bots” on Github pulls up multiple projects that can turn personal accounts into bots, such as Wechaty, the framework that Jiarui uses. However, that too has its limitations. Scraping the app’s web interface limits you to basic functions, such as sending messages and adding friends.</p>
+
+<p>“Web WeChat is this crippled, semi-supported project by Tencent,” emphasizes Alex, a freelance web developer who would only disclose his first name. You can only do about a quarter of what you can do with the mobile app, excluding all the “interesting features,” he says.</p>
+
+<p>“No hongbao […] and to re-login, you need to scan a QR code with phone,” Alex adds.</p>
+
+<p>Nevertheless, the commercial potential of chatbots has startups like Urbem, a WeChat-based restaurant recommendation and deals startup, interested in the technology. The startup’s account is already staffed with a bot that navigates Urbem’s database to recommend restaurants to its users.</p>
+
+<p>Urbem sees friendly chatbots as a way to generate leads from the various food groups it manages on WeChat.</p>
+
+<p>“We want to link this bot to the bot from our [brand] account’s knowledge base,” explains Steven Chen, founder and CEO of Urbem. “Then this bot [will be] interesting and knowledgeable, and people follow the bot.”</p>
+
+<p>“Eventually, we would convert them to our WeChat account, so they can pay to be a member. That’s how we generate revenue,” he says.</p>
+
+<p>Given Tencent’s unforgiving stance towards rogue bots leaping into your messages, it’s uncertain how these bots, even those that have a positive impact or fulfill legitimate needs, will develop on the social network. Allowing unofficial bots to thrive on WeChat opens a Pandora’s box of possibilities, including AI of the Cara ilk. For now, bot developers will have to work hard to build increasingly human-like and believable messaging bots to slip under Tencent’s radar.</p>
+
+<blockquote>
+  <p>From: <a href="https://www.techinasia.com/wechat-unofficial-bots">https://www.techinasia.com/wechat-unofficial-bots</a> by <a href="https://www.techinasia.com/profile/evaxiao">Eva Xiao</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#interview">interview</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/lijiarui">
+                            <img class="rounded-circle" src="/assets/contributors/lijiarui/avatar-new.webp" alt="Jiarui LI (李佳芮)" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/lijiarui">Jiarui LI (李佳芮)</a> <span><a target="_blank" href="https://weibo.com/u/2175505900" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Co-Creator of Wechaty; 句子互动创始人 & CEO，微软人工智能最具价值专家 (AI MVP)
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2017/01/06/wechaty-101-presentation/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2017/wechaty-connect-chatbots.webp">  Wechaty 101: from v0.0 to v0.7</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2017/03/20/added-hot-reload-for-bots-en/"> Adding Hot Reload Function for WeChat Bots  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2017/03-added-hot-reload-for-bots-en/gcaufy-hot-reload-screencast.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

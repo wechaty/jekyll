@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Win10通过Docker搭建Web协议服务开发机器人 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Win10通过Docker搭建Web协议服务开发机器人 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Win10通过Docker搭建Web协议服务开发机器人" />
+<meta name="author" content="mrwis" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="介绍" />
+<meta property="og:description" content="介绍" />
+<link rel="canonical" href="https://wechaty.js.org/2021/05/18/win10-use-docker-build-web-protocol-server-develop-bot/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/05/18/win10-use-docker-build-web-protocol-server-develop-bot/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/05-win10-use-docker-build-web-protocol-server-develop-bot/ding-dong.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-18T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/05-win10-use-docker-build-web-protocol-server-develop-bot/ding-dong.webp" />
+<meta property="twitter:title" content="Win10通过Docker搭建Web协议服务开发机器人" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"mrwis"},"dateModified":"2021-05-18T00:00:00+00:00","datePublished":"2021-05-18T00:00:00+00:00","description":"介绍","headline":"Win10通过Docker搭建Web协议服务开发机器人","image":"https://wechaty.js.org/assets/2021/05-win10-use-docker-build-web-protocol-server-develop-bot/ding-dong.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/05/18/win10-use-docker-build-web-protocol-server-develop-bot/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"mrwis"},"url":"https://wechaty.js.org/2021/05/18/win10-use-docker-build-web-protocol-server-develop-bot/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#article">article</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Win10通过Docker搭建Web协议服务开发机器人</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/mrwis">
+                            <img class="rounded-circle" src="/assets/contributors/mrwis/avatar.webp" alt="Xiaoyao Li" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/mrwis">Xiaoyao Li</a> <span><a target="_blank" href="https://twitter.com/andyli1991" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">May 18, 2021 · <span class="reading-time">
+  
+  
+    2 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/05-win10-use-docker-build-web-protocol-server-develop-bot/ding-dong.webp" alt="Win10通过Docker搭建Web协议服务开发机器人">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<h2 id="介绍">介绍</h2>
+
+<h3 id="背景介绍">背景介绍</h3>
+
+<p>最近本人在自学编程，选择的是python语言，自学一段时间后，自我感觉理论知识良好，需要找项目实践。然后找到python-wechaty这个项目，并加入微信群。在四月底听到群里说web协议复活后，决定亲手尝试一下。在尝试的过程中，遇到不少困难，最终在群友们的指点下顺利的走通整个流程。也就是说顺利的执行了ding-dong-bot。考虑到群里可能也有和我一样的小白，所以决定记录一下自己开发的过程，并发表出来，希望能帮助和我之前有一样困惑的朋友，节约他们的摸索时间。</p>
+
+<h3 id="本文读者">本文读者</h3>
+
+<p>如果您不是和我一样的小白，那么这篇文章很可能就不适合您了。本文面向的读者是和我一样，在win10开发环境下，想用docker来搭建免费web协议服务，通过python-wechaty来开发机器人的小白或零基础的朋友。</p>
+
+<h3 id="开发环境">开发环境</h3>
+
+<p>本人的开发环境如下，win10系统版本号1909，Docker Desktop版本3.3.1，Pycharm版本2020.3，python3.7。</p>
+
+<p>不同的版本环境下，可能会有兴许差异，请自我查验。</p>
+
+<h2 id="正文">正文</h2>
+
+<p>通过免费web协议服务来开发python-wechaty微信机器人分为两个步骤</p>
+
+<h3 id="docker启动web服务">docker启动web服务</h3>
+
+<p>首先我们需要在docker启动web协议服务容器，启动docker容器之前，我们对其进行简单配置，考虑到我的系统是windows，所以并不支持export指令。在windows下，用set替代export。但是最后结果并不理想，容器在启动之后立马又关闭了，所以就不细说了。</p>
+
+<p>经过对比启动docker其他的容器，并没用出现问题，因此我判断docker软件本身没有问题，最后在群友的帮助下，采用一条指令顺利启动docker容器，打开cmd。输入指令，指令如下</p>
+
+<p><code class="language-plaintext highlighter-rouge">docker run -ti --name wechaty_puppet_service_token_gateway --rm -e WECHATY_LOG="verbose" -e WECHATY_PUPPET="wechaty-puppet-service" -e WECHATY_PUPPET_SERVER_PORT="30001" -e WECHATY_TOKEN="e9b50dd4-e24d-409e-98aa-53e686101f0c" -p "30001:30001" wechaty/wechaty:latest</code></p>
+
+<p>如果有朋友想复制使用的话，请全部复制，这是一条完整指令。简单介绍：<code class="language-plaintext highlighter-rouge">wechaty_puppet_service_token_gateway</code> 就是我们启动的容器的名字。<code class="language-plaintext highlighter-rouge">WECHATY_PUPPET_SERVER_PORT="30001"</code>是指端口设定为30001。这个可以根据需要自己设定其他的数字。<code class="language-plaintext highlighter-rouge">WECHATY_TOKEN="e9b50dd4-e24d-409e-98aa-53e686101f0c"</code>绑定token到web协议服务，这个token是我用uuid自动生成的。在启动之前，请通过python脚本生成所需token。脚本如下：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">uuid</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">uuid</span><span class="p">.</span><span class="nf">uuid4</span><span class="p">())</span>
+</code></pre></div></div>
+
+<p>生成的token记录保存下来，请根据自己的需要，修改自己的token。</p>
+
+<p>这样我们就成功的启动了一个端口在30001的docker容器。启动后cmd立马可以看到如下：</p>
+
+<p><img src="/assets/2021/05-win10-use-docker-build-web-protocol-server-develop-bot/docker-build-web.webp" alt="docker-build-web" /></p>
+
+<p>打开docker也可以看到容器已经顺利启动。</p>
+
+<p><img src="/assets/2021/05-win10-use-docker-build-web-protocol-server-develop-bot/docker-status.webp" alt="docker-status" /></p>
+
+<h3 id="启动python脚本链接docker容器">启动python脚本链接docker容器</h3>
+
+<p>启动容器之后，接下来我们就需要用python脚本去链接这个容器，</p>
+
+<p>脚本如下：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">os</span>
+<span class="kn">import</span> <span class="n">asyncio</span>
+<span class="kn">from</span> <span class="n">wechaty</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">FileBox</span><span class="p">,</span>
+    <span class="n">Wechaty</span><span class="p">,</span>
+    <span class="n">Contact</span><span class="p">,</span>
+    <span class="n">Message</span><span class="p">,</span>
+    <span class="n">Room</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="p">[</span><span class="sh">'</span><span class="s">WECHATY_PUPPET_SERVICE_ENDPOINT</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="sh">'</span><span class="s">127.0.0.1:30001</span><span class="sh">'</span>
+<span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="p">[</span><span class="sh">'</span><span class="s">WECHATY_PUPPET_SERVICE_TOKEN</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="sh">'</span><span class="s">e9b50dd4-e24d-409e-98aa-53e686101f0c</span><span class="sh">'</span>
+
+<span class="k">class</span> <span class="nc">MyBot</span><span class="p">(</span><span class="n">Wechaty</span><span class="p">):</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="n">Message</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
+        listen for message event
+        </span><span class="sh">"""</span>
+        <span class="n">from_contact</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Contact</span><span class="p">]</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="nf">talker</span><span class="p">()</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="nf">text</span><span class="p">()</span>
+        <span class="n">room</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Room</span><span class="p">]</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="nf">room</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">text</span> <span class="o">==</span> <span class="sh">'</span><span class="s">ding</span><span class="sh">'</span><span class="p">:</span>
+            <span class="n">conversation</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span>
+                <span class="n">Room</span><span class="p">,</span> <span class="n">Contact</span><span class="p">]</span> <span class="o">=</span> <span class="n">from_contact</span> <span class="k">if</span> <span class="n">room</span> <span class="ow">is</span> <span class="bp">None</span> <span class="k">else</span> <span class="n">room</span>
+            <span class="k">await</span> <span class="n">conversation</span><span class="p">.</span><span class="nf">ready</span><span class="p">()</span>
+            <span class="k">await</span> <span class="n">conversation</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="sh">'</span><span class="s">dong</span><span class="sh">'</span><span class="p">)</span>
+            <span class="n">file_box</span> <span class="o">=</span> <span class="n">FileBox</span><span class="p">.</span><span class="nf">from_url</span><span class="p">(</span>
+                <span class="sh">'</span><span class="s">https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/</span><span class="sh">'</span>
+                <span class="sh">'</span><span class="s">u=1116676390,2305043183&amp;fm=26&amp;gp=0.jpg</span><span class="sh">'</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="sh">'</span><span class="s">ding-dong.jpg</span><span class="sh">'</span><span class="p">)</span>
+            <span class="k">await</span> <span class="n">conversation</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="n">file_box</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="p">.</span><span class="nf">run</span><span class="p">(</span><span class="nc">MyBot</span><span class="p">().</span><span class="nf">start</span><span class="p">())</span>
+</code></pre></div></div>
+
+<p>代码的主要部分来源于官方文档，我们需要做的就是两个事情，一个绑定web协议服务端口，因为我的docker容器是本地运行的，所以<code class="language-plaintext highlighter-rouge">os.environ['WECHATY_PUPPET_SERVICE_ENDPOINT'] = '127.0.0.1:30001'</code> ，指定端口到本地的30001端口。第二个就是token进行一个绑定<code class="language-plaintext highlighter-rouge">os.environ['WECHATY_PUPPET_SERVICE_TOKEN'] = 'e9b50dd4-e24d-409e-98aa-53e686101f0c'</code>，如果不进行这个操作，执行程序就会报错，token不存在。这个token必须和我们之前配置docker容器的token保持一致，否则就无法执行。</p>
+
+<p>代码写好后，执行代码，会出现一个二维码，要求我们扫码登录。</p>
+
+<p><img src="/assets/2021/05-win10-use-docker-build-web-protocol-server-develop-bot/run-python.webp" alt="run-python" /></p>
+
+<p>目前会有一个问题就是二维码太大了，无法扫描。不过官方很贴心的给了一个链接，点击链接就会跳转到一个可以扫描的二维码页面出了，扫码登录即可。</p>
+
+<p><img src="/assets/2021/05-win10-use-docker-build-web-protocol-server-develop-bot/scan-qrcode.webp" alt="scan-qrcode" /></p>
+
+<p>扫码登陆微信后就可以验证，发送ding，机器人会自动回复dong。</p>
+
+<p><img src="/assets/2021/05-win10-use-docker-build-web-protocol-server-develop-bot/ding-dong.webp" alt="ding-dong" /></p>
+
+<h2 id="补充内容">补充内容</h2>
+
+<h3 id="更改docker镜像位置否则立马占满空间">更改docker镜像位置，否则立马占满空间</h3>
+
+<p>程序运行一晚上后，我发现我的C盘可用空间急速下降。通过调查发现，docker的镜像默认位置就是C盘，所以我需要通过更改docker镜像位置来避免C盘可用空间不足导致的程序崩溃。首先将docker镜像导出：我这里将镜像文件导入到e盘。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wsl <span class="nt">--export</span> docker-desktop-data e:<span class="se">\w</span>sl2<span class="se">\d</span>ocker<span class="se">\d</span>ocker-desktop-data.tar
+wsl <span class="nt">--export</span> docker-desktop e:<span class="se">\w</span>sl2<span class="se">\d</span>ocker<span class="se">\d</span>ocker-desktop.tar
+</code></pre></div></div>
+
+<p>然后卸载之前的镜像：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wsl <span class="nt">--unregister</span> docker-desktop
+wsl <span class="nt">--unregister</span> docker-desktop-data
+</code></pre></div></div>
+
+<p>导入镜像文件：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wsl <span class="nt">--import</span> docker-desktop e:<span class="se">\w</span>sl2<span class="se">\d</span>ocker<span class="se">\d</span>ocker-desktop e:<span class="se">\w</span>sl2<span class="se">\d</span>ocker<span class="se">\d</span>ocker-desktop.tar <span class="nt">--version</span> 2
+wsl <span class="nt">--import</span> docker-desktop-data e:<span class="se">\w</span>sl2<span class="se">\d</span>ocker<span class="se">\d</span>ocker-desktop-data e:<span class="se">\w</span>sl2<span class="se">\d</span>ocker<span class="se">\d</span>ocker-desktop-data.tar <span class="nt">--version</span> 2
+</code></pre></div></div>
+
+<p>最后删除压缩文件：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>del e:<span class="se">\w</span>sl2<span class="se">\d</span>ocker<span class="se">\d</span>ocker-desktop.tar
+del e:<span class="se">\w</span>sl2<span class="se">\d</span>ocker<span class="se">\d</span>ocker-desktop-data.tar
+</code></pre></div></div>
+
+<p>重新启动docker服务，就可以了。</p>
+
+<h4 id="多开docker容器达成多开机器人的目的">多开docker容器，达成多开机器人的目的</h4>
+
+<p>能不能同时启动多个机器人呢？我这边测试了一下是可以的。</p>
+
+<p>首先需要再打开一个docker容器，给新的容器自定一个新的名字，同时指定不同的端口和token，新python脚本绑定的端口与token要与新开的docker容器一致。</p>
+
+<p>然后启动docker容器，再启动python脚本，扫码登录后，测试结果如下：</p>
+
+<p><img src="/assets/2021/05-win10-use-docker-build-web-protocol-server-develop-bot/multi-bot.webp" alt="multi-bot" /></p>
+
+<h4 id="关闭睡眠状态保持程序的持续运行">关闭睡眠状态，保持程序的持续运行</h4>
+
+<p>在中午离开电脑吃饭的时候，我发现机器人并没有回应我发送的ding，查看日志发现，因为电脑断网，虽然docker容器还在运行，python脚本也在运行，但是已经失去了网络连接，python脚本在请求重新扫码。后面分析，win10系统带有的自动睡眠功能会自动断网。导致程序运行失败。为了可以持续运行我的机器人，我选择暂时关闭睡眠功能。打开win10<code class="language-plaintext highlighter-rouge">设置</code>，选择<code class="language-plaintext highlighter-rouge">系统</code>，选择<code class="language-plaintext highlighter-rouge">电源和睡眠</code>，选择<code class="language-plaintext highlighter-rouge">睡眠</code>，设置成<code class="language-plaintext highlighter-rouge">从不</code>。这样你的程序就可以一直运行，而不会因为断网停掉。</p>
+
+<p><strong>特别提示：必须使用已经开通了微信支付的微信号扫码登录，否则登录失败，提示开通微信支付。</strong></p>
+
+<p>以上就是我本次尝试ding-dong-bot所遇到的一些情况的分享。</p>
+
+<h2 id="鸣谢">鸣谢</h2>
+
+<p>感谢wechaty社区的辛苦工作，为我提供了可以免费使用的工具，也感谢python-wechaty社区，提供了python可用的测试脚本。</p>
+
+<p>最后感谢Polygplot Wechaty Home微信群内小伙伴们的指点，否则我一定还需要更多的时间才能走通这个ding-dong机器人流程。</p>
+
+<blockquote>
+  <p>感谢您的阅读，考虑到本人水平极其有限，文章难免有差错，若读者发现文中错误，欢迎指正，或联系我修改。</p>
+</blockquote>
+
+<h2 id="参考链接">参考链接</h2>
+
+<ul>
+  <li><a href="https://wechaty.js.org/2021/04/17/python-wechaty-use-web/">教你用python-wecahty和web协议开发机器人</a></li>
+  <li><a href="https://wechaty.js.org/docs/puppet-services/diy">Puppet Service: DIY</a></li>
+  <li><a href="https://python-wechaty.readthedocs.io/zh_CN/latest/introduction/use-web-protocol/">使用免费Web协议</a></li>
+  <li><a href="https://github.com/wechaty/wechaty.js.org">How To Post a Blog</a></li>
+</ul>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#blog">blog</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#study">study</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#web-protocol">web-protocol</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#python">python</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/mrwis">
+                            <img class="rounded-circle" src="/assets/contributors/mrwis/avatar.webp" alt="Xiaoyao Li" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/mrwis">Xiaoyao Li</a> <span><a target="_blank" href="https://twitter.com/andyli1991" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						I am learning program with python
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/05/18/gsod-2021-proposal-to-improve-the-grpc-and-openapi-ecosystem/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/05-gsod-2021-proposal-to-improve-the-grpc-and-openapi-ecosystem/05-gsod-2021-proposal-to-improve-the-grpc-and-openapi-ecosystem.webp">  GSoD 2021 proposal to Improve the gRPC and OpenAPI ecosystem</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/05/23/gsod-2021-second-meeting/"> GSoD'21 Second Meeting  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/05-gsod-2021-second-meeting/gsod-meeting2-teasor.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

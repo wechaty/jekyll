@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      The Wechaty Way: Best Practices Guide for Open Source Collaboration | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>The Wechaty Way: Best Practices Guide for Open Source Collaboration | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="The Wechaty Way: Best Practices Guide for Open Source Collaboration" />
+<meta name="author" content="lijiarui" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A comprehensive guide to Wechaty community’s open source collaboration practices, including meeting procedures, blog publishing, issue management, and PR workflows following The Apache Way." />
+<meta property="og:description" content="A comprehensive guide to Wechaty community’s open source collaboration practices, including meeting procedures, blog publishing, issue management, and PR workflows following The Apache Way." />
+<link rel="canonical" href="https://wechaty.js.org/2021/06/23/the-wechaty-way-en/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/06/23/the-wechaty-way-en/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/06-the-wechaty-way-en/teaser.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-06-23T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/06-the-wechaty-way-en/teaser.webp" />
+<meta property="twitter:title" content="The Wechaty Way: Best Practices Guide for Open Source Collaboration" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"lijiarui"},"dateModified":"2021-06-23T00:00:00+00:00","datePublished":"2021-06-23T00:00:00+00:00","description":"A comprehensive guide to Wechaty community’s open source collaboration practices, including meeting procedures, blog publishing, issue management, and PR workflows following The Apache Way.","headline":"The Wechaty Way: Best Practices Guide for Open Source Collaboration","image":"https://wechaty.js.org/assets/2021/06-the-wechaty-way-en/teaser.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/06/23/the-wechaty-way-en/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"lijiarui"},"url":"https://wechaty.js.org/2021/06/23/the-wechaty-way-en/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#announcement">announcement</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">The Wechaty Way: Best Practices Guide for Open Source Collaboration</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/lijiarui">
+                            <img class="rounded-circle" src="/assets/contributors/lijiarui/avatar-new.webp" alt="Jiarui LI (李佳芮)" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/lijiarui">Jiarui LI (李佳芮)</a> <span><a target="_blank" href="https://weibo.com/u/2175505900" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jun 23, 2021 · <span class="reading-time">
+  
+  
+    12 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/06-the-wechaty-way-en/teaser.webp" alt="The Wechaty Way: Best Practices Guide for Open Source Collaboration">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>Wechaty (Conversational RPA SDK) was released on GitHub in 2016 and is an open source project licensed under Apache-2.0. After more than 5 years of development, the Wechaty open source community now has dozens of Committers, hundreds of Contributors, and is starred by over 10,000 GitHub developers. Currently, developers using Wechaty have covered tens of thousands of people and have thousands of active developer groups based on WeChat groups.</p>
+
+<p>Contributors to the Wechaty community are spread across many countries and regions around the world, and major Internet companies, with professional backgrounds ranging from programmers to designers, from university professors to entrepreneurs, very diverse. There are thousands of open source projects on GitHub that have built chatbots based on Wechaty, and these developer users have also greatly promoted the activity and development of the community.</p>
+
+<p>Wechaty’s own code quality management uses GitHub Actions’ DevOps tools to complete CI/CD workflows, from automated unit testing to automated packaging integration testing, from automatically publishing NPM packages to automatically building and publishing Docker Images of corresponding versions, realizing fully automatic community code release, greatly improving the collaborative efficiency of the community.</p>
+
+<p>In terms of open source community management, Wechaty follows The Apache Way, has a PMC/Committer management system, and complete Issue/PR/Release management systems. As of 2021, Wechaty has nearly one million NPM installation downloads, and the community has spontaneously promoted the adaptation and release of languages such as Python, Go, Java, Scala, .NET, PHP, Rust, making it the most active Conversational AI Chatbot developer community in China.</p>
+
+<h2 id="wechaty-introduction-ppt">Wechaty Introduction PPT</h2>
+
+<p>By reading the following 3 PPTs, you can have a basic understanding of Wechaty and its development history.</p>
+
+<ul>
+  <li>2016: <a href="https://docs.google.com/presentation/d/13oUOIEnzdLWO6KZWztD_pMuu22AQ3SIMjk2wp8f-f18/edit#slide=id.g194ee6e600_0_51">Wechaty 101: from v0.0 to v0.7</a></li>
+  <li>2016-2020: <a href="https://docs.google.com/presentation/d/1eRNrKnCpdnsmplTwtZzmtGZgrPoNCmOnitmHKVc6iVU/edit#slide=id.g8568e8a985_3_8">Open-source Wechaty: 2016 to 2020</a></li>
+  <li>2021: <a href="https://docs.google.com/presentation/d/1aJ9j0VoRk0Dkyyajy3Z-zEI0QcpmpTjcCcabEXxo4JM/edit#slide=id.p">Wechaty 2021</a></li>
+</ul>
+
+<h2 id="community-communication">Community Communication</h2>
+
+<p>The Wechaty community continues to uphold open and transparent information:</p>
+
+<ul>
+  <li>The preferred communication channel is <a href="https://gitter.im/wechaty/wechaty">Gitter</a>, because Gitter preserves all historical communication records. Even if you are a developer who has just joined the community, you can trace back to the content discussed by community members on day one.</li>
+  <li>The next best communication channel is to join our Mailing List (send an email to wechaty@googlegroups.com to join). In 2019, I chatted with Apache Foundation Chairman Craig: <strong>If it didn’t happen on list, it didn’t happen.</strong> Ensuring community content is open and transparent and archived via email is a very important thing, so we also highly recommend everyone communicate through Wechaty’s Mailing List.</li>
+</ul>
+
+<p>Below are all of Wechaty’s communication channels:</p>
+
+<ul>
+  <li><a href="https://gitter.im/wechaty/wechaty">Gitter</a></li>
+  <li>Mailing List: Send an email to wechaty@googlegroups.com to join</li>
+  <li><a href="https://github.com/wechaty/wechaty#raising_hand-join-us">WeChat Room: Wechaty Developers’ Home</a></li>
+  <li><a href="https://github.com/wechaty/wechaty/discussions">Discussion</a></li>
+  <li><a href="https://stackoverflow.com/questions/tagged/wechaty">Stack Overflow</a></li>
+  <li><a href="https://t.me/wechaty">Telegram</a></li>
+  <li><a href="https://twitter.com/chatieio">Twitter</a></li>
+</ul>
+
+<h2 id="more-wechaty-links">More Wechaty Links</h2>
+
+<p>In addition to community communication channels, you can also learn more about Wechaty-related content here.</p>
+
+<ul>
+  <li><a href="https://wechaty.js.org/blog/">Blog</a>: Here you can see all Wechaty blogs</li>
+  <li><a href="https://wechaty.js.org/contributors/">Wechaty Contributors</a>: Come here to see introductions to all Wechaty Contributors</li>
+  <li><a href="https://docs.google.com/document/d/1fVCk8qRYc4RKGMf2UY5HOe07hEhPUOpGC34v88GEFJg/edit#heading=h.64c95c3y2l4v">Meeting Notes</a>: Content recorded from each Wechaty meeting.</li>
+  <li><a href="https://wechaty.js.org/docs/marketing/branding/">Branding Guides</a>: Materials for using Wechaty’s logo and other content</li>
+  <li><a href="https://www.youtube.com/playlist?list=PL8hd9KDTdarDXf_Rxtr8meKhxtgcXMInh">YouTube</a>: Complete list of all Wechaty videos</li>
+  <li><a href="https://opencollective.com/wechaty">Open Collective</a>: The only channel for donating to Wechaty</li>
+  <li><a href="https://drive.google.com/drive/folders/1KTnB3EOZo3nFRFSWoFc2-7LM7MgKQLzM">Google Drive</a>: All Wechaty file archives</li>
+  <li><a href="https://photos.google.com/share/AF1QipOWKUfUkjw-VzE0skrjmCwbwIWwuBiI7Li4UCbdXH62n8iH2ITnvDbPTsx4eBl8dw?key=cy1NdWFoUGpXanVmczVHSm84TVg1LXJWeW5HTDhR">Photo Album</a>: Featured photos from Wechaty events</li>
+  <li><a href="https://docs.google.com/document/d/1fVCk8qRYc4RKGMf2UY5HOe07hEhPUOpGC34v88GEFJg/edit#heading=h.64c95c3y2l4v">Hall of Fame</a>: Learn about the Wechaty Hall of Fame</li>
+</ul>
+
+<h2 id="wechaty-meeting-process-best-practices-guide">Wechaty Meeting Process Best Practices Guide</h2>
+
+<p>The Wechaty community hopes that every meeting allows all participants to focus and participate as much as possible, achieve positive output, and ensure meetings are concise, efficient, and the community is transparent. Wechaty meetings have the following three important tools and usage guidelines.</p>
+
+<h3 id="1-wechaty-meeting-notes">1. Wechaty Meeting Notes</h3>
+
+<p>Meeting Notes have the following values:</p>
+
+<ul>
+  <li><strong>Transparency</strong>: Every meeting held by the community is recorded in <a href="https://docs.google.com/document/d/1fVCk8qRYc4RKGMf2UY5HOe07hEhPUOpGC34v88GEFJg/edit#heading=h.64c95c3y2l4v">Meeting Notes</a>. Even if you just joined the community, you can see past meeting content in Meeting Notes.</li>
+  <li><strong>Efficiency</strong>: As the saying goes, “Don’t fight an unprepared battle.” Similarly, “Don’t hold an unprepared meeting.” Preparing well before a meeting plays a crucial role in holding a good meeting. Before each meeting, participants must write meeting agendas in Meeting Notes in advance to ensure participants clearly know the discussion content before the meeting, improving meeting efficiency.</li>
+</ul>
+
+<p>This is the template content of Meeting Notes (you can get the text version at the bottom of Meeting Notes; I’ve put an image here to make the format easier to see):</p>
+
+<p><img src="/assets/2021/06-the-wechaty-way-en/meeting-notes.webp" alt="meeting-notes" /></p>
+
+<p>Specific usage process guidelines:</p>
+
+<ol>
+  <li>Before the meeting, the organizer comes to <a href="https://docs.google.com/document/d/1fVCk8qRYc4RKGMf2UY5HOe07hEhPUOpGC34v88GEFJg/edit#heading=h.64c95c3y2l4v">Meeting Notes</a> to write the meeting location and time. Usually, meetings are public, and anyone can attend the video meeting through the Zoom link in Meeting Notes.</li>
+  <li>Participants must register their information in <strong>Attendees</strong>, including:
+    <ol>
+      <li>Name</li>
+      <li>One-sentence introduction</li>
+      <li>Email (very important, as the host may send emails to this address later)</li>
+      <li>Time zone (Wechaty as an international community often has overseas participants)</li>
+    </ol>
+  </li>
+  <li>Before the meeting, participants should write their agenda items in Agenda in the format <strong>[Name] Content</strong>, so participants know which people have which different agenda items</li>
+  <li>In addition to meeting agenda items, you can also write down your questions in the Question section. Questions can also be commented on by others. The format is still <strong>[Name] Content</strong></li>
+  <li>Anyone can comment on other people’s agenda items at any time. The comment method is to indent and italicize the next line below the content, writing in the format <strong>[Name] Content</strong>.</li>
+  <li>We strongly encourage you to post comments under agenda items in Meeting Notes synchronously while others are expressing opinions during the meeting, because everyone will see what you write, and more discussion leads to more output.</li>
+  <li>It should be noted that Agenda and Question must be written before the meeting starts, so participants can understand the content in advance; but comments can be written at any time (before &amp; during the meeting), ensuring meeting content can be archived.</li>
+</ol>
+
+<h3 id="zoom-meeting">Zoom Meeting</h3>
+
+<p>When conditions allow, the community ensures that every meeting can be attended online as much as possible. The way to participate is to use Zoom meetings. Each Zoom meeting will be video recorded so people who did not attend the meeting can watch the video playback.</p>
+
+<ul>
+  <li>Zoom download address: <a href="https://zoom.us/download#client_4meeting">Download</a></li>
+  <li>Meeting link: <a href="https://zoom.us/j/6505033788">https://zoom.us/j/6505033788</a></li>
+  <li>Meeting password: huan</li>
+</ul>
+
+<h3 id="meeting-videos">Meeting Videos</h3>
+
+<p>To ensure meeting documentation, major online meetings require the host to upload the meeting video to <a href="https://www.youtube.com/playlist?list=PL8hd9KDTdarDXf_Rxtr8meKhxtgcXMInh">YouTube</a> after the meeting and complete the following:</p>
+
+<ul>
+  <li>Set <strong>Visibility</strong> to <code class="language-plaintext highlighter-rouge">Public</code></li>
+  <li>Add to the wechaty playlist (if the host doesn’t have add permissions, they can apply to <a href="https://wechaty.js.org/contributors/huan/">Huan</a>)</li>
+  <li>Write video description</li>
+  <li>In the video description, add video chapters on the video progress bar by adding times like <code class="language-plaintext highlighter-rouge">00:00</code>. For details, see: <a href="https://support.google.com/youtube/answer/9884579?hl=zh-Hans">How to add chapters on the progress bar in YouTube</a>. Chapters divide the video into multiple parts, making it easy for viewers to quickly jump to different parts of the video.</li>
+</ul>
+
+<p><a href="https://www.youtube.com/watch?v=hTkM_XPpFfU&amp;list=PL8hd9KDTdarDXf_Rxtr8meKhxtgcXMInh&amp;index=43">Wechaty ❤️ Google Season of Docs: Kick-off meeting with 20 Technical Writers!</a> is a good example. Because a meeting lasts a long time, when others watch the video, they can easily know from the image below that <strong>at 0:01:41 in the video, the content is Introducing the Meeting Agenda</strong>, and clicking <strong>0:01:41</strong> can quickly jump to that part of the video.</p>
+
+<p><img src="/assets/2021/06-the-wechaty-way-en/youtube-example.webp" alt="youtube-example" /></p>
+
+<p>After uploading the video, the host should publish a meeting blog post in the community and embed the video content, so this meeting can be archived and shared with any developer in the community.</p>
+
+<h3 id="meeting-blog">Meeting Blog</h3>
+
+<p>To ensure every meeting in the community has content documentation, a meeting blog is required after major meetings. <a href="#wechaty-blog-publishing-process-guide">Blog writing</a> will be introduced in the next section. A meeting blog should at least include the following content:</p>
+
+<ul>
+  <li>Meeting background introduction</li>
+  <li>Meeting group photo</li>
+  <li>Participants</li>
+  <li>Zoom meeting video</li>
+  <li>Meeting agenda (don’t paste the meeting agenda from Meeting Notes, but use the video segmentation links made in YouTube, which makes it convenient for readers to quickly watch the meeting content they are interested in)</li>
+</ul>
+
+<h4 id="meeting-blog-example">Meeting Blog Example</h4>
+
+<p>The Wechaty community organized a Google Season Of Docs Tech Writer meeting blog <a href="https://wechaty.js.org/2021/05/08/gsod-2021-selected-technical-writers/">Hello Wechaty GSoD’21 Technical Writers</a> is a good meeting blog case that completely includes the above requirements. People writing meeting blogs for the first time are advised to check out this case first.</p>
+
+<h2 id="wechaty-blog-publishing-process-guide">Wechaty Blog Publishing Process Guide</h2>
+
+<p>Anyone can publish a blog by submitting a PR under the <a href="https://github.com/wechaty/wechaty.js.org">wechaty.js.org</a> Repo.</p>
+
+<ul>
+  <li><a href="https://github.com/wechaty/wechaty.js.org#how-to-post-a-blog">How to post a Wechaty blog</a></li>
+  <li><a href="https://github.com/wechaty/wechaty.js.org#guidelines-for-writing-a-blog-post">Guidelines for writing a Wechaty blog</a></li>
+  <li><a href="https://github.com/wechaty/wechaty.js.org#how-to-run-tests">Test locally to ensure blog content has no issues</a></li>
+  <li><a href="https://github.com/wechaty/wechaty.js.org#how-to-preview-your-changes">Local preview</a></li>
+</ul>
+
+<h3 id="inserting-videos-in-blogs">Inserting Videos in Blogs</h3>
+
+<p>Below is a simple example of code for embedding videos in meeting blogs. Pass the video link as the src parameter of the <code class="language-plaintext highlighter-rouge">include</code> tag.</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>iframe.html<span class="w"> </span><span class="na">src</span><span class="o">=</span><span class="s2">"https://www.youtube.com/watch?v=hTkM_XPpFfU"</span><span class="w"> </span><span class="cp">%}</span>
+</code></pre></div></div>
+
+<p><a href="https://wechaty.js.org/contributors/univerone/">univerone</a> wrote a very detailed blog <a href="https://wechaty.js.org/2020/08/24/add-video-to-wechaty-blog/">Using jekyll include to quickly insert videos in wechaty blogs</a>, introducing how to elegantly insert videos in blogs. Interested students can also study the blog in depth.</p>
+
+<h3 id="beginners-guide-to-publishing-blogs">Beginner’s Guide to Publishing Blogs</h3>
+
+<p>If you are a complete beginner, you can refer to <a href="https://wechaty.js.org/contributors/atorber/">atorber</a>’s blog: <a href="https://wechaty.js.org/2021/04/22/how-to-publish-blog-on-wechaty/">Getting Started: How a Beginner Can Publish Their First Blog in the Wechaty Community (Part 1)</a>, which uses many screenshots to tell you step by step how to publish a Wechaty blog.</p>
+
+<h2 id="wechaty-issue-publishing-process-guide">Wechaty Issue Publishing Process Guide</h2>
+
+<p>The community hopes that any code problems are communicated through issues.</p>
+
+<p>We strongly oppose taking code screenshots or log screenshots and sending them directly to WeChat groups, asking everyone why it doesn’t work, or directly asking what error this is. A screenshot cannot provide comprehensive information, and is very unfavorable for archiving and disseminating to more developers. When you raise a valuable issue, you can actually greatly prevent other developers from stepping on the same pitfall.</p>
+
+<p>Of course, before publishing an issue, it is also strongly recommended that you search the issue list to see if someone else has already raised this issue, and maybe someone has even given a good solution.</p>
+
+<p>When publishing an issue, it is recommended to publish according to the issue template, which makes it easier for people in the community to provide you with better help. Issues are divided into 3 categories:</p>
+
+<h3 id="1-bug-report">1. Bug Report</h3>
+
+<p>Template content: <a href="https://github.com/wechaty/wechaty/blob/main/.github/ISSUE_TEMPLATE/wechaty-bug-report.md">Bug Report</a></p>
+
+<p>The most important thing in reporting a bug is <strong>reproduction</strong>. Only reproducible bugs can be solved. Specifically, you need to provide at least the following information:</p>
+
+<ul>
+  <li>Wechaty version number, which wechaty puppet was used, node version and operating system</li>
+  <li>Detailed description of this bug</li>
+  <li>Clear reproduction steps</li>
+  <li>Expected behavior after following your steps</li>
+  <li>Actual behavior after following your steps</li>
+  <li>Related complete logs</li>
+</ul>
+
+<h3 id="2-feature-request">2. Feature Request</h3>
+
+<p>Template content: <a href="https://github.com/wechaty/wechaty/blob/main/.github/ISSUE_TEMPLATE/wechaty-feature-request.md">Feature Request</a></p>
+
+<p>When you propose that the community should add a new feature, you need to describe in detail why it is needed and what you expect this requirement to look like specifically. The more detailed your description, the easier it is to get support from other developers. Requirements with more support from other developers are more likely to be given higher priority.</p>
+
+<h3 id="3-question">3. Question</h3>
+
+<p>Template content: <a href="https://github.com/wechaty/wechaty/blob/main/.github/ISSUE_TEMPLATE/wechaty-question.md">Question</a></p>
+
+<p>The community does not want you to ask questions in issues. The best way is to ask questions on <a href="https://stackoverflow.com/questions/tagged/wechaty">StackOverflow</a>.</p>
+
+<p>Wechaty Contributor <a href="https://stackoverflow.com/users/2125837/xpt">xpt</a> has over 10K reputation on StackOverflow. He specifically created a tag for wechaty, so you can see all questions about wechaty by searching for wechaty on StackOverflow. It is also recommended that developers ask questions on <a href="https://stackoverflow.com/questions/tagged/wechaty">StackOverflow</a> and tag them with wechaty, making it easy for other developers to search for related questions.</p>
+
+<h2 id="wechaty-pr-publishing-process-guide">Wechaty PR Publishing Process Guide</h2>
+
+<p>If you are not PR-ing a blog, before submitting a wechaty PR, you must create a new issue, clearly explain the problem you want to solve, and then send a PR linking the corresponding issue, so it is clear to everyone what problem your PR is solving, rather than just submitting a bunch of code.</p>
+
+<p>In addition, before submitting a PR, developers must follow the requirements of the PR template:</p>
+
+<ul>
+  <li>Clarify whether this is new feature development or a bug fix</li>
+  <li>Add test cases for this submission</li>
+  <li>Pass CI testing, displayed as GitHub Actions turning green</li>
+  <li>Complete CLA signing</li>
+  <li>Link related Issue links</li>
+</ul>
+
+<p><img src="/assets/2021/06-the-wechaty-way-en/pr.webp" alt="pr" /></p>
+
+<h2 id="wechaty-rfc">Wechaty RFC</h2>
+
+<p>If it is a relatively large proposal, it is recommended to first submit a proposal describing what you want to do, why you want to do this, what benefits it can bring, what the plan is, and analyze the pros and cons of alternative plans, etc. We will have you submit an Issue for discussion, and finally, based on the discussed proposal, start subsequent development.</p>
+
+<p>For example, this is a <a href="https://github.com/wechaty/wechaty/issues/1776">proposal</a> published by Wechaty Committer <a href="https://wechaty.js.org/contributors/windmemory/">Gaoyuan</a>:</p>
+
+<p><img src="/assets/2021/06-the-wechaty-way-en/rfc.webp" alt="rfc" /></p>
+
+<h2 id="advanced-understanding-the-apache-way-knowing-how-to-better-participate-in-open-source-projects">Advanced: Understanding The Apache Way, Knowing How to Better Participate in Open Source Projects</h2>
+
+<p>Finally, here I recommend a series of Apache Way materials to help you better understand the operation of open source projects, and welcome you to participate in community building in the Apache Way.</p>
+
+<h3 id="official-content">Official Content</h3>
+
+<ul>
+  <li><a href="http://incubator.apache.org/">Incubator address</a></li>
+  <li><a href="http://incubator.apache.org/cookbook/">Lifecycle</a></li>
+</ul>
+
+<h3 id="jiaruis-recommendations">Jiarui’s Recommendations</h3>
+
+<ul>
+  <li><a href="http://www.apache.org/foundation/">Apache Introduction</a></li>
+  <li><a href="http://apache.org/theapacheway/">What is The Apache Way, The Apache Way refers to Apache’s methods for managing and operating projects</a></li>
+  <li><a href="http://incubator.apache.org/whoweare.html#the_incubator_project_management_commitee_pmc">What is Incubator PMC</a></li>
+  <li><a href="https://selfserve.apache.org/">What is Infrastructure Team</a></li>
+  <li><a href="https://www.youtube.com/watch?v=TQwrH0PlpZg">Video - How the ASF Works and Its Value</a></li>
+  <li><a href="https://www.youtube.com/watch?v=hpAv54KIgK8">Video - How to Efficiently Manage Open Source Projects</a></li>
+</ul>
+
+<hr />
+
+<blockquote>
+  <p>本文也有<a href="/2021/06/23/the-wechaty-way/">中文版本</a>。</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#wechaty-way">wechaty-way</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#guide">guide</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ospp">ospp</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ospp-admin">ospp-admin</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ecosystem">ecosystem</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/lijiarui">
+                            <img class="rounded-circle" src="/assets/contributors/lijiarui/avatar-new.webp" alt="Jiarui LI (李佳芮)" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/lijiarui">Jiarui LI (李佳芮)</a> <span><a target="_blank" href="https://weibo.com/u/2175505900" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Co-Creator of Wechaty; 句子互动创始人 & CEO，微软人工智能最具价值专家 (AI MVP)
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/06/22/gsod-2021-fourth-meeting/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/06-gsod-2021-fourth-meeting/gsod-fourth-meeting.webp">  GSoD'21 Fourth Meeting</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/06/23/the-wechaty-way/"> Wechaty 社区开源协作最佳实践指南  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/06-the-wechaty-way-en/teaser.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

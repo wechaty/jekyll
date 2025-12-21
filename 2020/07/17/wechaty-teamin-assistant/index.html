@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      用 Wechaty 实现微信任务小助手（wechat teamin chat robot） | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>用 Wechaty 实现微信任务小助手（wechat teamin chat robot） | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="用 Wechaty 实现微信任务小助手（wechat teamin chat robot）" />
+<meta name="author" content="darkli" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This post is also available in English." />
+<meta property="og:description" content="This post is also available in English." />
+<link rel="canonical" href="https://wechaty.js.org/2020/07/17/wechaty-teamin-assistant/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/07/17/wechaty-teamin-assistant/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/07-wechaty-teamin-assistant-en/home-01.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-07-17T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/07-wechaty-teamin-assistant-en/home-01.webp" />
+<meta property="twitter:title" content="用 Wechaty 实现微信任务小助手（wechat teamin chat robot）" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"darkli"},"dateModified":"2020-07-17T00:00:00+00:00","datePublished":"2020-07-17T00:00:00+00:00","description":"This post is also available in English.","headline":"用 Wechaty 实现微信任务小助手（wechat teamin chat robot）","image":"https://wechaty.js.org/assets/2020/07-wechaty-teamin-assistant-en/home-01.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/07/17/wechaty-teamin-assistant/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"darkli"},"url":"https://wechaty.js.org/2020/07/17/wechaty-teamin-assistant/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">用 Wechaty 实现微信任务小助手（wechat teamin chat robot）</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/darkli">
+                            <img class="rounded-circle" src="/assets/contributors/darkli/avatar.webp" alt="darkli(李云军)" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/darkli">darkli(李云军)</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jul 17, 2020 · <span class="reading-time">
+  
+  
+    1 min read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/07-wechaty-teamin-assistant-en/home-01.webp" alt="用 Wechaty 实现微信任务小助手（wechat teamin chat robot）">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<blockquote>
+  <p>This post is also available in <a href="/2020/07/17/wechaty-teamin-assistant-en/">English</a>.</p>
+</blockquote>
+
+<p><a href="https://github.com/wechaty/wechaty"><img src="https://img.shields.io/badge/Powered%20By-Wechaty-green.svg#align=left&amp;display=inline&amp;height=20&amp;margin=%5Bobject%20Object%5D&amp;originHeight=20&amp;originWidth=132&amp;status=done&amp;style=none&amp;width=132" alt="PoweredBy" /></a>
+<a href="https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty"><img src="https://img.shields.io/badge/Wechaty-%E5%BC%80%E6%BA%90%E6%BF%80%E5%8A%B1%E8%AE%A1%E5%88%92-green.svg#align=left&amp;display=inline&amp;height=20&amp;margin=%5Bobject%20Object%5D&amp;originHeight=20&amp;originWidth=134&amp;status=done&amp;style=none&amp;width=134" alt="Wechaty" /></a></p>
+
+<h2 id="wechaty实现微信上的任务小助手">Wechaty实现微信上的任务小助手</h2>
+
+<h3 id="缘起">缘起</h3>
+
+<p>iphone自从增加了屏幕时间提醒以后，我惊奇的发现，现在一天有超过一半的时间都在看手机，而这么长的时间里面超过80%的时间在微信。。。<br />
+可能这是很多人日常生活的一个缩影，慢慢地我们会发现，生活重的各种点滴都开始会和微信关联起来。</p>
+
+<p>知道有Wechaty以后，我萌生了一个想法，是否可以在微信上做一个小助手，让她来帮我管理日常生活中的各种琐事呢？<br />
+当有什么需要做的事情，就直接告诉小助手，他帮忙记录下来，等到了时间就来提醒我，想想就很爽，比打开一个效率管理的App一字字输入日程安排要简单多了。<br />
+小助手也可以做的更拟人化一些，让我觉得就好像真的是自己的一个助理。</p>
+
+<h3 id="挑战">挑战</h3>
+
+<h4 id="设计思路">设计思路</h4>
+
+<p>其实结构比较简单，我想了一下，一个最简单的实现结构是这样的<br />
+<img src="/assets/2020/07-wechaty-teamin-assistant-en/structure.webp" alt="结构图" /></p>
+
+<p>怎么接入Wechat，实现微信消息的收发，这个官方文档已经说的很详细了，这里就不多说了。<br />
+针对任务助手这块，要实现通过小助手把任务添加进来，对话的意图分析和关键词获取是最核心的两个步骤</p>
+
+<p><strong>意图分析</strong><br />
+之前曾经对比过百度的UNIT、微软的Luis以及腾讯、讯飞的对话平台，效果最好的感觉还是微软的Luis，因此这里选择用他们的方案来做意图理解。</p>
+
+<p><strong>关键词获取</strong><br />
+在Luis的意图分析中可以通过Entity顺便挑选出一些想要的词汇，但这些对于添加一条任务来说，还是远远不够<br />
+和一般我们看到的客服对话不太一样，添加任务的对话场景是开放式的，因此常规的这种关键词获取并不能满足我们的要求<br />
+比如：</p>
+
+<ol>
+  <li>提醒我明天上午去开会</li>
+  <li>提醒我后台去出差</li>
+</ol>
+
+<p>这两句话中，提醒、时间词，这些都很好通过Entity挑选出来，比较难的是，任务的主题：开会、出差<br />
+任务主题的范围是开放式的，没有办法预料会有什么内容，也没有办法去限制，如果有一天小助手突然对你说，只能跟我说提醒你开会啊，那是一种什么样的心情。。。</p>
+
+<p>为了能够精准获取主题的内容，语法结构就派上用场了，具体怎么分析，不属于这篇Blog的范畴，就不详细说啦。<br />
+大致的思路是通过语法结构分析，找出用户表达内容的部分，去掉一些无用的词汇，就可以形成主题了，说起来很简单，做起来嘛，嘿嘿。。。</p>
+
+<p>嗯，大致的思路有了，开始搞一把。<br />
+基本逻辑是：</p>
+
+<ol>
+  <li>我发送语音、文字给微信</li>
+  <li>小助手通过Wechay接口获取我的信息，如果是语音，转成文字</li>
+  <li>将文字传送给Luis进行意图分析，同时获取一些简单的关键词：时间、地点、人物等</li>
+  <li>将句子进行句法分析，再抽取出任务的主题</li>
+  <li>形成业务逻辑，往数据库中记录任务</li>
+  <li>同时会有一个定时任务，定期检查任务是否到期，如果到期，通过Wechaty给我发送消息</li>
+</ol>
+
+<h4 id="效果尝试">效果尝试</h4>
+
+<p>由于任务主题的提取是一个非常难得事情，很难做到尽善尽美，不过常用的提醒任务都是没问题的，效果还是挺好的。<br />
+我们来看些例子：
+<img src="/assets/2020/07-wechaty-teamin-assistant-en/chat-01.webp" alt="聊天示例01" /></p>
+
+<p>在这里，向小助手提的要求是：<code class="language-plaintext highlighter-rouge">提醒我后天上午10点去三楼开会</code><br />
+在这句话中，<code class="language-plaintext highlighter-rouge">我</code>、<code class="language-plaintext highlighter-rouge">后天上午10点</code>，这两个关键词都可以在意图分析的时候，直接返回出来<br />
+按照前面说的，通过句法结构分析，我们发现，<code class="language-plaintext highlighter-rouge">我</code>、<code class="language-plaintext highlighter-rouge">后天上午10点去三楼开会</code>，都是<code class="language-plaintext highlighter-rouge">提醒</code>的宾语，
+通过这个可以抽取出主题：<code class="language-plaintext highlighter-rouge">去三楼开会</code><br />
+看起来是不是也不太难，嘿嘿。</p>
+
+<p>那咱们来个复杂的：
+<img src="/assets/2020/07-wechaty-teamin-assistant-en/chat-02.webp" alt="聊天示例02" /></p>
+
+<p>这次的话术是：
+<code class="language-plaintext highlighter-rouge">明天上午10点与客户开会，提醒一下小明下午3点之前把会议资料准备好</code></p>
+
+<p>这个结构就复杂了，在这里，<code class="language-plaintext highlighter-rouge">小明</code>是这件事情的负责人，
+同时这里有两个时间：<code class="language-plaintext highlighter-rouge">明天上午10点</code>，<code class="language-plaintext highlighter-rouge">下午3点之前</code>
+这句话的难点是：</p>
+
+<ol>
+  <li>判断<code class="language-plaintext highlighter-rouge">小明</code>是负责人</li>
+  <li>两个时间，<code class="language-plaintext highlighter-rouge">上午10点</code>是开会的正题，<code class="language-plaintext highlighter-rouge">下午3点之前</code>是需要准备资料的时间</li>
+  <li>得出主题：<code class="language-plaintext highlighter-rouge">与客户开会，把会议资料准备好</code>，不能有多余的无用的词</li>
+</ol>
+
+<p>具体怎么做，有兴趣的小伙伴可以自己研究研究，还是挺有意思的。</p>
+
+<h3 id="写在最后">写在最后</h3>
+
+<p>微信现在已经演变成了一个人和人之间的连接工具，对话慢慢会变成以后应用的主流，
+Wechaty的出现让我们进行类似这样的尝试有了新的机会，还是非常感谢Wechaty的作者们的辛勤努力的。
+可以畅想，未来一定会出现一个更加智能的对话小助手，它可以帮你解决身边各种复杂的问题，希望这一天能够早点到来，：）</p>
+
+<p>大家也可以加我们的小助手为好友，体验一下对话任务协作的功能，多多给我们提建议哦。</p>
+
+<p><img src="/assets/2020/07-wechaty-teamin-assistant-en/teamin-assistant.webp" alt="小助手二维码" /></p>
+
+<blockquote>
+  <p>作者: <a href="https://github.com/darkli">darkli</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#padplus">padplus</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#productivity">productivity</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#wechat-robot">wechat-robot</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#teamin">teamin</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#chatbot">chatbot</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#featured">featured</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/darkli">
+                            <img class="rounded-circle" src="/assets/contributors/darkli/avatar.webp" alt="darkli(李云军)" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/darkli">darkli(李云军)</a> </h5>
+						人机对话在任务协作领域的探索者
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/07/17/wechaty-teamin-assistant-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/07-wechaty-teamin-assistant-en/home-01.webp">  Implementing a WeChat Task Assistant with Wechaty</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/07/18/python-wechaty-groupchat-assistant-bot-en/"> Group Chat Assistant Bot based on python-wechaty  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/07-python-wechaty-groupchat-assistant-bot-en/header.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

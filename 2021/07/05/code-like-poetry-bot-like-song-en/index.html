@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Code Like Poetry, Bot Like Song - A Newbie's Adventure Journey Sparked by Wechaty | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Code Like Poetry, Bot Like Song - A Newbie’s Adventure Journey Sparked by Wechaty | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Code Like Poetry, Bot Like Song - A Newbie’s Adventure Journey Sparked by Wechaty" />
+<meta name="author" content="cixingguangming55555" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A heartfelt journey from late-night client calls to discovering Wechaty and building bots - told through the eyes of a self-described amateur who found passion in code." />
+<meta property="og:description" content="A heartfelt journey from late-night client calls to discovering Wechaty and building bots - told through the eyes of a self-described amateur who found passion in code." />
+<link rel="canonical" href="https://wechaty.js.org/2021/07/05/code-like-poetry-bot-like-song-en/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/07/05/code-like-poetry-bot-like-song-en/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/07-code-like-poetry-bot-like-song-en/cover.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-07-05T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/07-code-like-poetry-bot-like-song-en/cover.webp" />
+<meta property="twitter:title" content="Code Like Poetry, Bot Like Song - A Newbie’s Adventure Journey Sparked by Wechaty" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"cixingguangming55555"},"dateModified":"2021-07-05T00:00:00+00:00","datePublished":"2021-07-05T00:00:00+00:00","description":"A heartfelt journey from late-night client calls to discovering Wechaty and building bots - told through the eyes of a self-described amateur who found passion in code.","headline":"Code Like Poetry, Bot Like Song - A Newbie’s Adventure Journey Sparked by Wechaty","image":"https://wechaty.js.org/assets/2021/07-code-like-poetry-bot-like-song-en/cover.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/07/05/code-like-poetry-bot-like-song-en/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"cixingguangming55555"},"url":"https://wechaty.js.org/2021/07/05/code-like-poetry-bot-like-song-en/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#article">article</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Code Like Poetry, Bot Like Song - A Newbie's Adventure Journey Sparked by Wechaty</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/cixingguangming55555">
+                            <img class="rounded-circle" src="/assets/contributors/cixingguangming55555/avatar.webp" alt="老张学技术" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/cixingguangming55555">老张学技术</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jul 05, 2021 · <span class="reading-time">
+  
+  
+    7 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/07-code-like-poetry-bot-like-song-en/cover.webp" alt="Code Like Poetry, Bot Like Song - A Newbie's Adventure Journey Sparked by Wechaty">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<h2 id="preface">Preface</h2>
+
+<p>Short, line breaks, like poetry.
+In this world, besides the stacking of Chinese characters I love, there exists such a wonderful thing.
+It’s not by chance.
+It’s an unexpected encounter in life.
+More so, a lifetime’s joy!
+So, whenever I have free time, I pick up my fingers and feel the rhythm of my heart in short, broken lines.
+Of course, I’m naturally lazy - how could I become a geek? Looking up at the high mountain, my heart yearns for it, moving forward with trepidation, this is a kind of comfort for myself.</p>
+
+<p>Slow, winding, like a song.
+The journey doesn’t matter.
+The code doesn’t matter.
+When I first ran the desired result, the desk I slapped echoed……
+This is the most moving, most pleasant sound among the countless sounds I’ve heard, though no one sings it, it echoes in my heart!
+This is that guy called bot, through my fingertips, it occasionally croaks, and occasionally melodious……</p>
+
+<h2 id="origin">Origin</h2>
+
+<p>Seen Beijing at 4 AM…..
+Seen Chengdu at 5 AM…..
+This is Versailles-style writing, they say.
+I often must see, see you later, won’t leave without seeing - what kind of competition is this?</p>
+
+<p>Awareness must be high, execution must be thorough.
+Clients often tell me this. I remain silent.
+Then I start to think, what kind of awareness is high awareness, what kind of execution is thorough?</p>
+
+<p>The budding of this bot guy came from after several consecutive all-nighters, in a “cordial and friendly” atmosphere with the client, inspiration just burst out with a bang.
+The client patted my shoulder and said, Lao Zhang, TMD can you not bother me when there’s nothing wrong? I’ve been answering your midnight calls for so long, I’m almost customer service.
+I said, TMD I can not bother you, you tell me, when can I bother you?
+The client’s face bloomed into a flower, this is one of the most beautiful flowers I’ve seen.
+In our lifetime, some flowers really bloom beautifully.</p>
+
+<p>Information collection, priority sorting, time setting, sending mechanism.
+Round after round, the plan was finally finalized.
+The client smiled again, well, awareness is still sufficient, hurry up.</p>
+
+<p>Then in a friendly atmosphere, the subsequent journey really began.</p>
+
+<h2 id="journey">Journey</h2>
+
+<h3 id="one">One</h3>
+
+<p>I don’t have much affection for Baidu compared to Google.
+But I eventually gave in to Baidu. After all, she can also give me some of the tenderness I want (applause and parentheses should be here - don’t overthink it).
+GitHub is also often slow as a snail. Sometimes you have to endure - small impatience spoils great plans.
+I accept, I endure.
+I kept switching between Baidu and GitHub, exhausting: WeChat robot, wx robot, WeChat bot, wechat robot……
+Then I widened my eyes, concentrated, and in the familiar Chinese characters, I found nothing……
+That was August 2017.</p>
+
+<p>Hard work pays off for the devoted.
+After licking for a long time, heaven may inadvertently give you a surprise considering your mindless yet diligent effort (of course, a licker is always a licker, lickers must not forget their original intention).
+With my poor English and the persistence of a licker, I finally discovered:
+Wechaty!</p>
+
+<p>The most impressive sentence to me was: five lines of code can write a WeChat robot (it’s said to be six lines, but my impression has always been five lines, I naturally like five, look at my account and you’ll know, haha).
+You understand! That kind of ecstasy!
+You don’t understand? That kind of ecstasy!
+Anyway, I understand! There’s the heavy sound of desk-banging here, please don’t imitate, lest your wife give you an even heavier lion’s roar!</p>
+
+<p>Frankly speaking, when I saw a screen full of English, my heart actually wanted to curse: This TMD is all in English?! (TMD is Chinese characters, but don’t misinterpret, it means: quite cute).
+Then I bought a Tencent VPS (this is another kind of obsession, because of WeChat, I fell in love with all things Tencent, except games, and then abandoned all things Alibaba).
+Then various Baidu searches, various environment and code errors.
+TMD.
+Yes, quite cute.
+Reporting a problem for this Wechaty thing has such complex rules. I wore out fanyi.baidu.com before finally submitting the error information according to requirements.
+That was Aug 26, 2017. Why so clear? Because I copied it from an already closed issue.
+Then waiting for the great god……</p>
+
+<p>Then the code finally ran through.
+The robot’s first message: Hello World! Hello, Lao Zhang!</p>
+
+<h3 id="two">Two</h3>
+
+<p>The client and I began a very sweet time (everyone, don’t let your imagination run wild, be serious).
+But this friendly and cordial atmosphere was broken by two problems:
+Is it really okay to freeload from open source like this?
+Network security issues (data on internal network), need to close the port for transmitting data to Tencent VPS.</p>
+
+<p>The first problem is okay, freeload first, doesn’t everyone do this? So for the first problem, freeloading is still the way to go. As for future matters, it seems manageable.
+The second problem has no solution, only the strategy of delay.
+Then when delay was no longer possible, the client regretfully told me, we must have awareness, what must be closed must be closed, what must be executed thoroughly must be executed thoroughly without reservation.
+In the 2017 Lunar New Year, we executed thoroughly and shut down the WeChat robot based on Wechaty that was running quite happily.
+Regret, yes. Loss, even more!</p>
+
+<p>Then I used my spare time to start learning some knowledge related to WeChat bots.
+Time quickly came to 2019.
+The outbreak of the pandemic suddenly changed many things: the trajectory of the world, the trajectory of life. These were all incorporated into new operational rules.
+During the lockdown fighting the pandemic, I started thinking, can I make a bot myself?</p>
+
+<p>Perhaps I never thought about how risky such an idea was?
+The ignorant are fearless. Rather than saying it’s praise for a newbie, it’s more like a true portrait of a newbie.
+From then on, I’ve always maintained a lofty respect for countless newbies like me in this world. No other reason, I am such a newbie, we need such successive newbies (sinister smile).</p>
+
+<p>The adventure journey begins.
+Besides the courage of ignorance, I actually faced: Once you enter BOT it’s as deep as the sea, looking back you find baldness has grown.
+I started tinkering, Baidu, GitHub, newly discovered Bilibili, climbing over the wall to Google.
+Then, gradually, some things began to take their initial shape.
+That shape, I still can’t forget to this day.</p>
+
+<h2 id="winding-path">Winding Path</h2>
+
+<p>The initial version copied a lot of code, and learned superficially, so I never dared to let this code see the light of day.
+But still got quite a bit of attention.
+So while learning and tinkering, I started code refactoring. Finally mustered the courage to put this code on GitHub.
+For me, I still have inexplicable feelings about that courage.</p>
+
+<p>To this day, the situation is still winding, things are not yet achieved, progress is slow and the road is long, barely taking a small step.
+The path is like water, nothing more than this.
+And every sound about bot in moving forward is clear and loud, like a song, lasting for a long time.
+The journey is still long, the adventure continues, but my state of mind is surprisingly normal!</p>
+
+<h2 id="acknowledgments">Acknowledgments</h2>
+
+<p>To all selfless people! The true gods of this world should be you!
+To all persevering people! Your tireless figures moving forward are the best beacon!</p>
+
+<blockquote>
+  <p>Author: <a href="https://github.com/cixingguangming55555">cixingguangming55555</a>, Lao Zhang Learning Technology</p>
+</blockquote>
+
+<hr />
+
+<blockquote>
+  <p>Chinese version of this post: <a href="/2021/07/05/code-like-poetry-bot-like-song/">code like poetry bot like song</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#bot">bot</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/cixingguangming55555">
+                            <img class="rounded-circle" src="/assets/contributors/cixingguangming55555/avatar.webp" alt="老张学技术" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/cixingguangming55555">老张学技术</a> </h5>
+						good good study,day day up.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/07/02/how-to-publish-blog-on-wechaty/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/07-how-to-publish-blog-on-wechaty/homepage.webp">  零基础小白在Wechaty社区发表自己的第一篇博客</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/07/05/code-like-poetry-bot-like-song/"> code如诗，bot如歌，由Wechaty引发的一个小白冒险之旅  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/07-code-like-poetry-bot-like-song-en/cover.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

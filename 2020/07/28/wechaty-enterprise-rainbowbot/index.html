@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      wechaty-rainbowbot 基于Wechaty实现的企业业务系统与营销团队微信群之间通信的桥梁 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>wechaty-rainbowbot 基于Wechaty实现的企业业务系统与营销团队微信群之间通信的桥梁 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="wechaty-rainbowbot 基于Wechaty实现的企业业务系统与营销团队微信群之间通信的桥梁" />
+<meta name="author" content="cavoncheng" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Conversational RPA SDK for Chatbot Makers" />
+<meta property="og:description" content="Conversational RPA SDK for Chatbot Makers" />
+<link rel="canonical" href="https://wechaty.js.org/2020/07/28/wechaty-enterprise-rainbowbot/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/07/28/wechaty-enterprise-rainbowbot/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/wechaty-rainbowbot/rainbow.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-07-28T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/wechaty-rainbowbot/rainbow.webp" />
+<meta property="twitter:title" content="wechaty-rainbowbot 基于Wechaty实现的企业业务系统与营销团队微信群之间通信的桥梁" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"cavoncheng"},"dateModified":"2020-07-28T00:00:00+00:00","datePublished":"2020-07-28T00:00:00+00:00","description":"Conversational RPA SDK for Chatbot Makers","headline":"wechaty-rainbowbot 基于Wechaty实现的企业业务系统与营销团队微信群之间通信的桥梁","image":"https://wechaty.js.org/assets/2020/wechaty-rainbowbot/rainbow.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/07/28/wechaty-enterprise-rainbowbot/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"cavoncheng"},"url":"https://wechaty.js.org/2020/07/28/wechaty-enterprise-rainbowbot/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">wechaty-rainbowbot 基于Wechaty实现的企业业务系统与营销团队微信群之间通信的桥梁</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/cavoncheng">
+                            <img class="rounded-circle" src="/assets/contributors/cavoncheng/avatar.webp" alt="CavonCheng (程树)" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/cavoncheng">CavonCheng (程树)</a> <span><a target="_blank" href="https://weibo.com/u/1817428161" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jul 28, 2020 · <span class="reading-time">
+  
+  
+    2 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/wechaty-rainbowbot/rainbow.webp" alt="wechaty-rainbowbot 基于Wechaty实现的企业业务系统与营销团队微信群之间通信的桥梁">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p><a href="https://github.com/wechaty/wechaty"><img src="https://img.shields.io/badge/Powered%20By-Wechaty-green.svg" alt="Powered by Wechaty" /></a>
+<a href="https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty"><img src="https://img.shields.io/badge/Wechaty-开源激励计划-green.svg" alt="Wechaty开源激励计划" /></a></p>
+
+<h2 id="背景">背景</h2>
+
+<p>据我所知，大部分中小型公司，甚至某些传统大型销售公司，对销售团队的管理工作几乎依赖于微信、微信群，本人所处的公司也不例外。公司已有内部的web端业务数据系统，但是通常情况下数据只有发送到下级营销管理团队的微信群或者一线业务员的微信群中，才能发挥出相应的营销作用。</p>
+
+<h3 id="典型的场景">典型的场景</h3>
+
+<ul>
+  <li>
+    <p>每日评选销售精英团队Top10，在微信群中展示业绩数据（或者海报），并对销售欠佳的团队给予勉励，等等；</p>
+  </li>
+  <li>
+    <p>在某一销售阶段中，对达成业务目标的业务员，即时性地在微信群中给予祝贺（贺词或图文贺报）、奖励公示等。</p>
+  </li>
+</ul>
+
+<p>顺便说一句，熟悉微商行业的应该知道，微商团队把微信群管理营销发挥到了极致，最典型的是他们的“报单”场景，小伙伴开单后立即向团队群汇报，群内一阵庆贺、鼓励，不得不说，这样的操作对团队积极性的调动是最直接的，对维持团队开单活动率的正向效果明显。所以传统行业在走向微信群营销管理的时候，自然而然地也会选择这种“接地气”的营销方式。</p>
+
+<h3 id="痛点">痛点</h3>
+
+<p>大部分传统行业，这类工作是人工执行，甚至需要设立专职人员监控业务系统的数据情况，（尽量的）及时编辑文案，发送给相应的微信营销群或者个人。然而作为一个有程序猿背景的业务管理者，这样重复的人工浪费是我无法忍受的。为什么不能接入一个微信robot，把这些事务性的繁琐工作接管，自动执行从业务系统到微信群的发送工作呢。当然，痛点也是显而易见的：业务系统与团队微信群本身是相互独立地存在，两者之间缺少一个通信连接的桥梁。</p>
+
+<h3 id="关键需求">关键需求</h3>
+
+<p>外部的业务系统可以根据数据达成情况主动地向特定的微信群和个人发送消息。</p>
+
+<h3 id="关键实现">关键实现</h3>
+
+<p>微信robot要暴露外部通信接口，第三方系统能够通过调用接口，实现微信消息（图片、文字、视频、文件等）的发送。</p>
+
+<h2 id="结缘wechaty">结缘Wechaty</h2>
+
+<p>首先在微信robot实现框架的选型上，我也考察过多个开源项目，基本上都是基于web端协议的，而web协议存在诸多使用限制（许多up主的文章已经做过比较详细的解释，在此不在赘述），况且许多这类项目已经好几年没有update了，果断放弃。至于基于Hook的PC端协议解决方案，必须依赖于固定版本的windows微信客户端，考虑到我需要的是一个运行在Linux服务器上的长期稳定的API，这种方案也是不可取的。</p>
+
+<p>最后我发现了 <a href="https://github.com/wechaty">Wechaty</a> 这个项目，Wechaty的社区是目前我发现的最活跃的微信robot开源社区。该社区的主创人员还会经常举行线上分享会，把Wechaty的最新发展情况、以及Wechaty的新应用、新玩法介绍给大家，还会现场解答user/developer反馈的问题。也正是在后来的一次分享会的视频上，最后提问环节中<a href="https://github.com/Gcaufy">@Gcaufy</a>的问题解答，使我明确了Wechaty能够完美满足我的需求。</p>
+
+<p>另外，wechaty支持 iPad 协议，虽然需要付费获取 token，但是可以申请<a href="https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty#2免费Token参与开源激励计划">参与开源激励计划</a>来获取免费甚至长期有效的 token。</p>
+
+<blockquote>
+  <p>Wechaty 是一个开源的的个人号微信机器人接口，是一个使用 Typescript 构建的 Node.js  应用。支持多种微信接入方案，包括网页，ipad，ios，windows， android 等。同时支持 Linux, Windows,  Darwin(OSX/Mac) 和 Docker 多个平台。</p>
+</blockquote>
+
+<h2 id="搞起来">搞起来</h2>
+
+<p>为了避免重复制造轮子，我翻阅了不少已有的Wechaty项目，有基于爬虫+定时任务来实现外部系统与微信端通信的应用，但这与我的需求还是有区别的。我希望实现的是（理论上）任意时间点，外部系统主动调用接口与微信之间进行通信。最后决定自己动手搞起来，理论模型已经很清晰，一个最简单的实现结构是这样的：</p>
+
+<p><img src="/assets/2020/wechaty-rainbowbot/pic1.webp" alt="结构图" /></p>
+
+<p>RainbowBot作为中间通信桥梁，就像一弯<code class="language-plaintext highlighter-rouge">彩虹</code>，连接起远在天边的两个独立系统。</p>
+
+<h2 id="依赖">依赖</h2>
+
+<p>服务端基于 nodejs, koa, koa-jwt, multer</p>
+
+<ul>
+  <li>wechaty核心库 <a href="https://github.com/wechaty/wechaty">wechaty</a></li>
+  <li>wechaty的 ipad协议 <a href="https://github.com/wechaty/wechaty-puppet-padplus/">wechaty-puppet-padplus</a></li>
+</ul>
+
+<h2 id="实现逻辑">实现逻辑</h2>
+
+<ul>
+  <li>nodejs+koa启动服务端容器</li>
+  <li>Wechaty启动创建bot，并将bot注册到服务端全局</li>
+  <li>服务端监听外部POST请求，通过JWT进行身份验证</li>
+  <li>按照请求提供的消息内容、接收方等信息，调用bot发送消息</li>
+</ul>
+
+<h3 id="核心代码">核心代码</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">robot</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">// [roomTopics, contactNames, contents, file_box] - 请求端字段名必须一致</span>
+    <span class="c1">// 发送[多]文件消息</span>
+    <span class="na">sendFile</span><span class="p">:</span> <span class="k">async </span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">paths</span> <span class="o">=</span> <span class="kc">null</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="nx">paths</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">uploadFiles</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">next</span><span class="p">,</span> <span class="dl">'</span><span class="s1">file_box</span><span class="dl">'</span><span class="p">)</span>
+            <span class="kd">const</span> <span class="nx">roomTopics</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">roomTopics</span>
+            <span class="kd">const</span> <span class="nx">contactNames</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">contactNames</span>
+            <span class="kd">const</span> <span class="nx">fileBoxes</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">buildFileBoxes</span><span class="p">(</span><span class="nx">paths</span><span class="p">)</span>
+            <span class="kd">const</span> <span class="nx">sended</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">multiSend</span><span class="p">(</span><span class="nx">roomTopics</span><span class="p">,</span> <span class="nx">contactNames</span><span class="p">,</span> <span class="nx">fileBoxes</span><span class="p">)</span>
+            <span class="k">await</span> <span class="nf">delFiles</span><span class="p">(</span><span class="nx">paths</span><span class="p">)</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="nx">err</span>
+        <span class="p">}</span> <span class="k">finally</span><span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">paths</span><span class="p">)</span> <span class="k">await</span> <span class="nf">delFiles</span><span class="p">(</span><span class="nx">paths</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="c1">// 发送[多]文本消息</span>
+    <span class="na">sendText</span><span class="p">:</span> <span class="k">async </span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="kd">const</span> <span class="nx">roomTopics</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">roomTopics</span>
+            <span class="kd">const</span> <span class="nx">contactNames</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">contactNames</span>
+            <span class="kd">const</span> <span class="nx">contents</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">contents</span>
+            <span class="k">await</span> <span class="nf">multiSend</span><span class="p">(</span><span class="nx">roomTopics</span><span class="p">,</span> <span class="nx">contactNames</span><span class="p">,</span> <span class="nx">contents</span><span class="p">)</span>
+            <span class="nx">ctx</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="k">throw</span> <span class="nx">err</span> <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="c1">// 发送文本文件混合消息</span>
+    <span class="na">sendMix</span><span class="p">:</span> <span class="k">async </span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">await</span> <span class="nx">robot</span><span class="p">.</span><span class="nf">sendFile</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span>
+        <span class="k">await</span> <span class="nx">robot</span><span class="p">.</span><span class="nf">sendText</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>具体代码请参阅GitHub项目<a href="https://github.com/CavonCheng/rainbow-bot">RainbowBot</a></p>
+
+<h3 id="接入微信对话开放平台">接入微信对话开放平台</h3>
+
+<p>RainbowBot不只实现了系统与微信之间的通信，也扩展微信助理的能力，比如关键字问答能力。 7月16日中午WWC举办了线上分享会，句子互动联合创始人&amp;CTO <a href="https://github.com/windmemory">@高原</a>为我们分享了如何<a href="https://wechaty.github.io/wechaty-openai-agent/">用「Wechaty」和「微信对话开放平台」做个助理</a>，让我大开眼界。因为通过接入微信对话开放平台，能够将关键词判断逻辑与bot发消息模块解耦。其次更重要的一点是，接入了微信对话开放平台的AI能力，平台能够根据传入的用户消息，自动判断用户意图，从而响应指定的信息。</p>
+
+<p>因此，我在会后就立即为RainbowBot开通了微信对话平台API，并将关键词触发逻辑移接到平台端。高原先生也为我们封装好了Wechaty接入微信对话开放平台的插件<a href="https://github.com/wechaty/wechaty-weixin-openai">wechaty-weixin-openai</a> ，让我可以仅用少量的代码就能够快速的实现接入平台和机器人的对话逻辑的配置。</p>
+
+<p>在此推荐大家都看一下分享会的实况视频：<a href="https://www.bilibili.com/video/BV1LV411r756/">https://www.bilibili.com/video/BV1LV411r756/</a></p>
+
+<h2 id="本地运行">本地运行</h2>
+
+<ul>
+  <li>
+    <h3 id="克隆项目">克隆项目</h3>
+  </li>
+</ul>
+
+<pre><code class="language-Shell">git clone g https://github.com/CavonCheng/rainbow-bot
+cd rainbow-bot
+</code></pre>
+
+<ul>
+  <li>
+    <h3 id="安装依赖">安装依赖</h3>
+  </li>
+</ul>
+
+<pre><code class="language-Shell">npm install
+</code></pre>
+
+<ul>
+  <li>
+    <h3 id="修改配置">修改配置</h3>
+
+    <ol>
+      <li>修改<code class="language-plaintext highlighter-rouge">config/index.js</code> 文件，将里面的配置改为自己的。</li>
+      <li>修改<code class="language-plaintext highlighter-rouge">config/openai.js</code>、<code class="language-plaintext highlighter-rouge">config/puppet.js</code>，分别设置自己的微信对话开放平台 token和wechaty-puppet token。 <a href="https://openai.weixin.qq.com/">微信对话平台官网</a>，扫码登录提交开发者信息即可获得api token。</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="启动">启动</h3>
+
+<ul>
+  <li>
+    <h4 id="启动项目">启动项目</h4>
+  </li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node app
+</code></pre></div></div>
+
+<p>启动成功后终端会出现一个二维码，扫码登录即可。</p>
+
+<h2 id="感谢">感谢</h2>
+
+<p>感谢<a href="https://github.com/beclass/beclass">@beclass</a>的开源项目<a href="https://github.com/beclass/wxbot"><code class="language-plaintext highlighter-rouge">wxbot</code></a>，这是一套优秀的BS版微信robot后台管理系统，让我这枚nodejs全栈初级修炼者学习到了很多，受益匪浅。感谢<a href="https://wechaty.github.io/">Wechaty</a>团队提供微信机器人SDK，让开发者可以专注于业务代码。 感谢<a href="https://www.juzibot.com">句子互动</a>提供的pad协议版token。</p>
+
+<blockquote>
+  <p>Author: <a href="https://github.com/CavonCheng">@CavonCheng</a>
+Code: <a href="https://github.com/CavonCheng/rainbow-bot">@rainbow-bot</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#padplus">padplus</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#project">project</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#koa">koa</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#weixin-openai">weixin-openai</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#productivity">productivity</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/cavoncheng">
+                            <img class="rounded-circle" src="/assets/contributors/cavoncheng/avatar.webp" alt="CavonCheng (程树)" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/cavoncheng">CavonCheng (程树)</a> <span><a target="_blank" href="https://weibo.com/u/1817428161" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						保险管理行业从业者，Java攻城狮，python数据分析师，nodejs全栈修炼者
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/07/28/rae-oa-wechaty/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/rae-oa-wechaty/schecdule.webp">  Rae-oa系统微信群辅助机器人(rae-wechaty)</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/07/28/wechaty-puppet-douyin/"> 基于RPA封装的Wechaty接口下的抖音聊天机器人  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/10-wechaty-puppet-douyin-final-term-en/wechaty-puppet-douyin-logo.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      一个姑娘如何用6行代码写出微信聊天机器人 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>一个姑娘如何用6行代码写出微信聊天机器人 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="一个姑娘如何用6行代码写出微信聊天机器人" />
+<meta name="author" content="lijiarui" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="我一直和我的小伙伴在业余时间拍摄舞蹈教学视频，叫“舞哩”，原创了几百个视频，近千万的播放，所以就建了微信群来和粉丝交流。" />
+<meta property="og:description" content="我一直和我的小伙伴在业余时间拍摄舞蹈教学视频，叫“舞哩”，原创了几百个视频，近千万的播放，所以就建了微信群来和粉丝交流。" />
+<link rel="canonical" href="https://wechaty.js.org/2016/12/10/try-to-write-wexinrobot/" />
+<meta property="og:url" content="https://wechaty.js.org/2016/12/10/try-to-write-wexinrobot/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2016/12-try-to-write-wexinrobot-en/ruirui-dance.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-12-10T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2016/12-try-to-write-wexinrobot-en/ruirui-dance.webp" />
+<meta property="twitter:title" content="一个姑娘如何用6行代码写出微信聊天机器人" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"lijiarui"},"dateModified":"2016-12-10T00:00:00+00:00","datePublished":"2016-12-10T00:00:00+00:00","description":"我一直和我的小伙伴在业余时间拍摄舞蹈教学视频，叫“舞哩”，原创了几百个视频，近千万的播放，所以就建了微信群来和粉丝交流。","headline":"一个姑娘如何用6行代码写出微信聊天机器人","image":"https://wechaty.js.org/assets/2016/12-try-to-write-wexinrobot-en/ruirui-dance.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2016/12/10/try-to-write-wexinrobot/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"lijiarui"},"url":"https://wechaty.js.org/2016/12/10/try-to-write-wexinrobot/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#story">story</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">一个姑娘如何用6行代码写出微信聊天机器人</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/lijiarui">
+                            <img class="rounded-circle" src="/assets/contributors/lijiarui/avatar-new.webp" alt="Jiarui LI (李佳芮)" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/lijiarui">Jiarui LI (李佳芮)</a> <span><a target="_blank" href="https://weibo.com/u/2175505900" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Dec 10, 2016 · <span class="reading-time">
+  
+  
+    2 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2016/12-try-to-write-wexinrobot-en/ruirui-dance.webp" alt="一个姑娘如何用6行代码写出微信聊天机器人">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>我一直和我的小伙伴在业余时间拍摄舞蹈教学视频，叫“舞哩”，原创了几百个视频，近千万的播放，所以就建了微信群来和粉丝交流。</p>
+
+<p><img src="/assets/2016/12-try-to-write-wexinrobot-en/ruirui-dance.webp" alt="RuiRui" /></p>
+
+<h2 id="1-与微信机器人的结缘">1. 与微信机器人的结缘</h2>
+
+<p>当微信群超过100人以后，就必须要靠群主来手工拉人了，所以我在pad上注册了一个微信小号，让大家通过加小号进微信群，每天晚上9点，我登上这个小号，通过所有的好友请求，然后拉他们进来。有的时候会有几十个好友请求，我就先按一遍通过，然后用手机把这些新好友拍成照片，对照照片去通讯录里一个一个的找到这些好友，拉到微信群里。</p>
+
+<p>直到有一次我出国玩，觉得Pad太沉了就没有带，这意味着有10天无法处理微信小号，等我回来以后，我发现了一个非常悲剧的事情……大概100多个好友请求，仅仅只是拍下这些好友请求，我就得拍好几十张照片！</p>
+
+<p>这明明就是一些机械化的流水作业啊！这怎么能让一个程序员去完成呢？于是我开始梳理了我的需求，其实只有三个：</p>
+
+<ol>
+  <li>自动通过好友请求。</li>
+  <li>当我的粉丝和我微信聊天的时候，能通过关键词进行自动回复。毕竟问题80%都是一样的。</li>
+  <li>自动的把他们拉进群里。</li>
+</ol>
+
+<p>所以我在GitHub上找到了Wechaty，发现只要几十行代码，就可以满足我的需求。最主要的是，机械化的流水操作，机器人做的比人工要好很多。</p>
+
+<h2 id="2-一款简单的微信机器人框架介绍">2. 一款简单的微信机器人框架介绍</h2>
+
+<p>GitHub上与微信机器人相关的开源项目有很多，通过JavaScript、Electron、Go、Perl、Python等等都可以实现。</p>
+
+<p>因为我只对JavaScript比较熟悉，所以选择了Wechaty，他是使用Typescript进行编写的Node项目，是一个专门为个人微信号搭建的bot框架，使用Wechaty的API，只需要6行Javascript代码就可以搭建一个最简单的微信机器人，支持 Linux, Windows, Darwin(OSX/Mac) 和Docker。
+<img src="/assets/2017/lijiarui-write-bot-wechaty-pic.webp" alt="wechaty-pic" /></p>
+
+<p>我特别喜欢Wechaty的一点是，我不用关心任何实现逻辑，仅仅用JS写业务逻辑层面的事情，就可以了。当我把我需要做什么想清楚以后，JS实现起来，是非常简单便捷的。</p>
+
+<p>Wechaty基本的实现原理，是通过Chrome实时监听微信网页版的各类信息，然后将抓取的信息封装成接口，供开发者使用。 她有9个基本的事件，基本上涵盖了我们Web微信上的所有事件，分别是：</p>
+
+<ol>
+  <li>scan事件会在需要扫码登陆微信的被触发</li>
+  <li>login事件会在机器人成功登陆后被触发</li>
+  <li>logout事件会在机器人掉线以后被触发</li>
+  <li>message事件会在有新消息的时候被触发</li>
+  <li>error事件会在程序出现error的时候被触发</li>
+  <li>friend事件会在有好友请求的时候被触发</li>
+  <li>room-join事件会在有人加入群时被触发</li>
+  <li>room-leave事件会在群主移好友出群时被触发</li>
+  <li>room-topic事件会在群名称被修改时被触发</li>
+</ol>
+
+<p>另外，Wechaty将机器人、联系人、微信群、好友请求封装成类，分别是Wechaty、Contact、Message、和FriendRequest，这样我只要import这些包，就可以直接使用这些类里面的函数模拟微信的各种操作了。比如给指定的人发送消息，我只要用contact.say(‘hello’) 就可以了。Wechaty里面的函数名称起的非常人性化，使用JS进行业务逻辑编写的时候，读代码像和读英文文档一样流畅舒服。</p>
+
+<h2 id="3-如何安装wechaty">3. 如何安装Wechaty</h2>
+
+<p>安装Wechaty有两种方式：</p>
+
+<ol>
+  <li>Docker</li>
+  <li>NPM</li>
+</ol>
+
+<p>非常推荐使用Docker安装Wechaty，虽然我最开始是使用第二种方式，也正是因为我两种方式都试过，才会深深感慨出“Docker大法好” 。</p>
+
+<p>两种方式的安装—Docker和NPM 我在这里进行简单的介绍：</p>
+
+<h3 id="docker">Docker</h3>
+
+<p>安装Docker以后（可以点击这里查看如何安装docker），运行下面的命令，Wechaty就已经成功安装在电脑上了。</p>
+
+<p><code class="language-plaintext highlighter-rouge">docker run -ti --rm --volume="$(pwd)":/bot zixia/wechaty run demo</code></p>
+
+<p>首次运行以后会有如下的截图：
+<img src="/assets/2017/lijiarui-write-bot-docker-pull.webp" alt="docker-pull" /></p>
+
+<p>Docker会自动的将相关的包部署到电脑里面，安装成功后，以后再运行就会是如下的截图了：
+<img src="/assets/2017/lijiarui-write-bot-run-ding.webp" alt="run-ding" /></p>
+
+<p>Wechaty的编写者对这种特殊字体的热爱到疯狂的地步了，为了让大家了解的更清楚，我就把所有截图内容也就都放上来了。</p>
+
+<p>通常情况下，我会将这串命令alias给wechaty：</p>
+
+<p><code class="language-plaintext highlighter-rouge">alias wechaty='docker run -t -i --rm -e WECHATY_LOG="silly" --volume="$(pwd)":/bot zixia/wechaty:0.5.9’</code></p>
+
+<p>并加入-e WECHATY_LOG=”silly” 和后面的版本号：zixia/wechaty:0.5.9，然后这样运行：</p>
+
+<p><code class="language-plaintext highlighter-rouge">wechaty run demo</code></p>
+
+<p>-e WECHATY_LOG=”silly” 是为了把wechaty的系统日志都打印出来，方便发现问题和代码调试，zixia/wechaty:0.5.9 在后面加了版本号，因为作者经常更新代码，最近的代码偶尔会出问题，0.5.9是我认为相对比较稳定的版本。</p>
+
+<h3 id="npm">NPM</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">--save</span> wechaty
+node mybot.js
+</code></pre></div></div>
+
+<p>有以下几点值得注意的是：</p>
+
+<ol>
+  <li>Wechaty需要的Node版本最少在6以上，我现在在使用7。</li>
+  <li>有一些环境是需要安装Chromedriver的，根据版本不同，大家可能需要注意一下。</li>
+  <li>如果是在服务器上，需要到Script的脚本中，运行下xvfb.sh的脚本，为Chrome提供一个虚拟的运行环境，并根据运行后的提示，设置程序运行的环境变量。</li>
+  <li>同样可以设置WECHATY_LOG的值来打印系统日志：WECHATY_LOG=SILLY node mybot.js</li>
+</ol>
+
+<p>关于服务器的说明</p>
+
+<p>Wechaty依赖的很多包都在墙外，建议使用国外的VPS，我使用的是digitalocean 如果只是跑一个机器人服务的话，建议使2GB/2 CPUs 以上的配置，一个机器人服务会占用1G内存左右，如果配上swap的话，短期使用也可以。</p>
+
+<h2 id="4-如何使用wechaty">4. 如何使用wechaty</h2>
+
+<p>环境部署好以后下面6行代码，就可以成功的实现基础的bot功能：将微信机器人收到的所有消息打印出来：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import <span class="o">{</span> Wechaty <span class="o">}</span>  from <span class="s1">'wechaty'</span>
+
+Wechaty.instance<span class="o">()</span>
+.on<span class="o">(</span><span class="s1">'scan'</span>, <span class="o">(</span>url, code<span class="o">)</span> <span class="o">=&gt;</span> console.log<span class="o">(</span><span class="sb">`</span>Scan QR Code to login: <span class="k">${</span><span class="nv">code</span><span class="k">}</span><span class="se">\n</span><span class="k">${</span><span class="nv">url</span><span class="k">}</span><span class="sb">`</span><span class="o">))</span>
+.on<span class="o">(</span><span class="s1">'login'</span>,  user <span class="o">=&gt;</span> console.log<span class="o">(</span><span class="sb">`</span>User <span class="k">${</span><span class="nv">user</span><span class="p">.name()</span><span class="k">}</span> logined<span class="sb">`</span><span class="o">))</span>
+.on<span class="o">(</span><span class="s1">'message'</span>,  message <span class="o">=&gt;</span> console.log<span class="o">(</span><span class="sb">`</span>Message: <span class="k">${</span><span class="nv">message</span><span class="p">.content()</span><span class="k">}</span><span class="sb">`</span><span class="o">))</span>
+.init<span class="o">()</span>
+</code></pre></div></div>
+
+<p>下面对这段代码进行简单的介绍：</p>
+
+<ul>
+  <li>scan事件：两个返回值
+    <ul>
+      <li>code：返回了扫描的状态
+        <ul>
+          <li>0：初始状态</li>
+          <li>200：已经成功登陆</li>
+          <li>201：微信已经扫码，等待确认</li>
+          <li>408：等待微信扫码中</li>
+        </ul>
+      </li>
+      <li>url：登陆需要扫描的二维码图片的地址，你需要将这个url粘贴到浏览器中打开，进行扫码登陆</li>
+    </ul>
+  </li>
+  <li>login事件：返回的user，代表登陆的用户，返回的是一个Contact的类型，打印出来，是可以看到你当前登陆的用户昵称的。通过user.id()可以获取用户唯一id，user.name()可以获取用户的微信昵称，user.weixin()可以获取用户的微信号。</li>
+  <li>message事件：返回的是message，代表收到的消息，是一个Message类型。通过message.content()可以获取到消息的内容，message.from()可以获取到消息的发送者，返回的是一个Contact类型。</li>
+</ul>
+
+<p>以上只是一些简单的接口介绍，更多详细的接口文档可以点击查看：Wechaty的接口文档 接口文档还在更新中，如果希望更多接口，直接clone源码查看代码，你会发现很多惊喜好玩的小东西。</p>
+
+<p>除此之外，我还希望分享两个实用的Wechaty的工具：</p>
+
+<h3 id="qrcode-terminal">qrcode-terminal</h3>
+
+<p>仅仅把需要扫描的二维码图片作为链接打印在屏幕上，复制链接到浏览器中再去扫描，依然很麻烦，我更希望在terminal上直接扫描二维码登陆进来，这样才能到达demo中的炫酷效果，只需要两步：</p>
+
+<p>1.安装依赖包：</p>
+
+<p><code class="language-plaintext highlighter-rouge">npm install qrcode-terminal</code></p>
+
+<p>2.稍微修改下scan事件后的代码就可以了：</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">wechaty</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">code</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>  
+<span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="sr">/201|200/</span><span class="p">.</span><span class="nf">test</span><span class="p">(</span><span class="nc">String</span><span class="p">(</span><span class="nx">code</span><span class="p">))){</span>
+   <span class="kd">let</span> <span class="nx">loginUrl</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">\/</span><span class="sr">qrcode</span><span class="se">\/</span><span class="sr">/</span><span class="p">,</span> <span class="dl">'</span><span class="s1">/l/</span><span class="dl">'</span><span class="p">)</span>
+   <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">qrcode-terminal</span><span class="dl">'</span><span class="p">).</span><span class="nf">generate</span><span class="p">(</span><span class="nx">loginUrl</span><span class="p">)</span>  
+<span class="p">}</span>  
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">url</span><span class="p">}</span><span class="s2">\n[</span><span class="p">${</span><span class="nx">code</span><span class="p">}</span><span class="s2">] Scan QR Code in above url to login: `</span><span class="p">)</span>
+<span class="p">})</span>
+
+</code></pre></div></div>
+
+<h3 id="server酱">Server酱</h3>
+
+<p>虽然机器人可以稳定的跑在VPS中，但是网页版微信会经常把用户踢下线，所以我需要知道Wechaty的各种异常情况，有一个简单的第三方工具：Server酱，他是一个能从服务器推报警和日志到手机的工具，非常简单易操作：</p>
+
+<p>1.用GitHub账号登入后，获得一个SCKEY（在「发送消息」页面） 按照引导，点击“微信推送”，扫码关注“方糖”后即可完成绑定
+2.在login、logout、scan、和error事件触发后，将一些关键信息往 <a href="http://sc.ftqq.com/SCKEY.send">http://sc.ftqq.com/SCKEY.send</a> 发Get请求，我自己的微信里就收到消息了。</p>
+
+<p>这样，当我的机器人出现各种异常情况，我随时随地都可以知道，需要再扫码进入的时候，方糖这公众号就会把二维码推到我的手机上，我只要用机器人的微信扫码就可以了。</p>
+
+<p>恩，就是这样，我实现了闭着眼镜就可以拉人的美梦中。</p>
+
+<h2 id="5-后续">5. 后续</h2>
+
+<p>当我开始使用机器人做所有的重复操作的时候，对于加群的工作，我有了进一步的思考，比如我把很多微商拉入黑名单，他们再也无法进入我的微信群；另外我写了个功能，在微信群中加入了管理员功能，这样管理员即使不是群主，也可以把用户踢出微信群；有的时候脑洞大开，还会做个恶作剧，专门收集群友撤回信息，娱乐大众……</p>
+
+<p>忽然想起了一句话： “People should think, Bot should work”。 当机器能够帮助我们把机械化的工作完成之后，我们才会有更多的时间，思考真正有价值的事情。</p>
+
+<p>Wechaty解放了我的一些重复性工作，我也希望能为Wechaty做点什么，所以我现在在业余时间更新Wechaty的文档，有的时候也会分享一些我在使用Wechaty时候遇到的问题，希望帮助更多的人能够快速上手使用Wechaty。</p>
+
+<p>如果你对Wechaty感兴趣，希望一起交流，一起分享，共同学习，可以扫码添加”桔小秘”为好友，回复wechaty加入WECHATY DEVELOPERS’ HOME。也可以顺便体验下wechaty实现的小功能。</p>
+
+<p><img src="/assets/2017/lijiarui-write-bot-qr-code.webp" alt="qr-code" /></p>
+
+<hr />
+
+<blockquote>
+  <p>English version of this post: <a href="/2016/12/10/try-to-write-wexinrobot-en/">How a Girl Built a WeChat Chatbot with 6 Lines of Code</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#code">code</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/lijiarui">
+                            <img class="rounded-circle" src="/assets/contributors/lijiarui/avatar-new.webp" alt="Jiarui LI (李佳芮)" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/lijiarui">Jiarui LI (李佳芮)</a> <span><a target="_blank" href="https://weibo.com/u/2175505900" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Co-Creator of Wechaty; 句子互动创始人 & CEO，微软人工智能最具价值专家 (AI MVP)
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2016/12/10/try-to-write-wexinrobot-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2016/12-try-to-write-wexinrobot-en/ruirui-dance.webp">  How a Girl Built a WeChat Chatbot with 6 Lines of Code</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2017/01/01/getting-started-wechaty/"> Getting Started with Wechaty - Live Coding Tutorial  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2017/lijiarui-speech-nodejs.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

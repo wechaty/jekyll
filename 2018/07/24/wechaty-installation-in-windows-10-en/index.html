@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Installing Wechaty on Windows 10 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Installing Wechaty on Windows 10 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Installing Wechaty on Windows 10" />
+<meta name="author" content="kaffa" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A comprehensive guide to installing Wechaty on Windows 10 Home, covering common installation errors and solutions including Python 2.7, node-gyp, windows-build-tools, and puppeteer configuration." />
+<meta property="og:description" content="A comprehensive guide to installing Wechaty on Windows 10 Home, covering common installation errors and solutions including Python 2.7, node-gyp, windows-build-tools, and puppeteer configuration." />
+<link rel="canonical" href="https://wechaty.js.org/2018/07/24/wechaty-installation-in-windows-10-en/" />
+<meta property="og:url" content="https://wechaty.js.org/2018/07/24/wechaty-installation-in-windows-10-en/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2018/wechaty-installation-in-windows.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-07-24T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2018/wechaty-installation-in-windows.webp" />
+<meta property="twitter:title" content="Installing Wechaty on Windows 10" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"kaffa"},"dateModified":"2018-07-24T00:00:00+00:00","datePublished":"2018-07-24T00:00:00+00:00","description":"A comprehensive guide to installing Wechaty on Windows 10 Home, covering common installation errors and solutions including Python 2.7, node-gyp, windows-build-tools, and puppeteer configuration.","headline":"Installing Wechaty on Windows 10","image":"https://wechaty.js.org/assets/2018/wechaty-installation-in-windows.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2018/07/24/wechaty-installation-in-windows-10-en/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"kaffa"},"url":"https://wechaty.js.org/2018/07/24/wechaty-installation-in-windows-10-en/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#tutorial">tutorial</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Installing Wechaty on Windows 10</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/kaffa">
+                            <img class="rounded-circle" src="/assets/contributors/kaffa/avatar.webp" alt="kaffa" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/kaffa">kaffa</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jul 24, 2018 · <span class="reading-time">
+  
+  
+    9 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2018/wechaty-installation-in-windows.webp" alt="Installing Wechaty on Windows 10">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p><img src="/assets/2018/wechaty-installation-in-windows.webp" alt="Installing Wechaty on Windows 10" /></p>
+
+<p>Thanks to @huan @lijiarui for allowing me to share my experience installing Wechaty on the Windows 10 Home platform. I hope my documentation and analysis of the installation process can help others installing Wechaty on this platform.</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p><a href="https://github.com/wechaty/wechaty">Wechaty</a> is a conversational bot SDK that helps you implement a WeChat personal account with just 6 lines of JavaScript code. Using node technology, it supports Linux, Windows, macOS platforms and Docker containers. Its installation process is similar to other node packages: first <code class="language-plaintext highlighter-rouge">git clone</code> the source code, then use node’s npm command <code class="language-plaintext highlighter-rouge">npm install &amp; npm start</code> for out-of-the-box use. The official also provides a getting started case: Wechaty getting started. In China, you may encounter problems during the actual installation process due to certain software dependencies. This article documents errors that may occur during installation and their solutions. Detailed steps and explanations are described below:</p>
+
+<ul>
+  <li>Project address: <a href="https://github.com/wechaty/wechaty">Wechaty</a></li>
+  <li>Wechaty Getting Started: <a href="https://github.com/wechaty/wechaty-getting-started">Wechaty Getting Started</a></li>
+  <li>Wechaty Documentation: <a href="https://wechaty.js.org">Wechaty Documents</a></li>
+</ul>
+
+<h2 id="concepts">Concepts</h2>
+
+<ul>
+  <li><a href="https://github.com/wechaty/wechaty/wiki/Puppet">Puppet</a>: An abstract class containing bot conversation logic, part of Wechaty’s technical architecture. By inheriting and implementing the Puppet abstract class (protocol) components, you can implement broader logic related to contacts, messages/one-to-one conversations, groups/chat rooms/many-to-many conversations, etc. Puppet in Chinese means puppet/marionette, which is quite fitting here.</li>
+  <li><a href="https://www.npmjs.com/package/node-gyp">node-gyp</a>: A node package based on gyp for compiling node native extension modules, and gyp is a tool used in the Chromium project for cross-platform compilation. See <a href="https://github.com/nodejs/node-gyp#installation">installation documentation</a></li>
+  <li><a href="https://www.npmjs.com/package/windows-build-tools">windows-build-tools</a>: Node-packaged compilation tools for the Windows platform</li>
+  <li><a href="https://www.npmjs.com/package/node-expat">node-expat</a>: A node package based on libexpat for handling XML. libexpat is claimed to be the fastest XML parsing library, written in pure C language. Wechaty uses it to parse XML-based communications. See <a href="https://github.com/felixrieseberg/windows-build-tools">installation documentation</a></li>
+  <li><a href="https://www.python.org/downloads/">Python 2.7</a>: A timeless language; node-gyp depends on Python 2.7 for cross-platform compilation</li>
+  <li><a href="https://github.com/GoogleChrome/puppeteer">puppeteer</a>: Programmable Google Chrome, officially produced by the Google Chrome team.</li>
+  <li><a href="https://www.chromium.org/">Chromium</a>: puppeteer depends on a specific Chromium version. Chrome is open source Chromium + Google’s closed-source extension package.</li>
+</ul>
+
+<h2 id="installation-steps">Installation Steps</h2>
+
+<ol>
+  <li>
+    <p>Download Wechaty source code</p>
+  </li>
+  <li>
+    <p>Install Wechaty dependencies and configure</p>
+  </li>
+  <li>
+    <p>Start Wechaty</p>
+  </li>
+</ol>
+
+<h2 id="detailed-steps">Detailed Steps</h2>
+
+<h3 id="1-download-wechaty-source-code">1. Download Wechaty Source Code</h3>
+
+<p>First we create a source code directory. This article uses <code class="language-plaintext highlighter-rouge">D:\code</code>. If you use a different directory, make corresponding replacements in the following text. Let’s start with the getting started project, run the following commands to download and enter the project directory:</p>
+
+<div class="language-bat highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">git</span> <span class="kd">clone</span> <span class="kd">https</span>://github.com/lijiarui/wechaty<span class="na">-getting-started</span>.git
+<span class="nb">cd</span> <span class="kd">wechaty</span><span class="na">-getting-started
+</span></code></pre></div></div>
+
+<h3 id="2-install-wechaty-dependencies-and-configure">2. Install Wechaty Dependencies and Configure</h3>
+
+<p>First install node-v10.x.x. On Windows, using the official installation package is recommended. As of this writing, the <a href="https://nodejs.org/dist/v10.7.0/node-v10.7.0-x64.msi">latest 64-bit system installation package</a>. If network speed is insufficient, using Thunder downloader is recommended.</p>
+
+<p>Besides node-v10, Wechaty also depends on other software, and due to well-known network reasons, installing them won’t be very smooth.</p>
+
+<p>At this point, if you run npm install &amp; npm start, you’ll get the following error:</p>
+
+<div class="language-bat highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">Microsoft</span> <span class="kd">Windows</span> <span class="o">[</span><span class="kd">Version</span> <span class="m">10</span>.0.16299.492<span class="o">]</span>
+<span class="o">(</span><span class="kd">c</span><span class="o">)</span> <span class="m">2017</span> <span class="kd">Microsoft</span> <span class="kd">Corporation</span>. <span class="kd">All</span> <span class="kd">rights</span> <span class="kd">reserved</span>.
+
+<span class="kd">D</span>:\code&gt;cd <span class="kd">wechaty</span><span class="na">-getting-started
+
+</span><span class="kd">D</span>:\code\wechaty<span class="na">-getting-started</span><span class="o">&gt;</span><span class="kd">npm</span> <span class="kd">install</span>
+<span class="kd">npm</span> <span class="kd">notice</span> <span class="kd">created</span> <span class="kd">a</span> <span class="kd">lockfile</span> <span class="kd">as</span> <span class="kd">package</span><span class="na">-lock</span>.json. <span class="kd">You</span> <span class="kd">should</span> <span class="kd">commit</span> <span class="kd">this</span> <span class="kd">file</span>.
+<span class="kd">added</span> <span class="m">134</span> <span class="kd">packages</span> <span class="kd">from</span> <span class="m">94</span> <span class="kd">contributors</span> <span class="kd">and</span> <span class="kd">audited</span> <span class="m">324</span> <span class="kd">packages</span> <span class="k">in</span> <span class="m">22</span>.581s
+<span class="kd">found</span> <span class="m">0</span> <span class="kd">vulnerabilities</span>
+
+<span class="kd">D</span>:\code\wechaty<span class="na">-getting-started</span><span class="o">&gt;</span><span class="kd">npm</span> <span class="nb">start</span>
+
+<span class="o">&gt;</span> <span class="kd">wechaty</span><span class="na">-getting-started</span>@0.1.0 <span class="nb">start</span> <span class="kd">D</span>:\code\wechaty<span class="na">-getting-started
+</span><span class="o">&gt;</span> <span class="kd">node</span> <span class="kd">examples</span><span class="na">/starter-bot</span>.js
+
+<span class="m">01</span>:59:34 <span class="kd">INFO</span> <span class="kd">Wechaty</span> <span class="o">&lt;</span><span class="kd">default</span><span class="o">&gt;</span> <span class="nb">start</span><span class="o">()</span> <span class="kd">v0</span>.18.5 <span class="kd">is</span> <span class="kd">starting</span>...
+<span class="m">01</span>:59:34 <span class="kd">INFO</span> <span class="kd">Wechaty</span> <span class="kd">initPuppet</span><span class="o">()</span> <span class="kd">using</span> <span class="kd">puppet</span>: <span class="kd">default</span>
+<span class="m">01</span>:59:34 <span class="kd">INFO</span> <span class="kd">PuppetConfig</span> <span class="kd">installPuppet</span><span class="o">(</span><span class="kd">wechaty</span><span class="na">-puppet-puppeteer</span>@<span class="se">^0</span>.4.2<span class="o">)</span> <span class="kd">please</span> <span class="kd">wait</span> ...
+<span class="kd">npm</span>:
+<span class="o">&gt;</span> <span class="kd">node</span><span class="na">-expat</span>@2.3.16 <span class="kd">install</span> <span class="kd">D</span>:\code\wechaty<span class="na">-getting-started</span>\node_modules\wechaty\node_modules\node<span class="na">-expat
+</span><span class="o">&gt;</span> <span class="kd">node</span><span class="na">-gyp </span><span class="kd">rebuild</span>
+
+<span class="kd">npm</span>:
+<span class="kd">D</span>:\code\wechaty<span class="na">-getting-started</span>\node_modules\wechaty\node_modules\node<span class="na">-expat</span><span class="o">&gt;</span><span class="k">if</span> <span class="ow">not</span> <span class="ow">defined</span> <span class="kd">npm_config_node_gyp</span> <span class="o">(</span><span class="kd">node</span> <span class="s2">"D:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin\\..\..\node_modules\node-gyp\bin\node-gyp.js"</span> <span class="kd">rebuild</span> <span class="o">)</span>  <span class="k">else</span> <span class="o">(</span><span class="kd">node</span> <span class="s2">"D:\Program Files\nodejs\node_modules\npm\node_modules\node-gyp\bin\node-gyp.js"</span> <span class="kd">rebuild</span> <span class="o">)</span>
+
+<span class="kd">npm</span>: <span class="kd">gyp</span>
+<span class="kd">npm</span>:  <span class="kd">ERR</span><span class="err">!</span> <span class="kd">configure</span> <span class="kd">error</span>
+<span class="kd">gyp</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">stack</span> <span class="kd">Error</span>: <span class="kd">Can</span><span class="s1">'t find Python executable "C:\Python36\python.EXE", you can set the PYTHON env variable.
+gyp ERR</span><span class="err">!</span><span class="s1"> stack     at PythonFinder.failNoPython (D:\Program Files\nodejs\node_modules\npm\node_modules\node-gyp\lib\configure.js:483:19)
+gyp ERR</span><span class="err">!</span><span class="s1"> stack     at PythonFinder.&lt;anonymous&gt; (D:\Program Files\nodejs\node_modules\npm\node_modules\node-gyp\lib\configure.js:508:16)
+gyp ERR</span><span class="err">!</span><span class="s1"> stack     at D:\Program Files\nodejs\node_modules\npm\node_modules\graceful-fs\polyfills.js:284:29
+gyp ERR</span><span class="err">!</span><span class="s1"> stack     at FSReqWrap.oncomplete (fs.js:158:21)
+gyp ERR</span><span class="err">!</span><span class="s1"> System Windows_NT 10.0.16299
+
+npm: gyp ERR</span><span class="err">!</span><span class="s1"> command "D:\\Program Files\\nodejs\\node.exe" "D:\\Program Files\\nodejs\\node_modules\\npm\\node_modules\\node-gyp\\bin\\node-gyp.js" "rebuild"
+gyp ERR</span><span class="err">!</span><span class="s1"> cwd D:\code\wechaty-getting-started\node_modules\wechaty\node_modules\node-expat
+gyp ERR</span><span class="err">!</span><span class="s1"> node -v v10.7.0
+gyp ERR</span><span class="err">!</span><span class="s1"> node-gyp -v v3.6.2
+gyp ERR</span><span class="err">!</span><span class="s1"> not ok
+
+npm: npm WARN
+npm:  wechaty-puppet-puppeteer@0.4.2 requires a peer of brolog@</span><span class="se">^1</span><span class="s1">.6.5 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of file-box@</span><span class="se">^0</span><span class="s1">.8.22 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of hot-import@</span><span class="se">^0</span><span class="s1">.2.1 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of lru-cache@</span><span class="se">^4</span><span class="s1">.1.3 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of qr-image@</span><span class="se">^3</span><span class="s1">.2.0 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of promise-retry@</span><span class="se">^1</span><span class="s1">.1.1 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of rxjs@</span><span class="se">^6</span><span class="s1">.2.1 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of rx-queue@</span><span class="se">^0</span><span class="s1">.4.26 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of state-switch@</span><span class="se">^0</span><span class="s1">.6.2 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of watchdog@</span><span class="se">^0</span><span class="s1">.8.10 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of wechaty-puppet@</span><span class="se">^0</span><span class="s1">.6.4 but none is installed. You must install peer dependencies yourself.
+
+npm: npm ERR</span><span class="err">!</span><span class="s1">
+npm:  code ELIFECYCLE
+npm ERR</span><span class="err">!</span><span class="s1"> errno 1
+npm ERR</span><span class="err">!</span><span class="s1"> node-expat@2.3.16 install: `node-gyp rebuild`
+npm ERR</span><span class="err">!</span><span class="s1"> Exit status 1
+
+npm: npm ERR</span><span class="err">!</span><span class="s1">
+npm ERR</span><span class="err">!</span><span class="s1"> Failed at the node-expat@2.3.16 install script.
+npm ERR</span><span class="err">!</span><span class="s1"> This is probably not a problem with npm. There is likely additional logging output above.
+
+npm:
+npm
+npm:  ERR</span><span class="err">!</span><span class="s1"> A complete log of this run can be found in:
+npm ERR</span><span class="err">!</span><span class="s1">     C:\Users\username\AppData\Roaming\npm-cache\_logs\2018-07-22T17_59_53_633Z-debug.log
+</span></code></pre></div></div>
+
+<p>By reading the above log, the dependency relationship is analyzed as follows:</p>
+
+<div class="language-bat highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">wechaty</span><span class="na">-puppet-puppeteer
+    </span><span class="o">--&gt;</span> <span class="kd">node</span><span class="na">-expat
+        </span><span class="o">--&gt;</span> <span class="kd">node</span><span class="na">-gyp
+            </span><span class="o">--&gt;</span> <span class="kd">gyp</span>
+                <span class="o">--&gt;</span> <span class="kd">Python</span> <span class="m">2</span>.7 <span class="o">&amp;</span> <span class="kd">Windows</span> <span class="kd">Build</span> <span class="kd">Tools</span>
+</code></pre></div></div>
+
+<p>Next, we need to install from the bottom of the dependency chain</p>
+
+<p><strong>1. Install Python 2.7 to <code class="language-plaintext highlighter-rouge">C:\Python27\python.exe</code></strong>, set environment variable <code class="language-plaintext highlighter-rouge">PYTHON=C:\Python27\python.exe</code></p>
+
+<p>Note that node-gyp does not support Python 3.x. If you have Python 3.x installed, the error log looks like this:</p>
+
+<div class="language-bat highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">Can</span><span class="s1">'t find Python executable "C:\Python36\python.EXE", you can set the PYTHON env variable.
+</span></code></pre></div></div>
+
+<p>You may wonder about this existing Python 3 path. Personally, I think this inaccurate error message can be considered a bug in the npm package.</p>
+
+<h3 id="2-install-windows-build-tools">2. Install windows-build-tools</h3>
+
+<p>Referring to the windows-build-tools official documentation, there are two methods:</p>
+
+<ul>
+  <li>Visual C++ Build Tools</li>
+  <li>Visual Studio 2017 vs Visual Studio 2015</li>
+</ul>
+
+<p>Since I have already installed Visual Studio 2017 Community Edition, I didn’t try other options. The key here is needing a VC++ compiler to compile Windows native programs. Visual C++ Build Tools is no longer available at Microsoft’s official address and is not easy to find. npm officially recommends installing Visual Studio 2015. After installation, you can use <code class="language-plaintext highlighter-rouge">npm install node-expat</code> to verify if the above installation configuration was successful.</p>
+
+<p><strong>3. <a href="https://github.com/GoogleChrome/puppeteer">Install puppeteer</a></strong></p>
+
+<p>Due to network reasons, the Chromium that puppeteer depends on cannot be installed smoothly. At this time, we can use a special cnpm tool provided by Alibaba to install:</p>
+
+<div class="language-bat highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">npm</span> <span class="kd">install</span> <span class="na">-g </span><span class="kd">cnpm</span> <span class="na">--registry</span><span class="o">=</span><span class="kd">https</span>://registry.npm.taobao.org
+<span class="kd">cnpm</span> <span class="kd">install</span> <span class="kd">puppeteer</span>
+</code></pre></div></div>
+
+<p>PS: If you encounter “Chromium revision is not downloaded,” setting PUPPETEER_SKIP_CHROMIUM_DOWNLOAD in solutions you find is actually misleading. This option won’t help you install puppeteer, but rather lets you not download Chromium binary every time you update.</p>
+
+<p>There’s also a manual installation method, but not recommended: you can manually download the chromium installation package and place it in <code class="language-plaintext highlighter-rouge">/node_modules/puppeteer/.local-chromium/</code>, for example:</p>
+
+<div class="language-bat highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">D</span>:\code\wechaty<span class="na">-getting-started</span>\node_modules\_puppeteer@1.6.0@puppeteer\.local<span class="na">-chromium</span>\win64<span class="o">-</span><span class="m">571375</span>
+</code></pre></div></div>
+
+<p>This path on macOS is as follows, where the numbers may differ:</p>
+
+<div class="language-bat highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">~</span><span class="na">/node</span>_modules/puppeteer/.local<span class="na">-chromium/mac</span><span class="o">-</span><span class="m">526987</span><span class="na">/chrome-mac
+</span></code></pre></div></div>
+
+<h3 id="4-net-framework-451-windows-vista--7-only">4. .NET Framework 4.5.1 [Windows Vista / 7 only]</h3>
+
+<p>If using Windows Vista / 7, you need to manually install .Net Framework.</p>
+
+<p><strong>5. If using Wechaty with PadChat component and have the corresponding token, you also need to set the following environment variables:</strong></p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">WECHATY_LOG</span><span class="o">=</span>silly
+<span class="nv">WECHATY_PUPPET</span><span class="o">=</span>padchat
+<span class="nv">WECHATY_PUPPET_PADCHAT_TOKEN</span><span class="o">=</span><span class="k">*</span>YOUR-TOKEN<span class="k">*</span>
+</code></pre></div></div>
+
+<h3 id="3-start-wechaty">3. Start Wechaty</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> &amp; npm start
+</code></pre></div></div>
+
+<p>After running, the program will open a text QR code in the console window, with the QR code’s URL below it.</p>
+
+<p>If you encounter problems scanning the console text QR code, you can refer to my <a href="https://kaffa.im/a-story-about-text-qrcode.html">blog post about QR codes</a>.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>Since I successfully started the project, I haven’t configured it on Windows 7 systems or 32-bit machines, but the main issues should be similar. For solutions, I recommend checking the documentation for the software where errors occurred.</p>
+
+<p>Of course, if you encounter any other problems, feel free to contact me on <a href="https://github.com/kaffa">my Github</a>.</p>
+
+<hr />
+
+<blockquote>
+  <p>本文也有<a href="/2018/07/24/wechaty-installation-in-windows-10/">中文版本</a>。</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#windows">windows</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#install">install</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ecosystem">ecosystem</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/kaffa">
+                            <img class="rounded-circle" src="/assets/contributors/kaffa/avatar.webp" alt="kaffa" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/kaffa">kaffa</a> </h5>
+						a life-long learner / a Psychology, Astrology, Ancient Egyptian culture lover, also a coffee mocha lover.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2018/07/12/wechaty-new-release-version-0.18/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2018/huan-reduce-weight.webp">  Wechaty New Release Version v0.18: SLOC from 27,630 to 7,817</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2018/07/24/wechaty-installation-in-windows-10/"> Wechaty在windows10下的安装  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2018/wechaty-installation-in-windows.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

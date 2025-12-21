@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Wechaty在windows10下的安装 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Wechaty在windows10下的安装 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Wechaty在windows10下的安装" />
+<meta name="author" content="kaffa" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Conversational RPA SDK for Chatbot Makers" />
+<meta property="og:description" content="Conversational RPA SDK for Chatbot Makers" />
+<link rel="canonical" href="https://wechaty.js.org/2018/07/24/wechaty-installation-in-windows-10/" />
+<meta property="og:url" content="https://wechaty.js.org/2018/07/24/wechaty-installation-in-windows-10/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2018/wechaty-installation-in-windows.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-07-24T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2018/wechaty-installation-in-windows.webp" />
+<meta property="twitter:title" content="Wechaty在windows10下的安装" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"kaffa"},"dateModified":"2018-07-24T00:00:00+00:00","datePublished":"2018-07-24T00:00:00+00:00","description":"Conversational RPA SDK for Chatbot Makers","headline":"Wechaty在windows10下的安装","image":"https://wechaty.js.org/assets/2018/wechaty-installation-in-windows.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2018/07/24/wechaty-installation-in-windows-10/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"kaffa"},"url":"https://wechaty.js.org/2018/07/24/wechaty-installation-in-windows-10/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#tutorial">tutorial</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Wechaty在windows10下的安装</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/kaffa">
+                            <img class="rounded-circle" src="/assets/contributors/kaffa/avatar.webp" alt="kaffa" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/kaffa">kaffa</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jul 24, 2018 · <span class="reading-time">
+  
+  
+    19 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2018/wechaty-installation-in-windows.webp" alt="Wechaty在windows10下的安装">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p><img src="/assets/2018/wechaty-installation-in-windows.webp" alt="在 Windows 10 下安装 Wechaty" /></p>
+
+<p>感谢 @huan @lijiarui 让我在此分享我在 Windows 10 Home 平台安装 Wechaty 的经历，希望我对安装过程的记录和分析能帮助在此平台下安装 Wechaty 的人。</p>
+
+<h2 id="介绍">介绍</h2>
+
+<p><a href="https://github.com/wechaty/wechaty">Wechaty</a> 是一个对话机器人软件开发包，它可以帮你用 6 行 JavaScript 代码实现一个微信个人账号。由于使用 node 技术，它支持 Linux、Windows、macOS 平台和 Docker 容器。它的安装过程和其它 node 包类似，首先 <code class="language-plaintext highlighter-rouge">git clone</code> 源代码，再使用 node 的 npm 命令 <code class="language-plaintext highlighter-rouge">npm install &amp; npm start</code> 实现开箱即用，同时官方也提供了入门案例：Wechaty getting started。而在国内，实际安装过程中可能会因某些软件依赖的原因遇到问题，本文记录了安装过程中可能会出现的错误及解决办法，下面描述详细的步骤和说明：</p>
+
+<ul>
+  <li>项目地址: <a href="https://github.com/wechaty/wechaty">Wechaty</a></li>
+  <li>Wechaty 起步: <a href="https://github.com/wechaty/wechaty-getting-started">Wechaty Getting Started</a></li>
+  <li>Wechaty 文档: <a href="https://wechaty.js.org">Wechaty Documents</a></li>
+</ul>
+
+<h2 id="概念">概念</h2>
+
+<ul>
+  <li><a href="https://github.com/wechaty/wechaty/wiki/Puppet">Puppet</a>: 一个包含了机器人对话逻辑的抽象类，是 Wechaty 技术架构的一部分。继承实现 Puppet 抽象类（协议）的组件，即可实现更广泛的与联系人、消息/一对一对话、群组/聊天室/多对多对话等相关逻辑。Puppet 的中文是木偶，用在这里相当传神。</li>
+  <li><a href="https://www.npmjs.com/package/node-gyp">node-gyp</a>: 基于 gyp 编写的用来编译 node 本地扩展模块的 node 包，而 gpy 是 Chromium 项目上用于实现跨平台编译的工具。可参考 <a href="https://github.com/nodejs/node-gyp#installation">安装文档</a></li>
+  <li><a href="https://www.npmjs.com/package/windows-build-tools">windows-build-tools</a>: node 包装的 Windows 平台的编译工具</li>
+  <li><a href="https://www.npmjs.com/package/node-expat">node-expat</a>: 基于 libexpat 的用来处理 XML 的 node 包，libexpat 是一个号称最快的 XML 解析库，纯 C 语言编写。Wechaty 使用它解析基于 XML 的通讯。可参考 <a href="https://github.com/felixrieseberg/windows-build-tools">安装文档</a></li>
+  <li><a href="https://www.python.org/downloads/">Python 2.7</a>: 一门愈久弥新的语言，node-gyp 的依赖 Python 2.7 实现跨平台编译</li>
+  <li><a href="https://github.com/GoogleChrome/puppeteer">puppeteer</a>: 可编程的 Google Chrome， Google Chrome 团队官方出品。</li>
+  <li><a href="https://www.chromium.org/">Chromium</a>: puppeteer 依赖一个特定的 Chromium 版本，Chrome 就是 开源 Chromium + Google 开发的闭源的扩展包。</li>
+</ul>
+
+<h2 id="安装步骤">安装步骤</h2>
+
+<p>一、下载 Wechaty 源代码</p>
+
+<p>二、安装 Wechaty 依赖并配置</p>
+
+<p>三、启动 Wechaty</p>
+
+<h2 id="详细步骤">详细步骤</h2>
+
+<p>一、下载 Wechaty 源代码</p>
+
+<p>首先我们建立源代码目录，本文使用 <code class="language-plaintext highlighter-rouge">D:\code</code>。如果你使用了其他目录，在后文中作相应的替换即可。 让我们从入门项目开始，运行以下命令下载，并进入项目目录：</p>
+
+<div class="language-bat highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">git</span> <span class="kd">clone</span> <span class="kd">https</span>://github.com/lijiarui/wechaty<span class="na">-getting-started</span>.git
+<span class="nb">cd</span> <span class="kd">wechaty</span><span class="na">-getting-started
+</span></code></pre></div></div>
+
+<p>二、安装 Wechaty 依赖并配置</p>
+
+<p>首先安装 node-v10.x.x。在 Windows 下，推荐使用官方提供的安装包，截至本文 <a href="https://nodejs.org/dist/v10.7.0/node-v10.7.0-x64.msi">最新 64 位系统安装包</a>，如果网速不够，建议使用迅雷下载。</p>
+
+<p>除了 node-v10 ，Wechaty 也依赖其它软件，而由于众所周知的网络原因，安装它们并不会太顺利。</p>
+
+<p>此时，如果运行 npm install &amp; npm start，会报以下错误:</p>
+
+<div class="language-bat highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">Microsoft</span> <span class="kd">Windows</span> <span class="o">[</span>版本 <span class="m">10</span>.0.16299.492<span class="o">]</span>
+<span class="o">(</span><span class="kd">c</span><span class="o">)</span> <span class="m">2017</span> <span class="kd">Microsoft</span> <span class="kd">Corporation</span>。保留所有权利。
+
+<span class="kd">D</span>:\code&gt;cd <span class="kd">wechaty</span><span class="na">-getting-started
+
+</span><span class="kd">D</span>:\code\wechaty<span class="na">-getting-started</span><span class="o">&gt;</span><span class="kd">npm</span> <span class="kd">install</span>
+<span class="kd">npm</span> <span class="kd">notice</span> <span class="kd">created</span> <span class="kd">a</span> <span class="kd">lockfile</span> <span class="kd">as</span> <span class="kd">package</span><span class="na">-lock</span>.json. <span class="kd">You</span> <span class="kd">should</span> <span class="kd">commit</span> <span class="kd">this</span> <span class="kd">file</span>.
+<span class="kd">added</span> <span class="m">134</span> <span class="kd">packages</span> <span class="kd">from</span> <span class="m">94</span> <span class="kd">contributors</span> <span class="kd">and</span> <span class="kd">audited</span> <span class="m">324</span> <span class="kd">packages</span> <span class="k">in</span> <span class="m">22</span>.581s
+<span class="kd">found</span> <span class="m">0</span> <span class="kd">vulnerabilities</span>
+
+<span class="kd">D</span>:\code\wechaty<span class="na">-getting-started</span><span class="o">&gt;</span><span class="kd">npm</span> <span class="nb">start</span>
+
+<span class="o">&gt;</span> <span class="kd">wechaty</span><span class="na">-getting-started</span>@0.1.0 <span class="nb">start</span> <span class="kd">D</span>:\code\wechaty<span class="na">-getting-started
+</span><span class="o">&gt;</span> <span class="kd">node</span> <span class="kd">examples</span><span class="na">/starter-bot</span>.js
+
+<span class="m">01</span>:59:34 <span class="kd">INFO</span> <span class="kd">Wechaty</span> <span class="o">&lt;</span><span class="kd">default</span><span class="o">&gt;</span> <span class="nb">start</span><span class="o">()</span> <span class="kd">v0</span>.18.5 <span class="kd">is</span> <span class="kd">starting</span>...
+<span class="m">01</span>:59:34 <span class="kd">INFO</span> <span class="kd">Wechaty</span> <span class="kd">initPuppet</span><span class="o">()</span> <span class="kd">using</span> <span class="kd">puppet</span>: <span class="kd">default</span>
+<span class="m">01</span>:59:34 <span class="kd">INFO</span> <span class="kd">PuppetConfig</span> <span class="kd">installPuppet</span><span class="o">(</span><span class="kd">wechaty</span><span class="na">-puppet-puppeteer</span>@<span class="se">^0</span>.4.2<span class="o">)</span> <span class="kd">please</span> <span class="kd">wait</span> ...
+<span class="kd">npm</span>:
+<span class="o">&gt;</span> <span class="kd">node</span><span class="na">-expat</span>@2.3.16 <span class="kd">install</span> <span class="kd">D</span>:\code\wechaty<span class="na">-getting-started</span>\node_modules\wechaty\node_modules\node<span class="na">-expat
+</span><span class="o">&gt;</span> <span class="kd">node</span><span class="na">-gyp </span><span class="kd">rebuild</span>
+
+<span class="kd">npm</span>:
+<span class="kd">D</span>:\code\wechaty<span class="na">-getting-started</span>\node_modules\wechaty\node_modules\node<span class="na">-expat</span><span class="o">&gt;</span><span class="k">if</span> <span class="ow">not</span> <span class="ow">defined</span> <span class="kd">npm_config_node_gyp</span> <span class="o">(</span><span class="kd">node</span> <span class="s2">"D:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin\\..\..\node_modules\node-gyp\bin\node-gyp.js"</span> <span class="kd">rebuild</span> <span class="o">)</span>  <span class="k">else</span> <span class="o">(</span><span class="kd">node</span> <span class="s2">"D:\Program Files\nodejs\node_modules\npm\node_modules\node-gyp\bin\node-gyp.js"</span> <span class="kd">rebuild</span> <span class="o">)</span>
+
+<span class="kd">npm</span>: <span class="kd">gyp</span>
+<span class="kd">npm</span>:  <span class="kd">ERR</span><span class="err">!</span> <span class="kd">configure</span> <span class="kd">error</span>
+<span class="kd">gyp</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">stack</span> <span class="kd">Error</span>: <span class="kd">Can</span><span class="s1">'t find Python executable "C:\Python36\python.EXE", you can set the PYTHON env variable.
+gyp ERR</span><span class="err">!</span><span class="s1"> stack     at PythonFinder.failNoPython (D:\Program Files\nodejs\node_modules\npm\node_modules\node-gyp\lib\configure.js:483:19)
+gyp ERR</span><span class="err">!</span><span class="s1"> stack     at PythonFinder.&lt;anonymous&gt; (D:\Program Files\nodejs\node_modules\npm\node_modules\node-gyp\lib\configure.js:508:16)
+gyp ERR</span><span class="err">!</span><span class="s1"> stack     at D:\Program Files\nodejs\node_modules\npm\node_modules\graceful-fs\polyfills.js:284:29
+gyp ERR</span><span class="err">!</span><span class="s1"> stack     at FSReqWrap.oncomplete (fs.js:158:21)
+gyp ERR</span><span class="err">!</span><span class="s1"> System Windows_NT 10.0.16299
+
+npm: gyp ERR</span><span class="err">!</span><span class="s1"> command "D:\\Program Files\\nodejs\\node.exe" "D:\\Program Files\\nodejs\\node_modules\\npm\\node_modules\\node-gyp\\bin\\node-gyp.js" "rebuild"
+gyp ERR</span><span class="err">!</span><span class="s1"> cwd D:\code\wechaty-getting-started\node_modules\wechaty\node_modules\node-expat
+gyp ERR</span><span class="err">!</span><span class="s1"> node -v v10.7.0
+gyp ERR</span><span class="err">!</span><span class="s1"> node-gyp -v v3.6.2
+gyp ERR</span><span class="err">!</span><span class="s1"> not ok
+
+npm: npm WARN
+npm:  wechaty-puppet-puppeteer@0.4.2 requires a peer of brolog@</span><span class="se">^1</span><span class="s1">.6.5 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of file-box@</span><span class="se">^0</span><span class="s1">.8.22 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of hot-import@</span><span class="se">^0</span><span class="s1">.2.1 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of lru-cache@</span><span class="se">^4</span><span class="s1">.1.3 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of qr-image@</span><span class="se">^3</span><span class="s1">.2.0 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of promise-retry@</span><span class="se">^1</span><span class="s1">.1.1 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of rxjs@</span><span class="se">^6</span><span class="s1">.2.1 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of rx-queue@</span><span class="se">^0</span><span class="s1">.4.26 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of state-switch@</span><span class="se">^0</span><span class="s1">.6.2 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of watchdog@</span><span class="se">^0</span><span class="s1">.8.10 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of wechaty-puppet@</span><span class="se">^0</span><span class="s1">.6.4 but none is installed. You must install peer dependencies yourself.
+
+npm: npm ERR</span><span class="err">!</span><span class="s1">
+npm:  code ELIFECYCLE
+npm ERR</span><span class="err">!</span><span class="s1"> errno 1
+npm ERR</span><span class="err">!</span><span class="s1"> node-expat@2.3.16 install: `node-gyp rebuild`
+npm ERR</span><span class="err">!</span><span class="s1"> Exit status 1
+
+npm: npm ERR</span><span class="err">!</span><span class="s1">
+npm ERR</span><span class="err">!</span><span class="s1"> Failed at the node-expat@2.3.16 install script.
+npm ERR</span><span class="err">!</span><span class="s1"> This is probably not a problem with npm. There is likely additional logging output above.
+
+npm:
+npm
+npm:  ERR</span><span class="err">!</span><span class="s1"> A complete log of this run can be found in:
+npm ERR</span><span class="err">!</span><span class="s1">     C:\Users\username\AppData\Roaming\npm-cache\_logs\2018-07-22T17_59_53_633Z-debug.log
+
+01:59:53 ERR PupptConfig puppetResolver(default) install fail: Command failed: npm install wechaty-puppet-puppeteer@</span><span class="se">^0</span><span class="s1">.4.2
+gyp ERR</span><span class="err">!</span><span class="s1"> configure error
+gyp ERR</span><span class="err">!</span><span class="s1"> stack Error: Can'</span><span class="kd">t</span> <span class="nb">find</span> <span class="kd">Python</span> <span class="kd">executable</span> <span class="s2">"C:\Python36\python.EXE"</span><span class="o">,</span> <span class="kd">you</span> <span class="kd">can</span> <span class="kd">set</span> <span class="kd">the</span> <span class="kd">PYTHON</span> <span class="kd">env</span> <span class="kd">variable</span>.
+<span class="kd">gyp</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">stack</span>     <span class="nb">at</span> <span class="kd">PythonFinder</span>.failNoPython <span class="o">(</span><span class="kd">D</span>:\Program <span class="kd">Files</span>\nodejs\node_modules\npm\node_modules\node<span class="na">-gyp</span>\lib\configure.js:483:19<span class="o">)</span>
+<span class="kd">gyp</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">stack</span>     <span class="nb">at</span> <span class="kd">PythonFinder</span>.&lt;anonymous&gt; <span class="o">(</span><span class="kd">D</span>:\Program <span class="kd">Files</span>\nodejs\node_modules\npm\node_modules\node<span class="na">-gyp</span>\lib\configure.js:508:16<span class="o">)</span>
+<span class="kd">gyp</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">stack</span>     <span class="nb">at</span> <span class="kd">D</span>:\Program <span class="kd">Files</span>\nodejs\node_modules\npm\node_modules\graceful<span class="na">-fs</span>\polyfills.js:284:29
+<span class="kd">gyp</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">stack</span>     <span class="nb">at</span> <span class="kd">FSReqWrap</span>.oncomplete <span class="o">(</span><span class="kd">fs</span>.js:158:21<span class="o">)</span>
+<span class="kd">gyp</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">System</span> <span class="kd">Windows_NT</span> <span class="m">10</span>.0.16299
+<span class="kd">gyp</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">command</span> <span class="s2">"D:\\Program Files\\nodejs\\node.exe"</span> <span class="s2">"D:\\Program Files\\nodejs\\node_modules\\npm\\node_modules\\node-gyp\\bin\\node-gyp.js"</span> <span class="s2">"rebuild"</span>
+<span class="kd">gyp</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">cwd</span> <span class="kd">D</span>:\code\wechaty<span class="na">-getting-started</span>\node_modules\wechaty\node_modules\node<span class="na">-expat
+</span><span class="kd">gyp</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">node</span> <span class="na">-v </span><span class="kd">v10</span>.7.0
+<span class="kd">gyp</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">node</span><span class="na">-gyp -v </span><span class="kd">v3</span>.6.2
+<span class="kd">gyp</span> <span class="kd">ERR</span><span class="err">!</span> <span class="ow">not</span> <span class="kd">ok</span>
+<span class="kd">npm</span> <span class="kd">WARN</span> <span class="kd">wechaty</span><span class="na">-puppet-puppeteer</span>@0.4.2 <span class="kd">requires</span> <span class="kd">a</span> <span class="kd">peer</span> <span class="kd">of</span> <span class="kd">brolog</span>@<span class="se">^1</span>.6.5 <span class="kd">but</span> <span class="kd">none</span> <span class="kd">is</span> <span class="kd">installed</span>. <span class="kd">You</span> <span class="kd">must</span> <span class="kd">install</span> <span class="kd">peer</span> <span class="kd">dependencies</span> <span class="kd">yourself</span>.
+<span class="kd">npm</span> <span class="kd">WARN</span> <span class="kd">wechaty</span><span class="na">-puppet-puppeteer</span>@0.4.2 <span class="kd">requires</span> <span class="kd">a</span> <span class="kd">peer</span> <span class="kd">of</span> <span class="kd">file</span><span class="na">-box</span>@<span class="se">^0</span>.8.22 <span class="kd">but</span> <span class="kd">none</span> <span class="kd">is</span> <span class="kd">installed</span>. <span class="kd">You</span> <span class="kd">must</span> <span class="kd">install</span> <span class="kd">peer</span> <span class="kd">dependencies</span> <span class="kd">yourself</span>.
+<span class="kd">npm</span> <span class="kd">WARN</span> <span class="kd">wechaty</span><span class="na">-puppet-puppeteer</span>@0.4.2 <span class="kd">requires</span> <span class="kd">a</span> <span class="kd">peer</span> <span class="kd">of</span> <span class="kd">hot</span><span class="na">-import</span>@<span class="se">^0</span>.2.1 <span class="kd">but</span> <span class="kd">none</span> <span class="kd">is</span> <span class="kd">installed</span>. <span class="kd">You</span> <span class="kd">must</span> <span class="kd">install</span> <span class="kd">peer</span> <span class="kd">dependencies</span> <span class="kd">yourself</span>.
+<span class="kd">npm</span> <span class="kd">WARN</span> <span class="kd">wechaty</span><span class="na">-puppet-puppeteer</span>@0.4.2 <span class="kd">requires</span> <span class="kd">a</span> <span class="kd">peer</span> <span class="kd">of</span> <span class="kd">lru</span><span class="na">-cache</span>@<span class="se">^4</span>.1.3 <span class="kd">but</span> <span class="kd">none</span> <span class="kd">is</span> <span class="kd">installed</span>. <span class="kd">You</span> <span class="kd">must</span> <span class="kd">install</span> <span class="kd">peer</span> <span class="kd">dependencies</span> <span class="kd">yourself</span>.
+<span class="kd">npm</span> <span class="kd">WARN</span> <span class="kd">wechaty</span><span class="na">-puppet-puppeteer</span>@0.4.2 <span class="kd">requires</span> <span class="kd">a</span> <span class="kd">peer</span> <span class="kd">of</span> <span class="kd">qr</span><span class="na">-image</span>@<span class="se">^3</span>.2.0 <span class="kd">but</span> <span class="kd">none</span> <span class="kd">is</span> <span class="kd">installed</span>. <span class="kd">You</span> <span class="kd">must</span> <span class="kd">install</span> <span class="kd">peer</span> <span class="kd">dependencies</span> <span class="kd">yourself</span>.
+<span class="kd">npm</span> <span class="kd">WARN</span> <span class="kd">wechaty</span><span class="na">-puppet-puppeteer</span>@0.4.2 <span class="kd">requires</span> <span class="kd">a</span> <span class="kd">peer</span> <span class="kd">of</span> <span class="kd">promise</span><span class="na">-retry</span>@<span class="se">^1</span>.1.1 <span class="kd">but</span> <span class="kd">none</span> <span class="kd">is</span> <span class="kd">installed</span>. <span class="kd">You</span> <span class="kd">must</span> <span class="kd">install</span> <span class="kd">peer</span> <span class="kd">dependencies</span> <span class="kd">yourself</span>.
+<span class="kd">npm</span> <span class="kd">WARN</span> <span class="kd">wechaty</span><span class="na">-puppet-puppeteer</span>@0.4.2 <span class="kd">requires</span> <span class="kd">a</span> <span class="kd">peer</span> <span class="kd">of</span> <span class="kd">rxjs</span>@<span class="se">^6</span>.2.1 <span class="kd">but</span> <span class="kd">none</span> <span class="kd">is</span> <span class="kd">installed</span>. <span class="kd">You</span> <span class="kd">must</span> <span class="kd">install</span> <span class="kd">peer</span> <span class="kd">dependencies</span> <span class="kd">yourself</span>.
+<span class="kd">npm</span> <span class="kd">WARN</span> <span class="kd">wechaty</span><span class="na">-puppet-puppeteer</span>@0.4.2 <span class="kd">requires</span> <span class="kd">a</span> <span class="kd">peer</span> <span class="kd">of</span> <span class="kd">rx</span><span class="na">-queue</span>@<span class="se">^0</span>.4.26 <span class="kd">but</span> <span class="kd">none</span> <span class="kd">is</span> <span class="kd">installed</span>. <span class="kd">You</span> <span class="kd">must</span> <span class="kd">install</span> <span class="kd">peer</span> <span class="kd">dependencies</span> <span class="kd">yourself</span>.
+<span class="kd">npm</span> <span class="kd">WARN</span> <span class="kd">wechaty</span><span class="na">-puppet-puppeteer</span>@0.4.2 <span class="kd">requires</span> <span class="kd">a</span> <span class="kd">peer</span> <span class="kd">of</span> <span class="kd">state</span><span class="na">-switch</span>@<span class="se">^0</span>.6.2 <span class="kd">but</span> <span class="kd">none</span> <span class="kd">is</span> <span class="kd">installed</span>. <span class="kd">You</span> <span class="kd">must</span> <span class="kd">install</span> <span class="kd">peer</span> <span class="kd">dependencies</span> <span class="kd">yourself</span>.
+<span class="kd">npm</span> <span class="kd">WARN</span> <span class="kd">wechaty</span><span class="na">-puppet-puppeteer</span>@0.4.2 <span class="kd">requires</span> <span class="kd">a</span> <span class="kd">peer</span> <span class="kd">of</span> <span class="kd">watchdog</span>@<span class="se">^0</span>.8.10 <span class="kd">but</span> <span class="kd">none</span> <span class="kd">is</span> <span class="kd">installed</span>. <span class="kd">You</span> <span class="kd">must</span> <span class="kd">install</span> <span class="kd">peer</span> <span class="kd">dependencies</span> <span class="kd">yourself</span>.
+<span class="kd">npm</span> <span class="kd">WARN</span> <span class="kd">wechaty</span><span class="na">-puppet-puppeteer</span>@0.4.2 <span class="kd">requires</span> <span class="kd">a</span> <span class="kd">peer</span> <span class="kd">of</span> <span class="kd">wechaty</span><span class="na">-puppet</span>@<span class="se">^0</span>.6.4 <span class="kd">but</span> <span class="kd">none</span> <span class="kd">is</span> <span class="kd">installed</span>. <span class="kd">You</span> <span class="kd">must</span> <span class="kd">install</span> <span class="kd">peer</span> <span class="kd">dependencies</span> <span class="kd">yourself</span>.
+
+<span class="kd">npm</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">code</span> <span class="kd">ELIFECYCLE</span>
+<span class="kd">npm</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">errno</span> <span class="m">1</span>
+<span class="kd">npm</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">node</span><span class="na">-expat</span>@2.3.16 <span class="kd">install</span>: <span class="sb">`node-gyp rebuild`</span>
+<span class="kd">npm</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">Exit</span> <span class="kd">status</span> <span class="m">1</span>
+<span class="kd">npm</span> <span class="kd">ERR</span><span class="err">!</span>
+<span class="kd">npm</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">Failed</span> <span class="nb">at</span> <span class="kd">the</span> <span class="kd">node</span><span class="na">-expat</span>@2.3.16 <span class="kd">install</span> <span class="kd">script</span>.
+<span class="kd">npm</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">This</span> <span class="kd">is</span> <span class="kd">probably</span> <span class="ow">not</span> <span class="kd">a</span> <span class="kd">problem</span> <span class="kd">with</span> <span class="kd">npm</span>. <span class="kd">There</span> <span class="kd">is</span> <span class="kd">likely</span> <span class="kd">additional</span> <span class="kd">logging</span> <span class="kd">output</span> <span class="kd">above</span>.
+
+<span class="kd">npm</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">A</span> <span class="kd">complete</span> <span class="kd">log</span> <span class="kd">of</span> <span class="kd">this</span> <span class="nb">run</span> <span class="kd">can</span> <span class="kd">be</span> <span class="kd">found</span> <span class="k">in</span>:
+<span class="kd">npm</span> <span class="kd">ERR</span><span class="err">!</span>     <span class="kd">C</span>:\Users\username\AppData\Roaming\npm<span class="na">-cache</span>\_logs\2018<span class="o">-</span><span class="m">07</span><span class="o">-</span><span class="m">22</span><span class="kd">T17_59_53_633Z</span><span class="na">-debug</span>.log
+
+<span class="o">{</span> <span class="kd">Error</span>: <span class="kd">Command</span> <span class="kd">failed</span>: <span class="kd">npm</span> <span class="kd">install</span> <span class="kd">wechaty</span><span class="na">-puppet-puppeteer</span>@<span class="se">^0</span>.4.2
+<span class="kd">gyp</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">configure</span> <span class="kd">error</span>
+<span class="kd">gyp</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">stack</span> <span class="kd">Error</span>: <span class="kd">Can</span><span class="s1">'t find Python executable "C:\Python36\python.EXE", you can set the PYTHON env variable.
+gyp ERR</span><span class="err">!</span><span class="s1"> stack     at PythonFinder.failNoPython (D:\Program Files\nodejs\node_modules\npm\node_modules\node-gyp\lib\configure.js:483:19)
+gyp ERR</span><span class="err">!</span><span class="s1"> stack     at PythonFinder.&lt;anonymous&gt; (D:\Program Files\nodejs\node_modules\npm\node_modules\node-gyp\lib\configure.js:508:16)
+gyp ERR</span><span class="err">!</span><span class="s1"> stack     at D:\Program Files\nodejs\node_modules\npm\node_modules\graceful-fs\polyfills.js:284:29
+gyp ERR</span><span class="err">!</span><span class="s1"> stack     at FSReqWrap.oncomplete (fs.js:158:21)
+gyp ERR</span><span class="err">!</span><span class="s1"> System Windows_NT 10.0.16299
+gyp ERR</span><span class="err">!</span><span class="s1"> command "D:\\Program Files\\nodejs\\node.exe" "D:\\Program Files\\nodejs\\node_modules\\npm\\node_modules\\node-gyp\\bin\\node-gyp.js" "rebuild"
+gyp ERR</span><span class="err">!</span><span class="s1"> cwd D:\code\wechaty-getting-started\node_modules\wechaty\node_modules\node-expat
+gyp ERR</span><span class="err">!</span><span class="s1"> node -v v10.7.0
+gyp ERR</span><span class="err">!</span><span class="s1"> node-gyp -v v3.6.2
+gyp ERR</span><span class="err">!</span><span class="s1"> not ok
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of brolog@</span><span class="se">^1</span><span class="s1">.6.5 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of file-box@</span><span class="se">^0</span><span class="s1">.8.22 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of hot-import@</span><span class="se">^0</span><span class="s1">.2.1 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of lru-cache@</span><span class="se">^4</span><span class="s1">.1.3 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of qr-image@</span><span class="se">^3</span><span class="s1">.2.0 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of promise-retry@</span><span class="se">^1</span><span class="s1">.1.1 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of rxjs@</span><span class="se">^6</span><span class="s1">.2.1 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of rx-queue@</span><span class="se">^0</span><span class="s1">.4.26 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of state-switch@</span><span class="se">^0</span><span class="s1">.6.2 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of watchdog@</span><span class="se">^0</span><span class="s1">.8.10 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of wechaty-puppet@</span><span class="se">^0</span><span class="s1">.6.4 but none is installed. You must install peer dependencies yourself.
+
+npm ERR</span><span class="err">!</span><span class="s1"> code ELIFECYCLE
+npm ERR</span><span class="err">!</span><span class="s1"> errno 1
+npm ERR</span><span class="err">!</span><span class="s1"> node-expat@2.3.16 install: `node-gyp rebuild`
+npm ERR</span><span class="err">!</span><span class="s1"> Exit status 1
+npm ERR</span><span class="err">!</span><span class="s1">
+npm ERR</span><span class="err">!</span><span class="s1"> Failed at the node-expat@2.3.16 install script.
+npm ERR</span><span class="err">!</span><span class="s1"> This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR</span><span class="err">!</span><span class="s1"> A complete log of this run can be found in:
+npm ERR</span><span class="err">!</span><span class="s1">     C:\Users\username\AppData\Roaming\npm-cache\_logs\2018-07-22T17_59_53_633Z-debug.log
+
+    at ChildProcess.exithandler (child_process.js:291:12)
+    at ChildProcess.emit (events.js:182:13)
+    at ChildProcess.EventEmitter.emit (domain.js:442:20)
+    at maybeClose (internal/child_process.js:961:16)
+    at Process.ChildProcess._handle.onexit (internal/child_process.js:248:5)
+killed: false,
+code: 1,
+signal: null,
+cmd: '</span><span class="kd">npm</span> <span class="kd">install</span> <span class="kd">wechaty</span><span class="na">-puppet-puppeteer</span>@<span class="se">^0</span>.4.2 <span class="s1">' }
+01:59:53 ERR Wechaty start() exception: Command failed: npm install wechaty-puppet-puppeteer@</span><span class="se">^0</span><span class="s1">.4.2
+gyp ERR</span><span class="err">!</span><span class="s1"> configure error
+gyp ERR</span><span class="err">!</span><span class="s1"> stack Error: Can'</span><span class="kd">t</span> <span class="nb">find</span> <span class="kd">Python</span> <span class="kd">executable</span> <span class="s2">"C:\Python36\python.EXE"</span><span class="o">,</span> <span class="kd">you</span> <span class="kd">can</span> <span class="kd">set</span> <span class="kd">the</span> <span class="kd">PYTHON</span> <span class="kd">env</span> <span class="kd">variable</span>.
+<span class="kd">gyp</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">stack</span>     <span class="nb">at</span> <span class="kd">PythonFinder</span>.failNoPython <span class="o">(</span><span class="kd">D</span>:\Program <span class="kd">Files</span>\nodejs\node_modules\npm\node_modules\node<span class="na">-gyp</span>\lib\configure.js:483:19<span class="o">)</span>
+<span class="kd">gyp</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">stack</span>     <span class="nb">at</span> <span class="kd">PythonFinder</span>.&lt;anonymous&gt; <span class="o">(</span><span class="kd">D</span>:\Program <span class="kd">Files</span>\nodejs\node_modules\npm\node_modules\node<span class="na">-gyp</span>\lib\configure.js:508:16<span class="o">)</span>
+<span class="kd">gyp</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">stack</span>     <span class="nb">at</span> <span class="kd">D</span>:\Program <span class="kd">Files</span>\nodejs\node_modules\npm\node_modules\graceful<span class="na">-fs</span>\polyfills.js:284:29
+<span class="kd">gyp</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">stack</span>     <span class="nb">at</span> <span class="kd">FSReqWrap</span>.oncomplete <span class="o">(</span><span class="kd">fs</span>.js:158:21<span class="o">)</span>
+<span class="kd">gyp</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">System</span> <span class="kd">Windows_NT</span> <span class="m">10</span>.0.16299
+<span class="kd">gyp</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">command</span> <span class="s2">"D:\\Program Files\\nodejs\\node.exe"</span> <span class="s2">"D:\\Program Files\\nodejs\\node_modules\\npm\\node_modules\\node-gyp\\bin\\node-gyp.js"</span> <span class="s2">"rebuild"</span>
+<span class="kd">gyp</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">cwd</span> <span class="kd">D</span>:\code\wechaty<span class="na">-getting-started</span>\node_modules\wechaty\node_modules\node<span class="na">-expat
+</span><span class="kd">gyp</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">node</span> <span class="na">-v </span><span class="kd">v10</span>.7.0
+<span class="kd">gyp</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">node</span><span class="na">-gyp -v </span><span class="kd">v3</span>.6.2
+<span class="kd">gyp</span> <span class="kd">ERR</span><span class="err">!</span> <span class="ow">not</span> <span class="kd">ok</span>
+<span class="kd">npm</span> <span class="kd">WARN</span> <span class="kd">wechaty</span><span class="na">-puppet-puppeteer</span>@0.4.2 <span class="kd">requires</span> <span class="kd">a</span> <span class="kd">peer</span> <span class="kd">of</span> <span class="kd">brolog</span>@<span class="se">^1</span>.6.5 <span class="kd">but</span> <span class="kd">none</span> <span class="kd">is</span> <span class="kd">installed</span>. <span class="kd">You</span> <span class="kd">must</span> <span class="kd">install</span> <span class="kd">peer</span> <span class="kd">dependencies</span> <span class="kd">yourself</span>.
+<span class="kd">npm</span> <span class="kd">WARN</span> <span class="kd">wechaty</span><span class="na">-puppet-puppeteer</span>@0.4.2 <span class="kd">requires</span> <span class="kd">a</span> <span class="kd">peer</span> <span class="kd">of</span> <span class="kd">file</span><span class="na">-box</span>@<span class="se">^0</span>.8.22 <span class="kd">but</span> <span class="kd">none</span> <span class="kd">is</span> <span class="kd">installed</span>. <span class="kd">You</span> <span class="kd">must</span> <span class="kd">install</span> <span class="kd">peer</span> <span class="kd">dependencies</span> <span class="kd">yourself</span>.
+<span class="kd">npm</span> <span class="kd">WARN</span> <span class="kd">wechaty</span><span class="na">-puppet-puppeteer</span>@0.4.2 <span class="kd">requires</span> <span class="kd">a</span> <span class="kd">peer</span> <span class="kd">of</span> <span class="kd">hot</span><span class="na">-import</span>@<span class="se">^0</span>.2.1 <span class="kd">but</span> <span class="kd">none</span> <span class="kd">is</span> <span class="kd">installed</span>. <span class="kd">You</span> <span class="kd">must</span> <span class="kd">install</span> <span class="kd">peer</span> <span class="kd">dependencies</span> <span class="kd">yourself</span>.
+<span class="kd">npm</span> <span class="kd">WARN</span> <span class="kd">wechaty</span><span class="na">-puppet-puppeteer</span>@0.4.2 <span class="kd">requires</span> <span class="kd">a</span> <span class="kd">peer</span> <span class="kd">of</span> <span class="kd">lru</span><span class="na">-cache</span>@<span class="se">^4</span>.1.3 <span class="kd">but</span> <span class="kd">none</span> <span class="kd">is</span> <span class="kd">installed</span>. <span class="kd">You</span> <span class="kd">must</span> <span class="kd">install</span> <span class="kd">peer</span> <span class="kd">dependencies</span> <span class="kd">yourself</span>.
+<span class="kd">npm</span> <span class="kd">WARN</span> <span class="kd">wechaty</span><span class="na">-puppet-puppeteer</span>@0.4.2 <span class="kd">requires</span> <span class="kd">a</span> <span class="kd">peer</span> <span class="kd">of</span> <span class="kd">qr</span><span class="na">-image</span>@<span class="se">^3</span>.2.0 <span class="kd">but</span> <span class="kd">none</span> <span class="kd">is</span> <span class="kd">installed</span>. <span class="kd">You</span> <span class="kd">must</span> <span class="kd">install</span> <span class="kd">peer</span> <span class="kd">dependencies</span> <span class="kd">yourself</span>.
+<span class="kd">npm</span> <span class="kd">WARN</span> <span class="kd">wechaty</span><span class="na">-puppet-puppeteer</span>@0.4.2 <span class="kd">requires</span> <span class="kd">a</span> <span class="kd">peer</span> <span class="kd">of</span> <span class="kd">promise</span><span class="na">-retry</span>@<span class="se">^1</span>.1.1 <span class="kd">but</span> <span class="kd">none</span> <span class="kd">is</span> <span class="kd">installed</span>. <span class="kd">You</span> <span class="kd">must</span> <span class="kd">install</span> <span class="kd">peer</span> <span class="kd">dependencies</span> <span class="kd">yourself</span>.
+<span class="kd">npm</span> <span class="kd">WARN</span> <span class="kd">wechaty</span><span class="na">-puppet-puppeteer</span>@0.4.2 <span class="kd">requires</span> <span class="kd">a</span> <span class="kd">peer</span> <span class="kd">of</span> <span class="kd">rxjs</span>@<span class="se">^6</span>.2.1 <span class="kd">but</span> <span class="kd">none</span> <span class="kd">is</span> <span class="kd">installed</span>. <span class="kd">You</span> <span class="kd">must</span> <span class="kd">install</span> <span class="kd">peer</span> <span class="kd">dependencies</span> <span class="kd">yourself</span>.
+<span class="kd">npm</span> <span class="kd">WARN</span> <span class="kd">wechaty</span><span class="na">-puppet-puppeteer</span>@0.4.2 <span class="kd">requires</span> <span class="kd">a</span> <span class="kd">peer</span> <span class="kd">of</span> <span class="kd">rx</span><span class="na">-queue</span>@<span class="se">^0</span>.4.26 <span class="kd">but</span> <span class="kd">none</span> <span class="kd">is</span> <span class="kd">installed</span>. <span class="kd">You</span> <span class="kd">must</span> <span class="kd">install</span> <span class="kd">peer</span> <span class="kd">dependencies</span> <span class="kd">yourself</span>.
+<span class="kd">npm</span> <span class="kd">WARN</span> <span class="kd">wechaty</span><span class="na">-puppet-puppeteer</span>@0.4.2 <span class="kd">requires</span> <span class="kd">a</span> <span class="kd">peer</span> <span class="kd">of</span> <span class="kd">state</span><span class="na">-switch</span>@<span class="se">^0</span>.6.2 <span class="kd">but</span> <span class="kd">none</span> <span class="kd">is</span> <span class="kd">installed</span>. <span class="kd">You</span> <span class="kd">must</span> <span class="kd">install</span> <span class="kd">peer</span> <span class="kd">dependencies</span> <span class="kd">yourself</span>.
+<span class="kd">npm</span> <span class="kd">WARN</span> <span class="kd">wechaty</span><span class="na">-puppet-puppeteer</span>@0.4.2 <span class="kd">requires</span> <span class="kd">a</span> <span class="kd">peer</span> <span class="kd">of</span> <span class="kd">watchdog</span>@<span class="se">^0</span>.8.10 <span class="kd">but</span> <span class="kd">none</span> <span class="kd">is</span> <span class="kd">installed</span>. <span class="kd">You</span> <span class="kd">must</span> <span class="kd">install</span> <span class="kd">peer</span> <span class="kd">dependencies</span> <span class="kd">yourself</span>.
+<span class="kd">npm</span> <span class="kd">WARN</span> <span class="kd">wechaty</span><span class="na">-puppet-puppeteer</span>@0.4.2 <span class="kd">requires</span> <span class="kd">a</span> <span class="kd">peer</span> <span class="kd">of</span> <span class="kd">wechaty</span><span class="na">-puppet</span>@<span class="se">^0</span>.6.4 <span class="kd">but</span> <span class="kd">none</span> <span class="kd">is</span> <span class="kd">installed</span>. <span class="kd">You</span> <span class="kd">must</span> <span class="kd">install</span> <span class="kd">peer</span> <span class="kd">dependencies</span> <span class="kd">yourself</span>.
+
+<span class="kd">npm</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">code</span> <span class="kd">ELIFECYCLE</span>
+<span class="kd">npm</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">errno</span> <span class="m">1</span>
+<span class="kd">npm</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">node</span><span class="na">-expat</span>@2.3.16 <span class="kd">install</span>: <span class="sb">`node-gyp rebuild`</span>
+<span class="kd">npm</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">Exit</span> <span class="kd">status</span> <span class="m">1</span>
+<span class="kd">npm</span> <span class="kd">ERR</span><span class="err">!</span>
+<span class="kd">npm</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">Failed</span> <span class="nb">at</span> <span class="kd">the</span> <span class="kd">node</span><span class="na">-expat</span>@2.3.16 <span class="kd">install</span> <span class="kd">script</span>.
+<span class="kd">npm</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">This</span> <span class="kd">is</span> <span class="kd">probably</span> <span class="ow">not</span> <span class="kd">a</span> <span class="kd">problem</span> <span class="kd">with</span> <span class="kd">npm</span>. <span class="kd">There</span> <span class="kd">is</span> <span class="kd">likely</span> <span class="kd">additional</span> <span class="kd">logging</span> <span class="kd">output</span> <span class="kd">above</span>.
+
+<span class="kd">npm</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">A</span> <span class="kd">complete</span> <span class="kd">log</span> <span class="kd">of</span> <span class="kd">this</span> <span class="nb">run</span> <span class="kd">can</span> <span class="kd">be</span> <span class="kd">found</span> <span class="k">in</span>:
+<span class="kd">npm</span> <span class="kd">ERR</span><span class="err">!</span>     <span class="kd">C</span>:\Users\username\AppData\Roaming\npm<span class="na">-cache</span>\_logs\2018<span class="o">-</span><span class="m">07</span><span class="o">-</span><span class="m">22</span><span class="kd">T17_59_53_633Z</span><span class="na">-debug</span>.log
+
+<span class="o">{</span> <span class="kd">Error</span>: <span class="kd">Command</span> <span class="kd">failed</span>: <span class="kd">npm</span> <span class="kd">install</span> <span class="kd">wechaty</span><span class="na">-puppet-puppeteer</span>@<span class="se">^0</span>.4.2
+<span class="kd">gyp</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">configure</span> <span class="kd">error</span>
+<span class="kd">gyp</span> <span class="kd">ERR</span><span class="err">!</span> <span class="kd">stack</span> <span class="kd">Error</span>: <span class="kd">Can</span><span class="s1">'t find Python executable "C:\Python36\python.EXE", you can set the PYTHON env variable.
+gyp ERR</span><span class="err">!</span><span class="s1"> stack     at PythonFinder.failNoPython (D:\Program Files\nodejs\node_modules\npm\node_modules\node-gyp\lib\configure.js:483:19)
+gyp ERR</span><span class="err">!</span><span class="s1"> stack     at PythonFinder.&lt;anonymous&gt; (D:\Program Files\nodejs\node_modules\npm\node_modules\node-gyp\lib\configure.js:508:16)
+gyp ERR</span><span class="err">!</span><span class="s1"> stack     at D:\Program Files\nodejs\node_modules\npm\node_modules\graceful-fs\polyfills.js:284:29
+gyp ERR</span><span class="err">!</span><span class="s1"> stack     at FSReqWrap.oncomplete (fs.js:158:21)
+gyp ERR</span><span class="err">!</span><span class="s1"> System Windows_NT 10.0.16299
+gyp ERR</span><span class="err">!</span><span class="s1"> command "D:\\Program Files\\nodejs\\node.exe" "D:\\Program Files\\nodejs\\node_modules\\npm\\node_modules\\node-gyp\\bin\\node-gyp.js" "rebuild"
+gyp ERR</span><span class="err">!</span><span class="s1"> cwd D:\code\wechaty-getting-started\node_modules\wechaty\node_modules\node-expat
+gyp ERR</span><span class="err">!</span><span class="s1"> node -v v10.7.0
+gyp ERR</span><span class="err">!</span><span class="s1"> node-gyp -v v3.6.2
+gyp ERR</span><span class="err">!</span><span class="s1"> not ok
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of brolog@</span><span class="se">^1</span><span class="s1">.6.5 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of file-box@</span><span class="se">^0</span><span class="s1">.8.22 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of hot-import@</span><span class="se">^0</span><span class="s1">.2.1 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of lru-cache@</span><span class="se">^4</span><span class="s1">.1.3 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of qr-image@</span><span class="se">^3</span><span class="s1">.2.0 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of promise-retry@</span><span class="se">^1</span><span class="s1">.1.1 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of rxjs@</span><span class="se">^6</span><span class="s1">.2.1 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of rx-queue@</span><span class="se">^0</span><span class="s1">.4.26 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of state-switch@</span><span class="se">^0</span><span class="s1">.6.2 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of watchdog@</span><span class="se">^0</span><span class="s1">.8.10 but none is installed. You must install peer dependencies yourself.
+npm WARN wechaty-puppet-puppeteer@0.4.2 requires a peer of wechaty-puppet@</span><span class="se">^0</span><span class="s1">.6.4 but none is installed. You must install peer dependencies yourself.
+
+npm ERR</span><span class="err">!</span><span class="s1"> code ELIFECYCLE
+npm ERR</span><span class="err">!</span><span class="s1"> errno 1
+npm ERR</span><span class="err">!</span><span class="s1"> node-expat@2.3.16 install: `node-gyp rebuild`
+npm ERR</span><span class="err">!</span><span class="s1"> Exit status 1
+npm ERR</span><span class="err">!</span><span class="s1">
+npm ERR</span><span class="err">!</span><span class="s1"> Failed at the node-expat@2.3.16 install script.
+npm ERR</span><span class="err">!</span><span class="s1"> This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR</span><span class="err">!</span><span class="s1"> A complete log of this run can be found in:
+npm ERR</span><span class="err">!</span><span class="s1">     C:\Users\username\AppData\Roaming\npm-cache\_logs\2018-07-22T17_59_53_633Z-debug.log
+
+    at ChildProcess.exithandler (child_process.js:291:12)
+    at ChildProcess.emit (events.js:182:13)
+    at ChildProcess.EventEmitter.emit (domain.js:442:20)
+    at maybeClose (internal/child_process.js:961:16)
+    at Process.ChildProcess._handle.onexit (internal/child_process.js:248:5)
+killed: false,
+code: 1,
+signal: null,
+cmd: '</span><span class="kd">npm</span> <span class="kd">install</span> <span class="kd">wechaty</span><span class="na">-puppet-puppeteer</span>@<span class="se">^0</span>.4.2 <span class="s1">' }
+
+D:\code\wechaty-getting-started&gt;
+</span></code></pre></div></div>
+
+<p>通过阅读上述日志，分析依赖关系如下:</p>
+
+<div class="language-bat highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">wechaty</span><span class="na">-puppet-puppeteer
+    </span><span class="o">--&gt;</span> <span class="kd">node</span><span class="na">-expat
+        </span><span class="o">--&gt;</span> <span class="kd">node</span><span class="na">-gyp
+            </span><span class="o">--&gt;</span> <span class="kd">gyp</span>
+                <span class="o">--&gt;</span> <span class="kd">Python</span> <span class="m">2</span>.7 <span class="o">&amp;</span> <span class="kd">Windows</span> <span class="kd">Build</span> <span class="kd">Tools</span>
+</code></pre></div></div>
+
+<p>接下来要做的就是一一从依赖的最底层安装</p>
+
+<p>1.安装 Python 2.7 至 <code class="language-plaintext highlighter-rouge">C:\Python27\python.exe</code> ，设置环境变量 <code class="language-plaintext highlighter-rouge">PYTHON=C:\Python27\python.exe</code></p>
+
+<p>注意 node-gyp 并不支持 Python 3.x，如果你安装了 Python 3.x，错误日志如下:</p>
+
+<div class="language-bat highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">Can</span><span class="s1">'t find Python executable "C:\Python36\python.EXE", you can set the PYTHON env variable.
+</span></code></pre></div></div>
+
+<p>你可能会疑惑这个本来存在的 Python 3 路径，个人认为这个不准确错误提示可以算入 npm 包的 Bug</p>
+
+<p>2.安装 windows-build-tools</p>
+
+<p>参考 windows-build-tools 官方文档，有以下两种方式：</p>
+
+<ul>
+  <li>Visual C++ Build Tools</li>
+  <li>Visual Studio 2017 vs Visual Studio 2015</li>
+</ul>
+
+<p>我这里由于已经安装 Visual Studio 2017 社区版，所以没有尝试其他选项。这里的关键是需要一个 VC++ 编译器来编译 Windows 本地程序。而 Visual C++ Build Tools 在微软官方地址已失效，不容易找到，npm 官方推荐了安装 Visual Studio 2015。安装结束后，可以使用 <code class="language-plaintext highlighter-rouge">npm install node-expat</code> 验证上述安装配置是否成功</p>
+
+<p>4.<a href="https://github.com/GoogleChrome/puppeteer">安装 puppeteer</a></p>
+
+<p>由于网络原因，puppeteer 依赖的 Chromium 并不能顺利安装。此时，我们可以借助一个阿里巴巴公司提供的 cnpm 特色工具安装:</p>
+
+<div class="language-bat highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">npm</span> <span class="kd">install</span> <span class="na">-g </span><span class="kd">cnpm</span> <span class="na">--registry</span><span class="o">=</span><span class="kd">https</span>://registry.npm.taobao.org
+<span class="kd">cnpm</span> <span class="kd">install</span> <span class="kd">puppeteer</span>
+</code></pre></div></div>
+
+<p>PS: 如果你遇到 Chromium revision is not downloaded. 时，在解决办法中看到的设置 PUPPETEER_SKIP_CHROMIUM_DOWNLOAD 其实是一个误导， 这个选项并不能帮助你安装 puppeteer，而是让你在更新时不必每次都下载 Chromium 二进制。</p>
+
+<p>这里还有一个手动安装办法，但不推荐：可以手动下载 chromium 安装包，放在 <code class="language-plaintext highlighter-rouge">/node_modules/puppeteer/.local-chromium/</code> 下，例如:</p>
+
+<div class="language-bat highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">D</span>:\code\wechaty<span class="na">-getting-started</span>\node_modules\_puppeteer@1.6.0@puppeteer\.local<span class="na">-chromium</span>\win64<span class="o">-</span><span class="m">571375</span>
+</code></pre></div></div>
+
+<p>这个地址在 macOS 上如下，其中的数字可能不同:</p>
+
+<div class="language-bat highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">~</span><span class="na">/node</span>_modules/puppeteer/.local<span class="na">-chromium/mac</span><span class="o">-</span><span class="m">526987</span><span class="na">/chrome-mac
+</span></code></pre></div></div>
+
+<p>4..NET Framework 4.5.1 [仅 Windows Vista / 7 需要]</p>
+
+<p>如果 Windows Vista / 7 版本，则需要手动安装 .Net Framework</p>
+
+<p>5.如果使用的是 PadChat 组件的 Wechaty，且已有相应 token 则还需要设置以下几个环境变量:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">WECHATY_LOG</span><span class="o">=</span>silly
+<span class="nv">WECHATY_PUPPET</span><span class="o">=</span>padchat
+<span class="nv">WECHATY_PUPPET_PADCHAT_TOKEN</span><span class="o">=</span><span class="k">*</span>YOUR-TOKEN<span class="k">*</span>
+</code></pre></div></div>
+
+<p>三、启动 Wechaty</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> &amp; npm start
+</code></pre></div></div>
+
+<p>运行后，程序会在控制台窗口打开一个文本的二维码，在二维码下方是该二维码的网址。</p>
+
+<p>如果你对扫描控制台的文本二维码遇到问题，可以参考我的 <a href="https://kaffa.im/a-story-about-text-qrcode.html">一篇关于二维码</a> 的博文。</p>
+
+<h2 id="总结">总结</h2>
+
+<h2 id="小结">小结</h2>
+
+<p>因为本人成功启动项目，所以尚未在windows7系统、32位机器上配置，但主要的问题应该是类似的，遇到问题后的解决方案也推荐去查阅具体报错的软件的相关文档。</p>
+
+<p>当然了，如果你遇到了其他的任何问题，也欢迎在<a href="https://github.com/kaffa">我的Github</a>找到我。</p>
+
+<hr />
+
+<blockquote>
+  <p>This post is also available in <a href="/2018/07/24/wechaty-installation-in-windows-10-en/">English</a>.</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#windows">windows</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#install">install</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/kaffa">
+                            <img class="rounded-circle" src="/assets/contributors/kaffa/avatar.webp" alt="kaffa" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/kaffa">kaffa</a> </h5>
+						a life-long learner / a Psychology, Astrology, Ancient Egyptian culture lover, also a coffee mocha lover.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2018/07/24/wechaty-installation-in-windows-10-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2018/wechaty-installation-in-windows.webp">  Installing Wechaty on Windows 10</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2018/08/05/build-wechaty-chatbot-at-opensource-factory/"> Build Wechaty Chatbot at OpenSource Factory  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2018/08-build-wechaty-chatbot-at-opensource-factory/000.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

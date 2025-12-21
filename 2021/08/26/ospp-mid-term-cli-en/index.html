@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+       "OSPP 2021 - Mid-term Report - Wechaty Command-line Text Client Software Based on Blessed" | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>“OSPP 2021 - Mid-term Report - Wechaty Command-line Text Client Software Based on Blessed” | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="“OSPP 2021 - Mid-term Report - Wechaty Command-line Text Client Software Based on Blessed”" />
+<meta name="author" content="chinggg" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Mid-term report for the OSPP 2021 project developing a Blessed-based command-line text client for Wechaty, supporting all Wechaty puppet providers in a terminal interface." />
+<meta property="og:description" content="Mid-term report for the OSPP 2021 project developing a Blessed-based command-line text client for Wechaty, supporting all Wechaty puppet providers in a terminal interface." />
+<link rel="canonical" href="https://wechaty.js.org/2021/08/26/ospp-mid-term-cli-en/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/08/26/ospp-mid-term-cli-en/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/08-ospp-mid-term-cli-en/terminal-wechaty.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-08-26T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/08-ospp-mid-term-cli-en/terminal-wechaty.webp" />
+<meta property="twitter:title" content="“OSPP 2021 - Mid-term Report - Wechaty Command-line Text Client Software Based on Blessed”" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chinggg"},"dateModified":"2021-08-26T00:00:00+00:00","datePublished":"2021-08-26T00:00:00+00:00","description":"Mid-term report for the OSPP 2021 project developing a Blessed-based command-line text client for Wechaty, supporting all Wechaty puppet providers in a terminal interface.","headline":"“OSPP 2021 - Mid-term Report - Wechaty Command-line Text Client Software Based on Blessed”","image":"https://wechaty.js.org/assets/2021/08-ospp-mid-term-cli-en/terminal-wechaty.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/08/26/ospp-mid-term-cli-en/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"chinggg"},"url":"https://wechaty.js.org/2021/08/26/ospp-mid-term-cli-en/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+              <a class="sscroll text-danger" href="/categories.html#ospp">ospp</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline"> "OSPP 2021 - Mid-term Report - Wechaty Command-line Text Client Software Based on Blessed"</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/chinggg">
+                            <img class="rounded-circle" src="/assets/contributors/chinggg/avatar.webp" alt="chinggg" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/chinggg">chinggg</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Aug 26, 2021 · <span class="reading-time">
+  
+  
+    5 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/08-ospp-mid-term-cli-en/terminal-wechaty.webp" alt=" "OSPP 2021 - Mid-term Report - Wechaty Command-line Text Client Software Based on Blessed"">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<blockquote>
+  <p>This is a translated version of the original Chinese post. You can find the original post <a href="/2021/08/26/ospp-mid-term-cli/">here</a>.</p>
+</blockquote>
+
+<p>The “<a href="https://summer.iscas.ac.cn">Open Source Software Supply Chain Lighting Program - Summer 2021</a>” (hereinafter referred to as Summer 2021) is a summer activity for college students jointly organized by the Institute of Software at the Chinese Academy of Sciences and the openEuler community. It aims to encourage students to actively participate in the development and maintenance of open source software and promote the vigorous development of excellent domestic open source software communities. The activity unites major open source communities to provide projects for the development and maintenance of important open source software, open to college students around the world. Students can independently choose projects of interest to apply for, and after being selected, have the opportunity to receive personal guidance from senior maintainers of the software (community mentors). Depending on the difficulty of the project and completion status, participants can also receive bonuses and trophies from the “Open Source Software Supply Chain Lighting Program - Summer 2021” activity.</p>
+
+<p>This project [Wechaty Command-line Text Client Software Based on Blessed] is an open source project supported by Summer 2021.</p>
+
+<h2 id="wechaty-command-line-text-client-software-based-on-blessed-information">[Wechaty Command-line Text Client Software Based on Blessed] Information</h2>
+
+<ul>
+  <li>Mentor: Li Zhuohuan</li>
+  <li>Student: Liu Jing</li>
+  <li>
+    <p>Project Introduction: <a href="https://github.com/wechaty/summer/issues/80">https://github.com/wechaty/summer/issues/80</a></p>
+  </li>
+  <li>Project Name: Wechaty Command-line Text Client Software Based on Blessed</li>
+  <li>Solution Description:
+    <ul>
+      <li>Modeled after Linux command-line terminal IRC text clients, implement an instant messaging client based on Wechaty, supporting all existing <a href="https://wechaty.js.org/docs/puppet-providers/">Wechaty Puppet Providers</a> through Wechaty, such as WeChat, WeCom, Lark, WhatsApp, etc.</li>
+      <li>Use components provided by <a href="https://github.com/chjj/blessed">Blessed</a> and <a href="https://github.com/yaronn/blessed-contrib">blessed-contrib</a> to draw terminal graphical interface programs</li>
+      <li>Listen to events such as message reception and keyboard/mouse clicks, dynamically adjust component content, and provide an interactive experience close to general chat software</li>
+      <li>Refactor code using <a href="https://github.com/Yomguithereal/react-blessed">react-blessed</a>, RxJS, and Redux</li>
+    </ul>
+  </li>
+  <li>Time Planning:
+    <ul>
+      <li>Phase 1 (7.1 - 8.14) Interface with backend events, select appropriate architecture and technology stack to complete data storage, display, and update
+        <ul>
+          <li>Self-exploration to create demo
+            <ul>
+              <li>7.1 - 7.14</li>
+              <li>Implement simple message reception and contact list display</li>
+              <li>Communicate with mentor about architectural design and technology stack to be used</li>
+            </ul>
+          </li>
+          <li>During military training, project paused
+            <ul>
+              <li>7.15 - 7.29</li>
+              <li>Limited time, learn front-end related knowledge or implement simpler functions when possible</li>
+            </ul>
+          </li>
+          <li>Improve code structure, focus on advancing data storage and state management
+            <ul>
+              <li>8.1 - 8.14</li>
+              <li>Implement message content storage and viewing by source</li>
+              <li>Caching of contact and group chat information</li>
+              <li>Write mid-term report</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Phase 2 (8.15 - 9.30) Focus on improving frontend interaction, continuously improving user experience
+        <ul>
+          <li>Provide more interaction options and management functions
+            <ul>
+              <li>8.15 - 8.30</li>
+              <li>Perform state management and intelligent sorting of contacts based on unread message count</li>
+            </ul>
+          </li>
+          <li>Implement message sending
+            <ul>
+              <li>9.1 - 9.14</li>
+            </ul>
+          </li>
+          <li>Improve documentation, write sample code and tests
+            <ul>
+              <li>9.15 - 9.30</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="project-progress">Project Progress</h2>
+
+<ul>
+  <li>Completed Work:
+    <ul>
+      <li>Reception and storage of all messages</li>
+      <li>Display and caching of contact and group chat information</li>
+      <li>GitHub CI/CD and NPM package publishing</li>
+      <li>Display corresponding conversation records according to current chat object</li>
+      <li>Display all members when a group chat is selected</li>
+      <li>Message sending</li>
+    </ul>
+  </li>
+  <li>Problems Encountered and Solutions:
+    <ul>
+      <li>First are technical issues, mainly that <a href="https://github.com/chjj/blessed">Blessed</a> has been unmaintained for a long time, has few users, and lacks reference documentation and resources. To solve bugs encountered when using components, I often needed to read the source code in depth. For this purpose, I learned how to debug Node.js programs using VS Code, successfully found the causes of some problems and solved them, and even <a href="https://wechaty.js.org/2021/08/08/vscode-debug-nodejs/">contributed to the community blog</a> with encouragement from my mentor. However, due to limitations of the terminal environment itself and compatibility issues across different platforms, Blessed’s rendering capabilities and interactivity are indeed unsatisfactory, and some anticipated functions may ultimately be difficult to implement.</li>
+      <li>There are also issues with architecture selection and time planning. Lacking independent development experience, I initially obsessed over architecture choices, trying to determine all solutions from the start. After browsing related projects, I became even more confused. Only after I turned to implementing functions did I discover that Blessed had many unexpected problems - you still have to practice and encounter pitfalls one by one yourself; there is no silver bullet in software development.</li>
+      <li>Finally, there’s the issue of open source project maintenance. With my mentor’s help, I used Issues to subdivide tasks and manage progress, utilized GitHub Actions for CI/CD, and published NPM packages</li>
+    </ul>
+  </li>
+  <li>Future Work Arrangements:
+    <ul>
+      <li>Currently, basic chat functions have been roughly implemented; contact and group chat management still need to be discussed with the mentor regarding presentation format</li>
+      <li>Considering the characteristics of blessed and terminals, designs from general chat software (such as bringing new conversations to the top) may not be directly applicable</li>
+      <li>While ensuring usability, refactor the project using React and Redux</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="project-results">Project Results</h2>
+
+<p>Project Repository: <a href="https://github.com/wechaty/cli">https://github.com/wechaty/cli</a></p>
+
+<h3 id="live-coding-video">Live Coding Video</h3>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/1U0ONeHV7z8" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<blockquote>
+  <p>Domestic link: <a href="https://www.bilibili.com/video/BV1L3411q72g/">https://www.bilibili.com/video/BV1L3411q72g/</a></p>
+</blockquote>
+
+<h3 id="ppt-presentation-video">PPT Presentation Video</h3>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/xPsAwLglVdM" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<blockquote>
+  <p>Domestic link: <a href="https://www.bilibili.com/video/BV1PQ4y1a7pM/">https://www.bilibili.com/video/BV1PQ4y1a7pM/</a></p>
+</blockquote>
+
+<h3 id="project-ppt">Project PPT</h3>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="/assets/js/viewer-js/#/assets/2021/08-ospp-mid-term-cli-en/mid-slides.pdf" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h2 id="contact-us">Contact Us</h2>
+
+<ul>
+  <li>Project Link: [https://github.com/wechaty/cli]</li>
+  <li>Contact: liuchinggg@gmail.com</li>
+</ul>
+
+<blockquote>
+  <p>This is a translated version of the original Chinese post. You can find the original post <a href="/2021/08/26/ospp-mid-term-cli/">here</a>.</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#summer-of-wechaty">summer-of-wechaty</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#summer-2021">summer-2021</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ospp">ospp</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ospp-2021">ospp-2021</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#mid-term">mid-term</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ecosystem">ecosystem</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/chinggg">
+                            <img class="rounded-circle" src="/assets/contributors/chinggg/avatar.webp" alt="chinggg" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/chinggg">chinggg</a> </h5>
+						undergraduate student
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/08/26/gdg-community-talk-google-season-of-docs/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/08-gdg-community-talk-google-season-of-docs-en/gdg-community-talk-gsod-wechaty.webp">  Wechaty 开源社区文档协作 Google Season of Docs 实践分享</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/08/26/ospp-mid-term-cli/"> OSPP 2021-期中报告-基于 Blessed 的 Wechaty 命令行文本客户端软件  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/08-ospp-mid-term-cli-en/terminal-wechaty.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

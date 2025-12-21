@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Introduction to gRPC | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Introduction to gRPC | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Introduction to gRPC" />
+<meta name="author" content="iamrajiv" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Overview" />
+<meta property="og:description" content="Overview" />
+<link rel="canonical" href="https://wechaty.js.org/2021/06/08/introduction-to-grpc/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/06/08/introduction-to-grpc/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/06-introduction-to-grpc/1.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-06-08T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/06-introduction-to-grpc/1.webp" />
+<meta property="twitter:title" content="Introduction to gRPC" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"iamrajiv"},"dateModified":"2021-06-08T00:00:00+00:00","datePublished":"2021-06-08T00:00:00+00:00","description":"Overview","headline":"Introduction to gRPC","image":"https://wechaty.js.org/assets/2021/06-introduction-to-grpc/1.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/06/08/introduction-to-grpc/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"iamrajiv"},"url":"https://wechaty.js.org/2021/06/08/introduction-to-grpc/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#article">article</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Introduction to gRPC</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/iamrajiv">
+                            <img class="rounded-circle" src="/assets/contributors/iamrajiv/avatar.webp" alt="Rajiv Ranjan Singh" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/iamrajiv">Rajiv Ranjan Singh</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jun 08, 2021 · <span class="reading-time">
+  
+  
+    10 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/06-introduction-to-grpc/1.webp" alt="Introduction to gRPC">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<h2 id="overview">Overview</h2>
+
+<p>In gRPC, a client application can directly call a method on a server application on a different machine as if it were a local object, making it easier for you to create distributed applications and services. As in many RPC systems, gRPC is based around the idea of defining a service, specifying the methods that can be called remotely with their parameters and return types. On the server-side, the server implements this interface and runs a gRPC server to handle client calls. On the client-side, the client has a stub (referred to as just a client in some languages) that provides the same methods as the server.</p>
+
+<p><img src="../assets/2021/06-design-and-document-apis-with-swagger/2.webp" /></p>
+
+<p>gRPC clients and servers can run and talk to each other in a variety of environments - from servers inside Google to your desktop - and can be written in any of gRPC’s supported languages. So, for example, you can easily create a gRPC server in Java with clients in Go, Python, or Ruby. In addition, the latest Google APIs will have gRPC versions of their interfaces, letting you easily build Google functionality into your applications.</p>
+
+<h3 id="working-with-protocol-buffers">Working with Protocol Buffers</h3>
+
+<p>By default, gRPC uses <a href="https://developers.google.com/protocol-buffers/docs/overview">Protocol Buffers</a>, Google’s mature open source mechanism for serializing structured data (although it can be used with other data formats such as JSON). Here’s a quick intro to how it works. If you’re already familiar with protocol buffers, feel free to skip ahead to the next section.</p>
+
+<p>The first step when working with protocol buffers is to define the structure for the data you want to serialize in a <em>proto file</em>: this is an ordinary text file with a <code class="language-plaintext highlighter-rouge">.proto</code> extension. Protocol buffer data is structured as <em>messages</em>, where each message is a small logical record of information containing a series of name-value pairs called <em>fields</em>. Here’s a simple example:</p>
+
+<div class="language-proto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">message</span> <span class="nc">Person</span> <span class="p">{</span>
+ <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+ <span class="kt">int32</span> <span class="na">id</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+ <span class="kt">bool</span> <span class="na">has_ponycopter</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Then, once you’ve specified your data structures, you use the protocol buffer compiler <code class="language-plaintext highlighter-rouge">protoc</code> to generate data access classes in your preferred language(s) from your proto definition. These provide simple accessors for each field, like <code class="language-plaintext highlighter-rouge">name()</code> and <code class="language-plaintext highlighter-rouge">set_name()</code>, as well as methods to serialize/parse the whole structure to/from raw bytes. So, for instance, if your chosen language is C++, running the compiler on the example above will generate a class called <code class="language-plaintext highlighter-rouge">Person</code>. You can then use this class in your application to populate, serialize, and retrieve <code class="language-plaintext highlighter-rouge">Person</code> protocol buffer messages.</p>
+
+<p>You define gRPC services in ordinary proto files, with RPC method parameters and return types specified as protocol buffer messages:</p>
+
+<div class="language-proto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// The greeter service definition.</span>
+<span class="kd">service</span> <span class="n">Greeter</span> <span class="p">{</span>
+ <span class="c1">// Sends a greeting</span>
+ <span class="k">rpc</span> <span class="n">SayHello</span> <span class="p">(</span><span class="n">HelloRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">HelloReply</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="c1">// The request message containing the user's name.</span>
+<span class="kd">message</span> <span class="nc">HelloRequest</span> <span class="p">{</span>
+ <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// The response message containing the greetings</span>
+<span class="kd">message</span> <span class="nc">HelloReply</span> <span class="p">{</span>
+ <span class="kt">string</span> <span class="kd">message</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>gRPC uses <code class="language-plaintext highlighter-rouge">protoc</code> with a special gRPC plugin to generate code from your proto file: you get generated gRPC client and server code, as well as the regular protocol buffer code for populating, serializing, and retrieving your message types. You’ll see an example of this below.</p>
+
+<p>To learn more about protocol buffers, including how to install <code class="language-plaintext highlighter-rouge">protoc</code> with the gRPC plugin in your chosen language, see the <a href="https://developers.google.com/protocol-buffers/docs/overview">protocol buffers documentation</a>.</p>
+
+<h2 id="protocol-buffer-versions">Protocol buffer versions</h2>
+
+<p>While <a href="https://developers.google.com/protocol-buffers/docs/overview">protocol buffers</a> have been available to open-source users for some time, most examples from this site use protocol buffers version 3 (proto3), which has a slightly simplified syntax, some useful new features, and supports more languages. Proto3 is currently available in Java, C++, Dart, Python, Objective-C, C#, a lite-runtime (Android Java), Ruby, and JavaScript from the <a href="https://github.com/google/protobuf/releases">protocol buffers GitHub repo</a>, as well as a Go language generator from the<a href="https://pkg.go.dev/google.golang.org/protobuf">golang/protobuf official package</a>, with more languages in development. You can find out more in the <a href="https://developers.google.com/protocol-buffers/docs/proto3">proto3 language guide</a> and the <a href="https://developers.google.com/protocol-buffers/docs/reference/overview">reference documentation</a> available for each language. The reference documentation also includes a <a href="https://developers.google.com/protocol-buffers/docs/reference/proto3-spec">formal specification</a> for the <code class="language-plaintext highlighter-rouge">.proto</code> file format.</p>
+
+<p>In general, while you can use proto2 (the current default protocol buffers version), I will recommend that you use proto3 with gRPC as it lets you use the full range of gRPC-supported languages, as well as avoiding compatibility issues with proto2 clients talking to proto3 servers and vice versa.</p>
+
+<h3 id="service-definition">Service definition</h3>
+
+<p>Like many RPC systems, gRPC is based around the idea of defining a service, specifying the methods that can be called remotely with their parameters and return types. By default, gRPC uses <a href="https://developers.google.com/protocol-buffers">protocol buffers</a> as the Interface Definition Language (IDL) for describing both the service interface and the structure of the payload messages. It is possible to use other alternatives if desired.</p>
+
+<div class="language-proto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">service</span> <span class="n">HelloService</span> <span class="p">{</span>
+ <span class="k">rpc</span> <span class="n">SayHello</span> <span class="p">(</span><span class="n">HelloRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">HelloResponse</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">HelloRequest</span> <span class="p">{</span>
+ <span class="kt">string</span> <span class="na">greeting</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">HelloResponse</span> <span class="p">{</span>
+ <span class="kt">string</span> <span class="na">reply</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>gRPC lets you define four kinds of service method:</p>
+
+<ul>
+  <li>Unary RPCs where the client sends a single request to the server and gets a single response back, just like a normal function call.</li>
+</ul>
+
+<div class="language-proto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">rpc</span> <span class="n">SayHello</span><span class="p">(</span><span class="n">HelloRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">HelloResponse</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Server streaming RPCs where the client sends a request to the server and gets a stream to read a sequence of messages back. The client reads from the returned stream until there are no more messages. gRPC guarantees message ordering within an individual RPC call.</li>
+</ul>
+
+<div class="language-proto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">rpc</span> <span class="n">LotsOfReplies</span><span class="p">(</span><span class="n">HelloRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">stream</span> <span class="n">HelloResponse</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Client streaming RPCs where the client writes a sequence of messages and sends them to the server, again using a provided stream. Once the client has finished writing the messages, it waits for the server to read them and return its response. Again gRPC guarantees message ordering within an individual RPC call.</li>
+</ul>
+
+<div class="language-proto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">rpc</span> <span class="n">LotsOfGreetings</span><span class="p">(</span><span class="n">stream</span> <span class="n">HelloRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">HelloResponse</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Bidirectional streaming RPCs where both sides send a sequence of messages using a read-write stream. The two streams operate independently, so clients and servers can read and write in whatever order they like: for example, the server could wait to receive all the client messages before writing its responses, or it could alternately read a message then write a message, or some other combination of reads and writes. The order of messages in each stream is preserved.</li>
+</ul>
+
+<div class="language-proto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">rpc</span> <span class="n">BidiHello</span><span class="p">(</span><span class="n">stream</span> <span class="n">HelloRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">stream</span> <span class="n">HelloResponse</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="faq">FAQ</h2>
+
+<h3 id="what-is-grpc">What is gRPC?</h3>
+
+<p>gRPC is a modern, open-source remote procedure call (RPC) framework that can run anywhere. It enables client and server applications to communicate transparently and makes it easier to build connected systems.</p>
+
+<p>Read the longer <a href="https://grpc.io/blog/principles/">Motivation &amp; Design Principles</a> post for background.</p>
+
+<h3 id="what-does-grpc-stand-for">What does gRPC stand for?</h3>
+
+<p><strong>g</strong>RPC <strong>R</strong>emote <strong>P</strong>rocedure <strong>C</strong>alls.</p>
+
+<h3 id="why-would-i-want-to-use-grpc">Why would I want to use gRPC?</h3>
+
+<p>The main usage scenarios:</p>
+
+<ul>
+  <li>Low latency, highly scalable, distributed systems.</li>
+  <li>Developing mobile clients which are communicating to a cloud server.</li>
+  <li>Designing a new protocol that needs to be accurate, efficient, and language independent.</li>
+  <li>Layered design to enable extension eg. authentication, load balancing, logging, and monitoring, etc.</li>
+</ul>
+
+<h3 id="whos-using-this-and-why">Who’s using this and why?</h3>
+
+<p>gRPC is a <a href="https://cncf.io/">Cloud Native Computing Foundation</a> (CNCF) project.</p>
+
+<p>Google has been using a lot of the underlying technologies and concepts in gRPC for a long time. The current implementation is being used in several of Google’s cloud products and Google externally facing APIs. It is also being used by <a href="https://corner.squareup.com/2015/02/grpc.html">Square</a>, <a href="https://github.com/Netflix/ribbon">Netflix</a>, <a href="https://blog.gopheracademy.com/advent-2015/etcd-distributed-key-value-store-with-grpc-http2/">CoreOS</a>, <a href="https://blog.docker.com/2015/12/containerd-daemon-to-control-runc/">Docker</a>, <a href="https://github.com/cockroachdb/cockroach">CockroachDB</a>, <a href="https://github.com/CiscoDevNet/grpc-getting-started">Cisco</a>, <a href="https://github.com/Juniper/open-nti">Juniper Networks</a> and many other organizations and individuals.</p>
+
+<h3 id="which-programming-languages-are-supported">Which programming languages are supported?</h3>
+
+<p>See <a href="https://grpc.io/about/#officially-supported-languages-and-platforms">Officially supported languages and platforms</a>.</p>
+
+<h3 id="how-do-i-get-started-using-grpc">How do I get started using gRPC?</h3>
+
+<p>You can start with the installation of gRPC by following instructions <a href="https://grpc.io/docs/quickstart/">here</a>. Or head over to the <a href="https://github.com/grpc">gRPC GitHub org page</a>, pick the runtime or language you are interested in and follow the README instructions.</p>
+
+<h3 id="which-license-is-grpc-under">Which license is gRPC under?</h3>
+
+<p>All implementations are licensed under <a href="https://github.com/grpc/grpc/blob/master/LICENSE">Apache 2.0</a>.</p>
+
+<h3 id="where-is-the-documentation">Where is the documentation?</h3>
+
+<p>Check out the <a href="https://grpc.io/docs/">documentation</a> right here on grpc.io.</p>
+
+<h3 id="what-is-the-road-map">What is the road map?</h3>
+
+<p>The gRPC project has an RFC process, through which new features are designed and approved for implementation. They are tracked in <a href="https://github.com/grpc/proposal">this repository</a>.</p>
+
+<h3 id="what-is-the-grpc-versioning-policy">What is the gRPC versioning policy?</h3>
+
+<p>See the gRPC versioning policy <a href="https://github.com/grpc/grpc/blob/master/doc/versioning.md">here</a>.</p>
+
+<h3 id="when-do-grpc-releases-happen">When do gRPC releases happen?</h3>
+
+<p>The gRPC project works in a model where the tip of the master branch is stable at all times. The project (across the various runtimes) targets to ship checkpoint releases every 6 weeks on the best effort basis. See the release schedule <a href="https://github.com/grpc/grpc/blob/master/doc/grpc_release_schedule.md">here</a>.</p>
+
+<h3 id="how-can-i-report-a-security-vulnerability-in-grpc">How can I report a security vulnerability in gRPC?</h3>
+
+<p>To report a security vulnerability in gRPC, please follow the process documented <a href="https://github.com/grpc/proposal/blob/master/P4-grpc-cve-process.md">here</a>.</p>
+
+<h3 id="can-i-use-it-in-the-browser">Can I use it in the browser?</h3>
+
+<p>The <a href="https://github.com/grpc/grpc-web">gRPC-Web</a> project is Generally Available.</p>
+
+<h3 id="can-i-use-grpc-with-my-favorite-data-format-json-protobuf-thrift-xml">Can I use gRPC with my favorite data format (JSON, Protobuf, Thrift, XML)?</h3>
+
+<p>Yes. gRPC is designed to be extensible to support multiple content types. The initial release contains support for Protobuf and external support for other content types such as FlatBuffers and Thrift, at varying levels of maturity.</p>
+
+<h3 id="can-i-use-grpc-as-a-service-mesh">Can I use gRPC as a service mesh?</h3>
+
+<p>Yes. gRPC applications can be deployed in a service mesh like any other application. gRPC also supports <a href="https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol">xDS APIs</a> which enables deploying gRPC applications in a service mesh without sidecar proxies. The proxy less service mesh features supported in gRPC are listed <a href="https://github.com/grpc/grpc/blob/master/doc/grpc_xds_features.md">here</a>.</p>
+
+<h3 id="how-does-grpc-help-in-mobile-application-development">How does gRPC help in mobile application development?</h3>
+
+<p>gRPC and Protobuf provide an easy way to precisely define a service and auto-generate reliable client libraries for iOS, Android, and the servers providing the back end. The clients can take advantage of advanced streaming and connection features which help save bandwidth, do moreover fewer TCP connections, and save CPU usage and battery life.</p>
+
+<h3 id="why-is-grpc-better-than-any-binary-blob-over-http2">Why is gRPC better than any binary blob over HTTP/2?</h3>
+
+<p>This is largely what gRPC is on the wire. However, gRPC is also a set of libraries that will provide higher-level features consistently across platforms that common HTTP libraries typically do not. Examples of such features include:</p>
+
+<ul>
+  <li>interaction with flow-control at the application layer</li>
+  <li>cascading call-cancellation</li>
+  <li>load-balancing &amp; failover</li>
+</ul>
+
+<h3 id="how-do-you-pronounce-grpc">How do you pronounce gRPC?</h3>
+
+<p>Jee-Arr-Pee-See.</p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#article">article</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#blog">blog</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#grpc">grpc</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#gsod">gsod</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#protoc">protoc</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/iamrajiv">
+                            <img class="rounded-circle" src="/assets/contributors/iamrajiv/avatar.webp" alt="Rajiv Ranjan Singh" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/iamrajiv">Rajiv Ranjan Singh</a> </h5>
+						
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/06/08/how-to-get-a-weixin-chatbot-with-python-wechaty-and-paddlehub-and-aliyun/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/06-how-to-get-a-weixin-chatbot-with-python-wechaty-and-paddlehub-and-aliyun/cover.webp">  手把手教你用python-wechaty+paddlehub+阿里云白嫖一个智能微信机器人</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/06/11/ospp-startup-discussion/"> OSPP 2021 Project Status  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/06-ospp-startup-discussion/ospp-meeting-image.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

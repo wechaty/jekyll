@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Chatie API Service Incident Report | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Chatie API Service Incident Report | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Chatie API Service Incident Report" />
+<meta name="author" content="huan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="The Wechaty Puppet Service is running on top of the https://www.chatie.io service, which is open-sourced at here. It has been running for 5+ years on a Heroku free Dyno with Cloudflare CDN, everything works like a charm." />
+<meta property="og:description" content="The Wechaty Puppet Service is running on top of the https://www.chatie.io service, which is open-sourced at here. It has been running for 5+ years on a Heroku free Dyno with Cloudflare CDN, everything works like a charm." />
+<link rel="canonical" href="https://wechaty.js.org/2021/04/15/chatie-api-server-down/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/04/15/chatie-api-server-down/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/04-chatie-api-server-down/system-down.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-04-15T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/04-chatie-api-server-down/system-down.webp" />
+<meta property="twitter:title" content="Chatie API Service Incident Report" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"huan"},"dateModified":"2021-04-15T00:00:00+00:00","datePublished":"2021-04-15T00:00:00+00:00","description":"The Wechaty Puppet Service is running on top of the https://www.chatie.io service, which is open-sourced at here. It has been running for 5+ years on a Heroku free Dyno with Cloudflare CDN, everything works like a charm.","headline":"Chatie API Service Incident Report","image":"https://wechaty.js.org/assets/2021/04-chatie-api-server-down/system-down.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/04/15/chatie-api-server-down/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"huan"},"url":"https://wechaty.js.org/2021/04/15/chatie-api-server-down/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#article">article</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Chatie API Service Incident Report</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Apr 15, 2021 · <span class="reading-time">
+  
+  
+    6 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/04-chatie-api-server-down/system-down.webp" alt="Chatie API Service Incident Report">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>The <a href="https://wechaty.js.org/docs/puppet-services">Wechaty Puppet Service</a>
+is running on top of the <a href="https://www.chatie.io">https://www.chatie.io</a> service,
+which is open-sourced at <a href="https://github.com/chatie/server">here</a>.
+It has been running for 5+ years
+on a <a href="https://www.heroku.com">Heroku</a> free Dyno
+with <a href="https://www.cloudflare.com">Cloudflare</a> CDN,
+everything works like a charm.</p>
+
+<p>The Wechaty Puppet Service Server will register theirselves
+to <a href="https://api.chatie.io">https://api.chatie.io</a>
+with their <a href="https://wechaty.js.org/docs/specs/token">Wechaty Puppet Token</a>,
+and the Wechaty Puppet Service Client will use this token for service discovery.</p>
+
+<p>For example, the following shows that Wechaty started with a token:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">WECHATY_PUPPET_SERVICE_TOKEN</span><span class="o">=</span><span class="k">${</span><span class="nv">TOKEN</span><span class="k">}</span>
+make bot
+</code></pre></div></div>
+
+<p>In the past 6 months,
+our online <a href="https://wechaty.js.org/docs/specs/hostie">Hostie</a>
+has been increasing fast,
+first from 1,000, then 2,000,
+and now it’s 3,000+ concurrency
+with a peek number around 3,500.</p>
+
+<p>On April 15, 2021,
+we have a terrible service incident
+due to the limitation update of the Heroku and Cloudflare free servcies:</p>
+
+<ol>
+  <li>Heroku limited our Dyno
+  for no more than 1,000 concurrency WebSockets,
+  which raised <a href="https://devcenter.heroku.com/articles/error-codes#h11-backlog-too-deep">H11 - Backlog too deep</a> errors.</li>
+  <li>Cloudflare false report DDoS attatck
+  and block all our visitors
+  when we have 3,000+ WebSocket connections
+  trying to connect to us
+  during the server is rebooting.</li>
+</ol>
+
+<h2 id="heroku-error-h11">Heroku Error: H11</h2>
+
+<p><img src="/assets/2021/04-chatie-api-server-down/heroku-log-1.webp" alt="Heroku H11 Error 1" /></p>
+
+<p>By using <code class="language-plaintext highlighter-rouge">heroku logs -t -a chatieio</code>, we can see the follow <code class="language-plaintext highlighter-rouge">H11</code> and <code class="language-plaintext highlighter-rouge">H10</code> error messages:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2021-04-14T14:11:03.885895+00:00 heroku[router]: <span class="nv">at</span><span class="o">=</span>error <span class="nv">code</span><span class="o">=</span>H11 <span class="nv">desc</span><span class="o">=</span><span class="s2">"Backlog too deep"</span> <span class="nv">method</span><span class="o">=</span>GET <span class="nv">path</span><span class="o">=</span><span class="s2">"/v0/websocket"</span> <span class="nv">host</span><span class="o">=</span>api.chatie.io <span class="nv">request_id</span><span class="o">=</span>59ec8c0c-aba6-4a7a-a7a1-c1d6ff798fc9 <span class="nv">fwd</span><span class="o">=</span><span class="s2">"52.83.49.48,108.162.215.120"</span> <span class="nv">dyno</span><span class="o">=</span> <span class="nv">connect</span><span class="o">=</span> <span class="nv">service</span><span class="o">=</span> <span class="nv">status</span><span class="o">=</span>503 <span class="nv">bytes</span><span class="o">=</span> <span class="nv">protocol</span><span class="o">=</span>http
+</code></pre></div></div>
+
+<blockquote>
+  <p>at=error code=H11 desc=”Backlog too deep”</p>
+</blockquote>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2021-04-14T14:12:01.619098+00:00 heroku[router]: <span class="nv">at</span><span class="o">=</span>error <span class="nv">code</span><span class="o">=</span>H10 <span class="nv">desc</span><span class="o">=</span><span class="s2">"App crashed"</span> <span class="nv">method</span><span class="o">=</span>GET <span class="nv">path</span><span class="o">=</span><span class="s2">"/v0/websocket"</span> <span class="nv">host</span><span class="o">=</span>api.chatie.io <span class="nv">request_id</span><span class="o">=</span>d0fa3403-5d6f-4f42-a2f9-e81de0bfb6c3 <span class="nv">fwd</span><span class="o">=</span><span class="s2">"52.82.109.225,108.162.215.108"</span> <span class="nv">dyno</span><span class="o">=</span> <span class="nv">connect</span><span class="o">=</span> <span class="nv">service</span><span class="o">=</span> <span class="nv">status</span><span class="o">=</span>503 <span class="nv">bytes</span><span class="o">=</span> <span class="nv">protocol</span><span class="o">=</span>http
+</code></pre></div></div>
+
+<blockquote>
+  <p>code=H10 desc=”App crashed”</p>
+</blockquote>
+
+<p>The Dyno status is totally a mess:</p>
+
+<p><img src="/assets/2021/04-chatie-api-server-down/heroku-log-2.webp" alt="Heroku H11 Error 2" /></p>
+
+<p><img src="/assets/2021/04-chatie-api-server-down/heroku-log-3.webp" alt="Heroku H11 Error 3" /></p>
+
+<p>By reading the <a href="https://elixirforum.com/t/does-heroku-still-limit-websocket-connections/20029">Does Heroku still limit Websocket connections?, @Owens, Feb 2019</a>, we learned that the total WebSocket number of a single Dyno has some limitations:</p>
+
+<ul>
+  <li>Oct 2013: 6,000</li>
+  <li>Sep 2016: 1,500</li>
+  <li>Heroku Router docs: 50 (!?)</li>
+</ul>
+
+<p>Our concurrency has been over 3,000 for months:</p>
+
+<p><img src="/assets/2021/04-chatie-api-server-down/hostie-concurrency.webp" alt="Hostie concurrency" /></p>
+
+<p>So I believe there must be a inforstructure update
+to the Heroku system,
+which caused my free Dyno can not support
+so may concurrency WebSocket connections any more.</p>
+
+<p>I have to switch to the paid plan and create more Professional Dynos to support 3K+ concurrency, and I found that there needs at least four Dynos to prevent the <strong>H11</strong> error, which means each Dyno can only have no more than 1K concurrency WebSocket connections.</p>
+
+<h3 id="heroku-problem">Heroku Problem</h3>
+
+<ol>
+  <li>The Heroku Dyno fail with error H11 of a sudden.</li>
+  <li>In the past, we can connect 3000+ WebSocket connections with a free dyno.</li>
+  <li>From this week, it seems that we need 4 paid pro dynos to prevent the H11 error.</li>
+</ol>
+
+<h3 id="heroku-solution-workaround">Heroku Solution (Workaround)</h3>
+
+<p>We use 4 dynos for our service for workaround.</p>
+
+<h3 id="workaround-issues">Workaround Issues</h3>
+
+<p>Because the service is not designed for the horizon scale, so the query will fail 3 times with 1-time success on average.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>01:00:20 VERB Wechaty wechatifyUserModules<span class="o">(</span>Puppet#0&lt;PuppetService&gt;<span class="o">(</span>ding-dong-bot<span class="o">))</span>
+01:00:20 VERB PuppetService start<span class="o">()</span>
+01:00:20 VERB StateSwitch &lt;PuppetService&gt; on<span class="o">(</span>pending<span class="o">)</span> &lt;- <span class="o">(</span><span class="nb">false</span><span class="o">)</span>
+01:00:20 VERB PuppetService startGrpcClient<span class="o">()</span>
+01:00:20 VERB PuppetService discoverServiceIp<span class="o">(</span>puppet_donut_XXX<span class="o">)</span>
+01:00:20 WARN No endpoint when starting grpc client, 10 retry left. Reconnecting <span class="k">in </span>10 seconds... 
+01:00:30 VERB PuppetService discoverServiceIp<span class="o">(</span>puppet_donut_XXX<span class="o">)</span>
+01:00:32 WARN No endpoint when starting grpc client, 9 retry left. Reconnecting <span class="k">in </span>10 seconds... 
+01:00:42 VERB PuppetService discoverServiceIp<span class="o">(</span>puppet_donut_XXX<span class="o">)</span>
+01:00:43 WARN No endpoint when starting grpc client, 8 retry left. Reconnecting <span class="k">in </span>10 seconds... 
+01:00:53 VERB PuppetService discoverServiceIp<span class="o">(</span>puppet_donut_XXX<span class="o">)</span>
+01:00:54 WARN No endpoint when starting grpc client, 7 retry left. Reconnecting <span class="k">in </span>10 seconds... 
+01:01:04 VERB PuppetService discoverServiceIp<span class="o">(</span>puppet_donut_XXX<span class="o">)</span>
+01:01:05 WARN No endpoint when starting grpc client, 6 retry left. Reconnecting <span class="k">in </span>10 seconds... 
+01:01:15 VERB PuppetService discoverServiceIp<span class="o">(</span>puppet_donut_XXX<span class="o">)</span>
+01:01:15 VERB PuppetService startGrpcStream<span class="o">()</span>
+01:01:16 VERB PuppetService onGrpcStreamEvent<span class="o">({</span><span class="nb">type</span>:EVENT_TYPE_SCAN<span class="o">(</span>22<span class="o">)</span>, payload:<span class="s2">"{"</span>qrcode<span class="s2">":"</span>http://weixin.qq.com/x/AddMKwOGpxHRGRQNPWh5<span class="s2">","</span>status<span class="s2">":2}"</span><span class="o">})</span>
+</code></pre></div></div>
+
+<h2 id="setup-an-azure-server-for-chatie-api-service">Setup an Azure Server for Chatie API Service</h2>
+
+<p>It seems that the Heroku service can not meet the requirements of Chatie API service any more, so we have to create a VPS to host the Chatie API service by ourselves.</p>
+
+<p>It’s not hard for us to implemente this by the following steps:</p>
+
+<ol>
+  <li>Create a Azure server with Debian Linux</li>
+  <li>Install Docker</li>
+  <li>Prepare <a href="https://github.com/nginx-proxy/nginx-proxy">https://github.com/nginx-proxy/nginx-proxy</a> container: we found the <code class="language-plaintext highlighter-rouge">worker_connections</code> in this container has been limited to <code class="language-plaintext highlighter-rouge">1024</code>, so we need this <a href="https://github.com/nginx-proxy/nginx-proxy/pull/973">PR#973</a>.</li>
+  <li>Build docker image for <a href="https://github.com/Chatie/server">chatie/server</a></li>
+  <li>Start <code class="language-plaintext highlighter-rouge">nginx-proxy</code> with port <code class="language-plaintext highlighter-rouge">80</code> and <code class="language-plaintext highlighter-rouge">443</code> for the web service</li>
+  <li>
+    <p>Start <code class="language-plaintext highlighter-rouge">chatie/service</code> container with the following <code class="language-plaintext highlighter-rouge">docker-compose.yml</code> config:</p>
+
+    <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="na">version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3.8'</span>
+ <span class="na">services</span><span class="pi">:</span>
+   <span class="na">chatie-api</span><span class="pi">:</span>
+     <span class="na">image</span><span class="pi">:</span> <span class="s">chatie-api</span>
+     <span class="na">container_name</span><span class="pi">:</span> <span class="s">chatie-api</span>
+     <span class="na">network_mode</span><span class="pi">:</span> <span class="s">bridge</span>
+     <span class="na">expose</span><span class="pi">:</span>
+       <span class="pi">-</span> <span class="m">8788</span>
+     <span class="na">environment</span><span class="pi">:</span>
+       <span class="pi">-</span> <span class="s">HTTPS_METHOD=noredirect</span>
+       <span class="pi">-</span> <span class="s">VIRTUAL_HOST=api.chatie.io,www.chatie.io</span>
+       <span class="pi">-</span> <span class="s">LETSENCRYPT_HOST=api.chatie.io,www.chatie.io</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Change the DNS of <code class="language-plaintext highlighter-rouge">api.chatie.io</code> on Cloudflare from Heroku to our new Azure server.</li>
+</ol>
+
+<p>After the above steps, the service back to normal.
+The Cloudflare DNS TTL is 600 seconds by default,
+so the hostie concurrency increased to 3k+ after 10 minutes (600s).</p>
+
+<p>However, the system down again due to a Cloudflare HTTP DDoS protection, which has also never happened before.</p>
+
+<h2 id="cloudflare-false-alarm-http-ddos">Cloudflare False Alarm: HTTP DDoS</h2>
+
+<p>What I did before trigger the DDoS protection is that I stop the Chatie API server and restart it again.</p>
+
+<p>This will cause all the client’s WebSocket connection to be closed, then every clients will start trying to reconnect immediatelly, which will cause 3K+ WebSocket new connection at the same time.</p>
+
+<p><img src="/assets/2021/04-chatie-api-server-down/cloudflare-ddos.webp" alt="Cloudflare DDoS false alarm" /></p>
+
+<p>I try to add some <a href="https://support.cloudflare.com/hc/en-us/articles/360016473712-Cloudflare-Firewall-Rules">Firewall Rules</a> in the firewall settings to accept the traffic and bypass the HTTP DDoS protection, but have no luck to success.</p>
+
+<p>So finally I have to disable the Cloudflare proxy feature, to let the traffic do not touch Cloudflare CDN anymore.</p>
+
+<p>After all the traffic go to the Azure server directly, everything back to normal again.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>I do not like to setup server by myself. I want to use Heroku and Cloudflare to save my time.</p>
+
+<p>However, for now, our Chatie service have to run on my Azure box.
+I hope we can move this service back to cloud again, and soon.</p>
+
+<p>The service down affect about 12 hours:</p>
+
+<ol>
+  <li>Heroku workaround (service degrade) for about 8 hours</li>
+  <li>Cloudflare false protection (service down) for about 4 hours</li>
+</ol>
+
+<p>To-do list:</p>
+
+<ol>
+  <li>Config to restart servers (Node &amp; Linux) when the services run into unknown stautus</li>
+  <li>Config DevOps for CI/CD</li>
+</ol>
+
+<h2 id="issues">Issues</h2>
+
+<ul>
+  <li>Chatie.io server down <a href="https://github.com/Chatie/server/issues/55">Chatie/server#55</a></li>
+</ul>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#chatie">chatie</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#down">down</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#heroku">heroku</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#cloudflare">cloudflare</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Author @ Wechaty, Architect @ Chatie, LLM Code Generation Enthusiast, Serial Entrepreneur, Burner🔥
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/04/13/wechaty-uos-web/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/04-wechaty-uos-web-en/wechaty-puppet-wechat.webp">  重磅：使用UOS微信桌面版协议登录，wechaty免费版web协议重放荣光</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/04/16/go-wechaty-use-web/"> 教你用go-wecahty和web协议开发机器人  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/04-go-wechaty-use-web/struct.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

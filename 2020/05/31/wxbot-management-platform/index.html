@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      基于Nodejs+Wechaty开发微信机器人管理平台 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>基于Nodejs+Wechaty开发微信机器人管理平台 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="基于Nodejs+Wechaty开发微信机器人管理平台" />
+<meta name="author" content="lwp" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="前言" />
+<meta property="og:description" content="前言" />
+<link rel="canonical" href="https://wechaty.js.org/2020/05/31/wxbot-management-platform/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/05/31/wxbot-management-platform/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/wxbot/qrcode.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-05-31T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/wxbot/qrcode.webp" />
+<meta property="twitter:title" content="基于Nodejs+Wechaty开发微信机器人管理平台" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"lwp"},"dateModified":"2020-05-31T00:00:00+00:00","datePublished":"2020-05-31T00:00:00+00:00","description":"前言","headline":"基于Nodejs+Wechaty开发微信机器人管理平台","image":"https://wechaty.js.org/assets/2020/wxbot/qrcode.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/05/31/wxbot-management-platform/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"lwp"},"url":"https://wechaty.js.org/2020/05/31/wxbot-management-platform/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">基于Nodejs+Wechaty开发微信机器人管理平台</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/lwp">
+                            <img class="rounded-circle" src="/assets/contributors/lwp/avatar.webp" alt="beclass" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/lwp">beclass</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">May 31, 2020 · <span class="reading-time">
+  
+  
+    3 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/wxbot/qrcode.webp" alt="基于Nodejs+Wechaty开发微信机器人管理平台">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<h2 id="前言">前言</h2>
+
+<p>曾几何时，我加了一个微信，给它发送”加群”，然后就自动进到开发群了，随之在群聊里问问题，接着那个微信就会@我，引用我的问题并附上解答和参考链接。每天上下班的时候，它还会来一句温馨提示，出于对这种技术的强烈兴趣，开始了微信机器人研究之旅。</p>
+
+<p>开始找了几个第三方平台，试用了几天，但总觉得不够自由，既然是程序猿，何不通过技术手段实现？于是开始在GitHub找到以下三个开源作品</p>
+
+<ul>
+  <li>itchat
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">itchat</code>是一个开源的微信个人号接口，使用python调用微信</li>
+      <li>使用不到三十行的代码，你就可以完成一个能够处理所有信息的微信机器人</li>
+    </ul>
+  </li>
+  <li>wechaty
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">wechaty</code>是适用于微信个人的Bot SDK ，可以使用6行 js 创建一个机器人</li>
+      <li>具有包括<code class="language-plaintext highlighter-rouge">linux</code>，<code class="language-plaintext highlighter-rouge">Windows</code>，<code class="language-plaintext highlighter-rouge">MacOS</code>和 <code class="language-plaintext highlighter-rouge">Docker</code> 在内的跨平台支持，基于Node.js</li>
+    </ul>
+  </li>
+  <li>vbot
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">vbot</code>是基于微信web版的接口，使用<code class="language-plaintext highlighter-rouge">http协议</code>以及轮询方式实现</li>
+      <li>亮点在于通过匿名函数，能够实现多种有趣的玩法</li>
+      <li>通过 API，更方便的打造属于自己的网页版微信，基于PHP</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="初识wechaty">初识wechaty</h2>
+
+<p>因为对js相对比较熟悉，直接选择了wechaty</p>
+
+<p>它是使用Typescript进行编写的Node项目，是一个专门为个人微信号搭建的bot框架。基本的实现原是通过Chrome实时监听微信网页版的各类信息，然后将抓取的信息封装成接口，供开发者使用。</p>
+
+<p>先看一下官方文档</p>
+
+<p><a href="https://github.com/wechaty/wechaty">wechaty-github</a>
+     <a href="https://wechaty.js.org/v/zh/">wechaty中文文档</a></p>
+
+<p>6行js创建一个机器人，实在简洁</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Wechaty</span> <span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span>
+<span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Wechaty</span><span class="p">()</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">,</span>    <span class="p">(</span><span class="nx">qrcode</span><span class="p">,</span> <span class="nx">status</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">([</span><span class="dl">'</span><span class="s1">https://api.qrserver.com/v1/create-qr-code/?data=</span><span class="dl">'</span><span class="p">,</span><span class="nf">encodeURIComponent</span><span class="p">(</span><span class="nx">qrcode</span><span class="p">),</span><span class="dl">'</span><span class="s1">&amp;size=220x220&amp;margin=20</span><span class="dl">'</span><span class="p">,].</span><span class="nf">join</span><span class="p">(</span><span class="dl">''</span><span class="p">)))</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span>   <span class="nx">user</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`User </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2"> logined`</span><span class="p">))</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="nx">message</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Message: </span><span class="p">${</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">))</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>文档里可以看到一个示例代码  <a href="https://github.com/wechaty/wechaty-getting-started">wechaty-getting-started</a></p>
+
+<p>下载完之后先 npm i 安装模块，然后运行就有了登录二维码
+<img src="/assets/2020/wxbot/err1.webp" alt="err1" />
+很遗憾，失败了。</p>
+
+<h2 id="网页版微信登录失败">网页版微信登录失败</h2>
+
+<p>原来2017年之后注册的微信号都无法登录网页版微信，而2017年之前注册得微信账号也有很大几率登录不上，找朋友试了也都不行。</p>
+
+<p>检验你的微信号是否支持网页微信登录：</p>
+
+<p><a href="http://wx.qq.com">http://wx.qq.com</a></p>
+
+<p>点击链接链接，PC端进入然后手机扫码登录，若是可以登上，即可以使用上述示例</p>
+
+<p>然后又去看了vbot 和 itchat，但发现也都是是基于网页协议实现的</p>
+
+<p>从网上查资料，大概有一下几种实现方式：</p>
+
+<ul>
+  <li>Web网页端：2017年后不再支持新号登录，仅支持老号，并且掉线严重，功能缺失严重</li>
+  <li>Xposed技术：在2019年6月份，微信官方在行业重点打击Xposed，自此行业内一片哀嚎遍野，陆续向iPad/MAC协议转型。具体案例请点击</li>
+  <li>PC Hook：代码注入型，也就是逆向开发。封号情况偏多，使用容易出现追封，公司大规模封号等情况，且目前在营销行业使用率较少，比较偏小团队使用</li>
+  <li>模拟机：延迟高、消息实时到达率低、模拟人为操作效率慢、功能偏少，承担不了商业化功能</li>
+  <li>ipad协议：安全性较好，功能满足，行业占有率高，但具有能力研发人员偏少，基本两三个团队研发，且目前已有团队解散，部分微信号段登录失败、且通过grpc,mmtls研发，被检测几率存在</li>
+  <li>MAC协议：安全性相比iPad协议更好，功能性相比ipad协议少些，行业内具有研发能力更少，安全性、稳定性比较优秀，不会出现追封、批量封的情况</li>
+  <li>混合通道：微信内部通道，最高权限，基于MAC与Ipad协议，非grpc,mmtls，功能合适，微信正版通道，不会出现技术封号问题</li>
+</ul>
+
+<p>看了看，内部通道是不可能的，只有ipad协议个mac协议目前最好了</p>
+
+<h2 id="wechaty-puppet-padplus">wechaty-puppet-padplus</h2>
+
+<p>正当准备放弃的时候，看到wechaty就有一套基于ipad协议的包
+<a href="https://github.com/wechaty/wechaty-puppet-padplus">wechaty-puppet-padplus</a></p>
+
+<h2 id="微信机器人平台wxbot">微信机器人平台—wxbot</h2>
+
+<h3 id="项目介绍">项目介绍</h3>
+
+<ul>
+  <li>控制台
+    <ul>
+      <li>绑定机器人</li>
+      <li>登录</li>
+      <li>自动通过好友验证关键词设置，当有人添加机器人时，关键词匹配后直接通过</li>
+      <li>好友验证通过自动回复</li>
+      <li>退出</li>
+    </ul>
+  </li>
+  <li>自动回复
+    <ul>
+      <li>普通消息
+        <ul>
+          <li>针对好友/某个群聊/所有群聊 设置关键词自动回复</li>
+        </ul>
+      </li>
+      <li>加群邀请
+        <ul>
+          <li>机器人回复群聊列表，好友可以选择性进群</li>
+        </ul>
+      </li>
+      <li>踢人指令
+        <ul>
+          <li>机器人识别指令，自动把成员移出群聊</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>我的好友
+    <ul>
+      <li>单独对某个好友送消息</li>
+    </ul>
+  </li>
+  <li>我的群聊
+    <ul>
+      <li>群聊列表，管理所有群聊</li>
+      <li>设置群聊名称，发布公告，发送群消息</li>
+      <li>设置群聊基本信息，入群欢迎语，成员违规次数上限，是否受机器人控制</li>
+    </ul>
+  </li>
+  <li>定时任务
+    <ul>
+      <li>针对好友/某个群聊/所有群聊设置定时任务，机器人在指定时间会触发消息推送</li>
+    </ul>
+  </li>
+  <li>智能聊天
+    <ul>
+      <li>低智商对话</li>
+      <li>成语接龙，查天气，查酒店，歇后语…</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="/assets/2020/wxbot/admin1.webp" alt="admin" /></p>
+
+<h3 id="技术构成">技术构成</h3>
+
+<ul>
+  <li>服务端 <a href="https://nodejs.org/">Node.js</a></li>
+  <li>SSR框架 <a href="https://nuxtjs.org/">NuxtJS</a></li>
+  <li>前端框架 <a href="https://vuejs.org/">Vue</a></li>
+  <li>UI组件 <a href="https://www.antdv.com/docs/vue/introduce-cn/">Ant Design of Vue</a></li>
+  <li>持久化 <a href="https://www.mongodb.org/">MongoDB</a></li>
+  <li>ipad协议 <a href="https://github.com/wechaty/wechaty-puppet-padplus/">wechaty-puppet-padplus</a></li>
+</ul>
+
+<p>这里就直接介绍下机器人模块</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">|--</span> <span class="nx">server</span><span class="o">/</span>
+<span class="o">|</span><span class="err">———</span><span class="o">-</span> <span class="sr">/li</span><span class="err">b
+</span><span class="o">|------</span> <span class="nx">FriendShip</span><span class="p">.</span><span class="nx">js</span>   <span class="err">#</span> <span class="nx">友谊关系</span><span class="err">，</span><span class="nx">好友添加监听</span>
+<span class="o">|------</span> <span class="nx">Login</span><span class="p">.</span><span class="nx">js</span>        <span class="err">#</span> <span class="nx">机器人登录退出</span>
+<span class="o">|------</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">js</span>      <span class="err">#</span> <span class="nx">消息监听处理</span>
+<span class="o">|------</span> <span class="nx">Room</span><span class="p">.</span><span class="nx">js</span>         <span class="err">#</span> <span class="nx">加群</span><span class="err">，</span><span class="nx">退出群聊</span>
+<span class="o">|------</span> <span class="nx">Task</span>            <span class="err">#</span> <span class="nx">机器人定时任务</span>
+<span class="o">|</span><span class="err">———</span><span class="o">-</span> <span class="nx">index</span><span class="p">.</span><span class="nx">js</span>          <span class="err">#</span> <span class="nx">入口文件</span>
+</code></pre></div></div>
+
+<h3 id="在线实例">在线实例</h3>
+
+<p><a href="http://94.191.126.174:8081">wxbot</a></p>
+
+<p>(用户名/密码：guest/111111)</p>
+
+<h3 id="快速开始">快速开始</h3>
+
+<h4 id="准备条件">准备条件</h4>
+
+<ul>
+  <li>安装 <a href="https://nodejs.org/en/download/">Node.js</a> (v10 以上版本)、<a href="https://www.mongodb.org/downloads/">MongoDB</a>。</li>
+  <li>推荐安装 <a href="https://cnpmjs.org/">cnpm</a></li>
+</ul>
+
+<h4 id="安装依赖">安装依赖</h4>
+
+<pre><code class="language-Shell">cnpm i
+</code></pre>
+
+<h4 id="启动服务">启动服务</h4>
+
+<ul>
+  <li>开发模式</li>
+</ul>
+
+<pre><code class="language-Shell">npm run dev
+</code></pre>
+
+<ul>
+  <li>生产模式</li>
+</ul>
+
+<p>先编译项目</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run build
+</code></pre></div></div>
+
+<p>再启动服务</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm start
+</code></pre></div></div>
+
+<p>打开浏览器，访问 <a href="http://localhost:3000">http://localhost:3000/</a></p>
+
+<h4 id="系统配置">系统配置</h4>
+
+<p>根据实际情况修改 <code class="language-plaintext highlighter-rouge">config.js</code> 配置文件，修改后需要重启服务才能生效。<br />
+参数说明：</p>
+
+<h5 id="host">host</h5>
+
+<p><code class="language-plaintext highlighter-rouge">String</code> 类型，主机名，配置为 <code class="language-plaintext highlighter-rouge">0.0.0.0</code> 表示监听任意主机。</p>
+
+<h5 id="port">port</h5>
+
+<p><code class="language-plaintext highlighter-rouge">Number</code> 类型，端口号。</p>
+
+<h5 id="mongourl">mongoUrl</h5>
+
+<p><code class="language-plaintext highlighter-rouge">String</code> 类型，MongoDB 链接。</p>
+
+<h5 id="secret">secret</h5>
+
+<p><code class="language-plaintext highlighter-rouge">String</code> 类型，<a href="https://github.com/auth0/node-jsonwebtoken">JWT</a> 秘钥。</p>
+
+<h5 id="tianapikey">tianApiKey</h5>
+
+<p><code class="language-plaintext highlighter-rouge">String</code> 天行数据秘钥</p>
+
+<h3 id="线上部署">线上部署</h3>
+
+<h4 id="使用pm2">使用PM2</h4>
+
+<p>推荐使用 <a href="https://pm2.keymetrics.io/">pm2</a> 进行 Node.js 的进程管理和持久运行。</p>
+
+<h5 id="安装">安装</h5>
+
+<pre><code class="language-Shell">cnpm i -g pm2
+</code></pre>
+
+<h5 id="启动">启动</h5>
+
+<pre><code class="language-Shell">pm2 start pm2.config.js
+</code></pre>
+
+<h2 id="最后">最后</h2>
+
+<p>感谢 <a href="https://github.com/wechaty/wechaty">Wechaty</a>开源项目及<a href="https://www.juzibot.com/">句子互动</a>公司提供的 token，为开发者带来极大便利！</p>
+
+<p>还有很多可以完善的功能，代码上也有些不妥之处，正在慢慢升级中。欢迎大家多给意见，共同学习，让平台更完善。</p>
+
+<p>欢迎扫码加我的小助手，验证消息写 <code class="language-plaintext highlighter-rouge">机器人</code> 即可直接通过啦，加群一起交流也是可以的。也可以把机器人加到你的群聊中来玩耍哦，登陆上面的在线实例，设置关键字就能体验啦。</p>
+
+<p><img src="/assets/2020/wxbot/qrcode.webp" alt="qrcode" />
+<img src="/assets/2020/wxbot/wx0.webp" alt="0" />
+<img src="/assets/2020/wxbot/wx1.webp" alt="1" />
+<img src="/assets/2020/wxbot/wx2.webp" alt="2" /></p>
+
+<blockquote>
+  <p>作者: <a href="https://github.com/beclass">lwp</a>
+Code: <a href="https://github.com/beclass/wxbot">Github</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#nodejs">nodejs</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#vue">vue</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#padplus">padplus</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#project">project</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#nuxt">nuxt</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#feature">feature</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#utility">utility</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/lwp">
+                            <img class="rounded-circle" src="/assets/contributors/lwp/avatar.webp" alt="beclass" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/lwp">beclass</a> </h5>
+						全栈工程师，喜欢研究好玩的东西
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/05/31/wechaty-web-panel-plugin/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/web-panel-plugin/web-head.webp">  wechaty Web Panel的plugin诞生</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/05/31/your-wechat-bot/"> 你的微信小助手  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/your-wechat-bot/banner.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

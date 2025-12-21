@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Joseph Mawa: 2021 Google Season of Docs Technical Proposal | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Joseph Mawa: 2021 Google Season of Docs Technical Proposal | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Joseph Mawa: 2021 Google Season of Docs Technical Proposal" />
+<meta name="author" content="nibble0101" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="My name is Joseph Mawa. I am a technical writer and web developer. Below is my proposal for the project Create easy to learn tutorials for beginner users of Wechaty under Google Season of Docs 2021." />
+<meta property="og:description" content="My name is Joseph Mawa. I am a technical writer and web developer. Below is my proposal for the project Create easy to learn tutorials for beginner users of Wechaty under Google Season of Docs 2021." />
+<link rel="canonical" href="https://wechaty.js.org/2021/05/03/joseph-mawa-google-season-of-docs-project-technical-proposal/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/05/03/joseph-mawa-google-season-of-docs-project-technical-proposal/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/05-joseph-mawa-google-season-of-docs-project-technical-proposal/lemur.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-03T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/05-joseph-mawa-google-season-of-docs-project-technical-proposal/lemur.webp" />
+<meta property="twitter:title" content="Joseph Mawa: 2021 Google Season of Docs Technical Proposal" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"nibble0101"},"dateModified":"2021-05-03T00:00:00+00:00","datePublished":"2021-05-03T00:00:00+00:00","description":"My name is Joseph Mawa. I am a technical writer and web developer. Below is my proposal for the project Create easy to learn tutorials for beginner users of Wechaty under Google Season of Docs 2021.","headline":"Joseph Mawa: 2021 Google Season of Docs Technical Proposal","image":"https://wechaty.js.org/assets/2021/05-joseph-mawa-google-season-of-docs-project-technical-proposal/lemur.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/05/03/joseph-mawa-google-season-of-docs-project-technical-proposal/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"nibble0101"},"url":"https://wechaty.js.org/2021/05/03/joseph-mawa-google-season-of-docs-project-technical-proposal/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#gsod">gsod</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Joseph Mawa: 2021 Google Season of Docs Technical Proposal</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/nibble0101">
+                            <img class="rounded-circle" src="/assets/contributors/nibble0101/avatar.webp" alt="Joseph Mawa" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/nibble0101">Joseph Mawa</a> <span><a target="_blank" href="https://twitter.com/MJMAWA" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">May 03, 2021 · <span class="reading-time">
+  
+  
+    9 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/05-joseph-mawa-google-season-of-docs-project-technical-proposal/lemur.webp" alt="Joseph Mawa: 2021 Google Season of Docs Technical Proposal">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>My name is Joseph Mawa. I am a technical writer and web developer. Below is my proposal for the project <em>Create easy to learn tutorials for beginner users of Wechaty</em> under Google Season of Docs 2021.</p>
+
+<h2 id="statement-of-interest">Statement of interest</h2>
+
+<ul>
+  <li>Personal information</li>
+  <li>Name: Mukosa Joseph Mawa</li>
+  <li>Email: mjm.mawa@gmail.com</li>
+</ul>
+
+<h2 id="professional-information">Professional information</h2>
+
+<h3 id="summary">Summary</h3>
+
+<p>I am a self-taught web developer and technical writer with a passion for open source software. I have published a number of beginner friendly technical articles on <a href="https://dev.to/nibble">dev.to</a> and <a href="https://www.freecodecamp.org/news/javascript-events-explained-in-simple-english/">freeCodeCamp</a>. Before transitioning into tech, I was a high school  teacher. One of my core responsibilities as a teacher was simplifying and sequencing text written in complex technical language for learners to easily understand. I have  also been a frequent contributor to a couple of open source software. Notable ones are  ocaml.org and disease.sh.</p>
+
+<h3 id="writing-samples">Writing samples</h3>
+
+<h4 id="beginner-friendly-technical-article-written-for--freecodecamp">Beginner friendly technical article written for  freeCodeCamp</h4>
+
+<ul>
+  <li><a href="https://www.freecodecamp.org/news/javascript-events-explained-in-simple-english/">Browser events explained in simple English</a></li>
+  <li><a href="https://www.freecodecamp.org/news/how-to-add-a-netlify-form-to-a-react-app/">How to add netlify form to a react app bootstrapped using create-react-app</a></li>
+</ul>
+
+<h4 id="beginner-friendly-tutorials--published-on-devto">Beginner friendly tutorials  published on dev.to</h4>
+
+<ul>
+  <li><a href="https://dev.to/nibble/what-is-useref-hook-and-how-do-you-use-it-5emo">What is useRef hook and how do you use it</a></li>
+  <li><a href="https://dev.to/nibble/usecontext-hook-and-context-api-what-are-they-and-how-do-you-use-them-463a">Usecontext hook and context API. What are they and when do you use them</a></li>
+  <li><a href="https://dev.to/nibble/what-is-useeffect-hook-and-how-do-you-use-it-1p9c">What is useEffect hook and how do you use it</a></li>
+  <li><a href="https://dev.to/nibble/interview-type-coding-challenges-3i6i">Interview type coding challenges in JavaScript</a></li>
+  <li><a href="https://dev.to/nibble/what-is-useeffect-hook-and-how-do-you-use-it-1p9c">What is useEffect hook and how do you use it</a></li>
+</ul>
+
+<h4 id="open-source-contribution">Open source contribution</h4>
+
+<p>I helped improve  firefox profiler setup instructions</p>
+
+<p>Other useful links
+Resume
+portfolio</p>
+
+<h2 id="project-proposal">Project proposal</h2>
+
+<h3 id="project-title">Project title</h3>
+
+<p>Create easy to learn tutorials for beginner users of Wechaty</p>
+
+<h3 id="project-approach">Project approach</h3>
+
+<p>This is a high level overview of how I intend to approach this project. This is an evolving plan which will likely change pending feedback from stakeholders.</p>
+
+<h4 id="seek-to-understand-stakeholders">Seek to understand stakeholders</h4>
+
+<p>The first thing I will do is try to understand my audience. The tutorials are meant for absolute beginners who want to learn Wechaty but  what else can we learn about them? If possible, I will seek answers to the following questions.</p>
+
+<ul>
+  <li>What is their technical background?</li>
+  <li>What demographic groups do they belong to?</li>
+  <li>What problem are they trying to solve with Wechaty?</li>
+  <li>What is their motivation for using/learning Wechaty? Is it for  profit? Are they hackers doing it for fun? Are they using  Wechaty for building school projects? Are they researchers/ academics? Is it a mix of the above categories of people?</li>
+</ul>
+
+<p>It is important to  learn as much as possible about your audience before writing tutorials so that it is tailored to their needs.  Learning takes place much faster when it is structured from known to unknown and  reference  is made to what the learner already knows to explain a concept. It also ensures  cultural  sensitivity when giving examples especially in a global audience. The more you know about your audience the more relevant  your examples will be.
+Develop content
+Work with the project volunteer to come up with the list of key things a total beginner who wants to learn Wechaty needs to know. Break those key learning areas into the smallest units possible. For example a learner might need to set up a development environment. Setting up a development environment is not the smallest unit possible. It can still be broken down. For example one might need a  text editor,  install software such as  node or python,  have access to certain platforms e.t.c.</p>
+
+<h4 id="sequence-content">Sequence content</h4>
+
+<p>Sequence the learning areas which have been broken down in the previous step in chronological order. For example, the knowledge, skills and competences attained in step A might be prerequisite for step B, that of A and B might be needed for step C  and so on. If that is the case, it would make a lot more sense to sequence from A, to B then to C. Therefore sequencing the units appropriately from simple to complex, from known to unknown  will make the learning process enjoyable.</p>
+
+<h4 id="formulate--instructional-objectives">Formulate  instructional objectives</h4>
+
+<p>Turn those key learning areas into instructional objectives. The objective must be SMART.
+ S  - specific
+M - measurable
+A - attainable
+R - realistic
+T - within a time bound
+The smallest units in the previous sections can be amalgamated where necessary so as to make practical sense. A typical example of an instructional objective is: At the end of this section a learner should be able to set up a development environment for Wechaty. The objective is specific, measurable, attainable, realistic and within a time bound i.e. from the start of the section till the end. Achieving the above objective should contribute in a certain way to the overall objective of learning Wechaty so that a combination of all the small learning objectives will translate into the overall objective.</p>
+
+<h4 id="map--instructional-objectives-to-learning-activities">Map  instructional objectives to learning activities</h4>
+
+<p>Identify practical, repeatable activities a learner can perform to achieve the stated objectives in the previous section. Let us say  the main learning activity is building a chatbot using Wechaty. We would need to answer the following questions.
+What does building a chatbot using Wechaty entail?
+What steps should a learner follow when building a chatbot using Wechaty?</p>
+
+<p>This should be done while paying attention to the  objectives in the previous section  to make sure they are being achieved as the learner goes through these activities. The cardinal reason for going through the tutorials is to achieve the objectives in the previous section which will ultimately translate into the overall objective.</p>
+
+<h4 id="structure-and-write-content">Structure and write content</h4>
+
+<p>After outlining the activities in the previous section,  we  need to structure the content in a meaningful way. The proposed content structure and presentation  is to split the tutorial into high level units/ sections. Each unit/section will have the following components. This is important because it  ensures that anyone who has forgotten a specific concept can go to that specific section to remind themselves. Below are the proposed components of a unit. Each unit needs to have a  link to the next and previous  unit.</p>
+
+<h5 id="section-heading">Section heading</h5>
+
+<p>The section heading should be a high level summary of what the learner will be doing in a particular  section. It should capture the objective you wish to achieve by making the learner go through the activity.</p>
+
+<h5 id="explanation">Explanation</h5>
+
+<p>Immediately after the heading, there should be a brief explanation of what the learner will be doing in this particular  section and why they are doing it. The focus should be on the learner. It is therefore important to use  statements such as: In this section, you will declare a function which takes a string as argument and returns the number of characters in it. The focus here is on what the learner will do.</p>
+
+<h5 id="prerequisites">Prerequisites</h5>
+
+<p>After an explanation of what the learner will do  in this section as articulated in the preceding subsection, there should be an outline of what the learner should know or have,  to be able to complete this section successfully. For example the knowledge acquired in the preceding sections might be necessary to be able to complete this section. A learner might also need to have access to certain platforms such as whatsapp or facebook. This is where the prerequisites have to be clearly outlined. Prerequisites could also be software or other tools necessary to complete the section.</p>
+
+<h5 id="steps">Steps</h5>
+
+<p>These are the actual steps a learner will have to go through. If it is a multi-step process, you can  number them. For example step 1, step 2, step 3  and so on. There is no need to number if it is a single step process.</p>
+
+<h5 id="expected-output">Expected output</h5>
+
+<p>What should happen if a learner successfully followed the steps outlined in the above subsection. An example of expected output is: After successfully installing software  X, you should see it listed in the package.json file. We can also provide hints on possible  challenges  the learner might encounter in this section and how they can be fixed.</p>
+
+<h5 id="fun-quiz">Fun Quiz</h5>
+
+<p>If  possible,  simple optional quizzes should be included at the end of each section to test the knowledge gained. This can boost the morale of the learner and give feedback about the progress they are making.</p>
+
+<h5 id="additional-resources">Additional resources</h5>
+
+<p>This is an optional  section which points to additional resources a curious learner can explore to expand their knowledge about what has been covered in that particular section. It can link to Wechaty API if necessary.</p>
+
+<h5 id="things-to-pay-attention-to-while-writing-the-tutorial">Things to pay attention to while writing the tutorial**</h5>
+
+<ul>
+  <li>Use simple English that a non native speaker can easily understand without having to look up meaning of words or phrases</li>
+  <li>Avoid long sentences.</li>
+  <li>Minimize use of acronyms</li>
+  <li>Avoid unnecessarily long paragraphs which might confuse learners</li>
+  <li>Use formal language</li>
+  <li>Be gender sensitive. Gender neutral language  is better</li>
+  <li>Pay attention to grammar and spelling</li>
+  <li>Pay attention to technical accuracy</li>
+  <li>Focus more on what the learner will do</li>
+</ul>
+
+<h4 id="proposed-timeline">Proposed timeline</h4>
+
+<p>Below is an estimate of the timeframe  within which  this project will be completed. It has been broken down  into subtasks. It is worth pointing out that the processes below are not linear. They are iterative and cyclical. They can  change as feedback is received from  different stakeholders and incorporated in the project.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Month</th>
+      <th>Activities</th>
+      <th>Stakeholders</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>&lt;ul&gt; &lt;li&gt; Technical writer learns  Wechaty &lt;/li&gt;&lt;li&gt; Engage stakeholders to understand the Wechaty community &lt;/li&gt;&lt;li&gt; Develop outline of  tutorial  content &lt;/li&gt;&lt;li&gt; Develop learning objectives &lt;/li&gt;&lt;li&gt; Formulate tutorial structure at a higher level &lt;/li&gt;&lt;li&gt; First tutorial draft &lt;/li&gt;&lt;li&gt; Release first draft and take  feedback &lt;/li&gt;&lt;/ul&gt;</td>
+      <td>&lt;ul&gt; &lt;li&gt;Volunteer&lt;/li&gt;&lt;li&gt;Contributors&lt;/li&gt;&lt;li&gt;Users&lt;/li&gt; &lt;/ul&gt;</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>&lt;ul&gt; &lt;li&gt; Receive feedback from stakeholders about first draft &lt;/li&gt;&lt;li&gt; Incorporate feedback given for first draft &lt;/li&gt;&lt;li&gt; Release second draft &lt;/li&gt;&lt;li&gt; Incorporate feedback from stakeholders &lt;/li&gt;&lt;li&gt; Test the tutorial with volunteer  beginners &lt;/li&gt;&lt;li&gt; Incorporate feedback from volunteers &lt;/li&gt;&lt;li&gt; Release final version of tutorials &lt;/li&gt;&lt;/ul&gt;</td>
+      <td>&lt;ul&gt; &lt;li&gt;Volunteer&lt;/li&gt;&lt;li&gt;Contributors&lt;/li&gt;&lt;li&gt;Users&lt;/li&gt; &lt;/ul&gt;</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>&lt;ul&gt; &lt;li&gt; Audit Wechaty website &lt;/li&gt;&lt;li&gt; Propose changes to the volunteer mentor &lt;/li&gt;&lt;li&gt; Make improvements to the Wechaty website &lt;/li&gt;&lt;li&gt; Get feedback &lt;/li&gt;&lt;li&gt; Incorporate feedback &lt;/li&gt;</td>
+      <td>&lt;ul&gt; &lt;li&gt;Volunteer&lt;/li&gt;&lt;li&gt;Contributors&lt;/li&gt;&lt;li&gt;Users&lt;/li&gt; &lt;/ul&gt;</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="proposed-budget">Proposed budget</h2>
+
+<p>The proposed budget for the entire  project is 5000USD(Negotiable).</p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#google">google</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#gsod">gsod</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#2021">2021</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#gsod'21">gsod'21</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#project">project</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#proposal">proposal</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/nibble0101">
+                            <img class="rounded-circle" src="/assets/contributors/nibble0101/avatar.webp" alt="Joseph Mawa" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/nibble0101">Joseph Mawa</a> <span><a target="_blank" href="https://twitter.com/MJMAWA" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Technical writer and open source contributor
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/05/03/interactive-tutorials-for-newcomers/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/05-interactive-tutorials-for-newcomers/gsod_s.webp">  Soumi Bardhan: Interactive tutorials for newcomers</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/05/03/project-proposal-wechaty/"> Abhishek Jaiswal :Project Proposal for GSoD'21  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/05-project-proposal-wechaty/gsod-2021.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      使用 VS Code 调试 Node.js 应用 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>使用 VS Code 调试 Node.js 应用 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="使用 VS Code 调试 Node.js 应用" />
+<meta name="author" content="chinggg" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="「暑期 2021」活动中，我为 Wechaty 开发命令行环境下的客户端 wechaty-cli，使用 blessed 这个终端图形化组件库可以轻松做出炫酷的仿 IRC 聊天软件，原以为只需调库即可完成任务，但事情远没有那么简单…" />
+<meta property="og:description" content="「暑期 2021」活动中，我为 Wechaty 开发命令行环境下的客户端 wechaty-cli，使用 blessed 这个终端图形化组件库可以轻松做出炫酷的仿 IRC 聊天软件，原以为只需调库即可完成任务，但事情远没有那么简单…" />
+<link rel="canonical" href="https://wechaty.js.org/2021/08/08/vscode-debug-nodejs/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/08/08/vscode-debug-nodejs/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/08-vscode-debug-nodejs/debug.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-08-08T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/08-vscode-debug-nodejs/debug.webp" />
+<meta property="twitter:title" content="使用 VS Code 调试 Node.js 应用" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chinggg"},"dateModified":"2021-08-08T00:00:00+00:00","datePublished":"2021-08-08T00:00:00+00:00","description":"「暑期 2021」活动中，我为 Wechaty 开发命令行环境下的客户端 wechaty-cli，使用 blessed 这个终端图形化组件库可以轻松做出炫酷的仿 IRC 聊天软件，原以为只需调库即可完成任务，但事情远没有那么简单…","headline":"使用 VS Code 调试 Node.js 应用","image":"https://wechaty.js.org/assets/2021/08-vscode-debug-nodejs/debug.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/08/08/vscode-debug-nodejs/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"chinggg"},"url":"https://wechaty.js.org/2021/08/08/vscode-debug-nodejs/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#article">article</a><span class="sep">, </span>
+            
+              <a class="sscroll text-danger" href="/categories.html#tutorial">tutorial</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">使用 VS Code 调试 Node.js 应用</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/chinggg">
+                            <img class="rounded-circle" src="/assets/contributors/chinggg/avatar.webp" alt="chinggg" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/chinggg">chinggg</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Aug 08, 2021 · <span class="reading-time">
+  
+  
+    3 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/08-vscode-debug-nodejs/debug.webp" alt="使用 VS Code 调试 Node.js 应用">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>「暑期 2021」活动中，我为 Wechaty 开发命令行环境下的客户端 <a href="https://github.com/wechaty/cli">wechaty-cli</a>，使用 <a href="https://github.com/chjj/blessed">blessed</a> 这个终端图形化组件库可以轻松做出炫酷的仿 IRC 聊天软件，原以为只需调库即可完成任务，但事情远没有那么简单…</p>
+
+<p><img src="/assets/2021/08-vscode-debug-nodejs/error.webp" alt="error" /></p>
+
+<p>在我点击联系人列表时，应用瞬间崩溃，终端上只留下 npm 的常规报错，翻看对应日志也没有任何有效信息，这意味着没有明确的错误关键字可以一步到位地搜索，针对这种问题，我尝试按以下步骤解决：</p>
+
+<ol>
+  <li>
+    <p>直接 Google 项目名称和场景，如 “blessed js crash”，但很可惜并没有任何有效结果，翻遍了 <a href="https://stackoverflow.com/questions/tagged/blessed">Stack OverFlow</a> 上所有 blessed 相关问题都没有和我相同的情况。</p>
+  </li>
+  <li>
+    <p>浏览 GitHub 原项目的 Issues 和 Pull Requests，比如我用到了 <a href="https://github.com/yaronn/blessed-contrib#tree">blessed-contrib</a> 中的 Tree 组件，就可以搜索 Tree 相关的讨论，但很可惜仍然没有结果。</p>
+  </li>
+  <li>
+    <p>尝试 catch 错误并输出，但因为 blessed 相当于在原来的终端之上加了一层， <code class="language-plaintext highlighter-rouge">console.log(error)</code> 这种常见做法行不通了，而且我也根本不知道在哪 catch。</p>
+  </li>
+  <li>
+    <p>找不到报错信息，已经开始怀疑是自己的问题，仔细检查了一遍代码并严格使用 TypeScript 声明了类型，确保与文档描述一致，但错误仍旧。</p>
+  </li>
+  <li>
+    <p>寻找使用同一个库同一个组件的代码，与自己的代码相比较，尝试从不同之处上找出崩溃原因所在。但全网使用 Tree 组件的项目半只手都数得过来，而且基本就是沿用了样例代码中实现的 File Explorer，找不出代码的问题。</p>
+  </li>
+  <li>
+    <p>自己实在无法解决，可以在各种网站或交流群提问，但即使能提供详细的上下文信息，也不一定有人能够解答，毕竟终端命令行软件本就是小众领域，使用过 blessed 的人更可以说寥寥无几。</p>
+  </li>
+</ol>
+
+<p>总之，因为 blessed 实在有些冷门而且年久失修，在网络上无法找到所需的信息，我必须要独自面对一个没有人遇到过的问题，可我却连崩溃产生的原因都不清楚。难道我要一行行翻源码，脑补运行过程并人工审计代码？这显然不现实，所以只有通过调试，才能细致入微地理解程序的运行过程，从而找到问题所在。</p>
+
+<h2 id="vs-code-调试简介">VS Code 调试简介</h2>
+
+<p>VS Code 可能是前端领域现下最流行的开发工具，本文我们就以 VS Code 为例讲解调试的方法。</p>
+
+<p>作为一个文本编辑器，VS Code 也提供了运行和调试的功能，但和其他一键运行的 IDE 不同，编辑器可不知道要运行何种程序，调试的功能也要安装插件来获得，所以自行配置文件是免不了的。即使是同一种编程语言，开发环境和运行方式上也可能会有差异，网上搜索到的现成配置文件不尽相同，盲目照抄往往会出现各种千奇百怪的报错，如果时间允许推荐阅读<a href="https://code.visualstudio.com/docs/nodejs/nodejs-debugging">官方文档</a>。</p>
+
+<p>如果你此前没有进行过调试运行的配置，只需点击上方菜单栏 -&gt; Run -&gt; Add Configuration，并在弹出的框中选择 Node.js，就会自动在工作区内创建 <code class="language-plaintext highlighter-rouge">.vscode/launch.json</code> 这个文件并打开，生成如下内容：</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+ </span><span class="err">//</span><span class="w"> </span><span class="err">Use</span><span class="w"> </span><span class="err">IntelliSense</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">learn</span><span class="w"> </span><span class="err">about</span><span class="w"> </span><span class="err">possible</span><span class="w"> </span><span class="err">attributes.</span><span class="w">
+ </span><span class="err">//</span><span class="w"> </span><span class="err">Hover</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">view</span><span class="w"> </span><span class="err">descriptions</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">existing</span><span class="w"> </span><span class="err">attributes.</span><span class="w">
+ </span><span class="err">//</span><span class="w"> </span><span class="err">For</span><span class="w"> </span><span class="err">more</span><span class="w"> </span><span class="err">information</span><span class="p">,</span><span class="w"> </span><span class="err">visit:</span><span class="w"> </span><span class="err">https://go.microsoft.com/fwlink/?linkid=</span><span class="mi">830387</span><span class="w">
+ </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2.0"</span><span class="p">,</span><span class="w">
+ </span><span class="nl">"configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pwa-node"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"launch"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Launch Program"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"skipFiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"&lt;node_internals&gt;/**"</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+   </span><span class="nl">"program"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${file}"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+ </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>配置文件是 JSON 格式，鼠标悬浮到键名上会出现相应的提示，不过参数太多也不一定都用得到，这里我们只关注能让项目运行起来的参数，很明显就是 <code class="language-plaintext highlighter-rouge">program</code> 制定了文件路径，比如我们如果使用 <code class="language-plaintext highlighter-rouge">node index.js</code> 启动项目，那么 <code class="language-plaintext highlighter-rouge">program</code> 填 <code class="language-plaintext highlighter-rouge">index.js</code> 就可以。</p>
+
+<p>但我的项目是用 <code class="language-plaintext highlighter-rouge">ts-node</code> 直接运行的，并没有编译好的 js 文件，直接填写 ts 文件明显会失败，于是我 Google 搜索了 “ts-node debug”，出来的前两条结果中的配置文件都过于复杂，添加了很多参数，其实只需要加上 <code class="language-plaintext highlighter-rouge">"runtimeExecutable": "ts-node"</code> 就够了。</p>
+
+<p>除了这一种配置，VS Code 还为我们提供了许多配置模板，再次点击 Add Configuration 或者在编辑状态按下 “Ctrl+Space”，会出现一长串配置列表，比如 <code class="language-plaintext highlighter-rouge">Node.js: Launch via NPM</code> 是通过像 <code class="language-plaintext highlighter-rouge">npm start</code> 这样的命令来运行项目的，这样做的好处是具体代码文件位置或名称改动不会影响调试运行。</p>
+
+<p>不过对于某些需要与用户交互的程序，比如使用 blessed 开发的终端图形界面程序，这样启动默认是在 VS Code 内置的 Debug Console 中执行，无法接受输入，需要添加 <code class="language-plaintext highlighter-rouge">console</code> 属性设为 <code class="language-plaintext highlighter-rouge">integratedTerminal</code> 或 <code class="language-plaintext highlighter-rouge">externalTerminal</code>，分别是在 VS Code 自带的 Terminal 中或用户设置的外部 Terminal 中执行，配置文件如下：</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+ </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lanch via NPM"</span><span class="p">,</span><span class="w">
+ </span><span class="nl">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"launch"</span><span class="p">,</span><span class="w">
+ </span><span class="nl">"runtimeArgs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="s2">"start"</span><span class="p">,</span><span class="w">
+ </span><span class="p">],</span><span class="w">
+ </span><span class="nl">"runtimeExecutable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"npm"</span><span class="p">,</span><span class="w">
+ </span><span class="nl">"skipFiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="s2">"&lt;node_internals&gt;/**"</span><span class="w">
+ </span><span class="p">],</span><span class="w">
+ </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pwa-node"</span><span class="p">,</span><span class="w">
+ </span><span class="nl">"console"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integratedTerminal"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>细心的小伙伴可能已经发现，上述配置文件的 <code class="language-plaintext highlighter-rouge">request</code> 参数都设置为 <code class="language-plaintext highlighter-rouge">launch</code>，这意味着 VS Code 会直接启动程序并调试，和其他一键运行的 IDE 一样方便，不过有些时候我们仅仅需要调试而不想连带着捆绑启动的配置，所以 VS Code 也提供了 <code class="language-plaintext highlighter-rouge">attach</code> 模式，是对已经打开的程序进行调试。比如模板中 <code class="language-plaintext highlighter-rouge">Node.js: Attach</code> 配置如下：</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+ </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Attach"</span><span class="p">,</span><span class="w">
+ </span><span class="nl">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">9229</span><span class="p">,</span><span class="w">
+ </span><span class="nl">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attach"</span><span class="p">,</span><span class="w">
+ </span><span class="nl">"skipFiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="s2">"&lt;node_internals&gt;/**"</span><span class="w">
+ </span><span class="p">],</span><span class="w">
+ </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pwa-node"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>要调试 Node.js 应用程序，只需执行形如 <code class="language-plaintext highlighter-rouge">node --inspect-brk program.js</code> 命令，程序会在默认的 9229 端口等待调试器接入，在 VS Code 中点击开始调试后就会运行。对于用 <code class="language-plaintext highlighter-rouge">ts-node</code> 执行的命令，则要以形如 <code class="language-plaintext highlighter-rouge">node --nolazy --inspect-brk=9229 -r ts-node/register program.ts</code> 的方式运行。</p>
+
+<p>如果嫌使用 <code class="language-plaintext highlighter-rouge">--inspect</code> 参数麻烦，使用模板配置 <code class="language-plaintext highlighter-rouge">Node.js: Attach by Process ID</code> 则会自动弹出方框来选择对应正在运行的 Node.js 进程。如果连动动小手选择都不愿意，VS Code 还推出了 <a href="https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_auto-attach">Auto Attach</a> 功能，按下 <code class="language-plaintext highlighter-rouge">Ctrl+Shift+P</code> 输入 <code class="language-plaintext highlighter-rouge">Toggle Auto Attach</code>，选择 <code class="language-plaintext highlighter-rouge">smart</code> 模式，则只需在 VS Code 自带终端中执行 Node.js 程序，无需任何配置，VS Code 就会 Attach 你的程序并进行调试了。</p>
+
+<h2 id="栈溢出调试实战">栈溢出调试实战</h2>
+
+<p>介绍完了 VS Code 调试的基本配置，就可以来尝试解决文章最初遇到的问题了，直接开始调试并重现崩溃场景，程序退出后 Debug Console 中还能看到错误信息：</p>
+
+<pre><code class="language-log">RangeError: Maximum call stack size exceeded
+at List.focus (cli/node_modules/blessed/lib/widgets/element.js:329:30)
+at Tree.render (cli/node_modules/blessed-contrib/lib/widget/tree.js:152:52)
+at cli/node_modules/blessed/lib/widgets/screen.js:738:8
+at Array.forEach (&lt;anonymous&gt;)
+at Screen.render (cli/node_modules/blessed/lib/widgets/screen.js:735:17)
+at reposition (cli/node_modules/blessed/lib/widgets/element.js:968:17)
+at Tree._labelScroll (cli/node_modules/blessed/lib/widgets/element.js:972:5)
+at Tree._emit (cli/node_modules/blessed/lib/events.js:94:20)
+at Tree.emit (cli/node_modules/blessed/lib/events.js:117:12)
+at Tree.scroll (cli/node_modules/blessed/lib/widgets/scrollablebox.js:274:17)
+at Tree.&lt;anonymous&gt; (cli/node_modules/blessed/lib/widgets/scrollablebox.js:222:8)
+at Screen._focus (cli/node_modules/blessed/lib/widgets/screen.js:1680:10)
+at Screen.focusPush (cli/node_modules/blessed/lib/widgets/screen.js:1620:8)
+at Screen.focused (cli/node_modules/blessed/lib/widgets/screen.js:1697:15)
+at List.focus (cli/node_modules/blessed/lib/widgets/element.js:329:30)
+...
+</code></pre>
+
+<p>一下子就找到了问题的根源，应用本身的代码应该没有问题，而是在 blessed 库内部的代码中产生了无限循环，那么就可以在相应位置设下断点，观察代码执行顺序和变量值的变化，耐心地分析无限循环产生的原因。</p>
+
+<p><img src="/assets/2021/08-vscode-debug-nodejs/debug.webp" alt="debug" /></p>
+
+<p>如图所示，在 <code class="language-plaintext highlighter-rouge">tree.js</code> 的 <code class="language-plaintext highlighter-rouge">Tree.prototye.render</code> 这一函数中 <code class="language-plaintext highlighter-rouge">if (this.screen.focused === this.rows) this.rows.focus();</code> 这一语句可能导致 <code class="language-plaintext highlighter-rouge">Tree.render()</code> 会调用 <code class="language-plaintext highlighter-rouge">this.rows.focus()</code>，将鼠标悬浮至 <code class="language-plaintext highlighter-rouge">this.screen.focused</code> 发现与 <code class="language-plaintext highlighter-rouge">this.rows</code> 为同一对象，这是无限循环上的一个环节，如果注释掉此行再运行便不再有崩溃了。不过此行代码或许起着必要的作用，不敢轻易删除，最终还是更改了应用的代码，在另一处上破坏了循环继续的条件，详情可见 <a href="https://github.com/wechaty/cli/pull/13">wechaty/cli#13</a>。</p>
+
+<h2 id="扩展阅读">扩展阅读</h2>
+
+<ol>
+  <li><a href="https://code.visualstudio.com/blogs/2018/07/12/introducing-logpoints-and-auto-attach">Introducing Logpoints and auto-attach</a></li>
+  <li><a href="https://www.barretlee.com/blog/2019/03/18/debugging-in-vscode-tutorial/">VSCode 调试中 launch.json 配置不完全指南</a></li>
+  <li><a href="https://www.barretlee.com/blog/2015/10/07/debug-nodejs-in-command-line/">NodeJS的代码调试和性能调优</a></li>
+  <li><a href="https://mp.weixin.qq.com/s/7PNE3nBhpQOTN4stChvWzQ">写 Node.js 代码，从学会调试开始</a></li>
+</ol>
+
+<blockquote>
+  <p>Author:<a href="https://github.com/chinggg">@chinggg</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#code">code</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#debug">debug</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#nodejs">nodejs</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/chinggg">
+                            <img class="rounded-circle" src="/assets/contributors/chinggg/avatar.webp" alt="chinggg" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/chinggg">chinggg</a> </h5>
+						undergraduate student
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/08/03/gsod-2021-mid-term-blog-tutorials/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/08-gsod-2021-mid-term-blog-tutorials/mid-term-blog-tutorials.webp">  Google Season of Docs 2021 Mid Term Blog: Tutorials</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/08/10/docker-open-source-program/"> Docker Open Source Program ❤️ Wechaty  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/08-docker-open-source-program/docker-wechaty-osp.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

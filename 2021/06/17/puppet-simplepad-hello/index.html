@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      New Wechaty Puppet Service: SimplePad | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>New Wechaty Puppet Service: SimplePad | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="New Wechaty Puppet Service: SimplePad" />
+<meta name="author" content="simplepad" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="大家好,我是SimplePad的开发者,也是之前小丸子项目的开发者,群里的”银河飞车”." />
+<meta property="og:description" content="大家好,我是SimplePad的开发者,也是之前小丸子项目的开发者,群里的”银河飞车”." />
+<link rel="canonical" href="https://wechaty.js.org/2021/06/17/puppet-simplepad-hello/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/06/17/puppet-simplepad-hello/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/06-puppet-simplepad-hello-en/logo.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-06-17T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/06-puppet-simplepad-hello-en/logo.webp" />
+<meta property="twitter:title" content="New Wechaty Puppet Service: SimplePad" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"simplepad"},"dateModified":"2021-06-17T00:00:00+00:00","datePublished":"2021-06-17T00:00:00+00:00","description":"大家好,我是SimplePad的开发者,也是之前小丸子项目的开发者,群里的”银河飞车”.","headline":"New Wechaty Puppet Service: SimplePad","image":"https://wechaty.js.org/assets/2021/06-puppet-simplepad-hello-en/logo.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/06/17/puppet-simplepad-hello/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"simplepad"},"url":"https://wechaty.js.org/2021/06/17/puppet-simplepad-hello/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#announcement">announcement</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">New Wechaty Puppet Service: SimplePad</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/simplepad">
+                            <img class="rounded-circle" src="/assets/contributors/simplepad/avatar.webp" alt="simplepad" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/simplepad">simplepad</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jun 17, 2021 · <span class="reading-time">
+  
+  
+    1 min read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/06-puppet-simplepad-hello-en/logo.webp" alt="New Wechaty Puppet Service: SimplePad">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>大家好,我是<a href="https://github.com/chatrbot/wechaty-puppet-simplepad">SimplePad</a>的开发者,也是之前<a href="https://github.com/chatrbot/chatbot">小丸子</a>项目的开发者,群里的”银河飞车”.</p>
+
+<p>之前也在我们Wechaty群内宣传(<del>搔扰</del>)过几次大家,可能有些同学已经见过或者使用过了.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Wechaty-Puppet</code>我们大家已经很熟悉了,得益于Wechaty精巧合理的接口设计和高度抽象的模型,让我们在使用Puppet的时候得心应手的同时又能十分方便的在各种Puppet中切换自如.</p>
+
+<p>在我们享受SDK这种模式给我带来的便捷的同时,可能偶尔也会因此受到一些困扰:</p>
+
+<blockquote>
+  <ol>
+    <li>依赖冗余.例如你的项目里只是想用Bot发送一些简单的文本内容,但是不得不引入整个SDK生态来达到这一个目的.</li>
+    <li>使用受限.得益于社区的发展,现在除了官方Node版本的Wecahty外,已经有了<code class="language-plaintext highlighter-rouge">python-wechaty</code>和<code class="language-plaintext highlighter-rouge">go-wechaty</code>等其他语言项目.但如果你使用的是其他语言,就只能选择自己开发一个对应语言的Wechaty或者学习一门已有Wechaty实现的语言.</li>
+    <li>调试不易.如果我们使用的SDK中出现问题,只能研究其中的源码实现来做本地临时修正,或者提交一份PR,更或者只能联系(等待)开发者修复.这样会影响我们的开发进度,增加额外的排错时间.</li>
+    <li>功能冗余.比如你的机器人只想发送一些简单的文本信息,但是必须购买完整功能的Token,这在我看来并不是最佳的使用体验.</li>
+  </ol>
+</blockquote>
+
+<p>好在Wechaty社区也考虑到了这些问题,并且提供了一个正在开发的方案<a href="https://github.com/wechaty/openapi">WechatyOpenAPI</a>,提供一个网关来对接目前的<code class="language-plaintext highlighter-rouge">Wechaty-Grpc-Service</code>,而对外提供一整套Restful形式的Http接口来解决我上面说的问题.</p>
+
+<p>我说这么多可能大家心里会想:那这些和SimplePad又有什么关系?</p>
+
+<p>我想说的是,有关系而且关系还挺大.</p>
+
+<p>在开发SimplePad之前我也调查了目前市场上的Wechaty方案,意识到了前面说的几个痛点,为了解决上面说的几个问题,已经先开发了一套Http协议调用形式的协议系统,而SimplePad反而是之后才进行开发的.所以自然而然,整个SimplePad的API部分也是完全使用了这套系统的接口.对于我们互联网开发工作者而言,Http是使用最多也是最熟悉的协议方案,协议清晰易懂,调试方便,这也是SimplePad名称的由来和核心意义.希望给大家提供一个方便使用,调试简单的Puppet.开发者在拥有Token后可以选择使用Puppet,也可以选择直接调用Http协议的形式来实现相应的操作.这里我为大家画了一个简单的流程图.
+<img src="/assets/2021/06-puppet-simplepad-hello-en/process.webp" alt="process" /></p>
+
+<p>所以对于上面说的几个问题,SimplePad提供的方案更为灵活.</p>
+
+<ul>
+  <li>没有第三方库的依赖</li>
+  <li>也没有开发语言的限制</li>
+  <li>调试更为简单直观,可以使用开发者常用的Postman,也可以使用我在后台提供的API调试工具</li>
+  <li>按需使用(为了保证基本使用流程通畅,会有一些必须选择的接口).开发者可以自由选择需要的接口,按需付费.</li>
+  <li>提供一个完善功能的后台,可以方便调试接口和管理自己的Token.</li>
+</ul>
+
+<p>以上就是SimplePad开发的初衷和由来,以及我在解决目前社区痛点问题上的思路和一些小小的优势,更深入的使用和体验欢迎大家来探索.</p>
+
+<p>也期望大家能够和我积极<a href="https://github.com/chatrbot/wechaty-puppet-simplepad/issues">交流反馈</a>,我会尽最大努力让开发者们获得最优的使用体验.</p>
+
+<hr />
+
+<blockquote>
+  <p>This post is also available in <a href="/2021/06/17/puppet-simplepad-hello-en/">English</a>.</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#puppet">puppet</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#featured">featured</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#simplepad">simplepad</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#puppet-provider">puppet-provider</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#puppet-service">puppet-service</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/simplepad">
+                            <img class="rounded-circle" src="/assets/contributors/simplepad/avatar.webp" alt="simplepad" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/simplepad">simplepad</a> </h5>
+						
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/06/17/puppet-simplepad-hello-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/06-puppet-simplepad-hello-en/logo.webp">  New Wechaty Puppet Service: SimplePad</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/06/17/wxrobot-backend-management/"> 基于Nodejs+Wechaty开发微信机器人管理平台  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/06-wxrobot-backend-management/admin.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Summer 2020 Final Report: Designing and Implementing Plugin System for go-wechaty | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Summer 2020 Final Report: Designing and Implementing Plugin System for go-wechaty | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Summer 2020 Final Report: Designing and Implementing Plugin System for go-wechaty" />
+<meta name="author" content="finctive" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Final report for designing and implementing a comprehensive plugin system for go-wechaty, including plugin management features, context handling, and a demo plugin to demonstrate the system’s usability." />
+<meta property="og:description" content="Final report for designing and implementing a comprehensive plugin system for go-wechaty, including plugin management features, context handling, and a demo plugin to demonstrate the system’s usability." />
+<link rel="canonical" href="https://wechaty.js.org/2020/09/27/go-wechaty-plugin-en/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/09/27/go-wechaty-plugin-en/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/09-soc-go-plugin/2020-09-27-go-wechaty-plugin.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-09-27T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/09-soc-go-plugin/2020-09-27-go-wechaty-plugin.webp" />
+<meta property="twitter:title" content="Summer 2020 Final Report: Designing and Implementing Plugin System for go-wechaty" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"finctive"},"dateModified":"2020-09-27T00:00:00+00:00","datePublished":"2020-09-27T00:00:00+00:00","description":"Final report for designing and implementing a comprehensive plugin system for go-wechaty, including plugin management features, context handling, and a demo plugin to demonstrate the system’s usability.","headline":"Summer 2020 Final Report: Designing and Implementing Plugin System for go-wechaty","image":"https://wechaty.js.org/assets/2020/09-soc-go-plugin/2020-09-27-go-wechaty-plugin.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/09/27/go-wechaty-plugin-en/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"finctive"},"url":"https://wechaty.js.org/2020/09/27/go-wechaty-plugin-en/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Summer 2020 Final Report: Designing and Implementing Plugin System for go-wechaty</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/finctive">
+                            <img class="rounded-circle" src="/assets/contributors/finctive/avatar.webp" alt="FINCTIVE" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/finctive">FINCTIVE</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Sep 27, 2020 · <span class="reading-time">
+  
+  
+    9 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/09-soc-go-plugin/2020-09-27-go-wechaty-plugin.webp" alt="Summer 2020 Final Report: Designing and Implementing Plugin System for go-wechaty">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>The “Open Source Software Supply Chain Lighting Program - Summer 2020” (hereinafter referred to as Summer 2020) is a summer activity for college students jointly organized by the Institute of Software Chinese Academy of Sciences and the openEuler community. It aims to encourage college students to actively participate in the development and maintenance of open source software and promote the vigorous development of excellent domestic open source software communities.</p>
+
+<p>According to the difficulty of the project and the completion status, participants can also receive activity bonuses and trophies from the “Open Source Software Supply Chain Lighting Program - Summer 2020”.</p>
+
+<p>Official website: <a href="https://isrc.iscas.ac.cn/summer2020">https://isrc.iscas.ac.cn/summer2020</a></p>
+
+<p>Official news: <a href="http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html">http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html</a></p>
+
+<p>This project [Designing and Implementing Plugin System for go-wechaty] is an open source project supported by Summer 2020.</p>
+
+<h2 id="project-information-designing-and-implementing-plugin-system-for-go-wechaty">Project Information: [Designing and Implementing Plugin System for go-wechaty]</h2>
+
+<ul>
+  <li>Mentors: Xiaoyu Ding (丁小雨), Chaofei Ding (丁超飞), Bojie Li (李博杰)</li>
+  <li>Student: Haohan Lin (林昊翰)</li>
+  <li>Project Name: Designing and Implementing Plugin System for go-wechaty</li>
+</ul>
+
+<h3 id="project-description">Project Description</h3>
+
+<p>Wechaty is a multi-protocol WeChat access solution. With the establishment of a multi-language ecosystem in the community, it has attracted more developers and enthusiasts. As requirements grow and technology develops, the plugin system has gradually improved. However, the Plugin system in multi-language implementations is not yet complete. We hope that through this task, more people will join the development of go-wechaty.</p>
+
+<p>Currently, go-wechaty has a ding-dong bot in examples/ding-dong-bot.go, but we hope this ding-dong functionality can be universal. If we can build a proper Plugin system, implementing ding-dong might only require one line of code.</p>
+
+<p>For example:</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bot</span><span class="o">.</span><span class="n">Use</span><span class="p">(</span><span class="n">DingDong</span><span class="p">{})</span>
+</code></pre></div></div>
+
+<p>go-wechaty is a Go language implementation of Wechaty, which also supports multi-protocol access. By leveraging Go’s language features such as goroutines and channels, it achieves more reasonable encapsulation and design.</p>
+
+<h3 id="timeline">Timeline</h3>
+
+<p>Phase 1 (July 1 - August 15)</p>
+
+<p>Write plugin mechanism design documentation and communicate with mentors. The documentation includes design concepts, implementation logic, and project code changes. Improve the plugin mechanism design based on Go language features, and explore more possible solutions. Write experimental code if necessary.</p>
+
+<p>Phase 2 (August 16 - September 30)</p>
+
+<p>Write code according to the design documentation from Phase 1 to implement the go-wechaty plugin mechanism. Write a plugin demo using the go-wechaty plugin mechanism, solve problems encountered during plugin usage, and revise the plugin mechanism design and implementation accordingly.</p>
+
+<h2 id="project-summary">Project Summary</h2>
+
+<h3 id="videos">Videos</h3>
+
+<p>Final Report</p>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/Gku0nM0JOnE" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<p>Live Coding</p>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/I_3s2BrbnV0" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h3 id="project-results">Project Results</h3>
+
+<p>By the end of the project, the following achievements were made:</p>
+
+<ul>
+  <li>
+    <p>Designed and implemented the plugin mechanism for go-wechaty. This plugin system has basic management functions and references Go language design features.</p>
+  </li>
+  <li>
+    <p>Implemented a plugin demo based on the go-wechaty plugin mechanism, verifying the feasibility and usability of the plugin mechanism.</p>
+  </li>
+</ul>
+
+<p>All core objectives of the original plan have been completed.</p>
+
+<h4 id="go-wechaty-plugin-mechanism-design-documentation">go-wechaty Plugin Mechanism Design Documentation</h4>
+
+<p>Weekly progress reports and discussion issue: <a href="https://github.com/wechaty/summer-of-code/issues/9#">Designing and Implementing Plugin System for go-wechaty</a></p>
+
+<p>Related code repository: <a href="https://github.com/wechaty/go-wechaty/pull/67">go-wechaty Plugin branch PR</a></p>
+
+<p>Added <code class="language-plaintext highlighter-rouge">wechaty.Plugin</code> structure type to store plugin callback functions. It supports all event registration functions in Wechaty (such as <code class="language-plaintext highlighter-rouge">OnMessage()</code>), and its usage is consistent with Wechaty instances, making it easy to encapsulate Bot code into plugins.</p>
+
+<p>Added <code class="language-plaintext highlighter-rouge">wechaty.Context</code> structure type for controlling and passing information during a message event round. A new variable is passed in each time a new message event is received. This structure also implements the <code class="language-plaintext highlighter-rouge">context.Context</code> interface.</p>
+
+<p>The following describes the features of the go-wechaty plugin mechanism:</p>
+
+<ul>
+  <li>Call Order (Priority)</li>
+</ul>
+
+<p>Called in registration order. Bot logic code and plugin logic code can have interleaved execution order. For example:</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="n">bot</span> <span class="o">=</span> <span class="n">wechaty</span><span class="o">.</span><span class="n">NewWechaty</span><span class="p">()</span>
+<span class="n">bot</span><span class="o">.</span><span class="n">OnMessage</span><span class="p">(</span><span class="k">func</span><span class="p">(</span><span class="n">context</span> <span class="o">*</span><span class="n">wechaty</span><span class="o">.</span><span class="n">Context</span><span class="p">,</span> <span class="n">message</span> <span class="o">*</span><span class="n">user</span><span class="o">.</span><span class="n">Message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c">// Part A</span>
+<span class="p">})</span>
+<span class="n">bot</span><span class="o">.</span><span class="n">Use</span><span class="p">(</span><span class="n">pluginB</span><span class="p">)</span><span class="o">.</span><span class="n">Use</span><span class="p">(</span><span class="n">pluginC</span><span class="p">)</span>
+<span class="n">bot</span><span class="o">.</span><span class="n">OnMessage</span><span class="p">(</span><span class="k">func</span><span class="p">(</span><span class="n">context</span> <span class="o">*</span><span class="n">wechaty</span><span class="o">.</span><span class="n">Context</span><span class="p">,</span> <span class="n">message</span> <span class="o">*</span><span class="n">user</span><span class="o">.</span><span class="n">Message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c">// Part D</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Execution order: Part A → pluginB → pluginC → Part D</p>
+
+<ul>
+  <li>
+    <p>Switches</p>
+
+    <ul>
+      <li>
+        <p>Disable/Enable plugins.</p>
+
+        <p>Corresponding method: <code class="language-plaintext highlighter-rouge">Plugin.SetEnable</code></p>
+
+        <p>Modifies plugin property variables through locking. This method is concurrency-safe.</p>
+      </li>
+      <li>
+        <p>Temporarily disable a specific plugin in the current message event round.</p>
+
+        <p>Corresponding method: <code class="language-plaintext highlighter-rouge">Context.DisableOnce</code></p>
+      </li>
+      <li>
+        <p>Message interception, skip subsequent plugin processing for the current message event. Also terminates all ongoing plugin code operations, i.e., goroutines spawned by previous plugins.</p>
+
+        <p>Corresponding method: <code class="language-plaintext highlighter-rouge">Context.Abort</code> and <code class="language-plaintext highlighter-rouge">Context.Done</code></p>
+      </li>
+      <li>
+        <p>Control the termination of internal goroutines in plugins within concurrent programs. Usage is the same as context.Context (<a href="https://golang.org/pkg/context/#WithCancel">WithCancel()</a>) in the Go language.</p>
+
+        <p>Corresponding method: <code class="language-plaintext highlighter-rouge">Context.Abort</code> and <code class="language-plaintext highlighter-rouge">Context.Done</code></p>
+
+        <p>Example:</p>
+
+        <div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plugin</span> <span class="o">:=</span> <span class="n">NewPlugin</span><span class="p">()</span>
+<span class="n">plugin</span><span class="o">.</span><span class="n">OnMessage</span><span class="p">(</span><span class="k">func</span><span class="p">(</span><span class="n">context</span> <span class="o">*</span><span class="n">wechaty</span><span class="o">.</span><span class="n">Context</span><span class="p">,</span> <span class="n">message</span> <span class="o">*</span><span class="n">user</span><span class="o">.</span><span class="n">Message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">go</span> <span class="k">func</span><span class="p">(</span><span class="n">ctx</span> <span class="n">context</span><span class="o">.</span><span class="n">Context</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c">// other code ...</span>
+        <span class="k">select</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="o">&lt;-</span><span class="n">ctx</span><span class="o">.</span><span class="n">Done</span><span class="p">()</span><span class="o">:</span>
+            <span class="c">// terminated by wechaty.Context.Abort()</span>
+
+       <span class="c">// other code ...</span>
+
+       <span class="p">}</span>
+    <span class="p">}(</span><span class="n">context</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="c">// other code ...</span>
+
+<span class="c">// context.Abort() will terminate the goroutine</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Data Passing</p>
+  </li>
+</ul>
+
+<p>Data is passed through Context and is only valid for the current message event round.</p>
+
+<p>Does not support concurrent read/write.</p>
+
+<p>Corresponding methods: <code class="language-plaintext highlighter-rouge">Context.SetData</code>, <code class="language-plaintext highlighter-rouge">Context.GetData</code></p>
+
+<h4 id="example-plugin-wordcounter">Example Plugin: wordcounter</h4>
+
+<p>Related code repository: <a href="https://github.com/FINCTIVE/wordcounter">Example plugin wordcounter</a></p>
+
+<p>This plugin runs on the go-wechaty plugin mechanism designed above. The main purpose of developing this plugin is to verify the availability and usability of the plugin mechanism.</p>
+
+<p>The plugin’s function is to count the number of words spoken by group members within a specified number of hours (only counting text messages).</p>
+
+<p>The plugin is used as follows - the caller only needs to pass in the corresponding configuration information:</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="s">"github.com/FINCTIVE/wordcounter"</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="n">bot</span> <span class="o">=</span> <span class="n">wechaty</span><span class="o">.</span><span class="n">NewWechaty</span><span class="p">()</span>
+    <span class="n">bot</span><span class="o">.</span><span class="n">Use</span><span class="p">(</span><span class="n">wordcounter</span><span class="o">.</span><span class="n">New</span><span class="p">(</span><span class="n">wordcounter</span><span class="o">.</span><span class="n">Config</span><span class="p">{</span>
+            <span class="n">SearchKeyword</span><span class="o">:</span>  <span class="s">"#排名"</span><span class="p">,</span>
+            <span class="n">MaxResultCount</span><span class="o">:</span> <span class="m">10</span><span class="p">,</span>
+            <span class="n">Hours</span><span class="o">:</span>          <span class="m">6</span><span class="p">,</span>
+        <span class="p">}))</span>
+    <span class="p">}</span>
+    <span class="c">// starting bot ...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="problems-encountered-and-solutions">Problems Encountered and Solutions</h3>
+
+<ul>
+  <li>How to participate in open source communities and contribute to them?</li>
+</ul>
+
+<p>In my first two years of college, I had not participated in the development of large projects, let alone high-requirement open source projects. Remote collaborative development of open source projects was very attractive to me, but I never had a suitable opportunity to participate (due to insufficient skills, not knowing how to participate, etc., which made me give up taking the first step many times). This Open Source Software Supply Chain Lighting Program provided this opportunity, allowing me to participate in the Wechaty community for project development. The Wechaty community is a highly inclusive community, and the mentors in the community patiently answer students’ questions. This experience has increased my experience in participating in open source software development and also enhanced my communication skills. In future development, I will continue to contribute code to the open source community.</p>
+
+<ul>
+  <li>During the development process, I often encountered unfamiliar technical problems that required learning new knowledge.</li>
+</ul>
+
+<p>During the development of this project, the main problems I encountered came from unfamiliarity with Go programming. I had doubts about many details. When actually testing the program, there were also some minor issues to solve, such as using Docker and troubleshooting. My solution was mainly self-learning and consulting documentation. This project development experience greatly improved my programming ability.</p>
+
+<p>For some problems I couldn’t solve on my own, the mentors in the community gave me great help. After reviewing my code, the mentors provided many targeted suggestions, which were essential for me to complete the project. Thank you for the mentors’ dedication.</p>
+
+<ul>
+  <li>The project development time was long, and I often had thoughts of procrastination and lacked motivation.</li>
+</ul>
+
+<p>Thanks to the excellent management approach of the Wechaty community, students participating in project development need to fill in weekly development reports in the corresponding Issue, summarizing weekly work results and formulating next week’s development plan. Due to the pressure of weekly reporting, my procrastination was greatly reduced. This project development experience also taught me the importance of making plans.</p>
+
+<h2 id="mentor-review-results">Mentor Review Results</h2>
+
+<ul>
+  <li>
+    <p>Project Completion: <em>According to the original plan, all planned functions were completed</em></p>
+  </li>
+  <li>
+    <p>Student Participation: <em>The project participation part of the activity was entirely completed by the student</em></p>
+  </li>
+  <li>
+    <p>Code Contribution: <em>Plugin 100% completed by the student, including an example Plugin, accounting for 10%-20% of the entire open source project.</em></p>
+  </li>
+  <li>
+    <p>Comprehensive Evaluation and Suggestions:</p>
+
+    <ul>
+      <li>
+        <p>Haohan has particularly strong learning ability and initiative. He was able to quickly get started with new knowledge and methods. From initially not knowing how to approach open source projects, to becoming familiar with common ways of sharing code, and mastering Go, we can feel the progress and gains. I believe this brief activity experience can become a talking point in your future work and life.</p>
+      </li>
+      <li>
+        <p>I believe most people transitioning from school to work will waver on long-term projects. Actually, you just need to complete the established work according to the original plan. Breaking down large projects into small projects is a very important part of planning and execution. The report mentioned weekly planning, and I’m glad you saw the value it brought you. It kept you from deviating from the original plan, and I hope you can gain from this in your future work.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Final Review Result: <em>Passed</em></p>
+  </li>
+</ul>
+
+<h2 id="contact-us">Contact Us</h2>
+
+<ul>
+  <li>Project Link: <a href="https://github.com/wechaty/go-wechaty">wechaty/go-wechaty</a></li>
+  <li>Contact: finctive@foxmail.com</li>
+</ul>
+
+<hr />
+
+<blockquote>
+  <p>本文也有<a href="/2020/09/27/go-wechaty-plugin/">中文版本</a>。</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#plugins">plugins</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#summer-of-wechaty">summer-of-wechaty</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#summer-2020">summer-2020</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#go">go</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ecosystem">ecosystem</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/finctive">
+                            <img class="rounded-circle" src="/assets/contributors/finctive/avatar.webp" alt="FINCTIVE" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/finctive">FINCTIVE</a> </h5>
+						
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/09/27/go-wechaty-gh-actions-optimization-final-poc/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/09-go-wechaty-gh-actions-optimization-final-poc-en/header.webp">  暑期2020 [Go-wechaty Github Action optimization] 结项 POC</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/09/27/go-wechaty-plugin/"> 暑期2020 [为 go-wechaty 设计实现插件体系] 结项报告  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/09-soc-go-plugin/2020-09-27-go-wechaty-plugin.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

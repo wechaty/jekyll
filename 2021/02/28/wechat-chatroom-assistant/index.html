@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      微信群消息助手（wechat chatroom assistant） | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>微信群消息助手（wechat chatroom assistant） | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="微信群消息助手（wechat chatroom assistant）" />
+<meta name="author" content="paulhybryant" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Conversational RPA SDK for Chatbot Makers" />
+<meta property="og:description" content="Conversational RPA SDK for Chatbot Makers" />
+<link rel="canonical" href="https://wechaty.js.org/2021/02/28/wechat-chatroom-assistant/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/02/28/wechat-chatroom-assistant/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/02-wechat-chatroom-assistant/header.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-02-28T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/02-wechat-chatroom-assistant/header.webp" />
+<meta property="twitter:title" content="微信群消息助手（wechat chatroom assistant）" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"paulhybryant"},"dateModified":"2021-02-28T00:00:00+00:00","datePublished":"2021-02-28T00:00:00+00:00","description":"Conversational RPA SDK for Chatbot Makers","headline":"微信群消息助手（wechat chatroom assistant）","image":"https://wechaty.js.org/assets/2021/02-wechat-chatroom-assistant/header.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/02/28/wechat-chatroom-assistant/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"paulhybryant"},"url":"https://wechaty.js.org/2021/02/28/wechat-chatroom-assistant/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">微信群消息助手（wechat chatroom assistant）</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/paulhybryant">
+                            <img class="rounded-circle" src="/assets/contributors/paulhybryant/avatar.webp" alt="paulhybryant" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/paulhybryant">paulhybryant</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Feb 28, 2021 · <span class="reading-time">
+  
+  
+    3 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/02-wechat-chatroom-assistant/header.webp" alt="微信群消息助手（wechat chatroom assistant）">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p><a href="https://github.com/wechaty/wechaty"><img src="https://img.shields.io/badge/Powered%20By-Wechaty-green.svg#align=left&amp;display=inline&amp;height=20&amp;margin=%5Bobject%20Object%5D&amp;originHeight=20&amp;originWidth=132&amp;status=done&amp;style=none&amp;width=132" alt="Wechaty Badge" /></a>
+<a href="https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty"><img src="https://img.shields.io/badge/Wechaty-%E5%BC%80%E6%BA%90%E6%BF%80%E5%8A%B1%E8%AE%A1%E5%88%92-green.svg#align=left&amp;display=inline&amp;height=20&amp;margin=%5Bobject%20Object%5D&amp;originHeight=20&amp;originWidth=134&amp;status=done&amp;style=none&amp;width=134" alt="Everything about Wechaty" /></a></p>
+
+<h2 id="背景">背景</h2>
+
+<p>个人的微信里加了很多微信群，在这些微信群里经常会有一些重要的通知，或者一些我关心的文件等等，但是因为群里人多，所以也会有很多无关的消息。
+不想错过这些重要的通知，但是又不可能又精力自己一个个群去爬楼，非常浪费时间。
+所以就有了这么一个群消息助手机器人的需求，能够自动帮我按照定义的规则过滤消息，把我感兴趣的消息发到我个人的微信上。</p>
+
+<h2 id="功能">功能</h2>
+
+<p>根据定义的规则自动识别我关心的消息，并发送到我的个人微信上。
+初步的实现很简单，所有的规则，包括forward的对象都是hardcode在代码里的。
+之后可以将这些修改配可配置的方式，使得机器人更通用。</p>
+
+<p>还有一些其他的想法，比如提供一些命令，能够“教”机器人干些什么事情，动态的执行某些代码。</p>
+
+<h2 id="实现逻辑">实现逻辑</h2>
+
+<p>逻辑非常简单；利用wechaty接收用户消息，对消息类型进行判断，并采取相应的行动（forward，或者say），并给出一些上下文消息（比如是从那个群来的，谁发的，等等）</p>
+
+<h2 id="依赖">依赖</h2>
+
+<ul>
+  <li>python-wechaty：wechaty python核心库</li>
+  <li>wechaty-puppet-padlocal：wechaty的ipad协议实现</li>
+</ul>
+
+<h2 id="实现过程">实现过程</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="n">msg</span><span class="p">:</span> <span class="n">Message</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">
+    Message Handler for the Bot
+    </span><span class="sh">"""</span>
+    <span class="k">global</span> <span class="n">counter</span>
+    <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">log</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sh">'</span><span class="s">received %s messages</span><span class="sh">'</span> <span class="o">%</span> <span class="n">counter</span><span class="p">)</span>
+    <span class="n">me</span> <span class="o">=</span> <span class="n">bot</span><span class="p">.</span><span class="n">Contact</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="sh">'</span><span class="s">paulhybryant0104</span><span class="sh">'</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="nf">text</span><span class="p">()</span>
+    <span class="n">mention_self</span> <span class="o">=</span> <span class="k">await</span> <span class="n">msg</span><span class="p">.</span><span class="nf">mention_self</span><span class="p">()</span>
+    <span class="n">mention_text</span> <span class="o">=</span> <span class="k">await</span> <span class="n">msg</span><span class="p">.</span><span class="nf">mention_text</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">msg</span><span class="p">.</span><span class="nf">room</span><span class="p">():</span>
+        <span class="n">topic</span> <span class="o">=</span> <span class="k">await</span> <span class="n">msg</span><span class="p">.</span><span class="nf">room</span><span class="p">().</span><span class="nf">topic</span><span class="p">()</span>
+        <span class="n">log</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sh">'</span><span class="s">room: %s, topic %s</span><span class="sh">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="nf">room</span><span class="p">().</span><span class="n">room_id</span><span class="p">,</span> <span class="n">topic</span><span class="p">))</span>
+        <span class="c1"># @me
+</span>        <span class="k">if</span> <span class="n">mention_self</span><span class="p">:</span>
+            <span class="n">log</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sh">'</span><span class="s">mentioned me</span><span class="sh">'</span><span class="p">)</span>
+            <span class="k">await</span> <span class="n">me</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="sh">'</span><span class="s">来自群: %s</span><span class="sh">'</span> <span class="o">%</span> <span class="n">topic</span><span class="p">)</span>
+            <span class="k">await</span> <span class="n">msg</span><span class="p">.</span><span class="nf">forward</span><span class="p">(</span><span class="n">me</span><span class="p">)</span>
+        <span class="c1"># @all
+</span>        <span class="k">elif</span> <span class="sh">'</span><span class="s">@所有人</span><span class="sh">'</span> <span class="ow">in</span> <span class="n">mention_text</span> <span class="ow">or</span> <span class="sh">'</span><span class="s">@All</span><span class="sh">'</span> <span class="ow">in</span> <span class="n">mention_text</span><span class="p">:</span>
+            <span class="n">log</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sh">'</span><span class="s">mentioned all</span><span class="sh">'</span><span class="p">)</span>
+            <span class="k">await</span> <span class="n">me</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="sh">'</span><span class="s">来自群: %s</span><span class="sh">'</span> <span class="o">%</span> <span class="n">topic</span><span class="p">)</span>
+            <span class="k">await</span> <span class="n">msg</span><span class="p">.</span><span class="nf">forward</span><span class="p">(</span><span class="n">me</span><span class="p">)</span>
+        <span class="c1"># For testing
+</span>        <span class="k">elif</span> <span class="n">topic</span> <span class="o">==</span> <span class="sh">'</span><span class="s">MyAssistant</span><span class="sh">'</span><span class="p">:</span>
+            <span class="n">log</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">msg</span><span class="p">.</span><span class="nf">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">MessageType</span><span class="p">.</span><span class="n">MESSAGE_TYPE_ATTACHMENT</span><span class="p">:</span>
+                <span class="n">filebox</span> <span class="o">=</span> <span class="k">await</span> <span class="n">msg</span><span class="p">.</span><span class="nf">to_file_box</span><span class="p">()</span>
+                <span class="k">await</span> <span class="n">me</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="n">filebox</span><span class="p">)</span>
+        <span class="c1"># 低风险投资3群
+</span>        <span class="k">elif</span> <span class="n">msg</span><span class="p">.</span><span class="nf">room</span><span class="p">().</span><span class="n">room_id</span> <span class="o">==</span> <span class="sh">'</span><span class="s">4932234304@chatroom</span><span class="sh">'</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">msg</span><span class="p">.</span><span class="nf">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">MessageType</span><span class="p">.</span><span class="n">MESSAGE_TYPE_ATTACHMENT</span><span class="p">:</span>
+                <span class="n">filebox</span> <span class="o">=</span> <span class="k">await</span> <span class="n">msg</span><span class="p">.</span><span class="nf">to_file_box</span><span class="p">()</span>
+                <span class="k">await</span> <span class="n">me</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="n">filebox</span><span class="p">)</span>
+        <span class="c1"># TODO: Automatically cache chatroom ids, given topic (room name)
+</span>        <span class="k">elif</span> <span class="n">topic</span> <span class="o">==</span> <span class="sh">'</span><span class="s">投资学习8群</span><span class="sh">'</span><span class="p">:</span>
+            <span class="n">log</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="nf">room</span><span class="p">().</span><span class="n">room_id</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">msg</span><span class="p">.</span><span class="nf">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">MessageType</span><span class="p">.</span><span class="n">MESSAGE_TYPE_ATTACHMENT</span><span class="p">:</span>
+                <span class="n">filebox</span> <span class="o">=</span> <span class="k">await</span> <span class="n">msg</span><span class="p">.</span><span class="nf">to_file_box</span><span class="p">()</span>
+                <span class="k">await</span> <span class="n">me</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="n">filebox</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="n">KEYWORDS</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+                    <span class="n">log</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sh">'</span><span class="s">contains keyword: %s</span><span class="sh">'</span> <span class="o">%</span> <span class="n">keyword</span><span class="p">)</span>
+                    <span class="k">await</span> <span class="n">me</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="sh">'</span><span class="s">来自群: %s</span><span class="sh">'</span> <span class="o">%</span> <span class="n">topic</span><span class="p">)</span>
+                    <span class="k">await</span> <span class="n">msg</span><span class="p">.</span><span class="nf">forward</span><span class="p">(</span><span class="n">me</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">log</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">text</span> <span class="o">==</span> <span class="sh">'</span><span class="s">#weather</span><span class="sh">'</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">msg</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="sh">'</span><span class="s">TODO: report today</span><span class="se">\'</span><span class="s">s weather</span><span class="sh">'</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h2 id="本地运行">本地运行</h2>
+
+<ol>
+  <li>克隆项目</li>
+</ol>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone g https://github.com/paulhybryant/wechat-bot.git
+<span class="nb">cd </span>wechat-bot
+</code></pre></div></div>
+
+<ol>
+  <li>安装依赖</li>
+</ol>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install</span> <span class="nt">-r</span> requirements.txt
+</code></pre></div></div>
+
+<ol>
+  <li>启动项目</li>
+</ol>
+
+<p>参考<a href="https://wechaty.js.org/2021/02/03/python-wechaty-for-padlocal-puppet-service/">这篇文章</a>来配置wechaty-puppet-service环境</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">WECHATY_PUPPET_SERVICE_TOKEN</span><span class="o">=</span>&lt;your token&gt;
+<span class="nb">export </span><span class="nv">WECHATY_PUPPET</span><span class="o">=</span><span class="s2">"wechaty-puppet-service"</span>
+python3 chatroom_assistant.py
+</code></pre></div></div>
+
+<h2 id="效果图">效果图</h2>
+
+<p><img src="/assets/2021/02-wechat-chatroom-assistant/demo.webp" alt="效果图" /></p>
+
+<h2 id="致谢">致谢</h2>
+
+<p>感谢<a href="https://wechaty.js.org/">Wechaty</a>团队提供微信机器人SDK，让开发者可以专注于业务代码。
+感谢<a href="https://www.juzibot.com">句子互动</a>提供的pad协议版token。</p>
+
+<blockquote>
+  <p>作者: <a href="https://github.com/paulhybryant/">paulhybryant</a>
+Code: <a href="https://github.com/paulhybryant/wechat-bot">Github</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#python">python</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#padlocal">padlocal</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#productivity">productivity</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/paulhybryant">
+                            <img class="rounded-circle" src="/assets/contributors/paulhybryant/avatar.webp" alt="paulhybryant" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/paulhybryant">paulhybryant</a> </h5>
+						A tech guy who is interested in doing things by himself at spare time, and passionate in learning and sharing everything about investment.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/02/20/google-cloud-shell-tutorials/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/02-google-cloud-shell-tutorials/google-cloud-platform.webp">  Google Cloud Shell Tutorials for Wechaty</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/03/04/wechaty-puppet-providers-trends/"> Wechaty Puppet Providers Trends  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/03-wechaty-puppet-providers-trends/wechaty-puppet-providers-trends.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

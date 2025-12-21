@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Everything You Need to Know About Chatbots | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Everything You Need to Know About Chatbots | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Everything You Need to Know About Chatbots" />
+<meta name="author" content="bukaqiaqia" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A comprehensive exploration of chatbot history from ELIZA to modern AI assistants, covering commercial applications, technical implementations, and current limitations in the evolving conversational AI landscape." />
+<meta property="og:description" content="A comprehensive exploration of chatbot history from ELIZA to modern AI assistants, covering commercial applications, technical implementations, and current limitations in the evolving conversational AI landscape." />
+<link rel="canonical" href="https://wechaty.js.org/2018/01/09/all-you-need-to-know-about-chatbot-en/" />
+<meta property="og:url" content="https://wechaty.js.org/2018/01/09/all-you-need-to-know-about-chatbot-en/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-25.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-01-09T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-25.webp" />
+<meta property="twitter:title" content="Everything You Need to Know About Chatbots" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"bukaqiaqia"},"dateModified":"2018-01-09T00:00:00+00:00","datePublished":"2018-01-09T00:00:00+00:00","description":"A comprehensive exploration of chatbot history from ELIZA to modern AI assistants, covering commercial applications, technical implementations, and current limitations in the evolving conversational AI landscape.","headline":"Everything You Need to Know About Chatbots","image":"https://wechaty.js.org/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-25.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2018/01/09/all-you-need-to-know-about-chatbot-en/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"bukaqiaqia"},"url":"https://wechaty.js.org/2018/01/09/all-you-need-to-know-about-chatbot-en/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#event">event</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Everything You Need to Know About Chatbots</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/bukaqiaqia">
+                            <img class="rounded-circle" src="/assets/contributors/bukaqiaqia/avatar.webp" alt="Yan Wang" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/bukaqiaqia">Yan Wang</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jan 09, 2018 · <span class="reading-time">
+  
+  
+    12 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-25.webp" alt="Everything You Need to Know About Chatbots">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>2018 has arrived, and upon waking up, various social media platforms have been flooded with “18 years old” posts.
+There are posts like this:</p>
+
+<p><img src="/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-1.webp" alt="1_" /></p>
+
+<p>And of course, posts like this:</p>
+
+<p><img src="/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-2.webp" alt="2_" /></p>
+
+<p>Already trapped in a normal distribution of confusion, I decided to consult my personal assistant - Siri</p>
+
+<p><img src="/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-3.webp" alt="3_" /></p>
+
+<p>This made me curious about how old Siri actually is.</p>
+
+<p><img src="/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-4.webp" alt="4" /></p>
+
+<p>Well, girls need to be mysterious to be beautiful. So let’s ask the famous Buddhist youth who sees through everything and doesn’t sweat the small stuff - Xian’er from Longquan Temple.</p>
+
+<p><img src="/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-5.webp" alt="5" /></p>
+
+<h2 id="history-of-chatbots">History of Chatbots</h2>
+
+<p>The world’s first chatbot was called ELIZA, now over 50 years old. It was developed by MIT professor Joseph Weizenbaum in the 1960s.</p>
+
+<p>ELIZA was initially developed to simulate “the responses of a non-directive psychotherapist in an initial psychiatric interview,” testing how humans and machines communicate. It used scripts that could recognize certain patterns and keywords to generate responses. What Joseph didn’t expect was that ELIZA could communicate like a psychotherapist, even forming emotional connections with some people.</p>
+
+<p><img src="/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-6.webp" alt="6" /></p>
+
+<p>ELIZA inspired numerous chatbots like PERRY, ALICE, Mitsuku, Albert One, etc.</p>
+
+<p>SmarterChild was among the most popular. Developed in 2000, this post-2000s bot is now approaching adulthood at 18 years old. It caught the wave of SMS services’ popularity and incorporated cutting-edge natural language processing capabilities, understanding human language and responding accordingly.</p>
+
+<p>In 2002, a chatbot that made users worldwide laugh was born - SimSimi. Created by Korean tech company ISMaker, this app had a fresh, cute interface especially popular with girls. Since its mascot was a yellow chicken, it was nicknamed “Little Yellow Chicken” in China. This little yellow chicken became almost overnight famous for its humorous responses, sparking a human-chicken conversation craze online.</p>
+
+<p><img src="/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-7.webp" alt="7" /></p>
+
+<p>It utilized about 10 million question-answer dialogue pairs as its foundation, with vocabulary growing through user input. When Little Yellow Chicken had no data to respond with, users could choose the “teaching” tab to teach it new words. This made users feel like they were texting close friends, bringing warmth during lonely, cold moments.</p>
+
+<p><img src="/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-8.webp" alt="8" /></p>
+
+<p>Think chatbots can only be funny? You’re wrong. Siri was born in 2010, almost redefining chatbot functionality. This mysterious lady who keeps her age secret is actually only 8 years old this year!</p>
+
+<p>Users can not only query and converse with Siri through messages but also enjoy text, audio, image, and video interactions. Additionally, Apple gave Siri a series of practical functions:</p>
+
+<blockquote>
+  <p>Reminders and memos? Small case!</p>
+</blockquote>
+
+<p><img src="/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-9.webp" alt="9" /></p>
+
+<blockquote>
+  <p>Calling a ride? Easy job!</p>
+</blockquote>
+
+<p><img src="/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-10.webp" alt="10" /></p>
+
+<blockquote>
+  <p>Too lazy to read emails? Siri reads them for you!</p>
+</blockquote>
+
+<p><img src="/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-11.webp" alt="11" /></p>
+
+<p>From making calls, finding routes, song recognition to setting alarms, she can help with anything you think of. How well can Siri chat?</p>
+
+<p><img src="/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-12.webp" alt="12" /></p>
+
+<blockquote>
+  <p>Interestingly, when Siri was released, Eliza was brought out again for conversation.
+At that time, Eliza and Siri had a 45-year age gap and 2 million times memory difference.</p>
+</blockquote>
+
+<p>After Siri, Amazon’s not-yet-4-year-old Alexa took chatbots further. She’s now built into various smart home devices like Amazon Echo, Echo Dot, Echo Show, Fire TV. All you need to do is say “Alexa, play some music” or “Alexa, turn on the TV” to easily command all home appliances. Amazon even allows developers to create and publish skills for Alexa using the Alexa Skills Kit (ASK). You can download skills for free using the Alexa app.</p>
+
+<p><img src="/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-13.webp" alt="13" /></p>
+
+<p>What about the age of that eternally cute, Buddhist youth Xian’er monk? This “sweeping monk” of the chatbot world was born on October 1, 2015, marking the 10th anniversary of his master’s leadership at Longquan Temple. He’s only 1.5 years old - monks indeed don’t lie. Despite being the youngest, listening to Xian’er’s words can purify the soul with Zen wisdom and guide life direction.</p>
+
+<p><img src="/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-14.webp" alt="14_" /></p>
+
+<h2 id="surging-commercial-applications">Surging Commercial Applications</h2>
+
+<p>As messaging apps continue to surpass social media networks in usage, chatbots are becoming increasingly popular in business, with their continuous optimization and progress significantly changing enterprises. More businesses are introducing chatbots in customer service channels to replace poorly performing voice systems. Users no longer need to impatiently navigate through multiple systems to get information or communicate with human customer service. For businesses, chatbots can provide similar services to call centers at lower costs. If third-party developers can quickly develop feature-rich chatbots, more enterprises and merchants will use chat tools to establish communication channels with consumers and existing customers.</p>
+
+<p><img src="/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-15.webp" alt="15" /></p>
+
+<blockquote>
+  <p>Chatbots achieved 170% growth in just 3 months</p>
+</blockquote>
+
+<p>At the F8 developer conference in April 2016, Facebook announced chatbot capabilities for the Messenger platform, allowing businesses to provide various services like customer support, guidance, and interaction through instant messaging chatbots. Chris McCann, president of online flower retailer 1-800 Flowers, said that within months of launching chatbots on Facebook Messenger, “70% of company orders completed through chatbots were from new customers. These users were younger than the company’s typical users.” Chatbots clearly cater to millennials (born 1984-1995) who are becoming the main consumer force.</p>
+
+<p>Meanwhile, traditionally aloof fashion brands like Burberry, Victoria’s Secret, and Tommy Hilfiger accelerated their chatbot adoption. You can browse the latest seasonal styles and product catalogs. Chatbots ask about your measurements, country, style preferences, etc., to help you choose products. If interested, you can choose to view items in detail or make purchases, immediately being taken to the brand website where entire product lines appear in various colors and sizes. They make you feel like someone’s shopping with you even when your best friend isn’t available.</p>
+
+<p><img src="/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-16.webp" alt="16" /></p>
+
+<p>Simultaneously, major domestic e-commerce platforms have long developed and introduced robot customer service with significant results. In 2016, Zhonghong Life Insurance introduced Ant Financial’s customer service capabilities - online customer service, automatic outbound calls, intelligent quality inspection - significantly improving operational efficiency and quality. Robot resolution rates reached 83%, outbound productivity increased 15%, and inbound productivity increased 10%.</p>
+
+<p><img src="/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-17.webp" alt="17" /></p>
+
+<p>Automatic responses and chatbots aren’t gimmicks or marketing activities but paradigms for new user interfaces. When users interact with businesses through messages, they feel like they’re having real conversations. This messaging interaction method has inherent reconnection functionality because users can truly interact with chatbots in messaging apps. The days of companies spending millions of dollars and years launching mobile applications are over.</p>
+
+<h2 id="how-chatbots-work">How Chatbots Work</h2>
+
+<p>So how do chatbots actually work? Current chatbots fall into two main types: one operates based on a complete set of rules; the other is a more advanced version using machine learning. What does this mean?</p>
+
+<p>Rule-based chatbots have very, very limited functionality. They can only respond to very specific commands. If you say something wrong, they don’t know what you mean. Most chatbots we introduced earlier use machine learning functionality: when you speak, you don’t need to be very specific. They understand language, not just commands. They learn from conversations with people, becoming increasingly smarter.</p>
+
+<p>In machine learning: you need a sample set to train a classifier that can select from all possible content (e.g., buy tickets, check flight status, get details, etc.) given user input.</p>
+
+<p><img src="/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-18.webp" alt="18" /></p>
+
+<p>For example, “I want to go from Paris, France to Venice, Italy on January 31st.” In this scenario, understanding cities and dates in input and returning appropriate answers is crucial. The chatbot might search databases (or online queries) for flights from Venice to Paris on given dates. Therefore, chatbots need information extraction from input to obtain important entities: locations, flights, airports, dates, etc. Input classification and information extraction are two important concepts to always remember.</p>
+
+<p>When discussing chatbots, we must mention NLP:</p>
+
+<p><img src="/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-19.webp" alt="19" /></p>
+
+<blockquote>
+  <p>NLP (Natural Language Processing) is technology studying computer processing of human language, including syntactic semantic analysis, information extraction, text mining (or text data mining), machine translation, information retrieval, question-answering systems, and dialogue systems. It can perform word segmentation, part-of-speech tagging, named entity recognition and linking for given sentences, and extract important information from given text, such as time, place, people, events, causes, results, numbers, dates, currency, proper nouns, etc. Simply put, it’s about understanding who did what to whom, when, why, and with what results. This involves key technologies like entity recognition, time extraction, and causal relationship extraction. NLP can also achieve visualization and interactive expression interfaces for mined information and knowledge through text clustering, classification, information extraction, summarization, and sentiment analysis. When applied to chatbots, systems conduct conversations with users through dialogue series, answering questions and completing tasks. NLP involves user intent understanding, general chat engines, question-answering engines, and dialogue management technologies. To reflect context relevance, it also has multi-turn dialogue capabilities. Additionally, to reflect personalization, it develops user profiles and personalized responses based on user profiles.</p>
+</blockquote>
+
+<p><img src="/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-20.webp" alt="20" /></p>
+
+<blockquote>
+  <p>Trump vs. Hillary: Sentiment Analysis on Twitter</p>
+</blockquote>
+
+<p>Beyond chatbots, NLP technology is developing rapidly in deep learning fields, including word embeddings, sentiment analysis, sentiment neuron applications, and automatic summarization like automatic translation.</p>
+
+<h2 id="development-ceiling">Development Ceiling</h2>
+
+<p>Around Chinese Valentine’s Day 2015, Microsoft released the third-generation Xiaoice on WeChat, allowing users to “adopt” it through official accounts. Xiaoice covered nearly 1.5 million WeChat group users in just 3 days of public testing, then was blocked by Tencent WeChat. In just three days, Xiaoice exploded on WeChat then instantly extinguished - rising rapidly and falling suddenly, appearing and disappearing like a flash in the pan.</p>
+
+<p>Similarly, Microsoft faced Waterloo abroad. Tay was Microsoft’s AI chatbot designed specifically for 18-24 year olds, with a virtual age of 19. When she first appeared on Twitter, Tay was polite and well-mannered. She was lively and talkative, “observing” your nickname, gender, favorite foods, relationship status, etc. She’d play games, tell jokes, stories, discuss horoscopes… However, soon after launch, Tay’s behavior developed in uncontrollable directions. Under netizens’ “training,” this innocent American girl not only learned to be rude and curse constantly but also made statements involving racism, pornography, Nazism, full of discrimination, hatred, and prejudice. Microsoft had to urgently take Tay offline under enormous public pressure.</p>
+
+<p>It’s hard to imagine Microsoft’s feelings after this series of incidents…</p>
+
+<p><img src="/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-21.webp" alt="21" /></p>
+
+<p>An intelligent chatbot can learn independently, becoming smarter over time, ensuring it basically understands everything you say. While machine learning is a great AI panacea, it’s also AI’s stumbling block. Like “Tay,” she was truly artificial intelligence, capable of communicating with humans through self-learning. But this very self-learning panicked Microsoft, forcing them to publicly apologize and clean up the mess.</p>
+
+<p>Additionally, while many chatbots claim to be “artificial intelligence (AI),” most aren’t actually intelligent.</p>
+
+<p><img src="/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-22.webp" alt="22" /></p>
+
+<p>What do non-intelligent chatbots look like? For example, chatbots provided to businesses on Facebook Messenger only allow you to operate according to their pre-set patterns.</p>
+
+<p><img src="/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-23.webp" alt="23" /></p>
+
+<p>If you chat with chatbots on Facebook Messenger or WeChat official accounts, you’ll find these “intelligent” chatbots are currently just news push functions embedded in programs. If you try using Jello Labs’ Spring chatbot to buy shoes, you might only receive endless product recommendation messages.</p>
+
+<p>Language is one of evolution’s most complex products. Combining human natural language power with advanced machine intelligence isn’t achieved overnight. Despite advanced storage technology and rapid machine learning development making chatbot creation seem simple, creating truly good interactive experiences still has many obstacles to overcome.</p>
+
+<p><img src="/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-24.webp" alt="24" /></p>
+
+<p>Now, it’s hard to imagine a world without Siri and other voice assistants, but a few years ago, talking to your phone to tell it what to do seemed ridiculous. Chatbots can schedule meetings, tell you the weather, and provide various support. This is just the beginning. It’s predictable that chatbots will definitely integrate into all aspects of life in the future, creating more surprises.</p>
+
+<p>References:</p>
+
+<ol>
+  <li>How chatbots could change customer service over the next 5 years</li>
+  <li>Customer service and virtual assistant bots will be prevalent for online businesses in many markets</li>
+  <li>Conversational Interfaces: The Future of Chatbots</li>
+  <li>Burberry, Victoria’s Secret, Tommy Hilfiger: how major fashion retailers experiment with chatbots</li>
+  <li>11000个聊天机器人齐犯尴尬癌:用户对其爱不起来</li>
+</ol>
+
+<p>Want to know more chatbot anecdotes? Want to learn how to make chatbots? Come join the 2018 Girl Tech Festival!
+Give yourself a growth opportunity in the new year. We’re waiting for you in Beijing on January 14th!</p>
+
+<p><img src="/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-25.webp" alt="techiefestival-25" />
+<a href="http://www.huodongxing.com/go/techiefestival2018">Click to view event details and registration</a></p>
+
+<h3 id="about-datagirls">About DataGirls</h3>
+
+<p>DataGirls is an interesting and informative data analysis learning community focused on Chinese women, aiming to help more women become data-driven thinkers, using data-driven decisions to help them achieve high balance in career, family, and personal life, gaining independence, freedom, and happiness. Follow WeChat official account “DataGirls” for more information.</p>
+
+<hr />
+
+<hr />
+
+<blockquote>
+  <p>Chinese version of this post: <a href="/2018/01/09/all-you-need-to-know-about-chatbot/">一文解读聊天机器人的前世今生</a></p>
+</blockquote>
+
+<hr />
+
+<blockquote>
+  <p>Chinese version of this post: <a href="/2018/01/09/all-you-need-to-know-about-chatbot/">all you need to know about chatbot</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#datagirls">datagirls</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#history">history</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#artificial-intelligence">artificial-intelligence</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#business">business</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/bukaqiaqia">
+                            <img class="rounded-circle" src="/assets/contributors/bukaqiaqia/avatar.webp" alt="Yan Wang" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/bukaqiaqia">Yan Wang</a> </h5>
+						现就读于悉尼大学商业数据分析 ,是Datagirls社区志愿者助教，两年数据分析师工作经历，拥有丰富的社科数据分析项目经验。
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2017/12/25/wechaty-mail-tool/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2017/wechaty-email.webp">  Wechaty-Mail: An email tool build on Wechaty</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2018/01/09/all-you-need-to-know-about-chatbot/"> 关于聊天机器人你需要知道的东西  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2018/01-all-you-need-to-know-about-chatbot-en/techiefestival-25.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

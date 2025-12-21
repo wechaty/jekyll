@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      OSPP 2021-期初报告-基于 Blessed 的 Wechaty 命令行文本客户端软件 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>OSPP 2021-期初报告-基于 Blessed 的 Wechaty 命令行文本客户端软件 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="OSPP 2021-期初报告-基于 Blessed 的 Wechaty 命令行文本客户端软件" />
+<meta name="author" content="chinggg" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="项目名称：基于 Blessed 的 Wechaty 命令行文本客户端软件 导师：李卓桓 学生：刘靖 模块列表 所有消息的实时接收与展示 联系人与群聊列表的获取与展示 右侧群聊成员/联系人详情的展示 消息内容按来源存储与查看，联系人与群聊信息的缓存 未读新消息数量展示与联系人智能排序 私聊与群聊消息的发送 细粒度的联系人、群和对话管理 项目介绍：https://github.com/wechaty/summer-of-wechaty/issues/80 详细方案" />
+<meta property="og:description" content="项目名称：基于 Blessed 的 Wechaty 命令行文本客户端软件 导师：李卓桓 学生：刘靖 模块列表 所有消息的实时接收与展示 联系人与群聊列表的获取与展示 右侧群聊成员/联系人详情的展示 消息内容按来源存储与查看，联系人与群聊信息的缓存 未读新消息数量展示与联系人智能排序 私聊与群聊消息的发送 细粒度的联系人、群和对话管理 项目介绍：https://github.com/wechaty/summer-of-wechaty/issues/80 详细方案" />
+<link rel="canonical" href="https://wechaty.js.org/2021/07/14/ospp-plan-blessed-cli/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/07/14/ospp-plan-blessed-cli/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/07-ospp-plan-blessed-cli-en/wechaty-cli-logo.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-07-14T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/07-ospp-plan-blessed-cli-en/wechaty-cli-logo.webp" />
+<meta property="twitter:title" content="OSPP 2021-期初报告-基于 Blessed 的 Wechaty 命令行文本客户端软件" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chinggg"},"dateModified":"2021-07-14T00:00:00+00:00","datePublished":"2021-07-14T00:00:00+00:00","description":"项目名称：基于 Blessed 的 Wechaty 命令行文本客户端软件 导师：李卓桓 学生：刘靖 模块列表 所有消息的实时接收与展示 联系人与群聊列表的获取与展示 右侧群聊成员/联系人详情的展示 消息内容按来源存储与查看，联系人与群聊信息的缓存 未读新消息数量展示与联系人智能排序 私聊与群聊消息的发送 细粒度的联系人、群和对话管理 项目介绍：https://github.com/wechaty/summer-of-wechaty/issues/80 详细方案","headline":"OSPP 2021-期初报告-基于 Blessed 的 Wechaty 命令行文本客户端软件","image":"https://wechaty.js.org/assets/2021/07-ospp-plan-blessed-cli-en/wechaty-cli-logo.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/07/14/ospp-plan-blessed-cli/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"chinggg"},"url":"https://wechaty.js.org/2021/07/14/ospp-plan-blessed-cli/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+              <a class="sscroll text-danger" href="/categories.html#ospp">ospp</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">OSPP 2021-期初报告-基于 Blessed 的 Wechaty 命令行文本客户端软件</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/chinggg">
+                            <img class="rounded-circle" src="/assets/contributors/chinggg/avatar.webp" alt="chinggg" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/chinggg">chinggg</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jul 14, 2021 · <span class="reading-time">
+  
+  
+    1 min read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/07-ospp-plan-blessed-cli-en/wechaty-cli-logo.webp" alt="OSPP 2021-期初报告-基于 Blessed 的 Wechaty 命令行文本客户端软件">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<ul>
+  <li>项目名称：基于 Blessed 的 Wechaty 命令行文本客户端软件</li>
+  <li>导师：李卓桓</li>
+  <li>学生：刘靖</li>
+  <li>模块列表
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />所有消息的实时接收与展示</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />联系人与群聊列表的获取与展示</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />右侧群聊成员/联系人详情的展示</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />消息内容按来源存储与查看，联系人与群聊信息的缓存</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />未读新消息数量展示与联系人智能排序</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />私聊与群聊消息的发送</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />细粒度的联系人、群和对话管理</li>
+    </ul>
+  </li>
+  <li>项目介绍：<a href="https://github.com/wechaty/summer-of-wechaty/issues/81">https://github.com/wechaty/summer-of-wechaty/issues/80</a></li>
+</ul>
+
+<h2 id="详细方案">详细方案</h2>
+
+<ul>
+  <li>
+    <p>任务要求<br />
+利用 <a href="https://github.com/chjj/blessed">Blessed</a> 和 <a href="https://github.com/yaronn/blessed-contrib">blesssed-contrib</a> 提供的组件，仿照 Linux 命令行终端的 IRC 文本客户端，实现一个基于 Wechaty 的即时通讯客户端，通过 Wechaty 支持所有现有的 <a href="https://wechaty.js.org/docs/puppet-providers/">Wechaty Puppet Providers</a>，比如微信、企业微信、飞书、Whatsapp 等。在初期开发中，能够实现文本消息的接收和发送，即可完成原型验证 POC 。</p>
+  </li>
+  <li>
+    <p>实现方案<br />
+学习 blessed 和 Wechaty 的使用，并研究 <a href="https://github.com/huan/node-facenet/tree/master/src/manager/ui">node-facenet</a> 和 <a href="https://github.com/lekzd/console-tg-client">console-tg-client</a> 的架构设计，多和导师进行沟通，利用事件绑定或 RxJS 实现文本消息的收发功能和未读状态的提示，并提供一定的联系人和群对话管理功能，达到接近现有 IRC 客户端的完整程度。</p>
+  </li>
+</ul>
+
+<p>设计方案如下图所示：
+<img src="/assets/2021/07-ospp-plan-blessed-cli-en/wechaty-cli-diagram.webp" alt="diagram" /></p>
+
+<h2 id="项目开发时间计划">项目开发时间计划</h2>
+
+<h3 id="第一阶段71---814">第一阶段（7.1 - 8.14）</h3>
+
+<p>对接后端事件，选择恰当的架构与技术栈完成数据的存储、展示与更新。</p>
+
+<ul>
+  <li>
+    <p>7.1 - 7.14
+自行探索做出 demo，实现简单的消息接收和联系人列表展示，与导师沟通架构设计和需使用的技术栈。</p>
+  </li>
+  <li>
+    <p>7.15 - 7.29<br />
+军训期间，时间有限，学习前端相关知识或抽空实现较简单的功能。</p>
+  </li>
+  <li>
+    <p>8.1 - 8.14
+改进代码结构，重点推进数据的存储与状态的管理，实现消息内容按来源存储与查看，以及联系人与群聊信息的缓存，并撰写中期报告。</p>
+  </li>
+</ul>
+
+<h3 id="第二阶段815---930">第二阶段（8.15 - 9.30）</h3>
+
+<p>重点完善前端交互，持续改进用户体验。</p>
+
+<ul>
+  <li>
+    <p>8.15 - 8.30
+根据未读消息数量对联系人进行状态管理和智能排序，提供更多的交互选项和管理功能。</p>
+  </li>
+  <li>
+    <p>9.1 - 9.14
+实现消息的发送</p>
+  </li>
+  <li>
+    <p>9.15 - 9.30
+完善文档，编写样例代码，如有需要还需编写测试。</p>
+  </li>
+  <li>
+    <p>10月及以后
+继续维护并优化代码，实现新功能。</p>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Author:<a href="https://github.com/chinggg">@chinggg</a></p>
+</blockquote>
+
+<h2 id="关于暑期2021">关于暑期2021</h2>
+
+<p>「开源软件供应链点亮计划-暑期2021」（以下简称 暑期2021）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动，旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。
+根据项目的难易程度和完成情况，参与者还可获取「开源软件供应链点亮计划-暑期2021」活动奖金和奖杯。
+官网：<a href="https://summer.iscas.ac.cn/">https://summer.iscas.ac.cn/</a></p>
+
+<p>本项目 [基于 Blessed 的 Wechaty 命令行文本客户端软件] 系 暑期2021 支持的开源项目。</p>
+
+<hr />
+
+<blockquote>
+  <p>This post is also available in <a href="/2021/07/14/ospp-plan-blessed-cli-en/">English</a>.</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#summer-of-wechaty">summer-of-wechaty</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#summer-2021">summer-2021</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ecosystem">ecosystem</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ospp">ospp</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ospp-2021">ospp-2021</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#plan">plan</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/chinggg">
+                            <img class="rounded-circle" src="/assets/contributors/chinggg/avatar.webp" alt="chinggg" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/chinggg">chinggg</a> </h5>
+						undergraduate student
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/07/14/ospp-plan-blessed-cli-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/07-ospp-plan-blessed-cli-en/wechaty-cli-logo.webp">  OSPP 2021 - Initial Report - Blessed-based Wechaty Command Line Text Client Software</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/07/14/ospp-plan-wechaty-matrix-en/"> OSPP 2021 - Initial Report - Improving Basic Functions of Matrix AppService Wechaty Project for Users, Groups and Messages  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/07-ospp-plan-wechaty-matrix-en/wechaty-matrix-plan.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

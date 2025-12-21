@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Wechaty Puppet Service WxWork Beta 版发布公告 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Wechaty Puppet Service WxWork Beta 版发布公告 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Wechaty Puppet Service WxWork Beta 版发布公告" />
+<meta name="author" content="lijiarui" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="最新消息： WorkPro 作为 WxWork 的继任者已经正式上线了！WxWork 现已废弃，请尽快转移到 WorkPro 上。 对于这个 WorkPro 服务感兴趣的朋友，我们提供7天的免费试用 token ，请用微信或企微扫码添加客服咨询。" />
+<meta property="og:description" content="最新消息： WorkPro 作为 WxWork 的继任者已经正式上线了！WxWork 现已废弃，请尽快转移到 WorkPro 上。 对于这个 WorkPro 服务感兴趣的朋友，我们提供7天的免费试用 token ，请用微信或企微扫码添加客服咨询。" />
+<link rel="canonical" href="https://wechaty.js.org/2020/12/07/puppet-wxwork-beta-release/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/12/07/puppet-wxwork-beta-release/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/12-07-wxwork/wecom.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-12-07T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/12-07-wxwork/wecom.webp" />
+<meta property="twitter:title" content="Wechaty Puppet Service WxWork Beta 版发布公告" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"lijiarui"},"dateModified":"2020-12-07T00:00:00+00:00","datePublished":"2020-12-07T00:00:00+00:00","description":"最新消息： WorkPro 作为 WxWork 的继任者已经正式上线了！WxWork 现已废弃，请尽快转移到 WorkPro 上。 对于这个 WorkPro 服务感兴趣的朋友，我们提供7天的免费试用 token ，请用微信或企微扫码添加客服咨询。","headline":"Wechaty Puppet Service WxWork Beta 版发布公告","image":"https://wechaty.js.org/assets/2020/12-07-wxwork/wecom.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/12/07/puppet-wxwork-beta-release/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"lijiarui"},"url":"https://wechaty.js.org/2020/12/07/puppet-wxwork-beta-release/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#announcement">announcement</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Wechaty Puppet Service WxWork Beta 版发布公告</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/lijiarui">
+                            <img class="rounded-circle" src="/assets/contributors/lijiarui/avatar-new.webp" alt="Jiarui LI (李佳芮)" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/lijiarui">Jiarui LI (李佳芮)</a> <span><a target="_blank" href="https://weibo.com/u/2175505900" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Dec 07, 2020 · <span class="reading-time">
+  
+  
+    5 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/12-07-wxwork/wecom.webp" alt="Wechaty Puppet Service WxWork Beta 版发布公告">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>最新消息： <a href="https://wechaty.js.org/2022/12/23/introducing-workpro-puppet/">WorkPro</a> 作为 WxWork 的继任者已经正式上线了！WxWork 现已废弃，请尽快转移到 WorkPro 上。
+对于这个 WorkPro 服务感兴趣的朋友，我们提供7天的免费试用 token ，请用微信或企微扫码添加客服咨询。</p>
+
+<p><img src="/assets/2022/12-introducing-workpro-puppet-en/qrcode.webp" alt="qrcode.webp" /></p>
+
+<p>恭喜 WxWork 作为 Wechaty 社区新的 Puppet Service 正式进入 Beta 版！经过历时一个月的测试，WxWork 现在已经通过社区验证，可以正式售卖给社区的小伙伴了！</p>
+
+<p><del>想要使用的，请点击wxwork 购买链接购买吧！</del></p>
+
+<h2 id="关于-wechaty-puppet-service-wxwork">关于 Wechaty Puppet Service WxWork</h2>
+
+<p>WxWork 是 <a href="https://github.com/juzibot/wxwork-tester">juzibot</a> 基于 wechaty-puppet-service 做的新 puppet service，句子互动围绕微信生态为客户提供智能营销和销售服务，帮助企业引流并实现转化，客户覆盖教育、保险、大健康等多个领域。曾入选百度AI加速器 和 Facebook 大陆首期加速器，获得PreAngel、Plug and Play，Y Combination, TSVC和阿尔法公社多家中美机构投资。 而在今年，句子互动更加聚焦在企业微信，通过为客户提供 SCRM 系统帮助客户实现引流和转化，因此今年发布了 <strong>企业微信</strong> 的 puppet。</p>
+
+<p>关于 Wechaty Puppet WxWork Beta 版的发布历程如下：</p>
+
+<h2 id="wxwork-的-alpha-release">WxWork 的 Alpha Release</h2>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />写一个 getting started 告诉开发者如何将这个 puppet 跑起来: <a href="https://github.com/juzibot/wxwork-tester">https://github.com/juzibot/wxwork-tester</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />puppet service provider 的 token 要通过 api.chatie.io 发布，以最大化提升开发者社区体验。</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />token 设置规范为：puppet_wxwork_XXX</li>
+</ul>
+
+<p>为了能让开发者更好的了解如何运行 WxWork, 在这里给出大家运行的最小化代码：</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Wechaty</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">ScanStatus</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty-puppet</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">QrcodeTerminal</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">qrcode-terminal</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">get a wxwork token from: https://github.com/wechaty/puppet-services#buy-token</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Wechaty</span><span class="p">({</span>
+  <span class="na">puppet</span><span class="p">:</span> <span class="dl">'</span><span class="s1">wechaty-puppet-service</span><span class="dl">'</span><span class="p">,</span> <span class="c1">// 注意这里是 wechaty-puppet-service 而不是 wechaty-puppet-wxwork</span>
+  <span class="na">puppetOptions</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">token</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">bot</span>
+  <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">qrcode</span><span class="p">,</span> <span class="nx">status</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">status</span> <span class="o">===</span> <span class="nx">ScanStatus</span><span class="p">.</span><span class="nx">Waiting</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">QrcodeTerminal</span><span class="p">.</span><span class="nf">generate</span><span class="p">(</span><span class="nx">qrcode</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">small</span><span class="p">:</span> <span class="kc">true</span>
+      <span class="p">})</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">user</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`user: </span><span class="p">${</span><span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">user</span><span class="p">)}</span><span class="s2">`</span><span class="p">)</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">message</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`message: </span><span class="p">${</span><span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">message</span><span class="p">)}</span><span class="s2">`</span><span class="p">)</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="介绍-wechaty-puppet-service">介绍 wechaty-puppet-service</h3>
+
+<blockquote>
+  <p>This part is written by Huan</p>
+</blockquote>
+
+<p>在 Wechaty 的发展过程中，我们曾经发布过很多 Wechaty Puppet ，比如 Web 协议的 wechaty-puppet-puppeteer， Pad 协议的 wechaty-puppet-padplus ，Mac 协议的 wechaty-puppet-macpro，iOS 协议的 wechaty-puppet-iosbird ，等等。</p>
+
+<p>所以，如果你是一个随着 Wechaty 发展一路走来的开发者，那么你会记得，过去每一个不同的协议，我们都需要在运行 Wechaty 的本地环境中，安装上述的 NPM 包，来启用对应的协议。</p>
+
+<p>然而，Wechaty 社区在发展过程中，我们发现其实针对不同的协议，其核心的区别在于 Wechaty Puppet Abstract Class 这个抽象层之下的逻辑实现，而 Wechaty Puppet API 是完全一致的。所以，我们如果能够把 Wechaty Puppet API 及其之上层的代码重用，而将其之下层面的代码进行 gRPC 化封装，这样我们就能够通过一个 Wechaty Puppet 的实现，最终得以支持不同的底层协议。这就是 wechaty-puppet-service 的由来。</p>
+
+<p>简而言之，<a href="https://github.com/wechaty/wechaty-puppet-service">Wechaty Puppet Service</a> 是一个可以兼容任意 Wechaty Puppet 协议的模块，Wechaty 只需要安装 wechaty-puppet-service ，然后通过设置 <code class="language-plaintext highlighter-rouge">WECHATY_PUPPET_SERVICE_TOKEN</code>，即可通过 gRPC 协议，与 token 所对应的 gRPC 服务器进行通讯，实现 Wechaty Puppet Service 化，而提供 Wechaty Puppet Service 的第三方，既是我们称之为 <a href="https://github.com/wechaty/puppet-services">Wechaty Puppet Service Provider</a> 的角色。</p>
+
+<p>在未来，Wechaty 社区计划大部分的 Puppet Service 都将基于 wechaty-puppet-service 进行发布和使用。同时针对某些特定的 Puppet Service ，比如 <a href="https://www.npmjs.com/package/wechaty-puppet-padlocal">wechaty-puppet-padlocal</a> (<a href="https://github.com/padlocal/padlocal-client-ts">PadLocal</a>可以使用本地服务器 IP 与 Server 进行连接），也可以通过本地运行一个 Puppet Service Token Gateway 进行转换。（详见 <a href="https://github.com/wechaty/wechaty/issues/1986">Issue #1986</a>)</p>
+
+<p>目前，在社区最佳实践中，使用 wechaty-puppet-service 的方法如下：</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">WECHATY_PUPPET</span><span class="o">=</span>wechaty-puppet-service
+<span class="nb">export </span><span class="nv">WECHATY_PUPPET_SERVICE_TOKEN</span><span class="o">=</span>__YOUR_TOKEN__
+
+// Start your bot with the above two variables
+ts-node bot.ts
+</code></pre></div></div>
+
+<p>在上面的 <code class="language-plaintext highlighter-rouge">__YOUR_TOKEN__</code> 可以是任何的 Wechaty Puppet Service Token。了解如何获取 Wechaty Puppet Service Token 可以官网介绍： <a href="https://wechaty.js.org/docs/puppet-services/">https://wechaty.js.org/docs/puppet-services/</a></p>
+
+<h2 id="wxwork-的-alpha-test">WxWork 的 Alpha Test</h2>
+
+<p>WxWork 通过了 Alpha test 的内容，以下是 Rock 支持的功能清单，并和已有的Puppet进行对比。</p>
+
+<h3 id="puppet-comparison">Puppet Comparison</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Puppet</th>
+      <th>wxwork</th>
+      <th>rock</th>
+      <th>donut</th>
+      <th>padplus</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>支持账号</td>
+      <td>企业微信</td>
+      <td>个人微信</td>
+      <td>个人微信</td>
+      <td>个人微信</td>
+    </tr>
+    <tr>
+      <td><消息></消息></td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>收发文本</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>收发个人名片</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>收发图文链接</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>发送图片、文件</td>
+      <td>✅</td>
+      <td>✅（较慢）</td>
+      <td>✅</td>
+      <td>✅（对内容有大小限制，20M以下）</td>
+    </tr>
+    <tr>
+      <td>接收图片、文件</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅（对内容有大小限制，25M以下）</td>
+    </tr>
+    <tr>
+      <td>发送视频</td>
+      <td>✅</td>
+      <td>✅（较慢）</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>接收视频</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>发送小程序</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>接收动图</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>发送动图</td>
+      <td>✅</td>
+      <td>✅（以文件形式发送）</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>接收语音消息</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>发送语音消息</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>转发文本</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>转发图片</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>转发图文链接</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>转发音频</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>转发视频</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>转发文件</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>转发动图</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>转发小程序</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td><群组></群组></td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>创建群聊</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>设置群公告</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>获取群公告</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>群二维码</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>拉人进群</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>踢人出群</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>退出群聊</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>改群名称</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>入群事件</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>离群事件</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>群名称变更事件</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>@群成员</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>群列表</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>群成员列表</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>群详情</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td><联系人></联系人></td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>修改备注</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>添加好友</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>自动通过好友</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>好友列表</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>好友详情</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td><其他></其他></td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>登录事件</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>扫码状态</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>❌</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>登出事件</td>
+      <td>✅</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>主动退出登录</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>依赖协议</td>
+      <td>Windows</td>
+      <td>iPad</td>
+      <td>Windows</td>
+      <td>iPad</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="wxwork-的-beta-test">WxWork 的 Beta Test</h2>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />压力测试：</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>项目名</th>
+      <th>详情</th>
+      <th>状态</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>crash</td>
+      <td>崩溃，测扫码登录ready事件顺序是否正常</td>
+      <td>通过</td>
+    </tr>
+    <tr>
+      <td>flood-message</td>
+      <td>群发消息，测大批量发消息是否都有回调</td>
+      <td>通过</td>
+    </tr>
+    <tr>
+      <td>group-chat</td>
+      <td>群聊功能，测群加载人数，建群离群操作是否正常</td>
+      <td>通过</td>
+    </tr>
+    <tr>
+      <td>loading</td>
+      <td>加载，测加载时长，联系人和群的数量是否匹配</td>
+      <td>通过</td>
+    </tr>
+    <tr>
+      <td>loading-lost-tag</td>
+      <td>测启动奔溃导致的标签备注丢失问题</td>
+      <td>通过</td>
+    </tr>
+    <tr>
+      <td>receive-and-send-message</td>
+      <td>测收发不同类型的消息都正常</td>
+      <td>通过</td>
+    </tr>
+    <tr>
+      <td>receive-small-image</td>
+      <td>测试是否有收不到小图片的情况</td>
+      <td>测试是否有收不到小图片的情况</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />产品测试：
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />通过<a href="https://crm.botorange.com/">句子秒回</a>的在线测试，详见<a href="https://github.com/wechaty/puppet-services/wiki/Product-Test">Product Test</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>WxWork 的产品测试，已完成 100%，同时，<a href="https://www.juzibot.com">句子互动</a> 提供基于企业微信的 SCRM 系统，并基于 WxWork 提供了可视化的工具，有兴趣的小伙伴也可以来 <a href="https://qiwei.juzibot.com/user/login?isWechaty=true">句客宝</a> 通过企业微信扫码登陆后体验。</p>
+
+<h2 id="最后要在此感谢-puppet-provider-为社区持续做出如下贡献">最后，要在此感谢 puppet provider 为社区持续做出如下贡献</h2>
+
+<ol>
+  <li>为每个 wechaty contributor 提供2个免费token</li>
+  <li>未申请开源激励计划的开发者，提供15天的免费测试token</li>
+</ol>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#puppet-service">puppet-service</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#puppet-provider">puppet-provider</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#wxwork">wxwork</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/lijiarui">
+                            <img class="rounded-circle" src="/assets/contributors/lijiarui/avatar-new.webp" alt="Jiarui LI (李佳芮)" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/lijiarui">Jiarui LI (李佳芮)</a> <span><a target="_blank" href="https://weibo.com/u/2175505900" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Co-Creator of Wechaty; 句子互动创始人 & CEO，微软人工智能最具价值专家 (AI MVP)
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/11/14/summer-2020-wechaty/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/11-summer-2020-wechaty-en/summer-2020.webp">  开源软件供应链点亮计划暑期 2020 公布结果：基于 Wechaty 开发的项目斩获突出贡献奖和最具潜力两大奖项！</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/12/08/python-wechaty-open-source-journey-en/">  "Python-Wechaty Journey at Nanjing Open Source Summit"  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/12-python-wechaty-open-source-journey-en/wechaty-nanjing-picture.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

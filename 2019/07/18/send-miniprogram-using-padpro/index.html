@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      如何用PadPro实现发送微信小程序 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>如何用PadPro实现发送微信小程序 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="如何用PadPro实现发送微信小程序" />
+<meta name="author" content="limingth" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This post is also available in English" />
+<meta property="og:description" content="This post is also available in English" />
+<link rel="canonical" href="https://wechaty.js.org/2019/07/18/send-miniprogram-using-padpro/" />
+<meta property="og:url" content="https://wechaty.js.org/2019/07/18/send-miniprogram-using-padpro/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2019/maodou-ketang-demo.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-07-18T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2019/maodou-ketang-demo.webp" />
+<meta property="twitter:title" content="如何用PadPro实现发送微信小程序" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"limingth"},"dateModified":"2019-07-18T00:00:00+00:00","datePublished":"2019-07-18T00:00:00+00:00","description":"This post is also available in English","headline":"如何用PadPro实现发送微信小程序","image":"https://wechaty.js.org/assets/2019/maodou-ketang-demo.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2019/07/18/send-miniprogram-using-padpro/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"limingth"},"url":"https://wechaty.js.org/2019/07/18/send-miniprogram-using-padpro/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#feature">feature</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">如何用PadPro实现发送微信小程序</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/limingth">
+                            <img class="rounded-circle" src="/assets/contributors/limingth/avatar.webp" alt="Li Ming" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/limingth">Li Ming</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jul 18, 2019 · <span class="reading-time">
+  
+  
+    14 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2019/maodou-ketang-demo.webp" alt="如何用PadPro实现发送微信小程序">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<blockquote>
+  <p>This post is also available in <a href="/2019/07/18/send-miniprogram-using-padpro-en/">English</a></p>
+</blockquote>
+
+<p>3个月前，也就是2019.4.18，我们公司启动了一个小程序项目 – <strong>毛豆课堂</strong>。这个项目是依托<a href="https://maodou.io">毛豆网</a>的音视频互动直播技术，搭建一个专注少儿素质课程的在线教育平台。</p>
+
+<p>目前这个小程序的MVP已经通过微信审核上线，初步实现了家长（例如孩子妈妈）给孩子的课程设定时间提醒，提醒的方式包括小程序消息，短信，电话，邮件等四种常用通知方式。转发这个课程还可以邀请和课程有关的人（例如孩子爸爸，同学家长和课程老师等）也加入这个课程提醒，未来计划还会开发一些类似家长朋友圈的社交功能。有兴趣体验的朋友，可以扫这个<a href="/assets/2019/maodou-ketang-invite-qrcode.webp">毛豆课堂小程序二维码</a>。</p>
+
+<p>1个月前，我们觉得通过这个小程序创建课程提醒的流程还是不够方便，想到了能否在微信里通过聊天方式来创建提醒，例如孩子妈妈发过来一条消息<code class="language-plaintext highlighter-rouge">”今天晚上6点晨晨英语课，在商务会馆1101“</code>，收到消息的爸爸就可以转发给一个微信机器人bot，从而为爸爸建好这个课程提醒，爸爸加入后就可以提醒他去送孩子上课。有这个想法的时候，正好有一天带娃路上偶遇了李卓桓，很自然就想到了要用<a href="https://github.com/wechaty/wechaty/">Wechaty</a>这个牛逼闪闪的微信机器人开源项目。</p>
+
+<p>其实知道这个项目已经有好几年了，但登录到github上看到<a href="https://github.com/huan">huan</a>的5000多次commits还是把我惊了一跳，心中无数个草泥马翻腾而过，想说zixia还是那个zixia，你大爷居然还在写代码。Orz 钦佩之余，接下来一个多星期我也日夜奋战，虽然只有C语言和ARM汇编的基础，但在学习了<a href="https://github.com/wechaty/wechaty-getting-started/tree/master/examples/third-party/xiaoli">xiaoli-news-bot</a>代码框架的基础上，实现了我们的<a href="https://github.com/maodouio/wechaty-getting-started/blob/master/examples/third-party/maodou/README.md">maodou-ketang-bot</a>。有兴趣体验的朋友，可以扫这个<a href="/assets/2019/maodou-ketang-qrcode.webp">毛豆课堂小助手二维码</a>，加好友之后，转给它那条孩子妈妈的消息。</p>
+
+<p><img src="/assets/2019/maodou-ketang-demo.webp" alt="毛豆课堂演示" /></p>
+
+<p>大家看到小助手回复了2条消息，一条是文字，解析了这段文本中的时间、地点和标题；一条是小程序，创建了相应的消息提醒。但当时Wechaty底层是不支持发送小程序的，只能发送文字，图片，名片和链接。</p>
+
+<p>初期测试我们使用的wechaty+puppeteer，发现不能发送图片和小程序，和李卓桓联系沟通后，建议使用puppet-padpro，还把他珍藏的两个token送了一个给我们做开发。这时我们发现wechaty真的很强大，可以挂接不同的puppet，而puppet-padpro就是ipad版本的puppet。</p>
+
+<p>同时，我们了解到<a href="https://github.com/lhr0909">Simon大侠</a>已经在puppet-padpro上做了很多这方面的<a href="https://github.com/xanthous-tech/wechaty-puppet-padpro/commit/057927caf64f4b811b7269adfc18c7c8dec86efd">底层改造工作</a>，就差一点即可实现发送小程序，因为时间关系没能继续完成。于是在他的基础上，我们进行了实验和修改，发现只需要在底层xml协议中加上filekey字段就可以了。随后我发了一个相关的#issue <a href="https://github.com/wechaty/wechaty/issues/1806">Send Mini-Program</a>，接下来我的同事<a href="https://github.com/zhaoic">@zhaoic</a>参与完成了后继的开发工作，初步解决了这个问题并提交了代码的PR。</p>
+
+<p>对这次 PR 想仔细了解的可以直接进入下面的3个链接，重要的代码部分我也摘录在本文中，便于给想了解这个工作的人多一些线索。</p>
+
+<ul>
+  <li><a href="https://github.com/wechaty/wechaty/pull/1822/files">https://github.com/wechaty/wechaty/pull/1822/files</a></li>
+  <li><a href="https://github.com/wechaty/wechaty-puppet/pull/55/files">https://github.com/wechaty/wechaty-puppet/pull/55/files</a></li>
+  <li><a href="https://github.com/botorange/wechaty-puppet-padpro/pull/172/files">https://github.com/botorange/wechaty-puppet-padpro/pull/172/files</a></li>
+</ul>
+
+<p>下面，我就重点介绍一下我们是如何实现发送微信小程序的。</p>
+
+<h2 id="内容纲要">内容纲要</h2>
+
+<ul>
+  <li>毛豆课堂项目背景介绍</li>
+  <li>如何用PadPro实现发送微信小程序</li>
+  <li>进一步需要完成的工作</li>
+</ul>
+
+<h2 id="如何用padpro实现发送微信小程序">如何用PadPro实现发送微信小程序</h2>
+
+<p>实现发送小程序改造代码的过程，需要涉及 wechaty，wechaty-puppet和wechaty-puppet-padpro 三个库。关于这三个库的关系，推荐读一下另一位大侠<a href="https://github.com/su-chang">苏畅</a>写的这篇<a href="https://wechaty.github.io/summary-of-learning-wechaty-and-padpro">Summary of Learning Wechaty and Padpro</a>，非常清晰的勾画出了从上到下的三个层，即接口层-抽象层-实现层的逻辑关系，这里我就不再赘述，主要说明一下我们所做的代码改动过程。</p>
+
+<p>要想从上到下整个改动，涉及的代码修改量很大，为了尽快跑通小程序的流程，经过分析后，我们发现UrlLink结构，和小程序比较接近。这样我们就不需要动wechaty和wechaty-puppet这两个库，只修改wechaty-puppet-padpro这一个库，大大减轻了工作量。</p>
+
+<p>Simon的wechaty-puppet-padpro库，对小程序大多数功能都已经实现了，在此基础上，我们先改造了 puppet-padpro.ts文件的<code class="language-plaintext highlighter-rouge">forwardAttachment</code>函数，该函数调用<code class="language-plaintext highlighter-rouge">generateAttachmentXMLMessageFromRaw</code>函数，我们把分析出来的小程序xml替换这个函数的内容后，转发小程序成功了，基本流程跑通了。</p>
+
+<p>接下来，继续改造<code class="language-plaintext highlighter-rouge">messageSendUrl</code>函数，仿照<code class="language-plaintext highlighter-rouge">generateAttachmentXMLMessageFromRaw</code>，创建了一个<code class="language-plaintext highlighter-rouge">generateMiniProgramXMLMessageFromRaw</code>函数，把messageSendUrl底层调用改成这个新的函数 <code class="language-plaintext highlighter-rouge">await this.padproManager.GrpcSendApp(id, generateMiniProgramXMLMessageFromRaw(urlLinkPayload))</code>
+通过<code class="language-plaintext highlighter-rouge">urlLinkPayload</code>传递两个参数，小程序的<code class="language-plaintext highlighter-rouge">title</code>和<code class="language-plaintext highlighter-rouge">url</code>。经过测试后，通过<code class="language-plaintext highlighter-rouge">say(urlLink)</code>，可以实现小程序的发送。</p>
+
+<p>经过了可行性的验证，确认了底层能够发送小程序之后，下面我们就开始在三个库里进行具体的代码和文件的修改工作。</p>
+
+<h3 id="wechaty接口层">wechaty接口层</h3>
+
+<ul>
+  <li>新增一个文件 src/user/mini-program.ts ，定义一个新 Class</li>
+</ul>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">class</span> <span class="nc">MiniProgram</span> <span class="p">{</span>
+
+  <span class="cm">/**
+   *
+   * Create
+   *
+   */</span>
+  <span class="k">public</span> <span class="k">static</span> <span class="k">async</span> <span class="nf">create </span><span class="p">():</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">MiniProgram</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">.</span><span class="nf">verbose</span><span class="p">(</span><span class="dl">'</span><span class="s1">MiniProgram</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">create()</span><span class="dl">'</span><span class="p">)</span>
+
+    <span class="c1">// TODO: get title/description/thumbnailUrl from url automatically</span>
+    <span class="kd">const</span> <span class="na">payload</span><span class="p">:</span> <span class="nx">MiniProgramPayload</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">appid</span>              <span class="p">:</span> <span class="dl">'</span><span class="s1">todo</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">description</span>        <span class="p">:</span> <span class="dl">'</span><span class="s1">todo</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">pagepath</span>           <span class="p">:</span> <span class="dl">'</span><span class="s1">todo</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">thumbnailurl</span>       <span class="p">:</span> <span class="dl">'</span><span class="s1">todo</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">title</span>              <span class="p">:</span> <span class="dl">'</span><span class="s1">todo</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">username</span>           <span class="p">:</span> <span class="dl">'</span><span class="s1">todo</span><span class="dl">'</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="k">new</span> <span class="nc">MiniProgram</span><span class="p">(</span><span class="nx">payload</span><span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="nf">constructor </span><span class="p">(</span>
+    <span class="k">public</span> <span class="k">readonly</span> <span class="nx">payload</span><span class="p">:</span> <span class="nx">MiniProgramPayload</span><span class="p">,</span>
+  <span class="p">)</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">.</span><span class="nf">verbose</span><span class="p">(</span><span class="dl">'</span><span class="s1">MiniProgram</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">constructor()</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="k">public</span> <span class="nf">appid </span><span class="p">():</span> <span class="kc">undefined</span> <span class="o">|</span> <span class="kr">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">appid</span>
+  <span class="p">}</span>
+
+  <span class="k">public</span> <span class="nf">title </span><span class="p">():</span> <span class="kc">undefined</span> <span class="o">|</span> <span class="kr">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">title</span>
+  <span class="p">}</span>
+
+  <span class="k">public</span> <span class="nf">pagepath </span><span class="p">():</span> <span class="kc">undefined</span> <span class="o">|</span> <span class="kr">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">pagepath</span>
+  <span class="p">}</span>
+
+  <span class="k">public</span> <span class="nf">username </span><span class="p">():</span> <span class="kc">undefined</span> <span class="o">|</span> <span class="kr">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">username</span>
+  <span class="p">}</span>
+
+  <span class="k">public</span> <span class="nf">description </span><span class="p">():</span> <span class="kc">undefined</span> <span class="o">|</span> <span class="kr">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">description</span>
+  <span class="p">}</span>
+
+  <span class="k">public</span> <span class="nf">thumbnailurl </span><span class="p">():</span> <span class="kc">undefined</span> <span class="o">|</span> <span class="kr">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">thumbnailurl</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>更新三个文件 src/user/contact.ts ，src/user/message.ts ，src/user/room.ts ，加入 say 接口</li>
+</ul>
+
+<p>src/user/contact.ts</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">public</span> <span class="k">async</span> <span class="nf">say </span><span class="p">(</span><span class="nx">textOrContactOrFileOrUrlOrMini</span><span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="nx">Contact</span> <span class="o">|</span> <span class="nx">FileBox</span> <span class="o">|</span> <span class="nx">UrlLink</span> <span class="o">|</span> <span class="nx">MiniProgram</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">.</span><span class="nf">verbose</span><span class="p">(</span><span class="dl">'</span><span class="s1">Contact</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">say(%s)</span><span class="dl">'</span><span class="p">,</span> <span class="nx">textOrContactOrFileOrUrlOrMini</span><span class="p">)</span>
+
+    <span class="k">if </span><span class="p">(</span><span class="k">typeof</span> <span class="nx">textOrContactOrFileOrUrlOrMini</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">string</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+      <span class="cm">/**
+       * 1. Text
+       */</span>
+      <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">puppet</span><span class="p">.</span><span class="nf">messageSendText</span><span class="p">({</span>
+        <span class="na">contactId</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+      <span class="p">},</span> <span class="nx">textOrContactOrFileOrUrlOrMini</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">textOrContactOrFileOrUrlOrMini</span> <span class="k">instanceof</span> <span class="nx">Contact</span><span class="p">)</span> <span class="p">{</span>
+      <span class="cm">/**
+       * 2. Contact
+       */</span>
+      <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">puppet</span><span class="p">.</span><span class="nf">messageSendContact</span><span class="p">({</span>
+        <span class="na">contactId</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+      <span class="p">},</span> <span class="nx">textOrContactOrFileOrUrlOrMini</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">textOrContactOrFileOrUrlOrMini</span> <span class="k">instanceof</span> <span class="nx">FileBox</span><span class="p">)</span> <span class="p">{</span>
+      <span class="cm">/**
+       * 3. File
+       */</span>
+      <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">puppet</span><span class="p">.</span><span class="nf">messageSendFile</span><span class="p">({</span>
+        <span class="na">contactId</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+      <span class="p">},</span> <span class="nx">textOrContactOrFileOrUrlOrMini</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">textOrContactOrFileOrUrlOrMini</span> <span class="k">instanceof</span> <span class="nx">UrlLink</span><span class="p">)</span> <span class="p">{</span>
+      <span class="cm">/**
+       * 4. Link Message
+       */</span>
+      <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">puppet</span><span class="p">.</span><span class="nf">messageSendUrl</span><span class="p">({</span>
+        <span class="na">contactId</span> <span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+      <span class="p">},</span> <span class="nx">textOrContactOrFileOrUrlOrMini</span><span class="p">.</span><span class="nx">payload</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">textOrContactOrFileOrUrlOrMini</span> <span class="k">instanceof</span> <span class="nx">MiniProgram</span><span class="p">)</span> <span class="p">{</span>
+      <span class="cm">/**
+       * 5. Mini Program
+       */</span>
+      <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">puppet</span><span class="p">.</span><span class="nf">messageSendMiniProgram</span><span class="p">({</span>
+        <span class="na">contactId</span> <span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+      <span class="p">},</span> <span class="nx">textOrContactOrFileOrUrlOrMini</span><span class="p">.</span><span class="nx">payload</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">unsupported arg: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">textOrContactOrFileOrUrlOrMini</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>src/user/message.ts</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">public</span> <span class="k">async</span> <span class="nf">say </span><span class="p">(</span>
+    <span class="nx">textOrContactOrFileOrUrlOrMini</span> <span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="nx">Contact</span> <span class="o">|</span> <span class="nx">FileBox</span> <span class="o">|</span> <span class="nx">UrlLink</span> <span class="o">|</span> <span class="nx">MiniProgram</span><span class="p">,</span>
+  <span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">.</span><span class="nf">verbose</span><span class="p">(</span><span class="dl">'</span><span class="s1">Message</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">say(%s)</span><span class="dl">'</span><span class="p">,</span> <span class="nx">textOrContactOrFileOrUrlOrMini</span><span class="p">)</span>
+
+    <span class="c1">// const user = this.puppet.userSelf()</span>
+    <span class="kd">const</span> <span class="k">from</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="k">from</span><span class="p">()</span>
+    <span class="c1">// const to   = this.to()</span>
+    <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nf">room</span><span class="p">()</span>
+
+    <span class="k">if </span><span class="p">(</span><span class="k">typeof</span> <span class="nx">textOrContactOrFileOrUrlOrMini</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">string</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+      <span class="cm">/**
+       * Text Message
+       */</span>
+      <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">puppet</span><span class="p">.</span><span class="nf">messageSendText</span><span class="p">({</span>
+        <span class="na">contactId</span> <span class="p">:</span> <span class="p">(</span><span class="k">from</span> <span class="o">&amp;&amp;</span> <span class="k">from</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span> <span class="o">||</span> <span class="kc">undefined</span><span class="p">,</span>
+        <span class="na">roomId</span>    <span class="p">:</span> <span class="p">(</span><span class="nx">room</span> <span class="o">&amp;&amp;</span> <span class="nx">room</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span> <span class="o">||</span> <span class="kc">undefined</span><span class="p">,</span>
+      <span class="p">},</span> <span class="nx">textOrContactOrFileOrUrlOrMini</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">textOrContactOrFileOrUrlOrMini</span> <span class="k">instanceof</span> <span class="nx">Contact</span><span class="p">)</span> <span class="p">{</span>
+      <span class="cm">/**
+       * Contact Card
+       */</span>
+      <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">puppet</span><span class="p">.</span><span class="nf">messageSendContact</span><span class="p">({</span>
+        <span class="na">contactId</span> <span class="p">:</span> <span class="p">(</span><span class="k">from</span> <span class="o">&amp;&amp;</span> <span class="k">from</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span> <span class="o">||</span> <span class="kc">undefined</span><span class="p">,</span>
+        <span class="na">roomId</span>    <span class="p">:</span> <span class="p">(</span><span class="nx">room</span> <span class="o">&amp;&amp;</span> <span class="nx">room</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span> <span class="o">||</span> <span class="kc">undefined</span><span class="p">,</span>
+      <span class="p">},</span> <span class="nx">textOrContactOrFileOrUrlOrMini</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">textOrContactOrFileOrUrlOrMini</span> <span class="k">instanceof</span> <span class="nx">FileBox</span><span class="p">)</span> <span class="p">{</span>
+      <span class="cm">/**
+       * File Message
+       */</span>
+      <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">puppet</span><span class="p">.</span><span class="nf">messageSendFile</span><span class="p">({</span>
+        <span class="na">contactId</span> <span class="p">:</span> <span class="p">(</span><span class="k">from</span> <span class="o">&amp;&amp;</span> <span class="k">from</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span> <span class="o">||</span> <span class="kc">undefined</span><span class="p">,</span>
+        <span class="na">roomId</span>    <span class="p">:</span> <span class="p">(</span><span class="nx">room</span> <span class="o">&amp;&amp;</span> <span class="nx">room</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span> <span class="o">||</span> <span class="kc">undefined</span><span class="p">,</span>
+      <span class="p">},</span> <span class="nx">textOrContactOrFileOrUrlOrMini</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">textOrContactOrFileOrUrlOrMini</span> <span class="k">instanceof</span> <span class="nx">UrlLink</span><span class="p">)</span> <span class="p">{</span>
+      <span class="cm">/**
+       * Link Message
+       */</span>
+      <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">puppet</span><span class="p">.</span><span class="nf">messageSendUrl</span><span class="p">({</span>
+        <span class="na">contactId</span> <span class="p">:</span> <span class="p">(</span><span class="k">from</span> <span class="o">&amp;&amp;</span> <span class="k">from</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span> <span class="o">||</span> <span class="kc">undefined</span><span class="p">,</span>
+        <span class="na">roomId</span>    <span class="p">:</span> <span class="p">(</span><span class="nx">room</span> <span class="o">&amp;&amp;</span> <span class="nx">room</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span> <span class="o">||</span> <span class="kc">undefined</span><span class="p">,</span>
+      <span class="p">},</span> <span class="nx">textOrContactOrFileOrUrlOrMini</span><span class="p">.</span><span class="nx">payload</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">textOrContactOrFileOrUrlOrMini</span> <span class="k">instanceof</span> <span class="nx">MiniProgram</span><span class="p">)</span> <span class="p">{</span>
+      <span class="cm">/**
+       * MiniProgram
+       */</span>
+      <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">puppet</span><span class="p">.</span><span class="nf">messageSendMiniProgram</span><span class="p">({</span>
+        <span class="na">contactId</span> <span class="p">:</span> <span class="p">(</span><span class="k">from</span> <span class="o">&amp;&amp;</span> <span class="k">from</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span> <span class="o">||</span> <span class="kc">undefined</span><span class="p">,</span>
+        <span class="na">roomId</span>    <span class="p">:</span> <span class="p">(</span><span class="nx">room</span> <span class="o">&amp;&amp;</span> <span class="nx">room</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span> <span class="o">||</span> <span class="kc">undefined</span><span class="p">,</span>
+      <span class="p">},</span> <span class="nx">textOrContactOrFileOrUrlOrMini</span><span class="p">.</span><span class="nx">payload</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">unknown msg: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">textOrContactOrFileOrUrlOrMini</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>src/user/room.ts</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">public</span> <span class="k">async</span> <span class="nf">say </span><span class="p">(</span>
+    <span class="nx">textOrListOrContactOrFileOrUrl</span> <span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="nx">Contact</span> <span class="o">|</span> <span class="nx">FileBox</span> <span class="o">|</span> <span class="nx">UrlLink</span> <span class="o">|</span> <span class="nx">MiniProgram</span> <span class="o">|</span> <span class="nx">TemplateStringsArray</span><span class="p">,</span>
+    <span class="p">...</span><span class="nx">mentionList</span>                 <span class="p">:</span> <span class="nx">Contact</span><span class="p">[]</span>
+  <span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span> <span class="p">{</span>
+
+    <span class="nx">log</span><span class="p">.</span><span class="nf">verbose</span><span class="p">(</span><span class="dl">'</span><span class="s1">Room</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">say(%s, %s)</span><span class="dl">'</span><span class="p">,</span>
+      <span class="nx">textOrListOrContactOrFileOrUrl</span><span class="p">,</span>
+      <span class="nx">mentionList</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="dl">'</span><span class="s1">, </span><span class="dl">'</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="kd">let</span> <span class="na">text</span><span class="p">:</span> <span class="kr">string</span>
+
+    <span class="k">if </span><span class="p">(</span><span class="k">typeof</span> <span class="nx">textOrListOrContactOrFileOrUrl</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">string</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+
+      <span class="k">if </span><span class="p">(</span><span class="nx">mentionList</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">AT_SEPARATOR</span> <span class="o">=</span> <span class="nx">FOUR_PER_EM_SPACE</span>
+        <span class="kd">const</span> <span class="nx">mentionAlias</span> <span class="o">=</span> <span class="k">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nf">all</span><span class="p">(</span><span class="nx">mentionList</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="k">async</span> <span class="nx">contact</span> <span class="o">=&gt;</span>
+          <span class="dl">'</span><span class="s1">@</span><span class="dl">'</span> <span class="o">+</span> <span class="p">(</span><span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nf">alias</span><span class="p">(</span><span class="nx">contact</span><span class="p">)</span> <span class="o">||</span> <span class="nx">contact</span><span class="p">.</span><span class="nf">name</span><span class="p">())</span>
+        <span class="p">))</span>
+        <span class="kd">const</span> <span class="nx">mentionText</span> <span class="o">=</span> <span class="nx">mentionAlias</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="nx">AT_SEPARATOR</span><span class="p">)</span>
+
+        <span class="nx">text</span> <span class="o">=</span> <span class="nx">mentionText</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">textOrListOrContactOrFileOrUrl</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">text</span> <span class="o">=</span> <span class="nx">textOrListOrContactOrFileOrUrl</span>
+      <span class="p">}</span>
+      <span class="kd">const</span> <span class="nx">receiver</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">contactId</span> <span class="p">:</span> <span class="p">(</span><span class="nx">mentionList</span><span class="p">.</span><span class="nx">length</span> <span class="o">&amp;&amp;</span> <span class="nx">mentionList</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">id</span><span class="p">)</span> <span class="o">||</span> <span class="kc">undefined</span><span class="p">,</span>
+        <span class="na">roomId</span>    <span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+      <span class="p">}</span>
+      <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">puppet</span><span class="p">.</span><span class="nf">messageSendText</span><span class="p">(</span>
+        <span class="nx">receiver</span><span class="p">,</span>
+        <span class="nx">text</span><span class="p">,</span>
+        <span class="nx">mentionList</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="nx">c</span> <span class="o">=&gt;</span> <span class="nx">c</span><span class="p">.</span><span class="nx">id</span><span class="p">),</span>
+      <span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">textOrListOrContactOrFileOrUrl</span> <span class="k">instanceof</span> <span class="nx">FileBox</span><span class="p">)</span> <span class="p">{</span>
+      <span class="cm">/**
+       * 2. File Message
+       */</span>
+      <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">puppet</span><span class="p">.</span><span class="nf">messageSendFile</span><span class="p">({</span>
+        <span class="na">roomId</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+      <span class="p">},</span> <span class="nx">textOrListOrContactOrFileOrUrl</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">textOrListOrContactOrFileOrUrl</span> <span class="k">instanceof</span> <span class="nx">Contact</span><span class="p">)</span> <span class="p">{</span>
+      <span class="cm">/**
+       * 3. Contact Card
+       */</span>
+      <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">puppet</span><span class="p">.</span><span class="nf">messageSendContact</span><span class="p">({</span>
+        <span class="na">roomId</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+      <span class="p">},</span> <span class="nx">textOrListOrContactOrFileOrUrl</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">textOrListOrContactOrFileOrUrl</span> <span class="k">instanceof</span> <span class="nx">UrlLink</span><span class="p">)</span> <span class="p">{</span>
+      <span class="cm">/**
+       * 4. Link Message
+       */</span>
+      <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">puppet</span><span class="p">.</span><span class="nf">messageSendUrl</span><span class="p">({</span>
+        <span class="na">contactId</span> <span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+      <span class="p">},</span> <span class="nx">textOrListOrContactOrFileOrUrl</span><span class="p">.</span><span class="nx">payload</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">textOrListOrContactOrFileOrUrl</span> <span class="k">instanceof</span> <span class="nx">MiniProgram</span><span class="p">)</span> <span class="p">{</span>
+      <span class="cm">/**
+       * 5. Mini Program
+       */</span>
+      <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">puppet</span><span class="p">.</span><span class="nf">messageSendMiniProgram</span><span class="p">({</span>
+        <span class="na">contactId</span> <span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+      <span class="p">},</span> <span class="nx">textOrListOrContactOrFileOrUrl</span><span class="p">.</span><span class="nx">payload</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">textOrListOrContactOrFileOrUrl</span> <span class="k">instanceof</span> <span class="nb">Array</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nf">sayTemplateStringsArray</span><span class="p">(</span>
+        <span class="nx">textOrListOrContactOrFileOrUrl</span><span class="p">,</span>
+        <span class="p">...</span><span class="nx">mentionList</span><span class="p">,</span>
+      <span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">arg unsupported: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">textOrListOrContactOrFileOrUrl</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="wechaty-puppet抽象层">wechaty-puppet抽象层</h3>
+
+<ul>
+  <li>新增一个文件 src/schemas/mini-program.ts，定义一个 Interface</li>
+</ul>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kr">interface</span> <span class="nx">MiniProgramPayload</span> <span class="p">{</span>
+    <span class="nl">appid</span><span class="p">?</span>          <span class="p">:</span> <span class="kr">string</span><span class="p">,</span>    <span class="c1">// optional, appid, get from wechat (mp.weixin.qq.com)</span>
+    <span class="nx">description</span><span class="p">?</span>    <span class="p">:</span> <span class="kr">string</span><span class="p">,</span>    <span class="c1">// optional, mini program title</span>
+    <span class="nx">pagepath</span><span class="p">?</span>       <span class="p">:</span> <span class="kr">string</span><span class="p">,</span>    <span class="c1">// optional, mini program page path</span>
+    <span class="nx">thumbnailurl</span><span class="p">?</span>   <span class="p">:</span> <span class="kr">string</span><span class="p">,</span>    <span class="c1">// optional, default picture, convert to thumbnail</span>
+    <span class="nx">title</span><span class="p">?</span>          <span class="p">:</span> <span class="kr">string</span><span class="p">,</span>    <span class="c1">// optional, mini program title</span>
+    <span class="nx">username</span><span class="p">?</span>       <span class="p">:</span> <span class="kr">string</span><span class="p">,</span>    <span class="c1">// original ID, get from wechat (mp.weixin.qq.com)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>更新 src/puppet.ts ，声明 messageMiniProgram 和 messageSendMiniProgram 抽象接口</li>
+</ul>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">public</span> <span class="kd">abstract</span> <span class="k">async</span> <span class="nf">messageMiniProgram </span><span class="p">(</span><span class="nx">messageId</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span>  <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">MiniProgramPayload</span><span class="o">&gt;</span>
+
+  <span class="k">public</span> <span class="kd">abstract</span> <span class="k">async</span> <span class="nf">messageSendMiniProgram </span><span class="p">(</span><span class="nx">receiver</span><span class="p">:</span> <span class="nx">Receiver</span><span class="p">,</span> <span class="nx">miniProgramPayload</span><span class="p">:</span> <span class="nx">MiniProgramPayload</span><span class="p">)</span>          <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<h3 id="wechaty-puppet-padpro实现层">wechaty-puppet-padpro实现层</h3>
+
+<ul>
+  <li>更新 src/puppet-padpro.ts ，加入 messageMiniProgram，messageSendMiniProgram 的实现</li>
+</ul>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">public</span> <span class="k">async</span> <span class="nf">messageSendMiniProgram </span><span class="p">(</span>
+    <span class="nx">receiver</span><span class="p">:</span> <span class="nx">Receiver</span><span class="p">,</span>
+    <span class="nx">miniProgramPayload</span><span class="p">:</span> <span class="nx">MiniProgramPayload</span>
+  <span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">.</span><span class="nf">verbose</span><span class="p">(</span><span class="nx">PRE</span><span class="p">,</span> <span class="s2">`messageSendLink("</span><span class="p">${</span><span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">receiver</span><span class="p">)}</span><span class="s2">", </span><span class="p">${</span><span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">miniProgramPayload</span><span class="p">)}</span><span class="s2">)`</span><span class="p">)</span>
+
+    <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">padproManager</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">no padpro manager</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Send to the Room if there's a roomId</span>
+    <span class="kd">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">receiver</span><span class="p">.</span><span class="nx">roomId</span> <span class="o">||</span> <span class="nx">receiver</span><span class="p">.</span><span class="nx">contactId</span>
+
+    <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="nc">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">no id</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">padproManager</span><span class="p">.</span><span class="nc">GrpcSendApp</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nf">generateMiniProgramXMLMessage</span><span class="p">(</span><span class="nx">miniProgramPayload</span><span class="p">))</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">public</span> <span class="k">async</span> <span class="nf">messageMiniProgram </span><span class="p">(</span><span class="nx">messageId</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">MiniProgramPayload</span><span class="o">&gt;</span> <span class="p">{</span>
+
+    <span class="kd">const</span> <span class="nx">rawPayload</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nf">messageRawPayload</span><span class="p">(</span><span class="nx">messageId</span><span class="p">)</span>
+    <span class="kd">const</span> <span class="nx">payload</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nf">messagePayload</span><span class="p">(</span><span class="nx">messageId</span><span class="p">)</span>
+
+    <span class="k">if </span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="kd">type</span> <span class="o">!==</span> <span class="nx">MessageType</span><span class="p">.</span><span class="nx">MiniProgram</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Can not get miniProgram from non miniProgram payload</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">appPayload</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">appMessageParser</span><span class="p">(</span><span class="nx">rawPayload</span><span class="p">)</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">appPayload</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+        <span class="p">}</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Can not parse miniProgram message payload</span><span class="dl">'</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>更新 src/pure-function-helpers/app-message-generator.ts，增加 generateMiniProgramXMLMessage 的实现</li>
+</ul>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">generateMiniProgramXMLMessage</span> <span class="o">=</span> <span class="p">(</span><span class="nx">payload</span><span class="p">:</span> <span class="nx">MiniProgramPayload</span><span class="p">):</span> <span class="kr">string</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s2">`
+  &lt;appmsg appid="" sdkver="0"&gt;
+    &lt;title&gt;</span><span class="p">${</span><span class="nx">payload</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="s2">&lt;/title&gt;
+    &lt;des&gt;</span><span class="p">${</span><span class="nx">payload</span><span class="p">.</span><span class="nx">description</span><span class="p">}</span><span class="s2">&lt;/des&gt;
+    &lt;action/&gt;
+    &lt;type&gt;33&lt;/type&gt;
+    &lt;showtype&gt;0&lt;/showtype&gt;
+    &lt;soundtype&gt;0&lt;/soundtype&gt;
+    &lt;mediatagname/&gt;
+    &lt;messageext/&gt;
+    &lt;messageaction/&gt;
+    &lt;content/&gt;
+    &lt;contentattr&gt;0&lt;/contentattr&gt;
+    &lt;url&gt;https://mp.weixin.qq.com/mp/waerrpage?appid=</span><span class="p">${</span><span class="nx">payload</span><span class="p">.</span><span class="nx">appid</span><span class="p">}</span><span class="s2">&amp;amp;type=upgrade&amp;amp;upgradetype=3#wechat_redirect&lt;/url&gt;
+    &lt;lowurl/&gt;
+    &lt;dataurl/&gt;
+    &lt;lowdataurl/&gt;
+    &lt;appattach&gt;
+      &lt;totallen&gt;0&lt;/totallen&gt;
+      &lt;attachid/&gt;
+      &lt;emoticonmd5/&gt;
+      &lt;fileext/&gt;
+      &lt;cdnthumburl&gt;&lt;/cdnthumburl&gt;
+      &lt;cdnthumbmd5&gt;&lt;/cdnthumbmd5&gt;
+      &lt;cdnthumblength&gt;&lt;/cdnthumblength&gt;
+      &lt;cdnthumbwidth&gt;&lt;/cdnthumbwidth&gt;
+      &lt;cdnthumbheight&gt;&lt;/cdnthumbheight&gt;
+      &lt;cdnthumbaeskey&gt;&lt;/cdnthumbaeskey&gt;
+      &lt;aeskey&gt;&lt;/aeskey&gt;
+      &lt;encryver&gt;0&lt;/encryver&gt;
+      &lt;filekey&gt;&lt;/filekey&gt;
+    &lt;/appattach&gt;
+    &lt;extinfo/&gt;
+    &lt;sourceusername&gt;</span><span class="p">${</span><span class="nx">payload</span><span class="p">.</span><span class="nx">username</span><span class="p">}</span><span class="s2">@app&lt;/sourceusername&gt;
+    &lt;sourcedisplayname&gt;</span><span class="p">${</span><span class="nx">payload</span><span class="p">.</span><span class="nx">description</span><span class="p">}</span><span class="s2">&lt;/sourcedisplayname&gt;
+    &lt;thumburl/&gt;
+    &lt;md5/&gt;
+    &lt;statextstr/&gt;
+    &lt;weappinfo&gt;
+      &lt;username&gt;&lt;![CDATA[</span><span class="p">${</span><span class="nx">payload</span><span class="p">.</span><span class="nx">username</span><span class="p">}</span><span class="s2">@app]]&gt;&lt;/username&gt;
+      &lt;appid&gt;&lt;![CDATA[</span><span class="p">${</span><span class="nx">payload</span><span class="p">.</span><span class="nx">appid</span><span class="p">}</span><span class="s2">]]&gt;&lt;/appid&gt;
+      &lt;type&gt;2&lt;/type&gt;
+      &lt;version&gt;&lt;/version&gt;
+      &lt;weappiconurl&gt;&lt;![CDATA[]]&gt;&lt;/weappiconurl&gt;
+      &lt;pagepath&gt;&lt;![CDATA[</span><span class="p">${</span><span class="nx">payload</span><span class="p">.</span><span class="nx">pagepath</span><span class="p">}</span><span class="s2">]]&gt;&lt;/pagepath&gt;
+      &lt;shareId&gt;&lt;![CDATA[0_</span><span class="p">${</span><span class="nx">payload</span><span class="p">.</span><span class="nx">appid</span><span class="p">}</span><span class="s2">_858901320_1563444358_0]]&gt;&lt;/shareId&gt;
+      &lt;appservicetype&gt;0&lt;/appservicetype&gt;
+    &lt;/weappinfo&gt;
+  &lt;/appmsg&gt;
+  &lt;fromusername&gt;&lt;/fromusername&gt;
+  &lt;scene&gt;0&lt;/scene&gt;
+  &lt;appinfo&gt;
+    &lt;version&gt;1&lt;/version&gt;
+    &lt;appname/&gt;
+  &lt;/appinfo&gt;
+  &lt;commenturl/&gt;`</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="进一步需要完成的工作">进一步需要完成的工作</h2>
+
+<h3 id="底层小程序的xml协议分析">底层小程序的xml协议分析</h3>
+
+<p>padpro中想要发送一个小程序需要先打开调试开关<code class="language-plaintext highlighter-rouge">PADPRO_LOG='silly'</code>接收一个小程序，才能获得到诸如以上的信息。这样我们对保存的信息进行序列化操作，摸索规律，找到变量，提取公共模板数据，从而程序化的构造出一个发送小程序的 XML 数据。</p>
+
+<p>大体流程：</p>
+
+<ol>
+  <li>根据appid查询小程序信息（需要调研下如何进行）</li>
+  <li>将获得到的信息进行存储（若查询便利的话应该可以省去该操作）</li>
+  <li>构造公共模板</li>
+  <li>将获得到的信息嵌入模板</li>
+  <li>得到的XML结构作为messageSendMiniProgram的返回数据</li>
+</ol>
+
+<p>我们把抓到的底层 xml 协议发到了<a href="https://github.com/wechaty/wechaty/issues/1806">这里</a>，有兴趣深入研究的朋友可以继续分析这些底层的协议字段。虽然我们猜出了一些关键字段，实现了基本的发送功能，但不知道微信服务器那边会不会监测字段的完整性或者正确性，毕竟通过这样Hack的方法要把bot拉入黑名单也很容易。</p>
+
+<h3 id="thumbnailurl的cdn上传">thumbnailUrl的CDN上传</h3>
+
+<p>一个发送出来的小程序，其视图和接口传入数据的关系，如下图所示</p>
+
+<p><img src="/assets/2019/maodou-miniprogram-spec.webp" alt="MiniProgramPayload" /></p>
+
+<p>目前，appid、description、pagepath、title和username都比较容易获得，thumbnailUrl 我们参考了 UrlLink 结构，这块区域的缩略图可以让调用者传入一个图片的 thumbnailUrl ，底层代码里未来还应该做如下2个后继的工作，目前因为时间关系也还未实现。</p>
+
+<ol>
+  <li>调用 FileBox.fromUrl 获得这个图片文件</li>
+  <li>调用微信提供的 CDN 上传文件功能，获得如下的数据结构</li>
+</ol>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="err">thumbnail:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">cdnthumburl:</span><span class="w">
+    </span><span class="err">cdnthumbmd</span><span class="mi">5</span><span class="err">:</span><span class="w">
+    </span><span class="err">cdnthumblength:</span><span class="w">
+    </span><span class="err">cdnthumbwidth:</span><span class="w">
+    </span><span class="err">cdnthumbheight:</span><span class="w">
+    </span><span class="err">cdnthumbaeskey:</span><span class="w">
+    </span><span class="err">aeskey:</span><span class="w">
+    </span><span class="err">filekey:</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>目前底层发送的xml协议里面，cdnthumbnailurl, aeskey, filekey等字段，都是从已有小程序中提取出来的，后续这里可能还需要继续完善。</p>
+
+<h3 id="nlp的help-needed">NLP的Help needed</h3>
+
+<p>目前bot采用的NLP Parser是微软提供的<a href="https://github.com/microsoft/Recognizers-Text">@microsoft/recognizers-text-suite</a>，我们用它实现了从一句话中提取出时间变量，也就是 <code class="language-plaintext highlighter-rouge">const time = parseTime(msgText)</code> 这样一个简单函数。但微软NLP处理的结果，其实是一个复杂的Json返回值，还需要我们写不少代码来筛选出我们期待的时间结果，这些代码在 <a href="https://github.com/maodouio/wechaty-getting-started/blob/master/examples/third-party/maodou/maodou-nlp.js">getTimeInResults</a> 这个函数里，显得啰嗦又低级，期待谁能告诉我们一个更美好的 parseTime。</p>
+
+<p>除了时间之外，识别出一句话的课程标题和上课地点，也是我们所需要的，但微软NLP还不支持，所以我们又用了另外一个<a href="http://docs.bosonnlp.com/ner.html">BasonNLP NER</a>，但它的处理结果同样也是一个复杂的Json返回值，还需要借助词性来拼凑出我们期待的结果，这些代码在另外一个函数 <a href="https://github.com/maodouio/wechaty-getting-started/blob/master/examples/third-party/maodou/maodou-nlp.js">parseTitleAndLocation</a>里，显得低级又业余，也同样期待更优雅的ai来拯救一下。</p>
+
+<p>如今NLP在各个大厂提供的智能API套件里面都是标配了，但从腾讯百度阿里到科大讯飞到复旦FudanNLP测了一圈，也没有发现能够很方便很准确地实现识别时间/地点/主题的api。如果谁对这方面比较了解，可以告诉我，欢迎加我微信: limingth</p>
+
+<h2 id="致谢">致谢</h2>
+
+<ul>
+  <li><strong>Simon Liang</strong> 的代码，其实已经做完了大部分的底层工作。如果不是他的开创性成果在前面开路，我们很难有勇气最终完成这个任务。</li>
+  <li><strong>苏畅</strong> 写的本地开发环境搭建的文档，为我们本地跑通开发环境节省了时间，同时在代码修改过程中也提供了热心的帮助，更重要的是人还长得帅。</li>
+  <li>还要感谢微信PR群里的 @高原ོ 和 @杉木，帮我们确认了CDNManager可以解决未完成工作里的thumbnailUrl，期待以后能够一起再完善这部分的代码。</li>
+  <li>最后感谢Wechaty团队提供这么好的一个工具，感谢李卓桓，李佳芮前期做了那么多奠基性的工作，也很高兴通过这个项目认识了正在做<a href="https://www.teamin.cc/">Teamin群协作</a>的李云军，这么多姓李的，在一起搞事情很开心！:P</li>
+</ul>
+
+<blockquote>
+  <p>作者: <a href="https://github.com/limingth">limingth</a>，<a href="https://github.com/zhaoic">zhaoic</a> 毛豆网</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#code">code</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#featured">featured</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/limingth">
+                            <img class="rounded-circle" src="/assets/contributors/limingth/avatar.webp" alt="Li Ming" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/limingth">Li Ming</a> </h5>
+						Founder of Maodou
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2019/07/18/send-miniprogram-using-padpro-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2019/maodou-ketang-demo.webp">  How to Send WeChat Mini Programs Using PadPro</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2019/07/19/bot5-seminar-minutes-0-en/"> Bot Friday Zero — Seminar Minutes  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2019/07-bot5-seminar-minutes-0-en/group-photo.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

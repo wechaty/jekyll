@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      GSoD 2021-Mid-Term-How-to-guide-Blog | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>GSoD 2021-Mid-Term-How-to-guide-Blog | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="GSoD 2021-Mid-Term-How-to-guide-Blog" />
+<meta name="author" content="vasvi" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This is the Mid-term Blog for Wechaty How-to-guide documentation for which we are working as a part of Google Season of Docs 2021. We have reached half a way and it’s time to celebrate and describe our past experience." />
+<meta property="og:description" content="This is the Mid-term Blog for Wechaty How-to-guide documentation for which we are working as a part of Google Season of Docs 2021. We have reached half a way and it’s time to celebrate and describe our past experience." />
+<link rel="canonical" href="https://wechaty.js.org/2021/08/13/gsod-mid-term-how-to-guide-blog/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/08/13/gsod-mid-term-how-to-guide-blog/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/08-gsod-mid-term-how-to-guide-blog/gsod-2021.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-08-13T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/08-gsod-mid-term-how-to-guide-blog/gsod-2021.webp" />
+<meta property="twitter:title" content="GSoD 2021-Mid-Term-How-to-guide-Blog" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"vasvi"},"dateModified":"2021-08-13T00:00:00+00:00","datePublished":"2021-08-13T00:00:00+00:00","description":"This is the Mid-term Blog for Wechaty How-to-guide documentation for which we are working as a part of Google Season of Docs 2021. We have reached half a way and it’s time to celebrate and describe our past experience.","headline":"GSoD 2021-Mid-Term-How-to-guide-Blog","image":"https://wechaty.js.org/assets/2021/08-gsod-mid-term-how-to-guide-blog/gsod-2021.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/08/13/gsod-mid-term-how-to-guide-blog/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"vasvi"},"url":"https://wechaty.js.org/2021/08/13/gsod-mid-term-how-to-guide-blog/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#gsod">gsod</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">GSoD 2021-Mid-Term-How-to-guide-Blog</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/vasvi">
+                            <img class="rounded-circle" src="/assets/contributors/vasvi/avatar.webp" alt="Vasvi Sood" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/vasvi">Vasvi Sood</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Aug 13, 2021 · <span class="reading-time">
+  
+  
+    4 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/08-gsod-mid-term-how-to-guide-blog/gsod-2021.webp" alt="GSoD 2021-Mid-Term-How-to-guide-Blog">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>This is the Mid-term Blog for <strong>Wechaty How-to-guide</strong> documentation for which we are working as a part of Google Season of Docs 2021. We have reached half a way and it’s time to celebrate and describe our past experience.</p>
+
+<h2 id="team-members">Team members</h2>
+
+<h3 id="vasvi-sood">Vasvi Sood</h3>
+
+<p>I am a sophomore at NIT, Hamirpur. I am a Tech enthusiast and a story writer. For me combining technology with my writing skills  is a natural match. I am passionate about blockchain technology. I am also into competitive programming these days.</p>
+
+<p>Email: <a href="mailto:contactvasvisood@gmail.com">contactvasvisood@gmail.com</a>&lt;/br&gt;
+Github Handle: <a href="https://github.com/vasvi-sood">https://github.com/vasvi-sood</a>&lt;/br&gt;
+Medium: <a href="https://vasvisood1.medium.com/">https://vasvisood1.medium.com/</a></p>
+
+<h3 id="abhishek-jaiswal">Abhishek Jaiswal</h3>
+
+<p>Myself Abhishek Jaiswal,a CSE sophomore UG student currently pursuing my B.Tech from IIIT Bhubaneswar.It’s now been more than 8 month, I started writing technical blogs,tutorials,documentation and reviews.I have published many technical with medium and Analytics Vidhya, Devtutorials and Hashnode. I want to learn, build, grow my network, and want to transform open innovation projects into powerful real-world services.</p>
+
+<p>Email: <a href="mailto:abhishek.iiitbbsr@gmail.com">abhishek.iiitbbsr@gmail.com</a>&lt;/br&gt;
+Github Handle: <a href="https://github.com/abhishek-iiit">https://github.com/abhishek-iiit</a>&lt;/br&gt;
+Medium: <a href="https://abhishek-iiit.medium.com/">https://abhishek-iiit.medium.com/</a>&lt;/br&gt;
+Hashnode: <a href="https://abhishek-iiit.hashnode.dev/">https://abhishek-iiit.hashnode.dev/</a></p>
+
+<h2 id="abstract">Abstract</h2>
+
+<p>How to Guide is important because it guides us through the steps involved in addressing key problems and use-cases. They are more advanced than tutorials and assume knowledge of how the product works. On an average 45 - 50% of developers refer to How to guide. It contains instructions on how to use the program, its features and other inbuilt applications as well.</p>
+
+<h2 id="proposed-timeline">Proposed Timeline</h2>
+
+<p>The detailed structure for the timeline can be found <a href="#a">here</a>. Below are the some of the highlights:</p>
+
+<h3 id="week-1">Week 1</h3>
+
+<ul>
+  <li>Concentrate on community bonding.</li>
+  <li>Chalk out a blueprint.</li>
+  <li>Add a README file to GitHub.</li>
+</ul>
+
+<h3 id="week-2">Week 2</h3>
+
+<ul>
+  <li>Add about Bot: Adding brief introduction to the bot and its various use cases and functionalities with images.</li>
+</ul>
+
+<h3 id="week-3">Week 3</h3>
+
+<ul>
+  <li>Add Events to your bot: Define what an event is. Provide code snippets along with a brief paragraph about when to use an event. Include code snippets and examples.</li>
+</ul>
+
+<h3 id="week-4">Week 4</h3>
+
+<ul>
+  <li>Add more functionality to your bot:</li>
+</ul>
+
+<ol>
+  <li>Dealing with messages.</li>
+  <li>Manage Contacts.</li>
+</ol>
+
+<h3 id="week-5">Week 5</h3>
+
+<ul>
+  <li>Add more functionality to your bot:</li>
+</ul>
+
+<ol>
+  <li>Manage Rooms.</li>
+  <li>Send and Accept Friend Requests.</li>
+</ol>
+
+<h3 id="week-6">Week 6</h3>
+
+<ul>
+  <li>Add more functionality to your bot:</li>
+</ul>
+
+<ol>
+  <li>Sending and Receiving files.</li>
+</ol>
+
+<h2 id="proposal-mid-term-video-presentation">Proposal Mid-term Video Presentation</h2>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/2yDwsntWTQc" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h2 id="work-done">Work Done</h2>
+
+<p>We kick-off with the community bonding and getting familiar with the project. Also, if someone want’s to contribute we had a README file to help future contributors understand how to contribute to the How-to-guide page. We then restructured the How-to-guide section, and added various sub-sections. Some of them are:</p>
+
+<ol>
+  <li>Adding Events and customising the bot with providing code snippet for better understanding and its purpose</li>
+  <li>Install wechaty and run the most famous messaging app through it</li>
+  <li>Step by step guide to get familiar with deals with messages</li>
+  <li>Introduction to managing contacts and its use cases</li>
+  <li>Step by Step guide to get familiar with manage contacts</li>
+  <li>Step by Step guide to get familiar with send and accept friend requests</li>
+  <li>Introduction to sending and receiving files and its use cases</li>
+</ol>
+
+<h2 id="lesson-learned">Lesson learned</h2>
+
+<p>Working with Wechaty under Google Season of Docs has been an amazing and rewarding experience. It has provided me a chance for learning and self improvement. Here are some of the lessons we have learnt:</p>
+
+<ol>
+  <li>
+    <p>Became more familiar with Git, Github and open source culture and software development in general. Also learnt several md, mdx commands and their best practices.</p>
+  </li>
+  <li>
+    <p>Routine code submission, discussion and review by mentors helped to complete the task in short time and in directed manner.</p>
+  </li>
+  <li>
+    <p>We learned a great deal about working with the Docusaurus documentation system.</p>
+  </li>
+</ol>
+
+<h2 id="follow-up-work">Follow-up work</h2>
+
+<p>In the next half, we will be looking for the:</p>
+
+<ol>
+  <li>Deployment section where we will have the integration with various IM platfrom like WhatsApp, WeChat, Gitter, Lark, WeChat Official Account.</li>
+  <li>Deployment with containers where we will have it running in Heroku and Docker.</li>
+  <li>Review up all the PR and improve the documentation as suggested.</li>
+</ol>
+
+<h2 id="acknowledgment">Acknowledgment</h2>
+
+<p>We are extremely grateful to our mentors Rohitesh and Simin for helping us out at various stages throughout this summer. Special thanks to Huan and Rui, for facilitating the Summer Program. Sincere gratitude to Google for offering me this great opportunity.</p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#google">google</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#gsod">gsod</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#gsod-2021">gsod-2021</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#mid-term">mid-term</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#evaluation">evaluation</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#2021">2021</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#docs">docs</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/vasvi">
+                            <img class="rounded-circle" src="/assets/contributors/vasvi/avatar.webp" alt="Vasvi Sood" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/vasvi">Vasvi Sood</a> </h5>
+						I am a sophomore at NIT Hamirpur
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/08/12/the-matrix-server-of-wechaty/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/08-the-matrix-server-of-wechaty/wechaty-matrix.webp">  The community matrix server is online!</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/08/13/wechaty-face-carton/"> Wechaty卡通P图插件，18行代码帮你实现变脸功能   <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/08-wechaty-face-carton/main.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

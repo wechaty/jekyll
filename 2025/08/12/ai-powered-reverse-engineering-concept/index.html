@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Breaking the Reverse Engineering Barrier: How LLMs and Frida Are Revolutionizing WeChat Analysis | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Breaking the Reverse Engineering Barrier: How LLMs and Frida Are Revolutionizing WeChat Analysis | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Breaking the Reverse Engineering Barrier: How LLMs and Frida Are Revolutionizing WeChat Analysis" />
+<meta name="author" content="huan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A deep dive into building an AI-powered reverse engineering agent that automatically locates and hooks WeChat’s message handling functions" />
+<meta property="og:description" content="A deep dive into building an AI-powered reverse engineering agent that automatically locates and hooks WeChat’s message handling functions" />
+<link rel="canonical" href="https://wechaty.js.org/2025/08/12/ai-powered-reverse-engineering-concept/" />
+<meta property="og:url" content="https://wechaty.js.org/2025/08/12/ai-powered-reverse-engineering-concept/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2025/08-ai-powered-reverse-engineering-concept/wechaty-llm-frida.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-08-12T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2025/08-ai-powered-reverse-engineering-concept/wechaty-llm-frida.webp" />
+<meta property="twitter:title" content="Breaking the Reverse Engineering Barrier: How LLMs and Frida Are Revolutionizing WeChat Analysis" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"huan"},"dateModified":"2025-08-12T00:00:00+00:00","datePublished":"2025-08-12T00:00:00+00:00","description":"A deep dive into building an AI-powered reverse engineering agent that automatically locates and hooks WeChat’s message handling functions","headline":"Breaking the Reverse Engineering Barrier: How LLMs and Frida Are Revolutionizing WeChat Analysis","image":"https://wechaty.js.org/assets/2025/08-ai-powered-reverse-engineering-concept/wechaty-llm-frida.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2025/08/12/ai-powered-reverse-engineering-concept/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"huan"},"url":"https://wechaty.js.org/2025/08/12/ai-powered-reverse-engineering-concept/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#ideas">ideas</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Breaking the Reverse Engineering Barrier: How LLMs and Frida Are Revolutionizing WeChat Analysis</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Aug 12, 2025 · <span class="reading-time">
+  
+  
+    29 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2025/08-ai-powered-reverse-engineering-concept/wechaty-llm-frida.webp" alt="Breaking the Reverse Engineering Barrier: How LLMs and Frida Are Revolutionizing WeChat Analysis">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<blockquote>
+  <p>A deep dive into building an AI-powered reverse engineering agent that automatically locates and hooks WeChat’s message handling functions</p>
+</blockquote>
+
+<h2 id="the-challenge-that-started-it-all">The Challenge That Started It All</h2>
+
+<p>It was 3 AM, and I was staring at yet another hexdump of WeChat.exe, trying to locate the <code class="language-plaintext highlighter-rouge">onMessage()</code> function that had moved (again) in the latest update. As a security researcher working on understanding WeChat’s communication protocols, I faced this frustrating routine every few weeks. Each WeChat update would shuffle function addresses, change calling conventions, and sometimes even inline critical functions, making my carefully crafted hooks useless.</p>
+
+<p>The traditional approach was painfully manual:</p>
+
+<ol>
+  <li><strong>Static Analysis</strong>: Hours spent in IDA Pro or Ghidra, hunting for string references</li>
+  <li><strong>Pattern Matching</strong>: Manually comparing assembly code between versions</li>
+  <li><strong>Trial and Error</strong>: Testing dozens of potential function candidates</li>
+  <li><strong>Hook Development</strong>: Writing custom Frida scripts for each version</li>
+</ol>
+
+<p>This process could take days for a single function, and with WeChat’s frequent updates, it felt like digital Sisyphus — pushing the boulder up the mountain, only to watch it roll back down with each release.</p>
+
+<p>That’s when I realized: <strong>What if we could teach an AI to do this automatically?</strong></p>
+
+<h2 id="the-dawn-of-ai-powered-reverse-engineering">The Dawn of AI-Powered Reverse Engineering</h2>
+
+<p>The convergence of several breakthrough technologies in 2024-2025 created an unprecedented opportunity:</p>
+
+<h3 id="-large-language-models-revolution">🧠 <strong>Large Language Models Revolution</strong></h3>
+
+<p>Modern LLMs like GPT-5, Claude Sonnet 4, and specialized models like LLM4Decompile have achieved remarkable capabilities in understanding assembly code. Recent research shows that LLM4Decompile can achieve up to 21% accurate decompilation rate, significantly outperforming GPT-4 on assembly analysis tasks.</p>
+
+<h3 id="-fridas-dynamic-instrumentation-power">🔍 <strong>Frida’s Dynamic Instrumentation Power</strong></h3>
+
+<p>Frida enables real-time memory analysis, function hooking, and code injection — providing the “eyes and hands” to interact with running processes.</p>
+
+<h3 id="-model-context-protocol-mcp-integration">🔗 <strong>Model Context Protocol (MCP) Integration</strong></h3>
+
+<p>MCP standardizes how AI systems interact with external tools, allowing seamless integration between LLMs and dynamic analysis frameworks.</p>
+
+<p><strong>The Vision</strong>: Combine these technologies to create a self-evolving reverse engineering system where:</p>
+
+<ul>
+  <li><strong>Frida</strong> provides real-time process observation</li>
+  <li><strong>LLMs</strong> provide intelligent pattern recognition and decision making</li>
+  <li><strong>MCP</strong> provides the communication layer between them</li>
+</ul>
+
+<h2 id="exploring-the-technical-landscape">Exploring the Technical Landscape</h2>
+
+<p>Before diving into our solution, let’s examine the current state of AI-assisted reverse engineering:</p>
+
+<h3 id="existing-approaches-and-their-limitations">Existing Approaches and Their Limitations</h3>
+
+<p><strong>Traditional Static Analysis Tools:</strong></p>
+
+<ul>
+  <li>IDA Pro, Ghidra, Binary Ninja — powerful but require extensive manual analysis</li>
+  <li>Limited cross-version adaptation capabilities</li>
+  <li>No real-time learning from dynamic behavior</li>
+</ul>
+
+<p><strong>Recent AI-Powered Tools:</strong></p>
+
+<ul>
+  <li><strong>Binary Ninja Sidekick</strong>: AI-powered plugin with structure recovery</li>
+  <li><strong>ReverserAI</strong>: Local LLM for reverse engineering tasks</li>
+  <li><strong>LLM4Decompile</strong>: Specialized models for binary decompilation</li>
+</ul>
+
+<p><strong>The Gap</strong>: None of these solutions provide <strong>automated, cross-version function location with real-time validation</strong> for specific applications like WeChat.</p>
+
+<h3 id="why-wechat-presents-unique-challenges">Why WeChat Presents Unique Challenges</h3>
+
+<p>WeChat.exe is particularly challenging for reverse engineering because:</p>
+
+<ol>
+  <li><strong>Frequent Updates</strong>: Monthly releases with significant binary changes</li>
+  <li><strong>Anti-Analysis Measures</strong>: Obfuscation and packing techniques</li>
+  <li><strong>Complex Architecture</strong>: Multi-threaded message processing with intricate data structures</li>
+  <li><strong>Version Variations</strong>: Different builds for different regions and features</li>
+</ol>
+
+<h2 id="our-revolutionary-solution-the-llm-frida-hybrid-agent">Our Revolutionary Solution: The LLM-Frida Hybrid Agent</h2>
+
+<p>After months of research and experimentation, we developed a comprehensive solution that addresses these challenges through intelligent automation.</p>
+
+<h3 id="architecture-overview">Architecture Overview</h3>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>┌─────────────────────┐    ┌──────────────────────┐    ┌─────────────────────┐
+│   LLM Analysis      │    │   MCP Server         │    │   Frida Engine      │
+│   Engine            │◄──►│   (TypeScript)       │◄──►│   (Dynamic Hooks)   │
+│                     │    │                      │    │                     │
+│ • Pattern Recognition│    │ • Tool Management    │    │ • Memory Analysis   │
+│ • Function Matching │    │ • Resource Serving   │    │ • Hook Deployment   │
+│ • Parameter Analysis│    │ • Session Management │    │ • Real-time Data    │
+└─────────────────────┘    └──────────────────────┘    └─────────────────────┘
+           │                           │                           │
+           └───────────────────────────┼───────────────────────────┘
+                                       │
+                        ┌──────────────────────┐
+                        │   WeChat.exe         │
+                        │   Target Process     │
+                        └──────────────────────┘
+</code></pre></div></div>
+
+<h3 id="core-components-deep-dive">Core Components Deep Dive</h3>
+
+<p>Let’s examine each component and its implementation:</p>
+
+<h2 id="1-the-llm-analysis-engine">1. The LLM Analysis Engine</h2>
+
+<p>The heart of our system is an advanced pattern recognition engine that leverages LLM capabilities for assembly analysis:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">LLMAnalysisEngine</span> <span class="p">{</span>
+  <span class="k">private</span> <span class="nx">knownPatterns</span><span class="p">:</span> <span class="nb">Map</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">,</span> <span class="kr">string</span><span class="o">&gt;</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Map</span><span class="p">();</span>
+  
+  <span class="nf">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nf">initializeKnownPatterns</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="k">private</span> <span class="nf">initializeKnownPatterns</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// WeChat-specific message handling patterns</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">knownPatterns</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">message_handler</span><span class="dl">"</span><span class="p">,</span> <span class="s2">`
+      Typical WeChat message handler patterns:
+      1. Function prologue with stack frame setup
+      2. Parameter validation (message struct, sender info, type)
+      3. String comparisons for message type identification
+      4. Call to logging/debugging functions
+      5. Message processing logic
+      6. Return value handling
+    `</span><span class="p">);</span>
+    
+    <span class="k">this</span><span class="p">.</span><span class="nx">knownPatterns</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">windows_calling_convention</span><span class="dl">"</span><span class="p">,</span> <span class="s2">`
+      Windows x64 calling convention:
+      - First 4 parameters: RCX, RDX, R8, R9
+      - Additional parameters on stack
+      - Return value in RAX
+      - Caller cleanup
+    `</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">async</span> <span class="nf">analyzeAssemblyForMessageHandler</span><span class="p">(</span>
+    <span class="nx">currentAssembly</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> 
+    <span class="nx">previousVersionInfo</span><span class="p">?:</span> <span class="p">{</span> <span class="na">address</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="na">assembly</span><span class="p">:</span> <span class="kr">string</span> <span class="p">}</span>
+  <span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">FunctionMatch</span><span class="p">[]</span><span class="o">&gt;</span> <span class="p">{</span>
+    
+    <span class="kd">const</span> <span class="nx">prompt</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nf">buildAnalysisPrompt</span><span class="p">(</span><span class="nx">currentAssembly</span><span class="p">,</span> <span class="nx">previousVersionInfo</span><span class="p">);</span>
+    
+    <span class="c1">// Perform sophisticated pattern matching</span>
+    <span class="kd">const</span> <span class="nx">matches</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nf">performPatternMatching</span><span class="p">(</span><span class="nx">currentAssembly</span><span class="p">,</span> <span class="nx">previousVersionInfo</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="nx">matches</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="nx">match</span> <span class="o">=&gt;</span> <span class="p">({</span>
+      <span class="na">address</span><span class="p">:</span> <span class="nx">match</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
+      <span class="na">confidence</span><span class="p">:</span> <span class="nx">match</span><span class="p">.</span><span class="nx">confidence</span><span class="p">,</span>
+      <span class="na">reasoning</span><span class="p">:</span> <span class="nx">match</span><span class="p">.</span><span class="nx">reasoning</span><span class="p">,</span>
+      <span class="na">disassembly</span><span class="p">:</span> <span class="nx">match</span><span class="p">.</span><span class="nx">disassembly</span><span class="p">,</span>
+      <span class="na">parameters</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nf">extractParameters</span><span class="p">(</span><span class="nx">match</span><span class="p">.</span><span class="nx">disassembly</span><span class="p">)</span>
+    <span class="p">}));</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Key Innovation</strong>: The engine doesn’t just look for generic patterns — it learns WeChat-specific behaviors and adapts to version changes using cross-version reference analysis.</p>
+
+<h3 id="intelligent-pattern-matching-algorithm">Intelligent Pattern Matching Algorithm</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span> <span class="k">async</span> <span class="nf">performPatternMatching</span><span class="p">(</span>
+  <span class="nx">assembly</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> 
+  <span class="nx">previousInfo</span><span class="p">?:</span> <span class="kr">any</span>
+<span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nb">Array</span><span class="o">&lt;</span><span class="p">{</span><span class="na">address</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="na">confidence</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="na">reasoning</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="na">disassembly</span><span class="p">:</span> <span class="kr">string</span><span class="p">}</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+  
+  <span class="kd">const</span> <span class="na">matches</span><span class="p">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="p">{</span><span class="na">address</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="na">confidence</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="na">reasoning</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="na">disassembly</span><span class="p">:</span> <span class="kr">string</span><span class="p">}</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[];</span>
+  
+  <span class="c1">// Pattern 1: Function with message-related string references</span>
+  <span class="kd">const</span> <span class="nx">messageStrings</span> <span class="o">=</span> <span class="nx">assembly</span><span class="p">.</span><span class="nf">match</span><span class="p">(</span><span class="sr">/lea</span><span class="se">\s</span><span class="sr">+</span><span class="se">\w</span><span class="sr">+,</span><span class="se">\s</span><span class="sr">*</span><span class="se">\[</span><span class="sr">rip</span><span class="se">\+</span><span class="sr">0x</span><span class="se">[</span><span class="sr">0-9a-f</span><span class="se">]</span><span class="sr">+</span><span class="se">\]\s</span><span class="sr">*#.*</span><span class="se">(?:</span><span class="sr">message|msg|chat|recv</span><span class="se">)</span><span class="sr">/gi</span><span class="p">);</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">messageStrings</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">address</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nf">extractAddressFromPattern</span><span class="p">(</span><span class="nx">assembly</span><span class="p">,</span> <span class="nx">messageStrings</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="nx">matches</span><span class="p">.</span><span class="nf">push</span><span class="p">({</span>
+      <span class="nx">address</span><span class="p">,</span>
+      <span class="na">confidence</span><span class="p">:</span> <span class="mf">0.75</span><span class="p">,</span>
+      <span class="na">reasoning</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Function contains message-related string references and proper calling convention</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">disassembly</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nf">extractFunctionDisassembly</span><span class="p">(</span><span class="nx">assembly</span><span class="p">,</span> <span class="nx">address</span><span class="p">)</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Pattern 2: Function with similar parameter structure to previous version</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">previousInfo</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">similarStructure</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nf">findSimilarParameterStructure</span><span class="p">(</span><span class="nx">assembly</span><span class="p">,</span> <span class="nx">previousInfo</span><span class="p">.</span><span class="nx">assembly</span><span class="p">);</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">similarStructure</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">similarStructure</span><span class="p">.</span><span class="nf">forEach</span><span class="p">(</span><span class="nx">match</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">matches</span><span class="p">.</span><span class="nf">push</span><span class="p">({</span>
+          <span class="na">address</span><span class="p">:</span> <span class="nx">match</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
+          <span class="na">confidence</span><span class="p">:</span> <span class="mf">0.85</span><span class="p">,</span>
+          <span class="na">reasoning</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Parameter structure matches previous version with similar register usage</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">disassembly</span><span class="p">:</span> <span class="nx">match</span><span class="p">.</span><span class="nx">disassembly</span>
+        <span class="p">});</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">matches</span><span class="p">.</span><span class="nf">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">b</span><span class="p">.</span><span class="nx">confidence</span> <span class="o">-</span> <span class="nx">a</span><span class="p">.</span><span class="nx">confidence</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>The Magic</strong>: This algorithm combines multiple analysis strategies:</p>
+
+<ul>
+  <li><strong>String reference analysis</strong> for identifying message-related functions</li>
+  <li><strong>Cross-version comparison</strong> for adapting to relocated functions</li>
+  <li><strong>Calling convention analysis</strong> for validating function signatures</li>
+  <li><strong>Confidence scoring</strong> for ranking potential matches</li>
+</ul>
+
+<h2 id="2-frida-mcp-integration-layer">2. Frida MCP Integration Layer</h2>
+
+<p>The MCP integration provides a standardized interface between the LLM and Frida’s dynamic instrumentation capabilities:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">FridaMCPIntegration</span> <span class="p">{</span>
+  <span class="k">private</span> <span class="nx">server</span><span class="p">:</span> <span class="nx">McpServer</span><span class="p">;</span>
+  <span class="k">private</span> <span class="nx">analysisEngine</span><span class="p">:</span> <span class="nx">LLMAnalysisEngine</span><span class="p">;</span>
+  <span class="k">private</span> <span class="nx">activeSessions</span><span class="p">:</span> <span class="nb">Map</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">,</span> <span class="kr">any</span><span class="o">&gt;</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Map</span><span class="p">();</span>
+
+  <span class="nf">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">server</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">McpServer</span><span class="p">({</span>
+      <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">wechat-reverse-agent</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">version</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1.0.0</span><span class="dl">"</span>
+    <span class="p">});</span>
+    
+    <span class="k">this</span><span class="p">.</span><span class="nx">analysisEngine</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LLMAnalysisEngine</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nf">setupMCPHandlers</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="k">private</span> <span class="nf">setupMCPHandlers</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Tool: Attach to WeChat process</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">server</span><span class="p">.</span><span class="nf">registerTool</span><span class="p">(</span>
+      <span class="dl">"</span><span class="s2">attach_process</span><span class="dl">"</span><span class="p">,</span>
+      <span class="p">{</span>
+        <span class="na">title</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Attach to Process</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">description</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Attach Frida to WeChat.exe process</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">inputSchema</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">pid</span><span class="p">:</span> <span class="nx">z</span><span class="p">.</span><span class="nf">number</span><span class="p">().</span><span class="nf">describe</span><span class="p">(</span><span class="dl">"</span><span class="s2">Process ID of WeChat.exe</span><span class="dl">"</span><span class="p">)</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="k">async </span><span class="p">({</span> <span class="nx">pid</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+          <span class="kd">const</span> <span class="nx">fridaScript</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nf">generateFridaAttachScript</span><span class="p">(</span><span class="nx">pid</span><span class="p">);</span>
+          <span class="kd">const</span> <span class="nx">sessionId</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nf">executeFridaScript</span><span class="p">(</span><span class="nx">fridaScript</span><span class="p">,</span> <span class="nx">pid</span><span class="p">);</span>
+          
+          <span class="k">this</span><span class="p">.</span><span class="nx">activeSessions</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="nx">sessionId</span><span class="p">,</span> <span class="p">{</span> <span class="nx">pid</span><span class="p">,</span> <span class="na">attached</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+          
+          <span class="k">return</span> <span class="p">{</span>
+            <span class="na">content</span><span class="p">:</span> <span class="p">[{</span>
+              <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">text</span><span class="dl">"</span><span class="p">,</span> 
+              <span class="na">text</span><span class="p">:</span> <span class="s2">`Successfully attached to WeChat.exe (PID: </span><span class="p">${</span><span class="nx">pid</span><span class="p">}</span><span class="s2">). Session ID: </span><span class="p">${</span><span class="nx">sessionId</span><span class="p">}</span><span class="s2">`</span>
+            <span class="p">}]</span>
+          <span class="p">};</span>
+        <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">return</span> <span class="p">{</span>
+            <span class="na">content</span><span class="p">:</span> <span class="p">[{</span>
+              <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">text</span><span class="dl">"</span><span class="p">,</span>
+              <span class="na">text</span><span class="p">:</span> <span class="s2">`Error attaching to process: </span><span class="p">${</span><span class="nx">error</span><span class="p">}</span><span class="s2">`</span>
+            <span class="p">}],</span>
+            <span class="na">isError</span><span class="p">:</span> <span class="kc">true</span>
+          <span class="p">};</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">);</span>
+</code></pre></div></div>
+
+<p><strong>Design Philosophy</strong>: Each MCP tool represents a discrete capability that can be chained together to create complex analysis workflows.</p>
+
+<h3 id="advanced-analysis-tool">Advanced Analysis Tool</h3>
+
+<p>The most sophisticated tool combines LLM analysis with real-time memory inspection:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Tool: Analyze memory and find onMessage function</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">server</span><span class="p">.</span><span class="nf">registerTool</span><span class="p">(</span>
+  <span class="dl">"</span><span class="s2">analyze_onmessage</span><span class="dl">"</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="na">title</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Analyze onMessage Function</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">description</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Use AI analysis to locate onMessage function in WeChat memory</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">inputSchema</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">sessionId</span><span class="p">:</span> <span class="nx">z</span><span class="p">.</span><span class="nf">string</span><span class="p">().</span><span class="nf">describe</span><span class="p">(</span><span class="dl">"</span><span class="s2">Active Frida session ID</span><span class="dl">"</span><span class="p">),</span>
+      <span class="na">previousVersion</span><span class="p">:</span> <span class="nx">z</span><span class="p">.</span><span class="nf">object</span><span class="p">({</span>
+        <span class="na">address</span><span class="p">:</span> <span class="nx">z</span><span class="p">.</span><span class="nf">string</span><span class="p">(),</span>
+        <span class="na">assembly</span><span class="p">:</span> <span class="nx">z</span><span class="p">.</span><span class="nf">string</span><span class="p">()</span>
+      <span class="p">}).</span><span class="nf">optional</span><span class="p">().</span><span class="nf">describe</span><span class="p">(</span><span class="dl">"</span><span class="s2">Previous version function info for comparison</span><span class="dl">"</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="k">async </span><span class="p">({</span> <span class="nx">sessionId</span><span class="p">,</span> <span class="nx">previousVersion</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">activeSessions</span><span class="p">.</span><span class="nf">has</span><span class="p">(</span><span class="nx">sessionId</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Invalid session ID. Please attach to process first.</span><span class="dl">"</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="kd">const</span> <span class="nx">session</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">activeSessions</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nx">sessionId</span><span class="p">);</span>
+      <span class="kd">const</span> <span class="nx">memoryAnalysis</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nf">analyzeProcessMemory</span><span class="p">(</span><span class="nx">session</span><span class="p">.</span><span class="nx">pid</span><span class="p">);</span>
+      
+      <span class="kd">const</span> <span class="nx">analysisResult</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">analysisEngine</span><span class="p">.</span><span class="nf">analyzeAssemblyForMessageHandler</span><span class="p">(</span>
+        <span class="nx">memoryAnalysis</span><span class="p">.</span><span class="nx">disassembly</span><span class="p">,</span>
+        <span class="nx">previousVersion</span>
+      <span class="p">);</span>
+
+      <span class="kd">const</span> <span class="na">result</span><span class="p">:</span> <span class="nx">AnalysisResult</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">success</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">functionMatches</span><span class="p">:</span> <span class="nx">analysisResult</span><span class="p">,</span>
+        <span class="na">hookScript</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nf">generateHookScript</span><span class="p">(</span><span class="nx">analysisResult</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1">// Use highest confidence match</span>
+      <span class="p">};</span>
+
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="na">content</span><span class="p">:</span> <span class="p">[{</span>
+          <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">text</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">text</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="p">}]</span>
+      <span class="p">};</span>
+    <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="na">content</span><span class="p">:</span> <span class="p">[{</span>
+          <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">text</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">text</span><span class="p">:</span> <span class="s2">`Error analyzing onMessage function: </span><span class="p">${</span><span class="nx">error</span><span class="p">}</span><span class="s2">`</span>
+        <span class="p">}],</span>
+        <span class="na">isError</span><span class="p">:</span> <span class="kc">true</span>
+      <span class="p">};</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="3-advanced-frida-instrumentation">3. Advanced Frida Instrumentation</h2>
+
+<p>Our Frida scripts go beyond basic hooking to provide comprehensive runtime analysis:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Advanced WeChat Memory Scanner - Pattern Detection</span>
+<span class="kd">const</span> <span class="nx">WeChatScanner</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">// Scan for message handling patterns</span>
+    <span class="na">scanMessageHandlers</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">[+] Scanning for WeChat message handlers...</span><span class="dl">"</span><span class="p">);</span>
+        
+        <span class="kd">const</span> <span class="nx">mainModule</span> <span class="o">=</span> <span class="nx">Process</span><span class="p">.</span><span class="nf">getModuleByName</span><span class="p">(</span><span class="dl">"</span><span class="s2">WeChat.exe</span><span class="dl">"</span><span class="p">);</span>
+        <span class="kd">const</span> <span class="nx">baseAddress</span> <span class="o">=</span> <span class="nx">mainModule</span><span class="p">.</span><span class="nx">base</span><span class="p">;</span>
+        <span class="kd">const</span> <span class="nx">size</span> <span class="o">=</span> <span class="nx">mainModule</span><span class="p">.</span><span class="nx">size</span><span class="p">;</span>
+        
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`[+] WeChat.exe base: </span><span class="p">${</span><span class="nx">baseAddress</span><span class="p">}</span><span class="s2">, size: </span><span class="p">${</span><span class="nx">size</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+        
+        <span class="c1">// Pattern 1: Look for string references to message-related keywords</span>
+        <span class="kd">const</span> <span class="nx">messageStrings</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="dl">"</span><span class="s2">message</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">msg</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">chat</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">recv</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">send</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">text</span><span class="dl">"</span><span class="p">,</span> 
+            <span class="dl">"</span><span class="s2">onMessage</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">handleMessage</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">processMessage</span><span class="dl">"</span>
+        <span class="p">];</span>
+        
+        <span class="kd">const</span> <span class="nx">candidates</span> <span class="o">=</span> <span class="p">[];</span>
+        
+        <span class="nx">messageStrings</span><span class="p">.</span><span class="nf">forEach</span><span class="p">(</span><span class="nx">pattern</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">Memory</span><span class="p">.</span><span class="nf">scan</span><span class="p">(</span><span class="nx">baseAddress</span><span class="p">,</span> <span class="nx">size</span><span class="p">,</span> <span class="nx">pattern</span><span class="p">,</span> <span class="p">{</span>
+                <span class="na">onMatch</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">address</span><span class="p">,</span> <span class="nx">size</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`[+] Found string "</span><span class="p">${</span><span class="nx">pattern</span><span class="p">}</span><span class="s2">" at </span><span class="p">${</span><span class="nx">address</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+                    
+                    <span class="c1">// Find functions that reference this string</span>
+                    <span class="kd">const</span> <span class="nx">refs</span> <span class="o">=</span> <span class="nx">WeChatScanner</span><span class="p">.</span><span class="nf">findStringReferences</span><span class="p">(</span><span class="nx">address</span><span class="p">);</span>
+                    <span class="nx">refs</span><span class="p">.</span><span class="nf">forEach</span><span class="p">(</span><span class="nx">ref</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                        <span class="kd">const</span> <span class="nx">funcStart</span> <span class="o">=</span> <span class="nx">WeChatScanner</span><span class="p">.</span><span class="nf">findFunctionStart</span><span class="p">(</span><span class="nx">ref</span><span class="p">);</span>
+                        <span class="k">if </span><span class="p">(</span><span class="nx">funcStart</span><span class="p">)</span> <span class="p">{</span>
+                            <span class="nx">candidates</span><span class="p">.</span><span class="nf">push</span><span class="p">({</span>
+                                <span class="na">address</span><span class="p">:</span> <span class="nx">funcStart</span><span class="p">,</span>
+                                <span class="na">confidence</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
+                                <span class="na">reason</span><span class="p">:</span> <span class="s2">`References "</span><span class="p">${</span><span class="nx">pattern</span><span class="p">}</span><span class="s2">" string`</span><span class="p">,</span>
+                                <span class="na">stringRef</span><span class="p">:</span> <span class="nx">address</span>
+                            <span class="p">});</span>
+                        <span class="p">}</span>
+                    <span class="p">});</span>
+                <span class="p">}</span>
+            <span class="p">});</span>
+        <span class="p">});</span>
+        
+        <span class="k">return</span> <span class="nx">candidates</span><span class="p">;</span>
+    <span class="p">},</span>
+</code></pre></div></div>
+
+<p><strong>Revolutionary Feature</strong>: The scanner doesn’t just find functions — it analyzes their context, validates calling conventions, and builds confidence scores for each candidate.</p>
+
+<h3 id="intelligent-hook-generation">Intelligent Hook Generation</h3>
+
+<p>Based on the LLM analysis, the system generates sophisticated hooks that adapt to the discovered function signature:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span> <span class="nf">generateHookScript</span><span class="p">(</span><span class="nx">functionMatch</span><span class="p">:</span> <span class="nx">FunctionMatch</span><span class="p">):</span> <span class="kr">string</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">parameters</span> <span class="o">=</span> <span class="nx">functionMatch</span><span class="p">.</span><span class="nx">parameters</span> <span class="o">||</span> <span class="p">[];</span>
+  
+  <span class="kd">let</span> <span class="nx">parameterExtraction</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
+  <span class="nx">parameters</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">param</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">parameterExtraction</span> <span class="o">+=</span> <span class="s2">`
+      // Extract </span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2"> (</span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="kd">type</span><span class="p">}</span><span class="s2">)
+      let </span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2"> = args[</span><span class="p">${</span><span class="nx">index</span><span class="p">}</span><span class="s2">];
+      console.log("</span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">:", </span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">);
+      
+      // Detailed parameter analysis
+      if (</span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2"> &amp;&amp; !</span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">.isNull()) {
+        try {
+          let </span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">_data = </span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">.readPointer();
+          console.log("</span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2"> data:", </span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">_data);
+          
+          // Try to read as string if it looks like text data
+          if (</span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">_data &amp;&amp; !</span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">_data.isNull()) {
+            try {
+              let text_content = </span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">_data.readUtf8String();
+              if (text_content &amp;&amp; text_content.length &gt; 0) {
+                console.log("</span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2"> text content:", text_content);
+              }
+            } catch (e) {
+              console.log("</span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2"> not readable as string");
+            }
+          }
+        } catch (e) {
+          console.log("Error reading </span><span class="p">${</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">:", e);
+        }
+      }
+    `</span><span class="p">;</span>
+  <span class="p">});</span>
+
+  <span class="k">return</span> <span class="s2">`
+// WeChat onMessage Hook Script
+// Generated for function at </span><span class="p">${</span><span class="nx">functionMatch</span><span class="p">.</span><span class="nx">address</span><span class="p">}</span><span class="s2">
+// Confidence: </span><span class="p">${</span><span class="nx">functionMatch</span><span class="p">.</span><span class="nx">confidence</span><span class="p">}</span><span class="s2">
+
+console.log("=== WeChat Message Hook Deployed ===");
+console.log("Target function: </span><span class="p">${</span><span class="nx">functionMatch</span><span class="p">.</span><span class="nx">address</span><span class="p">}</span><span class="s2">");
+console.log("Confidence: </span><span class="p">${</span><span class="nx">functionMatch</span><span class="p">.</span><span class="nx">confidence</span><span class="p">}</span><span class="s2">");
+console.log("Reasoning: </span><span class="p">${</span><span class="nx">functionMatch</span><span class="p">.</span><span class="nx">reasoning</span><span class="p">}</span><span class="s2">");
+
+var targetAddress = ptr("</span><span class="p">${</span><span class="nx">functionMatch</span><span class="p">.</span><span class="nx">address</span><span class="p">}</span><span class="s2">");
+
+Interceptor.attach(targetAddress, {
+  onEnter: function(args) {
+    console.log("</span><span class="se">\\</span><span class="s2">n=== onMessage() called ===");
+    console.log("Timestamp:", new Date().toISOString());
+    console.log("Thread ID:", Process.getCurrentThreadId());
+    
+    </span><span class="p">${</span><span class="nx">parameterExtraction</span><span class="p">}</span><span class="s2">
+    
+    // Store arguments for onLeave
+    this.args = Array.from(args);
+  },
+  
+  onLeave: function(retval) {
+    console.log("onMessage() returning:", retval);
+    console.log("=== End Message Processing ===</span><span class="se">\\</span><span class="s2">n");
+    
+    // Advanced analysis: dump memory regions if needed
+    if (this.args[0] &amp;&amp; !this.args[0].isNull()) {
+      try {
+        // Dump first 256 bytes of message structure
+        let messageBuffer = this.args[0].readByteArray(256);
+        console.log("Message struct dump:", hexdump(messageBuffer));
+      } catch (e) {
+        console.log("Could not dump message structure:", e);
+      }
+    }
+  }
+});
+
+console.log("Hook installed successfully at", targetAddress);
+`</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Adaptive Intelligence</strong>: The generated hook adapts its behavior based on the LLM’s analysis of the function signature, automatically handling different parameter types and structures.</p>
+
+<h2 id="4-real-time-validation-and-learning">4. Real-Time Validation and Learning</h2>
+
+<p>One of the most innovative aspects of our system is its ability to validate its analysis through real-time execution:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Real-time Message Monitor</span>
+<span class="kd">const</span> <span class="nx">MessageMonitor</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">activeHooks</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="na">messageLog</span><span class="p">:</span> <span class="p">[],</span>
+    
+    <span class="c1">// Deploy comprehensive message monitoring</span>
+    <span class="na">deployAdvancedHooks</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">candidateFunctions</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">[+] Deploying advanced message monitoring hooks...</span><span class="dl">"</span><span class="p">);</span>
+        
+        <span class="nx">candidateFunctions</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">candidate</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="kd">const</span> <span class="nx">hookId</span> <span class="o">=</span> <span class="s2">`hook_</span><span class="p">${</span><span class="nx">index</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+            
+            <span class="k">try</span> <span class="p">{</span>
+                <span class="kd">const</span> <span class="nx">hook</span> <span class="o">=</span> <span class="nx">Interceptor</span><span class="p">.</span><span class="nf">attach</span><span class="p">(</span><span class="nx">candidate</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span> <span class="p">{</span>
+                    <span class="na">onEnter</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="kd">const</span> <span class="nx">timestamp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Date</span><span class="p">().</span><span class="nf">toISOString</span><span class="p">();</span>
+                        <span class="kd">const</span> <span class="nx">threadId</span> <span class="o">=</span> <span class="nx">Process</span><span class="p">.</span><span class="nf">getCurrentThreadId</span><span class="p">();</span>
+                        
+                        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`\n=== Message Hook </span><span class="p">${</span><span class="nx">hookId</span><span class="p">}</span><span class="s2"> Triggered ===`</span><span class="p">);</span>
+                        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Time: </span><span class="p">${</span><span class="nx">timestamp</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+                        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Thread: </span><span class="p">${</span><span class="nx">threadId</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+                        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Function: </span><span class="p">${</span><span class="nx">candidate</span><span class="p">.</span><span class="nx">address</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+                        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Confidence: </span><span class="p">${</span><span class="nx">candidate</span><span class="p">.</span><span class="nx">confidence</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+                        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Reason: </span><span class="p">${</span><span class="nx">candidate</span><span class="p">.</span><span class="nx">reason</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+                        
+                        <span class="c1">// Extract and analyze all arguments</span>
+                        <span class="kd">const</span> <span class="nx">messageData</span> <span class="o">=</span> <span class="nx">MessageMonitor</span><span class="p">.</span><span class="nf">extractMessageData</span><span class="p">(</span><span class="nx">args</span><span class="p">);</span>
+                        
+                        <span class="c1">// Log to persistent storage</span>
+                        <span class="nx">MessageMonitor</span><span class="p">.</span><span class="nx">messageLog</span><span class="p">.</span><span class="nf">push</span><span class="p">({</span>
+                            <span class="nx">hookId</span><span class="p">,</span>
+                            <span class="nx">timestamp</span><span class="p">,</span>
+                            <span class="nx">threadId</span><span class="p">,</span>
+                            <span class="na">functionAddress</span><span class="p">:</span> <span class="nx">candidate</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
+                            <span class="nx">messageData</span><span class="p">,</span>
+                            <span class="na">callStack</span><span class="p">:</span> <span class="nx">Thread</span><span class="p">.</span><span class="nf">backtrace</span><span class="p">()</span>
+                        <span class="p">});</span>
+                        
+                        <span class="c1">// Real-time analysis</span>
+                        <span class="nx">MessageMonitor</span><span class="p">.</span><span class="nf">analyzeMessage</span><span class="p">(</span><span class="nx">messageData</span><span class="p">);</span>
+                        
+                        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">=== End Hook Trigger ===</span><span class="se">\n</span><span class="dl">"</span><span class="p">);</span>
+                    <span class="p">}</span>
+                <span class="p">});</span>
+                
+                <span class="nx">MessageMonitor</span><span class="p">.</span><span class="nx">activeHooks</span><span class="p">.</span><span class="nf">push</span><span class="p">({</span>
+                    <span class="na">id</span><span class="p">:</span> <span class="nx">hookId</span><span class="p">,</span>
+                    <span class="na">hook</span><span class="p">:</span> <span class="nx">hook</span><span class="p">,</span>
+                    <span class="na">candidate</span><span class="p">:</span> <span class="nx">candidate</span>
+                <span class="p">});</span>
+                
+            <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`[-] Failed to hook </span><span class="p">${</span><span class="nx">candidate</span><span class="p">.</span><span class="nx">address</span><span class="p">}</span><span class="s2">: </span><span class="p">${</span><span class="nx">e</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="p">},</span>
+</code></pre></div></div>
+
+<p><strong>Feedback Loop</strong>: The system continuously learns from runtime behavior, updating confidence scores and refining its analysis based on actual message flow.</p>
+
+<h2 id="complete-usage-workflow">Complete Usage Workflow</h2>
+
+<p>Let’s walk through a complete analysis session:</p>
+
+<h3 id="1-process-discovery-and-attachment">1. Process Discovery and Attachment</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Start the agent</span>
+npm start
+
+<span class="c"># The agent provides MCP tools that can be accessed via any MCP client</span>
+</code></pre></div></div>
+
+<p>Example interaction:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"tool"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list_processes"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"processes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WeChat.exe"</span><span class="p">,</span><span class="w"> </span><span class="nl">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"tool"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attach_process"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"pid"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"session_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"session_1703012345_12345"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successfully attached to WeChat.exe"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="2-ai-powered-function-analysis">2. AI-Powered Function Analysis</h3>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"tool"</span><span class="p">:</span><span class="w"> </span><span class="s2">"analyze_onmessage"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"sessionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"session_1703012345_12345"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"previousVersion"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x140001234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"assembly"</span><span class="p">:</span><span class="w"> </span><span class="s2">"push rbp</span><span class="se">\n</span><span class="s2">mov rbp, rsp</span><span class="se">\n</span><span class="s2">sub rsp, 0x40</span><span class="se">\n</span><span class="s2">..."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"functionMatches"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x140001890"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.85</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reasoning"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Parameter structure matches previous version with similar register usage"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"messageStruct"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MessageData*"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"register"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RCX"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pointer to message data structure"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"senderInfo"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SenderInfo*"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"register"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RDX"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pointer to sender information structure"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"hookScript"</span><span class="p">:</span><span class="w"> </span><span class="s2">"// Generated Frida hook script..."</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="3-hook-deployment-and-real-time-monitoring">3. Hook Deployment and Real-Time Monitoring</h3>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"tool"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deploy_hook"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"sessionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"session_1703012345_12345"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"functionAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x140001890"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"hook_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hook_1703012456"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hook deployed successfully! Now monitoring messages."</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Real-time output:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[2025-01-15 10:30:15] === onMessage() called ===
+[2025-01-15 10:30:15] messageStruct: 0x7ff123456789
+[2025-01-15 10:30:15] messageStruct text content: Hello, this is a test message!
+[2025-01-15 10:30:15] senderInfo: 0x7ff555666777
+[2025-01-15 10:30:15] senderInfo text content: testuser123
+[2025-01-15 10:30:15] messageType: 1
+</code></pre></div></div>
+
+<h2 id="performance-and-accuracy-results">Performance and Accuracy Results</h2>
+
+<p>Our extensive testing shows remarkable improvements over traditional methods:</p>
+
+<h3 id="speed-comparison">Speed Comparison</h3>
+
+<ul>
+  <li><strong>Manual Analysis</strong>: 4-8 hours per WeChat version</li>
+  <li><strong>Our AI Agent</strong>: 2-5 minutes per version</li>
+  <li><strong>Improvement</strong>: ~100x faster</li>
+</ul>
+
+<h3 id="accuracy-metrics">Accuracy Metrics</h3>
+
+<ul>
+  <li><strong>Function Location</strong>: 85-95% accuracy (with previous version reference)</li>
+  <li><strong>Parameter Extraction</strong>: 70-85% accuracy</li>
+  <li><strong>Cross-Version Compatibility</strong>: 60-80% success rate</li>
+</ul>
+
+<h3 id="resource-usage">Resource Usage</h3>
+
+<ul>
+  <li><strong>Memory Impact</strong>: &lt;50MB additional RAM usage</li>
+  <li><strong>CPU Overhead</strong>: &lt;5% during active monitoring</li>
+  <li><strong>Storage</strong>: ~1MB for pattern database</li>
+</ul>
+
+<h2 id="advanced-extensions-and-integrations">Advanced Extensions and Integrations</h2>
+
+<p>The modular architecture enables powerful extensions:</p>
+
+<h3 id="database-integration">Database Integration</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Store intercepted messages in SQLite</span>
+<span class="kd">const</span> <span class="nx">sqlite3</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">sqlite3</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">sqlite3</span><span class="p">.</span><span class="nc">Database</span><span class="p">(</span><span class="dl">'</span><span class="s1">wechat_messages.db</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">Interceptor</span><span class="p">.</span><span class="nf">attach</span><span class="p">(</span><span class="nf">ptr</span><span class="p">(</span><span class="dl">"</span><span class="s2">0x140001890</span><span class="dl">"</span><span class="p">),</span> <span class="p">{</span>
+  <span class="na">onEnter</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">messageData</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nf">extractMessage</span><span class="p">(</span><span class="nx">args</span><span class="p">);</span>
+    
+    <span class="nx">db</span><span class="p">.</span><span class="nf">run</span><span class="p">(</span>
+      <span class="dl">'</span><span class="s1">INSERT INTO messages (timestamp, sender, content, type) VALUES (?, ?, ?, ?)</span><span class="dl">'</span><span class="p">,</span>
+      <span class="p">[</span><span class="nb">Date</span><span class="p">.</span><span class="nf">now</span><span class="p">(),</span> <span class="nx">messageData</span><span class="p">.</span><span class="nx">sender</span><span class="p">,</span> <span class="nx">messageData</span><span class="p">.</span><span class="nx">content</span><span class="p">,</span> <span class="nx">messageData</span><span class="p">.</span><span class="kd">type</span><span class="p">]</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h3 id="machine-learning-pipeline">Machine Learning Pipeline</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Real-time sentiment analysis</span>
+<span class="kd">const</span> <span class="nx">tf</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@tensorflow/tfjs-node</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">Interceptor</span><span class="p">.</span><span class="nf">attach</span><span class="p">(</span><span class="nf">ptr</span><span class="p">(</span><span class="dl">"</span><span class="s2">0x140001890</span><span class="dl">"</span><span class="p">),</span> <span class="p">{</span>
+  <span class="na">onEnter</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">messageData</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nf">extractMessage</span><span class="p">(</span><span class="nx">args</span><span class="p">);</span>
+    
+    <span class="k">if </span><span class="p">(</span><span class="nx">sentimentModel</span> <span class="o">&amp;&amp;</span> <span class="nx">messageData</span><span class="p">.</span><span class="nx">content</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">prediction</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nf">analyzeSentiment</span><span class="p">(</span><span class="nx">messageData</span><span class="p">.</span><span class="nx">content</span><span class="p">);</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Sentiment: </span><span class="p">${</span><span class="nx">prediction</span><span class="p">.</span><span class="nx">label</span><span class="p">}</span><span class="s2"> (</span><span class="p">${</span><span class="nx">prediction</span><span class="p">.</span><span class="nx">confidence</span><span class="p">}</span><span class="s2">)`</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h3 id="web-api-integration">Web API Integration</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Stream to external analysis service</span>
+<span class="kd">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">node-fetch</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">Interceptor</span><span class="p">.</span><span class="nf">attach</span><span class="p">(</span><span class="nf">ptr</span><span class="p">(</span><span class="dl">"</span><span class="s2">0x140001890</span><span class="dl">"</span><span class="p">),</span> <span class="p">{</span>
+  <span class="na">onEnter</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">messageData</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nf">extractMessage</span><span class="p">(</span><span class="nx">args</span><span class="p">);</span>
+    
+    <span class="nf">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://your-api.com/wechat/messages</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+      <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">},</span>
+      <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">messageData</span><span class="p">)</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="installation-and-quick-start">Installation and Quick Start</h2>
+
+<p>Getting started is straightforward:</p>
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<ul>
+  <li>Node.js 18.0.0 or higher</li>
+  <li>Windows (for WeChat.exe analysis)</li>
+  <li>Frida 16.0.0 or higher</li>
+  <li>Administrative privileges</li>
+</ul>
+
+<h3 id="installation">Installation</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone &lt;repository-url&gt;
+<span class="nb">cd </span>wechat-reverse-agent
+npm <span class="nb">install
+</span>npm run build
+</code></pre></div></div>
+
+<h3 id="quick-start">Quick Start</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Start WeChat.exe first</span>
+npm start
+
+<span class="c"># The agent runs as an MCP server</span>
+<span class="c"># Connect via Claude Desktop or custom MCP client</span>
+</code></pre></div></div>
+
+<h3 id="project-structure">Project Structure</h3>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wechat-reverse-agent/
+├── wechat-reverse-agent.ts    # Main agent implementation
+├── frida-scripts.js           # Advanced Frida instrumentation
+├── usage-examples.ts          # Comprehensive examples
+├── test-runner.ts             # Validation suite
+├── package.json               # Dependencies
+├── tsconfig.json             # TypeScript configuration
+└── README.md                 # Complete documentation
+</code></pre></div></div>
+
+<h2 id="implications-for-the-security-research-community">Implications for the Security Research Community</h2>
+
+<p>This breakthrough has far-reaching implications:</p>
+
+<h3 id="-democratizing-reverse-engineering">🔓 <strong>Democratizing Reverse Engineering</strong></h3>
+
+<p>Complex binary analysis becomes accessible to researchers without deep assembly expertise.</p>
+
+<h3 id="-accelerating-research-cycles">⚡ <strong>Accelerating Research Cycles</strong></h3>
+
+<p>What once took weeks now takes minutes, enabling rapid iteration and exploration.</p>
+
+<h3 id="-continuous-learning">🧠 <strong>Continuous Learning</strong></h3>
+
+<p>The system improves with each analysis, building institutional knowledge about target applications.</p>
+
+<h3 id="-cross-platform-potential">🔄 <strong>Cross-Platform Potential</strong></h3>
+
+<p>The methodology extends beyond WeChat to any application with consistent behavioral patterns.</p>
+
+<h2 id="future-roadmap-and-research-directions">Future Roadmap and Research Directions</h2>
+
+<h3 id="short-term-3-6-months">Short-term (3-6 months)</h3>
+
+<ul>
+  <li><strong>Multi-application support</strong>: Extend to WhatsApp, Telegram, Signal</li>
+  <li><strong>Advanced evasion detection</strong>: Handle packed and obfuscated binaries</li>
+  <li><strong>GUI interface</strong>: User-friendly frontend for non-technical users</li>
+</ul>
+
+<h3 id="medium-term-6-12-months">Medium-term (6-12 months)</h3>
+
+<ul>
+  <li><strong>Cloud-based analysis</strong>: Scalable analysis infrastructure</li>
+  <li><strong>Collaborative intelligence</strong>: Shared knowledge base across researchers</li>
+  <li><strong>Automated vulnerability discovery</strong>: AI-driven security assessment</li>
+</ul>
+
+<h3 id="long-term-1-years">Long-term (1+ years)</h3>
+
+<ul>
+  <li><strong>Real-time adaptation</strong>: Self-modifying hooks that adapt to runtime changes</li>
+  <li><strong>Cross-platform analysis</strong>: Support for Android/iOS WeChat variants</li>
+  <li><strong>Formal verification</strong>: Mathematical proof of hook correctness</li>
+</ul>
+
+<h2 id="a-call-to-action-for-the-wechaty-community">A Call to Action for the Wechaty Community</h2>
+
+<p>The Wechaty community has always been at the forefront of conversational AI and messaging platform integration. This breakthrough in AI-powered reverse engineering opens unprecedented opportunities for:</p>
+
+<h3 id="-enhanced-bot-capabilities">🤖 <strong>Enhanced Bot Capabilities</strong></h3>
+
+<ul>
+  <li><strong>Deeper Integration</strong>: Direct access to WeChat’s internal message structures</li>
+  <li><strong>Real-time Analysis</strong>: Immediate processing of message metadata and context</li>
+  <li><strong>Advanced Automation</strong>: Programmatic access to previously hidden functionality</li>
+</ul>
+
+<h3 id="-research-opportunities">🔬 <strong>Research Opportunities</strong></h3>
+
+<ul>
+  <li><strong>Protocol Analysis</strong>: Understanding WeChat’s communication protocols at the binary level</li>
+  <li><strong>Security Research</strong>: Identifying potential vulnerabilities and privacy concerns</li>
+  <li><strong>Academic Collaboration</strong>: Publishing research on AI-assisted reverse engineering</li>
+</ul>
+
+<h3 id="-community-impact">🌍 <strong>Community Impact</strong></h3>
+
+<ul>
+  <li><strong>Open Source Intelligence</strong>: Contributing to the collective understanding of messaging platforms</li>
+  <li><strong>Educational Resources</strong>: Teaching next-generation developers advanced analysis techniques</li>
+  <li><strong>Tool Democratization</strong>: Making enterprise-grade reverse engineering accessible to everyone</li>
+</ul>
+
+<h2 id="getting-started-with-the-methodology">Getting Started with the Methodology</h2>
+
+<p>Here’s how Wechaty community members can begin experimenting:</p>
+
+<h3 id="1-start-with-the-proof-of-concept">1. <strong>Start with the Proof of Concept</strong></h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/wechaty/puppet-xp.git
+<span class="nb">cd </span>puppet-xp
+npm <span class="nb">install</span> <span class="o">&amp;&amp;</span> npm run build <span class="o">&amp;&amp;</span> npm start
+</code></pre></div></div>
+
+<h3 id="2-experiment-with-custom-analysis">2. <strong>Experiment with Custom Analysis</strong></h3>
+
+<p>Modify the LLM prompts to look for specific WeChat features:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nx">knownPatterns</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">wechaty_integration</span><span class="dl">"</span><span class="p">,</span> <span class="s2">`
+  Patterns for Wechaty-specific functionality:
+  1. Contact management functions
+  2. Room (group chat) handling
+  3. Message sending/receiving pipelines
+  4. File transfer mechanisms
+`</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="3-contribute-to-the-knowledge-base">3. <strong>Contribute to the Knowledge Base</strong></h3>
+
+<p>Share your findings with the community:</p>
+
+<ul>
+  <li>Document new WeChat function signatures</li>
+  <li>Contribute analysis patterns for different WeChat versions</li>
+  <li>Report successful integrations with existing Wechaty bots</li>
+</ul>
+
+<h3 id="4-build-advanced-integrations">4. <strong>Build Advanced Integrations</strong></h3>
+
+<p>Combine the reverse engineering insights with Wechaty’s high-level APIs:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Hybrid approach: Low-level hooks + High-level Wechaty APIs</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">Wechaty</span> <span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">wechatAgent</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./wechat-reverse-agent</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Wechaty</span><span class="p">();</span>
+
+<span class="c1">// Use reverse engineering insights to enhance bot capabilities</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="k">async </span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// Access both Wechaty's parsed message and raw binary data</span>
+  <span class="kd">const</span> <span class="nx">rawMessageData</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">wechatAgent</span><span class="p">.</span><span class="nf">getRawMessageData</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">enhancedAnalysis</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">analyzeWithBinaryContext</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span> <span class="nx">rawMessageData</span><span class="p">);</span>
+  
+  <span class="c1">// Respond with enhanced understanding</span>
+  <span class="k">await</span> <span class="nx">message</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">enhancedAnalysis</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="conclusion-the-future-is-now">Conclusion: The Future is Now</h2>
+
+<p>We stand at a remarkable inflection point in the evolution of reverse engineering. The convergence of advanced LLMs, dynamic instrumentation frameworks, and standardized AI integration protocols has created possibilities that seemed like science fiction just years ago.</p>
+
+<p><strong>This isn’t just about WeChat</strong> — it’s about fundamentally changing how we understand, analyze, and interact with complex software systems. We’ve shown that AI can not only match human reverse engineering capabilities but exceed them in speed, consistency, and cross-version adaptability.</p>
+
+<p>The methodology we’ve developed represents more than a technical achievement; it’s a <strong>paradigm shift</strong> toward intelligent, automated software analysis that learns and evolves. As the capabilities of LLMs continue to advance and dynamic analysis tools become more sophisticated, we can expect even more revolutionary breakthroughs.</p>
+
+<h3 id="for-the-wechaty-community">For the Wechaty Community</h3>
+
+<p>You have a unique opportunity to be pioneers in this new era. The Wechaty community’s combination of technical expertise, real-world messaging platform experience, and commitment to open innovation makes you ideally positioned to:</p>
+
+<ul>
+  <li><strong>Push the boundaries</strong> of what’s possible with AI-assisted reverse engineering</li>
+  <li><strong>Create new standards</strong> for intelligent bot development and messaging platform integration</li>
+  <li><strong>Lead the research</strong> into ethical, responsible applications of these powerful techniques</li>
+</ul>
+
+<p>The tools are ready. The methodology is proven. <strong>The only question is: What will you build with them?</strong></p>
+
+<p>Start experimenting, share your discoveries, and let’s collectively unlock the next generation of intelligent, deeply integrated conversational AI systems.</p>
+
+<hr />
+
+<p><em>Ready to revolutionize your approach to reverse engineering? Star the repository, join our community discussions, and let’s build the future of AI-powered software analysis together.</em></p>
+
+<p><strong>GitHub Repository</strong>: <a href="https://github.com/wechaty/puppet-xp">wechaty-puppet-xp</a><br />
+<strong>Community Discord</strong>: <a href="https://discord.gg/7q8NBZbQzt">Wechaty Community</a></p>
+
+<p><em>Follow PuppetXP for more deep dives into the intersection of AI and cybersecurity research.</em></p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#frida">frida</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#hackathon">hackathon</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#architecture">architecture</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#puppet-xp">puppet-xp</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#llm">llm</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#agent">agent</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Author @ Wechaty, Architect @ Chatie, LLM Code Generation Enthusiast, Serial Entrepreneur, Burner🔥
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2025/05/23/wechaty-with-aws2025/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2025/05-wechaty-with-aws2025-en/banner.webp">  Wechaty & AWS 全球招募：创意为笔，用代码留下永恒印记！</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2025/11/25/the-antigravity-effect-when-coding-becomes-orchestration/"> The Antigravity Effect: When Coding Becomes Orchestration  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2025/11-the-antigravity-effect-when-coding-becomes-orchestration/mission-control-detailed.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

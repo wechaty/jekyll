@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      基于wechaty的简易shell | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>基于wechaty的简易shell | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="基于wechaty的简易shell" />
+<meta name="author" content="suninsky" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="这个项目是基于SpringBoot和SpringMVC的，语言是kotlin，构建工具是maven。" />
+<meta property="og:description" content="这个项目是基于SpringBoot和SpringMVC的，语言是kotlin，构建工具是maven。" />
+<link rel="canonical" href="https://wechaty.js.org/2020/08/20/kotlin-wechaty-simple-shell/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/08/20/kotlin-wechaty-simple-shell/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/kotlin-wechaty-simple-shell/home.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-08-20T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/kotlin-wechaty-simple-shell/home.webp" />
+<meta property="twitter:title" content="基于wechaty的简易shell" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"suninsky"},"dateModified":"2020-08-20T00:00:00+00:00","datePublished":"2020-08-20T00:00:00+00:00","description":"这个项目是基于SpringBoot和SpringMVC的，语言是kotlin，构建工具是maven。","headline":"基于wechaty的简易shell","image":"https://wechaty.js.org/assets/2020/kotlin-wechaty-simple-shell/home.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/08/20/kotlin-wechaty-simple-shell/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"suninsky"},"url":"https://wechaty.js.org/2020/08/20/kotlin-wechaty-simple-shell/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">基于wechaty的简易shell</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/suninsky">
+                            <img class="rounded-circle" src="/assets/contributors/suninsky/avatar.webp" alt="Suninsky" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/suninsky">Suninsky</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Aug 20, 2020 · <span class="reading-time">
+  
+  
+    3 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/kotlin-wechaty-simple-shell/home.webp" alt="基于wechaty的简易shell">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>这个项目是基于SpringBoot和SpringMVC的，语言是kotlin，构建工具是maven。</p>
+
+<h2 id="准备工作创建自己的wechaty-hostie-token">准备工作（创建自己的wechaty-hostie-token）</h2>
+
+<p>假设我们目前拥有的是padplus的token。
+因为java-wechaty需要的是hostie的，所以这就需要先做一下转换。</p>
+
+<p>然后执行以下命令</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull wechaty/wechaty
+<span class="nb">export </span><span class="nv">WECHATY_PUPPET_PADPLUS_TOKEN</span><span class="o">=</span>puppet_padplus_<span class="k">*****</span>
+<span class="nb">export </span><span class="nv">WECHATY_HOSTIE_PORT</span><span class="o">=</span>8788
+
+<span class="nb">export </span><span class="nv">WECHATY_PUPPET</span><span class="o">=</span>wechaty-puppet-padplus
+<span class="nb">export </span><span class="nv">WECHATY_LOG</span><span class="o">=</span>verbose
+
+docker run <span class="nt">-d</span><span class="se">\</span>
+  <span class="nt">--rm</span> <span class="se">\</span>
+  <span class="nt">-ti</span> <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">WECHATY_LOG</span><span class="o">=</span><span class="s2">"</span><span class="nv">$WECHATY_LOG</span><span class="s2">"</span> <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">WECHATY_PUPPET</span><span class="o">=</span><span class="s2">"</span><span class="nv">$WECHATY_PUPPET</span><span class="s2">"</span> <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">WECHATY_PUPPET_PADPLUS_TOKEN</span><span class="o">=</span><span class="s2">"</span><span class="nv">$WECHATY_PUPPET_PADPLUS_TOKEN</span><span class="s2">"</span> <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">WECHATY_HOSTIE_PORT</span><span class="o">=</span><span class="s2">"</span><span class="nv">$WECHATY_HOSTIE_PORT</span><span class="s2">"</span> <span class="se">\</span>
+  <span class="nt">-e</span> <span class="nv">WECHATY_TOKEN</span><span class="o">=</span><span class="s2">"</span><span class="nv">$WECHATY_PUPPET_PADPLUS_TOKEN</span><span class="s2">"</span> <span class="se">\</span>
+  <span class="nt">-p</span> <span class="s2">"</span><span class="nv">$WECHATY_HOSTIE_PORT</span><span class="s2">:</span><span class="nv">$WECHATY_HOSTIE_PORT</span><span class="s2">"</span> <span class="se">\</span>
+  wechaty/wechaty
+
+</code></pre></div></div>
+
+<p>经过这一番操作，你的padplus token就可以当成hostie来用了。一开始看官方文档并没有找到，搞了很久才发现在issue里面有提到这个用法，所以在这里写出来方便后面的人。同理，python和go的版本也是这么弄。</p>
+
+<h2 id="核心代码">核心代码</h2>
+
+<p>因为用了SpringBoot，所以比较好的办法是把它交给Spring管理，构造成一个Bean。</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Configuration</span>
+<span class="n">open</span> <span class="kd">class</span> <span class="nc">AppConfig</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="n">val</span> <span class="nl">log:</span> <span class="nc">Logger</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">javaClass</span><span class="o">)</span>
+
+    <span class="nd">@Value</span><span class="o">(</span><span class="s">"\${wechat-bot.token}"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">lateinit</span> <span class="kt">var</span> <span class="nl">wechatyToken:</span> <span class="nc">String</span>
+
+    <span class="nd">@Bean</span>
+    <span class="n">open</span> <span class="n">fun</span> <span class="nf">wechaty</span><span class="o">():</span> <span class="nc">Wechaty</span> <span class="o">{</span>
+        <span class="n">val</span> <span class="n">bot</span> <span class="o">=</span> <span class="nc">Wechaty</span><span class="o">.</span><span class="na">instance</span><span class="o">(</span><span class="n">wechatyToken</span><span class="o">)</span>
+        <span class="n">with</span><span class="o">(</span><span class="n">bot</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">onScan</span><span class="o">(</span><span class="n">object</span> <span class="o">:</span> <span class="nc">ScanListener</span> <span class="o">{</span>
+                <span class="n">override</span> <span class="n">fun</span> <span class="nf">handler</span><span class="o">(</span><span class="nl">qrcode:</span> <span class="nc">String</span><span class="o">?,</span> <span class="nl">statusScanStatus:</span> <span class="nc">ScanStatus</span><span class="o">,</span> <span class="nl">data:</span> <span class="nc">String</span><span class="o">?)</span> <span class="o">{</span>
+                    <span class="n">println</span><span class="o">(</span><span class="n">qrcode</span><span class="o">?.</span><span class="na">let</span> <span class="o">{</span> <span class="nc">QrcodeUtils</span><span class="o">.</span><span class="na">getQr</span><span class="o">(</span><span class="n">it</span><span class="o">)</span> <span class="o">})</span>
+                    <span class="n">val</span> <span class="n">url</span> <span class="o">=</span> <span class="s">"https://wechaty.js.org/qrcode/$qrcode"</span>
+                    <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"Online Image: $url"</span><span class="o">)</span>
+                    <span class="nc">ServerChanUtil</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="s">"微信机器人又挂掉啦~"</span><span class="o">,</span> <span class="n">url</span><span class="o">)</span>
+                <span class="o">}</span>
+            <span class="o">})</span>
+            <span class="n">onMessage</span><span class="o">(</span><span class="n">object</span> <span class="o">:</span> <span class="nc">MessageListener</span> <span class="o">{</span>
+                <span class="n">override</span> <span class="n">fun</span> <span class="nf">handler</span><span class="o">(</span><span class="nl">message:</span> <span class="nc">Message</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">val</span> <span class="n">from</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="na">from</span><span class="o">()</span>
+                    <span class="n">val</span> <span class="n">room</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="na">room</span><span class="o">()</span>
+                    <span class="n">val</span> <span class="n">text</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="na">text</span><span class="o">()</span>
+                    <span class="n">val</span> <span class="n">result</span> <span class="o">=</span> <span class="nc">CommandUtil</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
+                    <span class="n">room</span><span class="o">?.</span><span class="na">say</span><span class="o">(</span><span class="n">result</span><span class="o">)</span> <span class="o">?:</span> <span class="n">from</span><span class="o">!!.</span><span class="na">say</span><span class="o">(</span><span class="n">result</span><span class="o">)</span>
+                <span class="o">}</span>
+            <span class="o">})</span>
+            <span class="n">onLogin</span><span class="o">(</span><span class="n">object</span> <span class="o">:</span> <span class="nc">LoginListener</span> <span class="o">{</span>
+                <span class="n">override</span> <span class="n">fun</span> <span class="nf">handler</span><span class="o">(</span><span class="nl">self:</span> <span class="nc">ContactSelf</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="nc">ServerChanUtil</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="s">"登录成功~"</span><span class="o">)</span>
+                <span class="o">}</span>
+            <span class="o">})</span>
+            <span class="n">start</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">bot</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>命令行工具类</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">object</span> <span class="nc">CommandUtil</span> <span class="o">{</span>
+
+    <span class="n">fun</span> <span class="nf">execute</span><span class="o">(</span><span class="nl">command:</span> <span class="nc">String</span><span class="o">):</span> <span class="nc">String</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">try</span> <span class="o">{</span>
+            <span class="n">val</span> <span class="n">process</span> <span class="o">=</span> <span class="nc">Runtime</span><span class="o">.</span><span class="na">getRuntime</span><span class="o">().</span><span class="na">exec</span><span class="o">(</span><span class="n">command</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">process</span><span class="o">.</span><span class="na">waitFor</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">process</span><span class="o">.</span><span class="na">destroy</span><span class="o">()</span>
+                <span class="k">return</span> <span class="s">"出错，调用超时或因为调用了交互命令"</span>
+            <span class="o">}</span>
+            <span class="n">val</span> <span class="n">input</span> <span class="o">=</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="nc">InputStreamReader</span><span class="o">(</span><span class="n">process</span><span class="o">.</span><span class="na">inputStream</span><span class="o">))</span>
+            <span class="kt">var</span> <span class="nl">line:</span> <span class="nc">String</span><span class="o">?</span>
+            <span class="kt">var</span> <span class="n">result</span> <span class="o">=</span> <span class="s">""</span>
+            <span class="k">while</span> <span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">readLine</span><span class="o">().</span><span class="na">also</span> <span class="o">{</span> <span class="n">line</span> <span class="o">=</span> <span class="n">it</span> <span class="o">}</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="n">line</span> <span class="o">+</span> <span class="s">"\n"</span>
+            <span class="o">}</span>
+            <span class="n">input</span><span class="o">.</span><span class="na">close</span><span class="o">()</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">result</span><span class="o">.</span><span class="na">isBlank</span><span class="o">())</span> <span class="n">result</span> <span class="o">=</span> <span class="s">"没有任何输出"</span>
+            <span class="n">result</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nl">e:</span> <span class="nc">IOException</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">message</span><span class="o">!!</span> <span class="o">+</span> <span class="s">"\nusage: command [args]"</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="额外的事情">额外的事情</h2>
+
+<p>添加了Server酱的接口，在微信掉线以后会通过微信公众号发送二维码url，登录成功以后也会有通知。</p>
+
+<h2 id="部署">部署</h2>
+
+<h3 id="1-自行编译">1. 自行编译</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">git</span> <span class="n">clone</span> <span class="nl">https:</span><span class="c1">//github.com/suninsky/wechat-bot.git</span>
+</code></pre></div></div>
+
+<p>修改application.properties参数</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">server</span><span class="o">.</span><span class="na">port</span><span class="o">=</span><span class="mi">8090</span>
+<span class="n">wechat</span><span class="o">-</span><span class="n">bot</span><span class="o">.</span><span class="na">token</span><span class="o">=</span><span class="no">YOUR_TOKEN</span>
+<span class="n">server</span><span class="o">-</span><span class="n">chan</span><span class="o">.</span><span class="na">token</span><span class="o">=</span><span class="no">YOUR_TOKEN</span>
+</code></pre></div></div>
+
+<p>第一个是运行端口，可默认。
+第二个是wechaty-hostie的token，必选。
+第三个是server-chan的token，可选。</p>
+
+<h3 id="2--直接使用target中的jar包">2.  直接使用target中的jar包</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">wechat</span><span class="o">-</span><span class="n">bot</span><span class="o">-</span><span class="mf">1.0</span><span class="o">.</span><span class="na">jar</span> <span class="o">--</span><span class="n">wechat</span><span class="o">-</span><span class="n">bot</span><span class="o">.</span><span class="na">token</span><span class="o">=</span><span class="no">YOUR_TOKEN</span>  <span class="o">--</span><span class="n">server</span><span class="o">-</span><span class="n">chan</span><span class="o">.</span><span class="na">token</span><span class="o">=</span><span class="no">YOUR_TOKEN</span>
+</code></pre></div></div>
+
+<h2 id="使用">使用</h2>
+
+<p>扫码登录机器人以后，即可。群聊和私聊都可以操控shell，所以机器人需要谨慎加好友和群。考虑到安全问题，目前只能操作wechat-bot-1.0.jar所在的目录。以及，不支持交互式的命令。如果不小心输入了交互式的命令，将在5秒后返回。</p>
+
+<h2 id="例子">例子</h2>
+
+<p><img src="/assets/2020/kotlin-wechaty-simple-shell/example.webp" alt="example" /></p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#serverchen">serverchen</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#shell">shell</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#utility">utility</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/suninsky">
+                            <img class="rounded-circle" src="/assets/contributors/suninsky/avatar.webp" alt="Suninsky" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/suninsky">Suninsky</a> </h5>
+						just for fun
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/08/20/go-wechaty-github-action-optimization-mid-term/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/go-wechaty-github-action-optimization/header.webp">  暑期2020 [Go-wechaty Github Action optimization] POC 成果展示</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/08/20/wechaty-file-assistant-bot/"> 基于wechaty-puppet-padplus的微信文件传输助手  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/file-assistant-bot/file-assistant-bot-img.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Soumi Bardhan: Interactive tutorials for newcomers | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Soumi Bardhan: Interactive tutorials for newcomers | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Soumi Bardhan: Interactive tutorials for newcomers" />
+<meta name="author" content="soumi7" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="GSoD 2021 Project Proposal" />
+<meta property="og:description" content="GSoD 2021 Project Proposal" />
+<link rel="canonical" href="https://wechaty.js.org/2021/05/03/interactive-tutorials-for-newcomers/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/05/03/interactive-tutorials-for-newcomers/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/05-interactive-tutorials-for-newcomers/gsod_s.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-03T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/05-interactive-tutorials-for-newcomers/gsod_s.webp" />
+<meta property="twitter:title" content="Soumi Bardhan: Interactive tutorials for newcomers" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"soumi7"},"dateModified":"2021-05-03T00:00:00+00:00","datePublished":"2021-05-03T00:00:00+00:00","description":"GSoD 2021 Project Proposal","headline":"Soumi Bardhan: Interactive tutorials for newcomers","image":"https://wechaty.js.org/assets/2021/05-interactive-tutorials-for-newcomers/gsod_s.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/05/03/interactive-tutorials-for-newcomers/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"soumi7"},"url":"https://wechaty.js.org/2021/05/03/interactive-tutorials-for-newcomers/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#gsod">gsod</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Soumi Bardhan: Interactive tutorials for newcomers</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/soumi7">
+                            <img class="rounded-circle" src="/assets/contributors/soumi7/avatar.webp" alt="Soumi Bardhan" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/soumi7">Soumi Bardhan</a> <span><a target="_blank" href="https://twitter.com/MsBardhan" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">May 03, 2021 · <span class="reading-time">
+  
+  
+    9 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/05-interactive-tutorials-for-newcomers/gsod_s.webp" alt="Soumi Bardhan: Interactive tutorials for newcomers">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<h2 id="gsod-2021-project-proposal">GSoD 2021 Project Proposal</h2>
+
+<h3 id="project---create-easy-to-learn-interactive-tutorials-for-beginner-users-of-wechaty">Project - Create easy to learn interactive tutorials for beginner users of Wechaty</h3>
+
+<p>I am Soumi Bardhan, a passionate python and deep learning dev.</p>
+
+<h4 id="google-season-of-docs-2020---technical-writer---sympy">Google Season of Docs 2020 - Technical writer - Sympy</h4>
+
+<ul>
+  <li>Sympy is a lightweight independent computer algebra system. Added and updated documentation, added missing style sections like Parameters and improved organization.</li>
+  <li>My Season of Docs 2020 Report for the project Consistency Across docstrings : <a href="https://github.com/sympy/sympy/wiki/GSoD-2020-Report-Soumi-Bardhan:-Consistency-across-docstrings---SymPy-Documentation">Sympy Documentation</a></li>
+  <li>Analysed metrics on the google search console before, during and after. Updated the modules with the most number of users first, then moved on to the less used modules.</li>
+</ul>
+
+<h4 id="cppsecretscom--python-developer-technical-writer">Cppsecrets.com : Python Developer, technical writer</h4>
+
+<ul>
+  <li>Well written articles and tutorials on several python libraries.</li>
+  <li>Implementation of SQLAlchemy ORM for creating Flask Applications</li>
+  <li>Functions of OS Module in python and implementations, tutorials</li>
+</ul>
+
+<h4 id="geeks-for-geeks-technical-content-writer">Geeks for Geeks, Technical Content Writer</h4>
+
+<ul>
+  <li>Written articles based on OpenCV library functions and data structures and algorithms.</li>
+  <li><a href="https://auth.geeksforgeeks.org/user/soumibardhan10/articles">Link to profile</a></li>
+</ul>
+
+<h4 id="data-driven-investor--technical-writer">Data driven investor : Technical Writer</h4>
+
+<ul>
+  <li>Articles and tutorials on deep learning.</li>
+  <li>Using several deep learning methods to create models.</li>
+  <li>Create frontend and backend applications to host the models on cloud.</li>
+  <li>Docker and AWS</li>
+</ul>
+
+<h4 id="analytics-vidhya-technical-writer">Analytics Vidhya: Technical Writer</h4>
+
+<ul>
+  <li>Articles and tutorials on deep learning.</li>
+  <li>Using several deep learning methods on creating deep learning and ML models.</li>
+  <li>Create frontend and backend applications to host the models on cloud.</li>
+  <li>Using pycaret to create several regression models and tuning.</li>
+  <li>LSTMs for Stock Prediction</li>
+</ul>
+
+<h4 id="the-startup--technical-writer">The Startup : Technical writer</h4>
+
+<ul>
+  <li>The Startup is the largest active medium publication. I write technical articles mostly in the NLP domain.</li>
+  <li>Natural Language Processing</li>
+  <li>Deep Learning</li>
+  <li>BERT(Bidirectional Encoder Representations from Transformers)</li>
+</ul>
+
+<h4 id="research-work">Research Work</h4>
+
+<ul>
+  <li>My Research Work on Autism Spectrum Disorder Detection is also in progress. I am working at ITMR (Interactive Technologies &amp; Multimedia Research) Lab, IIIT Allahabad remotely to simulate the results of my research work that is almost completed.</li>
+</ul>
+
+<h3 id="links-to-some-of-my-medium-articles">Links to some of my medium articles</h3>
+
+<p>Named Entity Recognition — Simple Transformers — <a href="https://medium.com/@soumibardhan10/named-entity-recognition-simple-transformers-flask-rest-api-ec14a7a444cb">Flask REST API</a></p>
+
+<p>Fixing Open Source Vulnerabilities in Azure Dev Ops- <a href="https://code.likeagirl.io/fixing-open-source-vulnerabilities-in-azure-dev-ops-whitesource-bolt-4a5e53cb9cfe">WhiteSource Bolt</a></p>
+
+<p>Dockerizing and Hosting your Flask Web App(Rest API) on AWS <a href="https://medium.com/datadriveninvestor/dockerizing-and-hosting-your-flask-web-app-rest-api-on-aws-ec2-9f9c189bf563">EC2</a></p>
+
+<p>Weather Based Stock Prediction with Pycaret - <a href="https://medium.com/analytics-vidhya/weather-based-stock-prediction-with-pycaret-4d604cdeb68f">Analytics Vidhya</a></p>
+
+<p>Tkinter Application to Switch Between Different Page <a href="https://www.geeksforgeeks.org/tkinter-application-to-switch-between-different-page-frames/">Frames</a></p>
+
+<p>I believe creating a consistent documentation of code is very important for any open source project for its growth.</p>
+
+<h2 id="abstract">Abstract</h2>
+
+<h3 id="current-state-of-wechaty-tutorials-and-previous-work">Current State of Wechaty Tutorials and previous work</h3>
+
+<p>Users come to Wechaty website and are seeking how to use Wechaty to build a chatbot application for solving their problems. Unfortunately, the learning curve is not friendly to Wechaty users, they struggle with setting up their development environment, can not get started with the simplest example source code, and find it hard to know what they can do with the Wechaty API. This problem leads Wechaty to lose lots of new users, increases the number of questions asked in the community, and lowers the user satisfaction.</p>
+
+<p>The current version of the Wechaty tutorial is not properly planned. The tutorials on the website have to be approved.</p>
+
+<h3 id="proposed-work">Proposed Work</h3>
+
+<p>Tutorials need to be useful for the beginner, easy to follow, meaningful and extremely robust, and kept up-to-date.</p>
+
+<p>The Tutorial project will do the following :</p>
+
+<ul>
+  <li>Allow the user to learn by doing</li>
+  <li>Get the user started</li>
+  <li>Make sure that the tutorial works all the time</li>
+  <li>Ensure the user sees results immediately</li>
+  <li>Make the tutorial repeatable</li>
+  <li>Focus on concrete steps, not abstract concepts</li>
+  <li>Provide the minimum necessary explanation</li>
+  <li>Focus only on the steps the user needs to take</li>
+  <li>Work with the contributor team to update the documentation on the Wechaty site.</li>
+  <li>Make video tutorials available in English</li>
+  <li>Each Module in the documentation needs image screenshots as well as gifs and video demonstrating the action. It’s also important that they get access to both the code, screenshots, outputs and videos directly from the same page.</li>
+  <li>To get beginners interested, it is important to define right in the beginning of tutorial what will be the end result. So that will be designed as well.</li>
+</ul>
+
+<h3 id="contributions">Contributions</h3>
+
+<ul>
+  <li>795 : <a href="https://github.com/wechaty/wechaty.js.org/pull/795">Added interactive code sandbox for contact bot</a></li>
+  <li>797 : <a href="https://github.com/wechaty/wechaty.js.org/pull/797">Added subsections to Examples section and reorginzation</a></li>
+  <li>756 : <a href="https://github.com/Wechaty/Wechaty.js.org/pull/756">Updates Google Cloud instructions and images for Getting Started  Tutorial</a></li>
+  <li>749 : <a href="https://github.com/wechaty/wechaty.js.org/pull/749">Enhance Getting started with Gitpod section of Getting Started Tutorials</a></li>
+  <li>774 : <a href="https://github.com/wechaty/wechaty.js.org/pull/774">Update getting started with Redux</a></li>
+  <li>745 : <a href="https://github.com/Wechaty/Wechaty.js.org/pull/745">Updates Usage with Heroku Page</a></li>
+  <li>776 : <a href="https://github.com/wechaty/wechaty.js.org/pull/776">Added Case studies in English</a></li>
+</ul>
+
+<h3 id="project-goals-and-timeline">Project Goals and Timeline</h3>
+
+<ul>
+  <li>Before May 1, continue making contributions to Wechaty.</li>
+  <li>Become more familiar with the user documentation and current version of Wechaty.</li>
+</ul>
+
+<h4 id="community-bonding">Community bonding</h4>
+
+<ul>
+  <li>Set up a communication channel and time(due to timezone difference)</li>
+  <li>Refine my goals and set expectations on both sides.</li>
+  <li>Discussing the order in which the tutorial pages will be updated.</li>
+  <li>Finalize the order of editing the tutorial sections.</li>
+</ul>
+
+<h4 id="documentation-period">Documentation Period</h4>
+
+<p><a href="https://github.com/Wechaty/Wechaty.js.org">Wechaty Website repository</a></p>
+
+<ul>
+  <li>
+    <p>As we already have a repository for the website, I will start with updating the existing pages first. I think it is important to add video walkthroughs and tutorials for beginners.</p>
+  </li>
+  <li>
+    <p>For this, I will be collaborating with existing contributors and taking their inputs and feedback on the tutorials I create.</p>
+  </li>
+</ul>
+
+<p><strong>Two important changes :</strong></p>
+
+<ul>
+  <li>
+    <p>Define a specific structure for every tutorial page :</p>
+
+    <ul>
+      <li>Aim</li>
+      <li>Prerequisites</li>
+      <li>Video Tutorial</li>
+      <li>Steps (with Screenshots)</li>
+      <li>Results</li>
+      <li>Try Out the Bot (interactive section)</li>
+      <li>Important links</li>
+      <li>References</li>
+    </ul>
+  </li>
+  <li>Cutting down on text and adding video tutorials and gifs to engage beginners.</li>
+  <li>Add Interactive Sandboxes to all tutorials.</li>
+  <li>Adding simple English text for pages available only in Chinese.</li>
+  <li>Add a latest release section for blogs and information on the latest features.</li>
+</ul>
+
+<h3 id="week-1--1nd-may---8th-may">Week 1 : (1nd May - 8th May)</h3>
+
+<ul>
+  <li>Update cheat sheet and upload video tutorial on use cases.</li>
+  <li>Cover common setbacks beginners face while contributing.</li>
+  <li>Video tutorial for a first-time github contributor, for both code and documentation.</li>
+</ul>
+
+<h3 id="week-2--9th-may---15th-may">Week 2 : (9th May - 15th May)</h3>
+
+<ul>
+  <li>Update docker.md and upload video tutorials.</li>
+  <li>Demo of usage of Ding Dong Bot and Basic functions.</li>
+</ul>
+
+<h3 id="week-3--16th-may---22nd-may">Week 3 : (16th May - 22nd May)</h3>
+
+<ul>
+  <li>Video walkthrough of usage of advanced functions.</li>
+  <li>Overview.md will be made more attractive and friendly, to excite new users. Will add gifs to the webpage.</li>
+</ul>
+
+<h3 id="week-4--23rd-may---29th-may">Week 4 : (23rd May - 29th May)</h3>
+
+<ul>
+  <li>Add Use cases of usage-with-heroku.md in details.</li>
+  <li>Record demo videos and gifs of Friday Bot. Create interactive sandbox.</li>
+</ul>
+
+<h3 id="week-5--30th-may---5th-june">Week 5 : (30th May - 5th June)</h3>
+
+<ul>
+  <li>Record demo videos and gifs of :
+    <ul>
+      <li>OSSBot</li>
+      <li>Mikt BO</li>
+    </ul>
+  </li>
+  <li>Create interactive sandbox.</li>
+  <li>Organize and record videos and gifs for using-plugin-with-Wechaty.md. New users need to be able to see visuals.</li>
+</ul>
+
+<h3 id="week-6--6th-june---12th-june">Week 6 : (6th June - 12th June)</h3>
+
+<ul>
+  <li>Add separate pages for commonly used plugins with Wechaty.</li>
+  <li>Record videos for Running DingDong bot with GitPod with gifs.</li>
+</ul>
+
+<h3 id="week-7--13th-june---19th-june">Week 7 : (13th June - 19th June)</h3>
+
+<ul>
+  <li>Record videos for running Dingdong bot with Google Cloud along with gifs for blog posts, which can act as teasers and shared in open source communities.</li>
+</ul>
+
+<h3 id="week-8--20th-june---26th-june">Week 8 : (20th June - 26th June)</h3>
+
+<ul>
+  <li>Record video tutorial for getting started the hard way. Also, instead of mentioning the “hard way”, we can write “for experienced devs”. That is bound to make it sound easy. Also, adding a video tutorial will make it easy and resolve any issues they face along the way.</li>
+</ul>
+
+<h3 id="week-9--27th-june---3rd-july">Week 9 : (27th June - 3rd July)</h3>
+
+<ul>
+  <li>Get started with Videos in simple easy to understand English about the Money Bot. (Here will need a bit of help with translation from already existing tutorials, although i will be creating completely fresh videos. )</li>
+  <li>Update the website as well to be multilingual(will add simple easy to read English)</li>
+</ul>
+
+<h3 id="week-10--4th-july---10th-july">Week 10 : (4th July - 10th July)</h3>
+
+<ul>
+  <li>Update the Assistant Bot webpage and create video tutorials.  Create interactive sandbox.</li>
+</ul>
+
+<h3 id="week-11--11th-july---17th-july">Week 11 : (11th July - 17th July)</h3>
+
+<ul>
+  <li>Update the Coaxer Bot webpage and create video tutorials.</li>
+</ul>
+
+<h3 id="week-12--18th-july---24th-july">Week 12 : (18th July - 24th July)</h3>
+
+<ul>
+  <li>Update the getting started - overview.md with gifs and visuals with what can be achieved with Wechaty.</li>
+  <li>Add videos for setting up a development environment for new Wechaty contributors for the Contributing section of the docs.</li>
+  <li>Add a video keynote from Wechaty creators in simple english talking about why Wechaty was developed and its history.</li>
+</ul>
+
+<h3 id="week-13-and-14">Week 13 and 14</h3>
+
+<ul>
+  <li>Adding content to the testing page collaborating with the mentors.</li>
+  <li>Finalizing the work done and getting final reviews from the community.</li>
+</ul>
+
+<p>The modules mentioned here can be changed after further discussion with mentors and community.</p>
+
+<p>As suggested by mentors and community and by the search control stats, I will focus on updating those modules first which are more beginner friendly.</p>
+
+<p>The rest of the work will be decided based on the work done and search console results.</p>
+
+<h3 id="measuring-my-projects-success">Measuring my project’s success</h3>
+
+<p>Success shall be measured by the following metrics :</p>
+
+<ul>
+  <li>The tutorials page views increase by 50%</li>
+  <li>The visit duration on tutorials increases by 50% (&gt;2 minutes)</li>
+  <li>The bounce rate of tutorials decreases by 30% (&lt;50%)</li>
+</ul>
+
+<h2 id="why-am-i-the-right-person-for-this-project">Why am I the right person for this project?</h2>
+
+<p>I believe myself to be the right person for this project because I have past experience in technical writing and I am well versed with git and github. I also find Wechaty very interesting.</p>
+
+<p>I have experience in writing tutorials as well as open source. I have worked as a technical writer with SymPy in GSoD 2020. I would love to improve Wechaty’s tutorials and documentation structure. I have set up the development environment for <a href="https://github.com/Wechaty/Wechaty.js.org">Wechaty</a> [1] . I am very comfortable in making contributions.</p>
+
+<h2 id="stipend">Stipend</h2>
+
+<p>Based on work division.</p>
+
+<p>If one technical writer is selected - $5000</p>
+
+<p>If work is divided between two technical writers - $2500. In this case, I am open to collaborating with the other technical writer as well and working as a team.</p>
+
+<h2 id="personal-information">Personal Information</h2>
+
+<p>Soumi Bardhan</p>
+
+<ul>
+  <li><a href="https://github.com/Soumi7">Github</a></li>
+  <li><a href="https://www.linkedin.com/in/soumi-bardhan-8539b3191/">Linkedin</a></li>
+  <li><a href="https://soumibardhan10.medium.com/">Blog</a></li>
+  <li>Location:  Kolkata, West Bengal, India</li>
+  <li>Time Zone: (UTC + 05:30)</li>
+  <li>Typical working hours: 10AM - 7 PM (UTC + 05:30)</li>
+</ul>
+
+<h2 id="references">References</h2>
+
+<p><a href="https://github.com/Wechaty/Wechaty-getting-started">1</a>
+<a href="https://Wechaty.js.org/docs/contributing/">2</a>
+<a href="https://Wechaty.js.org/docs/contributing/documentation/">3</a></p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#python">python</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#google">google</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#gsod">gsod</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#2021">2021</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#docs">docs</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#introduction">introduction</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#project">project</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#proposal">proposal</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/soumi7">
+                            <img class="rounded-circle" src="/assets/contributors/soumi7/avatar.webp" alt="Soumi Bardhan" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/soumi7">Soumi Bardhan</a> <span><a target="_blank" href="https://twitter.com/MsBardhan" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Member @SymPy,technical writer
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/05/03/gsod-project-proposal-shwetal-wechaty/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/05-gsod-project-proposal-shwetal-wechaty/profilepic.webp">  Shwetal Soni: GSOD'21 project proposal for wechaty</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/05/03/joseph-mawa-google-season-of-docs-project-technical-proposal/"> Joseph Mawa: 2021 Google Season of Docs Technical Proposal  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/05-joseph-mawa-google-season-of-docs-project-technical-proposal/lemur.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

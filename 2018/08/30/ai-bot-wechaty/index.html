@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      AI、Bot、Wechaty相关思考 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>AI、Bot、Wechaty相关思考 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="AI、Bot、Wechaty相关思考" />
+<meta name="author" content="lirobin1998" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="人工智能（AI：Artificial Intelligence）经历了六十年几起几落，终于在2016年因为阿尔法狗（AlphaGo）战胜围棋世界冠军而轰动全球，迎来了发展新机遇。2017年中国发布《新一代人工智能发展规划》，准备到2025年把中国建设成为全球最重要的AI创新中心之一。中国新一代AI的创新机会主要在弱AI的广泛应用和强AI的原始创新，而Bot（聊天机器人）是使用AI科技成果的一种最简洁形式。目前市场上具有“公众号+Bot+内容”这样的AI使用解决方案，支持大众以Bot形式使用AI科技成果。同时市场上也有像Wechaty这样的软件开源Bot项目，支持研发人员开发和集成各种各样的Bot引擎，支持Bot引擎的原始创新。显然，把AI、新一代AI、Bot、Wechaty这些概念和关系梳理清楚，有助于我们更好地推动中国AI的发展。" />
+<meta property="og:description" content="人工智能（AI：Artificial Intelligence）经历了六十年几起几落，终于在2016年因为阿尔法狗（AlphaGo）战胜围棋世界冠军而轰动全球，迎来了发展新机遇。2017年中国发布《新一代人工智能发展规划》，准备到2025年把中国建设成为全球最重要的AI创新中心之一。中国新一代AI的创新机会主要在弱AI的广泛应用和强AI的原始创新，而Bot（聊天机器人）是使用AI科技成果的一种最简洁形式。目前市场上具有“公众号+Bot+内容”这样的AI使用解决方案，支持大众以Bot形式使用AI科技成果。同时市场上也有像Wechaty这样的软件开源Bot项目，支持研发人员开发和集成各种各样的Bot引擎，支持Bot引擎的原始创新。显然，把AI、新一代AI、Bot、Wechaty这些概念和关系梳理清楚，有助于我们更好地推动中国AI的发展。" />
+<link rel="canonical" href="https://wechaty.js.org/2018/08/30/ai-bot-wechaty/" />
+<meta property="og:url" content="https://wechaty.js.org/2018/08/30/ai-bot-wechaty/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2018/08-ai-bot-wechaty-en/hi-ai.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-08-30T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2018/08-ai-bot-wechaty-en/hi-ai.webp" />
+<meta property="twitter:title" content="AI、Bot、Wechaty相关思考" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"lirobin1998"},"dateModified":"2018-08-30T00:00:00+00:00","datePublished":"2018-08-30T00:00:00+00:00","description":"人工智能（AI：Artificial Intelligence）经历了六十年几起几落，终于在2016年因为阿尔法狗（AlphaGo）战胜围棋世界冠军而轰动全球，迎来了发展新机遇。2017年中国发布《新一代人工智能发展规划》，准备到2025年把中国建设成为全球最重要的AI创新中心之一。中国新一代AI的创新机会主要在弱AI的广泛应用和强AI的原始创新，而Bot（聊天机器人）是使用AI科技成果的一种最简洁形式。目前市场上具有“公众号+Bot+内容”这样的AI使用解决方案，支持大众以Bot形式使用AI科技成果。同时市场上也有像Wechaty这样的软件开源Bot项目，支持研发人员开发和集成各种各样的Bot引擎，支持Bot引擎的原始创新。显然，把AI、新一代AI、Bot、Wechaty这些概念和关系梳理清楚，有助于我们更好地推动中国AI的发展。","headline":"AI、Bot、Wechaty相关思考","image":"https://wechaty.js.org/assets/2018/08-ai-bot-wechaty-en/hi-ai.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2018/08/30/ai-bot-wechaty/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"lirobin1998"},"url":"https://wechaty.js.org/2018/08/30/ai-bot-wechaty/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#article">article</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">AI、Bot、Wechaty相关思考</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/lirobin1998">
+                            <img class="rounded-circle" src="/assets/contributors/lirobin1998/avatar.webp" alt="lirobin1998" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/lirobin1998">lirobin1998</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Aug 30, 2018 · <span class="reading-time">
+  
+  
+    3 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2018/08-ai-bot-wechaty-en/hi-ai.webp" alt="AI、Bot、Wechaty相关思考">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>人工智能（AI：Artificial Intelligence）经历了六十年几起几落，终于在2016年因为阿尔法狗（AlphaGo）战胜围棋世界冠军而轰动全球，迎来了发展新机遇。2017年中国发布《新一代人工智能发展规划》，准备到2025年把中国建设成为全球最重要的AI创新中心之一。中国新一代AI的创新机会主要在弱AI的广泛应用和强AI的原始创新，而Bot（聊天机器人）是使用AI科技成果的一种最简洁形式。目前市场上具有“公众号+Bot+内容”这样的AI使用解决方案，支持大众以Bot形式使用AI科技成果。同时市场上也有像Wechaty这样的软件开源Bot项目，支持研发人员开发和集成各种各样的Bot引擎，支持Bot引擎的原始创新。显然，把AI、新一代AI、Bot、Wechaty这些概念和关系梳理清楚，有助于我们更好地推动中国AI的发展。</p>
+
+<p><img src="/assets/2018/08-ai-bot-wechaty-en/hi-ai.webp" alt="hiai" /></p>
+
+<h2 id="一对ai的思考">一、对AI的思考</h2>
+
+<p>对AI的思考我们谈三点：AI的基本概念、AI研究的分类、AI研究的关键。</p>
+
+<h3 id="一ai的基本概念">（一）AI的基本概念</h3>
+
+<p>AI的基本概念包括AI的含义、AI研究的目的、AI研究的途径。</p>
+
+<h4 id="1ai的含义">1．AI的含义</h4>
+
+<p>AI是由人类开发的模仿人类智能的机器智能。
+模仿的形式可以多种多样。一般而言只要模仿出来的机器智能在功能上达到设计要求就行，而不需要完整模仿人类智能活动的中间环节。</p>
+
+<h4 id="2ai研究的目的">2．AI研究的目的</h4>
+
+<p>AI研究的目的是用机器智能减轻人类的智能工作负担。
+因为人类的智能工作种类很多，所以机器能够替代人类智能工作的地方也很多。同时因为人类的有些智能工作是做好事，有些智能工作是做坏事，所以机器智能也既有可能被用来做好事，也有可能被用来做坏事。</p>
+
+<h4 id="3ai研究的途径">3．AI研究的途径</h4>
+
+<p>AI研究的最基本途径是仿生学途径，即用机器智能模仿人类智能。</p>
+
+<p>研究AI必须首先研究人类智能，然后才能谈模仿。目前机器模仿人类智能主要是模仿外部功能，而机器实现外部功能的原理和机制可以与人类完全不同。</p>
+
+<h3 id="二ai研究的分类">（二）AI研究的分类</h3>
+
+<p>一般认为AI可以分为三类：弱人工智能（弱AI或Weak AI）、强人工智能（强AI或Strong AI或Artificial General Intelligence）、超人工智能（超AI或Super AI或Artificial Superintelligence）。</p>
+
+<h4 id="1弱ai">1．弱AI</h4>
+
+<p>弱AI主要解决单个或多个特定的局部AI功能问题，如视觉相关的图像识别、听觉相关的语音识别、自然语言理解、机器翻译、专家系统等。</p>
+
+<p>当前不少弱AI技术已经趋于成熟，而且研究主要由大企业承担。新创公司在弱AI领域的机会是弱AI技术的各种推广应用。</p>
+
+<h4 id="2强ai">2．强AI</h4>
+
+<p>强AI主要解决机器完整模仿人类智能的问题，使得AI系统在处理各种问题的时候能够像一般人类那样表现出类似于人类的完整智能功能。</p>
+
+<p>强AI研究比弱AI研究有更多挑战和机会。什么是人类完整智能，AI系统如何模仿人类完整智能等等问题都还缺乏研究。比如，目前有不少人研究模仿人类大脑的AI系统或芯片，因为人类对大脑的了解才20%左右，所以这些研究不可能完整。</p>
+
+<h4 id="3超ai">3．超AI</h4>
+
+<p>超AI主要解决AI系统智能超越人类最强智能的问题。这方面的研究隐藏着许多问题如技术奇点（Singularity）危机问题。所谓奇点就是机器智能超越人类最强智能的时候，因为机器系统可以自动复制和自我进化，还可能存在软件臭虫（BUG），所以机器系统就有可能出现故障而导致失控，给人机世界带来预想不到的灾难。</p>
+
+<p>机器智能已经在某些领域超越了人类智能，如视觉识别和语音识别等。机器智能要超越人类最强智能的目标不一定能够实现，但是技术奇点潜在危机却着实令人担忧。人类现在研究AI就要充分考虑如何防止技术奇点危机问题。</p>
+
+<h3 id="三ai研究的关键">（三）AI研究的关键</h3>
+
+<p>我们认为AI研究的关键有三方面：开发人类智能、开发机器智能、维护人机伦理。</p>
+
+<h4 id="1开发人类智能">1．开发人类智能</h4>
+
+<p>人类必须首先了解自己的智能，才能有效地开发机器智能。AI越深入发展，就越需要人类对自己的智能有深刻了解。这样，AI发展客观上起到了倒逼人类智能挖潜的作用。因为目前人类对自己的智能了解还比较有限，而且人类的智能潜力又是可以无限挖掘的，所以人类智能开发充满挑战和机会。人类智能开发的任何突破，都可能带来机器智能开发的相关突破。</p>
+
+<p>人类智能可以从多角度认识。如智商、情商、德商智能；意识智能，包括视听味嗅触五大意识、潜意识、智慧意识等智能；大脑、心灵、身体智能；生命系统智能等等。</p>
+
+<h4 id="2开发机器智能">2．开发机器智能</h4>
+
+<p>针对上面提到的人类智能，可以模仿开发对应的机器智能。如开发机器智商、情商、德商智能；开发机器意识智能，包括视听味嗅触五大意识、潜意识、智慧意识等意识智能；开发机器大脑、心灵、身体智能；开发机器生命系统智能等。</p>
+
+<p>因为人类对自己的智能认识还很有限，而且机器模仿人类智能的思路又可以五花八门，所以在机器智能开发上可能产生不同的学派，形成百家争鸣局面。目前开发等比较多的机器智能有机器学习、自然语言处理、语音识别、专家系统、规划、日程、优化、机器人、图像识别、计算机视觉等。</p>
+
+<h4 id="3维护人机伦理">3．维护人机伦理</h4>
+
+<p>机器计算力快速提升、机器智能水平不断提高、机器智能系统能够快速自我复制自我进化等，必然导致机器智能系统数量大量增加甚至超过人类总人口数量，从而引发所谓机器智能大爆炸问题，甚至可能出现技术奇点问题，导致人机世界失控。</p>
+
+<p>为了防止人机世界失控，必须建立和维护正确的人机伦理。比如，可以按照“机法人”的原则建立最基本的人类和机器的伦理关系，机器永远为人类服务，从而让人机双方各安本分、和平相处、和谐共事，更有效地防止人机世界失控。</p>
+
+<h2 id="二对新一代ai的思考">二、对新一代AI的思考</h2>
+
+<p>从2016年开始AI进入了新的发展时期，形成了新一代AI的概念。</p>
+
+<h3 id="一对新一代ai的基本认知">（一）对新一代AI的基本认知</h3>
+
+<p>新一代AI激发了普通大众对AI的兴趣，其驱动技术是计算力、大数据、深度学习算法等几方面的突破，使AI研究可以更加深入，存在很多挑战和机会。</p>
+
+<h4 id="1新一代ai激发大众兴趣">1．新一代AI激发大众兴趣</h4>
+
+<p>2016年3月阿尔法狗（AlphaGo）强势来袭战胜了围棋世界冠军，激发了全球普通大众对AI的兴趣，也标志着人类进入了新一代AI的发展阶段。</p>
+
+<h4 id="2新一代ai源于技术驱动">2．新一代AI源于技术驱动</h4>
+
+<p>人们普遍认为新一代AI兴起，技术上主要得益于计算能力、大数据、深度学习算法三方面的技术突破。这些技术突破使得研发人员可以快速度、低成本、高效率地试错各种新思路解决AI问题并获得突破。</p>
+
+<h4 id="3新一代ai有挑战和机会">3．新一代AI有挑战和机会</h4>
+
+<p>我们认为当前新一代AI的发展态势是：传统的弱AI技术趋于成熟，可以开展广泛的推广应用；强AI技术是未来技术创新重点领域，存在很多挑战和机会；超AI技术存在不确定性，需尽早防范潜在的技术奇点危机。</p>
+
+<h3 id="二发展新一代ai的价值主张">（二）发展新一代AI的价值主张</h3>
+
+<p>发展新一代AI有很多挑战和机会，我们提出的价值主张是：1．同步实施国家AI发展规划、打造智慧智能开放开源平台、从科普切入突破科教人瓶颈。</p>
+
+<h4 id="1同步实施国家ai发展规划">1．同步实施国家AI发展规划</h4>
+
+<p>中国《新一代人工智能发展规划》中明确提出了三步走发展战略：到2020年要完成AI应用发展目标，到2025年要完成AI理论创新目标，到2030年要完成AI总体全面发展目标，使我国成为世界级的人工智能创新中心之一。我们规划和实施自己的新一代AI研究计划，需要参考国家的发展规划，助力实现国家的发展规划。</p>
+
+<h4 id="2打造有特色优势的ai开放开源平台">2．打造有特色优势的AI开放开源平台</h4>
+
+<p>开放开源平台是推动全球AI创新发展的一种有效模式，全球很多企业都在实践这种模式。中国《新一代人工智能发展规划》中也明确提倡这种模式。我们规划和实施自己的新一代AI研究计划，需要打造具有特色优势的AI开放开源平台。</p>
+
+<h4 id="3从ai科普教育切入突破科教人瓶颈">3．从AI科普教育切入突破科教人瓶颈</h4>
+
+<p>中国新一代AI发展，可能最大的瓶颈还是在科技、教育、人才三个方面。其中人才又是最关键的环节。为此我们提出从AI科普教育切入，开展全民AI教育培育人才，并希望通过人才的创新创业开拓来突破这三大瓶颈。</p>
+
+<h3 id="三发展新一代ai的全民ai教育方案">（三）发展新一代AI的全民AI教育方案</h3>
+
+<p>我们的全民AI教育有三方面：AI科普教育、人类智能开发、机器智能开发。</p>
+
+<h4 id="1ai科普教育">1．AI科普教育</h4>
+
+<p>AI科普教育是我们的切入点，任务是提供AI科普解决方案，使普通大众都有机会不需掌握要软件开发技能就可以使用AI科技成果。
+我们的AI科普解决方案是：公众号+Bot+内容。人人都可以使用该解决方案。</p>
+
+<p>其中，“公众号”是微信公众号，腾讯公司允许每个人免费创建和运营。“Bot”是聊天机器人，北京雷风科技有限公司推出的图灵机器人允许每个人免费创建和运营，而且可以把每个人的Bot与微信公众号绑定在一起使用，用Bot与公众号用户聊天。“内容”是每个人的个性化内容，可以导入Bot的资料库中，以便Bot按照所导入的用户个性化内容与公众号用户聊天。通过导入不同的用户个性化内容，就可以控制Bot按照不同的内容回复公众号用户的信息，完成不同公众号的不同使命。</p>
+
+<h4 id="2人类智能开发教育">2．人类智能开发教育</h4>
+
+<p>因为AI的智能是模仿人类智能的结果，所以，人类对自己智能的了解将极大地影响人类对AI智能的理解、定义、设计、开发等。为此，我们把人类智能开发教育摆在人工智能教育的最重要位置。</p>
+
+<p>我们希望通过正规学校教育等形式开发人类智能，全面、系统、深入地提升学习者的智能水平。使得学习者在参与机器智能开发的时候，对人类自己的智能有足够充分的了解，从而更好地开发机器智能。</p>
+
+<p>比较完整的人类智能可以从多角度来探讨，如“智商+情商+德商等智能”、“视觉听觉嗅觉味觉触觉五大意识+潜意识+智慧意识等生命意识智能”、“大脑+心灵+身体等生命子系统智能”、“生命思维+分析+决策等智能”、“生命整体智能”，等等。</p>
+
+<h4 id="3机器智能开发教育">3．机器智能开发教育</h4>
+
+<p>过去六十年AI智能开发主要集中在弱AI的智能开发，模仿了人类的一些局部智能如视觉、听觉、嗅觉、味觉、触觉五大意识智能，还有一些人类思维、分析、决策等智能，还有就是大脑的某些局部智能等。</p>
+
+<p>新一代AI的主要创新机会在强AI的智能开发上。因为强AI研究的目标是模仿比较完整的人类智能，使得机器智能系统能够完成需要比较完整的人类智能才能完整的人类智能工作。</p>
+
+<p>通过人类智能开发教育之后，学习者能够比较全面、系统、深入地了解人类比较完整的智能，从而更好地参加“机器智能开发教育”，更好地学习如何规划、设计、开发比较完整的机器智能。</p>
+
+<p>同时，这里的机器智能开发将针对科普教育解决方案“公众号+Bot+内容”进行开发，希望能够创造性地改进这个解决方案，特别是
+Bot的智能引擎改进与原创。</p>
+
+<p>当然，这里的机器智能开发需要学习者掌握一定的软件编程、AI算法、AI引擎、机器学习、深度学习、AI数据、AI大数据等相关开发技能。</p>
+
+<h2 id="三对bot的思考">三、对Bot的思考</h2>
+
+<p>Bot是使用AI科技成果的一种最简洁产品形式，这是我们在“公众号+Bot+内容”解决方案之中选择Bot的主要原因。下面我们从教学内容、教学手段、教学成果三方面比较深入第探讨一下对Bot的思考。</p>
+
+<h3 id="一bot是教学内容">（一）Bot是教学内容</h3>
+
+<p>在我们的“公众号+Bot+内容”解决方案中，Bot首先是教学内容。</p>
+
+<h4 id="1bot的最简使用">1．Bot的最简使用</h4>
+
+<p>作为教学内容，Bot可以给我们带来最简的AI使用体验。比如，每个用户只需要到图灵机器人的官方网站<a href="http://www.tuling123.com">http://www.tuling123.com</a>上注册登录，然后创建自己的Bot机器人，并把所创建的Bot机器人与用户自己的微信公众号绑定起来，这样，被绑定的公众号就可以使用Bot与用户聊天。整个过程只需要几分钟就可以完成。通过这样的学习和使用Bot的过程，用户就可以获得学习和使用AI的信心。</p>
+
+<h4 id="2bot的ai多种功能使用">2．Bot的AI多种功能使用</h4>
+
+<p>可以通过Bot学习使用多种AI功能。比如，图灵机器人的官方网站除了给用户提供免费的Bot机器人创建和运营服务之外，同时还提供每月几十元到一百多元多档次的收费服务，支持用户为自己的Bot机器人配置使用多种收费的AI功能，如图像识别、语音识别与合成、自然语言智能等。</p>
+
+<h4 id="3bot的个性化内容开发和运营">3．Bot的个性化内容开发和运营</h4>
+
+<p>解决方案“公众号+Bot+内容”是普通大众用户创建和运营自己的微信公众号、Bot聊天机器人、个性化内容的完整解决方案。使用该解决方案，用户可以为自己的公众号客户提供资讯媒体、产品营销、客户服务、教育培训等多种服务，开发和运营用户的个人或企业品牌。其中，在Bot中导入不同的用户个性化内容，就可以改变Bot聊天的资料库内容，从而改变Bot的服务的内容，适应不同的个性化服务需求。</p>
+
+<h3 id="二bot是教学手段">（二）Bot是教学手段</h3>
+
+<p>在我们的AI教育中，Bot还可以作为一种教学工具来使用，即通过为Bot导入不同的课程内容改变Bot的聊天内容，为不同的课程提供教学问答服务。</p>
+
+<h4 id="1用bot获得最简的智能教学体验">1．用Bot获得最简的智能教学体验</h4>
+
+<p>使用Bot作为教学手段（软件工具），可以可以通过简洁的Bot问答模式实现教学服务，获得最简的智能教学体验。这应该是一种比较容易被接受的教学手段。</p>
+
+<h4 id="2用bot提供不同的课程教学内容">2．用Bot提供不同的课程教学内容</h4>
+
+<p>不同的教学课程有不同的教学内容。使用Bot作为教学手段，只需要把课程内容按照Bot要求的数据格式导入Bot，就可以让Bot按照所导入的课程内容聊天。</p>
+
+<p>从课程教学内容讲，数据格式可以分为简单的问答格式、复杂的语义网络格式和知识树格式等。简单的Bot或Bot引擎只能处理简单的数据格式，复杂的Bot引擎才能处理复杂的数据格式。</p>
+
+<h4 id="3用bot提供不同的教学创新探索">3．用Bot提供不同的教学创新探索</h4>
+
+<p>Bot或Bot引擎或Bot智能引擎是机器模仿人类智能的系统，因此，人类的教学创新智能可以通过Bot引擎来模仿，使Bot成为教学创新的工具。</p>
+
+<h3 id="三bot是教学成果">（三）Bot是教学成果</h3>
+
+<p>在我们的AI教育解决方案中，Bot不仅是教学内容和手段，而且还是教学成果。至少有三类潜在的Bot教学成果：最简教学示范类Bot、各种创新探索类Bot、各种重点原创类Bot。</p>
+
+<h4 id="1开发教学示范类bot">1．开发教学示范类Bot</h4>
+
+<p>选择一种功能最简洁的开源Bot项目，组织学习者对Bot项目从产品管理、编程开发、敏捷开发等角度出发进行开发，展示更加完善的Bot示范功能。</p>
+
+<h4 id="2开发创新探索类bot">2．开发创新探索类Bot</h4>
+
+<p>选择各种感兴趣的开源Bot项目，组织学习者对不同的Bot项目从产品管理、编程开发、敏捷开发等角度出发进行开发，展示各种Bot创新探索成果。</p>
+
+<h4 id="3开发原始创新类bot">3．开发原始创新类Bot</h4>
+
+<p>根据国家《新一代人工智能发展规划》的指导，首先开展Bot应用开发，然后提出新一代AI原创理论，并开发相应的Bot原创技术和产品，展示我们在AI理论原创和Bot技术原创方面的成果。</p>
+
+<h2 id="四对wechaty的思考">四、对Wechaty的思考</h2>
+
+<p>Wechaty是一个使用Nodejs的开源Bot项目<a href="https://github.com/wechaty/wechaty">https://github.com/wechaty/wechaty</a>，我们用Wechaty实现了微信群自动邀请入群的功能，获得了一点使用体验，而且感觉可以在AI教育之中用Wechaty开源项目做不少事情。</p>
+
+<h3 id="一理解wechaty的价值">（一）理解Wechaty的价值</h3>
+
+<p>Wechaty的价值至少有三个方面：Bot聊天机器人、微信Web接口中间件、开放开源的Bot开发平台。</p>
+
+<h4 id="1wechaty是一种bot">1．Wechaty是一种Bot</h4>
+
+<p>Wechaty是一种在微信环境下使用的Bot。一个微信用户登录Wechaty后，就可以把Wechaty与微信用户账号绑定在一起，使Wechaty代替该微信用户完成微信社交功能，包括聊天、邀请好友入群、从微信群移出用户等。</p>
+
+<h4 id="2wechaty是一种微信web接口中间件">2．Wechaty是一种微信Web接口中间件</h4>
+
+<p>Wechaty把微信Web的公开接口汇聚在一起，包装成为微信Web接口中间件，具有微信Web接口提供的各种功能。开发者可以使用Wechaty开发与微信接口相关的各种Bot功能或产品。</p>
+
+<h4 id="3wechaty是一种开放开源的bot开发平台">3．Wechaty是一种开放开源的Bot开发平台</h4>
+
+<p>Wechaty作为一个软件开源项目，支持开发者开发自己的Bot技术和产品、开发基于Wechaty的各种开源项目等，可以说Wechaty是一种开放开源的Bot开发平台。</p>
+
+<h3 id="二使用wechaty的体验">（二）使用Wechaty的体验</h3>
+
+<p>2018年3月我们开始启动一个科技类的百场公益系列演讲，并把参加演讲的听众都汇聚在一个群里面进行后续的互动交流。为了实现Bot自动邀请入群的目的，我们在网上研究对比了一些微信Bot工具，发现Wechaty是当时最好的一个选择。</p>
+
+<h4 id="1使用wechaty实现自动邀请入群">1．使用Wechaty实现自动邀请入群</h4>
+
+<p>大家知道微信群人数少于100的时候，可以通过扫描群二维码入群。当人数达到100人之后，就必须通过好友邀请才能入群。为此，一个群主如果要把一些陌生人（如某个讲座的部分听众）加入微信群中，那么就必须首先加好友，然后再从微信群里面去邀请好友入群，被邀请的人接受邀请之后才可以完成入群的全部过程。</p>
+
+<p>选择Wechaty之后，参照Wechaty提供的代码例子，我们很快编写完成了满足我们需求的一段JavaScript代码，并且按照Wechaty提供的操作说明，顺利通过了NPM和Docker两种运行模式的测试。从此之后我们每次演讲活动都可以使用群二维码和Wechaty自动地把新来的听众加入微信群，减轻了我们的相关智能工作。</p>
+
+<h4 id="2使用wechaty实现自动邀请入群的代码">2．使用Wechaty实现自动邀请入群的代码</h4>
+
+<p>我们参照Wechaty代码例子改写的源代码如下：</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Wechaty</span><span class="p">,</span> <span class="nx">Room</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span>
+<span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="nx">Wechaty</span><span class="p">.</span><span class="nf">instance</span><span class="p">()</span>
+<span class="nx">bot</span>
+  <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">code</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="sr">/201|200/</span><span class="p">.</span><span class="nf">test</span><span class="p">(</span><span class="nc">String</span><span class="p">(</span><span class="nx">code</span><span class="p">)))</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="sr">/201|200/</span><span class="p">.</span><span class="nx">test</span><span class="p">)</span>
+      <span class="kd">const</span> <span class="nx">loginUrl</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">\/</span><span class="sr">qrcode</span><span class="se">\/</span><span class="sr">/</span><span class="p">,</span> <span class="dl">'</span><span class="s1">/l/</span><span class="dl">'</span><span class="p">)</span>
+      <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">qrcode-terminal</span><span class="dl">'</span><span class="p">).</span><span class="nf">generate</span><span class="p">(</span><span class="nx">loginUrl</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span> <span class="nx">user</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2"> login`</span><span class="p">)</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">friend</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nf">function </span><span class="p">(</span><span class="nx">contact</span><span class="p">,</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">await</span> <span class="nx">request</span><span class="p">.</span><span class="nf">accept</span><span class="p">()</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Contact: </span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nf">name</span><span class="p">()}</span><span class="s2"> send request </span><span class="p">${</span><span class="nx">request</span><span class="p">.</span><span class="nx">hello</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+      <span class="kd">let</span> <span class="nx">keyroom</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Room</span><span class="p">.</span><span class="nf">find</span><span class="p">({</span> <span class="na">topic</span><span class="p">:</span> <span class="dl">"</span><span class="s2">BIT百场讲座群</span><span class="dl">"</span> <span class="p">})</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">邀请加入群：</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">keyroom</span><span class="p">)</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">keyroom</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">await</span> <span class="nx">keyroom</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="nx">contact</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nf">function </span><span class="p">(</span><span class="nx">m</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">contact</span> <span class="o">=</span> <span class="nx">m</span><span class="p">.</span><span class="k">from</span><span class="p">()</span>
+    <span class="kd">const</span> <span class="nx">content</span> <span class="o">=</span> <span class="nx">m</span><span class="p">.</span><span class="nf">content</span><span class="p">()</span>
+    <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="nx">m</span><span class="p">.</span><span class="nf">room</span><span class="p">()</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">当前Room: </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">room</span><span class="p">)</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="c1">//在群里都不说话</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Contact: </span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nf">name</span><span class="p">()}</span><span class="s2"> Content: </span><span class="p">${</span><span class="nx">content</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nf">self</span><span class="p">())</span> <span class="p">{</span>
+      <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="kd">let</span> <span class="nx">keyroom</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Room</span><span class="p">.</span><span class="nf">find</span><span class="p">({</span> <span class="na">topic</span><span class="p">:</span> <span class="dl">"</span><span class="s2">BIT百场讲座群</span><span class="dl">"</span> <span class="p">})</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">keyroom</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">m</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="dl">"</span><span class="s2">您好！我是Bot，邀请您加入【BIT百场讲座群】</span><span class="dl">"</span><span class="p">)</span>
+      <span class="k">await</span> <span class="nx">keyroom</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="nx">contact</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="3使用wechaty实现自动邀请入群的效果">3．使用Wechaty实现自动邀请入群的效果</h4>
+
+<p>减轻了群主邀请入群的智能工作负担，被邀请入群的朋友感觉Wechaty这个自动邀请入群的功能很有趣，激发了对Bot的一定兴趣和热情。</p>
+
+<p>Wechaty没有运行的时候，微信用户也可以扫描群二维码要求入群，虽然自动邀请入群的功能无法实现，但是还是可以通过手工操作的方式把要求入群的微信用户加入目标微信群中。因此，使用Wechaty没有带来什么副作用。</p>
+
+<h4 id="三挖掘wechaty的潜力">（三）挖掘Wechaty的潜力</h4>
+
+<p>我们感觉Wechaty具有很多潜力可以挖掘。比如我们可以从AI教学内容、AI教学手段、AI教学成果三个方面挖掘Wechaty在AI教育领域的潜力。</p>
+
+<h4 id="1wechaty作为ai教学内容">1．Wechaty作为AI教学内容</h4>
+
+<p>Wechaty本身包含很多内容，这些内容都可以作为AI教学内容来对待。</p>
+
+<p>首先，作为AI教学内容，Wechaty可以引出这样一种解决方案：微信号+Wechaty+Bot引擎。其中，微信号是用户的微信号，Wechaty作为一种中间件或开发运营平台可以绑定用户的微信号和用户的Bot引擎，Bot引擎是由用户选择的可供Wechaty调用的具有各种各样功能的Bot引擎（如自动邀请好友加入微信群）。</p>
+
+<p>其次，作为AI教学内容，Wechaty可以在上述解决方案中提供一些可以实际使用的Bot引擎供用户选用和定制开发。如用Wechaty自动邀请好友入群、根据他人的聊天内容而发布给定的聊天信息、调用任意给定的外部Bot引擎等。这样，Wechaty就可以成为一种实际可用的工具投入实际运营，快速解决各种实际问题。</p>
+
+<p>最后，作为AI教学内容，Wechaty可以用于软件开源项目教学。学习者可以学习到的内容包括开源项目实践、Nodejs编程、微信接口使用、Bot引擎编程等，这些可以支持学习者在Wechaty开源项目基础上开发各种AI功能。</p>
+
+<h4 id="2wechaty作为ai教学手段">2．Wechaty作为AI教学手段</h4>
+
+<p>Wechaty作为开源项目，在其基础上可以开发各种AI功能，因此Wechaty可以作为AI教学手段或软件工具来对待。</p>
+
+<p>首先，Wechaty作为AI编程的教学手段（软件工具），使用体验很简洁，而且可以很快解决微信社交中所遇到的问题（如自动邀请好友加入微信群）。</p>
+
+<p>其次，Wechaty作为AI编程的教学手段，可以支持不同的课程教学实训，如Nodejs编程开发、微信接口使用、Bot引擎开发等。</p>
+
+<p>最后，Wechaty作为AI编程的教学手段，可以支持不同的教学创新探索，特别是Bot引擎的创新探索。</p>
+
+<h4 id="3wechaty作为ai教学成果">3．Wechaty作为AI教学成果</h4>
+
+<p>我们不仅可以使用Wechaty作为教学内容和教学手段，而且还可以通过Wechaty相关的AI教育，完善Wechaty这个开源项目本身，使其也成为AI教学成果。</p>
+
+<p>首先，可以完善“微信号+Wechaty+Bot引擎”这个解决方案，提供SaaS服务模式为更多的用户服务。这样普通大众不需要做任何代码开发就可以使用Wechaty。</p>
+
+<p>其次，在“微信号+Wechaty+Bot引擎”这个解决方案的SaaS服务平台上不断添加新的功能供用户选择使用，如更多的微信社交功能、更多的Bot引擎等，使Wechaty的这套解决方案具有更强的功能、更多的用户、更高的价值。</p>
+
+<p>最后，通过“微信号+Wechaty+Bot引擎”这个解决方案的SaaS服务平台开发，使Wechaty这个软件开源项目更有价值，成为开放开源的AI创新创业平台。用户不仅可以在这个平台上开展AI教学、学习这个平台相关的AI教学内容，而且可以开发各种创新创业开源项目，特别是新一代人工智能的Bot引擎项目。</p>
+
+<h2 id="五小结">五、小结</h2>
+
+<p>新一代AI热潮袭来，带来很多挑战和机会。我们希望通过全民AI教育来探讨这些挑战和机会。我们的全民AI教育从AI科普教育切入，开发人类智能和机器智能。Bot作为AI成果使用的形式，是我们全民AI教育的教学内容、教学工具、教学成果，贯穿于AI科普教育、AI开发教育、AI创新教育之中。Wechaty作为我们试用过的Bot开源项目在全民AI教育中可以发挥的地方很多。</p>
+
+<blockquote>
+  <p>Author: <a href="https://github.com/lirobin1998">@李彬</a> ，清华大学博士。硅谷智慧科技公司创始人，贵州博士科技有限公司CEO。聚焦智慧AI创新创业，从AI科普教育切入，开展人机智慧智能开发教育，打造全民AI教育开放平台。30年前在清华大学电子工程系开始研究机器翻译，20年前到硅谷开始学习探索智慧智能科技，10年硅谷与国内高科技创业经历。</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ai">ai</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/lirobin1998">
+                            <img class="rounded-circle" src="/assets/contributors/lirobin1998/avatar.webp" alt="lirobin1998" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/lirobin1998">lirobin1998</a> </h5>
+						
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2018/08/30/ai-bot-wechaty-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2018/08-ai-bot-wechaty-en/hi-ai.webp">  Thoughts on AI, Bot, and Wechaty</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2018/09/15/country-wide-developer-conference/"> Wechaty Country Wide Developer Conference  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2018/country-wide-developer-conference.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

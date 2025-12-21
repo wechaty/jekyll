@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Wechaty OSPP(开源之夏) Final Demo Day | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Wechaty OSPP(开源之夏) Final Demo Day | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Wechaty OSPP(开源之夏) Final Demo Day" />
+<meta name="author" content="juzibot" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="“开源软件供应链点亮计划-暑期2021”（以下简称 暑期2021）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。活动联合各大开源社区，针对重要开源软件的开发与维护提供项目，并向全球高校学生开放报名。 学生可自主选择感兴趣的项目进行申请，并在中选后获得该软件资深维护者（社区导师）亲自指导的机会。" />
+<meta property="og:description" content="“开源软件供应链点亮计划-暑期2021”（以下简称 暑期2021）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。活动联合各大开源社区，针对重要开源软件的开发与维护提供项目，并向全球高校学生开放报名。 学生可自主选择感兴趣的项目进行申请，并在中选后获得该软件资深维护者（社区导师）亲自指导的机会。" />
+<link rel="canonical" href="https://wechaty.js.org/2021/10/09/summer-2021-wechaty-soc-final-demo-day/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/10/09/summer-2021-wechaty-soc-final-demo-day/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/10-summer-2021-wechaty-soc-final-demo-day-en/final-demo-day.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-10-09T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/10-summer-2021-wechaty-soc-final-demo-day-en/final-demo-day.webp" />
+<meta property="twitter:title" content="Wechaty OSPP(开源之夏) Final Demo Day" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"juzibot"},"dateModified":"2021-10-09T00:00:00+00:00","datePublished":"2021-10-09T00:00:00+00:00","description":"“开源软件供应链点亮计划-暑期2021”（以下简称 暑期2021）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。活动联合各大开源社区，针对重要开源软件的开发与维护提供项目，并向全球高校学生开放报名。 学生可自主选择感兴趣的项目进行申请，并在中选后获得该软件资深维护者（社区导师）亲自指导的机会。","headline":"Wechaty OSPP(开源之夏) Final Demo Day","image":"https://wechaty.js.org/assets/2021/10-summer-2021-wechaty-soc-final-demo-day-en/final-demo-day.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/10/09/summer-2021-wechaty-soc-final-demo-day/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"juzibot"},"url":"https://wechaty.js.org/2021/10/09/summer-2021-wechaty-soc-final-demo-day/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#announcement">announcement</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Wechaty OSPP(开源之夏) Final Demo Day</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/juzibot">
+                            <img class="rounded-circle" src="/assets/contributors/juzibot/avatar.webp" alt="juzibot" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/juzibot">juzibot</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Oct 09, 2021 · <span class="reading-time">
+  
+  
+    7 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/10-summer-2021-wechaty-soc-final-demo-day-en/final-demo-day.webp" alt="Wechaty OSPP(开源之夏) Final Demo Day">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>“<a href="https://summer.iscas.ac.cn">开源软件供应链点亮计划-暑期2021</a>”（以下简称 暑期2021）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。活动联合各大开源社区，针对重要开源软件的开发与维护提供项目，并向全球高校学生开放报名。 学生可自主选择感兴趣的项目进行申请，并在中选后获得该软件资深维护者（社区导师）亲自指导的机会。</p>
+
+<p>Wechaty 作为中国最大的聊天机器人开源项目，合计发布了9个项目，共收到来自上海大学、华东理工大学、长沙理工大学、中国科学技术大学、电子科技大学等高校的几十份申请。</p>
+
+<p>此次的9个项目的学生开发者，均录制了一份路演视频，向社区介绍具体的项目进展和后续规划。
+除了按顺序播放视频，还会邀请社区导师和开发者进行评价和指导，并给出切实有效的建议。</p>
+
+<p>此外，开发者们可以在路演日中找到自己感兴趣的项目，并在路演日结束后，与对应的开发者取得联系并在后续共同开发。</p>
+
+<p>开发者和项目地址：</p>
+
+<ul>
+  <li>
+    <p><a href="https://wechaty.js.org/2021/06/24/wechaty-soc-kick-off-meeting/">Wechaty Open Source Promotion Plan 2021 Kickoff Meeting</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/wechaty/summer/issues/79">项目地址</a></p>
+  </li>
+</ul>
+
+<h2 id="结项汇报final-term-demo-day会议纪实">结项汇报（Final-Term Demo Day）会议纪实</h2>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/xqJN3NmGukg" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<blockquote>
+  <p><a href="https://v.qq.com/x/page/w3310hm4e7v.html">Tencent video link</a></p>
+</blockquote>
+
+<p>You can learn more from our <a href="https://docs.google.com/document/d/1fVCk8qRYc4RKGMf2UY5HOe07hEhPUOpGC34v88GEFJg/edit#heading=h.xdrnd37ekiek">meeting_notes</a></p>
+
+<h3 id="agendas议程">Agendas议程</h3>
+
+<ul>
+  <li><a href="https://youtu.be/xqJN3NmGukg">0:00:00</a> 0.会议开始</li>
+  <li><a href="https://youtu.be/xqJN3NmGukg?t=510">0:08:30</a> 1.介绍会议议程</li>
+  <li><a href="https://youtu.be/xqJN3NmGukg?t=630">0:10:30</a> 2.陈婧：开发基于 Wechaty 实现微俱乐部会员&amp;活动管理的微信小程序</li>
+  <li><a href="https://youtu.be/xqJN3NmGukg?t=1780">0:29:40</a> 3.肖良玉:基于 Itchat为 Python Wechaty 实现社区首个 Python 语言的本地 Puppet</li>
+  <li><a href="https://youtu.be/xqJN3NmGukg?t=2810">0:46:50</a> 4.张瑞宁,邵琦:开发支持电信运营商 5G Chatbot / RCS 的 Wechaty 接入 Puppet 模块</li>
+  <li><a href="https://youtu.be/xqJN3NmGukg?t=3900">1:05:00</a> 5.马田慧:基于开放 API 封装 Wechaty 接口下的飞书聊天机器人</li>
+  <li><a href="https://youtu.be/xqJN3NmGukg?t=4770">1:19:30</a> 6.刘靖:基于 Blessed 的 Wechaty 命令行文本客户端软件（仿IRC）</li>
+  <li><a href="https://youtu.be/xqJN3NmGukg?t=5640">1:34:00</a> 7.林宇靖，张瑞宁:基于 Matrix AppService Wechaty 项目的用户、群与消息等基础功能的完善</li>
+  <li><a href="https://youtu.be/xqJN3NmGukg?t=6660">1:51:00</a> 8.anaivebird:开发支持 QQ 聊天软件的 Wechaty Puppet Provider 模块</li>
+  <li><a href="https://youtu.be/xqJN3NmGukg?t=8490">2:21:30</a> 9.左雁茹:基于 Wechaty Puppet Official Account 项目的用户与消息等基础功能的完善</li>
+  <li><a href="https://youtu.be/xqJN3NmGukg?t=9760">2:42:40</a> 10.井维嘉: 基于Wechaty 开发开源的二师兄社群逗乐机器人</li>
+  <li><a href="https://youtu.be/xqJN3NmGukg?t=11396">3:09:56</a> 11.总结</li>
+</ul>
+
+<h2 id="wechaty-期末项目列表">Wechaty 期末项目列表</h2>
+
+<p>Wechaty 在多平台、多功能多个维度上，共发布了 9 项任务，并通过 issue 的方式进行每周的更新。
+如果你有看到感兴趣的项目，可以直接在对应 issue 下面找到负责对应任务的开发者。</p>
+
+<p>你可以在查看<a href="https://wechaty.js.org/2021/06/24/wechaty-soc-kick-off-meeting/">首次KickOff博客</a>了解更多信息。</p>
+
+<h3 id="开发基于-wechaty-实现微俱乐部会员活动管理的微信小程序">开发基于 Wechaty 实现微俱乐部会员&amp;活动管理的微信小程序</h3>
+
+<ul>
+  <li>导师：鲁玉超 物联网行业产品经理、微信小程序群组大师开发者（atorber@163.com）</li>
+  <li>学生开发者：陈婧，华东理工大学本科生（1017137803@qq.com）</li>
+  <li>项目介绍：<a href="https://github.com/wechaty/summer-of-wechaty/issues/78">https://github.com/wechaty/summer-of-wechaty/issues/78</a></li>
+  <li><a href="https://wechaty.js.org/2021/07/15/ospp-plan-wechaty-club-managment/">OSPP 2021-期初报告-开发基于微信实现微俱乐部会员&amp;活动管理的微信小程序</a></li>
+  <li><a href="https://wechaty.js.org/2021/08/29/ospp-mid-term-club-managment/">OSPP 2021-期中报告-开发基于微信实现微俱乐部会员&amp;活动管理的微信小程序</a></li>
+  <li><a href="https://wechaty.js.org/2021/09/29/final-term-club-managment">OSPP 2021-结项报告-开发基于Wechaty实现微俱乐部会员&amp;活动管理的微信小程序</a></li>
+</ul>
+
+<h4 id="展示视频">展示视频</h4>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/eSgaD32njVw" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<blockquote>
+  <p><a href="https://v.qq.com/x/page/k3310fa8e2b.html">Tencent video link</a></p>
+</blockquote>
+
+<h4 id="live-demo-视频">Live Demo 视频</h4>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/5LZ08re5YR8" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<blockquote>
+  <p><a href="https://v.qq.com/x/page/a3310h36zeq.html">Tencent video link</a></p>
+</blockquote>
+
+<h3 id="基于-itchat-为-python-wechaty-实现社区首个-python-语言的本地-puppet">基于 Itchat 为 Python Wechaty 实现社区首个 Python 语言的本地 Puppet</h3>
+
+<ul>
+  <li>导师：吴京京 Python Wechaty creator，Wechaty committer （wjmcater@gmail.com）；李卓桓 Wechaty creator，Python Wechaty maintainer，Tencent TVP of Chatbot （zixia@zixia.net）</li>
+  <li>学生开发者：肖良玉，杭州电子科技大学本科生（x@lyleshaw.com）</li>
+  <li>项目介绍：<a href="https://github.com/wechaty/summer-of-wechaty/issues/75">https://github.com/wechaty/summer-of-wechaty/issues/75</a></li>
+  <li><a href="https://wechaty.js.org/2021/07/13/ospp-plan-wechaty-itchat-puppet/">OSPP 2021-期初报告-基于 Itchat 为 Python Wechaty 实现社区首个 Python 语言的本地 Puppet</a></li>
+  <li><a href="https://wechaty.js.org/2021/08/29/ospp-mid-term-wechaty-itchat-puppet/">OSPP 2021-期中报告-基于 Itchat 为 Python Wechaty 实现社区首个 Python 语言的本地 Puppet</a></li>
+  <li><a href="https://wechaty.js.org/2021/10/05/ospp-final-term-wechaty-itchat-puppet/">OSPP 2021-结项报告-基于Itchat为Python Wechaty实现社区首个Python语言的本地Puppet</a></li>
+</ul>
+
+<h4 id="展示视频-1">展示视频</h4>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/SKhgnRaljzk" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<blockquote>
+  <p><a href="https://v.qq.com/x/page/h3310cv0fkt.html">Tencent video link</a></p>
+</blockquote>
+
+<h4 id="live-demo-视频-1">Live Demo 视频</h4>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/fGjEd5O97lQ" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<blockquote>
+  <p><a href="https://v.qq.com/x/page/r3310cu8z5p.html">Tencent video link</a></p>
+</blockquote>
+
+<h3 id="开发支持电信运营商-5g-chatbot--rcs-的-wechaty-接入-puppet-模块">开发支持电信运营商 5G Chatbot / RCS 的 Wechaty 接入 Puppet 模块</h3>
+
+<ul>
+  <li>导师：康嘉 硬核桃社区PM （sj-kangj@dimpt.com）；李佳芮 Wechaty co-creator，Founder &amp; CEO of Juzi.BOT （rui@chatie.io）</li>
+  <li>学生开发者：张瑞宁，长沙理工大学本科生（3134191406@qq.com）；邵琦（shaoqichn@qq.com）</li>
+  <li>项目介绍：<a href="https://github.com/wechaty/summer-of-wechaty/issues/74">https://github.com/wechaty/summer-of-wechaty/issues/74</a></li>
+  <li><a href="https://wechaty.js.org/2021/07/15/ospp-plan-5g-chatbot-puppet/">OSPP 2021-期初报告-开发支持电信运营商5G Chatbot/RCS的 Wechaty接入Puppet模块</a></li>
+  <li><a href="https://wechaty.js.org/2021/08/30/ospp-mid-term-5g-chatbot-puppet/">OSPP 2021-期中报告-开发支持电信运营商 5G Chatbot / RCS 的 Wechaty 接入 Puppet 模块</a></li>
+  <li><a href="https://wechaty.js.org/2021/10/07/ospp-final-term-5g-chatbot-puppet/">OSPP 2021-结项报告-开发支持电信运营商 5G Chatbot / RCS 的 Wechaty 接入 Puppet 模块</a></li>
+</ul>
+
+<h4 id="展示视频-2">展示视频</h4>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/cQydTnaym7Y" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<blockquote>
+  <p><a href="https://v.qq.com/x/page/d33108u2qch.html">Tencent video link</a></p>
+</blockquote>
+
+<h4 id="live-demo-视频-2">Live Demo 视频</h4>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/4-0lW0kvelE" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<blockquote>
+  <p><a href="https://v.qq.com/x/page/f33108hywuy.html">Tencent video link</a></p>
+</blockquote>
+
+<h3 id="基于开放api封装-wechaty-接口下的飞书聊天机器人">基于开放API封装 Wechaty 接口下的飞书聊天机器人</h3>
+
+<ul>
+  <li>导师： 范蕊 飞书Puppet作者 （froxanne1024@gmail.com）</li>
+  <li>学生开发者：马田慧（tianhuima01@gmail.com）</li>
+  <li>项目介绍：<a href="https://github.com/wechaty/summer-of-wechaty/issues/38">https://github.com/wechaty/summer-of-wechaty/issues/38</a></li>
+  <li><a href="https://wechaty.js.org/2021/07/14/ospp-plan-wechaty-puppet-lark/">OSPP 2021-期初报告-基于开放 API 封装 Wechaty 接口下的飞书聊天机器人</a></li>
+  <li><a href="https://wechaty.js.org/2021/08/30/ospp-mid-term-wechaty-puppet-lark/">OSPP 2021-期中报告-基于开放 API 封装 Wechaty 接口下的飞书聊天机器人</a></li>
+  <li><a href="https://wechaty.js.org/2021/09/29/ospp-final-term-wechaty-puppet-lark/">OSPP 2021-结项报告-基于开放 API 封装 Wechaty 接口下的飞书聊天机器人</a></li>
+</ul>
+
+<h4 id="展示视频-3">展示视频</h4>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/-HOF0LV1d54" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<blockquote>
+  <p><a href="https://v.qq.com/x/page/i3310q35f5z.html">Tencent video link</a></p>
+</blockquote>
+
+<h4 id="live-demo-视频-3">Live Demo 视频</h4>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/lH3giTpdOtM" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<blockquote>
+  <p><a href="https://v.qq.com/x/page/y3310hos8va.html">Tencent video link</a></p>
+</blockquote>
+
+<h3 id="基于-blessed-的-wechaty-命令行文本客户端软件仿irc">基于 Blessed 的 Wechaty 命令行文本客户端软件（仿IRC）</h3>
+
+<ul>
+  <li>导师：李卓桓 Creator of Wechaty，Tencent TVP of Chatbot （zixia@zixia.net）</li>
+  <li>学生开发者：刘靖，上海大学本科生（liuchinggg@gmail.com）</li>
+  <li>项目介绍：<a href="https://github.com/wechaty/summer-of-wechaty/issues/80">https://github.com/wechaty/summer-of-wechaty/issues/80</a></li>
+  <li><a href="https://wechaty.js.org/2021/07/14/ospp-plan-blessed-cli/">OSPP 2021-期初报告-基于 Blessed 的 Wechaty 命令行文本客户端软件</a></li>
+  <li><a href="https://wechaty.js.org/2021/08/26/ospp-mid-term-cli/">OSPP 2021-期中报告-基于 Blessed 的 Wechaty 命令行文本客户端软件</a></li>
+  <li><a href="https://wechaty.js.org/2021/09/30/ospp-final-term-cli/">OSPP 2021-结项报告-基于 Blessed 的 Wechaty 命令行文本客户端软件</a></li>
+</ul>
+
+<h4 id="展示视频-4">展示视频</h4>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/PssH9epe0tU" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<blockquote>
+  <p><a href="https://v.qq.com/x/page/y3310gsontd.html">Tencent video link</a></p>
+</blockquote>
+
+<h4 id="live-demo-视频-4">Live Demo 视频</h4>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/D5QbX183kb8" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<blockquote>
+  <p><a href="https://v.qq.com/x/page/z3310zw17kd.html">Tencent video link</a></p>
+</blockquote>
+
+<h3 id="基于-matrix-appservice-wechaty-项目的用户群与消息等基础功能的完善">基于 Matrix AppService Wechaty 项目的用户、群与消息等基础功能的完善</h3>
+
+<ul>
+  <li>导师：yswtrue Wechaty contributor （yswtrue@gmail.com），李卓桓 Creator of Wechaty，Tencent TVP of Chatbot （zixia@zixia.net）</li>
+  <li>学生开发者：林宇靖, 上海海洋大学本科生（545641826@qq.com）；张瑞宁, 长沙理工大学本科生（3134191406@qq.com）</li>
+  <li>项目介绍：<a href="https://github.com/wechaty/summer-of-wechaty/issues/59">https://github.com/wechaty/summer-of-wechaty/issues/59</a></li>
+  <li><a href="https://wechaty.js.org/2021/07/14/ospp-plan-wechaty-matrix/">OSPP 2021-期初报告-基于 Matrix AppService Wechaty 项目的用户、群与消息等基础功能的完善</a></li>
+  <li><a href="https://wechaty.js.org/2021/08/30/ospp-mid-term-matrix-wechaty/">OSPP 2021-期中报告-基于 Matrix AppService Wechaty 项目的用户、群与消息等基础功能的完善</a></li>
+  <li><a href="https://wechaty.js.org/2021/09/28/ospp-final-term-matrix-wechaty/">OSPP 2021-结项报告-基于 Matrix AppService Wechaty 项目的用户、群与消息等基础功能的完善</a></li>
+</ul>
+
+<h4 id="展示视频-5">展示视频</h4>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/3j3BGRnoVtE" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<blockquote>
+  <p><a href="https://v.qq.com/x/page/f33102gsi6m.html">Tencent video link</a></p>
+</blockquote>
+
+<h4 id="live-demo-视频-5">Live Demo 视频</h4>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/qtbExkN0uoI" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<blockquote>
+  <p><a href="https://v.qq.com/x/page/m331018w169.html">Tencent video link</a></p>
+</blockquote>
+
+<h3 id="开发支持-qq-聊天软件的-wechaty-puppet-provider-模块">开发支持 QQ 聊天软件的 Wechaty Puppet Provider 模块</h3>
+
+<ul>
+  <li>导师：李佳芮 Wechaty co-creator，Founder &amp; CEO of Juzi.BOT （rui@chatie.io）；李卓桓 Creator of Wechaty，Tencent TVP of Chatbot （zixia@zixia.net）</li>
+  <li>学生开发者：anaivebird（20210240029@fudan.edu.cn）</li>
+  <li>项目介绍：<a href="https://github.com/wechaty/summer-of-wechaty/issues/81">https://github.com/wechaty/summer-of-wechaty/issues/81</a></li>
+  <li><a href="https://wechaty.js.org/2021/07/11/ospp-plan-qq-puppet/">OSPP 2021-期初报告-开发支持 QQ 聊天软件的 Wechaty Puppet Provider 模块</a></li>
+  <li><a href="https://wechaty.js.org/2021/08/31/ospp-mid-term-qq-puppet/">OSPP 2021-期中报告-开发支持 QQ 聊天软件的 Wechaty Puppet Provider 模块</a></li>
+  <li><a href="https://wechaty.js.org/2021/10/06/ospp-final-term-qq-puppet/">OSPP 2021-结项报告-开发支持 QQ 聊天软件的 Wechaty Puppet Provider 模块</a></li>
+</ul>
+
+<h4 id="展示视频-6">展示视频</h4>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/Z2IIPe0FLA4" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<blockquote>
+  <p><a href="https://v.qq.com/x/page/n3310ev9kl4.html">Tencent video link</a></p>
+</blockquote>
+
+<h4 id="live-demo-视频-6">Live Demo 视频</h4>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/TbIgFhSWVxI" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<blockquote>
+  <p><a href="https://v.qq.com/x/page/g3310ns51o6.html">Tencent video link</a></p>
+</blockquote>
+
+<h3 id="基于-wechaty-puppet-official-account-项目的用户与消息等基础功能的完善">基于 Wechaty Puppet Official Account 项目的用户与消息等基础功能的完善</h3>
+
+<ul>
+  <li>导师：吴京京 Python Wechaty creator，Wechaty committer （wjmcater@gmail.com）</li>
+  <li>学生开发者：左雁茹，中国科学技术大学研究生（zuoyanru@mail.ustc.edu.cn）</li>
+  <li>项目介绍：<a href="https://github.com/wechaty/summer-of-wechaty/issues/82">https://github.com/wechaty/summer-of-wechaty/issues/82</a></li>
+  <li><a href="https://wechaty.js.org/2021/07/17/ospp-plan-wechaty-puppet-oa/">OSPP 2021-期初报告-基于 Wechaty Puppet Official Account 项目的用户与消息等基础功能的完善</a></li>
+  <li><a href="https://wechaty.js.org/2021/08/26/ospp-mid-term-wechaty-puppet-oa/">OSPP 2021-期中报告-基于 Wechaty Puppet Official Account 项目的用户与消息等基础功能的完善</a></li>
+  <li><a href="https://wechaty.js.org/2021/10/03/ospp-final-term-wechaty-puppet-oa/">OSPP 2021-结项报告-基于 Wechaty Puppet Official Account 项目的用户与消息等基础功能的完善</a></li>
+</ul>
+
+<h4 id="展示视频-7">展示视频</h4>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/ySxpkKjv018" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<blockquote>
+  <p><a href="https://v.qq.com/x/page/b3310j4kg8y.html">Tencent video link</a></p>
+</blockquote>
+
+<h4 id="live-demo-视频-7">Live Demo 视频</h4>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/iVyutBZMZRE" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<blockquote>
+  <p><a href="https://v.qq.com/x/page/z3310lxhvbu.html">Tencent video link</a></p>
+</blockquote>
+
+<h3 id="基于wechaty-开发开源的二师兄社群逗乐机器人">基于Wechaty 开发开源的二师兄社群逗乐机器人</h3>
+
+<ul>
+  <li>导师：王玉丹 Wechaty Contributor，AI Chatbot Wechaty x PaddleHub UP主，Wechaty社区大使 （valeriewyd@gmail.com）；鲁玉超 物联网行业产品经理、微信小程序群组大师开发者 （atorber@163.com）；韩磊 百度飞桨PPDE，飞桨上海领航团团长 （iregisteru@163.com）</li>
+  <li>学生开发者：井维嘉，海南大学（hbsjzjwj@163.com）</li>
+  <li>项目介绍：<a href="https://github.com/wechaty/summer-of-wechaty/issues/83">https://github.com/wechaty/summer-of-wechaty/issues/83</a></li>
+  <li><a href="https://wechaty.js.org/2021/07/13/ospp-plan-wechaty-piggy-bro/">OSPP 2021-期初报告-基于 Wechaty 开发开源的二师兄社群逗乐机器人</a></li>
+  <li><a href="https://wechaty.js.org/2021/08/26/ospp-mid-term-wechaty-piggy-bro/">OSPP 2021-期中报告-基于 Wechaty 开发开源的二师兄社群逗乐机器人</a></li>
+  <li><a href="https://wechaty.js.org/2021/10/06/ospp-final-term-wechaty-piggy-bro/">OSPP 2021-结项报告-基于 Wechaty 开发开源的二师兄社群逗乐机器人</a></li>
+</ul>
+
+<h4 id="展示视频-8">展示视频</h4>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/Na9pGdf_6oY" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<blockquote>
+  <p><a href="https://v.qq.com/x/page/u3310br5o4k.html">Tencent video link</a></p>
+</blockquote>
+
+<h4 id="live-demo-视频-8">Live Demo 视频</h4>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/51EwCNB_Y90" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<blockquote>
+  <p><a href="https://v.qq.com/x/page/g3310wbhou9.html">Tencent video link</a></p>
+</blockquote>
+
+<h2 id="欢迎报名开源之夏-2022">欢迎报名开源之夏 2022</h2>
+
+<h3 id="报名学生开发者">报名学生开发者</h3>
+
+<blockquote>
+  <p>在校生都可以报名</p>
+</blockquote>
+
+<p>原始博客见： <a href="https://wechaty.js.org/2021/06/24/summer-wechaty-guide/">OSPP（开源之夏）指导手册 - 2021</a></p>
+
+<p>Wechaty 的项目 Issue 作为本次同学和导师通知的主要渠道，请所有同学在入选后，务必完成第一件事：
+<strong>在项目清单 Issue 下面，把所有同学和导师需要完成的工作，以 checklist 的形式回复到 Issue 下面，方便后续同学和导师完成相关工作，完成后在 Comment 中打钩确认</strong></p>
+
+<p>Wechaty 社区秉持开源开放的的原则，所有会议记录、在线会议、阶段性报告等视频、文档资料都会对社区完全开放。对自己的视频、文档资料介意开放的同学，请谨慎考虑加入。</p>
+
+<p>参与项目的同学完成 <strong>日常工作</strong> 和 <strong>阶段性工作</strong>，具体如下：</p>
+
+<h4 id="学生日常工作">学生日常工作</h4>
+
+<p>学生每周在 issue 下回复进度报告。</p>
+
+<p>日常工作以 OSPP 2020 的优秀学生突出贡献奖获得者<a href="https://wechaty.js.org/contributors/univerone/">江姗姗</a>的周报告和导师总结为例，详见<a href="https://github.com/wechaty/summer-of-wechaty/issues/10">编写一个“每日一句”插件</a></p>
+
+<p>报告模板参考：<a href="https://github.com/wechaty/summer/blob/master/iscas-open-source-promotion-plan/template/student-weekly-report-template.md">student-weekly-report-template</a></p>
+
+<h4 id="学生阶段性工作">学生阶段性工作</h4>
+
+<ul>
+  <li><a href="https://github.com/wechaty/summer/blob/master/iscas-open-source-promotion-plan/2021/student-plan.md">期初报告要求</a></li>
+  <li><a href="https://github.com/wechaty/summer/blob/master/iscas-open-source-promotion-plan/2021/student-mid-term.md">期中报告要求</a></li>
+  <li>期中答辩(Mid-term Demo Day)</li>
+  <li><a href="https://github.com/wechaty/summer/blob/master/iscas-open-source-promotion-plan/2021/student-final-term.md">期末报告要求</a></li>
+  <li>期末答辩(Final-term Demo Day)</li>
+</ul>
+
+<h3 id="报名社区导师">报名社区导师</h3>
+
+<blockquote>
+  <p>社区的 Contributor 都可以报名</p>
+</blockquote>
+
+<h4 id="导师日常工作">导师日常工作</h4>
+
+<p>导师每周在 issue 下根据学生的进度报告进行评分。</p>
+
+<p>日常工作以 OSPP 2020 的优秀学生突出贡献奖获得者<a href="https://wechaty.js.org/contributors/univerone/">江姗姗</a>的周报告和导师总结为例，详见<a href="https://github.com/wechaty/summer-of-wechaty/issues/10">编写一个“每日一句”插件</a></p>
+
+<p>报告模板参考：<a href="https://github.com/wechaty/summer/blob/master/iscas-open-source-promotion-plan/template/mentor-weekly-report-template.md">mentor-weekly-report-template</a></p>
+
+<h4 id="导师阶段性工作">导师阶段性工作</h4>
+
+<ul>
+  <li><a href="https://github.com/wechaty/summer/blob/master/iscas-open-source-promotion-plan/2021/mentor-plan.md">期初报告评审</a></li>
+  <li><a href="https://github.com/wechaty/summer/blob/master/iscas-open-source-promotion-plan/2021/mentor-mid-term.md">期中报告评审</a></li>
+  <li>期中答辩(Mid-term Demo Day)</li>
+  <li><a href="https://github.com/wechaty/summer/blob/master/iscas-open-source-promotion-plan/2021/mentor-final-term.md">期末报告评审</a></li>
+  <li>期末答辩(Final-term Demo Day)</li>
+</ul>
+
+<h3 id="报名wechaty-ospp-org-admin">报名Wechaty OSPP Org Admin</h3>
+
+<blockquote>
+  <p>当过导师的 Wechaty Contributor 可以报名</p>
+</blockquote>
+
+<h4 id="工具包">工具包</h4>
+
+<ol>
+  <li>社区 Repo: <a href="https://github.com/wechaty/summer">https://github.com/wechaty/summer</a></li>
+  <li>社区通知 Issue：<a href="https://github.com/wechaty/summer/issues/筹备会中完成后确认的项目清单链接">https://github.com/wechaty/summer/issues/筹备会中完成后确认的项目清单链接</a></li>
+  <li>社区微信群：<strong><em>Summer of Wechaty - SoW</em></strong></li>
+  <li>社区 Org Admin 组委会群：<strong><em>Summer of Wechaty Org Admin SoW</em></strong></li>
+  <li>Wechaty Contributor 群：<strong><em>Wechaty Contributors</em></strong></li>
+  <li>所有发布到 Wechaty 的博客需要打上如下标签：
+    <ul>
+      <li>ospp-admin</li>
+      <li>summer-2022</li>
+      <li>summer-of-wechaty</li>
+      <li>ospp</li>
+      <li>ospp-2022</li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="org-admin-阶段性工作">Org Admin 阶段性工作</h4>
+
+<ul>
+  <li><a href="https://github.com/wechaty/summer/blob/master/iscas-open-source-promotion-plan/2021/org-admin-prepare.md">筹备阶段</a></li>
+  <li><a href="https://github.com/wechaty/summer/blob/master/iscas-open-source-promotion-plan/2021/org-admin-first-meeting.md">期初见面会</a></li>
+  <li><a href="https://github.com/wechaty/summer/blob/master/iscas-open-source-promotion-plan/2021/org-admin-mid-term.md">期中报告状态收集 &amp; 答辩</a></li>
+  <li><a href="https://github.com/wechaty/summer/blob/master/iscas-open-source-promotion-plan/2021/org-admin-final-term.md">期末报告状态收集 &amp; 答辩</a></li>
+  <li><a href="https://github.com/wechaty/summer/blob/master/iscas-open-source-promotion-plan/2021/org-admin-be-better.md">复盘 &amp; 展望</a></li>
+</ul>
+
+<h2 id="欢迎正在阅读的你参与其中">欢迎正在阅读的你参与其中</h2>
+
+<p>虽然“暑期2021”的报名已经结束，但Wechaty社区依然欢迎正在阅读本篇内容的你参与到暑期2021的工作中来。
+以下是几种可能的参与方式：</p>
+
+<ul>
+  <li>时刻跟进Wechaty SoC项目的每周例行更新Issue，并直接与相关负责导师和学生开发者取得联系，和他们交流相关进展。</li>
+  <li>在 Wechaty 开发者群内，为学生开发者们的Plan Blog、POC Blog和Finished Blog点赞和提出想法。</li>
+  <li>直接参与已经完成部分工作的项目开发，为学生开发者们负责的复杂项目添砖加瓦。</li>
+  <li><a href="https://github.com/wechaty/summer">了解更多</a></li>
+</ul>
+
+<hr />
+
+<blockquote>
+  <p>This post is also available in <a href="/2021/10/09/summer-2021-wechaty-soc-final-demo-day-en/">English</a>.</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ospp-admin">ospp-admin</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#summer-2021">summer-2021</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#summer-of-wechaty">summer-of-wechaty</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ospp">ospp</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ospp-2021">ospp-2021</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ecosystem">ecosystem</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#meetup">meetup</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#featured">featured</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#final">final</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/juzibot">
+                            <img class="rounded-circle" src="/assets/contributors/juzibot/avatar.webp" alt="juzibot" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/juzibot">juzibot</a> </h5>
+						句子互动是一家人工智能技术与服务提供商,主营业务是基于微信生态,为客户提供集销售、市场和售后于一体的微信智能客服系统。
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/10/09/summer-2021-wechaty-soc-final-demo-day-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/10-summer-2021-wechaty-soc-final-demo-day-en/final-demo-day.webp">  Wechaty OSPP (Summer of Open Source) Final Demo Day</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/10/12/kai-yuan-she-2021/"> 今年的 COSCon 中国开源年会，让我们聊点不一样的  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/10-kai-yuan-she-2021/kai-yuan-she-event-2021.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

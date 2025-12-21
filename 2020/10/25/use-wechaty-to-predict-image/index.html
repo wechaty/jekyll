@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      通过Wechaty使用深度学习模型预测图片类型 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>通过Wechaty使用深度学习模型预测图片类型 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="通过Wechaty使用深度学习模型预测图片类型" />
+<meta name="author" content="lyleshaw" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Use wechaty to apply pytorch model via WeChat." />
+<meta property="og:description" content="Use wechaty to apply pytorch model via WeChat." />
+<link rel="canonical" href="https://wechaty.js.org/2020/10/25/use-wechaty-to-predict-image/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/10/25/use-wechaty-to-predict-image/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/10-use-wechaty-to-predict-image/screenshot.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-10-25T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/10-use-wechaty-to-predict-image/screenshot.webp" />
+<meta property="twitter:title" content="通过Wechaty使用深度学习模型预测图片类型" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"lyleshaw"},"dateModified":"2020-10-25T00:00:00+00:00","datePublished":"2020-10-25T00:00:00+00:00","description":"Use wechaty to apply pytorch model via WeChat.","headline":"通过Wechaty使用深度学习模型预测图片类型","image":"https://wechaty.js.org/assets/2020/10-use-wechaty-to-predict-image/screenshot.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/10/25/use-wechaty-to-predict-image/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"lyleshaw"},"url":"https://wechaty.js.org/2020/10/25/use-wechaty-to-predict-image/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">通过Wechaty使用深度学习模型预测图片类型</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/lyleshaw">
+                            <img class="rounded-circle" src="/assets/contributors/lyleshaw/avatar.webp" alt="Lyle Shaw" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/lyleshaw">Lyle Shaw</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Oct 25, 2020 · <span class="reading-time">
+  
+  
+    6 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/10-use-wechaty-to-predict-image/screenshot.webp" alt="通过Wechaty使用深度学习模型预测图片类型">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>Use wechaty to apply pytorch model via WeChat.</p>
+
+<h2 id="想法">想法</h2>
+
+<p>在跑深度学习模型时，我时常会感觉调用一个模型好复杂，需要写好长好长的代码，而我又没有学过小程序开发，于是想到做一个用微信快速调用模型的小玩意儿。</p>
+
+<p>本项目即是通过wechaty与微信通讯，利用fastapi中转数据并调用pytorch模型的实践。</p>
+
+<p>同时，目前该项目仅仅作为一个MVP（最小可行产品），功能可能并不完善，在未来或许会加入模型训练完毕提醒/模型训练意外终止提醒等功能，敬请期待~</p>
+
+<p>完整代码见<a href="https://github.com/lyleshaw/Wechaty-Torch">https://github.com/lyleshaw/Wechaty-Torch</a></p>
+
+<h2 id="原理">原理</h2>
+
+<ul>
+  <li>用户在微信发送图片–&gt;</li>
+  <li>–&gt;wechaty收到图片并进行base64后post请求到后端–&gt;</li>
+  <li>–&gt;使用fastapi开发的后端收到图片的base64编码后调用模型–&gt;</li>
+  <li>–&gt;模型给与预测与置信度表传给后端–&gt;</li>
+  <li>–&gt;后端收到后向wechaty响应–&gt;</li>
+  <li>–&gt;wechaty收到数据后发送给用户.</li>
+</ul>
+
+<h2 id="文件结构">文件结构</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">wechaty-torch.ts</code> typescript文件，使用wechaty与微信通讯；</li>
+  <li><code class="language-plaintext highlighter-rouge">main.py</code> 后端文件，基于fastapi开发，中转图片数据；</li>
+  <li><code class="language-plaintext highlighter-rouge">model.py</code> 模型调用文件，给出预测和置信度；</li>
+  <li><code class="language-plaintext highlighter-rouge">model.pth</code> <strong>(由于模型文件过大，请按快速开始的说明手动下载)</strong>模型文件（二进制），使用WideResNet在CIFAR-10数据集上进行训练，测试集准确率91.22%.</li>
+</ul>
+
+<h2 id="依赖库">依赖库</h2>
+
+<p>typescript：请按照wechaty文档安装.</p>
+
+<p>python：fastapi,uvicorn,torch,numpy,PIL</p>
+
+<h2 id="快速开始">快速开始</h2>
+
+<blockquote>
+  <p>请确保您已将所有依赖环境安装成功</p>
+</blockquote>
+
+<ol>
+  <li><strong><a href="https://hdueducn-my.sharepoint.com/:u:/g/personal/lyle_hdu_edu_cn/EX3kZ7SAFlZIriRZPQdbVmkBGKWpp8CGviu7Nt9sqlaNrg?e=JLvgr2">点击这里</a></strong> 下载<code class="language-plaintext highlighter-rouge">model.pth</code>，并将<code class="language-plaintext highlighter-rouge">model.pth</code>放到项目文件夹下</li>
+  <li>在<code class="language-plaintext highlighter-rouge">wechaty-torch.ts</code>文件的<code class="language-plaintext highlighter-rouge">const token = 'YOUR_TOKEN_HERE'</code>处填入您的token（获取方式见wechaty文档）；</li>
+  <li>在<code class="language-plaintext highlighter-rouge">model.py</code>文件的<code class="language-plaintext highlighter-rouge">os.chdir("Your PATH")</code>处修改为您的文件路径；</li>
+  <li>运行<code class="language-plaintext highlighter-rouge">main.py</code>后运行<code class="language-plaintext highlighter-rouge">wechaty-torch.ts</code>.</li>
+</ol>
+
+<h2 id="开发过程">开发过程</h2>
+
+<h3 id="wechaty部分">wechaty部分</h3>
+
+<p>首先创建一个名叫wechaty-torch的bot；</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Message</span><span class="p">,</span> <span class="nx">Wechaty</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">ScanStatus</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty-puppet</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">PuppetPadplus</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty-puppet-padplus</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">QrcodeTerminal</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">qrcode-terminal</span><span class="dl">'</span>
+<span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">request</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="kd">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">YOUR_TOKEN_HERE</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">puppet</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PuppetPadplus</span><span class="p">({</span>
+  <span class="nx">token</span><span class="p">,</span>
+<span class="p">})</span>
+
+<span class="kd">const</span> <span class="nx">name</span>  <span class="o">=</span> <span class="dl">'</span><span class="s1">wechaty-torch</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Wechaty</span><span class="p">({</span>
+  <span class="na">name</span><span class="p">:</span> <span class="nx">name</span><span class="p">,</span>
+  <span class="nx">puppet</span><span class="p">,</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>然后扫码登录后，显示登录帐号；</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">qrcode</span><span class="p">,</span> <span class="nx">status</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">status</span> <span class="o">===</span> <span class="nx">ScanStatus</span><span class="p">.</span><span class="nx">Waiting</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">QrcodeTerminal</span><span class="p">.</span><span class="nf">generate</span><span class="p">(</span><span class="nx">qrcode</span><span class="p">,</span> <span class="p">{</span>
+      <span class="na">small</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">})</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span>  <span class="p">,</span> <span class="nx">user</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="dl">'</span><span class="s1">Bot</span><span class="dl">'</span><span class="p">,</span> <span class="s2">`bot login: </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2">`</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>message部分是该文件的重点，首先获取消息类型，如果非图片即跳出，是图片则将图转化为base64编码后使用request发送post请求到<code class="language-plaintext highlighter-rouge">http://127.0.0.1:8000/message</code>(后端服务器)，然后将响应值回复给用户；</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="k">async </span><span class="p">(</span><span class="nx">msg</span><span class="p">:</span> <span class="nx">Message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nf">type</span><span class="p">()</span> <span class="o">!==</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">Audio</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="kd">const</span> <span class="nx">file</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">toFileBox</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="nx">bsimg</span> <span class="o">=</span> <span class="nx">file</span><span class="p">.</span><span class="nf">toBase64</span><span class="p">();</span>
+    <span class="kd">var</span> <span class="nx">formData</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">bsimg</span><span class="p">:</span> <span class="nx">bsimg</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">try</span><span class="p">{</span>
+      <span class="nx">request</span><span class="p">.</span><span class="nf">post</span><span class="p">({</span><span class="na">url</span><span class="p">:</span><span class="dl">'</span><span class="s1">http://127.0.0.1:8000/message</span><span class="dl">'</span><span class="p">,</span> <span class="na">formData</span><span class="p">:</span> <span class="nx">formData</span><span class="p">},</span> <span class="nf">function </span><span class="p">(</span><span class="na">error</span><span class="p">:</span><span class="kr">any</span><span class="p">,</span> <span class="na">response</span><span class="p">:</span><span class="kr">any</span><span class="p">,</span> <span class="na">body</span><span class="p">:</span><span class="kr">any</span><span class="p">)</span> <span class="p">{</span>  
+          <span class="k">if </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+              <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Error :</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">)</span>
+              <span class="k">return</span>
+          <span class="p">}</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1"> Body :</span><span class="dl">'</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span>
+          <span class="kd">var</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span>
+          <span class="k">if</span><span class="p">(</span><span class="nx">body</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">){</span>
+            <span class="kd">const</span> <span class="na">pred</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="nx">response</span><span class="p">[</span><span class="dl">'</span><span class="s1">pred</span><span class="dl">'</span><span class="p">]</span>
+            <span class="kd">const</span> <span class="nx">other</span> <span class="o">=</span> <span class="nx">response</span><span class="p">[</span><span class="dl">'</span><span class="s1">other</span><span class="dl">'</span><span class="p">]</span>
+            <span class="nx">msg</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">pred</span><span class="o">+</span><span class="dl">'</span><span class="se">\n</span><span class="dl">'</span><span class="o">+</span><span class="nx">other</span><span class="p">)</span>
+          <span class="p">}</span>
+      <span class="p">})</span>
+    <span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+</code></pre></div></div>
+
+<p>最后启动机器人即可。</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">bot</span><span class="p">.</span><span class="nf">start</span><span class="p">().</span><span class="k">catch</span><span class="p">(</span><span class="k">async</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="dl">'</span><span class="s1">Bot</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">init() fail:</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">e</span><span class="p">)</span>
+  <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nf">stop</span><span class="p">()</span>
+  <span class="nx">process</span><span class="p">.</span><span class="nf">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h3 id="后端部分">后端部分</h3>
+
+<p>首先，引入各种依赖库和模型调用文件；</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="n">fastapi</span> <span class="kn">import</span> <span class="n">Depends</span><span class="p">,</span> <span class="n">FastAPI</span>
+<span class="kn">import</span> <span class="n">time</span>
+<span class="kn">from</span> <span class="n">fastapi.middleware.cors</span> <span class="kn">import</span> <span class="n">CORSMiddleware</span>
+<span class="kn">from</span> <span class="n">starlette.responses</span> <span class="kn">import</span> <span class="n">RedirectResponse</span>
+<span class="kn">from</span> <span class="n">typing</span> <span class="kn">import</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Generic</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">Any</span>
+<span class="kn">from</span> <span class="n">starlette.requests</span> <span class="kn">import</span> <span class="n">Request</span>
+<span class="kn">import</span> <span class="n">sys</span>
+<span class="kn">from</span> <span class="n">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">import</span> <span class="n">os</span>
+<span class="kn">import</span> <span class="n">json</span>
+
+<span class="kn">from</span> <span class="n">model</span> <span class="kn">import</span> <span class="n">get_bsimg_pred</span>
+</code></pre></div></div>
+
+<p>然后创建一个FastAPI应用，并定义Message类（内含bsimg）；</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">app</span> <span class="o">=</span> <span class="nc">FastAPI</span><span class="p">()</span>
+
+<span class="n">app</span><span class="p">.</span><span class="nf">add_middleware</span><span class="p">(</span>
+    <span class="n">CORSMiddleware</span><span class="p">,</span>
+    <span class="n">allow_origins</span><span class="o">=</span><span class="p">[</span><span class="sh">'</span><span class="s">*</span><span class="sh">'</span><span class="p">],</span>
+    <span class="n">allow_credentials</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="n">allow_methods</span><span class="o">=</span><span class="p">[</span><span class="sh">"</span><span class="s">*</span><span class="sh">"</span><span class="p">],</span>
+    <span class="n">allow_headers</span><span class="o">=</span><span class="p">[</span><span class="sh">"</span><span class="s">*</span><span class="sh">"</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Message</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">bsimg</span><span class="p">:</span> <span class="nb">str</span>
+</code></pre></div></div>
+
+<p>简简单单写一个post请求，完事。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@app.post</span><span class="p">(</span><span class="sh">"</span><span class="s">/message/</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">m</span><span class="p">(</span><span class="n">msg</span><span class="p">:</span> <span class="n">Message</span><span class="p">):</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="nf">get_bsimg_pred</span><span class="p">(</span><span class="n">bsimg</span><span class="o">=</span><span class="n">msg</span><span class="p">.</span><span class="n">bsimg</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="sh">'</span><span class="s">content</span><span class="sh">'</span> <span class="p">:</span> <span class="n">content</span>
+    <span class="p">}</span>
+
+</code></pre></div></div>
+
+<h3 id="模型部分">模型部分</h3>
+
+<blockquote>
+  <p>模型部分仅介绍部分函数。</p>
+</blockquote>
+
+<p><strong>获得预测值和其余标签置信度</strong>：传入tensor类型的变量img，返回pred:int 预测值ID、conf_list:list 其余变量置信度；</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">get_pred</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nc">Variable</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">.</span><span class="nf">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="p">.</span><span class="nf">no_grad</span><span class="p">():</span>
+        <span class="n">y_</span> <span class="o">=</span> <span class="nf">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">y_</span><span class="p">.</span><span class="nf">max</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="bp">True</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">pred</span><span class="p">.</span><span class="nf">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">conf_list</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="nc">Softmax</span><span class="p">()(</span><span class="n">torch</span><span class="p">.</span><span class="nf">tensor</span><span class="p">(</span><span class="n">y_</span><span class="p">[</span><span class="mi">0</span><span class="p">])).</span><span class="nf">tolist</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">pred</span><span class="p">,</span><span class="n">conf_list</span>
+</code></pre></div></div>
+
+<p><strong>将base64编码转换为PLT图片类型</strong>：传入str类型的base64编码，返回PLT图片类型变量img；</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">base64_to_image</span><span class="p">(</span><span class="n">base64_str</span><span class="p">):</span>
+    <span class="n">base64_data</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="sh">'</span><span class="s">^data:image/.+;base64,</span><span class="sh">'</span><span class="p">,</span> <span class="sh">''</span><span class="p">,</span> <span class="n">base64_str</span><span class="p">)</span>
+    <span class="n">byte_data</span> <span class="o">=</span> <span class="n">base64</span><span class="p">.</span><span class="nf">b64decode</span><span class="p">(</span><span class="n">base64_data</span><span class="p">)</span>
+    <span class="n">image_data</span> <span class="o">=</span> <span class="nc">BytesIO</span><span class="p">(</span><span class="n">byte_data</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="n">image_data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">img</span>
+</code></pre></div></div>
+
+<p><strong>获得base64编码图片的预测内容</strong>：传入str类型的base64编码，返回包含预测值和置信度的字符串；</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">get_bsimg_pred</span><span class="p">(</span><span class="n">bsimg</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="n">img_1</span> <span class="o">=</span> <span class="nf">transform</span><span class="p">(</span><span class="nf">base64_to_image</span><span class="p">(</span><span class="n">bsimg</span><span class="p">))</span>
+    <span class="n">img_2</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">img_1</span> <span class="o">=</span> <span class="n">img_1</span><span class="p">.</span><span class="nf">tolist</span><span class="p">()</span>
+    <span class="n">img_2</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">img_1</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nf">tensor</span><span class="p">(</span><span class="n">img_2</span><span class="p">)</span>
+    <span class="n">pred</span><span class="p">,</span><span class="n">con_list</span> <span class="o">=</span> <span class="nf">get_pred</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+    <span class="n">confi_list</span> <span class="o">=</span> <span class="sh">''</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="n">confi_list</span> <span class="o">=</span> <span class="n">confi_list</span> <span class="o">+</span> <span class="sh">"</span><span class="s">%8s 的置信度为： %.2f%%</span><span class="se">\n</span><span class="sh">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">label</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">con_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nf">str</span><span class="p">(</span><span class="n">label</span><span class="p">[</span><span class="n">pred</span><span class="p">])</span><span class="o">+</span><span class="sh">'</span><span class="se">\n</span><span class="sh">'</span><span class="o">+</span><span class="n">confi_list</span>
+</code></pre></div></div>
+
+<p>以上即是开发过程~</p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#python">python</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#pytorch">pytorch</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#machine-learning">machine-learning</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#productivity">productivity</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/lyleshaw">
+                            <img class="rounded-circle" src="/assets/contributors/lyleshaw/avatar.webp" alt="Lyle Shaw" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/lyleshaw">Lyle Shaw</a> </h5>
+						Just a student.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/10/22/wetchat-bot-chat/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/wetchat-bot-chat/demo.webp">  基于Wechaty打造定时多功能机器人(一)</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/10/26/java-wechaty-group-message-sync/"> Wechaty bot in Java to sync group messages  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/java-group-message-sync-bot/wechaty-java.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

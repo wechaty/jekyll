@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      用 Wechaty 实现工作日报管理系统 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>用 Wechaty 实现工作日报管理系统 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="用 Wechaty 实现工作日报管理系统" />
+<meta name="author" content="zzhoouxin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Conversational RPA SDK for Chatbot Makers" />
+<meta property="og:description" content="Conversational RPA SDK for Chatbot Makers" />
+<link rel="canonical" href="https://wechaty.js.org/2020/07/11/wechaty-daily-report/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/07/11/wechaty-daily-report/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/wechaty-daily/daily.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-07-11T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/wechaty-daily/daily.webp" />
+<meta property="twitter:title" content="用 Wechaty 实现工作日报管理系统" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zzhoouxin"},"dateModified":"2020-07-11T00:00:00+00:00","datePublished":"2020-07-11T00:00:00+00:00","description":"Conversational RPA SDK for Chatbot Makers","headline":"用 Wechaty 实现工作日报管理系统","image":"https://wechaty.js.org/assets/2020/wechaty-daily/daily.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/07/11/wechaty-daily-report/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"zzhoouxin"},"url":"https://wechaty.js.org/2020/07/11/wechaty-daily-report/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">用 Wechaty 实现工作日报管理系统</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/zzhoouxin">
+                            <img class="rounded-circle" src="/assets/contributors/zzhoouxin/avatar.webp" alt="zzhoouxin" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/zzhoouxin">zzhoouxin</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jul 11, 2020 · <span class="reading-time">
+  
+  
+    7 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/wechaty-daily/daily.webp" alt="用 Wechaty 实现工作日报管理系统">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p><a href="https://github.com/wechaty/wechaty"><img src="https://img.shields.io/badge/Powered%20By-Wechaty-green.svg#align=left&amp;display=inline&amp;height=20&amp;margin=%5Bobject%20Object%5D&amp;originHeight=20&amp;originWidth=132&amp;status=done&amp;style=none&amp;width=132" alt="Wechaty" /></a>
+<a href="https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty"><img src="https://img.shields.io/badge/Wechaty-%E5%BC%80%E6%BA%90%E6%BF%80%E5%8A%B1%E8%AE%A1%E5%88%92-green.svg#align=left&amp;display=inline&amp;height=20&amp;margin=%5Bobject%20Object%5D&amp;originHeight=20&amp;originWidth=134&amp;status=done&amp;style=none&amp;width=134" alt="Wechaty" /></a></p>
+
+<h2 id="背景">背景</h2>
+
+<p>我们日常每天都需要写日报,用来汇报今日工作内容和明日工作计划。日报内容维护在 wiki 里面。团队 TL 每天会去 wiki 上收集工作内容；在发送到公司大群。但是每天会有小伙伴会忘记写。 导致 TL 没办法收集今日内容。很是苦恼。还有每次编写都需要去 wiki 挨个复制每个人的。 工作效率很低；</p>
+
+<h2 id="思考">思考</h2>
+
+<p>之前也了解过 wechaty，就想着是否可以做一个每天快下班提醒团队小伙伴，维护下工作日报。以及团队 TL 便捷获取团队所有日报的系统。不需要一个个复制；</p>
+
+<h2 id="项目地址">项目地址</h2>
+
+<p>github:<a href="https://github.com/zzhoouxin/wechaty-bot">https://github.com/zzhoouxin/wechaty-bot</a></p>
+
+<h2 id="基础依赖">基础依赖</h2>
+
+<ul>
+  <li><a href="https://github.com/wechaty/wechaty">wechaty</a> –微信操作</li>
+  <li><a href="https://github.com/node-schedule/node-schedule">node-schedule</a> –定时任务</li>
+  <li><a href="https://github.com/visionmedia/superagent">superagent</a> –接口请求</li>
+  <li><a href="https://github.com/cheeriojs/cheerio#readme">cheerio</a> – 抓取数据</li>
+  <li><a href="https://github.com/gtanner/qrcode-terminal">qrcode-terminal</a> –终端显示二维码</li>
+</ul>
+
+<h2 id="功能">功能</h2>
+
+<ul>
+  <li>定时提醒组内小伙伴填写工作日报以及发送工作日报到工作群</li>
+  <li>根据关键字自动发送日报内容</li>
+  <li>后续功能…(等待和小组人员讨论)</li>
+</ul>
+
+<h2 id="项目成果">项目成果</h2>
+
+<ul>
+  <li>日常提醒
+  <img src="/assets/2020/wechaty-daily/daily.webp" alt="效果图" /></li>
+  <li>定时发送日报
+  <img src="/assets/2020/wechaty-daily/daily2.webp" alt="效果图" /></li>
+  <li>根据关键字发送日报内容
+  <img src="/assets/2020/wechaty-daily/daily3.webp" alt="image.png" /></li>
+</ul>
+
+<h2 id="1项目结构">1.项目结构</h2>
+
+<p><img src="/assets/2020/wechaty-daily/daily4.webp" alt="image.png" /></p>
+
+<ul>
+  <li>bot 存放 wechaty 每个状态的回调函数</li>
+  <li>schecdule 定时任务-获取日报并发送</li>
+  <li>config 基本配置-链接、群号等</li>
+  <li>tool 封装基础请求、公共方法</li>
+  <li>index.js 启动入口</li>
+</ul>
+
+<h2 id="1indexjs--wechaty-启动入口">1.index.js – wechaty 启动入口</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">Wechaty</span><span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">PuppetPadplus</span><span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty-puppet-padplus</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">config</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">./config</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">onScan</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">./bot/onScan</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">onLogin</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">./bot/onLogin</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">onMessage</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">./bot/onMessage</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">onLogout</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">./bot/onLogout</span><span class="dl">'</span>
+<span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Wechaty</span><span class="p">({</span>
+    <span class="na">puppet</span><span class="p">:</span> <span class="k">new</span> <span class="nc">PuppetPadplus</span><span class="p">({</span>
+        <span class="na">token</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">TOKEN</span>
+    <span class="p">}),</span>
+    <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">小艾</span><span class="dl">"</span>
+<span class="p">});</span>
+<span class="nx">bot</span>
+    <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">,</span> <span class="nx">onScan</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span> <span class="nf">onLogin</span><span class="p">(</span><span class="nx">bot</span><span class="p">))</span>
+    <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">logout</span><span class="dl">'</span><span class="p">,</span> <span class="nx">onLogout</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="nf">onMessage</span><span class="p">(</span><span class="nx">bot</span><span class="p">))</span>
+    <span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+    <span class="p">.</span><span class="nf">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">开始登陆微信</span><span class="dl">'</span><span class="p">))</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="nx">e</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>这边使用的是<a href="https://github.com/wechaty/wechaty-puppet-padplus#readme">wechaty-puppet-padplus</a>基于 ipad 协议进行开发的；<code class="language-plaintext highlighter-rouge">scan login logout message</code>这些是 Wechaty 的基础回调事件。</p>
+
+<h2 id="2config-基础文件配置这里面都是自己基于自己业务的参数-如果您也是用confluence-wiki-那可以参考下">2.config 基础文件配置<code class="language-plaintext highlighter-rouge">这里面都是自己基于自己业务的参数-如果您也是用confluence wiki 那可以参考下</code></h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 配置文件</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">// 每个人对应页面的ID</span>
+  <span class="na">ALL_USER_LIST</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="mi">27169291</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">小人头</span><span class="dl">'</span><span class="p">},</span>
+  <span class="p">],</span>
+  <span class="na">WITHDRAWA_DATE</span><span class="p">:</span> <span class="dl">'</span><span class="s1">00 50 17 * * *</span><span class="dl">'</span><span class="p">,</span> <span class="c1">//定时任务事件</span>
+  <span class="na">COLLOECT_DATE</span><span class="p">:</span><span class="dl">'</span><span class="s1">10 30 09 * * *</span><span class="dl">'</span><span class="p">,</span> <span class="c1">// 定时任务事件</span>
+  <span class="na">WIKI_URL</span><span class="p">:</span> <span class="dl">'</span><span class="s1">http://wiki.xxxxx.com/pages/viewpage.action?pageId=</span><span class="dl">'</span><span class="p">,</span> <span class="c1">//wiki内容地址</span>
+  <span class="na">TOKEN</span><span class="p">:</span> <span class="dl">'</span><span class="s1">puppet_padplus_xxxxx</span><span class="dl">'</span><span class="p">,</span><span class="c1">//token</span>
+  <span class="na">ROOM</span><span class="p">:</span> <span class="dl">'</span><span class="s1">22186778457@chatroom</span><span class="dl">'</span><span class="p">,</span><span class="c1">//需要发送的群号</span>
+  <span class="na">KEYWORDs</span><span class="p">:[</span><span class="dl">'</span><span class="s1">本组</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">全部</span><span class="dl">'</span><span class="p">]</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p><img src="/assets/2020/wechaty-daily/daily5.webp" alt="image.png" /></p>
+
+<p>里面的 wiki_url 是我们自己平常填写日报的 wiki 地址。如果您使用其他方式-那就具体情况具体分析</p>
+
+<h2 id="3定时任务提醒">3.定时任务提醒</h2>
+
+<ul>
+  <li>在登录后启动定时任务</li>
+</ul>
+
+<p>这边我们就使用到了- <a href="https://github.com/node-schedule/node-schedule">node-schedule</a> 这个 node 库 当然可以配置他的启动时间。可以查看官网详细说明。</p>
+
+<h2 id="31-首页我们在-wechaty-的-onlogin-事件里面加入定时任务">3.1 首页我们在 wechaty 的 onlogin 事件里面加入定时任务</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">dailyRemind</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">../schedule/dailyRemind</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">collectContent</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">../schedule/collectContent</span><span class="dl">'</span>
+<span class="cm">/**
+ * 扫码登录
+ * @param qrcode
+ * @param status
+ */</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">bot</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">async</span> <span class="kd">function</span> <span class="nf">onLogin</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">await</span> <span class="nf">dailyRemind</span><span class="p">(</span><span class="nx">bot</span><span class="p">);</span><span class="c1">//日常提醒</span>
+        <span class="k">await</span> <span class="nf">collectContent</span><span class="p">(</span><span class="nx">bot</span><span class="p">);</span><span class="c1">//所有汇总</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="32-创建一个定时提醒的任务">3.2 创建一个定时提醒的任务</h2>
+
+<ul>
+  <li>通过 <a href="https://wechaty.js.org/v/zh/api/room#room-find-query-promise-less-than-room-greater-than">bot.Room.find(id)</a> 找到需要提醒的群</li>
+  <li>在使用 <a href="https://wechaty.js.org/v/zh/api/room#room-announce-text-promise-less-than-void-or-string-greater-than">announce</a> 创建群公告 @所有人 即可做到提醒</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">schedule</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">./index</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">config</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">../config</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">utils</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">../tool/utils</span><span class="dl">'</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span><span class="k">async</span>  <span class="kd">function</span> <span class="nf">dailyRemind</span><span class="p">(</span><span class="nx">bot</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">schedule</span><span class="p">.</span><span class="nf">setSchedule</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">WITHDRAWA_DATE</span><span class="p">,</span> <span class="k">async </span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">utils</span><span class="p">.</span><span class="nf">judgeIsJob</span><span class="p">()){</span> <span class="c1">//周末的话，不做提醒</span>
+           <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span>
+       <span class="k">try</span> <span class="p">{</span>
+           <span class="c1">//提醒组内人发送日报</span>
+           <span class="kd">const</span> <span class="nx">searchRoom</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Room</span><span class="p">.</span><span class="nf">find</span><span class="p">({</span> <span class="na">id</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">ROOM</span><span class="p">});</span>
+           <span class="k">await</span> <span class="nx">searchRoom</span><span class="p">.</span><span class="nf">announce</span><span class="p">(</span><span class="dl">"</span><span class="s2">快下班了~大佬们可以更新一下日报啦~/:@)</span><span class="dl">"</span><span class="p">)</span>
+       <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+           <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">error:</span><span class="dl">"</span><span class="p">,</span><span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+       <span class="p">}</span>
+   <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="4根据关键字发送日报内容">#4.根据关键字。发送日报内容</h2>
+
+<ul>
+  <li>
+    <p>上图中 机器人会自动提示，需要回复什么关键字。当然这一步是我们自己配置的。在 config.js 里面有关键字配置属性。直接看代码</p>
+  </li>
+  <li>
+    <p>机器人自动回复-就需要在<code class="language-plaintext highlighter-rouge">message</code>事件里面处理啦-<a href="https://wechaty.js.org/v/zh/api/message">message 的官方文档</a></p>
+  </li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 监听对话</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Message</span> <span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">config</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">../config</span><span class="dl">'</span><span class="p">;</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">(</span><span class="nx">bot</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">async</span> <span class="kd">function</span> <span class="nf">onMessage</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">contact</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="k">from</span><span class="p">();</span> <span class="c1">// 发消息人</span>
+    <span class="kd">const</span> <span class="nx">content</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">text</span><span class="p">();</span> <span class="c1">//消息内容</span>
+    <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">room</span><span class="p">();</span> <span class="c1">//是否是群消息</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nf">self</span><span class="p">())</span> <span class="p">{</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">//如果是文本消息</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nf">type</span><span class="p">()</span> <span class="o">==</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">Text</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// await textJ(bot);</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">room===&gt;</span><span class="dl">'</span><span class="p">,</span> <span class="nx">room</span><span class="p">);</span>
+        <span class="c1">// 如果是群消息</span>
+        <span class="kd">const</span> <span class="nx">topic</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">room</span><span class="p">.</span><span class="nf">topic</span><span class="p">();</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span>
+          <span class="s2">`群名: </span><span class="p">${</span><span class="nx">topic</span><span class="p">}</span><span class="s2"> 发消息人: </span><span class="p">${</span><span class="nx">contact</span><span class="p">.</span><span class="nf">name</span><span class="p">()}</span><span class="s2"> 内容: </span><span class="p">${</span><span class="nx">content</span><span class="p">}</span><span class="s2">`</span>
+        <span class="p">);</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">info</span> <span class="o">=</span> <span class="s2">`日报查询仅支持2种，回复【】内文字即可查询~\n`</span><span class="p">;</span>
+        <span class="nx">config</span><span class="p">.</span><span class="nx">KEYWORDs</span><span class="p">.</span><span class="nf">map</span><span class="p">((</span><span class="nx">v</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">info</span> <span class="o">+=</span> <span class="dl">'</span><span class="s1">【</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">v</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">】</span><span class="dl">'</span> <span class="o">+</span> <span class="dl">'</span><span class="se">\n</span><span class="dl">'</span><span class="p">;</span>
+        <span class="p">});</span>
+        <span class="nx">msg</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">info</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h2 id="5获取自己需要的信息">5.获取自己需要的信息</h2>
+
+<ul>
+  <li>上文中提交到我们有日报填写的地址</li>
+  <li>以及 <a href="https://github.com/visionmedia/superagent">superagent</a></li>
+  <li>和 <a href="https://github.com/cheeriojs/cheerio#readme">cheerio</a></li>
+</ul>
+
+<p>2个依赖库-主要用到请求我们日报地址 并且获取所需要的内容</p>
+
+<p><img src="/assets/2020/wechaty-daily/daily5.webp" alt="image.png" /></p>
+
+<p>这个是我们 wiki 文档的项目结构-我们首先需求通过 superagent 请求访问该页面-并且通过 cheero 获取内容。当然这 2 个依赖库使用。建议先熟悉一下官方文档。下文代码做了一些兼容–</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="kd">function</span> <span class="nf">collectUserContent</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">str</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
+  <span class="k">for </span><span class="p">(</span><span class="kd">let</span> <span class="nx">user</span> <span class="k">of</span> <span class="nx">config</span><span class="p">.</span><span class="nx">ALL_USER_LIST</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">config</span><span class="p">.</span><span class="nx">WIKI_URL</span><span class="p">}${</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">res</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">cheerio</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">text</span><span class="p">);</span>
+    <span class="c1">// const data = $('.wiki-content .p1').text();</span>
+    <span class="nx">str</span> <span class="o">+=</span> <span class="s2">`\n </span><span class="p">${</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2"> \n`</span><span class="p">;</span>
+    <span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.wiki-content p</span><span class="dl">'</span><span class="p">).</span><span class="nf">each</span><span class="p">(</span><span class="nf">function </span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">text</span> <span class="o">=</span> <span class="nf">$</span><span class="p">(</span><span class="nx">e</span><span class="p">).</span><span class="nf">text</span><span class="p">();</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">text</span> <span class="o">!==</span> <span class="dl">'</span><span class="se">\</span><span class="s1">xa0</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">str</span> <span class="o">+=</span> <span class="s2">` </span><span class="p">${</span><span class="nx">text</span><span class="p">}</span><span class="s2"> \n`</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+    <span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.wiki-content .p1pkss0x</span><span class="dl">'</span><span class="p">).</span><span class="nf">each</span><span class="p">(</span><span class="nf">function </span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">html</span> <span class="o">=</span> <span class="nf">$</span><span class="p">(</span><span class="nx">e</span><span class="p">).</span><span class="nf">children</span><span class="p">();</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">html</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">text</span> <span class="o">=</span> <span class="nf">$</span><span class="p">(</span><span class="nx">e</span><span class="p">).</span><span class="nf">text</span><span class="p">();</span>
+        <span class="k">if </span><span class="p">(</span><span class="nx">text</span> <span class="o">!==</span> <span class="dl">'</span><span class="se">\</span><span class="s1">xa0</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">str</span> <span class="o">+=</span> <span class="s2">` </span><span class="p">${</span><span class="nx">text</span><span class="p">}</span><span class="s2"> \n`</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+
+   <span class="nf">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.wiki-content .pd7nslm</span><span class="dl">'</span><span class="p">).</span><span class="nf">each</span><span class="p">(</span><span class="nf">function </span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">html</span> <span class="o">=</span> <span class="nf">$</span><span class="p">(</span><span class="nx">e</span><span class="p">).</span><span class="nf">children</span><span class="p">();</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">html</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">text</span> <span class="o">=</span> <span class="nf">$</span><span class="p">(</span><span class="nx">e</span><span class="p">).</span><span class="nf">text</span><span class="p">();</span>
+        <span class="k">if </span><span class="p">(</span><span class="nx">text</span> <span class="o">!==</span> <span class="dl">'</span><span class="se">\</span><span class="s1">xa0</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">str</span> <span class="o">+=</span> <span class="s2">` </span><span class="p">${</span><span class="nx">text</span><span class="p">}</span><span class="s2"> \n`</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">str</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">获取到自己需要的内容，依旧可以通过room.say发送出去</code>;</p>
+
+<p>至此我们一个简单的日报收集的系统机器人简单的实现了。</p>
+
+<h2 id="总结">总结</h2>
+
+<p>相信很多公司都有发送日报的要求,以上代码实现也是依赖了自己所需业务场景进行实现。通过 wechaty 改变了我们传统的工作流程。大大的提高了工作效率。避免很多重复行为。当然还有更多好玩有趣的功能区可以加入。希望自己可以和团队进行沟通，提高我们流程。大家可以参考以上流程。</p>
+
+<blockquote>
+  <p>作者: <a href="https://github.com/zzhoouxin/">zzhoouxin</a>
+Code: <a href="https://github.com/zzhoouxin/wechaty-bot">Github</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#padplus">padplus</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#productivity">productivity</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/zzhoouxin">
+                            <img class="rounded-circle" src="/assets/contributors/zzhoouxin/avatar.webp" alt="zzhoouxin" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/zzhoouxin">zzhoouxin</a> </h5>
+						A boy who loves to play
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/07/09/wechat-music-daycard/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/wechat-daycard/header.webp">  每日微信音乐卡片分享机器人（wechat-daycard）</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/07/12/wechat-roommessage-bot/"> 群消息同步机器人  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/wechat-roommessage-bot/teaser.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

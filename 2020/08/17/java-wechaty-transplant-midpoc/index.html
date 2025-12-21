@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Wechaty Java 移植组件开发 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Wechaty Java 移植组件开发 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Wechaty Java 移植组件开发" />
+<meta name="author" content="cunkoulaocai" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。 旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。 根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。 官网：https://isrc.iscas.ac.cn/summer2020 官方新闻：http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html 本项目 [Wechaty Java组件移植] 系 暑期2020 支持的开源项目。" />
+<meta property="og:description" content="“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。 旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。 根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。 官网：https://isrc.iscas.ac.cn/summer2020 官方新闻：http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html 本项目 [Wechaty Java组件移植] 系 暑期2020 支持的开源项目。" />
+<link rel="canonical" href="https://wechaty.js.org/2020/08/17/java-wechaty-transplant-midpoc/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/08/17/java-wechaty-transplant-midpoc/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/08-java-wechaty-transplant-midpoc-en/java-wechaty-transplant-midpoc.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-08-17T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/08-java-wechaty-transplant-midpoc-en/java-wechaty-transplant-midpoc.webp" />
+<meta property="twitter:title" content="Wechaty Java 移植组件开发" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"cunkoulaocai"},"dateModified":"2020-08-17T00:00:00+00:00","datePublished":"2020-08-17T00:00:00+00:00","description":"“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。 旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。 根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。 官网：https://isrc.iscas.ac.cn/summer2020 官方新闻：http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html 本项目 [Wechaty Java组件移植] 系 暑期2020 支持的开源项目。","headline":"Wechaty Java 移植组件开发","image":"https://wechaty.js.org/assets/2020/08-java-wechaty-transplant-midpoc-en/java-wechaty-transplant-midpoc.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/08/17/java-wechaty-transplant-midpoc/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"cunkoulaocai"},"url":"https://wechaty.js.org/2020/08/17/java-wechaty-transplant-midpoc/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Wechaty Java 移植组件开发</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/cunkoulaocai">
+                            <img class="rounded-circle" src="/assets/contributors/cunkoulaocai/avatar.webp" alt="cunkoulaocai" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/cunkoulaocai">cunkoulaocai</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Aug 17, 2020 · <span class="reading-time">
+  
+  
+    1 min read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/08-java-wechaty-transplant-midpoc-en/java-wechaty-transplant-midpoc.webp" alt="Wechaty Java 移植组件开发">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>“开源软件供应链点亮计划-暑期2020”（以下简称 暑期2020）是由中科院软件所与 openEuler 社区共同举办的一项面向高校学生的暑期活动。
+旨在鼓励在校学生积极参与开源软件的开发维护，促进国内优秀开源软件社区的蓬勃发展。
+根据项目的难易程度和完成情况，参与者还可获取“开源软件供应链点亮计划-暑期2020”活动奖金和奖杯。
+官网：<a href="https://isrc.iscas.ac.cn/summer2020">https://isrc.iscas.ac.cn/summer2020</a> 官方新闻：<a href="http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html">http://www.iscas.ac.cn/xshd2016/xshy2016/202004/t20200426_5563484.html</a>
+本项目 [Wechaty Java组件移植] 系 暑期2020 支持的开源项目。</p>
+
+<h2 id="暑期2020-wechaty-java组件移植-poc-成果展示">暑期2020 [Wechaty Java组件移植] POC 成果展示</h2>
+
+<h2 id="wechaty-java组件移植信息">[Wechaty Java组件移植]信息</h2>
+
+<ul>
+  <li>
+    <p>导师：刁政欣</p>
+  </li>
+  <li>
+    <p>学生：陈炀</p>
+  </li>
+  <li>
+    <p>项目名称：Wechaty</p>
+  </li>
+  <li>
+    <p>方案描述：用java或者kotlin将typescript版的wechaty移植到java/kotlin平台上</p>
+  </li>
+  <li>
+    <p>时间规划：</p>
+
+    <p>memory-card存储</p>
+
+    <ul>
+      <li>7.1 - 7.19</li>
+      <li>该模块移植是项目的基本要求,为了能够满足机器人重新登陆不需要扫码,保存机器人自身信息等功能,需要用到这个组件,这个组件将存储的功能和存储数据的结构相分离,以便能够简单的更换存储方式,支持阿里云oss,华为云obs,亚马逊s3,json存储等,同时提供了易用的api来使用</li>
+      <li>基本功能</li>
+    </ul>
+
+    <p>state-switch状态机</p>
+
+    <ul>
+      <li>7.20 - 7.26</li>
+      <li>state-switch是用于管理异步操作的监视器/保护器,在原本的ts版本中可以通过Promise的特性来比较轻松的实现,在kotlin则需要其他的api来实现,思路 比较清晰,但是要找到合适的实现手段有点麻烦</li>
+      <li>基本功能</li>
+    </ul>
+
+    <p>(选做) 其他api移植与测试</p>
+
+    <ul>
+      <li>7.27 - 8.7</li>
+      <li>java-wechaty中还有许多api没有实现,api的风格也是仿照js来实现的,后续需要将这些api逐步实现,并且修改其api风格,以更适合java和kotlin等语言</li>
+      <li>扩展功能</li>
+    </ul>
+
+    <p>(选做) 理解底层原理,添加一些新功能</p>
+
+    <ul>
+      <li>8.8-8.15</li>
+      <li>此部分为选作内容,wechaty还有一些关于miniprogram,红包等功能还未实现,需要能够理解底层,以便进行后续的扩展,逐步增强wechaty的功能</li>
+      <li>扩展功能</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="项目进度">项目进度</h2>
+
+<ul>
+  <li>已完成工作：</li>
+</ul>
+
+<ol>
+  <li>完成memory-card和states-witch组件的开发，由于其中一部分涉及到aws，而aws需要visa等银行卡才能注册，所以这个部分虽然编写了但是没有测试，但是我添加了一个阿里云的接口方便使用。</li>
+  <li>完成大部分typescript版api的移植，目前应该是几乎所有的ts版本的api都已经移植完毕，当然会有一些bug,并且在api的易用性上还没有达到很好的要求。</li>
+  <li>进行了一些现有api的测试，修复一些小bug，当然还有一些bug还没有修复,期待下一阶段开发.</li>
+</ol>
+
+<ul>
+  <li>遇到的问题及解决方案：</li>
+</ul>
+
+<blockquote>
+  <p>快速学习kotlin并了解程序架构和逻辑</p>
+</blockquote>
+
+<p>虽然说是<code class="language-plaintext highlighter-rouge">java</code>移植开发，但根据导师的建议和整个项目的整体性，我还是选择用kotlin开发，但是我之前还没有写过kotlin，我必须立马花些时间来学习kotlin，对于高级特性和有可能会遇到的错误只能遇到了再说了。整个程序逻辑架构还是比较清晰的，虽然还是花了点时间来明白工作流程</p>
+
+<blockquote>
+  <p>java和kotlin中的异步支持</p>
+</blockquote>
+
+<p>由于有了async和await以及Promise，js对于异步的支持是更好的，因此对于移植过程中的异步的操作，我们是需要仔细考虑的。当然由于用了kotlin，后续还可以尝试使用协程来进行编写。</p>
+
+<blockquote>
+  <p>协程的考虑</p>
+</blockquote>
+
+<p>在编写state-switch的时候，对于ts版的理解花费了点时间，主要还是因为promise的理解不到位，当理解了工作原理之后，由于kotlin中没有类似的api可以解决，因此花了点时间探索，最后在导师的建议之下，以及考虑到是用kotlin编写的，可以使用协程，暂时决定采用协程加上阻塞队列来实现，目前看来好像实现了效果。</p>
+
+<p>这个协程还是蛮有意思的，kotlin的协程感觉有些地方还是很难理解的。</p>
+
+<p>心得体会：在整个项目的后半段由于我这边出现了一点问题，导致拖慢了进度，好在是任务的难度没有很大，导师人也很好。最终不论有没有通过考核，这份参与开源项目的经历，都是值得回味的。</p>
+
+<blockquote>
+  <p>移植这东西我感觉蛮有意思的</p>
+</blockquote>
+
+<p>不同的编程语言，有不同的思维方式的碰撞，花几天的时间快速学一门语言并进行实践也是蛮有意思的一件事情，整个移植虽然最主要的考虑到是功能的移植，但是还是要注意api的易用性，ts和java的api的风格还是有不少区别的。</p>
+
+<blockquote>
+  <p>github的开发流程简单体验</p>
+</blockquote>
+
+<p>用github的参与到开源社区中是一次很有意思的体验，虽然之前有在同一个小组进行github上的合作，但是流程还是不一样，还有github的CI/CD流程我也是第一次体会到，对于开源社区的会议讨论我也是第一次体会到。</p>
+
+<blockquote>
+  <p>高质量的单元测试</p>
+</blockquote>
+
+<p>说实话我还是不太懂得怎么写出高质量的单元测试，后续要继续学习。</p>
+
+<ul>
+  <li>后续工作安排：</li>
+</ul>
+
+<p>从目前的进度来看，还是有一些东西需要完成的</p>
+
+<ol>
+  <li>写一个springboot starter方便springboot项目进行集成，里面应该会有存储的配置以及token的配置</li>
+  <li>将memory-card组件进行拆分（不拆分感觉也行）</li>
+  <li>继续完善api测试，我试了一下有些api达不到想要的效果，比如tags接口就有问题</li>
+  <li>开发新的功能，现有的一些api还有一些未完成，还有一些功能没有实现</li>
+  <li>文档的更新和完善（最近好像是更新过文档了，但是还是有一些东西还没有完善)，好像是没有中文文档</li>
+</ol>
+
+<h2 id="demo-day视频">Demo Day视频</h2>
+
+<p>youtube地址为：<a href="https://www.youtube.com/watch?v=ipRq3kT32wI">https://www.youtube.com/watch?v=ipRq3kT32wI</a></p>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/ipRq3kT32wI" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h2 id="联系我们">联系我们</h2>
+
+<ul>
+  <li>项目链接：<a href="https://github.com/cunkoulaocai/java-wechaty">https://github.com/cunkoulaocai/java-wechaty</a></li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>联系方式：+86 15806082601</td>
+          <td>e: <a href="mailto:1184016190@qq.com">1184016190@qq.com</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<blockquote>
+  <p>This post is also available in <a href="/2020/08/17/java-wechaty-transplant-midpoc-en/">English</a>.</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#java">java</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#soc">soc</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#soc2020">soc2020</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ecosystem">ecosystem</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/cunkoulaocai">
+                            <img class="rounded-circle" src="/assets/contributors/cunkoulaocai/avatar.webp" alt="cunkoulaocai" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/cunkoulaocai">cunkoulaocai</a> </h5>
+						Java Developer.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/08/17/java-wechaty-transplant-midpoc-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/08-java-wechaty-transplant-midpoc-en/java-wechaty-transplant-midpoc.webp">  Wechaty Java Component Porting Development</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/08/18/wechaty-for-new-student/"> 一个简单的微信群组「关键字」回答机器人  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/wechat-bot/header.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

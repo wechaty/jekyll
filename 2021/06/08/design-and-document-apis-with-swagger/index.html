@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Design and document APIs with Swagger | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Design and document APIs with Swagger | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Design and document APIs with Swagger" />
+<meta name="author" content="iamrajiv" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="What is Swagger and OpenAPI?" />
+<meta property="og:description" content="What is Swagger and OpenAPI?" />
+<link rel="canonical" href="https://wechaty.js.org/2021/06/08/design-and-document-apis-with-swagger/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/06/08/design-and-document-apis-with-swagger/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/06-design-and-document-apis-with-swagger/1.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-06-08T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/06-design-and-document-apis-with-swagger/1.webp" />
+<meta property="twitter:title" content="Design and document APIs with Swagger" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"iamrajiv"},"dateModified":"2021-06-08T00:00:00+00:00","datePublished":"2021-06-08T00:00:00+00:00","description":"What is Swagger and OpenAPI?","headline":"Design and document APIs with Swagger","image":"https://wechaty.js.org/assets/2021/06-design-and-document-apis-with-swagger/1.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/06/08/design-and-document-apis-with-swagger/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"iamrajiv"},"url":"https://wechaty.js.org/2021/06/08/design-and-document-apis-with-swagger/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#article">article</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Design and document APIs with Swagger</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/iamrajiv">
+                            <img class="rounded-circle" src="/assets/contributors/iamrajiv/avatar.webp" alt="Rajiv Ranjan Singh" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/iamrajiv">Rajiv Ranjan Singh</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jun 08, 2021 · <span class="reading-time">
+  
+  
+    6 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/06-design-and-document-apis-with-swagger/1.webp" alt="Design and document APIs with Swagger">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<h2 id="what-is-swagger-and-openapi">What is Swagger and OpenAPI?</h2>
+
+<p>Swagger is a tool for designing, building, documenting, and mocking APIs. It uses the OpenAPI specification (yaml or json files) to describe requests, responses, and any other details about your RESTful APIs.</p>
+
+<p>Using this spec you can then generate documentation and even create a mock server.</p>
+
+<h2 id="setting-up-visual-studio-code">Setting up Visual Studio Code</h2>
+
+<p>Microsoft’s free <a href="https://code.visualstudio.com/">Visual Studio Code</a> provides a great set of tools to create, edit, and verify your OpenAPI spec files. After installing VSCode you should install these Extensions (unsurprisingly using the <em>Extensions</em> button on the left):</p>
+
+<ul>
+  <li>YAML (<a href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml">link</a>)</li>
+  <li>Swagger Viewer (<a href="https://marketplace.visualstudio.com/items?itemName=Arjun.swagger-viewer">link</a>)</li>
+  <li>OpenAPI Swagger Editor (<a href="https://marketplace.visualstudio.com/items?itemName=42Crunch.vscode-openapi">link</a>)</li>
+  <li>Swagger Snippets (<a href="https://marketplace.visualstudio.com/items?itemName=adisreyaj.swagger-snippets">link</a>, optional)</li>
+</ul>
+
+<p>Once you create a yaml (or json) file and add the basic OpenAPI structure, the API icon will appear on the left and you’ll have the option to preview the documentation using <em>Shift+Option+P</em>.</p>
+
+<p><img src="../assets/2021/06-design-and-document-apis-with-swagger/2.webp" /></p>
+
+<h2 id="create-and-edit-your-openapi-spec-files">Create and edit your OpenAPI spec files</h2>
+
+<p>First off, create a *.yaml file. (I will be demonstrating examples in YAML, but JSON is also supported if you are more comfortable with that standard.)</p>
+
+<p>Although you can <a href="https://swagger.io/specification/">browse through the specs</a>, it’s probably best to start with a simple example — this describes a fictional API for the ubiquitous “Todo app”:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">openapi</span><span class="pi">:</span> <span class="s">3.0.0</span>
+<span class="na">info</span><span class="pi">:</span>
+  <span class="na">title</span><span class="pi">:</span> <span class="s">Example Task Manager Project</span>
+  <span class="na">description</span><span class="pi">:</span> <span class="s">An example API documentation for a task manager.</span>
+  <span class="na">version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">1.0'</span>
+<span class="na">servers</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">url</span><span class="pi">:</span> <span class="s1">'</span><span class="s">https://example.com/taskmanager/'</span>
+<span class="na">components</span><span class="pi">:</span>
+  <span class="na">schemas</span><span class="pi">:</span>
+    <span class="na">Task</span><span class="pi">:</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s">object</span>
+      <span class="na">properties</span><span class="pi">:</span>
+        <span class="na">title</span><span class="pi">:</span>
+          <span class="na">type</span><span class="pi">:</span> <span class="s">string</span>
+          <span class="na">example</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Buy</span><span class="nv"> </span><span class="s">eggs'</span>
+          <span class="na">description</span><span class="pi">:</span> <span class="s1">'</span><span class="s">The</span><span class="nv"> </span><span class="s">description</span><span class="nv"> </span><span class="s">task</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">done.'</span>
+        <span class="na">completed</span><span class="pi">:</span>
+          <span class="na">type</span><span class="pi">:</span> <span class="s">boolean</span>
+          <span class="na">example</span><span class="pi">:</span> <span class="kc">true</span>
+          <span class="na">description</span><span class="pi">:</span> <span class="s1">'</span><span class="s">True</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">false</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">mark</span><span class="nv"> </span><span class="s">whether</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">task</span><span class="nv"> </span><span class="s">has</span><span class="nv"> </span><span class="s">been</span><span class="nv"> </span><span class="s">completed.'</span>
+        <span class="na">id</span><span class="pi">:</span>
+          <span class="na">type</span><span class="pi">:</span> <span class="s">integer</span>
+          <span class="na">example</span><span class="pi">:</span> <span class="m">3</span>
+          <span class="na">description</span><span class="pi">:</span> <span class="s1">'</span><span class="s">A</span><span class="nv"> </span><span class="s">unique</span><span class="nv"> </span><span class="s">identifier</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">task.'</span>
+
+  <span class="na">responses</span><span class="pi">:</span>
+    <span class="na">error</span><span class="pi">:</span>
+      <span class="na">description</span><span class="pi">:</span> <span class="s">ERROR</span>
+      <span class="na">content</span><span class="pi">:</span>
+        <span class="na">application/json</span><span class="pi">:</span>
+          <span class="na">schema</span><span class="pi">:</span>
+            <span class="na">type</span><span class="pi">:</span> <span class="s">object</span>
+            <span class="na">properties</span><span class="pi">:</span>
+              <span class="na">message</span><span class="pi">:</span>
+                <span class="na">description</span><span class="pi">:</span> <span class="s">Describes the error in a human-readable format.</span>
+                <span class="na">type</span><span class="pi">:</span> <span class="s">string</span>
+                <span class="na">example</span><span class="pi">:</span> <span class="s">Permission denied.</span>
+
+  <span class="na">parameters</span><span class="pi">:</span>
+    <span class="na">task</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">id</span>
+      <span class="na">in</span><span class="pi">:</span> <span class="s">query</span>
+      <span class="na">required</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">description</span><span class="pi">:</span> <span class="s">The identifier of the task at hand.</span>
+      <span class="na">schema</span><span class="pi">:</span>
+        <span class="na">type</span><span class="pi">:</span> <span class="s">string</span>
+<span class="na">paths</span><span class="pi">:</span>
+  <span class="na">/tasks</span><span class="pi">:</span>
+    <span class="na">get</span><span class="pi">:</span>
+      <span class="na">summary</span><span class="pi">:</span> <span class="s">Get tasks</span>
+      <span class="na">description</span><span class="pi">:</span> <span class="s">Get a list of tasks</span>
+      <span class="na">responses</span><span class="pi">:</span>
+        <span class="s1">'</span><span class="s">200'</span><span class="err">:</span>
+          <span class="na">description</span><span class="pi">:</span> <span class="s">OK</span>
+          <span class="na">content</span><span class="pi">:</span>
+            <span class="na">application/json</span><span class="pi">:</span>
+              <span class="na">schema</span><span class="pi">:</span>
+                <span class="na">type</span><span class="pi">:</span> <span class="s">array</span>
+                <span class="na">items</span><span class="pi">:</span>
+                  <span class="na">$ref</span><span class="pi">:</span> <span class="s1">'</span><span class="s">#/components/schemas/Task'</span>
+  <span class="na">/task</span><span class="pi">:</span>
+    <span class="na">post</span><span class="pi">:</span>
+      <span class="na">summary</span><span class="pi">:</span> <span class="s">Create a task</span>
+      <span class="na">description</span><span class="pi">:</span> <span class="s">Creates a new task</span>
+      <span class="na">parameters</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">title</span>
+          <span class="na">in</span><span class="pi">:</span> <span class="s">query</span>
+          <span class="na">description</span><span class="pi">:</span> <span class="s">The new title of the task. Leave out if you don't want to change it.</span>
+          <span class="na">schema</span><span class="pi">:</span>
+            <span class="na">type</span><span class="pi">:</span> <span class="s">string</span>
+            <span class="na">example</span><span class="pi">:</span> <span class="s">Take the dog for a walk</span>
+      <span class="na">responses</span><span class="pi">:</span>
+        <span class="s1">'</span><span class="s">200'</span><span class="err">:</span>
+          <span class="na">description</span><span class="pi">:</span> <span class="s">OK</span>
+          <span class="na">content</span><span class="pi">:</span>
+            <span class="na">application/json</span><span class="pi">:</span>
+              <span class="na">schema</span><span class="pi">:</span>
+                <span class="na">type</span><span class="pi">:</span> <span class="s">object</span>
+                <span class="na">properties</span><span class="pi">:</span>
+                  <span class="na">message</span><span class="pi">:</span>
+                    <span class="na">description</span><span class="pi">:</span> <span class="s">Returns the id of the new task.</span>
+                    <span class="na">type</span><span class="pi">:</span> <span class="s">integer</span>
+                    <span class="na">example</span><span class="pi">:</span> <span class="m">23</span>
+      <span class="err">  </span><span class="s1">'</span><span class="s">500'</span><span class="err">:</span>
+          <span class="na">$ref</span><span class="pi">:</span> <span class="s1">'</span><span class="s">#/components/responses/error'</span>
+    <span class="na">put</span><span class="pi">:</span>
+      <span class="na">summary</span><span class="pi">:</span> <span class="s">Update a task</span>
+      <span class="na">description</span><span class="pi">:</span> <span class="s">Modify the task's title or its completed status.</span>
+      <span class="na">parameters</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">$ref</span><span class="pi">:</span> <span class="s1">'</span><span class="s">#/components/parameters/task'</span>
+        <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">title</span>
+          <span class="na">in</span><span class="pi">:</span> <span class="s">query</span>
+          <span class="na">description</span><span class="pi">:</span> <span class="s">The new title of the task. Leave out if you don't want to change it.</span>
+          <span class="na">schema</span><span class="pi">:</span>
+            <span class="na">type</span><span class="pi">:</span> <span class="s">string</span>
+            <span class="na">example</span><span class="pi">:</span> <span class="s">Take the dog for a walk</span>
+        <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">completed</span>
+          <span class="na">in</span><span class="pi">:</span> <span class="s">query</span>
+          <span class="na">description</span><span class="pi">:</span> <span class="s">The completion status of the task. Leave out if you don't want to change it.</span>
+          <span class="na">schema</span><span class="pi">:</span>
+            <span class="na">type</span><span class="pi">:</span> <span class="s">boolean</span>
+            <span class="na">example</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">responses</span><span class="pi">:</span>
+        <span class="s1">'</span><span class="s">200'</span><span class="err">:</span>
+          <span class="na">description</span><span class="pi">:</span> <span class="s">OK</span>
+        <span class="s1">'</span><span class="s">500'</span><span class="err">:</span>
+          <span class="na">$ref</span><span class="pi">:</span> <span class="s1">'</span><span class="s">#/components/responses/error'</span>
+    <span class="na">delete</span><span class="pi">:</span>
+      <span class="na">summary</span><span class="pi">:</span> <span class="s">Delete a task</span>
+      <span class="na">description</span><span class="pi">:</span> <span class="s">Removes a task completely.</span>
+      <span class="na">parameters</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">$ref</span><span class="pi">:</span> <span class="s1">'</span><span class="s">#/components/parameters/task'</span><span class="pi">]</span>
+      <span class="na">responses</span><span class="pi">:</span>
+        <span class="s1">'</span><span class="s">200'</span><span class="err">:</span>
+          <span class="na">description</span><span class="pi">:</span> <span class="s">OK</span>
+        <span class="s1">'</span><span class="s">500'</span><span class="err">:</span>
+          <span class="na">$ref</span><span class="pi">:</span> <span class="s1">'</span><span class="s">#/components/responses/error'</span>
+</code></pre></div></div>
+
+<p>OpenAPI allows you to specify in detail the requests, endpoints, responses, and data types of your API. You can also define reusable components that you can then reference several times in your specs (to limit repeating yourself).</p>
+
+<h2 id="generate-documentation">Generate documentation</h2>
+
+<p>Undoubtedly your yaml files are beautiful, but ultimately the goal (or rather one of the goals) is to generate documentation that the less-geeky members of your team can read. In addition, you can live-preview your yaml changes which can aid you a lot while writing the specs.</p>
+
+<p>Though there are <a href="https://swagger.io/docs/open-source-tools/swagger-ui/usage/installation/">a number</a> of <a href="https://github.com/Swagger2Markup/swagger2markup-cli">different</a> ways to generate documentation, I prefer using a command-line tool for generating a dependency-free (and nice-looking) HTML via redoc-cli.</p>
+
+<p>First, install <code class="language-plaintext highlighter-rouge">redoc-cli</code> with <code class="language-plaintext highlighter-rouge">npm</code> (<a href="http://osxdaily.com/2018/06/29/how-install-nodejs-npm-mac/">here’s how</a> to install <code class="language-plaintext highlighter-rouge">npm</code> in case you don’t have it yet):</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">-g</span> redoc-cli
+</code></pre></div></div>
+
+<p>Now you can generate a full HTML documentation from your OpenAPI specs. You can also start a server that watches for yaml file changes (super useful while you create the specs). Here’s how:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Generates the spec into a zero-dependency HTML file</span>
+redoc-cli bundle <span class="nt">-o</span> ~/desired/path/for/output/index.html ~/path/to/your/openapi.yaml
+
+<span class="c"># Starts a server with spec rendered with ReDoc. Supports SSR mode (--ssr) and can watch the spec (--watch)</span>
+redoc-cli serve ~/path/to/your/openapi.yaml <span class="nt">--watch</span>
+</code></pre></div></div>
+
+<p>You can also automatically generate documentation using your CI — if you use Gitlab, then you can set it up easily so that docs are generated and published to Gitlab Pages using Gitlab’s shared runners.</p>
+
+<p><img src="../assets/2021/06-design-and-document-apis-with-swagger/3.webp" /></p>
+
+<h2 id="whats-next">What’s next</h2>
+
+<p>Other features of Swagger:</p>
+
+<ul>
+  <li>You can use <a href="https://github.com/swagger-api/swagger-codegen">Swagger CodeGen</a> to generate code stubs for your server and client-side.</li>
+  <li>On the other hand, if you have existing code you wish to document you can follow <a href="https://medium.com/search?q=swagger%20existing">solutions, stories, and tips for generating OpenAPI specs from existing APIs</a>.</li>
+  <li>If you use Gitlab, then your <a href="https://medium.com/@aronbudinszky/auto-generate-swagger-docs-to-gitlab-pages-ca040230df3a">docs can be generated and published to Gitlab Pages using Gitlab’s shared runners</a>.</li>
+</ul>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#article">article</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#blog">blog</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#gsod">gsod</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#openapi">openapi</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#swagger">swagger</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/iamrajiv">
+                            <img class="rounded-circle" src="/assets/contributors/iamrajiv/avatar.webp" alt="Rajiv Ranjan Singh" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/iamrajiv">Rajiv Ranjan Singh</a> </h5>
+						
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/06/06/gsod-2021-third-meeting/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/06-gsod-2021-third-meeting/gsod-meeting-teasor.webp">  GSoD'21 Third Meeting</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/06/08/how-to-get-a-weixin-chatbot-with-python-wechaty-and-paddlehub-and-aliyun/"> 手把手教你用python-wechaty+paddlehub+阿里云白嫖一个智能微信机器人  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/06-how-to-get-a-weixin-chatbot-with-python-wechaty-and-paddlehub-and-aliyun/cover.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      微信群管辅助 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>微信群管辅助 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="微信群管辅助" />
+<meta name="author" content="tianyugeng" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="微信群管辅助" />
+<meta property="og:description" content="微信群管辅助" />
+<link rel="canonical" href="https://wechaty.js.org/2020/04/30/wechaty-chat-room-manager/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/04/30/wechaty-chat-room-manager/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/room-manager/bio-photo.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-04-30T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/room-manager/bio-photo.webp" />
+<meta property="twitter:title" content="微信群管辅助" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"tianyugeng"},"dateModified":"2020-04-30T00:00:00+00:00","datePublished":"2020-04-30T00:00:00+00:00","description":"微信群管辅助","headline":"微信群管辅助","image":"https://wechaty.js.org/assets/2020/room-manager/bio-photo.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/04/30/wechaty-chat-room-manager/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"tianyugeng"},"url":"https://wechaty.js.org/2020/04/30/wechaty-chat-room-manager/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">微信群管辅助</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/tianyugeng">
+                            <img class="rounded-circle" src="/assets/contributors/tianyugeng/avatar.webp" alt="tianyugeng" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/tianyugeng">tianyugeng</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Apr 30, 2020 · <span class="reading-time">
+  
+  
+    1 min read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/room-manager/bio-photo.webp" alt="微信群管辅助">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<h2 id="微信群管辅助">微信群管辅助</h2>
+
+<p><a href="https://github.com/wechaty/wechaty"><img src="https://img.shields.io/badge/Powered%20By-Wechaty-brightgreen.svg" alt="Powered by Wechaty" /></a></p>
+
+<p><a href="https://github.com/wechaty/wechaty-getting-started/actions?query=workflow%3A%22Node.js+CI%22"><img src="https://github.com/wechaty/wechaty-getting-started/workflows/Node.js CI/badge.svg" alt="Node.js CI" /></a>
+<img src="https://img.shields.io/badge/node-%3E%3D16-green.svg" alt="Node.js v16" />
+<a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/%3C%2F%3E-TypeScript-blue.svg" alt="TypeScript" /></a></p>
+
+<p><a href="https://github.com/wechaty/wechaty/">Wechaty</a> is a Wechat Bot SDK for Personal Account that lets you create software to extend the functionality of the Wechat, writen in Node.js with TypeScript, Support all platforms including Linux, OSX, Win32, and Docker.</p>
+
+<h2 id="功能目的">功能目的</h2>
+
+<ul>
+  <li>大型微信群（员工群）通常需要多位管理员分工管理，有各种信息需要发布。但是目前微信群中不论规模均最多只能设置三位群管理员，这在有三名以上管理人员的场景中显得十分不便。本项目的目的是通过机器人代办解决超过三名管理员的情况，方便大型微信群的管理。
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />群主可设置机器人管理员</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />响应机器人管理员指令</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />根据机器人管理员的指令发布群公告</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />根据机器人管理员的指令移除群成员</li>
+    </ul>
+  </li>
+  <li>此外对于人员较多且拥有自己的OA系统的公司而言，HR在微信群的维护上也是苦不堪言。人员流动带来的成员变动、人数超过500人限制导致的分群消息同步等问题都为HR带来了巨量的麻烦。本项目的第二步计划通过网络接口的形式提供API供OA系统调用，达到可以自动控制群成员，解放人力的目的。
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />提供http访问接口供外部程序引用</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />对http访问接口添加必要的合法性验证</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />根据外部接口指令对指定群发送群公告</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />根据外部接口指令对指定群添加成员</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />根据外部接口指令对指定群移除成员</li>
+    </ul>
+  </li>
+  <li>对于分群，本项目第三步计划是通过命令连接两个甚至多个不同的微信群，达到消息自动转发的目的，从某种意义上实现群成员超过500人上限。
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />群主可直接开启群联通，直接开启群联通时将生成联通口令</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />群主可通过联通口令开启群联通，通过口令开启群联通将于口令拥有群导通并开始转发所有消息</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />群主或机器人管理员可通过指令设置屏蔽指定人员的消息转发</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />群主或机器人管理员可通过指令设置屏蔽指定格式的消息转发</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="系统需求">系统需求</h2>
+
+<blockquote>
+  <p>我是用的是centos7作为开发运行环境，已经提前安装了git</p>
+</blockquote>
+
+<ol>
+  <li>Node.js v16 或以上</li>
+  <li>基本开发编译环境</li>
+</ol>
+
+<h2 id="开始使用">开始使用</h2>
+
+<h3 id="0-安装-nodejs-10">0. 安装 Node.js (&gt;=10)</h3>
+
+<p>如果你没有安装node或已经安装的node版本低于10，请根据下面步骤安装新的nodejs环境</p>
+
+<ul>
+  <li>Linux （centos7）</li>
+</ul>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://npm.taobao.org/mirrors/node/v16.2.0/node-v16.2.0-linux-x64.tar.xz
+<span class="nb">tar</span> <span class="nt">-xvf</span> node-v16.2.0-linux-x64.tar.xz
+<span class="nb">mv </span>node-v16.2.0-linux-x64 /opt/node
+<span class="nb">tee</span> /etc/profile <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh">
+  export NODE_HOME=/opt/node
+  export PATH=</span><span class="nv">$NODE_HOME</span><span class="sh">/bin:</span><span class="nv">$PATH</span><span class="sh">
+</span><span class="no">EOF
+</span><span class="nb">source</span> /etc/profile
+</code></pre></div></div>
+
+<p>随后可验证安装是否成功</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node <span class="nt">-v</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>在其他平台安装 Node.js 的方法可参见 <a href="https://nodejs.org/en/download/package-manager/">https://nodejs.org/en/download/package-manager/</a></p>
+</blockquote>
+
+<h3 id="1-下载项目">1. 下载项目</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/tianyugeng/wechaty_room_manager.git
+<span class="nb">cd </span>wechaty_room_manager
+</code></pre></div></div>
+
+<h3 id="2-安装依赖包">2. 安装依赖包</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#因为某些原因,一些依赖包无法直接从官方源下载，故此需要使用淘宝镜像源</span>
+npm <span class="nb">install</span> <span class="nt">-g</span> cnpm <span class="nt">--registry</span><span class="o">=</span>https://registry.npm.taobao.org
+
+cnpm <span class="nb">install </span>node-pre-gyp
+cnpm <span class="nb">install </span>bufferutil@^4.0.1
+cnpm <span class="nb">install </span>utf-8-validate@^5.0.2
+cnpm <span class="nb">install </span>file-box@^0.8.23
+cnpm <span class="nb">install </span>puppeteer
+cnpm <span class="nb">install </span>wechaty-puppet-padplus@^0.6.1
+cnpm <span class="nb">install </span>express
+cnpm rebuild
+</code></pre></div></div>
+
+<h3 id="3-开始运行">3. 开始运行</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">WECHATY_PUPPET_PADPLUS_TOKEN</span><span class="o">=</span><span class="k">${</span><span class="nv">YOUR_TOKEN</span><span class="k">}</span> npm start
+</code></pre></div></div>
+
+<p>或者直接通过node来启动</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Linux: export WECHATY_LOG=verbose</span>
+<span class="c"># Win32: set WECHATY_LOG=verbose</span>
+node examples/ding-dong-bot.ts
+</code></pre></div></div>
+
+<p>至此启动完成，去给机器人发指令吧。</p>
+
+<h2 id="补充">补充</h2>
+
+<h3 id="1-typescript">1. TypeScript</h3>
+
+<p>虽然官网的示例中提供了js和ts两种方式可供选择，但实际使用时发现用js进行开发会发生许多莫名其妙的错误。
+调试修改到烦之后换到ts发现可以运行启动。估计是我没怎么用过node，有哪个配置项没有找到的缘故吧。
+所以虽然我没有删除js，但本项目的所有内容均使用ts完成。</p>
+
+<blockquote>
+  <p>作者: <a href="https://github.com/tianyugeng">tianyugeng</a> 前端开发工程师(自称)</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#utility">utility</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/tianyugeng">
+                            <img class="rounded-circle" src="/assets/contributors/tianyugeng/avatar.webp" alt="tianyugeng" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/tianyugeng">tianyugeng</a> </h5>
+						前端开发工程师(自称)
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/04/30/wechat-promote-tool/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/04-wechat-promote-tool-en/banner.webp">  如何用Wechaty打造一个推广机器人</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/05/05/when-bus-come/"> Wechaty 实时公交查询  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/when-bus-come/teaser.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

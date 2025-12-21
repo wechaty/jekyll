@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Plans and Preview for Wechaty 2.0 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Plans and Preview for Wechaty 2.0 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Plans and Preview for Wechaty 2.0" />
+<meta name="author" content="wang-nan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="We are excited to share our plans for Wechaty 2.0, which will merge experimental features into the main branch. This update includes new functionalities like video channel messages, system messages, message quoting, and Moments support, along with significant improvements to existing features." />
+<meta property="og:description" content="We are excited to share our plans for Wechaty 2.0, which will merge experimental features into the main branch. This update includes new functionalities like video channel messages, system messages, message quoting, and Moments support, along with significant improvements to existing features." />
+<link rel="canonical" href="https://wechaty.js.org/2023/05/09/preview-on-wechaty-2.0-en/" />
+<meta property="og:url" content="https://wechaty.js.org/2023/05/09/preview-on-wechaty-2.0-en/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2023/05-preview-on-wechaty-2.0-en/logo.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-05-09T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2023/05-preview-on-wechaty-2.0-en/logo.webp" />
+<meta property="twitter:title" content="Plans and Preview for Wechaty 2.0" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"wang-nan"},"dateModified":"2023-05-09T00:00:00+00:00","datePublished":"2023-05-09T00:00:00+00:00","description":"We are excited to share our plans for Wechaty 2.0, which will merge experimental features into the main branch. This update includes new functionalities like video channel messages, system messages, message quoting, and Moments support, along with significant improvements to existing features.","headline":"Plans and Preview for Wechaty 2.0","image":"https://wechaty.js.org/assets/2023/05-preview-on-wechaty-2.0-en/logo.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2023/05/09/preview-on-wechaty-2.0-en/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"wang-nan"},"url":"https://wechaty.js.org/2023/05/09/preview-on-wechaty-2.0-en/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#announcement">announcement</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Plans and Preview for Wechaty 2.0</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/wang-nan">
+                            <img class="rounded-circle" src="/assets/contributors/wang-nan/avatar.webp" alt="Wang-Nan" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/wang-nan">Wang-Nan</a> <span><a target="_blank" href="https://twitter.com/brotherstyx" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">May 09, 2023 · <span class="reading-time">
+  
+  
+    6 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2023/05-preview-on-wechaty-2.0-en/logo.webp" alt="Plans and Preview for Wechaty 2.0">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>For those using the WorkPro Token, you may be aware that Wechaty has an experimental version, <code class="language-plaintext highlighter-rouge">@juzi/wechaty</code>, which allows you to try out features not yet supported in the main Wechaty branch, such as Moments, message quoting, and mentioning everyone (@all). We have been working hard to merge these features into the main community branch to make them accessible to more users. Recently, we had a brief meeting with <a href="https://wechaty.js.org/contributors/huan/">Huan</a> (you can view the summary <a href="https://docs.google.com/document/d/1fVCk8qRYc4RKGMf2UY5HOe07hEhPUOpGC34v88GEFJg/edit#heading=h.si1xxj2xji7f">here</a>) to discuss the design of these new features, and we have reached a general consensus. This marks a significant step toward launching these new features in the main branch. You can track the progress of these features in this <a href="https://github.com/wechaty/wechaty/issues/2535">issue</a>. Here is a brief overview.</p>
+
+<h2 id="meeting-discussion-summary">Meeting Discussion Summary</h2>
+
+<ul>
+  <li>A <code class="language-plaintext highlighter-rouge">messagePreview</code> might be needed to get information before actually downloading media.
+    <ul>
+      <li>Use a UUID FileBox for lazy loading.</li>
+      <li>Use the metadata of the FileBox to transmit metadata.</li>
+    </ul>
+  </li>
+  <li>New system messages.
+    <ul>
+      <li>If the IM has corresponding system messages, new events can be added.</li>
+      <li>Trigger a “Dirty” event at the bot layer to notify of data updates.</li>
+    </ul>
+  </li>
+  <li>Quoted messages.
+    <ul>
+      <li>Implement using <code class="language-plaintext highlighter-rouge">Post</code> and <code class="language-plaintext highlighter-rouge">message.toPost</code>.</li>
+    </ul>
+  </li>
+  <li>Moments (Post).
+    <ul>
+      <li>The payload in <code class="language-plaintext highlighter-rouge">sayableList</code> needs to be constructed as a <code class="language-plaintext highlighter-rouge">message</code>, where both the <code class="language-plaintext highlighter-rouge">talker</code> and <code class="language-plaintext highlighter-rouge">listener</code> are the bot itself.</li>
+      <li>Use <code class="language-plaintext highlighter-rouge">Location</code> in <code class="language-plaintext highlighter-rouge">sayable</code> as a workaround for the location of Moments.</li>
+      <li>Use <code class="language-plaintext highlighter-rouge">Contact</code> in <code class="language-plaintext highlighter-rouge">sayable</code> as a workaround for the visibility list.</li>
+    </ul>
+  </li>
+  <li>Mentioning everyone (@all).
+    <ul>
+      <li>Use <code class="language-plaintext highlighter-rouge">@&lt;group_chat_id&gt;</code> to represent mentioning everyone.</li>
+      <li>A new version of the <code class="language-plaintext highlighter-rouge">messageSendText</code> method is needed to pass the <code class="language-plaintext highlighter-rouge">contactId</code>, and the underlying layer will construct the message body.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Based on the meeting, we are proposing a preview of Wechaty 2.0 features:</p>
+
+<ul>
+  <li>
+    <p><strong>New Feature: Video Channel Messages.</strong>
+Video channel messages are a unique message type in the WeChat ecosystem, similar to sharing a video, photo (yes, video channels can also post photos), or live stream from one’s own space. The design for this feature is nearly complete.</p>
+  </li>
+  <li>
+    <p><strong>New Feature: System Messages.</strong>
+System messages are the small gray text that appears in the chat box, such as “xxx invited xxx to the group chat.” While we already have the <code class="language-plaintext highlighter-rouge">ROOM_JOIN</code> event for joining a group, system notifications include more than that, and some are difficult to categorize into existing Wechaty events.</p>
+  </li>
+  <li><strong>Concept Update: <code class="language-plaintext highlighter-rouge">message</code> vs. <code class="language-plaintext highlighter-rouge">post</code>.</strong> This is mainly for puppet developers, as some concepts need to be updated.
+    <ul>
+      <li>Previously, I thought a <code class="language-plaintext highlighter-rouge">message</code> was just a single message, equivalent to one line in a conversation between two people. After our discussion, I now understand that any sendable entity can be a <code class="language-plaintext highlighter-rouge">message</code>. For example, when I receive a Moments event, it contains some <code class="language-plaintext highlighter-rouge">sayable</code> items. According to Wechaty’s code, the <code class="language-plaintext highlighter-rouge">sayableList</code> from a server-side <code class="language-plaintext highlighter-rouge">post</code> contains IDs, and these IDs need to be used as <code class="language-plaintext highlighter-rouge">messageId</code> to fetch the specific content via <code class="language-plaintext highlighter-rouge">messagePayload</code>. Therefore, these images, although not generated in a two-person conversation, are essentially <code class="language-plaintext highlighter-rouge">message</code>s. Additionally, for these generated <code class="language-plaintext highlighter-rouge">message</code>s from Moments, both the <code class="language-plaintext highlighter-rouge">talker</code> and <code class="language-plaintext highlighter-rouge">listener</code> are the sender.</li>
+      <li>A <code class="language-plaintext highlighter-rouge">post</code> refers to a structure with a tree-like hierarchy and multiple <code class="language-plaintext highlighter-rouge">sayable</code> items. So, when sending a quoted message, you need to first convert it to a <code class="language-plaintext highlighter-rouge">post</code> using <code class="language-plaintext highlighter-rouge">toPost()</code> to make it the root of the tree before you can quote it.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>New Feature: Quoted Messages.</strong> You can use <code class="language-plaintext highlighter-rouge">message.reply()</code> to send a quoted message. A quoted message is a <code class="language-plaintext highlighter-rouge">POST</code>, and this call is equivalent to the following operation:</p>
+
+    <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">builder</span> <span class="o">=</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">Wechaty</span><span class="p">.</span><span class="nf">builder</span><span class="p">()</span>
+<span class="nx">builder</span><span class="p">.</span><span class="nf">reply</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nf">toPost</span><span class="p">())</span>
+<span class="nx">builder</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="nx">content</span><span class="p">)</span>
+<span class="nx">builder</span><span class="p">.</span><span class="nf">type</span><span class="p">(</span><span class="nx">Post</span><span class="p">.</span><span class="nx">Message</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">post</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">builder</span><span class="p">.</span><span class="nf">build</span><span class="p">()</span>
+<span class="k">await</span> <span class="nx">contact</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">post</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Moments.</strong> Moments is not a new feature, as it was previously supported at the Wechaty layer, but it seems no puppet could actually send them. WorkPro supports sending Moments, but it uses an experimental implementation. After understanding the <code class="language-plaintext highlighter-rouge">message</code> concept above, sending Moments should be a straightforward feature to implement. We look forward to more puppets supporting this functionality.</p>
+  </li>
+  <li>
+    <p><strong>New Feature: Mentioning Everyone (@all) Messages.</strong> Previously, mentioning everyone was mainly done through <code class="language-plaintext highlighter-rouge">roomAnnounce()</code>. This is because, in the WeChat ecosystem, sending a group announcement also sends an @all message with the same content. Now, we will identify an @all mention by setting the <code class="language-plaintext highlighter-rouge">mentionId</code> to the <code class="language-plaintext highlighter-rouge">roomId</code>.</p>
+  </li>
+  <li>
+    <p><strong>Revision: <code class="language-plaintext highlighter-rouge">messageSendText</code></strong>
+The problem with the existing <code class="language-plaintext highlighter-rouge">messageSendText</code> is that since the <code class="language-plaintext highlighter-rouge">text</code> parameter is a <code class="language-plaintext highlighter-rouge">string</code>, it’s difficult to map the mentioned person to a specific position. This is convenient when mentioning someone at the beginning of a sentence but becomes troublesome in the middle of a sentence. Therefore, we plan to change it to the following. Additionally, when sending a mention message, Wechaty currently replaces the mentioned part of the text with <code class="language-plaintext highlighter-rouge">@&lt;name&gt;</code>, which was a compromise made for the earliest WeChat puppet. A better solution is to mention by ID, so Wechaty will no longer replace the <code class="language-plaintext highlighter-rouge">contactId</code> in the text with <code class="language-plaintext highlighter-rouge">@&lt;name&gt;</code> but will keep it as <code class="language-plaintext highlighter-rouge">@${id}</code>.</p>
+
+    <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">abstract</span> <span class="nf">messageSendText </span><span class="p">(</span><span class="nx">conversationId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">text</span><span class="p">:</span> <span class="kr">string</span><span class="p">[],</span> <span class="nx">mentionIdList</span><span class="p">?:</span> <span class="kr">string</span><span class="p">[])</span> <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span> <span class="o">|</span> <span class="kr">string</span><span class="o">&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Improvement: Batch Deleting and Adding Group Members.</strong></p>
+  </li>
+  <li>
+    <p><strong>New Feature: Lazy Loading and Metadata for Files.</strong> Those who have read the <code class="language-plaintext highlighter-rouge">puppet-service</code> source code should be familiar with the UUID-type <code class="language-plaintext highlighter-rouge">FileBox</code>. This type of <code class="language-plaintext highlighter-rouge">FileBox</code> only downloads from the server when <code class="language-plaintext highlighter-rouge">toXXX()</code> is called. Now, we are taking it a step further: when the server cannot find the corresponding UUID file, it will try to download it from the IM. This means we can achieve true lazy loading, where the file is only downloaded from the IM when you need to save it. At the same time, you can use the metadata, such as width, height, duration, and filename, to decide whether you need to download the file.</p>
+  </li>
+  <li>
+    <p><strong>Bug Fix:</strong> The long-standing <code class="language-plaintext highlighter-rouge">RoomMember</code> Dirty bug will be fixed. For details, see this <a href="https://github.com/wechaty/wechaty/issues/2410">issue</a>.</p>
+  </li>
+  <li>
+    <p><strong>New System Events:</strong> <code class="language-plaintext highlighter-rouge">ROOM_OWNER</code>, <code class="language-plaintext highlighter-rouge">ROOM_ANNOUNCE</code>, and more.</p>
+  </li>
+  <li>
+    <p><strong>System-level Dirty Events:</strong> You will be notified whenever the properties of any group or contact change.</p>
+  </li>
+  <li><strong>Tagging System:</strong> Still in the discussion phase, mainly for adapting to Enterprise WeChat.</li>
+</ul>
+
+<p>These features are all under active development. You can follow this <a href="https://github.com/wechaty/wechaty/issues/2535">issue</a> to get the latest updates. Stay tuned!</p>
+
+<blockquote>
+  <p>This post is also available in <a href="/2023/05/09/preview-on-wechaty-2.0/">Chinese (Simplified)</a>.</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#talk">talk</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#meetup">meetup</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/wang-nan">
+                            <img class="rounded-circle" src="/assets/contributors/wang-nan/avatar.webp" alt="Wang-Nan" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/wang-nan">Wang-Nan</a> <span><a target="_blank" href="https://twitter.com/brotherstyx" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Just another coder.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2023/04/23/introducing-wechaty-puppet-wxkf/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2023/04-introducing-wechaty-puppet-wxkf/logo.webp">  Wechaty Puppet WXKF 发布公告</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2023/05/09/preview-on-wechaty-2.0/"> Wechaty 2.0 的计划与预告  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2023/05-preview-on-wechaty-2.0-en/logo.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

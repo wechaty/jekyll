@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      三步开发聊天机器人一秒生成漫画头像 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>三步开发聊天机器人一秒生成漫画头像 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="三步开发聊天机器人一秒生成漫画头像" />
+<meta name="author" content="hu-qi" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="大家好，我是胡琦。由于各种原因以及没能好好坚持笔记写作的习惯，距离上次分享有小半年了，今天给大家带来的是《三步开发聊天机器人一秒生成漫画头像》，其实就一个小小的功能：通过给微信群聊发送特定关键字触发聊天机器人头像漫画化处理程序，从而生成动漫化的头像。怎么实现呢？总的思路就是基于 ModelArts AI Gallery 快速验证 AnimateGanv2 现实照片动漫化能力，基于 Flask 快速部署动漫化服务，基于 Wechaty 快速开发动漫化聊天机器人。" />
+<meta property="og:description" content="大家好，我是胡琦。由于各种原因以及没能好好坚持笔记写作的习惯，距离上次分享有小半年了，今天给大家带来的是《三步开发聊天机器人一秒生成漫画头像》，其实就一个小小的功能：通过给微信群聊发送特定关键字触发聊天机器人头像漫画化处理程序，从而生成动漫化的头像。怎么实现呢？总的思路就是基于 ModelArts AI Gallery 快速验证 AnimateGanv2 现实照片动漫化能力，基于 Flask 快速部署动漫化服务，基于 Wechaty 快速开发动漫化聊天机器人。" />
+<link rel="canonical" href="https://wechaty.js.org/2022/07/21/three-steps-to-develop-a-chatbot-to-generate-cartoon-avatars-in-one-second/" />
+<meta property="og:url" content="https://wechaty.js.org/2022/07/21/three-steps-to-develop-a-chatbot-to-generate-cartoon-avatars-in-one-second/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2022/07-three-steps-to-develop-a-chatbot-to-generate-cartoon-avatars-in-one-second/title.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-07-21T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2022/07-three-steps-to-develop-a-chatbot-to-generate-cartoon-avatars-in-one-second/title.webp" />
+<meta property="twitter:title" content="三步开发聊天机器人一秒生成漫画头像" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"hu-qi"},"dateModified":"2022-07-21T00:00:00+00:00","datePublished":"2022-07-21T00:00:00+00:00","description":"大家好，我是胡琦。由于各种原因以及没能好好坚持笔记写作的习惯，距离上次分享有小半年了，今天给大家带来的是《三步开发聊天机器人一秒生成漫画头像》，其实就一个小小的功能：通过给微信群聊发送特定关键字触发聊天机器人头像漫画化处理程序，从而生成动漫化的头像。怎么实现呢？总的思路就是基于 ModelArts AI Gallery 快速验证 AnimateGanv2 现实照片动漫化能力，基于 Flask 快速部署动漫化服务，基于 Wechaty 快速开发动漫化聊天机器人。","headline":"三步开发聊天机器人一秒生成漫画头像","image":"https://wechaty.js.org/assets/2022/07-three-steps-to-develop-a-chatbot-to-generate-cartoon-avatars-in-one-second/title.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2022/07/21/three-steps-to-develop-a-chatbot-to-generate-cartoon-avatars-in-one-second/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"hu-qi"},"url":"https://wechaty.js.org/2022/07/21/three-steps-to-develop-a-chatbot-to-generate-cartoon-avatars-in-one-second/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#article">article</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">三步开发聊天机器人一秒生成漫画头像</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/hu-qi">
+                            <img class="rounded-circle" src="/assets/contributors/hu-qi/avatar.webp" alt="Qi Hu (胡琦)" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/hu-qi">Qi Hu (胡琦)</a> <span><a target="_blank" href="https://twitter.com/huqii" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jul 21, 2022 · <span class="reading-time">
+  
+  
+    4 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2022/07-three-steps-to-develop-a-chatbot-to-generate-cartoon-avatars-in-one-second/title.webp" alt="三步开发聊天机器人一秒生成漫画头像">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>大家好，我是胡琦。由于各种原因以及没能好好坚持笔记写作的习惯，距离上次分享有小半年了，今天给大家带来的是《三步开发聊天机器人一秒生成漫画头像》，其实就一个小小的功能：通过给微信群聊发送特定关键字触发聊天机器人头像漫画化处理程序，从而生成动漫化的头像。怎么实现呢？总的思路就是基于 ModelArts AI Gallery 快速验证 AnimateGanv2 现实照片动漫化能力，基于 Flask 快速部署动漫化服务，基于 Wechaty 快速开发动漫化聊天机器人。</p>
+
+<h2 id="为什么是-animegan">为什么是 AnimeGAN?</h2>
+
+<p>动漫(Animation &amp; Comic)作为日常生活中一种常见的艺术表现形式，在儿童教育、影视、广告等领域中应用十分广泛；但动漫创作困难、周期长、开发难度大，对创作者要求也十分苛刻，一般来说好的动漫作品需要创作者掌握线条、纹理、颜色和阴影等绘画技巧；普通人想要快速创造自己的动漫作品不得不借助工具。近年来，随着元宇宙的不断发展，人们对动漫的需求越来越多，比如生成二次元自画像、制作 NFT 艺术品等等，因此动漫风格迁移似乎成为“炼丹师”们喜爱的研究方向之一。</p>
+
+<p>图像风格迁移还得从 <a href="https://phillipi.github.io/pix2pix/">pix2pix</a> 和 <a href="https://junyanz.github.io/CycleGAN/">CycleGAN</a> 说起，这两个基于 GAN 的风格迁移算法为动漫画图片生成奠定了技术基础，后续的 <a href="https://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf">CartoonGAN</a> 通过语义内容损失函数和边缘增强的对抗性损失函数使生成的动漫图片质量更高。而 <a href="https://github.com/TachibanaYoshino/AnimeGAN/blob/master/doc/Chen2020_Chapter_AnimeGAN.pdf">AnimeGAN</a>基于 CartoonGAN 改进，并提出了一个更加轻量级的生成器架构以及灰度风格损失、灰度对抗损失和颜色重建损失三个新的损失函数，使其风格化的视觉效果能超越 CartoonGAN。</p>
+
+<p>毕竟，AnimeGAN 让新海诚本人都感觉很有趣；而对于我们普通人来说，多了一种创作的可能，只需一张现实照片就能通过 AI 输出大师级的动漫作品！</p>
+
+<p><img src="/assets/2022/07-three-steps-to-develop-a-chatbot-to-generate-cartoon-avatars-in-one-second/1.webp" alt="新海诚 AnimeGAN" /></p>
+
+<h2 id="什么是-animegan-">什么是 AnimeGAN ？</h2>
+
+<p><img src="/assets/2022/07-three-steps-to-develop-a-chatbot-to-generate-cartoon-avatars-in-one-second/2.webp" alt="AnimeGAN 发展历程" /></p>
+
+<p>提到 AnimeGAN ，不得不说说它的发展历程，一作<a href="https://github.com/TachibanaYoshino">Asher Chan</a>从 2019 年提交第一个 Git Commit 至今，已经迭代了三个版本，<a href="https://github.com/TachibanaYoshino/AnimeGANv3">AnimeGANv3</a>放出了可执行程序和刚出炉还热乎的肖像素描（点我快速体验：<a href="https://developer.huaweicloud.com/develop/aigallery/notebook/detail?id=8e87f943-9178-48d7-be00-28b9007dc7cb">Run in ModelArts - AnimeGANv3 肖像素描生成</a>）。</p>
+
+<p><img src="/assets/2022/07-three-steps-to-develop-a-chatbot-to-generate-cartoon-avatars-in-one-second/3.webp" alt="AnimeGANv3 生成肖像画" /></p>
+
+<p>AnimeGAN 实现了将现实世界场景的照片转换为动漫风格图像。 <a href="https://cdn.jsdelivr.net/gh/TachibanaYoshino/AnimeGAN/doc/Chen2020_Chapter_AnimeGAN.pdf">AnimeGANv1</a> 提出了三种损失函数：灰度样式损失、颜色重建损失和灰度对抗损失。<br />
+解决了：<br />
+1.生成的图像没有明显的动画风格纹理<br />
+2.生成的图像丢失了原始图像的内容；<br />
+3.网络的参数需要大的存储容量。</p>
+
+<p><a href="https://tachibanayoshino.github.io/AnimeGANv2/">AnimeGANv2</a> 修复了上个版本中存在的问题，例如模型生成的图像中存在高频伪影;更容易训练且直接能到达论文效果；进一步减少网络参数使生成器更小；尽可能多地使用更高画质的风格数据。作者觉得创新性不大因此就没重新发表论文。</p>
+
+<p><a href="https://github.com/TachibanaYoshino/AnimeGANv3">AnimeGANv3</a> 基于与 Google 的商业许可，作者暂时不提供源码。不过目前提供了图形用户界面程序 (AnimeGANv3.exe) 和预训练模型 (onnx.zip) ，目前我们可以直接在 Windows 上体验图片或视频转动漫风格。截止笔者发文，作者由更新了 AnimeGANv3_PortraitSketch 用于生成肖像画，也就是上图的效果。</p>
+
+<p>笔者有幸体验了 AnimeGAN 带来的乐趣，下图中左边是在华为云 ModelArts 上运行的结果，通过识别人脸关键点之后再进行风格迁移能获得动漫化头像；右边是 AnimeGANv3.exe 在本地运行的结果，我们无需关系环境和代码执行，简单操作就能生成动漫图片；中间是本次分享的主角–一个能将图片动漫化的聊天机器人。</p>
+
+<p><img src="/assets/2022/07-three-steps-to-develop-a-chatbot-to-generate-cartoon-avatars-in-one-second/4.webp" alt="AnimeGAN 应用" /></p>
+
+<h2 id="在-ai-gallery-上提前验证">在 AI Gallery 上提前验证</h2>
+
+<p>我们通常认为“数据、算法、算力”是人工智能的三要素，现如今，处在大数据时代，可靠高质量的数据的获得变得简洁；优质的算法随着开源文化的发展也变得普及；然而算力确成了制约人工智能普及的“拦路虎”，就连 AnimeGAN 的作者也感叹<a href="https://github.com/TachibanaYoshino/AnimeGANv3/issues/1">“论文的延迟发表只因只借到了一年的 2080ti”</a>。对于笔者而言，幸亏有普惠 AI 的华为云 ModelArts，<a href="https://developer.huaweicloud.com/develop/aigallery/home.html">AI Gallery</a> 是在 ModelArts 的基础上构建的开发者生态社区，提供了 Notebook 代码样例、数据集、算法、模型、Workflow 等 AI 数字资产的共享，姑且理解为 AI 届的 Github。</p>
+
+<p><img src="/assets/2022/07-three-steps-to-develop-a-chatbot-to-generate-cartoon-avatars-in-one-second/5.webp" alt="AI Gallery" /></p>
+
+<p>数据方面，AI Gallery 的数据模块支持数据集的共享和下载；而且数据集是支持 License 声明的，这一点类似于开源社区；
+算法方面，AI Gallery 的算法模块支持算法的共享和订阅；并且算法支持变现，类似于一个算法商城；
+算力方面，用户在 AI Gallery 中通过点击“Run in ModelArts”可以将 Notebook 案例在 ModelArts 控制台快速打开、运行以及进行二次开发等操作，目前提供有限的免费算力。</p>
+
+<p><img src="/assets/2022/07-three-steps-to-develop-a-chatbot-to-generate-cartoon-avatars-in-one-second/6.webp" alt="一键Run in ModelArts，算力我有" /></p>
+
+<p>通过学习改造 AI Gallery 已有的 AnimeGAN 案例，我们能够快速运行 NoteBook 并得到动漫化头像。</p>
+
+<p><img src="/assets/2022/07-three-steps-to-develop-a-chatbot-to-generate-cartoon-avatars-in-one-second/7.webp" alt="Github 头像动漫化" /></p>
+
+<h2 id="基于-wechaty-快速构建机器人">基于 Wechaty 快速构建机器人</h2>
+
+<p>提到聊天机器人的开发，作为前端工程师，笔者认为最快捷的方式莫过于<code class="language-plaintext highlighter-rouge">import {Wechaty} from "wechaty";</code>,是的，Wechaty 是一个开源的的对话机器人 SDK，支持 个人号 微信。它是一个使用 Typescript 构建的 Node.js 应用。支持多种微信接入方案，包括网页，ipad，ios，windows， android 等。同时支持 Linux, Windows, Darwin(OSX/Mac) 和 Docker 多个平台。因此我们要实现聊天机器人就十分简单了！（PS：除了 token 有点小贵，当然有能力有创意可以加入官方资助计划）。</p>
+
+<p><img src="/assets/2022/07-three-steps-to-develop-a-chatbot-to-generate-cartoon-avatars-in-one-second/8.webp" alt="Wechaty 构建机器人" /></p>
+
+<p>聊天机器人有了，接下来怎么接入 AnimeGAN 的能力呢？为了给机器人提供服务，我们需要部署一个应用给前端提供接口，暂且使用 Flask 快速部署头像动漫化服务。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">flask</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="c1"># import request
+</span><span class="kn">import</span> <span class="n">os</span>
+<span class="kn">import</span> <span class="n">uuid</span>
+<span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="n">animeGANv2</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="nc">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">,</span><span class="n">template_folder</span><span class="o">=</span><span class="sh">'</span><span class="s">view</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">app</span><span class="p">.</span><span class="n">config</span><span class="p">[</span><span class="sh">'</span><span class="s">MAX_CONTENT_LENGTH</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span>  <span class="c1"># 3MB
+</span>
+<span class="c1"># 转换图片文件
+</span><span class="nd">@app.route</span><span class="p">(</span><span class="sh">'</span><span class="s">/postdata</span><span class="sh">'</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="sh">'</span><span class="s">POST</span><span class="sh">'</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">postdata</span><span class="p">():</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="n">files</span><span class="p">[</span><span class="sh">'</span><span class="s">content</span><span class="sh">'</span><span class="p">]</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">user_input</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="n">form</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">"</span><span class="s">name</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">basepath</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)</span>  <span class="c1"># 当前文件所在路径
+</span>    <span class="n">src_imgname</span> <span class="o">=</span> <span class="nf">str</span><span class="p">(</span><span class="n">uuid</span><span class="p">.</span><span class="nf">uuid1</span><span class="p">())</span> <span class="o">+</span> <span class="sh">"</span><span class="s">.jpg</span><span class="sh">"</span>
+    <span class="n">upload_path</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">basepath</span><span class="p">,</span> <span class="sh">'</span><span class="s">static/srcImg/</span><span class="sh">'</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">exists</span><span class="p">(</span><span class="n">upload_path</span><span class="p">)</span><span class="o">==</span><span class="bp">False</span><span class="p">:</span>
+        <span class="n">os</span><span class="p">.</span><span class="nf">makedirs</span><span class="p">(</span><span class="n">upload_path</span><span class="p">)</span>
+    <span class="n">f</span><span class="p">.</span><span class="nf">save</span><span class="p">(</span><span class="n">upload_path</span> <span class="o">+</span> <span class="n">src_imgname</span><span class="p">)</span>
+    <span class="c1"># img = cv2.imread(upload_path + src_imgname, 1)
+</span>
+    <span class="n">save_path</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">basepath</span><span class="p">,</span> <span class="sh">'</span><span class="s">static/resImg/</span><span class="sh">'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">exists</span><span class="p">(</span><span class="n">save_path</span><span class="p">)</span> <span class="o">==</span> <span class="bp">False</span><span class="p">:</span>
+        <span class="n">os</span><span class="p">.</span><span class="nf">makedirs</span><span class="p">(</span><span class="n">save_path</span><span class="p">)</span>
+    <span class="n">fileSize</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">getsize</span><span class="p">(</span><span class="n">upload_path</span><span class="o">+</span><span class="n">src_imgname</span><span class="p">)</span>
+    <span class="nf">if</span><span class="p">(</span><span class="n">fileSize</span> <span class="o">/</span> <span class="mi">1024</span> <span class="o">/</span> <span class="mi">1024</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">resSets</span> <span class="o">=</span> <span class="nf">dict</span><span class="p">()</span>
+        <span class="n">resSets</span><span class="p">[</span><span class="sh">"</span><span class="s">value</span><span class="sh">"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="n">resSets</span><span class="p">[</span><span class="sh">"</span><span class="s">resurl</span><span class="sh">"</span><span class="p">]</span> <span class="o">=</span> <span class="sh">"</span><span class="s">http://127.0.0.1:5000</span><span class="sh">"</span> <span class="o">+</span><span class="sh">'</span><span class="s">/static/resImg/</span><span class="sh">'</span> <span class="o">+</span> <span class="n">src_imgname</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nf">inference_from_file</span><span class="p">(</span><span class="n">upload_path</span><span class="o">+</span><span class="n">src_imgname</span><span class="p">,</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">src_imgname</span><span class="p">))</span>
+        <span class="n">resSets</span> <span class="o">=</span> <span class="nf">dict</span><span class="p">()</span>
+        <span class="n">resSets</span><span class="p">[</span><span class="sh">"</span><span class="s">value</span><span class="sh">"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="n">resSets</span><span class="p">[</span><span class="sh">"</span><span class="s">resurl</span><span class="sh">"</span><span class="p">]</span> <span class="o">=</span> <span class="sh">"</span><span class="s">http://127.0.0.1:5000</span><span class="sh">"</span> <span class="o">+</span><span class="sh">'</span><span class="s">/static/resImg/</span><span class="sh">'</span> <span class="o">+</span> <span class="n">src_imgname</span>
+    <span class="k">return</span> <span class="n">json</span><span class="p">.</span><span class="nf">dumps</span><span class="p">(</span><span class="n">resSets</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="c1"># 转换图片链接
+</span><span class="nd">@app.route</span><span class="p">(</span><span class="sh">'</span><span class="s">/postdataUrl</span><span class="sh">'</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="sh">'</span><span class="s">POST</span><span class="sh">'</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">postdataUrl</span><span class="p">():</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="n">values</span><span class="p">[</span><span class="sh">'</span><span class="s">content</span><span class="sh">'</span><span class="p">]</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">user_input</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="n">form</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">"</span><span class="s">name</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">basepath</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)</span>  <span class="c1"># 当前文件所在路径
+</span>    <span class="n">src_imgname</span> <span class="o">=</span> <span class="nf">str</span><span class="p">(</span><span class="n">uuid</span><span class="p">.</span><span class="nf">uuid1</span><span class="p">())</span> <span class="o">+</span> <span class="sh">"</span><span class="s">.jpg</span><span class="sh">"</span>
+
+    <span class="n">save_path</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">basepath</span><span class="p">,</span> <span class="sh">'</span><span class="s">static/resImg/</span><span class="sh">'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">exists</span><span class="p">(</span><span class="n">save_path</span><span class="p">)</span> <span class="o">==</span> <span class="bp">False</span><span class="p">:</span>
+        <span class="n">os</span><span class="p">.</span><span class="nf">makedirs</span><span class="p">(</span><span class="n">save_path</span><span class="p">)</span>
+    <span class="nf">inference_from_url</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">src_imgname</span><span class="p">))</span>
+    <span class="n">resSets</span> <span class="o">=</span> <span class="nf">dict</span><span class="p">()</span>
+    <span class="n">resSets</span><span class="p">[</span><span class="sh">"</span><span class="s">value</span><span class="sh">"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">resSets</span><span class="p">[</span><span class="sh">"</span><span class="s">resurl</span><span class="sh">"</span><span class="p">]</span> <span class="o">=</span> <span class="sh">"</span><span class="s">http://127.0.0.1:5000</span><span class="sh">"</span> <span class="o">+</span><span class="sh">'</span><span class="s">/static/resImg/</span><span class="sh">'</span> <span class="o">+</span> <span class="n">src_imgname</span>
+    <span class="k">return</span> <span class="n">json</span><span class="p">.</span><span class="nf">dumps</span><span class="p">(</span><span class="n">resSets</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">'</span><span class="s">__main__</span><span class="sh">'</span><span class="p">:</span>
+   <span class="n">app</span><span class="p">.</span><span class="nf">run</span><span class="p">(</span><span class="n">threaded</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>完整代码详见：<a href="https://github.com/hu-qi/MDG-AnimeGANv2">https://github.com/hu-qi/MDG-AnimeGANv2</a></strong></p>
+</blockquote>
+
+<p>大致的效果如下图：
+<img src="/assets/2022/07-three-steps-to-develop-a-chatbot-to-generate-cartoon-avatars-in-one-second/9.webp" alt="头像漫画风聊天机器人" /></p>
+
+<p>至此我们已经完整地快速开发了一个头像漫画风聊天机器人，是不是很简单？文章有不当之处欢迎指正！</p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#puppet-service">puppet-service</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#code">code</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ai">ai</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/hu-qi">
+                            <img class="rounded-circle" src="/assets/contributors/hu-qi/avatar.webp" alt="Qi Hu (胡琦)" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/hu-qi">Qi Hu (胡琦)</a> <span><a target="_blank" href="https://twitter.com/huqii" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Copy the code, copy the world.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2022/06/23/wechaty-gateway-use/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2022/06-wechaty-gateway-use/logo.webp">  Wechaty Gateway 使用教程</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2022/07/22/wechaty-office-hour/"> Wechaty community meetup: Office Hour, Feb 22th, 2022  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2022/07-wechaty-office-hour/icon.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" crossorigin="anonymous"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      if (!window.mermaid) {
+        return;
+      }
+
+      const codeBlocks = document.querySelectorAll('pre code.language-mermaid, code.language-mermaid');
+      codeBlocks.forEach(function (codeEl) {
+        const container = document.createElement('div');
+        container.className = 'mermaid';
+        container.textContent = codeEl.textContent;
+
+        const parent = codeEl.parentElement;
+        if (parent && parent.tagName.toLowerCase() === 'pre') {
+          parent.parentElement.replaceChild(container, parent);
+        } else if (parent) {
+          parent.replaceChild(container, codeEl);
+        } else {
+          codeEl.replaceWith(container);
+        }
+      });
+
+      window.mermaid.initialize({ startOnLoad: true, securityLevel: 'loose' });
+    });
+  </script>
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

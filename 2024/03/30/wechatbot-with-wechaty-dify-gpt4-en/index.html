@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Building an Intelligent Medical WeChat Bot with Dify, GPT-4 Turbo, and Wechaty | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Building an Intelligent Medical WeChat Bot with Dify, GPT-4 Turbo, and Wechaty | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Building an Intelligent Medical WeChat Bot with Dify, GPT-4 Turbo, and Wechaty" />
+<meta name="author" content="gscfwid" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Building an intelligent medical follow-up and health education WeChat bot using Dify’s GPT-4 Turbo Agent platform and Wechaty, featuring conversation context management and knowledge base integration." />
+<meta property="og:description" content="Building an intelligent medical follow-up and health education WeChat bot using Dify’s GPT-4 Turbo Agent platform and Wechaty, featuring conversation context management and knowledge base integration." />
+<link rel="canonical" href="https://wechaty.js.org/2024/03/30/wechatbot-with-wechaty-dify-gpt4-en/" />
+<meta property="og:url" content="https://wechaty.js.org/2024/03/30/wechatbot-with-wechaty-dify-gpt4-en/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2024/03-wechatbot-with-wechaty-dify-gpt4-en/bp-post.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-03-30T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2024/03-wechatbot-with-wechaty-dify-gpt4-en/bp-post.webp" />
+<meta property="twitter:title" content="Building an Intelligent Medical WeChat Bot with Dify, GPT-4 Turbo, and Wechaty" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"gscfwid"},"dateModified":"2024-03-30T00:00:00+00:00","datePublished":"2024-03-30T00:00:00+00:00","description":"Building an intelligent medical follow-up and health education WeChat bot using Dify’s GPT-4 Turbo Agent platform and Wechaty, featuring conversation context management and knowledge base integration.","headline":"Building an Intelligent Medical WeChat Bot with Dify, GPT-4 Turbo, and Wechaty","image":"https://wechaty.js.org/assets/2024/03-wechatbot-with-wechaty-dify-gpt4-en/bp-post.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2024/03/30/wechatbot-with-wechaty-dify-gpt4-en/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"gscfwid"},"url":"https://wechaty.js.org/2024/03/30/wechatbot-with-wechaty-dify-gpt4-en/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#article">article</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Building an Intelligent Medical WeChat Bot with Dify, GPT-4 Turbo, and Wechaty</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/gscfwid">
+                            <img class="rounded-circle" src="/assets/contributors/gscfwid/avatar.webp" alt="gscfwid" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/gscfwid">gscfwid</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Mar 30, 2024 · <span class="reading-time">
+  
+  
+    9 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2024/03-wechatbot-with-wechaty-dify-gpt4-en/bp-post.webp" alt="Building an Intelligent Medical WeChat Bot with Dify, GPT-4 Turbo, and Wechaty">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<blockquote>
+  <p>Author: <a href="https://github.com/gscfwid/">gscfwid</a>, An anesthetist in a big ship of mainland.</p>
+</blockquote>
+
+<p>Hello everyone, I’m a doctor and also a technology enthusiast. Today I’d like to share with you my recent project — building an intelligent Agent based on GPT-4 Turbo using Dify to implement an advanced WeChat chatbot.</p>
+
+<h2 id="why-choose-a-wechat-bot">Why Choose a WeChat Bot</h2>
+
+<p>First, let me explain why I wanted to build this bot. As a doctor, one of my important tasks is following up with patients to understand their postoperative recovery. Our hospital performs 70,000-80,000 surgeries annually, making manual phone follow-ups very impractical. Moreover, telecom carriers now have strict restrictions on phone calls. I found that for patients, WeChat might be a more acceptable follow-up method because it doesn’t feel as intrusive to their daily lives.</p>
+
+<h2 id="why-choose-wechaty">Why Choose Wechaty</h2>
+
+<p>However, most WeChat bot frameworks on the market are based on the web protocol, which is currently largely unusable. For example, although Wechaty can utilize the web protocol preserved on UOS, it cannot obtain permanent IDs, remarks, tags, and other data, which is very disadvantageous for follow-up work. After trying the padlocal protocol, I found it very suitable for my needs.</p>
+
+<h2 id="why-choose-dify">Why Choose Dify</h2>
+
+<p>Next, I want to talk about why I chose to use Dify to build this bot. First, I hoped this bot would not only complete follow-up tasks but also serve as a medical education bot for patients. With the explosion of large language models, this idea became very easy to implement. Using Wechaty and the large model API, I quickly conceived a preliminary framework.</p>
+
+<p>Dify is a well-known large model Agent platform. Its API encapsulation is much more friendly than OpenAI’s official API, especially in terms of prompt construction and conversation thread maintenance. Although OpenAI can also build assistants, maintaining conversations doesn’t seem as easy. Additionally, the Dify platform itself has built some plugins, such as Google Search, which can be easily integrated into the API. Therefore, I ultimately chose Dify as my development platform.</p>
+
+<p>The above is some background and thinking behind developing this medical follow-up WeChat bot. As a doctor and technical novice, I hope that by sharing my project experience, I can bring some inspiration and food for thought to everyone. In the following sections, I’ll discuss some technical details of this bot. I welcome everyone’s valuable opinions and suggestions.</p>
+
+<h2 id="creating-a-gpt-4-turbo-based-model-through-dify">Creating a GPT-4 Turbo-Based Model Through Dify</h2>
+
+<p>Dify provides a simple and easy-to-use interface that allows me to quickly create and test models.</p>
+
+<p>First, I created a new application on the Dify platform and selected GPT-4 Turbo as the base model. In this initial phase, I temporarily didn’t use any custom prompts or plugins — I just wanted to do a simple test first to see how the model performs.</p>
+
+<p>After creating the application, Dify automatically generates an API key, which we can use to call Dify’s API interface and interact with the intelligent conversation model we created.</p>
+
+<h2 id="implementing-the-wechat-bot-with-wechaty">Implementing the WeChat Bot with Wechaty</h2>
+
+<p>With the intelligent conversation model in place, we next need a platform to implement the WeChat bot and integrate the model into WeChat. Here I chose Wechaty. Wechaty is an open-source conversational bot SDK that supports personal WeChat accounts, built with Node.js and TypeScript.</p>
+
+<p>Below is my code implementation, mainly divided into the following parts:</p>
+
+<p>First, I use wechaty-puppet-padlocal as Wechaty’s Puppet Provider. It connects to WeChat through the iPad protocol, which is more stable and reliable compared to the Web protocol. Then I use WechatyBuilder to build our bot instance.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Initialize Wechaty</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">PuppetPadlocal</span> <span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">wechaty-puppet-padlocal</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">WechatyBuilder</span> <span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">wechaty</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">puppet</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PuppetPadlocal</span><span class="p">({</span>
+  <span class="na">token</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PUPPET_PADLOCAL_TOKEN</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="nx">WechatyBuilder</span><span class="p">.</span><span class="nf">build</span><span class="p">({</span> <span class="nx">puppet</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">test</span><span class="dl">"</span> <span class="p">});</span>
+</code></pre></div></div>
+
+<p>Next is the core function for calling the Dify API. I use the axios library to send a POST request to Dify’s API endpoint, passing in the user’s input message, conversation ID, and other parameters, and authenticating with the API Key. Dify returns the reply generated by the intelligent conversation model.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Function to call Dify API</span>
+<span class="kd">const</span> <span class="nx">difyApiKey</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DIFY_API_KEY</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">difyApiUrl</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://api.dify.ai/v1/chat-messages</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">sendMessage</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span> <span class="nx">userName</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+      <span class="nx">difyApiUrl</span><span class="p">,</span>
+      <span class="p">{</span>
+        <span class="na">inputs</span><span class="p">:</span> <span class="p">{},</span>
+        <span class="na">query</span><span class="p">:</span> <span class="nx">message</span><span class="p">,</span>
+        <span class="na">response_mode</span><span class="p">:</span> <span class="dl">"</span><span class="s2">streaming</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">conversation_id</span><span class="p">:</span> <span class="nx">conversationData</span><span class="p">.</span><span class="nx">conversationId</span><span class="p">,</span>
+        <span class="na">user</span><span class="p">:</span> <span class="nx">userName</span><span class="p">,</span>
+        <span class="na">files</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`Bearer </span><span class="p">${</span><span class="nx">difyApiKey</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">,</span>
+        <span class="p">},</span>
+      <span class="p">}</span>
+    <span class="p">);</span>
+    <span class="c1">// Process response...</span>
+  <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span>
+        <span class="dl">"</span><span class="s2">Dify API responded with status code:</span><span class="dl">"</span><span class="p">,</span>
+        <span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span>
+      <span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">"</span><span class="s2">No response received from Dify API:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">error</span><span class="p">.</span><span class="nx">request</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Error setting up request to Dify API:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="c1">// Handle error appropriately...</span>
+  <span class="p">}</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Finally, I listen to Wechaty’s message event. When receiving a message from a user @mentioning the bot in a group chat, I extract the message content, call the sendMessage function to get the intelligent reply, and then send the reply to the group chat through room.say.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Listen to message events</span>
+<span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">message</span><span class="dl">"</span><span class="p">,</span> <span class="k">async </span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// Get information about the message sender</span>
+  <span class="kd">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">talker</span><span class="p">().</span><span class="nx">id</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">room</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">room</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="nx">userName</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">name</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">text</span><span class="p">();</span>
+  <span class="c1">// Check if it's in my already created SQLite database</span>
+  <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">query</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">SELECT * FROM contacts WHERE id = ?</span><span class="dl">"</span><span class="p">;</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">row</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nx">query</span><span class="p">,</span> <span class="p">[</span><span class="nx">id</span><span class="p">]);</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">row</span> <span class="o">!=</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">reply</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">sendMessage</span><span class="p">(</span><span class="nx">text</span><span class="p">,</span> <span class="nx">userName</span><span class="p">);</span>
+        <span class="k">await</span> <span class="nx">message</span><span class="p">.</span><span class="nf">talker</span><span class="p">().</span><span class="nf">say</span><span class="p">(</span><span class="nx">reply</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>One important point to emphasize here is that I use the conversation_id in the Dify API to implement the conversation persistence feature. This part of the code is mainly in the sendMessage function:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">conversationMap</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Map</span><span class="p">();</span> <span class="c1">// Create a key-value pair to save questioner information and conversation_id</span>
+<span class="kd">const</span> <span class="nx">CONVERSATION_EXPIRATION</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">;</span> <span class="c1">// Set conversation retention time to 5 minutes</span>
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">sendMessage</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span> <span class="nx">userName</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+  <span class="kd">let</span> <span class="nx">conversationData</span> <span class="o">=</span> <span class="nx">conversationMap</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nx">userName</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">timestamp</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nf">now</span><span class="p">();</span>
+
+  <span class="c1">// If the conversation doesn't exist or has expired, create a new conversation</span>
+  <span class="k">if </span><span class="p">(</span>
+    <span class="o">!</span><span class="nx">conversationData</span> <span class="o">||</span>
+    <span class="nx">timestamp</span> <span class="o">-</span> <span class="nx">conversationData</span><span class="p">.</span><span class="nx">timestamp</span> <span class="o">&gt;</span> <span class="nx">CONVERSATION_EXPIRATION</span>
+  <span class="p">)</span> <span class="p">{</span>
+    <span class="nx">conversationData</span> <span class="o">=</span> <span class="p">{</span> <span class="na">conversationId</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">timestamp</span> <span class="p">};</span>
+    <span class="nx">conversationMap</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="nx">userName</span><span class="p">,</span> <span class="nx">conversationData</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span>
+    <span class="nx">difyApiUrl</span><span class="p">,</span>
+    <span class="p">{</span>
+      <span class="c1">// ...</span>
+      <span class="na">conversation_id</span><span class="p">:</span> <span class="nx">conversationData</span><span class="p">.</span><span class="nx">conversationId</span><span class="p">,</span>
+      <span class="na">user</span><span class="p">:</span> <span class="nx">userName</span><span class="p">,</span>
+      <span class="c1">// ...</span>
+    <span class="p">}</span>
+    <span class="c1">// ...</span>
+  <span class="p">);</span>
+
+  <span class="c1">// Update conversation ID and timestamp</span>
+  <span class="nx">conversationData</span><span class="p">.</span><span class="nx">timestamp</span> <span class="o">=</span> <span class="nx">timestamp</span><span class="p">;</span>
+
+  <span class="c1">// ...</span>
+  <span class="c1">// The following code is needed because I'm using stream mode to get Dify's response, so I need to traverse each reply to find the final response content</span>
+  <span class="k">for </span><span class="p">(</span><span class="kd">const</span> <span class="nx">line</span> <span class="k">of</span> <span class="nx">lines</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">line</span><span class="p">.</span><span class="nf">startsWith</span><span class="p">(</span><span class="dl">"</span><span class="s2">data:</span><span class="dl">"</span><span class="p">))</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="nx">line</span><span class="p">.</span><span class="nf">slice</span><span class="p">(</span><span class="mi">5</span><span class="p">).</span><span class="nf">trim</span><span class="p">());</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">event</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">agent_thought</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// ...</span>
+        <span class="nx">conversationData</span><span class="p">.</span><span class="nx">conversationId</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">conversation_id</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Through this approach, we can maintain an independent conversation context for each user, implementing multi-turn dialogues. When users continue to send messages within a certain time period (set to 5 minutes here), the context remains coherent; if this time is exceeded, a new conversation begins.</p>
+
+<p>The next steps are all on the Dify platform, which I’m still working on. My vision is to upload health education articles downloaded from the web as a knowledge base and limit GPT-4 to only answer from the knowledge base. Anyway, that’s beyond the scope of technical discussion.</p>
+
+<p>The above is the core code for implementing an intelligent WeChat conversation bot using Dify and Wechaty. Through Dify’s powerful conversation model and Wechaty’s convenient WeChat integration, we can quickly build a practical medical education bot. Of course, this is just a basic version. We can continue to add more features, such as custom prompts and knowledge base search, to further enhance the bot’s intelligence level.</p>
+
+<hr />
+
+<blockquote>
+  <p>本文也有<a href="/2024/03/30/wechatbot-with-wechaty-dify-gpt4/">中文版本</a>。</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#dify">dify</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#gpt4-turbo">gpt4-turbo</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ecosystem">ecosystem</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/gscfwid">
+                            <img class="rounded-circle" src="/assets/contributors/gscfwid/avatar.webp" alt="gscfwid" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/gscfwid">gscfwid</a> </h5>
+						An anesthetist in a big ship of mainland.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2024/03/26/wechaty-in-2024gdc/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2024/03-wechaty-in-2024gdc/title.webp">  2024GDC: Wechaty Showcasing the Power of AI and Automation at GDC 2024</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2024/03/30/wechatbot-with-wechaty-dify-gpt4/"> 利用 Dify 构建基于 GPT-4 Turbo 的智能 Agent,实现医疗微信机器人  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2024/03-wechatbot-with-wechaty-dify-gpt4-en/bp-post.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

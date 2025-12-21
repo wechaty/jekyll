@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Google Season of Docs 2021 Final Blog - Tutorials | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Google Season of Docs 2021 Final Blog - Tutorials | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Google Season of Docs 2021 Final Blog - Tutorials" />
+<meta name="author" content="sbis04" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="We have been a part of Google Season of Docs 2021 for creating and improving the Wechaty documentation, specifically the Tutorials section. It was an amazing journey of 17 weeks (roughly 4 months) contributing to the Wechaty documentation, during which we got an opportunity to try out and learn a lot about the Wechaty bots. When we initially started contributing to the Docs, we didn’t have any idea about how Wechaty bots can be created that runs on various instant messaging (IM) systems like WhatsApp and Wechat. But gradually we became comfortable with building the bots and started building the documentation." />
+<meta property="og:description" content="We have been a part of Google Season of Docs 2021 for creating and improving the Wechaty documentation, specifically the Tutorials section. It was an amazing journey of 17 weeks (roughly 4 months) contributing to the Wechaty documentation, during which we got an opportunity to try out and learn a lot about the Wechaty bots. When we initially started contributing to the Docs, we didn’t have any idea about how Wechaty bots can be created that runs on various instant messaging (IM) systems like WhatsApp and Wechat. But gradually we became comfortable with building the bots and started building the documentation." />
+<link rel="canonical" href="https://wechaty.js.org/2021/10/20/wechaty-tutorials-final-blog/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/10/20/wechaty-tutorials-final-blog/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/10-wechaty-tutorials-final-blog/wechaty-tutorials-final-cover.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-10-20T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/10-wechaty-tutorials-final-blog/wechaty-tutorials-final-cover.webp" />
+<meta property="twitter:title" content="Google Season of Docs 2021 Final Blog - Tutorials" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sbis04"},"dateModified":"2021-10-20T00:00:00+00:00","datePublished":"2021-10-20T00:00:00+00:00","description":"We have been a part of Google Season of Docs 2021 for creating and improving the Wechaty documentation, specifically the Tutorials section. It was an amazing journey of 17 weeks (roughly 4 months) contributing to the Wechaty documentation, during which we got an opportunity to try out and learn a lot about the Wechaty bots. When we initially started contributing to the Docs, we didn’t have any idea about how Wechaty bots can be created that runs on various instant messaging (IM) systems like WhatsApp and Wechat. But gradually we became comfortable with building the bots and started building the documentation.","headline":"Google Season of Docs 2021 Final Blog - Tutorials","image":"https://wechaty.js.org/assets/2021/10-wechaty-tutorials-final-blog/wechaty-tutorials-final-cover.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/10/20/wechaty-tutorials-final-blog/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"sbis04"},"url":"https://wechaty.js.org/2021/10/20/wechaty-tutorials-final-blog/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#gsod">gsod</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Google Season of Docs 2021 Final Blog - Tutorials</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/sbis04">
+                            <img class="rounded-circle" src="/assets/contributors/sbis04/avatar.webp" alt="Souvik Biswas" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/sbis04">Souvik Biswas</a> <span><a target="_blank" href="https://twitter.com/sbis04" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Oct 20, 2021 · <span class="reading-time">
+  
+  
+    7 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/10-wechaty-tutorials-final-blog/wechaty-tutorials-final-cover.webp" alt="Google Season of Docs 2021 Final Blog - Tutorials">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>We have been a part of <strong>Google Season of Docs 2021</strong> for creating and improving the <strong>Wechaty documentation</strong>, specifically the <a href="https://wechaty.js.org/docs/tutorials/">Tutorials</a> section. It was an amazing journey of <strong>17 weeks</strong> (roughly 4 months) contributing to the Wechaty documentation, during which we got an opportunity to try out and learn a lot about the Wechaty bots. When we initially started contributing to the Docs, we didn’t have any idea about how Wechaty bots can be created that runs on various instant messaging (IM) systems like <a href="https://www.whatsapp.com/">WhatsApp</a> and <a href="https://www.wechat.com/">Wechat</a>. But gradually we became comfortable with building the bots and started building the documentation.</p>
+
+<p>A brief introduction about us is available below.</p>
+
+<h2 id="souvik-biswas">Souvik Biswas</h2>
+
+<p>I am Souvik Biswas, currently pursuing a B.Tech degree in Computer Science and Engineering from <strong>IIIT Kalyani</strong> in India. I am a freelance technical writer of <a href="https://blog.codemagic.io/">Codemagic</a> and <a href="https://blog.logrocket.com/">LogRocket</a> Blog, and a passionate mobile app developer. You can also find some of my articles on <a href="https://medium.com/@sbis1999">Medium</a>, and explore my projects on <a href="https://github.com/sbis04">GitHub</a>.</p>
+
+<h2 id="shwetal-soni">Shwetal Soni</h2>
+
+<p>I am Shwetal Soni, currently pursuing B.Tech in Computer Science and Engineering from <strong>NIT Hamirpur</strong> in India. I am interested in UI/UX Design, Frontend web development and recently I’m also exploring the field of Technical Writing. Recently I have only written one technical blog on <em>writing smart contracts on Tezos Blockchain</em>. You can check it out here <a href="https://shwetalsoni.medium.com/building-your-first-dapp-on-tezos-part-1-writing-smart-contract-on-smartpy-d7cdf27476f9">Medium</a>. You can also find my projects on <a href="https://github.com/shwetalsoni/">Github</a>.</p>
+
+<h2 id="final-video-presentation">Final Video Presentation</h2>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/lDaBTTSeXck" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h2 id="abstract">Abstract</h2>
+
+<p>Our main goal was to improve the Wechaty Tutorials documentation and make it easier to follow for beginner users of Wechaty. We have added step by step guide for building each Wechaty bot from scratch and added interactive CodeSandboxes using which users can try out the bot directly from within the documentation page.</p>
+
+<p>Here’s a brief overview of our tasks:</p>
+
+<ul>
+  <li>Refactor the overall Tutorials documentation</li>
+  <li>Add / improve the step-by-step instructions</li>
+  <li>Add interactive CodeSandbox</li>
+  <li>Screenshots / GIF of the bot running on a device</li>
+  <li>Add various bots building tutorials to Examples</li>
+  <li>Create a video tutorial</li>
+</ul>
+
+<p>Earlier the tutorial pages lacked a proper structure, so it might not be easy to follow and build a bot for a user to is new to Wechaty. So, we have introduced a structure that is followed on every documentation page, more information about it is below.</p>
+
+<h2 id="structure-of-tutorial-pages">Structure of tutorial pages</h2>
+
+<p>This is an overview of the final structure for each of the tutorial pages that we have followed so that all the tutorials are consistent and easy to follow for any user.</p>
+
+<ul>
+  <li><strong>Introduction:</strong> Highlights the goal of the tutorial.</li>
+  <li><strong>Try out the bot:</strong> Contains the CodeSandbox of the bot along with an editable link.</li>
+  <li><strong>Requirements:</strong> List of the required tools in order to follow the tutorial.</li>
+  <li><strong>Getting started:</strong> Covers the installation step of the required tools and how users can try out the bot locally by cloning its GitHub repo.</li>
+  <li><strong>Building the bot:</strong> The main section where we include the step by step guide</li>
+  <li><strong>Running the bot:</strong> Contains commands for running the bot on the user’s system</li>
+  <li><strong>Bot demonstration:</strong> Describes the commands that can be used within the bot along with some screenshots/GIFs if required.</li>
+  <li><strong>Conclusion &amp; References:</strong> Any links that the users can check out for knowing more about a particular concept related to the bot.</li>
+</ul>
+
+<h2 id="project-goals">Project Goals</h2>
+
+<p>We managed to complete all the GSoD tasks as per our initial proposal. In 17 weeks, we have done a total of <strong>40 pull requests</strong> which consist of 33 weekly PRs (addition or improvement of documentation pages that we had included in our initial proposal), and 7 miscellaneous PRs (fixes that we have done to some of the pages).</p>
+
+<p>We have also created a video tutorial for building the most basic Wechaty bot, called the <a href="https://wechaty.js.org/docs/tutorials/#build-your-first-chatbot-with-wechaty">Ding Dong Bot</a>, from scratch.</p>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/LHT49Q_x5D8" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<p>You can take a look at our contributions by going to the respective links present in this section.</p>
+
+<p>You can find all PRs done by us in the links below:</p>
+
+<ul>
+  <li><a href="https://github.com/wechaty/wechaty.js.org/pulls?q=is%3Apr+author%3Ashwetalsoni">Shwetal’s PRs</a></li>
+  <li><a href="https://github.com/wechaty/wechaty.js.org/pulls?q=is%3Apr+author%3Asbis04">Souvik’s PRs</a></li>
+</ul>
+
+<p>Here’s a complete list of all the contributions that we have done during the GSoD season:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Week</th>
+      <th>Pull Requests</th>
+      <th>Technical Writer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Add instructions and interactive sandbox for Vorpal <a href="https://github.com/wechaty/wechaty.js.org/pull/779">#779</a></td>
+      <td><a href="https://github.com/sbis04">Souvik Biswas</a></td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Update the Vorpal demo screenshot <a href="https://github.com/wechaty/wechaty.js.org/pull/780">#780</a></td>
+      <td><a href="https://github.com/sbis04">Souvik Biswas</a></td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Improve Vorpal docs <a href="https://github.com/wechaty/wechaty.js.org/pull/791">#791</a></td>
+      <td><a href="https://github.com/sbis04">Souvik Biswas</a></td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Improve and update Vorpal bot steps <a href="https://github.com/wechaty/wechaty.js.org/pull/882">#882</a></td>
+      <td><a href="https://github.com/sbis04">Souvik Biswas</a></td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Runnning Locally (Ding Dong bot) <a href="https://github.com/wechaty/wechaty.js.org/pull/888">#888</a></td>
+      <td><a href="https://github.com/shwetalsoni">Shwetal Soni</a></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Getting Started Overview <a href="https://github.com/wechaty/wechaty.js.org/pull/935">#935</a></td>
+      <td><a href="https://github.com/shwetalsoni">Shwetal Soni</a></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Tutorials Overview <a href="https://github.com/wechaty/wechaty.js.org/pull/934">#934</a></td>
+      <td><a href="https://github.com/shwetalsoni">Shwetal Soni</a></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Add installation page under tutorials <a href="https://github.com/wechaty/wechaty.js.org/pull/905">#905</a></td>
+      <td><a href="https://github.com/sbis04">Souvik Biswas</a></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Add Google Cloud Shell tutorial <a href="https://github.com/wechaty/wechaty.js.org/pull/922">#922</a></td>
+      <td><a href="https://github.com/sbis04">Souvik Biswas</a></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Running Ding Dong bot on gitpod <a href="https://github.com/wechaty/wechaty.js.org/pull/923">#923</a></td>
+      <td><a href="https://github.com/shwetalsoni">Shwetal Soni</a></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Update Wechaty Plugin Overview page under Tutorials <a href="https://github.com/wechaty/wechaty.js.org/pull/957">#957</a></td>
+      <td><a href="https://github.com/sbis04">Souvik Biswas</a></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Add tutorial for EventLogger plugin <a href="https://github.com/wechaty/wechaty.js.org/pull/963">#963</a></td>
+      <td><a href="https://github.com/sbis04">Souvik Biswas</a></td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Add tutorial for <code class="language-plaintext highlighter-rouge">QR code terminal plugin</code> <a href="https://github.com/wechaty/wechaty.js.org/pull/969">#969</a></td>
+      <td><a href="https://github.com/shwetalsoni">Shwetal Soni</a></td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Add tutorial for Heartbeat plugin <a href="https://github.com/wechaty/wechaty.js.org/pull/985">#985</a></td>
+      <td><a href="https://github.com/sbis04">Souvik Biswas</a></td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Using Redux with wechaty overview <a href="https://github.com/wechaty/wechaty.js.org/pull/989">#989</a></td>
+      <td><a href="https://github.com/shwetalsoni">Shwetal Soni</a></td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Add Redux: Ducks proposal style docs <a href="https://github.com/wechaty/wechaty.js.org/pull/1126">#1126</a></td>
+      <td><a href="https://github.com/sbis04">Souvik Biswas</a></td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Add Starter Bot under Examples: Basic <a href="https://github.com/wechaty/wechaty.js.org/pull/1076">#1076</a></td>
+      <td><a href="https://github.com/sbis04">Souvik Biswas</a></td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Improve the Contact Bot page <a href="https://github.com/wechaty/wechaty.js.org/pull/1099">#1099</a></td>
+      <td><a href="https://github.com/sbis04">Souvik Biswas</a></td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Updated <code class="language-plaintext highlighter-rouge">ding dong bot</code> under examples <a href="https://github.com/wechaty/wechaty.js.org/pull/1103">#1103</a></td>
+      <td><a href="https://github.com/shwetalsoni">Shwetal Soni</a></td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Updated <code class="language-plaintext highlighter-rouge">World's Shortest Chatbot</code> under examples <a href="https://github.com/wechaty/wechaty.js.org/pull/1104">#1104</a></td>
+      <td><a href="https://github.com/shwetalsoni">Shwetal Soni</a></td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Created tutorial for room-bot <a href="https://github.com/wechaty/wechaty.js.org/pull/1131">#1131</a></td>
+      <td><a href="https://github.com/shwetalsoni">Shwetal Soni</a></td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Tutorial for examples/advanced/busy-bot <a href="https://github.com/wechaty/wechaty.js.org/pull/1134">#1134</a></td>
+      <td><a href="https://github.com/shwetalsoni">Shwetal Soni</a></td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Update the Friend bot page <a href="https://github.com/wechaty/wechaty.js.org/pull/1138">#1138</a></td>
+      <td><a href="https://github.com/sbis04">Souvik Biswas</a></td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Add tutorial for Media File Bot <a href="https://github.com/wechaty/wechaty.js.org/pull/1155">#1155</a></td>
+      <td><a href="https://github.com/sbis04">Souvik Biswas</a></td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>Tutorial for using vanilla redux with wechaty <a href="https://github.com/wechaty/wechaty.js.org/pull/1165">#1165</a></td>
+      <td><a href="https://github.com/shwetalsoni">Shwetal Soni</a></td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>Add tutorial for Ctrl C Signal Bot <a href="https://github.com/wechaty/wechaty.js.org/pull/1204">#1204</a></td>
+      <td><a href="https://github.com/sbis04">Souvik Biswas</a></td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Tutorial for Tuling123 Bot <a href="https://github.com/wechaty/wechaty.js.org/pull/1207">#1207</a></td>
+      <td><a href="https://github.com/shwetalsoni">Shwetal Soni</a></td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Add video demo of ding ding bot <a href="https://github.com/wechaty/wechaty.js.org/pull/1249">#1249</a></td>
+      <td><a href="https://github.com/sbis04">Souvik Biswas</a></td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Add missing badges to Event Logger plugin page <a href="https://github.com/wechaty/wechaty.js.org/pull/1250">#1250</a></td>
+      <td><a href="https://github.com/sbis04">Souvik Biswas</a></td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Add missing badges to Heartbeat plugin page <a href="https://github.com/wechaty/wechaty.js.org/pull/1251">#1251</a></td>
+      <td><a href="https://github.com/sbis04">Souvik Biswas</a></td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Updated links in tutorials overview page and removed empty pages from examples section <a href="https://github.com/wechaty/wechaty.js.org/pull/1254">#1254</a></td>
+      <td><a href="https://github.com/shwetalsoni">Shwetal Soni</a></td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Added missing badges to QR code terminal plugin <a href="https://github.com/wechaty/wechaty.js.org/pull/1253">#1253</a></td>
+      <td><a href="https://github.com/shwetalsoni">Shwetal Soni</a></td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Update order of language display <a href="https://github.com/wechaty/wechaty.js.org/pull/1252">#1252</a></td>
+      <td><a href="https://github.com/shwetalsoni">Shwetal Soni</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!--- Merge Status Badges --->
+<!--- they are linked to the above last columns of the table, 
+      to add just use the correct PR number and use the same format --->
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The current version of <a href="https://wechaty.js.org/">Wechaty documentation</a> consists of a lot of easy-to-follow tutorials for building Wechaty bots from scratch. Users will find relevant links to all the resources required for building the bot by themselves and can also run some of the bots directly on the documentation page inside the CodeSandboxes that we have included.</p>
+
+<p>Thanks to all the mentors (<a href="https://github.com/huan">Huan</a> &amp; <a href="https://github.com/lijiarui">Rui</a>) and volunteers (<a href="https://github.com/Rohitesh-Kumar-Jain">Rohitesh</a> &amp; <a href="https://github.com/proudofsimin">Simin</a>) for helping us during the documentation period and making our GSoD 2021 season successful.</p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#google">google</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#gsod">gsod</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#2021">2021</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#docs">docs</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#tutorials">tutorials</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#project">project</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/sbis04">
+                            <img class="rounded-circle" src="/assets/contributors/sbis04/avatar.webp" alt="Souvik Biswas" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/sbis04">Souvik Biswas</a> <span><a target="_blank" href="https://twitter.com/sbis04" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Passionate mobile app developer, Freelance technical writer @ Codemagic
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/10/19/jyy-chatbot-blog/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/10-jyy-chatbot-blog-en/jyy.webp">  献给新生女儿的礼物：基于wechaty和语义开放平台打造的育儿机器人</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/10/28/opentekr-oss-pioneer-interview-huan/"> OpenTEKr｜OSS Pioneer｜Interview with Huan Li  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/10-opentekr-oss-pioneer-interview-huan/open-tekr-huan.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

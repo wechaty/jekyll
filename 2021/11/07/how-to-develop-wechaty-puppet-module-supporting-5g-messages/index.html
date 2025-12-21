@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      支持5G消息的 puppet-walnut 接入介绍 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>支持5G消息的 puppet-walnut 接入介绍 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="支持5G消息的 puppet-walnut 接入介绍" />
+<meta name="author" content="zrn-fight" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="很荣幸能参加”暑期2021“活动，接触到开发支持电信运营商 5G Chatbot / RCS 的 Wechaty 接入 Puppet 模块这一开源项目,下面来和大家分享一下开发流程，希望能帮助更多的开发者快速上手这个项目。" />
+<meta property="og:description" content="很荣幸能参加”暑期2021“活动，接触到开发支持电信运营商 5G Chatbot / RCS 的 Wechaty 接入 Puppet 模块这一开源项目,下面来和大家分享一下开发流程，希望能帮助更多的开发者快速上手这个项目。" />
+<link rel="canonical" href="https://wechaty.js.org/2021/11/07/how-to-develop-wechaty-puppet-module-supporting-5g-messages/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/11/07/how-to-develop-wechaty-puppet-module-supporting-5g-messages/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/11-how-to-develop-wechaty-puppet-module-supporting-5g-messages/puppet-walnut.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-11-07T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/11-how-to-develop-wechaty-puppet-module-supporting-5g-messages/puppet-walnut.webp" />
+<meta property="twitter:title" content="支持5G消息的 puppet-walnut 接入介绍" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"zrn-fight"},"dateModified":"2021-11-07T00:00:00+00:00","datePublished":"2021-11-07T00:00:00+00:00","description":"很荣幸能参加”暑期2021“活动，接触到开发支持电信运营商 5G Chatbot / RCS 的 Wechaty 接入 Puppet 模块这一开源项目,下面来和大家分享一下开发流程，希望能帮助更多的开发者快速上手这个项目。","headline":"支持5G消息的 puppet-walnut 接入介绍","image":"https://wechaty.js.org/assets/2021/11-how-to-develop-wechaty-puppet-module-supporting-5g-messages/puppet-walnut.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/11/07/how-to-develop-wechaty-puppet-module-supporting-5g-messages/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"zrn-fight"},"url":"https://wechaty.js.org/2021/11/07/how-to-develop-wechaty-puppet-module-supporting-5g-messages/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#article">article</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">支持5G消息的 puppet-walnut 接入介绍</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/zrn-fight">
+                            <img class="rounded-circle" src="/assets/contributors/zrn-fight/zrn-fight.webp" alt="张瑞宁" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/zrn-fight">张瑞宁</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Nov 07, 2021 · <span class="reading-time">
+  
+  
+    3 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/11-how-to-develop-wechaty-puppet-module-supporting-5g-messages/puppet-walnut.webp" alt="支持5G消息的 puppet-walnut 接入介绍">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>很荣幸能参加”<a href="(https://summer.iscas.ac.cn)">暑期2021</a>“活动，接触到<a href="https://github.com/wechaty/summer/issues/74">开发支持电信运营商 5G Chatbot / RCS 的 Wechaty 接入 Puppet 模块</a>这一开源项目,下面来和大家分享一下开发流程，希望能帮助更多的开发者快速上手这个项目。</p>
+
+<h2 id="一准备工作">一、准备工作</h2>
+
+<p>在开发之前，你需要准备以下工具：</p>
+
+<ul>
+  <li><a href="https://www.postman.com/">postman</a>：用来测试5G Chatbot的接口</li>
+  <li><a href="https://www.5g-msg.com/#/bussinessInformation">终端测试消息APP</a>：安装时设为默认短信应用</li>
+  <li>服务器</li>
+</ul>
+
+<p>整体步骤分为两步：</p>
+
+<ol>
+  <li>测通5G Chatbot的上下行接口</li>
+  <li>将5G Chatbot接入wechaty puppet中</li>
+</ol>
+
+<h2 id="二测试5g-chatbot的接口">二、测试5G Chatbot的接口</h2>
+
+<h3 id="1下行消息">1.下行消息</h3>
+
+<h4 id="接口申请">接口申请</h4>
+
+<p>在<a href="https://www.5g-msg.com/">5G消息开发者社区</a>申请开发接口，填写Chatbot信息并准备一个回调地址，可以是服务器的公网IP和端口号构成，也可以是提前申请好的域名。</p>
+
+<p><img src="/assets/2021/11-how-to-develop-wechaty-puppet-module-supporting-5g-messages/config.webp" alt="config" /></p>
+
+<h4 id="获取token">获取token</h4>
+
+<ul>
+  <li>首先要实现 <code class="language-plaintext highlighter-rouge">https://{notifyURL}/notifyPath</code> 这个接口进行身份鉴权并将代码部署到服务器上，其中<code class="language-plaintext highlighter-rouge">{notifyURL}</code>为申请Chatbot时所设置的回调地址。该接口的实现逻辑只需原样返回请求消息中的echoStr随机字符串和appId，如下面的这段验证示例所示，具体的实现不限语言。可参考 <a href="https://github.com/wechaty/puppet-walnut/blob/main/docs/5g-message-service-platform-industry-customer-access-interface-specification.pdf">中国电信-中国联通 5G 消息业务平台行业客户接入接口技术规范 V1.0.4文档</a>（以下简称“接口文档”）中第6.2 部分。</li>
+</ul>
+
+<p><a href="/assets/2021/11-how-to-develop-wechaty-puppet-module-supporting-5g-messages/notify.webp">notify</a></p>
+
+<ul>
+  <li>将以下代码导入 postman，修改 sipID、appID、appKey 和 senderPhone，点击 send 按钮即可获取到 token，可查看参考<a href="https://github.com/wechaty/puppet-walnut/blob/main/docs/5g-message-service-platform-industry-customer-access-interface-specification.pdf">中国电信-中国联通 5G 消息业务平台行业客户接入接口技术规范 V1.0.4文档</a> 中6.1部分。</li>
+</ul>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"get_token"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="nl">"listen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prerequest"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"script"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"exec"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"</span><span class="se">\r</span><span class="s2">"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"//////////skn环境测试 信息///////////////</span><span class="se">\r</span><span class="s2">"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"pm.globals.set(</span><span class="se">\"</span><span class="s2">sipID</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">你的chatbot的sipID</span><span class="se">\"</span><span class="s2">);</span><span class="se">\r</span><span class="s2">"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"pm.globals.set(</span><span class="se">\"</span><span class="s2">appID</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">你的chatbot的appID</span><span class="se">\"</span><span class="s2">);   </span><span class="se">\r</span><span class="s2">"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"pm.globals.set(</span><span class="se">\"</span><span class="s2">appKey</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">你的chatbot的appKey</span><span class="se">\"</span><span class="s2">);</span><span class="se">\r</span><span class="s2">"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"</span><span class="se">\r</span><span class="s2">"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"pm.globals.set(</span><span class="se">\"</span><span class="s2">senderPhone</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">你的手机号码</span><span class="se">\"</span><span class="s2">);</span><span class="se">\r</span><span class="s2">"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"</span><span class="se">\r</span><span class="s2">"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"pm.globals.set(</span><span class="se">\"</span><span class="s2">url</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">maap.5g-msg.com:30001</span><span class="se">\"</span><span class="s2">);</span><span class="se">\r</span><span class="s2">"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">""</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text/javascript"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"listen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"script"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"exec"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"var acquiretoken = JSON.parse(responseBody);</span><span class="se">\r</span><span class="s2">"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"pm.globals.set(</span><span class="se">\"</span><span class="s2">accessToken</span><span class="se">\"</span><span class="s2">,acquiretoken.accessToken);"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text/javascript"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"request"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POST"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"header"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"raw"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"raw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">appId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">appKey</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"raw"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"json"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"raw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:///bot/v1/sip:@botplatform.rcs.chinaunicom.cn/accessToken"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"host"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">""</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"bot"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"v1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sip:@botplatform.rcs.chinaunicom.cn"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"accessToken"</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"获取token"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="下行消息">下行消息</h4>
+
+<p>获取 token 后，即可进行下行消息发送，即终端 APP 可收到 Chatbot 所发送的消息。需要实现 <code class="language-plaintext highlighter-rouge">https://{serverRoot}/bot/{apiVersion}/{chatbotId}/messages</code> 接口。具体的请求方法，参照<a href="https://github.com/wechaty/puppet-walnut/blob/main/docs/5g-message-service-platform-industry-customer-access-interface-specification.pdf">中国电信-中国联通 5G 消息业务平台行业客户接入接口技术规范 V1.0.4文档</a> 的 9.2部分。</p>
+
+<p>终端接收到短信示例，如图：</p>
+
+<p><img src="/assets/2021/11-how-to-develop-wechaty-puppet-module-supporting-5g-messages/message1.webp" alt="message1" /></p>
+
+<h3 id="2上行消息">2.上行消息</h3>
+
+<p>需要实现 <code class="language-plaintext highlighter-rouge">http://{notifyURL}/messageNotification/{chatbotId}/messages</code> 这个接口，具体的请求方法参照<a href="https://github.com/wechaty/puppet-walnut/blob/main/docs/5g-message-service-platform-industry-customer-access-interface-specification.pdf">中国电信-中国联通 5G 消息业务平台行业客户接入接口技术规范 V1.0.4文档</a> 中的 11.1 部分，实现该接口后，终端即可向Chatbot发送消息，如下图所示：</p>
+
+<p><a href="/assets/2021/11-how-to-develop-wechaty-puppet-module-supporting-5g-messages/message2.webp">message2</a></p>
+
+<h2 id="三将5g-chatbot接入wechaty-puppet中">三、将5G Chatbot接入wechaty puppet中</h2>
+
+<ol>
+  <li>将上述身份鉴权和上行消息的业务逻辑在start()函数中实现,可参考如下代码：</li>
+</ol>
+
+<p><img src="/assets/2021/11-how-to-develop-wechaty-puppet-module-supporting-5g-messages/code1.webp" alt="code1" /></p>
+
+<ol>
+  <li>把Chatbot的消息结构转换为puppet的消息结构,重写messageRawPayloadParser函数</li>
+</ol>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">override</span> <span class="k">async</span> <span class="nf">messageRawPayloadParser </span><span class="p">(</span><span class="nx">smsPayload</span><span class="p">:</span> <span class="kr">any</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">MessagePayload</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="na">payload</span><span class="p">:</span> <span class="nx">MessagePayload</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">fromId</span><span class="p">:</span> <span class="nx">smsPayload</span><span class="p">.</span><span class="nx">senderAddress</span><span class="p">,</span>
+      <span class="na">id</span><span class="p">:</span> <span class="nx">smsPayload</span><span class="p">.</span><span class="nx">messageId</span><span class="p">,</span>
+      <span class="na">text</span><span class="p">:</span> <span class="nx">smsPayload</span><span class="p">.</span><span class="nx">messageList</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">contentText</span><span class="p">,</span>
+      <span class="na">timestamp</span><span class="p">:</span> <span class="nb">Date</span><span class="p">.</span><span class="nf">now</span><span class="p">(),</span>
+      <span class="na">toId</span><span class="p">:</span> <span class="nx">smsPayload</span><span class="p">.</span><span class="nx">destinationAddress</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+      <span class="na">type</span><span class="p">:</span> <span class="nx">MessageType</span><span class="p">.</span><span class="nx">Text</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">payload</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li>把chatbot要发送的消息连上puppet，将实现下行消息的逻辑在messageSend()函数中实现，可参考如下代码：</li>
+</ol>
+
+<p><img src="/assets/2021/11-how-to-develop-wechaty-puppet-module-supporting-5g-messages/code2.webp" alt="code2" /></p>
+
+<h2 id="参考资料">参考资料</h2>
+
+<p>《中国电信-中国联通 5G 消息业务平台行业客户接入接口技术规范 V1.0.4》：</p>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="/assets/js/viewer-js/#/assets/2021/11-how-to-develop-wechaty-puppet-module-supporting-5g-messages/5g-message-service-platform-industry-customer-access-interface-specification.pdf" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<ul>
+  <li>项目仓库: <a href="https://github.com/wechaty/wechaty-puppet-walnut">https://github.com/wechaty/wechaty-puppet-walnut</a></li>
+  <li>npm包：<a href="https://www.npmjs.com/package/wechaty-puppet-walnut">https://www.npmjs.com/package/wechaty-puppet-walnut</a></li>
+</ul>
+
+<blockquote>
+  <p>作者: <a href="https://github.com/zrn-fight">zrn-fight</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#blog">blog</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#study">study</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#introduction">introduction</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#wechaty-puppet-walnut">wechaty-puppet-walnut</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/zrn-fight">
+                            <img class="rounded-circle" src="/assets/contributors/zrn-fight/zrn-fight.webp" alt="张瑞宁" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/zrn-fight">张瑞宁</a> </h5>
+						
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/11/07/gsod-2021-improve-introduction-and-explanation-project-joint-report/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/11-gsod-2021-improve-introduction-and-explanation-project-joint-report/introduction-and-explanation.webp">  Google Season of Docs 2021 Team Report - Introduction and Explanation</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/11/11/sales-assistant-bot/"> 基于Wechaty的销售助理机器人--项目规划  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/11-sales-assistant-bot/sales-meme.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

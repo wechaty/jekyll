@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      twitter2wechat | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>twitter2wechat | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="twitter2wechat" />
+<meta name="author" content="steve" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Conversational RPA SDK for Chatbot Makers" />
+<meta property="og:description" content="Conversational RPA SDK for Chatbot Makers" />
+<link rel="canonical" href="https://wechaty.js.org/2020/08/06/wechaty-twitter-to-wechat/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/08/06/wechaty-twitter-to-wechat/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/wechaty-twitter2wechat/wechaty-twitter2wechat-header.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-08-06T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/wechaty-twitter2wechat/wechaty-twitter2wechat-header.webp" />
+<meta property="twitter:title" content="twitter2wechat" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"steve"},"dateModified":"2020-08-06T00:00:00+00:00","datePublished":"2020-08-06T00:00:00+00:00","description":"Conversational RPA SDK for Chatbot Makers","headline":"twitter2wechat","image":"https://wechaty.js.org/assets/2020/wechaty-twitter2wechat/wechaty-twitter2wechat-header.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/08/06/wechaty-twitter-to-wechat/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"steve"},"url":"https://wechaty.js.org/2020/08/06/wechaty-twitter-to-wechat/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">twitter2wechat</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/steve">
+                            <img class="rounded-circle" src="/assets/contributors/steve/steve-avatar.webp" alt="Steve" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/steve">Steve</a> <span><a target="_blank" href="https://www.twitter.com/pesnaleague" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Aug 06, 2020 · <span class="reading-time">
+  
+  
+    1 min read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/wechaty-twitter2wechat/wechaty-twitter2wechat-header.webp" alt="twitter2wechat">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p><a href="https://github.com/wechaty/wechaty"><img src="https://img.shields.io/badge/Powered%20By-Wechaty-blue.svg" alt="Powered by Wechaty" /></a>
+<a href="https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty"><img src="https://img.shields.io/badge/Wechaty-开源激励计划-green.svg" alt="Wechaty开源激励计划" /></a>
+<a href="http://nodejs.cn/download/"><img src="https://img.shields.io/badge/node-%3E%3D10-blue.svg" alt="node version" /></a>
+<a href="https://github.com/wechaty/wechaty"><img src="https://img.shields.io/badge/wechaty-%3E%3D0.40.5-blue.svg" alt="node version" /></a></p>
+
+<h2 id="twitter2wechat">Twitter2Wechat</h2>
+
+<p>当前，<a href="https://ifttt.com">IFTTT</a>应用相当广泛，连接了很多日常的应用，但是微信由于各种原因，尚不能接入。
+感恩Wechaty API的出现，这个Twitter2Wechat 通过监听Twitter，在探测到有新Tweet发布后，会同步到预设的微信群里。
+一个实际的应用是，我们有一个实况足球的小联盟<a href="https://www.pesnaleague.com">PESNALeague</a>。如果有玩家在YouTube或Twitch上直播比赛对战的话，通过预设的IFTTT, 直播的URL会在Twitter发布。
+之后，通过这个wechaty机器人，实现了在微信群的通告功能。</p>
+
+<h2 id="效果预览">效果预览</h2>
+
+<p><img src="/assets/2020/wechaty-twitter2wechat/wechaty-twitter2wechat-header.webp" alt="Header Picture" /></p>
+
+<h2 id="项目说明">项目说明</h2>
+
+<p>本项目是基于<a href="https://github.com/wechaty/wechaty">wechaty</a>的个人开源项目，更多关于<code class="language-plaintext highlighter-rouge">wechaty</code>项目说明及api文档可以移步：<a href="https://wechaty.js.org/v/zh/">wechaty介绍</a>
+如果你拥有了<a href="https://github.com/wechaty/wechaty">wechaty</a>发放的Padplus token，那么也可以直接使用本项目 （<a href="https://github.com/juzibot/Welcome/wiki/Everything-about-Wechaty">PadPlus token 申请地址</a>）</p>
+
+<h2 id="程序结构">程序结构</h2>
+
+<p><a href="https://github.com/afterever/twitter2wechat">GitHub</a></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">|---</span><span class="nx">index</span><span class="p">.</span><span class="nx">js</span>                   <span class="err">#</span> <span class="nx">入口文件</span>
+<span class="o">|---</span><span class="nx">twitter_monitor</span><span class="p">.</span><span class="nx">js</span>         <span class="err">#</span> <span class="nx">监听Twitter的module</span>
+<span class="o">|---</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">js</span>             <span class="err">#</span> <span class="nx">存放所有的authentication</span> <span class="nx">keys</span>
+<span class="o">|---</span><span class="nx">environment_settings</span><span class="p">.</span><span class="nx">json</span>  <span class="err">#</span> <span class="nx">设置</span><span class="err">，</span><span class="nx">比如Twitter</span> <span class="nx">polling</span> <span class="nx">frequency等等</span>
+<span class="o">|--</span> <span class="kr">package</span><span class="p">.</span><span class="nx">json</span>
+</code></pre></div></div>
+
+<h2 id="配置">配置</h2>
+
+<p>我们提供了credentials_example.js，如下所示。请移步<a href="https://developer.twitter.com/en/docs/basics/authentication/overview">申请Twitter Developer API</a>四个token填入即可运行。</p>
+
+<p>```shell script
+module.exports = {
+  // Twitter Devloper Account Credentials
+  // Apply here: https://developer.twitter.com/en/docs/basics/authentication/overview
+  consumer_key: ‘fill_in_your__consumer_keyi’,
+  consumer_secret: ‘fill_in_your__consumer_secret’,
+  access_token: ‘fill_in_your__access_token’,
+  access_token_secret: ‘fill_in_your__access_token_secret’,</p>
+
+<p>// Twitter ID you wanted to monitor
+  twitter_user_id: “fill_in_your_twitter_account”,</p>
+
+<p>// Wechaty and Wechat information
+  puppet_padplus_token: ‘fill_in_your_puppet_padplus_token’,
+  wechat_chatroom_id : ‘555456789@chatroom’,
+}
+```</p>
+
+<h2 id="核心代码">核心代码</h2>
+
+<p>首先，感谢<a href="https://github.com/matthewpalmer/monitor-twitter">Monitor Twitter</a>的开发者，我们发展了他们的主程序，实现了对Twitter账号的监听，具体的实现请参考twitter_monitor.js文件。
+核心的程序如下图，在每30秒poll一次Twitter的情况下，如果检测到有新Tweet发布，我们抓取Tweet的text()，然后同步发布到微信Wechat预设的房间内。
+<img src="/assets/2020/wechaty-twitter2wechat/core-code.webp" alt="Core Code" /></p>
+
+<h2 id="运行">运行</h2>
+
+<p>克隆本项目，并进入项目根目录
+第一步 <code class="language-plaintext highlighter-rouge">npm install</code>
+第二步 <code class="language-plaintext highlighter-rouge">node index.js</code></p>
+
+<h2 id="服务器heroku-部署-推荐">服务器Heroku 部署 (推荐)</h2>
+
+<p>代码写完了，我们需要一个服务器24/7运行，且最好是免费的:)
+Wechaty的主要开发者Huan LI (李卓桓)写过一篇<a href="https://wechaty.github.io/heroku-deploy-button-for-wechaty-starter-template/">博客文章</a>，且附带有<a href="https://github.com/wechaty/heroku-wechaty-getting-started">Heroku+Wechaty Getting Started例程</a>，对我们的帮助很大。
+Heroku免费提供每月500小时的服务器时间，分配到每天，几乎是20小时了，基本上够用了。他们提供的<a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs?singlepage=true">Node.js Tutorial教程</a>做，也写的非常详尽，一步步照着做完，也就学会了。
+在他们的服务器上部署后，只要修改Procfile就可以带参数的运行了。</p>
+
+<h2 id="延展与将来">延展与将来</h2>
+
+<p>国内抖音如火如荼，直播带货这些将来可能都会与微信连接。这些直播的信息将来有可能可以通过微信，直接推送到客户的手机上，方便用户获取最新消息。</p>
+
+<h2 id="最后">最后</h2>
+
+<p>本项目属于个人兴趣开发，开源出来是为了技术交流，请勿使用此项目做违反微信规定或者其他违法事情。
+建议使用小号进行测试，有被微信封禁网页端登录权限的风险（客户端不受影响），请确保自愿使用。</p>
+
+<h3 id="致谢">致谢</h3>
+
+<p>感谢<a href="https://github.com/wechaty/wechaty">wechaty</a>团队提供微信机器人SDK，让开发者可以专注于业务代码
+感谢<a href="https://www.juzibot.com/">句子互动juzibot</a>提供的iPad协议版token</p>
+
+<blockquote>
+  <p>Author: <a href="https://github.com/afterever">afterever</a>
+Code: <a href="https://github.com/afterever/twitter2wechat">twitter2wechat</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#padplus">padplus</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#project">project</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#twitter">twitter</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#utility">utility</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/steve">
+                            <img class="rounded-circle" src="/assets/contributors/steve/steve-avatar.webp" alt="Steve" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/steve">Steve</a> <span><a target="_blank" href="https://www.twitter.com/pesnaleague" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						a Web developer looking to expand IFTTT via Wechaty
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/08/05/wechaty-puppet-maker/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/09-wechaty-puppet-lark-final-blog-en/puppet.webp">  Wechaty Workshop for Puppet Makers: How to make a Puppet for Wechaty</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/08/08/qijibot-sales-automation-en/"> How I Rebuilt the Sales System at MiraclePlus with a Chatbot  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/08-qijibot-sales-automation-en/qijibot.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

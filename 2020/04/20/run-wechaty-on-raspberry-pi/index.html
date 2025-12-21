@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      在树莓派上运行wechaty | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>在树莓派上运行wechaty | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="在树莓派上运行wechaty" />
+<meta name="author" content="cr4fun" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="一、介绍" />
+<meta property="og:description" content="一、介绍" />
+<link rel="canonical" href="https://wechaty.js.org/2020/04/20/run-wechaty-on-raspberry-pi/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/04/20/run-wechaty-on-raspberry-pi/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/runwechatyonpi/head.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-04-20T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/runwechatyonpi/head.webp" />
+<meta property="twitter:title" content="在树莓派上运行wechaty" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"cr4fun"},"dateModified":"2020-04-20T00:00:00+00:00","datePublished":"2020-04-20T00:00:00+00:00","description":"一、介绍","headline":"在树莓派上运行wechaty","image":"https://wechaty.js.org/assets/2020/runwechatyonpi/head.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/04/20/run-wechaty-on-raspberry-pi/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"cr4fun"},"url":"https://wechaty.js.org/2020/04/20/run-wechaty-on-raspberry-pi/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#tutorial">tutorial</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">在树莓派上运行wechaty</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/cr4fun">
+                            <img class="rounded-circle" src="/assets/contributors/cr4fun/avatar.webp" alt="cr4fun" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/cr4fun">cr4fun</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Apr 20, 2020 · <span class="reading-time">
+  
+  
+    4 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/runwechatyonpi/head.webp" alt="在树莓派上运行wechaty">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<h2 id="一介绍">一、介绍</h2>
+
+<p>1、wechaty是迄今为止最易于使用的开源微信机器人框架</p>
+
+<p>只要会写JavaScript就可以开发微信机器人，示例只有7行代码：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Wechaty</span> <span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span> <span class="c1">// import { Wechaty } from 'wechaty'</span>
+<span class="nx">Wechaty</span><span class="p">.</span><span class="nf">instance</span><span class="p">()</span> <span class="c1">// Global Instance</span>
+<span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">qrcode</span><span class="p">,</span> <span class="nx">status</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Scan QR Code to login: </span><span class="p">${</span><span class="nx">status</span><span class="p">}</span><span class="s2">\nhttps://api.qrserver.com/v1/create-qr-code/?data=</span><span class="p">${</span><span class="nf">encodeURIComponent</span><span class="p">(</span><span class="nx">qrcode</span><span class="p">)}</span><span class="s2">`</span><span class="p">))</span>
+<span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span>            <span class="nx">user</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`User </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2"> logined`</span><span class="p">))</span>
+<span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span>       <span class="nx">message</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Message: </span><span class="p">${</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">))</span>
+<span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>2、树莓派是一个具备硬件接口的廉价卡片电脑</p>
+
+<p><img src="/assets/2020/runwechatyonpi/pi.webp" alt="RICEPO" /></p>
+
+<p>树莓派能运行完整的linux系统，可通过读写GPIO文件的方式实现与硬件交互。树莓派降低了开发硬件的难度，可使用开发软件的方式开发硬件。</p>
+
+<p>3、树莓派定律：<strong>凡是能在PC上运行的软件，必须在树莓派里也能运行</strong></p>
+
+<p>这个定律是我说的，因为我不出名，所以大部分人都不知道。</p>
+
+<h2 id="二思考wechaty--树莓派--">二、思考：wechaty + 树莓派 = ？</h2>
+
+<p>这个世界一直在重复造轮子。有平行的，有升维的，也有降维的。换了一个环境和应用场景时，常常会对同样的东西实现重新定义。比如直播重新定义了电视购物。而运行在树莓派上的wechaty微信机器人，则<strong>重新定义了人与智能设备的交互方式</strong>。</p>
+
+<h2 id="三在树莓派上体验wechaty">三、在树莓派上体验wechaty</h2>
+
+<p>1、安装nvm</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-o-</span> https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+</code></pre></div></div>
+
+<p>2、设置 ~/.profile，内容如下</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">NVM_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.nvm"</span>
+<span class="o">[</span> <span class="nt">-s</span> <span class="s2">"</span><span class="nv">$NVM_DIR</span><span class="s2">/nvm.sh"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="se">\.</span> <span class="s2">"</span><span class="nv">$NVM_DIR</span><span class="s2">/nvm.sh"</span>
+</code></pre></div></div>
+
+<p>3、安装node</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nvm <span class="nb">install </span>13
+</code></pre></div></div>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nvm use 13
+</code></pre></div></div>
+
+<p>4、创建一个名为wechatypi的文件夹，进入文件夹并安装wechaty及依赖</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>wechatypi
+npm init
+npm <span class="nb">install </span>wechaty@0.38.0
+npm <span class="nb">install </span>bufferutil@^4.0.1
+npm <span class="nb">install </span>utf-8-validate@^5.0.2
+</code></pre></div></div>
+
+<p>5、创建 bot.js 文件</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Wechaty</span> <span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span> <span class="c1">// import { Wechaty } from 'wechaty'</span>
+<span class="nx">Wechaty</span><span class="p">.</span><span class="nf">instance</span><span class="p">()</span> <span class="c1">// Global Instance</span>
+<span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">qrcode</span><span class="p">,</span> <span class="nx">status</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Scan QR Code to login: </span><span class="p">${</span><span class="nx">status</span><span class="p">}</span><span class="s2">\nhttps://api.qrserver.com/v1/create-qr-code/?data=</span><span class="p">${</span><span class="nf">encodeURIComponent</span><span class="p">(</span><span class="nx">qrcode</span><span class="p">)}</span><span class="s2">`</span><span class="p">))</span>
+<span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span>            <span class="nx">user</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`User </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2"> logined`</span><span class="p">))</span>
+<span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span>       <span class="nx">message</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Message: </span><span class="p">${</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">))</span>
+<span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>6、运行</p>
+
+<p>wechaty-puppet-service用的是windows微信协议，该协议需要使用token。把下面命令中的token替换成你的token。然后执行如下命令，启动机器人。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">WECHATY_PUPPET</span><span class="o">=</span>wechaty-puppet-service <span class="nv">WECHATY_PUPPET_SERVICE_TOKEN</span><span class="o">=</span>token node bot.js
+</code></pre></div></div>
+
+<p><img src="/assets/2020/runwechatyonpi/run.webp" alt="RICEPO" /></p>
+
+<p>7、终端上会出现一个url，复制粘贴到浏览器上，会出现一个二维码。</p>
+
+<p><img src="/assets/2020/runwechatyonpi/qrcode.webp" alt="RICEPO" /></p>
+
+<p>使用微信扫码登陆，微信机器人就上线了。</p>
+
+<h2 id="四最简单的应用根据消息开灯或关灯">四、最简单的应用：根据消息开灯或关灯</h2>
+
+<h3 id="关键代码">关键代码</h3>
+
+<p>树莓派操作硬件，只需要引入相应的GPIO库，操作GPIO，只需要对某个针脚执行高电平或低电平：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">Gpio</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">onoff</span><span class="dl">'</span><span class="p">.</span><span class="nx">Gpio</span><span class="p">;</span><span class="c1">//引入GPIO库</span>
+</code></pre></div></div>
+
+<p>设置针脚17为输出针脚，用于连接继电器</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">led</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Gpio</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="dl">'</span><span class="s1">out</span><span class="dl">'</span><span class="p">);</span><span class="c1">//设置针脚17为输出针脚</span>
+</code></pre></div></div>
+
+<p>开灯</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">led</span><span class="p">.</span><span class="nf">writeSync</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="c1">//高电平开灯</span>
+</code></pre></div></div>
+
+<p>关灯</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">led</span><span class="p">.</span><span class="nf">writeSync</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="c1">//低电平关灯</span>
+</code></pre></div></div>
+
+<h3 id="全部代码">全部代码</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Wechaty</span> <span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span> <span class="c1">// import { Wechaty } from 'wechaty'</span>
+<span class="k">import</span> <span class="nx">Gpio</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">onoff</span><span class="dl">'</span><span class="p">.</span><span class="nx">Gpio</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">led</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Gpio</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="dl">'</span><span class="s1">out</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">Wechaty</span><span class="p">.</span><span class="nf">instance</span><span class="p">()</span> <span class="c1">// Global Instance</span>
+<span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">qrcode</span><span class="p">,</span> <span class="nx">status</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Scan QR Code to login: </span><span class="p">${</span><span class="nx">status</span><span class="p">}</span><span class="s2">\nhttps://api.qrserver.com/v1/create-qr-code/?data=</span><span class="p">${</span><span class="nf">encodeURIComponent</span><span class="p">(</span><span class="nx">qrcode</span><span class="p">)}</span><span class="s2">`</span><span class="p">))</span>
+<span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span>            <span class="nx">user</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`User </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2"> logined`</span><span class="p">))</span>
+<span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span>  <span class="nx">on_msg</span><span class="p">)</span>
+<span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+
+<span class="kd">function</span> <span class="nf">on_msg</span><span class="p">(</span><span class="nx">message</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="k">from</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="k">from</span><span class="p">()</span>
+    <span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">text</span><span class="p">()</span>
+    <span class="kd">var</span> <span class="nx">to</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">to</span><span class="p">()</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">text</span><span class="o">==</span><span class="dl">"</span><span class="s2">open</span><span class="dl">"</span><span class="p">){</span>
+        <span class="nx">led</span><span class="p">.</span><span class="nf">writeSync</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">text</span><span class="o">==</span><span class="dl">"</span><span class="s2">close</span><span class="dl">"</span><span class="p">){</span>
+        <span class="nx">led</span><span class="p">.</span><span class="nf">writeSync</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Message from: </span><span class="p">${</span><span class="k">from</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Message text: </span><span class="p">${</span><span class="nx">text</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Message to: </span><span class="p">${</span><span class="nx">to</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>上面的代码以后可能会更新，最新代码位于：</p>
+
+<p><a href="https://github.com/wechatypi/gpio">https://github.com/wechatypi/gpio</a></p>
+
+<h2 id="视频演示">视频演示</h2>
+
+<p><a href="https://www.bilibili.com/video/BV1bz411B7XG?seid=14179117841102771483">https://www.bilibili.com/video/BV1bz411B7XG?seid=14179117841102771483</a></p>
+
+<blockquote>
+  <p>作者: <a href="https://github.com/cr4fun">cr4fun</a>，极客、物联网专家，SDK产品经理。</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#iot">iot</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#raspberrypi">raspberrypi</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/cr4fun">
+                            <img class="rounded-circle" src="/assets/contributors/cr4fun/avatar.webp" alt="cr4fun" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/cr4fun">cr4fun</a> </h5>
+						不务正业的SDK产品经理，平时喜欢鼓捣电子元件及做木工。
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/04/20/open-source-wechaty-in-python-go-and-java/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/04-open-source-wechaty-in-python-go-and-java/001.webp">  Open-source Wechaty in Python, Go, and Java</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/04/21/wechaty-min-forwarder-en/"> Minimalist Implementation of Wechaty Server </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

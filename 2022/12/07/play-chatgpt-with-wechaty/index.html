@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      5分钟把ChatGPT装进微信里 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>5分钟把ChatGPT装进微信里 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="5分钟把ChatGPT装进微信里" />
+<meta name="author" content="sunshanpeng" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="基于wechaty创建一个自己的ChatGPT机器人" />
+<meta property="og:description" content="基于wechaty创建一个自己的ChatGPT机器人" />
+<link rel="canonical" href="https://wechaty.js.org/2022/12/07/play-chatgpt-with-wechaty/" />
+<meta property="og:url" content="https://wechaty.js.org/2022/12/07/play-chatgpt-with-wechaty/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2022/12-play-chatgpt-with-wechaty/636.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-12-07T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2022/12-play-chatgpt-with-wechaty/636.webp" />
+<meta property="twitter:title" content="5分钟把ChatGPT装进微信里" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sunshanpeng"},"dateModified":"2022-12-07T00:00:00+00:00","datePublished":"2022-12-07T00:00:00+00:00","description":"基于wechaty创建一个自己的ChatGPT机器人","headline":"5分钟把ChatGPT装进微信里","image":"https://wechaty.js.org/assets/2022/12-play-chatgpt-with-wechaty/636.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2022/12/07/play-chatgpt-with-wechaty/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"sunshanpeng"},"url":"https://wechaty.js.org/2022/12/07/play-chatgpt-with-wechaty/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#article">article</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">5分钟把ChatGPT装进微信里</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/sunshanpeng">
+                            <img class="rounded-circle" src="/assets/contributors/sunshanpeng/avatar.webp" alt="sunshanpeng" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/sunshanpeng">sunshanpeng</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Dec 07, 2022 · <span class="reading-time">
+  
+  
+    4 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2022/12-play-chatgpt-with-wechaty/636.webp" alt="5分钟把ChatGPT装进微信里">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>基于wechaty创建一个自己的ChatGPT机器人</p>
+
+<h2 id="背景">背景</h2>
+
+<h3 id="chatgpt是什么">ChatGPT是什么</h3>
+
+<p>这几天我的朋友圈被ChatGPT刷屏，如果你还不知道那就赶紧上网搜一下吧。</p>
+
+<p>官方介绍：<a href="https://openai.com/blog/chatgpt/">https://openai.com/blog/chatgpt/</a></p>
+
+<h3 id="chatgpt能干什么">ChatGPT能干什么</h3>
+
+<p>可以砍价，可以写文章，可以写代码，可以…</p>
+
+<p>更多好玩的场景等你探索</p>
+
+<p><img src="/assets/2022/12-play-chatgpt-with-wechaty/634.webp" alt="image.png" />
+<img src="/assets/2022/12-play-chatgpt-with-wechaty/636.webp" alt="image.png" /></p>
+
+<h3 id="uos-web协议复活">UOS web协议复活</h3>
+
+<p><code class="language-plaintext highlighter-rouge">wechaty-puppet-wechat 1.18.4</code>版本可以免费使用了</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install </span>wechaty-puppet-wechat@latest <span class="nt">--save</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const bot <span class="o">=</span> WechatyBuilder.build<span class="o">({</span>
+    name: <span class="s1">'puppet-wechat'</span>,
+    puppetOptions: <span class="o">{</span>
+      uos: <span class="nb">true</span>  // 开启uos协议
+    <span class="o">}</span>,
+    puppet: <span class="s1">'wechaty-puppet-wechat'</span>,
+<span class="o">})</span>
+</code></pre></div></div>
+
+<h2 id="获取chatgpt-session_token">获取ChatGPT SESSION_TOKEN</h2>
+
+<h3 id="注册chatgpt">注册ChatGPT</h3>
+
+<p>注册地址: <a href="https://chat.openai.com/chat">https://chat.openai.com/chat</a></p>
+
+<p>在国内注册ChatGPT账号稍微有点门槛</p>
+
+<ol>
+  <li>需要有一个国外的梯子（香港的不行）</li>
+  <li>需要国外手机号，可以使用<a href="https://sms-activate.org/cn">https://sms-activate.org/cn</a></li>
+</ol>
+
+<p><img src="/assets/2022/12-play-chatgpt-with-wechaty/637.webp" alt="image.png" /></p>
+
+<p>国内注册教程: <a href="https://juejin.cn/post/7173447848292253704">https://juejin.cn/post/7173447848292253704</a></p>
+
+<h3 id="登录chatgpt获取session_token">登录ChatGPT获取SESSION_TOKEN</h3>
+
+<ul>
+  <li>打开网页: <a href="https://chat.openai.com/chat">https://chat.openai.com/chat</a></li>
+  <li>打开开发者工具-&gt;应用-&gt;Cookie</li>
+  <li>拷贝<code class="language-plaintext highlighter-rouge">__Secure-next-auth.session-token</code>的值
+<img src="/assets/2022/12-play-chatgpt-with-wechaty/image.webp" alt="image.png" /></li>
+</ul>
+
+<h2 id="使用chatgpt-api">使用chatgpt-api</h2>
+
+<p>github地址: <a href="https://github.com/transitive-bullshit/chatgpt-api">https://github.com/transitive-bullshit/chatgpt-api</a></p>
+
+<h3 id="使用方法">使用方法</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install </span>chatgpt
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">ChatGPTAPI</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">chatgpt</span><span class="dl">'</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">example</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// sessionToken is required; see below for details</span>
+  <span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ChatGPTAPI</span><span class="p">({</span>
+    <span class="na">sessionToken</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">SESSION_TOKEN</span>
+  <span class="p">})</span>
+
+  <span class="c1">// ensure the API is properly authenticated</span>
+  <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nf">ensureAuth</span><span class="p">()</span>
+
+  <span class="c1">// send a message and wait for the response</span>
+  <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nf">sendMessage</span><span class="p">(</span>
+    <span class="dl">'</span><span class="s1">Write a python version of bubble sort.
+  )
+
+  // response is a markdown-formatted string
+  console.log(response)
+}
+</span></code></pre></div></div>
+
+<h2 id="集成chatgpt-api和wechaty">集成chatgpt-api和wechaty</h2>
+
+<p>直接上代码：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">WechatyBuilder</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">qrcodeTerminal</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">qrcode-terminal</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">ChatGPTAPI</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">chatgpt</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">sessionToken</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ChatGPTAPI</span><span class="p">({</span> <span class="na">sessionToken</span><span class="p">:</span> <span class="nx">sessionToken</span> <span class="o">||</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">SESSION_TOKEN</span> <span class="p">});</span>
+<span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nf">ensureAuth</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">wechaty</span> <span class="o">=</span> <span class="nx">WechatyBuilder</span><span class="p">.</span><span class="nf">build</span><span class="p">({</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">wechaty-chatgpt</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">puppet</span><span class="p">:</span> <span class="dl">'</span><span class="s1">wechaty-puppet-wechat</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">puppetOptions</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">uos</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">});</span>
+<span class="nx">wechaty</span>
+  <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">,</span> <span class="k">async </span><span class="p">(</span><span class="nx">qrcode</span><span class="p">,</span> <span class="nx">status</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">qrcodeTerminal</span><span class="p">.</span><span class="nf">generate</span><span class="p">(</span><span class="nx">qrcode</span><span class="p">);</span> <span class="c1">// 在console端显示二维码</span>
+    <span class="kd">const</span> <span class="nx">qrcodeImageUrl</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">https://api.qrserver.com/v1/create-qr-code/?data=</span><span class="dl">'</span><span class="p">,</span> <span class="nf">encodeURIComponent</span><span class="p">(</span><span class="nx">qrcode</span><span class="p">)].</span><span class="nf">join</span><span class="p">(</span><span class="dl">''</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">qrcodeImageUrl</span><span class="p">);</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span> <span class="nx">user</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`User </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2"> logged in`</span><span class="p">))</span>
+  <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">logout</span><span class="dl">'</span><span class="p">,</span> <span class="nx">user</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`User </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2"> has logged out`</span><span class="p">))</span>
+  <span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">message</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">contact</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">talker</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="nx">content</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">text</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="nx">isText</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nf">type</span><span class="p">()</span> <span class="o">===</span> <span class="nx">wechaty</span><span class="p">.</span><span class="nx">Message</span><span class="p">.</span><span class="nx">Type</span><span class="p">.</span><span class="nx">Text</span><span class="p">;</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nf">self</span><span class="p">()</span> <span class="o">||</span> <span class="o">!</span><span class="nx">isText</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`contact: </span><span class="p">${</span><span class="nx">contact</span><span class="p">}</span><span class="s2"> content: </span><span class="p">${</span><span class="nx">content</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">content</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">ding</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">await</span> <span class="nx">contact</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="dl">'</span><span class="s1">dong</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">content</span><span class="p">.</span><span class="nf">startsWith</span><span class="p">(</span><span class="dl">'</span><span class="s1">/c </span><span class="dl">'</span><span class="p">))</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nf">sendMessage</span><span class="p">(</span><span class="nx">content</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="dl">'</span><span class="s1">/c </span><span class="dl">'</span><span class="p">,</span> <span class="dl">''</span><span class="p">));</span>
+      <span class="k">try</span> <span class="p">{</span>
+        <span class="k">await</span> <span class="nx">contact</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+      <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="nx">wechaty</span>
+  <span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+  <span class="p">.</span><span class="nf">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Start to log in wechat...</span><span class="dl">'</span><span class="p">))</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">e</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="nx">e</span><span class="p">));</span>
+</code></pre></div></div>
+
+<h3 id="效果">效果</h3>
+
+<p><img src="https://raw.githubusercontent.com/sunshanpeng/wechaty-chatgpt/main/media/screenshot-20221207-131138.png" alt="image.png" /></p>
+
+<h2 id="总结">总结</h2>
+
+<p>感谢wechaty和chatgpt-api，让我们能够很方便的开发自己的机器人，更多玩法等你探索</p>
+
+<p>项目地址：<a href="https://github.com/sunshanpeng/wechaty-chatgpt">github sunshanpeng/wechaty-chatgpt</a>，欢迎给我一个 Star⭐</p>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#chatgpt">chatgpt</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#wechaty-puppet-wechat">wechaty-puppet-wechat</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/sunshanpeng">
+                            <img class="rounded-circle" src="/assets/contributors/sunshanpeng/avatar.webp" alt="sunshanpeng" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/sunshanpeng">sunshanpeng</a> </h5>
+						just for fun
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2022/09/27/wechaty-university-admission-helper/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2022/09-wechaty-university-admission-helper-en/cover.webp">  基于 Wechaty 实现高校招生宣传小助手的实践</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2022/12/23/introducing-workpro-puppet-en/"> Wechaty Puppet Service WorkPro Release Announcement  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2022/12-introducing-workpro-puppet-en/wecom.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" crossorigin="anonymous"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      if (!window.mermaid) {
+        return;
+      }
+
+      const codeBlocks = document.querySelectorAll('pre code.language-mermaid, code.language-mermaid');
+      codeBlocks.forEach(function (codeEl) {
+        const container = document.createElement('div');
+        container.className = 'mermaid';
+        container.textContent = codeEl.textContent;
+
+        const parent = codeEl.parentElement;
+        if (parent && parent.tagName.toLowerCase() === 'pre') {
+          parent.parentElement.replaceChild(container, parent);
+        } else if (parent) {
+          parent.replaceChild(container, codeEl);
+        } else {
+          codeEl.replaceWith(container);
+        }
+      });
+
+      window.mermaid.initialize({ startOnLoad: true, securityLevel: 'loose' });
+    });
+  </script>
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

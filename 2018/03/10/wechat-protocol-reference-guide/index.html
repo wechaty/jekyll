@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      微信App通信协议案例学习参考指南 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>微信App通信协议案例学习参考指南 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="微信App通信协议案例学习参考指南" />
+<meta name="author" content="h4dex" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="在1月初无意看到某微信爱好者学习交流群里发现讨论一个名为 MicroChat （基于Mars）利用微信AndroidAPP客户端通讯协议代码！！， 震惊之余，已对作者膜拜。心情激动之下下载了下来，参考了一些文章对原始版本进行了部分修正和应用测试。 后测试增加了一些功能实现以及对扩展模拟任意设备方式登入验证，和特定功能处理的思路。本人能力有限，技术很菜很水，但是秉着对技术向往以及分享我的坑给更多的学习者科普了解，故整理编辑了一篇文章带领大家先一睹为快。并且对MicroChat基础功能做了一些扩展思路，如果有错误的地方，欢迎批评指正 ！" />
+<meta property="og:description" content="在1月初无意看到某微信爱好者学习交流群里发现讨论一个名为 MicroChat （基于Mars）利用微信AndroidAPP客户端通讯协议代码！！， 震惊之余，已对作者膜拜。心情激动之下下载了下来，参考了一些文章对原始版本进行了部分修正和应用测试。 后测试增加了一些功能实现以及对扩展模拟任意设备方式登入验证，和特定功能处理的思路。本人能力有限，技术很菜很水，但是秉着对技术向往以及分享我的坑给更多的学习者科普了解，故整理编辑了一篇文章带领大家先一睹为快。并且对MicroChat基础功能做了一些扩展思路，如果有错误的地方，欢迎批评指正 ！" />
+<link rel="canonical" href="https://wechaty.js.org/2018/03/10/wechat-protocol-reference-guide/" />
+<meta property="og:url" content="https://wechaty.js.org/2018/03/10/wechat-protocol-reference-guide/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2018/h4dex-wechatprotocol.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-03-10T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2018/h4dex-wechatprotocol.webp" />
+<meta property="twitter:title" content="微信App通信协议案例学习参考指南" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"h4dex"},"dateModified":"2018-03-10T00:00:00+00:00","datePublished":"2018-03-10T00:00:00+00:00","description":"在1月初无意看到某微信爱好者学习交流群里发现讨论一个名为 MicroChat （基于Mars）利用微信AndroidAPP客户端通讯协议代码！！， 震惊之余，已对作者膜拜。心情激动之下下载了下来，参考了一些文章对原始版本进行了部分修正和应用测试。 后测试增加了一些功能实现以及对扩展模拟任意设备方式登入验证，和特定功能处理的思路。本人能力有限，技术很菜很水，但是秉着对技术向往以及分享我的坑给更多的学习者科普了解，故整理编辑了一篇文章带领大家先一睹为快。并且对MicroChat基础功能做了一些扩展思路，如果有错误的地方，欢迎批评指正 ！","headline":"微信App通信协议案例学习参考指南","image":"https://wechaty.js.org/assets/2018/h4dex-wechatprotocol.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2018/03/10/wechat-protocol-reference-guide/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"h4dex"},"url":"https://wechaty.js.org/2018/03/10/wechat-protocol-reference-guide/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#hacking">hacking</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">微信App通信协议案例学习参考指南</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/h4dex">
+                            <img class="rounded-circle" src="/assets/contributors/h4dex/avatar.webp" alt="h4dex" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/h4dex">h4dex</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Mar 10, 2018 · <span class="reading-time">
+  
+  
+    15 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2018/h4dex-wechatprotocol.webp" alt="微信App通信协议案例学习参考指南">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>在1月初无意看到某微信爱好者学习交流群里发现讨论一个名为 <strong>MicroChat</strong> （基于Mars）利用微信AndroidAPP客户端通讯协议代码！！， 震惊之余，已对作者膜拜。心情激动之下下载了下来，参考了一些文章对原始版本进行了部分修正和应用测试。 后测试增加了一些功能实现以及对扩展模拟任意设备方式登入验证，和特定功能处理的思路。本人能力有限，技术很菜很水，但是秉着对技术向往以及分享我的坑给更多的学习者科普了解，故整理编辑了一篇文章带领大家先一睹为快。并且对MicroChat基础功能做了一些扩展思路，如果有错误的地方，欢迎批评指正 ！</p>
+
+<p><img src="/assets/2018/h4dex-wechatprotocol.webp" alt="Wechat Protocol" /></p>
+
+<h2 id="准备工作">准备工作</h2>
+
+<blockquote>
+  <p>开发环境：</p>
+</blockquote>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>开发工具: Visual Studio 2015 及以上版本(marsWin32SDK 需要vc140以上)
+抓包和分析工具： Wireshark / Fiddler / Charles、TCPDump
+编译配套： Boost 、 ATL
+</code></pre></div></div>
+
+<blockquote>
+  <p>附加目录</p>
+</blockquote>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>如果本机缺少引用目录请手动附加
+</code></pre></div></div>
+
+<blockquote>
+  <p>其他提醒</p>
+</blockquote>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>编译顺序为： Mars相关依赖 / SQLite3 -&gt; MicrochatSDK(基于Mars Win32 Example) -&gt; MicroChat(用户层)
+</code></pre></div></div>
+
+<h2 id="微信是如何通信的呢">微信是如何通信的呢？</h2>
+
+<blockquote>
+  <p>端口</p>
+</blockquote>
+
+<p>经过使用扫描器对微信常用域名的扫描发现远程端口有： 80  443  8080  5222 5223  5228 等</p>
+
+<blockquote>
+  <p>域名</p>
+</blockquote>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dns.weixin.qq.com
+support.weixin.qq.com    80/8080
+short.weixin.qq.com        443/8080 (sz)
+long.weixin.qq.com          80/443 (sz)
+wx.qlogo.cn                    80
+timg.cn  等
+</code></pre></div></div>
+
+<blockquote>
+  <p>基本执行过程概况</p>
+</blockquote>
+
+<ol>
+  <li>程序启动后，优先尝试DNS解析特定域名（上述域名，会返回所有节点）;</li>
+</ol>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dns查询
+dns.weixin.qq.com
+返回一组IP地址long.weixin.qq.com
+返回一组IP地址，本次通信中，微信使用了最后一个IP作为TCP长连接的连接地址。
+http://dns.weixin.qq.com/cgi-bin/micromsg-bin/newgetdns?uin=0&amp;clientversion=620888113&amp;scene=0&amp;net=1
+用于请求服务器获得最优IP路径。服务器通过结算返回一个xml定义了域名:IP对应列表。
+仔细阅读，可看到微信已经开始了国际化的步伐：香港、加拿大、韩国等。
+具体文本，请参考：https://gist.github.com/yongboy/9341884
+获取到long.weixin.qq.com最优IP，然后建立到101.227.131.105的TCP长连接
+</code></pre></div></div>
+
+<ol>
+  <li>如果DNS查询不可用，程序转为使用hardcode的ip链接服务；</li>
+  <li>如果dns可用，返回的ip为根据ISP智能解析的结果，程序使用返回的ip链接服务;</li>
+  <li>程序在注册、验证、解封、小程序等内置内容请求、阶段会使用https链接，加密协议为腾讯的mmtls;</li>
+  <li>客户端使用tcp 80/8080连接远端服务器。80/8080两个端口同时或任何单独一个，均可提供服务;</li>
+  <li>80端口为短链接，8080为长链接， 程序会优先使用8080端口;</li>
+</ol>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>请求确认连接后获取数据。
+提交请求中包含 账号 密码 登录方式(可以模拟任何设备~) 设备信息 网络信息 网络设备信息 地理位置 等~
+
+POST http://short.weixin.qq.com/cgi-bin/micromsg-bin/getprofile HTTP/1.1  (application/octet-stream)
+返回一个名为“micromsgresp.dat”的附件，个人信息
+
+POST http://short.weixin.qq.com/cgi-bin/micromsg-bin/whatsnews HTTP/1.1  (application/octet-stream)
+仍然返回一个名为“micromsgresp.dat”的附件
+大概是微信新版本介绍和验证之类的、资讯、订阅更新等...
+
+POST http://short.weixin.qq.com/cgi-bin/micromsg-bin/downloadpackage HTTP/1.1  (application/octet-stream)
+输出为micromsgresp.dat文件
+然后还会再有一个 micromsgresp.dat创建，大概可能是未读消息和联系人列表吧
+(测试大概总共会有1~3次)
+
+GET http://support.weixin.qq.com/cgi-bin/mmsupport-bin/reportdevice?channel=34&amp;deviceid=A952001f7a840c2a&amp;clientversion=620888113&amp;platform=0&amp;lang=zh_CN&amp;installtype=0 HTTP/1.1
+客户端自身信息和设备信息校验反馈
+POST http://short.weixin.qq.com/cgi-bin/micromsg-bin/reportstrategy HTTP/1.1  (application/octet-stream)
+返回分块数据
+GET http://wx.qlogo.cn/mmhead/Q3auHgzwzM7NR4TYFcoNjbxZpfO9aiaE7RU5lXGUw13SMicL6iacWIf2A/96
+图片等一些静态资源都会被分配到wx.qlogo.cn域名下，会根据加载或手动访问情况异步多线程下载缓存在本地目录。
+
+</code></pre></div></div>
+
+<ol>
+  <li>当连续2次心跳发送失败时，客户端会弹出提示“当前网络状况不好，是否提交反馈数据”，确认后客户端试图通过web提交反馈数据;</li>
+</ol>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>心跳频率约为5分钟
+
+登陆之后，会建立一个long.weixin.qq.com的HTTP长连接，端口号为8080
+
+具体查看长连接初始数据通信，没有发现任何包含"HTTP"字样的数据，以为是微信自定义的TCP/HTTP通信格式。据分析，用于可能用于获取数据、心跳交换消息等用途吧。
+
+初始消息传输
+个人资料、离线未阅读消息部分等通过 POST HTTP短连接单独获取。如上..
+
+二进制简单分析
+抽取微信某次HTTP协议方式通信数据，16进制表示，每两个靠近的数字为一个byte字节。
+</code></pre></div></div>
+
+<blockquote>
+  <p>协议文本分析</p>
+</blockquote>
+
+<p>微信协议报文可能如下：</p>
+
+<p>一个消息包 = 消息头 + 消息体
+消息头固定16字节长度，消息包长度定义在消息头前4个字节中。</p>
+
+<p>单纯摘取第0000行为例，共16个字节的头部:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>00 00 00 10 00 10 00 01 00 00 00 06 00 00 00 0f
+</code></pre></div></div>
+
+<p>16进制表示，每两个紧挨着数字代表一个byte字节。</p>
+
+<p>微信消息包格式：</p>
+
+<ol>
+  <li>前4字节表示数据包长度，可变 值为16时，意味着一个仅仅包含头部的完整的数据包（可能表示着预先定义好的业务意义），后面可能还有会别的消息包</li>
+  <li>2个字节表示头部长度，固定值，0x10 = 16</li>
+  <li>2个字节表示谢意版本，固定值，0x01 = 1</li>
+  <li>4个字节操作码说明数字，可变</li>
+  <li>序列号，可变</li>
+  <li>头部后面紧跟着消息体，非明文，加密形式</li>
+  <li>一个消息包，最小16 byte字节</li>
+</ol>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>如果对报文不是很了解可以学习参考一下其他底层通信协议 比如.. ModbusTCP
+</code></pre></div></div>
+
+<p>通过数据多次采样分析：</p>
+
+<p>0000 - 0040为单独的数据包
+0050行为下一个数据包的头部，前四个字节值为0xca = 202，表示包含了从0050-0110共202个字节数据
+一次数据发送，可能包含若干子数据包
+换行符\n，16进制表示为0x0a，在00f0行，包含了两个换行符号
+一个数据体换行符号用于更细粒度的业务数据分割 是否蒙对，需要问问做微信协议的同学
+所有被标记为HTTP协议通信所发送数据都包含换行符号
+动手试试猜想，模拟微信TCP长连接
+开始很不解为什么会出现如此怪异的HTTP双通道长连接请求，难道基于TCP通信，然后做了一些手脚？很常规的TCP长连接，传输数据时(不是所有数据传输)，被wireshark误认为HTTP长连接。这个需要做一个实验证实一下自己想法，设想如下：</p>
+
+<p>写一个Ping-Pong客户端、服务器端程序，然后使用Wireshark看一下结果，是否符合判断。</p>
+
+<blockquote>
+  <p>测试服务端代码</p>
+</blockquote>
+
+<p><a href="https://gist.githubusercontent.com/yongboy/9341037/raw/pong_server.c">https://gist.githubusercontent.com/yongboy/9341037/raw/pong_server.c</a></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * nieyong@youku.com
+ * how to compile it:
+ * gcc pong_server.c -o pong_server /usr/local/lib/libev.a -lm
+ */</span>
+<span class="cp">#include</span> <span class="cpf">&lt;arpa/inet.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;fcntl.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;errno.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;err.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span>
+<span class="cp">#include</span> <span class="cpf">"../include/ev.h"</span><span class="cp">
+</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">server_port</span> <span class="o">=</span> <span class="mi">8080</span><span class="p">;</span>
+
+<span class="k">struct</span> <span class="n">ev_loop</span> <span class="o">*</span><span class="n">loop</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">fd</span><span class="p">;</span>
+    <span class="n">ev_io</span> <span class="n">ev_read</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">client_t</span><span class="p">;</span>
+
+<span class="n">ev_io</span> <span class="n">ev_accept</span><span class="p">;</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">free_res</span><span class="p">(</span><span class="k">struct</span> <span class="n">ev_loop</span> <span class="o">*</span><span class="n">loop</span><span class="p">,</span> <span class="n">ev_io</span> <span class="o">*</span><span class="n">ws</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="nf">setnonblock</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">fcntl</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">F_GETFL</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">flags</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">flags</span><span class="p">;</span>
+
+    <span class="n">flags</span> <span class="o">|=</span> <span class="n">O_NONBLOCK</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">fcntl</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">F_SETFL</span><span class="p">,</span> <span class="n">flags</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">read_cb</span><span class="p">(</span><span class="k">struct</span> <span class="n">ev_loop</span> <span class="o">*</span><span class="n">loop</span><span class="p">,</span> <span class="n">ev_io</span> <span class="o">*</span><span class="n">w</span><span class="p">,</span> <span class="kt">int</span> <span class="n">revents</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">client_t</span> <span class="o">*</span><span class="n">client</span> <span class="o">=</span> <span class="n">w</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">rbuff</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">revents</span> <span class="o">&amp;</span> <span class="n">EV_READ</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">client</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">rbuff</span><span class="p">,</span> <span class="mi">1024</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">EV_ERROR</span> <span class="o">&amp;</span> <span class="n">revents</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">"error event in read</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">free_res</span><span class="p">(</span><span class="n">loop</span><span class="p">,</span> <span class="n">w</span><span class="p">);</span>
+        <span class="k">return</span> <span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">r</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">"read error</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">ev_io_stop</span><span class="p">(</span><span class="n">EV_A_</span> <span class="n">w</span><span class="p">);</span>
+        <span class="n">free_res</span><span class="p">(</span><span class="n">loop</span><span class="p">,</span> <span class="n">w</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">r</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">"client disconnected.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">ev_io_stop</span><span class="p">(</span><span class="n">EV_A_</span> <span class="n">w</span><span class="p">);</span>
+        <span class="n">free_res</span><span class="p">(</span><span class="n">loop</span><span class="p">,</span> <span class="n">w</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">send</span><span class="p">(</span><span class="n">client</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">,</span> <span class="n">rbuff</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">accept_cb</span><span class="p">(</span><span class="k">struct</span> <span class="n">ev_loop</span> <span class="o">*</span><span class="n">loop</span><span class="p">,</span> <span class="n">ev_io</span> <span class="o">*</span><span class="n">w</span><span class="p">,</span> <span class="kt">int</span> <span class="n">revents</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">sockaddr_in</span> <span class="n">client_addr</span><span class="p">;</span>
+    <span class="n">socklen_t</span> <span class="n">client_len</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">client_addr</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">client_fd</span> <span class="o">=</span> <span class="n">accept</span><span class="p">(</span><span class="n">w</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr</span> <span class="o">*</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">client_addr</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">client_len</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">client_fd</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">"the client_fd is  NULL !</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">client_t</span> <span class="o">*</span><span class="n">client</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">client_t</span><span class="p">));</span>
+    <span class="n">client</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="o">=</span> <span class="n">client_fd</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">setnonblock</span><span class="p">(</span><span class="n">client</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">err</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"failed to set client socket to non-blocking"</span><span class="p">);</span>
+
+    <span class="n">client</span><span class="o">-&gt;</span><span class="n">ev_read</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">client</span><span class="p">;</span>
+
+    <span class="n">ev_io_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">client</span><span class="o">-&gt;</span><span class="n">ev_read</span><span class="p">,</span> <span class="n">read_cb</span><span class="p">,</span> <span class="n">client</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">,</span> <span class="n">EV_READ</span><span class="p">);</span>
+    <span class="n">ev_io_start</span><span class="p">(</span><span class="n">loop</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">client</span><span class="o">-&gt;</span><span class="n">ev_read</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="k">const</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">ch</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">((</span><span class="n">ch</span> <span class="o">=</span> <span class="n">getopt</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">,</span> <span class="s">"p:"</span><span class="p">))</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="p">(</span><span class="n">ch</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="sc">'p'</span><span class="p">:</span>
+            <span class="n">server_port</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">optarg</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">loop</span> <span class="o">=</span> <span class="n">ev_default_loop</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="k">struct</span> <span class="n">sockaddr_in</span> <span class="n">listen_addr</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">reuseaddr_on</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">listen_fd</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">listen_fd</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">err</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"listen failed"</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">listen_fd</span><span class="p">,</span> <span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">reuseaddr_on</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">reuseaddr_on</span><span class="p">))</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">err</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"setsockopt failed"</span><span class="p">);</span>
+
+    <span class="n">memset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">listen_addr</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">listen_addr</span><span class="p">));</span>
+    <span class="n">listen_addr</span><span class="p">.</span><span class="n">sin_family</span> <span class="o">=</span> <span class="n">AF_INET</span><span class="p">;</span>
+    <span class="n">listen_addr</span><span class="p">.</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">s_addr</span> <span class="o">=</span> <span class="n">INADDR_ANY</span><span class="p">;</span>
+    <span class="n">listen_addr</span><span class="p">.</span><span class="n">sin_port</span> <span class="o">=</span> <span class="n">htons</span><span class="p">(</span><span class="n">server_port</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">bind</span><span class="p">(</span><span class="n">listen_fd</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr</span> <span class="o">*</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">listen_addr</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">listen_addr</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">err</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"bind failed"</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">listen</span><span class="p">(</span><span class="n">listen_fd</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">err</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"listen failed"</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">setnonblock</span><span class="p">(</span><span class="n">listen_fd</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">err</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"failed to set server socket to non-blocking"</span><span class="p">);</span>
+
+    <span class="n">ev_io_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ev_accept</span><span class="p">,</span> <span class="n">accept_cb</span><span class="p">,</span> <span class="n">listen_fd</span><span class="p">,</span> <span class="n">EV_READ</span><span class="p">);</span>
+    <span class="n">ev_io_start</span><span class="p">(</span><span class="n">loop</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ev_accept</span><span class="p">);</span>
+    <span class="n">ev_loop</span><span class="p">(</span><span class="n">loop</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">free_res</span><span class="p">(</span><span class="k">struct</span> <span class="n">ev_loop</span> <span class="o">*</span><span class="n">loop</span><span class="p">,</span> <span class="n">ev_io</span> <span class="o">*</span><span class="n">w</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">client_t</span> <span class="o">*</span><span class="n">client</span> <span class="o">=</span> <span class="n">w</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">client</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">"the client is NULL !!!!!!"</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">ev_io_stop</span><span class="p">(</span><span class="n">loop</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">client</span><span class="o">-&gt;</span><span class="n">ev_read</span><span class="p">);</span>
+    <span class="n">close</span><span class="p">(</span><span class="n">client</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">);</span>
+    <span class="n">free</span><span class="p">(</span><span class="n">client</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>客户端<a href="https://gist.githubusercontent.com/yongboy/9319660/raw/PingClient.java">https://gist.githubusercontent.com/yongboy/9319660/raw/PingClient.java</a></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Ping Client
+ * @author nieyong
+ */</span>
+<span class="kn">package</span> <span class="nn">com.learn</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">io.netty.bootstrap.Bootstrap</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">io.netty.buffer.ByteBuf</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">io.netty.buffer.PooledByteBufAllocator</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">io.netty.channel.ChannelFuture</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">io.netty.channel.ChannelHandlerContext</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">io.netty.channel.ChannelInboundHandlerAdapter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">io.netty.channel.ChannelInitializer</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">io.netty.channel.ChannelOption</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">io.netty.channel.EventLoopGroup</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">io.netty.channel.nio.NioEventLoopGroup</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">io.netty.channel.socket.SocketChannel</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">io.netty.channel.socket.nio.NioSocketChannel</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.concurrent.TimeUnit</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">PingClientHandler</span> <span class="kd">extends</span> <span class="nc">ChannelInboundHandlerAdapter</span> <span class="o">{</span>
+  <span class="kd">private</span> <span class="kd">final</span> <span class="nc">ByteBuf</span> <span class="n">firstMessage</span><span class="o">;</span>
+
+  <span class="kd">public</span> <span class="nf">PingClientHandler</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">firstMessage</span> <span class="o">=</span> <span class="nc">PooledByteBufAllocator</span><span class="o">.</span><span class="na">DEFAULT</span><span class="o">.</span><span class="na">buffer</span><span class="o">(</span><span class="mi">22</span><span class="o">);</span>
+
+    <span class="c1">// weixin 16 byte's header</span>
+    <span class="n">firstMessage</span><span class="o">.</span><span class="na">writeByte</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+    <span class="n">firstMessage</span><span class="o">.</span><span class="na">writeByte</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+    <span class="n">firstMessage</span><span class="o">.</span><span class="na">writeByte</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+    <span class="n">firstMessage</span><span class="o">.</span><span class="na">writeByte</span><span class="o">(</span><span class="mi">16</span><span class="o">);</span>
+
+    <span class="n">firstMessage</span><span class="o">.</span><span class="na">writeByte</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+    <span class="n">firstMessage</span><span class="o">.</span><span class="na">writeByte</span><span class="o">(</span><span class="mi">16</span><span class="o">);</span>
+
+    <span class="n">firstMessage</span><span class="o">.</span><span class="na">writeByte</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+    <span class="n">firstMessage</span><span class="o">.</span><span class="na">writeByte</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+
+    <span class="n">firstMessage</span><span class="o">.</span><span class="na">writeByte</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+    <span class="n">firstMessage</span><span class="o">.</span><span class="na">writeByte</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+    <span class="n">firstMessage</span><span class="o">.</span><span class="na">writeByte</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+    <span class="n">firstMessage</span><span class="o">.</span><span class="na">writeByte</span><span class="o">(</span><span class="mi">6</span><span class="o">);</span>
+
+    <span class="n">firstMessage</span><span class="o">.</span><span class="na">writeByte</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+    <span class="n">firstMessage</span><span class="o">.</span><span class="na">writeByte</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+    <span class="n">firstMessage</span><span class="o">.</span><span class="na">writeByte</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+    <span class="n">firstMessage</span><span class="o">.</span><span class="na">writeByte</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+
+    <span class="c1">// just for /n</span>
+    <span class="n">firstMessage</span><span class="o">.</span><span class="na">writeByte</span><span class="o">(</span><span class="sc">'\n'</span><span class="o">);</span> <span class="c1">// 1 byte</span>
+
+    <span class="c1">// footer 16 byte</span>
+    <span class="nc">String</span> <span class="n">welcome</span> <span class="o">=</span> <span class="s">"hello"</span><span class="o">;</span> <span class="c1">// 5 byte</span>
+    <span class="n">firstMessage</span><span class="o">.</span><span class="na">writeBytes</span><span class="o">(</span><span class="n">welcome</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">channelActive</span><span class="o">(</span><span class="nc">ChannelHandlerContext</span> <span class="n">ctx</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">ctx</span><span class="o">.</span><span class="na">writeAndFlush</span><span class="o">(</span><span class="n">firstMessage</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">channelRead</span><span class="o">(</span><span class="kd">final</span> <span class="nc">ChannelHandlerContext</span> <span class="n">ctx</span><span class="o">,</span> <span class="kd">final</span> <span class="nc">Object</span> <span class="n">msg</span><span class="o">)</span>
+      <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+    <span class="n">ctx</span><span class="o">.</span><span class="na">executor</span><span class="o">().</span><span class="na">schedule</span><span class="o">(</span><span class="k">new</span> <span class="nc">Runnable</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nd">@Override</span>
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">ctx</span><span class="o">.</span><span class="na">channel</span><span class="o">().</span><span class="na">writeAndFlush</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span>
+      <span class="o">}</span>
+    <span class="o">},</span> <span class="mi">1</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">channelReadComplete</span><span class="o">(</span><span class="nc">ChannelHandlerContext</span> <span class="n">ctx</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+    <span class="n">ctx</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">exceptionCaught</span><span class="o">(</span><span class="nc">ChannelHandlerContext</span> <span class="n">ctx</span><span class="o">,</span> <span class="nc">Throwable</span> <span class="n">cause</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Unexpected exception from downstream :"</span>
+        <span class="o">+</span> <span class="n">cause</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+    <span class="n">ctx</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PingClient</span> <span class="o">{</span>
+
+  <span class="kd">private</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">host</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">port</span><span class="o">;</span>
+
+  <span class="kd">public</span> <span class="nf">PingClient</span><span class="o">(</span><span class="nc">String</span> <span class="n">host</span><span class="o">,</span> <span class="kt">int</span> <span class="n">port</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">host</span> <span class="o">=</span> <span class="n">host</span><span class="o">;</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">port</span> <span class="o">=</span> <span class="n">port</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+    <span class="nc">EventLoopGroup</span> <span class="n">group</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">NioEventLoopGroup</span><span class="o">();</span>
+    <span class="k">try</span> <span class="o">{</span>
+      <span class="nc">Bootstrap</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Bootstrap</span><span class="o">();</span>
+      <span class="n">b</span><span class="o">.</span><span class="na">group</span><span class="o">(</span><span class="n">group</span><span class="o">).</span><span class="na">channel</span><span class="o">(</span><span class="nc">NioSocketChannel</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+          <span class="o">.</span><span class="na">option</span><span class="o">(</span><span class="nc">ChannelOption</span><span class="o">.</span><span class="na">TCP_NODELAY</span><span class="o">,</span> <span class="kc">true</span><span class="o">)</span>
+          <span class="o">.</span><span class="na">handler</span><span class="o">(</span><span class="k">new</span> <span class="nc">ChannelInitializer</span><span class="o">&lt;</span><span class="nc">SocketChannel</span><span class="o">&gt;()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">initChannel</span><span class="o">(</span><span class="nc">SocketChannel</span> <span class="n">ch</span><span class="o">)</span>
+                <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+              <span class="n">ch</span><span class="o">.</span><span class="na">pipeline</span><span class="o">().</span><span class="na">addLast</span><span class="o">(</span><span class="k">new</span> <span class="nc">PingClientHandler</span><span class="o">());</span>
+            <span class="o">}</span>
+          <span class="o">});</span>
+
+      <span class="nc">ChannelFuture</span> <span class="n">f</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="na">connect</span><span class="o">(</span><span class="n">host</span><span class="o">,</span> <span class="n">port</span><span class="o">).</span><span class="na">sync</span><span class="o">();</span>
+
+      <span class="n">f</span><span class="o">.</span><span class="na">channel</span><span class="o">().</span><span class="na">closeFuture</span><span class="o">().</span><span class="na">sync</span><span class="o">();</span>
+    <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+      <span class="c1">// Shut down the event loop to terminate all threads.</span>
+      <span class="n">group</span><span class="o">.</span><span class="na">shutdownGracefully</span><span class="o">();</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">host</span> <span class="o">=</span> <span class="s">"127.0.0.1"</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">port</span> <span class="o">=</span> <span class="mi">8080</span><span class="o">;</span>
+
+    <span class="k">if</span> <span class="o">(</span><span class="n">args</span><span class="o">.</span><span class="na">length</span> <span class="o">==</span> <span class="mi">3</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">host</span> <span class="o">=</span> <span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+      <span class="n">port</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">1</span><span class="o">]);</span>
+    <span class="o">}</span>
+
+    <span class="k">new</span> <span class="nf">PingClient</span><span class="o">(</span><span class="n">host</span><span class="o">,</span> <span class="n">port</span><span class="o">).</span><span class="na">run</span><span class="o">();</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>结论</p>
+</blockquote>
+
+<p>若使用原始TCP进行双向通信，则需要满足以下条件，可以被类似于Wireshark协议拦截器误认为是HTTP长连接：</p>
+
+<p>使用80/8080端口（81/3128/8000经测试无效） 也许8080一般被作为WEB代理服务端口，微信才会享用这个红利吧。
+输出的内容中，一定要包含换行字符”\n”
+因此，可以定性为微信使用了基于8080端口TCP长连接，一旦数据包中含有换行”\n”符号，就会被Wireshark误认为HTTP协议。可能微信是无心为之吧。</p>
+
+<blockquote>
+  <p>SyncRecv 新消息获取</p>
+</blockquote>
+
+<ol>
+  <li>TCP长连接接收到服务器通知有新消息需要获取(消息，朋友圈，附近人，好友请求，瓶子，通知，摇一摇等)</li>
+  <li>APP发起一个HTTP POST请求获取新状态消息，会带上当前SyncKey 地址为：<a href="http://short.weixin.qq.com/cgi-bin/micromsg-bin/reportstrategy">http://short.weixin.qq.com/cgi-bin/micromsg-bin/reportstrategy</a> HTTP/1.1，看不到明文(这是一个数据块，也可能是多个数据块)</li>
+  <li>APP获取到新的消息，会再次发起一次HTTP POST请求，告诉服务器已确认收到，同时获取最新SyncKey 地址为：<a href="http://short.weixin.qq.com/cgi-bin/micromsg-bin/kvreport">http://short.weixin.qq.com/cgi-bin/micromsg-bin/kvreport</a>，看不到明文</li>
+  <li>接受一个消息，TCP长连接至少交互两次，客户端发起两次HTTP POST请求 具体每次交互内容是什么，有些模糊</li>
+  <li>服务器需要支持：状态消息获取标记，状态消息确认收取标记。只有被确认收到，此状态消息才算是被正确消费掉</li>
+  <li>多个不同设备同一账号同时使用微信，同一个状态消息会会被同时分发到多个设备上（如：模拟PC版 或IPAD MAC WINPHONE在线时）</li>
+  <li>特殊接收操作，红包功能、小程序、转账、表情、VOIP</li>
+</ol>
+
+<blockquote>
+  <p>发送类(发消息,上传，发朋友圈，查看附近人,加好友等其他请求)</p>
+</blockquote>
+
+<ol>
+  <li>发送消息走已经建立的TCP长连接通道，发送消息到服务器，然后接受确认信息等，产生一次交互。</li>
+  <li>小伙伴接收到信息阅读也都会收到服务器端通知，产生一次交互等。</li>
+  <li>可以确定，微信发送消息走TCP长连接方式，因为不对自身状态数据产生影响，应该不交换SyncKey。</li>
+  <li>在低速网络下，大概会看到消息发送中的提示，属于消息重发机制</li>
+  <li>网络不好有时客户端会出现发送失败的红色感叹号</li>
+  <li>已发送到服务器但未收到确认的消息，客户端显示红色感叹号，再次重发，服务器作为重复消息处理，反馈确认</li>
+  <li>上传图片/视频，会根据图片大小，分割成若干部分（大概1.5K被划分为一部分），同一时间点，客户端会发起若干次POST请求，各自上传成功之后，服务器大概会合并成一个完整图片，返回一个缩略图，显示在APP聊天窗口内。APP作为常规的文字消息发送到服务器端</li>
+  <li>上传音频，则单独走TCP通道，一个两秒的录制音频，客户端录制完毕，分为两块传输，一块最大1.5K左右，服务端响应一条数据通知确认收到。共三次数据传输。音频和纯文字信息一致，都是走TCP长连接，客户端发送，服务器端确认。</li>
+  <li>发朋友圈和发消息同理，自行抓请求地址测试。</li>
+  <li>加好友会根据双方关联状态加密 自身 + 好友或关联关系 的 wxid/uin/chatroom -&gt; v1， 非已有关联关系型模型的好友服务器会增加返回二次验证v2验证回调信息。通过结果会从验证中解密为 添加好友方式 / 关联的群 。。 旧版本和PC/MAC版则无二次验证。目前已修复。</li>
+  <li>获取附近人、摇一摇、漂流瓶、雷达加好友的信息，通过长连接SYNC中返回数据解析 (仅作为学习研究，严禁用于黑产！)</li>
+  <li>小程序和内置浏览器就不过多介绍了。COOKIE操作和微信返回的SEESION验证权限和提交一些数据。</li>
+  <li>加群，拉群，访问网页参数 A8KEY 中包含地址。</li>
+  <li>特殊操作，抢红包(接收后红包信息，网络分配取随机金额后短连接请求)、转账、发送扩展表情、VOIP请求等</li>
+  <li>获取设置绑定信息，账户余额等操作属于扩展HTTPS请求</li>
+  <li>其他特殊请求微信运动等，获取传感器开放数据后手动请求上传或定时。</li>
+  <li>收付款功能还没研究</li>
+  <li>微信 CommandSchedule自定义协议 weixin://  手动根据功能解析 profile获取和展示、View跳转等。可手动解析实现模拟手机端.</li>
+</ol>
+
+<blockquote>
+  <p>协议小结</p>
+</blockquote>
+
+<ol>
+  <li>发布的消息对应一个ID（只要单个方向唯一即可，服务器端可能会根ID判断重复接收），消息重传机制确保有限次的重试，重试失败给予用户提示，发送成功会反馈确认，客户端只有收到确认信息才知道发送成功。发送消息可能不会产生新SyncKey。</li>
+  <li>基于版本号（SynKey）的状态消息同步机制，增量、有序传输需求水到渠成。长连接通知/短连接获取、确认等，交互方式简单，确保了消息可靠谱、准确无误到达。</li>
+  <li>客户端/服务器端都会存储消息ID处理记录，避免被重复消费客户端获取最新消息，但未确认，服务器端不会认为该消息被消费掉。下次客户端会重新获取，会查询当前消息是否被处理过。根据一些现象猜测。</li>
+  <li>总体上看，微信协议跨平台（TCP或HTTP都可呈现，处理方式可统一），通过“握手”同步，很可靠，无论哪一个平台都可以支持的很好</li>
+  <li>微信协议最小成本为16字节，大部分时间若干个消息包和在一起，批量传输。微信协议说不上最简洁，也不是最节省流量，但是非常成功的。</li>
+  <li>若服务器检测到一些不确定因素，可能会导致微启用安全套接层SSL协议进行常规的TCP长连接传输。短连接都没有发生变化</li>
+</ol>
+
+<h2 id="microchat使用指南">MicroChat使用指南</h2>
+
+<blockquote>
+  <p>请求地址</p>
+</blockquote>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define CGI_NEWSYNC "/cgi-bin/micromsg-bin/newsync" //同步服务端最新消息
+#define CGI_MANUALAUTH "/cgi-bin/micromsg-bin/manualauth" //登录
+#define CGI_NEWSENDMSG "/cgi-bin/micromsg-bin/newsendmsg" //发送文字消息
+#define CGI_NEWINIT "/cgi-bin/micromsg-bin/newinit" //首次登录,初始化数据库
+#define CGI_GETPROFILE "/cgi-bin/micromsg-bin/getprofile" //获取个人信息
+#define CGI_SEARCHCONTACT "/cgi-bin/micromsg-bin/searchcontact" //搜索新朋友
+#define CGI_GETCONTACT "/cgi-bin/micromsg-bin/getcontact" //查找新朋友
+#define CGI_VERIFYUSER "/cgi-bin/micromsg-bin/verifyuser" //添加好友
+#define CGI_BIND "/cgi-bin/micromsg-bin/bindopmobileforreg" //首次登录短信授权
+</span></code></pre></div></div>
+
+<p>其他功能 自行添加请求地址，如 FindNearBy 附近人等~</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">/</span><span class="err">测试请手动修改登录设备信息</span>
+<span class="c1">//登录设备硬件信息</span>
+<span class="cp">#define DEVICE_INFO_GUID          "A31d2152a33d83e7"   //GUID
+#define DEVICE_INFO_CLIENT_SEQID      "A31cc712ad2d83e6_1512965043210"  //GUID_LOCATION地址
+#define DEVICE_INFO_CLIENT_SEQID_SIGN    "e89b238e77cf988ebd09eb65f5378e99"  //MD5
+#define DEVICE_INFO_IMEI          "865167123366678"   //手机IMEI
+#define DEVICE_INFO_ANDROID_ID        "eabe1f220561a49f"          //设备ID
+#define DEVICE_INFO_ANDROID_VER        "android-26"                //安卓版本
+#define DEVICE_INFO_MANUFACTURER      CStringA2Utf8("iPhone")     //设备名称 随便填
+#define DEVICE_INFO_MODELNAME          CStringA2Utf8("X")              //型号名称 随便填
+#define DEVICE_INFO_MOBILE_WIFI_MAC_ADDRESS  "01:67:33:56:78:11"                 //WIFI MAC地址
+#define DEVICE_INFO_AP_BSSID        "41:25:99:22:3f:14"         //手机信号基站  MAC地址
+#define DEVICE_INFO_LANGUAGE        "zh_CN"                     //语言
+</span>
+<span class="c1">//下面2个是设备 com.tencent.mm 包信息 及 设备信息（使用上面宏）</span>
+<span class="cp">#define DEVICE_INFO_SOFTINFO        "&lt;softtype&gt;&lt;lctmoc&gt;0&lt;/lctmoc&gt;&lt;level&gt;1&lt;/level&gt;&lt;k1&gt;ARMv7 processor rev 1 (v7l) &lt;/k1&gt;&lt;k2&gt;&lt;/k2&gt;&lt;k3&gt;5.1.1&lt;/k3&gt;&lt;k4&gt;%s&lt;/k4&gt;&lt;k5&gt;460007337766541&lt;/k5&gt;&lt;k6&gt;89860012221746527381&lt;/k6&gt;&lt;k7&gt;%s&lt;/k7&gt;&lt;k8&gt;unknown&lt;/k8&gt;&lt;k9&gt;%s&lt;/k9&gt;&lt;k10&gt;2&lt;/k10&gt;&lt;k11&gt;placeholder&lt;/k11&gt;&lt;k12&gt;0001&lt;/k12&gt;&lt;k13&gt;0000000000000001&lt;/k13&gt;&lt;k14&gt;%s&lt;/k14&gt;&lt;k15&gt;&lt;/k15&gt;&lt;k16&gt;neon vfp swp half thumb fastmult edsp vfpv3 idiva idivt&lt;/k16&gt;&lt;k18&gt;%s&lt;/k18&gt;&lt;k21&gt;\"wireless\"&lt;/k21&gt;&lt;k22&gt;&lt;/k22&gt;&lt;k24&gt;%s&lt;/k24&gt;&lt;k26&gt;0&lt;/k26&gt;&lt;k30&gt;\"wireless\"&lt;/k30&gt;&lt;k33&gt;com.tencent.mm&lt;/k33&gt;&lt;k34&gt;Android-x86/android_x86/x86:5.1.1/LMY48Z/denglibo08021647:userdebug/test-keys&lt;/k34&gt;&lt;k35&gt;vivo v3&lt;/k35&gt;&lt;k36&gt;unknown&lt;/k36&gt;&lt;k37&gt;%s&lt;/k37&gt;&lt;k38&gt;x86&lt;/k38&gt;&lt;k39&gt;android_x86&lt;/k39&gt;&lt;k40&gt;%s&lt;/k40&gt;&lt;k41&gt;1&lt;/k41&gt;&lt;k42&gt;%s&lt;/k42&gt;&lt;k43&gt;null&lt;/k43&gt;&lt;k44&gt;0&lt;/k44&gt;&lt;k45&gt;&lt;/k45&gt;&lt;k46&gt;&lt;/k46&gt;&lt;k47&gt;wifi&lt;/k47&gt;&lt;k48&gt;%s&lt;/k48&gt;&lt;k49&gt;/data/data/com.tencent.mm/&lt;/k49&gt;&lt;k52&gt;0&lt;/k52&gt;&lt;k53&gt;0&lt;/k53&gt;&lt;k57&gt;1080&lt;/k57&gt;&lt;k58&gt;&lt;/k58&gt;&lt;k59&gt;0&lt;/k59&gt;&lt;/softtype&gt;"
+#define DEVICE_INFO_DEVICEINFO        "&lt;deviceinfo&gt;&lt;MANUFACTURER name=\"%s\"&gt;&lt;MODEL name=\%s\"&gt;&lt;VERSION_RELEASE name=\"5.1.1\"&gt;&lt;VERSION_INCREMENTAL name=\"eng.denglibo.20171224.164708\"&gt;&lt;DISPLAY name=\"android_x86-userdebug 5.1.1 LMY48Z eng.denglibo.20171224.164708 test-keys\"&gt;&lt;/DISPLAY&gt;&lt;/VERSION_INCREMENTAL&gt;&lt;/VERSION_RELEASE&gt;&lt;/MODEL&gt;&lt;/MANUFACTURER&gt;&lt;/deviceinfo&gt;"
+</span></code></pre></div></div>
+
+<blockquote>
+  <p>验证</p>
+</blockquote>
+
+<p>LOGIN_RSA_VER  //秘钥版本</p>
+
+<p>LOGIN_RSA_VER158_KEY_E  //秘钥加密</p>
+
+<p>LOGIN_RSA_VER158_KEY_N  //混淆后??</p>
+
+<p>SYNC验证  SYNCKEY //收消息验证KEY</p>
+
+<blockquote>
+  <p>Profile</p>
+</blockquote>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#pragma once
+#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
+#include</span> <span class="cpf">"db/db.h"</span><span class="cp">
+</span>
+<span class="k">class</span> <span class="nc">CAuthInfo</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+  <span class="n">CAuthInfo</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="n">InitializeCriticalSection</span><span class="p">(</span><span class="o">&amp;</span><span class="n">m_cs_syncKey</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="n">string</span>  <span class="n">m_UserName</span><span class="p">;</span> <span class="c1">//昵称</span>
+  <span class="n">string</span>  <span class="n">m_WxId</span><span class="p">;</span>  <span class="c1">//wxid 或 老微信号</span>
+  <span class="n">DWORD</span>   <span class="n">m_uin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>   <span class="c1">//uin 唯一标识</span>
+  <span class="n">string</span>  <span class="n">m_Alias</span><span class="p">;</span>     <span class="c1">//微信号</span>
+  <span class="n">string</span>  <span class="n">m_Session</span><span class="p">;</span>  <span class="c1">//SessionKey</span>
+  <span class="n">DWORD</span>   <span class="n">m_ClientVersion</span><span class="p">;</span>   <span class="c1">//客户端版本</span>
+  <span class="n">string</span>  <span class="n">m_guid_15</span><span class="p">;</span>    <span class="c1">//guid 15位</span>
+  <span class="n">string</span>  <span class="n">m_guid</span><span class="p">;</span>       <span class="c1">//guid</span>
+  <span class="n">string</span>  <span class="n">m_androidVer</span><span class="p">;</span>  <span class="c1">//安卓版本</span>
+  <span class="n">string</span>  <span class="n">m_launguage</span><span class="p">;</span>   <span class="c1">//lang</span>
+  <span class="n">string</span>  <span class="n">m_cookie</span><span class="p">;</span>      <span class="c1">//置入浏览器的Cookie</span>
+
+  <span class="n">string</span> <span class="nf">GetSyncKey</span><span class="p">();</span>
+  <span class="kt">void</span> <span class="nf">SetSyncKey</span><span class="p">(</span><span class="n">string</span> <span class="n">strSyncKey</span><span class="p">);</span>
+
+  <span class="k">static</span> <span class="n">CAuthInfo</span> <span class="o">*</span><span class="nf">GetInstance</span><span class="p">();</span>
+
+  <span class="c1">//获取短信验证码凭据</span>
+  <span class="n">string</span> <span class="n">m_mobilecode_authticket</span><span class="p">;</span>
+  <span class="c1">//接受短信号码(当前默认使用登录账号)</span>
+  <span class="n">string</span> <span class="n">m_mobileNum</span><span class="p">;</span>
+
+<span class="k">private</span><span class="o">:</span>
+  <span class="k">static</span> <span class="n">CAuthInfo</span> <span class="o">*</span> <span class="n">m_Instance</span><span class="p">;</span>
+
+  <span class="n">CRITICAL_SECTION</span>   <span class="n">m_cs_syncKey</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="cp">#define pAuthInfo (CAuthInfo::GetInstance())
+</span></code></pre></div></div>
+
+<blockquote>
+  <p>扩展多设备在线</p>
+</blockquote>
+
+<ol>
+  <li>二维码扫码登录 （获取扫码方式从Android版无法获取,需要从IPAD版抓包）</li>
+  <li>抓包不同设备登录请求，自定义登录请求参数即可模拟.</li>
+  <li>仅仅是登录验证。SYNC部分未实现，部分平台略有不同。。。</li>
+</ol>
+
+<blockquote>
+  <p>UI实现</p>
+</blockquote>
+
+<p>代码中使用了Duilib界面，因为微信消息功能复杂DUILIB都在一个Notify中数据处理会比较麻烦，建议大家可以考虑QT / MFC / WebUI 实现View层。或者使用winform 或 WPF实现会更加简单。</p>
+
+<blockquote>
+  <p>借助开源库完善其他功能</p>
+</blockquote>
+
+<ol>
+  <li>FFmpeg  视频音频文件转码与播放</li>
+  <li>Avcodec 音频文件转码与播放</li>
+  <li>CEF3    提供模拟微信内置浏览器访问功能(小程序不支持)</li>
+  <li>截图工具</li>
+  <li>proxy</li>
+  <li>SQLite3</li>
+</ol>
+
+<h2 id="附录">附录</h2>
+
+<p>Microsoft Exchange Active Sync协议，简称EAS，分为folderrsync(同步文件夹目录，即邮箱内有哪几个文件夹)和sync（每个文件夹内有哪些文档）两部分。</p>
+
+<p>某网友总结的协议一次回话大致示范：</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">Client:</span>   <span class="n">synckey</span><span class="o">=</span><span class="mi">0</span> <span class="c1">//第一次key为0</span>
+<span class="n">Server</span><span class="o">:</span>  <span class="n">newsynckey</span><span class="o">=</span><span class="mi">1235434</span>    <span class="c1">//第一次返回新key</span>
+<span class="n">Client</span><span class="o">:</span>   <span class="n">synckey</span><span class="o">=</span><span class="mi">1235434</span>   <span class="c1">//使用新key查询</span>
+<span class="n">Server</span><span class="o">:</span>  <span class="n">newsynckey</span><span class="o">=</span><span class="mi">1647645</span><span class="p">,</span><span class="n">data</span><span class="o">=****</span><span class="err">*/</span><span class="o">/</span><span class="err">第一次查询，得到新</span><span class="n">key</span><span class="err">和数据</span>
+<span class="n">Client</span><span class="o">:</span>   <span class="n">synckey</span><span class="o">=</span><span class="mi">1647645</span>
+<span class="n">Server</span><span class="o">:</span>  <span class="n">newsynckey</span><span class="o">=</span><span class="mi">5637535</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">null</span> <span class="c1">//第二次查询，无新消息</span>
+<span class="n">Client</span><span class="o">:</span>   <span class="n">synckey</span><span class="o">=</span><span class="mi">5637535</span>
+<span class="n">Server</span><span class="o">:</span> <span class="n">newsynckey</span><span class="o">=</span><span class="mi">8654542</span><span class="p">,</span> <span class="n">data</span><span class="o">=***</span><span class="err">*/</span><span class="o">/</span><span class="err">第三次查询，增量同步</span>
+<span class="err">上页中的相邻请求都是隔固定时间的，如两分钟</span>
+<span class="err">客户端每次使用旧</span><span class="n">key</span><span class="err">标记自己的状态，服务端每次将新</span><span class="n">key</span><span class="err">和增量数据一起返回。</span>
+<span class="n">key</span><span class="err">是递增的，但不要求连续</span>
+<span class="err">请求的某个参数决定服务器是否立即返回</span>
+</code></pre></div></div>
+
+<h2 id="传送门">传送门</h2>
+
+<p>原版Github传送门(已修复DNS错误301问题)：</p>
+<blockquote>
+  <p><a href="https://github.com/InfiniteTsukuyomi/MicroChat/">https://github.com/InfiniteTsukuyomi/MicroChat/</a></p>
+</blockquote>
+
+<p>Python版</p>
+<blockquote>
+  <p><a href="https://github.com/InfiniteTsukuyomi/MicroChat/tree/master/test">https://github.com/InfiniteTsukuyomi/MicroChat/tree/master/test</a></p>
+</blockquote>
+
+<h2 id="感谢">感谢</h2>
+
+<p>特别鸣谢 CSDN博客、博客园的微信协议分析文章作者，是你们的文章参考带领我参考学习和验证。给了很大启发和帮助。</p>
+
+<p>代码由 @InfiniteTsukuyomi 公开发布代码。</p>
+
+<p>感谢腾讯WXG的开源精神奉献，给了大量的开源参考和文章讲解。</p>
+
+<p>参考链接：</p>
+
+<p><a href="http://www.blogjava.net/yongboy/archive/2014/03/05/410636.html">http://www.blogjava.net/yongboy/archive/2014/03/05/410636.html</a></p>
+
+<h2 id="严重声明">严重声明</h2>
+
+<blockquote>
+  <p>请勿外传用于任何商业用途，违者后果自负！
+Blog: <a href="https://www.icefox.org">https://www.icefox.org</a></p>
+</blockquote>
+
+<hr />
+
+<blockquote>
+  <p>This post is also available in <a href="/2018/03/10/wechat-protocol-reference-guide-en/">English</a>.</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#hook">hook</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#featured">featured</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/h4dex">
+                            <img class="rounded-circle" src="/assets/contributors/h4dex/avatar.webp" alt="h4dex" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/h4dex">h4dex</a> </h5>
+						会使用各种计算机语言写出 Hello World 的设计师（http://icefox.org/）
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2018/03/10/wechat-protocol-reference-guide-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2018/h4dex-wechatprotocol.webp">  WeChat App Communication Protocol Case Study Reference Guide</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2018/04/18/botbuilder-wechaty-connector/"> Integrate Wechat Personal Account to Microsoft BotFramework with a BotBuilder Wechaty Connector  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2018/botframework.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      OSSChat is What You Need for Open Source Community Operations | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>OSSChat is What You Need for Open Source Community Operations | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="OSSChat is What You Need for Open Source Community Operations" />
+<meta name="author" content="hailiang-wang" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="OSSChat now supports auto-reply for WeChat bots, helping you manage your open-source community by bridging WeChat groups with GitHub Issues." />
+<meta property="og:description" content="OSSChat now supports auto-reply for WeChat bots, helping you manage your open-source community by bridging WeChat groups with GitHub Issues." />
+<link rel="canonical" href="https://wechaty.js.org/2021/10/28/osschat-is-what-you-need-for-opensouce-community-operations-en/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/10/28/osschat-is-what-you-need-for-opensouce-community-operations-en/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/10-osschat-is-what-you-need-for-opensouce-community-operations-en/cover.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-10-28T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/10-osschat-is-what-you-need-for-opensouce-community-operations-en/cover.webp" />
+<meta property="twitter:title" content="OSSChat is What You Need for Open Source Community Operations" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"hailiang-wang"},"dateModified":"2021-10-28T00:00:00+00:00","datePublished":"2021-10-28T00:00:00+00:00","description":"OSSChat now supports auto-reply for WeChat bots, helping you manage your open-source community by bridging WeChat groups with GitHub Issues.","headline":"OSSChat is What You Need for Open Source Community Operations","image":"https://wechaty.js.org/assets/2021/10-osschat-is-what-you-need-for-opensouce-community-operations-en/cover.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/10/28/osschat-is-what-you-need-for-opensouce-community-operations-en/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"hailiang-wang"},"url":"https://wechaty.js.org/2021/10/28/osschat-is-what-you-need-for-opensouce-community-operations-en/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">OSSChat is What You Need for Open Source Community Operations</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/hailiang-wang">
+                            <img class="rounded-circle" src="/assets/contributors/hailiang-wang/avatar.webp" alt="hai" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/hailiang-wang">hai</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Oct 28, 2021 · <span class="reading-time">
+  
+  
+    7 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/10-osschat-is-what-you-need-for-opensouce-community-operations-en/cover.webp" alt="OSSChat is What You Need for Open Source Community Operations">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>Hello everyone, I’m the Chief Operating Officer of the <a href="http://github.com/chatopera/cskefu">Cskefu Open Source Community</a>. We often find that WeChat groups, especially when they have more than 30 people, become places where you can’t “discuss things.” <strong>Many ideas just fly by.</strong> Some of these ideas are worth tracking, with necessary tasks behind them, but in WeChat groups, or on WeChat in general, we are not focused.</p>
+
+<h2 id="the-pains-of-community-operations">The Pains of Community Operations</h2>
+
+<p>To deal with this, our usual solution is for operations staff to answer the same questions repeatedly, or to remind people (or do it themselves) to create a GitHub Issue. We document the matter on GitHub or elsewhere, and sometimes we even create a new group. However, the problem persists: valuable conversation data from the group is not stored in a public, searchable place. <strong>Users don’t like to contact you; they prefer self-service.</strong> Imagine how cool it would be if users could find answers directly through a search engine or on GitHub Issues. In short, WeChat group operations are a pain. How much time do we waste every day answering repetitive questions?</p>
+
+<h3 id="answering-the-same-questions-over-and-over">Answering the Same Questions Over and Over</h3>
+
+<p>Large WeChat groups also become highly inefficient. For example, every new member who joins asks the same questions that have been answered before.</p>
+
+<h3 id="can-you-create-an-issue-for-that">“Can You Create an Issue for That?”</h3>
+
+<p>Another problem is that <strong>users don’t like to create issues.</strong> We live fast-paced lives, and everything is in a rush. Not every matter deserves an issue; sometimes it’s just casual chat. But when a task emerges, we need an issue—a stateful record with an owner that can be assigned, tracked, and commented on. Issues are significant. An issue is a commitment, a clear list of work to be delivered. We can tolerate a poorly written initial issue, but then we follow up on it, and that’s the magic of issues. I used to use Wunderlist, and now I use Microsoft To-do. Having a record immediately boosts my execution. But in a WeChat group, after a heated discussion, the task of creating an issue suddenly becomes daunting.</p>
+
+<p><img src="/assets/2021/10-osschat-is-what-you-need-for-opensouce-community-operations-en/screenshot-6.webp" alt="osschat-is-what-you-need 6" /></p>
+
+<p>From opening a GitHub Issue to pasting the conversation and saving it—the steps are simple, but few people do it. Believe me, once an issue is created, the matter will be resolved. Even if the issue later turns out to be for a task not worth doing, that’s still a gain. <strong>On the one hand, having issues is good for our work; on the other hand, few people create them.</strong> We have some inertia, and we even absurdly analyze the cultural rationality of this.</p>
+
+<p>If you tell me about a difficult task, I’ll create an issue for you, and the task will be resolved, or at least it will see progress. If you tell me something in a WeChat group, you’ll have to remind me tomorrow and next week. <strong>The human brain has its own working principles. Issues help us build a culture of keeping promises and foster more trust.</strong></p>
+
+<p><strong>The secret to improving execution is to take the first step:</strong> start from the discussion in WeChat, create an issue, and begin execution.</p>
+
+<h2 id="data-hides-value">Data Hides Value</h2>
+
+<p>Another very, very important thing—very important! <strong>Data hides the secret to your project’s success.</strong> People chat in WeChat every day. Do you know what they care about? Do you know how you should prioritize tasks right now?</p>
+
+<p>We can compile frequently asked questions into an FAQ list. Can we use a chatbot with multi-turn conversations to handle common processes? We can check keywords to see what users are concerned about.</p>
+
+<p>All of this depends on data, and this data is in WeChat groups. If you handle this data well, your project’s activity can increase tenfold in 90 days! I don’t have a habit of over-promising :-). I’m talking about <strong>analyzing chat data to help you truly become “customer-centric.”</strong></p>
+
+<h2 id="wechat-doesnt-innovate">WeChat Doesn’t Innovate</h2>
+
+<p>Eight years ago, Mark Zuckerberg said he often looked at WeChat to learn from its innovation. Look at his enthusiasm now; his Mandarin is fluent. But now, do you know? Facebook Messenger’s innovation is already a product generation ahead of WeChat! Messenger provides a pretty good experience for Metaverse-level scenarios like AR and Chatbots. <strong>WeChat doesn’t innovate.</strong> If you’ve experienced Messenger’s support for chatbot interactions, you’ll feel the same way.</p>
+
+<p><img src="/assets/2021/10-osschat-is-what-you-need-for-opensouce-community-operations-en/screenshot-1.webp" alt="osschat-is-what-you-need 1" /></p>
+
+<p><strong>We are like WeChat slaves, giving our data to WeChat, which then mines this value to exploit us.</strong></p>
+
+<h2 id="a-hero-arrives">A Hero Arrives</h2>
+
+<p>Things won’t end like this. The wheels of history roll forward, and one day, some people awakened: <strong>Take back our data, we want to innovate!</strong></p>
+
+<p><img src="/assets/2021/10-osschat-is-what-you-need-for-opensouce-community-operations-en/screenshot-2.webp" alt="osschat-is-what-you-need 2" /></p>
+
+<p>Wechaty is very cool. It uses RPA to turn WeChat into a programmable tool. You can manage your contacts, messages, and WeChat groups with code. Yes, yours, all yours. The WeChat in the middle is yours. Then there’s Chatopera, which is also very cool. It’s the brain for custom robots, handling smart Q&amp;A and conversation flows. This way, we can integrate with GitHub, allowing free synchronization between WeChat groups and GitHub issues.</p>
+
+<pre><code class="language-plain">I have a dream that one day, I can analyze the chat data from my WeChat groups to see what people often talk about, so I can build a knowledge base bot for automatic replies.
+
+I have a dream that one day, I can get automatic notifications in my WeChat group for GitHub Issue creation and comment events.
+
+I have a dream that one day, I can just say, "create an issue from the above," and the chat history from the WeChat group will automatically be created as a GitHub Issue.
+
+I have a dream that one day, I can be with her...
+</code></pre>
+
+<p>Okay, back to work. This dream can be realized. It’s a very cool idea, and I’m a bit excited. These goals can be achieved with <strong>Wechaty + Chatopera + WeChat + GitHub</strong>, but the workload is quite large. Let’s skip the hundred thousand words here.</p>
+
+<p><img src="/assets/2021/10-osschat-is-what-you-need-for-opensouce-community-operations-en/screenshot-3.webp" alt="osschat-is-what-you-need 3" /></p>
+
+<p>With the participation of more than twenty contributors, this idea has finally been realized.</p>
+
+<p><img src="/assets/2021/10-osschat-is-what-you-need-for-opensouce-community-operations-en/screenshot-4.webp" alt="osschat-is-what-you-need 4" /></p>
+
+<p><a href="https://github.com/kaiyuanshe/osschat">https://github.com/kaiyuanshe/osschat</a></p>
+
+<h2 id="osschat-auto-reply-feature-launched-on-2021-10-14">OSSChat Auto-Reply Feature Launched on 2021-10-14</h2>
+
+<p>The OSSChat cloud service has been online since March 2020, but it wasn’t until October 14, 2021, that the auto-reply feature was ready, because the workload was indeed quite large. Now we just need to say in a WeChat group, “create an issue from the five messages above,” and the corresponding GitHub Issue will be created and sent to the group.</p>
+
+<p><img src="/assets/2021/10-osschat-is-what-you-need-for-opensouce-community-operations-en/screenshot-5.webp" alt="osschat-is-what-you-need 5" /></p>
+
+<p>This is a conversation in our Cskefu developer group. With just one sentence, a GitHub Issue was created. Isn’t that great? Aren’t you excited? Aren’t you envious?</p>
+
+<p><strong>Saving 5 minutes in the process of creating an issue and ultimately raising execution to a higher level.</strong> Once the first step of a complex process is initiated, the process has its own momentum.</p>
+
+<h2 id="i-want-to-use-osschat">I Want to Use OSSChat</h2>
+
+<ul>
+  <li><strong>Managed Service</strong></li>
+</ul>
+
+<p>To access the cloud service, you just need to contact us for registration and authorization.</p>
+
+<p><a href="https://github.com/kaiyuanshe/osschat/wiki/How-to-use-osschat">How to use osschat</a></p>
+
+<ul>
+  <li><strong>Self-Hosted</strong></li>
+</ul>
+
+<p>Do it yourself, run the service and configure it. The workload is 20 times that of the managed service! Feel free to give it a try!</p>
+
+<p>Refer to the <a href="https://github.com/kaiyuanshe/osschat">README.md documentation</a> <a href="https://github.com/kaiyuanshe/osschat">https://github.com/kaiyuanshe/osschat</a></p>
+
+<h2 id="discover-more">Discover More</h2>
+
+<p>OSSChat’s auto-reply feature for WeChat bots is now live, helping with open-source community operations. On the evening of October 14, 2021, the OSSChat project team held an online sharing session to introduce the automatic issue creation feature to users who were already using OSSChat.</p>
+
+<p>For visitors from China who cannot access YouTube.com, this video is also hosted on bilibili.com:</p>
+
+<ul>
+  <li><a href="https://www.bilibili.com/video/BV1PQ4y1S7iZ">微信机器人上线自动回复，OSSChat 助力开源社区运营 | Wechaty @ bilibili</a></li>
+</ul>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/qWxDnSaa29s" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<p><img src="/assets/2021/10-osschat-is-what-you-need-for-opensouce-community-operations-en/screenshot-7.webp" alt="osschat-is-what-you-need 7" /></p>
+
+<blockquote>
+  <p>This post is also available in <a href="/2021/10/28/osschat-is-what-you-need-for-opensouce-community-operations/">Chinese</a>.</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#osschat">osschat</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#chatopera">chatopera</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#github">github</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#utility">utility</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#sticky">sticky</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/hailiang-wang">
+                            <img class="rounded-circle" src="/assets/contributors/hailiang-wang/avatar.webp" alt="hai" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/hailiang-wang">hai</a> </h5>
+						Deliver contact center and chatbots for Enterprises at Chatopera.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/10/28/opentekr-oss-pioneer-interview-huan/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/10-opentekr-oss-pioneer-interview-huan/open-tekr-huan.webp">  OpenTEKr｜OSS Pioneer｜Interview with Huan Li</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/10/28/osschat-is-what-you-need-for-opensouce-community-operations/"> 微信机器人上线自动回复，OSSChat 助力开源社区运营  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/10-osschat-is-what-you-need-for-opensouce-community-operations-en/cover.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

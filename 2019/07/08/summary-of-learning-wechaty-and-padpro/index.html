@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Summary of Learning Wechaty and Padpro | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Summary of Learning Wechaty and Padpro | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Summary of Learning Wechaty and Padpro" />
+<meta name="author" content="su-chang" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="总结 wechaty 的基础用法； 介绍 wechaty 与 puppet 及 padpro 模块之间的关系、数据流向、事件监听机制等； 详细介绍合作开发的本地环境配置。" />
+<meta property="og:description" content="总结 wechaty 的基础用法； 介绍 wechaty 与 puppet 及 padpro 模块之间的关系、数据流向、事件监听机制等； 详细介绍合作开发的本地环境配置。" />
+<link rel="canonical" href="https://wechaty.js.org/2019/07/08/summary-of-learning-wechaty-and-padpro/" />
+<meta property="og:url" content="https://wechaty.js.org/2019/07/08/summary-of-learning-wechaty-and-padpro/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-07-08T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Summary of Learning Wechaty and Padpro" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"su-chang"},"dateModified":"2019-07-08T00:00:00+00:00","datePublished":"2019-07-08T00:00:00+00:00","description":"总结 wechaty 的基础用法； 介绍 wechaty 与 puppet 及 padpro 模块之间的关系、数据流向、事件监听机制等； 详细介绍合作开发的本地环境配置。","headline":"Summary of Learning Wechaty and Padpro","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2019/07/08/summary-of-learning-wechaty-and-padpro/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"su-chang"},"url":"https://wechaty.js.org/2019/07/08/summary-of-learning-wechaty-and-padpro/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-center ">
+				<div class=" col-md-8  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#tutorial">tutorial</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Summary of Learning Wechaty and Padpro</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/su-chang">
+                            <img class="rounded-circle" src="/assets/contributors/su-chang/avatar.webp" alt="SuperChang" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/su-chang">SuperChang</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jul 08, 2019 · <span class="reading-time">
+  
+  
+    7 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<ol>
+  <li>总结 wechaty 的基础用法；</li>
+  <li>介绍 wechaty 与 puppet 及 padpro 模块之间的关系、数据流向、事件监听机制等；</li>
+  <li>详细介绍合作开发的本地环境配置。</li>
+</ol>
+
+<h2 id="简介">简介</h2>
+
+<h3 id="wechaty">Wechaty</h3>
+
+<p><a href="https://github.com/wechaty/wechaty">Wechaty</a> 是一个开源的<code class="language-plaintext highlighter-rouge">微信机器人</code>接口，由 Typescript 构建的 Node.js  应用。支持多种微信接入方案，包括网页、ipad、ios、windows, android 等。同时支持Linux, Windows, Darwin(OSX/Mac) 和 Docker 多个平台。</p>
+
+<h4 id="wechaty能帮我们做什么">Wechaty能帮我们做什么？</h4>
+
+<ul>
+  <li>智能收发消息
+    <ul>
+      <li>发送者，接收者及群组的ID</li>
+      <li>消息的类型（文本、链接、联系人、表情、图片、文件）</li>
+      <li>通过简单配置，即可加入智能对话系统，完成指定任务</li>
+    </ul>
+  </li>
+  <li>管理联系人
+    <ul>
+      <li>查找好友</li>
+      <li>获取联系人详细信息</li>
+      <li>管理备注信息</li>
+      <li>获取机器人信息（self）</li>
+    </ul>
+  </li>
+  <li>管理群组
+    <ul>
+      <li>创建群组</li>
+      <li>自动入群、关键字入群、二维码入群</li>
+      <li>邀请联系人进群（40人以上链接邀请好友，确认后入群；40人以下直接入群）</li>
+      <li>将联系人移出群组</li>
+    </ul>
+  </li>
+  <li>处理好友请求
+    <ul>
+      <li>自动处理好友请求</li>
+      <li>获取发好友请求的联系人信息</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="快速创建微信机器人">快速创建<code class="language-plaintext highlighter-rouge">微信机器人</code></h4>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Wechaty</span> <span class="p">}</span>  <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span>
+
+<span class="nx">Wechaty</span><span class="p">.</span><span class="nf">instance</span><span class="p">()</span> <span class="c1">// Singleton</span>
+<span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">qrcode</span><span class="p">,</span> <span class="nx">status</span><span class="p">)</span>  <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Scan QR Code to login: </span><span class="p">${</span><span class="nx">status</span><span class="p">}</span><span class="s2">\nhttps://api.qrserver.com/v1/create-qr-code/?data=</span><span class="p">${</span><span class="nf">encodeURIComponent</span><span class="p">(</span><span class="nx">qrcode</span><span class="p">)}</span><span class="s2">`</span><span class="p">))</span>
+<span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span> <span class="nx">user</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`User </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2"> logined`</span><span class="p">))</span>
+<span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="nx">message</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Message: </span><span class="p">${</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">))</span>
+<span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>以上一段很简短的代码就能创建一个 wechaty 智能机器人。</p>
+
+<ul>
+  <li>通过监听<code class="language-plaintext highlighter-rouge">scan</code>事件，触发扫码登录的功能</li>
+  <li>监听<code class="language-plaintext highlighter-rouge">login</code>事件，检测到用户登录成功时，提示用户登录信息</li>
+  <li>监听<code class="language-plaintext highlighter-rouge">message</code>事件，用户通过微信所发的消息都会被<code class="language-plaintext highlighter-rouge">微信机器人</code>打印显示在控制台</li>
+</ul>
+
+<p>基于事件绑定机制，我们可以根据不同场景事件的触发，通过wechaty中的room, contact, message等功能模块完成自己感兴趣的逻辑操作，从而提升工作效率。</p>
+
+<p>为了机器人功能的多样化，wechaty 中还支持对群组操作、好友请求、数据准备，退出登录等事件的监听。下面简单介绍我对这些事件的理解，便于大家能够更好的使用 wechaty。</p>
+
+<h5 id="群组监听事件区别">群组监听事件区别</h5>
+
+<ul>
+  <li>room-join
+    <blockquote>
+      <p>无论邀请者是群主还是群成员，被邀请者加入群组后即触发此事件。</p>
+    </blockquote>
+  </li>
+  <li>room-leave
+    <blockquote>
+      <p>群主在群组中移出某些用户会触发此事件，群组成员自动退出不会触发此事件。</p>
+    </blockquote>
+  </li>
+  <li>room-invite
+    <blockquote>
+      <p>bot 被邀请至群组中，会触发此事件。</p>
+    </blockquote>
+  </li>
+</ul>
+
+<h5 id="其他监听事件">其他监听事件</h5>
+
+<ul>
+  <li>ready
+    <blockquote>
+      <p>完成数据准备工作，在底层拉取微信端数据进行同步，同步完成后会触发此事件。对数据实时性有较高要求的操作需要监听此事件。</p>
+    </blockquote>
+  </li>
+  <li>message
+    <blockquote>
+      <p>bot 收到消息时，会触发此事件。</p>
+    </blockquote>
+  </li>
+  <li>friendship
+    <blockquote>
+      <p>bot 收到好友请求时，会触发此事件。</p>
+    </blockquote>
+  </li>
+  <li>room-topic
+    <blockquote>
+      <p>bot 所在群组的群名称发生变动时，会触发此事件。</p>
+    </blockquote>
+  </li>
+  <li>logout
+    <blockquote>
+      <p>当 bot 退出登录时，会触发此事件。</p>
+    </blockquote>
+  </li>
+</ul>
+
+<h4 id="关于-say-方法">关于 <code class="language-plaintext highlighter-rouge">say()</code> 方法</h4>
+
+<p>wechaty 所创建微信机器人做的最频繁的事情就是应答消息，下面我来简答介绍关于机器人应答消息的几种方式。</p>
+
+<ul>
+  <li>
+    <p>bot.say()</p>
+
+    <p><code class="language-plaintext highlighter-rouge">bot</code>即我们所创建的机器人，其对应的 <code class="language-plaintext highlighter-rouge">say()</code> 方法，也就是机器人这个微信号来发送消息。该方法并不常用。</p>
+  </li>
+  <li>
+    <p>contact.say()</p>
+
+    <p>该方法从字面理解起来可能会存在些困惑，它不是指联系人对微信机器人发送消息，而是微信机器人对某个联系人发送消息。结合几种 <code class="language-plaintext highlighter-rouge">say()</code> 方法来看，就能理解。</p>
+  </li>
+  <li>
+    <p>msg.say()</p>
+
+    <p>该方法是发送消息最常用的方法，微信机器人只要收到消息就会予以回复，即微信机器人对所接受到的消息进行回复。使用该方法需要<strong>慎重</strong>，很可能会导致你的微信机器人疯狂的和自己说话。具体解决办法在我们官方的 <a href="https://wechaty.js.org/v/zh/faq#endless-talking">FAQ</a> 中有明确答案，有兴趣的小伙伴可以飞去查看。</p>
+  </li>
+  <li>
+    <p>room.say()</p>
+
+    <p>该方法是微信机器人在群组中发送消息，类似 <code class="language-plaintext highlighter-rouge">contact.say()</code>。</p>
+  </li>
+</ul>
+
+<p>以上简单介绍了 wechaty 的基本功能、事件监听，以及消息的几种发送方式，接着我们就可以创造自己的微信机器人了。为了能够使我们所创建的机器人更加友爱，作为开发者的我们还需要对 wechaty 及其相关模块（puppet, padpro）的源码进行阅读，从而能够更好的理解微信机器人的构造原理。我们先对相关模块进行介绍，在后续章节中会整理一些我在阅读源码过程中所遇到的疑惑点。</p>
+
+<h3 id="puppet">Puppet</h3>
+
+<p>Puppet 是帮助 Wechaty 操纵微信的工具，即微信接入方案。目前存在根据不同协议实现的版本(wechaty-puppet-padchat, wechaty-puppet-padpro,wechaty-puppet-mock等)。详细了解Puppet抽象类的层级结构，参见 <a href="https://wechaty.github.io/wechaty-puppet/typedoc/classes/puppet.html#hierarchy">Puppet Provider Interface Documentation</a>。</p>
+
+<h4 id="puppet常用方法梳理">Puppet常用方法梳理</h4>
+
+<p>对于Wechaty中所提供的接口，部分接口的实现都会依赖于 Puppet 的抽象方法，再根据协议的不同进行实现。例如 wechaty-puppet-padpro 模块，该模块是一种基于 iPad 协议的对 Puppet 抽象方法的具体实现。</p>
+
+<ul>
+  <li>Message方法</li>
+</ul>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Message</span><span class="o">--&gt;</span><span class="nx">messageSendText</span><span class="p">:</span><span class="nx">发送文本信息</span>
+<span class="nx">Message</span><span class="o">--&gt;</span><span class="nx">messageSendFile</span><span class="p">:</span><span class="nx">根据FileBox的文件名后缀进行处理</span>
+<span class="nx">Message</span><span class="o">--&gt;</span><span class="nx">messageFile</span><span class="p">:</span><span class="nx">根据消息文件类型进行处理</span>
+<span class="nx">Message</span><span class="o">--&gt;</span><span class="nx">messageSendContact</span><span class="p">:</span><span class="nx">发送联系人名片</span>
+<span class="nx">Message</span><span class="o">--&gt;</span><span class="nx">messagePayload</span><span class="p">:</span><span class="nx">从缓存中获取message信息</span>
+<span class="nx">Message</span><span class="o">--&gt;</span><span class="nx">messageForward</span><span class="p">:</span><span class="nx">根据payload的type来判断消息类型处理</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Contact方法</li>
+</ul>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Contact--&gt;contactRoomList:联系人群组列表
+Contact--&gt;contactList:联系人ID列表
+Contact--&gt;contactQrcode:联系人二维码
+Contact--&gt;contactPayload:从缓存中获取联系人信息
+Contact--&gt;contactSearch:查找联系人
+</code></pre></div></div>
+
+<ul>
+  <li>Room方法</li>
+</ul>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Room--&gt;roomCreate:创建群组
+Room--&gt;roomTopic:群组的名称
+Room--&gt;roomQrcode:群组二维码
+Room--&gt;roomAdd:添加成员
+Room--&gt;roomDel:移出成员
+Room--&gt;roomList:群组列表
+Room--&gt;roomMemberList:群组成员列表
+Room--&gt;roomMemberPayload:加载群组成员
+Room--&gt;roomMemberSearch:查找群组成员
+</code></pre></div></div>
+
+<ul>
+  <li>Friendship方法</li>
+</ul>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Friendship--&gt;friendshipAdd:添加好友
+Friendship--&gt;friendshipAccept:接受好友
+Friendship--&gt;friendshipPayload:从缓存中获取好友请求信息
+</code></pre></div></div>
+
+<h3 id="puppet-padpro">Puppet-Padpro</h3>
+
+<p>Puppet-PadPro 是 Puppet 基于 iPad 协议的一种实现方式，将 Puppet 中的抽象方法进行实现，是一种较成熟的微信接入方案。</p>
+
+<h4 id="padpro入门">padpro入门</h4>
+
+<p>从 git 上下载 <a href="https://github.com/botorange/wechaty-puppet-padpro">wechaty-puppet-padpro源码</a>，从入口文件<code class="language-plaintext highlighter-rouge">index</code>开始，我们会发现项目的核心文件 <code class="language-plaintext highlighter-rouge">puppet-padpro</code>，一切的学习从这里开始。</p>
+
+<ul>
+  <li>引入模块
+    <ul>
+      <li>wechaty-puppet
+        <blockquote>
+          <p>引入 puppet 基类中的一些数据类型</p>
+        </blockquote>
+      </li>
+      <li>pure-function-helpers
+        <blockquote>
+          <p>纯函数助手，用来解析一些数据，大多是对XML的解析</p>
+        </blockquote>
+      </li>
+      <li>config
+        <blockquote>
+          <p>日志及基础配置文件</p>
+        </blockquote>
+      </li>
+      <li>utils
+        <blockquote>
+          <p>工具类方法</p>
+        </blockquote>
+      </li>
+      <li>padpro-manager
+        <blockquote>
+          <p>Padpro逻辑管理工具，主要是调用gRPC接口来实现相应的功能，也是该项目的核心之一</p>
+        </blockquote>
+      </li>
+      <li>schemas
+        <blockquote>
+          <p>类型声明，对于业务处理所采用到的数据结构进行约束</p>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>以上介绍了 padpro 中所依赖的一些模块，可以看出 <code class="language-plaintext highlighter-rouge">puppet-padpro</code> 及 <code class="language-plaintext highlighter-rouge">padpro-manager</code> 这两个文件是 padpro 的核心。</p>
+
+<p>进一步了解 padpro 从 <code class="language-plaintext highlighter-rouge">puppet-padpro</code> 的 <code class="language-plaintext highlighter-rouge">start</code> 方法开始。</p>
+
+<h3 id="grpc及其优点">GRPC及其优点</h3>
+
+<p>Padpro 采用 gRPC 取代 RESTful 作为通信方式。具体使用教程参见 <a href="https://grpc.io/docs/quickstart/node/">GRPC quick start</a></p>
+
+<ul>
+  <li>谷歌开发的一个远程调用框架，现在已开源</li>
+  <li>使用了二进制编码，所以它比 JSON / HTTP 更快</li>
+  <li>明确的接口规范</li>
+  <li>支持流式传输</li>
+</ul>
+
+<h2 id="三者之间的调用关系">三者之间的调用关系</h2>
+
+<p>为了便于讨论，本文以 wechaty 中的 <code class="language-plaintext highlighter-rouge">room.qrcode()</code> 为例，来阐述三个模块之间的调用关系。</p>
+
+<p><a href="https://wechaty.js.org/v/zh/api/room#room-qrcode-promise">Wechaty API ⇒ room.qrcode</a></p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nx">room</span><span class="p">.</span><span class="nf">qrcode</span><span class="p">()</span> <span class="err">⇒</span> <span class="nb">Promise</span> <span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<p>获取群二维码，用户可以通过扫描这个二维码加入群聊。</p>
+
+<p>我们先看一下该 API 所执行的具体逻辑：</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     <span class="cm">/**
+      * Get QR Code of the Room from the room, which can be used as scan and join the room.
+      * &gt; Tips:
+      * This function is depending on the Puppet Implementation, see [puppet-compatible-table](https://github.com/wechaty/wechaty/wiki/Puppet#3-puppet-compatible-table)
+      * @returns {Promise&lt;string&gt;}
+      */</span>
+    <span class="k">public</span> <span class="k">async</span> <span class="nf">qrcode </span><span class="p">():</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">.</span><span class="nf">verbose</span><span class="p">(</span><span class="dl">'</span><span class="s1">Room</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">qrcode()</span><span class="dl">'</span><span class="p">)</span>
+        <span class="kd">const</span> <span class="nx">qrcode</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">puppet</span><span class="p">.</span><span class="nf">roomQrcode</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nx">qrcode</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>该逻辑实现的过程中会依赖于 puppet 的 roomQrcode 方法，在 puppet 中 roomQrcode 方法只是一个抽象方法：</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">public</span> <span class="kd">abstract</span> <span class="k">async</span> <span class="nf">roomQrcode </span><span class="p">(</span><span class="nx">roomId</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<p>我们知道 puppet 是 wechaty 微信接入方案的抽象，其具体的实现还需要看使用者所采用的puppet实现模块，例如 wechaty-puppet-padpro。当我们使用 padrpo 模块时，padpro 会继承并实现 puppet 中的所有抽象方法：</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">export</span> <span class="kd">class</span> <span class="nc">PuppetPadpro</span> <span class="kd">extends</span> <span class="nc">Puppet</span> <span class="p">{</span>
+        <span class="p">...</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>padpro 对于 roomQrcode 的具体实现如下：</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">async</span> <span class="nf">roomQrcode</span><span class="p">(</span><span class="nx">roomId</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">.</span><span class="nf">verbose</span><span class="p">(</span><span class="nx">PRE</span><span class="p">,</span> <span class="dl">'</span><span class="s1">roomQrcode(%s)</span><span class="dl">'</span><span class="p">,</span> <span class="nx">roomId</span><span class="p">)</span>
+    <span class="kd">const</span> <span class="nx">memberIdList</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nf">roomMemberList</span><span class="p">(</span><span class="nx">roomId</span><span class="p">)</span>
+    <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">memberIdList</span><span class="p">.</span><span class="nf">includes</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nf">selfId</span><span class="p">()))</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="s2">`userSelf not in this room: </span><span class="p">${</span><span class="nx">roomId</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">padproManager</span><span class="o">!</span><span class="p">.</span><span class="nc">GrpcGetContactQrcode</span><span class="p">(</span><span class="nx">roomId</span><span class="p">)</span>
+    <span class="kd">const</span> <span class="nx">base64</span> <span class="o">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">QrcodeBuf</span>
+
+    <span class="kd">const</span> <span class="nx">roomPayload</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nf">roomPayload</span><span class="p">(</span><span class="nx">roomId</span><span class="p">)</span>
+    <span class="kd">const</span> <span class="nx">roomName</span>    <span class="o">=</span> <span class="nx">roomPayload</span><span class="p">.</span><span class="nx">topic</span> <span class="o">||</span> <span class="nx">roomPayload</span><span class="p">.</span><span class="nx">id</span>
+    <span class="kd">const</span> <span class="nx">fileBox</span>     <span class="o">=</span> <span class="nx">FileBox</span><span class="p">.</span><span class="nf">fromBase64</span><span class="p">(</span><span class="nx">base64</span><span class="p">,</span> <span class="s2">`</span><span class="p">${</span><span class="nx">roomName</span><span class="p">}</span><span class="s2">-qrcode.jpg`</span><span class="p">)</span>
+
+    <span class="kd">const</span> <span class="nx">qrcode</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">fileBoxToQrcode</span><span class="p">(</span><span class="nx">fileBox</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="nx">qrcode</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="源码阅读部分">源码阅读部分</h3>
+
+<h4 id="状态管理">状态管理</h4>
+
+<p>对于一些操作需要添加状态，确保其已经完成。wechaty 中采用 status 的 on 方法和 off 方法来判断启动和结束。这两个方法都会接收一个参数来表示当前该方法的状态，具体如下所示。</p>
+
+<ul>
+  <li>status.on()
+    <ul>
+      <li>‘pending’
+        <blockquote>
+          <p>表示当前操作正在启动</p>
+        </blockquote>
+      </li>
+      <li>true
+        <blockquote>
+          <p>表示当前操作启动成功</p>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+  <li>status.off()
+    <ul>
+      <li>‘pending’
+        <blockquote>
+          <p>表示当前操作正在关闭</p>
+        </blockquote>
+      </li>
+      <li>true
+        <blockquote>
+          <p>表示当前操作关闭成功</p>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="事件监听机制">事件监听机制</h4>
+
+<p>事件监听机制主要由事件源、事件对象、事件监听器三个部分组成。
+例如 <code class="language-plaintext highlighter-rouge">room-join</code> 事件：</p>
+
+<ul>
+  <li>事件监听器</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">room-join</span><span class="dl">'</span><span class="p">,</span> <span class="nx">msg</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+<span class="p">})</span>
+</code></pre></div></div>
+
+<ul>
+  <li>事件源</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">bot</span><span class="p">.</span><span class="nf">emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">room-join</span><span class="dl">'</span><span class="p">,</span> <span class="nx">messagePayload</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>事件对象</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="dl">'</span><span class="s1">room-join</span><span class="dl">'</span>
+</code></pre></div></div>
+
+<p>padpro 通过 GRPC 接收到微信端推送过来的消息进行处理，根据处理后消息的类别来触发对应事件，并发送对应的数据。puppet 在监听到该事件时，将接收到的数据进行进一步处理，并携带处理后的数据继续向上层发送监听事件（对 puppet 的监听是在 wechaty-manager 中进行的）。使用者就可以通过监听 wechaty 所 监听到的事件，来对返回的数据进行处理。</p>
+
+<p>为了更详细的了解 wechaty 中的数据流，我写了一篇博客来进行详细的介绍。<a href="http://note.youdao.com/noteshare?id=e5a0ee56a8f7efabd7500ac5062731c0">关于 wechaty 中 room-join 事件的数据流</a>。</p>
+
+<p>介绍了这些，相信你结合官方API文档已经能够打造出属于自己的微信机器人了。如果你在开发过程中，有超 nice 的想法，并想为 wechaty 的发展贡献力量。那就让我们一起来合作开发吧！</p>
+
+<h2 id="合作开发">合作开发</h2>
+
+<p>有兴趣参与 wechaty 开发的小伙伴们，可以从GitHub上将 <a href="https://github.com/wechaty/wechaty">wechaty</a>、<a href="https://github.com/wechaty/wechaty-puppet">wechaty-puppet</a>、<a href="https://github.com/botorange/wechaty-puppet-padpro">wechaty-puppet-padpro</a> 源码下载到本地，在开发项目中使用 npm link 将以上模块载入。便于Bug修复、业务拓展等的提交。</p>
+
+<p>技术栈：<code class="language-plaintext highlighter-rouge">Typescript</code> <code class="language-plaintext highlighter-rouge">Node.js</code></p>
+
+<h3 id="环境变量配置及使用">环境变量配置及使用</h3>
+
+<ul>
+  <li>WECHATY_NAME
+    <blockquote>
+      <p>设置该变量来控制启动的机器人</p>
+    </blockquote>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">WECHATY_NAME</span><span class="o">=</span><span class="dl">"</span><span class="s2">your-cute-bot-name</span><span class="dl">"</span> <span class="nx">node</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">js</span>
+</code></pre></div>    </div>
+  </li>
+  <li>PADPRO_IP
+    <blockquote>
+      <p>传文件的时候在查询CDN之前需要配置本地公网IP</p>
+    </blockquote>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">PADPRO_IP</span><span class="o">=</span><span class="dl">'</span><span class="s1">192.0.0.1</span><span class="dl">'</span> <span class="nx">node</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">js</span>
+</code></pre></div>    </div>
+  </li>
+  <li>PADPRO_LOG
+    <blockquote>
+      <p>查看日志</p>
+    </blockquote>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">PADPRO_LOG</span><span class="o">=</span><span class="dl">'</span><span class="s1">silly</span><span class="dl">'</span> <span class="nx">node</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">js</span>
+</code></pre></div>    </div>
+  </li>
+  <li>PADPRO_REPLAY_MESSAGE
+    <blockquote>
+      <p>bot发送的消息也会触发message监听事件</p>
+    </blockquote>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">PADPRO_REPLAY_MESSAGE</span><span class="o">=</span><span class="kc">true</span> <span class="nx">node</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">js</span>
+</code></pre></div>    </div>
+  </li>
+  <li>WECHATY_PUPPET_PADPRO_TOKEN
+    <blockquote>
+      <p>配置padpro的token</p>
+    </blockquote>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">WECHATY_PUPPET_PADPRO_TOKEN</span><span class="o">=</span><span class="dl">'</span><span class="s1">your padpro token</span><span class="dl">'</span> <span class="nx">node</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">js</span>
+</code></pre></div>    </div>
+  </li>
+  <li>STORE_HOME
+    <blockquote>
+      <p>配置 FlashStore 缓存在磁盘中的位置</p>
+    </blockquote>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">STORE_HOME</span><span class="o">=</span><span class="dl">'</span><span class="s1">your store dir</span><span class="dl">'</span> <span class="nx">node</span> <span class="nx">bot</span><span class="p">.</span><span class="nx">js</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="详细日志查看">详细日志查看</h3>
+
+<p>padpro中有详尽的日志层级系统，可以使用命令<code class="language-plaintext highlighter-rouge">PADPRO_LOG='silly'</code>来启动项目，从而查看对应等级的日志。通过日志的反应情况，可以明显的得知某功能所执行的具体逻辑过程，便于快速锁定问题。</p>
+
+<h3 id="npm-link-的坑">npm link 的坑</h3>
+
+<p>简单介绍以上三个模块之间的依赖关系：</p>
+
+<blockquote>
+  <p>wechaty 依赖于 wechaty-puppet
+wechaty-puppet-padpro 依赖于 wechaty-puppet</p>
+</blockquote>
+
+<p>引入模块的步骤说明：</p>
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">Note</code>:以上三个模块都需要执行<code class="language-plaintext highlighter-rouge">npm install</code>安装项目依赖包</p>
+</blockquote>
+
+<p><code class="language-plaintext highlighter-rouge">Step1</code></p>
+<blockquote>
+  <p>在模块 wechaty-puppet 中创建链接，执行以下命令</p>
+</blockquote>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run dist // 编译 .ts 文件
+npm <span class="nb">link</span> // 创建链接
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Step2</code></p>
+<blockquote>
+  <p>在模块 wechaty 中引入依赖模块并创建链接，执行以下命令</p>
+</blockquote>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">link </span>wechaty-puppet // 引入 puppet 模块
+npm run dist // 编译 .ts 文件
+npm <span class="nb">link</span> // 创建链接
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Step3</code></p>
+<blockquote>
+  <p>在模块 wechaty-puppet-padpro 中引入依赖模块并创建链接，执行以下命令</p>
+</blockquote>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">link </span>wechaty-puppet // 引入 puppet 模块
+npm run dist // 编译 .ts 文件
+npm <span class="nb">link</span> // 创建链接
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Step4</code></p>
+<blockquote>
+  <p>在开发项目 my-wechaty-project 中引入链接，执行以下命令</p>
+</blockquote>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">link </span>wechaty // 引入 wechaty 模块
+npm <span class="nb">link </span>wechaty-puppet-padpro // 引入 puppet-padpro 模块
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Step5</code></p>
+<blockquote>
+  <p>运行开发项目 my-wechaty-project，执行以下命令，并查看运行状态。</p>
+</blockquote>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ts-node index.ts
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>若出现错误提示</strong>，请在模块 wechaty 及 wechaty-puppet-padpro 中重新执行 <code class="language-plaintext highlighter-rouge">npm link</code> 操作。
+作者: <a href="https://github.com/su-chang">Su Chang</a>，Node.js全栈工程师</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#code">code</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/su-chang">
+                            <img class="rounded-circle" src="/assets/contributors/su-chang/avatar.webp" alt="SuperChang" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/su-chang">SuperChang</a> </h5>
+						Node.js Full Stack Engineer
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2019/07/08/data-stream-about-room-join-from-wechat-to-wechaty/"> Data Stream about Room-Join Event from Wechat to Wechaty</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2019/07/12/wechaty-business-easy-pay-en/"> Wechaty - Making Online Business Easy  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2019/wechaty-pay-paypic.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

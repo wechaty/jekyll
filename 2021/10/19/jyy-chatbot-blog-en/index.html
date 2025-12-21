@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      A Gift for My Newborn Daughter: Parenting Chatbot Built with Wechaty and Semantic Open Platform | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>A Gift for My Newborn Daughter: Parenting Chatbot Built with Wechaty and Semantic Open Platform | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="A Gift for My Newborn Daughter: Parenting Chatbot Built with Wechaty and Semantic Open Platform" />
+<meta name="author" content="jxitc" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Building a smart parenting chatbot using Wechaty and semantic analysis to automatically record baby’s daily activities through WeChat, converting natural language into structured data for data-driven parenting." />
+<meta property="og:description" content="Building a smart parenting chatbot using Wechaty and semantic analysis to automatically record baby’s daily activities through WeChat, converting natural language into structured data for data-driven parenting." />
+<link rel="canonical" href="https://wechaty.js.org/2021/10/19/jyy-chatbot-blog-en/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/10/19/jyy-chatbot-blog-en/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/10-jyy-chatbot-blog-en/jyy.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-10-19T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/10-jyy-chatbot-blog-en/jyy.webp" />
+<meta property="twitter:title" content="A Gift for My Newborn Daughter: Parenting Chatbot Built with Wechaty and Semantic Open Platform" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"jxitc"},"dateModified":"2021-10-19T00:00:00+00:00","datePublished":"2021-10-19T00:00:00+00:00","description":"Building a smart parenting chatbot using Wechaty and semantic analysis to automatically record baby’s daily activities through WeChat, converting natural language into structured data for data-driven parenting.","headline":"A Gift for My Newborn Daughter: Parenting Chatbot Built with Wechaty and Semantic Open Platform","image":"https://wechaty.js.org/assets/2021/10-jyy-chatbot-blog-en/jyy.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/10/19/jyy-chatbot-blog-en/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"jxitc"},"url":"https://wechaty.js.org/2021/10/19/jyy-chatbot-blog-en/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#tutorial">tutorial</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">A Gift for My Newborn Daughter: Parenting Chatbot Built with Wechaty and Semantic Open Platform</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/jxitc">
+                            <img class="rounded-circle" src="/assets/contributors/jxitc/jxitc.webp" alt="X.J" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/jxitc">X.J</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Oct 19, 2021 · <span class="reading-time">
+  
+  
+    5 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/10-jyy-chatbot-blog-en/jyy.webp" alt="A Gift for My Newborn Daughter: Parenting Chatbot Built with Wechaty and Semantic Open Platform">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<blockquote>
+  <p>This is a translated version of the original Chinese post. You can find the original post <a href="/2021/10/19/jyy-chatbot-blog/">here</a>.</p>
+</blockquote>
+
+<p>Recently my life has been enriched by a new daughter (Jiang Yiyi). For digital parenting, I wrote this bot that can automatically record the baby’s daily routine through WeChat, storing structured parenting data to achieve data-driven parenting.</p>
+<blockquote>
+  <p>About me: Graduated from Fudan/Cambridge Natural Language Processing group. From 2013-2018, led teams at startup Mobvoi responsible for semantic analysis algorithms and open platform development, supporting many clients including Google, JAC, WHALEY, Volkswagen, etc. Currently at WhatsApp responsible for fake news and anti-spam machine learning development. Welcome to follow my <a href="https://www.zhihu.com/people/xjiangxjxjxjx">Zhihu profile</a>.</p>
+</blockquote>
+
+<h2 id="the-need-how-to-raise-a-baby">The Need: How to Raise a Baby</h2>
+
+<p>Newborns cannot express their needs in complete language, so as parents, in addition to passive signals like “crying”, we also need to “actively record” the baby’s daily behavioral and rest data to ensure healthy growth. This data includes:</p>
+
+<ul>
+  <li><em>Feeding Amount</em>: Newborns have relatively fixed feeding amounts in early growth (although individual differences exist), so we need to track the baby’s daily feeding amount and frequency. For example, when I was developing the bot, my daughter Jiang Yiyi was exactly two weeks old. She needed to be fed about every 3-4 hours, about 6-8 times a day.</li>
+  <li><em>Diapers</em>: Diaper quantity is to track whether the baby has taken in enough nutrition and water daily. For example, Jiang Yiyi needs at least 6 or more wet diapers per day, otherwise it may mean insufficient water intake.</li>
+  <li><em>Sleep</em>: To track the baby’s daily sleep situation. For instance, Jiang Yiyi needs to sleep about 15 hours a day to ensure her brain and body development. At the same time, sufficient sleep also ensures parents have enough time to watch shows and play games.</li>
+</ul>
+
+<p>Therefore, for scientific parenting, I decided to write this WeChat bot that allows natural language input from users and automatically converts it to structured data for later analysis:</p>
+
+<p>For example:</p>
+
+<pre><code class="language-lang-text"># Input
+Jiang Yiyi drank 30 milliliters of milk at 9 AM
+</code></pre>
+
+<pre><code class="language-lang-text"># Output
+event: feeding
+time: 2021-10-19 09:00:00
+quantity: 30
+</code></pre>
+
+<h2 id="technical-design-semantic-open-platform">Technical Design: Semantic Open Platform</h2>
+
+<p>To extract key information from natural language text, the simple approach would be using regular expressions, for example:</p>
+
+<pre><code class="language-lang-text">(?&lt;time&gt;(上午|下午)?\d+点).*(?&lt;event&gt;喂奶|奶粉|睡觉|起床|拉屎|拉尿).*(?&lt;quantity&gt;\d+(毫升|克))?
+</code></pre>
+
+<p>But obviously using proper semantic analysis algorithms is a better choice. The semantic analysis algorithms here specifically refer to those used in task-oriented dialogue, data-driven semantic analysis algorithms based on <em>intent classification</em> (classification algorithm) and <em>slot extraction</em> (sequence labeling algorithm). For details, you can search keywords <em>NLU</em> <em>semantic analysis</em> <em>task-oriented dialogue</em>, or directly read this <a href="https://bbs.huaweicloud.com/blogs/detail/200427">popular science article</a>.</p>
+
+<p>Compared to previous rule-based recognition, machine learning model-based algorithms have the following advantages:</p>
+
+<ol>
+  <li><em>Broader Recognition Range</em>: No need for strict rule matching, with great freedom to handle different phrasings.</li>
+  <li><em>Easy Maintenance and Extension</em>: Especially for complex semantic systems, the number of rules grows exponentially to become unmaintainable. With machine learning-based semantic analysis, you only need to provide annotated training text and the machine learning algorithm will automatically handle the rest.</li>
+</ol>
+
+<p>Moreover, in 2021, basic semantic analysis has been platformized, which means:</p>
+<ol>
+  <li>No need to train models from scratch, can completely configure your own semantic analysis through graphical interfaces.</li>
+  <li>There are ready-made processing methods for common tasks, such as time (today, tomorrow at 9 o’clock, next Friday), measurements (thirty milliliters, 40°, one and a half meters)</li>
+  <li>Can also be easily extended to dialogue semantic analysis with context.</li>
+</ol>
+
+<p>For this task, I used <a href="https://ai.chumenwenwen.com/pages/home">Mobvoi’s Semantic Open Platform</a>. There are many other semantic analysis open platforms on the market (like Baidu, iFlytek, Facebook’s wit.ai). I chose Mobvoi’s platform for a simple reason - because I wrote it myself.</p>
+
+<p>Specific usage methods can be found in the platform documentation. In short, I spent about 10 minutes submitting some training data and automatically got a usable semantic analysis model that supports direct HTTP GET calls. Actual call example:</p>
+
+<pre><code class="language-lang-text">// input: Jiang Yiyi was fed 30 milliliters
+
+// output:
+"semantic": {
+    "slots": {
+        "event_type": [
+            {
+                "prob": 0.8787958032333055,
+                "index": {
+                    "3-5": "喂奶"
+                },
+                "raw_data": "喂奶",
+                "norm_value": "喂奶"
+            }
+        ],
+        "quantity": [
+            {
+                "prob": 0.9999999999999982,
+                "index": {
+                    "6-10": "30毫升"
+                },
+                "raw_data": "30毫升",
+                "norm_value": "30"
+            }
+        ]
+    },
+}
+
+</code></pre>
+
+<h2 id="technical-design-wechat-bot">Technical Design: WeChat Bot</h2>
+
+<p>Compared to the semantic open platform, the WeChat API part is relatively simple and straightforward.</p>
+
+<p>I directly referenced wechaty’s ding-dong-bot.js code, adding calls to Mobvoi’s open platform in the <code class="language-plaintext highlighter-rouge">onMessage</code> function, then writing to Google Docs for data storage for later analysis. Detailed code will be updated in my <a href="https://github.com/jxitc/jyy_bot">code repository</a>.</p>
+
+<p>However, during preliminary research, I also looked at many different WeChat code libraries, including itchat which I used before but can no longer log into personal WeChat. Apart from other methods based on dll code injection, wechaty is the only API I’ve tried that works. But in the long term, using personal WeChat accounts for bots is inherently risky, so I did abstraction encapsulation in code design to facilitate migration to other platforms (WeChat Official Account, WeChat Work, etc.) if personal WeChat API really becomes unusable.</p>
+
+<h2 id="extension-is-there-commercial-value">Extension: Is There Commercial Value?</h2>
+
+<p>This small bot itself is not very difficult. What it replaces is merely helping record some data during childcare, not even much more convenient than manual recording or Excel.</p>
+
+<p>But I think the more important meaning of this project is opening up the WeChat workflow, converting everyday natural language into computer-processable structured semantics through natural language processing, which can then be used to build various automation processes.</p>
+
+<p>Various intelligent customer service and RPA robot platforms were created for this vision. However, these platform tools based on general scenarios sometimes still lack flexibility to support actual scenarios.</p>
+
+<p>Therefore, I want to explore through this small project a set of low-cost DIY automated workflows to replicate to more personal workflows in the future.</p>
+
+<blockquote>
+  <p>This is a translated version of the original Chinese post. You can find the original post <a href="/2021/10/19/jyy-chatbot-blog/">here</a>.</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#opensource">opensource</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/jxitc">
+                            <img class="rounded-circle" src="/assets/contributors/jxitc/jxitc.webp" alt="X.J" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/jxitc">X.J</a> </h5>
+						语义分析 自然语言处理
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/10/12/kai-yuan-she-2021/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/10-kai-yuan-she-2021/kai-yuan-she-event-2021.webp">  今年的 COSCon 中国开源年会，让我们聊点不一样的</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/10/19/jyy-chatbot-blog/"> 献给新生女儿的礼物：基于wechaty和语义开放平台打造的育儿机器人  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/10-jyy-chatbot-blog-en/jyy.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

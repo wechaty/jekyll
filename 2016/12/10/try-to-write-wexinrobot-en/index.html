@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      How a Girl Built a WeChat Chatbot with 6 Lines of Code | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>How a Girl Built a WeChat Chatbot with 6 Lines of Code | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="How a Girl Built a WeChat Chatbot with 6 Lines of Code" />
+<meta name="author" content="lijiarui" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A personal story of how dance video creator Jiarui Li solved her community management challenges by building a WeChat chatbot using Wechaty framework with just 6 lines of JavaScript." />
+<meta property="og:description" content="A personal story of how dance video creator Jiarui Li solved her community management challenges by building a WeChat chatbot using Wechaty framework with just 6 lines of JavaScript." />
+<link rel="canonical" href="https://wechaty.js.org/2016/12/10/try-to-write-wexinrobot-en/" />
+<meta property="og:url" content="https://wechaty.js.org/2016/12/10/try-to-write-wexinrobot-en/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2016/12-try-to-write-wexinrobot-en/ruirui-dance.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-12-10T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2016/12-try-to-write-wexinrobot-en/ruirui-dance.webp" />
+<meta property="twitter:title" content="How a Girl Built a WeChat Chatbot with 6 Lines of Code" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"lijiarui"},"dateModified":"2016-12-10T00:00:00+00:00","datePublished":"2016-12-10T00:00:00+00:00","description":"A personal story of how dance video creator Jiarui Li solved her community management challenges by building a WeChat chatbot using Wechaty framework with just 6 lines of JavaScript.","headline":"How a Girl Built a WeChat Chatbot with 6 Lines of Code","image":"https://wechaty.js.org/assets/2016/12-try-to-write-wexinrobot-en/ruirui-dance.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2016/12/10/try-to-write-wexinrobot-en/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"lijiarui"},"url":"https://wechaty.js.org/2016/12/10/try-to-write-wexinrobot-en/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#story">story</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">How a Girl Built a WeChat Chatbot with 6 Lines of Code</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/lijiarui">
+                            <img class="rounded-circle" src="/assets/contributors/lijiarui/avatar-new.webp" alt="Jiarui LI (李佳芮)" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/lijiarui">Jiarui LI (李佳芮)</a> <span><a target="_blank" href="https://weibo.com/u/2175505900" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Dec 10, 2016 · <span class="reading-time">
+  
+  
+    10 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2016/12-try-to-write-wexinrobot-en/ruirui-dance.webp" alt="How a Girl Built a WeChat Chatbot with 6 Lines of Code">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>I’ve been shooting dance tutorial videos with my friends in our spare time, called “WuLi”. We’ve created hundreds of original videos with nearly 10 million views, so we built WeChat groups to communicate with our fans.</p>
+
+<p><img src="/assets/2016/12-try-to-write-wexinrobot-en/ruirui-dance.webp" alt="RuiRui" /></p>
+
+<h2 id="1-my-encounter-with-wechat-robots">1. My Encounter with WeChat Robots</h2>
+
+<p>When our WeChat group exceeded 100 people, the group owner had to manually add people. So I registered a WeChat secondary account on my iPad, letting everyone join the WeChat group by adding this secondary account. Every evening at 9 PM, I would log into this secondary account, approve all friend requests, and then add them to the group. Sometimes there would be dozens of friend requests. I’d first approve them all, then take photos of these new friends with my phone, and match the photos to find each friend in my contacts to add them to the WeChat group.</p>
+
+<p>Until one time when I went abroad and didn’t bring my iPad because it was too heavy, meaning I couldn’t handle the WeChat secondary account for 10 days. When I returned, I discovered something tragic… about 100+ friend requests, and just taking photos of these friend requests would require dozens of screenshots!</p>
+
+<p>This was clearly mechanized assembly line work! How could a programmer be expected to complete this manually? So I started organizing my requirements, which were actually just three:</p>
+
+<ol>
+  <li>Automatically approve friend requests</li>
+  <li>When fans chat with me on WeChat, automatically reply through keywords. After all, 80% of questions are the same</li>
+  <li>Automatically add them to groups</li>
+</ol>
+
+<p>So I found Wechaty on GitHub and discovered that just a few dozen lines of code could meet my needs. Most importantly, robots do mechanized assembly line operations much better than manual work.</p>
+
+<h2 id="2-introduction-to-a-simple-wechat-robot-framework">2. Introduction to a Simple WeChat Robot Framework</h2>
+
+<p>There are many open source projects related to WeChat robots on GitHub, implementable through JavaScript, Electron, Go, Perl, Python, etc.</p>
+
+<p>Since I’m only familiar with JavaScript, I chose Wechaty. It’s a Node project written in TypeScript, a bot framework specifically built for personal WeChat accounts. Using Wechaty’s API, you can build the simplest WeChat robot with just 6 lines of JavaScript code, supporting Linux, Windows, Darwin(OSX/Mac) and Docker.</p>
+
+<p><img src="/assets/2017/lijiarui-write-bot-wechaty-pic.webp" alt="wechaty-pic" /></p>
+
+<p>What I particularly love about Wechaty is that I don’t need to worry about any implementation logic - I just write business logic in JS. Once I figure out what I need to do, implementing it in JS is very simple and convenient.</p>
+
+<p>Wechaty’s basic implementation principle is to monitor various information from WeChat web version through Chrome in real-time, then encapsulate the captured information into APIs for developers to use. It has 9 basic events that basically cover all events on our Web WeChat:</p>
+
+<ol>
+  <li>scan event is triggered when QR code login is needed</li>
+  <li>login event is triggered after the robot successfully logs in</li>
+  <li>logout event is triggered after the robot goes offline</li>
+  <li>message event is triggered when there are new messages</li>
+  <li>error event is triggered when the program encounters an error</li>
+  <li>friend event is triggered when there are friend requests</li>
+  <li>room-join event is triggered when someone joins a group</li>
+  <li>room-leave event is triggered when the group owner removes friends from the group</li>
+  <li>room-topic event is triggered when the group name is modified</li>
+</ol>
+
+<p>Additionally, Wechaty encapsulates robots, contacts, WeChat groups, and friend requests into classes: Wechaty, Contact, Message, and FriendRequest. This way, I just need to import these packages to directly use functions in these classes to simulate various WeChat operations. For example, to send a message to a specific person, I just use contact.say(‘hello’). Function names in Wechaty are very human-friendly - writing business logic in JS reads as smoothly and comfortably as reading English documentation.</p>
+
+<h2 id="3-how-to-install-wechaty">3. How to Install Wechaty</h2>
+
+<p>There are two ways to install Wechaty:</p>
+
+<ol>
+  <li>Docker</li>
+  <li>NPM</li>
+</ol>
+
+<p>I highly recommend using Docker to install Wechaty. Although I initially used the second method, having tried both ways, I deeply appreciate “Docker is awesome.”</p>
+
+<p>Here’s a simple introduction to both installation methods - Docker and NPM:</p>
+
+<h3 id="docker">Docker</h3>
+
+<p>After installing Docker (click here to see how to install docker), run the following command and Wechaty will be successfully installed on your computer:</p>
+
+<p><code class="language-plaintext highlighter-rouge">docker run -ti --rm --volume="$(pwd)":/bot zixia/wechaty run demo</code></p>
+
+<p>After first run, you’ll see this screenshot:
+<img src="/assets/2017/lijiarui-write-bot-docker-pull.webp" alt="docker-pull" /></p>
+
+<p>Docker will automatically deploy related packages to your computer. After successful installation, future runs will look like this:
+<img src="/assets/2017/lijiarui-write-bot-run-ding.webp" alt="run-ding" /></p>
+
+<p>The Wechaty author’s love for this special font reaches a crazy level. To help everyone understand more clearly, I’ve included all screenshot content.</p>
+
+<p>Usually, I alias this command string to wechaty:</p>
+
+<p><code class="language-plaintext highlighter-rouge">alias wechaty='docker run -t -i --rm -e WECHATY_LOG="silly" --volume="$(pwd)":/bot zixia/wechaty:0.5.9'</code></p>
+
+<p>And add -e WECHATY_LOG=”silly” and the version number: zixia/wechaty:0.5.9, then run like this:</p>
+
+<p><code class="language-plaintext highlighter-rouge">wechaty run demo</code></p>
+
+<p>-e WECHATY_LOG=”silly” prints all wechaty system logs for easier problem discovery and code debugging. zixia/wechaty:0.5.9 adds a version number because the author frequently updates code, and recent code occasionally has issues. 0.5.9 is what I consider a relatively stable version.</p>
+
+<h3 id="npm">NPM</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">--save</span> wechaty
+node mybot.js
+</code></pre></div></div>
+
+<p>Several points worth noting:</p>
+
+<ol>
+  <li>Wechaty requires Node version 6 or above; I’m currently using version 7</li>
+  <li>Some environments require installing Chromedriver - depending on versions, you may need to pay attention</li>
+  <li>If on a server, you need to run the xvfb.sh script in the Script directory to provide Chrome with a virtual runtime environment, and set program runtime environment variables according to post-run prompts</li>
+  <li>You can also set WECHATY_LOG value to print system logs: WECHATY_LOG=SILLY node mybot.js</li>
+</ol>
+
+<h4 id="about-servers">About Servers</h4>
+
+<p>Many packages Wechaty depends on are outside the firewall, so I recommend using overseas VPS. I use DigitalOcean. If just running a robot service, I suggest 2GB/2 CPUs or higher configuration. One robot service occupies about 1G memory. With swap configured, short-term use is also possible.</p>
+
+<h2 id="4-how-to-use-wechaty">4. How to Use Wechaty</h2>
+
+<p>After environment deployment, the following 6 lines of code can successfully implement basic bot functionality: print out all messages received by the WeChat robot:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import <span class="o">{</span> Wechaty <span class="o">}</span>  from <span class="s1">'wechaty'</span>
+
+Wechaty.instance<span class="o">()</span>
+.on<span class="o">(</span><span class="s1">'scan'</span>, <span class="o">(</span>url, code<span class="o">)</span> <span class="o">=&gt;</span> console.log<span class="o">(</span><span class="sb">`</span>Scan QR Code to login: <span class="k">${</span><span class="nv">code</span><span class="k">}</span><span class="se">\n</span><span class="k">${</span><span class="nv">url</span><span class="k">}</span><span class="sb">`</span><span class="o">))</span>
+.on<span class="o">(</span><span class="s1">'login'</span>,  user <span class="o">=&gt;</span> console.log<span class="o">(</span><span class="sb">`</span>User <span class="k">${</span><span class="nv">user</span><span class="p">.name()</span><span class="k">}</span> logined<span class="sb">`</span><span class="o">))</span>
+.on<span class="o">(</span><span class="s1">'message'</span>,  message <span class="o">=&gt;</span> console.log<span class="o">(</span><span class="sb">`</span>Message: <span class="k">${</span><span class="nv">message</span><span class="p">.content()</span><span class="k">}</span><span class="sb">`</span><span class="o">))</span>
+.init<span class="o">()</span>
+</code></pre></div></div>
+
+<p>Brief introduction to this code:</p>
+
+<ul>
+  <li>scan event: Two return values
+    <ul>
+      <li>code: Returns scan status
+        <ul>
+          <li>0: Initial state</li>
+          <li>200: Successfully logged in</li>
+          <li>201: WeChat has been scanned, waiting for confirmation</li>
+          <li>408: Waiting for WeChat scan</li>
+        </ul>
+      </li>
+      <li>url: QR code image address needed for login. You need to paste this url into a browser to open and scan for login</li>
+    </ul>
+  </li>
+  <li>login event: Returns user representing the logged-in user, which is a Contact type. When printed, you can see the current logged-in user’s nickname. Through user.id() you can get the user’s unique id, user.name() gets the user’s WeChat nickname, user.weixin() gets the user’s WeChat ID.</li>
+  <li>message event: Returns message representing received messages, which is a Message type. Through message.content() you can get message content, message.from() can get the message sender, returning a Contact type.</li>
+</ul>
+
+<p>The above are just simple interface introductions. For more detailed interface documentation, click to view: Wechaty Interface Documentation. The interface documentation is still being updated. If you want more interfaces, directly clone the source code to view the code - you’ll discover many surprising and fun little things.</p>
+
+<p>Besides this, I also want to share two practical Wechaty tools:</p>
+
+<h3 id="qrcode-terminal">qrcode-terminal</h3>
+
+<p>Just printing the QR code image link that needs scanning on screen, then copying the link to browser for scanning is still troublesome. I prefer directly scanning QR codes on terminal for login to achieve the cool effect in demos. Just two steps:</p>
+
+<ol>
+  <li>Install dependency package:</li>
+</ol>
+
+<p><code class="language-plaintext highlighter-rouge">npm install qrcode-terminal</code></p>
+
+<ol>
+  <li>Slightly modify the code after scan event:</li>
+</ol>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">wechaty</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">code</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>  
+<span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="sr">/201|200/</span><span class="p">.</span><span class="nf">test</span><span class="p">(</span><span class="nc">String</span><span class="p">(</span><span class="nx">code</span><span class="p">))){</span>
+   <span class="kd">let</span> <span class="nx">loginUrl</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">\/</span><span class="sr">qrcode</span><span class="se">\/</span><span class="sr">/</span><span class="p">,</span> <span class="dl">'</span><span class="s1">/l/</span><span class="dl">'</span><span class="p">)</span>
+   <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">qrcode-terminal</span><span class="dl">'</span><span class="p">).</span><span class="nf">generate</span><span class="p">(</span><span class="nx">loginUrl</span><span class="p">)</span>  
+<span class="p">}</span>  
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">url</span><span class="p">}</span><span class="s2">\n[</span><span class="p">${</span><span class="nx">code</span><span class="p">}</span><span class="s2">] Scan QR Code in above url to login: `</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h3 id="server酱-serverchan">Server酱 (ServerChan)</h3>
+
+<p>Although robots can run stably on VPS, Web WeChat frequently kicks users offline, so I need to know about various Wechaty exceptions. There’s a simple third-party tool: ServerChan, which can push alerts and logs from servers to phones. Very simple and easy to operate:</p>
+
+<ol>
+  <li>Login with GitHub account to get an SCKEY (on the “Send Message” page). Follow guidance, click “WeChat Push”, scan to follow “FangTang” to complete binding</li>
+  <li>After login, logout, scan, and error events trigger, send key information via GET request to <a href="http://sc.ftqq.com/SCKEY.send">http://sc.ftqq.com/SCKEY.send</a>, and I receive messages on my WeChat</li>
+</ol>
+
+<p>This way, when my robot encounters various exceptions, I can know anytime, anywhere. When re-scanning is needed, the FangTang official account pushes the QR code to my phone, and I just scan with the robot’s WeChat.</p>
+
+<p>Yes, just like this, I achieved my dream of adding people with my eyes closed.</p>
+
+<h2 id="5-follow-up">5. Follow-up</h2>
+
+<p>When I started using robots for all repetitive operations, I had further thoughts about group joining work. For example, I blacklisted many micro-merchants so they can never enter my WeChat groups again. I also wrote an admin function for WeChat groups, so admins can kick users from WeChat groups even if they’re not group owners. Sometimes when feeling creative, I’d make pranks, specifically collecting group members’ recalled messages to entertain everyone…</p>
+
+<p>Suddenly remembered a saying: “People should think, Bot should work.” When machines can help us complete mechanized work, we have more time to think about truly valuable things.</p>
+
+<p>Wechaty liberated me from some repetitive work, and I also hope to do something for Wechaty. So I’m now updating Wechaty documentation in my spare time, sometimes sharing problems I encounter when using Wechaty, hoping to help more people quickly get started with Wechaty.</p>
+
+<p>If you’re interested in Wechaty and want to communicate, share, and learn together, you can scan the code to add “JuziBot Secretary” as a friend, reply “wechaty” to join WECHATY DEVELOPERS’ HOME. You can also experience some small functions implemented by wechaty.</p>
+
+<p><img src="/assets/2017/lijiarui-write-bot-qr-code.webp" alt="qr-code" /></p>
+
+<hr />
+
+<hr />
+
+<blockquote>
+  <p>Chinese version of this post: <a href="/2016/12/10/try-to-write-wexinrobot/">尝试写微信聊天机器人，以及对chatBot的思考</a></p>
+</blockquote>
+
+<hr />
+
+<blockquote>
+  <p>Chinese version of this post: <a href="/2016/12/10/try-to-write-wexinrobot/">try to write wexinrobot</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#code">code</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#tutorial">tutorial</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#chatbot">chatbot</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/lijiarui">
+                            <img class="rounded-circle" src="/assets/contributors/lijiarui/avatar-new.webp" alt="Jiarui LI (李佳芮)" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/lijiarui">Jiarui LI (李佳芮)</a> <span><a target="_blank" href="https://weibo.com/u/2175505900" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Co-Creator of Wechaty; 句子互动创始人 & CEO，微软人工智能最具价值专家 (AI MVP)
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2016/12/08/jaslin-user-case/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2016/jaslin-case-study.webp">  Wechaty Case Study - a letter from JasLin</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2016/12/10/try-to-write-wexinrobot/"> 一个姑娘如何用6行代码写出微信聊天机器人  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2016/12-try-to-write-wexinrobot-en/ruirui-dance.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

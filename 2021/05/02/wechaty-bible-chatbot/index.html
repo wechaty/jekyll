@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      微信群机器人-读经助手 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>微信群机器人-读经助手 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="微信群机器人-读经助手" />
+<meta name="author" content="kkdev163" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="笔者将从 开发意图、产品功能特性、技术方案、心得体会 等方面回顾总结 微信群机器人-读经助手 的产品开发历程，希望对其他开发者有所帮助。" />
+<meta property="og:description" content="笔者将从 开发意图、产品功能特性、技术方案、心得体会 等方面回顾总结 微信群机器人-读经助手 的产品开发历程，希望对其他开发者有所帮助。" />
+<link rel="canonical" href="https://wechaty.js.org/2021/05/02/wechaty-bible-chatbot/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/05/02/wechaty-bible-chatbot/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/05-wechaty-bible-chatbot-en/logo.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-02T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/05-wechaty-bible-chatbot-en/logo.webp" />
+<meta property="twitter:title" content="微信群机器人-读经助手" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"kkdev163"},"dateModified":"2021-05-02T00:00:00+00:00","datePublished":"2021-05-02T00:00:00+00:00","description":"笔者将从 开发意图、产品功能特性、技术方案、心得体会 等方面回顾总结 微信群机器人-读经助手 的产品开发历程，希望对其他开发者有所帮助。","headline":"微信群机器人-读经助手","image":"https://wechaty.js.org/assets/2021/05-wechaty-bible-chatbot-en/logo.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/05/02/wechaty-bible-chatbot/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"kkdev163"},"url":"https://wechaty.js.org/2021/05/02/wechaty-bible-chatbot/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">微信群机器人-读经助手</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/kkdev163">
+                            <img class="rounded-circle" src="/assets/contributors/kkdev163/avatar.webp" alt="kkdev163" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/kkdev163">kkdev163</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">May 02, 2021 · <span class="reading-time">
+  
+  
+    2 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/05-wechaty-bible-chatbot-en/logo.webp" alt="微信群机器人-读经助手">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>笔者将从 开发意图、产品功能特性、技术方案、心得体会 等方面回顾总结 微信群机器人-读经助手 的产品开发历程，希望对其他开发者有所帮助。</p>
+
+<h2 id="二开发意图">二、开发意图</h2>
+
+<p>笔者是一名基督徒微信群的成员，群里需要人工每天定时发送「文章」链接，并统计群成员「已读」人数。最早我们采取的方案是人工定时发送，群成员到 在线协同工具 如「石墨文档」手动填写「已读」。该方案虽然节省了统计人数的工作量，但依然有几个缺点：</p>
+
+<ul>
+  <li>群成员年龄分布广，包含 60、70岁成员，让他们跳转至第三方应用手动填写，操作成本高，导致打卡率低。</li>
+  <li>在群里直接文字打卡，可激励其他成员，而跳转至第三方应用打卡，就减弱了这个互动性。</li>
+  <li>每天人工定时发送，长期来看对发送人员是个不小的挑战。</li>
+</ul>
+
+<p>所以希望能够开发一个 微信机器人-读经助手 帮助实现如下功能：</p>
+
+<ul>
+  <li>
+    <ol>
+      <li>定时在微信群中发送文章链接</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>基于群成员的聊天信息(已读、完成) 等，自动进行统计打卡</li>
+    </ol>
+  </li>
+</ul>
+
+<p>感谢 <a href="https://wechaty.js.org/">Wechaty</a> ，基于 Wechaty SDK，笔者通过一个晚上，就实现了 读经助手 的上述核心诉求，从此解放双手。目前 读经助手 在投入到 6 个微信群中使用，最长服务时长达 2 个月，服务人数 200+。(不敢主动推广，原因后面会讲)</p>
+
+<h2 id="三产品功能特性">三、产品功能特性</h2>
+
+<p>核心功能仅用了一个晚上就实现了，但笔者大概花了 一个月(代码量3000行左右 ts 代码) 的时间来丰富 读经助手 的周边功能。完整功能大致分为以下几类：</p>
+
+<ul>
+  <li>
+    <ol>
+      <li>定时文章推送 (支持了多种基督教刊物)</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>群成员打卡 (基于群成员聊天，统计打卡人数、汇总生成 excel 表格)</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>获取文章链接 (获取多种基督教刊物的在线链接)</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>搜索文章内容 (搜索基督教刊物的内容)</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="功能简介">功能简介</h3>
+
+<p><img src="/assets/2021/05-wechaty-bible-chatbot-en/03-01.webp" alt="image" /></p>
+
+<h3 id="更多功能">更多功能</h3>
+
+<p><img src="/assets/2021/05-wechaty-bible-chatbot-en/03-02.webp" alt="image" /></p>
+
+<p><a href="/assets/2021/05-wechaty-bible-chatbot-en/03-03.webp">更多功能长图</a></p>
+
+<h3 id="文章推送">文章推送</h3>
+
+<p><img src="/assets/2021/05-wechaty-bible-chatbot-en/03-04.webp" alt="image" /></p>
+
+<p><img src="/assets/2021/05-wechaty-bible-chatbot-en/03-05.webp" alt="image" /></p>
+
+<h3 id="打卡统计">打卡统计</h3>
+
+<p><img src="/assets/2021/05-wechaty-bible-chatbot-en/03-06.webp" alt="image" /></p>
+
+<p><img src="/assets/2021/05-wechaty-bible-chatbot-en/03-07.webp" alt="image" /></p>
+
+<p><img src="/assets/2021/05-wechaty-bible-chatbot-en/03-08.webp" alt="image" /></p>
+
+<h3 id="搜文章内容">搜文章内容</h3>
+
+<p><img src="/assets/2021/05-wechaty-bible-chatbot-en/03-09.webp" alt="image" /></p>
+
+<h2 id="四技术实现">四、技术实现</h2>
+
+<h3 id="wechaty">Wechaty</h3>
+
+<p>目前来看，上手成本最低的应该是只用 <a href="https://wechaty.js.org/docs/puppet-services/">puppet-services</a>，我使用的 token 提供商是 <a href="https://wechaty.js.org/docs/puppet-services/paimon">Paimon</a>, 注册手机号，即可获取 7 天 token。</p>
+
+<h3 id="部署方案">部署方案</h3>
+
+<p>一共经历了如下几个部署方案：</p>
+
+<ul>
+  <li>
+    <ol>
+      <li>闲置电脑部署 wechaty 应用 + 数据库(AWS dynamodb 香港节点)，使用 dynamodb 是因为这是亚马逊云的免费数据库产品，想白嫖。</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>阿里云轻量应用服务器(1C 2G 40G-SSD 杭州节点) 部署 wechaty 应用 + 数据库(AWS dynamodb 香港节点)，阿里云服务器是98元每年(新用户活动价)，可连续买三年。但阿里云杭州节点 连 亚马逊香港节点，延迟有时候会有 几十秒。尝试过阿里云香港节点，数据库请求是快了，但发送给 puppet-services 的请求有时会有几秒的延迟。</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>阿里云部署 wechaty 应用 + 数据库换成服务器自带的 mongodb。 这样访问 puppet-services、数据库都非常快。 由于两种数据库都是文档型，迁移的成本还不算太高，大概花了一天时间做数据库迁移+适配层代码。</li>
+    </ol>
+  </li>
+</ul>
+
+<p>由于需要做内容搜索，所以也在阿里云服务器上部署了 ElasticSearch。阿里云 98 一年真香。</p>
+
+<h3 id="实现思路">实现思路</h3>
+
+<p>代码开源在该<a href="https://github.com/kkdev163/wechaty-bible-robot">仓库</a>，感兴趣的可以参考下，本节主要介绍下目录结构</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>├── README.md
+├── deploy.sh  部署脚本
+├── dev.sh  开发环境脚本
+├── ecosystem.config.js pm2进程管理配置
+├── nodemon.json 本地开发配置
+├── package-lock.json
+├── package.json
+├── prod.sh 生产环境脚本
+├── server
+│   ├── index.ts  wechaty 主入口
+│   └── src
+│       ├── actions  actions 命令的实现
+│       │   ├── _7cthSchedule.ts
+│       │   ├── bibleSchedule.ts
+│       │   ├── commit.ts
+│       │   ├── index.ts
+│       │   ├── pushSchedule.ts
+│       │   ├── remind.ts
+│       │   ├── search.ts
+│       │   ├── smdjSchedule.ts
+│       │   └── static.ts
+│       ├── bible  圣经相关的资源
+│       │   ├── _7cth.ts
+│       │   ├── plan.ts
+│       │   ├── shareRes.ts
+│       │   └── smdj.ts
+│       ├── constants.ts  
+│       ├── controller 放开 http 服务的控制器
+│       │   ├── index.ts
+│       │   ├── proxy.ts
+│       │   ├── search.ts
+│       │   ├── setting.ts
+│       │   └── utils.ts
+│       ├── ddb 数据库相关
+│       │   ├── commands
+│       │   ├── index.ts
+│       │   ├── mongoDb.ts
+│       │   ├── schema.ts
+│       │   ├── script
+│       │   └── syncModels.ts
+│       ├── handleMessage.ts 消息处理
+│       ├── http.ts http 服务器入口
+│       ├── interface
+│       │   └── index.ts
+│       ├── schedule.ts 定时任务入口
+│       ├── service http 服务对应的 service
+│       │   ├── esClient.ts
+│       │   ├── search.ts
+│       │   └── setting.ts
+│       └── util 工具函数库
+│           ├── bibleData.json
+│           ├── bibleUtils.ts
+│           ├── canvas.html
+│           ├── devUtils.ts
+│           ├── drawBible.html
+│           ├── drawUtils.ts
+│           ├── formatUtils.ts
+│           ├── index.ts
+│           ├── smdj-es-doc
+│           ├── smdjStats
+│           ├── smdjUtils.ts
+│           ├── songUtils.ts
+│           ├── timeUtils.ts
+│           └── wxUtils.ts
+</code></pre></div></div>
+
+<h2 id="五心得体会">五、心得体会</h2>
+
+<h3 id="第一次为自己写代码">第一次为自己写代码</h3>
+
+<p>笔者之前大部分写的代码都是为了学习、工作(赚钱)。这次是 为了解放自己的双手、便利身边朋友 而写代码，心态从赚钱变成了奉献。发现自己又重新找回了，写程序的激情 和 热情，在开发读经机器人期间，有好几次通宵的经历，而且功能上线后，及时的反馈 和自我满足感是很让人愉悦的。</p>
+
+<p>这也让我意识到，写代码不仅仅是一种工作，而确确实实是一项实用的生活技能、特长。</p>
+
+<h3 id="微信侧风险">微信侧风险</h3>
+
+<p>开发阶段，有次把机器人号，从测试群中主动踢出，发现 Provider Service 抛出了一个 Error，为了复现这个异常，我重复多次把这个号从测试群中踢出。然后过了一段时间，就收到了 微信风控通知，提示该号被 多人投诉、有骚扰用户的行为。 所以大家尽量不要将 机器人踢出群，最好采用主动退出的方式，以免被微信风控。</p>
+
+<p>换了新的微信号后，大概服务了 2 个月不到，发现被微信主动踢下线了，再次登录提示使用了 微信外挂、非官方客户端或模拟器。不清楚是, provider service 的方案，被大批检测出，还是仅仅是 笔者的微信号，被投诉导致。。
+(/assets/2021/05-wechaty-bible-chatbot-en/04-01.webp)</p>
+
+<p>笔者开发机器人的初衷是希望解放人力，其实越多的微信群使用(免费使用)，对我来说，开发机器人的价值越高。但由于存在微信封号风险，是目前笔者不敢主动推广，仅靠群成员的口口相传。</p>
+
+<h3 id="2-8-原则">2 8 原则</h3>
+
+<p>如上文提到的核心功能，笔者1个晚上就实现了，剩下的时间都在丰富七七八八的周边功能。但说实话，这些周边功能，都是我个人在使用，频率非常低，但却占据了我整体开发的 80% 以上时间。</p>
+
+<h3 id="交互友好性">交互友好性</h3>
+
+<p>由于读经机器人有部分功能是需要输出长段的文字，考虑到阅读的友好性，防止老年机大段文字刷屏，读经机器人使用了 node-canvas 渲染引擎，并实现了简单的文字排版，将大段文字通过图片的方式发送给用户。</p>
+
+<h3 id="便利性与通用性">便利性与通用性</h3>
+
+<p>为了使功能更加通用性，部分功能的开发，常常是站在程序员的视角出发，提供出多个参数化的配置，但这却加大了使用者的认知成本。比如 读经助手 提供了如下命令</p>
+
+<p><code class="language-plaintext highlighter-rouge">@读经助手  创建读经计划 创世记1~玛拉基书4 90天</code></p>
+
+<p>该命令中包含了如下几个参数「起始书卷、起始章节、结束书卷、结束章节、阅读天数」，更便利的做法是包装成如下指令</p>
+
+<p><code class="language-plaintext highlighter-rouge">@读经助手 创建读经计划 旧约 90天</code></p>
+
+<p>另外笔者还尝试过开发了一个 H5 页面，当群成员输入</p>
+
+<p><code class="language-plaintext highlighter-rouge">@读经助手 群设置</code></p>
+
+<p>返回该群设置的 H5 页面链接，这样通过 H5 页面的方式进行配置，虽然可以方便使用者。但同时也引入了安全性问题：任意一名群成员都能打开 H5 页面，他可以随意 删除、改变 群配置。如果要防止该问题，就需要额外开发 登录、鉴权。相比而言，使用群聊输入命令，是处于 全群监督下，不会有人进行乱操作。。所以虽然开发了 H5 设置页面，但没有对用户开发。</p>
+
+<blockquote>
+  <p>作者: <a href="https://github.com/kkdev163">kkdev163</a>，软件开发工程师</p>
+</blockquote>
+
+<hr />
+
+<blockquote>
+  <p>This post is also available in <a href="/2021/05/02/wechaty-bible-chatbot-en/">English</a>.</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#nodejs">nodejs</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#chatroom-tool">chatroom-tool</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#bible">bible</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#other">other</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/kkdev163">
+                            <img class="rounded-circle" src="/assets/contributors/kkdev163/avatar.webp" alt="kkdev163" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/kkdev163">kkdev163</a> </h5>
+						软件开发工程师
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/05/02/wechaty-bible-chatbot-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/05-wechaty-bible-chatbot-en/logo.webp">  WeChat Group Robot - Bible Reading Assistant</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/05/03/gsod-2021-applicant-jaya2320/"> Create easy to learn tutorials for beginner users of Wechaty  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/05-gsod-2021-applicant-jaya2320/profile.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Introducing Wechaty Puppet Service (Providers) | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Introducing Wechaty Puppet Service (Providers) | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Introducing Wechaty Puppet Service (Providers)" />
+<meta name="author" content="huan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Wechaty is an SDK for chatbot makers. It uses Robotic Progress Automation (RPA) technology to help developers to be more productive for building Conversational User Interface (CUI), which we call it a Chatbot." />
+<meta property="og:description" content="Wechaty is an SDK for chatbot makers. It uses Robotic Progress Automation (RPA) technology to help developers to be more productive for building Conversational User Interface (CUI), which we call it a Chatbot." />
+<link rel="canonical" href="https://wechaty.js.org/2021/01/14/wechaty-puppet-service/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/01/14/wechaty-puppet-service/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/01-wechaty-puppet-service/5-puppets.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-14T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/01-wechaty-puppet-service/5-puppets.webp" />
+<meta property="twitter:title" content="Introducing Wechaty Puppet Service (Providers)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"huan"},"dateModified":"2021-01-14T00:00:00+00:00","datePublished":"2021-01-14T00:00:00+00:00","description":"Wechaty is an SDK for chatbot makers. It uses Robotic Progress Automation (RPA) technology to help developers to be more productive for building Conversational User Interface (CUI), which we call it a Chatbot.","headline":"Introducing Wechaty Puppet Service (Providers)","image":"https://wechaty.js.org/assets/2021/01-wechaty-puppet-service/5-puppets.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/01/14/wechaty-puppet-service/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"huan"},"url":"https://wechaty.js.org/2021/01/14/wechaty-puppet-service/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#announcement">announcement</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Introducing Wechaty Puppet Service (Providers)</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jan 14, 2021 · <span class="reading-time">
+  
+  
+    12 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/01-wechaty-puppet-service/5-puppets.webp" alt="Introducing Wechaty Puppet Service (Providers)">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>Wechaty is an SDK for chatbot makers. It uses <a href="https://en.wikipedia.org/wiki/Robotic_process_automation">Robotic Progress Automation (RPA)</a> technology to help developers to be more productive for building <a href="https://en.wikipedia.org/wiki/Conversational_user_interface">Conversational User Interface (CUI)</a>, which we call it a <a href="https://en.wikipedia.org/wiki/Chatbot">Chatbot</a>.</p>
+
+<h2 id="wechaty-puppet">Wechaty Puppet</h2>
+
+<p>For different instant messaging (IM) systems (such as WeChat, Whatsapp, and TikTok), the Wechaty community builds separate RPA modules for each, and we call those modules <a href="https://github.com/wechaty/wechaty-puppet">Wechaty Puppet</a>. <em>Wechaty Puppet</em> is the core concept in the Wechaty ecosystem, which is in charge of connecting the Wechaty API to the underlying IM Platform bot account.</p>
+
+<h2 id="wechaty-puppet-abstract">Wechaty Puppet Abstract</h2>
+
+<p><em>Wechaty Puppet</em> is a standard for maintaining compatibility between IM systems. <em>Wechaty Puppet</em> defines the universal IM interface for compatibility with Wechaty API to variants of IM systems.</p>
+
+<h2 id="wechaty-puppet-provider">Wechaty Puppet Provider</h2>
+
+<p>Different IM systems need different Wechaty Puppets, and they have different names and all implementing the Wechaty Puppet API, we call them the <strong>Wechaty Puppet Provider</strong>. For example, the Wechaty Puppet Provider who is supporting WeChat is named <a href="https://github.com/wechaty/wechaty-puppet-wechat">wechaty-puppet-wechat</a>, supporting Whatsapp is named <a href="https://github.com/wechaty/wechaty-puppet-whatsapp">wechaty-puppet-whatsapp</a>, and supporting Lark is named <a href="https://github.com/wechaty/wechaty-puppet-lark">wechaty-puppet-lark</a>.</p>
+
+<p>When we published Wechaty in May 2016, we were using WebDriver/Puppeteer(<a href="https://github.com/wechaty/wechaty-puppet-wechat">wechaty-puppet-wechat</a>) and <a href="https://github.com/wechaty/wechaty-puppet-wechat4u">wechaty-puppet-wechat4u</a> to hook to the Web WeChat code. Still, later the <a href="https://github.com/wechaty/wechaty/issues/603">Web Protocol has been deprecated</a>, and we have to find other ways to get the job done.</p>
+
+<p>Beyonds the Web Protocol, the community have tried many technologies in the past years, such as:</p>
+
+<ol>
+  <li>Windows Hook
+    <ol>
+      <li><a href="https://github.com/juzibot/wxwork-tester">WxWork</a></li>
+      <li><a href="https://github.com/juzibot/donut-tester">Donut</a></li>
+    </ol>
+  </li>
+  <li>Pad Protocol
+    <ol>
+      <li><a href="https://github.com/padlocal/wechaty-puppet-padlocal">PadLocal</a></li>
+      <li><a href="https://www.npmjs.com/package/wechaty-puppet-padchat">PadChat (deprecated)</a></li>
+      <li><a href="https://www.npmjs.com/package/wechaty-puppet-padpro">PadPro (deprecated)</a></li>
+      <li><a href="https://github.com/wechaty/wechaty-puppet-padplus">PadPlus (deprecated)</a></li>
+    </ol>
+  </li>
+  <li>Mac Hook
+    <ol>
+      <li><a href="https://github.com/wechaty/wechaty-puppet-macOS">macOS (under construction)</a></li>
+      <li><a href="https://github.com/juzibot/wechaty-puppet-macpro">MacPro (deprecated)</a></li>
+    </ol>
+  </li>
+  <li>App Hook: <a href="https://github.com/juzibot/wechaty-puppet-iosbird">IosBird (deprecated)</a></li>
+</ol>
+
+<p>To learn about all Wechaty Puppet Providers, you can go to our <a href="https://github.com/wechaty/wechaty-puppet/wiki/Directory">Wechaty Puppet Directory</a></p>
+
+<h2 id="using-wechaty-puppet-providers">Using Wechaty Puppet Providers</h2>
+
+<p>Let’s see a code example (in TypeScript) of how to change Wechaty Puppet Providers.</p>
+
+<p>We have the following six lines code, which is the world’s shortest chatbot:</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// bot.ts</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Wechaty</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty</span><span class="dl">'</span>
+
+<span class="nx">Wechaty</span><span class="p">.</span><span class="nf">instance</span><span class="p">()</span> <span class="c1">// Global Instance</span>
+<span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">qrcode</span><span class="p">,</span> <span class="nx">status</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Scan QR Code to login: </span><span class="p">${</span><span class="nx">status</span><span class="p">}</span><span class="s2">\nhttps://wechaty.js.org/qrcode/</span><span class="p">${</span><span class="nf">encodeURIComponent</span><span class="p">(</span><span class="nx">qrcode</span><span class="p">)}</span><span class="s2">`</span><span class="p">))</span>
+<span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span>            <span class="nx">user</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`User </span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2"> logged in`</span><span class="p">))</span>
+<span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span>       <span class="nx">message</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`Message: </span><span class="p">${</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">))</span>
+<span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>The above code will use the default Wechaty Puppet Provider (which is <a href="https://github.com/wechaty/wechaty-puppet-wechat">wechaty-puppet-wechat</a>) because we have not specified manually.</p>
+
+<p>If we want this bot to serve on Whatsapp, we need to specify a Wechaty Puppet Provider for Whatsapp.</p>
+
+<p>We have two methods to specify Wechaty Puppet Providers for our program:</p>
+
+<ol>
+  <li>Using the <code class="language-plaintext highlighter-rouge">WECHATY_PUPPET</code> environment variable</li>
+  <li>Import the Wechaty Puppet manually in code</li>
+</ol>
+
+<h3 id="1-using-the-wechaty_puppet-environment-variable">1. Using the <code class="language-plaintext highlighter-rouge">WECHATY_PUPPET</code> environment variable</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">WECHATY_PUPPET</code> environment will be used as the Wechaty Puppet Provider NPM name, and then you are all set.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">WECHATY_PUPPET</span><span class="o">=</span>wechaty-puppet-whatsapp
+ts-node bot.ts
+</code></pre></div></div>
+
+<p>The above shell commands set the <a href="https://github.com/wechaty/wechaty-puppet-whatsapp">wechaty-puppet-whatsapp</a> to the environment variable <code class="language-plaintext highlighter-rouge">WECHATY_PUPPET</code> and our Wechaty system will use it.</p>
+
+<h3 id="2-import-the-wechaty-puppet-manually-in-code">2. Import the Wechaty Puppet manually in code</h3>
+
+<p>On the other hand, you can import the Wechaty Puppet Provider NPM module directly in your code and then add an option when instantiating the Wechaty with the object name <code class="language-plaintext highlighter-rouge">puppet</code>:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// bot.ts
+<span class="p">import { Wechaty } from 'wechaty'
+</span><span class="gi">+ import { PuppetWhatsapp } from 'wechaty-puppet-whatsapp'
+</span><span class="err">
+</span><span class="gd">- Wechaty.instance() // Global Instance
+</span><span class="gi">+ Wechaty.instance({ puppet: new PuppetWhatsapp() })
+</span>.on('scan', (qrcode, status) =&gt; console.log(`Scan QR Code to login: ${status}\nhttps://wechaty.js.org/qrcode/${encodeURIComponent(qrcode)}`))
+.on('login',            user =&gt; console.log(`User ${user} logged in`))
+.on('message',       message =&gt; console.log(`Message: ${message}`))
+.start()
+</code></pre></div></div>
+
+<p>The above code can be self-explained: the Wechaty will use <code class="language-plaintext highlighter-rouge">PuppetWhatsapp</code> from the <code class="language-plaintext highlighter-rouge">wechaty-puppet-whatsapp</code> module.</p>
+
+<h2 id="build-polyglotmulti-language-wechaty-with-the-typescript-ecosystem">Build Polyglot(Multi-language) Wechaty with the TypeScript Ecosystem</h2>
+
+<p>Wechaty, Wechaty Puppet, and Wechaty Puppet Providers are all written in TypeScript (before 2020). We are pleased with TypeScript because it’s robust, scalable, and portable.</p>
+
+<p>In 2020, we started to build Wechaty in many other languages, like Python, Go, Java, PHP, .NET, Scala, etc. Wechaty community started to translate Wechaty from TypeScript to those languages (<a href="https://github.com/wechaty/wechaty/discussions/1927">Issue #1927</a>), and the plan was going very smoothly. Polyglot Wechaty has been published, and almost all developers from all programming languages are happy with Wechaty by developing using their favorite language now.</p>
+
+<p>However, as we mentioned, all the Wechaty ecosystems are build on top of TypeScript, especially all the Wechaty Puppets. How can we reuse them in Polyglot Wechaty?</p>
+
+<p>Our goal is to reuse all the TypeScript ecosystems with the Polyglot Wechaty. But how?</p>
+
+<h2 id="rpc-for-rescue">RPC for Rescue</h2>
+
+<p>The key to using the TypeScript ecosystem in other languages is to cloudify the Wechaty Puppet API.</p>
+
+<p>As we mentioned before:</p>
+
+<blockquote>
+  <p><em>Wechaty Puppet</em> is a standard for maintaining compatibility between IM systems. <em>Wechaty Puppet</em> defines the universal IM interface for compatibility with Wechaty API to variants of IM systems.</p>
+</blockquote>
+
+<p>Wechaty is built on top of the Wechaty Puppet API. If we can use the Wechaty Puppet Providers remotely via network, then Polyglot Wechaty will be able to use the Wechaty Puppet API from the TypeScript ecosystem.</p>
+
+<p>How can we use a Wechaty Puppet Provider remotely via network? The answer is that we can convert it to Remote Procedure Call (RPC).</p>
+
+<p>The goal of Wechaty RPC is to cloudify our Wechaty Puppet Providers. A Wechaty Puppet Provider, like <a href="https://github.com/padlocal/wechaty-puppet-padlocal">PadLocal</a>, is written in TypeScript and can only be used in TypeScript program locally.</p>
+
+<p>With RPC, we can design our Wechaty Ecosystem Architecture as the following diagram:</p>
+
+<pre><code class="language-asciiart">  +-------------------------------------------------------+
+  |                        Wechaty                        |
+  |                                                       |
+  |                 TypeScript/JavaScript                 |
+  |          Python, Go, Java, .NET, PHP, Scala           |
+  +-------------------------------------------------------+
+
+  +-------------------------------------------------------+
+  |                Wechaty Puppet Abstract                |
+  |                                                       |
+  |                (wechaty-puppet-service)               |
+  +-------------------------------------------------------+
+
+    +--------------------+  gRPC  +---------------------+
+
++-----------------------------------------------------------+
+|                  Wechaty Puppet Service                   |
+|                        (Provider)                         |
+|       &lt;https://wechaty.js.org/docs/puppet-services&gt;       |
++-----------------------------------------------------------+
+
+  +-------------------------------------------------------+
+  |                 Wechaty Puppet Abstract               |
+  +-------------------------------------------------------+
+
+  +--------------------------+ +--------------------------+
+  |       Pad Protocol:      | |       Web Protocol:      |
+  | wechaty-puppet-padlocal  | | wechaty-puppet-wechat |
+  +--------------------------+ +--------------------------+
+  +--------------------------+ +--------------------------+
+  |     Windows Protocol:    | |       Mac Protocol:      |
+  |  wechaty-puppet-wxwork   | |  wechaty-puppet-macpro   |
+  +--------------------------+ +--------------------------+
+</code></pre>
+
+<h2 id="google-remote-procedure-call-grpc">Google Remote Procedure Call (gRPC)</h2>
+
+<p>Google Remote Procedure Call (<a href="https://grpc.io/">gRPC</a>) is a modern open source high performance RPC framework that can run in any environment.</p>
+
+<p>Currently, gRPC provides support for many languages like Node.js, Python, Golang, .NET, C++, Java, etc.</p>
+
+<p>It is very easy to generate the gRPC client and server interfaces from <code class="language-plaintext highlighter-rouge">.proto</code> service definition by using protocol buffer compiler <code class="language-plaintext highlighter-rouge">protoc</code> with a special gRPC polyglot plugin to generate gRPC services in all supported languages.</p>
+
+<p>In Feb 2020, we finished the <a href="https://github.com/wechaty/grpc">Wechaty gRPC</a> service abstracting module with the <a href="https://github.com/wechaty/wechaty-puppet-service">wechaty-puppet-service</a> implementation.</p>
+
+<p>Wechaty gRPC is always auto-generating gRPC client from our <a href="https://github.com/wechaty/grpc/tree/master/proto/wechaty">wechaty.proto</a> service defination, and publish them as multi-language modules. Learn more about how it works of our DevOps pipeline by reading our <a href="https://github.com/wechaty/grpc/tree/master/.github/workflows">GitHub Action Workflows</a>.</p>
+
+<h2 id="wechaty-puppet-service">Wechaty Puppet Service</h2>
+
+<p><em>Wechaty Puppet Service</em> is gRPC for <em>Wechaty Puppet Provider</em>.</p>
+
+<p>For example, we can cloudify the <em>Wechaty Puppet Provider</em> <code class="language-plaintext highlighter-rouge">wechaty-puppet-padlocal</code> to a <em>Wechaty Puppet Service</em> by running our <em>Wechaty Puppet Service Token Gateway</em>.</p>
+
+<h2 id="using-wechaty-puppet-service-token-gateway-to-setup-wechaty-puppet-service">Using Wechaty Puppet Service Token Gateway to Setup Wechaty Puppet Service</h2>
+
+<p><em>Wechaty Puppet Service Token Gateway</em> is a gateway for converting the <em>Wechaty Puppet Provider</em> to a <em>Wechaty Puppet Service</em>.</p>
+
+<p>Here’s an example for setup a Wechaty Puppet Service for the PadLocal Puppet Provider.</p>
+
+<h3 id="1-wechaty_puppet">1. WECHATY_PUPPET</h3>
+
+<p>Define the underlying Wechaty Puppet Provider and its parameters:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">WECHATY_PUPPET</span><span class="o">=</span><span class="s1">'wechaty-puppet-padlocal'</span>
+<span class="nb">export </span><span class="nv">WECHATY_PUPPET_PADLOCAL_TOKEN</span><span class="o">=</span><span class="s1">'puppet_padlocal_xxx'</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Note: you can using any Wechaty Puppet at here, like <a href="https://github.com/wechaty/wechaty-puppet-wechat">wechaty-puppet-wechat</a>, <a href="https://github.com/wechaty/wechaty-puppet-whatsapp">wechaty-puppet-whatsapp</a>, and any others we mentioned earlier.</p>
+</blockquote>
+
+<h3 id="2-wechaty_token">2. WECHATY_TOKEN</h3>
+
+<p><a href="https://www.uuidgenerator.net/version4">Generate a new UUIDv4</a> as your Wechaty Puppet Service Token. Your new token <strong>MUST</strong> different to any existing tokens in our system. (or they will conflict)</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">WECHATY_TOKEN</span><span class="o">=</span><span class="s1">'2fdb00a5-5c31-4018-84ac-c64e5f995057'</span>
+</code></pre></div></div>
+
+<h3 id="3-wechaty_puppet_server_port">3. WECHATY_PUPPET_SERVER_PORT</h3>
+
+<p>Specify a free port for the Wechaty Puppet Service (it will also be used for the docker port mapping)</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">WECHATY_PUPPET_SERVER_PORT</span><span class="o">=</span>8788 // any available port can be visited from internet
+</code></pre></div></div>
+
+<h3 id="4-wechaty_log">4. WECHATY_LOG</h3>
+
+<p>Set log to <code class="language-plaintext highlighter-rouge">verbose</code> to get more debug log messages.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">WECHATY_LOG</span><span class="o">=</span><span class="s2">"verbose"</span>
+</code></pre></div></div>
+
+<h3 id="5-start-wechaty-puppet-servcie-token-gateway">5. Start Wechaty Puppet Servcie Token Gateway</h3>
+
+<p>At last, everything we need has been packaged to the docker image <code class="language-plaintext highlighter-rouge">wechaty/wechaty</code>. All you need is to use a docker command to start your Wechaty Puppet Service Token Gateway with the above configuration:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-ti</span> <span class="nt">--rm</span> <span class="se">\</span>
+  <span class="se">\</span>
+  <span class="nt">-e</span> WECHATY_PUPPET <span class="se">\</span>
+  <span class="nt">-e</span> WECHATY_PUPPET_PADLOCAL_TOKEN <span class="se">\</span>
+  <span class="se">\</span>
+  <span class="nt">-e</span> WECHATY_TOKEN <span class="se">\</span>
+  <span class="nt">-e</span> WECHATY_PUPPET_SERVER_PORT <span class="se">\</span>
+  <span class="se">\</span>
+  <span class="nt">-e</span> WECHATY_LOG <span class="se">\</span>
+  <span class="se">\</span>
+  <span class="nt">-p</span> <span class="s2">"</span><span class="nv">$WECHATY_PUPPET_SERVER_PORT</span><span class="s2">:</span><span class="nv">$WECHATY_PUPPET_SERVER_PORT</span><span class="s2">” </span><span class="se">\</span><span class="s2">
+  wechaty/wechaty:0.56
+</span></code></pre></div></div>
+
+<p>You can see lots of the output log messages in your terminal with the above command.</p>
+
+<p>Then you can confirm your Wechaty Puppet Service is online by visiting:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl https://api.chatie.io/v0/hosties/<span class="k">${</span><span class="nv">WECHATY_TOKEN</span><span class="k">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Replace ${WECHATY_TOKEN} to your real token in the above configuration</p>
+</blockquote>
+
+<p>✅ If you get an HTTP/200 response with a JSON object body that includes your <code class="language-plaintext highlighter-rouge">ip</code> and <code class="language-plaintext highlighter-rouge">port</code>, then you are all set.<br />
+❌ If you get an HTTP/404 response, your Puppet Service Gateway has some issues and needs to be troubleshooting.</p>
+
+<h2 id="using-wechaty-puppet-service-with-wechaty">Using Wechaty Puppet Service with Wechaty</h2>
+
+<p>Using Wechaty Puppet Service is very easy. Just set the <code class="language-plaintext highlighter-rouge">WECHATY_PUPPET</code> to <code class="language-plaintext highlighter-rouge">wechaty-puppet-service</code> and <code class="language-plaintext highlighter-rouge">WECHATY_PUPPET_SERVICE_TOKEN</code> to your Wechaty Puppet Service Token.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">WECHATY_PUPPET</span><span class="o">=</span>wechaty-puppet-service
+<span class="nb">export </span><span class="nv">WECHATY_PUPPET_SERVICE_TOKEN</span><span class="o">=</span><span class="k">${</span><span class="nv">WECHATY_PUPPET_SERVICE_TOKEN</span><span class="k">}</span>
+ts-node bot.ts
+</code></pre></div></div>
+
+<p>You may have a question of what is the value of <code class="language-plaintext highlighter-rouge">WECHATY_PUPPET_SERVICE_TOKEN</code>? The answer is that the value should be the <code class="language-plaintext highlighter-rouge">WECHATY_TOKEN</code> when you set up your Wechaty Puppet Service Gateway in the previous step.</p>
+
+<h2 id="ready-to-use-wechaty-puppet-services">Ready-to-use Wechaty Puppet Services</h2>
+
+<p>With the power of <em>Wechaty Puppet Service Token Gateway</em>, we can convert any <em>Wechaty Puppet Provider</em> to <em>Wechaty Puppet Service</em> by yourself.</p>
+
+<p>However, it would be lots of reasons that you need a ready-to-use Wechaty Puppet Service:</p>
+
+<ol>
+  <li>You are a Polyglot Wechaty developer, but you do not want to run another docker container in your system.</li>
+  <li>You are a TpyeScript Wechaty developer, but the Wechaty Puppet Provider needs a complicated system setup, like an X11 System, Wine, or Android Emulator.</li>
+  <li>etc.</li>
+</ol>
+
+<p>And there has another scenario for the Wechaty Puppet Provider is closed source, which means you will not be able to install it, but only can use it as a Wechaty Puppet Service.</p>
+
+<h2 id="introducing-wechaty-puppet-service-provider">Introducing Wechaty Puppet Service Provider</h2>
+
+<p>Our Wechaty Community now has serval Wechaty Puppet Services which works out-of-the-box. All you need is to get a Wechaty Puppet Service Token, then use <code class="language-plaintext highlighter-rouge">wechaty-puppet-service</code> with that token.</p>
+
+<p>For now, the Wechaty community has four official Wechaty Puppet Services:</p>
+
+<ol>
+  <li><a href="https://wechaty.js.org/docs/puppet-services/wxwork/">WXWork</a>: WeCom Windows Protocol</li>
+  <li><a href="https://wechaty.js.org/docs/puppet-services/padlocal/">PadLocal</a>: WeChat Pad Protocol</li>
+  <li><a href="https://wechaty.js.org/docs/puppet-services/paimon/">Paimon</a>: WeChat Pad Protocol</li>
+  <li><a href="https://wechaty.js.org/docs/puppet-services/donut/">Donut</a>: WeChat Windows Protocol</li>
+</ol>
+
+<p>More Puppet Service Providers are welcomed, please learn more from <a href="https://github.com/wechaty/puppet-services">https://github.com/wechaty/puppet-services</a> and feel free to contact us by <a href="https://gitter.im/wechaty/wechaty">joining our Gitter</a> network if you aren’t already a member.</p>
+
+<p>Learn more about all the Wechaty Puppet Services at our official website: <a href="https://wechaty.js.org/docs/puppet-services/">https://wechaty.js.org/docs/puppet-services/</a></p>
+
+<h2 id="summary">Summary</h2>
+
+<p>In this post, we clarified the following core concepts of Wechaty:</p>
+
+<ol>
+  <li><strong>Wechaty Puppet</strong></li>
+  <li><strong>Wechaty Puppet Abstract</strong></li>
+  <li><strong>Wechaty Puppet Provider</strong></li>
+  <li><strong>Wechaty gRPC</strong></li>
+  <li><strong>Wechaty Puppet Service</strong></li>
+  <li><strong>Wechaty Puppet Service Token</strong></li>
+  <li><strong>Wechaty Puppet Service Provider</strong></li>
+</ol>
+
+<p>I hope it can help our developer to understand Wechaty ecosystem better.</p>
+
+<p>The Wechaty Puppet Core repo is <a href="https://github.com/wechaty/wechaty-puppet">here</a> and gRPC repo is <a href="https://github.com/wechaty/grpc">there</a>.</p>
+
+<p>Interested in RPA, building chatbots &amp; providing service for developers? <a href="https://gitter.im/wechaty/wechaty">Join the Wechaty community on Gitter</a>!</p>
+
+<p>And, <a href="https://chatie.breezy.hr/">We are hiring</a>!</p>
+
+<h2 id="appendix">Appendix</h2>
+
+<p>The following topics on GitHub was created when we were building the Wechaty Puppet Service ecosystem. Please feel free to read them and join the discussion by commenting those issues/discussions.</p>
+
+<ol>
+  <li><a href="https://github.com/wechaty/puppet-services/discussions/11">Deprecated Announcement: Padplus service will end on Dec 1st, 2020 #11</a></li>
+  <li><a href="https://github.com/wechaty/go-wechaty/issues/22">go-wechaty implementation wechaty-puppet-service discussion. #22</a></li>
+  <li><a href="https://github.com/wechaty/wechaty/discussions/1986">How to create your own Wechaty Servie Token with the Web Protocol #1986</a></li>
+  <li><a href="https://github.com/wechaty/puppet-services/discussions/16">MemoryCard support: required for stateless puppet service #16</a></li>
+  <li><a href="https://github.com/wechaty/puppet-services/discussions/54">Puppet Service Specifications #54</a></li>
+  <li><a href="https://github.com/wechaty/wechaty-puppet-service/issues/98">Support rock puppet service provider. #98</a></li>
+  <li><a href="https://github.com/wechaty/wechaty/issues/1947">the relationship between hostie, grpc, and puppet. #1947</a></li>
+  <li><a href="https://github.com/wechaty/wechaty/discussions/1985">Using your Puppet PadPlus token with Python, Java, and Go Wechaty #1985</a></li>
+  <li><a href="https://github.com/wechaty/wechaty/discussions/1927">Wechaty is All You Need: Python, Go, and Java Translation Project #1927</a></li>
+  <li><a href="https://github.com/wechaty/puppet-services/discussions/1">Wechaty Puppet Service Provider FAQ #1</a></li>
+  <li><a href="https://github.com/wechaty/puppet-services/discussions/39">Wechaty Puppet Service Registration &amp; Discovery (w.r.t. token) #39</a></li>
+  <li><a href="https://wechaty.js.org/2020/08/05/wechaty-puppet-maker/">Wechaty Workshop for Puppet Makers: How to Make a Puppet for Wechaty</a></li>
+  <li><a href="https://github.com/wechaty/grpc/issues/50">Support GRPC in Go #50</a></li>
+</ol>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#puppet-service">puppet-service</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#puppet-provider">puppet-provider</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Author @ Wechaty, Architect @ Chatie, LLM Code Generation Enthusiast, Serial Entrepreneur, Burner🔥
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/01/04/summer-2020-summit-okr/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/01-summer-2020-summit-okr/what-is-okr.webp">  A OKR Review for the Summer 2020 Summit</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/01/15/carpool-bot-with-wechaty-1/"> 基于wechaty的拼车小程序（1）  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/01-carpool-bot-with-wechaty-1/4.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

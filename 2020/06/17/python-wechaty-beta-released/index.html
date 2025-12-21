@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Python Wechaty Beta Released: A Simple Bot | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Python Wechaty Beta Released: A Simple Bot | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Python Wechaty Beta Released: A Simple Bot" />
+<meta name="author" content="wj-mcat" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Python-wechaty能够使用少量代码即可完成一个机器人，使用起来非常简单，基于OOP的设计思路能够很好监听和处理微信内部大量的事件，比如：自动回复消息，定时发送消息，拉人入群，好友申请同意等等。此外，目前的插件系统里面有很多拿来即用的工具，比如拉人入群等。当然开发一个自己的插件也是非常简单，无需很高深的概念，只需要你能够理解事件和OOP即可。" />
+<meta property="og:description" content="Python-wechaty能够使用少量代码即可完成一个机器人，使用起来非常简单，基于OOP的设计思路能够很好监听和处理微信内部大量的事件，比如：自动回复消息，定时发送消息，拉人入群，好友申请同意等等。此外，目前的插件系统里面有很多拿来即用的工具，比如拉人入群等。当然开发一个自己的插件也是非常简单，无需很高深的概念，只需要你能够理解事件和OOP即可。" />
+<link rel="canonical" href="https://wechaty.js.org/2020/06/17/python-wechaty-beta-released/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/06/17/python-wechaty-beta-released/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/12-python-wechaty-open-source-journey-en/python-wechaty-logo.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-06-17T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/12-python-wechaty-open-source-journey-en/python-wechaty-logo.webp" />
+<meta property="twitter:title" content="Python Wechaty Beta Released: A Simple Bot" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"wj-mcat"},"dateModified":"2020-06-17T00:00:00+00:00","datePublished":"2020-06-17T00:00:00+00:00","description":"Python-wechaty能够使用少量代码即可完成一个机器人，使用起来非常简单，基于OOP的设计思路能够很好监听和处理微信内部大量的事件，比如：自动回复消息，定时发送消息，拉人入群，好友申请同意等等。此外，目前的插件系统里面有很多拿来即用的工具，比如拉人入群等。当然开发一个自己的插件也是非常简单，无需很高深的概念，只需要你能够理解事件和OOP即可。","headline":"Python Wechaty Beta Released: A Simple Bot","image":"https://wechaty.js.org/assets/2020/12-python-wechaty-open-source-journey-en/python-wechaty-logo.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/06/17/python-wechaty-beta-released/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"wj-mcat"},"url":"https://wechaty.js.org/2020/06/17/python-wechaty-beta-released/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#announcement">announcement</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Python Wechaty Beta Released: A Simple Bot</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/wj-mcat">
+                            <img class="rounded-circle" src="/assets/contributors/wj-mcat/avatar.webp" alt="吴京京" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/wj-mcat">吴京京</a> <span><a target="_blank" href="https://weibo.com/u/3877178684" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jun 17, 2020 · <span class="reading-time">
+  
+  
+    3 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/12-python-wechaty-open-source-journey-en/python-wechaty-logo.webp" alt="Python Wechaty Beta Released: A Simple Bot">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>Python-wechaty能够使用少量代码即可完成一个机器人，使用起来非常简单，基于OOP的设计思路能够很好监听和处理微信内部大量的事件，比如：自动回复消息，定时发送消息，拉人入群，好友申请同意等等。此外，目前的插件系统里面有很多拿来即用的工具，比如拉人入群等。当然开发一个自己的插件也是非常简单，无需很高深的概念，只需要你能够理解事件和OOP即可。</p>
+
+<p>python-wechaty项目源于wechaty，甚至说很大程度上代码是直接从其翻译过来的，然后加上一些python的特性，让其更加pythonic。作为一个IM的入口工具，未来我们也将添加更多的Chatbot元素进去，让其能够成为一个真正的聊天机器人。</p>
+
+<p>在介绍python-wechaty之前，还是简要介绍一下wechaty。</p>
+
+<h2 id="wechaty">wechaty</h2>
+
+<p>或许有很多人会把<code class="language-plaintext highlighter-rouge">wechaty</code>和<code class="language-plaintext highlighter-rouge">wechat</code>联系起来，毕竟在名称上面只是一字之差。这个得从<code class="language-plaintext highlighter-rouge">wechaty</code>的起源开始说起，起初，此项目只是作为微信的一个工具库，能够进行一些简单的自动化操作过程，比如：定时发送消息，入群消息发送，好友申请接受等。</p>
+
+<p>可随着项目的逐步更新，<code class="language-plaintext highlighter-rouge">wechaty</code>已支持主流的IM软件，比如：微信，钉钉，Telegram。</p>
+
+<p>这个<a href="https://github.com/wechaty/wechaty">项目</a>从2016年开始，到现在已经获取8k star，是一个非常稳定且用户量非常庞大的项目。官方对其给出的介绍是：</p>
+
+<blockquote>
+  <p>A Conversational AI RPA SDK for Chatbot</p>
+</blockquote>
+
+<p>所以wechaty作为IM ChatBot的入口工具，是很多聊天机器人的基础架构组件，也将会逐步支持主流聊天机器人的功能。</p>
+
+<h2 id="python-wchaty的诞生">python-wchaty的诞生</h2>
+
+<p>与Wechaty的结缘是在2019年底的一次技术沙龙会上，认识到了原来6行代码就能够开发出一款足够灵活的机器人，当时给我一个很大的震撼。微信作为我们日常聊天工具之一，如果能够对其做一些自动化的过程，能够很大程度上减少繁琐过程的工作量，比如说：办活动时的拉人入群，定时提醒用户打卡，提醒女朋友姨妈快来了等等。而wechaty能够很好的支持以上所有功能，只需要简单的几行代码即可完成。回去之后就立马着手相关资料的查阅，然后逐步进入wechaty的社区。</p>
+
+<p>一个很巧的机会群里面说可以开发一款go-wechaty的开发，当时我就在想，为什么不能够有一款python-wechaty呢，然后就毛遂自荐，成为了python-wechaty的联合作者之一。由于对开源软件和DevOps不是很熟悉，起步阶段遇到了很多的问题，不过经过社区大佬的耐心指导，目前已能够完成对issue和feature的开发和管理。亲身经历，建议大家有机会一定要参加开源项目，能够让你学习到很多知识点。</p>
+
+<h2 id="最简单的bot">最简单的Bot</h2>
+
+<p>使用python-wechaty能够很简单的开发一款Bot，特别是使用了一个插件系统之后，如下所示：</p>
+
+<p><img src="/assets/2020/12-python-wechaty-open-source-journey-en/simple-bot.webp" alt="image-20200617105548475" /></p>
+
+<p>以上代码中实现了两个主要的功能：</p>
+
+<ul>
+  <li>当Bot接受到一个<code class="language-plaintext highlighter-rouge">#ding</code>信号，就立马回复一个<code class="language-plaintext highlighter-rouge">dong</code>消息，这就是一个基本的<code class="language-plaintext highlighter-rouge">ding-dong-bot</code>。</li>
+  <li>当接受到查阅天气的文本语句时，则返回对应的天气查询结果，比如：今天天气如何？</li>
+</ul>
+
+<p>以上两个插件是系统内置的，后续也会增加更多的拿来即用的实用插件，当然用户也可创建自己的插件，方式很简单。</p>
+
+<h2 id="如何开发插件系统">如何开发插件系统</h2>
+
+<p>在了解如何开发插件系统之前，可先移驾<a href="https://en.wikipedia.org/wiki/Plug-in_%28computing%29">Plug-in`</a>，插件系统支持对插件的安装，卸载，自定义配置等内容 ，至于具体的实现形式我相信也是需要面对具体的应用场景。而在Wechaty这个面相事件型且交互逻辑非常简单的场景下，插件的设计与开发就非常简单。</p>
+
+<p>我们现在直接来看看，系统内置的叮咚插件是如何实现的。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="sh">"""</span><span class="s">basic ding-dong bot for the wechaty plugin</span><span class="sh">"""</span>
+<span class="kn">from</span> <span class="n">typing</span> <span class="kn">import</span> <span class="n">Union</span>
+
+<span class="kn">from</span> <span class="n">wechaty</span> <span class="kn">import</span> <span class="n">Message</span><span class="p">,</span> <span class="n">Contact</span><span class="p">,</span> <span class="n">Room</span><span class="p">,</span> <span class="n">FileBox</span>
+<span class="kn">from</span> <span class="n">wechaty.plugin</span> <span class="kn">import</span> <span class="n">WechatyPlugin</span>
+
+<span class="k">class</span> <span class="nc">DingDongPlugin</span><span class="p">(</span><span class="n">WechatyPlugin</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">basic ding-dong plugin</span><span class="sh">"""</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">name of the plugin</span><span class="sh">"""</span>
+        <span class="k">return</span> <span class="sh">'</span><span class="s">ding-dong</span><span class="sh">'</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="n">Message</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">listen message event</span><span class="sh">"""</span>
+        <span class="n">from_contact</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="nf">talker</span><span class="p">()</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="nf">text</span><span class="p">()</span>
+        <span class="n">room</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="nf">room</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">text</span> <span class="o">==</span> <span class="sh">'</span><span class="s">#ding</span><span class="sh">'</span><span class="p">:</span>
+            <span class="n">conversation</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span>
+                <span class="n">Room</span><span class="p">,</span> <span class="n">Contact</span><span class="p">]</span> <span class="o">=</span> <span class="n">from_contact</span> <span class="k">if</span> <span class="n">room</span> <span class="ow">is</span> <span class="bp">None</span> <span class="k">else</span> <span class="n">room</span>
+            <span class="k">await</span> <span class="n">conversation</span><span class="p">.</span><span class="nf">ready</span><span class="p">()</span>
+            <span class="k">await</span> <span class="n">conversation</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="sh">'</span><span class="s">dong</span><span class="sh">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>代码很简单，不过也是需要氛围一下几个层面来介绍。</p>
+
+<ul>
+  <li>WechatyPlugin</li>
+  <li>on_[event_name]</li>
+  <li>init_plugin</li>
+</ul>
+
+<h3 id="wechatyplugin">WechatyPlugin</h3>
+
+<p>此类为一个抽象类，所有的插件必须要继承此基类，并重写其中的函数。</p>
+
+<ul>
+  <li>
+    <p>name 属性函数</p>
+
+    <p>为抽象函数，必须重写。主要是为了标识插件的名称，作为插件唯一性身份认证。</p>
+  </li>
+  <li>
+    <p>init_plugin 初始化函数</p>
+
+    <p>能够支持插件的初始化过程，比如初始化定时器对象，数据库延迟连接对象等。</p>
+  </li>
+  <li>
+    <p>on_[event_name]</p>
+
+    <p>此类函数主要是为了监听系统中的不同事件，比如：<code class="language-plaintext highlighter-rouge">on_message</code>, <code class="language-plaintext highlighter-rouge">on_login</code>, <code class="language-plaintext highlighter-rouge">on_friendship</code>等事件的监听都只需要重写一下函数即可完成。不同插件之间以及不同事件之间都是独立的，能够很好的专注于不同业务场景下的开发。</p>
+  </li>
+</ul>
+
+<h3 id="event_name">event_name</h3>
+
+<p><code class="language-plaintext highlighter-rouge">python-wechaty</code>很大程度上是由事件驱动，毕竟很多操作都是基于<strong>消息接受</strong>触发，由此事件的监听是其基础特性，可能第一感觉就是实用<code class="language-plaintext highlighter-rouge">EventEmitter</code>这种模式来监听事件，这样每个事件我都可以注册不同的函数来监听，每个函数中会有不同的逻辑处理。这也是传统的事件监听方法，可这至少会给开发上带来一些不方便：函数的参数需要查阅文档才能够获知，标准的函数式编程。</p>
+
+<blockquote>
+  <p>我不是说函数式编程不好，只是在这种场景下对系统性能并不能提升多少，且<code class="language-plaintext highlighter-rouge">python-wechaty</code> 也并不能太注重性能。</p>
+</blockquote>
+
+<p>由此将其扩展了OOP的方式，用户可继承<code class="language-plaintext highlighter-rouge">Wechaty</code>或<code class="language-plaintext highlighter-rouge">WechatyPlugin</code>来监听不同的事件，且在常规的代码编辑器里面重写函数时就可以自动填充函数参数，从而减少查阅事件函数参数的问题。</p>
+
+<p>监听事件的类型有：<code class="language-plaintext highlighter-rouge">error</code>, <code class="language-plaintext highlighter-rouge">friendship</code>, <code class="language-plaintext highlighter-rouge">heartbeat</code>, <code class="language-plaintext highlighter-rouge">login</code>, <code class="language-plaintext highlighter-rouge">logout</code>, <code class="language-plaintext highlighter-rouge">message</code>, <code class="language-plaintext highlighter-rouge">ready</code>, <code class="language-plaintext highlighter-rouge">room_invite</code>, <code class="language-plaintext highlighter-rouge">room_join</code>, <code class="language-plaintext highlighter-rouge">room_leave</code>, <code class="language-plaintext highlighter-rouge">room_topic</code>, <code class="language-plaintext highlighter-rouge">scan</code>。</p>
+
+<p>在上面已经展示了WechatyPlugin如何开发，需要注意的地方，那接下来我将给大家详细介绍一下最基础的<code class="language-plaintext highlighter-rouge">每日一说</code>的机器人如何开发。</p>
+
+<h2 id="每日一说机器人">每日一说机器人</h2>
+
+<p>每日一说，顾名思义每天每个固定时间段发送一个祝福或提醒，具体内容可自定义。这其中需要注意几点：</p>
+
+<ul>
+  <li>机器人内部有一个调度器，用于调度时间事件的触发。</li>
+  <li>机器人可给制定的人和群发送对应的内容。</li>
+</ul>
+
+<p>以上的功能我封装成一个插件，然后注入到<code class="language-plaintext highlighter-rouge">python-wechaty</code>中即可。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="sh">"""</span><span class="s">daily word plugin</span><span class="sh">"""</span>
+<span class="kn">from</span> <span class="n">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="kn">from</span> <span class="n">apscheduler.schedulers.asyncio</span> <span class="kn">import</span> <span class="n">AsyncIOScheduler</span>
+
+<span class="kn">from</span> <span class="n">wechaty</span> <span class="kn">import</span> <span class="n">Wechaty</span>
+<span class="kn">from</span> <span class="n">wechaty.plugin</span> <span class="kn">import</span> <span class="n">WechatyPlugin</span>
+
+<span class="k">class</span> <span class="nc">DailyPlugin</span><span class="p">(</span><span class="n">WechatyPlugin</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">
+    say something everyday, like `Daily Words`
+    </span><span class="sh">"""</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="n">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sh">"""</span><span class="s">get the name of the plugin</span><span class="sh">"""</span>
+        <span class="k">return</span> <span class="sh">'</span><span class="s">dayily</span><span class="sh">'</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">tick</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">time tick for the plugin scheduler</span><span class="sh">"""</span>
+        <span class="n">room_id</span> <span class="o">=</span> <span class="nf">get_room_id</span><span class="p">()</span>
+        <span class="n">room</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">bot</span><span class="p">.</span><span class="n">Room</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="n">room_id</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">room</span><span class="p">.</span><span class="nf">ready</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">room</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="sa">f</span><span class="sh">'</span><span class="s">i love you -&gt; </span><span class="si">{</span><span class="n">datetime</span><span class="p">.</span><span class="nf">now</span><span class="p">()</span><span class="si">}</span><span class="sh">'</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">init_plugin</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">wechaty</span><span class="p">:</span> <span class="n">Wechaty</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">init plugin</span><span class="sh">"""</span>
+        <span class="k">await</span> <span class="nf">super</span><span class="p">().</span><span class="nf">init_plugin</span><span class="p">(</span><span class="n">wechaty</span><span class="p">)</span>
+        <span class="n">scheduler</span> <span class="o">=</span> <span class="nc">AsyncIOScheduler</span><span class="p">()</span>
+        <span class="n">scheduler</span><span class="p">.</span><span class="nf">add_job</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">tick</span><span class="p">,</span> <span class="sh">'</span><span class="s">cron</span><span class="sh">'</span><span class="p">,</span> <span class="n">hour</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">minute</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+        <span class="n">scheduler</span><span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+
+</code></pre></div></div>
+
+<p>插件就开发完了，然后将其注入到Wechaty中即可跑起来。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">bot</span> <span class="o">=</span> <span class="nc">Wechaty</span><span class="p">().</span><span class="nf">use</span><span class="p">(</span><span class="nc">DailyPlugin</span><span class="p">())</span>
+    <span class="k">await</span> <span class="n">bot</span><span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+<span class="n">asyncio</span><span class="p">.</span><span class="nf">run</span><span class="p">(</span><span class="nf">main</span><span class="p">())</span>
+</code></pre></div></div>
+
+<p>是不是超级简单，插件系统帮你隔离所有的业务场景，让代码非常易于开发和维护。</p>
+
+<h2 id="python-wechaty还可以做更多">python-wechaty还可以做更多</h2>
+
+<p>现在python-wechaty只完成了基本的Chatbot入口工具，离真正的聊天机器人还距离很远，所以未来还有很多工作量可以做，也欢迎更多的研究chatbot，nlp的小伙伴联系我，共同开发让大家都喜欢用的开源软件。</p>
+
+<p>微信号：<code class="language-plaintext highlighter-rouge">pure-_--love</code></p>
+
+<p><img src="/assets/2020/12-python-wechaty-open-source-journey-en/wujing-weixin.webp" alt="image-20200617145659900" /></p>
+
+<blockquote>
+  <p>Author: <a href="https://github.com/wj-Mcat">wj-Mcat</a>
+Code: <a href="https://github.com/wechaty/python-wechaty">python-wechaty</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#python">python</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#featured">featured</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/wj-mcat">
+                            <img class="rounded-circle" src="/assets/contributors/wj-mcat/avatar.webp" alt="吴京京" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/wj-mcat">吴京京</a> <span><a target="_blank" href="https://weibo.com/u/3877178684" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Committer of Python-Wechaty. NLP & Chatbot Researcher, a graduate student at Beijing University of Posts and Telecommunications.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/06/16/java-puppet-manager/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/09-puppet-work-final-en/java-wechaty-logo.webp">  简单聊聊java版Puppet Manager的实现</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/06/17/wechaty-academic-yanbot/"> 学术场景应用：YanBot  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/yanbot/yanbot.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

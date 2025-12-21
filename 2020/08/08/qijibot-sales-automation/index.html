@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      我如何用Chatbot在奇绩创坛重构销售体系 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>我如何用Chatbot在奇绩创坛重构销售体系 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="我如何用Chatbot在奇绩创坛重构销售体系" />
+<meta name="author" content="rickyyin98" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This post is also available in English: How I Rebuilt the Sales System at MiraclePlus with a Chatbot" />
+<meta property="og:description" content="This post is also available in English: How I Rebuilt the Sales System at MiraclePlus with a Chatbot" />
+<link rel="canonical" href="https://wechaty.js.org/2020/08/08/qijibot-sales-automation/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/08/08/qijibot-sales-automation/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/08-qijibot-sales-automation-en/qijibot.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-08-08T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/08-qijibot-sales-automation-en/qijibot.webp" />
+<meta property="twitter:title" content="我如何用Chatbot在奇绩创坛重构销售体系" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"rickyyin98"},"dateModified":"2020-08-08T00:00:00+00:00","datePublished":"2020-08-08T00:00:00+00:00","description":"This post is also available in English: How I Rebuilt the Sales System at MiraclePlus with a Chatbot","headline":"我如何用Chatbot在奇绩创坛重构销售体系","image":"https://wechaty.js.org/assets/2020/08-qijibot-sales-automation-en/qijibot.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/08/08/qijibot-sales-automation/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"rickyyin98"},"url":"https://wechaty.js.org/2020/08/08/qijibot-sales-automation/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">我如何用Chatbot在奇绩创坛重构销售体系</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/rickyyin98">
+                            <img class="rounded-circle" src="/assets/contributors/rickyyin98/avatar.webp" alt="Yinbohao（尹伯昊）" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/rickyyin98">Yinbohao（尹伯昊）</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Aug 08, 2020 · <span class="reading-time">
+  
+  
+    1 min read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/08-qijibot-sales-automation-en/qijibot.webp" alt="我如何用Chatbot在奇绩创坛重构销售体系">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<blockquote>
+  <p>This post is also available in English: <a href="/2020/08/08/qijibot-sales-automation-en/">How I Rebuilt the Sales System at MiraclePlus with a Chatbot</a></p>
+</blockquote>
+
+<ul>
+  <li>除了媒体上的曝光，通过人进行深度触达是好的获客方式</li>
+  <li>对于团队来说，需要保证所有人的触达标准化</li>
+  <li>对于个人来说，需要努力提升触达过程的效率</li>
+  <li>聊天机器人不是“银弹”，需要人总结出结构性的方法论</li>
+  <li>结合方法论的聊天机器人是好的标准化和提效工具</li>
+  <li>基于企业微信的辅助坐席，可能实现快速组建“销售铁军”的目标</li>
+</ul>
+
+<h2 id="我和奇绩创坛">我和奇绩创坛</h2>
+
+<p>我自己是一位连续创业者，有一家<a href="www.phaedoclasses.com">教育科技公司</a>，在2019年夏天有幸在1700份申请中获得了YC中国的面试机会，也因此有机会见到了YC中国（现奇绩创坛）的创始人陆奇博士。<br />
+虽然后来没有通过那一轮面试拿到投资，但我太想拿到陆奇博士的投资了，所以我在2019年的10月选择成为一名奇绩创坛的实习生，开始与陆奇博士和奇绩创坛共事。
+在成为实习生后，我一个人在两周时间里完成了奇绩创坛的小程序的产品、视觉、开发和内外部协调的全部工作，又在奇绩创坛内做了一个“帮投资经理和创业者聊天”的机器人，故事就从这里说起。
+<strong>本文代码详见<a href="www.github.com/juzibot/qijibot">qijibot</a>，本文不做代码层面的详细说明</strong></p>
+
+<h2 id="一-奇绩创坛如何获客和背后的困难">一、 奇绩创坛如何获客和背后的困难？</h2>
+
+<h3 id="11奇绩创坛探索的获客路径">1.1.奇绩创坛探索的获客路径</h3>
+
+<p>在2019年末那样一个时间节点，奇绩创坛还并不是一个足够有影响力的创投品牌，单纯依靠媒体上的曝光很难让所有早期创业者了解并报名奇绩创坛。<br />
+所以，奇绩创坛探索的路径就是在媒体持续曝光之外，通过大量的工作人员在微信上直接触达创业者，并邀请他们报名奇绩创坛。<br />
+事实上，这样的路径是非常成功的。因为人的存在，奇绩创坛价值主张的传递变得非常轻松，原来需要在媒体上反复解释的，通过对话的几个来回可以快速传递。</p>
+
+<h3 id="12新的获客路径下的新困难">1.2.新的获客路径下的新困难</h3>
+
+<p>然而，这背后带来了两点结构性的困难：</p>
+
+<ul>
+  <li>其一，对于团队管理者来说，如何保证每一个人说的话都是正确的（或者说是管理者希望传递下去的）</li>
+  <li>其二，对于个人来说，如何尽可能地降低沟通中的重复劳动。</li>
+</ul>
+
+<p>基于这样的问题，我开始探索一种好的方式，能够让团队在微信上的沟通是标准化的、每个人都能几乎不进行重复劳动，又能在这两个前提下，真正把价值传递出去。</p>
+
+<h3 id="13表层困难下的结构性困境">1.3.表层困难下的结构性困境</h3>
+
+<p>为了完成整套探索的路径，“搞个机器人来做自动化”显然是必然的。我将其拆分成两个维度：找到自动化的方式、找到决策方法论。</p>
+
+<ul>
+  <li>自动化意味着可以让机器自由地收发消息，具体收发什么，交给决策方法论来进行。</li>
+  <li>决策方法论的本质是将人的沟通抽象为一个对话的二叉树，并把这个可解释的二叉树变为机器可以学习的编码。</li>
+</ul>
+
+<p>完成了这两步之后，一个在微信上的对话系统就可以运行，并切实地帮助销售团队去解决复杂的用户沟通问题。</p>
+
+<h2 id="二正式迈入聊天机器人行业的大门">二、正式迈入聊天机器人行业的大门</h2>
+
+<h3 id="21从零开始了解聊天机器人">2.1.从零开始了解聊天机器人</h3>
+
+<p>2019年的12月，奇绩创坛开始密集地进行微信上的沟通和获客。我从那时起，开始正式研究如何将整套过程落地成一套机器人系统。<br />
+对于当时的我来说，我只有模糊的一点“我要把这个事情做了”，但完全没有“我该如何做”的想法。<br />
+在一个周四的深夜，我在微信上找到了在奇绩创坛校友日上机缘巧合认识的、句子互动的创始人李佳芮，介绍了大致情况之后，她便邀请我参与在周五举行的<a href="bot5.ml">BOT Friday</a>（一个技术极客讨论聊天机器人行业落地和商业应用的创业论坛）。</p>
+
+<h3 id="22连续地高密度的思考和沉淀">2.2.连续地高密度的思考和沉淀</h3>
+
+<p>就在那周，我收到了句子互动创始人佳芮的书稿，《Chatbot从0到1》，成为了我聊天机器人的启蒙。
+后来，我在BOT Friday上认识了大量的创业者、工程师和聊天机器人从业者，并通过几次“看起来是分享实际上是请大家帮我答疑”的BOT Friday活动，逐渐迈入聊天机器人行业。
+<img src="/assets/2020/08-qijibot-sales-automation-en/talk1.webp" alt="我的第一次分享" /></p>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="/assets/js/viewer-js/#/assets/2020/08-qijibot-sales-automation-en/talk2.pdf" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h2 id="三如何做出一个可用的聊天机器人系统">三、如何做出一个可用的聊天机器人系统？</h2>
+
+<h3 id="31一套一万字的剧本">3.1.一套一万字的“剧本”</h3>
+
+<p>在我开始尝试设计一个帮助奇绩创坛进行沟通的聊天机器人的时候，我模糊地觉得我应该先把可能的话术对整理出来，
+我反复阅读和回顾我和之前创业者们的聊天记录，沉淀出了一套一万字的“剧本”，其中明确列出了if-else式的推进流。</p>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="/assets/js/viewer-js/#/assets/2020/08-qijibot-sales-automation-en/method.pdf" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<p>当我写完“剧本”、技术开发又没有完成时，我基于这套“剧本”在一周时间里与300人进行了沟通，全程几乎不需要进行任何的思考，仿佛机器就应该如此运行一样。
+基于这套剧本，我成功地在人肉沟通环节，把每名创业者的沟通时间缩短到5分钟以内，并真正直接转化了其中数十位创业者报名。
+那个时候，我意识到，是时候将其变成更通用的系统了。</p>
+
+<h3 id="32一个全自动化的尝试">3.2.一个全自动化的尝试</h3>
+
+<p>没有人会拒绝一个全自动化的系统，这也是我完成剧本后第一件希望完成的工作。
+<img src="/assets/2020/08-qijibot-sales-automation-en/first.webp" alt="一个全自动化的尝试" />
+然而，它毫无疑问的失败了，理由甚至不用赘述，毕竟这已经是聊天机器人行业的共识——纯机器人很难完成人类的所有需求。</p>
+
+<h3 id="33回归人机耦合的辅助坐席">3.3.回归人机耦合的辅助坐席</h3>
+
+<p>在全自动化的尝试显著的失败之后，我开始探索真正能够解决问题的路径——不迷恋机器完成所有事情，那么机器完成90%的事情，然后人来做最后的决策如何？
+这个时候，我开始意识到，应该做一套人机耦合的辅助坐席。</p>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="/assets/js/viewer-js/#/assets/2020/08-qijibot-sales-automation-en/final.pdf" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<p>在产品层面我又进行了几个维度的思考：</p>
+
+<ul>
+  <li>这个辅助坐席应该是独立于微信传统的对话形式的、在每天的工作就是去用微信完成同一个任务的时候，应该做成Feed流形式。也就是说，所有消息应该不分究竟是谁的消息，而混编在一整条时间线上。</li>
+  <li>针对每条消息，应该可以通过点击按钮的方式进行回复，每个按钮对应完整的话术和额外行为（打标签、拉群、改备注）。</li>
+</ul>
+
+<p>基于这两个层次的思考，传统意义上反复切换不同的聊天对象，针对每个人进行不同的回复的逻辑，应该变成流水线式的作业：</p>
+
+<ul>
+  <li>用户只需要盯着流水线上是否有新消息并基本不需要考虑是谁发出的。</li>
+  <li>用户只需要点击按钮就能把对方提出的问题进行回复，并完成一些必要的操作。</li>
+  <li>机器永远不自作主张地进行回复，永远需要人进行一次确认。</li>
+</ul>
+
+<p><img src="/assets/2020/08-qijibot-sales-automation-en/qijibot.webp" alt="最终产品" /></p>
+
+<h2 id="四帮更多企业在微信上做好私域销售">四、帮更多企业在微信上做好私域销售</h2>
+
+<p>当然，Qijibot被投入的资源注定其只是一个非商业的尝试，距离成为人人可用的、真正改变企业销售体验的工具还有遥远的距离。<br />
+后来，我在2020年正式地加入句子互动，以CMO的身份，开始在企业微信生态上，去帮助企业做好“私域销售”，我们的产品<a href="qiwei.juzibot.com">句客宝</a>已经上线。<br />
+<img src="/assets/2020/08-qijibot-sales-automation-en/jukebao.webp" alt="句客宝" />
+这是另外一个很长的、还没有结束的故事……
+如果你对于如何借助工具打造销售体系感兴趣，欢迎你与我聊聊（微信：bohao-YIN），也许会是我们下一篇博客内容的起点。</p>
+
+<blockquote>
+  <p>作者: <a href="https://github.com/rickyyin98/">Yinbohao</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#featured">featured</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#qiji">qiji</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#productivity">productivity</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#social">social</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/rickyyin98">
+                            <img class="rounded-circle" src="/assets/contributors/rickyyin98/avatar.webp" alt="Yinbohao（尹伯昊）" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/rickyyin98">Yinbohao（尹伯昊）</a> </h5>
+						Serial entrepreneur, CMO of JuziBOT.
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/08/08/qijibot-sales-automation-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/08-qijibot-sales-automation-en/qijibot.webp">  How I Rebuilt the Sales System at MiraclePlus with a Chatbot</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/08/09/wechaty-log-monitor-en/"> Chatbots Duet: Using wechaty-log-monitor Plugin to Implement DevOps like 'QR Code Rescue on Disconnect'  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/wechaty-log-monitor/demo.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

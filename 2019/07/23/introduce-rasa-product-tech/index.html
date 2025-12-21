@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Rasa介绍：对话系统、产品与技术 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Rasa介绍：对话系统、产品与技术 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Rasa介绍：对话系统、产品与技术" />
+<meta name="author" content="qhduan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="« 本次活动通知: 腾讯+句子互动=碰撞思想，点燃科技 «" />
+<meta property="og:description" content="« 本次活动通知: 腾讯+句子互动=碰撞思想，点燃科技 «" />
+<link rel="canonical" href="https://wechaty.js.org/2019/07/23/introduce-rasa-product-tech/" />
+<meta property="og:url" content="https://wechaty.js.org/2019/07/23/introduce-rasa-product-tech/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-07-23T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Rasa介绍：对话系统、产品与技术" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"qhduan"},"dateModified":"2019-07-23T00:00:00+00:00","datePublished":"2019-07-23T00:00:00+00:00","description":"« 本次活动通知: 腾讯+句子互动=碰撞思想，点燃科技 «","headline":"Rasa介绍：对话系统、产品与技术","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2019/07/23/introduce-rasa-product-tech/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"qhduan"},"url":"https://wechaty.js.org/2019/07/23/introduce-rasa-product-tech/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-center ">
+				<div class=" col-md-8  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#event">event</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Rasa介绍：对话系统、产品与技术</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/qhduan">
+                            <img class="rounded-circle" src="/assets/contributors/qhduan/avatar.webp" alt="段清华" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/qhduan">段清华</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jul 23, 2019 · <span class="reading-time">
+  
+  
+    1 min read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>« 本次活动通知: <a href="https://mp.weixin.qq.com/s?__biz=MzU3OTk2MzA1Nw==&amp;mid=2247485197&amp;idx=1&amp;sn=404c319ad11b9e12515d127dfabf7efd">腾讯+句子互动=碰撞思想，点燃科技</a> «</p>
+
+<h2 id="bot-friday-zero---沙龙第0场分享">Bot Friday Zero - 沙龙第0场分享</h2>
+
+<p>关于对话系统/产品/技术</p>
+
+<p>2019-07-19 于北京腾讯，<a href="https://github.com/qhduan">QHDuan</a></p>
+
+<h2 id="对话系统与rasa">对话系统与Rasa</h2>
+
+<p>首先笔者认为：
+所谓对话系统，是通过对话的方式，实现人机交互的一种方法</p>
+
+<p>就如同键盘鼠标是输入设备，显示器音箱是输出设备，输入输出是什么？是与计算机交互。对话系统也如此而已。</p>
+
+<p>Rasa是一家通过机器学习技术实现对话系统、机器人开发的工具，同时也是一家创业公司。</p>
+
+<p>Rasa最新于2019年初A轮融资$13M。</p>
+
+<p>笔者认为Rasa最大的创新，是开发了整套的基于机器学习的对话工具，而相对的，如wit.ai，dialogflow(原api.ai)，luis.ai等都不够完整。</p>
+
+<p>相对来说国内的unit，yige ai，更完整，但是无论是体验、效果、社区等等都不如rasa。</p>
+
+<p>个人认为：程序员更爱工具，而不是平台。</p>
+
+<h2 id="rasa的组成">Rasa的组成</h2>
+
+<h3 id="rasa-nlu">Rasa NLU</h3>
+
+<p>主要实现自然语言理解（即NLU）功能，本质上就是识别句子的意图和实体。</p>
+
+<p>如“买一张去北京的票”，我们可以定义一个意图是“购票”，实体是“北京”和“一张”。</p>
+
+<p>意图识别本质是短文本分类任务（当然在学术界可能称为Intent Detection来和Text Classification分开）。
+单纯短文本分类任务的SOTA基本上就是BERT了。</p>
+
+<p>抽取本质是信息抽取任务。
+抽取的SOTA现在一般还是BiLSTM-CRF的各种变型，或BERT之类。</p>
+
+<p>现在学术界的主要研究方向是多种工作结合，例如同一模型同时做意图识别和信息抽取，互相配合增加总体准确率。</p>
+
+<p>Rasa的NLU，主要是当前的社区版，主要还是使用了各种开源技术，并没有追求学术上的SOTA。
+它使用的工具包括Spacy、sklearn-crfsuite</p>
+
+<h3 id="rasa-core">Rasa Core</h3>
+
+<p>笔者认为这是Rasa的核心部分，NLU有各种实现，开源的也有snips nlu等，但是core却独一无二。</p>
+
+<p>Rasa Core主要完成了基于故事的对话管理，包括解析故事并生成对话系统中的对话管理模型（Dialog Management），输出系统决策（System Action/System Policy）。</p>
+
+<p>学术上一般认为这部分会包含两个模型</p>
+
+<ol>
+  <li>对话状态跟踪（Dialog State Tracking / Belief Tracking）</li>
+  <li>对话策略（Dialog Policy / Policy Optimization）</li>
+</ol>
+
+<p>对于1.其实Rasa实现很简单，具体在它的论文 Few-Shot Generalization Across Dialogue Tasks, Vlasov et at., 2018 中说的比较具体。就是简单的基于策略的槽状态替换。</p>
+
+<p>对于2.Rasa使用基于LSTM的Learn to Rank方法，大体上是将当前轮用户意图、上一轮系统行为、当前槽值状态向量化，然后与所有系统行为做相似度学习，以此决定当前轮次的一个或多个系统行为</p>
+
+<p><img src="/assets/2019/07-introduce-rasa-product-tech-en/rasa-1.webp" alt="rasa-1.png" /></p>
+
+<h3 id="rasa-x">Rasa X</h3>
+
+<p>Rasa的可视化编辑工具，更方便NLU、NLG数据的管理，故事的编写。</p>
+
+<p>Rasa X可能暂时还不能让所有非开发人员也能快速方便的使用。不过它本质上可以方便开发人员快速开发，快速训练模型验证。</p>
+
+<p>笔者是这么认为的，Rasa X就好像小程序开发也要有个本地开发工具一样，或者像Android Studio那样的工具。本地工具的优点就是方便调试、开发、快速验证、Debug。相对线上的缺点就是速度慢、验证需要等待后台训练、不便于Debug。</p>
+
+<p>可以看出国内外现在很多机器人平台都是完全在线的，例如国外的luis.ai，dialogflow等。这样当然也可以，但是总还是不如有一个可自己训练的终端对开发者更友好。
+国内的就不说了。</p>
+
+<p>再举个例子，如Elasticsearch、Docker都是非常棒的工具，但是如果官方开始的时候说：你不能自己本地架设，你只能用我的云服务。这样对于很多开发者来说就必然丧失了很大的兴趣。</p>
+
+<h2 id="rasa-的-pipeline">Rasa 的 Pipeline</h2>
+
+<p>Pipeline 的过程是这样的：</p>
+
+<p><img src="/assets/2019/07-introduce-rasa-product-tech-en/rasa-2.webp" alt="rasa-2.png" /></p>
+
+<ol>
+  <li>用户输入文字，送入解释器，即Rasa NLU</li>
+  <li>NLU给出结果，如图
+ <img src="/assets/2019/07-introduce-rasa-product-tech-en/rasa-3.webp" alt="rasa-3.png" /></li>
+  <li>从Tracker到Policy，Tracker用于跟踪对话状态，Tracker输出的是Embedding
+    <ol>
+      <li>用户意图的Embedding</li>
+      <li>系统动作（上一步）的Embedding</li>
+      <li>实体（槽值/Slot）的Embedding</li>
+    </ol>
+  </li>
+  <li>Policy给出系统行为</li>
+  <li>Tracker记录系统行为，下一次会提供给Policy使用</li>
+  <li>返回消息给用户</li>
+</ol>
+
+<h2 id="rasa技术详细">Rasa技术详细</h2>
+
+<h3 id="embedding-方法">Embedding 方法</h3>
+
+<p>用户意图和系统行为会通过bag-of-word的方法分词，然后向量化，很有趣的结果。在官方论文没有仔细探讨为什么，笔者猜测是为了增加不同的意图、行为之间的语义关联。</p>
+
+<p>论文原文：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A bag-of-words representations for the user and the system labels are then created using token counts inside each label.
+</code></pre></div></div>
+
+<p>例如:</p>
+
+<p>action_search_restaurant = {action, search, restaurant}</p>
+
+<hr />
+
+<p>实体/槽值（Slot）的向量化就非常简单了，只是走了是否存在的binary向量</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The slots are featurized as binary vectors, indicating their presence or absence at each step of the dialogue.
+</code></pre></div></div>
+
+<h3 id="learn-to-rank-方法">Learn to Rank 方法</h3>
+
+<p>很多对话系统的系统决策都采用的是分类（Classification）方法，也就是每次总是在多个系统行为中选择唯一一个。</p>
+
+<p>而Rasa选择了排序方法，即判断当前对话状态和系统行为的相似度，笔者认为这有两个可能的好处（论文没说明）：</p>
+
+<ol>
+  <li>可以更容易实现多个系统行为的同时输出。能让一个对话状态输出多个系统行为是Rasa的特色。至于为什么如此，可能有工程上的一些考虑，例如这样更方便，例如两个系统行为，一个是机器人说“请等待”，一个是真的去查询数据。</li>
+  <li>更方便扩展系统行为。如果是分类模型，增加一个分类，那必须重新训练整个分类器。如果是Ranking模型，如果只是增加或减少分类，可以考虑只训练新增的系统行为相关的和不相关的部分数据集，可能增加总体的训练速度。更方便快速实验、迭代。</li>
+</ol>
+
+<h2 id="总结">总结</h2>
+
+<h3 id="优点">优点</h3>
+
+<ul>
+  <li>机器学习方法的好处是实际工程上代码量比较少，很多状态不需要写判断（对比专家系统）</li>
+  <li>可以做到不写逻辑下，快速验证某些场景或对话流。例如一个非开发者甚至可以不需要写一行代码就能搭建某种原型机器人。</li>
+</ul>
+
+<h3 id="缺点">缺点</h3>
+
+<ul>
+  <li>要做好一个比较复杂的机器人，还是需要对机器学习有了解的工程师</li>
+  <li>针对复杂的机器人，可能需要大量数据</li>
+</ul>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#bot">bot</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#rasa">rasa</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#meetup">meetup</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/qhduan">
+                            <img class="rounded-circle" src="/assets/contributors/qhduan/avatar.webp" alt="段清华" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/qhduan">段清华</a> </h5>
+						人工智障工程师
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2019/07/23/introduce-rasa-product-tech-en/"> Introduction to Rasa: Dialogue Systems, Products, and Technology</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2019/07/26/bot-friday-second-en/"> Bot Friday - Second Edition  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2019/07-bot-friday-second-en/group-photo.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

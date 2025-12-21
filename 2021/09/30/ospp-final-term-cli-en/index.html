@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      OSPP 2021 - Final Report - Wechaty Command-line Text Client Software Based on Blessed | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>OSPP 2021 - Final Report - Wechaty Command-line Text Client Software Based on Blessed | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="OSPP 2021 - Final Report - Wechaty Command-line Text Client Software Based on Blessed" />
+<meta name="author" content="chinggg" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Final report for the OSPP 2021 project developing a Blessed-based command-line text client for Wechaty, enabling users to chat using keyboard in terminal and developers to observe bot behavior in real-time." />
+<meta property="og:description" content="Final report for the OSPP 2021 project developing a Blessed-based command-line text client for Wechaty, enabling users to chat using keyboard in terminal and developers to observe bot behavior in real-time." />
+<link rel="canonical" href="https://wechaty.js.org/2021/09/30/ospp-final-term-cli-en/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/09/30/ospp-final-term-cli-en/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/09-ospp-final-term-cli-en/terminal-wechaty.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-09-30T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/09-ospp-final-term-cli-en/terminal-wechaty.webp" />
+<meta property="twitter:title" content="OSPP 2021 - Final Report - Wechaty Command-line Text Client Software Based on Blessed" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"chinggg"},"dateModified":"2021-09-30T00:00:00+00:00","datePublished":"2021-09-30T00:00:00+00:00","description":"Final report for the OSPP 2021 project developing a Blessed-based command-line text client for Wechaty, enabling users to chat using keyboard in terminal and developers to observe bot behavior in real-time.","headline":"OSPP 2021 - Final Report - Wechaty Command-line Text Client Software Based on Blessed","image":"https://wechaty.js.org/assets/2021/09-ospp-final-term-cli-en/terminal-wechaty.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/09/30/ospp-final-term-cli-en/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"chinggg"},"url":"https://wechaty.js.org/2021/09/30/ospp-final-term-cli-en/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+              <a class="sscroll text-danger" href="/categories.html#ospp">ospp</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">OSPP 2021 - Final Report - Wechaty Command-line Text Client Software Based on Blessed</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/chinggg">
+                            <img class="rounded-circle" src="/assets/contributors/chinggg/avatar.webp" alt="chinggg" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/chinggg">chinggg</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Sep 30, 2021 · <span class="reading-time">
+  
+  
+    7 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/09-ospp-final-term-cli-en/terminal-wechaty.webp" alt="OSPP 2021 - Final Report - Wechaty Command-line Text Client Software Based on Blessed">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<blockquote>
+  <p>This is a translated version of the original Chinese post. You can find the original post <a href="/2021/09/30/ospp-final-term-cli/">here</a>.</p>
+</blockquote>
+
+<p>This project developed a command-line text client for Wechaty based on Blessed, allowing users to chat using keyboard in the terminal and making it convenient for developers to observe bot behavior in real-time.</p>
+
+<h2 id="wechaty-command-line-text-client-software-based-on-blessed-information">[Wechaty Command-line Text Client Software Based on Blessed] Information</h2>
+
+<ul>
+  <li>Mentor: Li Zhuohuan</li>
+  <li>Student: Liu Jing</li>
+  <li>Project Name: Wechaty Command-line Text Client Software Based on Blessed</li>
+  <li>Project Introduction: <a href="https://github.com/wechaty/summer/issues/80">https://github.com/wechaty/summer/issues/80</a></li>
+  <li>Solution Description:
+    <ul>
+      <li>Following the IRC text client of Linux command-line terminals, implement an instant messaging client based on Wechaty, supporting all existing <a href="https://wechaty.js.org/docs/puppet-providers/">Wechaty Puppet Providers</a> through Wechaty, such as WeChat, WeChat Work, Lark, WhatsApp, etc.</li>
+      <li>Utilize components provided by <a href="https://github.com/chjj/blessed">Blessed</a> and <a href="https://github.com/yaronn/blessed-contrib">blessed-contrib</a> to draw terminal graphical interface programs</li>
+      <li>Listen to events such as message reception and keyboard/mouse clicks, dynamically adjust component content to provide interactive experience close to general chat software</li>
+      <li>Refactor code using <a href="https://github.com/Yomguithereal/react-blessed">react-blessed</a>, RxJS and Redux (optional)</li>
+    </ul>
+  </li>
+  <li>Timeline:
+    <ul>
+      <li>Phase 1 (7.1 - 8.14) Connect backend events, select appropriate architecture and technology stack to complete data storage, display and update
+        <ul>
+          <li>Self-explore to make demo
+            <ul>
+              <li>7.1 - 7.14</li>
+              <li>Implement simple message reception and contact list display</li>
+              <li>Communicate with mentor on architecture design and technology stack to use</li>
+            </ul>
+          </li>
+          <li>During military training, project paused
+            <ul>
+              <li>7.15 - 7.29</li>
+              <li>Limited time, learn front-end related knowledge or find time to implement simpler functions</li>
+            </ul>
+          </li>
+          <li>Improve code structure, focus on data storage and state management
+            <ul>
+              <li>8.1 - 8.14</li>
+              <li>Implement message content storage and viewing by source</li>
+              <li>Contact and group chat information caching</li>
+              <li>Write mid-term report</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Phase 2 (8.15 - 9.30) Focus on improving front-end interaction, continuously improve user experience
+        <ul>
+          <li>Provide more interaction options and management functions
+            <ul>
+              <li>8.15 - 8.30</li>
+              <li>Perform state management and intelligent sorting of contacts based on unread message count</li>
+            </ul>
+          </li>
+          <li>Implement message sending
+            <ul>
+              <li>9.1 - 9.14</li>
+            </ul>
+          </li>
+          <li>Improve documentation, write sample code and tests
+            <ul>
+              <li>9.15 - 9.30</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="project-summary">Project Summary</h2>
+
+<ul>
+  <li>Project Results: The entire project is a Wechaty chat client running in the terminal. Results can be summarized from the following perspectives:
+    <ul>
+      <li>Data acquisition and display: All contacts and group chats are fetched at once when the application starts, then messages are monitored and displayed in the corresponding chat interface. Since the underlying puppet implementation may not be able to obtain all information at startup, an option to re-fetch contact and group chat data is also provided.</li>
+      <li>Interface interaction design: Basically completed. The left side of the interface is the friends and group chat list, the right side is the active chat (friends and group chats with message exchanges) list, the middle large block displays message records, the middle lower side has an input box for sending messages, and the bottom is the quick menu bar. Users can press shortcuts to trigger various functions. Some functions will pop up windows in the upper layer, and pressing again will make the window disappear. Worth mentioning is support for common Vim keys - users can use <code class="language-plaintext highlighter-rouge">j/k/C-u/C-d/g/G</code> to move the selection box, and pressing <code class="language-plaintext highlighter-rouge">/</code> will pop up a search box where you can directly enter the chat name to try searching and jumping to the corresponding chat.</li>
+      <li>Chat function coverage: Basic text message sending and receiving has been completed. Chat management is relatively easy to implement, but due to dissatisfaction with the existing code architecture and not having figured out what layout and interaction methods should be used for group and contact management, and unlike the scenario where bots automatically manage chats, users don’t frequently add/delete/modify contacts and group chats, and the consequences of misoperation are quite serious, so management functions have lower priority.</li>
+      <li>Open source ecosystem improvement: First is the standardization of open source collaboration. The development process is preserved through meaningful commit messages. Using English to discuss technical details in issues and PRs also allows developers worldwide to easily retrieve and communicate. To improve development efficiency, a set of CI/CD processes common in the Wechaty community is used, and ESM is adopted as the module management method. For ease of use, besides npm installation, a Docker build method is also provided.</li>
+    </ul>
+
+    <p>Some effect images are shown below:
+<img src="/assets/2021/09-ospp-final-term-cli-en/final-demo.webp" alt="demo" /></p>
+  </li>
+  <li>
+    <p>Problems Encountered and Solutions:</p>
+
+    <p>First is interface design: The initially designed interface was too idealistic. There are actually many limitations in the terminal, including automatic text wrapping and defects in keyboard and mouse interaction. Finally, following <a href="https://github.com/lirantal/dockly">dockly</a>, using menu bar + shortcuts to provide interaction is a relatively ideal solution.</p>
+
+    <p>Second are code detail issues: <a href="https://github.com/chjj/blessed">Blessed</a> has been unmaintained for a long time, with few users and lacking reference documentation and resources. To solve bugs encountered when using components, I learned how to debug Node.js programs with VS Code, successfully found the cause of the problem and solved it, and even <a href="https://wechaty.js.org/2021/08/08/vscode-debug-nodejs/">contributed to the community blog</a> with mentor encouragement.</p>
+
+    <p>Finally are architectural issues: Actually from the beginning I collected many small projects to reference and learned basic RxJS knowledge, but lacking personal experience in independent development and due to scenario differences being unable to directly apply them, I could only lead development with feature implementation, concentrating all code in two or three files. This approach was actually very intuitive and easy to understand at the beginning, but in the later stages of project development, with more and more states needing maintenance and control, code grew extensively making maintenance difficult, finally showing the importance of using design patterns and frameworks. Expected to later reference <a href="https://github.com/cancerberoSgx/accursed">accursed</a> to try using React for rendering and refactor code accordingly.</p>
+  </li>
+  <li>Follow-up Work Arrangement:
+    <ul>
+      <li>Currently basic chat functions have been roughly implemented. Contact and group chat management still needs discussion with mentor on what form to present</li>
+      <li>Considering the characteristics of blessed and terminals, general chat software designs (like new conversations pinned to top) may not be directly applicable</li>
+      <li>While ensuring usability, refactor the project using React and Redux</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="live-coding-video">Live Coding Video</h3>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/D5QbX183kb8" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<blockquote>
+  <p>Domestic link: <a href="https://www.bilibili.com/video/BV1444y1t7So/">https://www.bilibili.com/video/BV1444y1t7So/</a></p>
+</blockquote>
+
+<h3 id="ppt-presentation-video">PPT Presentation Video</h3>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/PssH9epe0tU" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<blockquote>
+  <p>Domestic link: <a href="https://www.bilibili.com/video/BV1Wg411F7Gh/">https://www.bilibili.com/video/BV1Wg411F7Gh/</a></p>
+</blockquote>
+
+<h3 id="project-ppt">Project PPT</h3>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="/assets/js/viewer-js/#/assets/2021/09-ospp-final-term-cli-en/final-slides.pdf" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h2 id="contact-us">Contact Us</h2>
+
+<ul>
+  <li>Project Link: [https://github.com/wechaty/cli]</li>
+  <li>Contact: liuchinggg@gmail.com</li>
+</ul>
+
+<p>The “<a href="https://summer.iscas.ac.cn">Summer 2021 of Open Source Promotion Plan</a>” (hereinafter referred to as Summer 2021) is a summer activity for college students jointly organized by the Institute of Software Chinese Academy of Sciences and the openEuler community. It aims to encourage college students to actively participate in the development and maintenance of open source software and promote the vigorous development of excellent domestic open source software communities. The activity collaborates with major open source communities to provide projects for the development and maintenance of important open source software, and opens registration to college students worldwide. Students can independently choose projects of interest to apply for, and after being selected, gain the opportunity to receive personal guidance from senior maintainers (community mentors) of the software. According to the difficulty of the project and completion status, participants can also receive awards and trophies from the “Summer 2021 of Open Source Promotion Plan”.</p>
+
+<p>This project [Wechaty Command-line Text Client Software Based on Blessed] is an open source project supported by Summer 2021.</p>
+
+<blockquote>
+  <p>This is a translated version of the original Chinese post. You can find the original post <a href="/2021/09/30/ospp-final-term-cli/">here</a>.</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#summer-of-wechaty">summer-of-wechaty</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#summer-2021">summer-2021</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ospp">ospp</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ospp-2021">ospp-2021</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#final-term">final-term</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ecosystem">ecosystem</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/chinggg">
+                            <img class="rounded-circle" src="/assets/contributors/chinggg/avatar.webp" alt="chinggg" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/chinggg">chinggg</a> </h5>
+						undergraduate student
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/09/29/ospp-final-term-wechaty-puppet-lark/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/09-ospp-final-term-wechaty-puppet-lark-en/wechaty-lark.webp">  OSPP 2021-结项报告-基于开放 API 封装 Wechaty 接口下的飞书聊天机器人</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/09/30/ospp-final-term-cli/"> OSPP 2021-结项报告-基于 Blessed 的 Wechaty 命令行文本客户端软件  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/09-ospp-final-term-cli-en/terminal-wechaty.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Microsoft Tech Summit - 快速搭建一个聊天机器人 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Microsoft Tech Summit - 快速搭建一个聊天机器人 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Microsoft Tech Summit - 快速搭建一个聊天机器人" />
+<meta name="author" content="lijiarui" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="这是我在2018微软技术暨生态大会 动手实验室的分享，2018微软技术暨生态大会10月24日在上海世博中心如约而至。 作为微软最负盛名的技术峰会，此次大会将带领参会者深入领略技术精髓，感受微软黑科技的魅力，探讨在云计算、物联网、移动互联网、大数据和人工智能的发展洪流中，如何洞察新技术与新变革，聚焦解决问题与创造价值，如何开启企业数字化转型之旅。" />
+<meta property="og:description" content="这是我在2018微软技术暨生态大会 动手实验室的分享，2018微软技术暨生态大会10月24日在上海世博中心如约而至。 作为微软最负盛名的技术峰会，此次大会将带领参会者深入领略技术精髓，感受微软黑科技的魅力，探讨在云计算、物联网、移动互联网、大数据和人工智能的发展洪流中，如何洞察新技术与新变革，聚焦解决问题与创造价值，如何开启企业数字化转型之旅。" />
+<link rel="canonical" href="https://wechaty.js.org/2018/10/21/microsoft-tech-summit-chatbot-quick-started/" />
+<meta property="og:url" content="https://wechaty.js.org/2018/10/21/microsoft-tech-summit-chatbot-quick-started/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2018/microsoft-hol-chatbot.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-10-21T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2018/microsoft-hol-chatbot.webp" />
+<meta property="twitter:title" content="Microsoft Tech Summit - 快速搭建一个聊天机器人" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"lijiarui"},"dateModified":"2018-10-21T00:00:00+00:00","datePublished":"2018-10-21T00:00:00+00:00","description":"这是我在2018微软技术暨生态大会 动手实验室的分享，2018微软技术暨生态大会10月24日在上海世博中心如约而至。 作为微软最负盛名的技术峰会，此次大会将带领参会者深入领略技术精髓，感受微软黑科技的魅力，探讨在云计算、物联网、移动互联网、大数据和人工智能的发展洪流中，如何洞察新技术与新变革，聚焦解决问题与创造价值，如何开启企业数字化转型之旅。","headline":"Microsoft Tech Summit - 快速搭建一个聊天机器人","image":"https://wechaty.js.org/assets/2018/microsoft-hol-chatbot.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2018/10/21/microsoft-tech-summit-chatbot-quick-started/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"lijiarui"},"url":"https://wechaty.js.org/2018/10/21/microsoft-tech-summit-chatbot-quick-started/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#event">event</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Microsoft Tech Summit - 快速搭建一个聊天机器人</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/lijiarui">
+                            <img class="rounded-circle" src="/assets/contributors/lijiarui/avatar-new.webp" alt="Jiarui LI (李佳芮)" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/lijiarui">Jiarui LI (李佳芮)</a> <span><a target="_blank" href="https://weibo.com/u/2175505900" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Oct 21, 2018 · <span class="reading-time">
+  
+  
+    1 min read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2018/microsoft-hol-chatbot.webp" alt="Microsoft Tech Summit - 快速搭建一个聊天机器人">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<p>这是我在<a href="https://mp.weixin.qq.com/s/Hm2tc_V4b3EKOlBx4PxEuA">2018微软技术暨生态大会</a> 动手实验室的分享，2018微软技术暨生态大会10月24日在上海世博中心如约而至。 作为微软最负盛名的技术峰会，此次大会将带领参会者深入领略技术精髓，感受微软黑科技的魅力，探讨在云计算、物联网、移动互联网、大数据和人工智能的发展洪流中，如何洞察新技术与新变革，聚焦解决问题与创造价值，如何开启企业数字化转型之旅。</p>
+
+<p>本次实验帮助开发者从实际业务场景出发，围绕微软Luis 和 Typescript 做实践课，让开发者轻松的做一个微信聊天机器人。另外，对于希望转变为人工智能的传统产品经理或传统工程师而言，可以帮助你快速了解行业背景并快速上手，对于技术决策者，可以在此阶段清楚地了解聊天机器人的局限性和发展。</p>
+
+<h2 id="luis-介绍">Luis 介绍</h2>
+
+<p>LUIS (Language Understanding Intelligent Service，<a href="https://www.luis.ai">https://www.luis.ai</a>) 是微软发布的面向开发者的自然语言语义理解模块开发服务。LUIS的使命是<strong>让非NLP专业的开发者能够轻松地创建和维护高质量的自然语言理解模型，并无缝对接到相关的智能应用当中</strong>。
+通过LUIS平台，非NLP专业的开发者可以轻松创建一个LUIS App，并通过标注所期望的输入(自然语言指令)和输出(意图和实体)来进一步“培养” 它。在整个开发过程中，开发者并不需要了解背后算法的细节，只需要清晰地定义自己需要让机器理解的用户意图和实体即可。LUIS App 可以是任何传统的应用，包括社交媒体应用，聊天机器人，实体机器人，车载以及支持语音的桌面程序应用。
+LUIS的开发流程更像是一个教学过程：开发者是老师，LUIS App是学生。老师通过不停地告知学生正确的语义解析结果来完成教学。一个好的教学过程是一个“训练+实践”的闭环：标注一定量的起始数据；训练得到语义理解模型；对模型进行必要的测试；发布模型并应用到真实用户场景；甄选应用日志中的语句；继续标注并更新模型。这个过程周而复始，通过不停地迭代开发，不停地改善理解模型，使其越来越接近人类的理解能力。</p>
+
+<p><img src="/assets/2018/microsoft-hol-luis.webp" alt="luis" /></p>
+
+<h2 id="实验目标">实验目标</h2>
+
+<ul>
+  <li>搭建一个LUIS 模型</li>
+  <li>使用wechaty 创建一个微信聊天机器人</li>
+  <li>将LUIS 模型整合进入微信机器人</li>
+</ul>
+
+<h2 id="系统要求">系统要求</h2>
+
+<ul>
+  <li>Ubuntu 18</li>
+  <li>Microsoft Visual Studio Code (VSCode)</li>
+  <li>Node (version &gt; 10.0)</li>
+  <li>Github 账号</li>
+  <li>Luis 账号</li>
+</ul>
+
+<h2 id="步骤">步骤</h2>
+
+<ol>
+  <li>安装Unbutun 18</li>
+  <li>安装 Node 和 Npm</li>
+  <li>安装Microsoft Visual Studio Code (VSCode)</li>
+  <li>安装Github</li>
+  <li>从Github 上clone 项目：<a href="https://github.com/lijiarui/microsoft-summit-chatbot-course">https://github.com/lijiarui/microsoft-summit-chatbot-course</a></li>
+</ol>
+
+<h2 id="实验">实验</h2>
+
+<ol>
+  <li>创建一个LUIS模型</li>
+  <li>创建一个微信机器人</li>
+  <li>将LUIS 模型整合到微信机器人中</li>
+</ol>
+
+<h2 id="实验1创建一个luis模型">实验1–创建一个LUIS模型</h2>
+
+<p>创建一个LUIS 模型可以分为3个步骤: 创建APP，训练模型，发布模型。下面将会进行详细的讲解：</p>
+
+<h3 id="任务1-创建app">任务1-创建APP</h3>
+
+<p>1.登陆 www.luis.ai  如果之前注册过就sign in, 注册过直接login 就可以了：</p>
+
+<p><img src="/assets/2018/microsoft-hol-luis-1.webp" alt="luis-1" /></p>
+
+<p>2.点击左上角的“Create New App” 创建一个新的应用</p>
+
+<p><img src="/assets/2018/microsoft-hol-luis-2.webp" alt="luis-2" /></p>
+
+<p>3.在弹框中，给你的LUIS模型起个名字，并设置描述，然后选一个应用环境，我们选择中文。然后点击“Done”</p>
+
+<p><img src="/assets/2018/microsoft-hol-luis-3.webp" alt="luis-3" /></p>
+
+<p>4.然后进去LUIS 模型的主页面，接下来去训练LUIS 模型。</p>
+
+<p><img src="/assets/2018/microsoft-hol-luis-4.webp" alt="luis-4" /></p>
+
+<h3 id="任务2-增加意图和实体">任务2-增加意图和实体</h3>
+
+<p>接下来，我们为我们的APP增加两个意图，意图表示用户希望执行的任务。定义一组意图，对应于用户希望在APP中执行的操作。</p>
+
+<p>1.点击‘Create new intent’ 创建一个 ‘BookFlight’ 的意图，并把这个意图命名为‘BookFlight’点击‘Done’</p>
+
+<p><img src="/assets/2018/microsoft-hol-luis-5.webp" alt="luis-5" /></p>
+
+<p><img src="/assets/2018/microsoft-hol-luis-6.webp" alt="luis-6" /></p>
+
+<p><img src="/assets/2018/microsoft-hol-luis-7.webp" alt="luis-7" /></p>
+
+<p>2.输入一个可能的订票话术，比如“帮我订一张去上海的机票”，然后回车：</p>
+
+<p><img src="/assets/2018/microsoft-hol-luis-8.webp" alt="luis-8" /></p>
+
+<p>3.推荐最少写5个类似的话术，你会发现这些话术会自动的被标注为BookFlight 的意图。</p>
+
+<p><img src="/assets/2018/microsoft-hol-luis-9.webp" alt="luis-9" /></p>
+
+<p>4.回到点击‘Intent’再添加一个 ‘GetWeather’ 的意图，像刚刚一样，也至少输入5个有表示天气的话术：</p>
+
+<p><img src="/assets/2018/microsoft-hol-luis-10.webp" alt="luis-10" />
+<img src="/assets/2018/microsoft-hol-luis-11.webp" alt="luis-11" /></p>
+
+<h4 id="定义实体entities">定义实体(entities)</h4>
+
+<p>你可以创建各种类别的实体。实体代表话术中有用的词语或者短语，他们将是完成任务的关键要素。实体和与之相关的意图对于APP 的任务执行是非常重要的。在我们这个订机票的例子中，“位置”,“日期”，“航空公司”，“舱位”都是非常重要的实体。</p>
+
+<p>实体有多种类型：</p>
+
+<ul>
+  <li>Simple： 通过机器学习的方法识别出来，是最简单的实体</li>
+  <li>Hierarchical: 通过机器学习的方法识别出来，根据上下文关系得到的实体，比如Location，根据上下文知道是ToLocation还是FromLocation. 他们共享一个实体集合，但是根据上下文被分配到不同的实体中。</li>
+  <li>Composite: 通过机器学习的方法识别出来，有多个实体组成，比如3张去上海的机票，可以是PlaneTicketOrder 的实体，由number 和ToLocation 组成</li>
+  <li>List: 是通过文本匹配的方法识别出来的，是一组封闭的词语。LUIS 不会为List 自动生成更多的值</li>
+  <li>Regex: 通过正则表达式识别出来的实体</li>
+  <li>Pattern.any: 是一种长度可变的占位符，在模板中使用，用来标出实体的起始位置和结束位置。比如搜索书籍： 谁写了{BookTitle}[?]</li>
+</ul>
+
+<p>1.点击‘Create new entity’ 创建新的实体.</p>
+
+<p>2.在弹框中将实体命名为‘Location’，选择实体类别为’Hierarchical’</p>
+
+<p>3.选择实体类别后，会自动跳出’Child name’,点击‘Add a child entity’增加两个Child name, 分为为’ToLocation’和 ‘FromLocation’</p>
+
+<p>4.最后，点击’Done’完成保存这个实体。</p>
+
+<p><img src="/assets/2018/microsoft-hol-luis-12.webp" alt="luis-12" /></p>
+
+<h4 id="使用预定义实体pre-build-entities">使用预定义实体(Pre-Build Entities)</h4>
+
+<p>接下来，我们增加一个预定义的时间实体。</p>
+
+<p>1.点击‘Add prebuild Entity’</p>
+
+<p><img src="/assets/2018/microsoft-hol-luis-13.webp" alt="luis-13" /></p>
+
+<p>2.预定义实体现在还不支持中文，我们可以选择’number’先来感受一下。</p>
+
+<p><img src="/assets/2018/microsoft-hol-luis-14.webp" alt="luis-14" /></p>
+
+<h3 id="任务3-训练模型">任务3-训练模型</h3>
+
+<p>我们定义了意图和实体以后，需要进行模型的训练。点击右上角的’Train’。当按钮由红色变为绿色以后，训练成功。为了让模型越来越好用，需要添加更多的标注好的意图和实体。</p>
+
+<p><img src="/assets/2018/microsoft-hol-luis-15.webp" alt="luis-15" /></p>
+
+<p>点击‘Publish’可以将这个App发布出去。最后就可以整合到微信机器人中。</p>
+
+<h2 id="实验2创建一个微信机器人">实验2–创建一个微信机器人</h2>
+
+<p>这一部分来展示如果快速搭建一个微信机器人</p>
+
+<h3 id="任务1-运行代码">任务1-运行代码</h3>
+
+<p>1.输入命令git clone <a href="https://github.com/lijiarui/microsoft-summit-chatbot-course.git">https://github.com/lijiarui/microsoft-summit-chatbot-course.git</a></p>
+
+<p><img src="/assets/2018/microsoft-hol-wechaty-1.webp" alt="wechaty-1" /></p>
+
+<p>2.进入目录microsoft-summit-chatbot-course， cd microsoft-summit-chatbot-course</p>
+
+<p>3.安装依赖包，运行npm install</p>
+
+<p><img src="/assets/2018/microsoft-hol-wechaty-2.webp" alt="wechaty-2" /></p>
+
+<h3 id="任务2-运行代码">任务2-运行代码</h3>
+
+<p>1.运行 npm run start</p>
+
+<p><img src="/assets/2018/microsoft-hol-wechaty-3.webp" alt="wechaty-3" /></p>
+
+<h2 id="实验3将luis-模型整合到微信机器人中">实验3–将LUIS 模型整合到微信机器人中</h2>
+
+<h3 id="任务1-发布luis版本">任务1-发布LUIS版本</h3>
+
+<p>1.点击LUIS的Publish获取APPID和KEY</p>
+
+<p><img src="/assets/2018/microsoft-hol-integrate-1.webp" alt="integrate-1" /></p>
+
+<p>2.发布成功后，可以看到绿色的成功提示，点击Refer to the list of endpoints切换到管理页面：</p>
+
+<p><img src="/assets/2018/microsoft-hol-integrate-2.webp" alt="integrate-2" /></p>
+
+<p>3.获取Authoring Key:</p>
+
+<p><img src="/assets/2018/microsoft-hol-integrate-3.webp" alt="integrate-3" /></p>
+
+<p>4.点击 Application Information, 获取APP ID</p>
+
+<p><img src="/assets/2018/microsoft-hol-integrate-4.webp" alt="integrate-4" /></p>
+
+<h3 id="任务2-将luis-restful-api-接入wechaty">任务2-将LUIS RESTFUL API 接入wechaty</h3>
+
+<p>1.安装官方的’luis-sdk’,并将获取的key 和 Application ID 填入：</p>
+
+<p><img src="/assets/2018/microsoft-hol-wechaty-4.webp" alt="wechaty-4" /></p>
+
+<p>2.根据已有的LUIS 配置写示例代码：</p>
+
+<p><img src="/assets/2018/microsoft-hol-wechaty-5.webp" alt="wechaty-5" /></p>
+
+<p>3.运行 npm run start：</p>
+
+<p><img src="/assets/2018/microsoft-hol-wechaty-6.webp" alt="wechaty-6" /></p>
+
+<p>用户发送，即可得到测试回复：</p>
+
+<p><img src="/assets/2018/microsoft-hol-demo.webp" alt="demo" /></p>
+
+<p>注意：
+由于时间关系，本次实验只是讲解了LUIS 的部分，LUIS获取的key 只是免费测试版本，后续需要和Azure 结合，获取到稳定的付费版本接口。</p>
+
+<blockquote>
+  <p>This post is also available in <a href="/2018/10/21/microsoft-tech-summit-chatbot-quick-started-en/">English</a>.</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#talk">talk</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/lijiarui">
+                            <img class="rounded-circle" src="/assets/contributors/lijiarui/avatar-new.webp" alt="Jiarui LI (李佳芮)" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/lijiarui">Jiarui LI (李佳芮)</a> <span><a target="_blank" href="https://weibo.com/u/2175505900" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Co-Creator of Wechaty; 句子互动创始人 & CEO，微软人工智能最具价值专家 (AI MVP)
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2018/10/21/microsoft-tech-summit-chatbot-quick-started-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2018/microsoft-hol-chatbot.webp">  Microsoft Tech Summit - Quickly Build a Chatbot</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2018/11/25/wechat-robot-can-do-anything-en/"> What Can a WeChat Bot Do?  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2018/11-25-wechat-robot-can-do-anything-en/kaiyuanshe.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

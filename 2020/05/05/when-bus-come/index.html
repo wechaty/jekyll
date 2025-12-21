@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Wechaty 实时公交查询 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Wechaty 实时公交查询 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Wechaty 实时公交查询" />
+<meta name="author" content="ershing" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="需求" />
+<meta property="og:description" content="需求" />
+<link rel="canonical" href="https://wechaty.js.org/2020/05/05/when-bus-come/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/05/05/when-bus-come/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/when-bus-come/teaser.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-05-05T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/when-bus-come/teaser.webp" />
+<meta property="twitter:title" content="Wechaty 实时公交查询" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"ershing"},"dateModified":"2020-05-05T00:00:00+00:00","datePublished":"2020-05-05T00:00:00+00:00","description":"需求","headline":"Wechaty 实时公交查询","image":"https://wechaty.js.org/assets/2020/when-bus-come/teaser.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/05/05/when-bus-come/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"ershing"},"url":"https://wechaty.js.org/2020/05/05/when-bus-come/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Wechaty 实时公交查询</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/ershing">
+                            <img class="rounded-circle" src="/assets/contributors/ershing/avatar.webp" alt="ershing" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/ershing">ershing</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">May 05, 2020 · <span class="reading-time">
+  
+  
+    4 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/when-bus-come/teaser.webp" alt="Wechaty 实时公交查询">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<h2 id="需求">需求</h2>
+
+<p>我们很多时候需要到某个公交站，但是不知道公交什么时候来，导致等来很久才到，浪费来太多的时间，如果可以提前知道车什么时候来，就可以准时出门，不用在车站等这么久的时间，特别这么炎热的天气。当然，已经有很多小程序可以做到这个查询的工作，这里的仓库也是用来广州公交行讯通小程序的接口，或许你觉得多此一举，但是我觉得这个只是其中一个小功能集成在某个机器人的问答交互功能当中，后面扩展起来还是有很多可以做的工作。</p>
+
+<h2 id="wechaty-和-puppet">Wechaty 和 Puppet</h2>
+
+<p><a href="https://github.com/wechaty/wechaty"><code class="language-plaintext highlighter-rouge">Wechaty</code></a> 提供了群组管理、收发消息等接口，能够方便地满足计划需求。</p>
+
+<p>由于 <code class="language-plaintext highlighter-rouge">Wechaty</code> 本身只是一个控制器，因此其对微信功能的执行需要依赖于微信客户端协议与服务器进行通信。<code class="language-plaintext highlighter-rouge">puppet</code> 就是这些协议的具体承载者，现在有基于 Web / iPad / Mac 等协议的多种实现。经过测试，首先排除了 Web 协议：由于腾讯的限制，近年新注册的微信账号都无法使用网页协议，而老账号又实在过于珍贵；接着，就决定使用了<code class="language-plaintext highlighter-rouge">wechaty-puppet-padplus</code>。</p>
+
+<h2 id="架构">架构</h2>
+
+<ul>
+  <li>目标：问答式交互，输入公交站名，返回对应的将要来的车辆和时间信息</li>
+  <li>方案：
+    <ol>
+      <li>使用 <code class="language-plaintext highlighter-rouge">Node.js</code> 开发，使用<code class="language-plaintext highlighter-rouge">wechaty/wechaty-puppet-padplus</code>等功能库；</li>
+      <li>抓取广州公交行讯通小程序的接口；</li>
+      <li>跟进接口参数，用户输入车站名后，调用相关接口，返回整理后的数据。</li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="实现">实现</h2>
+
+<h3 id="机器人登录扫码">机器人登录扫码</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    <span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">scan</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">qrcode</span><span class="p">,</span> <span class="nx">status</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if </span><span class="p">(</span><span class="nx">status</span> <span class="o">===</span> <span class="nx">ScanStatus</span><span class="p">.</span><span class="nx">Waiting</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">QrcodeTerminal</span><span class="p">.</span><span class="nf">generate</span><span class="p">(</span><span class="nx">qrcode</span><span class="p">,</span> <span class="p">{</span>
+                <span class="na">small</span><span class="p">:</span> <span class="kc">true</span>
+            <span class="p">})</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+
+</code></pre></div></div>
+
+<h3 id="接收消息并交给处理">接收消息并交给处理</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    <span class="nx">bot</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">msg</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">contact</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="k">from</span><span class="p">()</span>
+        <span class="kd">const</span> <span class="nx">busStation</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nf">text</span><span class="p">().</span><span class="nf">trim</span><span class="p">()</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="kd">const</span> <span class="nx">res</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">handler</span><span class="p">(</span><span class="nx">busStation</span><span class="p">)</span>
+            <span class="nf">botMsger</span><span class="p">(</span><span class="nx">contact</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">eMsg</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nf">botMsger</span><span class="p">(</span><span class="nx">contact</span><span class="p">,</span> <span class="nx">eMsg</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+
+   <span class="kd">function</span> <span class="nf">botMsger</span><span class="p">(</span><span class="nx">contact</span><span class="p">,</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
+       <span class="nx">contact</span><span class="p">.</span><span class="nf">say</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span>
+   <span class="p">}</span>
+
+</code></pre></div></div>
+
+<h3 id="调用接口处理获取数据">调用接口处理获取数据</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">retCode</span><span class="p">,</span> <span class="nx">retData</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">getBusStationId</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="nx">busStation</span><span class="p">,</span> <span class="na">requesttime</span><span class="p">:</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">floor</span><span class="p">(</span><span class="o">+</span><span class="k">new</span> <span class="nc">Date</span><span class="p">()</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">)</span> <span class="p">})</span>
+
+    <span class="k">if </span><span class="p">(</span><span class="nx">retCode</span> <span class="o">!==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nf">reject</span><span class="p">(</span><span class="dl">'</span><span class="s1">服务器异常，请稍后重试</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="na">bus</span><span class="p">:</span> <span class="p">{</span> <span class="nx">station</span> <span class="p">}</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">retData</span>
+    <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">station</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nf">reject</span><span class="p">(</span><span class="s2">`查询不到公交站：</span><span class="p">${</span><span class="nx">busStation</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="kd">const</span> <span class="nx">busStationId</span> <span class="o">=</span> <span class="nx">station</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">i</span>
+
+    <span class="kd">let</span> <span class="p">[</span><span class="nx">busAbout</span><span class="p">,</span> <span class="nx">busTime</span><span class="p">]</span> <span class="o">=</span> <span class="k">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nf">all</span><span class="p">([</span>
+        <span class="nf">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">getBusAbout</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">stationNameId</span><span class="p">:</span> <span class="nx">busStationId</span> <span class="p">}),</span>
+        <span class="nf">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">getBusTime</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">stationNameId</span><span class="p">:</span> <span class="nx">busStationId</span> <span class="p">}),</span>
+    <span class="p">])</span>
+
+    <span class="k">if </span><span class="p">(</span><span class="nx">busAbout</span><span class="p">.</span><span class="nx">retCode</span> <span class="o">!==</span> <span class="mi">0</span> <span class="o">||</span> <span class="nx">busTime</span><span class="p">.</span><span class="nx">retCode</span> <span class="o">!==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nf">reject</span><span class="p">(</span><span class="dl">'</span><span class="s1">服务器异常，请稍后重试</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">let</span> <span class="nx">idTime</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="nx">busTime</span><span class="p">.</span><span class="nx">retData</span><span class="p">.</span><span class="nf">forEach</span><span class="p">(</span><span class="nx">ele</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">idTime</span><span class="p">[</span><span class="nx">ele</span><span class="p">.</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">ele</span><span class="p">.</span><span class="nx">time</span>
+    <span class="p">})</span>
+
+    <span class="kd">let</span> <span class="nx">direcBus</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="nx">busAbout</span><span class="p">.</span><span class="nx">retData</span><span class="p">.</span><span class="nx">l</span><span class="p">.</span><span class="nf">forEach</span><span class="p">(</span><span class="nx">ele</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="p">{</span> <span class="nx">dn</span><span class="p">,</span> <span class="nx">rn</span><span class="p">,</span> <span class="nx">rsi</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">ele</span>
+        <span class="kd">let</span> <span class="nx">terminal</span> <span class="o">=</span> <span class="nx">dn</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">-</span><span class="dl">'</span><span class="p">).</span><span class="nf">pop</span><span class="p">()</span>
+        <span class="kd">let</span> <span class="nx">ter</span> <span class="o">=</span> <span class="nx">direcBus</span><span class="p">[</span><span class="nx">terminal</span><span class="p">]</span>
+
+        <span class="kd">let</span> <span class="nx">itemTime</span> <span class="o">=</span> <span class="nx">idTime</span><span class="p">[</span><span class="nx">rsi</span><span class="p">]</span>
+        <span class="k">if </span><span class="p">(</span><span class="o">~</span><span class="nx">itemTime</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">let</span> <span class="nx">addItem</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="na">busId</span><span class="p">:</span> <span class="nx">rsi</span><span class="p">,</span>
+                <span class="na">name</span><span class="p">:</span> <span class="nx">rn</span><span class="p">,</span>
+                <span class="na">time</span><span class="p">:</span> <span class="nx">itemTime</span>
+            <span class="p">}</span>
+            <span class="k">if </span><span class="p">(</span><span class="nx">ter</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">ter</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">addItem</span><span class="p">)</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">direcBus</span><span class="p">[</span><span class="nx">terminal</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nx">addItem</span><span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+
+</code></pre></div></div>
+
+<h3 id="处理数据返回">处理数据返回</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    <span class="kd">let</span> <span class="nx">resText</span> <span class="o">=</span> <span class="s2">`公交车站：</span><span class="p">${</span><span class="nx">busStation</span><span class="p">}</span><span class="s2">\n`</span>
+    <span class="nb">Object</span><span class="p">.</span><span class="nf">keys</span><span class="p">(</span><span class="nx">direcBus</span><span class="p">).</span><span class="nf">forEach</span><span class="p">(</span><span class="nx">direct</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">busLine</span> <span class="o">=</span> <span class="nx">direcBus</span><span class="p">[</span><span class="nx">direct</span><span class="p">]</span>
+        <span class="nx">busLine</span><span class="p">.</span><span class="nf">sort</span><span class="p">((</span><span class="nx">pre</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">pre</span><span class="p">.</span><span class="nx">time</span> <span class="o">-</span> <span class="nx">next</span><span class="p">.</span><span class="nx">time</span><span class="p">)</span>
+        <span class="nx">resText</span> <span class="o">+=</span> <span class="s2">`\n开往：</span><span class="p">${</span><span class="nx">direct</span><span class="p">}</span><span class="s2">\n`</span>
+        <span class="nx">busLine</span><span class="p">.</span><span class="nf">forEach</span><span class="p">(</span><span class="nx">el</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">resText</span> <span class="o">+=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">el</span><span class="p">.</span><span class="nx">time</span><span class="p">}</span><span class="s2">分钟后-&gt;</span><span class="p">${</span><span class="nx">el</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">\n`</span>
+        <span class="p">})</span>
+    <span class="p">})</span>
+
+</code></pre></div></div>
+
+<h2 id="实际效果">实际效果</h2>
+
+<p>输入<code class="language-plaintext highlighter-rouge">北京路</code>，返回如下：</p>
+
+<p>公交车站：北京路</p>
+
+<p>开往：昌岗路总站
+5分钟后-&gt;10路</p>
+
+<p>开往：汾水小区总站
+2分钟后-&gt;183路</p>
+
+<p>开往：芳村花园南门总站
+9分钟后-&gt;1路</p>
+
+<p>开往：黄沙总站
+2分钟后-&gt;219路</p>
+
+<p>开往：如意坊总站
+3分钟后-&gt;3路</p>
+
+<p>开往：恒宝广场总站
+3分钟后-&gt;541路</p>
+
+<p>开往：纸厂总站
+3分钟后-&gt;544路</p>
+
+<p>开往：泮塘总站
+10分钟后-&gt;66路</p>
+
+<h2 id="致谢">致谢</h2>
+
+<p>感谢 <code class="language-plaintext highlighter-rouge">Wechaty</code> 开源项目及 <code class="language-plaintext highlighter-rouge">JuziBot</code> 公司提供的 token，为开发者带来极大便利！</p>
+
+<blockquote>
+  <p>作者: <a href="https://github.com/ershing">ershing</a> Node.js developer
+Code: <a href="https://github.com/ershing/when-bus-come">Github</a></p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#padplus">padplus</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#travel">travel</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/ershing">
+                            <img class="rounded-circle" src="/assets/contributors/ershing/avatar.webp" alt="ershing" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/ershing">ershing</a> </h5>
+						Node.js developer
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/04/30/wechaty-chat-room-manager/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2020/room-manager/bio-photo.webp">  微信群管辅助</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/05/09/wechaty-multi-language-developers-meetup/"> Wechaty Multi-language Developers Meetup  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/05-wechaty-multi-language-developers-meetup/000.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

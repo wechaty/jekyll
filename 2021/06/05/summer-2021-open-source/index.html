@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Open Source 大咖说开源--wechaty的开源之路 | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Open Source 大咖说开源–wechaty的开源之路 | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Open Source 大咖说开源–wechaty的开源之路" />
+<meta name="author" content="windmemory" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="自我介绍" />
+<meta property="og:description" content="自我介绍" />
+<link rel="canonical" href="https://wechaty.js.org/2021/06/05/summer-2021-open-source/" />
+<meta property="og:url" content="https://wechaty.js.org/2021/06/05/summer-2021-open-source/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2021/06-summer-2021-open-source-en/001.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-06-05T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2021/06-summer-2021-open-source-en/001.webp" />
+<meta property="twitter:title" content="Open Source 大咖说开源–wechaty的开源之路" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"windmemory"},"dateModified":"2021-06-05T00:00:00+00:00","datePublished":"2021-06-05T00:00:00+00:00","description":"自我介绍","headline":"Open Source 大咖说开源–wechaty的开源之路","image":"https://wechaty.js.org/assets/2021/06-summer-2021-open-source-en/001.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2021/06/05/summer-2021-open-source/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"windmemory"},"url":"https://wechaty.js.org/2021/06/05/summer-2021-open-source/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#announcement">announcement</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Open Source 大咖说开源--wechaty的开源之路</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/windmemory">
+                            <img class="rounded-circle" src="/assets/contributors/windmemory/avatar.webp" alt="Yuan GAO (高原)" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/windmemory">Yuan GAO (高原)</a> <span><a target="_blank" href="https://www.weibo.com/u/2166731327" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Jun 05, 2021 · <span class="reading-time">
+  
+  
+    2 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2021/06-summer-2021-open-source-en/001.webp" alt="Open Source 大咖说开源--wechaty的开源之路">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<h2 id="自我介绍">自我介绍</h2>
+
+<p>高原：句子互动联合创始人&amp;CTO，开源项目Wechaty commiter，前亚马逊，Expedia工程师，Bot Friday联合发起人。</p>
+
+<p><img src="/assets/2021/06-summer-2021-open-source-en/002.webp" alt="intro" /></p>
+
+<h2 id="wechaty开源之路直播纪实">Wechaty开源之路直播纪实</h2>
+
+<div style="
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe src="https://www.youtube.com/embed/0UMLAA1Pa-s" allowfullscreen="" webkitallowfullscreen="" frameborder="0" style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    ">
+</iframe>
+
+</div>
+
+<h3 id="agendas议程">Agendas议程</h3>
+
+<ul>
+  <li><a href="https://youtu.be/0UMLAA1Pa-s?t=293">0:04:52</a> 自我介绍</li>
+  <li><a href="https://youtu.be/0UMLAA1Pa-s?t=353">0:05:55</a> 什么是wechaty</li>
+  <li><a href="https://youtu.be/0UMLAA1Pa-s?t=778">0:12:58</a> 如何使用wechaty</li>
+  <li><a href="https://youtu.be/0UMLAA1Pa-s?t=1338">0:22:18</a> wechaty的开源之路</li>
+  <li><a href="https://youtu.be/0UMLAA1Pa-s?t=2379">0:39:39</a> 基于wechaty的开源项目</li>
+</ul>
+
+<h2 id="1-什么是wechaty">1. 什么是Wechaty</h2>
+
+<ul>
+  <li>
+    <p>官方介绍：
+A Conversational RPA SDK for Wechat which can help you create a bot in 6 lines of javascript, with cross-platform support including Linux, Windows, Darwin(OSX/Mac) and Docker.
+也就是帮助聊天机器人开发者快速搭建聊天机器人的框架，并且支持多个系统平台。</p>
+  </li>
+  <li>
+    <p>Wechaty的使命：
+给聊天机器人的开发者提供一个最好的开源sdk，不断优化sdk，给开发者最好的体验。帮助开发者更多关注于逻辑应用，而不是与平台的底部对接上，只需关乎自己写上层应用的代码就可以了。</p>
+  </li>
+  <li>
+    <p>开发者们的评价：
+腾讯的软件工程师，著名小程序vp框架的作者。在管理社区时用到了wechaty。并评价：”Wechaty is a great solution, I believe there would be much more users recognize it.”
+谷歌工程师，好室友项目的创始人，创建了帮助留学生找房的平台，所有交互在微信群内，基于wechaty搭建了平台，并服务了5000左右的活跃用户。他评价：”太好用，好用的想哭”。</p>
+  </li>
+  <li>
+    <p>Wechaty越来越受欢迎，从2016年的330star到现在的10000+star很难得，因为在GitHub上超过10000star的并不多。开发者遍布全球各地，来自不同的互联网公司：微软、腾讯、谷歌、阿里巴巴、百度等等。Contributor来自各个大厂的开发者，在使用wechaty时为我们贡献了代码，Wechaty已经被854个开源项目引用了，了解到还有许多非开源项目也在使用wechaty，真正使用的数量庞大。</p>
+  </li>
+</ul>
+
+<h2 id="2-怎样使用wechaty">2. 怎样使用Wechaty</h2>
+
+<ul>
+  <li>用typescript举例子：</li>
+</ul>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="s">import{Wechaty} from 'wechaty';</span>
+<span class="s">import QRCodeTerminal from 'qrcode-terminal';</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<ul>
+  <li>引入wechaty和二维码的包</li>
+</ul>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="s">const bot = new Wechaty({ name</span><span class="err">:</span> <span class="s1">'</span><span class="s">my-bot'</span> <span class="err">}</span><span class="s">)</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<ul>
+  <li>创建新的bot并给他命名，加入：登陆事件，扫码事件（用到二维码的包），message的信息（在bot上收到message的情况）</li>
+</ul>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="s">bot</span>
+<span class="s">on('login',user =&gt; console.log(`Login</span><span class="err">:</span> <span class="s">${user}`))</span>
+<span class="s">on('scan',qrcode =&gt; QRCodeTerminal.generate(qrcode, { small</span><span class="err">:</span> <span class="kc">true</span><span class="s"> }))</span>
+<span class="s">on('message', message =&gt; console.log(`Message</span><span class="err">:</span> <span class="s">${message}`))</span>
+<span class="s">start()</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<ul>
+  <li>六行代码实现聊天机器人</li>
+</ul>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="s">const bot = new Wechaty({ name</span><span class="err">:</span> <span class="s1">'</span><span class="s">my-bot'</span> <span class="err">}</span><span class="s">);</span>
+<span class="s">bot</span>
+<span class="s">on('login',user =&gt; console.log(`Login</span><span class="err">:</span> <span class="s">${user}`))</span>
+<span class="s">on('scan',qrcode =&gt; QRCodeTerminal.generate(qrcode, { small</span><span class="err">:</span> <span class="kc">true</span><span class="s"> }))</span>
+<span class="s">on('message', message =&gt; console.log(`Message</span><span class="err">:</span> <span class="s">${message}`))</span>
+<span class="s">start()</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<ul>
+  <li>一个简单的叮咚的机器人：有人说叮，机器人会说咚</li>
+</ul>
+
+<p>大家可以去实现自己想要的任何逻辑，进行不同操作，获取消息后，对消息做不同的指令，做自己想要的逻辑，感兴趣的可以自己下载，随意玩一玩。</p>
+
+<h2 id="3-wechaty的开源之路">3. wechaty的开源之路</h2>
+
+<p>大家应该知道怎么用了，现在开始讲一讲开源之路上面经历了哪些事情。</p>
+
+<p>Wechaty始于chatbot爱好者：李卓桓，他是一个很懒又聪明的人，在2016年，微信还没有500人的上限，他的微信里有12859个联系人，数百个百人群，有1000+未读消息，而他会写程序会开源，希望自动化处理微信里的消息，过滤不必要的消息，抽取筛选重要信息并处理。</p>
+
+<ul>
+  <li>2016年的wechaty:支持微信、Web接入，当时只有300star。</li>
+</ul>
+
+<p>到了2018年，微信网页版限制登录，一大部分用户无法使用，社区出现非网页版接入方案；为了开发者无缝切换方案，运行稳定，提升效率，实施了新的策略，实现方式和代码都不同，对wechaty进行了一次重大的重塑，引入Puppet概念，puppet是自动化测试的框架，相当于一个适配器。</p>
+
+<p><img src="/assets/2021/06-summer-2021-open-source-en/009.webp" alt="intro" /></p>
+
+<ul>
+  <li>
+    <p>绿色部分：为上层，是开发者直接接触到的部分，为不同的类，像刚刚例子中用到的，都是开发者在写业务逻辑时需要频繁调用使用的。</p>
+  </li>
+  <li>
+    <p>红色部分（puppet）：抽象的概念定义好了与wechaty对接的抽象接口，下面的实现需要按照要求去实现，只要底层实现符合标准，就会无缝的对接到wechaty上面。底层实现会对接到不同的平台上，去做数据的交互，再提交到上层的wechaty上面。</p>
+  </li>
+  <li>
+    <p>Puppet巨大的好处：不改动任何业务逻辑代码，切换环境变量即可切换底层实现；让开发者无需关注底层接入实现，只关心自己的业务逻辑；社区里不同的底层实现可以无缝交付到开发者手里，为后续的更多IM实现奠定了坚实的基础；就有更多的开发者愿意做底层接入，与上层开发者有更好的配合。</p>
+  </li>
+  <li>
+    <p>2019年，有趣的wechaty项目开始大量的出现。</p>
+  </li>
+</ul>
+
+<p>微信上的讨论无法在邮件列表中存档，也无法通过永久地址进行访问特定讨论内容，交流讨论内容多基于中文，对国际开发者不友好，阻碍了跨越国界的理解和互动，为了解决以上问题而出现了OSS.CHAT，OSS.CHAT的功能是：当用户在 GitHub 上发布 issue 或者评论 issue 的时候，对应的微信群内会收到消息；群主引导用户将重要信息在 GitHub 的 issue 中进行回复讨论，正常群内闲聊内容在群中讨论；发布的中文issue 会被自动翻译成英文。
+大家若感兴趣，加入方式如下：</p>
+
+<p><a href="https://youtu.be/HNksCmm_pvY">Getting Started Tutorial (video)</a></p>
+
+<p><a href="https://github.com/kaiyuanshe/osschat">GitHub Repo</a></p>
+
+<p><a href="https://shimo.im/docs/wGHydDxvWGjWKgDK">Community Meeting Notes</a></p>
+
+<p>2020年，加入 2020 开源软件供应链点亮计划，极大程度的扩展了 Wechaty 支持的 IM 接入数量，多语言版本的 Wechaty，更多非 Javascript 语言的开发者涌入社区Wechaty 支持 Plugin 系统，写一份代码，可以在7个不同的主流平台上运行，只需要切换一下环境变量就可以。</p>
+
+<p>2021年，参加了 Google Season of Docs，加入 2021 开源软件供应链点亮计划，Wechaty 主项目的 Star 数突破一万，网页版重新回归接入wechaty，更多新的有意思的IM的接入推进中。有很多来自全球各地的typewriter帮我们项目来优化我们的文档，目前还在推进中，大概有10个左右的typewriter在写。</p>
+
+<p>终点和目标
+我们已经在一定程度上实现了我们的使命，现在的开发者已经可以很大程度上的只关注业务上的实现了，不必关注底层的实现，wechaty不敢说是做的最好的，但从开发者的反馈来看，我们已经是很成功的项目。</p>
+
+<h2 id="4-基于wechaty的开源项目">4. 基于wechaty的开源项目</h2>
+
+<h3 id="算卦机器人-httpswechatyjsorg20200628build-divination-yibot">算卦机器人 <a href="https://wechaty.js.org/2020/06/28/build-divination-yibot/">https://wechaty.js.org/2020/06/28/build-divination-yibot/</a></h3>
+
+<p><img src="/assets/2021/06-summer-2021-open-source-en/010.webp" alt="intro" /></p>
+
+<h3 id="诗歌搜索机器人-httpswechatyjsorg20200707wechat-poem-robot">诗歌搜索机器人 <a href="https://wechaty.js.org/2020/07/07/wechat-poem-robot/">https://wechaty.js.org/2020/07/07/wechat-poem-robot/</a></h3>
+
+<p><img src="/assets/2021/06-summer-2021-open-source-en/011.webp" alt="intro" /></p>
+
+<h3 id="聚会娱乐机器人-httpswechatyjsorg20200606wechaty-game-bot">聚会娱乐机器人 <a href="https://wechaty.js.org/2020/06/06/wechaty-game-bot/">https://wechaty.js.org/2020/06/06/wechaty-game-bot/</a></h3>
+
+<p><img src="/assets/2021/06-summer-2021-open-source-en/012.webp" alt="intro" /></p>
+
+<h3 id="外卖机器人-httpswechatyjsorg20191223wechaty-north-america-ricepo">外卖机器人 <a href="https://wechaty.js.org/2019/12/23/wechaty-north-america-ricepo/">https://wechaty.js.org/2019/12/23/wechaty-north-america-ricepo/</a></h3>
+
+<p><img src="/assets/2021/06-summer-2021-open-source-en/013.webp" alt="intro" /></p>
+
+<h3 id="中文学习助理-httpswechatyjsorg20200619archyshuo-anki-assistant">中文学习助理 <a href="https://wechaty.js.org/2020/06/19/archyshuo-anki-assistant/">https://wechaty.js.org/2020/06/19/archyshuo-anki-assistant/</a></h3>
+
+<p><img src="/assets/2021/06-summer-2021-open-source-en/014.webp" alt="intro" /></p>
+
+<h3 id="奇绩创坛机器人-httpswechatyjsorg20200808qijibot-sales-automation">奇绩创坛机器人 <a href="https://wechaty.js.org/2020/08/08/qijibot-sales-automation/">https://wechaty.js.org/2020/08/08/qijibot-sales-automation/</a></h3>
+
+<p><img src="/assets/2021/06-summer-2021-open-source-en/015.webp" alt="intro" /></p>
+
+<h3 id="工作日报机器人-httpswechatyjsorg20200711wechaty-daily-report">工作日报机器人 <a href="https://wechaty.js.org/2020/07/11/wechaty-daily-report/">https://wechaty.js.org/2020/07/11/wechaty-daily-report/</a></h3>
+
+<p><img src="/assets/2021/06-summer-2021-open-source-en/016.webp" alt="intro" /></p>
+
+<p>若感兴趣，还有更多：<a href="https://wechaty.js.org/blog/">https://wechaty.js.org/blog/</a></p>
+
+<p>最后，欢迎大家加入wechaty的社区，项目、文档、博客的地址。</p>
+
+<p>项目：<a href="https://github.com/wechaty/wechaty">https://github.com/wechaty/wechaty</a>
+文档：<a href="https://wechaty.js.org/v/zh/">https://wechaty.js.org/v/zh/</a>
+博客：<a href="https://wechaty.github.io/">https://wechaty.github.io/</a></p>
+
+<h2 id="欢迎正在阅读的你参与其中">欢迎正在阅读的你参与其中</h2>
+
+<p>如果有人有兴趣一起加入，一起来在企业级的scrm软件上面为营销过程提效的话，欢迎大家联系我，我们一起聊一聊能否一起合作。
+<img src="/assets/2021/06-summer-2021-open-source-en/008.webp" alt="intro" /></p>
+
+<blockquote>
+  <p>作者:<a href="https://github.com/windmemory">windmemory</a></p>
+</blockquote>
+
+<hr />
+
+<blockquote>
+  <p>This post is also available in <a href="/2021/06/05/summer-2021-open-source-en/">English</a>.</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#summer-of-wechaty">summer-of-wechaty</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#summer-2021">summer-2021</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#talk">talk</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#news">news</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#meetup">meetup</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#featured">featured</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ospp">ospp</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ospp-admin">ospp-admin</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/windmemory">
+                            <img class="rounded-circle" src="/assets/contributors/windmemory/avatar.webp" alt="Yuan GAO (高原)" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/windmemory">Yuan GAO (高原)</a> <span><a target="_blank" href="https://www.weibo.com/u/2166731327" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Committer of Wechaty. Author of several wechaty-puppets. Co-founder & CTO of JuziBot
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2021/06/05/summer-2021-open-source-en/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2021/06-summer-2021-open-source-en/001.webp">  Open Source Leaders Talk - Wechaty's Open Source Journey</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2021/06/06/gsod-2021-third-meeting/"> GSoD'21 Third Meeting  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2021/06-gsod-2021-third-meeting/gsod-meeting-teasor.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

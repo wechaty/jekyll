@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Sending and Receiving WeChat Messages Using [Matrix] | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Sending and Receiving WeChat Messages Using [Matrix] | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Sending and Receiving WeChat Messages Using [Matrix]" />
+<meta name="author" content="cubesky" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This post is also available in Chinese" />
+<meta property="og:description" content="This post is also available in Chinese" />
+<link rel="canonical" href="https://wechaty.js.org/2020/03/01/matrix-wechat-bridge-en/" />
+<meta property="og:url" content="https://wechaty.js.org/2020/03/01/matrix-wechat-bridge-en/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2020/matrix-wechaty/2020-03-matrix-appservice-wechaty.webp" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-03-01T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://wechaty.js.org/assets/2020/matrix-wechaty/2020-03-matrix-appservice-wechaty.webp" />
+<meta property="twitter:title" content="Sending and Receiving WeChat Messages Using [Matrix]" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"cubesky"},"dateModified":"2020-03-01T00:00:00+00:00","datePublished":"2020-03-01T00:00:00+00:00","description":"This post is also available in Chinese","headline":"Sending and Receiving WeChat Messages Using [Matrix]","image":"https://wechaty.js.org/assets/2020/matrix-wechaty/2020-03-matrix-appservice-wechaty.webp","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2020/03/01/matrix-wechat-bridge-en/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"cubesky"},"url":"https://wechaty.js.org/2020/03/01/matrix-wechat-bridge-en/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#tutorial">tutorial</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Sending and Receiving WeChat Messages Using [Matrix]</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/cubesky">
+                            <img class="rounded-circle" src="/assets/contributors/cubesky/avatar.webp" alt="立音" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/cubesky">立音</a> <span><a target="_blank" href="" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Mar 01, 2020 · <span class="reading-time">
+  
+  
+    8 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2020/matrix-wechaty/2020-03-matrix-appservice-wechaty.webp" alt="Sending and Receiving WeChat Messages Using [Matrix]">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<blockquote>
+  <p>This post is also available in <a href="/2020/03/01/matrix-wechat-bridge/">Chinese</a></p>
+</blockquote>
+
+<p>Everyone around me knows I really dislike WeChat—it’s bloated, slow, has low openness, and is extremely power-hungry. So naturally, I exercised my ability to cripple rogue software by completely disabling WeChat’s background processes. As a result, people around me always say they often can’t find me on WeChat. Of course—without background processes, it would be strange if they could find me in real-time.</p>
+
+<p>Therefore, using other chat software to relay WeChat messages became very important. Previously, I used EH Forwarder Bot to forward WeChat messages to Telegram. After using it for a while, I found it rather inconvenient. After logging in, all messages were sent to you by a Bot account. Moreover, if you wanted to separately connect a WeChat group, you had to create a group yourself, invite the Bot, and then select the connection. Also, due to connection issues with the WeChat protocol, there were often situations where messages suddenly couldn’t be received or connections would suddenly drop. So I eventually stopped using EH Forwarder Bot. (Of course, also because I bought a second phone at that time…)</p>
+
+<p>Then this year, for various reasons, my friend and I each set up our own Matrix servers. I discovered a feature called Bridge on the official website, which essentially allows users and groups from other chat protocols to join Matrix as virtual users and Portal groups, as if they were originally Matrix users.</p>
+
+<p>As an experiment, I first set up a Telegram Bridge to connect my Telegram account. The connection was successful, and I could receive messages normally and reply. However, because my Telegram message volume was too large, my server often responded slowly, and I eventually had to close the Telegram Bridge.</p>
+
+<p>At the same time, I saw a Bridge called Wechaty in the Bridge introduction, developed by <a href="https://github.com/huan">Huan</a>. Since my WeChat message volume wasn’t that high, I wanted to give it a try.</p>
+
+<h2 id="installing-nodejs">Installing NodeJS</h2>
+
+<p>Actually, installing NodeJS can be easily found by searching, so I’ll keep it brief. I used a domestic VPS with Debian Stable installed as the server running Wechaty to avoid being banned due to WeChat remote login. However, since Wechaty works best with NodeJS v10, and because installing via official sources places some Node components in certain fixed system directories, some Node packages that call recompilation commands may cause permission issues leading to failures, I recommend using nvm to install NodeJS.</p>
+
+<p>Installing NVM is very simple—just run:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-o-</span> https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
+</code></pre></div></div>
+
+<p>Wait for the installation to complete.</p>
+
+<p>After NVM is installed, enter:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nvm <span class="nb">install </span>v10.18.0
+</code></pre></div></div>
+
+<p>This completes the installation and configuration of NodeJS v10.18.0.</p>
+
+<h2 id="using-yarn">Using Yarn</h2>
+
+<p>Although the README for <a href="https://github.com/wechaty/matrix-appservice-wechaty">matrix-appservice-wechaty</a> states to install using <code class="language-plaintext highlighter-rouge">npm install -g matrix-appservice-wechaty</code>, during my installation process, I repeatedly encountered failures when executing node-pre-gyp while installing grpc. After extensive searching, I found that using the Yarn package manager can quickly solve this problem, so let’s install Yarn first.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">-g</span> yarn
+</code></pre></div></div>
+
+<p>Then install matrix-appservice-wechaty via yarn. Note that since the version is currently being rapidly updated to fix bugs, I recommend installing the next version:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yarn global add matrix-appservice-wechaty@next
+</code></pre></div></div>
+
+<h2 id="installing-the-required-puppet">Installing the Required Puppet</h2>
+
+<p>In the matrix-appservice-wechaty program, we need to define a Puppet to indicate which WeChat backend this AppService should use for communication. Currently available backends include <code class="language-plaintext highlighter-rouge">Puppeteer</code>, <code class="language-plaintext highlighter-rouge">Padplus</code>, <code class="language-plaintext highlighter-rouge">Macpro</code>, <code class="language-plaintext highlighter-rouge">Mock</code>, and <code class="language-plaintext highlighter-rouge">Wechat4u</code>. Among them, <code class="language-plaintext highlighter-rouge">Puppeteer</code> and <code class="language-plaintext highlighter-rouge">Wechat4u</code> are based on the Web protocol, <code class="language-plaintext highlighter-rouge">Padplus</code> is based on the iPad WeChat protocol, and <code class="language-plaintext highlighter-rouge">Macpro</code> is based on the MacOS WeChat protocol. After selecting the appropriate protocol, use the following command to install:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yarn global add wechaty-puppet-backend-name
+</code></pre></div></div>
+
+<blockquote>
+  <p>Note: The backend name is all lowercase, such as <code class="language-plaintext highlighter-rouge">wechaty-puppet-wechat4u</code>
+Note 2: Some backends are paid services. Please check the deployment information for each backend.</p>
+</blockquote>
+
+<p>Currently, the next version of appservice requires the next version of PadPlus when using PadPlus as the backend: <code class="language-plaintext highlighter-rouge">wechaty-puppet-padplus@next</code></p>
+
+<h2 id="creating-the-configuration-file">Creating the Configuration File</h2>
+
+<p>First copy <a href="https://github.com/wechaty/matrix-appservice-wechaty/blob/master/config/config.sample.yaml">config.sample.yaml</a> to config.yaml. I recommend creating a separate folder for it, making it convenient to put all data files in this one folder later.</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">domain</span><span class="pi">:</span> <span class="s">chatie.io</span>
+<span class="na">homeserverUrl</span><span class="pi">:</span> <span class="s">https://matrix.chatie.io</span>
+<span class="na">registration</span><span class="pi">:</span> <span class="s">wechaty-registration.yaml</span>
+</code></pre></div></div>
+
+<p>Replace aka.cn in the example with your Matrix Synapse server address. Replace homeserverUrl with your Synapse server endpoint address. Then run the command to create the registration file.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">APP_SERVICE_ENDPOINT</span><span class="o">=</span><span class="s1">'http://localhost:8788'</span>
+
+matrix-appservice-wechaty <span class="se">\</span>
+  <span class="nt">--config</span>  config.yaml <span class="se">\</span>
+  <span class="nt">--url</span>     <span class="s2">"</span><span class="nv">$APP_SERVICE_ENDPOINT</span><span class="s2">"</span> <span class="se">\</span>
+  <span class="nt">--generate-registration</span>
+</code></pre></div></div>
+
+<p>Note: If your Synapse server and Wechaty server are not the same server, you need to set the APP_SERVICE_ENDPOINT address to the Wechaty server address, and also pay attention to firewall port opening.</p>
+
+<blockquote>
+  <p>Note: If your server is on a domestic VPS in China, please be aware of filing requirements. If not filed, Matrix server connections may be blocked by your VPS service provider.</p>
+</blockquote>
+
+<p>After running the above command, a file named <code class="language-plaintext highlighter-rouge">wechaty-registration.yaml</code> will be generated. Copy it to your Synapse server.</p>
+
+<p>Edit Synapse’s <code class="language-plaintext highlighter-rouge">homeserver.yaml</code> file, add the path to <code class="language-plaintext highlighter-rouge">wechaty-registration.yaml</code> in the <code class="language-plaintext highlighter-rouge">app_service_config_files</code> item, save and restart the Synapse server.</p>
+
+<blockquote>
+  <p>Note: Each time you run <code class="language-plaintext highlighter-rouge">--generate-registration</code>, you need to recopy and restart the Synapse server.</p>
+</blockquote>
+
+<h2 id="starting-to-run">Starting to Run</h2>
+
+<p>Generally speaking, simply running the following command in the directory with <code class="language-plaintext highlighter-rouge">config.yaml</code> and <code class="language-plaintext highlighter-rouge">wechaty-registration.yaml</code> should work.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">WECHATY_PUPPET</span><span class="o">=</span>wechaty-puppet-backend-name
+
+matrix-appservice-wechaty <span class="se">\</span>
+  <span class="nt">--config</span>  config.yaml <span class="se">\</span>
+  <span class="nt">--file</span>    wechaty-registration.yaml
+</code></pre></div></div>
+
+<p>However, note that if you use paid or Token-required Puppet backends like PadPlus, you also need to export the corresponding variables, such as <code class="language-plaintext highlighter-rouge">export WECHATY_PUPPET_PADPLUS_TOKEN=xxxxxxxxxxxxxxxxxxxxx</code></p>
+
+<p>I created a start.sh for convenience:</p>
+
+<blockquote>
+  <p>Note: padplus version requires additionally installing <code class="language-plaintext highlighter-rouge">qrcode-terminal</code> or errors will occur.</p>
+</blockquote>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<span class="nb">.</span> /home/user/.nvm/nvm.sh
+<span class="nb">export </span><span class="nv">WECHATY_PUPPET</span><span class="o">=</span>wechaty-puppet-backend-name
+matrix-appservice-wechaty <span class="se">\</span>
+  <span class="nt">--config</span>  config.yaml <span class="se">\</span>
+  <span class="nt">--file</span>    wechaty-registration.yaml
+</code></pre></div></div>
+
+<blockquote>
+  <p>Note: Replace user with your username</p>
+</blockquote>
+
+<p>chmod +x /path/to/config/start.sh</p>
+
+<p>You can also create a systemd configuration for auto-start (if your Wechaty and Synapse are not on the same server, don’t add the <code class="language-plaintext highlighter-rouge">After</code> line):</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>Unit]
+<span class="nv">Description</span><span class="o">=</span>Matrix Bridge Wechaty
+<span class="nv">After</span><span class="o">=</span>matrix-synapse.service
+
+<span class="o">[</span>Service]
+<span class="nv">Type</span><span class="o">=</span>simple
+<span class="nv">WorkingDirectory</span><span class="o">=</span>/path/to/config/
+<span class="nv">ExecStart</span><span class="o">=</span>/path/to/config/start.sh
+<span class="nv">Restart</span><span class="o">=</span>on-abort
+
+<span class="o">[</span>Install]
+<span class="nv">WantedBy</span><span class="o">=</span>multi-user.target
+</code></pre></div></div>
+
+<p>Execute <code class="language-plaintext highlighter-rouge">systemctl daemon-reload</code>.</p>
+
+<p>Then you can use the <code class="language-plaintext highlighter-rouge">systemctl enable</code> command and <code class="language-plaintext highlighter-rouge">systemctl start</code> command to start the Wechaty Matrix Bridge.</p>
+
+<p>I only recommend using systemctl to start after debugging is complete and it can run successfully.</p>
+
+<h2 id="lets-go">Let’s Go</h2>
+
+<p>Come to your Matrix client and initiate a <strong>private chat</strong> with <code class="language-plaintext highlighter-rouge">@wechaty:your-server</code>. After the Bot joins, it should prompt:</p>
+
+<pre><code class="language-log">This room has been registered as your bridge management/status room.
+</code></pre>
+
+<p>After seeing this prompt, enter <code class="language-plaintext highlighter-rouge">!login</code>. When using it for the first time, the Bot should prompt:</p>
+
+<pre><code class="language-log">You are not enable matrix-appservice-wechaty yet.
+</code></pre>
+
+<p>It will immediately prompt <code class="language-plaintext highlighter-rouge">I had enabled it for you.</code></p>
+
+<p>At this point, Wechaty is officially registered as an AppService.</p>
+
+<p>Send <code class="language-plaintext highlighter-rouge">!login</code> again. If you haven’t installed your specified puppet, PuppetManager will automatically install it—just wait. If installation is too slow, you can consider pressing Ctrl + C to terminate the program, then manually install it yourself with yarn before starting again.</p>
+
+<p>When the puppet starts successfully, a QR code link will be generated on the Matrix side. Open and scan the QR code to complete login.</p>
+
+<h2 id="about-logout">About Logout</h2>
+
+<p>Just send !logout to the wechaty bot!</p>
+
+<blockquote>
+  <p>Note: As of the current latest version (0.6.3), this command doesn’t exist. You need the next version (0.7.2)</p>
+</blockquote>
+
+<h2 id="matrix-appservice-wechaty">Matrix-AppService-Wechaty</h2>
+
+<p>This communication bridge is currently in an early development state and can only solve basic message relay issues. If the other party sends a link message, the Matrix side will display a very long xml structure. Looking forward to future version updates bringing more features!</p>
+
+<p>At the same time, with <a href="https://github.com/wechaty/wechaty-puppet-padplus">Wechaty-Puppet-PadPlus</a>, users who cannot use Web WeChat can use the iPad protocol to connect. Since I just completed the deployment, I’m not very clear about stability yet, but since this protocol is implemented through client-level protocols, I estimate it will be more stable.</p>
+
+<p>Many thanks to <a href="https://github.com/huan">huan</a> for developing <a href="https://github.com/wechaty/wechaty">Wechaty</a>, bringing more possibilities for WeChat bridging and WeChat bots!</p>
+
+<p>I also recommend his <a href="https://github.com/huan/docker-wechat">Docker-Wechat</a>, which solves the troublesome problem of using Linux WeChat with Docker. Thinking about how I installed WeChat using CrossOver and then had a bunch of bugs when using it, I feel this is really very good.</p>
+
+<blockquote>
+  <p>Author: <a href="https://github.com/cubesky">Liyin</a>, individual developer. Originally published on blog: <a href="https://liyin.date/2020/03/01/matrix-wechat-bridge/">Receiving WeChat Messages Using Matrix</a> under CC BY-NC-SA 3.0 CN</p>
+</blockquote>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#matrix">matrix</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#featured">featured</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ecosystem">ecosystem</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/cubesky">
+                            <img class="rounded-circle" src="/assets/contributors/cubesky/avatar.webp" alt="立音" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/cubesky">立音</a> </h5>
+						
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2020/02/08/wechaty-new-release-version-0.30/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2017/wechaty-sticker.webp">  Wechaty New Release Version v0.30: Lots of New Features!</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/2020/03/01/matrix-wechat-bridge/"> 使用 [Matrix] 收发微信消息  <img height="30px" class="ml-1" src="https://wechaty.js.org/assets/2020/matrix-wechaty/2020-03-matrix-appservice-wechaty.webp"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>
