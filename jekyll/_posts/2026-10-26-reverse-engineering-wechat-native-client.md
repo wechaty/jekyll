@@ -1,5 +1,5 @@
 ---
-title: "I never thought it was possible, but now I’m using my own WeChat client."
+title: "I created a drop-in WeChat client replacement that is fully open source."
 excerpt: "I thought an independent WeChat client was out of reach. A week with AI agents changed my mind."
 categories: project
 author: thisnick
