@@ -29,15 +29,15 @@ After the message I kept thinking about what he had sent. It was not until a few
 
 ## Fully reverse engineering WeChat has required the skill of a few people
 
-Prior public work on reverse engineering WeChat falls into a few categories. None of them produced a maintained, open, independent client that fully reimplements the protocol and local formats without relying on the official binary.
+Prior public work on reverse engineering WeChat falls into a few categories. These examples cover protocol analysis, service-backed integrations, local data recovery, and automation of the official client.
 
 | Area | What exists | Scope and limitations |
 |---|---|---|
-| MMTLS and network protocol | Citizen Lab analysis (2023–2024) with Frida tooling to intercept and decrypt traffic; older academic opcode mapping | Documents dual encryption layers and request formats. Security/privacy focused, not a usable client. |
-| Wechaty / PadLocal | Reverse-engineered iPad protocol; commercial puppet that proxies traffic | Heavy obfuscation (functions >70k lines), device fingerprinting, custom algorithms. Not an independent open reimplementation. |
-| Local databases | Multiple tools extract SQLCipher/WCDB keys from memory (Windows, macOS, Linux) | Version-sensitive; enables reading history but not live protocol or media transfer. |
-| Media and CDN | Partial write-ups of CDN paths, image DAT formats, and related AES keys | Mostly one-off analyses or hooks; incomplete independent upload/download and storage formats. |
-| Hooks and instrumented clients | Frida-based bots and RPA (WeChatFerry, macOS hooks, earlier Agent-WeChat) | Drive or intercept the official binary. Break on updates; require the official process. |
+| MMTLS and network protocol | [Citizen Lab’s 2024 analysis](https://citizenlab.ca/research/should-we-chat-too-security-analysis-of-wechats-mmtls-encryption-protocol/) and accompanying [Frida/decryption tooling](https://github.com/citizenlab/wechat-security-report) | Documents MMTLS, business-layer encryption, and request formats. Security/privacy research and traffic analysis rather than a standalone messaging client. |
+| Wechaty / PadLocal | [PadLocal](https://wechaty.js.org/docs/specs/puppet/) uses the iPad protocol; its [developer account](https://wechaty.js.org/2020/10/12/puppet-padlocal-intro-en/) describes reverse engineering and client-side traffic forwarding | Describes a function with over 70,000 lines of obfuscated code, device fingerprinting, and custom algorithms. A service-backed Wechaty integration rather than a fully open, independent client. |
+| Local databases | [WeChat 4.0 Database Decryptor](https://github.com/328336690/wechat-decrypt) and [earlier Agent-WeChat work](https://thisnick.me/blog/agent-wechat/) extract database keys from the running client | Enables local history access and database-based monitoring. Depends on supported client versions and memory layouts; database access alone does not implement the wire protocol. |
+| Media and CDN | [wechat-decrypt-rs](https://github.com/H3CoF6/wechat-decrypt-rs) extracts AES/XOR keys and decrypts cached DAT images; [earlier Agent-WeChat](https://thisnick.me/blog/agent-wechat/) hooks the official CDN download path | Demonstrates local media recovery and downloads through the official client, rather than a complete independent upload/download implementation. |
+| Hooks and instrumented clients | [WeChatFerry](https://github.com/lich0821/WeChatFerry) uses DLL injection and hooks; [earlier Agent-WeChat](https://thisnick.me/blog/agent-wechat/) combines Frida with UI automation | Operates through the official executable. Requires the official process and compatibility with the targeted build. |
 
 What has been scarce is a complete, open, independent native client that handles login, synchronization, messaging, media, and compatible local storage without the official binary. The existing pieces required substantial manual reverse engineering of obfuscated code and frequently changing offsets.
 
