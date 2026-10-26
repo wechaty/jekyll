@@ -61,7 +61,7 @@ I was surprised it actually worked. Seeing a real session come back from the off
 
 ## I found my ambitious project, and I was in awe
 
-I had been looking for a project that would make me take the advice to be more ambitious seriously. This turned out to be it. I had decided an independent WeChat client was out of reach. A few months, 91 recent commits, and roughly 145,000 lines of code later, I was using one to send and receive messages, view images, and listen to voice notes. I was in awe of how far the agents had taken a project I would not have known how to attempt on my own.
+I had been looking for a project that would make me take the advice to be more ambitious seriously. This turned out to be it. I had decided an independent WeChat client was out of reach. A few months later, and after 91 recent commits, roughly 145,000 lines of code, and seven days of work, I was using one to send and receive messages, view images, and listen to voice notes. I was in awe of how far the agents had taken a project I would not have known how to attempt on my own.
 
 What excites me about an open-source client is the control it gives people over how they use WeChat and the data stored on their own machines. People can inspect and change the client, give an AI assistant access to the conversations they choose, and build workflows around their messages. They can build tools to download and save available images and other attachments, maintain their own archives, and search or organize the data locally. Having the client code makes those choices much easier to implement.
 
