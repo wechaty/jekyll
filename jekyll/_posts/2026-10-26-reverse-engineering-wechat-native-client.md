@@ -13,7 +13,7 @@ tags:
 image: /assets/2026/10-reverse-engineering-wechat-native-client/teaser.webp
 ---
 
-I never thought it was possible, but now I’m using my own WeChat client. I can send and receive messages, view images, and listen to voice notes. The client is working locally and will be publicly available as open source in the next few days. All my previous research told me this was impossible. I know nothing about reverse engineering and I do not know how to use Frida or the other reverse engineering tools, but I did it in one week.
+I never thought it was possible, but now I’m using my own [WeChat client](https://github.com/thisnick/agent-wechat). I can send and receive messages, view images, and listen to voice notes. The client is working locally and will be publicly available as open source in the next few days. All my previous research told me this was impossible. I know nothing about reverse engineering and I do not know how to use Frida or the other reverse engineering tools, but I did it in one week.
 
 ## AI agents demand more ambition, but finding a project that warrants it is hard
 
