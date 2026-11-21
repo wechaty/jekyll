@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="530" viewBox="0 0 1200 530" role="img" aria-label="The review loop: Claude Code opens a pull request, Codex, Copilot and Claude review it, every valid finding is fixed with a failing-then-passing test, then Huan merges">
+  <rect width="1200" height="530" fill="#ffffff"/>
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <text x="600" y="46" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#0f172a">One pull request, many reviewers</text>
+  <g transform="translate(0,80)">
+  <g font-family="Helvetica, Arial, sans-serif" text-anchor="middle">
+    <rect x="40" y="170" width="220" height="110" rx="14" fill="#fde7dd" stroke="#d97757" stroke-width="2"/>
+    <text x="150" y="215" font-size="20" font-weight="700" fill="#0f172a">Claude Code</text>
+    <text x="150" y="245" font-size="16" fill="#334155">writes the change</text>
+    <text x="150" y="266" font-size="16" fill="#334155">and its tests</text>
+
+    <rect x="330" y="170" width="200" height="110" rx="14" fill="#f1f5f9" stroke="#475569" stroke-width="2"/>
+    <text x="430" y="215" font-size="20" font-weight="700" fill="#0f172a">Pull request</text>
+    <text x="430" y="245" font-size="16" fill="#334155">rebased on main,</text>
+    <text x="430" y="266" font-size="16" fill="#334155">CI on 3 OSes + Deno</text>
+
+    <rect x="600" y="80" width="230" height="70" rx="12" fill="#d1fae5" stroke="#10a37f" stroke-width="2"/>
+    <text x="715" y="122" font-size="18" font-weight="700" fill="#0f172a">Codex review</text>
+    <rect x="600" y="190" width="230" height="70" rx="12" fill="#ede9fe" stroke="#6e40c9" stroke-width="2"/>
+    <text x="715" y="232" font-size="18" font-weight="700" fill="#0f172a">Copilot review</text>
+    <rect x="600" y="300" width="230" height="70" rx="12" fill="#fde7dd" stroke="#d97757" stroke-width="2"/>
+    <text x="715" y="342" font-size="18" font-weight="700" fill="#0f172a">Claude review</text>
+
+    <rect x="900" y="80" width="260" height="110" rx="14" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+    <text x="1030" y="122" font-size="18" font-weight="700" fill="#0f172a">Every valid finding</text>
+    <text x="1030" y="150" font-size="16" fill="#334155">fixed with a test that fails</text>
+    <text x="1030" y="172" font-size="16" fill="#334155">on the previous commit</text>
+
+    <rect x="900" y="270" width="260" height="110" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+    <text x="1030" y="315" font-size="20" font-weight="700" fill="#0f172a">Huan merges</text>
+    <text x="1030" y="345" font-size="16" fill="#334155">when the current head</text>
+    <text x="1030" y="366" font-size="16" fill="#334155">is clean</text>
+  </g>
+  <g stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#b)">
+    <line x1="260" y1="225" x2="326" y2="225"/>
+    <path d="M530 210 L 596 120"/>
+    <line x1="530" y1="225" x2="596" y2="225"/>
+    <path d="M530 240 L 596 330"/>
+    <path d="M830 115 L 896 125"/>
+    <path d="M830 225 L 896 160"/>
+    <path d="M830 335 L 896 175"/>
+    <line x1="1030" y1="190" x2="1030" y2="266"/>
+    <path d="M900 135 C 700 20, 300 40, 150 166" stroke-dasharray="7 6"/>
+  </g>
+  </g>
+  <text x="520" y="108" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#475569">another round on the new head</text>
+  <text x="600" y="505" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#475569">The D31 pull request alone went through six rounds: reviewers found 28 gaps, each pinned by a new test.</text>
+</svg>
