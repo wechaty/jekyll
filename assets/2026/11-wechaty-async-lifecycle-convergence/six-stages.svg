@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-label="The six stages of the convergence: S1 contract, S2 shared suite, S3 random schedules, S4 final kernel, S5 consumers, S6 packaging">
+  <rect width="1200" height="420" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <text x="600" y="48" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#0f172a">The convergence plan: six stages, test-first</text>
+  <g font-family="Helvetica, Arial, sans-serif" text-anchor="middle">
+    <g>
+      <rect x="20" y="100" width="170" height="210" rx="14" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+      <text x="105" y="140" font-size="26" font-weight="700" fill="#0369a1">S1</text>
+      <text x="105" y="175" font-size="18" font-weight="700" fill="#0f172a">Contract</text>
+      <text x="105" y="210" font-size="15" fill="#334155">public types,</text>
+      <text x="105" y="232" font-size="15" fill="#334155">errors, rule IDs</text>
+      <text x="105" y="290" font-size="14" fill="#64748b">#2975</text>
+    </g>
+    <g>
+      <rect x="215" y="100" width="170" height="210" rx="14" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+      <text x="300" y="140" font-size="26" font-weight="700" fill="#0369a1">S2</text>
+      <text x="300" y="175" font-size="18" font-weight="700" fill="#0f172a">Shared suite</text>
+      <text x="300" y="210" font-size="15" fill="#334155">every old test</text>
+      <text x="300" y="232" font-size="15" fill="#334155">vs. all three</text>
+      <text x="300" y="290" font-size="14" fill="#64748b">#2977 – #2991</text>
+    </g>
+    <g>
+      <rect x="410" y="100" width="170" height="210" rx="14" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+      <text x="495" y="140" font-size="26" font-weight="700" fill="#0369a1">S3</text>
+      <text x="495" y="175" font-size="18" font-weight="700" fill="#0f172a">Random</text>
+      <text x="495" y="210" font-size="15" fill="#334155">seeded schedules,</text>
+      <text x="495" y="232" font-size="15" fill="#334155">11 invariants</text>
+      <text x="495" y="290" font-size="14" fill="#64748b">#2992</text>
+    </g>
+    <g>
+      <rect x="605" y="100" width="170" height="210" rx="14" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+      <text x="690" y="140" font-size="26" font-weight="700" fill="#b45309">S4</text>
+      <text x="690" y="175" font-size="18" font-weight="700" fill="#0f172a">Final kernel</text>
+      <text x="690" y="210" font-size="15" fill="#334155">one baseline,</text>
+      <text x="690" y="232" font-size="15" fill="#334155">known failures → 0</text>
+      <text x="690" y="290" font-size="14" fill="#64748b">#2995 – #3016</text>
+    </g>
+    <g>
+      <rect x="800" y="100" width="170" height="210" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+      <text x="885" y="140" font-size="26" font-weight="700" fill="#15803d">S5</text>
+      <text x="885" y="175" font-size="18" font-weight="700" fill="#0f172a">Consumers</text>
+      <text x="885" y="210" font-size="15" fill="#334155">Io, Puppet,</text>
+      <text x="885" y="232" font-size="15" fill="#334155">Wechaty run on it</text>
+      <text x="885" y="290" font-size="14" fill="#64748b">#3017</text>
+    </g>
+    <g>
+      <rect x="995" y="100" width="185" height="210" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+      <text x="1087" y="140" font-size="26" font-weight="700" fill="#15803d">S6</text>
+      <text x="1087" y="175" font-size="18" font-weight="700" fill="#0f172a">Ship &amp; clean</text>
+      <text x="1087" y="210" font-size="15" fill="#334155">publish, coverage,</text>
+      <text x="1087" y="232" font-size="15" fill="#334155">delete the three</text>
+      <text x="1087" y="290" font-size="14" fill="#64748b">#3018 – #3020</text>
+    </g>
+  </g>
+  <g stroke="#64748b" stroke-width="2.5" marker-end="url(#a)">
+    <line x1="190" y1="205" x2="211" y2="205"/>
+    <line x1="385" y1="205" x2="406" y2="205"/>
+    <line x1="580" y1="205" x2="601" y2="205"/>
+    <line x1="775" y1="205" x2="796" y2="205"/>
+    <line x1="970" y1="205" x2="991" y2="205"/>
+  </g>
+  <text x="600" y="370" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#475569">22 pull requests, 2026-11-20 to 2026-11-21 · tracked in wechaty/wechaty#2968</text>
+</svg>

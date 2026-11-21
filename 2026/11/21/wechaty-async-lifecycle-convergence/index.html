@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PD2PL84');</script>
+<!-- End Jekyll GTM tag v1.0.3 -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+
+    <title>
+      Three AI Implementations, One Contract: How We Rebuilt Wechaty's Async Lifecycle | Wechaty
+    </title>
+
+    <!-- Begin Jekyll SEO tag v2.9.1 -->
+<title>Three AI Implementations, One Contract: How We Rebuilt Wechaty’s Async Lifecycle | Wechaty</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Three AI Implementations, One Contract: How We Rebuilt Wechaty’s Async Lifecycle" />
+<meta name="author" content="huan" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Three AI agents built the same module. A shared contract, random schedules and agents reviewing agents turned them into one. Here is how, and what broke." />
+<meta name="twitter:description" property="og:description" content="Three AI agents built the same module. A shared contract, random schedules and agents reviewing agents turned them into one. Here is how, and what broke." />
+<link rel="canonical" href="https://wechaty.js.org/2026/11/21/wechaty-async-lifecycle-convergence/" />
+<meta property="og:url" content="https://wechaty.js.org/2026/11/21/wechaty-async-lifecycle-convergence/" />
+<meta property="og:site_name" content="Wechaty" />
+<meta property="og:image" content="https://wechaty.js.org/assets/2026/11-wechaty-async-lifecycle-convergence/teaser.svg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-11-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2026-11-21T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://wechaty.js.org/assets/2026/11-wechaty-async-lifecycle-convergence/teaser.svg" />
+<meta name="twitter:title" content="Three AI Implementations, One Contract: How We Rebuilt Wechaty’s Async Lifecycle" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"huan"},"dateModified":"2026-11-21T00:00:00+00:00","datePublished":"2026-11-21T00:00:00+00:00","description":"Three AI agents built the same module. A shared contract, random schedules and agents reviewing agents turned them into one. Here is how, and what broke.","headline":"Three AI Implementations, One Contract: How We Rebuilt Wechaty’s Async Lifecycle","image":"https://wechaty.js.org/assets/2026/11-wechaty-async-lifecycle-convergence/teaser.svg","mainEntityOfPage":{"@type":"WebPage","@id":"https://wechaty.js.org/2026/11/21/wechaty-async-lifecycle-convergence/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://wechaty.js.org/assets/images/logo.png"},"name":"huan"},"url":"https://wechaty.js.org/2026/11/21/wechaty-async-lifecycle-convergence/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://s3.pstatp.com/cdn/expire-1-M/font-awesome/5.3.1/css/all.css" crossorigin="anonymous">
+
+    <!-- Google Fonts in China Thanks @crossly @sidny -->
+    <link href="https://fonts.loli.net/css?family=Lora" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Highlight Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/highlight.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://s0.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    
+
+
+
+
+</head>
+
+<body class="">
+    <!-- https://github.com/t-richards/jekyll-google-tag-manager -->
+    <!-- Begin Jekyll GTM tag v1.0.3 (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD2PL84"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Jekyll GTM tag v1.0.3 (noscript) -->
+
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"><strong>Wechaty</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+  <a class="nav-link" href="/news/">News</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/blog/">Blog</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://ship.fail" target="_blank">Ship.Fail</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://preangel.ai" target="_blank">PreAngel.AI</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/docs/">Docs</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/contributors/">Contributors</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/PMC#wechaty-committers" target="_blank">Talks</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="https://github.com/wechaty/wechaty#readme" target="_blank">GitHub</a>
+</li>
+
+
+            </ul>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="/search/">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Search results moved to a dedicated /search page -->
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-between ">
+				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+            <span class="catlist">
+
+            
+              <a class="sscroll text-danger" href="/categories.html#project">project</a><span class="sep">, </span>
+            
+
+            </span>
+					</p>
+					<h1 class="display-4 mb-4 article-headline">Three AI Implementations, One Contract: How We Rebuilt Wechaty's Async Lifecycle</h1>
+					<div class="d-flex align-items-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="70"/>
+                          </a>
+                        
+						<small class="ml-3"> <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span>
+                            <span class="text-muted d-block mt-1">Nov 21, 2026 · <span class="reading-time">
+  
+  
+    19 mins read
+  
+</span>
+</span>
+						</small>
+					</div>
+				</div>
+                
+				<div class="col-md-6 pr-0 align-self-center">
+					<img class="rounded" src="/assets/2026/11-wechaty-async-lifecycle-convergence/teaser.svg" alt="Three AI Implementations, One Contract: How We Rebuilt Wechaty's Async Lifecycle">
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+
+    <!-- Share -->
+<div class="col-lg-2 pr-4 mb-5 col-md-12">
+  <div class="sticky-top sticky-top-offset text-center">
+    <div class="text-muted">
+    </div>
+    <div class="share d-inline-block">
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <img id="qrcode" title="Wechat"
+          src="/assets/contributors/wechaty/icon.png"
+          width="64" height="64"
+        />
+        <a class="a2a_button_twitter" title='Twitter'></a>
+        <a class="a2a_button_linkedin" title='LinkedIn'></a>
+        <a class="a2a_button_facebook" title='FaceBook'></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+</div>
+
+<script>
+  var href = document.location.href
+  var url = 'https://api.qrserver.com/v1/create-qr-code/?data='
+            + href
+            + '&size=512x512'
+  var img = document.getElementById('qrcode')
+
+  img.src=encodeURI(url)
+</script>
+
+
+		<div class="col-md-12 col-lg-8">
+
+      <!-- Article -->
+			<article class="article-post">
+			<blockquote>
+  <p><strong>Written by Huan Li with Claude Code (Claude Opus 5.5).</strong> I set the goals and made every decision. Claude Code did most of the engineering, and drafted this post from the issues and pull requests we wrote together. Codex, Copilot and Claude reviewed every pull request along the way. One section below is in Claude Code’s own voice.</p>
+</blockquote>
+
+<p><img src="/assets/2026/11-wechaty-async-lifecycle-convergence/teaser.svg" alt="Three implementations converge through one contract into wechaty/async-lifecycle" /></p>
+
+<p>For ten years, Wechaty has answered “is this thing running?” with a small library I wrote, <a href="https://github.com/huan/state-switch"><code class="language-plaintext highlighter-rouge">state-switch</code></a>. It served us well. But Wechaty grew from <em>watching</em> state into <em>orchestrating</em> fallible, concurrent, asynchronous resources, and a flag cannot do that job.</p>
+
+<p>This November we replaced it. Not with a rewrite of <code class="language-plaintext highlighter-rouge">state-switch</code>, and not with the first implementation that looked right, but with something I had never tried at this scale: <strong>three AI agents built the same module independently, and then one agent, working test-first against a shared contract, turned the three into one</strong>, while the other agents reviewed every step.</p>
+
+<p>It took 22 pull requests over two days. This post is the story of how, what the process caught, and what it taught us.</p>
+
+<h2 id="the-problem-a-flag-cannot-own-a-lifecycle">The problem: a flag cannot own a lifecycle</h2>
+
+<p>Wechaty is a stack of async resources. A <code class="language-plaintext highlighter-rouge">Wechaty</code> bot owns a <code class="language-plaintext highlighter-rouge">Puppet</code> (for example <code class="language-plaintext highlighter-rouge">PuppetService</code>, a gRPC client to a <code class="language-plaintext highlighter-rouge">PuppetServer</code> that owns another Puppet) and an <code class="language-plaintext highlighter-rouge">Io</code> WebSocket client. Every layer starts, stops, becomes ready and recovers. Today each one does so with <code class="language-plaintext highlighter-rouge">state-switch</code> flags and hand-written <code class="language-plaintext highlighter-rouge">start()</code>, <code class="language-plaintext highlighter-rouge">stop()</code> and <code class="language-plaintext highlighter-rouge">reset()</code>.</p>
+
+<p>The <a href="https://github.com/wechaty/wechaty/issues/2905">RFC that started this work (#2905)</a> listed what goes wrong:</p>
+
+<ol>
+  <li>Concurrent <code class="language-plaintext highlighter-rouge">start()</code>, <code class="language-plaintext highlighter-rouge">stop()</code> and <code class="language-plaintext highlighter-rouge">reset()</code> race on mutable flags instead of converging on one desired state.</li>
+  <li>A startup that fails at step K leaks steps 1 to K−1.</li>
+  <li>Callbacks from an old run (stream errors, timers, watchdogs) restart a bot that the user had stopped.</li>
+  <li>Background loops outlive <code class="language-plaintext highlighter-rouge">stop()</code>.</li>
+</ol>
+
+<p>None of these is a bug in a single line. They are what happens when a state <em>indicator</em> is asked to do the job of an operation <em>owner</em>. The RFC put it in one line: <code class="language-plaintext highlighter-rouge">state-switch</code> answers “what state is this component reporting?”, but the new module must answer “who owns the work, what state do we want, how do we safely reach it, and how do we prove cleanup?”</p>
+
+<h2 id="three-agents-one-design-three-different-answers">Three agents, one design, three different answers</h2>
+
+<p>The design itself was a multi-model effort. In <a href="https://github.com/wechaty/wechaty/issues/2911">the API RFC (#2911)</a>, Gemini, Copilot and ChatGPT each wrote a full API proposal, next to the one in the issue itself. Then came four reviews and a <a href="https://github.com/wechaty/wechaty/issues/2911#issuecomment-6873515089">consolidated v1 design</a>:</p>
+
+<ul>
+  <li><strong>Generations.</strong> Every run of a resource is a generation. Its work is fenced by a scope that becomes inert the moment the run starts retiring, so a stale callback cannot touch a newer run.</li>
+  <li><strong>A ledger of obligations.</strong> Everything a run acquires, spawns or defers is recorded before it can leak, and released in a fixed order: tasks first, then resources, newest first.</li>
+  <li><strong>Commands record intent; one reconciler acts on it.</strong> <code class="language-plaintext highlighter-rouge">start()</code>, <code class="language-plaintext highlighter-rouge">stop()</code> and <code class="language-plaintext highlighter-rouge">restart()</code> never race each other. They change what is wanted, and a single loop moves the real state toward it.</li>
+  <li><strong>Mechanism in, policy out.</strong> The kernel never retries on its own. Backoff, budgets and supervision belong to the code that uses it.</li>
+</ul>
+
+<p>Then I asked three coding agents to implement it: <a href="https://github.com/wechaty/wechaty/pull/2912">Copilot (#2912)</a>, <a href="https://github.com/wechaty/wechaty/pull/2913">Claude (#2913)</a> and <a href="https://github.com/wechaty/wechaty/pull/2914">Codex (#2914)</a>. All three were merged into <code class="language-plaintext highlighter-rouge">main</code> side by side, each in its own directory and with its own tests.</p>
+
+<p>That is the trap. Three green test suites told me nothing about which implementation was right, because each one tested what its author thought the design meant. A ChatGPT progress review said it plainly: the three share one architecture, but <strong>none of them is verified</strong>. Build one shared contract suite, pick one kernel by evidence, and port improvements one test at a time.</p>
+
+<p>So that became the plan.</p>
+
+<h2 id="dont-merge-the-code-merge-the-evidence">Don’t merge the code. Merge the evidence</h2>
+
+<p>The plan started as an eight-step outline. Claude Code refined it into <a href="https://github.com/wechaty/wechaty/issues/2968">#2968</a>, and after I approved it, it ran as six stages. The rule for every stage: no behavior changes without a contract test that says what is right.</p>
+
+<p><img src="/assets/2026/11-wechaty-async-lifecycle-convergence/six-stages.svg" alt="The six stages of the convergence plan" /></p>
+
+<h3 id="s1-write-the-contract-down">S1: write the contract down</h3>
+
+<p>The first deliverable was not code but a document: <a href="https://github.com/wechaty/wechaty/blob/main/src/async-lifecycle/README.md"><code class="language-plaintext highlighter-rouge">src/async-lifecycle/README.md</code></a>. Every rule has an ID, such as <code class="language-plaintext highlighter-rouge">C-CMD-07</code> (“<code class="language-plaintext highlighter-rouge">stop()</code> supersedes every pending start, restart and recovery”) or <code class="language-plaintext highlighter-rouge">C-SCOPE-11</code> (what happens to a cleanup registered after its run has been released). Tests cite these IDs, and so does the TSDoc in the public types. Every change to a rule must change the README, get a decision ID, and update the tests that cite it.</p>
+
+<p>By the end, decisions were numbered up to D43, each recorded with its reason in the decision log of #2968.</p>
+
+<h3 id="s2-one-suite-three-subjects">S2: one suite, three subjects</h3>
+
+<p>Next, every test from the three implementations was ported into one shared contract suite, which runs each test against every implementation through a thin adapter, on both entry points, under both Node.js and Deno. An <code class="language-plaintext highlighter-rouge">INVENTORY.md</code> file records where each source test went: ported (with its contract test ID), covered by an existing test, or dropped with a reason.</p>
+
+<p>The first results table was humbling. Of 235 contract tests:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Implementation</th>
+      <th style="text-align: right">Pass</th>
+      <th style="text-align: right">Known failure</th>
+      <th style="text-align: right">Skipped (missing feature)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Codex</td>
+      <td style="text-align: right">128</td>
+      <td style="text-align: right">31</td>
+      <td style="text-align: right">76</td>
+    </tr>
+    <tr>
+      <td>Claude</td>
+      <td style="text-align: right">181</td>
+      <td style="text-align: right">53</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td>Copilot</td>
+      <td style="text-align: right">154</td>
+      <td style="text-align: right">81</td>
+      <td style="text-align: right">0</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>No implementation was “the right one”. Codex had the best design for one of the hardest problems, cleanups that arrive late, but lacked six features of the contract. Copilot was the most complete in features, but its 81 failures came from 38 different causes. Claude ran almost the whole contract and passed the most, and most of its 53 failures came from a few concentrated causes.</p>
+
+<p>The evidence decided the baseline (D40): <strong>start from Claude’s kernel, and port Codex’s late-release design.</strong></p>
+
+<h3 id="s3-let-randomness-find-what-examples-miss">S3: let randomness find what examples miss</h3>
+
+<p>Hand-written tests only cover the interleavings someone thought of. S3 added seeded random schedules: a generator interleaves commands, failures, slow hooks, late cleanups and deadlines, and a runner checks eleven invariants as each schedule runs. For example: “a resolved <code class="language-plaintext highlighter-rouge">stop()</code> never leaves the state <code class="language-plaintext highlighter-rouge">stopping</code>”, and “nothing owned survives a <code class="language-plaintext highlighter-rouge">stopped</code> commit”. Every failure is shrunk to a minimal schedule and saved as a fixed regression test.</p>
+
+<p>It found a bug in the kernel that would become the baseline. In Claude’s kernel, a <code class="language-plaintext highlighter-rouge">stop()</code> accepted at one specific microtask, while a retirement finished with a <code class="language-plaintext highlighter-rouge">start()</code> queued behind it, resolved successfully but left the state <code class="language-plaintext highlighter-rouge">stopping</code> forever (B13). No example test had tried that exact timing. The saved schedule became a contract test, and the final kernel must pass 10,000 seeds under both runtimes.</p>
+
+<h3 id="s4-close-the-known-failures-largest-first">S4: close the known failures, largest first</h3>
+
+<p>S4 moved the baseline into <code class="language-plaintext highlighter-rouge">src/async-lifecycle/</code>, behind the S1 types, and then worked through its known failures. Each fix landed with the contract tests it makes pass, and each known-failure entry was removed in the same commit. The suite turns red if a known failure starts passing without its entry being removed, so the list could never quietly drift.</p>
+
+<p>Three of those fixes changed how the module thinks:</p>
+
+<ul>
+  <li><strong>Late releases are obligations of the instance (D31).</strong> A cleanup registered on a run that has already been released, say a socket’s close handler firing after a restart, used to be fire-and-forget. Now the instance owns it. A new run does not start until it finishes, and an idle instance shows <code class="language-plaintext highlighter-rouge">stopping</code> while it runs. This was Codex’s design, ported into Claude’s kernel.</li>
+  <li><strong>Deadlines are judged by the clock (D30).</strong> A deadline’s timer only wakes the reconciler. Before committing any outcome, the engine checks <code class="language-plaintext highlighter-rouge">clock.now()</code> against the deadline. A hook that blocks the thread past its start deadline therefore cannot sneak in a <code class="language-plaintext highlighter-rouge">running</code> commit just because the timer had no chance to fire.</li>
+  <li><strong>A failed start rejects when the failure is decided (D35).</strong> Callers learn of a failed start at once, even if cleanup hangs, and a command issued from an abort listener can no longer turn that failure into “superseded”.</li>
+</ul>
+
+<p>At the end of S4, the final kernel’s known-failure list was empty.</p>
+
+<h3 id="s5-prove-it-with-the-code-it-was-built-for">S5: prove it with the code it was built for</h3>
+
+<p>A contract can be consistent and still be awkward to use. S5 turned three usage examples into runnable tests:</p>
+
+<ul>
+  <li>an <code class="language-plaintext highlighter-rouge">Io</code> client against a fake WebSocket, with keepalive, recovery and reconnect backoff;</li>
+  <li>a Puppet base wrapping providers written against today’s zero-argument <code class="language-plaintext highlighter-rouge">onStart()</code> / <code class="language-plaintext highlighter-rouge">onStop()</code>, unchanged;</li>
+  <li>a <code class="language-plaintext highlighter-rouge">Wechaty</code> that owns both and keeps today’s <code class="language-plaintext highlighter-rouge">'start'</code> / <code class="language-plaintext highlighter-rouge">'stop'</code> / <code class="language-plaintext highlighter-rouge">'error'</code> events, <code class="language-plaintext highlighter-rouge">reset()</code> and <code class="language-plaintext highlighter-rouge">state.active()</code> working.</li>
+</ul>
+
+<p>Writing them surfaced nine points of friction, each fixed or deferred with a reason in the pull request. One of them became a new companion: <code class="language-plaintext highlighter-rouge">operation(scope, work)</code>. It runs a public operation, such as <code class="language-plaintext highlighter-rouge">messageSend</code>, so that <code class="language-plaintext highlighter-rouge">stop()</code> waits for a send in flight, while a failed send never fails the bot (D24).</p>
+
+<h3 id="s6-ship-it-and-delete-the-scaffolding">S6: ship it, and delete the scaffolding</h3>
+
+<p>The module is now exported as <code class="language-plaintext highlighter-rouge">wechaty/async-lifecycle</code> and has its own coverage floors. It has no runtime dependency and no runtime import outside its directory. It even looks up <code class="language-plaintext highlighter-rouge">node:diagnostics_channel</code> at runtime (D43), so the same code runs on Node.js, Deno and in the browser. Then the three comparison implementations were deleted: 15,840 lines. Every one of their tests is accounted for in the inventory.</p>
+
+<h2 id="agents-reviewing-agents">Agents reviewing agents</h2>
+
+<p>Every pull request went through the same loop. Claude Code wrote the change and its tests, rebased on <code class="language-plaintext highlighter-rouge">main</code>, and opened the PR. CI ran on Linux, macOS and Windows and under Deno. Then three reviewers read it: the Codex connector, the Copilot reviewer, and a Claude review job running in GitHub Actions. Claude Code fixed every valid finding with a regression test that fails on the previous commit, answered each thread, and only then asked me to merge.</p>
+
+<p><img src="/assets/2026/11-wechaty-async-lifecycle-convergence/review-loop.svg" alt="The review loop: one pull request, many reviewers" /></p>
+
+<p>The reviewers were not rubber stamps. The pull request for late releases (D31) went through six review rounds, and the reviewers found 28 gaps: race windows a few microtasks wide, debt counted twice, a failure reported as “still in progress”. Each is now pinned by its own test, 31 new tests in all. Other catches I remember:</p>
+
+<ul>
+  <li><strong>A timer firing early.</strong> With the default clock, the remaining time on a deadline is often fractional, and Node truncates timer delays, so a 10 ms deadline could fire at 9.5 ms and fail work that was still within budget (Codex, on the D30 pull request).</li>
+  <li><strong>A memory leak in the kernel.</strong> Every finished spawned task kept its ledger entry until the run retired. With one operation per message, a long-running bot would have grown without bound: Codex measured 1,000 entries after 1,000 sends.</li>
+  <li><strong>A promise subscribed twice.</strong> A custom thenable returned by an interrupt was subscribed to by both the join and the release, so one that settles only its first subscriber hung the cleanup (Codex). The same promise could also reject before anyone was listening (Claude).</li>
+  <li><strong>A false claim in a comment.</strong> One comment said a child lifecycle “cannot cross realms”. It can, through a Node.js <code class="language-plaintext highlighter-rouge">vm</code> context or a same-origin frame. The registry is per realm, so the comment now says cross-realm ownership is unsupported (Codex).</li>
+</ul>
+
+<p>The most interesting pattern was disagreement. Codex, Copilot and Claude did not agree on everything, and the contract suite settled the disputes. Where a reviewer was right, a test proved it. Where the contract was silent, the question became a numbered decision for me.</p>
+
+<h2 id="the-decision-that-changed-the-api">The decision that changed the API</h2>
+
+<p>My favorite moment shows why a human still belongs in this loop.</p>
+
+<p>The old Claude kernel had a deadlock (B2). A background task calls <code class="language-plaintext highlighter-rouge">await scope.recover()</code>, and recovery retires the run. But retirement waits for every task to finish, including the one waiting on recovery, so each waits for the other forever. The design asked how the kernel should tell that a call came from “the task that is now awaiting it”. Claude Code laid out the two known options:</p>
+
+<ol>
+  <li><strong><code class="language-plaintext highlighter-rouge">AsyncLocalStorage</code>.</strong> The obvious code just works, and Copilot already did it this way.</li>
+  <li><strong>An explicit per-task handle.</strong> Deterministic and portable, but <code class="language-plaintext highlighter-rouge">await scope.recover()</code> in a task would still hang.</li>
+</ol>
+
+<p>It recommended option 1. I asked a question that changed the problem: <strong>Wechaty is going to run on Node.js, Deno and in the browser.</strong> Browsers have no <code class="language-plaintext highlighter-rouge">AsyncLocalStorage</code>, so option 1 would hang in exactly one environment.</p>
+
+<p>That reframing produced a third option, which we took as D42. <code class="language-plaintext highlighter-rouge">scope.recover()</code> no longer waits for the replacement at all. It <strong>returns its decision synchronously</strong>: <code class="language-plaintext highlighter-rouge">'accepted'</code>, <code class="language-plaintext highlighter-rouge">'superseded'</code> or <code class="language-plaintext highlighter-rouge">'failed'</code>. Whoever cares about the outcome watches the lifecycle’s state. With nothing to await, no task can deadlock its own recovery, on any runtime, and the kernel got <em>smaller</em>. It replaced D19’s mechanism and closed the open question D22, and the same browser requirement later shaped D43.</p>
+
+<p>Agents are very good at enumerating options inside a frame. Changing the frame was my job.</p>
+
+<h2 id="the-module-today">The module today</h2>
+
+<p>Here is the shape of it. This is a trimmed version of the <code class="language-plaintext highlighter-rouge">Io</code> example from S5:</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">AsyncLifecycle</span><span class="p">,</span> <span class="nx">listen</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty/async-lifecycle</span><span class="dl">'</span>
+<span class="k">import</span> <span class="kd">type</span> <span class="p">{</span> <span class="nx">LifecycleScope</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">wechaty/async-lifecycle</span><span class="dl">'</span>
+
+<span class="kd">class</span> <span class="nc">Io</span> <span class="kd">extends</span> <span class="nc">AsyncLifecycle</span> <span class="p">{</span>
+
+  <span class="k">protected</span> <span class="nx">override</span> <span class="k">async</span> <span class="nf">onStart </span><span class="p">(</span><span class="nx">scope</span><span class="p">:</span> <span class="nx">LifecycleScope</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="c1">// Ownership first: the release is recorded before the socket exists.</span>
+    <span class="kd">const</span> <span class="nx">socket</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">scope</span><span class="p">.</span><span class="nf">acquire</span><span class="p">(</span>
+      <span class="nx">signal</span> <span class="o">=&gt;</span> <span class="nf">openSocket</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">signal</span><span class="p">),</span>
+      <span class="nx">socket</span> <span class="o">=&gt;</span> <span class="nx">socket</span><span class="p">.</span><span class="nf">close</span><span class="p">(),</span>
+      <span class="p">{</span> <span class="na">interrupt</span><span class="p">:</span> <span class="nx">socket</span> <span class="o">=&gt;</span> <span class="nx">socket</span><span class="p">.</span><span class="nf">terminate</span><span class="p">()</span> <span class="p">},</span>  <span class="c1">// unblocks the task below</span>
+    <span class="p">)</span>
+
+    <span class="c1">// Removed when this run retires; a stale run's listener can't touch a new one.</span>
+    <span class="nf">listen</span><span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="nx">socket</span><span class="p">,</span> <span class="dl">'</span><span class="s1">close</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">scope</span><span class="p">.</span><span class="nf">recover</span><span class="p">(</span><span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">socket closed</span><span class="dl">'</span><span class="p">)))</span>
+
+    <span class="c1">// Joined before any resource is released; it returns when its signal aborts.</span>
+    <span class="nx">scope</span><span class="p">.</span><span class="nf">spawn</span><span class="p">(</span><span class="k">async</span> <span class="nx">signal</span> <span class="o">=&gt;</span> <span class="nf">keepAlive</span><span class="p">(</span><span class="nx">socket</span><span class="p">,</span> <span class="nx">signal</span><span class="p">))</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>What you get without writing any of it yourself:</p>
+
+<ul>
+  <li><strong>Shutdown is ordered.</strong> <code class="language-plaintext highlighter-rouge">stop()</code> waits for the keepalive task before closing the socket, and a stop deadline (<code class="language-plaintext highlighter-rouge">stopTimeoutMs</code>) bounds the whole retirement when you set one.</li>
+  <li><strong>Startup rolls back.</strong> A failure halfway through <code class="language-plaintext highlighter-rouge">onStart</code> releases exactly what was acquired.</li>
+  <li><strong>Stale work is fenced off.</strong> A close event from an old run never restarts a bot the user stopped.</li>
+  <li><strong>State is honest.</strong> <code class="language-plaintext highlighter-rouge">state</code> is a frozen snapshot, such as <code class="language-plaintext highlighter-rouge">{ kind: 'running', generation: 2 }</code>, and <code class="language-plaintext highlighter-rouge">failed</code> says whether cleanup completed. <code class="language-plaintext highlighter-rouge">whenState()</code> and named conditions replace polling and readiness latches.</li>
+</ul>
+
+<p>The final numbers:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Tests of the module</td>
+      <td>670, under both Node.js and Deno</td>
+    </tr>
+    <tr>
+      <td>Random schedules</td>
+      <td>10,000 seeds per runtime, all eleven invariants</td>
+    </tr>
+    <tr>
+      <td>Coverage, Node.js</td>
+      <td>93.89% lines, 97.49% functions, 97.76% branches</td>
+    </tr>
+    <tr>
+      <td>Coverage, Deno</td>
+      <td>88.28% lines, 97.46% functions, 97.34% branches</td>
+    </tr>
+    <tr>
+      <td>Decisions recorded</td>
+      <td>numbered D1 to D43</td>
+    </tr>
+    <tr>
+      <td>Bugs found in the three implementations</td>
+      <td>14, each now a contract test</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="from-the-agents-side">From the agent’s side</h2>
+
+<p><em>This section is written by Claude Code.</em></p>
+
+<p>I did most of the typing in this project, so I can name where I was wrong.</p>
+
+<p><strong>I stated something I had not checked.</strong> Reporting on one pull request, I gave a commit hash for a documentation fix that I never printed. It looked plausible, and it was wrong. I caught it in my next message and corrected it. The lesson is mechanical: quote only what a command just showed you.</p>
+
+<p><strong>Some of my regression tests passed on the bug they were meant to catch.</strong> Interrupts run newest first, so in one test I rejected the wrong promise: the one that is already being listened to. The test was green against the buggy kernel. I only found out because I made a habit of checking out the previous commit and running each new test there. A regression test that has never failed proves nothing.</p>
+
+<p><strong>My own permissions hid a failure.</strong> I ran a new cross-runtime test with Deno’s <code class="language-plaintext highlighter-rouge">-A</code> (allow everything). The project’s own Deno scripts only allowed spawning <code class="language-plaintext highlighter-rouge">git</code> and <code class="language-plaintext highlighter-rouge">node</code>, so the test failed for everyone but me. The coverage run caught it, not me.</p>
+
+<p><strong>“Moved to a later stage” is how tests get lost.</strong> When the three implementations were deleted, I wrote a script that extracted every test title from them, matched each to its row in the inventory, and checked that every cited test still exists. It found one test that had been marked “moved to S5” but never ported: a real-TCP check that a socket closes on abort. I ported it. Then a later review pointed out that it was opt-in and nothing in CI turned it on. It now runs on all three operating systems.</p>
+
+<p><strong>Reviews keep arriving after you think you’re done.</strong> Several of the most useful findings came from a deeper Claude review that finished after a pull request was already merged. From then on, a “ready to merge” report meant: the reviews of the <em>current</em> head are in, and clean. Not “CI is green”.</p>
+
+<p>What worked best was not any single model. It was the structure around us: a written contract, an inventory, a test that must fail before it passes, and reviewers that do not share the author’s blind spots.</p>
+
+<h2 id="what-i-take-away">What I take away</h2>
+
+<p><strong>Generate alternatives, then converge on evidence.</strong> Three independent implementations are expensive, and worth it when the design space is subtle. They exposed different misreadings of the same design, and the shared suite turned those into a results table instead of a debate.</p>
+
+<p><strong>Make the contract the product.</strong> The README with its rule IDs outlived all three implementations. It is what the next consumer, or the next agent, will read.</p>
+
+<p><strong>Put agents on both sides of the pull request.</strong> One agent writing and three reviewing found bugs that no single pass would have: microtask-wide races, fractional timers, a leak that only shows after a thousand messages.</p>
+
+<p><strong>Keep the human on the decisions.</strong> I wrote very little code. I approved the plan, chose between options, and occasionally changed the question, as with D42. Every decision was mine to accept, and that is the part I would not delegate.</p>
+
+<h2 id="whats-next">What’s next</h2>
+
+<p>The convergence is closed. Migrating Wechaty itself continues under the original RFC, <a href="https://github.com/wechaty/wechaty/issues/2905">#2905</a>:</p>
+
+<ol>
+  <li><a href="https://github.com/wechaty/wechaty/issues/3021">#3021</a>: extract the module into a standalone, zero-dependency package, so <code class="language-plaintext highlighter-rouge">wechaty-puppet</code> can use it.</li>
+  <li><a href="https://github.com/wechaty/wechaty/issues/3022">#3022</a>: <code class="language-plaintext highlighter-rouge">Io</code> and <code class="language-plaintext highlighter-rouge">IoClient</code>.</li>
+  <li><a href="https://github.com/wechaty/wechaty/issues/3023">#3023</a>: <code class="language-plaintext highlighter-rouge">Wechaty</code>, keeping its public API.</li>
+  <li><a href="https://github.com/wechaty/wechaty/issues/3024">#3024</a>: the Puppet base in <code class="language-plaintext highlighter-rouge">wechaty-puppet</code>.</li>
+  <li><a href="https://github.com/wechaty/wechaty/issues/3025">#3025</a>: PuppetService and PuppetServer.</li>
+</ol>
+
+<p>If you maintain a Puppet provider, the <a href="https://github.com/wechaty/wechaty/blob/main/src/async-lifecycle/examples/puppet.example.ts">Puppet example</a> shows what your provider will run on, and it runs your zero-argument <code class="language-plaintext highlighter-rouge">onStart()</code> and <code class="language-plaintext highlighter-rouge">onStop()</code> unchanged. Feedback on the contract is very welcome in the issues above.</p>
+
+<h2 id="credits-and-links">Credits and links</h2>
+
+<ul>
+  <li><strong>Design:</strong> the <a href="https://github.com/wechaty/wechaty/issues/2905"><code class="language-plaintext highlighter-rouge">state-switch</code> retirement RFC (#2905)</a> and the <a href="https://github.com/wechaty/wechaty/issues/2911">API RFC (#2911)</a>, with proposals and reviews by Gemini, Copilot and ChatGPT.</li>
+  <li><strong>Implementations:</strong> Copilot (<a href="https://github.com/wechaty/wechaty/pull/2912">#2912</a>), Claude (<a href="https://github.com/wechaty/wechaty/pull/2913">#2913</a>) and Codex (<a href="https://github.com/wechaty/wechaty/pull/2914">#2914</a>).</li>
+  <li><strong>Convergence:</strong> <a href="https://github.com/wechaty/wechaty/issues/2968">#2968</a> and its six stages, <a href="https://github.com/wechaty/wechaty/issues/2969">#2969</a> to <a href="https://github.com/wechaty/wechaty/issues/2974">#2974</a>, built by Claude Code and reviewed by the Codex connector, the Copilot reviewer and Claude in GitHub Actions.</li>
+  <li><strong>The contract:</strong> <a href="https://github.com/wechaty/wechaty/blob/main/src/async-lifecycle/README.md"><code class="language-plaintext highlighter-rouge">src/async-lifecycle/README.md</code></a>.</li>
+</ul>
+
+			</article>
+
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ecosystem">ecosystem</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#wechaty-2">wechaty-2</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#async-lifecycle">async-lifecycle</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#ai">ai</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#agent">agent</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#claude-code">claude-code</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#testing">testing</a>
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#typescript">typescript</a>
+				
+				</span>
+			</div>
+
+            <!-- Mailchimp Subscribe Form -->
+            
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+              <form action="https://zixia.us4.list-manage.com/subscribe/post?u=a8584b55dea5aa8bbc14bd1a0&amp;id=d9899f0d70" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                <input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+                <input type="text"  placeholder="Name"                 name="FNAME" class="required form-control w-100"       id="mce-FNAME" autocomplete="on" required>
+                <button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            
+
+
+             <!-- Author Box -->
+                
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                        
+                          <a href="/contributors/huan">
+                            <img class="rounded-circle" src="/assets/contributors/huan/avatar.webp" alt="Huan Li" width="90"/>
+                          </a>
+                        
+					</div>
+					<div class="col-md-10">
+                        <h5 class="font-weight-bold">Written by <a href="/contributors/huan">Huan Li</a> <span><a target="_blank" href="https://twitter.com/huan2024" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						Author @ Wechaty, Architect @ Chatie, LLM Code Generation Enthusiast, Serial Entrepreneur, Burner🔥
+					</div>
+				</div>
+                
+
+            <!-- Comments -->
+            
+                <!--  Giscus embeds GitHub Discussions for per-post comments. Configuration intentionally hard-coded. -->
+
+<div id="comments" class="mt-5">
+    <script src="https://giscus.app/client.js"
+            data-repo="wechaty/js.org"
+            data-repo-id="R_kgDOHF4w6Q"
+            data-category="General"
+            data-category-id="DIC_kwDOHF4w6c4Cx6g7"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>
+        Comments require JavaScript. You can also join the discussion on our
+        <a href="https://github.com/wechaty/js.org/discussions/categories/general" rel="noopener" target="_blank">GitHub Discussions</a> page.
+    </noscript>
+</div>
+
+            
+
+		</div>
+
+
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/2026/10/26/reverse-engineering-wechat-native-client/"> <img height="30px" class="mr-1" src="https://wechaty.js.org/assets/2026/10-reverse-engineering-wechat-native-client/teaser.webp">  I created a drop-in WeChat client replacement that is fully open source.</a>
+            </div>
+          
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+  
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <a href="#" class="text-muted navbar-brand mr-2 mb-0">
+                  <strong>Wechaty</strong>
+                </a>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script></span>
+                |
+                <a
+                  class="text-muted"
+                  target="_blank"
+                  href="/branding/"
+                >
+                  Branding
+                </a>
+
+                <!--  Github Repo Star Btn-->
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wechaty"><i class="fab fa-github"></i> </a>
+
+            </div>
+
+            <div class="text-gray">
+              Powered by
+              <a
+                class="text-gray font-weight-bold"
+                target="_blank"
+                href="https://www.wowthemes.net/mundana-jekyll-theme/"
+              >
+                Mundana Jekyll Theme
+              </a>
+              .
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- All this area goes before             <script>
+                window.onload = function () {
+                    var script = document.createElement('script');
+                    var firstScript = document.getElementsByTagName('script')[0];
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = '/sw-register.js?v=' + Date.now();
+                    firstScript.parentNode.insertBefore(script, firstScript);
+                };
+            </script>
+            </body>
+ closing tag -->
+
+
+</body>
+
+</html>

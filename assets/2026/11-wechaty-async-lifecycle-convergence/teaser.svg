@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Three AI implementations converge through one contract into wechaty/async-lifecycle">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#1e293b"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <text x="60" y="88" font-family="Helvetica, Arial, sans-serif" font-size="46" font-weight="700" fill="#f8fafc">Three implementations, one contract</text>
+  <text x="60" y="136" font-family="Helvetica, Arial, sans-serif" font-size="26" fill="#cbd5e1">How AI agents rebuilt Wechaty's async lifecycle</text>
+  <g font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="700">
+    <rect x="60" y="220" width="240" height="70" rx="14" fill="#10a37f"/>
+    <text x="180" y="263" text-anchor="middle" fill="#ffffff">Codex</text>
+    <rect x="60" y="330" width="240" height="70" rx="14" fill="#d97757"/>
+    <text x="180" y="373" text-anchor="middle" fill="#ffffff">Claude</text>
+    <rect x="60" y="440" width="240" height="70" rx="14" fill="#6e40c9"/>
+    <text x="180" y="483" text-anchor="middle" fill="#ffffff">Copilot</text>
+  </g>
+  <g stroke="#94a3b8" stroke-width="4" fill="none" marker-end="url(#arrow)">
+    <path d="M300 255 C 400 255, 420 365, 505 365"/>
+    <path d="M300 365 L 505 365"/>
+    <path d="M300 475 C 400 475, 420 365, 505 365"/>
+    <path d="M795 365 L 875 365"/>
+  </g>
+  <rect x="510" y="270" width="285" height="190" rx="18" fill="#0b1220" stroke="#38bdf8" stroke-width="4"/>
+  <g font-family="Helvetica, Arial, sans-serif" text-anchor="middle">
+    <text x="652" y="322" font-size="26" font-weight="700" fill="#38bdf8">The contract</text>
+    <text x="652" y="362" font-size="20" fill="#e2e8f0">rules C-STATE … C-COMP</text>
+    <text x="652" y="394" font-size="20" fill="#e2e8f0">43 decisions · 14 bugs</text>
+    <text x="652" y="426" font-size="20" fill="#e2e8f0">10,000 random schedules</text>
+  </g>
+  <rect x="880" y="300" width="270" height="130" rx="18" fill="#f8fafc"/>
+  <g font-family="Helvetica, Arial, sans-serif" text-anchor="middle">
+    <text x="1015" y="352" font-size="22" font-weight="700" fill="#0f172a">wechaty/</text>
+    <text x="1015" y="386" font-size="22" font-weight="700" fill="#0f172a">async-lifecycle</text>
+  </g>
+  <text x="60" y="590" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#94a3b8">wechaty.js.org · Wechaty 2.0</text>
+</svg>
