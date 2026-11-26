@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 480">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
+    </marker>
+    <linearGradient id="boxGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f0f4ff;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#e0e8ff;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="botGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8f5e9;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#c8e6c9;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="filterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fff8e1;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#ffecb3;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="aiGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fce4ec;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#f8bbd0;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="dbGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e0f2f1;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#b2dfdb;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Title -->
+  <text x="340" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#333">WeChat Group Feedback Collector Architecture</text>
+
+  <!-- WeChat Group -->
+  <rect x="250" y="55" width="180" height="45" rx="8" fill="url(#boxGrad)" stroke="#7986cb" stroke-width="1.5"/>
+  <text x="340" y="73" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#3949ab">微信群消息</text>
+  <text x="340" y="89" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">用户反馈 / 建议 / 吐槽</text>
+
+  <!-- Arrow -->
+  <line x1="340" y1="100" x2="340" y2="125" stroke="#555" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+  <!-- Wechaty Bot -->
+  <rect x="230" y="130" width="220" height="50" rx="8" fill="url(#botGrad)" stroke="#66bb6a" stroke-width="1.5"/>
+  <text x="340" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2e7d32">Wechaty Bot (PadLocal)</text>
+  <text x="340" y="167" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">被动监听 · 不回复 · 降低风控</text>
+
+  <!-- Arrow -->
+  <line x1="340" y1="180" x2="340" y2="205" stroke="#555" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+  <!-- Layer 1 -->
+  <rect x="230" y="210" width="220" height="50" rx="8" fill="url(#filterGrad)" stroke="#ffa726" stroke-width="1.5"/>
+  <text x="340" y="230" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#e65100">Layer 1: 规则粗筛 (filter.js)</text>
+  <text x="340" y="247" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">53 个中文关键词 · 评分 ≥ 3 进入下层</text>
+
+  <!-- Arrow -->
+  <line x1="340" y1="260" x2="340" y2="285" stroke="#555" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+  <!-- Layer 2 -->
+  <rect x="230" y="290" width="220" height="50" rx="8" fill="url(#aiGrad)" stroke="#e91e63" stroke-width="1.5"/>
+  <text x="340" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#880e4f">Layer 2: LLM 精确分类 (analyzer.js)</text>
+  <text x="340" y="327" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">类型 / 严重程度 / 模块 / 摘要</text>
+
+  <!-- Arrow -->
+  <line x1="340" y1="340" x2="340" y2="365" stroke="#555" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+  <!-- Storage -->
+  <rect x="230" y="370" width="220" height="50" rx="8" fill="url(#dbGrad)" stroke="#26a69a" stroke-width="1.5"/>
+  <text x="340" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#00695c">目标: 现有 Feedback API + Admin Panel</text>
+  <text x="340" y="407" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">统一入库 · 零额外 UI 开发</text>
+
+  <!-- Filtering ratio annotation -->
+  <text x="150" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#999">过滤</text>
+  <text x="150" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#e65100">~95% 闲聊</text>
+
+  <text x="150" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#999">过滤</text>
+  <text x="150" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#880e4f">误报/重复</text>
+
+  <!-- Result badge -->
+  <rect x="32" y="395" width="170" height="22" rx="11" fill="#e8f5e9" stroke="#66bb6a" stroke-width="1"/>
+  <text x="117" y="410" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2e7d32">输出: 结构化反馈数据</text>
+</svg>
